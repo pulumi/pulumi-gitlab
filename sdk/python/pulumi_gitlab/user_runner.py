@@ -454,6 +454,8 @@ class UserRunner(pulumi.CustomResource):
             __props__.__dict__["tag_lists"] = tag_lists
             __props__.__dict__["untagged"] = untagged
             __props__.__dict__["token"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(UserRunner, __self__).__init__(
             'gitlab:index/userRunner:UserRunner',
             resource_name,

@@ -20,91 +20,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_environments.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = new GitLab.ProjectEnvironment("this", new()
-    ///     {
-    ///         Project = "123",
-    ///         ExternalUrl = "www.example.com",
-    ///     });
-    /// 
-    ///     // Example with access level
-    ///     var exampleWithAccessLevel = new GitLab.ProjectProtectedEnvironment("exampleWithAccessLevel", new()
-    ///     {
-    ///         Project = @this.Project,
-    ///         RequiredApprovalCount = 1,
-    ///         Environment = @this.Name,
-    ///         DeployAccessLevels = new[]
-    ///         {
-    ///             new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
-    ///             {
-    ///                 AccessLevel = "developer",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Example with group
-    ///     var exampleWithGroup = new GitLab.ProjectProtectedEnvironment("exampleWithGroup", new()
-    ///     {
-    ///         Project = @this.Project,
-    ///         Environment = @this.Name,
-    ///         DeployAccessLevels = new[]
-    ///         {
-    ///             new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
-    ///             {
-    ///                 GroupId = 456,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Example with user
-    ///     var exampleWithUser = new GitLab.ProjectProtectedEnvironment("exampleWithUser", new()
-    ///     {
-    ///         Project = @this.Project,
-    ///         Environment = @this.Name,
-    ///         DeployAccessLevels = new[]
-    ///         {
-    ///             new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
-    ///             {
-    ///                 UserId = 789,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Example with multiple access levels
-    ///     var exampleWithMultiple = new GitLab.ProjectProtectedEnvironment("exampleWithMultiple", new()
-    ///     {
-    ///         Project = @this.Project,
-    ///         RequiredApprovalCount = 2,
-    ///         Environment = @this.Name,
-    ///         DeployAccessLevels = new[]
-    ///         {
-    ///             new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
-    ///             {
-    ///                 AccessLevel = "developer",
-    ///             },
-    ///             new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
-    ///             {
-    ///                 GroupId = 456,
-    ///             },
-    ///             new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
-    ///             {
-    ///                 UserId = 789,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
@@ -116,6 +31,12 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment")]
     public partial class ProjectProtectedEnvironment : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Array of approval rules to deploy, with each described by a hash.
+        /// </summary>
+        [Output("approvalRules")]
+        public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentApprovalRule>> ApprovalRules { get; private set; } = null!;
+
         /// <summary>
         /// Array of access levels allowed to deploy, with each described by a hash.
         /// </summary>
@@ -186,6 +107,18 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectProtectedEnvironmentArgs : global::Pulumi.ResourceArgs
     {
+        [Input("approvalRules")]
+        private InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleArgs>? _approvalRules;
+
+        /// <summary>
+        /// Array of approval rules to deploy, with each described by a hash.
+        /// </summary>
+        public InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleArgs> ApprovalRules
+        {
+            get => _approvalRules ?? (_approvalRules = new InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleArgs>());
+            set => _approvalRules = value;
+        }
+
         [Input("deployAccessLevels")]
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>? _deployAccessLevels;
 
@@ -224,6 +157,18 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectProtectedEnvironmentState : global::Pulumi.ResourceArgs
     {
+        [Input("approvalRules")]
+        private InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleGetArgs>? _approvalRules;
+
+        /// <summary>
+        /// Array of approval rules to deploy, with each described by a hash.
+        /// </summary>
+        public InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleGetArgs> ApprovalRules
+        {
+            get => _approvalRules ?? (_approvalRules = new InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleGetArgs>());
+            set => _approvalRules = value;
+        }
+
         [Input("deployAccessLevels")]
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs>? _deployAccessLevels;
 

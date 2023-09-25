@@ -928,6 +928,33 @@ export interface ProjectIssueTaskCompletionStatus {
     count: number;
 }
 
+export interface ProjectProtectedEnvironmentApprovalRule {
+    /**
+     * Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+     */
+    accessLevel?: string;
+    /**
+     * Readable description of level of access.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+     */
+    groupId?: number;
+    /**
+     * The unique ID of the Approval Rules object.
+     */
+    id: number;
+    /**
+     * The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+     */
+    requiredApprovals: number;
+    /**
+     * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+     */
+    userId?: number;
+}
+
 export interface ProjectProtectedEnvironmentDeployAccessLevel {
     /**
      * Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
@@ -941,6 +968,10 @@ export interface ProjectProtectedEnvironmentDeployAccessLevel {
      * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
      */
     groupId?: number;
+    /**
+     * The unique ID of the Deploy Access Level object.
+     */
+    id: number;
     /**
      * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
      */

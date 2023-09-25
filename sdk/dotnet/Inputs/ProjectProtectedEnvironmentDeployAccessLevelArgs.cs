@@ -31,6 +31,12 @@ namespace Pulumi.GitLab.Inputs
         public Input<int>? GroupId { get; set; }
 
         /// <summary>
+        /// The unique ID of the Deploy Access Level object.
+        /// </summary>
+        [Input("id")]
+        public Input<int>? Id { get; set; }
+
+        /// <summary>
         /// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
         /// </summary>
         [Input("userId")]

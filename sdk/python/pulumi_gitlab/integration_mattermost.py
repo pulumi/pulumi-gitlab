@@ -9,16 +9,17 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['IntegrationSlackArgs', 'IntegrationSlack']
+__all__ = ['IntegrationMattermostArgs', 'IntegrationMattermost']
 
 @pulumi.input_type
-class IntegrationSlackArgs:
+class IntegrationMattermostArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  webhook: pulumi.Input[str],
                  branches_to_be_notified: Optional[pulumi.Input[str]] = None,
                  confidential_issue_channel: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_channel: Optional[pulumi.Input[str]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  issue_channel: Optional[pulumi.Input[str]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -27,7 +28,6 @@ class IntegrationSlackArgs:
                  note_channel: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
-                 notify_only_default_branch: Optional[pulumi.Input[bool]] = None,
                  pipeline_channel: Optional[pulumi.Input[str]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  push_channel: Optional[pulumi.Input[str]] = None,
@@ -38,12 +38,13 @@ class IntegrationSlackArgs:
                  wiki_page_channel: Optional[pulumi.Input[str]] = None,
                  wiki_page_events: Optional[pulumi.Input[bool]] = None):
         """
-        The set of arguments for constructing a IntegrationSlack resource.
+        The set of arguments for constructing a IntegrationMattermost resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
+        :param pulumi.Input[str] confidential_note_channel: The name of the channel to receive confidential note events notifications.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -52,7 +53,6 @@ class IntegrationSlackArgs:
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] push_channel: The name of the channel to receive push events notifications.
@@ -71,6 +71,8 @@ class IntegrationSlackArgs:
             pulumi.set(__self__, "confidential_issue_channel", confidential_issue_channel)
         if confidential_issues_events is not None:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+        if confidential_note_channel is not None:
+            pulumi.set(__self__, "confidential_note_channel", confidential_note_channel)
         if confidential_note_events is not None:
             pulumi.set(__self__, "confidential_note_events", confidential_note_events)
         if issue_channel is not None:
@@ -87,11 +89,6 @@ class IntegrationSlackArgs:
             pulumi.set(__self__, "note_events", note_events)
         if notify_only_broken_pipelines is not None:
             pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
-        if notify_only_default_branch is not None:
-            warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
-            pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
-        if notify_only_default_branch is not None:
-            pulumi.set(__self__, "notify_only_default_branch", notify_only_default_branch)
         if pipeline_channel is not None:
             pulumi.set(__self__, "pipeline_channel", pipeline_channel)
         if pipeline_events is not None:
@@ -127,7 +124,7 @@ class IntegrationSlackArgs:
     @pulumi.getter
     def webhook(self) -> pulumi.Input[str]:
         """
-        Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
@@ -170,6 +167,18 @@ class IntegrationSlackArgs:
     @confidential_issues_events.setter
     def confidential_issues_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "confidential_issues_events", value)
+
+    @property
+    @pulumi.getter(name="confidentialNoteChannel")
+    def confidential_note_channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the channel to receive confidential note events notifications.
+        """
+        return pulumi.get(self, "confidential_note_channel")
+
+    @confidential_note_channel.setter
+    def confidential_note_channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "confidential_note_channel", value)
 
     @property
     @pulumi.getter(name="confidentialNoteEvents")
@@ -266,21 +275,6 @@ class IntegrationSlackArgs:
     @notify_only_broken_pipelines.setter
     def notify_only_broken_pipelines(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "notify_only_broken_pipelines", value)
-
-    @property
-    @pulumi.getter(name="notifyOnlyDefaultBranch")
-    def notify_only_default_branch(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This parameter has been replaced with `branches_to_be_notified`.
-        """
-        warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
-        pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
-
-        return pulumi.get(self, "notify_only_default_branch")
-
-    @notify_only_default_branch.setter
-    def notify_only_default_branch(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "notify_only_default_branch", value)
 
     @property
     @pulumi.getter(name="pipelineChannel")
@@ -392,21 +386,20 @@ class IntegrationSlackArgs:
 
 
 @pulumi.input_type
-class _IntegrationSlackState:
+class _IntegrationMattermostState:
     def __init__(__self__, *,
                  branches_to_be_notified: Optional[pulumi.Input[str]] = None,
                  confidential_issue_channel: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_channel: Optional[pulumi.Input[str]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  issue_channel: Optional[pulumi.Input[str]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
-                 job_events: Optional[pulumi.Input[bool]] = None,
                  merge_request_channel: Optional[pulumi.Input[str]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
                  note_channel: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
-                 notify_only_default_branch: Optional[pulumi.Input[bool]] = None,
                  pipeline_channel: Optional[pulumi.Input[str]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -419,20 +412,19 @@ class _IntegrationSlackState:
                  wiki_page_channel: Optional[pulumi.Input[str]] = None,
                  wiki_page_events: Optional[pulumi.Input[bool]] = None):
         """
-        Input properties used for looking up and filtering IntegrationSlack resources.
+        Input properties used for looking up and filtering IntegrationMattermost resources.
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
+        :param pulumi.Input[str] confidential_note_channel: The name of the channel to receive confidential note events notifications.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
-        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
         :param pulumi.Input[str] merge_request_channel: The name of the channel to receive merge request events notifications.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge requests events.
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -441,7 +433,7 @@ class _IntegrationSlackState:
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -451,14 +443,14 @@ class _IntegrationSlackState:
             pulumi.set(__self__, "confidential_issue_channel", confidential_issue_channel)
         if confidential_issues_events is not None:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+        if confidential_note_channel is not None:
+            pulumi.set(__self__, "confidential_note_channel", confidential_note_channel)
         if confidential_note_events is not None:
             pulumi.set(__self__, "confidential_note_events", confidential_note_events)
         if issue_channel is not None:
             pulumi.set(__self__, "issue_channel", issue_channel)
         if issues_events is not None:
             pulumi.set(__self__, "issues_events", issues_events)
-        if job_events is not None:
-            pulumi.set(__self__, "job_events", job_events)
         if merge_request_channel is not None:
             pulumi.set(__self__, "merge_request_channel", merge_request_channel)
         if merge_requests_events is not None:
@@ -469,11 +461,6 @@ class _IntegrationSlackState:
             pulumi.set(__self__, "note_events", note_events)
         if notify_only_broken_pipelines is not None:
             pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
-        if notify_only_default_branch is not None:
-            warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
-            pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
-        if notify_only_default_branch is not None:
-            pulumi.set(__self__, "notify_only_default_branch", notify_only_default_branch)
         if pipeline_channel is not None:
             pulumi.set(__self__, "pipeline_channel", pipeline_channel)
         if pipeline_events is not None:
@@ -534,6 +521,18 @@ class _IntegrationSlackState:
         pulumi.set(self, "confidential_issues_events", value)
 
     @property
+    @pulumi.getter(name="confidentialNoteChannel")
+    def confidential_note_channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the channel to receive confidential note events notifications.
+        """
+        return pulumi.get(self, "confidential_note_channel")
+
+    @confidential_note_channel.setter
+    def confidential_note_channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "confidential_note_channel", value)
+
+    @property
     @pulumi.getter(name="confidentialNoteEvents")
     def confidential_note_events(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -568,18 +567,6 @@ class _IntegrationSlackState:
     @issues_events.setter
     def issues_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "issues_events", value)
-
-    @property
-    @pulumi.getter(name="jobEvents")
-    def job_events(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-        """
-        return pulumi.get(self, "job_events")
-
-    @job_events.setter
-    def job_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "job_events", value)
 
     @property
     @pulumi.getter(name="mergeRequestChannel")
@@ -640,21 +627,6 @@ class _IntegrationSlackState:
     @notify_only_broken_pipelines.setter
     def notify_only_broken_pipelines(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "notify_only_broken_pipelines", value)
-
-    @property
-    @pulumi.getter(name="notifyOnlyDefaultBranch")
-    def notify_only_default_branch(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This parameter has been replaced with `branches_to_be_notified`.
-        """
-        warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
-        pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
-
-        return pulumi.get(self, "notify_only_default_branch")
-
-    @notify_only_default_branch.setter
-    def notify_only_default_branch(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "notify_only_default_branch", value)
 
     @property
     @pulumi.getter(name="pipelineChannel")
@@ -756,7 +728,7 @@ class _IntegrationSlackState:
     @pulumi.getter
     def webhook(self) -> Optional[pulumi.Input[str]]:
         """
-        Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
@@ -789,7 +761,7 @@ class _IntegrationSlackState:
         pulumi.set(self, "wiki_page_events", value)
 
 
-class IntegrationSlack(pulumi.CustomResource):
+class IntegrationMattermost(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -797,6 +769,7 @@ class IntegrationSlack(pulumi.CustomResource):
                  branches_to_be_notified: Optional[pulumi.Input[str]] = None,
                  confidential_issue_channel: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_channel: Optional[pulumi.Input[str]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  issue_channel: Optional[pulumi.Input[str]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -805,7 +778,6 @@ class IntegrationSlack(pulumi.CustomResource):
                  note_channel: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
-                 notify_only_default_branch: Optional[pulumi.Input[bool]] = None,
                  pipeline_channel: Optional[pulumi.Input[str]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -819,9 +791,9 @@ class IntegrationSlack(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        The `IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
+        The `IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
 
         ## Example Usage
 
@@ -832,7 +804,7 @@ class IntegrationSlack(pulumi.CustomResource):
         awesome_project = gitlab.Project("awesomeProject",
             description="My awesome project.",
             visibility_level="public")
-        slack = gitlab.IntegrationSlack("slack",
+        mattermost = gitlab.IntegrationMattermost("mattermost",
             project=awesome_project.id,
             webhook="https://webhook.com",
             username="myuser",
@@ -842,10 +814,10 @@ class IntegrationSlack(pulumi.CustomResource):
 
         ## Import
 
-        You can import a gitlab_integration_slack.slack state using the project ID, e.g.
+        You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1
+         $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
         ```
 
         :param str resource_name: The name of the resource.
@@ -853,6 +825,7 @@ class IntegrationSlack(pulumi.CustomResource):
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
+        :param pulumi.Input[str] confidential_note_channel: The name of the channel to receive confidential note events notifications.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -861,7 +834,6 @@ class IntegrationSlack(pulumi.CustomResource):
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -870,7 +842,7 @@ class IntegrationSlack(pulumi.CustomResource):
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -878,12 +850,12 @@ class IntegrationSlack(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IntegrationSlackArgs,
+                 args: IntegrationMattermostArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
+        The `IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
 
         ## Example Usage
 
@@ -894,7 +866,7 @@ class IntegrationSlack(pulumi.CustomResource):
         awesome_project = gitlab.Project("awesomeProject",
             description="My awesome project.",
             visibility_level="public")
-        slack = gitlab.IntegrationSlack("slack",
+        mattermost = gitlab.IntegrationMattermost("mattermost",
             project=awesome_project.id,
             webhook="https://webhook.com",
             username="myuser",
@@ -904,19 +876,19 @@ class IntegrationSlack(pulumi.CustomResource):
 
         ## Import
 
-        You can import a gitlab_integration_slack.slack state using the project ID, e.g.
+        You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1
+         $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
         ```
 
         :param str resource_name: The name of the resource.
-        :param IntegrationSlackArgs args: The arguments to use to populate this resource's properties.
+        :param IntegrationMattermostArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IntegrationSlackArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IntegrationMattermostArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -928,6 +900,7 @@ class IntegrationSlack(pulumi.CustomResource):
                  branches_to_be_notified: Optional[pulumi.Input[str]] = None,
                  confidential_issue_channel: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_channel: Optional[pulumi.Input[str]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  issue_channel: Optional[pulumi.Input[str]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -936,7 +909,6 @@ class IntegrationSlack(pulumi.CustomResource):
                  note_channel: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
-                 notify_only_default_branch: Optional[pulumi.Input[bool]] = None,
                  pipeline_channel: Optional[pulumi.Input[str]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -955,11 +927,12 @@ class IntegrationSlack(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IntegrationSlackArgs.__new__(IntegrationSlackArgs)
+            __props__ = IntegrationMattermostArgs.__new__(IntegrationMattermostArgs)
 
             __props__.__dict__["branches_to_be_notified"] = branches_to_be_notified
             __props__.__dict__["confidential_issue_channel"] = confidential_issue_channel
             __props__.__dict__["confidential_issues_events"] = confidential_issues_events
+            __props__.__dict__["confidential_note_channel"] = confidential_note_channel
             __props__.__dict__["confidential_note_events"] = confidential_note_events
             __props__.__dict__["issue_channel"] = issue_channel
             __props__.__dict__["issues_events"] = issues_events
@@ -968,10 +941,6 @@ class IntegrationSlack(pulumi.CustomResource):
             __props__.__dict__["note_channel"] = note_channel
             __props__.__dict__["note_events"] = note_events
             __props__.__dict__["notify_only_broken_pipelines"] = notify_only_broken_pipelines
-            if notify_only_default_branch is not None and not opts.urn:
-                warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
-                pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
-            __props__.__dict__["notify_only_default_branch"] = notify_only_default_branch
             __props__.__dict__["pipeline_channel"] = pipeline_channel
             __props__.__dict__["pipeline_events"] = pipeline_events
             if project is None and not opts.urn:
@@ -987,9 +956,8 @@ class IntegrationSlack(pulumi.CustomResource):
             __props__.__dict__["webhook"] = webhook
             __props__.__dict__["wiki_page_channel"] = wiki_page_channel
             __props__.__dict__["wiki_page_events"] = wiki_page_events
-            __props__.__dict__["job_events"] = None
-        super(IntegrationSlack, __self__).__init__(
-            'gitlab:index/integrationSlack:IntegrationSlack',
+        super(IntegrationMattermost, __self__).__init__(
+            'gitlab:index/integrationMattermost:IntegrationMattermost',
             resource_name,
             __props__,
             opts)
@@ -1001,16 +969,15 @@ class IntegrationSlack(pulumi.CustomResource):
             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
             confidential_issue_channel: Optional[pulumi.Input[str]] = None,
             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+            confidential_note_channel: Optional[pulumi.Input[str]] = None,
             confidential_note_events: Optional[pulumi.Input[bool]] = None,
             issue_channel: Optional[pulumi.Input[str]] = None,
             issues_events: Optional[pulumi.Input[bool]] = None,
-            job_events: Optional[pulumi.Input[bool]] = None,
             merge_request_channel: Optional[pulumi.Input[str]] = None,
             merge_requests_events: Optional[pulumi.Input[bool]] = None,
             note_channel: Optional[pulumi.Input[str]] = None,
             note_events: Optional[pulumi.Input[bool]] = None,
             notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
-            notify_only_default_branch: Optional[pulumi.Input[bool]] = None,
             pipeline_channel: Optional[pulumi.Input[str]] = None,
             pipeline_events: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1021,9 +988,9 @@ class IntegrationSlack(pulumi.CustomResource):
             username: Optional[pulumi.Input[str]] = None,
             webhook: Optional[pulumi.Input[str]] = None,
             wiki_page_channel: Optional[pulumi.Input[str]] = None,
-            wiki_page_events: Optional[pulumi.Input[bool]] = None) -> 'IntegrationSlack':
+            wiki_page_events: Optional[pulumi.Input[bool]] = None) -> 'IntegrationMattermost':
         """
-        Get an existing IntegrationSlack resource's state with the given name, id, and optional extra
+        Get an existing IntegrationMattermost resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -1032,16 +999,15 @@ class IntegrationSlack(pulumi.CustomResource):
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
+        :param pulumi.Input[str] confidential_note_channel: The name of the channel to receive confidential note events notifications.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
-        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
         :param pulumi.Input[str] merge_request_channel: The name of the channel to receive merge request events notifications.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge requests events.
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -1050,27 +1016,26 @@ class IntegrationSlack(pulumi.CustomResource):
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _IntegrationSlackState.__new__(_IntegrationSlackState)
+        __props__ = _IntegrationMattermostState.__new__(_IntegrationMattermostState)
 
         __props__.__dict__["branches_to_be_notified"] = branches_to_be_notified
         __props__.__dict__["confidential_issue_channel"] = confidential_issue_channel
         __props__.__dict__["confidential_issues_events"] = confidential_issues_events
+        __props__.__dict__["confidential_note_channel"] = confidential_note_channel
         __props__.__dict__["confidential_note_events"] = confidential_note_events
         __props__.__dict__["issue_channel"] = issue_channel
         __props__.__dict__["issues_events"] = issues_events
-        __props__.__dict__["job_events"] = job_events
         __props__.__dict__["merge_request_channel"] = merge_request_channel
         __props__.__dict__["merge_requests_events"] = merge_requests_events
         __props__.__dict__["note_channel"] = note_channel
         __props__.__dict__["note_events"] = note_events
         __props__.__dict__["notify_only_broken_pipelines"] = notify_only_broken_pipelines
-        __props__.__dict__["notify_only_default_branch"] = notify_only_default_branch
         __props__.__dict__["pipeline_channel"] = pipeline_channel
         __props__.__dict__["pipeline_events"] = pipeline_events
         __props__.__dict__["project"] = project
@@ -1082,7 +1047,7 @@ class IntegrationSlack(pulumi.CustomResource):
         __props__.__dict__["webhook"] = webhook
         __props__.__dict__["wiki_page_channel"] = wiki_page_channel
         __props__.__dict__["wiki_page_events"] = wiki_page_events
-        return IntegrationSlack(resource_name, opts=opts, __props__=__props__)
+        return IntegrationMattermost(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="branchesToBeNotified")
@@ -1109,6 +1074,14 @@ class IntegrationSlack(pulumi.CustomResource):
         return pulumi.get(self, "confidential_issues_events")
 
     @property
+    @pulumi.getter(name="confidentialNoteChannel")
+    def confidential_note_channel(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the channel to receive confidential note events notifications.
+        """
+        return pulumi.get(self, "confidential_note_channel")
+
+    @property
     @pulumi.getter(name="confidentialNoteEvents")
     def confidential_note_events(self) -> pulumi.Output[bool]:
         """
@@ -1131,14 +1104,6 @@ class IntegrationSlack(pulumi.CustomResource):
         Enable notifications for issues events.
         """
         return pulumi.get(self, "issues_events")
-
-    @property
-    @pulumi.getter(name="jobEvents")
-    def job_events(self) -> pulumi.Output[bool]:
-        """
-        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-        """
-        return pulumi.get(self, "job_events")
 
     @property
     @pulumi.getter(name="mergeRequestChannel")
@@ -1179,17 +1144,6 @@ class IntegrationSlack(pulumi.CustomResource):
         Send notifications for broken pipelines.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
-
-    @property
-    @pulumi.getter(name="notifyOnlyDefaultBranch")
-    def notify_only_default_branch(self) -> pulumi.Output[bool]:
-        """
-        This parameter has been replaced with `branches_to_be_notified`.
-        """
-        warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
-        pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
-
-        return pulumi.get(self, "notify_only_default_branch")
 
     @property
     @pulumi.getter(name="pipelineChannel")
@@ -1259,7 +1213,7 @@ class IntegrationSlack(pulumi.CustomResource):
     @pulumi.getter
     def webhook(self) -> pulumi.Output[str]:
         """
-        Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 

@@ -77,6 +77,7 @@ from .integration_emails_on_push import *
 from .integration_external_wiki import *
 from .integration_github import *
 from .integration_jira import *
+from .integration_mattermost import *
 from .integration_microsoft_teams import *
 from .integration_pipelines_email import *
 from .integration_slack import *
@@ -396,6 +397,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/integrationJira:IntegrationJira": "IntegrationJira"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/integrationMattermost",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationMattermost:IntegrationMattermost": "IntegrationMattermost"
   }
  },
  {

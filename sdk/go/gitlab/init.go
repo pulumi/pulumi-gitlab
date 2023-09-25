@@ -85,6 +85,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IntegrationGithub{}
 	case "gitlab:index/integrationJira:IntegrationJira":
 		r = &IntegrationJira{}
+	case "gitlab:index/integrationMattermost:IntegrationMattermost":
+		r = &IntegrationMattermost{}
 	case "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams":
 		r = &IntegrationMicrosoftTeams{}
 	case "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail":
@@ -376,6 +378,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/integrationJira",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/integrationMattermost",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

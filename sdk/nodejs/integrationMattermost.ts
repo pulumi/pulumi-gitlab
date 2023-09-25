@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
+ * The `gitlab.IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
  *
  * ## Example Usage
  *
@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     description: "My awesome project.",
  *     visibilityLevel: "public",
  * });
- * const slack = new gitlab.IntegrationSlack("slack", {
+ * const mattermost = new gitlab.IntegrationMattermost("mattermost", {
  *     project: awesomeProject.id,
  *     webhook: "https://webhook.com",
  *     username: "myuser",
@@ -30,15 +30,15 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * You can import a gitlab_integration_slack.slack state using the project ID, e.g.
+ * You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1
+ *  $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
  * ```
  */
-export class IntegrationSlack extends pulumi.CustomResource {
+export class IntegrationMattermost extends pulumi.CustomResource {
     /**
-     * Get an existing IntegrationSlack resource's state with the given name, ID, and optional extra
+     * Get an existing IntegrationMattermost resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -46,22 +46,22 @@ export class IntegrationSlack extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IntegrationSlackState, opts?: pulumi.CustomResourceOptions): IntegrationSlack {
-        return new IntegrationSlack(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IntegrationMattermostState, opts?: pulumi.CustomResourceOptions): IntegrationMattermost {
+        return new IntegrationMattermost(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gitlab:index/integrationSlack:IntegrationSlack';
+    public static readonly __pulumiType = 'gitlab:index/integrationMattermost:IntegrationMattermost';
 
     /**
-     * Returns true if the given object is an instance of IntegrationSlack.  This is designed to work even
+     * Returns true if the given object is an instance of IntegrationMattermost.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is IntegrationSlack {
+    public static isInstance(obj: any): obj is IntegrationMattermost {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === IntegrationSlack.__pulumiType;
+        return obj['__pulumiType'] === IntegrationMattermost.__pulumiType;
     }
 
     /**
@@ -77,6 +77,10 @@ export class IntegrationSlack extends pulumi.CustomResource {
      */
     public readonly confidentialIssuesEvents!: pulumi.Output<boolean>;
     /**
+     * The name of the channel to receive confidential note events notifications.
+     */
+    public readonly confidentialNoteChannel!: pulumi.Output<string | undefined>;
+    /**
      * Enable notifications for confidential note events.
      */
     public readonly confidentialNoteEvents!: pulumi.Output<boolean>;
@@ -88,10 +92,6 @@ export class IntegrationSlack extends pulumi.CustomResource {
      * Enable notifications for issues events.
      */
     public readonly issuesEvents!: pulumi.Output<boolean>;
-    /**
-     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-     */
-    public /*out*/ readonly jobEvents!: pulumi.Output<boolean>;
     /**
      * The name of the channel to receive merge request events notifications.
      */
@@ -112,12 +112,6 @@ export class IntegrationSlack extends pulumi.CustomResource {
      * Send notifications for broken pipelines.
      */
     public readonly notifyOnlyBrokenPipelines!: pulumi.Output<boolean>;
-    /**
-     * This parameter has been replaced with `branchesToBeNotified`.
-     *
-     * @deprecated use 'branches_to_be_notified' argument instead
-     */
-    public readonly notifyOnlyDefaultBranch!: pulumi.Output<boolean>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */
@@ -151,7 +145,7 @@ export class IntegrationSlack extends pulumi.CustomResource {
      */
     public readonly username!: pulumi.Output<string | undefined>;
     /**
-     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
      */
     public readonly webhook!: pulumi.Output<string>;
     /**
@@ -164,31 +158,30 @@ export class IntegrationSlack extends pulumi.CustomResource {
     public readonly wikiPageEvents!: pulumi.Output<boolean>;
 
     /**
-     * Create a IntegrationSlack resource with the given unique name, arguments, and options.
+     * Create a IntegrationMattermost resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: IntegrationSlackArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: IntegrationSlackArgs | IntegrationSlackState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: IntegrationMattermostArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: IntegrationMattermostArgs | IntegrationMattermostState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as IntegrationSlackState | undefined;
+            const state = argsOrState as IntegrationMattermostState | undefined;
             resourceInputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
             resourceInputs["confidentialIssueChannel"] = state ? state.confidentialIssueChannel : undefined;
             resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
+            resourceInputs["confidentialNoteChannel"] = state ? state.confidentialNoteChannel : undefined;
             resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
             resourceInputs["issueChannel"] = state ? state.issueChannel : undefined;
             resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
-            resourceInputs["jobEvents"] = state ? state.jobEvents : undefined;
             resourceInputs["mergeRequestChannel"] = state ? state.mergeRequestChannel : undefined;
             resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
             resourceInputs["noteChannel"] = state ? state.noteChannel : undefined;
             resourceInputs["noteEvents"] = state ? state.noteEvents : undefined;
             resourceInputs["notifyOnlyBrokenPipelines"] = state ? state.notifyOnlyBrokenPipelines : undefined;
-            resourceInputs["notifyOnlyDefaultBranch"] = state ? state.notifyOnlyDefaultBranch : undefined;
             resourceInputs["pipelineChannel"] = state ? state.pipelineChannel : undefined;
             resourceInputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -201,7 +194,7 @@ export class IntegrationSlack extends pulumi.CustomResource {
             resourceInputs["wikiPageChannel"] = state ? state.wikiPageChannel : undefined;
             resourceInputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
         } else {
-            const args = argsOrState as IntegrationSlackArgs | undefined;
+            const args = argsOrState as IntegrationMattermostArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -211,6 +204,7 @@ export class IntegrationSlack extends pulumi.CustomResource {
             resourceInputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
             resourceInputs["confidentialIssueChannel"] = args ? args.confidentialIssueChannel : undefined;
             resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
+            resourceInputs["confidentialNoteChannel"] = args ? args.confidentialNoteChannel : undefined;
             resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
             resourceInputs["issueChannel"] = args ? args.issueChannel : undefined;
             resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
@@ -219,7 +213,6 @@ export class IntegrationSlack extends pulumi.CustomResource {
             resourceInputs["noteChannel"] = args ? args.noteChannel : undefined;
             resourceInputs["noteEvents"] = args ? args.noteEvents : undefined;
             resourceInputs["notifyOnlyBrokenPipelines"] = args ? args.notifyOnlyBrokenPipelines : undefined;
-            resourceInputs["notifyOnlyDefaultBranch"] = args ? args.notifyOnlyDefaultBranch : undefined;
             resourceInputs["pipelineChannel"] = args ? args.pipelineChannel : undefined;
             resourceInputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -231,17 +224,16 @@ export class IntegrationSlack extends pulumi.CustomResource {
             resourceInputs["webhook"] = args ? args.webhook : undefined;
             resourceInputs["wikiPageChannel"] = args ? args.wikiPageChannel : undefined;
             resourceInputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
-            resourceInputs["jobEvents"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(IntegrationSlack.__pulumiType, name, resourceInputs, opts);
+        super(IntegrationMattermost.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering IntegrationSlack resources.
+ * Input properties used for looking up and filtering IntegrationMattermost resources.
  */
-export interface IntegrationSlackState {
+export interface IntegrationMattermostState {
     /**
      * Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
      */
@@ -255,6 +247,10 @@ export interface IntegrationSlackState {
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
+     * The name of the channel to receive confidential note events notifications.
+     */
+    confidentialNoteChannel?: pulumi.Input<string>;
+    /**
      * Enable notifications for confidential note events.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
@@ -266,10 +262,6 @@ export interface IntegrationSlackState {
      * Enable notifications for issues events.
      */
     issuesEvents?: pulumi.Input<boolean>;
-    /**
-     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-     */
-    jobEvents?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive merge request events notifications.
      */
@@ -290,12 +282,6 @@ export interface IntegrationSlackState {
      * Send notifications for broken pipelines.
      */
     notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
-    /**
-     * This parameter has been replaced with `branchesToBeNotified`.
-     *
-     * @deprecated use 'branches_to_be_notified' argument instead
-     */
-    notifyOnlyDefaultBranch?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */
@@ -329,7 +315,7 @@ export interface IntegrationSlackState {
      */
     username?: pulumi.Input<string>;
     /**
-     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
      */
     webhook?: pulumi.Input<string>;
     /**
@@ -343,9 +329,9 @@ export interface IntegrationSlackState {
 }
 
 /**
- * The set of arguments for constructing a IntegrationSlack resource.
+ * The set of arguments for constructing a IntegrationMattermost resource.
  */
-export interface IntegrationSlackArgs {
+export interface IntegrationMattermostArgs {
     /**
      * Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
      */
@@ -358,6 +344,10 @@ export interface IntegrationSlackArgs {
      * Enable notifications for confidential issues events.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
+    /**
+     * The name of the channel to receive confidential note events notifications.
+     */
+    confidentialNoteChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for confidential note events.
      */
@@ -391,12 +381,6 @@ export interface IntegrationSlackArgs {
      */
     notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
-     * This parameter has been replaced with `branchesToBeNotified`.
-     *
-     * @deprecated use 'branches_to_be_notified' argument instead
-     */
-    notifyOnlyDefaultBranch?: pulumi.Input<boolean>;
-    /**
      * The name of the channel to receive pipeline events notifications.
      */
     pipelineChannel?: pulumi.Input<string>;
@@ -429,7 +413,7 @@ export interface IntegrationSlackArgs {
      */
     username?: pulumi.Input<string>;
     /**
-     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
      */
     webhook: pulumi.Input<string>;
     /**

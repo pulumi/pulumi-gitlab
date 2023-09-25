@@ -53,6 +53,10 @@ func NewUserRunner(ctx *pulumi.Context,
 	if args.RunnerType == nil {
 		return nil, errors.New("invalid value for required argument 'RunnerType'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserRunner
 	err := ctx.RegisterResource("gitlab:index/userRunner:UserRunner", name, args, &resource, opts...)

@@ -106,6 +106,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -263,11 +267,21 @@ namespace Pulumi.GitLab
             set => _tagLists = value;
         }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specifies if the runner should handle untagged jobs.

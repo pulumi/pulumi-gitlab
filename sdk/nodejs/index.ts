@@ -365,6 +365,11 @@ export type IntegrationJira = import("./integrationJira").IntegrationJira;
 export const IntegrationJira: typeof import("./integrationJira").IntegrationJira = null as any;
 utilities.lazyLoad(exports, ["IntegrationJira"], () => require("./integrationJira"));
 
+export { IntegrationMattermostArgs, IntegrationMattermostState } from "./integrationMattermost";
+export type IntegrationMattermost = import("./integrationMattermost").IntegrationMattermost;
+export const IntegrationMattermost: typeof import("./integrationMattermost").IntegrationMattermost = null as any;
+utilities.lazyLoad(exports, ["IntegrationMattermost"], () => require("./integrationMattermost"));
+
 export { IntegrationMicrosoftTeamsArgs, IntegrationMicrosoftTeamsState } from "./integrationMicrosoftTeams";
 export type IntegrationMicrosoftTeams = import("./integrationMicrosoftTeams").IntegrationMicrosoftTeams;
 export const IntegrationMicrosoftTeams: typeof import("./integrationMicrosoftTeams").IntegrationMicrosoftTeams = null as any;
@@ -703,6 +708,8 @@ const _module = {
                 return new IntegrationGithub(name, <any>undefined, { urn })
             case "gitlab:index/integrationJira:IntegrationJira":
                 return new IntegrationJira(name, <any>undefined, { urn })
+            case "gitlab:index/integrationMattermost:IntegrationMattermost":
+                return new IntegrationMattermost(name, <any>undefined, { urn })
             case "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams":
                 return new IntegrationMicrosoftTeams(name, <any>undefined, { urn })
             case "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail":
@@ -842,6 +849,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/integrationEmailsOnPush",
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationExternalWiki", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationGithub", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationJira", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationMattermost", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationMicrosoftTeams", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationPipelinesEmail", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationSlack", _module)

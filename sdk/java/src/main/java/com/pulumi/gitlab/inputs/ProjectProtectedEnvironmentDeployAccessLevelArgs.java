@@ -62,6 +62,21 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
     }
 
     /**
+     * The unique ID of the Deploy Access Level object.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<Integer> id;
+
+    /**
+     * @return The unique ID of the Deploy Access Level object.
+     * 
+     */
+    public Optional<Output<Integer>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
      * 
      */
@@ -82,6 +97,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
         this.accessLevel = $.accessLevel;
         this.accessLevelDescription = $.accessLevelDescription;
         this.groupId = $.groupId;
+        this.id = $.id;
         this.userId = $.userId;
     }
 
@@ -164,6 +180,27 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
          */
         public Builder groupId(Integer groupId) {
             return groupId(Output.of(groupId));
+        }
+
+        /**
+         * @param id The unique ID of the Deploy Access Level object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<Integer> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The unique ID of the Deploy Access Level object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(Integer id) {
+            return id(Output.of(id));
         }
 
         /**

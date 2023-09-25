@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class ProjectProtectedEnvironmentDeployAccessLevel {
+public final class ProjectProtectedEnvironmentApprovalRule {
     /**
-     * @return Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+     * @return Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
      * 
      */
     private @Nullable String accessLevel;
@@ -23,24 +23,29 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
      */
     private @Nullable String accessLevelDescription;
     /**
-     * @return The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+     * @return The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
      * 
      */
     private @Nullable Integer groupId;
     /**
-     * @return The unique ID of the Deploy Access Level object.
+     * @return The unique ID of the Approval Rules object.
      * 
      */
     private @Nullable Integer id;
     /**
-     * @return The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+     * @return The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+     * 
+     */
+    private @Nullable Integer requiredApprovals;
+    /**
+     * @return The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
      * 
      */
     private @Nullable Integer userId;
 
-    private ProjectProtectedEnvironmentDeployAccessLevel() {}
+    private ProjectProtectedEnvironmentApprovalRule() {}
     /**
-     * @return Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+     * @return Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
      * 
      */
     public Optional<String> accessLevel() {
@@ -54,21 +59,28 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
         return Optional.ofNullable(this.accessLevelDescription);
     }
     /**
-     * @return The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+     * @return The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
      * 
      */
     public Optional<Integer> groupId() {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return The unique ID of the Deploy Access Level object.
+     * @return The unique ID of the Approval Rules object.
      * 
      */
     public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+     * @return The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+     * 
+     */
+    public Optional<Integer> requiredApprovals() {
+        return Optional.ofNullable(this.requiredApprovals);
+    }
+    /**
+     * @return The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
      * 
      */
     public Optional<Integer> userId() {
@@ -79,7 +91,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
         return new Builder();
     }
 
-    public static Builder builder(ProjectProtectedEnvironmentDeployAccessLevel defaults) {
+    public static Builder builder(ProjectProtectedEnvironmentApprovalRule defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -88,14 +100,16 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
         private @Nullable String accessLevelDescription;
         private @Nullable Integer groupId;
         private @Nullable Integer id;
+        private @Nullable Integer requiredApprovals;
         private @Nullable Integer userId;
         public Builder() {}
-        public Builder(ProjectProtectedEnvironmentDeployAccessLevel defaults) {
+        public Builder(ProjectProtectedEnvironmentApprovalRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLevel = defaults.accessLevel;
     	      this.accessLevelDescription = defaults.accessLevelDescription;
     	      this.groupId = defaults.groupId;
     	      this.id = defaults.id;
+    	      this.requiredApprovals = defaults.requiredApprovals;
     	      this.userId = defaults.userId;
         }
 
@@ -120,16 +134,22 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
             return this;
         }
         @CustomType.Setter
+        public Builder requiredApprovals(@Nullable Integer requiredApprovals) {
+            this.requiredApprovals = requiredApprovals;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userId(@Nullable Integer userId) {
             this.userId = userId;
             return this;
         }
-        public ProjectProtectedEnvironmentDeployAccessLevel build() {
-            final var o = new ProjectProtectedEnvironmentDeployAccessLevel();
+        public ProjectProtectedEnvironmentApprovalRule build() {
+            final var o = new ProjectProtectedEnvironmentApprovalRule();
             o.accessLevel = accessLevel;
             o.accessLevelDescription = accessLevelDescription;
             o.groupId = groupId;
             o.id = id;
+            o.requiredApprovals = requiredApprovals;
             o.userId = userId;
             return o;
         }

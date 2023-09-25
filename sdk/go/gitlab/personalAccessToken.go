@@ -81,7 +81,7 @@ type PersonalAccessToken struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
-	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`.
+	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -142,7 +142,7 @@ type personalAccessTokenState struct {
 	Name *string `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked *bool `pulumi:"revoked"`
-	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`.
+	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`.
 	Scopes []string `pulumi:"scopes"`
 	// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
 	Token *string `pulumi:"token"`
@@ -161,7 +161,7 @@ type PersonalAccessTokenState struct {
 	Name pulumi.StringPtrInput
 	// True if the token is revoked.
 	Revoked pulumi.BoolPtrInput
-	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`.
+	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`.
 	Scopes pulumi.StringArrayInput
 	// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
 	Token pulumi.StringPtrInput
@@ -178,7 +178,7 @@ type personalAccessTokenArgs struct {
 	ExpiresAt string `pulumi:"expiresAt"`
 	// The name of the personal access token.
 	Name *string `pulumi:"name"`
-	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`.
+	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`.
 	Scopes []string `pulumi:"scopes"`
 	// The id of the user.
 	UserId int `pulumi:"userId"`
@@ -190,7 +190,7 @@ type PersonalAccessTokenArgs struct {
 	ExpiresAt pulumi.StringInput
 	// The name of the personal access token.
 	Name pulumi.StringPtrInput
-	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`.
+	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`.
 	Scopes pulumi.StringArrayInput
 	// The id of the user.
 	UserId pulumi.IntInput
@@ -332,7 +332,7 @@ func (o PersonalAccessTokenOutput) Revoked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.BoolOutput { return v.Revoked }).(pulumi.BoolOutput)
 }
 
-// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`.
+// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`.
 func (o PersonalAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

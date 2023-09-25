@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
+    /// The `gitlab.IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var slack = new GitLab.IntegrationSlack("slack", new()
+    ///     var mattermost = new GitLab.IntegrationMattermost("mattermost", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Webhook = "https://webhook.com",
@@ -44,14 +44,14 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// You can import a gitlab_integration_slack.slack state using the project ID, e.g.
+    /// You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1
+    ///  $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
     /// ```
     /// </summary>
-    [GitLabResourceType("gitlab:index/integrationSlack:IntegrationSlack")]
-    public partial class IntegrationSlack : global::Pulumi.CustomResource
+    [GitLabResourceType("gitlab:index/integrationMattermost:IntegrationMattermost")]
+    public partial class IntegrationMattermost : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
@@ -72,6 +72,12 @@ namespace Pulumi.GitLab
         public Output<bool> ConfidentialIssuesEvents { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the channel to receive confidential note events notifications.
+        /// </summary>
+        [Output("confidentialNoteChannel")]
+        public Output<string?> ConfidentialNoteChannel { get; private set; } = null!;
+
+        /// <summary>
         /// Enable notifications for confidential note events.
         /// </summary>
         [Output("confidentialNoteEvents")]
@@ -88,12 +94,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("issuesEvents")]
         public Output<bool> IssuesEvents { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-        /// </summary>
-        [Output("jobEvents")]
-        public Output<bool> JobEvents { get; private set; } = null!;
 
         /// <summary>
         /// The name of the channel to receive merge request events notifications.
@@ -124,12 +124,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("notifyOnlyBrokenPipelines")]
         public Output<bool> NotifyOnlyBrokenPipelines { get; private set; } = null!;
-
-        /// <summary>
-        /// This parameter has been replaced with `branches_to_be_notified`.
-        /// </summary>
-        [Output("notifyOnlyDefaultBranch")]
-        public Output<bool> NotifyOnlyDefaultBranch { get; private set; } = null!;
 
         /// <summary>
         /// The name of the channel to receive pipeline events notifications.
@@ -180,7 +174,7 @@ namespace Pulumi.GitLab
         public Output<string?> Username { get; private set; } = null!;
 
         /// <summary>
-        /// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        /// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         /// </summary>
         [Output("webhook")]
         public Output<string> Webhook { get; private set; } = null!;
@@ -199,19 +193,19 @@ namespace Pulumi.GitLab
 
 
         /// <summary>
-        /// Create a IntegrationSlack resource with the given unique name, arguments, and options.
+        /// Create a IntegrationMattermost resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public IntegrationSlack(string name, IntegrationSlackArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/integrationSlack:IntegrationSlack", name, args ?? new IntegrationSlackArgs(), MakeResourceOptions(options, ""))
+        public IntegrationMattermost(string name, IntegrationMattermostArgs args, CustomResourceOptions? options = null)
+            : base("gitlab:index/integrationMattermost:IntegrationMattermost", name, args ?? new IntegrationMattermostArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private IntegrationSlack(string name, Input<string> id, IntegrationSlackState? state = null, CustomResourceOptions? options = null)
-            : base("gitlab:index/integrationSlack:IntegrationSlack", name, state, MakeResourceOptions(options, id))
+        private IntegrationMattermost(string name, Input<string> id, IntegrationMattermostState? state = null, CustomResourceOptions? options = null)
+            : base("gitlab:index/integrationMattermost:IntegrationMattermost", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -227,7 +221,7 @@ namespace Pulumi.GitLab
             return merged;
         }
         /// <summary>
-        /// Get an existing IntegrationSlack resource's state with the given name, ID, and optional extra
+        /// Get an existing IntegrationMattermost resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -235,13 +229,13 @@ namespace Pulumi.GitLab
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static IntegrationSlack Get(string name, Input<string> id, IntegrationSlackState? state = null, CustomResourceOptions? options = null)
+        public static IntegrationMattermost Get(string name, Input<string> id, IntegrationMattermostState? state = null, CustomResourceOptions? options = null)
         {
-            return new IntegrationSlack(name, id, state, options);
+            return new IntegrationMattermost(name, id, state, options);
         }
     }
 
-    public sealed class IntegrationSlackArgs : global::Pulumi.ResourceArgs
+    public sealed class IntegrationMattermostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
@@ -260,6 +254,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("confidentialIssuesEvents")]
         public Input<bool>? ConfidentialIssuesEvents { get; set; }
+
+        /// <summary>
+        /// The name of the channel to receive confidential note events notifications.
+        /// </summary>
+        [Input("confidentialNoteChannel")]
+        public Input<string>? ConfidentialNoteChannel { get; set; }
 
         /// <summary>
         /// Enable notifications for confidential note events.
@@ -308,12 +308,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("notifyOnlyBrokenPipelines")]
         public Input<bool>? NotifyOnlyBrokenPipelines { get; set; }
-
-        /// <summary>
-        /// This parameter has been replaced with `branches_to_be_notified`.
-        /// </summary>
-        [Input("notifyOnlyDefaultBranch")]
-        public Input<bool>? NotifyOnlyDefaultBranch { get; set; }
 
         /// <summary>
         /// The name of the channel to receive pipeline events notifications.
@@ -364,7 +358,7 @@ namespace Pulumi.GitLab
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        /// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         /// </summary>
         [Input("webhook", required: true)]
         public Input<string> Webhook { get; set; } = null!;
@@ -381,13 +375,13 @@ namespace Pulumi.GitLab
         [Input("wikiPageEvents")]
         public Input<bool>? WikiPageEvents { get; set; }
 
-        public IntegrationSlackArgs()
+        public IntegrationMattermostArgs()
         {
         }
-        public static new IntegrationSlackArgs Empty => new IntegrationSlackArgs();
+        public static new IntegrationMattermostArgs Empty => new IntegrationMattermostArgs();
     }
 
-    public sealed class IntegrationSlackState : global::Pulumi.ResourceArgs
+    public sealed class IntegrationMattermostState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
@@ -408,6 +402,12 @@ namespace Pulumi.GitLab
         public Input<bool>? ConfidentialIssuesEvents { get; set; }
 
         /// <summary>
+        /// The name of the channel to receive confidential note events notifications.
+        /// </summary>
+        [Input("confidentialNoteChannel")]
+        public Input<string>? ConfidentialNoteChannel { get; set; }
+
+        /// <summary>
         /// Enable notifications for confidential note events.
         /// </summary>
         [Input("confidentialNoteEvents")]
@@ -424,12 +424,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("issuesEvents")]
         public Input<bool>? IssuesEvents { get; set; }
-
-        /// <summary>
-        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-        /// </summary>
-        [Input("jobEvents")]
-        public Input<bool>? JobEvents { get; set; }
 
         /// <summary>
         /// The name of the channel to receive merge request events notifications.
@@ -460,12 +454,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("notifyOnlyBrokenPipelines")]
         public Input<bool>? NotifyOnlyBrokenPipelines { get; set; }
-
-        /// <summary>
-        /// This parameter has been replaced with `branches_to_be_notified`.
-        /// </summary>
-        [Input("notifyOnlyDefaultBranch")]
-        public Input<bool>? NotifyOnlyDefaultBranch { get; set; }
 
         /// <summary>
         /// The name of the channel to receive pipeline events notifications.
@@ -516,7 +504,7 @@ namespace Pulumi.GitLab
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        /// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         /// </summary>
         [Input("webhook")]
         public Input<string>? Webhook { get; set; }
@@ -533,9 +521,9 @@ namespace Pulumi.GitLab
         [Input("wikiPageEvents")]
         public Input<bool>? WikiPageEvents { get; set; }
 
-        public IntegrationSlackState()
+        public IntegrationMattermostState()
         {
         }
-        public static new IntegrationSlackState Empty => new IntegrationSlackState();
+        public static new IntegrationMattermostState Empty => new IntegrationMattermostState();
     }
 }

@@ -95,7 +95,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
+     * The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -192,7 +192,7 @@ export interface ProjectAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
+     * The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -226,7 +226,7 @@ export interface ProjectAccessTokenArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
+     * The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

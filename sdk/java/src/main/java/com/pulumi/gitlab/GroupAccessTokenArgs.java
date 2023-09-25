@@ -77,14 +77,14 @@ public final class GroupAccessTokenArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
      * 
      */
     @Import(name="scopes", required=true)
     private Output<List<String>> scopes;
 
     /**
-     * @return The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+     * @return The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
      * 
      */
     public Output<List<String>> scopes() {
@@ -204,7 +204,7 @@ public final class GroupAccessTokenArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param scopes The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+         * @param scopes The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GroupAccessTokenArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param scopes The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+         * @param scopes The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class GroupAccessTokenArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param scopes The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+         * @param scopes The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
          * 
          * @return builder
          * 

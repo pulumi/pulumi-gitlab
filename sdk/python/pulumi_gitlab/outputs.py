@@ -20,6 +20,7 @@ __all__ = [
     'ProjectContainerExpirationPolicy',
     'ProjectIssueBoardList',
     'ProjectIssueTaskCompletionStatus',
+    'ProjectProtectedEnvironmentApprovalRule',
     'ProjectProtectedEnvironmentDeployAccessLevel',
     'ProjectPushRules',
     'ProjectTagCommit',
@@ -828,6 +829,110 @@ class ProjectIssueTaskCompletionStatus(dict):
 
 
 @pulumi.output_type
+class ProjectProtectedEnvironmentApprovalRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessLevelDescription":
+            suggest = "access_level_description"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "requiredApprovals":
+            suggest = "required_approvals"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectProtectedEnvironmentApprovalRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectProtectedEnvironmentApprovalRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectProtectedEnvironmentApprovalRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None,
+                 access_level_description: Optional[str] = None,
+                 group_id: Optional[int] = None,
+                 id: Optional[int] = None,
+                 required_approvals: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param str access_level: Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+        :param str access_level_description: Readable description of level of access.
+        :param int group_id: The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+        :param int id: The unique ID of the Approval Rules object.
+        :param int required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+        :param int user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if required_approvals is not None:
+            pulumi.set(__self__, "required_approvals", required_approvals)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        """
+        Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+        """
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[str]:
+        """
+        Readable description of level of access.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The unique ID of the Approval Rules object.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="requiredApprovals")
+    def required_approvals(self) -> Optional[int]:
+        """
+        The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+        """
+        return pulumi.get(self, "required_approvals")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
 class ProjectProtectedEnvironmentDeployAccessLevel(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -856,11 +961,13 @@ class ProjectProtectedEnvironmentDeployAccessLevel(dict):
                  access_level: Optional[str] = None,
                  access_level_description: Optional[str] = None,
                  group_id: Optional[int] = None,
+                 id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
         :param str access_level: Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
         :param str access_level_description: Readable description of level of access.
         :param int group_id: The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+        :param int id: The unique ID of the Deploy Access Level object.
         :param int user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
         """
         if access_level is not None:
@@ -869,6 +976,8 @@ class ProjectProtectedEnvironmentDeployAccessLevel(dict):
             pulumi.set(__self__, "access_level_description", access_level_description)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
 
@@ -895,6 +1004,14 @@ class ProjectProtectedEnvironmentDeployAccessLevel(dict):
         The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
         """
         return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The unique ID of the Deploy Access Level object.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="userId")

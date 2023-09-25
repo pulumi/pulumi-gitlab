@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.ProjectProtectedEnvironmentArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentState;
+import com.pulumi.gitlab.outputs.ProjectProtectedEnvironmentApprovalRule;
 import com.pulumi.gitlab.outputs.ProjectProtectedEnvironmentDeployAccessLevel;
 import java.lang.Integer;
 import java.lang.String;
@@ -29,6 +30,7 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_environments.html)
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
@@ -40,6 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gitlab.ProjectProtectedEnvironment;
  * import com.pulumi.gitlab.ProjectProtectedEnvironmentArgs;
  * import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs;
+ * import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentApprovalRuleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -83,7 +86,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleWithMultiple = new ProjectProtectedEnvironment(&#34;exampleWithMultiple&#34;, ProjectProtectedEnvironmentArgs.builder()        
+ *         var exampleWithMultipleProjectProtectedEnvironment = new ProjectProtectedEnvironment(&#34;exampleWithMultipleProjectProtectedEnvironment&#34;, ProjectProtectedEnvironmentArgs.builder()        
  *             .project(this_.project())
  *             .requiredApprovalCount(2)
  *             .environment(this_.name())
@@ -96,6 +99,37 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()
  *                     .userId(789)
+ *                     .build())
+ *             .build());
+ * 
+ *         var exampleWithMultipleIndex_projectProtectedEnvironmentProjectProtectedEnvironment = new ProjectProtectedEnvironment(&#34;exampleWithMultipleIndex/projectProtectedEnvironmentProjectProtectedEnvironment&#34;, ProjectProtectedEnvironmentArgs.builder()        
+ *             .project(this_.project())
+ *             .requiredApprovalCount(2)
+ *             .environment(this_.name())
+ *             .deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()
+ *                 .accessLevel(&#34;developer&#34;)
+ *                 .build())
+ *             .approvalRules(ProjectProtectedEnvironmentApprovalRuleArgs.builder()
+ *                 .access_level(&#34;developer&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleWithMultipleGitlabIndex_projectProtectedEnvironmentProjectProtectedEnvironment = new ProjectProtectedEnvironment(&#34;exampleWithMultipleGitlabIndex/projectProtectedEnvironmentProjectProtectedEnvironment&#34;, ProjectProtectedEnvironmentArgs.builder()        
+ *             .project(this_.project())
+ *             .requiredApprovalCount(2)
+ *             .environment(this_.name())
+ *             .deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()
+ *                 .accessLevel(&#34;developer&#34;)
+ *                 .build())
+ *             .approvalRules(            
+ *                 ProjectProtectedEnvironmentApprovalRuleArgs.builder()
+ *                     .user_id(789)
+ *                     .build(),
+ *                 ProjectProtectedEnvironmentApprovalRuleArgs.builder()
+ *                     .access_level(&#34;developer&#34;)
+ *                     .build(),
+ *                 ProjectProtectedEnvironmentApprovalRuleArgs.builder()
+ *                     .group_id(456)
  *                     .build())
  *             .build());
  * 
@@ -114,6 +148,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment")
 public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomResource {
+    /**
+     * Array of approval rules to deploy, with each described by a hash.
+     * 
+     */
+    @Export(name="approvalRules", refs={List.class,ProjectProtectedEnvironmentApprovalRule.class}, tree="[0,1]")
+    private Output<List<ProjectProtectedEnvironmentApprovalRule>> approvalRules;
+
+    /**
+     * @return Array of approval rules to deploy, with each described by a hash.
+     * 
+     */
+    public Output<List<ProjectProtectedEnvironmentApprovalRule>> approvalRules() {
+        return this.approvalRules;
+    }
     /**
      * Array of access levels allowed to deploy, with each described by a hash.
      * 

@@ -1509,6 +1509,172 @@ func (o ProjectIssueTaskCompletionStatusArrayOutput) Index(i pulumi.IntInput) Pr
 	}).(ProjectIssueTaskCompletionStatusOutput)
 }
 
+type ProjectProtectedEnvironmentApprovalRule struct {
+	// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// Readable description of level of access.
+	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
+	// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+	GroupId *int `pulumi:"groupId"`
+	// The unique ID of the Approval Rules object.
+	Id *int `pulumi:"id"`
+	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+	RequiredApprovals *int `pulumi:"requiredApprovals"`
+	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+	UserId *int `pulumi:"userId"`
+}
+
+// ProjectProtectedEnvironmentApprovalRuleInput is an input type that accepts ProjectProtectedEnvironmentApprovalRuleArgs and ProjectProtectedEnvironmentApprovalRuleOutput values.
+// You can construct a concrete instance of `ProjectProtectedEnvironmentApprovalRuleInput` via:
+//
+//	ProjectProtectedEnvironmentApprovalRuleArgs{...}
+type ProjectProtectedEnvironmentApprovalRuleInput interface {
+	pulumi.Input
+
+	ToProjectProtectedEnvironmentApprovalRuleOutput() ProjectProtectedEnvironmentApprovalRuleOutput
+	ToProjectProtectedEnvironmentApprovalRuleOutputWithContext(context.Context) ProjectProtectedEnvironmentApprovalRuleOutput
+}
+
+type ProjectProtectedEnvironmentApprovalRuleArgs struct {
+	// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// Readable description of level of access.
+	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
+	// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The unique ID of the Approval Rules object.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+	RequiredApprovals pulumi.IntPtrInput `pulumi:"requiredApprovals"`
+	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (ProjectProtectedEnvironmentApprovalRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectProtectedEnvironmentApprovalRule)(nil)).Elem()
+}
+
+func (i ProjectProtectedEnvironmentApprovalRuleArgs) ToProjectProtectedEnvironmentApprovalRuleOutput() ProjectProtectedEnvironmentApprovalRuleOutput {
+	return i.ToProjectProtectedEnvironmentApprovalRuleOutputWithContext(context.Background())
+}
+
+func (i ProjectProtectedEnvironmentApprovalRuleArgs) ToProjectProtectedEnvironmentApprovalRuleOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentApprovalRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectProtectedEnvironmentApprovalRuleOutput)
+}
+
+func (i ProjectProtectedEnvironmentApprovalRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectProtectedEnvironmentApprovalRule] {
+	return pulumix.Output[ProjectProtectedEnvironmentApprovalRule]{
+		OutputState: i.ToProjectProtectedEnvironmentApprovalRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ProjectProtectedEnvironmentApprovalRuleArrayInput is an input type that accepts ProjectProtectedEnvironmentApprovalRuleArray and ProjectProtectedEnvironmentApprovalRuleArrayOutput values.
+// You can construct a concrete instance of `ProjectProtectedEnvironmentApprovalRuleArrayInput` via:
+//
+//	ProjectProtectedEnvironmentApprovalRuleArray{ ProjectProtectedEnvironmentApprovalRuleArgs{...} }
+type ProjectProtectedEnvironmentApprovalRuleArrayInput interface {
+	pulumi.Input
+
+	ToProjectProtectedEnvironmentApprovalRuleArrayOutput() ProjectProtectedEnvironmentApprovalRuleArrayOutput
+	ToProjectProtectedEnvironmentApprovalRuleArrayOutputWithContext(context.Context) ProjectProtectedEnvironmentApprovalRuleArrayOutput
+}
+
+type ProjectProtectedEnvironmentApprovalRuleArray []ProjectProtectedEnvironmentApprovalRuleInput
+
+func (ProjectProtectedEnvironmentApprovalRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectProtectedEnvironmentApprovalRule)(nil)).Elem()
+}
+
+func (i ProjectProtectedEnvironmentApprovalRuleArray) ToProjectProtectedEnvironmentApprovalRuleArrayOutput() ProjectProtectedEnvironmentApprovalRuleArrayOutput {
+	return i.ToProjectProtectedEnvironmentApprovalRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectProtectedEnvironmentApprovalRuleArray) ToProjectProtectedEnvironmentApprovalRuleArrayOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentApprovalRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectProtectedEnvironmentApprovalRuleArrayOutput)
+}
+
+func (i ProjectProtectedEnvironmentApprovalRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ProjectProtectedEnvironmentApprovalRule] {
+	return pulumix.Output[[]ProjectProtectedEnvironmentApprovalRule]{
+		OutputState: i.ToProjectProtectedEnvironmentApprovalRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ProjectProtectedEnvironmentApprovalRuleOutput struct{ *pulumi.OutputState }
+
+func (ProjectProtectedEnvironmentApprovalRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectProtectedEnvironmentApprovalRule)(nil)).Elem()
+}
+
+func (o ProjectProtectedEnvironmentApprovalRuleOutput) ToProjectProtectedEnvironmentApprovalRuleOutput() ProjectProtectedEnvironmentApprovalRuleOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentApprovalRuleOutput) ToProjectProtectedEnvironmentApprovalRuleOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentApprovalRuleOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentApprovalRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectProtectedEnvironmentApprovalRule] {
+	return pulumix.Output[ProjectProtectedEnvironmentApprovalRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+func (o ProjectProtectedEnvironmentApprovalRuleOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// Readable description of level of access.
+func (o ProjectProtectedEnvironmentApprovalRuleOutput) AccessLevelDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+func (o ProjectProtectedEnvironmentApprovalRuleOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The unique ID of the Approval Rules object.
+func (o ProjectProtectedEnvironmentApprovalRuleOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+func (o ProjectProtectedEnvironmentApprovalRuleOutput) RequiredApprovals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *int { return v.RequiredApprovals }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+func (o ProjectProtectedEnvironmentApprovalRuleOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type ProjectProtectedEnvironmentApprovalRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectProtectedEnvironmentApprovalRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectProtectedEnvironmentApprovalRule)(nil)).Elem()
+}
+
+func (o ProjectProtectedEnvironmentApprovalRuleArrayOutput) ToProjectProtectedEnvironmentApprovalRuleArrayOutput() ProjectProtectedEnvironmentApprovalRuleArrayOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentApprovalRuleArrayOutput) ToProjectProtectedEnvironmentApprovalRuleArrayOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentApprovalRuleArrayOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentApprovalRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProjectProtectedEnvironmentApprovalRule] {
+	return pulumix.Output[[]ProjectProtectedEnvironmentApprovalRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ProjectProtectedEnvironmentApprovalRuleArrayOutput) Index(i pulumi.IntInput) ProjectProtectedEnvironmentApprovalRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectProtectedEnvironmentApprovalRule {
+		return vs[0].([]ProjectProtectedEnvironmentApprovalRule)[vs[1].(int)]
+	}).(ProjectProtectedEnvironmentApprovalRuleOutput)
+}
+
 type ProjectProtectedEnvironmentDeployAccessLevel struct {
 	// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
@@ -1516,6 +1682,8 @@ type ProjectProtectedEnvironmentDeployAccessLevel struct {
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
 	// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
 	GroupId *int `pulumi:"groupId"`
+	// The unique ID of the Deploy Access Level object.
+	Id *int `pulumi:"id"`
 	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
 	UserId *int `pulumi:"userId"`
 }
@@ -1538,6 +1706,8 @@ type ProjectProtectedEnvironmentDeployAccessLevelArgs struct {
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
 	// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The unique ID of the Deploy Access Level object.
+	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
 	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
@@ -1624,6 +1794,11 @@ func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) AccessLevelDescripti
 // The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
 func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The unique ID of the Deploy Access Level object.
+func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevel) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
@@ -10232,6 +10407,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueBoardListArrayInput)(nil)).Elem(), ProjectIssueBoardListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueTaskCompletionStatusInput)(nil)).Elem(), ProjectIssueTaskCompletionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueTaskCompletionStatusArrayInput)(nil)).Elem(), ProjectIssueTaskCompletionStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentApprovalRuleInput)(nil)).Elem(), ProjectProtectedEnvironmentApprovalRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentApprovalRuleArrayInput)(nil)).Elem(), ProjectProtectedEnvironmentApprovalRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelArrayInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesInput)(nil)).Elem(), ProjectPushRulesArgs{})
@@ -10345,6 +10522,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectIssueBoardListArrayOutput{})
 	pulumi.RegisterOutputType(ProjectIssueTaskCompletionStatusOutput{})
 	pulumi.RegisterOutputType(ProjectIssueTaskCompletionStatusArrayOutput{})
+	pulumi.RegisterOutputType(ProjectProtectedEnvironmentApprovalRuleOutput{})
+	pulumi.RegisterOutputType(ProjectProtectedEnvironmentApprovalRuleArrayOutput{})
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelOutput{})
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesOutput{})

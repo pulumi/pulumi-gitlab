@@ -97,7 +97,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -194,7 +194,7 @@ export interface GroupAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -228,7 +228,7 @@ export interface GroupAccessTokenArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }
