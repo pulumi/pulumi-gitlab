@@ -11,10 +11,10 @@ namespace Pulumi.GitLab.Outputs
 {
 
     [OutputType]
-    public sealed class ProjectProtectedEnvironmentDeployAccessLevel
+    public sealed class ProjectProtectedEnvironmentApprovalRule
     {
         /// <summary>
-        /// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+        /// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
         /// </summary>
         public readonly string? AccessLevel;
         /// <summary>
@@ -22,20 +22,24 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string? AccessLevelDescription;
         /// <summary>
-        /// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+        /// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
         /// </summary>
         public readonly int? GroupId;
         /// <summary>
-        /// The unique ID of the Deploy Access Level object.
+        /// The unique ID of the Approval Rules object.
         /// </summary>
         public readonly int? Id;
         /// <summary>
-        /// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+        /// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+        /// </summary>
+        public readonly int? RequiredApprovals;
+        /// <summary>
+        /// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
         /// </summary>
         public readonly int? UserId;
 
         [OutputConstructor]
-        private ProjectProtectedEnvironmentDeployAccessLevel(
+        private ProjectProtectedEnvironmentApprovalRule(
             string? accessLevel,
 
             string? accessLevelDescription,
@@ -44,12 +48,15 @@ namespace Pulumi.GitLab.Outputs
 
             int? id,
 
+            int? requiredApprovals,
+
             int? userId)
         {
             AccessLevel = accessLevel;
             AccessLevelDescription = accessLevelDescription;
             GroupId = groupId;
             Id = id;
+            RequiredApprovals = requiredApprovals;
             UserId = userId;
         }
     }

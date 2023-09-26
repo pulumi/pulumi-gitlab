@@ -17,60 +17,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_environments.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const _this = new gitlab.ProjectEnvironment("this", {
- *     project: "123",
- *     externalUrl: "www.example.com",
- * });
- * // Example with access level
- * const exampleWithAccessLevel = new gitlab.ProjectProtectedEnvironment("exampleWithAccessLevel", {
- *     project: _this.project,
- *     requiredApprovalCount: 1,
- *     environment: _this.name,
- *     deployAccessLevels: [{
- *         accessLevel: "developer",
- *     }],
- * });
- * // Example with group
- * const exampleWithGroup = new gitlab.ProjectProtectedEnvironment("exampleWithGroup", {
- *     project: _this.project,
- *     environment: _this.name,
- *     deployAccessLevels: [{
- *         groupId: 456,
- *     }],
- * });
- * // Example with user
- * const exampleWithUser = new gitlab.ProjectProtectedEnvironment("exampleWithUser", {
- *     project: _this.project,
- *     environment: _this.name,
- *     deployAccessLevels: [{
- *         userId: 789,
- *     }],
- * });
- * // Example with multiple access levels
- * const exampleWithMultiple = new gitlab.ProjectProtectedEnvironment("exampleWithMultiple", {
- *     project: _this.project,
- *     requiredApprovalCount: 2,
- *     environment: _this.name,
- *     deployAccessLevels: [
- *         {
- *             accessLevel: "developer",
- *         },
- *         {
- *             groupId: 456,
- *         },
- *         {
- *             userId: 789,
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
@@ -108,6 +54,10 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
     }
 
     /**
+     * Array of approval rules to deploy, with each described by a hash.
+     */
+    public readonly approvalRules!: pulumi.Output<outputs.ProjectProtectedEnvironmentApprovalRule[]>;
+    /**
      * Array of access levels allowed to deploy, with each described by a hash.
      */
     public readonly deployAccessLevels!: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevel[] | undefined>;
@@ -137,6 +87,7 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectProtectedEnvironmentState | undefined;
+            resourceInputs["approvalRules"] = state ? state.approvalRules : undefined;
             resourceInputs["deployAccessLevels"] = state ? state.deployAccessLevels : undefined;
             resourceInputs["environment"] = state ? state.environment : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -149,6 +100,7 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            resourceInputs["approvalRules"] = args ? args.approvalRules : undefined;
             resourceInputs["deployAccessLevels"] = args ? args.deployAccessLevels : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -163,6 +115,10 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectProtectedEnvironment resources.
  */
 export interface ProjectProtectedEnvironmentState {
+    /**
+     * Array of approval rules to deploy, with each described by a hash.
+     */
+    approvalRules?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentApprovalRule>[]>;
     /**
      * Array of access levels allowed to deploy, with each described by a hash.
      */
@@ -185,6 +141,10 @@ export interface ProjectProtectedEnvironmentState {
  * The set of arguments for constructing a ProjectProtectedEnvironment resource.
  */
 export interface ProjectProtectedEnvironmentArgs {
+    /**
+     * Array of approval rules to deploy, with each described by a hash.
+     */
+    approvalRules?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentApprovalRule>[]>;
     /**
      * Array of access levels allowed to deploy, with each described by a hash.
      */

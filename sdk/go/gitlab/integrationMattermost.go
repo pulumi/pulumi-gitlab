@@ -13,9 +13,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// The `IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
+// The `IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
 //
 // ## Example Usage
 //
@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewIntegrationSlack(ctx, "slack", &gitlab.IntegrationSlackArgs{
+//			_, err = gitlab.NewIntegrationMattermost(ctx, "mattermost", &gitlab.IntegrationMattermostArgs{
 //				Project:     awesomeProject.ID(),
 //				Webhook:     pulumi.String("https://webhook.com"),
 //				Username:    pulumi.String("myuser"),
@@ -56,14 +56,14 @@ import (
 //
 // ## Import
 //
-// You can import a gitlab_integration_slack.slack state using the project ID, e.g.
+// You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
 //
 // ```sh
 //
-//	$ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1
+//	$ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
 //
 // ```
-type IntegrationSlack struct {
+type IntegrationMattermost struct {
 	pulumi.CustomResourceState
 
 	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
@@ -72,14 +72,14 @@ type IntegrationSlack struct {
 	ConfidentialIssueChannel pulumi.StringPtrOutput `pulumi:"confidentialIssueChannel"`
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolOutput `pulumi:"confidentialIssuesEvents"`
+	// The name of the channel to receive confidential note events notifications.
+	ConfidentialNoteChannel pulumi.StringPtrOutput `pulumi:"confidentialNoteChannel"`
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolOutput `pulumi:"confidentialNoteEvents"`
 	// The name of the channel to receive issue events notifications.
 	IssueChannel pulumi.StringPtrOutput `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel pulumi.StringPtrOutput `pulumi:"mergeRequestChannel"`
 	// Enable notifications for merge requests events.
@@ -90,10 +90,6 @@ type IntegrationSlack struct {
 	NoteEvents pulumi.BoolOutput `pulumi:"noteEvents"`
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolOutput `pulumi:"notifyOnlyBrokenPipelines"`
-	// This parameter has been replaced with `branchesToBeNotified`.
-	//
-	// Deprecated: use 'branches_to_be_notified' argument instead
-	NotifyOnlyDefaultBranch pulumi.BoolOutput `pulumi:"notifyOnlyDefaultBranch"`
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel pulumi.StringPtrOutput `pulumi:"pipelineChannel"`
 	// Enable notifications for pipeline events.
@@ -110,7 +106,7 @@ type IntegrationSlack struct {
 	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
-	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
 	Webhook pulumi.StringOutput `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrOutput `pulumi:"wikiPageChannel"`
@@ -118,9 +114,9 @@ type IntegrationSlack struct {
 	WikiPageEvents pulumi.BoolOutput `pulumi:"wikiPageEvents"`
 }
 
-// NewIntegrationSlack registers a new resource with the given unique name, arguments, and options.
-func NewIntegrationSlack(ctx *pulumi.Context,
-	name string, args *IntegrationSlackArgs, opts ...pulumi.ResourceOption) (*IntegrationSlack, error) {
+// NewIntegrationMattermost registers a new resource with the given unique name, arguments, and options.
+func NewIntegrationMattermost(ctx *pulumi.Context,
+	name string, args *IntegrationMattermostArgs, opts ...pulumi.ResourceOption) (*IntegrationMattermost, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -132,42 +128,42 @@ func NewIntegrationSlack(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Webhook'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource IntegrationSlack
-	err := ctx.RegisterResource("gitlab:index/integrationSlack:IntegrationSlack", name, args, &resource, opts...)
+	var resource IntegrationMattermost
+	err := ctx.RegisterResource("gitlab:index/integrationMattermost:IntegrationMattermost", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetIntegrationSlack gets an existing IntegrationSlack resource's state with the given name, ID, and optional
+// GetIntegrationMattermost gets an existing IntegrationMattermost resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetIntegrationSlack(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *IntegrationSlackState, opts ...pulumi.ResourceOption) (*IntegrationSlack, error) {
-	var resource IntegrationSlack
-	err := ctx.ReadResource("gitlab:index/integrationSlack:IntegrationSlack", name, id, state, &resource, opts...)
+func GetIntegrationMattermost(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *IntegrationMattermostState, opts ...pulumi.ResourceOption) (*IntegrationMattermost, error) {
+	var resource IntegrationMattermost
+	err := ctx.ReadResource("gitlab:index/integrationMattermost:IntegrationMattermost", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering IntegrationSlack resources.
-type integrationSlackState struct {
+// Input properties used for looking up and filtering IntegrationMattermost resources.
+type integrationMattermostState struct {
 	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel *string `pulumi:"confidentialIssueChannel"`
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
+	// The name of the channel to receive confidential note events notifications.
+	ConfidentialNoteChannel *string `pulumi:"confidentialNoteChannel"`
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
 	// The name of the channel to receive issue events notifications.
 	IssueChannel *string `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-	JobEvents *bool `pulumi:"jobEvents"`
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel *string `pulumi:"mergeRequestChannel"`
 	// Enable notifications for merge requests events.
@@ -178,10 +174,6 @@ type integrationSlackState struct {
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
-	// This parameter has been replaced with `branchesToBeNotified`.
-	//
-	// Deprecated: use 'branches_to_be_notified' argument instead
-	NotifyOnlyDefaultBranch *bool `pulumi:"notifyOnlyDefaultBranch"`
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel *string `pulumi:"pipelineChannel"`
 	// Enable notifications for pipeline events.
@@ -198,7 +190,7 @@ type integrationSlackState struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username *string `pulumi:"username"`
-	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
 	Webhook *string `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel *string `pulumi:"wikiPageChannel"`
@@ -206,21 +198,21 @@ type integrationSlackState struct {
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
 }
 
-type IntegrationSlackState struct {
+type IntegrationMattermostState struct {
 	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
 	BranchesToBeNotified pulumi.StringPtrInput
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel pulumi.StringPtrInput
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
+	// The name of the channel to receive confidential note events notifications.
+	ConfidentialNoteChannel pulumi.StringPtrInput
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
 	// The name of the channel to receive issue events notifications.
 	IssueChannel pulumi.StringPtrInput
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolPtrInput
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-	JobEvents pulumi.BoolPtrInput
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel pulumi.StringPtrInput
 	// Enable notifications for merge requests events.
@@ -231,10 +223,6 @@ type IntegrationSlackState struct {
 	NoteEvents pulumi.BoolPtrInput
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
-	// This parameter has been replaced with `branchesToBeNotified`.
-	//
-	// Deprecated: use 'branches_to_be_notified' argument instead
-	NotifyOnlyDefaultBranch pulumi.BoolPtrInput
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel pulumi.StringPtrInput
 	// Enable notifications for pipeline events.
@@ -251,7 +239,7 @@ type IntegrationSlackState struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// Username to use.
 	Username pulumi.StringPtrInput
-	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
 	Webhook pulumi.StringPtrInput
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrInput
@@ -259,17 +247,19 @@ type IntegrationSlackState struct {
 	WikiPageEvents pulumi.BoolPtrInput
 }
 
-func (IntegrationSlackState) ElementType() reflect.Type {
-	return reflect.TypeOf((*integrationSlackState)(nil)).Elem()
+func (IntegrationMattermostState) ElementType() reflect.Type {
+	return reflect.TypeOf((*integrationMattermostState)(nil)).Elem()
 }
 
-type integrationSlackArgs struct {
+type integrationMattermostArgs struct {
 	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel *string `pulumi:"confidentialIssueChannel"`
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
+	// The name of the channel to receive confidential note events notifications.
+	ConfidentialNoteChannel *string `pulumi:"confidentialNoteChannel"`
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
 	// The name of the channel to receive issue events notifications.
@@ -286,10 +276,6 @@ type integrationSlackArgs struct {
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
-	// This parameter has been replaced with `branchesToBeNotified`.
-	//
-	// Deprecated: use 'branches_to_be_notified' argument instead
-	NotifyOnlyDefaultBranch *bool `pulumi:"notifyOnlyDefaultBranch"`
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel *string `pulumi:"pipelineChannel"`
 	// Enable notifications for pipeline events.
@@ -306,7 +292,7 @@ type integrationSlackArgs struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username *string `pulumi:"username"`
-	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
 	Webhook string `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel *string `pulumi:"wikiPageChannel"`
@@ -314,14 +300,16 @@ type integrationSlackArgs struct {
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
 }
 
-// The set of arguments for constructing a IntegrationSlack resource.
-type IntegrationSlackArgs struct {
+// The set of arguments for constructing a IntegrationMattermost resource.
+type IntegrationMattermostArgs struct {
 	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
 	BranchesToBeNotified pulumi.StringPtrInput
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel pulumi.StringPtrInput
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
+	// The name of the channel to receive confidential note events notifications.
+	ConfidentialNoteChannel pulumi.StringPtrInput
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
 	// The name of the channel to receive issue events notifications.
@@ -338,10 +326,6 @@ type IntegrationSlackArgs struct {
 	NoteEvents pulumi.BoolPtrInput
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
-	// This parameter has been replaced with `branchesToBeNotified`.
-	//
-	// Deprecated: use 'branches_to_be_notified' argument instead
-	NotifyOnlyDefaultBranch pulumi.BoolPtrInput
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel pulumi.StringPtrInput
 	// Enable notifications for pipeline events.
@@ -358,7 +342,7 @@ type IntegrationSlackArgs struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// Username to use.
 	Username pulumi.StringPtrInput
-	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
 	Webhook pulumi.StringInput
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrInput
@@ -366,296 +350,289 @@ type IntegrationSlackArgs struct {
 	WikiPageEvents pulumi.BoolPtrInput
 }
 
-func (IntegrationSlackArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*integrationSlackArgs)(nil)).Elem()
+func (IntegrationMattermostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*integrationMattermostArgs)(nil)).Elem()
 }
 
-type IntegrationSlackInput interface {
+type IntegrationMattermostInput interface {
 	pulumi.Input
 
-	ToIntegrationSlackOutput() IntegrationSlackOutput
-	ToIntegrationSlackOutputWithContext(ctx context.Context) IntegrationSlackOutput
+	ToIntegrationMattermostOutput() IntegrationMattermostOutput
+	ToIntegrationMattermostOutputWithContext(ctx context.Context) IntegrationMattermostOutput
 }
 
-func (*IntegrationSlack) ElementType() reflect.Type {
-	return reflect.TypeOf((**IntegrationSlack)(nil)).Elem()
+func (*IntegrationMattermost) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationMattermost)(nil)).Elem()
 }
 
-func (i *IntegrationSlack) ToIntegrationSlackOutput() IntegrationSlackOutput {
-	return i.ToIntegrationSlackOutputWithContext(context.Background())
+func (i *IntegrationMattermost) ToIntegrationMattermostOutput() IntegrationMattermostOutput {
+	return i.ToIntegrationMattermostOutputWithContext(context.Background())
 }
 
-func (i *IntegrationSlack) ToIntegrationSlackOutputWithContext(ctx context.Context) IntegrationSlackOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationSlackOutput)
+func (i *IntegrationMattermost) ToIntegrationMattermostOutputWithContext(ctx context.Context) IntegrationMattermostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMattermostOutput)
 }
 
-func (i *IntegrationSlack) ToOutput(ctx context.Context) pulumix.Output[*IntegrationSlack] {
-	return pulumix.Output[*IntegrationSlack]{
-		OutputState: i.ToIntegrationSlackOutputWithContext(ctx).OutputState,
+func (i *IntegrationMattermost) ToOutput(ctx context.Context) pulumix.Output[*IntegrationMattermost] {
+	return pulumix.Output[*IntegrationMattermost]{
+		OutputState: i.ToIntegrationMattermostOutputWithContext(ctx).OutputState,
 	}
 }
 
-// IntegrationSlackArrayInput is an input type that accepts IntegrationSlackArray and IntegrationSlackArrayOutput values.
-// You can construct a concrete instance of `IntegrationSlackArrayInput` via:
+// IntegrationMattermostArrayInput is an input type that accepts IntegrationMattermostArray and IntegrationMattermostArrayOutput values.
+// You can construct a concrete instance of `IntegrationMattermostArrayInput` via:
 //
-//	IntegrationSlackArray{ IntegrationSlackArgs{...} }
-type IntegrationSlackArrayInput interface {
+//	IntegrationMattermostArray{ IntegrationMattermostArgs{...} }
+type IntegrationMattermostArrayInput interface {
 	pulumi.Input
 
-	ToIntegrationSlackArrayOutput() IntegrationSlackArrayOutput
-	ToIntegrationSlackArrayOutputWithContext(context.Context) IntegrationSlackArrayOutput
+	ToIntegrationMattermostArrayOutput() IntegrationMattermostArrayOutput
+	ToIntegrationMattermostArrayOutputWithContext(context.Context) IntegrationMattermostArrayOutput
 }
 
-type IntegrationSlackArray []IntegrationSlackInput
+type IntegrationMattermostArray []IntegrationMattermostInput
 
-func (IntegrationSlackArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IntegrationSlack)(nil)).Elem()
+func (IntegrationMattermostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IntegrationMattermost)(nil)).Elem()
 }
 
-func (i IntegrationSlackArray) ToIntegrationSlackArrayOutput() IntegrationSlackArrayOutput {
-	return i.ToIntegrationSlackArrayOutputWithContext(context.Background())
+func (i IntegrationMattermostArray) ToIntegrationMattermostArrayOutput() IntegrationMattermostArrayOutput {
+	return i.ToIntegrationMattermostArrayOutputWithContext(context.Background())
 }
 
-func (i IntegrationSlackArray) ToIntegrationSlackArrayOutputWithContext(ctx context.Context) IntegrationSlackArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationSlackArrayOutput)
+func (i IntegrationMattermostArray) ToIntegrationMattermostArrayOutputWithContext(ctx context.Context) IntegrationMattermostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMattermostArrayOutput)
 }
 
-func (i IntegrationSlackArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationSlack] {
-	return pulumix.Output[[]*IntegrationSlack]{
-		OutputState: i.ToIntegrationSlackArrayOutputWithContext(ctx).OutputState,
+func (i IntegrationMattermostArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationMattermost] {
+	return pulumix.Output[[]*IntegrationMattermost]{
+		OutputState: i.ToIntegrationMattermostArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-// IntegrationSlackMapInput is an input type that accepts IntegrationSlackMap and IntegrationSlackMapOutput values.
-// You can construct a concrete instance of `IntegrationSlackMapInput` via:
+// IntegrationMattermostMapInput is an input type that accepts IntegrationMattermostMap and IntegrationMattermostMapOutput values.
+// You can construct a concrete instance of `IntegrationMattermostMapInput` via:
 //
-//	IntegrationSlackMap{ "key": IntegrationSlackArgs{...} }
-type IntegrationSlackMapInput interface {
+//	IntegrationMattermostMap{ "key": IntegrationMattermostArgs{...} }
+type IntegrationMattermostMapInput interface {
 	pulumi.Input
 
-	ToIntegrationSlackMapOutput() IntegrationSlackMapOutput
-	ToIntegrationSlackMapOutputWithContext(context.Context) IntegrationSlackMapOutput
+	ToIntegrationMattermostMapOutput() IntegrationMattermostMapOutput
+	ToIntegrationMattermostMapOutputWithContext(context.Context) IntegrationMattermostMapOutput
 }
 
-type IntegrationSlackMap map[string]IntegrationSlackInput
+type IntegrationMattermostMap map[string]IntegrationMattermostInput
 
-func (IntegrationSlackMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IntegrationSlack)(nil)).Elem()
+func (IntegrationMattermostMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IntegrationMattermost)(nil)).Elem()
 }
 
-func (i IntegrationSlackMap) ToIntegrationSlackMapOutput() IntegrationSlackMapOutput {
-	return i.ToIntegrationSlackMapOutputWithContext(context.Background())
+func (i IntegrationMattermostMap) ToIntegrationMattermostMapOutput() IntegrationMattermostMapOutput {
+	return i.ToIntegrationMattermostMapOutputWithContext(context.Background())
 }
 
-func (i IntegrationSlackMap) ToIntegrationSlackMapOutputWithContext(ctx context.Context) IntegrationSlackMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationSlackMapOutput)
+func (i IntegrationMattermostMap) ToIntegrationMattermostMapOutputWithContext(ctx context.Context) IntegrationMattermostMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMattermostMapOutput)
 }
 
-func (i IntegrationSlackMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationSlack] {
-	return pulumix.Output[map[string]*IntegrationSlack]{
-		OutputState: i.ToIntegrationSlackMapOutputWithContext(ctx).OutputState,
+func (i IntegrationMattermostMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationMattermost] {
+	return pulumix.Output[map[string]*IntegrationMattermost]{
+		OutputState: i.ToIntegrationMattermostMapOutputWithContext(ctx).OutputState,
 	}
 }
 
-type IntegrationSlackOutput struct{ *pulumi.OutputState }
+type IntegrationMattermostOutput struct{ *pulumi.OutputState }
 
-func (IntegrationSlackOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IntegrationSlack)(nil)).Elem()
+func (IntegrationMattermostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationMattermost)(nil)).Elem()
 }
 
-func (o IntegrationSlackOutput) ToIntegrationSlackOutput() IntegrationSlackOutput {
+func (o IntegrationMattermostOutput) ToIntegrationMattermostOutput() IntegrationMattermostOutput {
 	return o
 }
 
-func (o IntegrationSlackOutput) ToIntegrationSlackOutputWithContext(ctx context.Context) IntegrationSlackOutput {
+func (o IntegrationMattermostOutput) ToIntegrationMattermostOutputWithContext(ctx context.Context) IntegrationMattermostOutput {
 	return o
 }
 
-func (o IntegrationSlackOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationSlack] {
-	return pulumix.Output[*IntegrationSlack]{
+func (o IntegrationMattermostOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationMattermost] {
+	return pulumix.Output[*IntegrationMattermost]{
 		OutputState: o.OutputState,
 	}
 }
 
 // Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
-func (o IntegrationSlackOutput) BranchesToBeNotified() pulumi.StringOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringOutput { return v.BranchesToBeNotified }).(pulumi.StringOutput)
+func (o IntegrationMattermostOutput) BranchesToBeNotified() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringOutput { return v.BranchesToBeNotified }).(pulumi.StringOutput)
 }
 
 // The name of the channel to receive confidential issue events notifications.
-func (o IntegrationSlackOutput) ConfidentialIssueChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringPtrOutput { return v.ConfidentialIssueChannel }).(pulumi.StringPtrOutput)
+func (o IntegrationMattermostOutput) ConfidentialIssueChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.ConfidentialIssueChannel }).(pulumi.StringPtrOutput)
 }
 
 // Enable notifications for confidential issues events.
-func (o IntegrationSlackOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolOutput)
+func (o IntegrationMattermostOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.BoolOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolOutput)
+}
+
+// The name of the channel to receive confidential note events notifications.
+func (o IntegrationMattermostOutput) ConfidentialNoteChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.ConfidentialNoteChannel }).(pulumi.StringPtrOutput)
 }
 
 // Enable notifications for confidential note events.
-func (o IntegrationSlackOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
+func (o IntegrationMattermostOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.BoolOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
 }
 
 // The name of the channel to receive issue events notifications.
-func (o IntegrationSlackOutput) IssueChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringPtrOutput { return v.IssueChannel }).(pulumi.StringPtrOutput)
+func (o IntegrationMattermostOutput) IssueChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.IssueChannel }).(pulumi.StringPtrOutput)
 }
 
 // Enable notifications for issues events.
-func (o IntegrationSlackOutput) IssuesEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.IssuesEvents }).(pulumi.BoolOutput)
-}
-
-// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-func (o IntegrationSlackOutput) JobEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.JobEvents }).(pulumi.BoolOutput)
+func (o IntegrationMattermostOutput) IssuesEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.BoolOutput { return v.IssuesEvents }).(pulumi.BoolOutput)
 }
 
 // The name of the channel to receive merge request events notifications.
-func (o IntegrationSlackOutput) MergeRequestChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringPtrOutput { return v.MergeRequestChannel }).(pulumi.StringPtrOutput)
+func (o IntegrationMattermostOutput) MergeRequestChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.MergeRequestChannel }).(pulumi.StringPtrOutput)
 }
 
 // Enable notifications for merge requests events.
-func (o IntegrationSlackOutput) MergeRequestsEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
+func (o IntegrationMattermostOutput) MergeRequestsEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
 }
 
 // The name of the channel to receive note events notifications.
-func (o IntegrationSlackOutput) NoteChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringPtrOutput { return v.NoteChannel }).(pulumi.StringPtrOutput)
+func (o IntegrationMattermostOutput) NoteChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.NoteChannel }).(pulumi.StringPtrOutput)
 }
 
 // Enable notifications for note events.
-func (o IntegrationSlackOutput) NoteEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.NoteEvents }).(pulumi.BoolOutput)
+func (o IntegrationMattermostOutput) NoteEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.BoolOutput { return v.NoteEvents }).(pulumi.BoolOutput)
 }
 
 // Send notifications for broken pipelines.
-func (o IntegrationSlackOutput) NotifyOnlyBrokenPipelines() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.NotifyOnlyBrokenPipelines }).(pulumi.BoolOutput)
-}
-
-// This parameter has been replaced with `branchesToBeNotified`.
-//
-// Deprecated: use 'branches_to_be_notified' argument instead
-func (o IntegrationSlackOutput) NotifyOnlyDefaultBranch() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.NotifyOnlyDefaultBranch }).(pulumi.BoolOutput)
+func (o IntegrationMattermostOutput) NotifyOnlyBrokenPipelines() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.BoolOutput { return v.NotifyOnlyBrokenPipelines }).(pulumi.BoolOutput)
 }
 
 // The name of the channel to receive pipeline events notifications.
-func (o IntegrationSlackOutput) PipelineChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringPtrOutput { return v.PipelineChannel }).(pulumi.StringPtrOutput)
+func (o IntegrationMattermostOutput) PipelineChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.PipelineChannel }).(pulumi.StringPtrOutput)
 }
 
 // Enable notifications for pipeline events.
-func (o IntegrationSlackOutput) PipelineEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.PipelineEvents }).(pulumi.BoolOutput)
+func (o IntegrationMattermostOutput) PipelineEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.BoolOutput { return v.PipelineEvents }).(pulumi.BoolOutput)
 }
 
 // ID of the project you want to activate integration on.
-func (o IntegrationSlackOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o IntegrationMattermostOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The name of the channel to receive push events notifications.
-func (o IntegrationSlackOutput) PushChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringPtrOutput { return v.PushChannel }).(pulumi.StringPtrOutput)
+func (o IntegrationMattermostOutput) PushChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.PushChannel }).(pulumi.StringPtrOutput)
 }
 
 // Enable notifications for push events.
-func (o IntegrationSlackOutput) PushEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.PushEvents }).(pulumi.BoolOutput)
+func (o IntegrationMattermostOutput) PushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.BoolOutput { return v.PushEvents }).(pulumi.BoolOutput)
 }
 
 // The name of the channel to receive tag push events notifications.
-func (o IntegrationSlackOutput) TagPushChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringPtrOutput { return v.TagPushChannel }).(pulumi.StringPtrOutput)
+func (o IntegrationMattermostOutput) TagPushChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.TagPushChannel }).(pulumi.StringPtrOutput)
 }
 
 // Enable notifications for tag push events.
-func (o IntegrationSlackOutput) TagPushEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.TagPushEvents }).(pulumi.BoolOutput)
+func (o IntegrationMattermostOutput) TagPushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.BoolOutput { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
 // Username to use.
-func (o IntegrationSlackOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+func (o IntegrationMattermostOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
-// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
-func (o IntegrationSlackOutput) Webhook() pulumi.StringOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringOutput { return v.Webhook }).(pulumi.StringOutput)
+// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+func (o IntegrationMattermostOutput) Webhook() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringOutput { return v.Webhook }).(pulumi.StringOutput)
 }
 
 // The name of the channel to receive wiki page events notifications.
-func (o IntegrationSlackOutput) WikiPageChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringPtrOutput { return v.WikiPageChannel }).(pulumi.StringPtrOutput)
+func (o IntegrationMattermostOutput) WikiPageChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.WikiPageChannel }).(pulumi.StringPtrOutput)
 }
 
 // Enable notifications for wiki page events.
-func (o IntegrationSlackOutput) WikiPageEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.WikiPageEvents }).(pulumi.BoolOutput)
+func (o IntegrationMattermostOutput) WikiPageEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IntegrationMattermost) pulumi.BoolOutput { return v.WikiPageEvents }).(pulumi.BoolOutput)
 }
 
-type IntegrationSlackArrayOutput struct{ *pulumi.OutputState }
+type IntegrationMattermostArrayOutput struct{ *pulumi.OutputState }
 
-func (IntegrationSlackArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IntegrationSlack)(nil)).Elem()
+func (IntegrationMattermostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IntegrationMattermost)(nil)).Elem()
 }
 
-func (o IntegrationSlackArrayOutput) ToIntegrationSlackArrayOutput() IntegrationSlackArrayOutput {
+func (o IntegrationMattermostArrayOutput) ToIntegrationMattermostArrayOutput() IntegrationMattermostArrayOutput {
 	return o
 }
 
-func (o IntegrationSlackArrayOutput) ToIntegrationSlackArrayOutputWithContext(ctx context.Context) IntegrationSlackArrayOutput {
+func (o IntegrationMattermostArrayOutput) ToIntegrationMattermostArrayOutputWithContext(ctx context.Context) IntegrationMattermostArrayOutput {
 	return o
 }
 
-func (o IntegrationSlackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationSlack] {
-	return pulumix.Output[[]*IntegrationSlack]{
+func (o IntegrationMattermostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationMattermost] {
+	return pulumix.Output[[]*IntegrationMattermost]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o IntegrationSlackArrayOutput) Index(i pulumi.IntInput) IntegrationSlackOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationSlack {
-		return vs[0].([]*IntegrationSlack)[vs[1].(int)]
-	}).(IntegrationSlackOutput)
+func (o IntegrationMattermostArrayOutput) Index(i pulumi.IntInput) IntegrationMattermostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationMattermost {
+		return vs[0].([]*IntegrationMattermost)[vs[1].(int)]
+	}).(IntegrationMattermostOutput)
 }
 
-type IntegrationSlackMapOutput struct{ *pulumi.OutputState }
+type IntegrationMattermostMapOutput struct{ *pulumi.OutputState }
 
-func (IntegrationSlackMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IntegrationSlack)(nil)).Elem()
+func (IntegrationMattermostMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IntegrationMattermost)(nil)).Elem()
 }
 
-func (o IntegrationSlackMapOutput) ToIntegrationSlackMapOutput() IntegrationSlackMapOutput {
+func (o IntegrationMattermostMapOutput) ToIntegrationMattermostMapOutput() IntegrationMattermostMapOutput {
 	return o
 }
 
-func (o IntegrationSlackMapOutput) ToIntegrationSlackMapOutputWithContext(ctx context.Context) IntegrationSlackMapOutput {
+func (o IntegrationMattermostMapOutput) ToIntegrationMattermostMapOutputWithContext(ctx context.Context) IntegrationMattermostMapOutput {
 	return o
 }
 
-func (o IntegrationSlackMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationSlack] {
-	return pulumix.Output[map[string]*IntegrationSlack]{
+func (o IntegrationMattermostMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationMattermost] {
+	return pulumix.Output[map[string]*IntegrationMattermost]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o IntegrationSlackMapOutput) MapIndex(k pulumi.StringInput) IntegrationSlackOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IntegrationSlack {
-		return vs[0].(map[string]*IntegrationSlack)[vs[1].(string)]
-	}).(IntegrationSlackOutput)
+func (o IntegrationMattermostMapOutput) MapIndex(k pulumi.StringInput) IntegrationMattermostOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IntegrationMattermost {
+		return vs[0].(map[string]*IntegrationMattermost)[vs[1].(string)]
+	}).(IntegrationMattermostOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationSlackInput)(nil)).Elem(), &IntegrationSlack{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationSlackArrayInput)(nil)).Elem(), IntegrationSlackArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationSlackMapInput)(nil)).Elem(), IntegrationSlackMap{})
-	pulumi.RegisterOutputType(IntegrationSlackOutput{})
-	pulumi.RegisterOutputType(IntegrationSlackArrayOutput{})
-	pulumi.RegisterOutputType(IntegrationSlackMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationMattermostInput)(nil)).Elem(), &IntegrationMattermost{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationMattermostArrayInput)(nil)).Elem(), IntegrationMattermostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationMattermostMapInput)(nil)).Elem(), IntegrationMattermostMap{})
+	pulumi.RegisterOutputType(IntegrationMattermostOutput{})
+	pulumi.RegisterOutputType(IntegrationMattermostArrayOutput{})
+	pulumi.RegisterOutputType(IntegrationMattermostMapOutput{})
 }

@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentApprovalRuleArgs;
 import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class ProjectProtectedEnvironmentState extends com.pulumi.resources.ResourceArgs {
 
     public static final ProjectProtectedEnvironmentState Empty = new ProjectProtectedEnvironmentState();
+
+    /**
+     * Array of approval rules to deploy, with each described by a hash.
+     * 
+     */
+    @Import(name="approvalRules")
+    private @Nullable Output<List<ProjectProtectedEnvironmentApprovalRuleArgs>> approvalRules;
+
+    /**
+     * @return Array of approval rules to deploy, with each described by a hash.
+     * 
+     */
+    public Optional<Output<List<ProjectProtectedEnvironmentApprovalRuleArgs>>> approvalRules() {
+        return Optional.ofNullable(this.approvalRules);
+    }
 
     /**
      * Array of access levels allowed to deploy, with each described by a hash.
@@ -81,6 +97,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
     private ProjectProtectedEnvironmentState() {}
 
     private ProjectProtectedEnvironmentState(ProjectProtectedEnvironmentState $) {
+        this.approvalRules = $.approvalRules;
         this.deployAccessLevels = $.deployAccessLevels;
         this.environment = $.environment;
         this.project = $.project;
@@ -103,6 +120,37 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
 
         public Builder(ProjectProtectedEnvironmentState defaults) {
             $ = new ProjectProtectedEnvironmentState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder approvalRules(@Nullable Output<List<ProjectProtectedEnvironmentApprovalRuleArgs>> approvalRules) {
+            $.approvalRules = approvalRules;
+            return this;
+        }
+
+        /**
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder approvalRules(List<ProjectProtectedEnvironmentApprovalRuleArgs> approvalRules) {
+            return approvalRules(Output.of(approvalRules));
+        }
+
+        /**
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder approvalRules(ProjectProtectedEnvironmentApprovalRuleArgs... approvalRules) {
+            return approvalRules(List.of(approvalRules));
         }
 
         /**

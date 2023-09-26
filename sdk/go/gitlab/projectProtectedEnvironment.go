@@ -24,89 +24,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_environments.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := gitlab.NewProjectEnvironment(ctx, "this", &gitlab.ProjectEnvironmentArgs{
-//				Project:     pulumi.String("123"),
-//				ExternalUrl: pulumi.String("www.example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithAccessLevel", &gitlab.ProjectProtectedEnvironmentArgs{
-//				Project:               this.Project,
-//				RequiredApprovalCount: pulumi.Int(1),
-//				Environment:           this.Name,
-//				DeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{
-//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
-//						AccessLevel: pulumi.String("developer"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithGroup", &gitlab.ProjectProtectedEnvironmentArgs{
-//				Project:     this.Project,
-//				Environment: this.Name,
-//				DeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{
-//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
-//						GroupId: pulumi.Int(456),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithUser", &gitlab.ProjectProtectedEnvironmentArgs{
-//				Project:     this.Project,
-//				Environment: this.Name,
-//				DeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{
-//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
-//						UserId: pulumi.Int(789),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithMultiple", &gitlab.ProjectProtectedEnvironmentArgs{
-//				Project:               this.Project,
-//				RequiredApprovalCount: pulumi.Int(2),
-//				Environment:           this.Name,
-//				DeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{
-//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
-//						AccessLevel: pulumi.String("developer"),
-//					},
-//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
-//						GroupId: pulumi.Int(456),
-//					},
-//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
-//						UserId: pulumi.Int(789),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
@@ -119,6 +36,8 @@ import (
 type ProjectProtectedEnvironment struct {
 	pulumi.CustomResourceState
 
+	// Array of approval rules to deploy, with each described by a hash.
+	ApprovalRules ProjectProtectedEnvironmentApprovalRuleArrayOutput `pulumi:"approvalRules"`
 	// Array of access levels allowed to deploy, with each described by a hash.
 	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelArrayOutput `pulumi:"deployAccessLevels"`
 	// The name of the environment.
@@ -165,6 +84,8 @@ func GetProjectProtectedEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectProtectedEnvironment resources.
 type projectProtectedEnvironmentState struct {
+	// Array of approval rules to deploy, with each described by a hash.
+	ApprovalRules []ProjectProtectedEnvironmentApprovalRule `pulumi:"approvalRules"`
 	// Array of access levels allowed to deploy, with each described by a hash.
 	DeployAccessLevels []ProjectProtectedEnvironmentDeployAccessLevel `pulumi:"deployAccessLevels"`
 	// The name of the environment.
@@ -176,6 +97,8 @@ type projectProtectedEnvironmentState struct {
 }
 
 type ProjectProtectedEnvironmentState struct {
+	// Array of approval rules to deploy, with each described by a hash.
+	ApprovalRules ProjectProtectedEnvironmentApprovalRuleArrayInput
 	// Array of access levels allowed to deploy, with each described by a hash.
 	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelArrayInput
 	// The name of the environment.
@@ -191,6 +114,8 @@ func (ProjectProtectedEnvironmentState) ElementType() reflect.Type {
 }
 
 type projectProtectedEnvironmentArgs struct {
+	// Array of approval rules to deploy, with each described by a hash.
+	ApprovalRules []ProjectProtectedEnvironmentApprovalRule `pulumi:"approvalRules"`
 	// Array of access levels allowed to deploy, with each described by a hash.
 	DeployAccessLevels []ProjectProtectedEnvironmentDeployAccessLevel `pulumi:"deployAccessLevels"`
 	// The name of the environment.
@@ -203,6 +128,8 @@ type projectProtectedEnvironmentArgs struct {
 
 // The set of arguments for constructing a ProjectProtectedEnvironment resource.
 type ProjectProtectedEnvironmentArgs struct {
+	// Array of approval rules to deploy, with each described by a hash.
+	ApprovalRules ProjectProtectedEnvironmentApprovalRuleArrayInput
 	// Array of access levels allowed to deploy, with each described by a hash.
 	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelArrayInput
 	// The name of the environment.
@@ -322,6 +249,13 @@ func (o ProjectProtectedEnvironmentOutput) ToOutput(ctx context.Context) pulumix
 	return pulumix.Output[*ProjectProtectedEnvironment]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Array of approval rules to deploy, with each described by a hash.
+func (o ProjectProtectedEnvironmentOutput) ApprovalRules() ProjectProtectedEnvironmentApprovalRuleArrayOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironment) ProjectProtectedEnvironmentApprovalRuleArrayOutput {
+		return v.ApprovalRules
+	}).(ProjectProtectedEnvironmentApprovalRuleArrayOutput)
 }
 
 // Array of access levels allowed to deploy, with each described by a hash.

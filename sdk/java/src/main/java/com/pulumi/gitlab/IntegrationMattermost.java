@@ -7,18 +7,18 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.gitlab.IntegrationSlackArgs;
+import com.pulumi.gitlab.IntegrationMattermostArgs;
 import com.pulumi.gitlab.Utilities;
-import com.pulumi.gitlab.inputs.IntegrationSlackState;
+import com.pulumi.gitlab.inputs.IntegrationMattermostState;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
+ * The `gitlab.IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
  * 
  * ## Example Usage
  * ```java
@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gitlab.Project;
  * import com.pulumi.gitlab.ProjectArgs;
- * import com.pulumi.gitlab.IntegrationSlack;
- * import com.pulumi.gitlab.IntegrationSlackArgs;
+ * import com.pulumi.gitlab.IntegrationMattermost;
+ * import com.pulumi.gitlab.IntegrationMattermostArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *             .visibilityLevel(&#34;public&#34;)
  *             .build());
  * 
- *         var slack = new IntegrationSlack(&#34;slack&#34;, IntegrationSlackArgs.builder()        
+ *         var mattermost = new IntegrationMattermost(&#34;mattermost&#34;, IntegrationMattermostArgs.builder()        
  *             .project(awesomeProject.id())
  *             .webhook(&#34;https://webhook.com&#34;)
  *             .username(&#34;myuser&#34;)
@@ -63,15 +63,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * You can import a gitlab_integration_slack.slack state using the project ID, e.g.
+ * You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1
+ *  $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
  * ```
  * 
  */
-@ResourceType(type="gitlab:index/integrationSlack:IntegrationSlack")
-public class IntegrationSlack extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gitlab:index/integrationMattermost:IntegrationMattermost")
+public class IntegrationMattermost extends com.pulumi.resources.CustomResource {
     /**
      * Branches to send notifications for. Valid options are &#34;all&#34;, &#34;default&#34;, &#34;protected&#34;, and &#34;default*and*protected&#34;.
      * 
@@ -115,6 +115,20 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
         return this.confidentialIssuesEvents;
     }
     /**
+     * The name of the channel to receive confidential note events notifications.
+     * 
+     */
+    @Export(name="confidentialNoteChannel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> confidentialNoteChannel;
+
+    /**
+     * @return The name of the channel to receive confidential note events notifications.
+     * 
+     */
+    public Output<Optional<String>> confidentialNoteChannel() {
+        return Codegen.optional(this.confidentialNoteChannel);
+    }
+    /**
      * Enable notifications for confidential note events.
      * 
      */
@@ -155,20 +169,6 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> issuesEvents() {
         return this.issuesEvents;
-    }
-    /**
-     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-     * 
-     */
-    @Export(name="jobEvents", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> jobEvents;
-
-    /**
-     * @return Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
-     * 
-     */
-    public Output<Boolean> jobEvents() {
-        return this.jobEvents;
     }
     /**
      * The name of the channel to receive merge request events notifications.
@@ -239,24 +239,6 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> notifyOnlyBrokenPipelines() {
         return this.notifyOnlyBrokenPipelines;
-    }
-    /**
-     * This parameter has been replaced with `branches_to_be_notified`.
-     * 
-     * @deprecated
-     * use &#39;branches_to_be_notified&#39; argument instead
-     * 
-     */
-    @Deprecated /* use 'branches_to_be_notified' argument instead */
-    @Export(name="notifyOnlyDefaultBranch", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> notifyOnlyDefaultBranch;
-
-    /**
-     * @return This parameter has been replaced with `branches_to_be_notified`.
-     * 
-     */
-    public Output<Boolean> notifyOnlyDefaultBranch() {
-        return this.notifyOnlyDefaultBranch;
     }
     /**
      * The name of the channel to receive pipeline events notifications.
@@ -371,14 +353,14 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.username);
     }
     /**
-     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
      * 
      */
     @Export(name="webhook", refs={String.class}, tree="[0]")
     private Output<String> webhook;
 
     /**
-     * @return Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * @return Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
      * 
      */
     public Output<String> webhook() {
@@ -417,15 +399,15 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IntegrationSlack(String name) {
-        this(name, IntegrationSlackArgs.Empty);
+    public IntegrationMattermost(String name) {
+        this(name, IntegrationMattermostArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IntegrationSlack(String name, IntegrationSlackArgs args) {
+    public IntegrationMattermost(String name, IntegrationMattermostArgs args) {
         this(name, args, null);
     }
     /**
@@ -434,12 +416,12 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IntegrationSlack(String name, IntegrationSlackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationSlack:IntegrationSlack", name, args == null ? IntegrationSlackArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IntegrationMattermost(String name, IntegrationMattermostArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationMattermost:IntegrationMattermost", name, args == null ? IntegrationMattermostArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private IntegrationSlack(String name, Output<String> id, @Nullable IntegrationSlackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationSlack:IntegrationSlack", name, state, makeResourceOptions(options, id));
+    private IntegrationMattermost(String name, Output<String> id, @Nullable IntegrationMattermostState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationMattermost:IntegrationMattermost", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -458,7 +440,7 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IntegrationSlack get(String name, Output<String> id, @Nullable IntegrationSlackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new IntegrationSlack(name, id, state, options);
+    public static IntegrationMattermost get(String name, Output<String> id, @Nullable IntegrationMattermostState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new IntegrationMattermost(name, id, state, options);
     }
 }

@@ -84,7 +84,7 @@ type ProjectAccessToken struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// True if the token is revoked.
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
-	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
+	// The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The secret token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -149,7 +149,7 @@ type projectAccessTokenState struct {
 	Project *string `pulumi:"project"`
 	// True if the token is revoked.
 	Revoked *bool `pulumi:"revoked"`
-	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
+	// The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
 	Scopes []string `pulumi:"scopes"`
 	// The secret token. **Note**: the token is not available for imported resources.
 	Token *string `pulumi:"token"`
@@ -172,7 +172,7 @@ type ProjectAccessTokenState struct {
 	Project pulumi.StringPtrInput
 	// True if the token is revoked.
 	Revoked pulumi.BoolPtrInput
-	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
+	// The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
 	Scopes pulumi.StringArrayInput
 	// The secret token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringPtrInput
@@ -193,7 +193,7 @@ type projectAccessTokenArgs struct {
 	Name *string `pulumi:"name"`
 	// The id of the project to add the project access token to.
 	Project string `pulumi:"project"`
-	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
+	// The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
 	Scopes []string `pulumi:"scopes"`
 }
 
@@ -207,7 +207,7 @@ type ProjectAccessTokenArgs struct {
 	Name pulumi.StringPtrInput
 	// The id of the project to add the project access token to.
 	Project pulumi.StringInput
-	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
+	// The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
 	Scopes pulumi.StringArrayInput
 }
 
@@ -357,7 +357,7 @@ func (o ProjectAccessTokenOutput) Revoked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.BoolOutput { return v.Revoked }).(pulumi.BoolOutput)
 }
 
-// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
+// The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
 func (o ProjectAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

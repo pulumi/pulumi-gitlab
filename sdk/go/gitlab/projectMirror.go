@@ -18,6 +18,11 @@ import (
 // This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
 // import_url, mirror, and mirrorTriggerBuilds properties on the Project resource.
 //
+// > **Warning** By default, the provider sets the `keepDivergentRefs` argument to `True`.
+//
+//	If you manually set `keepDivergentRefs` to `False`, GitLab mirroring removes branches in the target that aren't in the source.
+//	This action can result in unexpected branch deletions.
+//
 // > **Destroy Behavior** GitLab 14.10 introduced an API endpoint to delete a project mirror.
 //
 //	Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.

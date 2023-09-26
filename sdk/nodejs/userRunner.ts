@@ -124,6 +124,8 @@ export class UserRunner extends pulumi.CustomResource {
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(UserRunner.__pulumiType, name, resourceInputs, opts);
     }
 }

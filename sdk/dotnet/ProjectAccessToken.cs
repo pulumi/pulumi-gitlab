@@ -101,7 +101,7 @@ namespace Pulumi.GitLab
         public Output<bool> Revoked { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
+        /// The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
+        /// The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -258,7 +258,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
+        /// The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
         /// </summary>
         public InputList<string> Scopes
         {

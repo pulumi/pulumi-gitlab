@@ -23,7 +23,7 @@ class GroupAccessTokenArgs:
         The set of arguments for constructing a GroupAccessToken resource.
         :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         :param pulumi.Input[str] group: The ID or path of the group to add the group access token to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
         :param pulumi.Input[str] access_level: The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[str] name: The name of the group access token.
         """
@@ -63,7 +63,7 @@ class GroupAccessTokenArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
         """
         return pulumi.get(self, "scopes")
 
@@ -118,7 +118,7 @@ class _GroupAccessTokenState:
         :param pulumi.Input[str] group: The ID or path of the group to add the group access token to.
         :param pulumi.Input[str] name: The name of the group access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
         :param pulumi.Input[str] token: The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
         :param pulumi.Input[int] user_id: The user id associated to the token.
         """
@@ -231,7 +231,7 @@ class _GroupAccessTokenState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
         """
         return pulumi.get(self, "scopes")
 
@@ -315,7 +315,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         :param pulumi.Input[str] group: The ID or path of the group to add the group access token to.
         :param pulumi.Input[str] name: The name of the group access token.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
         """
         ...
     @overload
@@ -438,7 +438,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] group: The ID or path of the group to add the group access token to.
         :param pulumi.Input[str] name: The name of the group access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
         :param pulumi.Input[str] token: The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
         :param pulumi.Input[int] user_id: The user id associated to the token.
         """
@@ -518,7 +518,7 @@ class GroupAccessToken(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Sequence[str]]:
         """
-        The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
         """
         return pulumi.get(self, "scopes")
 
