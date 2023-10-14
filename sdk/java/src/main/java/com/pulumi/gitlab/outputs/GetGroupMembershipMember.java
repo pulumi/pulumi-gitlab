@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupMembershipMember {
-    /**
-     * @return Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-     * 
-     */
     private String accessLevel;
     private String avatarUrl;
     private String expiresAt;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private Integer id;
     private String name;
     private String state;
@@ -28,10 +20,6 @@ public final class GetGroupMembershipMember {
     private String webUrl;
 
     private GetGroupMembershipMember() {}
-    /**
-     * @return Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-     * 
-     */
     public String accessLevel() {
         return this.accessLevel;
     }
@@ -41,10 +29,6 @@ public final class GetGroupMembershipMember {
     public String expiresAt() {
         return this.expiresAt;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Integer id() {
         return this.id;
     }

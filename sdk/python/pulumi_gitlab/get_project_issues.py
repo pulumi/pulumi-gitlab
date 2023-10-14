@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -415,14 +415,9 @@ def get_project_issues(assignee_id: Optional[int] = None,
 
     :param int assignee_id: Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.
     :param str assignee_username: Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
-    :param int author_id: Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-    :param bool confidential: Filter confidential or public issues.
     :param str created_after: Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
     :param str created_before: Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
-    :param str due_date: Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
     :param Sequence[int] iids: Return only the issues having the given iid
-    :param str issue_type: Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-    :param Sequence[str] labels: Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
     :param str milestone: The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
     :param str my_reaction_emoji: Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
     :param Sequence[int] not_assignee_ids: Return issues that do not match the assignee id.
@@ -431,13 +426,11 @@ def get_project_issues(assignee_id: Optional[int] = None,
     :param str not_milestone: Return issues that do not match the milestone.
     :param Sequence[str] not_my_reaction_emojis: Return issues not reacted by the authenticated user by the given emoji.
     :param str order_by: Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
-    :param str project: The name or id of the project.
     :param str scope: Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
     :param str search: Search project issues against their title and description
     :param str sort: Return issues sorted in asc or desc order. Default is desc
     :param str updated_after: Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
     :param str updated_before: Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
-    :param int weight: Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
     :param bool with_labels_details: If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
     """
     __args__ = dict()
@@ -548,14 +541,9 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
 
     :param int assignee_id: Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.
     :param str assignee_username: Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
-    :param int author_id: Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-    :param bool confidential: Filter confidential or public issues.
     :param str created_after: Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
     :param str created_before: Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
-    :param str due_date: Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
     :param Sequence[int] iids: Return only the issues having the given iid
-    :param str issue_type: Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-    :param Sequence[str] labels: Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
     :param str milestone: The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
     :param str my_reaction_emoji: Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
     :param Sequence[int] not_assignee_ids: Return issues that do not match the assignee id.
@@ -564,13 +552,11 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
     :param str not_milestone: Return issues that do not match the milestone.
     :param Sequence[str] not_my_reaction_emojis: Return issues not reacted by the authenticated user by the given emoji.
     :param str order_by: Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
-    :param str project: The name or id of the project.
     :param str scope: Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
     :param str search: Search project issues against their title and description
     :param str sort: Return issues sorted in asc or desc order. Default is desc
     :param str updated_after: Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
     :param str updated_before: Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
-    :param int weight: Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
     :param bool with_labels_details: If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
     """
     ...

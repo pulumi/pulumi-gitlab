@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PipelineScheduleArgs', 'PipelineSchedule']
@@ -29,14 +29,33 @@ class PipelineScheduleArgs:
         :param pulumi.Input[bool] active: The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         :param pulumi.Input[str] cron_timezone: The timezone.
         """
-        pulumi.set(__self__, "cron", cron)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "ref", ref)
+        PipelineScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cron=cron,
+            description=description,
+            project=project,
+            ref=ref,
+            active=active,
+            cron_timezone=cron_timezone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cron: pulumi.Input[str],
+             description: pulumi.Input[str],
+             project: pulumi.Input[str],
+             ref: pulumi.Input[str],
+             active: Optional[pulumi.Input[bool]] = None,
+             cron_timezone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cron", cron)
+        _setter("description", description)
+        _setter("project", project)
+        _setter("ref", ref)
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if cron_timezone is not None:
-            pulumi.set(__self__, "cron_timezone", cron_timezone)
+            _setter("cron_timezone", cron_timezone)
 
     @property
     @pulumi.getter
@@ -131,20 +150,41 @@ class _PipelineScheduleState:
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[str] ref: The branch/tag name to be triggered.
         """
+        _PipelineScheduleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            cron=cron,
+            cron_timezone=cron_timezone,
+            description=description,
+            pipeline_schedule_id=pipeline_schedule_id,
+            project=project,
+            ref=ref,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             cron: Optional[pulumi.Input[str]] = None,
+             cron_timezone: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             ref: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if cron is not None:
-            pulumi.set(__self__, "cron", cron)
+            _setter("cron", cron)
         if cron_timezone is not None:
-            pulumi.set(__self__, "cron_timezone", cron_timezone)
+            _setter("cron_timezone", cron_timezone)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if pipeline_schedule_id is not None:
-            pulumi.set(__self__, "pipeline_schedule_id", pipeline_schedule_id)
+            _setter("pipeline_schedule_id", pipeline_schedule_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if ref is not None:
-            pulumi.set(__self__, "ref", ref)
+            _setter("ref", ref)
 
     @property
     @pulumi.getter
@@ -320,6 +360,10 @@ class PipelineSchedule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PipelineScheduleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

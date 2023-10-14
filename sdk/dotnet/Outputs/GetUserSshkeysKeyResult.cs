@@ -18,9 +18,6 @@ namespace Pulumi.GitLab.Outputs
         public readonly string Key;
         public readonly int KeyId;
         public readonly string Title;
-        /// <summary>
-        /// ID of the user to get the SSH keys for.
-        /// </summary>
         public readonly int UserId;
 
         [OutputConstructor]

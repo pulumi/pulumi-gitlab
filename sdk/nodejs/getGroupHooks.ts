@@ -23,9 +23,6 @@ export function getGroupHooks(args: GetGroupHooksArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getGroupHooks.
  */
 export interface GetGroupHooksArgs {
-    /**
-     * The ID or full path of the group.
-     */
     group: string;
 }
 
@@ -59,8 +56,5 @@ export function getGroupHooksOutput(args: GetGroupHooksOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getGroupHooks.
  */
 export interface GetGroupHooksOutputArgs {
-    /**
-     * The ID or full path of the group.
-     */
     group: pulumi.Input<string>;
 }

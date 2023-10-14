@@ -56,7 +56,6 @@ func GetRepositoryTree(ctx *pulumi.Context, args *GetRepositoryTreeArgs, opts ..
 
 // A collection of arguments for invoking getRepositoryTree.
 type GetRepositoryTreeArgs struct {
-	// The path inside repository. Used to get content of subdirectories.
 	Path *string `pulumi:"path"`
 	// The ID or full path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
@@ -97,7 +96,6 @@ func GetRepositoryTreeOutput(ctx *pulumi.Context, args GetRepositoryTreeOutputAr
 
 // A collection of arguments for invoking getRepositoryTree.
 type GetRepositoryTreeOutputArgs struct {
-	// The path inside repository. Used to get content of subdirectories.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The ID or full path of the project owned by the authenticated user.
 	Project pulumi.StringInput `pulumi:"project"`

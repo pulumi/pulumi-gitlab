@@ -99,15 +99,9 @@ namespace Pulumi.GitLab
         [Input("assigneeUsername")]
         public string? AssigneeUsername { get; set; }
 
-        /// <summary>
-        /// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-        /// </summary>
         [Input("authorId")]
         public int? AuthorId { get; set; }
 
-        /// <summary>
-        /// Filter confidential or public issues.
-        /// </summary>
         [Input("confidential")]
         public bool? Confidential { get; set; }
 
@@ -123,9 +117,6 @@ namespace Pulumi.GitLab
         [Input("createdBefore")]
         public string? CreatedBefore { get; set; }
 
-        /// <summary>
-        /// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-        /// </summary>
         [Input("dueDate")]
         public string? DueDate { get; set; }
 
@@ -141,18 +132,11 @@ namespace Pulumi.GitLab
             set => _iids = value;
         }
 
-        /// <summary>
-        /// Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-        /// </summary>
         [Input("issueType")]
         public string? IssueType { get; set; }
 
         [Input("labels")]
         private List<string>? _labels;
-
-        /// <summary>
-        /// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-        /// </summary>
         public List<string> Labels
         {
             get => _labels ?? (_labels = new List<string>());
@@ -231,9 +215,6 @@ namespace Pulumi.GitLab
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        /// <summary>
-        /// The name or id of the project.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -267,9 +248,6 @@ namespace Pulumi.GitLab
         [Input("updatedBefore")]
         public string? UpdatedBefore { get; set; }
 
-        /// <summary>
-        /// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-        /// </summary>
         [Input("weight")]
         public int? Weight { get; set; }
 
@@ -299,15 +277,9 @@ namespace Pulumi.GitLab
         [Input("assigneeUsername")]
         public Input<string>? AssigneeUsername { get; set; }
 
-        /// <summary>
-        /// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-        /// </summary>
         [Input("authorId")]
         public Input<int>? AuthorId { get; set; }
 
-        /// <summary>
-        /// Filter confidential or public issues.
-        /// </summary>
         [Input("confidential")]
         public Input<bool>? Confidential { get; set; }
 
@@ -323,9 +295,6 @@ namespace Pulumi.GitLab
         [Input("createdBefore")]
         public Input<string>? CreatedBefore { get; set; }
 
-        /// <summary>
-        /// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-        /// </summary>
         [Input("dueDate")]
         public Input<string>? DueDate { get; set; }
 
@@ -341,18 +310,11 @@ namespace Pulumi.GitLab
             set => _iids = value;
         }
 
-        /// <summary>
-        /// Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-        /// </summary>
         [Input("issueType")]
         public Input<string>? IssueType { get; set; }
 
         [Input("labels")]
         private InputList<string>? _labels;
-
-        /// <summary>
-        /// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-        /// </summary>
         public InputList<string> Labels
         {
             get => _labels ?? (_labels = new InputList<string>());
@@ -431,9 +393,6 @@ namespace Pulumi.GitLab
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 
-        /// <summary>
-        /// The name or id of the project.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -467,9 +426,6 @@ namespace Pulumi.GitLab
         [Input("updatedBefore")]
         public Input<string>? UpdatedBefore { get; set; }
 
-        /// <summary>
-        /// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-        /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
 

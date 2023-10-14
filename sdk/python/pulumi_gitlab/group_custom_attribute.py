@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupCustomAttributeArgs', 'GroupCustomAttribute']
@@ -23,9 +23,22 @@ class GroupCustomAttributeArgs:
         :param pulumi.Input[str] key: Key for the Custom Attribute.
         :param pulumi.Input[str] value: Value for the Custom Attribute.
         """
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GroupCustomAttributeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: pulumi.Input[int],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group", group)
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -76,12 +89,25 @@ class _GroupCustomAttributeState:
         :param pulumi.Input[str] key: Key for the Custom Attribute.
         :param pulumi.Input[str] value: Value for the Custom Attribute.
         """
+        _GroupCustomAttributeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: Optional[pulumi.Input[int]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -201,6 +227,10 @@ class GroupCustomAttribute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupCustomAttributeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

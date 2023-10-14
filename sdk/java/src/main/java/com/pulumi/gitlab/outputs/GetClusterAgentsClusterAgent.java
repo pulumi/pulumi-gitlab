@@ -14,10 +14,6 @@ public final class GetClusterAgentsClusterAgent {
     private String createdAt;
     private Integer createdByUserId;
     private String name;
-    /**
-     * @return The ID or full path of the project owned by the authenticated user.
-     * 
-     */
     private String project;
 
     private GetClusterAgentsClusterAgent() {}
@@ -33,10 +29,6 @@ public final class GetClusterAgentsClusterAgent {
     public String name() {
         return this.name;
     }
-    /**
-     * @return The ID or full path of the project owned by the authenticated user.
-     * 
-     */
     public String project() {
         return this.project;
     }

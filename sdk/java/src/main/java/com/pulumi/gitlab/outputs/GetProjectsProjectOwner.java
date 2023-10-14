@@ -11,10 +11,6 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectsProjectOwner {
     private String avatarUrl;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private Integer id;
     private String name;
     private String state;
@@ -25,10 +21,6 @@ public final class GetProjectsProjectOwner {
     public String avatarUrl() {
         return this.avatarUrl;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Integer id() {
         return this.id;
     }

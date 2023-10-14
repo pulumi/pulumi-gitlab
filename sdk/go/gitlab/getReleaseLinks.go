@@ -54,9 +54,7 @@ func GetReleaseLinks(ctx *pulumi.Context, args *GetReleaseLinksArgs, opts ...pul
 
 // A collection of arguments for invoking getReleaseLinks.
 type GetReleaseLinksArgs struct {
-	// The ID or full path to the project.
 	Project string `pulumi:"project"`
-	// The tag associated with the Release.
 	TagName string `pulumi:"tagName"`
 }
 
@@ -87,9 +85,7 @@ func GetReleaseLinksOutput(ctx *pulumi.Context, args GetReleaseLinksOutputArgs, 
 
 // A collection of arguments for invoking getReleaseLinks.
 type GetReleaseLinksOutputArgs struct {
-	// The ID or full path to the project.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The tag associated with the Release.
 	TagName pulumi.StringInput `pulumi:"tagName"`
 }
 

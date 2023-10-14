@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -90,7 +90,6 @@ def get_user_sshkeys(user_id: Optional[int] = None,
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
 
 
-    :param int user_id: ID of the user to get the SSH keys for.
     :param str username: Username of the user to get the SSH keys for.
     """
     __args__ = dict()
@@ -116,7 +115,6 @@ def get_user_sshkeys_output(user_id: Optional[pulumi.Input[Optional[int]]] = Non
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
 
 
-    :param int user_id: ID of the user to get the SSH keys for.
     :param str username: Username of the user to get the SSH keys for.
     """
     ...

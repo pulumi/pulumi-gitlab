@@ -12,10 +12,6 @@ import java.util.Objects;
 public final class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
     private String createdAt;
     private String description;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private Integer id;
     private String name;
     private String nameWithNamespace;
@@ -29,10 +25,6 @@ public final class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
     public String description() {
         return this.description;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Integer id() {
         return this.id;
     }

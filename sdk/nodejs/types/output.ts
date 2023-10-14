@@ -12,9 +12,6 @@ export interface BranchCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
-    /**
-     * The ID of this resource.
-     */
     id: string;
     message: string;
     parentIds: string[];
@@ -86,9 +83,6 @@ export interface GetBranchCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
-    /**
-     * The ID of this resource.
-     */
     id: string;
     message: string;
     parentIds: string[];
@@ -101,9 +95,6 @@ export interface GetClusterAgentsClusterAgent {
     createdAt: string;
     createdByUserId: number;
     name: string;
-    /**
-     * The ID or full path of the project owned by the authenticated user.
-     */
     project: string;
 }
 
@@ -112,9 +103,6 @@ export interface GetGroupHooksHook {
     confidentialNoteEvents: boolean;
     deploymentEvents: boolean;
     enableSslVerification: boolean;
-    /**
-     * The ID or full path of the group.
-     */
     group: string;
     groupId: number;
     hookId: number;
@@ -134,15 +122,9 @@ export interface GetGroupHooksHook {
 }
 
 export interface GetGroupMembershipMember {
-    /**
-     * Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-     */
     accessLevel: string;
     avatarUrl: string;
     expiresAt: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     name: string;
     state: string;
@@ -160,9 +142,6 @@ export interface GetGroupSubgroupsSubgroup {
     fileTemplateProjectId: number;
     fullName: string;
     fullPath: string;
-    /**
-     * The ID of the group.
-     */
     groupId: number;
     ipRestrictionRanges: string;
     lfsEnabled: boolean;
@@ -174,9 +153,6 @@ export interface GetGroupSubgroupsSubgroup {
     requestAccessEnabled: boolean;
     requireTwoFactorAuthentication: boolean;
     shareWithGroupLock: boolean;
-    /**
-     * Include group statistics (administrators only).
-     */
     statistics: {[key: string]: string};
     subgroupCreationLevel: string;
     twoFactorGracePeriod: number;
@@ -186,13 +162,7 @@ export interface GetGroupSubgroupsSubgroup {
 }
 
 export interface GetGroupVariablesVariable {
-    /**
-     * The environment scope of the variable. Defaults to all environment (`*`).
-     */
     environmentScope: string;
-    /**
-     * The name or id of the group.
-     */
     group: string;
     key: string;
     masked: boolean;
@@ -223,9 +193,6 @@ export interface GetGroupsGroup {
 export interface GetInstanceDeployKeysDeployKey {
     createdAt: string;
     fingerprint: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     key: string;
     projectsWithWriteAccesses: outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess[];
@@ -235,9 +202,6 @@ export interface GetInstanceDeployKeysDeployKey {
 export interface GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
     createdAt: string;
     description: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     name: string;
     nameWithNamespace: string;
@@ -288,9 +252,6 @@ export interface GetProjectBranchesBranchCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
-    /**
-     * The ID of this resource.
-     */
     id: string;
     message: string;
     parentIds: string[];
@@ -323,9 +284,6 @@ export interface GetProjectHooksHook {
     mergeRequestsEvents: boolean;
     noteEvents: boolean;
     pipelineEvents: boolean;
-    /**
-     * The name or id of the project.
-     */
     project: string;
     projectId: number;
     pushEvents: boolean;
@@ -344,24 +302,15 @@ export interface GetProjectIssueTaskCompletionStatus {
 
 export interface GetProjectIssuesIssue {
     assigneeIds: number[];
-    /**
-     * Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-     */
     authorId: number;
     closedAt: string;
     closedByUserId: number;
-    /**
-     * Filter confidential or public issues.
-     */
     confidential: boolean;
     createdAt: string;
     description: string;
     discussionLocked: boolean;
     discussionToResolve: string;
     downvotes: number;
-    /**
-     * Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-     */
     dueDate: string;
     epicId: number;
     epicIssueId: number;
@@ -371,22 +320,13 @@ export interface GetProjectIssuesIssue {
     iid: number;
     issueId: number;
     issueLinkId: number;
-    /**
-     * Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
-     */
     issueType: string;
-    /**
-     * Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-     */
     labels: string[];
     links: {[key: string]: string};
     mergeRequestToResolveDiscussionsOf: number;
     mergeRequestsCount: number;
     milestoneId: number;
     movedToId: number;
-    /**
-     * The name or id of the project.
-     */
     project: string;
     references: {[key: string]: string};
     state: string;
@@ -399,9 +339,6 @@ export interface GetProjectIssuesIssue {
     upvotes: number;
     userNotesCount: number;
     webUrl: string;
-    /**
-     * Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-     */
     weight: number;
 }
 
@@ -414,9 +351,6 @@ export interface GetProjectMembershipMember {
     accessLevel: string;
     avatarUrl: string;
     expiresAt: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     name: string;
     state: string;
@@ -431,19 +365,10 @@ export interface GetProjectMilestonesMilestone {
     expired: boolean;
     iid: number;
     milestoneId: number;
-    /**
-     * The ID or URL-encoded path of the project owned by the authenticated user.
-     */
     project: string;
     projectId: number;
     startDate: string;
-    /**
-     * Return only `active` or `closed` milestones.
-     */
     state: string;
-    /**
-     * Return only the milestones having the given `title`.
-     */
     title: string;
     updatedAt: string;
     webUrl: string;
@@ -466,9 +391,6 @@ export interface GetProjectProtectedBranchPushAccessLevel {
 export interface GetProjectProtectedBranchesProtectedBranch {
     allowForcePush: boolean;
     codeOwnerApprovalRequired: boolean;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     mergeAccessLevels: outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevel[];
     name: string;
@@ -510,13 +432,7 @@ export interface GetProjectTagCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
-    /**
-     * The ID of this resource.
-     */
     id: string;
-    /**
-     * The message of the annotated tag.
-     */
     message: string;
     parentIds: string[];
     shortId: string;
@@ -544,9 +460,6 @@ export interface GetProjectTagsTagCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
-    /**
-     * The ID of this resource.
-     */
     id: string;
     message: string;
     parentIds: string[];
@@ -560,15 +473,9 @@ export interface GetProjectTagsTagRelease {
 }
 
 export interface GetProjectVariablesVariable {
-    /**
-     * The environment scope of the variable. Defaults to all environment (`*`).
-     */
     environmentScope: string;
     key: string;
     masked: boolean;
-    /**
-     * The name or id of the project.
-     */
     project: string;
     protected: boolean;
     raw: boolean;
@@ -581,9 +488,6 @@ export interface GetProjectsProject {
     allowMergeOnSkippedPipeline: boolean;
     analyticsAccessLevel: string;
     approvalsBeforeMerge: number;
-    /**
-     * Limit by archived status.
-     */
     archived: boolean;
     autoCancelPendingPipelines: string;
     autoDevopsDeployStrategy: string;
@@ -613,9 +517,6 @@ export interface GetProjectsProject {
     forkingAccessLevel: string;
     forksCount: number;
     httpUrlToRepo: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     importError: string;
     importStatus: string;
@@ -669,16 +570,10 @@ export interface GetProjectsProject {
     squashCommitTemplate: string;
     sshUrlToRepo: string;
     starCount: number;
-    /**
-     * Include project statistics. Cannot be used with `groupId`.
-     */
     statistics: {[key: string]: number};
     suggestionCommitMessage: string;
     tagLists: string[];
     topics: string[];
-    /**
-     * Limit by visibility `public`, `internal`, or `private`.
-     */
     visibility: string;
     webUrl: string;
     wikiAccessLevel: string;
@@ -701,9 +596,6 @@ export interface GetProjectsProjectContainerExpirationPolicy {
 
 export interface GetProjectsProjectForkedFromProject {
     httpUrlToRepo: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     name: string;
     nameWithNamespace: string;
@@ -714,9 +606,6 @@ export interface GetProjectsProjectForkedFromProject {
 
 export interface GetProjectsProjectNamespace {
     fullPath: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     kind: string;
     name: string;
@@ -725,9 +614,6 @@ export interface GetProjectsProjectNamespace {
 
 export interface GetProjectsProjectOwner {
     avatarUrl: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     name: string;
     state: string;
@@ -742,9 +628,6 @@ export interface GetProjectsProjectPermission {
 
 export interface GetProjectsProjectSharedWithGroup {
     groupAccessLevel: string;
-    /**
-     * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
-     */
     groupId: number;
     groupName: string;
 }
@@ -756,27 +639,15 @@ export interface GetReleaseLinksReleaseLink {
     linkId: number;
     linkType: string;
     name: string;
-    /**
-     * The ID or full path to the project.
-     */
     project: string;
-    /**
-     * The tag associated with the Release.
-     */
     tagName: string;
     url: string;
 }
 
 export interface GetRepositoryTreeTree {
-    /**
-     * The ID of this resource.
-     */
     id: string;
     mode: string;
     name: string;
-    /**
-     * The path inside repository. Used to get content of subdirectories.
-     */
     path: string;
     type: string;
 }
@@ -787,9 +658,6 @@ export interface GetUserSshkeysKey {
     key: string;
     keyId: number;
     title: string;
-    /**
-     * ID of the user to get the SSH keys for.
-     */
     userId: number;
 }
 
@@ -802,14 +670,8 @@ export interface GetUsersUser {
     createdAt: string;
     currentSignInAt: string;
     email: string;
-    /**
-     * Lookup users by external UID. (Requires administrator privileges)
-     */
     externUid: string;
     external: boolean;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     isAdmin: boolean;
     lastSignInAt: string;
@@ -1032,13 +894,7 @@ export interface ProjectTagCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
-    /**
-     * The ID of this resource.
-     */
     id: string;
-    /**
-     * The message of the annotated tag.
-     */
     message: string;
     parentIds: string[];
     shortId: string;

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -153,10 +153,7 @@ def get_project_milestones(iids: Optional[Sequence[int]] = None,
 
     :param Sequence[int] iids: Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
     :param bool include_parent_milestones: Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
-    :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
     :param str search: Return only milestones with a title or description matching the provided string.
-    :param str state: Return only `active` or `closed` milestones.
-    :param str title: Return only the milestones having the given `title`.
     """
     __args__ = dict()
     __args__['iids'] = iids
@@ -204,9 +201,6 @@ def get_project_milestones_output(iids: Optional[pulumi.Input[Optional[Sequence[
 
     :param Sequence[int] iids: Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
     :param bool include_parent_milestones: Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
-    :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
     :param str search: Return only milestones with a title or description matching the provided string.
-    :param str state: Return only `active` or `closed` milestones.
-    :param str title: Return only the milestones having the given `title`.
     """
     ...

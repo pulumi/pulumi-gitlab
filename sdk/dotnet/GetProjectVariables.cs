@@ -87,15 +87,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectVariablesArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`).
-        /// </summary>
         [Input("environmentScope")]
         public string? EnvironmentScope { get; set; }
 
-        /// <summary>
-        /// The name or id of the project.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -107,15 +101,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectVariablesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`).
-        /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
 
-        /// <summary>
-        /// The name or id of the project.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

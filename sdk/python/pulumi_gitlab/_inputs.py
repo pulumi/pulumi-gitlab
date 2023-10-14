@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -41,31 +41,57 @@ class BranchCommitArgs:
                  parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  short_id: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] id: The ID of this resource.
-        """
+        BranchCommitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email=author_email,
+            author_name=author_name,
+            authored_date=authored_date,
+            committed_date=committed_date,
+            committer_email=committer_email,
+            committer_name=committer_name,
+            id=id,
+            message=message,
+            parent_ids=parent_ids,
+            short_id=short_id,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email: Optional[pulumi.Input[str]] = None,
+             author_name: Optional[pulumi.Input[str]] = None,
+             authored_date: Optional[pulumi.Input[str]] = None,
+             committed_date: Optional[pulumi.Input[str]] = None,
+             committer_email: Optional[pulumi.Input[str]] = None,
+             committer_name: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             short_id: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if author_email is not None:
-            pulumi.set(__self__, "author_email", author_email)
+            _setter("author_email", author_email)
         if author_name is not None:
-            pulumi.set(__self__, "author_name", author_name)
+            _setter("author_name", author_name)
         if authored_date is not None:
-            pulumi.set(__self__, "authored_date", authored_date)
+            _setter("authored_date", authored_date)
         if committed_date is not None:
-            pulumi.set(__self__, "committed_date", committed_date)
+            _setter("committed_date", committed_date)
         if committer_email is not None:
-            pulumi.set(__self__, "committer_email", committer_email)
+            _setter("committer_email", committer_email)
         if committer_name is not None:
-            pulumi.set(__self__, "committer_name", committer_name)
+            _setter("committer_name", committer_name)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if parent_ids is not None:
-            pulumi.set(__self__, "parent_ids", parent_ids)
+            _setter("parent_ids", parent_ids)
         if short_id is not None:
-            pulumi.set(__self__, "short_id", short_id)
+            _setter("short_id", short_id)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="authorEmail")
@@ -124,9 +150,6 @@ class BranchCommitArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -183,14 +206,29 @@ class BranchProtectionAllowedToMergeArgs:
         :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
+        BranchProtectionAllowedToMergeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             access_level_description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -254,14 +292,29 @@ class BranchProtectionAllowedToPushArgs:
         :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
+        BranchProtectionAllowedToPushArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             access_level_description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -325,14 +378,29 @@ class BranchProtectionAllowedToUnprotectArgs:
         :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
+        BranchProtectionAllowedToUnprotectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             access_level_description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -394,12 +462,25 @@ class GroupEpicBoardListArgs:
         :param pulumi.Input[int] label_id: The ID of the label the list should be scoped to.
         :param pulumi.Input[int] position: The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
         """
+        GroupEpicBoardListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label_id=label_id,
+            position=position,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[int]] = None,
+             label_id: Optional[pulumi.Input[int]] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if label_id is not None:
-            pulumi.set(__self__, "label_id", label_id)
+            _setter("label_id", label_id)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
 
     @property
     @pulumi.getter
@@ -449,12 +530,25 @@ class GroupIssueBoardListArgs:
         :param pulumi.Input[int] label_id: The ID of the label the list should be scoped to.
         :param pulumi.Input[int] position: The position of the list within the board. The position for the list is based on the its position in the `lists` array.
         """
+        GroupIssueBoardListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label_id=label_id,
+            position=position,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[int]] = None,
+             label_id: Optional[pulumi.Input[int]] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if label_id is not None:
-            pulumi.set(__self__, "label_id", label_id)
+            _setter("label_id", label_id)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
 
     @property
     @pulumi.getter
@@ -514,25 +608,48 @@ class ProjectContainerExpirationPolicyArgs:
         :param pulumi.Input[str] next_run_at: The next time the policy will run.
         :param pulumi.Input[str] older_than: The number of days to keep images.
         """
+        ProjectContainerExpirationPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cadence=cadence,
+            enabled=enabled,
+            keep_n=keep_n,
+            name_regex=name_regex,
+            name_regex_delete=name_regex_delete,
+            name_regex_keep=name_regex_keep,
+            next_run_at=next_run_at,
+            older_than=older_than,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cadence: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             keep_n: Optional[pulumi.Input[int]] = None,
+             name_regex: Optional[pulumi.Input[str]] = None,
+             name_regex_delete: Optional[pulumi.Input[str]] = None,
+             name_regex_keep: Optional[pulumi.Input[str]] = None,
+             next_run_at: Optional[pulumi.Input[str]] = None,
+             older_than: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cadence is not None:
-            pulumi.set(__self__, "cadence", cadence)
+            _setter("cadence", cadence)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if keep_n is not None:
-            pulumi.set(__self__, "keep_n", keep_n)
+            _setter("keep_n", keep_n)
         if name_regex is not None:
             warnings.warn("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""", DeprecationWarning)
             pulumi.log.warn("""name_regex is deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.""")
         if name_regex is not None:
-            pulumi.set(__self__, "name_regex", name_regex)
+            _setter("name_regex", name_regex)
         if name_regex_delete is not None:
-            pulumi.set(__self__, "name_regex_delete", name_regex_delete)
+            _setter("name_regex_delete", name_regex_delete)
         if name_regex_keep is not None:
-            pulumi.set(__self__, "name_regex_keep", name_regex_keep)
+            _setter("name_regex_keep", name_regex_keep)
         if next_run_at is not None:
-            pulumi.set(__self__, "next_run_at", next_run_at)
+            _setter("next_run_at", next_run_at)
         if older_than is not None:
-            pulumi.set(__self__, "older_than", older_than)
+            _setter("older_than", older_than)
 
     @property
     @pulumi.getter
@@ -651,18 +768,37 @@ class ProjectIssueBoardListArgs:
         :param pulumi.Input[int] milestone_id: The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[int] position: The position of the list within the board. The position for the list is based on the its position in the `lists` array.
         """
+        ProjectIssueBoardListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assignee_id=assignee_id,
+            id=id,
+            iteration_id=iteration_id,
+            label_id=label_id,
+            milestone_id=milestone_id,
+            position=position,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assignee_id: Optional[pulumi.Input[int]] = None,
+             id: Optional[pulumi.Input[int]] = None,
+             iteration_id: Optional[pulumi.Input[int]] = None,
+             label_id: Optional[pulumi.Input[int]] = None,
+             milestone_id: Optional[pulumi.Input[int]] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if assignee_id is not None:
-            pulumi.set(__self__, "assignee_id", assignee_id)
+            _setter("assignee_id", assignee_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if iteration_id is not None:
-            pulumi.set(__self__, "iteration_id", iteration_id)
+            _setter("iteration_id", iteration_id)
         if label_id is not None:
-            pulumi.set(__self__, "label_id", label_id)
+            _setter("label_id", label_id)
         if milestone_id is not None:
-            pulumi.set(__self__, "milestone_id", milestone_id)
+            _setter("milestone_id", milestone_id)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
 
     @property
     @pulumi.getter(name="assigneeId")
@@ -742,10 +878,21 @@ class ProjectIssueTaskCompletionStatusArgs:
     def __init__(__self__, *,
                  completed_count: Optional[pulumi.Input[int]] = None,
                  count: Optional[pulumi.Input[int]] = None):
+        ProjectIssueTaskCompletionStatusArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            completed_count=completed_count,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             completed_count: Optional[pulumi.Input[int]] = None,
+             count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if completed_count is not None:
-            pulumi.set(__self__, "completed_count", completed_count)
+            _setter("completed_count", completed_count)
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
 
     @property
     @pulumi.getter(name="completedCount")
@@ -783,18 +930,37 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
         :param pulumi.Input[int] required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
         :param pulumi.Input[int] user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
         """
+        ProjectProtectedEnvironmentApprovalRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            id=id,
+            required_approvals=required_approvals,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             access_level_description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             id: Optional[pulumi.Input[int]] = None,
+             required_approvals: Optional[pulumi.Input[int]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if required_approvals is not None:
-            pulumi.set(__self__, "required_approvals", required_approvals)
+            _setter("required_approvals", required_approvals)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -884,16 +1050,33 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
         :param pulumi.Input[int] id: The unique ID of the Deploy Access Level object.
         :param pulumi.Input[int] user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
         """
+        ProjectProtectedEnvironmentDeployAccessLevelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            id=id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             access_level_description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             id: Optional[pulumi.Input[int]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -983,28 +1166,57 @@ class ProjectPushRulesArgs:
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
         :param pulumi.Input[bool] reject_unsigned_commits: Reject commit when it’s not signed through GPG.
         """
+        ProjectPushRulesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email_regex=author_email_regex,
+            branch_name_regex=branch_name_regex,
+            commit_committer_check=commit_committer_check,
+            commit_message_negative_regex=commit_message_negative_regex,
+            commit_message_regex=commit_message_regex,
+            deny_delete_tag=deny_delete_tag,
+            file_name_regex=file_name_regex,
+            max_file_size=max_file_size,
+            member_check=member_check,
+            prevent_secrets=prevent_secrets,
+            reject_unsigned_commits=reject_unsigned_commits,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email_regex: Optional[pulumi.Input[str]] = None,
+             branch_name_regex: Optional[pulumi.Input[str]] = None,
+             commit_committer_check: Optional[pulumi.Input[bool]] = None,
+             commit_message_negative_regex: Optional[pulumi.Input[str]] = None,
+             commit_message_regex: Optional[pulumi.Input[str]] = None,
+             deny_delete_tag: Optional[pulumi.Input[bool]] = None,
+             file_name_regex: Optional[pulumi.Input[str]] = None,
+             max_file_size: Optional[pulumi.Input[int]] = None,
+             member_check: Optional[pulumi.Input[bool]] = None,
+             prevent_secrets: Optional[pulumi.Input[bool]] = None,
+             reject_unsigned_commits: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if author_email_regex is not None:
-            pulumi.set(__self__, "author_email_regex", author_email_regex)
+            _setter("author_email_regex", author_email_regex)
         if branch_name_regex is not None:
-            pulumi.set(__self__, "branch_name_regex", branch_name_regex)
+            _setter("branch_name_regex", branch_name_regex)
         if commit_committer_check is not None:
-            pulumi.set(__self__, "commit_committer_check", commit_committer_check)
+            _setter("commit_committer_check", commit_committer_check)
         if commit_message_negative_regex is not None:
-            pulumi.set(__self__, "commit_message_negative_regex", commit_message_negative_regex)
+            _setter("commit_message_negative_regex", commit_message_negative_regex)
         if commit_message_regex is not None:
-            pulumi.set(__self__, "commit_message_regex", commit_message_regex)
+            _setter("commit_message_regex", commit_message_regex)
         if deny_delete_tag is not None:
-            pulumi.set(__self__, "deny_delete_tag", deny_delete_tag)
+            _setter("deny_delete_tag", deny_delete_tag)
         if file_name_regex is not None:
-            pulumi.set(__self__, "file_name_regex", file_name_regex)
+            _setter("file_name_regex", file_name_regex)
         if max_file_size is not None:
-            pulumi.set(__self__, "max_file_size", max_file_size)
+            _setter("max_file_size", max_file_size)
         if member_check is not None:
-            pulumi.set(__self__, "member_check", member_check)
+            _setter("member_check", member_check)
         if prevent_secrets is not None:
-            pulumi.set(__self__, "prevent_secrets", prevent_secrets)
+            _setter("prevent_secrets", prevent_secrets)
         if reject_unsigned_commits is not None:
-            pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
+            _setter("reject_unsigned_commits", reject_unsigned_commits)
 
     @property
     @pulumi.getter(name="authorEmailRegex")
@@ -1153,32 +1365,57 @@ class ProjectTagCommitArgs:
                  parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  short_id: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] id: The ID of this resource.
-        :param pulumi.Input[str] message: The message of the annotated tag.
-        """
+        ProjectTagCommitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email=author_email,
+            author_name=author_name,
+            authored_date=authored_date,
+            committed_date=committed_date,
+            committer_email=committer_email,
+            committer_name=committer_name,
+            id=id,
+            message=message,
+            parent_ids=parent_ids,
+            short_id=short_id,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email: Optional[pulumi.Input[str]] = None,
+             author_name: Optional[pulumi.Input[str]] = None,
+             authored_date: Optional[pulumi.Input[str]] = None,
+             committed_date: Optional[pulumi.Input[str]] = None,
+             committer_email: Optional[pulumi.Input[str]] = None,
+             committer_name: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             short_id: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if author_email is not None:
-            pulumi.set(__self__, "author_email", author_email)
+            _setter("author_email", author_email)
         if author_name is not None:
-            pulumi.set(__self__, "author_name", author_name)
+            _setter("author_name", author_name)
         if authored_date is not None:
-            pulumi.set(__self__, "authored_date", authored_date)
+            _setter("authored_date", authored_date)
         if committed_date is not None:
-            pulumi.set(__self__, "committed_date", committed_date)
+            _setter("committed_date", committed_date)
         if committer_email is not None:
-            pulumi.set(__self__, "committer_email", committer_email)
+            _setter("committer_email", committer_email)
         if committer_name is not None:
-            pulumi.set(__self__, "committer_name", committer_name)
+            _setter("committer_name", committer_name)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if parent_ids is not None:
-            pulumi.set(__self__, "parent_ids", parent_ids)
+            _setter("parent_ids", parent_ids)
         if short_id is not None:
-            pulumi.set(__self__, "short_id", short_id)
+            _setter("short_id", short_id)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="authorEmail")
@@ -1237,9 +1474,6 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -1249,9 +1483,6 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        The message of the annotated tag.
-        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -1291,10 +1522,21 @@ class ProjectTagReleaseArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  tag_name: Optional[pulumi.Input[str]] = None):
+        ProjectTagReleaseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            tag_name=tag_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             tag_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if tag_name is not None:
-            pulumi.set(__self__, "tag_name", tag_name)
+            _setter("tag_name", tag_name)
 
     @property
     @pulumi.getter
@@ -1328,14 +1570,29 @@ class TagProtectionAllowedToCreateArgs:
         :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
+        TagProtectionAllowedToCreateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             access_level_description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")

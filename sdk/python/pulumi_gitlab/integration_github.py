@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IntegrationGithubArgs', 'IntegrationGithub']
@@ -25,11 +25,26 @@ class IntegrationGithubArgs:
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
         :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "repository_url", repository_url)
-        pulumi.set(__self__, "token", token)
+        IntegrationGithubArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            repository_url=repository_url,
+            token=token,
+            static_context=static_context,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: pulumi.Input[str],
+             repository_url: pulumi.Input[str],
+             token: pulumi.Input[str],
+             static_context: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project", project)
+        _setter("repository_url", repository_url)
+        _setter("token", token)
         if static_context is not None:
-            pulumi.set(__self__, "static_context", static_context)
+            _setter("static_context", static_context)
 
     @property
     @pulumi.getter
@@ -102,22 +117,45 @@ class _IntegrationGithubState:
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
         :param pulumi.Input[str] updated_at: Update time.
         """
+        _IntegrationGithubState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            created_at=created_at,
+            project=project,
+            repository_url=repository_url,
+            static_context=static_context,
+            title=title,
+            token=token,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             repository_url: Optional[pulumi.Input[str]] = None,
+             static_context: Optional[pulumi.Input[bool]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if repository_url is not None:
-            pulumi.set(__self__, "repository_url", repository_url)
+            _setter("repository_url", repository_url)
         if static_context is not None:
-            pulumi.set(__self__, "static_context", static_context)
+            _setter("static_context", static_context)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter
@@ -313,6 +351,10 @@ class IntegrationGithub(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IntegrationGithubArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

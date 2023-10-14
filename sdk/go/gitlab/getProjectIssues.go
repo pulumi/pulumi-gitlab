@@ -64,22 +64,17 @@ type GetProjectIssuesArgs struct {
 	AssigneeId *int `pulumi:"assigneeId"`
 	// Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
 	AssigneeUsername *string `pulumi:"assigneeUsername"`
-	// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-	AuthorId *int `pulumi:"authorId"`
-	// Filter confidential or public issues.
-	Confidential *bool `pulumi:"confidential"`
+	AuthorId         *int    `pulumi:"authorId"`
+	Confidential     *bool   `pulumi:"confidential"`
 	// Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
 	CreatedAfter *string `pulumi:"createdAfter"`
 	// Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
 	CreatedBefore *string `pulumi:"createdBefore"`
-	// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-	DueDate *string `pulumi:"dueDate"`
+	DueDate       *string `pulumi:"dueDate"`
 	// Return only the issues having the given iid
-	Iids []int `pulumi:"iids"`
-	// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
-	IssueType *string `pulumi:"issueType"`
-	// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-	Labels []string `pulumi:"labels"`
+	Iids      []int    `pulumi:"iids"`
+	IssueType *string  `pulumi:"issueType"`
+	Labels    []string `pulumi:"labels"`
 	// The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
 	Milestone *string `pulumi:"milestone"`
 	// Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
@@ -96,8 +91,7 @@ type GetProjectIssuesArgs struct {
 	NotMyReactionEmojis []string `pulumi:"notMyReactionEmojis"`
 	// Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
 	OrderBy *string `pulumi:"orderBy"`
-	// The name or id of the project.
-	Project string `pulumi:"project"`
+	Project string  `pulumi:"project"`
 	// Return issues for the given scope. Valid values are `createdByMe`, `assignedToMe`, `all`. Defaults to all.
 	Scope *string `pulumi:"scope"`
 	// Search project issues against their title and description
@@ -108,8 +102,7 @@ type GetProjectIssuesArgs struct {
 	UpdatedAfter *string `pulumi:"updatedAfter"`
 	// Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
 	UpdatedBefore *string `pulumi:"updatedBefore"`
-	// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-	Weight *int `pulumi:"weight"`
+	Weight        *int    `pulumi:"weight"`
 	// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7
 	WithLabelsDetails *bool `pulumi:"withLabelsDetails"`
 }
@@ -193,22 +186,17 @@ type GetProjectIssuesOutputArgs struct {
 	AssigneeId pulumi.IntPtrInput `pulumi:"assigneeId"`
 	// Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
 	AssigneeUsername pulumi.StringPtrInput `pulumi:"assigneeUsername"`
-	// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-	AuthorId pulumi.IntPtrInput `pulumi:"authorId"`
-	// Filter confidential or public issues.
-	Confidential pulumi.BoolPtrInput `pulumi:"confidential"`
+	AuthorId         pulumi.IntPtrInput    `pulumi:"authorId"`
+	Confidential     pulumi.BoolPtrInput   `pulumi:"confidential"`
 	// Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
 	CreatedAfter pulumi.StringPtrInput `pulumi:"createdAfter"`
 	// Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
-	// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-	DueDate pulumi.StringPtrInput `pulumi:"dueDate"`
+	DueDate       pulumi.StringPtrInput `pulumi:"dueDate"`
 	// Return only the issues having the given iid
-	Iids pulumi.IntArrayInput `pulumi:"iids"`
-	// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
-	IssueType pulumi.StringPtrInput `pulumi:"issueType"`
-	// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-	Labels pulumi.StringArrayInput `pulumi:"labels"`
+	Iids      pulumi.IntArrayInput    `pulumi:"iids"`
+	IssueType pulumi.StringPtrInput   `pulumi:"issueType"`
+	Labels    pulumi.StringArrayInput `pulumi:"labels"`
 	// The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
 	Milestone pulumi.StringPtrInput `pulumi:"milestone"`
 	// Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
@@ -225,8 +213,7 @@ type GetProjectIssuesOutputArgs struct {
 	NotMyReactionEmojis pulumi.StringArrayInput `pulumi:"notMyReactionEmojis"`
 	// Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
-	// The name or id of the project.
-	Project pulumi.StringInput `pulumi:"project"`
+	Project pulumi.StringInput    `pulumi:"project"`
 	// Return issues for the given scope. Valid values are `createdByMe`, `assignedToMe`, `all`. Defaults to all.
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// Search project issues against their title and description
@@ -237,8 +224,7 @@ type GetProjectIssuesOutputArgs struct {
 	UpdatedAfter pulumi.StringPtrInput `pulumi:"updatedAfter"`
 	// Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
 	UpdatedBefore pulumi.StringPtrInput `pulumi:"updatedBefore"`
-	// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-	Weight pulumi.IntPtrInput `pulumi:"weight"`
+	Weight        pulumi.IntPtrInput    `pulumi:"weight"`
 	// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7
 	WithLabelsDetails pulumi.BoolPtrInput `pulumi:"withLabelsDetails"`
 }

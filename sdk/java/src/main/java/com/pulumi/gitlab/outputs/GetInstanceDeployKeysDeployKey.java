@@ -14,10 +14,6 @@ import java.util.Objects;
 public final class GetInstanceDeployKeysDeployKey {
     private String createdAt;
     private String fingerprint;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private Integer id;
     private String key;
     private List<GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess> projectsWithWriteAccesses;
@@ -30,10 +26,6 @@ public final class GetInstanceDeployKeysDeployKey {
     public String fingerprint() {
         return this.fingerprint;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Integer id() {
         return this.id;
     }

@@ -17,22 +17,10 @@ public final class GetProjectMilestonesMilestone {
     private Boolean expired;
     private Integer iid;
     private Integer milestoneId;
-    /**
-     * @return The ID or URL-encoded path of the project owned by the authenticated user.
-     * 
-     */
     private String project;
     private Integer projectId;
     private String startDate;
-    /**
-     * @return Return only `active` or `closed` milestones.
-     * 
-     */
     private String state;
-    /**
-     * @return Return only the milestones having the given `title`.
-     * 
-     */
     private String title;
     private String updatedAt;
     private String webUrl;
@@ -56,10 +44,6 @@ public final class GetProjectMilestonesMilestone {
     public Integer milestoneId() {
         return this.milestoneId;
     }
-    /**
-     * @return The ID or URL-encoded path of the project owned by the authenticated user.
-     * 
-     */
     public String project() {
         return this.project;
     }
@@ -69,17 +53,9 @@ public final class GetProjectMilestonesMilestone {
     public String startDate() {
         return this.startDate;
     }
-    /**
-     * @return Return only `active` or `closed` milestones.
-     * 
-     */
     public String state() {
         return this.state;
     }
-    /**
-     * @return Return only the milestones having the given `title`.
-     * 
-     */
     public String title() {
         return this.title;
     }

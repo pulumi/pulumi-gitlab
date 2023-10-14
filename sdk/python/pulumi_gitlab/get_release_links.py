@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -98,10 +98,6 @@ def get_release_links(project: Optional[str] = None,
     example = gitlab.get_release_links(project="foo/bar",
         tag_name="v1.0.1")
     ```
-
-
-    :param str project: The ID or full path to the project.
-    :param str tag_name: The tag associated with the Release.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -134,9 +130,5 @@ def get_release_links_output(project: Optional[pulumi.Input[str]] = None,
     example = gitlab.get_release_links(project="foo/bar",
         tag_name="v1.0.1")
     ```
-
-
-    :param str project: The ID or full path to the project.
-    :param str tag_name: The tag associated with the Release.
     """
     ...

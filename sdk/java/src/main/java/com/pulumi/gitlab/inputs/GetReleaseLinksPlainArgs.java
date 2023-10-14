@@ -12,32 +12,16 @@ public final class GetReleaseLinksPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetReleaseLinksPlainArgs Empty = new GetReleaseLinksPlainArgs();
 
-    /**
-     * The ID or full path to the project.
-     * 
-     */
     @Import(name="project", required=true)
     private String project;
 
-    /**
-     * @return The ID or full path to the project.
-     * 
-     */
     public String project() {
         return this.project;
     }
 
-    /**
-     * The tag associated with the Release.
-     * 
-     */
     @Import(name="tagName", required=true)
     private String tagName;
 
-    /**
-     * @return The tag associated with the Release.
-     * 
-     */
     public String tagName() {
         return this.tagName;
     }
@@ -67,23 +51,11 @@ public final class GetReleaseLinksPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetReleaseLinksPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param project The ID or full path to the project.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param tagName The tag associated with the Release.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tagName(String tagName) {
             $.tagName = tagName;
             return this;

@@ -73,10 +73,8 @@ func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getProjects.
 type GetProjectsArgs struct {
-	// Limit by archived status.
 	Archived *bool `pulumi:"archived"`
-	// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
-	GroupId *int `pulumi:"groupId"`
+	GroupId  *int  `pulumi:"groupId"`
 	// Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
 	IncludeSubgroups *bool `pulumi:"includeSubgroups"`
 	// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
@@ -100,13 +98,11 @@ type GetProjectsArgs struct {
 	// Return projects sorted in `asc` or `desc` order. Default is `desc`.
 	Sort *string `pulumi:"sort"`
 	// Limit by projects starred by the current user.
-	Starred *bool `pulumi:"starred"`
-	// Include project statistics. Cannot be used with `groupId`.
+	Starred    *bool `pulumi:"starred"`
 	Statistics *bool `pulumi:"statistics"`
 	// Limit by projects that have all of the given topics.
-	Topics []string `pulumi:"topics"`
-	// Limit by visibility `public`, `internal`, or `private`.
-	Visibility *string `pulumi:"visibility"`
+	Topics     []string `pulumi:"topics"`
+	Visibility *string  `pulumi:"visibility"`
 	// Include custom attributes in response *(admins only)*.
 	WithCustomAttributes *bool `pulumi:"withCustomAttributes"`
 	// Limit by projects with issues feature enabled. Default is `false`.
@@ -186,10 +182,8 @@ func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...
 
 // A collection of arguments for invoking getProjects.
 type GetProjectsOutputArgs struct {
-	// Limit by archived status.
 	Archived pulumi.BoolPtrInput `pulumi:"archived"`
-	// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
-	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	GroupId  pulumi.IntPtrInput  `pulumi:"groupId"`
 	// Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
 	IncludeSubgroups pulumi.BoolPtrInput `pulumi:"includeSubgroups"`
 	// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
@@ -213,13 +207,11 @@ type GetProjectsOutputArgs struct {
 	// Return projects sorted in `asc` or `desc` order. Default is `desc`.
 	Sort pulumi.StringPtrInput `pulumi:"sort"`
 	// Limit by projects starred by the current user.
-	Starred pulumi.BoolPtrInput `pulumi:"starred"`
-	// Include project statistics. Cannot be used with `groupId`.
+	Starred    pulumi.BoolPtrInput `pulumi:"starred"`
 	Statistics pulumi.BoolPtrInput `pulumi:"statistics"`
 	// Limit by projects that have all of the given topics.
-	Topics pulumi.StringArrayInput `pulumi:"topics"`
-	// Limit by visibility `public`, `internal`, or `private`.
-	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
+	Topics     pulumi.StringArrayInput `pulumi:"topics"`
+	Visibility pulumi.StringPtrInput   `pulumi:"visibility"`
 	// Include custom attributes in response *(admins only)*.
 	WithCustomAttributes pulumi.BoolPtrInput `pulumi:"withCustomAttributes"`
 	// Limit by projects with issues feature enabled. Default is `false`.

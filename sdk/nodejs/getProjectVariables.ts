@@ -39,13 +39,7 @@ export function getProjectVariables(args: GetProjectVariablesArgs, opts?: pulumi
  * A collection of arguments for invoking getProjectVariables.
  */
 export interface GetProjectVariablesArgs {
-    /**
-     * The environment scope of the variable. Defaults to all environment (`*`).
-     */
     environmentScope?: string;
-    /**
-     * The name or id of the project.
-     */
     project: string;
 }
 
@@ -98,12 +92,6 @@ export function getProjectVariablesOutput(args: GetProjectVariablesOutputArgs, o
  * A collection of arguments for invoking getProjectVariables.
  */
 export interface GetProjectVariablesOutputArgs {
-    /**
-     * The environment scope of the variable. Defaults to all environment (`*`).
-     */
     environmentScope?: pulumi.Input<string>;
-    /**
-     * The name or id of the project.
-     */
     project: pulumi.Input<string>;
 }

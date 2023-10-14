@@ -9,25 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryTreeTree {
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private String id;
     private String mode;
     private String name;
-    /**
-     * @return The path inside repository. Used to get content of subdirectories.
-     * 
-     */
     private String path;
     private String type;
 
     private GetRepositoryTreeTree() {}
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -37,10 +25,6 @@ public final class GetRepositoryTreeTree {
     public String name() {
         return this.name;
     }
-    /**
-     * @return The path inside repository. Used to get content of subdirectories.
-     * 
-     */
     public String path() {
         return this.path;
     }

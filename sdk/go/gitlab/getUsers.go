@@ -75,8 +75,7 @@ type GetUsersArgs struct {
 	CreatedBefore *string `pulumi:"createdBefore"`
 	// Lookup users by external provider. (Requires administrator privileges)
 	ExternProvider *string `pulumi:"externProvider"`
-	// Lookup users by external UID. (Requires administrator privileges)
-	ExternUid *string `pulumi:"externUid"`
+	ExternUid      *string `pulumi:"externUid"`
 	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy *string `pulumi:"orderBy"`
 	// Search users by username, name or email.
@@ -136,8 +135,7 @@ type GetUsersOutputArgs struct {
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
 	// Lookup users by external provider. (Requires administrator privileges)
 	ExternProvider pulumi.StringPtrInput `pulumi:"externProvider"`
-	// Lookup users by external UID. (Requires administrator privileges)
-	ExternUid pulumi.StringPtrInput `pulumi:"externUid"`
+	ExternUid      pulumi.StringPtrInput `pulumi:"externUid"`
 	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// Search users by username, name or email.

@@ -15,17 +15,9 @@ public final class GetRepositoryTreePlainArgs extends com.pulumi.resources.Invok
 
     public static final GetRepositoryTreePlainArgs Empty = new GetRepositoryTreePlainArgs();
 
-    /**
-     * The path inside repository. Used to get content of subdirectories.
-     * 
-     */
     @Import(name="path")
     private @Nullable String path;
 
-    /**
-     * @return The path inside repository. Used to get content of subdirectories.
-     * 
-     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
@@ -102,12 +94,6 @@ public final class GetRepositoryTreePlainArgs extends com.pulumi.resources.Invok
             $ = new GetRepositoryTreePlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param path The path inside repository. Used to get content of subdirectories.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(@Nullable String path) {
             $.path = path;
             return this;

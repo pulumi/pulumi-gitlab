@@ -16,9 +16,6 @@ namespace Pulumi.GitLab.Outputs
         public readonly string AccessLevel;
         public readonly string AvatarUrl;
         public readonly string ExpiresAt;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly string Name;
         public readonly string State;

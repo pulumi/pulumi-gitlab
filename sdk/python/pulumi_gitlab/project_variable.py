@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectVariableArgs', 'ProjectVariable']
@@ -33,19 +33,42 @@ class ProjectVariableArgs:
         :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "value", value)
+        ProjectVariableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            project=project,
+            value=value,
+            environment_scope=environment_scope,
+            masked=masked,
+            protected=protected,
+            raw=raw,
+            variable_type=variable_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             project: pulumi.Input[str],
+             value: pulumi.Input[str],
+             environment_scope: Optional[pulumi.Input[str]] = None,
+             masked: Optional[pulumi.Input[bool]] = None,
+             protected: Optional[pulumi.Input[bool]] = None,
+             raw: Optional[pulumi.Input[bool]] = None,
+             variable_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("project", project)
+        _setter("value", value)
         if environment_scope is not None:
-            pulumi.set(__self__, "environment_scope", environment_scope)
+            _setter("environment_scope", environment_scope)
         if masked is not None:
-            pulumi.set(__self__, "masked", masked)
+            _setter("masked", masked)
         if protected is not None:
-            pulumi.set(__self__, "protected", protected)
+            _setter("protected", protected)
         if raw is not None:
-            pulumi.set(__self__, "raw", raw)
+            _setter("raw", raw)
         if variable_type is not None:
-            pulumi.set(__self__, "variable_type", variable_type)
+            _setter("variable_type", variable_type)
 
     @property
     @pulumi.getter
@@ -166,22 +189,45 @@ class _ProjectVariableState:
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
+        _ProjectVariableState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            environment_scope=environment_scope,
+            key=key,
+            masked=masked,
+            project=project,
+            protected=protected,
+            raw=raw,
+            value=value,
+            variable_type=variable_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             environment_scope: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             masked: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             protected: Optional[pulumi.Input[bool]] = None,
+             raw: Optional[pulumi.Input[bool]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             variable_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if environment_scope is not None:
-            pulumi.set(__self__, "environment_scope", environment_scope)
+            _setter("environment_scope", environment_scope)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if masked is not None:
-            pulumi.set(__self__, "masked", masked)
+            _setter("masked", masked)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if protected is not None:
-            pulumi.set(__self__, "protected", protected)
+            _setter("protected", protected)
         if raw is not None:
-            pulumi.set(__self__, "raw", raw)
+            _setter("raw", raw)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
         if variable_type is not None:
-            pulumi.set(__self__, "variable_type", variable_type)
+            _setter("variable_type", variable_type)
 
     @property
     @pulumi.getter(name="environmentScope")
@@ -377,6 +423,10 @@ class ProjectVariable(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectVariableArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -47,32 +47,16 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.assigneeUsername);
     }
 
-    /**
-     * Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-     * 
-     */
     @Import(name="authorId")
     private @Nullable Integer authorId;
 
-    /**
-     * @return Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-     * 
-     */
     public Optional<Integer> authorId() {
         return Optional.ofNullable(this.authorId);
     }
 
-    /**
-     * Filter confidential or public issues.
-     * 
-     */
     @Import(name="confidential")
     private @Nullable Boolean confidential;
 
-    /**
-     * @return Filter confidential or public issues.
-     * 
-     */
     public Optional<Boolean> confidential() {
         return Optional.ofNullable(this.confidential);
     }
@@ -107,17 +91,9 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.createdBefore);
     }
 
-    /**
-     * Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-     * 
-     */
     @Import(name="dueDate")
     private @Nullable String dueDate;
 
-    /**
-     * @return Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-     * 
-     */
     public Optional<String> dueDate() {
         return Optional.ofNullable(this.dueDate);
     }
@@ -137,32 +113,16 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.iids);
     }
 
-    /**
-     * Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-     * 
-     */
     @Import(name="issueType")
     private @Nullable String issueType;
 
-    /**
-     * @return Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-     * 
-     */
     public Optional<String> issueType() {
         return Optional.ofNullable(this.issueType);
     }
 
-    /**
-     * Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-     * 
-     */
     @Import(name="labels")
     private @Nullable List<String> labels;
 
-    /**
-     * @return Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-     * 
-     */
     public Optional<List<String>> labels() {
         return Optional.ofNullable(this.labels);
     }
@@ -287,17 +247,9 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.orderBy);
     }
 
-    /**
-     * The name or id of the project.
-     * 
-     */
     @Import(name="project", required=true)
     private String project;
 
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     public String project() {
         return this.project;
     }
@@ -377,17 +329,9 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.updatedBefore);
     }
 
-    /**
-     * Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-     * 
-     */
     @Import(name="weight")
     private @Nullable Integer weight;
 
-    /**
-     * @return Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-     * 
-     */
     public Optional<Integer> weight() {
         return Optional.ofNullable(this.weight);
     }
@@ -478,23 +422,11 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param authorId Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-         * 
-         * @return builder
-         * 
-         */
         public Builder authorId(@Nullable Integer authorId) {
             $.authorId = authorId;
             return this;
         }
 
-        /**
-         * @param confidential Filter confidential or public issues.
-         * 
-         * @return builder
-         * 
-         */
         public Builder confidential(@Nullable Boolean confidential) {
             $.confidential = confidential;
             return this;
@@ -522,12 +454,6 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param dueDate Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dueDate(@Nullable String dueDate) {
             $.dueDate = dueDate;
             return this;
@@ -554,34 +480,16 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
             return iids(List.of(iids));
         }
 
-        /**
-         * @param issueType Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-         * 
-         * @return builder
-         * 
-         */
         public Builder issueType(@Nullable String issueType) {
             $.issueType = issueType;
             return this;
         }
 
-        /**
-         * @param labels Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-         * 
-         * @return builder
-         * 
-         */
         public Builder labels(@Nullable List<String> labels) {
             $.labels = labels;
             return this;
         }
 
-        /**
-         * @param labels Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-         * 
-         * @return builder
-         * 
-         */
         public Builder labels(String... labels) {
             return labels(List.of(labels));
         }
@@ -714,12 +622,6 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param project The name or id of the project.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             $.project = project;
             return this;
@@ -780,12 +682,6 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param weight Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder weight(@Nullable Integer weight) {
             $.weight = weight;
             return this;

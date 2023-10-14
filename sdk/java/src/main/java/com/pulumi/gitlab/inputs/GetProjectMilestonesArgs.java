@@ -48,17 +48,9 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.includeParentMilestones);
     }
 
-    /**
-     * The ID or URL-encoded path of the project owned by the authenticated user.
-     * 
-     */
     @Import(name="project", required=true)
     private Output<String> project;
 
-    /**
-     * @return The ID or URL-encoded path of the project owned by the authenticated user.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
@@ -78,32 +70,16 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.search);
     }
 
-    /**
-     * Return only `active` or `closed` milestones.
-     * 
-     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
-    /**
-     * @return Return only `active` or `closed` milestones.
-     * 
-     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
 
-    /**
-     * Return only the milestones having the given `title`.
-     * 
-     */
     @Import(name="title")
     private @Nullable Output<String> title;
 
-    /**
-     * @return Return only the milestones having the given `title`.
-     * 
-     */
     public Optional<Output<String>> title() {
         return Optional.ofNullable(this.title);
     }
@@ -189,23 +165,11 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
             return includeParentMilestones(Output.of(includeParentMilestones));
         }
 
-        /**
-         * @param project The ID or URL-encoded path of the project owned by the authenticated user.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID or URL-encoded path of the project owned by the authenticated user.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -231,44 +195,20 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
             return search(Output.of(search));
         }
 
-        /**
-         * @param state Return only `active` or `closed` milestones.
-         * 
-         * @return builder
-         * 
-         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
-        /**
-         * @param state Return only `active` or `closed` milestones.
-         * 
-         * @return builder
-         * 
-         */
         public Builder state(String state) {
             return state(Output.of(state));
         }
 
-        /**
-         * @param title Return only the milestones having the given `title`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder title(@Nullable Output<String> title) {
             $.title = title;
             return this;
         }
 
-        /**
-         * @param title Return only the milestones having the given `title`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder title(String title) {
             return title(Output.of(title));
         }

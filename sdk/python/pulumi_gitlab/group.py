@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupArgs', 'Group']
@@ -65,53 +65,108 @@ class GroupArgs:
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
         :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
-        pulumi.set(__self__, "path", path)
+        GroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            auto_devops_enabled=auto_devops_enabled,
+            avatar=avatar,
+            avatar_hash=avatar_hash,
+            default_branch_protection=default_branch_protection,
+            description=description,
+            emails_disabled=emails_disabled,
+            extra_shared_runners_minutes_limit=extra_shared_runners_minutes_limit,
+            ip_restriction_ranges=ip_restriction_ranges,
+            lfs_enabled=lfs_enabled,
+            membership_lock=membership_lock,
+            mentions_disabled=mentions_disabled,
+            name=name,
+            parent_id=parent_id,
+            prevent_forking_outside_group=prevent_forking_outside_group,
+            project_creation_level=project_creation_level,
+            request_access_enabled=request_access_enabled,
+            require_two_factor_authentication=require_two_factor_authentication,
+            share_with_group_lock=share_with_group_lock,
+            shared_runners_minutes_limit=shared_runners_minutes_limit,
+            subgroup_creation_level=subgroup_creation_level,
+            two_factor_grace_period=two_factor_grace_period,
+            visibility_level=visibility_level,
+            wiki_access_level=wiki_access_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: pulumi.Input[str],
+             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+             avatar: Optional[pulumi.Input[str]] = None,
+             avatar_hash: Optional[pulumi.Input[str]] = None,
+             default_branch_protection: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             emails_disabled: Optional[pulumi.Input[bool]] = None,
+             extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+             ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             lfs_enabled: Optional[pulumi.Input[bool]] = None,
+             membership_lock: Optional[pulumi.Input[bool]] = None,
+             mentions_disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[int]] = None,
+             prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
+             project_creation_level: Optional[pulumi.Input[str]] = None,
+             request_access_enabled: Optional[pulumi.Input[bool]] = None,
+             require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
+             share_with_group_lock: Optional[pulumi.Input[bool]] = None,
+             shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+             subgroup_creation_level: Optional[pulumi.Input[str]] = None,
+             two_factor_grace_period: Optional[pulumi.Input[int]] = None,
+             visibility_level: Optional[pulumi.Input[str]] = None,
+             wiki_access_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path", path)
         if auto_devops_enabled is not None:
-            pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+            _setter("auto_devops_enabled", auto_devops_enabled)
         if avatar is not None:
-            pulumi.set(__self__, "avatar", avatar)
+            _setter("avatar", avatar)
         if avatar_hash is not None:
-            pulumi.set(__self__, "avatar_hash", avatar_hash)
+            _setter("avatar_hash", avatar_hash)
         if default_branch_protection is not None:
-            pulumi.set(__self__, "default_branch_protection", default_branch_protection)
+            _setter("default_branch_protection", default_branch_protection)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if emails_disabled is not None:
-            pulumi.set(__self__, "emails_disabled", emails_disabled)
+            _setter("emails_disabled", emails_disabled)
         if extra_shared_runners_minutes_limit is not None:
-            pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
+            _setter("extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
         if ip_restriction_ranges is not None:
-            pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
+            _setter("ip_restriction_ranges", ip_restriction_ranges)
         if lfs_enabled is not None:
-            pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+            _setter("lfs_enabled", lfs_enabled)
         if membership_lock is not None:
-            pulumi.set(__self__, "membership_lock", membership_lock)
+            _setter("membership_lock", membership_lock)
         if mentions_disabled is not None:
-            pulumi.set(__self__, "mentions_disabled", mentions_disabled)
+            _setter("mentions_disabled", mentions_disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if prevent_forking_outside_group is not None:
-            pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
+            _setter("prevent_forking_outside_group", prevent_forking_outside_group)
         if project_creation_level is not None:
-            pulumi.set(__self__, "project_creation_level", project_creation_level)
+            _setter("project_creation_level", project_creation_level)
         if request_access_enabled is not None:
-            pulumi.set(__self__, "request_access_enabled", request_access_enabled)
+            _setter("request_access_enabled", request_access_enabled)
         if require_two_factor_authentication is not None:
-            pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
+            _setter("require_two_factor_authentication", require_two_factor_authentication)
         if share_with_group_lock is not None:
-            pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
+            _setter("share_with_group_lock", share_with_group_lock)
         if shared_runners_minutes_limit is not None:
-            pulumi.set(__self__, "shared_runners_minutes_limit", shared_runners_minutes_limit)
+            _setter("shared_runners_minutes_limit", shared_runners_minutes_limit)
         if subgroup_creation_level is not None:
-            pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
+            _setter("subgroup_creation_level", subgroup_creation_level)
         if two_factor_grace_period is not None:
-            pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
+            _setter("two_factor_grace_period", two_factor_grace_period)
         if visibility_level is not None:
-            pulumi.set(__self__, "visibility_level", visibility_level)
+            _setter("visibility_level", visibility_level)
         if wiki_access_level is not None:
-            pulumi.set(__self__, "wiki_access_level", wiki_access_level)
+            _setter("wiki_access_level", wiki_access_level)
 
     @property
     @pulumi.getter
@@ -466,64 +521,129 @@ class _GroupState:
         :param pulumi.Input[str] web_url: Web URL of the group.
         :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
+        _GroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_devops_enabled=auto_devops_enabled,
+            avatar=avatar,
+            avatar_hash=avatar_hash,
+            avatar_url=avatar_url,
+            default_branch_protection=default_branch_protection,
+            description=description,
+            emails_disabled=emails_disabled,
+            extra_shared_runners_minutes_limit=extra_shared_runners_minutes_limit,
+            full_name=full_name,
+            full_path=full_path,
+            ip_restriction_ranges=ip_restriction_ranges,
+            lfs_enabled=lfs_enabled,
+            membership_lock=membership_lock,
+            mentions_disabled=mentions_disabled,
+            name=name,
+            parent_id=parent_id,
+            path=path,
+            prevent_forking_outside_group=prevent_forking_outside_group,
+            project_creation_level=project_creation_level,
+            request_access_enabled=request_access_enabled,
+            require_two_factor_authentication=require_two_factor_authentication,
+            runners_token=runners_token,
+            share_with_group_lock=share_with_group_lock,
+            shared_runners_minutes_limit=shared_runners_minutes_limit,
+            subgroup_creation_level=subgroup_creation_level,
+            two_factor_grace_period=two_factor_grace_period,
+            visibility_level=visibility_level,
+            web_url=web_url,
+            wiki_access_level=wiki_access_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+             avatar: Optional[pulumi.Input[str]] = None,
+             avatar_hash: Optional[pulumi.Input[str]] = None,
+             avatar_url: Optional[pulumi.Input[str]] = None,
+             default_branch_protection: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             emails_disabled: Optional[pulumi.Input[bool]] = None,
+             extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+             full_name: Optional[pulumi.Input[str]] = None,
+             full_path: Optional[pulumi.Input[str]] = None,
+             ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             lfs_enabled: Optional[pulumi.Input[bool]] = None,
+             membership_lock: Optional[pulumi.Input[bool]] = None,
+             mentions_disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[int]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
+             project_creation_level: Optional[pulumi.Input[str]] = None,
+             request_access_enabled: Optional[pulumi.Input[bool]] = None,
+             require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
+             runners_token: Optional[pulumi.Input[str]] = None,
+             share_with_group_lock: Optional[pulumi.Input[bool]] = None,
+             shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+             subgroup_creation_level: Optional[pulumi.Input[str]] = None,
+             two_factor_grace_period: Optional[pulumi.Input[int]] = None,
+             visibility_level: Optional[pulumi.Input[str]] = None,
+             web_url: Optional[pulumi.Input[str]] = None,
+             wiki_access_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_devops_enabled is not None:
-            pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+            _setter("auto_devops_enabled", auto_devops_enabled)
         if avatar is not None:
-            pulumi.set(__self__, "avatar", avatar)
+            _setter("avatar", avatar)
         if avatar_hash is not None:
-            pulumi.set(__self__, "avatar_hash", avatar_hash)
+            _setter("avatar_hash", avatar_hash)
         if avatar_url is not None:
-            pulumi.set(__self__, "avatar_url", avatar_url)
+            _setter("avatar_url", avatar_url)
         if default_branch_protection is not None:
-            pulumi.set(__self__, "default_branch_protection", default_branch_protection)
+            _setter("default_branch_protection", default_branch_protection)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if emails_disabled is not None:
-            pulumi.set(__self__, "emails_disabled", emails_disabled)
+            _setter("emails_disabled", emails_disabled)
         if extra_shared_runners_minutes_limit is not None:
-            pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
+            _setter("extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
         if full_name is not None:
-            pulumi.set(__self__, "full_name", full_name)
+            _setter("full_name", full_name)
         if full_path is not None:
-            pulumi.set(__self__, "full_path", full_path)
+            _setter("full_path", full_path)
         if ip_restriction_ranges is not None:
-            pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
+            _setter("ip_restriction_ranges", ip_restriction_ranges)
         if lfs_enabled is not None:
-            pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+            _setter("lfs_enabled", lfs_enabled)
         if membership_lock is not None:
-            pulumi.set(__self__, "membership_lock", membership_lock)
+            _setter("membership_lock", membership_lock)
         if mentions_disabled is not None:
-            pulumi.set(__self__, "mentions_disabled", mentions_disabled)
+            _setter("mentions_disabled", mentions_disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if prevent_forking_outside_group is not None:
-            pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
+            _setter("prevent_forking_outside_group", prevent_forking_outside_group)
         if project_creation_level is not None:
-            pulumi.set(__self__, "project_creation_level", project_creation_level)
+            _setter("project_creation_level", project_creation_level)
         if request_access_enabled is not None:
-            pulumi.set(__self__, "request_access_enabled", request_access_enabled)
+            _setter("request_access_enabled", request_access_enabled)
         if require_two_factor_authentication is not None:
-            pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
+            _setter("require_two_factor_authentication", require_two_factor_authentication)
         if runners_token is not None:
-            pulumi.set(__self__, "runners_token", runners_token)
+            _setter("runners_token", runners_token)
         if share_with_group_lock is not None:
-            pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
+            _setter("share_with_group_lock", share_with_group_lock)
         if shared_runners_minutes_limit is not None:
-            pulumi.set(__self__, "shared_runners_minutes_limit", shared_runners_minutes_limit)
+            _setter("shared_runners_minutes_limit", shared_runners_minutes_limit)
         if subgroup_creation_level is not None:
-            pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
+            _setter("subgroup_creation_level", subgroup_creation_level)
         if two_factor_grace_period is not None:
-            pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
+            _setter("two_factor_grace_period", two_factor_grace_period)
         if visibility_level is not None:
-            pulumi.set(__self__, "visibility_level", visibility_level)
+            _setter("visibility_level", visibility_level)
         if web_url is not None:
-            pulumi.set(__self__, "web_url", web_url)
+            _setter("web_url", web_url)
         if wiki_access_level is not None:
-            pulumi.set(__self__, "wiki_access_level", wiki_access_level)
+            _setter("wiki_access_level", wiki_access_level)
 
     @property
     @pulumi.getter(name="autoDevopsEnabled")
@@ -1015,6 +1135,10 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

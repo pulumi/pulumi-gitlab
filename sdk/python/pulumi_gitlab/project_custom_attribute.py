@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectCustomAttributeArgs', 'ProjectCustomAttribute']
@@ -23,9 +23,22 @@ class ProjectCustomAttributeArgs:
         :param pulumi.Input[int] project: The id of the project.
         :param pulumi.Input[str] value: Value for the Custom Attribute.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "value", value)
+        ProjectCustomAttributeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            project=project,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             project: pulumi.Input[int],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("project", project)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -76,12 +89,25 @@ class _ProjectCustomAttributeState:
         :param pulumi.Input[int] project: The id of the project.
         :param pulumi.Input[str] value: Value for the Custom Attribute.
         """
+        _ProjectCustomAttributeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            project=project,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[int]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -201,6 +227,10 @@ class ProjectCustomAttribute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectCustomAttributeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

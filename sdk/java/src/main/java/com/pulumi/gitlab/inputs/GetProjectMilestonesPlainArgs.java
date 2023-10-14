@@ -47,17 +47,9 @@ public final class GetProjectMilestonesPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.includeParentMilestones);
     }
 
-    /**
-     * The ID or URL-encoded path of the project owned by the authenticated user.
-     * 
-     */
     @Import(name="project", required=true)
     private String project;
 
-    /**
-     * @return The ID or URL-encoded path of the project owned by the authenticated user.
-     * 
-     */
     public String project() {
         return this.project;
     }
@@ -77,32 +69,16 @@ public final class GetProjectMilestonesPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.search);
     }
 
-    /**
-     * Return only `active` or `closed` milestones.
-     * 
-     */
     @Import(name="state")
     private @Nullable String state;
 
-    /**
-     * @return Return only `active` or `closed` milestones.
-     * 
-     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
 
-    /**
-     * Return only the milestones having the given `title`.
-     * 
-     */
     @Import(name="title")
     private @Nullable String title;
 
-    /**
-     * @return Return only the milestones having the given `title`.
-     * 
-     */
     public Optional<String> title() {
         return Optional.ofNullable(this.title);
     }
@@ -168,12 +144,6 @@ public final class GetProjectMilestonesPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
-        /**
-         * @param project The ID or URL-encoded path of the project owned by the authenticated user.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             $.project = project;
             return this;
@@ -190,23 +160,11 @@ public final class GetProjectMilestonesPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
-        /**
-         * @param state Return only `active` or `closed` milestones.
-         * 
-         * @return builder
-         * 
-         */
         public Builder state(@Nullable String state) {
             $.state = state;
             return this;
         }
 
-        /**
-         * @param title Return only the milestones having the given `title`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder title(@Nullable String title) {
             $.title = title;
             return this;

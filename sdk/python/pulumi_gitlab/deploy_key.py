@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DeployKeyArgs', 'DeployKey']
@@ -25,11 +25,26 @@ class DeployKeyArgs:
         :param pulumi.Input[str] title: A title to describe the deploy key with.
         :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "title", title)
+        DeployKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            project=project,
+            title=title,
+            can_push=can_push,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             project: pulumi.Input[str],
+             title: pulumi.Input[str],
+             can_push: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("project", project)
+        _setter("title", title)
         if can_push is not None:
-            pulumi.set(__self__, "can_push", can_push)
+            _setter("can_push", can_push)
 
     @property
     @pulumi.getter
@@ -96,16 +111,33 @@ class _DeployKeyState:
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[str] title: A title to describe the deploy key with.
         """
+        _DeployKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            can_push=can_push,
+            deploy_key_id=deploy_key_id,
+            key=key,
+            project=project,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             can_push: Optional[pulumi.Input[bool]] = None,
+             deploy_key_id: Optional[pulumi.Input[int]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if can_push is not None:
-            pulumi.set(__self__, "can_push", can_push)
+            _setter("can_push", can_push)
         if deploy_key_id is not None:
-            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
+            _setter("deploy_key_id", deploy_key_id)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="canPush")
@@ -263,6 +295,10 @@ class DeployKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeployKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

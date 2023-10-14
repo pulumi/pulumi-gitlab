@@ -121,14 +121,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectIssueBoard:ProjectIssueBoard")
 public class ProjectIssueBoard extends com.pulumi.resources.CustomResource {
     /**
-     * The assignee the board should be scoped to. Requires a GitLab EE license.
+     * The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
      * 
      */
     @Export(name="assigneeId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> assigneeId;
 
     /**
-     * @return The assignee the board should be scoped to. Requires a GitLab EE license.
+     * @return The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
      * 
      */
     public Output<Optional<Integer>> assigneeId() {
@@ -163,14 +163,14 @@ public class ProjectIssueBoard extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lists);
     }
     /**
-     * The milestone the board should be scoped to. Requires a GitLab EE license.
+     * The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
      * 
      */
     @Export(name="milestoneId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> milestoneId;
 
     /**
-     * @return The milestone the board should be scoped to. Requires a GitLab EE license.
+     * @return The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
      * 
      */
     public Output<Optional<Integer>> milestoneId() {

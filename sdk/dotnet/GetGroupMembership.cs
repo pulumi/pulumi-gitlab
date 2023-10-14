@@ -75,9 +75,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetGroupMembershipArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        /// </summary>
         [Input("accessLevel")]
         public string? AccessLevel { get; set; }
 
@@ -107,9 +104,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetGroupMembershipInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 

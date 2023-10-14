@@ -16,10 +16,6 @@ public final class GetProjectBranchesBranchCommit {
     private String committedDate;
     private String committerEmail;
     private String committerName;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private String id;
     private String message;
     private List<String> parentIds;
@@ -45,10 +41,6 @@ public final class GetProjectBranchesBranchCommit {
     public String committerName() {
         return this.committerName;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

@@ -15,9 +15,6 @@ namespace Pulumi.GitLab.Outputs
     {
         public readonly string CreatedAt;
         public readonly string Fingerprint;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly string Key;
         public readonly ImmutableArray<Outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult> ProjectsWithWriteAccesses;

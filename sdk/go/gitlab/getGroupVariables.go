@@ -60,10 +60,8 @@ func GetGroupVariables(ctx *pulumi.Context, args *GetGroupVariablesArgs, opts ..
 
 // A collection of arguments for invoking getGroupVariables.
 type GetGroupVariablesArgs struct {
-	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope *string `pulumi:"environmentScope"`
-	// The name or id of the group.
-	Group string `pulumi:"group"`
+	Group            string  `pulumi:"group"`
 }
 
 // A collection of values returned by getGroupVariables.
@@ -93,10 +91,8 @@ func GetGroupVariablesOutput(ctx *pulumi.Context, args GetGroupVariablesOutputAr
 
 // A collection of arguments for invoking getGroupVariables.
 type GetGroupVariablesOutputArgs struct {
-	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope pulumi.StringPtrInput `pulumi:"environmentScope"`
-	// The name or id of the group.
-	Group pulumi.StringInput `pulumi:"group"`
+	Group            pulumi.StringInput    `pulumi:"group"`
 }
 
 func (GetGroupVariablesOutputArgs) ElementType() reflect.Type {

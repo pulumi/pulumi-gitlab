@@ -12,17 +12,9 @@ public final class GetGroupHooksPlainArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetGroupHooksPlainArgs Empty = new GetGroupHooksPlainArgs();
 
-    /**
-     * The ID or full path of the group.
-     * 
-     */
     @Import(name="group", required=true)
     private String group;
 
-    /**
-     * @return The ID or full path of the group.
-     * 
-     */
     public String group() {
         return this.group;
     }
@@ -51,12 +43,6 @@ public final class GetGroupHooksPlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetGroupHooksPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param group The ID or full path of the group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder group(String group) {
             $.group = group;
             return this;

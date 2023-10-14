@@ -77,15 +77,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetReleaseLinksArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID or full path to the project.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        /// <summary>
-        /// The tag associated with the Release.
-        /// </summary>
         [Input("tagName", required: true)]
         public string TagName { get; set; } = null!;
 
@@ -97,15 +91,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetReleaseLinksInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID or full path to the project.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// The tag associated with the Release.
-        /// </summary>
         [Input("tagName", required: true)]
         public Input<string> TagName { get; set; } = null!;
 

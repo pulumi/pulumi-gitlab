@@ -31,9 +31,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetUserSshkeysArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the user to get the SSH keys for.
-        /// </summary>
         [Input("userId")]
         public int? UserId { get; set; }
 
@@ -51,9 +48,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetUserSshkeysInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the user to get the SSH keys for.
-        /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }
 

@@ -53,7 +53,6 @@ func LookupGroupMembership(ctx *pulumi.Context, args *LookupGroupMembershipArgs,
 
 // A collection of arguments for invoking getGroupMembership.
 type LookupGroupMembershipArgs struct {
-	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The full path of the group.
 	FullPath *string `pulumi:"fullPath"`
@@ -94,7 +93,6 @@ func LookupGroupMembershipOutput(ctx *pulumi.Context, args LookupGroupMembership
 
 // A collection of arguments for invoking getGroupMembership.
 type LookupGroupMembershipOutputArgs struct {
-	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// The full path of the group.
 	FullPath pulumi.StringPtrInput `pulumi:"fullPath"`

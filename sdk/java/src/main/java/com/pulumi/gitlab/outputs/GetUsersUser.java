@@ -19,16 +19,8 @@ public final class GetUsersUser {
     private String createdAt;
     private String currentSignInAt;
     private String email;
-    /**
-     * @return Lookup users by external UID. (Requires administrator privileges)
-     * 
-     */
     private String externUid;
     private Boolean external;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private Integer id;
     private Boolean isAdmin;
     private String lastSignInAt;
@@ -72,20 +64,12 @@ public final class GetUsersUser {
     public String email() {
         return this.email;
     }
-    /**
-     * @return Lookup users by external UID. (Requires administrator privileges)
-     * 
-     */
     public String externUid() {
         return this.externUid;
     }
     public Boolean external() {
         return this.external;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Integer id() {
         return this.id;
     }

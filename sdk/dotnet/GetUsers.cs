@@ -127,9 +127,6 @@ namespace Pulumi.GitLab
         [Input("externProvider")]
         public string? ExternProvider { get; set; }
 
-        /// <summary>
-        /// Lookup users by external UID. (Requires administrator privileges)
-        /// </summary>
         [Input("externUid")]
         public string? ExternUid { get; set; }
 
@@ -189,9 +186,6 @@ namespace Pulumi.GitLab
         [Input("externProvider")]
         public Input<string>? ExternProvider { get; set; }
 
-        /// <summary>
-        /// Lookup users by external UID. (Requires administrator privileges)
-        /// </summary>
         [Input("externUid")]
         public Input<string>? ExternUid { get; set; }
 

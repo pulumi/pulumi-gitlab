@@ -14,32 +14,16 @@ public final class GetGroupVariablesPlainArgs extends com.pulumi.resources.Invok
 
     public static final GetGroupVariablesPlainArgs Empty = new GetGroupVariablesPlainArgs();
 
-    /**
-     * The environment scope of the variable. Defaults to all environment (`*`).
-     * 
-     */
     @Import(name="environmentScope")
     private @Nullable String environmentScope;
 
-    /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`).
-     * 
-     */
     public Optional<String> environmentScope() {
         return Optional.ofNullable(this.environmentScope);
     }
 
-    /**
-     * The name or id of the group.
-     * 
-     */
     @Import(name="group", required=true)
     private String group;
 
-    /**
-     * @return The name or id of the group.
-     * 
-     */
     public String group() {
         return this.group;
     }
@@ -69,23 +53,11 @@ public final class GetGroupVariablesPlainArgs extends com.pulumi.resources.Invok
             $ = new GetGroupVariablesPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param environmentScope The environment scope of the variable. Defaults to all environment (`*`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder environmentScope(@Nullable String environmentScope) {
             $.environmentScope = environmentScope;
             return this;
         }
 
-        /**
-         * @param group The name or id of the group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder group(String group) {
             $.group = group;
             return this;

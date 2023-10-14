@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -205,14 +205,12 @@ def get_group_subgroups(all_available: Optional[bool] = None,
 
 
     :param bool all_available: Show all the groups you have access to.
-    :param int group_id: The ID of the group.
     :param str min_access_level: Limit to groups where current user has at least this access level.
     :param str order_by: Order groups by name, path or id.
     :param bool owned: Limit to groups explicitly owned by the current user.
     :param str search: Return the list of authorized groups matching the search criteria.
     :param Sequence[int] skip_groups: Skip the group IDs passed.
     :param str sort: Order groups in asc or desc order.
-    :param bool statistics: Include group statistics (administrators only).
     :param bool with_custom_attributes: Include custom attributes in response (administrators only).
     """
     __args__ = dict()
@@ -273,14 +271,12 @@ def get_group_subgroups_output(all_available: Optional[pulumi.Input[Optional[boo
 
 
     :param bool all_available: Show all the groups you have access to.
-    :param int group_id: The ID of the group.
     :param str min_access_level: Limit to groups where current user has at least this access level.
     :param str order_by: Order groups by name, path or id.
     :param bool owned: Limit to groups explicitly owned by the current user.
     :param str search: Return the list of authorized groups matching the search criteria.
     :param Sequence[int] skip_groups: Skip the group IDs passed.
     :param str sort: Order groups in asc or desc order.
-    :param bool statistics: Include group statistics (administrators only).
     :param bool with_custom_attributes: Include custom attributes in response (administrators only).
     """
     ...

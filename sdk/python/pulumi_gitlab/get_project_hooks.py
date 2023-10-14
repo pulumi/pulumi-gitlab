@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -85,9 +85,6 @@ def get_project_hooks(project: Optional[str] = None,
     example = gitlab.get_project(id="foo/bar/baz")
     examples = gitlab.get_project_hooks(project=example.id)
     ```
-
-
-    :param str project: The name or id of the project.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -117,8 +114,5 @@ def get_project_hooks_output(project: Optional[pulumi.Input[str]] = None,
     example = gitlab.get_project(id="foo/bar/baz")
     examples = gitlab.get_project_hooks(project=example.id)
     ```
-
-
-    :param str project: The name or id of the project.
     """
     ...

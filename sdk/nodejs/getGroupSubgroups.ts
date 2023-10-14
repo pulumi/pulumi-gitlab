@@ -48,9 +48,6 @@ export interface GetGroupSubgroupsArgs {
      * Show all the groups you have access to.
      */
     allAvailable?: boolean;
-    /**
-     * The ID of the group.
-     */
     groupId: number;
     /**
      * Limit to groups where current user has at least this access level.
@@ -76,9 +73,6 @@ export interface GetGroupSubgroupsArgs {
      * Order groups in asc or desc order.
      */
     sort?: string;
-    /**
-     * Include group statistics (administrators only).
-     */
     statistics?: boolean;
     /**
      * Include custom attributes in response (administrators only).
@@ -168,9 +162,6 @@ export interface GetGroupSubgroupsOutputArgs {
      * Show all the groups you have access to.
      */
     allAvailable?: pulumi.Input<boolean>;
-    /**
-     * The ID of the group.
-     */
     groupId: pulumi.Input<number>;
     /**
      * Limit to groups where current user has at least this access level.
@@ -196,9 +187,6 @@ export interface GetGroupSubgroupsOutputArgs {
      * Order groups in asc or desc order.
      */
     sort?: pulumi.Input<string>;
-    /**
-     * Include group statistics (administrators only).
-     */
     statistics?: pulumi.Input<boolean>;
     /**
      * Include custom attributes in response (administrators only).

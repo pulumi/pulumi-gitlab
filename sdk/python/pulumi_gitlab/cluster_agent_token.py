@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ClusterAgentTokenArgs', 'ClusterAgentToken']
@@ -25,12 +25,27 @@ class ClusterAgentTokenArgs:
         :param pulumi.Input[str] description: The Description for the agent.
         :param pulumi.Input[str] name: The Name of the agent.
         """
-        pulumi.set(__self__, "agent_id", agent_id)
-        pulumi.set(__self__, "project", project)
+        ClusterAgentTokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            agent_id=agent_id,
+            project=project,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             agent_id: pulumi.Input[int],
+             project: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("agent_id", agent_id)
+        _setter("project", project)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="agentId")
@@ -107,26 +122,53 @@ class _ClusterAgentTokenState:
         :param pulumi.Input[str] token: The secret token for the agent. The `token` is not available in imported resources.
         :param pulumi.Input[int] token_id: The ID of the token.
         """
+        _ClusterAgentTokenState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            agent_id=agent_id,
+            created_at=created_at,
+            created_by_user_id=created_by_user_id,
+            description=description,
+            last_used_at=last_used_at,
+            name=name,
+            project=project,
+            status=status,
+            token=token,
+            token_id=token_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             agent_id: Optional[pulumi.Input[int]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by_user_id: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             last_used_at: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             token_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if agent_id is not None:
-            pulumi.set(__self__, "agent_id", agent_id)
+            _setter("agent_id", agent_id)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by_user_id is not None:
-            pulumi.set(__self__, "created_by_user_id", created_by_user_id)
+            _setter("created_by_user_id", created_by_user_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if last_used_at is not None:
-            pulumi.set(__self__, "last_used_at", last_used_at)
+            _setter("last_used_at", last_used_at)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if token_id is not None:
-            pulumi.set(__self__, "token_id", token_id)
+            _setter("token_id", token_id)
 
     @property
     @pulumi.getter(name="agentId")
@@ -382,6 +424,10 @@ class ClusterAgentToken(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterAgentTokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

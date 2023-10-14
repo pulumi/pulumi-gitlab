@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectVariablesVariable {
-    /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`).
-     * 
-     */
     private String environmentScope;
     private String key;
     private Boolean masked;
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     private String project;
     private Boolean protected_;
     private Boolean raw;
@@ -28,10 +20,6 @@ public final class GetProjectVariablesVariable {
     private String variableType;
 
     private GetProjectVariablesVariable() {}
-    /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`).
-     * 
-     */
     public String environmentScope() {
         return this.environmentScope;
     }
@@ -41,10 +29,6 @@ public final class GetProjectVariablesVariable {
     public Boolean masked() {
         return this.masked;
     }
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     public String project() {
         return this.project;
     }

@@ -13,17 +13,9 @@ public final class GetProjectHooksArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetProjectHooksArgs Empty = new GetProjectHooksArgs();
 
-    /**
-     * The name or id of the project.
-     * 
-     */
     @Import(name="project", required=true)
     private Output<String> project;
 
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
@@ -52,23 +44,11 @@ public final class GetProjectHooksArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetProjectHooksArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param project The name or id of the project.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The name or id of the project.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

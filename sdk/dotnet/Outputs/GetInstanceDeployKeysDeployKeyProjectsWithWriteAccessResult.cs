@@ -15,9 +15,6 @@ namespace Pulumi.GitLab.Outputs
     {
         public readonly string CreatedAt;
         public readonly string Description;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly string Name;
         public readonly string NameWithNamespace;

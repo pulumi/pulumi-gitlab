@@ -18,32 +18,16 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetProjectsArgs Empty = new GetProjectsArgs();
 
-    /**
-     * Limit by archived status.
-     * 
-     */
     @Import(name="archived")
     private @Nullable Output<Boolean> archived;
 
-    /**
-     * @return Limit by archived status.
-     * 
-     */
     public Optional<Output<Boolean>> archived() {
         return Optional.ofNullable(this.archived);
     }
 
-    /**
-     * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-     * 
-     */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
-    /**
-     * @return The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-     * 
-     */
     public Optional<Output<Integer>> groupId() {
         return Optional.ofNullable(this.groupId);
     }
@@ -228,17 +212,9 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.starred);
     }
 
-    /**
-     * Include project statistics. Cannot be used with `group_id`.
-     * 
-     */
     @Import(name="statistics")
     private @Nullable Output<Boolean> statistics;
 
-    /**
-     * @return Include project statistics. Cannot be used with `group_id`.
-     * 
-     */
     public Optional<Output<Boolean>> statistics() {
         return Optional.ofNullable(this.statistics);
     }
@@ -258,17 +234,9 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.topics);
     }
 
-    /**
-     * Limit by visibility `public`, `internal`, or `private`.
-     * 
-     */
     @Import(name="visibility")
     private @Nullable Output<String> visibility;
 
-    /**
-     * @return Limit by visibility `public`, `internal`, or `private`.
-     * 
-     */
     public Optional<Output<String>> visibility() {
         return Optional.ofNullable(this.visibility);
     }
@@ -393,44 +361,20 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetProjectsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param archived Limit by archived status.
-         * 
-         * @return builder
-         * 
-         */
         public Builder archived(@Nullable Output<Boolean> archived) {
             $.archived = archived;
             return this;
         }
 
-        /**
-         * @param archived Limit by archived status.
-         * 
-         * @return builder
-         * 
-         */
         public Builder archived(Boolean archived) {
             return archived(Output.of(archived));
         }
 
-        /**
-         * @param groupId The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupId(@Nullable Output<Integer> groupId) {
             $.groupId = groupId;
             return this;
         }
 
-        /**
-         * @param groupId The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupId(Integer groupId) {
             return groupId(Output.of(groupId));
         }
@@ -687,23 +631,11 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
             return starred(Output.of(starred));
         }
 
-        /**
-         * @param statistics Include project statistics. Cannot be used with `group_id`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistics(@Nullable Output<Boolean> statistics) {
             $.statistics = statistics;
             return this;
         }
 
-        /**
-         * @param statistics Include project statistics. Cannot be used with `group_id`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistics(Boolean statistics) {
             return statistics(Output.of(statistics));
         }
@@ -739,23 +671,11 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
             return topics(List.of(topics));
         }
 
-        /**
-         * @param visibility Limit by visibility `public`, `internal`, or `private`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder visibility(@Nullable Output<String> visibility) {
             $.visibility = visibility;
             return this;
         }
 
-        /**
-         * @param visibility Limit by visibility `public`, `internal`, or `private`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder visibility(String visibility) {
             return visibility(Output.of(visibility));
         }

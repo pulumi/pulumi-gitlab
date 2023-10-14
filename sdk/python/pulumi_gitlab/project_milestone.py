@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectMilestoneArgs', 'ProjectMilestone']
@@ -29,16 +29,35 @@ class ProjectMilestoneArgs:
         :param pulumi.Input[str] start_date: The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
         :param pulumi.Input[str] state: The state of the milestone. Valid values are: `active`, `closed`.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "title", title)
+        ProjectMilestoneArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            title=title,
+            description=description,
+            due_date=due_date,
+            start_date=start_date,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: pulumi.Input[str],
+             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             due_date: Optional[pulumi.Input[str]] = None,
+             start_date: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project", project)
+        _setter("title", title)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if due_date is not None:
-            pulumi.set(__self__, "due_date", due_date)
+            _setter("due_date", due_date)
         if start_date is not None:
-            pulumi.set(__self__, "start_date", start_date)
+            _setter("start_date", start_date)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter
@@ -145,32 +164,65 @@ class _ProjectMilestoneState:
         :param pulumi.Input[str] updated_at: The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         :param pulumi.Input[str] web_url: The web URL of the milestone.
         """
+        _ProjectMilestoneState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            description=description,
+            due_date=due_date,
+            expired=expired,
+            iid=iid,
+            milestone_id=milestone_id,
+            project=project,
+            project_id=project_id,
+            start_date=start_date,
+            state=state,
+            title=title,
+            updated_at=updated_at,
+            web_url=web_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             due_date: Optional[pulumi.Input[str]] = None,
+             expired: Optional[pulumi.Input[bool]] = None,
+             iid: Optional[pulumi.Input[int]] = None,
+             milestone_id: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[int]] = None,
+             start_date: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             web_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if due_date is not None:
-            pulumi.set(__self__, "due_date", due_date)
+            _setter("due_date", due_date)
         if expired is not None:
-            pulumi.set(__self__, "expired", expired)
+            _setter("expired", expired)
         if iid is not None:
-            pulumi.set(__self__, "iid", iid)
+            _setter("iid", iid)
         if milestone_id is not None:
-            pulumi.set(__self__, "milestone_id", milestone_id)
+            _setter("milestone_id", milestone_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if start_date is not None:
-            pulumi.set(__self__, "start_date", start_date)
+            _setter("start_date", start_date)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if web_url is not None:
-            pulumi.set(__self__, "web_url", web_url)
+            _setter("web_url", web_url)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -422,6 +474,10 @@ class ProjectMilestone(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectMilestoneArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
