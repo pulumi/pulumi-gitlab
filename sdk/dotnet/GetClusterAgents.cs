@@ -79,9 +79,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetClusterAgentsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID or full path of the project owned by the authenticated user.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -93,9 +90,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetClusterAgentsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID or full path of the project owned by the authenticated user.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

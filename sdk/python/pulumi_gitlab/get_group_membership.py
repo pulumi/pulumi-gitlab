@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -125,7 +125,6 @@ def get_group_membership(access_level: Optional[str] = None,
     ```
 
 
-    :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
     :param str full_path: The full path of the group.
     :param int group_id: The ID of the group.
     :param bool inherited: Return all project members including members through ancestor groups.
@@ -168,7 +167,6 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
     ```
 
 
-    :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
     :param str full_path: The full path of the group.
     :param int group_id: The ID of the group.
     :param bool inherited: Return all project members including members through ancestor groups.

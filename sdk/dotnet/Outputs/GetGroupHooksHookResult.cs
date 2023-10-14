@@ -17,9 +17,6 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool ConfidentialNoteEvents;
         public readonly bool DeploymentEvents;
         public readonly bool EnableSslVerification;
-        /// <summary>
-        /// The ID or full path of the group.
-        /// </summary>
         public readonly string Group;
         public readonly int GroupId;
         public readonly int HookId;

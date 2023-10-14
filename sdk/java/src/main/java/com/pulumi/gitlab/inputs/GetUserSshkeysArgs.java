@@ -16,17 +16,9 @@ public final class GetUserSshkeysArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUserSshkeysArgs Empty = new GetUserSshkeysArgs();
 
-    /**
-     * ID of the user to get the SSH keys for.
-     * 
-     */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
-    /**
-     * @return ID of the user to get the SSH keys for.
-     * 
-     */
     public Optional<Output<Integer>> userId() {
         return Optional.ofNullable(this.userId);
     }
@@ -71,23 +63,11 @@ public final class GetUserSshkeysArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetUserSshkeysArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param userId ID of the user to get the SSH keys for.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userId(@Nullable Output<Integer> userId) {
             $.userId = userId;
             return this;
         }
 
-        /**
-         * @param userId ID of the user to get the SSH keys for.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userId(Integer userId) {
             return userId(Output.of(userId));
         }

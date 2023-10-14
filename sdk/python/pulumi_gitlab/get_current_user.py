@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetCurrentUserResult',
     'AwaitableGetCurrentUserResult',
     'get_current_user',
+    'get_current_user_output',
 ]
 
 @pulumi.output_type
@@ -168,3 +169,22 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         public_email=pulumi.get(__ret__, 'public_email'),
         username=pulumi.get(__ret__, 'username'))
+
+
+@_utilities.lift_output_func(get_current_user)
+def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentUserResult]:
+    """
+    The `get_current_user` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
+
+    **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_current_user()
+    ```
+    """
+    ...

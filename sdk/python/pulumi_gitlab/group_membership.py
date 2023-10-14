@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupMembershipArgs', 'GroupMembership']
@@ -29,15 +29,34 @@ class GroupMembershipArgs:
         :param pulumi.Input[bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "user_id", user_id)
+        GroupMembershipArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            group_id=group_id,
+            user_id=user_id,
+            expires_at=expires_at,
+            skip_subresources_on_destroy=skip_subresources_on_destroy,
+            unassign_issuables_on_destroy=unassign_issuables_on_destroy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: pulumi.Input[str],
+             group_id: pulumi.Input[str],
+             user_id: pulumi.Input[int],
+             expires_at: Optional[pulumi.Input[str]] = None,
+             skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
+             unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_level", access_level)
+        _setter("group_id", group_id)
+        _setter("user_id", user_id)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
         if skip_subresources_on_destroy is not None:
-            pulumi.set(__self__, "skip_subresources_on_destroy", skip_subresources_on_destroy)
+            _setter("skip_subresources_on_destroy", skip_subresources_on_destroy)
         if unassign_issuables_on_destroy is not None:
-            pulumi.set(__self__, "unassign_issuables_on_destroy", unassign_issuables_on_destroy)
+            _setter("unassign_issuables_on_destroy", unassign_issuables_on_destroy)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -130,18 +149,37 @@ class _GroupMembershipState:
         :param pulumi.Input[bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         :param pulumi.Input[int] user_id: The id of the user.
         """
+        _GroupMembershipState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            expires_at=expires_at,
+            group_id=group_id,
+            skip_subresources_on_destroy=skip_subresources_on_destroy,
+            unassign_issuables_on_destroy=unassign_issuables_on_destroy,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             expires_at: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
+             unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if skip_subresources_on_destroy is not None:
-            pulumi.set(__self__, "skip_subresources_on_destroy", skip_subresources_on_destroy)
+            _setter("skip_subresources_on_destroy", skip_subresources_on_destroy)
         if unassign_issuables_on_destroy is not None:
-            pulumi.set(__self__, "unassign_issuables_on_destroy", unassign_issuables_on_destroy)
+            _setter("unassign_issuables_on_destroy", unassign_issuables_on_destroy)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -309,6 +347,10 @@ class GroupMembership(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupMembershipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

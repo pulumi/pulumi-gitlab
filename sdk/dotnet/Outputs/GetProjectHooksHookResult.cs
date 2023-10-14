@@ -23,9 +23,6 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool MergeRequestsEvents;
         public readonly bool NoteEvents;
         public readonly bool PipelineEvents;
-        /// <summary>
-        /// The name or id of the project.
-        /// </summary>
         public readonly string Project;
         public readonly int ProjectId;
         public readonly bool PushEvents;

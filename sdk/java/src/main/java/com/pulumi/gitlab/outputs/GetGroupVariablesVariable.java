@@ -10,15 +10,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupVariablesVariable {
-    /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`).
-     * 
-     */
     private String environmentScope;
-    /**
-     * @return The name or id of the group.
-     * 
-     */
     private String group;
     private String key;
     private Boolean masked;
@@ -28,17 +20,9 @@ public final class GetGroupVariablesVariable {
     private String variableType;
 
     private GetGroupVariablesVariable() {}
-    /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`).
-     * 
-     */
     public String environmentScope() {
         return this.environmentScope;
     }
-    /**
-     * @return The name or id of the group.
-     * 
-     */
     public String group() {
         return this.group;
     }

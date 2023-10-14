@@ -21,10 +21,6 @@ public final class GetProjectHooksHook {
     private Boolean mergeRequestsEvents;
     private Boolean noteEvents;
     private Boolean pipelineEvents;
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     private String project;
     private Integer projectId;
     private Boolean pushEvents;
@@ -66,10 +62,6 @@ public final class GetProjectHooksHook {
     public Boolean pipelineEvents() {
         return this.pipelineEvents;
     }
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     public String project() {
         return this.project;
     }

@@ -15,27 +15,15 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectIssuesIssue {
     private List<Integer> assigneeIds;
-    /**
-     * @return Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-     * 
-     */
     private Integer authorId;
     private String closedAt;
     private Integer closedByUserId;
-    /**
-     * @return Filter confidential or public issues.
-     * 
-     */
     private Boolean confidential;
     private String createdAt;
     private String description;
     private Boolean discussionLocked;
     private String discussionToResolve;
     private Integer downvotes;
-    /**
-     * @return Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-     * 
-     */
     private String dueDate;
     private Integer epicId;
     private Integer epicIssueId;
@@ -45,25 +33,13 @@ public final class GetProjectIssuesIssue {
     private Integer iid;
     private Integer issueId;
     private Integer issueLinkId;
-    /**
-     * @return Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-     * 
-     */
     private String issueType;
-    /**
-     * @return Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-     * 
-     */
     private List<String> labels;
     private Map<String,String> links;
     private Integer mergeRequestToResolveDiscussionsOf;
     private Integer mergeRequestsCount;
     private Integer milestoneId;
     private Integer movedToId;
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     private String project;
     private Map<String,String> references;
     private String state;
@@ -76,20 +52,12 @@ public final class GetProjectIssuesIssue {
     private Integer upvotes;
     private Integer userNotesCount;
     private String webUrl;
-    /**
-     * @return Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-     * 
-     */
     private Integer weight;
 
     private GetProjectIssuesIssue() {}
     public List<Integer> assigneeIds() {
         return this.assigneeIds;
     }
-    /**
-     * @return Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-     * 
-     */
     public Integer authorId() {
         return this.authorId;
     }
@@ -99,10 +67,6 @@ public final class GetProjectIssuesIssue {
     public Integer closedByUserId() {
         return this.closedByUserId;
     }
-    /**
-     * @return Filter confidential or public issues.
-     * 
-     */
     public Boolean confidential() {
         return this.confidential;
     }
@@ -121,10 +85,6 @@ public final class GetProjectIssuesIssue {
     public Integer downvotes() {
         return this.downvotes;
     }
-    /**
-     * @return Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-     * 
-     */
     public String dueDate() {
         return this.dueDate;
     }
@@ -152,17 +112,9 @@ public final class GetProjectIssuesIssue {
     public Integer issueLinkId() {
         return this.issueLinkId;
     }
-    /**
-     * @return Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-     * 
-     */
     public String issueType() {
         return this.issueType;
     }
-    /**
-     * @return Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-     * 
-     */
     public List<String> labels() {
         return this.labels;
     }
@@ -181,10 +133,6 @@ public final class GetProjectIssuesIssue {
     public Integer movedToId() {
         return this.movedToId;
     }
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     public String project() {
         return this.project;
     }
@@ -221,10 +169,6 @@ public final class GetProjectIssuesIssue {
     public String webUrl() {
         return this.webUrl;
     }
-    /**
-     * @return Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-     * 
-     */
     public Integer weight() {
         return this.weight;
     }

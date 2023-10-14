@@ -14,32 +14,16 @@ public final class GetProjectVariablesPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetProjectVariablesPlainArgs Empty = new GetProjectVariablesPlainArgs();
 
-    /**
-     * The environment scope of the variable. Defaults to all environment (`*`).
-     * 
-     */
     @Import(name="environmentScope")
     private @Nullable String environmentScope;
 
-    /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`).
-     * 
-     */
     public Optional<String> environmentScope() {
         return Optional.ofNullable(this.environmentScope);
     }
 
-    /**
-     * The name or id of the project.
-     * 
-     */
     @Import(name="project", required=true)
     private String project;
 
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     public String project() {
         return this.project;
     }
@@ -69,23 +53,11 @@ public final class GetProjectVariablesPlainArgs extends com.pulumi.resources.Inv
             $ = new GetProjectVariablesPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param environmentScope The environment scope of the variable. Defaults to all environment (`*`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder environmentScope(@Nullable String environmentScope) {
             $.environmentScope = environmentScope;
             return this;
         }
 
-        /**
-         * @param project The name or id of the project.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             $.project = project;
             return this;

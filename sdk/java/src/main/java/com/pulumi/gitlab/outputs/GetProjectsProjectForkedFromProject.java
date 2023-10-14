@@ -11,10 +11,6 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectsProjectForkedFromProject {
     private String httpUrlToRepo;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private Integer id;
     private String name;
     private String nameWithNamespace;
@@ -26,10 +22,6 @@ public final class GetProjectsProjectForkedFromProject {
     public String httpUrlToRepo() {
         return this.httpUrlToRepo;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Integer id() {
         return this.id;
     }

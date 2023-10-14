@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TopicArgs', 'Topic']
@@ -29,21 +29,40 @@ class TopicArgs:
         :param pulumi.Input[bool] soft_destroy: Empty the topics fields instead of deleting it.
         :param pulumi.Input[str] title: The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
         """
+        TopicArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            avatar=avatar,
+            avatar_hash=avatar_hash,
+            description=description,
+            name=name,
+            soft_destroy=soft_destroy,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             avatar: Optional[pulumi.Input[str]] = None,
+             avatar_hash: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             soft_destroy: Optional[pulumi.Input[bool]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if avatar is not None:
-            pulumi.set(__self__, "avatar", avatar)
+            _setter("avatar", avatar)
         if avatar_hash is not None:
-            pulumi.set(__self__, "avatar_hash", avatar_hash)
+            _setter("avatar_hash", avatar_hash)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if soft_destroy is not None:
             warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
             pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
         if soft_destroy is not None:
-            pulumi.set(__self__, "soft_destroy", soft_destroy)
+            _setter("soft_destroy", soft_destroy)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -141,23 +160,44 @@ class _TopicState:
         :param pulumi.Input[bool] soft_destroy: Empty the topics fields instead of deleting it.
         :param pulumi.Input[str] title: The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
         """
+        _TopicState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            avatar=avatar,
+            avatar_hash=avatar_hash,
+            avatar_url=avatar_url,
+            description=description,
+            name=name,
+            soft_destroy=soft_destroy,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             avatar: Optional[pulumi.Input[str]] = None,
+             avatar_hash: Optional[pulumi.Input[str]] = None,
+             avatar_url: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             soft_destroy: Optional[pulumi.Input[bool]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if avatar is not None:
-            pulumi.set(__self__, "avatar", avatar)
+            _setter("avatar", avatar)
         if avatar_hash is not None:
-            pulumi.set(__self__, "avatar_hash", avatar_hash)
+            _setter("avatar_hash", avatar_hash)
         if avatar_url is not None:
-            pulumi.set(__self__, "avatar_url", avatar_url)
+            _setter("avatar_url", avatar_url)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if soft_destroy is not None:
             warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
             pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
         if soft_destroy is not None:
-            pulumi.set(__self__, "soft_destroy", soft_destroy)
+            _setter("soft_destroy", soft_destroy)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -326,6 +366,10 @@ class Topic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -350,9 +394,6 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["avatar_hash"] = avatar_hash
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if soft_destroy is not None and not opts.urn:
-                warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
-                pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
             __props__.__dict__["soft_destroy"] = soft_destroy
             __props__.__dict__["title"] = title
             __props__.__dict__["avatar_url"] = None

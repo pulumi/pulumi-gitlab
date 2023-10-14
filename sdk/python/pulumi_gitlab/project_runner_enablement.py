@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectRunnerEnablementArgs', 'ProjectRunnerEnablement']
@@ -21,8 +21,19 @@ class ProjectRunnerEnablementArgs:
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[int] runner_id: The ID of a runner to enable for the project.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "runner_id", runner_id)
+        ProjectRunnerEnablementArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            runner_id=runner_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: pulumi.Input[str],
+             runner_id: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project", project)
+        _setter("runner_id", runner_id)
 
     @property
     @pulumi.getter
@@ -59,10 +70,21 @@ class _ProjectRunnerEnablementState:
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[int] runner_id: The ID of a runner to enable for the project.
         """
+        _ProjectRunnerEnablementState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            runner_id=runner_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             runner_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if runner_id is not None:
-            pulumi.set(__self__, "runner_id", runner_id)
+            _setter("runner_id", runner_id)
 
     @property
     @pulumi.getter
@@ -166,6 +188,10 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectRunnerEnablementArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

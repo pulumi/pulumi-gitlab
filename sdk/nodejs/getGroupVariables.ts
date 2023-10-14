@@ -39,13 +39,7 @@ export function getGroupVariables(args: GetGroupVariablesArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getGroupVariables.
  */
 export interface GetGroupVariablesArgs {
-    /**
-     * The environment scope of the variable. Defaults to all environment (`*`).
-     */
     environmentScope?: string;
-    /**
-     * The name or id of the group.
-     */
     group: string;
 }
 
@@ -98,12 +92,6 @@ export function getGroupVariablesOutput(args: GetGroupVariablesOutputArgs, opts?
  * A collection of arguments for invoking getGroupVariables.
  */
 export interface GetGroupVariablesOutputArgs {
-    /**
-     * The environment scope of the variable. Defaults to all environment (`*`).
-     */
     environmentScope?: pulumi.Input<string>;
-    /**
-     * The name or id of the group.
-     */
     group: pulumi.Input<string>;
 }

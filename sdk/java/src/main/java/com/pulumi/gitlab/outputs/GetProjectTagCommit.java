@@ -16,15 +16,7 @@ public final class GetProjectTagCommit {
     private String committedDate;
     private String committerEmail;
     private String committerName;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private String id;
-    /**
-     * @return The message of the annotated tag.
-     * 
-     */
     private String message;
     private List<String> parentIds;
     private String shortId;
@@ -49,17 +41,9 @@ public final class GetProjectTagCommit {
     public String committerName() {
         return this.committerName;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return The message of the annotated tag.
-     * 
-     */
     public String message() {
         return this.message;
     }

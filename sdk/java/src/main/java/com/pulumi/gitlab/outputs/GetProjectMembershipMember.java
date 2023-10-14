@@ -13,10 +13,6 @@ public final class GetProjectMembershipMember {
     private String accessLevel;
     private String avatarUrl;
     private String expiresAt;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private Integer id;
     private String name;
     private String state;
@@ -33,10 +29,6 @@ public final class GetProjectMembershipMember {
     public String expiresAt() {
         return this.expiresAt;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Integer id() {
         return this.id;
     }

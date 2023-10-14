@@ -23,10 +23,6 @@ public final class GetProjectsProject {
     private Boolean allowMergeOnSkippedPipeline;
     private String analyticsAccessLevel;
     private Integer approvalsBeforeMerge;
-    /**
-     * @return Limit by archived status.
-     * 
-     */
     private Boolean archived;
     private String autoCancelPendingPipelines;
     private String autoDevopsDeployStrategy;
@@ -56,10 +52,6 @@ public final class GetProjectsProject {
     private String forkingAccessLevel;
     private Integer forksCount;
     private String httpUrlToRepo;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private Integer id;
     private String importError;
     private String importStatus;
@@ -113,18 +105,10 @@ public final class GetProjectsProject {
     private String squashCommitTemplate;
     private String sshUrlToRepo;
     private Integer starCount;
-    /**
-     * @return Include project statistics. Cannot be used with `group_id`.
-     * 
-     */
     private Map<String,Integer> statistics;
     private String suggestionCommitMessage;
     private List<String> tagLists;
     private List<String> topics;
-    /**
-     * @return Limit by visibility `public`, `internal`, or `private`.
-     * 
-     */
     private String visibility;
     private String webUrl;
     private String wikiAccessLevel;
@@ -143,10 +127,6 @@ public final class GetProjectsProject {
     public Integer approvalsBeforeMerge() {
         return this.approvalsBeforeMerge;
     }
-    /**
-     * @return Limit by archived status.
-     * 
-     */
     public Boolean archived() {
         return this.archived;
     }
@@ -234,10 +214,6 @@ public final class GetProjectsProject {
     public String httpUrlToRepo() {
         return this.httpUrlToRepo;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Integer id() {
         return this.id;
     }
@@ -397,10 +373,6 @@ public final class GetProjectsProject {
     public Integer starCount() {
         return this.starCount;
     }
-    /**
-     * @return Include project statistics. Cannot be used with `group_id`.
-     * 
-     */
     public Map<String,Integer> statistics() {
         return this.statistics;
     }
@@ -413,10 +385,6 @@ public final class GetProjectsProject {
     public List<String> topics() {
         return this.topics;
     }
-    /**
-     * @return Limit by visibility `public`, `internal`, or `private`.
-     * 
-     */
     public String visibility() {
         return this.visibility;
     }

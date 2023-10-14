@@ -81,9 +81,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetRepositoryTreeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The path inside repository. Used to get content of subdirectories.
-        /// </summary>
         [Input("path")]
         public string? Path { get; set; }
 
@@ -113,9 +110,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetRepositoryTreeInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The path inside repository. Used to get content of subdirectories.
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 

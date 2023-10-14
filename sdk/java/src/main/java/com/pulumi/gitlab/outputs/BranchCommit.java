@@ -18,10 +18,6 @@ public final class BranchCommit {
     private @Nullable String committedDate;
     private @Nullable String committerEmail;
     private @Nullable String committerName;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private @Nullable String id;
     private @Nullable String message;
     private @Nullable List<String> parentIds;
@@ -47,10 +43,6 @@ public final class BranchCommit {
     public Optional<String> committerName() {
         return Optional.ofNullable(this.committerName);
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }

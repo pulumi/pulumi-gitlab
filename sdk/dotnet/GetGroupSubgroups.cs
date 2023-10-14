@@ -89,9 +89,6 @@ namespace Pulumi.GitLab
         [Input("allAvailable")]
         public bool? AllAvailable { get; set; }
 
-        /// <summary>
-        /// The ID of the group.
-        /// </summary>
         [Input("groupId", required: true)]
         public int GroupId { get; set; }
 
@@ -137,9 +134,6 @@ namespace Pulumi.GitLab
         [Input("sort")]
         public string? Sort { get; set; }
 
-        /// <summary>
-        /// Include group statistics (administrators only).
-        /// </summary>
         [Input("statistics")]
         public bool? Statistics { get; set; }
 
@@ -163,9 +157,6 @@ namespace Pulumi.GitLab
         [Input("allAvailable")]
         public Input<bool>? AllAvailable { get; set; }
 
-        /// <summary>
-        /// The ID of the group.
-        /// </summary>
         [Input("groupId", required: true)]
         public Input<int> GroupId { get; set; } = null!;
 
@@ -211,9 +202,6 @@ namespace Pulumi.GitLab
         [Input("sort")]
         public Input<string>? Sort { get; set; }
 
-        /// <summary>
-        /// Include group statistics (administrators only).
-        /// </summary>
         [Input("statistics")]
         public Input<bool>? Statistics { get; set; }
 

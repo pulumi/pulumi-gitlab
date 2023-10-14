@@ -15,9 +15,6 @@ namespace Pulumi.GitLab.Outputs
     {
         public readonly bool AllowForcePush;
         public readonly bool CodeOwnerApprovalRequired;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult> MergeAccessLevels;
         public readonly string Name;

@@ -40,9 +40,6 @@ export function getRepositoryTree(args: GetRepositoryTreeArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getRepositoryTree.
  */
 export interface GetRepositoryTreeArgs {
-    /**
-     * The path inside repository. Used to get content of subdirectories.
-     */
     path?: string;
     /**
      * The ID or full path of the project owned by the authenticated user.
@@ -114,9 +111,6 @@ export function getRepositoryTreeOutput(args: GetRepositoryTreeOutputArgs, opts?
  * A collection of arguments for invoking getRepositoryTree.
  */
 export interface GetRepositoryTreeOutputArgs {
-    /**
-     * The path inside repository. Used to get content of subdirectories.
-     */
     path?: pulumi.Input<string>;
     /**
      * The ID or full path of the project owned by the authenticated user.

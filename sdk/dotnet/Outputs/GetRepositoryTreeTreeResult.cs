@@ -13,15 +13,9 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetRepositoryTreeTreeResult
     {
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string Id;
         public readonly string Mode;
         public readonly string Name;
-        /// <summary>
-        /// The path inside repository. Used to get content of subdirectories.
-        /// </summary>
         public readonly string Path;
         public readonly string Type;
 

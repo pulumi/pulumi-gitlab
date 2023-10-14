@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectShareGroupArgs', 'ProjectShareGroup']
@@ -25,15 +25,30 @@ class ProjectShareGroupArgs:
         :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "project", project)
+        ProjectShareGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            project=project,
+            access_level=access_level,
+            group_access=group_access,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: pulumi.Input[int],
+             project: pulumi.Input[str],
+             access_level: Optional[pulumi.Input[str]] = None,
+             group_access: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_id", group_id)
+        _setter("project", project)
         if access_level is not None:
             warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
             pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if group_access is not None:
-            pulumi.set(__self__, "group_access", group_access)
+            _setter("group_access", group_access)
 
     @property
     @pulumi.getter(name="groupId")
@@ -101,17 +116,32 @@ class _ProjectShareGroupState:
         :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
         """
+        _ProjectShareGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            group_access=group_access,
+            group_id=group_id,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             group_access: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
             warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
             pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if group_access is not None:
-            pulumi.set(__self__, "group_access", group_access)
+            _setter("group_access", group_access)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -248,6 +278,10 @@ class ProjectShareGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectShareGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -266,9 +300,6 @@ class ProjectShareGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectShareGroupArgs.__new__(ProjectShareGroupArgs)
 
-            if access_level is not None and not opts.urn:
-                warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
-                pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
             __props__.__dict__["access_level"] = access_level
             __props__.__dict__["group_access"] = group_access
             if group_id is None and not opts.urn:

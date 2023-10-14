@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetMetadataResult',
     'AwaitableGetMetadataResult',
     'get_metadata',
+    'get_metadata_output',
 ]
 
 @pulumi.output_type
@@ -117,3 +118,22 @@ def get_metadata(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMet
         kas=pulumi.get(__ret__, 'kas'),
         revision=pulumi.get(__ret__, 'revision'),
         version=pulumi.get(__ret__, 'version'))
+
+
+@_utilities.lift_output_func(get_metadata)
+def get_metadata_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetadataResult]:
+    """
+    The `get_metadata` data source retrieves the metadata of the GitLab instance.
+
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    this = gitlab.get_metadata()
+    ```
+    """
+    ...

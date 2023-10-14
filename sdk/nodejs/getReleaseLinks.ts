@@ -36,13 +36,7 @@ export function getReleaseLinks(args: GetReleaseLinksArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getReleaseLinks.
  */
 export interface GetReleaseLinksArgs {
-    /**
-     * The ID or full path to the project.
-     */
     project: string;
-    /**
-     * The tag associated with the Release.
-     */
     tagName: string;
 }
 
@@ -92,12 +86,6 @@ export function getReleaseLinksOutput(args: GetReleaseLinksOutputArgs, opts?: pu
  * A collection of arguments for invoking getReleaseLinks.
  */
 export interface GetReleaseLinksOutputArgs {
-    /**
-     * The ID or full path to the project.
-     */
     project: pulumi.Input<string>;
-    /**
-     * The tag associated with the Release.
-     */
     tagName: pulumi.Input<string>;
 }

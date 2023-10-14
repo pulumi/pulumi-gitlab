@@ -17,9 +17,6 @@ namespace Pulumi.GitLab.Outputs
         public readonly string CreatedAt;
         public readonly int CreatedByUserId;
         public readonly string Name;
-        /// <summary>
-        /// The ID or full path of the project owned by the authenticated user.
-        /// </summary>
         public readonly string Project;
 
         [OutputConstructor]

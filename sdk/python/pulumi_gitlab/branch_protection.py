@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,24 +39,51 @@ class BranchProtectionArgs:
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
         """
-        pulumi.set(__self__, "branch", branch)
-        pulumi.set(__self__, "project", project)
+        BranchProtectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            branch=branch,
+            project=project,
+            allow_force_push=allow_force_push,
+            allowed_to_merges=allowed_to_merges,
+            allowed_to_pushes=allowed_to_pushes,
+            allowed_to_unprotects=allowed_to_unprotects,
+            code_owner_approval_required=code_owner_approval_required,
+            merge_access_level=merge_access_level,
+            push_access_level=push_access_level,
+            unprotect_access_level=unprotect_access_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             branch: pulumi.Input[str],
+             project: pulumi.Input[str],
+             allow_force_push: Optional[pulumi.Input[bool]] = None,
+             allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]] = None,
+             allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]] = None,
+             allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]] = None,
+             code_owner_approval_required: Optional[pulumi.Input[bool]] = None,
+             merge_access_level: Optional[pulumi.Input[str]] = None,
+             push_access_level: Optional[pulumi.Input[str]] = None,
+             unprotect_access_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("branch", branch)
+        _setter("project", project)
         if allow_force_push is not None:
-            pulumi.set(__self__, "allow_force_push", allow_force_push)
+            _setter("allow_force_push", allow_force_push)
         if allowed_to_merges is not None:
-            pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
+            _setter("allowed_to_merges", allowed_to_merges)
         if allowed_to_pushes is not None:
-            pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+            _setter("allowed_to_pushes", allowed_to_pushes)
         if allowed_to_unprotects is not None:
-            pulumi.set(__self__, "allowed_to_unprotects", allowed_to_unprotects)
+            _setter("allowed_to_unprotects", allowed_to_unprotects)
         if code_owner_approval_required is not None:
-            pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
+            _setter("code_owner_approval_required", code_owner_approval_required)
         if merge_access_level is not None:
-            pulumi.set(__self__, "merge_access_level", merge_access_level)
+            _setter("merge_access_level", merge_access_level)
         if push_access_level is not None:
-            pulumi.set(__self__, "push_access_level", push_access_level)
+            _setter("push_access_level", push_access_level)
         if unprotect_access_level is not None:
-            pulumi.set(__self__, "unprotect_access_level", unprotect_access_level)
+            _setter("unprotect_access_level", unprotect_access_level)
 
     @property
     @pulumi.getter
@@ -207,28 +234,57 @@ class _BranchProtectionState:
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
         """
+        _BranchProtectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_force_push=allow_force_push,
+            allowed_to_merges=allowed_to_merges,
+            allowed_to_pushes=allowed_to_pushes,
+            allowed_to_unprotects=allowed_to_unprotects,
+            branch=branch,
+            branch_protection_id=branch_protection_id,
+            code_owner_approval_required=code_owner_approval_required,
+            merge_access_level=merge_access_level,
+            project=project,
+            push_access_level=push_access_level,
+            unprotect_access_level=unprotect_access_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_force_push: Optional[pulumi.Input[bool]] = None,
+             allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]] = None,
+             allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]] = None,
+             allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]] = None,
+             branch: Optional[pulumi.Input[str]] = None,
+             branch_protection_id: Optional[pulumi.Input[int]] = None,
+             code_owner_approval_required: Optional[pulumi.Input[bool]] = None,
+             merge_access_level: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             push_access_level: Optional[pulumi.Input[str]] = None,
+             unprotect_access_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_force_push is not None:
-            pulumi.set(__self__, "allow_force_push", allow_force_push)
+            _setter("allow_force_push", allow_force_push)
         if allowed_to_merges is not None:
-            pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
+            _setter("allowed_to_merges", allowed_to_merges)
         if allowed_to_pushes is not None:
-            pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+            _setter("allowed_to_pushes", allowed_to_pushes)
         if allowed_to_unprotects is not None:
-            pulumi.set(__self__, "allowed_to_unprotects", allowed_to_unprotects)
+            _setter("allowed_to_unprotects", allowed_to_unprotects)
         if branch is not None:
-            pulumi.set(__self__, "branch", branch)
+            _setter("branch", branch)
         if branch_protection_id is not None:
-            pulumi.set(__self__, "branch_protection_id", branch_protection_id)
+            _setter("branch_protection_id", branch_protection_id)
         if code_owner_approval_required is not None:
-            pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
+            _setter("code_owner_approval_required", code_owner_approval_required)
         if merge_access_level is not None:
-            pulumi.set(__self__, "merge_access_level", merge_access_level)
+            _setter("merge_access_level", merge_access_level)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if push_access_level is not None:
-            pulumi.set(__self__, "push_access_level", push_access_level)
+            _setter("push_access_level", push_access_level)
         if unprotect_access_level is not None:
-            pulumi.set(__self__, "unprotect_access_level", unprotect_access_level)
+            _setter("unprotect_access_level", unprotect_access_level)
 
     @property
     @pulumi.getter(name="allowForcePush")
@@ -426,6 +482,10 @@ class BranchProtection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BranchProtectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

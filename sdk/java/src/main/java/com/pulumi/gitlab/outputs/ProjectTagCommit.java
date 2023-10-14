@@ -18,15 +18,7 @@ public final class ProjectTagCommit {
     private @Nullable String committedDate;
     private @Nullable String committerEmail;
     private @Nullable String committerName;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private @Nullable String id;
-    /**
-     * @return The message of the annotated tag.
-     * 
-     */
     private @Nullable String message;
     private @Nullable List<String> parentIds;
     private @Nullable String shortId;
@@ -51,17 +43,9 @@ public final class ProjectTagCommit {
     public Optional<String> committerName() {
         return Optional.ofNullable(this.committerName);
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
-    /**
-     * @return The message of the annotated tag.
-     * 
-     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }

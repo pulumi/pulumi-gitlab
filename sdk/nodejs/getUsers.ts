@@ -72,9 +72,6 @@ export interface GetUsersArgs {
      * Lookup users by external provider. (Requires administrator privileges)
      */
     externProvider?: string;
-    /**
-     * Lookup users by external UID. (Requires administrator privileges)
-     */
     externUid?: string;
     /**
      * Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
@@ -192,9 +189,6 @@ export interface GetUsersOutputArgs {
      * Lookup users by external provider. (Requires administrator privileges)
      */
     externProvider?: pulumi.Input<string>;
-    /**
-     * Lookup users by external UID. (Requires administrator privileges)
-     */
     externUid?: pulumi.Input<string>;
     /**
      * Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)

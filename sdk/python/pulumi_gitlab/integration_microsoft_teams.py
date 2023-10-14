@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IntegrationMicrosoftTeamsArgs', 'IntegrationMicrosoftTeams']
@@ -43,30 +43,63 @@ class IntegrationMicrosoftTeamsArgs:
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "webhook", webhook)
+        IntegrationMicrosoftTeamsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            webhook=webhook,
+            branches_to_be_notified=branches_to_be_notified,
+            confidential_issues_events=confidential_issues_events,
+            confidential_note_events=confidential_note_events,
+            issues_events=issues_events,
+            merge_requests_events=merge_requests_events,
+            note_events=note_events,
+            notify_only_broken_pipelines=notify_only_broken_pipelines,
+            pipeline_events=pipeline_events,
+            push_events=push_events,
+            tag_push_events=tag_push_events,
+            wiki_page_events=wiki_page_events,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: pulumi.Input[str],
+             webhook: pulumi.Input[str],
+             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
+             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+             confidential_note_events: Optional[pulumi.Input[bool]] = None,
+             issues_events: Optional[pulumi.Input[bool]] = None,
+             merge_requests_events: Optional[pulumi.Input[bool]] = None,
+             note_events: Optional[pulumi.Input[bool]] = None,
+             notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
+             pipeline_events: Optional[pulumi.Input[bool]] = None,
+             push_events: Optional[pulumi.Input[bool]] = None,
+             tag_push_events: Optional[pulumi.Input[bool]] = None,
+             wiki_page_events: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project", project)
+        _setter("webhook", webhook)
         if branches_to_be_notified is not None:
-            pulumi.set(__self__, "branches_to_be_notified", branches_to_be_notified)
+            _setter("branches_to_be_notified", branches_to_be_notified)
         if confidential_issues_events is not None:
-            pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+            _setter("confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
-            pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+            _setter("confidential_note_events", confidential_note_events)
         if issues_events is not None:
-            pulumi.set(__self__, "issues_events", issues_events)
+            _setter("issues_events", issues_events)
         if merge_requests_events is not None:
-            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+            _setter("merge_requests_events", merge_requests_events)
         if note_events is not None:
-            pulumi.set(__self__, "note_events", note_events)
+            _setter("note_events", note_events)
         if notify_only_broken_pipelines is not None:
-            pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
+            _setter("notify_only_broken_pipelines", notify_only_broken_pipelines)
         if pipeline_events is not None:
-            pulumi.set(__self__, "pipeline_events", pipeline_events)
+            _setter("pipeline_events", pipeline_events)
         if push_events is not None:
-            pulumi.set(__self__, "push_events", push_events)
+            _setter("push_events", push_events)
         if tag_push_events is not None:
-            pulumi.set(__self__, "tag_push_events", tag_push_events)
+            _setter("tag_push_events", tag_push_events)
         if wiki_page_events is not None:
-            pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+            _setter("wiki_page_events", wiki_page_events)
 
     @property
     @pulumi.getter
@@ -263,38 +296,77 @@ class _IntegrationMicrosoftTeamsState:
         :param pulumi.Input[str] webhook: The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events
         """
+        _IntegrationMicrosoftTeamsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            branches_to_be_notified=branches_to_be_notified,
+            confidential_issues_events=confidential_issues_events,
+            confidential_note_events=confidential_note_events,
+            created_at=created_at,
+            issues_events=issues_events,
+            merge_requests_events=merge_requests_events,
+            note_events=note_events,
+            notify_only_broken_pipelines=notify_only_broken_pipelines,
+            pipeline_events=pipeline_events,
+            project=project,
+            push_events=push_events,
+            tag_push_events=tag_push_events,
+            updated_at=updated_at,
+            webhook=webhook,
+            wiki_page_events=wiki_page_events,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
+             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+             confidential_note_events: Optional[pulumi.Input[bool]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             issues_events: Optional[pulumi.Input[bool]] = None,
+             merge_requests_events: Optional[pulumi.Input[bool]] = None,
+             note_events: Optional[pulumi.Input[bool]] = None,
+             notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
+             pipeline_events: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             push_events: Optional[pulumi.Input[bool]] = None,
+             tag_push_events: Optional[pulumi.Input[bool]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             webhook: Optional[pulumi.Input[str]] = None,
+             wiki_page_events: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if branches_to_be_notified is not None:
-            pulumi.set(__self__, "branches_to_be_notified", branches_to_be_notified)
+            _setter("branches_to_be_notified", branches_to_be_notified)
         if confidential_issues_events is not None:
-            pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+            _setter("confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
-            pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+            _setter("confidential_note_events", confidential_note_events)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if issues_events is not None:
-            pulumi.set(__self__, "issues_events", issues_events)
+            _setter("issues_events", issues_events)
         if merge_requests_events is not None:
-            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+            _setter("merge_requests_events", merge_requests_events)
         if note_events is not None:
-            pulumi.set(__self__, "note_events", note_events)
+            _setter("note_events", note_events)
         if notify_only_broken_pipelines is not None:
-            pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
+            _setter("notify_only_broken_pipelines", notify_only_broken_pipelines)
         if pipeline_events is not None:
-            pulumi.set(__self__, "pipeline_events", pipeline_events)
+            _setter("pipeline_events", pipeline_events)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if push_events is not None:
-            pulumi.set(__self__, "push_events", push_events)
+            _setter("push_events", push_events)
         if tag_push_events is not None:
-            pulumi.set(__self__, "tag_push_events", tag_push_events)
+            _setter("tag_push_events", tag_push_events)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if webhook is not None:
-            pulumi.set(__self__, "webhook", webhook)
+            _setter("webhook", webhook)
         if wiki_page_events is not None:
-            pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+            _setter("wiki_page_events", wiki_page_events)
 
     @property
     @pulumi.getter
@@ -596,6 +668,10 @@ class IntegrationMicrosoftTeams(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IntegrationMicrosoftTeamsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

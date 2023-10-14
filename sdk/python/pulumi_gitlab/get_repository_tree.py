@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -128,7 +128,6 @@ def get_repository_tree(path: Optional[str] = None,
     ```
 
 
-    :param str path: The path inside repository. Used to get content of subdirectories.
     :param str project: The ID or full path of the project owned by the authenticated user.
     :param bool recursive: Boolean value used to get a recursive tree (false by default).
     :param str ref: The name of a repository branch or tag.
@@ -174,7 +173,6 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
     ```
 
 
-    :param str path: The path inside repository. Used to get content of subdirectories.
     :param str project: The ID or full path of the project owned by the authenticated user.
     :param bool recursive: Boolean value used to get a recursive tree (false by default).
     :param str ref: The name of a repository branch or tag.

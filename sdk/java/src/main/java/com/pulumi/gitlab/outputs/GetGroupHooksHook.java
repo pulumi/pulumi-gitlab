@@ -15,10 +15,6 @@ public final class GetGroupHooksHook {
     private Boolean confidentialNoteEvents;
     private Boolean deploymentEvents;
     private Boolean enableSslVerification;
-    /**
-     * @return The ID or full path of the group.
-     * 
-     */
     private String group;
     private Integer groupId;
     private Integer hookId;
@@ -49,10 +45,6 @@ public final class GetGroupHooksHook {
     public Boolean enableSslVerification() {
         return this.enableSslVerification;
     }
-    /**
-     * @return The ID or full path of the group.
-     * 
-     */
     public String group() {
         return this.group;
     }

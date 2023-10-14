@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -99,10 +99,6 @@ def get_project_variables(environment_scope: Optional[str] = None,
     staging_vars = gitlab.get_project_variables(environment_scope="staging/*",
         project="my/example/project")
     ```
-
-
-    :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
-    :param str project: The name or id of the project.
     """
     __args__ = dict()
     __args__['environmentScope'] = environment_scope
@@ -136,9 +132,5 @@ def get_project_variables_output(environment_scope: Optional[pulumi.Input[Option
     staging_vars = gitlab.get_project_variables(environment_scope="staging/*",
         project="my/example/project")
     ```
-
-
-    :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
-    :param str project: The name or id of the project.
     """
     ...

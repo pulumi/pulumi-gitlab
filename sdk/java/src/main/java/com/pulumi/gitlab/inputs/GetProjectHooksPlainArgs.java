@@ -12,17 +12,9 @@ public final class GetProjectHooksPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetProjectHooksPlainArgs Empty = new GetProjectHooksPlainArgs();
 
-    /**
-     * The name or id of the project.
-     * 
-     */
     @Import(name="project", required=true)
     private String project;
 
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     public String project() {
         return this.project;
     }
@@ -51,12 +43,6 @@ public final class GetProjectHooksPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetProjectHooksPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param project The name or id of the project.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             $.project = project;
             return this;

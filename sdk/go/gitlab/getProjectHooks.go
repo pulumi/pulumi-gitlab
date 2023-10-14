@@ -59,7 +59,6 @@ func GetProjectHooks(ctx *pulumi.Context, args *GetProjectHooksArgs, opts ...pul
 
 // A collection of arguments for invoking getProjectHooks.
 type GetProjectHooksArgs struct {
-	// The name or id of the project.
 	Project string `pulumi:"project"`
 }
 
@@ -88,7 +87,6 @@ func GetProjectHooksOutput(ctx *pulumi.Context, args GetProjectHooksOutputArgs, 
 
 // A collection of arguments for invoking getProjectHooks.
 type GetProjectHooksOutputArgs struct {
-	// The name or id of the project.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 

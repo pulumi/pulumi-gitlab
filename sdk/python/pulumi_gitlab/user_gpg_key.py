@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserGpgKeyArgs', 'UserGpgKey']
@@ -21,9 +21,20 @@ class UserGpgKeyArgs:
         :param pulumi.Input[str] key: The armored GPG public key.
         :param pulumi.Input[int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
-        pulumi.set(__self__, "key", key)
+        UserGpgKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -64,14 +75,29 @@ class _UserGpgKeyState:
         :param pulumi.Input[int] key_id: The ID of the GPG key.
         :param pulumi.Input[int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
+        _UserGpgKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            key=key,
+            key_id=key_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             key_id: Optional[pulumi.Input[int]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if key_id is not None:
-            pulumi.set(__self__, "key_id", key_id)
+            _setter("key_id", key_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -231,6 +257,10 @@ class UserGpgKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserGpgKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

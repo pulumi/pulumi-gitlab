@@ -58,32 +58,16 @@ public final class ProjectTagCommitArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.committerName);
     }
 
-    /**
-     * The ID of this resource.
-     * 
-     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * The message of the annotated tag.
-     * 
-     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
-    /**
-     * @return The message of the annotated tag.
-     * 
-     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
@@ -197,44 +181,20 @@ public final class ProjectTagCommitArgs extends com.pulumi.resources.ResourceArg
             return committerName(Output.of(committerName));
         }
 
-        /**
-         * @param id The ID of this resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param id The ID of this resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
-        /**
-         * @param message The message of the annotated tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
-        /**
-         * @param message The message of the annotated tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder message(String message) {
             return message(Output.of(message));
         }

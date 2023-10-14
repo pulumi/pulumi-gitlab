@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,12 +27,27 @@ class ProjectTagArgs:
         :param pulumi.Input[str] message: The message of the annotated tag.
         :param pulumi.Input[str] name: The name of a tag.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "ref", ref)
+        ProjectTagArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            ref=ref,
+            message=message,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: pulumi.Input[str],
+             ref: pulumi.Input[str],
+             message: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project", project)
+        _setter("ref", ref)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -105,22 +120,45 @@ class _ProjectTagState:
         :param pulumi.Input[Sequence[pulumi.Input['ProjectTagReleaseArgs']]] releases: The release associated with the tag.
         :param pulumi.Input[str] target: The unique id assigned to the commit by Gitlab.
         """
+        _ProjectTagState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            commits=commits,
+            message=message,
+            name=name,
+            project=project,
+            protected=protected,
+            ref=ref,
+            releases=releases,
+            target=target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             commits: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagCommitArgs']]]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             protected: Optional[pulumi.Input[bool]] = None,
+             ref: Optional[pulumi.Input[str]] = None,
+             releases: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagReleaseArgs']]]] = None,
+             target: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if commits is not None:
-            pulumi.set(__self__, "commits", commits)
+            _setter("commits", commits)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if protected is not None:
-            pulumi.set(__self__, "protected", protected)
+            _setter("protected", protected)
         if ref is not None:
-            pulumi.set(__self__, "ref", ref)
+            _setter("ref", ref)
         if releases is not None:
-            pulumi.set(__self__, "releases", releases)
+            _setter("releases", releases)
         if target is not None:
-            pulumi.set(__self__, "target", target)
+            _setter("target", target)
 
     @property
     @pulumi.getter
@@ -312,6 +350,10 @@ class ProjectTag(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectTagArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

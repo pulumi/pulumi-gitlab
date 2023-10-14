@@ -12,9 +12,6 @@ export interface BranchCommit {
     committedDate?: pulumi.Input<string>;
     committerEmail?: pulumi.Input<string>;
     committerName?: pulumi.Input<string>;
-    /**
-     * The ID of this resource.
-     */
     id?: pulumi.Input<string>;
     message?: pulumi.Input<string>;
     parentIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -282,13 +279,7 @@ export interface ProjectTagCommit {
     committedDate?: pulumi.Input<string>;
     committerEmail?: pulumi.Input<string>;
     committerName?: pulumi.Input<string>;
-    /**
-     * The ID of this resource.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The message of the annotated tag.
-     */
     message?: pulumi.Input<string>;
     parentIds?: pulumi.Input<pulumi.Input<string>[]>;
     shortId?: pulumi.Input<string>;

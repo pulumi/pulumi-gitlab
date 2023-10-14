@@ -25,9 +25,6 @@ export function getUserSshkeys(args?: GetUserSshkeysArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getUserSshkeys.
  */
 export interface GetUserSshkeysArgs {
-    /**
-     * ID of the user to get the SSH keys for.
-     */
     userId?: number;
     /**
      * Username of the user to get the SSH keys for.
@@ -69,9 +66,6 @@ export function getUserSshkeysOutput(args?: GetUserSshkeysOutputArgs, opts?: pul
  * A collection of arguments for invoking getUserSshkeys.
  */
 export interface GetUserSshkeysOutputArgs {
-    /**
-     * ID of the user to get the SSH keys for.
-     */
     userId?: pulumi.Input<number>;
     /**
      * Username of the user to get the SSH keys for.

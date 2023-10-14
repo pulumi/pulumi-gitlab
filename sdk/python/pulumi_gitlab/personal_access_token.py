@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PersonalAccessTokenArgs', 'PersonalAccessToken']
@@ -25,11 +25,26 @@ class PersonalAccessTokenArgs:
         :param pulumi.Input[int] user_id: The id of the user.
         :param pulumi.Input[str] name: The name of the personal access token.
         """
-        pulumi.set(__self__, "expires_at", expires_at)
-        pulumi.set(__self__, "scopes", scopes)
-        pulumi.set(__self__, "user_id", user_id)
+        PersonalAccessTokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expires_at=expires_at,
+            scopes=scopes,
+            user_id=user_id,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expires_at: pulumi.Input[str],
+             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             user_id: pulumi.Input[int],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expires_at", expires_at)
+        _setter("scopes", scopes)
+        _setter("user_id", user_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="expiresAt")
@@ -102,22 +117,45 @@ class _PersonalAccessTokenState:
         :param pulumi.Input[str] token: The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
         :param pulumi.Input[int] user_id: The id of the user.
         """
+        _PersonalAccessTokenState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            created_at=created_at,
+            expires_at=expires_at,
+            name=name,
+            revoked=revoked,
+            scopes=scopes,
+            token=token,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             expires_at: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             revoked: Optional[pulumi.Input[bool]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if revoked is not None:
-            pulumi.set(__self__, "revoked", revoked)
+            _setter("revoked", revoked)
         if scopes is not None:
-            pulumi.set(__self__, "scopes", scopes)
+            _setter("scopes", scopes)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -315,6 +353,10 @@ class PersonalAccessToken(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PersonalAccessTokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

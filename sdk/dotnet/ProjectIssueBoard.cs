@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     public partial class ProjectIssueBoard : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The assignee the board should be scoped to. Requires a GitLab EE license.
+        /// The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
         /// </summary>
         [Output("assigneeId")]
         public Output<int?> AssigneeId { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<Outputs.ProjectIssueBoardList>> Lists { get; private set; } = null!;
 
         /// <summary>
-        /// The milestone the board should be scoped to. Requires a GitLab EE license.
+        /// The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
         /// </summary>
         [Output("milestoneId")]
         public Output<int?> MilestoneId { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectIssueBoardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The assignee the board should be scoped to. Requires a GitLab EE license.
+        /// The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
         /// </summary>
         [Input("assigneeId")]
         public Input<int>? AssigneeId { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The milestone the board should be scoped to. Requires a GitLab EE license.
+        /// The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
         /// </summary>
         [Input("milestoneId")]
         public Input<int>? MilestoneId { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectIssueBoardState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The assignee the board should be scoped to. Requires a GitLab EE license.
+        /// The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
         /// </summary>
         [Input("assigneeId")]
         public Input<int>? AssigneeId { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The milestone the board should be scoped to. Requires a GitLab EE license.
+        /// The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
         /// </summary>
         [Input("milestoneId")]
         public Input<int>? MilestoneId { get; set; }

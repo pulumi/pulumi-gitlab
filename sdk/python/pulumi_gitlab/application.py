@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationArgs', 'Application']
@@ -26,12 +26,27 @@ class ApplicationArgs:
         :param pulumi.Input[bool] confidential: The application is used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential. Defaults to true if not supplied
         :param pulumi.Input[str] name: Name of the application.
         """
-        pulumi.set(__self__, "redirect_url", redirect_url)
-        pulumi.set(__self__, "scopes", scopes)
+        ApplicationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            redirect_url=redirect_url,
+            scopes=scopes,
+            confidential=confidential,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             redirect_url: pulumi.Input[str],
+             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             confidential: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("redirect_url", redirect_url)
+        _setter("scopes", scopes)
         if confidential is not None:
-            pulumi.set(__self__, "confidential", confidential)
+            _setter("confidential", confidential)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="redirectUrl")
@@ -102,18 +117,37 @@ class _ApplicationState:
                This is only populated when creating a new application. This attribute is not available for imported resources
         :param pulumi.Input[str] secret: Application secret. Sensitive and must be kept secret. This is only populated when creating a new application. This attribute is not available for imported resources.
         """
+        _ApplicationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            confidential=confidential,
+            name=name,
+            redirect_url=redirect_url,
+            scopes=scopes,
+            secret=secret,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
+             confidential: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             redirect_url: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if confidential is not None:
-            pulumi.set(__self__, "confidential", confidential)
+            _setter("confidential", confidential)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if redirect_url is not None:
-            pulumi.set(__self__, "redirect_url", redirect_url)
+            _setter("redirect_url", redirect_url)
         if scopes is not None:
-            pulumi.set(__self__, "scopes", scopes)
+            _setter("scopes", scopes)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -283,6 +317,10 @@ class Application(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -75,9 +75,6 @@ def get_group_hooks(group: Optional[str] = None,
     The `get_group_hooks` data source allows to retrieve details about hooks in a group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-group-hooks)
-
-
-    :param str group: The ID or full path of the group.
     """
     __args__ = dict()
     __args__['group'] = group
@@ -97,8 +94,5 @@ def get_group_hooks_output(group: Optional[pulumi.Input[str]] = None,
     The `get_group_hooks` data source allows to retrieve details about hooks in a group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-group-hooks)
-
-
-    :param str group: The ID or full path of the group.
     """
     ...

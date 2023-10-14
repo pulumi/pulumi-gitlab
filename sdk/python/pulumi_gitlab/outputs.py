@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -116,31 +116,57 @@ class BranchCommit(dict):
                  parent_ids: Optional[Sequence[str]] = None,
                  short_id: Optional[str] = None,
                  title: Optional[str] = None):
-        """
-        :param str id: The ID of this resource.
-        """
+        BranchCommit._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email=author_email,
+            author_name=author_name,
+            authored_date=authored_date,
+            committed_date=committed_date,
+            committer_email=committer_email,
+            committer_name=committer_name,
+            id=id,
+            message=message,
+            parent_ids=parent_ids,
+            short_id=short_id,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email: Optional[str] = None,
+             author_name: Optional[str] = None,
+             authored_date: Optional[str] = None,
+             committed_date: Optional[str] = None,
+             committer_email: Optional[str] = None,
+             committer_name: Optional[str] = None,
+             id: Optional[str] = None,
+             message: Optional[str] = None,
+             parent_ids: Optional[Sequence[str]] = None,
+             short_id: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if author_email is not None:
-            pulumi.set(__self__, "author_email", author_email)
+            _setter("author_email", author_email)
         if author_name is not None:
-            pulumi.set(__self__, "author_name", author_name)
+            _setter("author_name", author_name)
         if authored_date is not None:
-            pulumi.set(__self__, "authored_date", authored_date)
+            _setter("authored_date", authored_date)
         if committed_date is not None:
-            pulumi.set(__self__, "committed_date", committed_date)
+            _setter("committed_date", committed_date)
         if committer_email is not None:
-            pulumi.set(__self__, "committer_email", committer_email)
+            _setter("committer_email", committer_email)
         if committer_name is not None:
-            pulumi.set(__self__, "committer_name", committer_name)
+            _setter("committer_name", committer_name)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if parent_ids is not None:
-            pulumi.set(__self__, "parent_ids", parent_ids)
+            _setter("parent_ids", parent_ids)
         if short_id is not None:
-            pulumi.set(__self__, "short_id", short_id)
+            _setter("short_id", short_id)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="authorEmail")
@@ -175,9 +201,6 @@ class BranchCommit(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -237,14 +260,29 @@ class BranchProtectionAllowedToMerge(dict):
         :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
+        BranchProtectionAllowedToMerge._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[str] = None,
+             access_level_description: Optional[str] = None,
+             group_id: Optional[int] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -315,14 +353,29 @@ class BranchProtectionAllowedToPush(dict):
         :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
+        BranchProtectionAllowedToPush._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[str] = None,
+             access_level_description: Optional[str] = None,
+             group_id: Optional[int] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -393,14 +446,29 @@ class BranchProtectionAllowedToUnprotect(dict):
         :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
+        BranchProtectionAllowedToUnprotect._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[str] = None,
+             access_level_description: Optional[str] = None,
+             group_id: Optional[int] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -463,12 +531,25 @@ class GroupEpicBoardList(dict):
         :param int label_id: The ID of the label the list should be scoped to.
         :param int position: The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
         """
+        GroupEpicBoardList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label_id=label_id,
+            position=position,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[int] = None,
+             label_id: Optional[int] = None,
+             position: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if label_id is not None:
-            pulumi.set(__self__, "label_id", label_id)
+            _setter("label_id", label_id)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
 
     @property
     @pulumi.getter
@@ -523,12 +604,25 @@ class GroupIssueBoardList(dict):
         :param int label_id: The ID of the label the list should be scoped to.
         :param int position: The position of the list within the board. The position for the list is based on the its position in the `lists` array.
         """
+        GroupIssueBoardList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            label_id=label_id,
+            position=position,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[int] = None,
+             label_id: Optional[int] = None,
+             position: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if label_id is not None:
-            pulumi.set(__self__, "label_id", label_id)
+            _setter("label_id", label_id)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
 
     @property
     @pulumi.getter
@@ -603,22 +697,45 @@ class ProjectContainerExpirationPolicy(dict):
         :param str next_run_at: The next time the policy will run.
         :param str older_than: The number of days to keep images.
         """
+        ProjectContainerExpirationPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cadence=cadence,
+            enabled=enabled,
+            keep_n=keep_n,
+            name_regex=name_regex,
+            name_regex_delete=name_regex_delete,
+            name_regex_keep=name_regex_keep,
+            next_run_at=next_run_at,
+            older_than=older_than,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cadence: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             keep_n: Optional[int] = None,
+             name_regex: Optional[str] = None,
+             name_regex_delete: Optional[str] = None,
+             name_regex_keep: Optional[str] = None,
+             next_run_at: Optional[str] = None,
+             older_than: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cadence is not None:
-            pulumi.set(__self__, "cadence", cadence)
+            _setter("cadence", cadence)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if keep_n is not None:
-            pulumi.set(__self__, "keep_n", keep_n)
+            _setter("keep_n", keep_n)
         if name_regex is not None:
-            pulumi.set(__self__, "name_regex", name_regex)
+            _setter("name_regex", name_regex)
         if name_regex_delete is not None:
-            pulumi.set(__self__, "name_regex_delete", name_regex_delete)
+            _setter("name_regex_delete", name_regex_delete)
         if name_regex_keep is not None:
-            pulumi.set(__self__, "name_regex_keep", name_regex_keep)
+            _setter("name_regex_keep", name_regex_keep)
         if next_run_at is not None:
-            pulumi.set(__self__, "next_run_at", next_run_at)
+            _setter("next_run_at", next_run_at)
         if older_than is not None:
-            pulumi.set(__self__, "older_than", older_than)
+            _setter("older_than", older_than)
 
     @property
     @pulumi.getter
@@ -728,18 +845,37 @@ class ProjectIssueBoardList(dict):
         :param int milestone_id: The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
         :param int position: The position of the list within the board. The position for the list is based on the its position in the `lists` array.
         """
+        ProjectIssueBoardList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assignee_id=assignee_id,
+            id=id,
+            iteration_id=iteration_id,
+            label_id=label_id,
+            milestone_id=milestone_id,
+            position=position,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assignee_id: Optional[int] = None,
+             id: Optional[int] = None,
+             iteration_id: Optional[int] = None,
+             label_id: Optional[int] = None,
+             milestone_id: Optional[int] = None,
+             position: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if assignee_id is not None:
-            pulumi.set(__self__, "assignee_id", assignee_id)
+            _setter("assignee_id", assignee_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if iteration_id is not None:
-            pulumi.set(__self__, "iteration_id", iteration_id)
+            _setter("iteration_id", iteration_id)
         if label_id is not None:
-            pulumi.set(__self__, "label_id", label_id)
+            _setter("label_id", label_id)
         if milestone_id is not None:
-            pulumi.set(__self__, "milestone_id", milestone_id)
+            _setter("milestone_id", milestone_id)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
 
     @property
     @pulumi.getter(name="assigneeId")
@@ -812,10 +948,21 @@ class ProjectIssueTaskCompletionStatus(dict):
     def __init__(__self__, *,
                  completed_count: Optional[int] = None,
                  count: Optional[int] = None):
+        ProjectIssueTaskCompletionStatus._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            completed_count=completed_count,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             completed_count: Optional[int] = None,
+             count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if completed_count is not None:
-            pulumi.set(__self__, "completed_count", completed_count)
+            _setter("completed_count", completed_count)
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
 
     @property
     @pulumi.getter(name="completedCount")
@@ -870,18 +1017,37 @@ class ProjectProtectedEnvironmentApprovalRule(dict):
         :param int required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
         :param int user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
         """
+        ProjectProtectedEnvironmentApprovalRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            id=id,
+            required_approvals=required_approvals,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[str] = None,
+             access_level_description: Optional[str] = None,
+             group_id: Optional[int] = None,
+             id: Optional[int] = None,
+             required_approvals: Optional[int] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if required_approvals is not None:
-            pulumi.set(__self__, "required_approvals", required_approvals)
+            _setter("required_approvals", required_approvals)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -970,16 +1136,33 @@ class ProjectProtectedEnvironmentDeployAccessLevel(dict):
         :param int id: The unique ID of the Deploy Access Level object.
         :param int user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
         """
+        ProjectProtectedEnvironmentDeployAccessLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            id=id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[str] = None,
+             access_level_description: Optional[str] = None,
+             group_id: Optional[int] = None,
+             id: Optional[int] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -1086,28 +1269,57 @@ class ProjectPushRules(dict):
         :param bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
         :param bool reject_unsigned_commits: Reject commit when it’s not signed through GPG.
         """
+        ProjectPushRules._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email_regex=author_email_regex,
+            branch_name_regex=branch_name_regex,
+            commit_committer_check=commit_committer_check,
+            commit_message_negative_regex=commit_message_negative_regex,
+            commit_message_regex=commit_message_regex,
+            deny_delete_tag=deny_delete_tag,
+            file_name_regex=file_name_regex,
+            max_file_size=max_file_size,
+            member_check=member_check,
+            prevent_secrets=prevent_secrets,
+            reject_unsigned_commits=reject_unsigned_commits,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email_regex: Optional[str] = None,
+             branch_name_regex: Optional[str] = None,
+             commit_committer_check: Optional[bool] = None,
+             commit_message_negative_regex: Optional[str] = None,
+             commit_message_regex: Optional[str] = None,
+             deny_delete_tag: Optional[bool] = None,
+             file_name_regex: Optional[str] = None,
+             max_file_size: Optional[int] = None,
+             member_check: Optional[bool] = None,
+             prevent_secrets: Optional[bool] = None,
+             reject_unsigned_commits: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if author_email_regex is not None:
-            pulumi.set(__self__, "author_email_regex", author_email_regex)
+            _setter("author_email_regex", author_email_regex)
         if branch_name_regex is not None:
-            pulumi.set(__self__, "branch_name_regex", branch_name_regex)
+            _setter("branch_name_regex", branch_name_regex)
         if commit_committer_check is not None:
-            pulumi.set(__self__, "commit_committer_check", commit_committer_check)
+            _setter("commit_committer_check", commit_committer_check)
         if commit_message_negative_regex is not None:
-            pulumi.set(__self__, "commit_message_negative_regex", commit_message_negative_regex)
+            _setter("commit_message_negative_regex", commit_message_negative_regex)
         if commit_message_regex is not None:
-            pulumi.set(__self__, "commit_message_regex", commit_message_regex)
+            _setter("commit_message_regex", commit_message_regex)
         if deny_delete_tag is not None:
-            pulumi.set(__self__, "deny_delete_tag", deny_delete_tag)
+            _setter("deny_delete_tag", deny_delete_tag)
         if file_name_regex is not None:
-            pulumi.set(__self__, "file_name_regex", file_name_regex)
+            _setter("file_name_regex", file_name_regex)
         if max_file_size is not None:
-            pulumi.set(__self__, "max_file_size", max_file_size)
+            _setter("max_file_size", max_file_size)
         if member_check is not None:
-            pulumi.set(__self__, "member_check", member_check)
+            _setter("member_check", member_check)
         if prevent_secrets is not None:
-            pulumi.set(__self__, "prevent_secrets", prevent_secrets)
+            _setter("prevent_secrets", prevent_secrets)
         if reject_unsigned_commits is not None:
-            pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
+            _setter("reject_unsigned_commits", reject_unsigned_commits)
 
     @property
     @pulumi.getter(name="authorEmailRegex")
@@ -1243,32 +1455,57 @@ class ProjectTagCommit(dict):
                  parent_ids: Optional[Sequence[str]] = None,
                  short_id: Optional[str] = None,
                  title: Optional[str] = None):
-        """
-        :param str id: The ID of this resource.
-        :param str message: The message of the annotated tag.
-        """
+        ProjectTagCommit._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email=author_email,
+            author_name=author_name,
+            authored_date=authored_date,
+            committed_date=committed_date,
+            committer_email=committer_email,
+            committer_name=committer_name,
+            id=id,
+            message=message,
+            parent_ids=parent_ids,
+            short_id=short_id,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email: Optional[str] = None,
+             author_name: Optional[str] = None,
+             authored_date: Optional[str] = None,
+             committed_date: Optional[str] = None,
+             committer_email: Optional[str] = None,
+             committer_name: Optional[str] = None,
+             id: Optional[str] = None,
+             message: Optional[str] = None,
+             parent_ids: Optional[Sequence[str]] = None,
+             short_id: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if author_email is not None:
-            pulumi.set(__self__, "author_email", author_email)
+            _setter("author_email", author_email)
         if author_name is not None:
-            pulumi.set(__self__, "author_name", author_name)
+            _setter("author_name", author_name)
         if authored_date is not None:
-            pulumi.set(__self__, "authored_date", authored_date)
+            _setter("authored_date", authored_date)
         if committed_date is not None:
-            pulumi.set(__self__, "committed_date", committed_date)
+            _setter("committed_date", committed_date)
         if committer_email is not None:
-            pulumi.set(__self__, "committer_email", committer_email)
+            _setter("committer_email", committer_email)
         if committer_name is not None:
-            pulumi.set(__self__, "committer_name", committer_name)
+            _setter("committer_name", committer_name)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if parent_ids is not None:
-            pulumi.set(__self__, "parent_ids", parent_ids)
+            _setter("parent_ids", parent_ids)
         if short_id is not None:
-            pulumi.set(__self__, "short_id", short_id)
+            _setter("short_id", short_id)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="authorEmail")
@@ -1303,17 +1540,11 @@ class ProjectTagCommit(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
-        """
-        The message of the annotated tag.
-        """
         return pulumi.get(self, "message")
 
     @property
@@ -1354,10 +1585,21 @@ class ProjectTagRelease(dict):
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  tag_name: Optional[str] = None):
+        ProjectTagRelease._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            tag_name=tag_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             tag_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if tag_name is not None:
-            pulumi.set(__self__, "tag_name", tag_name)
+            _setter("tag_name", tag_name)
 
     @property
     @pulumi.getter
@@ -1406,14 +1648,29 @@ class TagProtectionAllowedToCreate(dict):
         :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
+        TagProtectionAllowedToCreate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[str] = None,
+             access_level_description: Optional[str] = None,
+             group_id: Optional[int] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
+            _setter("access_level_description", access_level_description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -1462,20 +1719,46 @@ class GetBranchCommitResult(dict):
                  parent_ids: Sequence[str],
                  short_id: str,
                  title: str):
-        """
-        :param str id: The ID of this resource.
-        """
-        pulumi.set(__self__, "author_email", author_email)
-        pulumi.set(__self__, "author_name", author_name)
-        pulumi.set(__self__, "authored_date", authored_date)
-        pulumi.set(__self__, "committed_date", committed_date)
-        pulumi.set(__self__, "committer_email", committer_email)
-        pulumi.set(__self__, "committer_name", committer_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "parent_ids", parent_ids)
-        pulumi.set(__self__, "short_id", short_id)
-        pulumi.set(__self__, "title", title)
+        GetBranchCommitResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email=author_email,
+            author_name=author_name,
+            authored_date=authored_date,
+            committed_date=committed_date,
+            committer_email=committer_email,
+            committer_name=committer_name,
+            id=id,
+            message=message,
+            parent_ids=parent_ids,
+            short_id=short_id,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email: str,
+             author_name: str,
+             authored_date: str,
+             committed_date: str,
+             committer_email: str,
+             committer_name: str,
+             id: str,
+             message: str,
+             parent_ids: Sequence[str],
+             short_id: str,
+             title: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("author_email", author_email)
+        _setter("author_name", author_name)
+        _setter("authored_date", authored_date)
+        _setter("committed_date", committed_date)
+        _setter("committer_email", committer_email)
+        _setter("committer_name", committer_name)
+        _setter("id", id)
+        _setter("message", message)
+        _setter("parent_ids", parent_ids)
+        _setter("short_id", short_id)
+        _setter("title", title)
 
     @property
     @pulumi.getter(name="authorEmail")
@@ -1510,9 +1793,6 @@ class GetBranchCommitResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -1544,14 +1824,28 @@ class GetClusterAgentsClusterAgentResult(dict):
                  created_by_user_id: int,
                  name: str,
                  project: str):
-        """
-        :param str project: The ID or full path of the project owned by the authenticated user.
-        """
-        pulumi.set(__self__, "agent_id", agent_id)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "created_by_user_id", created_by_user_id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project", project)
+        GetClusterAgentsClusterAgentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            agent_id=agent_id,
+            created_at=created_at,
+            created_by_user_id=created_by_user_id,
+            name=name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             agent_id: int,
+             created_at: str,
+             created_by_user_id: int,
+             name: str,
+             project: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("agent_id", agent_id)
+        _setter("created_at", created_at)
+        _setter("created_by_user_id", created_by_user_id)
+        _setter("name", name)
+        _setter("project", project)
 
     @property
     @pulumi.getter(name="agentId")
@@ -1576,9 +1870,6 @@ class GetClusterAgentsClusterAgentResult(dict):
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        The ID or full path of the project owned by the authenticated user.
-        """
         return pulumi.get(self, "project")
 
 
@@ -1605,29 +1896,73 @@ class GetGroupHooksHookResult(dict):
                  token: str,
                  url: str,
                  wiki_page_events: bool):
-        """
-        :param str group: The ID or full path of the group.
-        """
-        pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
-        pulumi.set(__self__, "confidential_note_events", confidential_note_events)
-        pulumi.set(__self__, "deployment_events", deployment_events)
-        pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "hook_id", hook_id)
-        pulumi.set(__self__, "issues_events", issues_events)
-        pulumi.set(__self__, "job_events", job_events)
-        pulumi.set(__self__, "merge_requests_events", merge_requests_events)
-        pulumi.set(__self__, "note_events", note_events)
-        pulumi.set(__self__, "pipeline_events", pipeline_events)
-        pulumi.set(__self__, "push_events", push_events)
-        pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
-        pulumi.set(__self__, "releases_events", releases_events)
-        pulumi.set(__self__, "subgroup_events", subgroup_events)
-        pulumi.set(__self__, "tag_push_events", tag_push_events)
-        pulumi.set(__self__, "token", token)
-        pulumi.set(__self__, "url", url)
-        pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+        GetGroupHooksHookResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            confidential_issues_events=confidential_issues_events,
+            confidential_note_events=confidential_note_events,
+            deployment_events=deployment_events,
+            enable_ssl_verification=enable_ssl_verification,
+            group=group,
+            group_id=group_id,
+            hook_id=hook_id,
+            issues_events=issues_events,
+            job_events=job_events,
+            merge_requests_events=merge_requests_events,
+            note_events=note_events,
+            pipeline_events=pipeline_events,
+            push_events=push_events,
+            push_events_branch_filter=push_events_branch_filter,
+            releases_events=releases_events,
+            subgroup_events=subgroup_events,
+            tag_push_events=tag_push_events,
+            token=token,
+            url=url,
+            wiki_page_events=wiki_page_events,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             confidential_issues_events: bool,
+             confidential_note_events: bool,
+             deployment_events: bool,
+             enable_ssl_verification: bool,
+             group: str,
+             group_id: int,
+             hook_id: int,
+             issues_events: bool,
+             job_events: bool,
+             merge_requests_events: bool,
+             note_events: bool,
+             pipeline_events: bool,
+             push_events: bool,
+             push_events_branch_filter: str,
+             releases_events: bool,
+             subgroup_events: bool,
+             tag_push_events: bool,
+             token: str,
+             url: str,
+             wiki_page_events: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("confidential_issues_events", confidential_issues_events)
+        _setter("confidential_note_events", confidential_note_events)
+        _setter("deployment_events", deployment_events)
+        _setter("enable_ssl_verification", enable_ssl_verification)
+        _setter("group", group)
+        _setter("group_id", group_id)
+        _setter("hook_id", hook_id)
+        _setter("issues_events", issues_events)
+        _setter("job_events", job_events)
+        _setter("merge_requests_events", merge_requests_events)
+        _setter("note_events", note_events)
+        _setter("pipeline_events", pipeline_events)
+        _setter("push_events", push_events)
+        _setter("push_events_branch_filter", push_events_branch_filter)
+        _setter("releases_events", releases_events)
+        _setter("subgroup_events", subgroup_events)
+        _setter("tag_push_events", tag_push_events)
+        _setter("token", token)
+        _setter("url", url)
+        _setter("wiki_page_events", wiki_page_events)
 
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -1652,9 +1987,6 @@ class GetGroupHooksHookResult(dict):
     @property
     @pulumi.getter
     def group(self) -> str:
-        """
-        The ID or full path of the group.
-        """
         return pulumi.get(self, "group")
 
     @property
@@ -1744,25 +2076,41 @@ class GetGroupMembershipMemberResult(dict):
                  state: str,
                  username: str,
                  web_url: str):
-        """
-        :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        :param int id: The ID of this resource.
-        """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "avatar_url", avatar_url)
-        pulumi.set(__self__, "expires_at", expires_at)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "username", username)
-        pulumi.set(__self__, "web_url", web_url)
+        GetGroupMembershipMemberResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            avatar_url=avatar_url,
+            expires_at=expires_at,
+            id=id,
+            name=name,
+            state=state,
+            username=username,
+            web_url=web_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: str,
+             avatar_url: str,
+             expires_at: str,
+             id: int,
+             name: str,
+             state: str,
+             username: str,
+             web_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_level", access_level)
+        _setter("avatar_url", avatar_url)
+        _setter("expires_at", expires_at)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("state", state)
+        _setter("username", username)
+        _setter("web_url", web_url)
 
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
-        """
-        Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        """
         return pulumi.get(self, "access_level")
 
     @property
@@ -1778,9 +2126,6 @@ class GetGroupMembershipMemberResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -1833,36 +2178,91 @@ class GetGroupSubgroupsSubgroupResult(dict):
                  visibility: str,
                  web_url: str,
                  wiki_access_level: str):
-        """
-        :param int group_id: The ID of the group.
-        :param Mapping[str, str] statistics: Include group statistics (administrators only).
-        """
-        pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
-        pulumi.set(__self__, "avatar_url", avatar_url)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "default_branch_protection", default_branch_protection)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "emails_disabled", emails_disabled)
-        pulumi.set(__self__, "file_template_project_id", file_template_project_id)
-        pulumi.set(__self__, "full_name", full_name)
-        pulumi.set(__self__, "full_path", full_path)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
-        pulumi.set(__self__, "lfs_enabled", lfs_enabled)
-        pulumi.set(__self__, "mentions_disabled", mentions_disabled)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "parent_id", parent_id)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "project_creation_level", project_creation_level)
-        pulumi.set(__self__, "request_access_enabled", request_access_enabled)
-        pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
-        pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
-        pulumi.set(__self__, "statistics", statistics)
-        pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
-        pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
-        pulumi.set(__self__, "visibility", visibility)
-        pulumi.set(__self__, "web_url", web_url)
-        pulumi.set(__self__, "wiki_access_level", wiki_access_level)
+        GetGroupSubgroupsSubgroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_devops_enabled=auto_devops_enabled,
+            avatar_url=avatar_url,
+            created_at=created_at,
+            default_branch_protection=default_branch_protection,
+            description=description,
+            emails_disabled=emails_disabled,
+            file_template_project_id=file_template_project_id,
+            full_name=full_name,
+            full_path=full_path,
+            group_id=group_id,
+            ip_restriction_ranges=ip_restriction_ranges,
+            lfs_enabled=lfs_enabled,
+            mentions_disabled=mentions_disabled,
+            name=name,
+            parent_id=parent_id,
+            path=path,
+            project_creation_level=project_creation_level,
+            request_access_enabled=request_access_enabled,
+            require_two_factor_authentication=require_two_factor_authentication,
+            share_with_group_lock=share_with_group_lock,
+            statistics=statistics,
+            subgroup_creation_level=subgroup_creation_level,
+            two_factor_grace_period=two_factor_grace_period,
+            visibility=visibility,
+            web_url=web_url,
+            wiki_access_level=wiki_access_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_devops_enabled: bool,
+             avatar_url: str,
+             created_at: str,
+             default_branch_protection: int,
+             description: str,
+             emails_disabled: bool,
+             file_template_project_id: int,
+             full_name: str,
+             full_path: str,
+             group_id: int,
+             ip_restriction_ranges: str,
+             lfs_enabled: bool,
+             mentions_disabled: bool,
+             name: str,
+             parent_id: int,
+             path: str,
+             project_creation_level: str,
+             request_access_enabled: bool,
+             require_two_factor_authentication: bool,
+             share_with_group_lock: bool,
+             statistics: Mapping[str, str],
+             subgroup_creation_level: str,
+             two_factor_grace_period: int,
+             visibility: str,
+             web_url: str,
+             wiki_access_level: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_devops_enabled", auto_devops_enabled)
+        _setter("avatar_url", avatar_url)
+        _setter("created_at", created_at)
+        _setter("default_branch_protection", default_branch_protection)
+        _setter("description", description)
+        _setter("emails_disabled", emails_disabled)
+        _setter("file_template_project_id", file_template_project_id)
+        _setter("full_name", full_name)
+        _setter("full_path", full_path)
+        _setter("group_id", group_id)
+        _setter("ip_restriction_ranges", ip_restriction_ranges)
+        _setter("lfs_enabled", lfs_enabled)
+        _setter("mentions_disabled", mentions_disabled)
+        _setter("name", name)
+        _setter("parent_id", parent_id)
+        _setter("path", path)
+        _setter("project_creation_level", project_creation_level)
+        _setter("request_access_enabled", request_access_enabled)
+        _setter("require_two_factor_authentication", require_two_factor_authentication)
+        _setter("share_with_group_lock", share_with_group_lock)
+        _setter("statistics", statistics)
+        _setter("subgroup_creation_level", subgroup_creation_level)
+        _setter("two_factor_grace_period", two_factor_grace_period)
+        _setter("visibility", visibility)
+        _setter("web_url", web_url)
+        _setter("wiki_access_level", wiki_access_level)
 
     @property
     @pulumi.getter(name="autoDevopsEnabled")
@@ -1912,9 +2312,6 @@ class GetGroupSubgroupsSubgroupResult(dict):
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
-        """
-        The ID of the group.
-        """
         return pulumi.get(self, "group_id")
 
     @property
@@ -1970,9 +2367,6 @@ class GetGroupSubgroupsSubgroupResult(dict):
     @property
     @pulumi.getter
     def statistics(self) -> Mapping[str, str]:
-        """
-        Include group statistics (administrators only).
-        """
         return pulumi.get(self, "statistics")
 
     @property
@@ -2012,33 +2406,46 @@ class GetGroupVariablesVariableResult(dict):
                  raw: bool,
                  value: str,
                  variable_type: str):
-        """
-        :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
-        :param str group: The name or id of the group.
-        """
-        pulumi.set(__self__, "environment_scope", environment_scope)
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "masked", masked)
-        pulumi.set(__self__, "protected", protected)
-        pulumi.set(__self__, "raw", raw)
-        pulumi.set(__self__, "value", value)
-        pulumi.set(__self__, "variable_type", variable_type)
+        GetGroupVariablesVariableResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            environment_scope=environment_scope,
+            group=group,
+            key=key,
+            masked=masked,
+            protected=protected,
+            raw=raw,
+            value=value,
+            variable_type=variable_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             environment_scope: str,
+             group: str,
+             key: str,
+             masked: bool,
+             protected: bool,
+             raw: bool,
+             value: str,
+             variable_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("environment_scope", environment_scope)
+        _setter("group", group)
+        _setter("key", key)
+        _setter("masked", masked)
+        _setter("protected", protected)
+        _setter("raw", raw)
+        _setter("value", value)
+        _setter("variable_type", variable_type)
 
     @property
     @pulumi.getter(name="environmentScope")
     def environment_scope(self) -> str:
-        """
-        The environment scope of the variable. Defaults to all environment (`*`).
-        """
         return pulumi.get(self, "environment_scope")
 
     @property
     @pulumi.getter
     def group(self) -> str:
-        """
-        The name or id of the group.
-        """
         return pulumi.get(self, "group")
 
     @property
@@ -2090,21 +2497,58 @@ class GetGroupsGroupResult(dict):
                  visibility_level: str,
                  web_url: str,
                  wiki_access_level: str):
-        pulumi.set(__self__, "default_branch_protection", default_branch_protection)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "full_name", full_name)
-        pulumi.set(__self__, "full_path", full_path)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "lfs_enabled", lfs_enabled)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "parent_id", parent_id)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
-        pulumi.set(__self__, "request_access_enabled", request_access_enabled)
-        pulumi.set(__self__, "runners_token", runners_token)
-        pulumi.set(__self__, "visibility_level", visibility_level)
-        pulumi.set(__self__, "web_url", web_url)
-        pulumi.set(__self__, "wiki_access_level", wiki_access_level)
+        GetGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_branch_protection=default_branch_protection,
+            description=description,
+            full_name=full_name,
+            full_path=full_path,
+            group_id=group_id,
+            lfs_enabled=lfs_enabled,
+            name=name,
+            parent_id=parent_id,
+            path=path,
+            prevent_forking_outside_group=prevent_forking_outside_group,
+            request_access_enabled=request_access_enabled,
+            runners_token=runners_token,
+            visibility_level=visibility_level,
+            web_url=web_url,
+            wiki_access_level=wiki_access_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_branch_protection: int,
+             description: str,
+             full_name: str,
+             full_path: str,
+             group_id: int,
+             lfs_enabled: bool,
+             name: str,
+             parent_id: int,
+             path: str,
+             prevent_forking_outside_group: bool,
+             request_access_enabled: bool,
+             runners_token: str,
+             visibility_level: str,
+             web_url: str,
+             wiki_access_level: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default_branch_protection", default_branch_protection)
+        _setter("description", description)
+        _setter("full_name", full_name)
+        _setter("full_path", full_path)
+        _setter("group_id", group_id)
+        _setter("lfs_enabled", lfs_enabled)
+        _setter("name", name)
+        _setter("parent_id", parent_id)
+        _setter("path", path)
+        _setter("prevent_forking_outside_group", prevent_forking_outside_group)
+        _setter("request_access_enabled", request_access_enabled)
+        _setter("runners_token", runners_token)
+        _setter("visibility_level", visibility_level)
+        _setter("web_url", web_url)
+        _setter("wiki_access_level", wiki_access_level)
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
@@ -2191,15 +2635,31 @@ class GetInstanceDeployKeysDeployKeyResult(dict):
                  key: str,
                  projects_with_write_accesses: Sequence['outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult'],
                  title: str):
-        """
-        :param int id: The ID of this resource.
-        """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "fingerprint", fingerprint)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "projects_with_write_accesses", projects_with_write_accesses)
-        pulumi.set(__self__, "title", title)
+        GetInstanceDeployKeysDeployKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            fingerprint=fingerprint,
+            id=id,
+            key=key,
+            projects_with_write_accesses=projects_with_write_accesses,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: str,
+             fingerprint: str,
+             id: int,
+             key: str,
+             projects_with_write_accesses: Sequence['outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult'],
+             title: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created_at", created_at)
+        _setter("fingerprint", fingerprint)
+        _setter("id", id)
+        _setter("key", key)
+        _setter("projects_with_write_accesses", projects_with_write_accesses)
+        _setter("title", title)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -2214,9 +2674,6 @@ class GetInstanceDeployKeysDeployKeyResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -2245,16 +2702,34 @@ class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult(dict):
                  name_with_namespace: str,
                  path: str,
                  path_with_namespace: str):
-        """
-        :param int id: The ID of this resource.
-        """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "name_with_namespace", name_with_namespace)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "path_with_namespace", path_with_namespace)
+        GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            description=description,
+            id=id,
+            name=name,
+            name_with_namespace=name_with_namespace,
+            path=path,
+            path_with_namespace=path_with_namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: str,
+             description: str,
+             id: int,
+             name: str,
+             name_with_namespace: str,
+             path: str,
+             path_with_namespace: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created_at", created_at)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("name_with_namespace", name_with_namespace)
+        _setter("path", path)
+        _setter("path_with_namespace", path_with_namespace)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -2269,9 +2744,6 @@ class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -2304,12 +2776,31 @@ class GetInstanceVariablesVariableResult(dict):
                  raw: bool,
                  value: str,
                  variable_type: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "masked", masked)
-        pulumi.set(__self__, "protected", protected)
-        pulumi.set(__self__, "raw", raw)
-        pulumi.set(__self__, "value", value)
-        pulumi.set(__self__, "variable_type", variable_type)
+        GetInstanceVariablesVariableResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            masked=masked,
+            protected=protected,
+            raw=raw,
+            value=value,
+            variable_type=variable_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             masked: bool,
+             protected: bool,
+             raw: bool,
+             value: str,
+             variable_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("masked", masked)
+        _setter("protected", protected)
+        _setter("raw", raw)
+        _setter("value", value)
+        _setter("variable_type", variable_type)
 
     @property
     @pulumi.getter
@@ -2353,9 +2844,22 @@ class GetMetadataKasResult(dict):
         :param str external_url: URL used by the agents to communicate with KAS. It’s null if kas.enabled is false.
         :param str version: Version of KAS. It’s null if kas.enabled is false.
         """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "external_url", external_url)
-        pulumi.set(__self__, "version", version)
+        GetMetadataKasResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            external_url=external_url,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: bool,
+             external_url: str,
+             version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
+        _setter("external_url", external_url)
+        _setter("version", version)
 
     @property
     @pulumi.getter
@@ -2394,15 +2898,40 @@ class GetProjectBranchesBranchResult(dict):
                  name: str,
                  protected: bool,
                  web_url: str):
-        pulumi.set(__self__, "can_push", can_push)
-        pulumi.set(__self__, "commits", commits)
-        pulumi.set(__self__, "default", default)
-        pulumi.set(__self__, "developers_can_merge", developers_can_merge)
-        pulumi.set(__self__, "developers_can_push", developers_can_push)
-        pulumi.set(__self__, "merged", merged)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "protected", protected)
-        pulumi.set(__self__, "web_url", web_url)
+        GetProjectBranchesBranchResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            can_push=can_push,
+            commits=commits,
+            default=default,
+            developers_can_merge=developers_can_merge,
+            developers_can_push=developers_can_push,
+            merged=merged,
+            name=name,
+            protected=protected,
+            web_url=web_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             can_push: bool,
+             commits: Sequence['outputs.GetProjectBranchesBranchCommitResult'],
+             default: bool,
+             developers_can_merge: bool,
+             developers_can_push: bool,
+             merged: bool,
+             name: str,
+             protected: bool,
+             web_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("can_push", can_push)
+        _setter("commits", commits)
+        _setter("default", default)
+        _setter("developers_can_merge", developers_can_merge)
+        _setter("developers_can_push", developers_can_push)
+        _setter("merged", merged)
+        _setter("name", name)
+        _setter("protected", protected)
+        _setter("web_url", web_url)
 
     @property
     @pulumi.getter(name="canPush")
@@ -2464,20 +2993,46 @@ class GetProjectBranchesBranchCommitResult(dict):
                  parent_ids: Sequence[str],
                  short_id: str,
                  title: str):
-        """
-        :param str id: The ID of this resource.
-        """
-        pulumi.set(__self__, "author_email", author_email)
-        pulumi.set(__self__, "author_name", author_name)
-        pulumi.set(__self__, "authored_date", authored_date)
-        pulumi.set(__self__, "committed_date", committed_date)
-        pulumi.set(__self__, "committer_email", committer_email)
-        pulumi.set(__self__, "committer_name", committer_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "parent_ids", parent_ids)
-        pulumi.set(__self__, "short_id", short_id)
-        pulumi.set(__self__, "title", title)
+        GetProjectBranchesBranchCommitResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email=author_email,
+            author_name=author_name,
+            authored_date=authored_date,
+            committed_date=committed_date,
+            committer_email=committer_email,
+            committer_name=committer_name,
+            id=id,
+            message=message,
+            parent_ids=parent_ids,
+            short_id=short_id,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email: str,
+             author_name: str,
+             authored_date: str,
+             committed_date: str,
+             committer_email: str,
+             committer_name: str,
+             id: str,
+             message: str,
+             parent_ids: Sequence[str],
+             short_id: str,
+             title: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("author_email", author_email)
+        _setter("author_name", author_name)
+        _setter("authored_date", authored_date)
+        _setter("committed_date", committed_date)
+        _setter("committer_email", committer_email)
+        _setter("committer_name", committer_name)
+        _setter("id", id)
+        _setter("message", message)
+        _setter("parent_ids", parent_ids)
+        _setter("short_id", short_id)
+        _setter("title", title)
 
     @property
     @pulumi.getter(name="authorEmail")
@@ -2512,9 +3067,6 @@ class GetProjectBranchesBranchCommitResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -2549,14 +3101,37 @@ class GetProjectContainerExpirationPolicyResult(dict):
                  name_regex_keep: str,
                  next_run_at: str,
                  older_than: str):
-        pulumi.set(__self__, "cadence", cadence)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "keep_n", keep_n)
-        pulumi.set(__self__, "name_regex", name_regex)
-        pulumi.set(__self__, "name_regex_delete", name_regex_delete)
-        pulumi.set(__self__, "name_regex_keep", name_regex_keep)
-        pulumi.set(__self__, "next_run_at", next_run_at)
-        pulumi.set(__self__, "older_than", older_than)
+        GetProjectContainerExpirationPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cadence=cadence,
+            enabled=enabled,
+            keep_n=keep_n,
+            name_regex=name_regex,
+            name_regex_delete=name_regex_delete,
+            name_regex_keep=name_regex_keep,
+            next_run_at=next_run_at,
+            older_than=older_than,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cadence: str,
+             enabled: bool,
+             keep_n: int,
+             name_regex: str,
+             name_regex_delete: str,
+             name_regex_keep: str,
+             next_run_at: str,
+             older_than: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cadence", cadence)
+        _setter("enabled", enabled)
+        _setter("keep_n", keep_n)
+        _setter("name_regex", name_regex)
+        _setter("name_regex_delete", name_regex_delete)
+        _setter("name_regex_keep", name_regex_keep)
+        _setter("next_run_at", next_run_at)
+        _setter("older_than", older_than)
 
     @property
     @pulumi.getter
@@ -2624,28 +3199,70 @@ class GetProjectHooksHookResult(dict):
                  token: str,
                  url: str,
                  wiki_page_events: bool):
-        """
-        :param str project: The name or id of the project.
-        """
-        pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
-        pulumi.set(__self__, "confidential_note_events", confidential_note_events)
-        pulumi.set(__self__, "deployment_events", deployment_events)
-        pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
-        pulumi.set(__self__, "hook_id", hook_id)
-        pulumi.set(__self__, "issues_events", issues_events)
-        pulumi.set(__self__, "job_events", job_events)
-        pulumi.set(__self__, "merge_requests_events", merge_requests_events)
-        pulumi.set(__self__, "note_events", note_events)
-        pulumi.set(__self__, "pipeline_events", pipeline_events)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "push_events", push_events)
-        pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
-        pulumi.set(__self__, "releases_events", releases_events)
-        pulumi.set(__self__, "tag_push_events", tag_push_events)
-        pulumi.set(__self__, "token", token)
-        pulumi.set(__self__, "url", url)
-        pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+        GetProjectHooksHookResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            confidential_issues_events=confidential_issues_events,
+            confidential_note_events=confidential_note_events,
+            deployment_events=deployment_events,
+            enable_ssl_verification=enable_ssl_verification,
+            hook_id=hook_id,
+            issues_events=issues_events,
+            job_events=job_events,
+            merge_requests_events=merge_requests_events,
+            note_events=note_events,
+            pipeline_events=pipeline_events,
+            project=project,
+            project_id=project_id,
+            push_events=push_events,
+            push_events_branch_filter=push_events_branch_filter,
+            releases_events=releases_events,
+            tag_push_events=tag_push_events,
+            token=token,
+            url=url,
+            wiki_page_events=wiki_page_events,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             confidential_issues_events: bool,
+             confidential_note_events: bool,
+             deployment_events: bool,
+             enable_ssl_verification: bool,
+             hook_id: int,
+             issues_events: bool,
+             job_events: bool,
+             merge_requests_events: bool,
+             note_events: bool,
+             pipeline_events: bool,
+             project: str,
+             project_id: int,
+             push_events: bool,
+             push_events_branch_filter: str,
+             releases_events: bool,
+             tag_push_events: bool,
+             token: str,
+             url: str,
+             wiki_page_events: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("confidential_issues_events", confidential_issues_events)
+        _setter("confidential_note_events", confidential_note_events)
+        _setter("deployment_events", deployment_events)
+        _setter("enable_ssl_verification", enable_ssl_verification)
+        _setter("hook_id", hook_id)
+        _setter("issues_events", issues_events)
+        _setter("job_events", job_events)
+        _setter("merge_requests_events", merge_requests_events)
+        _setter("note_events", note_events)
+        _setter("pipeline_events", pipeline_events)
+        _setter("project", project)
+        _setter("project_id", project_id)
+        _setter("push_events", push_events)
+        _setter("push_events_branch_filter", push_events_branch_filter)
+        _setter("releases_events", releases_events)
+        _setter("tag_push_events", tag_push_events)
+        _setter("token", token)
+        _setter("url", url)
+        _setter("wiki_page_events", wiki_page_events)
 
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -2700,9 +3317,6 @@ class GetProjectHooksHookResult(dict):
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        The name or id of the project.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -2751,8 +3365,19 @@ class GetProjectIssueTaskCompletionStatusResult(dict):
     def __init__(__self__, *,
                  completed_count: int,
                  count: int):
-        pulumi.set(__self__, "completed_count", completed_count)
-        pulumi.set(__self__, "count", count)
+        GetProjectIssueTaskCompletionStatusResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            completed_count=completed_count,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             completed_count: int,
+             count: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("completed_count", completed_count)
+        _setter("count", count)
 
     @property
     @pulumi.getter(name="completedCount")
@@ -2807,54 +3432,130 @@ class GetProjectIssuesIssueResult(dict):
                  user_notes_count: int,
                  web_url: str,
                  weight: int):
-        """
-        :param int author_id: Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-        :param bool confidential: Filter confidential or public issues.
-        :param str due_date: Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-        :param str issue_type: Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-        :param Sequence[str] labels: Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-        :param str project: The name or id of the project.
-        :param int weight: Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-        """
-        pulumi.set(__self__, "assignee_ids", assignee_ids)
-        pulumi.set(__self__, "author_id", author_id)
-        pulumi.set(__self__, "closed_at", closed_at)
-        pulumi.set(__self__, "closed_by_user_id", closed_by_user_id)
-        pulumi.set(__self__, "confidential", confidential)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "discussion_locked", discussion_locked)
-        pulumi.set(__self__, "discussion_to_resolve", discussion_to_resolve)
-        pulumi.set(__self__, "downvotes", downvotes)
-        pulumi.set(__self__, "due_date", due_date)
-        pulumi.set(__self__, "epic_id", epic_id)
-        pulumi.set(__self__, "epic_issue_id", epic_issue_id)
-        pulumi.set(__self__, "external_id", external_id)
-        pulumi.set(__self__, "human_time_estimate", human_time_estimate)
-        pulumi.set(__self__, "human_total_time_spent", human_total_time_spent)
-        pulumi.set(__self__, "iid", iid)
-        pulumi.set(__self__, "issue_id", issue_id)
-        pulumi.set(__self__, "issue_link_id", issue_link_id)
-        pulumi.set(__self__, "issue_type", issue_type)
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "links", links)
-        pulumi.set(__self__, "merge_request_to_resolve_discussions_of", merge_request_to_resolve_discussions_of)
-        pulumi.set(__self__, "merge_requests_count", merge_requests_count)
-        pulumi.set(__self__, "milestone_id", milestone_id)
-        pulumi.set(__self__, "moved_to_id", moved_to_id)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "references", references)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "subscribed", subscribed)
-        pulumi.set(__self__, "task_completion_statuses", task_completion_statuses)
-        pulumi.set(__self__, "time_estimate", time_estimate)
-        pulumi.set(__self__, "title", title)
-        pulumi.set(__self__, "total_time_spent", total_time_spent)
-        pulumi.set(__self__, "updated_at", updated_at)
-        pulumi.set(__self__, "upvotes", upvotes)
-        pulumi.set(__self__, "user_notes_count", user_notes_count)
-        pulumi.set(__self__, "web_url", web_url)
-        pulumi.set(__self__, "weight", weight)
+        GetProjectIssuesIssueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assignee_ids=assignee_ids,
+            author_id=author_id,
+            closed_at=closed_at,
+            closed_by_user_id=closed_by_user_id,
+            confidential=confidential,
+            created_at=created_at,
+            description=description,
+            discussion_locked=discussion_locked,
+            discussion_to_resolve=discussion_to_resolve,
+            downvotes=downvotes,
+            due_date=due_date,
+            epic_id=epic_id,
+            epic_issue_id=epic_issue_id,
+            external_id=external_id,
+            human_time_estimate=human_time_estimate,
+            human_total_time_spent=human_total_time_spent,
+            iid=iid,
+            issue_id=issue_id,
+            issue_link_id=issue_link_id,
+            issue_type=issue_type,
+            labels=labels,
+            links=links,
+            merge_request_to_resolve_discussions_of=merge_request_to_resolve_discussions_of,
+            merge_requests_count=merge_requests_count,
+            milestone_id=milestone_id,
+            moved_to_id=moved_to_id,
+            project=project,
+            references=references,
+            state=state,
+            subscribed=subscribed,
+            task_completion_statuses=task_completion_statuses,
+            time_estimate=time_estimate,
+            title=title,
+            total_time_spent=total_time_spent,
+            updated_at=updated_at,
+            upvotes=upvotes,
+            user_notes_count=user_notes_count,
+            web_url=web_url,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assignee_ids: Sequence[int],
+             author_id: int,
+             closed_at: str,
+             closed_by_user_id: int,
+             confidential: bool,
+             created_at: str,
+             description: str,
+             discussion_locked: bool,
+             discussion_to_resolve: str,
+             downvotes: int,
+             due_date: str,
+             epic_id: int,
+             epic_issue_id: int,
+             external_id: str,
+             human_time_estimate: str,
+             human_total_time_spent: str,
+             iid: int,
+             issue_id: int,
+             issue_link_id: int,
+             issue_type: str,
+             labels: Sequence[str],
+             links: Mapping[str, str],
+             merge_request_to_resolve_discussions_of: int,
+             merge_requests_count: int,
+             milestone_id: int,
+             moved_to_id: int,
+             project: str,
+             references: Mapping[str, str],
+             state: str,
+             subscribed: bool,
+             task_completion_statuses: Sequence['outputs.GetProjectIssuesIssueTaskCompletionStatusResult'],
+             time_estimate: int,
+             title: str,
+             total_time_spent: int,
+             updated_at: str,
+             upvotes: int,
+             user_notes_count: int,
+             web_url: str,
+             weight: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("assignee_ids", assignee_ids)
+        _setter("author_id", author_id)
+        _setter("closed_at", closed_at)
+        _setter("closed_by_user_id", closed_by_user_id)
+        _setter("confidential", confidential)
+        _setter("created_at", created_at)
+        _setter("description", description)
+        _setter("discussion_locked", discussion_locked)
+        _setter("discussion_to_resolve", discussion_to_resolve)
+        _setter("downvotes", downvotes)
+        _setter("due_date", due_date)
+        _setter("epic_id", epic_id)
+        _setter("epic_issue_id", epic_issue_id)
+        _setter("external_id", external_id)
+        _setter("human_time_estimate", human_time_estimate)
+        _setter("human_total_time_spent", human_total_time_spent)
+        _setter("iid", iid)
+        _setter("issue_id", issue_id)
+        _setter("issue_link_id", issue_link_id)
+        _setter("issue_type", issue_type)
+        _setter("labels", labels)
+        _setter("links", links)
+        _setter("merge_request_to_resolve_discussions_of", merge_request_to_resolve_discussions_of)
+        _setter("merge_requests_count", merge_requests_count)
+        _setter("milestone_id", milestone_id)
+        _setter("moved_to_id", moved_to_id)
+        _setter("project", project)
+        _setter("references", references)
+        _setter("state", state)
+        _setter("subscribed", subscribed)
+        _setter("task_completion_statuses", task_completion_statuses)
+        _setter("time_estimate", time_estimate)
+        _setter("title", title)
+        _setter("total_time_spent", total_time_spent)
+        _setter("updated_at", updated_at)
+        _setter("upvotes", upvotes)
+        _setter("user_notes_count", user_notes_count)
+        _setter("web_url", web_url)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="assigneeIds")
@@ -2864,9 +3565,6 @@ class GetProjectIssuesIssueResult(dict):
     @property
     @pulumi.getter(name="authorId")
     def author_id(self) -> int:
-        """
-        Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-        """
         return pulumi.get(self, "author_id")
 
     @property
@@ -2882,9 +3580,6 @@ class GetProjectIssuesIssueResult(dict):
     @property
     @pulumi.getter
     def confidential(self) -> bool:
-        """
-        Filter confidential or public issues.
-        """
         return pulumi.get(self, "confidential")
 
     @property
@@ -2915,9 +3610,6 @@ class GetProjectIssuesIssueResult(dict):
     @property
     @pulumi.getter(name="dueDate")
     def due_date(self) -> str:
-        """
-        Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-        """
         return pulumi.get(self, "due_date")
 
     @property
@@ -2963,17 +3655,11 @@ class GetProjectIssuesIssueResult(dict):
     @property
     @pulumi.getter(name="issueType")
     def issue_type(self) -> str:
-        """
-        Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
-        """
         return pulumi.get(self, "issue_type")
 
     @property
     @pulumi.getter
     def labels(self) -> Sequence[str]:
-        """
-        Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -3004,9 +3690,6 @@ class GetProjectIssuesIssueResult(dict):
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        The name or id of the project.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -3067,9 +3750,6 @@ class GetProjectIssuesIssueResult(dict):
     @property
     @pulumi.getter
     def weight(self) -> int:
-        """
-        Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-        """
         return pulumi.get(self, "weight")
 
 
@@ -3078,8 +3758,19 @@ class GetProjectIssuesIssueTaskCompletionStatusResult(dict):
     def __init__(__self__, *,
                  completed_count: int,
                  count: int):
-        pulumi.set(__self__, "completed_count", completed_count)
-        pulumi.set(__self__, "count", count)
+        GetProjectIssuesIssueTaskCompletionStatusResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            completed_count=completed_count,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             completed_count: int,
+             count: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("completed_count", completed_count)
+        _setter("count", count)
 
     @property
     @pulumi.getter(name="completedCount")
@@ -3103,17 +3794,37 @@ class GetProjectMembershipMemberResult(dict):
                  state: str,
                  username: str,
                  web_url: str):
-        """
-        :param int id: The ID of this resource.
-        """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "avatar_url", avatar_url)
-        pulumi.set(__self__, "expires_at", expires_at)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "username", username)
-        pulumi.set(__self__, "web_url", web_url)
+        GetProjectMembershipMemberResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            avatar_url=avatar_url,
+            expires_at=expires_at,
+            id=id,
+            name=name,
+            state=state,
+            username=username,
+            web_url=web_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: str,
+             avatar_url: str,
+             expires_at: str,
+             id: int,
+             name: str,
+             state: str,
+             username: str,
+             web_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_level", access_level)
+        _setter("avatar_url", avatar_url)
+        _setter("expires_at", expires_at)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("state", state)
+        _setter("username", username)
+        _setter("web_url", web_url)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -3133,9 +3844,6 @@ class GetProjectMembershipMemberResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -3175,24 +3883,52 @@ class GetProjectMilestonesMilestoneResult(dict):
                  title: str,
                  updated_at: str,
                  web_url: str):
-        """
-        :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
-        :param str state: Return only `active` or `closed` milestones.
-        :param str title: Return only the milestones having the given `title`.
-        """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "due_date", due_date)
-        pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "iid", iid)
-        pulumi.set(__self__, "milestone_id", milestone_id)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "start_date", start_date)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "title", title)
-        pulumi.set(__self__, "updated_at", updated_at)
-        pulumi.set(__self__, "web_url", web_url)
+        GetProjectMilestonesMilestoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            description=description,
+            due_date=due_date,
+            expired=expired,
+            iid=iid,
+            milestone_id=milestone_id,
+            project=project,
+            project_id=project_id,
+            start_date=start_date,
+            state=state,
+            title=title,
+            updated_at=updated_at,
+            web_url=web_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: str,
+             description: str,
+             due_date: str,
+             expired: bool,
+             iid: int,
+             milestone_id: int,
+             project: str,
+             project_id: int,
+             start_date: str,
+             state: str,
+             title: str,
+             updated_at: str,
+             web_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created_at", created_at)
+        _setter("description", description)
+        _setter("due_date", due_date)
+        _setter("expired", expired)
+        _setter("iid", iid)
+        _setter("milestone_id", milestone_id)
+        _setter("project", project)
+        _setter("project_id", project_id)
+        _setter("start_date", start_date)
+        _setter("state", state)
+        _setter("title", title)
+        _setter("updated_at", updated_at)
+        _setter("web_url", web_url)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -3227,9 +3963,6 @@ class GetProjectMilestonesMilestoneResult(dict):
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        The ID or URL-encoded path of the project owned by the authenticated user.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -3245,17 +3978,11 @@ class GetProjectMilestonesMilestoneResult(dict):
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        Return only `active` or `closed` milestones.
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def title(self) -> str:
-        """
-        Return only the milestones having the given `title`.
-        """
         return pulumi.get(self, "title")
 
     @property
@@ -3276,10 +4003,25 @@ class GetProjectProtectedBranchMergeAccessLevelResult(dict):
                  access_level_description: str,
                  group_id: int,
                  user_id: int):
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_level_description", access_level_description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "user_id", user_id)
+        GetProjectProtectedBranchMergeAccessLevelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: str,
+             access_level_description: str,
+             group_id: int,
+             user_id: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_level", access_level)
+        _setter("access_level_description", access_level_description)
+        _setter("group_id", group_id)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -3309,10 +4051,25 @@ class GetProjectProtectedBranchPushAccessLevelResult(dict):
                  access_level_description: str,
                  group_id: int,
                  user_id: int):
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_level_description", access_level_description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "user_id", user_id)
+        GetProjectProtectedBranchPushAccessLevelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: str,
+             access_level_description: str,
+             group_id: int,
+             user_id: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_level", access_level)
+        _setter("access_level_description", access_level_description)
+        _setter("group_id", group_id)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -3344,15 +4101,31 @@ class GetProjectProtectedBranchesProtectedBranchResult(dict):
                  merge_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult'],
                  name: str,
                  push_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult']):
-        """
-        :param int id: The ID of this resource.
-        """
-        pulumi.set(__self__, "allow_force_push", allow_force_push)
-        pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "merge_access_levels", merge_access_levels)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "push_access_levels", push_access_levels)
+        GetProjectProtectedBranchesProtectedBranchResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_force_push=allow_force_push,
+            code_owner_approval_required=code_owner_approval_required,
+            id=id,
+            merge_access_levels=merge_access_levels,
+            name=name,
+            push_access_levels=push_access_levels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_force_push: bool,
+             code_owner_approval_required: bool,
+             id: int,
+             merge_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult'],
+             name: str,
+             push_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allow_force_push", allow_force_push)
+        _setter("code_owner_approval_required", code_owner_approval_required)
+        _setter("id", id)
+        _setter("merge_access_levels", merge_access_levels)
+        _setter("name", name)
+        _setter("push_access_levels", push_access_levels)
 
     @property
     @pulumi.getter(name="allowForcePush")
@@ -3367,9 +4140,6 @@ class GetProjectProtectedBranchesProtectedBranchResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -3395,10 +4165,25 @@ class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult(dict):
                  access_level_description: str,
                  group_id: int,
                  user_id: int):
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_level_description", access_level_description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "user_id", user_id)
+        GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: str,
+             access_level_description: str,
+             group_id: int,
+             user_id: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_level", access_level)
+        _setter("access_level_description", access_level_description)
+        _setter("group_id", group_id)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -3428,10 +4213,25 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
                  access_level_description: str,
                  group_id: int,
                  user_id: int):
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_level_description", access_level_description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "user_id", user_id)
+        GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_level_description=access_level_description,
+            group_id=group_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: str,
+             access_level_description: str,
+             group_id: int,
+             user_id: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_level", access_level)
+        _setter("access_level_description", access_level_description)
+        _setter("group_id", group_id)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -3468,17 +4268,46 @@ class GetProjectPushRuleResult(dict):
                  member_check: bool,
                  prevent_secrets: bool,
                  reject_unsigned_commits: bool):
-        pulumi.set(__self__, "author_email_regex", author_email_regex)
-        pulumi.set(__self__, "branch_name_regex", branch_name_regex)
-        pulumi.set(__self__, "commit_committer_check", commit_committer_check)
-        pulumi.set(__self__, "commit_message_negative_regex", commit_message_negative_regex)
-        pulumi.set(__self__, "commit_message_regex", commit_message_regex)
-        pulumi.set(__self__, "deny_delete_tag", deny_delete_tag)
-        pulumi.set(__self__, "file_name_regex", file_name_regex)
-        pulumi.set(__self__, "max_file_size", max_file_size)
-        pulumi.set(__self__, "member_check", member_check)
-        pulumi.set(__self__, "prevent_secrets", prevent_secrets)
-        pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
+        GetProjectPushRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email_regex=author_email_regex,
+            branch_name_regex=branch_name_regex,
+            commit_committer_check=commit_committer_check,
+            commit_message_negative_regex=commit_message_negative_regex,
+            commit_message_regex=commit_message_regex,
+            deny_delete_tag=deny_delete_tag,
+            file_name_regex=file_name_regex,
+            max_file_size=max_file_size,
+            member_check=member_check,
+            prevent_secrets=prevent_secrets,
+            reject_unsigned_commits=reject_unsigned_commits,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email_regex: str,
+             branch_name_regex: str,
+             commit_committer_check: bool,
+             commit_message_negative_regex: str,
+             commit_message_regex: str,
+             deny_delete_tag: bool,
+             file_name_regex: str,
+             max_file_size: int,
+             member_check: bool,
+             prevent_secrets: bool,
+             reject_unsigned_commits: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("author_email_regex", author_email_regex)
+        _setter("branch_name_regex", branch_name_regex)
+        _setter("commit_committer_check", commit_committer_check)
+        _setter("commit_message_negative_regex", commit_message_negative_regex)
+        _setter("commit_message_regex", commit_message_regex)
+        _setter("deny_delete_tag", deny_delete_tag)
+        _setter("file_name_regex", file_name_regex)
+        _setter("max_file_size", max_file_size)
+        _setter("member_check", member_check)
+        _setter("prevent_secrets", prevent_secrets)
+        _setter("reject_unsigned_commits", reject_unsigned_commits)
 
     @property
     @pulumi.getter(name="authorEmailRegex")
@@ -3550,21 +4379,46 @@ class GetProjectTagCommitResult(dict):
                  parent_ids: Sequence[str],
                  short_id: str,
                  title: str):
-        """
-        :param str id: The ID of this resource.
-        :param str message: The message of the annotated tag.
-        """
-        pulumi.set(__self__, "author_email", author_email)
-        pulumi.set(__self__, "author_name", author_name)
-        pulumi.set(__self__, "authored_date", authored_date)
-        pulumi.set(__self__, "committed_date", committed_date)
-        pulumi.set(__self__, "committer_email", committer_email)
-        pulumi.set(__self__, "committer_name", committer_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "parent_ids", parent_ids)
-        pulumi.set(__self__, "short_id", short_id)
-        pulumi.set(__self__, "title", title)
+        GetProjectTagCommitResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email=author_email,
+            author_name=author_name,
+            authored_date=authored_date,
+            committed_date=committed_date,
+            committer_email=committer_email,
+            committer_name=committer_name,
+            id=id,
+            message=message,
+            parent_ids=parent_ids,
+            short_id=short_id,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email: str,
+             author_name: str,
+             authored_date: str,
+             committed_date: str,
+             committer_email: str,
+             committer_name: str,
+             id: str,
+             message: str,
+             parent_ids: Sequence[str],
+             short_id: str,
+             title: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("author_email", author_email)
+        _setter("author_name", author_name)
+        _setter("authored_date", authored_date)
+        _setter("committed_date", committed_date)
+        _setter("committer_email", committer_email)
+        _setter("committer_name", committer_name)
+        _setter("id", id)
+        _setter("message", message)
+        _setter("parent_ids", parent_ids)
+        _setter("short_id", short_id)
+        _setter("title", title)
 
     @property
     @pulumi.getter(name="authorEmail")
@@ -3599,17 +4453,11 @@ class GetProjectTagCommitResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def message(self) -> str:
-        """
-        The message of the annotated tag.
-        """
         return pulumi.get(self, "message")
 
     @property
@@ -3633,8 +4481,19 @@ class GetProjectTagReleaseResult(dict):
     def __init__(__self__, *,
                  description: str,
                  tag_name: str):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "tag_name", tag_name)
+        GetProjectTagReleaseResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            tag_name=tag_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             tag_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("tag_name", tag_name)
 
     @property
     @pulumi.getter
@@ -3656,12 +4515,31 @@ class GetProjectTagsTagResult(dict):
                  protected: bool,
                  releases: Sequence['outputs.GetProjectTagsTagReleaseResult'],
                  target: str):
-        pulumi.set(__self__, "commits", commits)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "protected", protected)
-        pulumi.set(__self__, "releases", releases)
-        pulumi.set(__self__, "target", target)
+        GetProjectTagsTagResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            commits=commits,
+            message=message,
+            name=name,
+            protected=protected,
+            releases=releases,
+            target=target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             commits: Sequence['outputs.GetProjectTagsTagCommitResult'],
+             message: str,
+             name: str,
+             protected: bool,
+             releases: Sequence['outputs.GetProjectTagsTagReleaseResult'],
+             target: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("commits", commits)
+        _setter("message", message)
+        _setter("name", name)
+        _setter("protected", protected)
+        _setter("releases", releases)
+        _setter("target", target)
 
     @property
     @pulumi.getter
@@ -3708,20 +4586,46 @@ class GetProjectTagsTagCommitResult(dict):
                  parent_ids: Sequence[str],
                  short_id: str,
                  title: str):
-        """
-        :param str id: The ID of this resource.
-        """
-        pulumi.set(__self__, "author_email", author_email)
-        pulumi.set(__self__, "author_name", author_name)
-        pulumi.set(__self__, "authored_date", authored_date)
-        pulumi.set(__self__, "committed_date", committed_date)
-        pulumi.set(__self__, "committer_email", committer_email)
-        pulumi.set(__self__, "committer_name", committer_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "parent_ids", parent_ids)
-        pulumi.set(__self__, "short_id", short_id)
-        pulumi.set(__self__, "title", title)
+        GetProjectTagsTagCommitResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email=author_email,
+            author_name=author_name,
+            authored_date=authored_date,
+            committed_date=committed_date,
+            committer_email=committer_email,
+            committer_name=committer_name,
+            id=id,
+            message=message,
+            parent_ids=parent_ids,
+            short_id=short_id,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email: str,
+             author_name: str,
+             authored_date: str,
+             committed_date: str,
+             committer_email: str,
+             committer_name: str,
+             id: str,
+             message: str,
+             parent_ids: Sequence[str],
+             short_id: str,
+             title: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("author_email", author_email)
+        _setter("author_name", author_name)
+        _setter("authored_date", authored_date)
+        _setter("committed_date", committed_date)
+        _setter("committer_email", committer_email)
+        _setter("committer_name", committer_name)
+        _setter("id", id)
+        _setter("message", message)
+        _setter("parent_ids", parent_ids)
+        _setter("short_id", short_id)
+        _setter("title", title)
 
     @property
     @pulumi.getter(name="authorEmail")
@@ -3756,9 +4660,6 @@ class GetProjectTagsTagCommitResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -3787,8 +4688,19 @@ class GetProjectTagsTagReleaseResult(dict):
     def __init__(__self__, *,
                  description: str,
                  tag_name: str):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "tag_name", tag_name)
+        GetProjectTagsTagReleaseResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            tag_name=tag_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             tag_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("tag_name", tag_name)
 
     @property
     @pulumi.getter
@@ -3812,25 +4724,41 @@ class GetProjectVariablesVariableResult(dict):
                  raw: bool,
                  value: str,
                  variable_type: str):
-        """
-        :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
-        :param str project: The name or id of the project.
-        """
-        pulumi.set(__self__, "environment_scope", environment_scope)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "masked", masked)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "protected", protected)
-        pulumi.set(__self__, "raw", raw)
-        pulumi.set(__self__, "value", value)
-        pulumi.set(__self__, "variable_type", variable_type)
+        GetProjectVariablesVariableResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            environment_scope=environment_scope,
+            key=key,
+            masked=masked,
+            project=project,
+            protected=protected,
+            raw=raw,
+            value=value,
+            variable_type=variable_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             environment_scope: str,
+             key: str,
+             masked: bool,
+             project: str,
+             protected: bool,
+             raw: bool,
+             value: str,
+             variable_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("environment_scope", environment_scope)
+        _setter("key", key)
+        _setter("masked", masked)
+        _setter("project", project)
+        _setter("protected", protected)
+        _setter("raw", raw)
+        _setter("value", value)
+        _setter("variable_type", variable_type)
 
     @property
     @pulumi.getter(name="environmentScope")
     def environment_scope(self) -> str:
-        """
-        The environment scope of the variable. Defaults to all environment (`*`).
-        """
         return pulumi.get(self, "environment_scope")
 
     @property
@@ -3846,9 +4774,6 @@ class GetProjectVariablesVariableResult(dict):
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        The name or id of the project.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -3969,106 +4894,295 @@ class GetProjectsProjectResult(dict):
                  web_url: str,
                  wiki_access_level: str,
                  wiki_enabled: bool):
-        """
-        :param bool archived: Limit by archived status.
-        :param int id: The ID of this resource.
-        :param Mapping[str, int] statistics: Include project statistics. Cannot be used with `group_id`.
-        :param str visibility: Limit by visibility `public`, `internal`, or `private`.
-        """
-        pulumi.set(__self__, "_links", _links)
-        pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
-        pulumi.set(__self__, "analytics_access_level", analytics_access_level)
-        pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
-        pulumi.set(__self__, "archived", archived)
-        pulumi.set(__self__, "auto_cancel_pending_pipelines", auto_cancel_pending_pipelines)
-        pulumi.set(__self__, "auto_devops_deploy_strategy", auto_devops_deploy_strategy)
-        pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
-        pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
-        pulumi.set(__self__, "avatar_url", avatar_url)
-        pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
-        pulumi.set(__self__, "build_git_strategy", build_git_strategy)
-        pulumi.set(__self__, "build_timeout", build_timeout)
-        pulumi.set(__self__, "builds_access_level", builds_access_level)
-        pulumi.set(__self__, "ci_config_path", ci_config_path)
-        pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
-        pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
-        pulumi.set(__self__, "container_expiration_policies", container_expiration_policies)
-        pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
-        pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "creator_id", creator_id)
-        pulumi.set(__self__, "custom_attributes", custom_attributes)
-        pulumi.set(__self__, "default_branch", default_branch)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "emails_disabled", emails_disabled)
-        pulumi.set(__self__, "environments_access_level", environments_access_level)
-        pulumi.set(__self__, "external_authorization_classification_label", external_authorization_classification_label)
-        pulumi.set(__self__, "feature_flags_access_level", feature_flags_access_level)
-        pulumi.set(__self__, "forked_from_projects", forked_from_projects)
-        pulumi.set(__self__, "forking_access_level", forking_access_level)
-        pulumi.set(__self__, "forks_count", forks_count)
-        pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "import_error", import_error)
-        pulumi.set(__self__, "import_status", import_status)
-        pulumi.set(__self__, "import_url", import_url)
-        pulumi.set(__self__, "infrastructure_access_level", infrastructure_access_level)
-        pulumi.set(__self__, "issues_access_level", issues_access_level)
-        pulumi.set(__self__, "issues_enabled", issues_enabled)
-        pulumi.set(__self__, "jobs_enabled", jobs_enabled)
-        pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
-        pulumi.set(__self__, "last_activity_at", last_activity_at)
-        pulumi.set(__self__, "lfs_enabled", lfs_enabled)
-        pulumi.set(__self__, "merge_commit_template", merge_commit_template)
-        pulumi.set(__self__, "merge_method", merge_method)
-        pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
-        pulumi.set(__self__, "merge_requests_access_level", merge_requests_access_level)
-        pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
-        pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
-        pulumi.set(__self__, "mirror", mirror)
-        pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
-        pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
-        pulumi.set(__self__, "mirror_user_id", mirror_user_id)
-        pulumi.set(__self__, "monitor_access_level", monitor_access_level)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "name_with_namespace", name_with_namespace)
-        pulumi.set(__self__, "namespaces", namespaces)
-        pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
-        pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
-        pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
-        pulumi.set(__self__, "open_issues_count", open_issues_count)
-        pulumi.set(__self__, "owners", owners)
-        pulumi.set(__self__, "packages_enabled", packages_enabled)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "path_with_namespace", path_with_namespace)
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "public", public)
-        pulumi.set(__self__, "public_builds", public_builds)
-        pulumi.set(__self__, "readme_url", readme_url)
-        pulumi.set(__self__, "releases_access_level", releases_access_level)
-        pulumi.set(__self__, "repository_access_level", repository_access_level)
-        pulumi.set(__self__, "repository_storage", repository_storage)
-        pulumi.set(__self__, "request_access_enabled", request_access_enabled)
-        pulumi.set(__self__, "requirements_access_level", requirements_access_level)
-        pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
-        pulumi.set(__self__, "restrict_user_defined_variables", restrict_user_defined_variables)
-        pulumi.set(__self__, "runners_token", runners_token)
-        pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
-        pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
-        pulumi.set(__self__, "shared_with_groups", shared_with_groups)
-        pulumi.set(__self__, "snippets_access_level", snippets_access_level)
-        pulumi.set(__self__, "snippets_enabled", snippets_enabled)
-        pulumi.set(__self__, "squash_commit_template", squash_commit_template)
-        pulumi.set(__self__, "ssh_url_to_repo", ssh_url_to_repo)
-        pulumi.set(__self__, "star_count", star_count)
-        pulumi.set(__self__, "statistics", statistics)
-        pulumi.set(__self__, "suggestion_commit_message", suggestion_commit_message)
-        pulumi.set(__self__, "tag_lists", tag_lists)
-        pulumi.set(__self__, "topics", topics)
-        pulumi.set(__self__, "visibility", visibility)
-        pulumi.set(__self__, "web_url", web_url)
-        pulumi.set(__self__, "wiki_access_level", wiki_access_level)
-        pulumi.set(__self__, "wiki_enabled", wiki_enabled)
+        GetProjectsProjectResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            _links=_links,
+            allow_merge_on_skipped_pipeline=allow_merge_on_skipped_pipeline,
+            analytics_access_level=analytics_access_level,
+            approvals_before_merge=approvals_before_merge,
+            archived=archived,
+            auto_cancel_pending_pipelines=auto_cancel_pending_pipelines,
+            auto_devops_deploy_strategy=auto_devops_deploy_strategy,
+            auto_devops_enabled=auto_devops_enabled,
+            autoclose_referenced_issues=autoclose_referenced_issues,
+            avatar_url=avatar_url,
+            build_coverage_regex=build_coverage_regex,
+            build_git_strategy=build_git_strategy,
+            build_timeout=build_timeout,
+            builds_access_level=builds_access_level,
+            ci_config_path=ci_config_path,
+            ci_default_git_depth=ci_default_git_depth,
+            ci_forward_deployment_enabled=ci_forward_deployment_enabled,
+            container_expiration_policies=container_expiration_policies,
+            container_registry_access_level=container_registry_access_level,
+            container_registry_enabled=container_registry_enabled,
+            created_at=created_at,
+            creator_id=creator_id,
+            custom_attributes=custom_attributes,
+            default_branch=default_branch,
+            description=description,
+            emails_disabled=emails_disabled,
+            environments_access_level=environments_access_level,
+            external_authorization_classification_label=external_authorization_classification_label,
+            feature_flags_access_level=feature_flags_access_level,
+            forked_from_projects=forked_from_projects,
+            forking_access_level=forking_access_level,
+            forks_count=forks_count,
+            http_url_to_repo=http_url_to_repo,
+            id=id,
+            import_error=import_error,
+            import_status=import_status,
+            import_url=import_url,
+            infrastructure_access_level=infrastructure_access_level,
+            issues_access_level=issues_access_level,
+            issues_enabled=issues_enabled,
+            jobs_enabled=jobs_enabled,
+            keep_latest_artifact=keep_latest_artifact,
+            last_activity_at=last_activity_at,
+            lfs_enabled=lfs_enabled,
+            merge_commit_template=merge_commit_template,
+            merge_method=merge_method,
+            merge_pipelines_enabled=merge_pipelines_enabled,
+            merge_requests_access_level=merge_requests_access_level,
+            merge_requests_enabled=merge_requests_enabled,
+            merge_trains_enabled=merge_trains_enabled,
+            mirror=mirror,
+            mirror_overwrites_diverged_branches=mirror_overwrites_diverged_branches,
+            mirror_trigger_builds=mirror_trigger_builds,
+            mirror_user_id=mirror_user_id,
+            monitor_access_level=monitor_access_level,
+            name=name,
+            name_with_namespace=name_with_namespace,
+            namespaces=namespaces,
+            only_allow_merge_if_all_discussions_are_resolved=only_allow_merge_if_all_discussions_are_resolved,
+            only_allow_merge_if_pipeline_succeeds=only_allow_merge_if_pipeline_succeeds,
+            only_mirror_protected_branches=only_mirror_protected_branches,
+            open_issues_count=open_issues_count,
+            owners=owners,
+            packages_enabled=packages_enabled,
+            path=path,
+            path_with_namespace=path_with_namespace,
+            permissions=permissions,
+            public=public,
+            public_builds=public_builds,
+            readme_url=readme_url,
+            releases_access_level=releases_access_level,
+            repository_access_level=repository_access_level,
+            repository_storage=repository_storage,
+            request_access_enabled=request_access_enabled,
+            requirements_access_level=requirements_access_level,
+            resolve_outdated_diff_discussions=resolve_outdated_diff_discussions,
+            restrict_user_defined_variables=restrict_user_defined_variables,
+            runners_token=runners_token,
+            security_and_compliance_access_level=security_and_compliance_access_level,
+            shared_runners_enabled=shared_runners_enabled,
+            shared_with_groups=shared_with_groups,
+            snippets_access_level=snippets_access_level,
+            snippets_enabled=snippets_enabled,
+            squash_commit_template=squash_commit_template,
+            ssh_url_to_repo=ssh_url_to_repo,
+            star_count=star_count,
+            statistics=statistics,
+            suggestion_commit_message=suggestion_commit_message,
+            tag_lists=tag_lists,
+            topics=topics,
+            visibility=visibility,
+            web_url=web_url,
+            wiki_access_level=wiki_access_level,
+            wiki_enabled=wiki_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             _links: Mapping[str, str],
+             allow_merge_on_skipped_pipeline: bool,
+             analytics_access_level: str,
+             approvals_before_merge: int,
+             archived: bool,
+             auto_cancel_pending_pipelines: str,
+             auto_devops_deploy_strategy: str,
+             auto_devops_enabled: bool,
+             autoclose_referenced_issues: bool,
+             avatar_url: str,
+             build_coverage_regex: str,
+             build_git_strategy: str,
+             build_timeout: int,
+             builds_access_level: str,
+             ci_config_path: str,
+             ci_default_git_depth: int,
+             ci_forward_deployment_enabled: bool,
+             container_expiration_policies: Sequence['outputs.GetProjectsProjectContainerExpirationPolicyResult'],
+             container_registry_access_level: str,
+             container_registry_enabled: bool,
+             created_at: str,
+             creator_id: int,
+             custom_attributes: Sequence[Mapping[str, str]],
+             default_branch: str,
+             description: str,
+             emails_disabled: bool,
+             environments_access_level: str,
+             external_authorization_classification_label: str,
+             feature_flags_access_level: str,
+             forked_from_projects: Sequence['outputs.GetProjectsProjectForkedFromProjectResult'],
+             forking_access_level: str,
+             forks_count: int,
+             http_url_to_repo: str,
+             id: int,
+             import_error: str,
+             import_status: str,
+             import_url: str,
+             infrastructure_access_level: str,
+             issues_access_level: str,
+             issues_enabled: bool,
+             jobs_enabled: bool,
+             keep_latest_artifact: bool,
+             last_activity_at: str,
+             lfs_enabled: bool,
+             merge_commit_template: str,
+             merge_method: str,
+             merge_pipelines_enabled: bool,
+             merge_requests_access_level: str,
+             merge_requests_enabled: bool,
+             merge_trains_enabled: bool,
+             mirror: bool,
+             mirror_overwrites_diverged_branches: bool,
+             mirror_trigger_builds: bool,
+             mirror_user_id: int,
+             monitor_access_level: str,
+             name: str,
+             name_with_namespace: str,
+             namespaces: Sequence['outputs.GetProjectsProjectNamespaceResult'],
+             only_allow_merge_if_all_discussions_are_resolved: bool,
+             only_allow_merge_if_pipeline_succeeds: bool,
+             only_mirror_protected_branches: bool,
+             open_issues_count: int,
+             owners: Sequence['outputs.GetProjectsProjectOwnerResult'],
+             packages_enabled: bool,
+             path: str,
+             path_with_namespace: str,
+             permissions: Sequence['outputs.GetProjectsProjectPermissionResult'],
+             public: bool,
+             public_builds: bool,
+             readme_url: str,
+             releases_access_level: str,
+             repository_access_level: str,
+             repository_storage: str,
+             request_access_enabled: bool,
+             requirements_access_level: str,
+             resolve_outdated_diff_discussions: bool,
+             restrict_user_defined_variables: bool,
+             runners_token: str,
+             security_and_compliance_access_level: str,
+             shared_runners_enabled: bool,
+             shared_with_groups: Sequence['outputs.GetProjectsProjectSharedWithGroupResult'],
+             snippets_access_level: str,
+             snippets_enabled: bool,
+             squash_commit_template: str,
+             ssh_url_to_repo: str,
+             star_count: int,
+             statistics: Mapping[str, int],
+             suggestion_commit_message: str,
+             tag_lists: Sequence[str],
+             topics: Sequence[str],
+             visibility: str,
+             web_url: str,
+             wiki_access_level: str,
+             wiki_enabled: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("_links", _links)
+        _setter("allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
+        _setter("analytics_access_level", analytics_access_level)
+        _setter("approvals_before_merge", approvals_before_merge)
+        _setter("archived", archived)
+        _setter("auto_cancel_pending_pipelines", auto_cancel_pending_pipelines)
+        _setter("auto_devops_deploy_strategy", auto_devops_deploy_strategy)
+        _setter("auto_devops_enabled", auto_devops_enabled)
+        _setter("autoclose_referenced_issues", autoclose_referenced_issues)
+        _setter("avatar_url", avatar_url)
+        _setter("build_coverage_regex", build_coverage_regex)
+        _setter("build_git_strategy", build_git_strategy)
+        _setter("build_timeout", build_timeout)
+        _setter("builds_access_level", builds_access_level)
+        _setter("ci_config_path", ci_config_path)
+        _setter("ci_default_git_depth", ci_default_git_depth)
+        _setter("ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        _setter("container_expiration_policies", container_expiration_policies)
+        _setter("container_registry_access_level", container_registry_access_level)
+        _setter("container_registry_enabled", container_registry_enabled)
+        _setter("created_at", created_at)
+        _setter("creator_id", creator_id)
+        _setter("custom_attributes", custom_attributes)
+        _setter("default_branch", default_branch)
+        _setter("description", description)
+        _setter("emails_disabled", emails_disabled)
+        _setter("environments_access_level", environments_access_level)
+        _setter("external_authorization_classification_label", external_authorization_classification_label)
+        _setter("feature_flags_access_level", feature_flags_access_level)
+        _setter("forked_from_projects", forked_from_projects)
+        _setter("forking_access_level", forking_access_level)
+        _setter("forks_count", forks_count)
+        _setter("http_url_to_repo", http_url_to_repo)
+        _setter("id", id)
+        _setter("import_error", import_error)
+        _setter("import_status", import_status)
+        _setter("import_url", import_url)
+        _setter("infrastructure_access_level", infrastructure_access_level)
+        _setter("issues_access_level", issues_access_level)
+        _setter("issues_enabled", issues_enabled)
+        _setter("jobs_enabled", jobs_enabled)
+        _setter("keep_latest_artifact", keep_latest_artifact)
+        _setter("last_activity_at", last_activity_at)
+        _setter("lfs_enabled", lfs_enabled)
+        _setter("merge_commit_template", merge_commit_template)
+        _setter("merge_method", merge_method)
+        _setter("merge_pipelines_enabled", merge_pipelines_enabled)
+        _setter("merge_requests_access_level", merge_requests_access_level)
+        _setter("merge_requests_enabled", merge_requests_enabled)
+        _setter("merge_trains_enabled", merge_trains_enabled)
+        _setter("mirror", mirror)
+        _setter("mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
+        _setter("mirror_trigger_builds", mirror_trigger_builds)
+        _setter("mirror_user_id", mirror_user_id)
+        _setter("monitor_access_level", monitor_access_level)
+        _setter("name", name)
+        _setter("name_with_namespace", name_with_namespace)
+        _setter("namespaces", namespaces)
+        _setter("only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
+        _setter("only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
+        _setter("only_mirror_protected_branches", only_mirror_protected_branches)
+        _setter("open_issues_count", open_issues_count)
+        _setter("owners", owners)
+        _setter("packages_enabled", packages_enabled)
+        _setter("path", path)
+        _setter("path_with_namespace", path_with_namespace)
+        _setter("permissions", permissions)
+        _setter("public", public)
+        _setter("public_builds", public_builds)
+        _setter("readme_url", readme_url)
+        _setter("releases_access_level", releases_access_level)
+        _setter("repository_access_level", repository_access_level)
+        _setter("repository_storage", repository_storage)
+        _setter("request_access_enabled", request_access_enabled)
+        _setter("requirements_access_level", requirements_access_level)
+        _setter("resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
+        _setter("restrict_user_defined_variables", restrict_user_defined_variables)
+        _setter("runners_token", runners_token)
+        _setter("security_and_compliance_access_level", security_and_compliance_access_level)
+        _setter("shared_runners_enabled", shared_runners_enabled)
+        _setter("shared_with_groups", shared_with_groups)
+        _setter("snippets_access_level", snippets_access_level)
+        _setter("snippets_enabled", snippets_enabled)
+        _setter("squash_commit_template", squash_commit_template)
+        _setter("ssh_url_to_repo", ssh_url_to_repo)
+        _setter("star_count", star_count)
+        _setter("statistics", statistics)
+        _setter("suggestion_commit_message", suggestion_commit_message)
+        _setter("tag_lists", tag_lists)
+        _setter("topics", topics)
+        _setter("visibility", visibility)
+        _setter("web_url", web_url)
+        _setter("wiki_access_level", wiki_access_level)
+        _setter("wiki_enabled", wiki_enabled)
 
     @property
     @pulumi.getter
@@ -4093,9 +5207,6 @@ class GetProjectsProjectResult(dict):
     @property
     @pulumi.getter
     def archived(self) -> bool:
-        """
-        Limit by archived status.
-        """
         return pulumi.get(self, "archived")
 
     @property
@@ -4241,9 +5352,6 @@ class GetProjectsProjectResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -4509,9 +5617,6 @@ class GetProjectsProjectResult(dict):
     @property
     @pulumi.getter
     def statistics(self) -> Mapping[str, int]:
-        """
-        Include project statistics. Cannot be used with `group_id`.
-        """
         return pulumi.get(self, "statistics")
 
     @property
@@ -4532,9 +5637,6 @@ class GetProjectsProjectResult(dict):
     @property
     @pulumi.getter
     def visibility(self) -> str:
-        """
-        Limit by visibility `public`, `internal`, or `private`.
-        """
         return pulumi.get(self, "visibility")
 
     @property
@@ -4564,14 +5666,37 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
                  name_regex_keep: str,
                  next_run_at: str,
                  older_than: str):
-        pulumi.set(__self__, "cadence", cadence)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "keep_n", keep_n)
-        pulumi.set(__self__, "name_regex", name_regex)
-        pulumi.set(__self__, "name_regex_delete", name_regex_delete)
-        pulumi.set(__self__, "name_regex_keep", name_regex_keep)
-        pulumi.set(__self__, "next_run_at", next_run_at)
-        pulumi.set(__self__, "older_than", older_than)
+        GetProjectsProjectContainerExpirationPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cadence=cadence,
+            enabled=enabled,
+            keep_n=keep_n,
+            name_regex=name_regex,
+            name_regex_delete=name_regex_delete,
+            name_regex_keep=name_regex_keep,
+            next_run_at=next_run_at,
+            older_than=older_than,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cadence: str,
+             enabled: bool,
+             keep_n: int,
+             name_regex: str,
+             name_regex_delete: str,
+             name_regex_keep: str,
+             next_run_at: str,
+             older_than: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cadence", cadence)
+        _setter("enabled", enabled)
+        _setter("keep_n", keep_n)
+        _setter("name_regex", name_regex)
+        _setter("name_regex_delete", name_regex_delete)
+        _setter("name_regex_keep", name_regex_keep)
+        _setter("next_run_at", next_run_at)
+        _setter("older_than", older_than)
 
     @property
     @pulumi.getter
@@ -4627,16 +5752,34 @@ class GetProjectsProjectForkedFromProjectResult(dict):
                  path: str,
                  path_with_namespace: str,
                  web_url: str):
-        """
-        :param int id: The ID of this resource.
-        """
-        pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "name_with_namespace", name_with_namespace)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "path_with_namespace", path_with_namespace)
-        pulumi.set(__self__, "web_url", web_url)
+        GetProjectsProjectForkedFromProjectResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            http_url_to_repo=http_url_to_repo,
+            id=id,
+            name=name,
+            name_with_namespace=name_with_namespace,
+            path=path,
+            path_with_namespace=path_with_namespace,
+            web_url=web_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             http_url_to_repo: str,
+             id: int,
+             name: str,
+             name_with_namespace: str,
+             path: str,
+             path_with_namespace: str,
+             web_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("http_url_to_repo", http_url_to_repo)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("name_with_namespace", name_with_namespace)
+        _setter("path", path)
+        _setter("path_with_namespace", path_with_namespace)
+        _setter("web_url", web_url)
 
     @property
     @pulumi.getter(name="httpUrlToRepo")
@@ -4646,9 +5789,6 @@ class GetProjectsProjectForkedFromProjectResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -4685,14 +5825,28 @@ class GetProjectsProjectNamespaceResult(dict):
                  kind: str,
                  name: str,
                  path: str):
-        """
-        :param int id: The ID of this resource.
-        """
-        pulumi.set(__self__, "full_path", full_path)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "kind", kind)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "path", path)
+        GetProjectsProjectNamespaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            full_path=full_path,
+            id=id,
+            kind=kind,
+            name=name,
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             full_path: str,
+             id: int,
+             kind: str,
+             name: str,
+             path: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("full_path", full_path)
+        _setter("id", id)
+        _setter("kind", kind)
+        _setter("name", name)
+        _setter("path", path)
 
     @property
     @pulumi.getter(name="fullPath")
@@ -4702,9 +5856,6 @@ class GetProjectsProjectNamespaceResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -4732,15 +5883,31 @@ class GetProjectsProjectOwnerResult(dict):
                  state: str,
                  username: str,
                  website_url: str):
-        """
-        :param int id: The ID of this resource.
-        """
-        pulumi.set(__self__, "avatar_url", avatar_url)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "username", username)
-        pulumi.set(__self__, "website_url", website_url)
+        GetProjectsProjectOwnerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            avatar_url=avatar_url,
+            id=id,
+            name=name,
+            state=state,
+            username=username,
+            website_url=website_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             avatar_url: str,
+             id: int,
+             name: str,
+             state: str,
+             username: str,
+             website_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("avatar_url", avatar_url)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("state", state)
+        _setter("username", username)
+        _setter("website_url", website_url)
 
     @property
     @pulumi.getter(name="avatarUrl")
@@ -4750,9 +5917,6 @@ class GetProjectsProjectOwnerResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -4781,8 +5945,19 @@ class GetProjectsProjectPermissionResult(dict):
     def __init__(__self__, *,
                  group_access: Mapping[str, int],
                  project_access: Mapping[str, int]):
-        pulumi.set(__self__, "group_access", group_access)
-        pulumi.set(__self__, "project_access", project_access)
+        GetProjectsProjectPermissionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_access=group_access,
+            project_access=project_access,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_access: Mapping[str, int],
+             project_access: Mapping[str, int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_access", group_access)
+        _setter("project_access", project_access)
 
     @property
     @pulumi.getter(name="groupAccess")
@@ -4801,12 +5976,22 @@ class GetProjectsProjectSharedWithGroupResult(dict):
                  group_access_level: str,
                  group_id: int,
                  group_name: str):
-        """
-        :param int group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-        """
-        pulumi.set(__self__, "group_access_level", group_access_level)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
+        GetProjectsProjectSharedWithGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_access_level=group_access_level,
+            group_id=group_id,
+            group_name=group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_access_level: str,
+             group_id: int,
+             group_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_access_level", group_access_level)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
 
     @property
     @pulumi.getter(name="groupAccessLevel")
@@ -4816,9 +6001,6 @@ class GetProjectsProjectSharedWithGroupResult(dict):
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
-        """
-        The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-        """
         return pulumi.get(self, "group_id")
 
     @property
@@ -4839,19 +6021,40 @@ class GetReleaseLinksReleaseLinkResult(dict):
                  project: str,
                  tag_name: str,
                  url: str):
-        """
-        :param str project: The ID or full path to the project.
-        :param str tag_name: The tag associated with the Release.
-        """
-        pulumi.set(__self__, "direct_asset_url", direct_asset_url)
-        pulumi.set(__self__, "external", external)
-        pulumi.set(__self__, "filepath", filepath)
-        pulumi.set(__self__, "link_id", link_id)
-        pulumi.set(__self__, "link_type", link_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "tag_name", tag_name)
-        pulumi.set(__self__, "url", url)
+        GetReleaseLinksReleaseLinkResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            direct_asset_url=direct_asset_url,
+            external=external,
+            filepath=filepath,
+            link_id=link_id,
+            link_type=link_type,
+            name=name,
+            project=project,
+            tag_name=tag_name,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             direct_asset_url: str,
+             external: bool,
+             filepath: str,
+             link_id: int,
+             link_type: str,
+             name: str,
+             project: str,
+             tag_name: str,
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("direct_asset_url", direct_asset_url)
+        _setter("external", external)
+        _setter("filepath", filepath)
+        _setter("link_id", link_id)
+        _setter("link_type", link_type)
+        _setter("name", name)
+        _setter("project", project)
+        _setter("tag_name", tag_name)
+        _setter("url", url)
 
     @property
     @pulumi.getter(name="directAssetUrl")
@@ -4886,17 +6089,11 @@ class GetReleaseLinksReleaseLinkResult(dict):
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        The ID or full path to the project.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="tagName")
     def tag_name(self) -> str:
-        """
-        The tag associated with the Release.
-        """
         return pulumi.get(self, "tag_name")
 
     @property
@@ -4913,22 +6110,32 @@ class GetRepositoryTreeTreeResult(dict):
                  name: str,
                  path: str,
                  type: str):
-        """
-        :param str id: The ID of this resource.
-        :param str path: The path inside repository. Used to get content of subdirectories.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "type", type)
+        GetRepositoryTreeTreeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            mode=mode,
+            name=name,
+            path=path,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             mode: str,
+             name: str,
+             path: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("mode", mode)
+        _setter("name", name)
+        _setter("path", path)
+        _setter("type", type)
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -4944,9 +6151,6 @@ class GetRepositoryTreeTreeResult(dict):
     @property
     @pulumi.getter
     def path(self) -> str:
-        """
-        The path inside repository. Used to get content of subdirectories.
-        """
         return pulumi.get(self, "path")
 
     @property
@@ -4964,15 +6168,31 @@ class GetUserSshkeysKeyResult(dict):
                  key_id: int,
                  title: str,
                  user_id: int):
-        """
-        :param int user_id: ID of the user to get the SSH keys for.
-        """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "expires_at", expires_at)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "key_id", key_id)
-        pulumi.set(__self__, "title", title)
-        pulumi.set(__self__, "user_id", user_id)
+        GetUserSshkeysKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            expires_at=expires_at,
+            key=key,
+            key_id=key_id,
+            title=title,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: str,
+             expires_at: str,
+             key: str,
+             key_id: int,
+             title: str,
+             user_id: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created_at", created_at)
+        _setter("expires_at", expires_at)
+        _setter("key", key)
+        _setter("key_id", key_id)
+        _setter("title", title)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -5002,9 +6222,6 @@ class GetUserSshkeysKeyResult(dict):
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> int:
-        """
-        ID of the user to get the SSH keys for.
-        """
         return pulumi.get(self, "user_id")
 
 
@@ -5038,37 +6255,94 @@ class GetUsersUserResult(dict):
                  two_factor_enabled: bool,
                  username: str,
                  website_url: str):
-        """
-        :param str extern_uid: Lookup users by external UID. (Requires administrator privileges)
-        :param int id: The ID of this resource.
-        """
-        pulumi.set(__self__, "avatar_url", avatar_url)
-        pulumi.set(__self__, "bio", bio)
-        pulumi.set(__self__, "can_create_group", can_create_group)
-        pulumi.set(__self__, "can_create_project", can_create_project)
-        pulumi.set(__self__, "color_scheme_id", color_scheme_id)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "current_sign_in_at", current_sign_in_at)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "extern_uid", extern_uid)
-        pulumi.set(__self__, "external", external)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_admin", is_admin)
-        pulumi.set(__self__, "last_sign_in_at", last_sign_in_at)
-        pulumi.set(__self__, "linkedin", linkedin)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "organization", organization)
-        pulumi.set(__self__, "projects_limit", projects_limit)
-        pulumi.set(__self__, "provider", provider)
-        pulumi.set(__self__, "skype", skype)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "theme_id", theme_id)
-        pulumi.set(__self__, "twitter", twitter)
-        pulumi.set(__self__, "two_factor_enabled", two_factor_enabled)
-        pulumi.set(__self__, "username", username)
-        pulumi.set(__self__, "website_url", website_url)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            avatar_url=avatar_url,
+            bio=bio,
+            can_create_group=can_create_group,
+            can_create_project=can_create_project,
+            color_scheme_id=color_scheme_id,
+            created_at=created_at,
+            current_sign_in_at=current_sign_in_at,
+            email=email,
+            extern_uid=extern_uid,
+            external=external,
+            id=id,
+            is_admin=is_admin,
+            last_sign_in_at=last_sign_in_at,
+            linkedin=linkedin,
+            location=location,
+            name=name,
+            namespace_id=namespace_id,
+            organization=organization,
+            projects_limit=projects_limit,
+            provider=provider,
+            skype=skype,
+            state=state,
+            theme_id=theme_id,
+            twitter=twitter,
+            two_factor_enabled=two_factor_enabled,
+            username=username,
+            website_url=website_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             avatar_url: str,
+             bio: str,
+             can_create_group: bool,
+             can_create_project: bool,
+             color_scheme_id: int,
+             created_at: str,
+             current_sign_in_at: str,
+             email: str,
+             extern_uid: str,
+             external: bool,
+             id: int,
+             is_admin: bool,
+             last_sign_in_at: str,
+             linkedin: str,
+             location: str,
+             name: str,
+             namespace_id: int,
+             organization: str,
+             projects_limit: int,
+             provider: str,
+             skype: str,
+             state: str,
+             theme_id: int,
+             twitter: str,
+             two_factor_enabled: bool,
+             username: str,
+             website_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("avatar_url", avatar_url)
+        _setter("bio", bio)
+        _setter("can_create_group", can_create_group)
+        _setter("can_create_project", can_create_project)
+        _setter("color_scheme_id", color_scheme_id)
+        _setter("created_at", created_at)
+        _setter("current_sign_in_at", current_sign_in_at)
+        _setter("email", email)
+        _setter("extern_uid", extern_uid)
+        _setter("external", external)
+        _setter("id", id)
+        _setter("is_admin", is_admin)
+        _setter("last_sign_in_at", last_sign_in_at)
+        _setter("linkedin", linkedin)
+        _setter("location", location)
+        _setter("name", name)
+        _setter("namespace_id", namespace_id)
+        _setter("organization", organization)
+        _setter("projects_limit", projects_limit)
+        _setter("provider", provider)
+        _setter("skype", skype)
+        _setter("state", state)
+        _setter("theme_id", theme_id)
+        _setter("twitter", twitter)
+        _setter("two_factor_enabled", two_factor_enabled)
+        _setter("username", username)
+        _setter("website_url", website_url)
 
     @property
     @pulumi.getter(name="avatarUrl")
@@ -5113,9 +6387,6 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter(name="externUid")
     def extern_uid(self) -> str:
-        """
-        Lookup users by external UID. (Requires administrator privileges)
-        """
         return pulumi.get(self, "extern_uid")
 
     @property
@@ -5126,9 +6397,6 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property

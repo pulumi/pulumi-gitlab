@@ -21,10 +21,6 @@ public final class GetGroupSubgroupsSubgroup {
     private Integer fileTemplateProjectId;
     private String fullName;
     private String fullPath;
-    /**
-     * @return The ID of the group.
-     * 
-     */
     private Integer groupId;
     private String ipRestrictionRanges;
     private Boolean lfsEnabled;
@@ -36,10 +32,6 @@ public final class GetGroupSubgroupsSubgroup {
     private Boolean requestAccessEnabled;
     private Boolean requireTwoFactorAuthentication;
     private Boolean shareWithGroupLock;
-    /**
-     * @return Include group statistics (administrators only).
-     * 
-     */
     private Map<String,String> statistics;
     private String subgroupCreationLevel;
     private Integer twoFactorGracePeriod;
@@ -75,10 +67,6 @@ public final class GetGroupSubgroupsSubgroup {
     public String fullPath() {
         return this.fullPath;
     }
-    /**
-     * @return The ID of the group.
-     * 
-     */
     public Integer groupId() {
         return this.groupId;
     }
@@ -112,10 +100,6 @@ public final class GetGroupSubgroupsSubgroup {
     public Boolean shareWithGroupLock() {
         return this.shareWithGroupLock;
     }
-    /**
-     * @return Include group statistics (administrators only).
-     * 
-     */
     public Map<String,String> statistics() {
         return this.statistics;
     }

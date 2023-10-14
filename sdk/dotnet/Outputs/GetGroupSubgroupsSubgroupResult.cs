@@ -22,9 +22,6 @@ namespace Pulumi.GitLab.Outputs
         public readonly int FileTemplateProjectId;
         public readonly string FullName;
         public readonly string FullPath;
-        /// <summary>
-        /// The ID of the group.
-        /// </summary>
         public readonly int GroupId;
         public readonly string IpRestrictionRanges;
         public readonly bool LfsEnabled;
@@ -36,9 +33,6 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool RequestAccessEnabled;
         public readonly bool RequireTwoFactorAuthentication;
         public readonly bool ShareWithGroupLock;
-        /// <summary>
-        /// Include group statistics (administrators only).
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Statistics;
         public readonly string SubgroupCreationLevel;
         public readonly int TwoFactorGracePeriod;

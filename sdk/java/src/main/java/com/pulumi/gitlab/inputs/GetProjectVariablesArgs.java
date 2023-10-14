@@ -15,32 +15,16 @@ public final class GetProjectVariablesArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetProjectVariablesArgs Empty = new GetProjectVariablesArgs();
 
-    /**
-     * The environment scope of the variable. Defaults to all environment (`*`).
-     * 
-     */
     @Import(name="environmentScope")
     private @Nullable Output<String> environmentScope;
 
-    /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`).
-     * 
-     */
     public Optional<Output<String>> environmentScope() {
         return Optional.ofNullable(this.environmentScope);
     }
 
-    /**
-     * The name or id of the project.
-     * 
-     */
     @Import(name="project", required=true)
     private Output<String> project;
 
-    /**
-     * @return The name or id of the project.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
@@ -70,44 +54,20 @@ public final class GetProjectVariablesArgs extends com.pulumi.resources.InvokeAr
             $ = new GetProjectVariablesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param environmentScope The environment scope of the variable. Defaults to all environment (`*`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder environmentScope(@Nullable Output<String> environmentScope) {
             $.environmentScope = environmentScope;
             return this;
         }
 
-        /**
-         * @param environmentScope The environment scope of the variable. Defaults to all environment (`*`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder environmentScope(String environmentScope) {
             return environmentScope(Output.of(environmentScope));
         }
 
-        /**
-         * @param project The name or id of the project.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The name or id of the project.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

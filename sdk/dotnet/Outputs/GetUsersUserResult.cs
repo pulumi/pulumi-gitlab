@@ -21,14 +21,8 @@ namespace Pulumi.GitLab.Outputs
         public readonly string CreatedAt;
         public readonly string CurrentSignInAt;
         public readonly string Email;
-        /// <summary>
-        /// Lookup users by external UID. (Requires administrator privileges)
-        /// </summary>
         public readonly string ExternUid;
         public readonly bool External;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly bool IsAdmin;
         public readonly string LastSignInAt;

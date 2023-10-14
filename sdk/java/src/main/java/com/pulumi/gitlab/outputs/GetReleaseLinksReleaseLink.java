@@ -17,15 +17,7 @@ public final class GetReleaseLinksReleaseLink {
     private Integer linkId;
     private String linkType;
     private String name;
-    /**
-     * @return The ID or full path to the project.
-     * 
-     */
     private String project;
-    /**
-     * @return The tag associated with the Release.
-     * 
-     */
     private String tagName;
     private String url;
 
@@ -48,17 +40,9 @@ public final class GetReleaseLinksReleaseLink {
     public String name() {
         return this.name;
     }
-    /**
-     * @return The ID or full path to the project.
-     * 
-     */
     public String project() {
         return this.project;
     }
-    /**
-     * @return The tag associated with the Release.
-     * 
-     */
     public String tagName() {
         return this.tagName;
     }

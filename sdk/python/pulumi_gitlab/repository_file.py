@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RepositoryFileArgs', 'RepositoryFile']
@@ -45,30 +45,65 @@ class RepositoryFileArgs:
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
         :param pulumi.Input[str] update_commit_message: Update commit message.
         """
-        pulumi.set(__self__, "branch", branch)
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "file_path", file_path)
-        pulumi.set(__self__, "project", project)
+        RepositoryFileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            branch=branch,
+            content=content,
+            file_path=file_path,
+            project=project,
+            author_email=author_email,
+            author_name=author_name,
+            commit_message=commit_message,
+            create_commit_message=create_commit_message,
+            delete_commit_message=delete_commit_message,
+            encoding=encoding,
+            execute_filemode=execute_filemode,
+            overwrite_on_create=overwrite_on_create,
+            start_branch=start_branch,
+            update_commit_message=update_commit_message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             branch: pulumi.Input[str],
+             content: pulumi.Input[str],
+             file_path: pulumi.Input[str],
+             project: pulumi.Input[str],
+             author_email: Optional[pulumi.Input[str]] = None,
+             author_name: Optional[pulumi.Input[str]] = None,
+             commit_message: Optional[pulumi.Input[str]] = None,
+             create_commit_message: Optional[pulumi.Input[str]] = None,
+             delete_commit_message: Optional[pulumi.Input[str]] = None,
+             encoding: Optional[pulumi.Input[str]] = None,
+             execute_filemode: Optional[pulumi.Input[bool]] = None,
+             overwrite_on_create: Optional[pulumi.Input[bool]] = None,
+             start_branch: Optional[pulumi.Input[str]] = None,
+             update_commit_message: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("branch", branch)
+        _setter("content", content)
+        _setter("file_path", file_path)
+        _setter("project", project)
         if author_email is not None:
-            pulumi.set(__self__, "author_email", author_email)
+            _setter("author_email", author_email)
         if author_name is not None:
-            pulumi.set(__self__, "author_name", author_name)
+            _setter("author_name", author_name)
         if commit_message is not None:
-            pulumi.set(__self__, "commit_message", commit_message)
+            _setter("commit_message", commit_message)
         if create_commit_message is not None:
-            pulumi.set(__self__, "create_commit_message", create_commit_message)
+            _setter("create_commit_message", create_commit_message)
         if delete_commit_message is not None:
-            pulumi.set(__self__, "delete_commit_message", delete_commit_message)
+            _setter("delete_commit_message", delete_commit_message)
         if encoding is not None:
-            pulumi.set(__self__, "encoding", encoding)
+            _setter("encoding", encoding)
         if execute_filemode is not None:
-            pulumi.set(__self__, "execute_filemode", execute_filemode)
+            _setter("execute_filemode", execute_filemode)
         if overwrite_on_create is not None:
-            pulumi.set(__self__, "overwrite_on_create", overwrite_on_create)
+            _setter("overwrite_on_create", overwrite_on_create)
         if start_branch is not None:
-            pulumi.set(__self__, "start_branch", start_branch)
+            _setter("start_branch", start_branch)
         if update_commit_message is not None:
-            pulumi.set(__self__, "update_commit_message", update_commit_message)
+            _setter("update_commit_message", update_commit_message)
 
     @property
     @pulumi.getter
@@ -287,48 +322,97 @@ class _RepositoryFileState:
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
         :param pulumi.Input[str] update_commit_message: Update commit message.
         """
+        _RepositoryFileState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            author_email=author_email,
+            author_name=author_name,
+            blob_id=blob_id,
+            branch=branch,
+            commit_id=commit_id,
+            commit_message=commit_message,
+            content=content,
+            content_sha256=content_sha256,
+            create_commit_message=create_commit_message,
+            delete_commit_message=delete_commit_message,
+            encoding=encoding,
+            execute_filemode=execute_filemode,
+            file_name=file_name,
+            file_path=file_path,
+            last_commit_id=last_commit_id,
+            overwrite_on_create=overwrite_on_create,
+            project=project,
+            ref=ref,
+            size=size,
+            start_branch=start_branch,
+            update_commit_message=update_commit_message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             author_email: Optional[pulumi.Input[str]] = None,
+             author_name: Optional[pulumi.Input[str]] = None,
+             blob_id: Optional[pulumi.Input[str]] = None,
+             branch: Optional[pulumi.Input[str]] = None,
+             commit_id: Optional[pulumi.Input[str]] = None,
+             commit_message: Optional[pulumi.Input[str]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             content_sha256: Optional[pulumi.Input[str]] = None,
+             create_commit_message: Optional[pulumi.Input[str]] = None,
+             delete_commit_message: Optional[pulumi.Input[str]] = None,
+             encoding: Optional[pulumi.Input[str]] = None,
+             execute_filemode: Optional[pulumi.Input[bool]] = None,
+             file_name: Optional[pulumi.Input[str]] = None,
+             file_path: Optional[pulumi.Input[str]] = None,
+             last_commit_id: Optional[pulumi.Input[str]] = None,
+             overwrite_on_create: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             ref: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             start_branch: Optional[pulumi.Input[str]] = None,
+             update_commit_message: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if author_email is not None:
-            pulumi.set(__self__, "author_email", author_email)
+            _setter("author_email", author_email)
         if author_name is not None:
-            pulumi.set(__self__, "author_name", author_name)
+            _setter("author_name", author_name)
         if blob_id is not None:
-            pulumi.set(__self__, "blob_id", blob_id)
+            _setter("blob_id", blob_id)
         if branch is not None:
-            pulumi.set(__self__, "branch", branch)
+            _setter("branch", branch)
         if commit_id is not None:
-            pulumi.set(__self__, "commit_id", commit_id)
+            _setter("commit_id", commit_id)
         if commit_message is not None:
-            pulumi.set(__self__, "commit_message", commit_message)
+            _setter("commit_message", commit_message)
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if content_sha256 is not None:
-            pulumi.set(__self__, "content_sha256", content_sha256)
+            _setter("content_sha256", content_sha256)
         if create_commit_message is not None:
-            pulumi.set(__self__, "create_commit_message", create_commit_message)
+            _setter("create_commit_message", create_commit_message)
         if delete_commit_message is not None:
-            pulumi.set(__self__, "delete_commit_message", delete_commit_message)
+            _setter("delete_commit_message", delete_commit_message)
         if encoding is not None:
-            pulumi.set(__self__, "encoding", encoding)
+            _setter("encoding", encoding)
         if execute_filemode is not None:
-            pulumi.set(__self__, "execute_filemode", execute_filemode)
+            _setter("execute_filemode", execute_filemode)
         if file_name is not None:
-            pulumi.set(__self__, "file_name", file_name)
+            _setter("file_name", file_name)
         if file_path is not None:
-            pulumi.set(__self__, "file_path", file_path)
+            _setter("file_path", file_path)
         if last_commit_id is not None:
-            pulumi.set(__self__, "last_commit_id", last_commit_id)
+            _setter("last_commit_id", last_commit_id)
         if overwrite_on_create is not None:
-            pulumi.set(__self__, "overwrite_on_create", overwrite_on_create)
+            _setter("overwrite_on_create", overwrite_on_create)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if ref is not None:
-            pulumi.set(__self__, "ref", ref)
+            _setter("ref", ref)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if start_branch is not None:
-            pulumi.set(__self__, "start_branch", start_branch)
+            _setter("start_branch", start_branch)
         if update_commit_message is not None:
-            pulumi.set(__self__, "update_commit_message", update_commit_message)
+            _setter("update_commit_message", update_commit_message)
 
     @property
     @pulumi.getter(name="authorEmail")
@@ -654,6 +738,10 @@ class RepositoryFile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RepositoryFileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

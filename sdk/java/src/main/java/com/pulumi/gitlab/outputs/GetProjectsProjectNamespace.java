@@ -11,10 +11,6 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectsProjectNamespace {
     private String fullPath;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private Integer id;
     private String kind;
     private String name;
@@ -24,10 +20,6 @@ public final class GetProjectsProjectNamespace {
     public String fullPath() {
         return this.fullPath;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Integer id() {
         return this.id;
     }

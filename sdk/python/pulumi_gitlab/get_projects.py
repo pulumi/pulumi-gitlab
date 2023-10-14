@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -369,8 +369,6 @@ def get_projects(archived: Optional[bool] = None,
     ```
 
 
-    :param bool archived: Limit by archived status.
-    :param int group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
     :param int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
     :param bool membership: Limit by projects that the current user is a member of.
@@ -383,9 +381,7 @@ def get_projects(archived: Optional[bool] = None,
     :param bool simple: Return only the ID, URL, name, and path of each project.
     :param str sort: Return projects sorted in `asc` or `desc` order. Default is `desc`.
     :param bool starred: Limit by projects starred by the current user.
-    :param bool statistics: Include project statistics. Cannot be used with `group_id`.
     :param Sequence[str] topics: Limit by projects that have all of the given topics.
-    :param str visibility: Limit by visibility `public`, `internal`, or `private`.
     :param bool with_custom_attributes: Include custom attributes in response *(admins only)*.
     :param bool with_issues_enabled: Limit by projects with issues feature enabled. Default is `false`.
     :param bool with_merge_requests_enabled: Limit by projects with merge requests feature enabled. Default is `false`.
@@ -494,8 +490,6 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     ```
 
 
-    :param bool archived: Limit by archived status.
-    :param int group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
     :param int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
     :param bool membership: Limit by projects that the current user is a member of.
@@ -508,9 +502,7 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     :param bool simple: Return only the ID, URL, name, and path of each project.
     :param str sort: Return projects sorted in `asc` or `desc` order. Default is `desc`.
     :param bool starred: Limit by projects starred by the current user.
-    :param bool statistics: Include project statistics. Cannot be used with `group_id`.
     :param Sequence[str] topics: Limit by projects that have all of the given topics.
-    :param str visibility: Limit by visibility `public`, `internal`, or `private`.
     :param bool with_custom_attributes: Include custom attributes in response *(admins only)*.
     :param bool with_issues_enabled: Limit by projects with issues feature enabled. Default is `false`.
     :param bool with_merge_requests_enabled: Limit by projects with merge requests feature enabled. Default is `false`.

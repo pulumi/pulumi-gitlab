@@ -32,17 +32,9 @@ public final class GetGroupSubgroupsPlainArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.allAvailable);
     }
 
-    /**
-     * The ID of the group.
-     * 
-     */
     @Import(name="groupId", required=true)
     private Integer groupId;
 
-    /**
-     * @return The ID of the group.
-     * 
-     */
     public Integer groupId() {
         return this.groupId;
     }
@@ -137,17 +129,9 @@ public final class GetGroupSubgroupsPlainArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.sort);
     }
 
-    /**
-     * Include group statistics (administrators only).
-     * 
-     */
     @Import(name="statistics")
     private @Nullable Boolean statistics;
 
-    /**
-     * @return Include group statistics (administrators only).
-     * 
-     */
     public Optional<Boolean> statistics() {
         return Optional.ofNullable(this.statistics);
     }
@@ -211,12 +195,6 @@ public final class GetGroupSubgroupsPlainArgs extends com.pulumi.resources.Invok
             return this;
         }
 
-        /**
-         * @param groupId The ID of the group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupId(Integer groupId) {
             $.groupId = groupId;
             return this;
@@ -298,12 +276,6 @@ public final class GetGroupSubgroupsPlainArgs extends com.pulumi.resources.Invok
             return this;
         }
 
-        /**
-         * @param statistics Include group statistics (administrators only).
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistics(@Nullable Boolean statistics) {
             $.statistics = statistics;
             return this;

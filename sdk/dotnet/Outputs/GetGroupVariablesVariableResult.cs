@@ -13,13 +13,7 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetGroupVariablesVariableResult
     {
-        /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`).
-        /// </summary>
         public readonly string EnvironmentScope;
-        /// <summary>
-        /// The name or id of the group.
-        /// </summary>
         public readonly string Group;
         public readonly string Key;
         public readonly bool Masked;

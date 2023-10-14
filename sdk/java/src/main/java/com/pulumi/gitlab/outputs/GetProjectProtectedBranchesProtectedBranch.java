@@ -16,10 +16,6 @@ import java.util.Objects;
 public final class GetProjectProtectedBranchesProtectedBranch {
     private Boolean allowForcePush;
     private Boolean codeOwnerApprovalRequired;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private Integer id;
     private List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels;
     private String name;
@@ -32,10 +28,6 @@ public final class GetProjectProtectedBranchesProtectedBranch {
     public Boolean codeOwnerApprovalRequired() {
         return this.codeOwnerApprovalRequired;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Integer id() {
         return this.id;
     }

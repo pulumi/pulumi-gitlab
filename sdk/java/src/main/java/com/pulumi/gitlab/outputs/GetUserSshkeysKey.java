@@ -15,10 +15,6 @@ public final class GetUserSshkeysKey {
     private String key;
     private Integer keyId;
     private String title;
-    /**
-     * @return ID of the user to get the SSH keys for.
-     * 
-     */
     private Integer userId;
 
     private GetUserSshkeysKey() {}
@@ -37,10 +33,6 @@ public final class GetUserSshkeysKey {
     public String title() {
         return this.title;
     }
-    /**
-     * @return ID of the user to get the SSH keys for.
-     * 
-     */
     public Integer userId() {
         return this.userId;
     }

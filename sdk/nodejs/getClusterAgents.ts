@@ -36,9 +36,6 @@ export function getClusterAgents(args: GetClusterAgentsArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getClusterAgents.
  */
 export interface GetClusterAgentsArgs {
-    /**
-     * The ID or full path of the project owned by the authenticated user.
-     */
     project: string;
 }
 
@@ -85,8 +82,5 @@ export function getClusterAgentsOutput(args: GetClusterAgentsOutputArgs, opts?: 
  * A collection of arguments for invoking getClusterAgents.
  */
 export interface GetClusterAgentsOutputArgs {
-    /**
-     * The ID or full path of the project owned by the authenticated user.
-     */
     project: pulumi.Input<string>;
 }

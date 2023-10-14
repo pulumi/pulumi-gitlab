@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectApprovalRuleArgs', 'ProjectApprovalRule']
@@ -33,20 +33,43 @@ class ProjectApprovalRuleArgs:
         :param pulumi.Input[str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
-        pulumi.set(__self__, "approvals_required", approvals_required)
-        pulumi.set(__self__, "project", project)
+        ProjectApprovalRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approvals_required=approvals_required,
+            project=project,
+            disable_importing_default_any_approver_rule_on_create=disable_importing_default_any_approver_rule_on_create,
+            group_ids=group_ids,
+            name=name,
+            protected_branch_ids=protected_branch_ids,
+            rule_type=rule_type,
+            user_ids=user_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approvals_required: pulumi.Input[int],
+             project: pulumi.Input[str],
+             disable_importing_default_any_approver_rule_on_create: Optional[pulumi.Input[bool]] = None,
+             group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             rule_type: Optional[pulumi.Input[str]] = None,
+             user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("approvals_required", approvals_required)
+        _setter("project", project)
         if disable_importing_default_any_approver_rule_on_create is not None:
-            pulumi.set(__self__, "disable_importing_default_any_approver_rule_on_create", disable_importing_default_any_approver_rule_on_create)
+            _setter("disable_importing_default_any_approver_rule_on_create", disable_importing_default_any_approver_rule_on_create)
         if group_ids is not None:
-            pulumi.set(__self__, "group_ids", group_ids)
+            _setter("group_ids", group_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if protected_branch_ids is not None:
-            pulumi.set(__self__, "protected_branch_ids", protected_branch_ids)
+            _setter("protected_branch_ids", protected_branch_ids)
         if rule_type is not None:
-            pulumi.set(__self__, "rule_type", rule_type)
+            _setter("rule_type", rule_type)
         if user_ids is not None:
-            pulumi.set(__self__, "user_ids", user_ids)
+            _setter("user_ids", user_ids)
 
     @property
     @pulumi.getter(name="approvalsRequired")
@@ -167,22 +190,45 @@ class _ProjectApprovalRuleState:
         :param pulumi.Input[str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
+        _ProjectApprovalRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approvals_required=approvals_required,
+            disable_importing_default_any_approver_rule_on_create=disable_importing_default_any_approver_rule_on_create,
+            group_ids=group_ids,
+            name=name,
+            project=project,
+            protected_branch_ids=protected_branch_ids,
+            rule_type=rule_type,
+            user_ids=user_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approvals_required: Optional[pulumi.Input[int]] = None,
+             disable_importing_default_any_approver_rule_on_create: Optional[pulumi.Input[bool]] = None,
+             group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             rule_type: Optional[pulumi.Input[str]] = None,
+             user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if approvals_required is not None:
-            pulumi.set(__self__, "approvals_required", approvals_required)
+            _setter("approvals_required", approvals_required)
         if disable_importing_default_any_approver_rule_on_create is not None:
-            pulumi.set(__self__, "disable_importing_default_any_approver_rule_on_create", disable_importing_default_any_approver_rule_on_create)
+            _setter("disable_importing_default_any_approver_rule_on_create", disable_importing_default_any_approver_rule_on_create)
         if group_ids is not None:
-            pulumi.set(__self__, "group_ids", group_ids)
+            _setter("group_ids", group_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if protected_branch_ids is not None:
-            pulumi.set(__self__, "protected_branch_ids", protected_branch_ids)
+            _setter("protected_branch_ids", protected_branch_ids)
         if rule_type is not None:
-            pulumi.set(__self__, "rule_type", rule_type)
+            _setter("rule_type", rule_type)
         if user_ids is not None:
-            pulumi.set(__self__, "user_ids", user_ids)
+            _setter("user_ids", user_ids)
 
     @property
     @pulumi.getter(name="approvalsRequired")
@@ -340,6 +386,10 @@ class ProjectApprovalRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectApprovalRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

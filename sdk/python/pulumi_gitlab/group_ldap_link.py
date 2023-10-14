@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupLdapLinkArgs', 'GroupLdapLink']
@@ -31,21 +31,42 @@ class GroupLdapLinkArgs:
         :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists.
         :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "ldap_provider", ldap_provider)
+        GroupLdapLinkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            ldap_provider=ldap_provider,
+            access_level=access_level,
+            cn=cn,
+            filter=filter,
+            force=force,
+            group_access=group_access,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: pulumi.Input[str],
+             ldap_provider: pulumi.Input[str],
+             access_level: Optional[pulumi.Input[str]] = None,
+             cn: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             group_access: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group", group)
+        _setter("ldap_provider", ldap_provider)
         if access_level is not None:
             warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
             pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if cn is not None:
-            pulumi.set(__self__, "cn", cn)
+            _setter("cn", cn)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if group_access is not None:
-            pulumi.set(__self__, "group_access", group_access)
+            _setter("group_access", group_access)
 
     @property
     @pulumi.getter
@@ -155,23 +176,44 @@ class _GroupLdapLinkState:
         :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         """
+        _GroupLdapLinkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            cn=cn,
+            filter=filter,
+            force=force,
+            group=group,
+            group_access=group_access,
+            ldap_provider=ldap_provider,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             cn: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             group_access: Optional[pulumi.Input[str]] = None,
+             ldap_provider: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_level is not None:
             warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
             pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if cn is not None:
-            pulumi.set(__self__, "cn", cn)
+            _setter("cn", cn)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if group_access is not None:
-            pulumi.set(__self__, "group_access", group_access)
+            _setter("group_access", group_access)
         if ldap_provider is not None:
-            pulumi.set(__self__, "ldap_provider", ldap_provider)
+            _setter("ldap_provider", ldap_provider)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -338,6 +380,10 @@ class GroupLdapLink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupLdapLinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -359,9 +405,6 @@ class GroupLdapLink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupLdapLinkArgs.__new__(GroupLdapLinkArgs)
 
-            if access_level is not None and not opts.urn:
-                warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
-                pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
             __props__.__dict__["access_level"] = access_level
             __props__.__dict__["cn"] = cn
             __props__.__dict__["filter"] = filter

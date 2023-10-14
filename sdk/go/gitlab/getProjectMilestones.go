@@ -56,15 +56,12 @@ type GetProjectMilestonesArgs struct {
 	// Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
 	Iids []int `pulumi:"iids"`
 	// Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
-	IncludeParentMilestones *bool `pulumi:"includeParentMilestones"`
-	// The ID or URL-encoded path of the project owned by the authenticated user.
-	Project string `pulumi:"project"`
+	IncludeParentMilestones *bool  `pulumi:"includeParentMilestones"`
+	Project                 string `pulumi:"project"`
 	// Return only milestones with a title or description matching the provided string.
 	Search *string `pulumi:"search"`
-	// Return only `active` or `closed` milestones.
-	State *string `pulumi:"state"`
-	// Return only the milestones having the given `title`.
-	Title *string `pulumi:"title"`
+	State  *string `pulumi:"state"`
+	Title  *string `pulumi:"title"`
 }
 
 // A collection of values returned by getProjectMilestones.
@@ -106,14 +103,11 @@ type GetProjectMilestonesOutputArgs struct {
 	Iids pulumi.IntArrayInput `pulumi:"iids"`
 	// Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
 	IncludeParentMilestones pulumi.BoolPtrInput `pulumi:"includeParentMilestones"`
-	// The ID or URL-encoded path of the project owned by the authenticated user.
-	Project pulumi.StringInput `pulumi:"project"`
+	Project                 pulumi.StringInput  `pulumi:"project"`
 	// Return only milestones with a title or description matching the provided string.
 	Search pulumi.StringPtrInput `pulumi:"search"`
-	// Return only `active` or `closed` milestones.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Return only the milestones having the given `title`.
-	Title pulumi.StringPtrInput `pulumi:"title"`
+	State  pulumi.StringPtrInput `pulumi:"state"`
+	Title  pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (GetProjectMilestonesOutputArgs) ElementType() reflect.Type {

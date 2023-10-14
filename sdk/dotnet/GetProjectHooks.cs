@@ -85,9 +85,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectHooksArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name or id of the project.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -99,9 +96,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectHooksInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name or id of the project.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

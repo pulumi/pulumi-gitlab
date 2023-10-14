@@ -37,9 +37,6 @@ export function getProjectHooks(args: GetProjectHooksArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getProjectHooks.
  */
 export interface GetProjectHooksArgs {
-    /**
-     * The name or id of the project.
-     */
     project: string;
 }
 
@@ -87,8 +84,5 @@ export function getProjectHooksOutput(args: GetProjectHooksOutputArgs, opts?: pu
  * A collection of arguments for invoking getProjectHooks.
  */
 export interface GetProjectHooksOutputArgs {
-    /**
-     * The name or id of the project.
-     */
     project: pulumi.Input<string>;
 }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -99,10 +99,6 @@ def get_group_variables(environment_scope: Optional[str] = None,
     staging_vars = gitlab.get_group_variables(environment_scope="staging/*",
         group="my/example/group")
     ```
-
-
-    :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
-    :param str group: The name or id of the group.
     """
     __args__ = dict()
     __args__['environmentScope'] = environment_scope
@@ -136,9 +132,5 @@ def get_group_variables_output(environment_scope: Optional[pulumi.Input[Optional
     staging_vars = gitlab.get_group_variables(environment_scope="staging/*",
         group="my/example/group")
     ```
-
-
-    :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
-    :param str group: The name or id of the group.
     """
     ...

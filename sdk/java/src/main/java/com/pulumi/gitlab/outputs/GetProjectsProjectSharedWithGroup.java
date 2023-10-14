@@ -11,10 +11,6 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectsProjectSharedWithGroup {
     private String groupAccessLevel;
-    /**
-     * @return The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-     * 
-     */
     private Integer groupId;
     private String groupName;
 
@@ -22,10 +18,6 @@ public final class GetProjectsProjectSharedWithGroup {
     public String groupAccessLevel() {
         return this.groupAccessLevel;
     }
-    /**
-     * @return The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-     * 
-     */
     public Integer groupId() {
         return this.groupId;
     }

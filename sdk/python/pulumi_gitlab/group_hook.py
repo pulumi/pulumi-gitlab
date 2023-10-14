@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupHookArgs', 'GroupHook']
@@ -53,40 +53,83 @@ class GroupHookArgs:
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "url", url)
+        GroupHookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            url=url,
+            confidential_issues_events=confidential_issues_events,
+            confidential_note_events=confidential_note_events,
+            deployment_events=deployment_events,
+            enable_ssl_verification=enable_ssl_verification,
+            issues_events=issues_events,
+            job_events=job_events,
+            merge_requests_events=merge_requests_events,
+            note_events=note_events,
+            pipeline_events=pipeline_events,
+            push_events=push_events,
+            push_events_branch_filter=push_events_branch_filter,
+            releases_events=releases_events,
+            subgroup_events=subgroup_events,
+            tag_push_events=tag_push_events,
+            token=token,
+            wiki_page_events=wiki_page_events,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: pulumi.Input[str],
+             url: pulumi.Input[str],
+             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+             confidential_note_events: Optional[pulumi.Input[bool]] = None,
+             deployment_events: Optional[pulumi.Input[bool]] = None,
+             enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+             issues_events: Optional[pulumi.Input[bool]] = None,
+             job_events: Optional[pulumi.Input[bool]] = None,
+             merge_requests_events: Optional[pulumi.Input[bool]] = None,
+             note_events: Optional[pulumi.Input[bool]] = None,
+             pipeline_events: Optional[pulumi.Input[bool]] = None,
+             push_events: Optional[pulumi.Input[bool]] = None,
+             push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+             releases_events: Optional[pulumi.Input[bool]] = None,
+             subgroup_events: Optional[pulumi.Input[bool]] = None,
+             tag_push_events: Optional[pulumi.Input[bool]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             wiki_page_events: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group", group)
+        _setter("url", url)
         if confidential_issues_events is not None:
-            pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+            _setter("confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
-            pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+            _setter("confidential_note_events", confidential_note_events)
         if deployment_events is not None:
-            pulumi.set(__self__, "deployment_events", deployment_events)
+            _setter("deployment_events", deployment_events)
         if enable_ssl_verification is not None:
-            pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+            _setter("enable_ssl_verification", enable_ssl_verification)
         if issues_events is not None:
-            pulumi.set(__self__, "issues_events", issues_events)
+            _setter("issues_events", issues_events)
         if job_events is not None:
-            pulumi.set(__self__, "job_events", job_events)
+            _setter("job_events", job_events)
         if merge_requests_events is not None:
-            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+            _setter("merge_requests_events", merge_requests_events)
         if note_events is not None:
-            pulumi.set(__self__, "note_events", note_events)
+            _setter("note_events", note_events)
         if pipeline_events is not None:
-            pulumi.set(__self__, "pipeline_events", pipeline_events)
+            _setter("pipeline_events", pipeline_events)
         if push_events is not None:
-            pulumi.set(__self__, "push_events", push_events)
+            _setter("push_events", push_events)
         if push_events_branch_filter is not None:
-            pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
+            _setter("push_events_branch_filter", push_events_branch_filter)
         if releases_events is not None:
-            pulumi.set(__self__, "releases_events", releases_events)
+            _setter("releases_events", releases_events)
         if subgroup_events is not None:
-            pulumi.set(__self__, "subgroup_events", subgroup_events)
+            _setter("subgroup_events", subgroup_events)
         if tag_push_events is not None:
-            pulumi.set(__self__, "tag_push_events", tag_push_events)
+            _setter("tag_push_events", tag_push_events)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if wiki_page_events is not None:
-            pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+            _setter("wiki_page_events", wiki_page_events)
 
     @property
     @pulumi.getter
@@ -351,46 +394,93 @@ class _GroupHookState:
         :param pulumi.Input[str] url: The url of the hook to invoke.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
+        _GroupHookState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            confidential_issues_events=confidential_issues_events,
+            confidential_note_events=confidential_note_events,
+            deployment_events=deployment_events,
+            enable_ssl_verification=enable_ssl_verification,
+            group=group,
+            group_id=group_id,
+            hook_id=hook_id,
+            issues_events=issues_events,
+            job_events=job_events,
+            merge_requests_events=merge_requests_events,
+            note_events=note_events,
+            pipeline_events=pipeline_events,
+            push_events=push_events,
+            push_events_branch_filter=push_events_branch_filter,
+            releases_events=releases_events,
+            subgroup_events=subgroup_events,
+            tag_push_events=tag_push_events,
+            token=token,
+            url=url,
+            wiki_page_events=wiki_page_events,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+             confidential_note_events: Optional[pulumi.Input[bool]] = None,
+             deployment_events: Optional[pulumi.Input[bool]] = None,
+             enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             hook_id: Optional[pulumi.Input[int]] = None,
+             issues_events: Optional[pulumi.Input[bool]] = None,
+             job_events: Optional[pulumi.Input[bool]] = None,
+             merge_requests_events: Optional[pulumi.Input[bool]] = None,
+             note_events: Optional[pulumi.Input[bool]] = None,
+             pipeline_events: Optional[pulumi.Input[bool]] = None,
+             push_events: Optional[pulumi.Input[bool]] = None,
+             push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+             releases_events: Optional[pulumi.Input[bool]] = None,
+             subgroup_events: Optional[pulumi.Input[bool]] = None,
+             tag_push_events: Optional[pulumi.Input[bool]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             wiki_page_events: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if confidential_issues_events is not None:
-            pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+            _setter("confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
-            pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+            _setter("confidential_note_events", confidential_note_events)
         if deployment_events is not None:
-            pulumi.set(__self__, "deployment_events", deployment_events)
+            _setter("deployment_events", deployment_events)
         if enable_ssl_verification is not None:
-            pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+            _setter("enable_ssl_verification", enable_ssl_verification)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if hook_id is not None:
-            pulumi.set(__self__, "hook_id", hook_id)
+            _setter("hook_id", hook_id)
         if issues_events is not None:
-            pulumi.set(__self__, "issues_events", issues_events)
+            _setter("issues_events", issues_events)
         if job_events is not None:
-            pulumi.set(__self__, "job_events", job_events)
+            _setter("job_events", job_events)
         if merge_requests_events is not None:
-            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+            _setter("merge_requests_events", merge_requests_events)
         if note_events is not None:
-            pulumi.set(__self__, "note_events", note_events)
+            _setter("note_events", note_events)
         if pipeline_events is not None:
-            pulumi.set(__self__, "pipeline_events", pipeline_events)
+            _setter("pipeline_events", pipeline_events)
         if push_events is not None:
-            pulumi.set(__self__, "push_events", push_events)
+            _setter("push_events", push_events)
         if push_events_branch_filter is not None:
-            pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
+            _setter("push_events_branch_filter", push_events_branch_filter)
         if releases_events is not None:
-            pulumi.set(__self__, "releases_events", releases_events)
+            _setter("releases_events", releases_events)
         if subgroup_events is not None:
-            pulumi.set(__self__, "subgroup_events", subgroup_events)
+            _setter("subgroup_events", subgroup_events)
         if tag_push_events is not None:
-            pulumi.set(__self__, "tag_push_events", tag_push_events)
+            _setter("tag_push_events", tag_push_events)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if wiki_page_events is not None:
-            pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+            _setter("wiki_page_events", wiki_page_events)
 
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -788,6 +878,10 @@ class GroupHook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupHookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
