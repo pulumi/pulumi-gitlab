@@ -15,28 +15,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = GitLab.GetGroup.Invoke(new()
-        ///     {
-        ///         FullPath = "foo/bar",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
@@ -45,28 +23,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = GitLab.GetGroup.Invoke(new()
-        ///     {
-        ///         FullPath = "foo/bar",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());

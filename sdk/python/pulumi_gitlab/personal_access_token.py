@@ -35,11 +35,23 @@ class PersonalAccessTokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expires_at: pulumi.Input[str],
-             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
-             user_id: pulumi.Input[int],
+             expires_at: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if expires_at is None:
+            raise TypeError("Missing 'expires_at' argument")
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("expires_at", expires_at)
         _setter("scopes", scopes)
         _setter("user_id", user_id)
@@ -139,7 +151,15 @@ class _PersonalAccessTokenState:
              scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              token: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if active is not None:
             _setter("active", active)
         if created_at is not None:
@@ -271,22 +291,6 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_personal_access_token = gitlab.PersonalAccessToken("examplePersonalAccessToken",
-            user_id=25,
-            expires_at="2020-03-14",
-            scopes=["api"])
-        example_project_variable = gitlab.ProjectVariable("exampleProjectVariable",
-            project=gitlab_project["example"]["id"],
-            key="pat",
-            value=example_personal_access_token.token)
-        ```
-
         ## Import
 
         A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
@@ -316,22 +320,6 @@ class PersonalAccessToken(pulumi.CustomResource):
         > This resource requires administration privileges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_personal_access_token = gitlab.PersonalAccessToken("examplePersonalAccessToken",
-            user_id=25,
-            expires_at="2020-03-14",
-            scopes=["api"])
-        example_project_variable = gitlab.ProjectVariable("exampleProjectVariable",
-            project=gitlab_project["example"]["id"],
-            key="pat",
-            value=example_personal_access_token.token)
-        ```
 
         ## Import
 

@@ -19,46 +19,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_clusters.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := gitlab.NewGroup(ctx, "foo", &gitlab.GroupArgs{
-//				Path: pulumi.String("foo-path"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewGroupCluster(ctx, "bar", &gitlab.GroupClusterArgs{
-//				Group:                       foo.ID(),
-//				Domain:                      pulumi.String("example.com"),
-//				Enabled:                     pulumi.Bool(true),
-//				KubernetesApiUrl:            pulumi.String("https://124.124.124"),
-//				KubernetesToken:             pulumi.String("some-token"),
-//				KubernetesCaCert:            pulumi.String("some-cert"),
-//				KubernetesAuthorizationType: pulumi.String("rbac"),
-//				EnvironmentScope:            pulumi.String("*"),
-//				ManagementProjectId:         pulumi.String("123456"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.

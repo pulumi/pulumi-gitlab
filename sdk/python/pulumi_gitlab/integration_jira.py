@@ -71,10 +71,10 @@ class IntegrationJiraArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: pulumi.Input[str],
-             project: pulumi.Input[str],
-             url: pulumi.Input[str],
-             username: pulumi.Input[str],
+             password: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              api_url: Optional[pulumi.Input[str]] = None,
              comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
              commit_events: Optional[pulumi.Input[bool]] = None,
@@ -87,7 +87,41 @@ class IntegrationJiraArgs:
              project_key: Optional[pulumi.Input[str]] = None,
              push_events: Optional[pulumi.Input[bool]] = None,
              tag_push_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if api_url is None and 'apiUrl' in kwargs:
+            api_url = kwargs['apiUrl']
+        if comment_on_event_enabled is None and 'commentOnEventEnabled' in kwargs:
+            comment_on_event_enabled = kwargs['commentOnEventEnabled']
+        if commit_events is None and 'commitEvents' in kwargs:
+            commit_events = kwargs['commitEvents']
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if jira_issue_transition_id is None and 'jiraIssueTransitionId' in kwargs:
+            jira_issue_transition_id = kwargs['jiraIssueTransitionId']
+        if job_events is None and 'jobEvents' in kwargs:
+            job_events = kwargs['jobEvents']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if project_key is None and 'projectKey' in kwargs:
+            project_key = kwargs['projectKey']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+
         _setter("password", password)
         _setter("project", project)
         _setter("url", url)
@@ -402,7 +436,37 @@ class _IntegrationJiraState:
              updated_at: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_url is None and 'apiUrl' in kwargs:
+            api_url = kwargs['apiUrl']
+        if comment_on_event_enabled is None and 'commentOnEventEnabled' in kwargs:
+            comment_on_event_enabled = kwargs['commentOnEventEnabled']
+        if commit_events is None and 'commitEvents' in kwargs:
+            commit_events = kwargs['commitEvents']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if jira_issue_transition_id is None and 'jiraIssueTransitionId' in kwargs:
+            jira_issue_transition_id = kwargs['jiraIssueTransitionId']
+        if job_events is None and 'jobEvents' in kwargs:
+            job_events = kwargs['jobEvents']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if project_key is None and 'projectKey' in kwargs:
+            project_key = kwargs['projectKey']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if active is not None:
             _setter("active", active)
         if api_url is not None:
@@ -712,22 +776,6 @@ class IntegrationJira(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        jira = gitlab.IntegrationJira("jira",
-            project=awesome_project.id,
-            url="https://jira.example.com",
-            username="user",
-            password="mypass")
-        ```
-
         ## Import
 
         You can import a gitlab_integration_jira state using the project ID, e.g.
@@ -765,22 +813,6 @@ class IntegrationJira(pulumi.CustomResource):
         The `IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        jira = gitlab.IntegrationJira("jira",
-            project=awesome_project.id,
-            url="https://jira.example.com",
-            username="user",
-            password="mypass")
-        ```
 
         ## Import
 

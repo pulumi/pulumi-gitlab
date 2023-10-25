@@ -14,34 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
-    ///     {
-    ///         Description = "My awesome project.",
-    ///         VisibilityLevel = "public",
-    ///     });
-    /// 
-    ///     var mattermost = new GitLab.IntegrationMattermost("mattermost", new()
-    ///     {
-    ///         Project = awesomeProject.Id,
-    ///         Webhook = "https://webhook.com",
-    ///         Username = "myuser",
-    ///         PushEvents = true,
-    ///         PushChannel = "push_chan",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.

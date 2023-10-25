@@ -38,12 +38,24 @@ class ProjectAccessTokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expires_at: pulumi.Input[str],
-             project: pulumi.Input[str],
-             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             expires_at: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              access_level: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if expires_at is None:
+            raise TypeError("Missing 'expires_at' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+
         _setter("expires_at", expires_at)
         _setter("project", project)
         _setter("scopes", scopes)
@@ -165,7 +177,17 @@ class _ProjectAccessTokenState:
              scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              token: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if active is not None:
@@ -324,23 +346,6 @@ class ProjectAccessToken(pulumi.CustomResource):
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_project_access_token = gitlab.ProjectAccessToken("exampleProjectAccessToken",
-            project="25",
-            expires_at="2020-03-14",
-            access_level="reporter",
-            scopes=["api"])
-        example_project_variable = gitlab.ProjectVariable("exampleProjectVariable",
-            project=gitlab_project["example"]["id"],
-            key="pat",
-            value=example_project_access_token.token)
-        ```
-
         ## Import
 
         A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
@@ -369,23 +374,6 @@ class ProjectAccessToken(pulumi.CustomResource):
         The `ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_project_access_token = gitlab.ProjectAccessToken("exampleProjectAccessToken",
-            project="25",
-            expires_at="2020-03-14",
-            access_level="reporter",
-            scopes=["api"])
-        example_project_variable = gitlab.ProjectVariable("exampleProjectVariable",
-            project=gitlab_project["example"]["id"],
-            key="pat",
-            value=example_project_access_token.token)
-        ```
 
         ## Import
 

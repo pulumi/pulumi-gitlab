@@ -8,23 +8,6 @@ import * as utilities from "./utilities";
  * The `gitlab.ProjectVariable` data source allows to retrieve details about a project-level CI/CD variable.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const foo = gitlab.getProjectVariable({
- *     key: "foo",
- *     project: "my/example/project",
- * });
- * const bar = gitlab.getProjectVariable({
- *     environmentScope: "staging/*",
- *     key: "bar",
- *     project: "my/example/project",
- * });
- * ```
  */
 export function getProjectVariable(args: GetProjectVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVariableResult> {
 
@@ -99,23 +82,6 @@ export interface GetProjectVariableResult {
  * The `gitlab.ProjectVariable` data source allows to retrieve details about a project-level CI/CD variable.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const foo = gitlab.getProjectVariable({
- *     key: "foo",
- *     project: "my/example/project",
- * });
- * const bar = gitlab.getProjectVariable({
- *     environmentScope: "staging/*",
- *     key: "bar",
- *     project: "my/example/project",
- * });
- * ```
  */
 export function getProjectVariableOutput(args: GetProjectVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectVariableResult> {
     return pulumi.output(args).apply((a: any) => getProjectVariable(a, opts))

@@ -14,33 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
-    ///     {
-    ///         Description = "My awesome project.",
-    ///         VisibilityLevel = "public",
-    ///     });
-    /// 
-    ///     var jira = new GitLab.IntegrationJira("jira", new()
-    ///     {
-    ///         Project = awesomeProject.Id,
-    ///         Url = "https://jira.example.com",
-    ///         Username = "user",
-    ///         Password = "mypass",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// You can import a gitlab_integration_jira state using the project ID, e.g.

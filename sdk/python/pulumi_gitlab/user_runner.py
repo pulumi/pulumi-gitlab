@@ -53,7 +53,7 @@ class UserRunnerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             runner_type: pulumi.Input[str],
+             runner_type: Optional[pulumi.Input[str]] = None,
              access_level: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[int]] = None,
@@ -63,7 +63,23 @@ class UserRunnerArgs:
              project_id: Optional[pulumi.Input[int]] = None,
              tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              untagged: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if runner_type is None and 'runnerType' in kwargs:
+            runner_type = kwargs['runnerType']
+        if runner_type is None:
+            raise TypeError("Missing 'runner_type' argument")
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if maximum_timeout is None and 'maximumTimeout' in kwargs:
+            maximum_timeout = kwargs['maximumTimeout']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if tag_lists is None and 'tagLists' in kwargs:
+            tag_lists = kwargs['tagLists']
+
         _setter("runner_type", runner_type)
         if access_level is not None:
             _setter("access_level", access_level)
@@ -261,7 +277,21 @@ class _UserRunnerState:
              tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              token: Optional[pulumi.Input[str]] = None,
              untagged: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if maximum_timeout is None and 'maximumTimeout' in kwargs:
+            maximum_timeout = kwargs['maximumTimeout']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if runner_type is None and 'runnerType' in kwargs:
+            runner_type = kwargs['runnerType']
+        if tag_lists is None and 'tagLists' in kwargs:
+            tag_lists = kwargs['tagLists']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if description is not None:

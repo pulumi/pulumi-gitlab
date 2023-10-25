@@ -9,19 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/labels.html#group-labels)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const fixme = new gitlab.GroupLabel("fixme", {
- *     color: "#ffcc00",
- *     description: "issue with failing tests",
- *     group: "example",
- * });
- * ```
- *
  * ## Import
  *
  * Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.

@@ -149,19 +149,6 @@ def get_project_variable(environment_scope: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    foo = gitlab.get_project_variable(key="foo",
-        project="my/example/project")
-    bar = gitlab.get_project_variable(environment_scope="staging/*",
-        key="bar",
-        project="my/example/project")
-    ```
-
 
     :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
     :param str key: The name of the variable.
@@ -195,19 +182,6 @@ def get_project_variable_output(environment_scope: Optional[pulumi.Input[Optiona
     The `ProjectVariable` data source allows to retrieve details about a project-level CI/CD variable.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    foo = gitlab.get_project_variable(key="foo",
-        project="my/example/project")
-    bar = gitlab.get_project_variable(environment_scope="staging/*",
-        key="bar",
-        project="my/example/project")
-    ```
 
 
     :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.

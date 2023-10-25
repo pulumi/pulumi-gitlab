@@ -37,11 +37,17 @@ class GroupIssueBoardArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
+             group: Optional[pulumi.Input[str]] = None,
              lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]] = None,
              milestone_id: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+
         _setter("group", group)
         if lists is not None:
             _setter("lists", lists)
@@ -127,7 +133,11 @@ class _GroupIssueBoardState:
              lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]] = None,
              milestone_id: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+
         if group is not None:
             _setter("group", group)
         if lists is not None:

@@ -14,21 +14,6 @@ import * as utilities from "./utilities";
  * > Some available options require administrator privileges.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getGroups({
- *     orderBy: "name",
- *     sort: "desc",
- * });
- * const example-two = gitlab.getGroups({
- *     search: "GitLab",
- * });
- * ```
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
@@ -101,21 +86,6 @@ export interface GetGroupsResult {
  * > Some available options require administrator privileges.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getGroups({
- *     orderBy: "name",
- *     sort: "desc",
- * });
- * const example-two = gitlab.getGroups({
- *     search: "GitLab",
- * });
- * ```
  */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroups(a, opts))

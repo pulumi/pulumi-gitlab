@@ -799,15 +799,6 @@ def get_project(ci_default_git_depth: Optional[int] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project(path_with_namespace="foo/bar/baz")
-    ```
-
 
     :param int ci_default_git_depth: Default number of revisions for shallow cloning.
     :param str id: The integer that uniquely identifies the project within the gitlab install.
@@ -898,15 +889,6 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]
     The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project(path_with_namespace="foo/bar/baz")
-    ```
 
 
     :param int ci_default_git_depth: Default number of revisions for shallow cloning.

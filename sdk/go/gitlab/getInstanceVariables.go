@@ -4,37 +4,17 @@
 package gitlab
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.GetInstanceVariables(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstanceVariables(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetInstanceVariablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceVariablesResult
@@ -51,4 +31,50 @@ type GetInstanceVariablesResult struct {
 	Id string `pulumi:"id"`
 	// The list of variables returned by the search
 	Variables []GetInstanceVariablesVariable `pulumi:"variables"`
+}
+
+func GetInstanceVariablesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetInstanceVariablesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetInstanceVariablesResult, error) {
+		r, err := GetInstanceVariables(ctx, opts...)
+		var s GetInstanceVariablesResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetInstanceVariablesResultOutput)
+}
+
+// A collection of values returned by getInstanceVariables.
+type GetInstanceVariablesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceVariablesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceVariablesResult)(nil)).Elem()
+}
+
+func (o GetInstanceVariablesResultOutput) ToGetInstanceVariablesResultOutput() GetInstanceVariablesResultOutput {
+	return o
+}
+
+func (o GetInstanceVariablesResultOutput) ToGetInstanceVariablesResultOutputWithContext(ctx context.Context) GetInstanceVariablesResultOutput {
+	return o
+}
+
+func (o GetInstanceVariablesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceVariablesResult] {
+	return pulumix.Output[GetInstanceVariablesResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstanceVariablesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceVariablesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of variables returned by the search
+func (o GetInstanceVariablesResultOutput) Variables() GetInstanceVariablesVariableArrayOutput {
+	return o.ApplyT(func(v GetInstanceVariablesResult) []GetInstanceVariablesVariable { return v.Variables }).(GetInstanceVariablesVariableArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstanceVariablesResultOutput{})
 }

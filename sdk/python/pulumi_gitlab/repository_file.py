@@ -65,10 +65,10 @@ class RepositoryFileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch: pulumi.Input[str],
-             content: pulumi.Input[str],
-             file_path: pulumi.Input[str],
-             project: pulumi.Input[str],
+             branch: Optional[pulumi.Input[str]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             file_path: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              author_email: Optional[pulumi.Input[str]] = None,
              author_name: Optional[pulumi.Input[str]] = None,
              commit_message: Optional[pulumi.Input[str]] = None,
@@ -79,7 +79,37 @@ class RepositoryFileArgs:
              overwrite_on_create: Optional[pulumi.Input[bool]] = None,
              start_branch: Optional[pulumi.Input[str]] = None,
              update_commit_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch is None:
+            raise TypeError("Missing 'branch' argument")
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if file_path is None and 'filePath' in kwargs:
+            file_path = kwargs['filePath']
+        if file_path is None:
+            raise TypeError("Missing 'file_path' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if author_email is None and 'authorEmail' in kwargs:
+            author_email = kwargs['authorEmail']
+        if author_name is None and 'authorName' in kwargs:
+            author_name = kwargs['authorName']
+        if commit_message is None and 'commitMessage' in kwargs:
+            commit_message = kwargs['commitMessage']
+        if create_commit_message is None and 'createCommitMessage' in kwargs:
+            create_commit_message = kwargs['createCommitMessage']
+        if delete_commit_message is None and 'deleteCommitMessage' in kwargs:
+            delete_commit_message = kwargs['deleteCommitMessage']
+        if execute_filemode is None and 'executeFilemode' in kwargs:
+            execute_filemode = kwargs['executeFilemode']
+        if overwrite_on_create is None and 'overwriteOnCreate' in kwargs:
+            overwrite_on_create = kwargs['overwriteOnCreate']
+        if start_branch is None and 'startBranch' in kwargs:
+            start_branch = kwargs['startBranch']
+        if update_commit_message is None and 'updateCommitMessage' in kwargs:
+            update_commit_message = kwargs['updateCommitMessage']
+
         _setter("branch", branch)
         _setter("content", content)
         _setter("file_path", file_path)
@@ -370,7 +400,39 @@ class _RepositoryFileState:
              size: Optional[pulumi.Input[int]] = None,
              start_branch: Optional[pulumi.Input[str]] = None,
              update_commit_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email is None and 'authorEmail' in kwargs:
+            author_email = kwargs['authorEmail']
+        if author_name is None and 'authorName' in kwargs:
+            author_name = kwargs['authorName']
+        if blob_id is None and 'blobId' in kwargs:
+            blob_id = kwargs['blobId']
+        if commit_id is None and 'commitId' in kwargs:
+            commit_id = kwargs['commitId']
+        if commit_message is None and 'commitMessage' in kwargs:
+            commit_message = kwargs['commitMessage']
+        if content_sha256 is None and 'contentSha256' in kwargs:
+            content_sha256 = kwargs['contentSha256']
+        if create_commit_message is None and 'createCommitMessage' in kwargs:
+            create_commit_message = kwargs['createCommitMessage']
+        if delete_commit_message is None and 'deleteCommitMessage' in kwargs:
+            delete_commit_message = kwargs['deleteCommitMessage']
+        if execute_filemode is None and 'executeFilemode' in kwargs:
+            execute_filemode = kwargs['executeFilemode']
+        if file_name is None and 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+        if file_path is None and 'filePath' in kwargs:
+            file_path = kwargs['filePath']
+        if last_commit_id is None and 'lastCommitId' in kwargs:
+            last_commit_id = kwargs['lastCommitId']
+        if overwrite_on_create is None and 'overwriteOnCreate' in kwargs:
+            overwrite_on_create = kwargs['overwriteOnCreate']
+        if start_branch is None and 'startBranch' in kwargs:
+            start_branch = kwargs['startBranch']
+        if update_commit_message is None and 'updateCommitMessage' in kwargs:
+            update_commit_message = kwargs['updateCommitMessage']
+
         if author_email is not None:
             _setter("author_email", author_email)
         if author_name is not None:

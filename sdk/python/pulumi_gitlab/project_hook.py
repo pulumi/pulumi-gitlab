@@ -74,8 +74,8 @@ class ProjectHookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             url: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              confidential_issues_events: Optional[pulumi.Input[bool]] = None,
              confidential_note_events: Optional[pulumi.Input[bool]] = None,
              deployment_events: Optional[pulumi.Input[bool]] = None,
@@ -91,7 +91,41 @@ class ProjectHookArgs:
              tag_push_events: Optional[pulumi.Input[bool]] = None,
              token: Optional[pulumi.Input[str]] = None,
              wiki_page_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
+            confidential_issues_events = kwargs['confidentialIssuesEvents']
+        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
+            confidential_note_events = kwargs['confidentialNoteEvents']
+        if deployment_events is None and 'deploymentEvents' in kwargs:
+            deployment_events = kwargs['deploymentEvents']
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if job_events is None and 'jobEvents' in kwargs:
+            job_events = kwargs['jobEvents']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if push_events_branch_filter is None and 'pushEventsBranchFilter' in kwargs:
+            push_events_branch_filter = kwargs['pushEventsBranchFilter']
+        if releases_events is None and 'releasesEvents' in kwargs:
+            releases_events = kwargs['releasesEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
+            wiki_page_events = kwargs['wikiPageEvents']
+
         _setter("project", project)
         _setter("url", url)
         if confidential_issues_events is not None:
@@ -418,7 +452,41 @@ class _ProjectHookState:
              token: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              wiki_page_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
+            confidential_issues_events = kwargs['confidentialIssuesEvents']
+        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
+            confidential_note_events = kwargs['confidentialNoteEvents']
+        if deployment_events is None and 'deploymentEvents' in kwargs:
+            deployment_events = kwargs['deploymentEvents']
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if hook_id is None and 'hookId' in kwargs:
+            hook_id = kwargs['hookId']
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if job_events is None and 'jobEvents' in kwargs:
+            job_events = kwargs['jobEvents']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if push_events_branch_filter is None and 'pushEventsBranchFilter' in kwargs:
+            push_events_branch_filter = kwargs['pushEventsBranchFilter']
+        if releases_events is None and 'releasesEvents' in kwargs:
+            releases_events = kwargs['releasesEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
+            wiki_page_events = kwargs['wikiPageEvents']
+
         if confidential_issues_events is not None:
             _setter("confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
@@ -715,18 +783,6 @@ class ProjectHook(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.ProjectHook("example",
-            merge_requests_events=True,
-            project="example/hooked",
-            url="https://example.com/hook/example")
-        ```
-
         ## Import
 
         A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
@@ -767,18 +823,6 @@ class ProjectHook(pulumi.CustomResource):
         The `ProjectHook` resource allows to manage the lifecycle of a project hook.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.ProjectHook("example",
-            merge_requests_events=True,
-            project="example/hooked",
-            url="https://example.com/hook/example")
-        ```
 
         ## Import
 

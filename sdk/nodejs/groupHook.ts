@@ -9,40 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = new gitlab.GroupHook("example", {
- *     group: "example/hooked",
- *     mergeRequestsEvents: true,
- *     url: "https://example.com/hook/example",
- * });
- * // Setting all attributes
- * const allAttributes = new gitlab.GroupHook("allAttributes", {
- *     confidentialIssuesEvents: false,
- *     confidentialNoteEvents: true,
- *     deploymentEvents: true,
- *     enableSslVerification: false,
- *     group: "1",
- *     issuesEvents: false,
- *     jobEvents: true,
- *     mergeRequestsEvents: true,
- *     noteEvents: true,
- *     pipelineEvents: true,
- *     pushEvents: true,
- *     pushEventsBranchFilter: "devel",
- *     releasesEvents: true,
- *     subgroupEvents: true,
- *     tagPushEvents: true,
- *     token: "supersecret",
- *     url: "http://example.com",
- *     wikiPageEvents: true,
- * });
- * ```
- *
  * ## Import
  *
  * A GitLab Group Hook can be imported using a key composed of `<group-id>:<hook-id>`, e.g.

@@ -17,29 +17,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var oidc = new GitLab.Application("oidc", new()
-    ///     {
-    ///         Confidential = true,
-    ///         RedirectUrl = "https://mycompany.com",
-    ///         Scopes = new[]
-    ///         {
-    ///             "openid",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Gitlab applications can be imported with their id, e.g.

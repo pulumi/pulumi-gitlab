@@ -137,16 +137,6 @@ def get_project_tag(name: Optional[str] = None,
 
     **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    foo = gitlab.get_project_tag(name="example",
-        project="foo/bar")
-    ```
-
 
     :param str name: The name of a tag.
     :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
@@ -176,16 +166,6 @@ def get_project_tag_output(name: Optional[pulumi.Input[str]] = None,
     The `ProjectTag` data source allows details of a project tag to be retrieved by its name.
 
     **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    foo = gitlab.get_project_tag(name="example",
-        project="foo/bar")
-    ```
 
 
     :param str name: The name of a tag.

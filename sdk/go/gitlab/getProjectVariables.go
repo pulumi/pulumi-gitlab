@@ -15,39 +15,6 @@ import (
 // The `getProjectVariables` data source allows to retrieve all project-level CI/CD variables.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.GetProjectVariables(ctx, &gitlab.GetProjectVariablesArgs{
-//				Project: "my/example/project",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.GetProjectVariables(ctx, &gitlab.GetProjectVariablesArgs{
-//				EnvironmentScope: pulumi.StringRef("staging/*"),
-//				Project:          "my/example/project",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetProjectVariables(ctx *pulumi.Context, args *GetProjectVariablesArgs, opts ...pulumi.InvokeOption) (*GetProjectVariablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectVariablesResult

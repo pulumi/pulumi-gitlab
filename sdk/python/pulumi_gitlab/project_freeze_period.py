@@ -35,11 +35,25 @@ class ProjectFreezePeriodArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             freeze_end: pulumi.Input[str],
-             freeze_start: pulumi.Input[str],
-             project: pulumi.Input[str],
+             freeze_end: Optional[pulumi.Input[str]] = None,
+             freeze_start: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              cron_timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if freeze_end is None and 'freezeEnd' in kwargs:
+            freeze_end = kwargs['freezeEnd']
+        if freeze_end is None:
+            raise TypeError("Missing 'freeze_end' argument")
+        if freeze_start is None and 'freezeStart' in kwargs:
+            freeze_start = kwargs['freezeStart']
+        if freeze_start is None:
+            raise TypeError("Missing 'freeze_start' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if cron_timezone is None and 'cronTimezone' in kwargs:
+            cron_timezone = kwargs['cronTimezone']
+
         _setter("freeze_end", freeze_end)
         _setter("freeze_start", freeze_start)
         _setter("project", project)
@@ -123,7 +137,15 @@ class _ProjectFreezePeriodState:
              freeze_end: Optional[pulumi.Input[str]] = None,
              freeze_start: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cron_timezone is None and 'cronTimezone' in kwargs:
+            cron_timezone = kwargs['cronTimezone']
+        if freeze_end is None and 'freezeEnd' in kwargs:
+            freeze_end = kwargs['freezeEnd']
+        if freeze_start is None and 'freezeStart' in kwargs:
+            freeze_start = kwargs['freezeStart']
+
         if cron_timezone is not None:
             _setter("cron_timezone", cron_timezone)
         if freeze_end is not None:
@@ -197,19 +219,6 @@ class ProjectFreezePeriod(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/freeze_periods.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        schedule = gitlab.ProjectFreezePeriod("schedule",
-            project=gitlab_project["foo"]["id"],
-            freeze_start="0 23 * * 5",
-            freeze_end="0 7 * * 1",
-            cron_timezone="UTC")
-        ```
-
         ## Import
 
         GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
@@ -235,19 +244,6 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         The `ProjectFreezePeriod` resource allows to manage the lifecycle of a freeze period for a project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/freeze_periods.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        schedule = gitlab.ProjectFreezePeriod("schedule",
-            project=gitlab_project["foo"]["id"],
-            freeze_start="0 23 * * 5",
-            freeze_end="0 7 * * 1",
-            cron_timezone="UTC")
-        ```
 
         ## Import
 

@@ -10,37 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var thisGroup = new GitLab.Group("thisGroup", new()
-    ///     {
-    ///         Path = "example",
-    ///         Description = "An example group",
-    ///     });
-    /// 
-    ///     var thisProject = new GitLab.Project("thisProject", new()
-    ///     {
-    ///         NamespaceId = thisGroup.Id,
-    ///         InitializeWithReadme = true,
-    ///     });
-    /// 
-    ///     var thisProjectEnvironment = new GitLab.ProjectEnvironment("thisProjectEnvironment", new()
-    ///     {
-    ///         Project = thisProject.Id,
-    ///         ExternalUrl = "www.example.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.

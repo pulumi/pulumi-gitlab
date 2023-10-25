@@ -35,11 +35,23 @@ class UserSshKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             title: pulumi.Input[str],
-             user_id: pulumi.Input[int],
+             key: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
              expires_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+
         _setter("key", key)
         _setter("title", title)
         _setter("user_id", user_id)
@@ -131,7 +143,17 @@ class _UserSshKeyState:
              key_id: Optional[pulumi.Input[int]] = None,
              title: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if expires_at is not None:
@@ -233,20 +255,6 @@ class UserSshKey(pulumi.CustomResource):
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/users.html#single-ssh-key)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_user = gitlab.get_user(username="example-user")
-        example_user_ssh_key = gitlab.UserSshKey("exampleUserSshKey",
-            user_id=example_user.id,
-            title="example-key",
-            key="ssh-ed25519 AAAA...",
-            expires_at="2016-01-21T00:00:00.000Z")
-        ```
-
         ## Import
 
         You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
@@ -272,20 +280,6 @@ class UserSshKey(pulumi.CustomResource):
         The `UserSshKey` resource allows to manage the lifecycle of an SSH key assigned to a user.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/users.html#single-ssh-key)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_user = gitlab.get_user(username="example-user")
-        example_user_ssh_key = gitlab.UserSshKey("exampleUserSshKey",
-            user_id=example_user.id,
-            title="example-key",
-            key="ssh-ed25519 AAAA...",
-            expires_at="2016-01-21T00:00:00.000Z")
-        ```
 
         ## Import
 

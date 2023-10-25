@@ -76,15 +76,6 @@ def get_project_protected_branches(project_id: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project_protected_branches(project_id="foo/bar/baz")
-    ```
-
 
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
     """
@@ -106,15 +97,6 @@ def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]
     The `get_project_protected_branches` data source allows details of the protected branches of a given project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project_protected_branches(project_id="foo/bar/baz")
-    ```
 
 
     :param str project_id: The integer or path with namespace that uniquely identifies the project.

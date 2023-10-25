@@ -14,25 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#enable-a-runner-in-project)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new GitLab.ProjectRunnerEnablement("foo", new()
-    ///     {
-    ///         Project = "5",
-    ///         RunnerId = 7,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.

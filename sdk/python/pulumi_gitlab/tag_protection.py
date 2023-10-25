@@ -37,11 +37,23 @@ class TagProtectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_access_level: pulumi.Input[str],
-             project: pulumi.Input[str],
-             tag: pulumi.Input[str],
+             create_access_level: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             tag: Optional[pulumi.Input[str]] = None,
              allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_access_level is None and 'createAccessLevel' in kwargs:
+            create_access_level = kwargs['createAccessLevel']
+        if create_access_level is None:
+            raise TypeError("Missing 'create_access_level' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
+        if allowed_to_creates is None and 'allowedToCreates' in kwargs:
+            allowed_to_creates = kwargs['allowedToCreates']
+
         _setter("create_access_level", create_access_level)
         _setter("project", project)
         _setter("tag", tag)
@@ -125,7 +137,13 @@ class _TagProtectionState:
              create_access_level: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_to_creates is None and 'allowedToCreates' in kwargs:
+            allowed_to_creates = kwargs['allowedToCreates']
+        if create_access_level is None and 'createAccessLevel' in kwargs:
+            create_access_level = kwargs['createAccessLevel']
+
         if allowed_to_creates is not None:
             _setter("allowed_to_creates", allowed_to_creates)
         if create_access_level is not None:
@@ -195,26 +213,6 @@ class TagProtection(pulumi.CustomResource):
                  tag: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        tag_protect = gitlab.TagProtection("tagProtect",
-            allowed_to_creates=[
-                gitlab.TagProtectionAllowedToCreateArgs(
-                    user_id=42,
-                ),
-                gitlab.TagProtectionAllowedToCreateArgs(
-                    group_id=43,
-                ),
-            ],
-            create_access_level="developer",
-            project="12345",
-            tag="TagProtected")
-        ```
-
         ## Import
 
         Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
@@ -237,26 +235,6 @@ class TagProtection(pulumi.CustomResource):
                  args: TagProtectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        tag_protect = gitlab.TagProtection("tagProtect",
-            allowed_to_creates=[
-                gitlab.TagProtectionAllowedToCreateArgs(
-                    user_id=42,
-                ),
-                gitlab.TagProtectionAllowedToCreateArgs(
-                    group_id=43,
-                ),
-            ],
-            create_access_level="developer",
-            project="12345",
-            tag="TagProtected")
-        ```
-
         ## Import
 
         Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.

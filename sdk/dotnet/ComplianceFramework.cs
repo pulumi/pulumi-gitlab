@@ -20,28 +20,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationcreatecomplianceframework)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sample = new GitLab.ComplianceFramework("sample", new()
-    ///     {
-    ///         Color = "#87BEEF",
-    ///         Default = false,
-    ///         Description = "A HIPAA Compliance Framework",
-    ///         NamespacePath = "top-level-group",
-    ///         PipelineConfigurationFullPath = ".hipaa.yml@top-level-group/compliance-frameworks",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Gitlab compliance frameworks can be imported with a key composed of `&lt;namespace_path&gt;:&lt;framework_id&gt;`, e.g.

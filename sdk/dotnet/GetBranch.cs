@@ -15,29 +15,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = GitLab.GetBranch.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///         Project = "foo/bar",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBranchResult> InvokeAsync(GetBranchArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBranchResult>("gitlab:index/getBranch:getBranch", args ?? new GetBranchArgs(), options.WithDefaults());
@@ -46,29 +23,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = GitLab.GetBranch.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///         Project = "foo/bar",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBranchResult> Invoke(GetBranchInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBranchResult>("gitlab:index/getBranch:getBranch", args ?? new GetBranchInvokeArgs(), options.WithDefaults());

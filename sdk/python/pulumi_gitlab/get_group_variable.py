@@ -149,19 +149,6 @@ def get_group_variable(environment_scope: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    foo = gitlab.get_group_variable(group="my/example/group",
-        key="foo")
-    bar = gitlab.get_group_variable(environment_scope="staging/*",
-        group="my/example/group",
-        key="bar")
-    ```
-
 
     :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
     :param str group: The name or id of the group.
@@ -195,19 +182,6 @@ def get_group_variable_output(environment_scope: Optional[pulumi.Input[Optional[
     The `GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    foo = gitlab.get_group_variable(group="my/example/group",
-        key="foo")
-    bar = gitlab.get_group_variable(environment_scope="staging/*",
-        group="my/example/group",
-        key="bar")
-    ```
 
 
     :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.

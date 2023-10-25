@@ -11,23 +11,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = new gitlab.SystemHook("example", {
- *     enableSslVerification: true,
- *     mergeRequestsEvents: true,
- *     pushEvents: true,
- *     repositoryUpdateEvents: true,
- *     tagPushEvents: true,
- *     token: "secret-token",
- *     url: "https://example.com/hook-%d",
- * });
- * ```
- *
  * ## Import
  *
  * You can import a system hook using the hook id `{hook-id}`, e.g.

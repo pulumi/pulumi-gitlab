@@ -12,17 +12,6 @@ import * as utilities from "./utilities";
  * > Requires at least GitLab 14.10
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const agents = gitlab.getClusterAgents({
- *     project: "12345",
- * });
- * ```
  */
 export function getClusterAgents(args: GetClusterAgentsArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAgentsResult> {
 
@@ -62,17 +51,6 @@ export interface GetClusterAgentsResult {
  * > Requires at least GitLab 14.10
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const agents = gitlab.getClusterAgents({
- *     project: "12345",
- * });
- * ```
  */
 export function getClusterAgentsOutput(args: GetClusterAgentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAgentsResult> {
     return pulumi.output(args).apply((a: any) => getClusterAgents(a, opts))

@@ -19,40 +19,6 @@ import (
 // > Some available options require administrator privileges.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.GetUsers(ctx, &gitlab.GetUsersArgs{
-//				CreatedBefore: pulumi.StringRef("2019-01-01"),
-//				OrderBy:       pulumi.StringRef("name"),
-//				Sort:          pulumi.StringRef("desc"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.GetUsers(ctx, &gitlab.GetUsersArgs{
-//				Search: pulumi.StringRef("username"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult

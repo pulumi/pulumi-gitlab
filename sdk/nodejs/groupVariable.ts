@@ -9,22 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = new gitlab.GroupVariable("example", {
- *     environmentScope: "*",
- *     group: "12345",
- *     key: "group_variable_key",
- *     masked: false,
- *     "protected": false,
- *     value: "group_variable_value",
- * });
- * ```
- *
  * ## Import
  *
  * GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.

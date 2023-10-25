@@ -27,50 +27,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := gitlab.NewClusterAgent(ctx, "example", &gitlab.ClusterAgentArgs{
-//				Project: pulumi.String("12345"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewRepositoryFile(ctx, "exampleAgentConfig", &gitlab.RepositoryFileArgs{
-//				Project: example.Project,
-//				Branch:  pulumi.String("main"),
-//				FilePath: example.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf(".gitlab/agents/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				Content:     pulumi.String("  gitops:\n    ...\n"),
-//				AuthorEmail: pulumi.String("terraform@example.com"),
-//				AuthorName:  pulumi.String("Terraform"),
-//				CommitMessage: example.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("feature: add agent config for %v", name), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>`

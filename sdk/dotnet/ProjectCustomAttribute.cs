@@ -14,26 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var attr = new GitLab.ProjectCustomAttribute("attr", new()
-    ///     {
-    ///         Key = "location",
-    ///         Project = 42,
-    ///         Value = "Greenland",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// You can import a project custom attribute using an id made up of `{project-id}:{key}`, e.g.

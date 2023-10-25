@@ -41,13 +41,25 @@ class ReleaseLinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             tag_name: pulumi.Input[str],
-             url: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             tag_name: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              filepath: Optional[pulumi.Input[str]] = None,
              link_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+        if tag_name is None:
+            raise TypeError("Missing 'tag_name' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if link_type is None and 'linkType' in kwargs:
+            link_type = kwargs['linkType']
+
         _setter("project", project)
         _setter("tag_name", tag_name)
         _setter("url", url)
@@ -179,7 +191,17 @@ class _ReleaseLinkState:
              project: Optional[pulumi.Input[str]] = None,
              tag_name: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if direct_asset_url is None and 'directAssetUrl' in kwargs:
+            direct_asset_url = kwargs['directAssetUrl']
+        if link_id is None and 'linkId' in kwargs:
+            link_id = kwargs['linkId']
+        if link_type is None and 'linkType' in kwargs:
+            link_type = kwargs['linkType']
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+
         if direct_asset_url is not None:
             _setter("direct_asset_url", direct_asset_url)
         if external is not None:
@@ -325,21 +347,6 @@ class ReleaseLink(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Create a project
-        example_project = gitlab.Project("exampleProject", description="An example project")
-        # Can create release link only to a tag associated with a release
-        example_release_link = gitlab.ReleaseLink("exampleReleaseLink",
-            project=example_project.id,
-            tag_name="tag_name_associated_with_release",
-            url="https://test/")
-        ```
-
         ## Import
 
         Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, e.g.
@@ -367,21 +374,6 @@ class ReleaseLink(pulumi.CustomResource):
         The `ReleaseLink` resource allows to manage the lifecycle of a release link.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Create a project
-        example_project = gitlab.Project("exampleProject", description="An example project")
-        # Can create release link only to a tag associated with a release
-        example_release_link = gitlab.ReleaseLink("exampleReleaseLink",
-            project=example_project.id,
-            tag_name="tag_name_associated_with_release",
-            url="https://test/")
-        ```
 
         ## Import
 

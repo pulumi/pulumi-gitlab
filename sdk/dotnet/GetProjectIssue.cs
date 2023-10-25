@@ -15,38 +15,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.ProjectIssue` data source allows to retrieve details about an issue in a project.
         /// 
         /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = GitLab.GetProject.Invoke(new()
-        ///     {
-        ///         PathWithNamespace = "foo/bar/baz",
-        ///     });
-        /// 
-        ///     var welcomeIssue = GitLab.GetProjectIssue.Invoke(new()
-        ///     {
-        ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Id),
-        ///         Iid = 1,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["welcomeIssueWebUrl"] = data.Gitlab_project_issue.Web_url,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectIssueResult> InvokeAsync(GetProjectIssueArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectIssueResult>("gitlab:index/getProjectIssue:getProjectIssue", args ?? new GetProjectIssueArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.ProjectIssue` data source allows to retrieve details about an issue in a project.
         /// 
         /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = GitLab.GetProject.Invoke(new()
-        ///     {
-        ///         PathWithNamespace = "foo/bar/baz",
-        ///     });
-        /// 
-        ///     var welcomeIssue = GitLab.GetProjectIssue.Invoke(new()
-        ///     {
-        ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Id),
-        ///         Iid = 1,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["welcomeIssueWebUrl"] = data.Gitlab_project_issue.Web_url,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectIssueResult> Invoke(GetProjectIssueInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectIssueResult>("gitlab:index/getProjectIssue:getProjectIssue", args ?? new GetProjectIssueInvokeArgs(), options.WithDefaults());

@@ -15,28 +15,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.getProjectMilestones` data source allows get details of a project milestones.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = GitLab.GetProjectMilestones.Invoke(new()
-        ///     {
-        ///         Project = "foo/bar",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectMilestonesResult> InvokeAsync(GetProjectMilestonesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectMilestonesResult>("gitlab:index/getProjectMilestones:getProjectMilestones", args ?? new GetProjectMilestonesArgs(), options.WithDefaults());
@@ -45,28 +23,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.getProjectMilestones` data source allows get details of a project milestones.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = GitLab.GetProjectMilestones.Invoke(new()
-        ///     {
-        ///         Project = "foo/bar",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectMilestonesResult> Invoke(GetProjectMilestonesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMilestonesResult>("gitlab:index/getProjectMilestones:getProjectMilestones", args ?? new GetProjectMilestonesInvokeArgs(), options.WithDefaults());

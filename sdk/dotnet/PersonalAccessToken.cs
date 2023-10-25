@@ -16,36 +16,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var examplePersonalAccessToken = new GitLab.PersonalAccessToken("examplePersonalAccessToken", new()
-    ///     {
-    ///         UserId = 25,
-    ///         ExpiresAt = "2020-03-14",
-    ///         Scopes = new[]
-    ///         {
-    ///             "api",
-    ///         },
-    ///     });
-    /// 
-    ///     var exampleProjectVariable = new GitLab.ProjectVariable("exampleProjectVariable", new()
-    ///     {
-    ///         Project = gitlab_project.Example.Id,
-    ///         Key = "pat",
-    ///         Value = examplePersonalAccessToken.Token,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// A GitLab Personal Access Token can be imported using a key composed of `&lt;user-id&gt;:&lt;token-id&gt;`, e.g.

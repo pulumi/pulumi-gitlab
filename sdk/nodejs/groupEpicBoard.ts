@@ -13,32 +13,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = new gitlab.Group("example", {
- *     path: "test_group",
- *     description: "An example group",
- * });
- * const label1 = new gitlab.GroupLabel("label1", {
- *     group: example.id,
- *     color: "#FF0000",
- * });
- * const label3 = new gitlab.GroupLabel("label3", {
- *     group: example.id,
- *     color: "#003000",
- * });
- * const epicBoard = new gitlab.GroupEpicBoard("epicBoard", {
- *     group: example.path,
- *     lists: [{
- *         labelId: label1.labelId,
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * You can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.

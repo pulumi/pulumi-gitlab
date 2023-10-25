@@ -92,8 +92,8 @@ class IntegrationMattermostArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             webhook: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             webhook: Optional[pulumi.Input[str]] = None,
              branches_to_be_notified: Optional[pulumi.Input[str]] = None,
              confidential_issue_channel: Optional[pulumi.Input[str]] = None,
              confidential_issues_events: Optional[pulumi.Input[bool]] = None,
@@ -115,7 +115,53 @@ class IntegrationMattermostArgs:
              username: Optional[pulumi.Input[str]] = None,
              wiki_page_channel: Optional[pulumi.Input[str]] = None,
              wiki_page_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if webhook is None:
+            raise TypeError("Missing 'webhook' argument")
+        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
+            branches_to_be_notified = kwargs['branchesToBeNotified']
+        if confidential_issue_channel is None and 'confidentialIssueChannel' in kwargs:
+            confidential_issue_channel = kwargs['confidentialIssueChannel']
+        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
+            confidential_issues_events = kwargs['confidentialIssuesEvents']
+        if confidential_note_channel is None and 'confidentialNoteChannel' in kwargs:
+            confidential_note_channel = kwargs['confidentialNoteChannel']
+        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
+            confidential_note_events = kwargs['confidentialNoteEvents']
+        if issue_channel is None and 'issueChannel' in kwargs:
+            issue_channel = kwargs['issueChannel']
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if merge_request_channel is None and 'mergeRequestChannel' in kwargs:
+            merge_request_channel = kwargs['mergeRequestChannel']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if note_channel is None and 'noteChannel' in kwargs:
+            note_channel = kwargs['noteChannel']
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if notify_only_broken_pipelines is None and 'notifyOnlyBrokenPipelines' in kwargs:
+            notify_only_broken_pipelines = kwargs['notifyOnlyBrokenPipelines']
+        if pipeline_channel is None and 'pipelineChannel' in kwargs:
+            pipeline_channel = kwargs['pipelineChannel']
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if push_channel is None and 'pushChannel' in kwargs:
+            push_channel = kwargs['pushChannel']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if tag_push_channel is None and 'tagPushChannel' in kwargs:
+            tag_push_channel = kwargs['tagPushChannel']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if wiki_page_channel is None and 'wikiPageChannel' in kwargs:
+            wiki_page_channel = kwargs['wikiPageChannel']
+        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
+            wiki_page_events = kwargs['wikiPageEvents']
+
         _setter("project", project)
         _setter("webhook", webhook)
         if branches_to_be_notified is not None:
@@ -542,7 +588,49 @@ class _IntegrationMattermostState:
              webhook: Optional[pulumi.Input[str]] = None,
              wiki_page_channel: Optional[pulumi.Input[str]] = None,
              wiki_page_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
+            branches_to_be_notified = kwargs['branchesToBeNotified']
+        if confidential_issue_channel is None and 'confidentialIssueChannel' in kwargs:
+            confidential_issue_channel = kwargs['confidentialIssueChannel']
+        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
+            confidential_issues_events = kwargs['confidentialIssuesEvents']
+        if confidential_note_channel is None and 'confidentialNoteChannel' in kwargs:
+            confidential_note_channel = kwargs['confidentialNoteChannel']
+        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
+            confidential_note_events = kwargs['confidentialNoteEvents']
+        if issue_channel is None and 'issueChannel' in kwargs:
+            issue_channel = kwargs['issueChannel']
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if merge_request_channel is None and 'mergeRequestChannel' in kwargs:
+            merge_request_channel = kwargs['mergeRequestChannel']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if note_channel is None and 'noteChannel' in kwargs:
+            note_channel = kwargs['noteChannel']
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if notify_only_broken_pipelines is None and 'notifyOnlyBrokenPipelines' in kwargs:
+            notify_only_broken_pipelines = kwargs['notifyOnlyBrokenPipelines']
+        if pipeline_channel is None and 'pipelineChannel' in kwargs:
+            pipeline_channel = kwargs['pipelineChannel']
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if push_channel is None and 'pushChannel' in kwargs:
+            push_channel = kwargs['pushChannel']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if tag_push_channel is None and 'tagPushChannel' in kwargs:
+            tag_push_channel = kwargs['tagPushChannel']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if wiki_page_channel is None and 'wikiPageChannel' in kwargs:
+            wiki_page_channel = kwargs['wikiPageChannel']
+        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
+            wiki_page_events = kwargs['wikiPageEvents']
+
         if branches_to_be_notified is not None:
             _setter("branches_to_be_notified", branches_to_be_notified)
         if confidential_issue_channel is not None:
@@ -901,23 +989,6 @@ class IntegrationMattermost(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        mattermost = gitlab.IntegrationMattermost("mattermost",
-            project=awesome_project.id,
-            webhook="https://webhook.com",
-            username="myuser",
-            push_events=True,
-            push_channel="push_chan")
-        ```
-
         ## Import
 
         You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
@@ -962,23 +1033,6 @@ class IntegrationMattermost(pulumi.CustomResource):
         The `IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        mattermost = gitlab.IntegrationMattermost("mattermost",
-            project=awesome_project.id,
-            webhook="https://webhook.com",
-            username="myuser",
-            push_events=True,
-            push_channel="push_chan")
-        ```
 
         ## Import
 

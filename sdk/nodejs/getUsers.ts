@@ -14,22 +14,6 @@ import * as utilities from "./utilities";
  * > Some available options require administrator privileges.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getUsers({
- *     createdBefore: "2019-01-01",
- *     orderBy: "name",
- *     sort: "desc",
- * });
- * const example-two = gitlab.getUsers({
- *     search: "username",
- * });
- * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
@@ -144,22 +128,6 @@ export interface GetUsersResult {
  * > Some available options require administrator privileges.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getUsers({
- *     createdBefore: "2019-01-01",
- *     orderBy: "name",
- *     sort: "desc",
- * });
- * const example-two = gitlab.getUsers({
- *     search: "username",
- * });
- * ```
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))

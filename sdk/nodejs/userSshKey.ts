@@ -9,23 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/users.html#single-ssh-key)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const exampleUser = gitlab.getUser({
- *     username: "example-user",
- * });
- * const exampleUserSshKey = new gitlab.UserSshKey("exampleUserSshKey", {
- *     userId: exampleUser.then(exampleUser => exampleUser.id),
- *     title: "example-key",
- *     key: "ssh-ed25519 AAAA...",
- *     expiresAt: "2016-01-21T00:00:00.000Z",
- * });
- * ```
- *
  * ## Import
  *
  * You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.

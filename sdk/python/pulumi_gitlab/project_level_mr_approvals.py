@@ -44,14 +44,30 @@ class ProjectLevelMrApprovalsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
              disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[bool]] = None,
              merge_requests_author_approval: Optional[pulumi.Input[bool]] = None,
              merge_requests_disable_committers_approval: Optional[pulumi.Input[bool]] = None,
              require_password_to_approve: Optional[pulumi.Input[bool]] = None,
              reset_approvals_on_push: Optional[pulumi.Input[bool]] = None,
              selective_code_owner_removals: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if disable_overriding_approvers_per_merge_request is None and 'disableOverridingApproversPerMergeRequest' in kwargs:
+            disable_overriding_approvers_per_merge_request = kwargs['disableOverridingApproversPerMergeRequest']
+        if merge_requests_author_approval is None and 'mergeRequestsAuthorApproval' in kwargs:
+            merge_requests_author_approval = kwargs['mergeRequestsAuthorApproval']
+        if merge_requests_disable_committers_approval is None and 'mergeRequestsDisableCommittersApproval' in kwargs:
+            merge_requests_disable_committers_approval = kwargs['mergeRequestsDisableCommittersApproval']
+        if require_password_to_approve is None and 'requirePasswordToApprove' in kwargs:
+            require_password_to_approve = kwargs['requirePasswordToApprove']
+        if reset_approvals_on_push is None and 'resetApprovalsOnPush' in kwargs:
+            reset_approvals_on_push = kwargs['resetApprovalsOnPush']
+        if selective_code_owner_removals is None and 'selectiveCodeOwnerRemovals' in kwargs:
+            selective_code_owner_removals = kwargs['selectiveCodeOwnerRemovals']
+
         _setter("project", project)
         if disable_overriding_approvers_per_merge_request is not None:
             _setter("disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
@@ -191,7 +207,21 @@ class _ProjectLevelMrApprovalsState:
              require_password_to_approve: Optional[pulumi.Input[bool]] = None,
              reset_approvals_on_push: Optional[pulumi.Input[bool]] = None,
              selective_code_owner_removals: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disable_overriding_approvers_per_merge_request is None and 'disableOverridingApproversPerMergeRequest' in kwargs:
+            disable_overriding_approvers_per_merge_request = kwargs['disableOverridingApproversPerMergeRequest']
+        if merge_requests_author_approval is None and 'mergeRequestsAuthorApproval' in kwargs:
+            merge_requests_author_approval = kwargs['mergeRequestsAuthorApproval']
+        if merge_requests_disable_committers_approval is None and 'mergeRequestsDisableCommittersApproval' in kwargs:
+            merge_requests_disable_committers_approval = kwargs['mergeRequestsDisableCommittersApproval']
+        if require_password_to_approve is None and 'requirePasswordToApprove' in kwargs:
+            require_password_to_approve = kwargs['requirePasswordToApprove']
+        if reset_approvals_on_push is None and 'resetApprovalsOnPush' in kwargs:
+            reset_approvals_on_push = kwargs['resetApprovalsOnPush']
+        if selective_code_owner_removals is None and 'selectiveCodeOwnerRemovals' in kwargs:
+            selective_code_owner_removals = kwargs['selectiveCodeOwnerRemovals']
+
         if disable_overriding_approvers_per_merge_request is not None:
             _setter("disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
         if merge_requests_author_approval is not None:
@@ -312,21 +342,6 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo_project = gitlab.Project("fooProject", description="My example project")
-        foo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals",
-            project=foo_project.id,
-            reset_approvals_on_push=True,
-            disable_overriding_approvers_per_merge_request=False,
-            merge_requests_author_approval=False,
-            merge_requests_disable_committers_approval=True)
-        ```
-
         ## Import
 
         ```sh
@@ -361,21 +376,6 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo_project = gitlab.Project("fooProject", description="My example project")
-        foo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals",
-            project=foo_project.id,
-            reset_approvals_on_push=True,
-            disable_overriding_approvers_per_merge_request=False,
-            merge_requests_author_approval=False,
-            merge_requests_disable_committers_approval=True)
-        ```
 
         ## Import
 

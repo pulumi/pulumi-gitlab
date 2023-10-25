@@ -19,43 +19,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewProjectMembership(ctx, "test", &gitlab.ProjectMembershipArgs{
-//				AccessLevel: pulumi.String("guest"),
-//				Project:     pulumi.String("12345"),
-//				UserId:      pulumi.Int(1337),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectMembership(ctx, "example", &gitlab.ProjectMembershipArgs{
-//				AccessLevel: pulumi.String("guest"),
-//				ExpiresAt:   pulumi.String("2022-12-31"),
-//				Project:     pulumi.String("67890"),
-//				UserId:      pulumi.Int(1234),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.

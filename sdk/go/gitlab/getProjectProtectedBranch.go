@@ -15,33 +15,6 @@ import (
 // The `gitlabProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.GetProjectProtectedBranch(ctx, &gitlab.GetProjectProtectedBranchArgs{
-//				Name:      "main",
-//				ProjectId: "foo/bar/baz",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetProjectProtectedBranch(ctx *pulumi.Context, args *GetProjectProtectedBranchArgs, opts ...pulumi.InvokeOption) (*GetProjectProtectedBranchResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectProtectedBranchResult

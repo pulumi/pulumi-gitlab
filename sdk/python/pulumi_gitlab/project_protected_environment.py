@@ -40,12 +40,24 @@ class ProjectProtectedEnvironmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             environment: pulumi.Input[str],
-             project: pulumi.Input[str],
+             environment: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]]] = None,
              deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
              required_approval_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if environment is None:
+            raise TypeError("Missing 'environment' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if approval_rules is None and 'approvalRules' in kwargs:
+            approval_rules = kwargs['approvalRules']
+        if deploy_access_levels is None and 'deployAccessLevels' in kwargs:
+            deploy_access_levels = kwargs['deployAccessLevels']
+        if required_approval_count is None and 'requiredApprovalCount' in kwargs:
+            required_approval_count = kwargs['requiredApprovalCount']
+
         _setter("environment", environment)
         _setter("project", project)
         if approval_rules is not None:
@@ -148,7 +160,15 @@ class _ProjectProtectedEnvironmentState:
              environment: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              required_approval_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if approval_rules is None and 'approvalRules' in kwargs:
+            approval_rules = kwargs['approvalRules']
+        if deploy_access_levels is None and 'deployAccessLevels' in kwargs:
+            deploy_access_levels = kwargs['deployAccessLevels']
+        if required_approval_count is None and 'requiredApprovalCount' in kwargs:
+            required_approval_count = kwargs['requiredApprovalCount']
+
         if approval_rules is not None:
             _setter("approval_rules", approval_rules)
         if deploy_access_levels is not None:

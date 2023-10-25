@@ -32,10 +32,18 @@ class UserCustomAttributeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             user: pulumi.Input[int],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[int]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("user", user)
         _setter("value", value)
@@ -101,7 +109,9 @@ class _UserCustomAttributeState:
              key: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if user is not None:
@@ -160,18 +170,6 @@ class UserCustomAttribute(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        attr = gitlab.UserCustomAttribute("attr",
-            key="location",
-            user=42,
-            value="Greenland")
-        ```
-
         ## Import
 
         You can import a user custom attribute using an id made up of `{user-id}:{key}`, e.g.
@@ -196,18 +194,6 @@ class UserCustomAttribute(pulumi.CustomResource):
         The `UserCustomAttribute` resource allows to manage custom attributes for a user.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        attr = gitlab.UserCustomAttribute("attr",
-            key="location",
-            user=42,
-            value="Greenland")
-        ```
 
         ## Import
 

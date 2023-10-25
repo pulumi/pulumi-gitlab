@@ -95,7 +95,7 @@ class GroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
              auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
              avatar: Optional[pulumi.Input[str]] = None,
              avatar_hash: Optional[pulumi.Input[str]] = None,
@@ -119,7 +119,51 @@ class GroupArgs:
              two_factor_grace_period: Optional[pulumi.Input[int]] = None,
              visibility_level: Optional[pulumi.Input[str]] = None,
              wiki_access_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
+            auto_devops_enabled = kwargs['autoDevopsEnabled']
+        if avatar_hash is None and 'avatarHash' in kwargs:
+            avatar_hash = kwargs['avatarHash']
+        if default_branch_protection is None and 'defaultBranchProtection' in kwargs:
+            default_branch_protection = kwargs['defaultBranchProtection']
+        if emails_disabled is None and 'emailsDisabled' in kwargs:
+            emails_disabled = kwargs['emailsDisabled']
+        if extra_shared_runners_minutes_limit is None and 'extraSharedRunnersMinutesLimit' in kwargs:
+            extra_shared_runners_minutes_limit = kwargs['extraSharedRunnersMinutesLimit']
+        if ip_restriction_ranges is None and 'ipRestrictionRanges' in kwargs:
+            ip_restriction_ranges = kwargs['ipRestrictionRanges']
+        if lfs_enabled is None and 'lfsEnabled' in kwargs:
+            lfs_enabled = kwargs['lfsEnabled']
+        if membership_lock is None and 'membershipLock' in kwargs:
+            membership_lock = kwargs['membershipLock']
+        if mentions_disabled is None and 'mentionsDisabled' in kwargs:
+            mentions_disabled = kwargs['mentionsDisabled']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if prevent_forking_outside_group is None and 'preventForkingOutsideGroup' in kwargs:
+            prevent_forking_outside_group = kwargs['preventForkingOutsideGroup']
+        if project_creation_level is None and 'projectCreationLevel' in kwargs:
+            project_creation_level = kwargs['projectCreationLevel']
+        if request_access_enabled is None and 'requestAccessEnabled' in kwargs:
+            request_access_enabled = kwargs['requestAccessEnabled']
+        if require_two_factor_authentication is None and 'requireTwoFactorAuthentication' in kwargs:
+            require_two_factor_authentication = kwargs['requireTwoFactorAuthentication']
+        if share_with_group_lock is None and 'shareWithGroupLock' in kwargs:
+            share_with_group_lock = kwargs['shareWithGroupLock']
+        if shared_runners_minutes_limit is None and 'sharedRunnersMinutesLimit' in kwargs:
+            shared_runners_minutes_limit = kwargs['sharedRunnersMinutesLimit']
+        if subgroup_creation_level is None and 'subgroupCreationLevel' in kwargs:
+            subgroup_creation_level = kwargs['subgroupCreationLevel']
+        if two_factor_grace_period is None and 'twoFactorGracePeriod' in kwargs:
+            two_factor_grace_period = kwargs['twoFactorGracePeriod']
+        if visibility_level is None and 'visibilityLevel' in kwargs:
+            visibility_level = kwargs['visibilityLevel']
+        if wiki_access_level is None and 'wikiAccessLevel' in kwargs:
+            wiki_access_level = kwargs['wikiAccessLevel']
+
         _setter("path", path)
         if auto_devops_enabled is not None:
             _setter("auto_devops_enabled", auto_devops_enabled)
@@ -585,7 +629,59 @@ class _GroupState:
              visibility_level: Optional[pulumi.Input[str]] = None,
              web_url: Optional[pulumi.Input[str]] = None,
              wiki_access_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
+            auto_devops_enabled = kwargs['autoDevopsEnabled']
+        if avatar_hash is None and 'avatarHash' in kwargs:
+            avatar_hash = kwargs['avatarHash']
+        if avatar_url is None and 'avatarUrl' in kwargs:
+            avatar_url = kwargs['avatarUrl']
+        if default_branch_protection is None and 'defaultBranchProtection' in kwargs:
+            default_branch_protection = kwargs['defaultBranchProtection']
+        if emails_disabled is None and 'emailsDisabled' in kwargs:
+            emails_disabled = kwargs['emailsDisabled']
+        if extra_shared_runners_minutes_limit is None and 'extraSharedRunnersMinutesLimit' in kwargs:
+            extra_shared_runners_minutes_limit = kwargs['extraSharedRunnersMinutesLimit']
+        if full_name is None and 'fullName' in kwargs:
+            full_name = kwargs['fullName']
+        if full_path is None and 'fullPath' in kwargs:
+            full_path = kwargs['fullPath']
+        if ip_restriction_ranges is None and 'ipRestrictionRanges' in kwargs:
+            ip_restriction_ranges = kwargs['ipRestrictionRanges']
+        if lfs_enabled is None and 'lfsEnabled' in kwargs:
+            lfs_enabled = kwargs['lfsEnabled']
+        if membership_lock is None and 'membershipLock' in kwargs:
+            membership_lock = kwargs['membershipLock']
+        if mentions_disabled is None and 'mentionsDisabled' in kwargs:
+            mentions_disabled = kwargs['mentionsDisabled']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if prevent_forking_outside_group is None and 'preventForkingOutsideGroup' in kwargs:
+            prevent_forking_outside_group = kwargs['preventForkingOutsideGroup']
+        if project_creation_level is None and 'projectCreationLevel' in kwargs:
+            project_creation_level = kwargs['projectCreationLevel']
+        if request_access_enabled is None and 'requestAccessEnabled' in kwargs:
+            request_access_enabled = kwargs['requestAccessEnabled']
+        if require_two_factor_authentication is None and 'requireTwoFactorAuthentication' in kwargs:
+            require_two_factor_authentication = kwargs['requireTwoFactorAuthentication']
+        if runners_token is None and 'runnersToken' in kwargs:
+            runners_token = kwargs['runnersToken']
+        if share_with_group_lock is None and 'shareWithGroupLock' in kwargs:
+            share_with_group_lock = kwargs['shareWithGroupLock']
+        if shared_runners_minutes_limit is None and 'sharedRunnersMinutesLimit' in kwargs:
+            shared_runners_minutes_limit = kwargs['sharedRunnersMinutesLimit']
+        if subgroup_creation_level is None and 'subgroupCreationLevel' in kwargs:
+            subgroup_creation_level = kwargs['subgroupCreationLevel']
+        if two_factor_grace_period is None and 'twoFactorGracePeriod' in kwargs:
+            two_factor_grace_period = kwargs['twoFactorGracePeriod']
+        if visibility_level is None and 'visibilityLevel' in kwargs:
+            visibility_level = kwargs['visibilityLevel']
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if wiki_access_level is None and 'wikiAccessLevel' in kwargs:
+            wiki_access_level = kwargs['wikiAccessLevel']
+
         if auto_devops_enabled is not None:
             _setter("auto_devops_enabled", auto_devops_enabled)
         if avatar is not None:
@@ -1031,21 +1127,6 @@ class Group(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_group = gitlab.Group("exampleGroup",
-            path="example",
-            description="An example group")
-        # Create a project in the example group
-        example_project = gitlab.Project("exampleProject",
-            description="An example project",
-            namespace_id=example_group.id)
-        ```
-
         ## Import
 
         ```sh
@@ -1097,21 +1178,6 @@ class Group(pulumi.CustomResource):
         > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_group = gitlab.Group("exampleGroup",
-            path="example",
-            description="An example group")
-        # Create a project in the example group
-        example_project = gitlab.Project("exampleProject",
-            description="An example project",
-            namespace_id=example_group.id)
-        ```
 
         ## Import
 

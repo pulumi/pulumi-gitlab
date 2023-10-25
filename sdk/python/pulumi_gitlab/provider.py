@@ -62,7 +62,19 @@ class ProviderArgs:
              early_auth_check: Optional[pulumi.Input[bool]] = None,
              insecure: Optional[pulumi.Input[bool]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if cacert_file is None and 'cacertFile' in kwargs:
+            cacert_file = kwargs['cacertFile']
+        if client_cert is None and 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if early_auth_check is None and 'earlyAuthCheck' in kwargs:
+            early_auth_check = kwargs['earlyAuthCheck']
+
         if base_url is not None:
             _setter("base_url", base_url)
         if cacert_file is not None:

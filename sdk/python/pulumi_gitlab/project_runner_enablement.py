@@ -29,9 +29,17 @@ class ProjectRunnerEnablementArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             runner_id: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project: Optional[pulumi.Input[str]] = None,
+             runner_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if runner_id is None and 'runnerId' in kwargs:
+            runner_id = kwargs['runnerId']
+        if runner_id is None:
+            raise TypeError("Missing 'runner_id' argument")
+
         _setter("project", project)
         _setter("runner_id", runner_id)
 
@@ -80,7 +88,11 @@ class _ProjectRunnerEnablementState:
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
              runner_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if runner_id is None and 'runnerId' in kwargs:
+            runner_id = kwargs['runnerId']
+
         if project is not None:
             _setter("project", project)
         if runner_id is not None:
@@ -124,17 +136,6 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#enable-a-runner-in-project)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.ProjectRunnerEnablement("foo",
-            project="5",
-            runner_id=7)
-        ```
-
         ## Import
 
         GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
@@ -158,17 +159,6 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
         The `ProjectRunnerEnablement` resource allows to enable a runner in a project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#enable-a-runner-in-project)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.ProjectRunnerEnablement("foo",
-            project="5",
-            runner_id=7)
-        ```
 
         ## Import
 

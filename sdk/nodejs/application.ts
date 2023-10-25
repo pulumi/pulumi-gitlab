@@ -12,19 +12,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const oidc = new gitlab.Application("oidc", {
- *     confidential: true,
- *     redirectUrl: "https://mycompany.com",
- *     scopes: ["openid"],
- * });
- * ```
- *
  * ## Import
  *
  * Gitlab applications can be imported with their id, e.g.

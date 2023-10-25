@@ -9,24 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#pipeline-emails)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const awesomeProject = new gitlab.Project("awesomeProject", {
- *     description: "My awesome project.",
- *     visibilityLevel: "public",
- * });
- * const email = new gitlab.IntegrationPipelinesEmail("email", {
- *     project: awesomeProject.id,
- *     recipients: ["gitlab@user.create"],
- *     notifyOnlyBrokenPipelines: true,
- *     branchesToBeNotified: "all",
- * });
- * ```
- *
  * ## Import
  *
  * You can import a gitlab_integration_pipelines_email state using the project ID, e.g.

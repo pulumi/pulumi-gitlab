@@ -35,11 +35,19 @@ class ClusterAgentTokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             agent_id: pulumi.Input[int],
-             project: pulumi.Input[str],
+             agent_id: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if agent_id is None and 'agentId' in kwargs:
+            agent_id = kwargs['agentId']
+        if agent_id is None:
+            raise TypeError("Missing 'agent_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("agent_id", agent_id)
         _setter("project", project)
         if description is not None:
@@ -148,7 +156,19 @@ class _ClusterAgentTokenState:
              status: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
              token_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if agent_id is None and 'agentId' in kwargs:
+            agent_id = kwargs['agentId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by_user_id is None and 'createdByUserId' in kwargs:
+            created_by_user_id = kwargs['createdByUserId']
+        if last_used_at is None and 'lastUsedAt' in kwargs:
+            last_used_at = kwargs['lastUsedAt']
+        if token_id is None and 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+
         if agent_id is not None:
             _setter("agent_id", agent_id)
         if created_at is not None:
@@ -310,37 +330,6 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html#create-an-agent-token)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-        import pulumi_helm as helm
-
-        # Create token for an agent
-        example = gitlab.ClusterAgentToken("example",
-            project="12345",
-            agent_id=42,
-            description="some token")
-        this_project = gitlab.get_project(path_with_namespace="my-org/example")
-        this_cluster_agent = gitlab.ClusterAgent("thisClusterAgent", project=this_project.id)
-        this_cluster_agent_token = gitlab.ClusterAgentToken("thisClusterAgentToken",
-            project=this_project.id,
-            agent_id=this_cluster_agent.agent_id,
-            description="Token for the my-agent used with `gitlab-agent` Helm Chart")
-        gitlab_agent = helm.index.Helm_release("gitlabAgent",
-            name=gitlab-agent,
-            namespace=gitlab-agent,
-            create_namespace=True,
-            repository=https://charts.gitlab.io,
-            chart=gitlab-agent,
-            version=1.2.0,
-            set=[{
-                name: config.token,
-                value: this_cluster_agent_token.token,
-            }])
-        ```
-
         ## Import
 
         A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>:<token-id>`
@@ -372,37 +361,6 @@ class ClusterAgentToken(pulumi.CustomResource):
         > Requires at least GitLab 15.0
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html#create-an-agent-token)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-        import pulumi_helm as helm
-
-        # Create token for an agent
-        example = gitlab.ClusterAgentToken("example",
-            project="12345",
-            agent_id=42,
-            description="some token")
-        this_project = gitlab.get_project(path_with_namespace="my-org/example")
-        this_cluster_agent = gitlab.ClusterAgent("thisClusterAgent", project=this_project.id)
-        this_cluster_agent_token = gitlab.ClusterAgentToken("thisClusterAgentToken",
-            project=this_project.id,
-            agent_id=this_cluster_agent.agent_id,
-            description="Token for the my-agent used with `gitlab-agent` Helm Chart")
-        gitlab_agent = helm.index.Helm_release("gitlabAgent",
-            name=gitlab-agent,
-            namespace=gitlab-agent,
-            create_namespace=True,
-            repository=https://charts.gitlab.io,
-            chart=gitlab-agent,
-            version=1.2.0,
-            set=[{
-                name: config.token,
-                value: this_cluster_agent_token.token,
-            }])
-        ```
 
         ## Import
 

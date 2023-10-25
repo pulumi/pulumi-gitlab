@@ -46,14 +46,22 @@ class ProjectIssueBoardArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
              assignee_id: Optional[pulumi.Input[int]] = None,
              labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              lists: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]] = None,
              milestone_id: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if assignee_id is None and 'assigneeId' in kwargs:
+            assignee_id = kwargs['assigneeId']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+
         _setter("project", project)
         if assignee_id is not None:
             _setter("assignee_id", assignee_id)
@@ -193,7 +201,13 @@ class _ProjectIssueBoardState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assignee_id is None and 'assigneeId' in kwargs:
+            assignee_id = kwargs['assigneeId']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+
         if assignee_id is not None:
             _setter("assignee_id", assignee_id)
         if labels is not None:

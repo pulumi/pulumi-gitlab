@@ -125,16 +125,6 @@ def get_project_protected_branch(name: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project_protected_branch(name="main",
-        project_id="foo/bar/baz")
-    ```
-
 
     :param str name: The name of the protected branch.
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
@@ -163,16 +153,6 @@ def get_project_protected_branch_output(name: Optional[pulumi.Input[str]] = None
     The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project_protected_branch(name="main",
-        project_id="foo/bar/baz")
-    ```
 
 
     :param str name: The name of the protected branch.

@@ -35,11 +35,23 @@ class GroupBadgeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
-             image_url: pulumi.Input[str],
-             link_url: pulumi.Input[str],
+             group: Optional[pulumi.Input[str]] = None,
+             image_url: Optional[pulumi.Input[str]] = None,
+             link_url: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if image_url is None and 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if image_url is None:
+            raise TypeError("Missing 'image_url' argument")
+        if link_url is None and 'linkUrl' in kwargs:
+            link_url = kwargs['linkUrl']
+        if link_url is None:
+            raise TypeError("Missing 'link_url' argument")
+
         _setter("group", group)
         _setter("image_url", image_url)
         _setter("link_url", link_url)
@@ -131,7 +143,17 @@ class _GroupBadgeState:
              name: Optional[pulumi.Input[str]] = None,
              rendered_image_url: Optional[pulumi.Input[str]] = None,
              rendered_link_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if image_url is None and 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if link_url is None and 'linkUrl' in kwargs:
+            link_url = kwargs['linkUrl']
+        if rendered_image_url is None and 'renderedImageUrl' in kwargs:
+            rendered_image_url = kwargs['renderedImageUrl']
+        if rendered_link_url is None and 'renderedLinkUrl' in kwargs:
+            rendered_link_url = kwargs['renderedLinkUrl']
+
         if group is not None:
             _setter("group", group)
         if image_url is not None:
@@ -233,34 +255,6 @@ class GroupBadge(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.Group("foo")
-        example = gitlab.GroupBadge("example",
-            group=foo.id,
-            link_url="https://example.com/badge-123",
-            image_url="https://example.com/badge-123.svg")
-        # Pipeline status badges with placeholders will be enabled for each project
-        gitlab_pipeline = gitlab.GroupBadge("gitlabPipeline",
-            group=foo.id,
-            link_url="https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
-            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
-        # Test coverage report badges with placeholders will be enabled for each project
-        gitlab_coverage = gitlab.GroupBadge("gitlabCoverage",
-            group=foo.id,
-            link_url="https://gitlab.example.com/%{project_path}/-/jobs",
-            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
-        # Latest release badges with placeholders will be enabled for each project
-        gitlab_release = gitlab.GroupBadge("gitlabRelease",
-            group=foo.id,
-            link_url="https://gitlab.example.com/%{project_path}/-/releases",
-            image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
-        ```
-
         ## Import
 
         GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
@@ -286,34 +280,6 @@ class GroupBadge(pulumi.CustomResource):
         The `GroupBadge` resource allows to manage the lifecycle of group badges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.Group("foo")
-        example = gitlab.GroupBadge("example",
-            group=foo.id,
-            link_url="https://example.com/badge-123",
-            image_url="https://example.com/badge-123.svg")
-        # Pipeline status badges with placeholders will be enabled for each project
-        gitlab_pipeline = gitlab.GroupBadge("gitlabPipeline",
-            group=foo.id,
-            link_url="https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
-            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
-        # Test coverage report badges with placeholders will be enabled for each project
-        gitlab_coverage = gitlab.GroupBadge("gitlabCoverage",
-            group=foo.id,
-            link_url="https://gitlab.example.com/%{project_path}/-/jobs",
-            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
-        # Latest release badges with placeholders will be enabled for each project
-        gitlab_release = gitlab.GroupBadge("gitlabRelease",
-            group=foo.id,
-            link_url="https://gitlab.example.com/%{project_path}/-/releases",
-            image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
-        ```
 
         ## Import
 

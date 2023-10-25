@@ -10,22 +10,6 @@ import * as utilities from "./utilities";
  * The `gitlab.ProjectIssue` data source allows to retrieve details about an issue in a project.
  *
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const foo = gitlab.getProject({
- *     pathWithNamespace: "foo/bar/baz",
- * });
- * const welcomeIssue = foo.then(foo => gitlab.getProjectIssue({
- *     project: foo.id,
- *     iid: 1,
- * }));
- * export const welcomeIssueWebUrl = data.gitlab_project_issue.web_url;
- * ```
  */
 export function getProjectIssue(args: GetProjectIssueArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIssueResult> {
 
@@ -219,22 +203,6 @@ export interface GetProjectIssueResult {
  * The `gitlab.ProjectIssue` data source allows to retrieve details about an issue in a project.
  *
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const foo = gitlab.getProject({
- *     pathWithNamespace: "foo/bar/baz",
- * });
- * const welcomeIssue = foo.then(foo => gitlab.getProjectIssue({
- *     project: foo.id,
- *     iid: 1,
- * }));
- * export const welcomeIssueWebUrl = data.gitlab_project_issue.web_url;
- * ```
  */
 export function getProjectIssueOutput(args: GetProjectIssueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIssueResult> {
     return pulumi.output(args).apply((a: any) => getProjectIssue(a, opts))

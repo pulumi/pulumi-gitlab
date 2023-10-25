@@ -38,12 +38,22 @@ class DeployKeyEnableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_id: pulumi.Input[str],
-             project: pulumi.Input[str],
+             key_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              can_push: Optional[pulumi.Input[bool]] = None,
              key: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if can_push is None and 'canPush' in kwargs:
+            can_push = kwargs['canPush']
+
         _setter("key_id", key_id)
         _setter("project", project)
         if can_push is not None:
@@ -146,7 +156,13 @@ class _DeployKeyEnableState:
              key_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if can_push is None and 'canPush' in kwargs:
+            can_push = kwargs['canPush']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+
         if can_push is not None:
             _setter("can_push", can_push)
         if key is not None:
@@ -235,27 +251,6 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#enable-a-deploy-key)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # A repo to host the deployment key
-        parent_project = gitlab.Project("parentProject")
-        # A second repo to use the deployment key from the parent project
-        foo_project = gitlab.Project("fooProject")
-        # Upload a deployment key for the parent repo
-        parent_deploy_key = gitlab.DeployKey("parentDeployKey",
-            project=parent_project.id,
-            title="Example deploy key",
-            key="ssh-ed25519 AAAA...")
-        # Enable the deployment key on the second repo
-        foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
-            project=foo_project.id,
-            key_id=parent_deploy_key.deploy_key_id)
-        ```
-
         ## Import
 
         GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
@@ -286,27 +281,6 @@ class DeployKeyEnable(pulumi.CustomResource):
         The `DeployKeyEnable` resource allows to enable an already existing deploy key (see `DeployKey resource`) for a specific project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#enable-a-deploy-key)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # A repo to host the deployment key
-        parent_project = gitlab.Project("parentProject")
-        # A second repo to use the deployment key from the parent project
-        foo_project = gitlab.Project("fooProject")
-        # Upload a deployment key for the parent repo
-        parent_deploy_key = gitlab.DeployKey("parentDeployKey",
-            project=parent_project.id,
-            title="Example deploy key",
-            key="ssh-ed25519 AAAA...")
-        # Enable the deployment key on the second repo
-        foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
-            project=foo_project.id,
-            key_id=parent_deploy_key.deploy_key_id)
-        ```
 
         ## Import
 

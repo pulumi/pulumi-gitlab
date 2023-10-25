@@ -38,12 +38,22 @@ class ProjectMirrorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             url: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
              only_protected_branches: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if keep_divergent_refs is None and 'keepDivergentRefs' in kwargs:
+            keep_divergent_refs = kwargs['keepDivergentRefs']
+        if only_protected_branches is None and 'onlyProtectedBranches' in kwargs:
+            only_protected_branches = kwargs['onlyProtectedBranches']
+
         _setter("project", project)
         _setter("url", url)
         if enabled is not None:
@@ -150,7 +160,15 @@ class _ProjectMirrorState:
              only_protected_branches: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if keep_divergent_refs is None and 'keepDivergentRefs' in kwargs:
+            keep_divergent_refs = kwargs['keepDivergentRefs']
+        if mirror_id is None and 'mirrorId' in kwargs:
+            mirror_id = kwargs['mirrorId']
+        if only_protected_branches is None and 'onlyProtectedBranches' in kwargs:
+            only_protected_branches = kwargs['onlyProtectedBranches']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if keep_divergent_refs is not None:
@@ -264,17 +282,6 @@ class ProjectMirror(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.ProjectMirror("foo",
-            project="1",
-            url="https://username:password@github.com/org/repository.git")
-        ```
-
         ## Import
 
         GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
@@ -312,17 +319,6 @@ class ProjectMirror(pulumi.CustomResource):
            For older versions, the mirror will be disabled and the resource will be destroyed.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.ProjectMirror("foo",
-            project="1",
-            url="https://username:password@github.com/org/repository.git")
-        ```
 
         ## Import
 

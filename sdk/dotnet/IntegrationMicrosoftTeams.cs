@@ -14,32 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
-    ///     {
-    ///         Description = "My awesome project.",
-    ///         VisibilityLevel = "public",
-    ///     });
-    /// 
-    ///     var teams = new GitLab.IntegrationMicrosoftTeams("teams", new()
-    ///     {
-    ///         Project = awesomeProject.Id,
-    ///         Webhook = "https://testurl.com/?token=XYZ",
-    ///         PushEvents = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// You can import a gitlab_integration_microsoft_teams state using the project ID, e.g.

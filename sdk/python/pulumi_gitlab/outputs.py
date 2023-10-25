@@ -144,7 +144,25 @@ class BranchCommit(dict):
              parent_ids: Optional[Sequence[str]] = None,
              short_id: Optional[str] = None,
              title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email is None and 'authorEmail' in kwargs:
+            author_email = kwargs['authorEmail']
+        if author_name is None and 'authorName' in kwargs:
+            author_name = kwargs['authorName']
+        if authored_date is None and 'authoredDate' in kwargs:
+            authored_date = kwargs['authoredDate']
+        if committed_date is None and 'committedDate' in kwargs:
+            committed_date = kwargs['committedDate']
+        if committer_email is None and 'committerEmail' in kwargs:
+            committer_email = kwargs['committerEmail']
+        if committer_name is None and 'committerName' in kwargs:
+            committer_name = kwargs['committerName']
+        if parent_ids is None and 'parentIds' in kwargs:
+            parent_ids = kwargs['parentIds']
+        if short_id is None and 'shortId' in kwargs:
+            short_id = kwargs['shortId']
+
         if author_email is not None:
             _setter("author_email", author_email)
         if author_name is not None:
@@ -274,7 +292,17 @@ class BranchProtectionAllowedToMerge(dict):
              access_level_description: Optional[str] = None,
              group_id: Optional[int] = None,
              user_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -367,7 +395,17 @@ class BranchProtectionAllowedToPush(dict):
              access_level_description: Optional[str] = None,
              group_id: Optional[int] = None,
              user_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -460,7 +498,17 @@ class BranchProtectionAllowedToUnprotect(dict):
              access_level_description: Optional[str] = None,
              group_id: Optional[int] = None,
              user_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -543,7 +591,11 @@ class GroupEpicBoardList(dict):
              id: Optional[int] = None,
              label_id: Optional[int] = None,
              position: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label_id is None and 'labelId' in kwargs:
+            label_id = kwargs['labelId']
+
         if id is not None:
             _setter("id", id)
         if label_id is not None:
@@ -616,7 +668,11 @@ class GroupIssueBoardList(dict):
              id: Optional[int] = None,
              label_id: Optional[int] = None,
              position: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label_id is None and 'labelId' in kwargs:
+            label_id = kwargs['labelId']
+
         if id is not None:
             _setter("id", id)
         if label_id is not None:
@@ -719,7 +775,21 @@ class ProjectContainerExpirationPolicy(dict):
              name_regex_keep: Optional[str] = None,
              next_run_at: Optional[str] = None,
              older_than: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if keep_n is None and 'keepN' in kwargs:
+            keep_n = kwargs['keepN']
+        if name_regex is None and 'nameRegex' in kwargs:
+            name_regex = kwargs['nameRegex']
+        if name_regex_delete is None and 'nameRegexDelete' in kwargs:
+            name_regex_delete = kwargs['nameRegexDelete']
+        if name_regex_keep is None and 'nameRegexKeep' in kwargs:
+            name_regex_keep = kwargs['nameRegexKeep']
+        if next_run_at is None and 'nextRunAt' in kwargs:
+            next_run_at = kwargs['nextRunAt']
+        if older_than is None and 'olderThan' in kwargs:
+            older_than = kwargs['olderThan']
+
         if cadence is not None:
             _setter("cadence", cadence)
         if enabled is not None:
@@ -863,7 +933,17 @@ class ProjectIssueBoardList(dict):
              label_id: Optional[int] = None,
              milestone_id: Optional[int] = None,
              position: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assignee_id is None and 'assigneeId' in kwargs:
+            assignee_id = kwargs['assigneeId']
+        if iteration_id is None and 'iterationId' in kwargs:
+            iteration_id = kwargs['iterationId']
+        if label_id is None and 'labelId' in kwargs:
+            label_id = kwargs['labelId']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+
         if assignee_id is not None:
             _setter("assignee_id", assignee_id)
         if id is not None:
@@ -958,7 +1038,11 @@ class ProjectIssueTaskCompletionStatus(dict):
              _setter: Callable[[Any, Any], None],
              completed_count: Optional[int] = None,
              count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if completed_count is None and 'completedCount' in kwargs:
+            completed_count = kwargs['completedCount']
+
         if completed_count is not None:
             _setter("completed_count", completed_count)
         if count is not None:
@@ -1035,7 +1119,19 @@ class ProjectProtectedEnvironmentApprovalRule(dict):
              id: Optional[int] = None,
              required_approvals: Optional[int] = None,
              user_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if required_approvals is None and 'requiredApprovals' in kwargs:
+            required_approvals = kwargs['requiredApprovals']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -1152,7 +1248,17 @@ class ProjectProtectedEnvironmentDeployAccessLevel(dict):
              group_id: Optional[int] = None,
              id: Optional[int] = None,
              user_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -1297,7 +1403,31 @@ class ProjectPushRules(dict):
              member_check: Optional[bool] = None,
              prevent_secrets: Optional[bool] = None,
              reject_unsigned_commits: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email_regex is None and 'authorEmailRegex' in kwargs:
+            author_email_regex = kwargs['authorEmailRegex']
+        if branch_name_regex is None and 'branchNameRegex' in kwargs:
+            branch_name_regex = kwargs['branchNameRegex']
+        if commit_committer_check is None and 'commitCommitterCheck' in kwargs:
+            commit_committer_check = kwargs['commitCommitterCheck']
+        if commit_message_negative_regex is None and 'commitMessageNegativeRegex' in kwargs:
+            commit_message_negative_regex = kwargs['commitMessageNegativeRegex']
+        if commit_message_regex is None and 'commitMessageRegex' in kwargs:
+            commit_message_regex = kwargs['commitMessageRegex']
+        if deny_delete_tag is None and 'denyDeleteTag' in kwargs:
+            deny_delete_tag = kwargs['denyDeleteTag']
+        if file_name_regex is None and 'fileNameRegex' in kwargs:
+            file_name_regex = kwargs['fileNameRegex']
+        if max_file_size is None and 'maxFileSize' in kwargs:
+            max_file_size = kwargs['maxFileSize']
+        if member_check is None and 'memberCheck' in kwargs:
+            member_check = kwargs['memberCheck']
+        if prevent_secrets is None and 'preventSecrets' in kwargs:
+            prevent_secrets = kwargs['preventSecrets']
+        if reject_unsigned_commits is None and 'rejectUnsignedCommits' in kwargs:
+            reject_unsigned_commits = kwargs['rejectUnsignedCommits']
+
         if author_email_regex is not None:
             _setter("author_email_regex", author_email_regex)
         if branch_name_regex is not None:
@@ -1483,7 +1613,25 @@ class ProjectTagCommit(dict):
              parent_ids: Optional[Sequence[str]] = None,
              short_id: Optional[str] = None,
              title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email is None and 'authorEmail' in kwargs:
+            author_email = kwargs['authorEmail']
+        if author_name is None and 'authorName' in kwargs:
+            author_name = kwargs['authorName']
+        if authored_date is None and 'authoredDate' in kwargs:
+            authored_date = kwargs['authoredDate']
+        if committed_date is None and 'committedDate' in kwargs:
+            committed_date = kwargs['committedDate']
+        if committer_email is None and 'committerEmail' in kwargs:
+            committer_email = kwargs['committerEmail']
+        if committer_name is None and 'committerName' in kwargs:
+            committer_name = kwargs['committerName']
+        if parent_ids is None and 'parentIds' in kwargs:
+            parent_ids = kwargs['parentIds']
+        if short_id is None and 'shortId' in kwargs:
+            short_id = kwargs['shortId']
+
         if author_email is not None:
             _setter("author_email", author_email)
         if author_name is not None:
@@ -1595,7 +1743,11 @@ class ProjectTagRelease(dict):
              _setter: Callable[[Any, Any], None],
              description: Optional[str] = None,
              tag_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+
         if description is not None:
             _setter("description", description)
         if tag_name is not None:
@@ -1662,7 +1814,17 @@ class TagProtectionAllowedToCreate(dict):
              access_level_description: Optional[str] = None,
              group_id: Optional[int] = None,
              user_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -1736,18 +1898,58 @@ class GetBranchCommitResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             author_email: str,
-             author_name: str,
-             authored_date: str,
-             committed_date: str,
-             committer_email: str,
-             committer_name: str,
-             id: str,
-             message: str,
-             parent_ids: Sequence[str],
-             short_id: str,
-             title: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             author_email: Optional[str] = None,
+             author_name: Optional[str] = None,
+             authored_date: Optional[str] = None,
+             committed_date: Optional[str] = None,
+             committer_email: Optional[str] = None,
+             committer_name: Optional[str] = None,
+             id: Optional[str] = None,
+             message: Optional[str] = None,
+             parent_ids: Optional[Sequence[str]] = None,
+             short_id: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email is None and 'authorEmail' in kwargs:
+            author_email = kwargs['authorEmail']
+        if author_email is None:
+            raise TypeError("Missing 'author_email' argument")
+        if author_name is None and 'authorName' in kwargs:
+            author_name = kwargs['authorName']
+        if author_name is None:
+            raise TypeError("Missing 'author_name' argument")
+        if authored_date is None and 'authoredDate' in kwargs:
+            authored_date = kwargs['authoredDate']
+        if authored_date is None:
+            raise TypeError("Missing 'authored_date' argument")
+        if committed_date is None and 'committedDate' in kwargs:
+            committed_date = kwargs['committedDate']
+        if committed_date is None:
+            raise TypeError("Missing 'committed_date' argument")
+        if committer_email is None and 'committerEmail' in kwargs:
+            committer_email = kwargs['committerEmail']
+        if committer_email is None:
+            raise TypeError("Missing 'committer_email' argument")
+        if committer_name is None and 'committerName' in kwargs:
+            committer_name = kwargs['committerName']
+        if committer_name is None:
+            raise TypeError("Missing 'committer_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if parent_ids is None and 'parentIds' in kwargs:
+            parent_ids = kwargs['parentIds']
+        if parent_ids is None:
+            raise TypeError("Missing 'parent_ids' argument")
+        if short_id is None and 'shortId' in kwargs:
+            short_id = kwargs['shortId']
+        if short_id is None:
+            raise TypeError("Missing 'short_id' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("author_email", author_email)
         _setter("author_name", author_name)
         _setter("authored_date", authored_date)
@@ -1835,12 +2037,30 @@ class GetClusterAgentsClusterAgentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             agent_id: int,
-             created_at: str,
-             created_by_user_id: int,
-             name: str,
-             project: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             agent_id: Optional[int] = None,
+             created_at: Optional[str] = None,
+             created_by_user_id: Optional[int] = None,
+             name: Optional[str] = None,
+             project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if agent_id is None and 'agentId' in kwargs:
+            agent_id = kwargs['agentId']
+        if agent_id is None:
+            raise TypeError("Missing 'agent_id' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if created_by_user_id is None and 'createdByUserId' in kwargs:
+            created_by_user_id = kwargs['createdByUserId']
+        if created_by_user_id is None:
+            raise TypeError("Missing 'created_by_user_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("agent_id", agent_id)
         _setter("created_at", created_at)
         _setter("created_by_user_id", created_by_user_id)
@@ -1922,27 +2142,103 @@ class GetGroupHooksHookResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             confidential_issues_events: bool,
-             confidential_note_events: bool,
-             deployment_events: bool,
-             enable_ssl_verification: bool,
-             group: str,
-             group_id: int,
-             hook_id: int,
-             issues_events: bool,
-             job_events: bool,
-             merge_requests_events: bool,
-             note_events: bool,
-             pipeline_events: bool,
-             push_events: bool,
-             push_events_branch_filter: str,
-             releases_events: bool,
-             subgroup_events: bool,
-             tag_push_events: bool,
-             token: str,
-             url: str,
-             wiki_page_events: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             confidential_issues_events: Optional[bool] = None,
+             confidential_note_events: Optional[bool] = None,
+             deployment_events: Optional[bool] = None,
+             enable_ssl_verification: Optional[bool] = None,
+             group: Optional[str] = None,
+             group_id: Optional[int] = None,
+             hook_id: Optional[int] = None,
+             issues_events: Optional[bool] = None,
+             job_events: Optional[bool] = None,
+             merge_requests_events: Optional[bool] = None,
+             note_events: Optional[bool] = None,
+             pipeline_events: Optional[bool] = None,
+             push_events: Optional[bool] = None,
+             push_events_branch_filter: Optional[str] = None,
+             releases_events: Optional[bool] = None,
+             subgroup_events: Optional[bool] = None,
+             tag_push_events: Optional[bool] = None,
+             token: Optional[str] = None,
+             url: Optional[str] = None,
+             wiki_page_events: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
+            confidential_issues_events = kwargs['confidentialIssuesEvents']
+        if confidential_issues_events is None:
+            raise TypeError("Missing 'confidential_issues_events' argument")
+        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
+            confidential_note_events = kwargs['confidentialNoteEvents']
+        if confidential_note_events is None:
+            raise TypeError("Missing 'confidential_note_events' argument")
+        if deployment_events is None and 'deploymentEvents' in kwargs:
+            deployment_events = kwargs['deploymentEvents']
+        if deployment_events is None:
+            raise TypeError("Missing 'deployment_events' argument")
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if enable_ssl_verification is None:
+            raise TypeError("Missing 'enable_ssl_verification' argument")
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if hook_id is None and 'hookId' in kwargs:
+            hook_id = kwargs['hookId']
+        if hook_id is None:
+            raise TypeError("Missing 'hook_id' argument")
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if issues_events is None:
+            raise TypeError("Missing 'issues_events' argument")
+        if job_events is None and 'jobEvents' in kwargs:
+            job_events = kwargs['jobEvents']
+        if job_events is None:
+            raise TypeError("Missing 'job_events' argument")
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if merge_requests_events is None:
+            raise TypeError("Missing 'merge_requests_events' argument")
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if note_events is None:
+            raise TypeError("Missing 'note_events' argument")
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if pipeline_events is None:
+            raise TypeError("Missing 'pipeline_events' argument")
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if push_events is None:
+            raise TypeError("Missing 'push_events' argument")
+        if push_events_branch_filter is None and 'pushEventsBranchFilter' in kwargs:
+            push_events_branch_filter = kwargs['pushEventsBranchFilter']
+        if push_events_branch_filter is None:
+            raise TypeError("Missing 'push_events_branch_filter' argument")
+        if releases_events is None and 'releasesEvents' in kwargs:
+            releases_events = kwargs['releasesEvents']
+        if releases_events is None:
+            raise TypeError("Missing 'releases_events' argument")
+        if subgroup_events is None and 'subgroupEvents' in kwargs:
+            subgroup_events = kwargs['subgroupEvents']
+        if subgroup_events is None:
+            raise TypeError("Missing 'subgroup_events' argument")
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if tag_push_events is None:
+            raise TypeError("Missing 'tag_push_events' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
+            wiki_page_events = kwargs['wikiPageEvents']
+        if wiki_page_events is None:
+            raise TypeError("Missing 'wiki_page_events' argument")
+
         _setter("confidential_issues_events", confidential_issues_events)
         _setter("confidential_note_events", confidential_note_events)
         _setter("deployment_events", deployment_events)
@@ -2090,15 +2386,41 @@ class GetGroupMembershipMemberResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_level: str,
-             avatar_url: str,
-             expires_at: str,
-             id: int,
-             name: str,
-             state: str,
-             username: str,
-             web_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_level: Optional[str] = None,
+             avatar_url: Optional[str] = None,
+             expires_at: Optional[str] = None,
+             id: Optional[int] = None,
+             name: Optional[str] = None,
+             state: Optional[str] = None,
+             username: Optional[str] = None,
+             web_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if avatar_url is None and 'avatarUrl' in kwargs:
+            avatar_url = kwargs['avatarUrl']
+        if avatar_url is None:
+            raise TypeError("Missing 'avatar_url' argument")
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if expires_at is None:
+            raise TypeError("Missing 'expires_at' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if web_url is None:
+            raise TypeError("Missing 'web_url' argument")
+
         _setter("access_level", access_level)
         _setter("avatar_url", avatar_url)
         _setter("expires_at", expires_at)
@@ -2210,33 +2532,129 @@ class GetGroupSubgroupsSubgroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_devops_enabled: bool,
-             avatar_url: str,
-             created_at: str,
-             default_branch_protection: int,
-             description: str,
-             emails_disabled: bool,
-             file_template_project_id: int,
-             full_name: str,
-             full_path: str,
-             group_id: int,
-             ip_restriction_ranges: str,
-             lfs_enabled: bool,
-             mentions_disabled: bool,
-             name: str,
-             parent_id: int,
-             path: str,
-             project_creation_level: str,
-             request_access_enabled: bool,
-             require_two_factor_authentication: bool,
-             share_with_group_lock: bool,
-             statistics: Mapping[str, str],
-             subgroup_creation_level: str,
-             two_factor_grace_period: int,
-             visibility: str,
-             web_url: str,
-             wiki_access_level: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             auto_devops_enabled: Optional[bool] = None,
+             avatar_url: Optional[str] = None,
+             created_at: Optional[str] = None,
+             default_branch_protection: Optional[int] = None,
+             description: Optional[str] = None,
+             emails_disabled: Optional[bool] = None,
+             file_template_project_id: Optional[int] = None,
+             full_name: Optional[str] = None,
+             full_path: Optional[str] = None,
+             group_id: Optional[int] = None,
+             ip_restriction_ranges: Optional[str] = None,
+             lfs_enabled: Optional[bool] = None,
+             mentions_disabled: Optional[bool] = None,
+             name: Optional[str] = None,
+             parent_id: Optional[int] = None,
+             path: Optional[str] = None,
+             project_creation_level: Optional[str] = None,
+             request_access_enabled: Optional[bool] = None,
+             require_two_factor_authentication: Optional[bool] = None,
+             share_with_group_lock: Optional[bool] = None,
+             statistics: Optional[Mapping[str, str]] = None,
+             subgroup_creation_level: Optional[str] = None,
+             two_factor_grace_period: Optional[int] = None,
+             visibility: Optional[str] = None,
+             web_url: Optional[str] = None,
+             wiki_access_level: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
+            auto_devops_enabled = kwargs['autoDevopsEnabled']
+        if auto_devops_enabled is None:
+            raise TypeError("Missing 'auto_devops_enabled' argument")
+        if avatar_url is None and 'avatarUrl' in kwargs:
+            avatar_url = kwargs['avatarUrl']
+        if avatar_url is None:
+            raise TypeError("Missing 'avatar_url' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if default_branch_protection is None and 'defaultBranchProtection' in kwargs:
+            default_branch_protection = kwargs['defaultBranchProtection']
+        if default_branch_protection is None:
+            raise TypeError("Missing 'default_branch_protection' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if emails_disabled is None and 'emailsDisabled' in kwargs:
+            emails_disabled = kwargs['emailsDisabled']
+        if emails_disabled is None:
+            raise TypeError("Missing 'emails_disabled' argument")
+        if file_template_project_id is None and 'fileTemplateProjectId' in kwargs:
+            file_template_project_id = kwargs['fileTemplateProjectId']
+        if file_template_project_id is None:
+            raise TypeError("Missing 'file_template_project_id' argument")
+        if full_name is None and 'fullName' in kwargs:
+            full_name = kwargs['fullName']
+        if full_name is None:
+            raise TypeError("Missing 'full_name' argument")
+        if full_path is None and 'fullPath' in kwargs:
+            full_path = kwargs['fullPath']
+        if full_path is None:
+            raise TypeError("Missing 'full_path' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if ip_restriction_ranges is None and 'ipRestrictionRanges' in kwargs:
+            ip_restriction_ranges = kwargs['ipRestrictionRanges']
+        if ip_restriction_ranges is None:
+            raise TypeError("Missing 'ip_restriction_ranges' argument")
+        if lfs_enabled is None and 'lfsEnabled' in kwargs:
+            lfs_enabled = kwargs['lfsEnabled']
+        if lfs_enabled is None:
+            raise TypeError("Missing 'lfs_enabled' argument")
+        if mentions_disabled is None and 'mentionsDisabled' in kwargs:
+            mentions_disabled = kwargs['mentionsDisabled']
+        if mentions_disabled is None:
+            raise TypeError("Missing 'mentions_disabled' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if parent_id is None:
+            raise TypeError("Missing 'parent_id' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if project_creation_level is None and 'projectCreationLevel' in kwargs:
+            project_creation_level = kwargs['projectCreationLevel']
+        if project_creation_level is None:
+            raise TypeError("Missing 'project_creation_level' argument")
+        if request_access_enabled is None and 'requestAccessEnabled' in kwargs:
+            request_access_enabled = kwargs['requestAccessEnabled']
+        if request_access_enabled is None:
+            raise TypeError("Missing 'request_access_enabled' argument")
+        if require_two_factor_authentication is None and 'requireTwoFactorAuthentication' in kwargs:
+            require_two_factor_authentication = kwargs['requireTwoFactorAuthentication']
+        if require_two_factor_authentication is None:
+            raise TypeError("Missing 'require_two_factor_authentication' argument")
+        if share_with_group_lock is None and 'shareWithGroupLock' in kwargs:
+            share_with_group_lock = kwargs['shareWithGroupLock']
+        if share_with_group_lock is None:
+            raise TypeError("Missing 'share_with_group_lock' argument")
+        if statistics is None:
+            raise TypeError("Missing 'statistics' argument")
+        if subgroup_creation_level is None and 'subgroupCreationLevel' in kwargs:
+            subgroup_creation_level = kwargs['subgroupCreationLevel']
+        if subgroup_creation_level is None:
+            raise TypeError("Missing 'subgroup_creation_level' argument")
+        if two_factor_grace_period is None and 'twoFactorGracePeriod' in kwargs:
+            two_factor_grace_period = kwargs['twoFactorGracePeriod']
+        if two_factor_grace_period is None:
+            raise TypeError("Missing 'two_factor_grace_period' argument")
+        if visibility is None:
+            raise TypeError("Missing 'visibility' argument")
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if web_url is None:
+            raise TypeError("Missing 'web_url' argument")
+        if wiki_access_level is None and 'wikiAccessLevel' in kwargs:
+            wiki_access_level = kwargs['wikiAccessLevel']
+        if wiki_access_level is None:
+            raise TypeError("Missing 'wiki_access_level' argument")
+
         _setter("auto_devops_enabled", auto_devops_enabled)
         _setter("avatar_url", avatar_url)
         _setter("created_at", created_at)
@@ -2420,15 +2838,37 @@ class GetGroupVariablesVariableResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             environment_scope: str,
-             group: str,
-             key: str,
-             masked: bool,
-             protected: bool,
-             raw: bool,
-             value: str,
-             variable_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             environment_scope: Optional[str] = None,
+             group: Optional[str] = None,
+             key: Optional[str] = None,
+             masked: Optional[bool] = None,
+             protected: Optional[bool] = None,
+             raw: Optional[bool] = None,
+             value: Optional[str] = None,
+             variable_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if environment_scope is None and 'environmentScope' in kwargs:
+            environment_scope = kwargs['environmentScope']
+        if environment_scope is None:
+            raise TypeError("Missing 'environment_scope' argument")
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if masked is None:
+            raise TypeError("Missing 'masked' argument")
+        if protected is None:
+            raise TypeError("Missing 'protected' argument")
+        if raw is None:
+            raise TypeError("Missing 'raw' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+        if variable_type is None:
+            raise TypeError("Missing 'variable_type' argument")
+
         _setter("environment_scope", environment_scope)
         _setter("group", group)
         _setter("key", key)
@@ -2518,22 +2958,78 @@ class GetGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_branch_protection: int,
-             description: str,
-             full_name: str,
-             full_path: str,
-             group_id: int,
-             lfs_enabled: bool,
-             name: str,
-             parent_id: int,
-             path: str,
-             prevent_forking_outside_group: bool,
-             request_access_enabled: bool,
-             runners_token: str,
-             visibility_level: str,
-             web_url: str,
-             wiki_access_level: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             default_branch_protection: Optional[int] = None,
+             description: Optional[str] = None,
+             full_name: Optional[str] = None,
+             full_path: Optional[str] = None,
+             group_id: Optional[int] = None,
+             lfs_enabled: Optional[bool] = None,
+             name: Optional[str] = None,
+             parent_id: Optional[int] = None,
+             path: Optional[str] = None,
+             prevent_forking_outside_group: Optional[bool] = None,
+             request_access_enabled: Optional[bool] = None,
+             runners_token: Optional[str] = None,
+             visibility_level: Optional[str] = None,
+             web_url: Optional[str] = None,
+             wiki_access_level: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_branch_protection is None and 'defaultBranchProtection' in kwargs:
+            default_branch_protection = kwargs['defaultBranchProtection']
+        if default_branch_protection is None:
+            raise TypeError("Missing 'default_branch_protection' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if full_name is None and 'fullName' in kwargs:
+            full_name = kwargs['fullName']
+        if full_name is None:
+            raise TypeError("Missing 'full_name' argument")
+        if full_path is None and 'fullPath' in kwargs:
+            full_path = kwargs['fullPath']
+        if full_path is None:
+            raise TypeError("Missing 'full_path' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if lfs_enabled is None and 'lfsEnabled' in kwargs:
+            lfs_enabled = kwargs['lfsEnabled']
+        if lfs_enabled is None:
+            raise TypeError("Missing 'lfs_enabled' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if parent_id is None:
+            raise TypeError("Missing 'parent_id' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if prevent_forking_outside_group is None and 'preventForkingOutsideGroup' in kwargs:
+            prevent_forking_outside_group = kwargs['preventForkingOutsideGroup']
+        if prevent_forking_outside_group is None:
+            raise TypeError("Missing 'prevent_forking_outside_group' argument")
+        if request_access_enabled is None and 'requestAccessEnabled' in kwargs:
+            request_access_enabled = kwargs['requestAccessEnabled']
+        if request_access_enabled is None:
+            raise TypeError("Missing 'request_access_enabled' argument")
+        if runners_token is None and 'runnersToken' in kwargs:
+            runners_token = kwargs['runnersToken']
+        if runners_token is None:
+            raise TypeError("Missing 'runners_token' argument")
+        if visibility_level is None and 'visibilityLevel' in kwargs:
+            visibility_level = kwargs['visibilityLevel']
+        if visibility_level is None:
+            raise TypeError("Missing 'visibility_level' argument")
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if web_url is None:
+            raise TypeError("Missing 'web_url' argument")
+        if wiki_access_level is None and 'wikiAccessLevel' in kwargs:
+            wiki_access_level = kwargs['wikiAccessLevel']
+        if wiki_access_level is None:
+            raise TypeError("Missing 'wiki_access_level' argument")
+
         _setter("default_branch_protection", default_branch_protection)
         _setter("description", description)
         _setter("full_name", full_name)
@@ -2647,13 +3143,31 @@ class GetInstanceDeployKeysDeployKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_at: str,
-             fingerprint: str,
-             id: int,
-             key: str,
-             projects_with_write_accesses: Sequence['outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult'],
-             title: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created_at: Optional[str] = None,
+             fingerprint: Optional[str] = None,
+             id: Optional[int] = None,
+             key: Optional[str] = None,
+             projects_with_write_accesses: Optional[Sequence['outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult']] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if fingerprint is None:
+            raise TypeError("Missing 'fingerprint' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if projects_with_write_accesses is None and 'projectsWithWriteAccesses' in kwargs:
+            projects_with_write_accesses = kwargs['projectsWithWriteAccesses']
+        if projects_with_write_accesses is None:
+            raise TypeError("Missing 'projects_with_write_accesses' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("created_at", created_at)
         _setter("fingerprint", fingerprint)
         _setter("id", id)
@@ -2715,14 +3229,36 @@ class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_at: str,
-             description: str,
-             id: int,
-             name: str,
-             name_with_namespace: str,
-             path: str,
-             path_with_namespace: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created_at: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[int] = None,
+             name: Optional[str] = None,
+             name_with_namespace: Optional[str] = None,
+             path: Optional[str] = None,
+             path_with_namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_with_namespace is None and 'nameWithNamespace' in kwargs:
+            name_with_namespace = kwargs['nameWithNamespace']
+        if name_with_namespace is None:
+            raise TypeError("Missing 'name_with_namespace' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if path_with_namespace is None and 'pathWithNamespace' in kwargs:
+            path_with_namespace = kwargs['pathWithNamespace']
+        if path_with_namespace is None:
+            raise TypeError("Missing 'path_with_namespace' argument")
+
         _setter("created_at", created_at)
         _setter("description", description)
         _setter("id", id)
@@ -2788,13 +3324,29 @@ class GetInstanceVariablesVariableResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             masked: bool,
-             protected: bool,
-             raw: bool,
-             value: str,
-             variable_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             masked: Optional[bool] = None,
+             protected: Optional[bool] = None,
+             raw: Optional[bool] = None,
+             value: Optional[str] = None,
+             variable_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if masked is None:
+            raise TypeError("Missing 'masked' argument")
+        if protected is None:
+            raise TypeError("Missing 'protected' argument")
+        if raw is None:
+            raise TypeError("Missing 'raw' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+        if variable_type is None:
+            raise TypeError("Missing 'variable_type' argument")
+
         _setter("key", key)
         _setter("masked", masked)
         _setter("protected", protected)
@@ -2853,10 +3405,20 @@ class GetMetadataKasResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             external_url: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             external_url: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if external_url is None and 'externalUrl' in kwargs:
+            external_url = kwargs['externalUrl']
+        if external_url is None:
+            raise TypeError("Missing 'external_url' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("enabled", enabled)
         _setter("external_url", external_url)
         _setter("version", version)
@@ -2913,16 +3475,44 @@ class GetProjectBranchesBranchResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             can_push: bool,
-             commits: Sequence['outputs.GetProjectBranchesBranchCommitResult'],
-             default: bool,
-             developers_can_merge: bool,
-             developers_can_push: bool,
-             merged: bool,
-             name: str,
-             protected: bool,
-             web_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             can_push: Optional[bool] = None,
+             commits: Optional[Sequence['outputs.GetProjectBranchesBranchCommitResult']] = None,
+             default: Optional[bool] = None,
+             developers_can_merge: Optional[bool] = None,
+             developers_can_push: Optional[bool] = None,
+             merged: Optional[bool] = None,
+             name: Optional[str] = None,
+             protected: Optional[bool] = None,
+             web_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if can_push is None and 'canPush' in kwargs:
+            can_push = kwargs['canPush']
+        if can_push is None:
+            raise TypeError("Missing 'can_push' argument")
+        if commits is None:
+            raise TypeError("Missing 'commits' argument")
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+        if developers_can_merge is None and 'developersCanMerge' in kwargs:
+            developers_can_merge = kwargs['developersCanMerge']
+        if developers_can_merge is None:
+            raise TypeError("Missing 'developers_can_merge' argument")
+        if developers_can_push is None and 'developersCanPush' in kwargs:
+            developers_can_push = kwargs['developersCanPush']
+        if developers_can_push is None:
+            raise TypeError("Missing 'developers_can_push' argument")
+        if merged is None:
+            raise TypeError("Missing 'merged' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if protected is None:
+            raise TypeError("Missing 'protected' argument")
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if web_url is None:
+            raise TypeError("Missing 'web_url' argument")
+
         _setter("can_push", can_push)
         _setter("commits", commits)
         _setter("default", default)
@@ -3010,18 +3600,58 @@ class GetProjectBranchesBranchCommitResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             author_email: str,
-             author_name: str,
-             authored_date: str,
-             committed_date: str,
-             committer_email: str,
-             committer_name: str,
-             id: str,
-             message: str,
-             parent_ids: Sequence[str],
-             short_id: str,
-             title: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             author_email: Optional[str] = None,
+             author_name: Optional[str] = None,
+             authored_date: Optional[str] = None,
+             committed_date: Optional[str] = None,
+             committer_email: Optional[str] = None,
+             committer_name: Optional[str] = None,
+             id: Optional[str] = None,
+             message: Optional[str] = None,
+             parent_ids: Optional[Sequence[str]] = None,
+             short_id: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email is None and 'authorEmail' in kwargs:
+            author_email = kwargs['authorEmail']
+        if author_email is None:
+            raise TypeError("Missing 'author_email' argument")
+        if author_name is None and 'authorName' in kwargs:
+            author_name = kwargs['authorName']
+        if author_name is None:
+            raise TypeError("Missing 'author_name' argument")
+        if authored_date is None and 'authoredDate' in kwargs:
+            authored_date = kwargs['authoredDate']
+        if authored_date is None:
+            raise TypeError("Missing 'authored_date' argument")
+        if committed_date is None and 'committedDate' in kwargs:
+            committed_date = kwargs['committedDate']
+        if committed_date is None:
+            raise TypeError("Missing 'committed_date' argument")
+        if committer_email is None and 'committerEmail' in kwargs:
+            committer_email = kwargs['committerEmail']
+        if committer_email is None:
+            raise TypeError("Missing 'committer_email' argument")
+        if committer_name is None and 'committerName' in kwargs:
+            committer_name = kwargs['committerName']
+        if committer_name is None:
+            raise TypeError("Missing 'committer_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if parent_ids is None and 'parentIds' in kwargs:
+            parent_ids = kwargs['parentIds']
+        if parent_ids is None:
+            raise TypeError("Missing 'parent_ids' argument")
+        if short_id is None and 'shortId' in kwargs:
+            short_id = kwargs['shortId']
+        if short_id is None:
+            raise TypeError("Missing 'short_id' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("author_email", author_email)
         _setter("author_name", author_name)
         _setter("authored_date", authored_date)
@@ -3115,15 +3745,45 @@ class GetProjectContainerExpirationPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cadence: str,
-             enabled: bool,
-             keep_n: int,
-             name_regex: str,
-             name_regex_delete: str,
-             name_regex_keep: str,
-             next_run_at: str,
-             older_than: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cadence: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             keep_n: Optional[int] = None,
+             name_regex: Optional[str] = None,
+             name_regex_delete: Optional[str] = None,
+             name_regex_keep: Optional[str] = None,
+             next_run_at: Optional[str] = None,
+             older_than: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cadence is None:
+            raise TypeError("Missing 'cadence' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if keep_n is None and 'keepN' in kwargs:
+            keep_n = kwargs['keepN']
+        if keep_n is None:
+            raise TypeError("Missing 'keep_n' argument")
+        if name_regex is None and 'nameRegex' in kwargs:
+            name_regex = kwargs['nameRegex']
+        if name_regex is None:
+            raise TypeError("Missing 'name_regex' argument")
+        if name_regex_delete is None and 'nameRegexDelete' in kwargs:
+            name_regex_delete = kwargs['nameRegexDelete']
+        if name_regex_delete is None:
+            raise TypeError("Missing 'name_regex_delete' argument")
+        if name_regex_keep is None and 'nameRegexKeep' in kwargs:
+            name_regex_keep = kwargs['nameRegexKeep']
+        if name_regex_keep is None:
+            raise TypeError("Missing 'name_regex_keep' argument")
+        if next_run_at is None and 'nextRunAt' in kwargs:
+            next_run_at = kwargs['nextRunAt']
+        if next_run_at is None:
+            raise TypeError("Missing 'next_run_at' argument")
+        if older_than is None and 'olderThan' in kwargs:
+            older_than = kwargs['olderThan']
+        if older_than is None:
+            raise TypeError("Missing 'older_than' argument")
+
         _setter("cadence", cadence)
         _setter("enabled", enabled)
         _setter("keep_n", keep_n)
@@ -3224,26 +3884,98 @@ class GetProjectHooksHookResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             confidential_issues_events: bool,
-             confidential_note_events: bool,
-             deployment_events: bool,
-             enable_ssl_verification: bool,
-             hook_id: int,
-             issues_events: bool,
-             job_events: bool,
-             merge_requests_events: bool,
-             note_events: bool,
-             pipeline_events: bool,
-             project: str,
-             project_id: int,
-             push_events: bool,
-             push_events_branch_filter: str,
-             releases_events: bool,
-             tag_push_events: bool,
-             token: str,
-             url: str,
-             wiki_page_events: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             confidential_issues_events: Optional[bool] = None,
+             confidential_note_events: Optional[bool] = None,
+             deployment_events: Optional[bool] = None,
+             enable_ssl_verification: Optional[bool] = None,
+             hook_id: Optional[int] = None,
+             issues_events: Optional[bool] = None,
+             job_events: Optional[bool] = None,
+             merge_requests_events: Optional[bool] = None,
+             note_events: Optional[bool] = None,
+             pipeline_events: Optional[bool] = None,
+             project: Optional[str] = None,
+             project_id: Optional[int] = None,
+             push_events: Optional[bool] = None,
+             push_events_branch_filter: Optional[str] = None,
+             releases_events: Optional[bool] = None,
+             tag_push_events: Optional[bool] = None,
+             token: Optional[str] = None,
+             url: Optional[str] = None,
+             wiki_page_events: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
+            confidential_issues_events = kwargs['confidentialIssuesEvents']
+        if confidential_issues_events is None:
+            raise TypeError("Missing 'confidential_issues_events' argument")
+        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
+            confidential_note_events = kwargs['confidentialNoteEvents']
+        if confidential_note_events is None:
+            raise TypeError("Missing 'confidential_note_events' argument")
+        if deployment_events is None and 'deploymentEvents' in kwargs:
+            deployment_events = kwargs['deploymentEvents']
+        if deployment_events is None:
+            raise TypeError("Missing 'deployment_events' argument")
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if enable_ssl_verification is None:
+            raise TypeError("Missing 'enable_ssl_verification' argument")
+        if hook_id is None and 'hookId' in kwargs:
+            hook_id = kwargs['hookId']
+        if hook_id is None:
+            raise TypeError("Missing 'hook_id' argument")
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if issues_events is None:
+            raise TypeError("Missing 'issues_events' argument")
+        if job_events is None and 'jobEvents' in kwargs:
+            job_events = kwargs['jobEvents']
+        if job_events is None:
+            raise TypeError("Missing 'job_events' argument")
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if merge_requests_events is None:
+            raise TypeError("Missing 'merge_requests_events' argument")
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if note_events is None:
+            raise TypeError("Missing 'note_events' argument")
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if pipeline_events is None:
+            raise TypeError("Missing 'pipeline_events' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if push_events is None:
+            raise TypeError("Missing 'push_events' argument")
+        if push_events_branch_filter is None and 'pushEventsBranchFilter' in kwargs:
+            push_events_branch_filter = kwargs['pushEventsBranchFilter']
+        if push_events_branch_filter is None:
+            raise TypeError("Missing 'push_events_branch_filter' argument")
+        if releases_events is None and 'releasesEvents' in kwargs:
+            releases_events = kwargs['releasesEvents']
+        if releases_events is None:
+            raise TypeError("Missing 'releases_events' argument")
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if tag_push_events is None:
+            raise TypeError("Missing 'tag_push_events' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
+            wiki_page_events = kwargs['wikiPageEvents']
+        if wiki_page_events is None:
+            raise TypeError("Missing 'wiki_page_events' argument")
+
         _setter("confidential_issues_events", confidential_issues_events)
         _setter("confidential_note_events", confidential_note_events)
         _setter("deployment_events", deployment_events)
@@ -3373,9 +4105,17 @@ class GetProjectIssueTaskCompletionStatusResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             completed_count: int,
-             count: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             completed_count: Optional[int] = None,
+             count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if completed_count is None and 'completedCount' in kwargs:
+            completed_count = kwargs['completedCount']
+        if completed_count is None:
+            raise TypeError("Missing 'completed_count' argument")
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+
         _setter("completed_count", completed_count)
         _setter("count", count)
 
@@ -3477,46 +4217,178 @@ class GetProjectIssuesIssueResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             assignee_ids: Sequence[int],
-             author_id: int,
-             closed_at: str,
-             closed_by_user_id: int,
-             confidential: bool,
-             created_at: str,
-             description: str,
-             discussion_locked: bool,
-             discussion_to_resolve: str,
-             downvotes: int,
-             due_date: str,
-             epic_id: int,
-             epic_issue_id: int,
-             external_id: str,
-             human_time_estimate: str,
-             human_total_time_spent: str,
-             iid: int,
-             issue_id: int,
-             issue_link_id: int,
-             issue_type: str,
-             labels: Sequence[str],
-             links: Mapping[str, str],
-             merge_request_to_resolve_discussions_of: int,
-             merge_requests_count: int,
-             milestone_id: int,
-             moved_to_id: int,
-             project: str,
-             references: Mapping[str, str],
-             state: str,
-             subscribed: bool,
-             task_completion_statuses: Sequence['outputs.GetProjectIssuesIssueTaskCompletionStatusResult'],
-             time_estimate: int,
-             title: str,
-             total_time_spent: int,
-             updated_at: str,
-             upvotes: int,
-             user_notes_count: int,
-             web_url: str,
-             weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             assignee_ids: Optional[Sequence[int]] = None,
+             author_id: Optional[int] = None,
+             closed_at: Optional[str] = None,
+             closed_by_user_id: Optional[int] = None,
+             confidential: Optional[bool] = None,
+             created_at: Optional[str] = None,
+             description: Optional[str] = None,
+             discussion_locked: Optional[bool] = None,
+             discussion_to_resolve: Optional[str] = None,
+             downvotes: Optional[int] = None,
+             due_date: Optional[str] = None,
+             epic_id: Optional[int] = None,
+             epic_issue_id: Optional[int] = None,
+             external_id: Optional[str] = None,
+             human_time_estimate: Optional[str] = None,
+             human_total_time_spent: Optional[str] = None,
+             iid: Optional[int] = None,
+             issue_id: Optional[int] = None,
+             issue_link_id: Optional[int] = None,
+             issue_type: Optional[str] = None,
+             labels: Optional[Sequence[str]] = None,
+             links: Optional[Mapping[str, str]] = None,
+             merge_request_to_resolve_discussions_of: Optional[int] = None,
+             merge_requests_count: Optional[int] = None,
+             milestone_id: Optional[int] = None,
+             moved_to_id: Optional[int] = None,
+             project: Optional[str] = None,
+             references: Optional[Mapping[str, str]] = None,
+             state: Optional[str] = None,
+             subscribed: Optional[bool] = None,
+             task_completion_statuses: Optional[Sequence['outputs.GetProjectIssuesIssueTaskCompletionStatusResult']] = None,
+             time_estimate: Optional[int] = None,
+             title: Optional[str] = None,
+             total_time_spent: Optional[int] = None,
+             updated_at: Optional[str] = None,
+             upvotes: Optional[int] = None,
+             user_notes_count: Optional[int] = None,
+             web_url: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assignee_ids is None and 'assigneeIds' in kwargs:
+            assignee_ids = kwargs['assigneeIds']
+        if assignee_ids is None:
+            raise TypeError("Missing 'assignee_ids' argument")
+        if author_id is None and 'authorId' in kwargs:
+            author_id = kwargs['authorId']
+        if author_id is None:
+            raise TypeError("Missing 'author_id' argument")
+        if closed_at is None and 'closedAt' in kwargs:
+            closed_at = kwargs['closedAt']
+        if closed_at is None:
+            raise TypeError("Missing 'closed_at' argument")
+        if closed_by_user_id is None and 'closedByUserId' in kwargs:
+            closed_by_user_id = kwargs['closedByUserId']
+        if closed_by_user_id is None:
+            raise TypeError("Missing 'closed_by_user_id' argument")
+        if confidential is None:
+            raise TypeError("Missing 'confidential' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if discussion_locked is None and 'discussionLocked' in kwargs:
+            discussion_locked = kwargs['discussionLocked']
+        if discussion_locked is None:
+            raise TypeError("Missing 'discussion_locked' argument")
+        if discussion_to_resolve is None and 'discussionToResolve' in kwargs:
+            discussion_to_resolve = kwargs['discussionToResolve']
+        if discussion_to_resolve is None:
+            raise TypeError("Missing 'discussion_to_resolve' argument")
+        if downvotes is None:
+            raise TypeError("Missing 'downvotes' argument")
+        if due_date is None and 'dueDate' in kwargs:
+            due_date = kwargs['dueDate']
+        if due_date is None:
+            raise TypeError("Missing 'due_date' argument")
+        if epic_id is None and 'epicId' in kwargs:
+            epic_id = kwargs['epicId']
+        if epic_id is None:
+            raise TypeError("Missing 'epic_id' argument")
+        if epic_issue_id is None and 'epicIssueId' in kwargs:
+            epic_issue_id = kwargs['epicIssueId']
+        if epic_issue_id is None:
+            raise TypeError("Missing 'epic_issue_id' argument")
+        if external_id is None and 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if external_id is None:
+            raise TypeError("Missing 'external_id' argument")
+        if human_time_estimate is None and 'humanTimeEstimate' in kwargs:
+            human_time_estimate = kwargs['humanTimeEstimate']
+        if human_time_estimate is None:
+            raise TypeError("Missing 'human_time_estimate' argument")
+        if human_total_time_spent is None and 'humanTotalTimeSpent' in kwargs:
+            human_total_time_spent = kwargs['humanTotalTimeSpent']
+        if human_total_time_spent is None:
+            raise TypeError("Missing 'human_total_time_spent' argument")
+        if iid is None:
+            raise TypeError("Missing 'iid' argument")
+        if issue_id is None and 'issueId' in kwargs:
+            issue_id = kwargs['issueId']
+        if issue_id is None:
+            raise TypeError("Missing 'issue_id' argument")
+        if issue_link_id is None and 'issueLinkId' in kwargs:
+            issue_link_id = kwargs['issueLinkId']
+        if issue_link_id is None:
+            raise TypeError("Missing 'issue_link_id' argument")
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+        if issue_type is None:
+            raise TypeError("Missing 'issue_type' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if links is None:
+            raise TypeError("Missing 'links' argument")
+        if merge_request_to_resolve_discussions_of is None and 'mergeRequestToResolveDiscussionsOf' in kwargs:
+            merge_request_to_resolve_discussions_of = kwargs['mergeRequestToResolveDiscussionsOf']
+        if merge_request_to_resolve_discussions_of is None:
+            raise TypeError("Missing 'merge_request_to_resolve_discussions_of' argument")
+        if merge_requests_count is None and 'mergeRequestsCount' in kwargs:
+            merge_requests_count = kwargs['mergeRequestsCount']
+        if merge_requests_count is None:
+            raise TypeError("Missing 'merge_requests_count' argument")
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+        if milestone_id is None:
+            raise TypeError("Missing 'milestone_id' argument")
+        if moved_to_id is None and 'movedToId' in kwargs:
+            moved_to_id = kwargs['movedToId']
+        if moved_to_id is None:
+            raise TypeError("Missing 'moved_to_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if references is None:
+            raise TypeError("Missing 'references' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if subscribed is None:
+            raise TypeError("Missing 'subscribed' argument")
+        if task_completion_statuses is None and 'taskCompletionStatuses' in kwargs:
+            task_completion_statuses = kwargs['taskCompletionStatuses']
+        if task_completion_statuses is None:
+            raise TypeError("Missing 'task_completion_statuses' argument")
+        if time_estimate is None and 'timeEstimate' in kwargs:
+            time_estimate = kwargs['timeEstimate']
+        if time_estimate is None:
+            raise TypeError("Missing 'time_estimate' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if total_time_spent is None and 'totalTimeSpent' in kwargs:
+            total_time_spent = kwargs['totalTimeSpent']
+        if total_time_spent is None:
+            raise TypeError("Missing 'total_time_spent' argument")
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if updated_at is None:
+            raise TypeError("Missing 'updated_at' argument")
+        if upvotes is None:
+            raise TypeError("Missing 'upvotes' argument")
+        if user_notes_count is None and 'userNotesCount' in kwargs:
+            user_notes_count = kwargs['userNotesCount']
+        if user_notes_count is None:
+            raise TypeError("Missing 'user_notes_count' argument")
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if web_url is None:
+            raise TypeError("Missing 'web_url' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+
         _setter("assignee_ids", assignee_ids)
         _setter("author_id", author_id)
         _setter("closed_at", closed_at)
@@ -3766,9 +4638,17 @@ class GetProjectIssuesIssueTaskCompletionStatusResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             completed_count: int,
-             count: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             completed_count: Optional[int] = None,
+             count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if completed_count is None and 'completedCount' in kwargs:
+            completed_count = kwargs['completedCount']
+        if completed_count is None:
+            raise TypeError("Missing 'completed_count' argument")
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+
         _setter("completed_count", completed_count)
         _setter("count", count)
 
@@ -3808,15 +4688,41 @@ class GetProjectMembershipMemberResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_level: str,
-             avatar_url: str,
-             expires_at: str,
-             id: int,
-             name: str,
-             state: str,
-             username: str,
-             web_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_level: Optional[str] = None,
+             avatar_url: Optional[str] = None,
+             expires_at: Optional[str] = None,
+             id: Optional[int] = None,
+             name: Optional[str] = None,
+             state: Optional[str] = None,
+             username: Optional[str] = None,
+             web_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if avatar_url is None and 'avatarUrl' in kwargs:
+            avatar_url = kwargs['avatarUrl']
+        if avatar_url is None:
+            raise TypeError("Missing 'avatar_url' argument")
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if expires_at is None:
+            raise TypeError("Missing 'expires_at' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if web_url is None:
+            raise TypeError("Missing 'web_url' argument")
+
         _setter("access_level", access_level)
         _setter("avatar_url", avatar_url)
         _setter("expires_at", expires_at)
@@ -3902,20 +4808,62 @@ class GetProjectMilestonesMilestoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_at: str,
-             description: str,
-             due_date: str,
-             expired: bool,
-             iid: int,
-             milestone_id: int,
-             project: str,
-             project_id: int,
-             start_date: str,
-             state: str,
-             title: str,
-             updated_at: str,
-             web_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created_at: Optional[str] = None,
+             description: Optional[str] = None,
+             due_date: Optional[str] = None,
+             expired: Optional[bool] = None,
+             iid: Optional[int] = None,
+             milestone_id: Optional[int] = None,
+             project: Optional[str] = None,
+             project_id: Optional[int] = None,
+             start_date: Optional[str] = None,
+             state: Optional[str] = None,
+             title: Optional[str] = None,
+             updated_at: Optional[str] = None,
+             web_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if due_date is None and 'dueDate' in kwargs:
+            due_date = kwargs['dueDate']
+        if due_date is None:
+            raise TypeError("Missing 'due_date' argument")
+        if expired is None:
+            raise TypeError("Missing 'expired' argument")
+        if iid is None:
+            raise TypeError("Missing 'iid' argument")
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+        if milestone_id is None:
+            raise TypeError("Missing 'milestone_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if updated_at is None:
+            raise TypeError("Missing 'updated_at' argument")
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if web_url is None:
+            raise TypeError("Missing 'web_url' argument")
+
         _setter("created_at", created_at)
         _setter("description", description)
         _setter("due_date", due_date)
@@ -4013,11 +4961,29 @@ class GetProjectProtectedBranchMergeAccessLevelResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_level: str,
-             access_level_description: str,
-             group_id: int,
-             user_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_level: Optional[str] = None,
+             access_level_description: Optional[str] = None,
+             group_id: Optional[int] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if access_level_description is None:
+            raise TypeError("Missing 'access_level_description' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("access_level", access_level)
         _setter("access_level_description", access_level_description)
         _setter("group_id", group_id)
@@ -4061,11 +5027,29 @@ class GetProjectProtectedBranchPushAccessLevelResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_level: str,
-             access_level_description: str,
-             group_id: int,
-             user_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_level: Optional[str] = None,
+             access_level_description: Optional[str] = None,
+             group_id: Optional[int] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if access_level_description is None:
+            raise TypeError("Missing 'access_level_description' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("access_level", access_level)
         _setter("access_level_description", access_level_description)
         _setter("group_id", group_id)
@@ -4113,13 +5097,35 @@ class GetProjectProtectedBranchesProtectedBranchResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_force_push: bool,
-             code_owner_approval_required: bool,
-             id: int,
-             merge_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult'],
-             name: str,
-             push_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allow_force_push: Optional[bool] = None,
+             code_owner_approval_required: Optional[bool] = None,
+             id: Optional[int] = None,
+             merge_access_levels: Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult']] = None,
+             name: Optional[str] = None,
+             push_access_levels: Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_force_push is None and 'allowForcePush' in kwargs:
+            allow_force_push = kwargs['allowForcePush']
+        if allow_force_push is None:
+            raise TypeError("Missing 'allow_force_push' argument")
+        if code_owner_approval_required is None and 'codeOwnerApprovalRequired' in kwargs:
+            code_owner_approval_required = kwargs['codeOwnerApprovalRequired']
+        if code_owner_approval_required is None:
+            raise TypeError("Missing 'code_owner_approval_required' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if merge_access_levels is None and 'mergeAccessLevels' in kwargs:
+            merge_access_levels = kwargs['mergeAccessLevels']
+        if merge_access_levels is None:
+            raise TypeError("Missing 'merge_access_levels' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if push_access_levels is None and 'pushAccessLevels' in kwargs:
+            push_access_levels = kwargs['pushAccessLevels']
+        if push_access_levels is None:
+            raise TypeError("Missing 'push_access_levels' argument")
+
         _setter("allow_force_push", allow_force_push)
         _setter("code_owner_approval_required", code_owner_approval_required)
         _setter("id", id)
@@ -4175,11 +5181,29 @@ class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_level: str,
-             access_level_description: str,
-             group_id: int,
-             user_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_level: Optional[str] = None,
+             access_level_description: Optional[str] = None,
+             group_id: Optional[int] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if access_level_description is None:
+            raise TypeError("Missing 'access_level_description' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("access_level", access_level)
         _setter("access_level_description", access_level_description)
         _setter("group_id", group_id)
@@ -4223,11 +5247,29 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_level: str,
-             access_level_description: str,
-             group_id: int,
-             user_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_level: Optional[str] = None,
+             access_level_description: Optional[str] = None,
+             group_id: Optional[int] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if access_level_description is None:
+            raise TypeError("Missing 'access_level_description' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("access_level", access_level)
         _setter("access_level_description", access_level_description)
         _setter("group_id", group_id)
@@ -4285,18 +5327,64 @@ class GetProjectPushRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             author_email_regex: str,
-             branch_name_regex: str,
-             commit_committer_check: bool,
-             commit_message_negative_regex: str,
-             commit_message_regex: str,
-             deny_delete_tag: bool,
-             file_name_regex: str,
-             max_file_size: int,
-             member_check: bool,
-             prevent_secrets: bool,
-             reject_unsigned_commits: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             author_email_regex: Optional[str] = None,
+             branch_name_regex: Optional[str] = None,
+             commit_committer_check: Optional[bool] = None,
+             commit_message_negative_regex: Optional[str] = None,
+             commit_message_regex: Optional[str] = None,
+             deny_delete_tag: Optional[bool] = None,
+             file_name_regex: Optional[str] = None,
+             max_file_size: Optional[int] = None,
+             member_check: Optional[bool] = None,
+             prevent_secrets: Optional[bool] = None,
+             reject_unsigned_commits: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email_regex is None and 'authorEmailRegex' in kwargs:
+            author_email_regex = kwargs['authorEmailRegex']
+        if author_email_regex is None:
+            raise TypeError("Missing 'author_email_regex' argument")
+        if branch_name_regex is None and 'branchNameRegex' in kwargs:
+            branch_name_regex = kwargs['branchNameRegex']
+        if branch_name_regex is None:
+            raise TypeError("Missing 'branch_name_regex' argument")
+        if commit_committer_check is None and 'commitCommitterCheck' in kwargs:
+            commit_committer_check = kwargs['commitCommitterCheck']
+        if commit_committer_check is None:
+            raise TypeError("Missing 'commit_committer_check' argument")
+        if commit_message_negative_regex is None and 'commitMessageNegativeRegex' in kwargs:
+            commit_message_negative_regex = kwargs['commitMessageNegativeRegex']
+        if commit_message_negative_regex is None:
+            raise TypeError("Missing 'commit_message_negative_regex' argument")
+        if commit_message_regex is None and 'commitMessageRegex' in kwargs:
+            commit_message_regex = kwargs['commitMessageRegex']
+        if commit_message_regex is None:
+            raise TypeError("Missing 'commit_message_regex' argument")
+        if deny_delete_tag is None and 'denyDeleteTag' in kwargs:
+            deny_delete_tag = kwargs['denyDeleteTag']
+        if deny_delete_tag is None:
+            raise TypeError("Missing 'deny_delete_tag' argument")
+        if file_name_regex is None and 'fileNameRegex' in kwargs:
+            file_name_regex = kwargs['fileNameRegex']
+        if file_name_regex is None:
+            raise TypeError("Missing 'file_name_regex' argument")
+        if max_file_size is None and 'maxFileSize' in kwargs:
+            max_file_size = kwargs['maxFileSize']
+        if max_file_size is None:
+            raise TypeError("Missing 'max_file_size' argument")
+        if member_check is None and 'memberCheck' in kwargs:
+            member_check = kwargs['memberCheck']
+        if member_check is None:
+            raise TypeError("Missing 'member_check' argument")
+        if prevent_secrets is None and 'preventSecrets' in kwargs:
+            prevent_secrets = kwargs['preventSecrets']
+        if prevent_secrets is None:
+            raise TypeError("Missing 'prevent_secrets' argument")
+        if reject_unsigned_commits is None and 'rejectUnsignedCommits' in kwargs:
+            reject_unsigned_commits = kwargs['rejectUnsignedCommits']
+        if reject_unsigned_commits is None:
+            raise TypeError("Missing 'reject_unsigned_commits' argument")
+
         _setter("author_email_regex", author_email_regex)
         _setter("branch_name_regex", branch_name_regex)
         _setter("commit_committer_check", commit_committer_check)
@@ -4396,18 +5484,58 @@ class GetProjectTagCommitResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             author_email: str,
-             author_name: str,
-             authored_date: str,
-             committed_date: str,
-             committer_email: str,
-             committer_name: str,
-             id: str,
-             message: str,
-             parent_ids: Sequence[str],
-             short_id: str,
-             title: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             author_email: Optional[str] = None,
+             author_name: Optional[str] = None,
+             authored_date: Optional[str] = None,
+             committed_date: Optional[str] = None,
+             committer_email: Optional[str] = None,
+             committer_name: Optional[str] = None,
+             id: Optional[str] = None,
+             message: Optional[str] = None,
+             parent_ids: Optional[Sequence[str]] = None,
+             short_id: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email is None and 'authorEmail' in kwargs:
+            author_email = kwargs['authorEmail']
+        if author_email is None:
+            raise TypeError("Missing 'author_email' argument")
+        if author_name is None and 'authorName' in kwargs:
+            author_name = kwargs['authorName']
+        if author_name is None:
+            raise TypeError("Missing 'author_name' argument")
+        if authored_date is None and 'authoredDate' in kwargs:
+            authored_date = kwargs['authoredDate']
+        if authored_date is None:
+            raise TypeError("Missing 'authored_date' argument")
+        if committed_date is None and 'committedDate' in kwargs:
+            committed_date = kwargs['committedDate']
+        if committed_date is None:
+            raise TypeError("Missing 'committed_date' argument")
+        if committer_email is None and 'committerEmail' in kwargs:
+            committer_email = kwargs['committerEmail']
+        if committer_email is None:
+            raise TypeError("Missing 'committer_email' argument")
+        if committer_name is None and 'committerName' in kwargs:
+            committer_name = kwargs['committerName']
+        if committer_name is None:
+            raise TypeError("Missing 'committer_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if parent_ids is None and 'parentIds' in kwargs:
+            parent_ids = kwargs['parentIds']
+        if parent_ids is None:
+            raise TypeError("Missing 'parent_ids' argument")
+        if short_id is None and 'shortId' in kwargs:
+            short_id = kwargs['shortId']
+        if short_id is None:
+            raise TypeError("Missing 'short_id' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("author_email", author_email)
         _setter("author_name", author_name)
         _setter("authored_date", authored_date)
@@ -4489,9 +5617,17 @@ class GetProjectTagReleaseResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             tag_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             description: Optional[str] = None,
+             tag_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+        if tag_name is None:
+            raise TypeError("Missing 'tag_name' argument")
+
         _setter("description", description)
         _setter("tag_name", tag_name)
 
@@ -4527,13 +5663,27 @@ class GetProjectTagsTagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             commits: Sequence['outputs.GetProjectTagsTagCommitResult'],
-             message: str,
-             name: str,
-             protected: bool,
-             releases: Sequence['outputs.GetProjectTagsTagReleaseResult'],
-             target: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             commits: Optional[Sequence['outputs.GetProjectTagsTagCommitResult']] = None,
+             message: Optional[str] = None,
+             name: Optional[str] = None,
+             protected: Optional[bool] = None,
+             releases: Optional[Sequence['outputs.GetProjectTagsTagReleaseResult']] = None,
+             target: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if commits is None:
+            raise TypeError("Missing 'commits' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if protected is None:
+            raise TypeError("Missing 'protected' argument")
+        if releases is None:
+            raise TypeError("Missing 'releases' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+
         _setter("commits", commits)
         _setter("message", message)
         _setter("name", name)
@@ -4603,18 +5753,58 @@ class GetProjectTagsTagCommitResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             author_email: str,
-             author_name: str,
-             authored_date: str,
-             committed_date: str,
-             committer_email: str,
-             committer_name: str,
-             id: str,
-             message: str,
-             parent_ids: Sequence[str],
-             short_id: str,
-             title: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             author_email: Optional[str] = None,
+             author_name: Optional[str] = None,
+             authored_date: Optional[str] = None,
+             committed_date: Optional[str] = None,
+             committer_email: Optional[str] = None,
+             committer_name: Optional[str] = None,
+             id: Optional[str] = None,
+             message: Optional[str] = None,
+             parent_ids: Optional[Sequence[str]] = None,
+             short_id: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email is None and 'authorEmail' in kwargs:
+            author_email = kwargs['authorEmail']
+        if author_email is None:
+            raise TypeError("Missing 'author_email' argument")
+        if author_name is None and 'authorName' in kwargs:
+            author_name = kwargs['authorName']
+        if author_name is None:
+            raise TypeError("Missing 'author_name' argument")
+        if authored_date is None and 'authoredDate' in kwargs:
+            authored_date = kwargs['authoredDate']
+        if authored_date is None:
+            raise TypeError("Missing 'authored_date' argument")
+        if committed_date is None and 'committedDate' in kwargs:
+            committed_date = kwargs['committedDate']
+        if committed_date is None:
+            raise TypeError("Missing 'committed_date' argument")
+        if committer_email is None and 'committerEmail' in kwargs:
+            committer_email = kwargs['committerEmail']
+        if committer_email is None:
+            raise TypeError("Missing 'committer_email' argument")
+        if committer_name is None and 'committerName' in kwargs:
+            committer_name = kwargs['committerName']
+        if committer_name is None:
+            raise TypeError("Missing 'committer_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if parent_ids is None and 'parentIds' in kwargs:
+            parent_ids = kwargs['parentIds']
+        if parent_ids is None:
+            raise TypeError("Missing 'parent_ids' argument")
+        if short_id is None and 'shortId' in kwargs:
+            short_id = kwargs['shortId']
+        if short_id is None:
+            raise TypeError("Missing 'short_id' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("author_email", author_email)
         _setter("author_name", author_name)
         _setter("authored_date", authored_date)
@@ -4696,9 +5886,17 @@ class GetProjectTagsTagReleaseResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             tag_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             description: Optional[str] = None,
+             tag_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+        if tag_name is None:
+            raise TypeError("Missing 'tag_name' argument")
+
         _setter("description", description)
         _setter("tag_name", tag_name)
 
@@ -4738,15 +5936,37 @@ class GetProjectVariablesVariableResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             environment_scope: str,
-             key: str,
-             masked: bool,
-             project: str,
-             protected: bool,
-             raw: bool,
-             value: str,
-             variable_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             environment_scope: Optional[str] = None,
+             key: Optional[str] = None,
+             masked: Optional[bool] = None,
+             project: Optional[str] = None,
+             protected: Optional[bool] = None,
+             raw: Optional[bool] = None,
+             value: Optional[str] = None,
+             variable_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if environment_scope is None and 'environmentScope' in kwargs:
+            environment_scope = kwargs['environmentScope']
+        if environment_scope is None:
+            raise TypeError("Missing 'environment_scope' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if masked is None:
+            raise TypeError("Missing 'masked' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if protected is None:
+            raise TypeError("Missing 'protected' argument")
+        if raw is None:
+            raise TypeError("Missing 'raw' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+        if variable_type is None:
+            raise TypeError("Missing 'variable_type' argument")
+
         _setter("environment_scope", environment_scope)
         _setter("key", key)
         _setter("masked", masked)
@@ -4994,101 +6214,451 @@ class GetProjectsProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             _links: Mapping[str, str],
-             allow_merge_on_skipped_pipeline: bool,
-             analytics_access_level: str,
-             approvals_before_merge: int,
-             archived: bool,
-             auto_cancel_pending_pipelines: str,
-             auto_devops_deploy_strategy: str,
-             auto_devops_enabled: bool,
-             autoclose_referenced_issues: bool,
-             avatar_url: str,
-             build_coverage_regex: str,
-             build_git_strategy: str,
-             build_timeout: int,
-             builds_access_level: str,
-             ci_config_path: str,
-             ci_default_git_depth: int,
-             ci_forward_deployment_enabled: bool,
-             container_expiration_policies: Sequence['outputs.GetProjectsProjectContainerExpirationPolicyResult'],
-             container_registry_access_level: str,
-             container_registry_enabled: bool,
-             created_at: str,
-             creator_id: int,
-             custom_attributes: Sequence[Mapping[str, str]],
-             default_branch: str,
-             description: str,
-             emails_disabled: bool,
-             environments_access_level: str,
-             external_authorization_classification_label: str,
-             feature_flags_access_level: str,
-             forked_from_projects: Sequence['outputs.GetProjectsProjectForkedFromProjectResult'],
-             forking_access_level: str,
-             forks_count: int,
-             http_url_to_repo: str,
-             id: int,
-             import_error: str,
-             import_status: str,
-             import_url: str,
-             infrastructure_access_level: str,
-             issues_access_level: str,
-             issues_enabled: bool,
-             jobs_enabled: bool,
-             keep_latest_artifact: bool,
-             last_activity_at: str,
-             lfs_enabled: bool,
-             merge_commit_template: str,
-             merge_method: str,
-             merge_pipelines_enabled: bool,
-             merge_requests_access_level: str,
-             merge_requests_enabled: bool,
-             merge_trains_enabled: bool,
-             mirror: bool,
-             mirror_overwrites_diverged_branches: bool,
-             mirror_trigger_builds: bool,
-             mirror_user_id: int,
-             monitor_access_level: str,
-             name: str,
-             name_with_namespace: str,
-             namespaces: Sequence['outputs.GetProjectsProjectNamespaceResult'],
-             only_allow_merge_if_all_discussions_are_resolved: bool,
-             only_allow_merge_if_pipeline_succeeds: bool,
-             only_mirror_protected_branches: bool,
-             open_issues_count: int,
-             owners: Sequence['outputs.GetProjectsProjectOwnerResult'],
-             packages_enabled: bool,
-             path: str,
-             path_with_namespace: str,
-             permissions: Sequence['outputs.GetProjectsProjectPermissionResult'],
-             public: bool,
-             public_builds: bool,
-             readme_url: str,
-             releases_access_level: str,
-             repository_access_level: str,
-             repository_storage: str,
-             request_access_enabled: bool,
-             requirements_access_level: str,
-             resolve_outdated_diff_discussions: bool,
-             restrict_user_defined_variables: bool,
-             runners_token: str,
-             security_and_compliance_access_level: str,
-             shared_runners_enabled: bool,
-             shared_with_groups: Sequence['outputs.GetProjectsProjectSharedWithGroupResult'],
-             snippets_access_level: str,
-             snippets_enabled: bool,
-             squash_commit_template: str,
-             ssh_url_to_repo: str,
-             star_count: int,
-             statistics: Mapping[str, int],
-             suggestion_commit_message: str,
-             tag_lists: Sequence[str],
-             topics: Sequence[str],
-             visibility: str,
-             web_url: str,
-             wiki_access_level: str,
-             wiki_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             _links: Optional[Mapping[str, str]] = None,
+             allow_merge_on_skipped_pipeline: Optional[bool] = None,
+             analytics_access_level: Optional[str] = None,
+             approvals_before_merge: Optional[int] = None,
+             archived: Optional[bool] = None,
+             auto_cancel_pending_pipelines: Optional[str] = None,
+             auto_devops_deploy_strategy: Optional[str] = None,
+             auto_devops_enabled: Optional[bool] = None,
+             autoclose_referenced_issues: Optional[bool] = None,
+             avatar_url: Optional[str] = None,
+             build_coverage_regex: Optional[str] = None,
+             build_git_strategy: Optional[str] = None,
+             build_timeout: Optional[int] = None,
+             builds_access_level: Optional[str] = None,
+             ci_config_path: Optional[str] = None,
+             ci_default_git_depth: Optional[int] = None,
+             ci_forward_deployment_enabled: Optional[bool] = None,
+             container_expiration_policies: Optional[Sequence['outputs.GetProjectsProjectContainerExpirationPolicyResult']] = None,
+             container_registry_access_level: Optional[str] = None,
+             container_registry_enabled: Optional[bool] = None,
+             created_at: Optional[str] = None,
+             creator_id: Optional[int] = None,
+             custom_attributes: Optional[Sequence[Mapping[str, str]]] = None,
+             default_branch: Optional[str] = None,
+             description: Optional[str] = None,
+             emails_disabled: Optional[bool] = None,
+             environments_access_level: Optional[str] = None,
+             external_authorization_classification_label: Optional[str] = None,
+             feature_flags_access_level: Optional[str] = None,
+             forked_from_projects: Optional[Sequence['outputs.GetProjectsProjectForkedFromProjectResult']] = None,
+             forking_access_level: Optional[str] = None,
+             forks_count: Optional[int] = None,
+             http_url_to_repo: Optional[str] = None,
+             id: Optional[int] = None,
+             import_error: Optional[str] = None,
+             import_status: Optional[str] = None,
+             import_url: Optional[str] = None,
+             infrastructure_access_level: Optional[str] = None,
+             issues_access_level: Optional[str] = None,
+             issues_enabled: Optional[bool] = None,
+             jobs_enabled: Optional[bool] = None,
+             keep_latest_artifact: Optional[bool] = None,
+             last_activity_at: Optional[str] = None,
+             lfs_enabled: Optional[bool] = None,
+             merge_commit_template: Optional[str] = None,
+             merge_method: Optional[str] = None,
+             merge_pipelines_enabled: Optional[bool] = None,
+             merge_requests_access_level: Optional[str] = None,
+             merge_requests_enabled: Optional[bool] = None,
+             merge_trains_enabled: Optional[bool] = None,
+             mirror: Optional[bool] = None,
+             mirror_overwrites_diverged_branches: Optional[bool] = None,
+             mirror_trigger_builds: Optional[bool] = None,
+             mirror_user_id: Optional[int] = None,
+             monitor_access_level: Optional[str] = None,
+             name: Optional[str] = None,
+             name_with_namespace: Optional[str] = None,
+             namespaces: Optional[Sequence['outputs.GetProjectsProjectNamespaceResult']] = None,
+             only_allow_merge_if_all_discussions_are_resolved: Optional[bool] = None,
+             only_allow_merge_if_pipeline_succeeds: Optional[bool] = None,
+             only_mirror_protected_branches: Optional[bool] = None,
+             open_issues_count: Optional[int] = None,
+             owners: Optional[Sequence['outputs.GetProjectsProjectOwnerResult']] = None,
+             packages_enabled: Optional[bool] = None,
+             path: Optional[str] = None,
+             path_with_namespace: Optional[str] = None,
+             permissions: Optional[Sequence['outputs.GetProjectsProjectPermissionResult']] = None,
+             public: Optional[bool] = None,
+             public_builds: Optional[bool] = None,
+             readme_url: Optional[str] = None,
+             releases_access_level: Optional[str] = None,
+             repository_access_level: Optional[str] = None,
+             repository_storage: Optional[str] = None,
+             request_access_enabled: Optional[bool] = None,
+             requirements_access_level: Optional[str] = None,
+             resolve_outdated_diff_discussions: Optional[bool] = None,
+             restrict_user_defined_variables: Optional[bool] = None,
+             runners_token: Optional[str] = None,
+             security_and_compliance_access_level: Optional[str] = None,
+             shared_runners_enabled: Optional[bool] = None,
+             shared_with_groups: Optional[Sequence['outputs.GetProjectsProjectSharedWithGroupResult']] = None,
+             snippets_access_level: Optional[str] = None,
+             snippets_enabled: Optional[bool] = None,
+             squash_commit_template: Optional[str] = None,
+             ssh_url_to_repo: Optional[str] = None,
+             star_count: Optional[int] = None,
+             statistics: Optional[Mapping[str, int]] = None,
+             suggestion_commit_message: Optional[str] = None,
+             tag_lists: Optional[Sequence[str]] = None,
+             topics: Optional[Sequence[str]] = None,
+             visibility: Optional[str] = None,
+             web_url: Optional[str] = None,
+             wiki_access_level: Optional[str] = None,
+             wiki_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if _links is None:
+            raise TypeError("Missing '_links' argument")
+        if allow_merge_on_skipped_pipeline is None and 'allowMergeOnSkippedPipeline' in kwargs:
+            allow_merge_on_skipped_pipeline = kwargs['allowMergeOnSkippedPipeline']
+        if allow_merge_on_skipped_pipeline is None:
+            raise TypeError("Missing 'allow_merge_on_skipped_pipeline' argument")
+        if analytics_access_level is None and 'analyticsAccessLevel' in kwargs:
+            analytics_access_level = kwargs['analyticsAccessLevel']
+        if analytics_access_level is None:
+            raise TypeError("Missing 'analytics_access_level' argument")
+        if approvals_before_merge is None and 'approvalsBeforeMerge' in kwargs:
+            approvals_before_merge = kwargs['approvalsBeforeMerge']
+        if approvals_before_merge is None:
+            raise TypeError("Missing 'approvals_before_merge' argument")
+        if archived is None:
+            raise TypeError("Missing 'archived' argument")
+        if auto_cancel_pending_pipelines is None and 'autoCancelPendingPipelines' in kwargs:
+            auto_cancel_pending_pipelines = kwargs['autoCancelPendingPipelines']
+        if auto_cancel_pending_pipelines is None:
+            raise TypeError("Missing 'auto_cancel_pending_pipelines' argument")
+        if auto_devops_deploy_strategy is None and 'autoDevopsDeployStrategy' in kwargs:
+            auto_devops_deploy_strategy = kwargs['autoDevopsDeployStrategy']
+        if auto_devops_deploy_strategy is None:
+            raise TypeError("Missing 'auto_devops_deploy_strategy' argument")
+        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
+            auto_devops_enabled = kwargs['autoDevopsEnabled']
+        if auto_devops_enabled is None:
+            raise TypeError("Missing 'auto_devops_enabled' argument")
+        if autoclose_referenced_issues is None and 'autocloseReferencedIssues' in kwargs:
+            autoclose_referenced_issues = kwargs['autocloseReferencedIssues']
+        if autoclose_referenced_issues is None:
+            raise TypeError("Missing 'autoclose_referenced_issues' argument")
+        if avatar_url is None and 'avatarUrl' in kwargs:
+            avatar_url = kwargs['avatarUrl']
+        if avatar_url is None:
+            raise TypeError("Missing 'avatar_url' argument")
+        if build_coverage_regex is None and 'buildCoverageRegex' in kwargs:
+            build_coverage_regex = kwargs['buildCoverageRegex']
+        if build_coverage_regex is None:
+            raise TypeError("Missing 'build_coverage_regex' argument")
+        if build_git_strategy is None and 'buildGitStrategy' in kwargs:
+            build_git_strategy = kwargs['buildGitStrategy']
+        if build_git_strategy is None:
+            raise TypeError("Missing 'build_git_strategy' argument")
+        if build_timeout is None and 'buildTimeout' in kwargs:
+            build_timeout = kwargs['buildTimeout']
+        if build_timeout is None:
+            raise TypeError("Missing 'build_timeout' argument")
+        if builds_access_level is None and 'buildsAccessLevel' in kwargs:
+            builds_access_level = kwargs['buildsAccessLevel']
+        if builds_access_level is None:
+            raise TypeError("Missing 'builds_access_level' argument")
+        if ci_config_path is None and 'ciConfigPath' in kwargs:
+            ci_config_path = kwargs['ciConfigPath']
+        if ci_config_path is None:
+            raise TypeError("Missing 'ci_config_path' argument")
+        if ci_default_git_depth is None and 'ciDefaultGitDepth' in kwargs:
+            ci_default_git_depth = kwargs['ciDefaultGitDepth']
+        if ci_default_git_depth is None:
+            raise TypeError("Missing 'ci_default_git_depth' argument")
+        if ci_forward_deployment_enabled is None and 'ciForwardDeploymentEnabled' in kwargs:
+            ci_forward_deployment_enabled = kwargs['ciForwardDeploymentEnabled']
+        if ci_forward_deployment_enabled is None:
+            raise TypeError("Missing 'ci_forward_deployment_enabled' argument")
+        if container_expiration_policies is None and 'containerExpirationPolicies' in kwargs:
+            container_expiration_policies = kwargs['containerExpirationPolicies']
+        if container_expiration_policies is None:
+            raise TypeError("Missing 'container_expiration_policies' argument")
+        if container_registry_access_level is None and 'containerRegistryAccessLevel' in kwargs:
+            container_registry_access_level = kwargs['containerRegistryAccessLevel']
+        if container_registry_access_level is None:
+            raise TypeError("Missing 'container_registry_access_level' argument")
+        if container_registry_enabled is None and 'containerRegistryEnabled' in kwargs:
+            container_registry_enabled = kwargs['containerRegistryEnabled']
+        if container_registry_enabled is None:
+            raise TypeError("Missing 'container_registry_enabled' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if creator_id is None and 'creatorId' in kwargs:
+            creator_id = kwargs['creatorId']
+        if creator_id is None:
+            raise TypeError("Missing 'creator_id' argument")
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if custom_attributes is None:
+            raise TypeError("Missing 'custom_attributes' argument")
+        if default_branch is None and 'defaultBranch' in kwargs:
+            default_branch = kwargs['defaultBranch']
+        if default_branch is None:
+            raise TypeError("Missing 'default_branch' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if emails_disabled is None and 'emailsDisabled' in kwargs:
+            emails_disabled = kwargs['emailsDisabled']
+        if emails_disabled is None:
+            raise TypeError("Missing 'emails_disabled' argument")
+        if environments_access_level is None and 'environmentsAccessLevel' in kwargs:
+            environments_access_level = kwargs['environmentsAccessLevel']
+        if environments_access_level is None:
+            raise TypeError("Missing 'environments_access_level' argument")
+        if external_authorization_classification_label is None and 'externalAuthorizationClassificationLabel' in kwargs:
+            external_authorization_classification_label = kwargs['externalAuthorizationClassificationLabel']
+        if external_authorization_classification_label is None:
+            raise TypeError("Missing 'external_authorization_classification_label' argument")
+        if feature_flags_access_level is None and 'featureFlagsAccessLevel' in kwargs:
+            feature_flags_access_level = kwargs['featureFlagsAccessLevel']
+        if feature_flags_access_level is None:
+            raise TypeError("Missing 'feature_flags_access_level' argument")
+        if forked_from_projects is None and 'forkedFromProjects' in kwargs:
+            forked_from_projects = kwargs['forkedFromProjects']
+        if forked_from_projects is None:
+            raise TypeError("Missing 'forked_from_projects' argument")
+        if forking_access_level is None and 'forkingAccessLevel' in kwargs:
+            forking_access_level = kwargs['forkingAccessLevel']
+        if forking_access_level is None:
+            raise TypeError("Missing 'forking_access_level' argument")
+        if forks_count is None and 'forksCount' in kwargs:
+            forks_count = kwargs['forksCount']
+        if forks_count is None:
+            raise TypeError("Missing 'forks_count' argument")
+        if http_url_to_repo is None and 'httpUrlToRepo' in kwargs:
+            http_url_to_repo = kwargs['httpUrlToRepo']
+        if http_url_to_repo is None:
+            raise TypeError("Missing 'http_url_to_repo' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if import_error is None and 'importError' in kwargs:
+            import_error = kwargs['importError']
+        if import_error is None:
+            raise TypeError("Missing 'import_error' argument")
+        if import_status is None and 'importStatus' in kwargs:
+            import_status = kwargs['importStatus']
+        if import_status is None:
+            raise TypeError("Missing 'import_status' argument")
+        if import_url is None and 'importUrl' in kwargs:
+            import_url = kwargs['importUrl']
+        if import_url is None:
+            raise TypeError("Missing 'import_url' argument")
+        if infrastructure_access_level is None and 'infrastructureAccessLevel' in kwargs:
+            infrastructure_access_level = kwargs['infrastructureAccessLevel']
+        if infrastructure_access_level is None:
+            raise TypeError("Missing 'infrastructure_access_level' argument")
+        if issues_access_level is None and 'issuesAccessLevel' in kwargs:
+            issues_access_level = kwargs['issuesAccessLevel']
+        if issues_access_level is None:
+            raise TypeError("Missing 'issues_access_level' argument")
+        if issues_enabled is None and 'issuesEnabled' in kwargs:
+            issues_enabled = kwargs['issuesEnabled']
+        if issues_enabled is None:
+            raise TypeError("Missing 'issues_enabled' argument")
+        if jobs_enabled is None and 'jobsEnabled' in kwargs:
+            jobs_enabled = kwargs['jobsEnabled']
+        if jobs_enabled is None:
+            raise TypeError("Missing 'jobs_enabled' argument")
+        if keep_latest_artifact is None and 'keepLatestArtifact' in kwargs:
+            keep_latest_artifact = kwargs['keepLatestArtifact']
+        if keep_latest_artifact is None:
+            raise TypeError("Missing 'keep_latest_artifact' argument")
+        if last_activity_at is None and 'lastActivityAt' in kwargs:
+            last_activity_at = kwargs['lastActivityAt']
+        if last_activity_at is None:
+            raise TypeError("Missing 'last_activity_at' argument")
+        if lfs_enabled is None and 'lfsEnabled' in kwargs:
+            lfs_enabled = kwargs['lfsEnabled']
+        if lfs_enabled is None:
+            raise TypeError("Missing 'lfs_enabled' argument")
+        if merge_commit_template is None and 'mergeCommitTemplate' in kwargs:
+            merge_commit_template = kwargs['mergeCommitTemplate']
+        if merge_commit_template is None:
+            raise TypeError("Missing 'merge_commit_template' argument")
+        if merge_method is None and 'mergeMethod' in kwargs:
+            merge_method = kwargs['mergeMethod']
+        if merge_method is None:
+            raise TypeError("Missing 'merge_method' argument")
+        if merge_pipelines_enabled is None and 'mergePipelinesEnabled' in kwargs:
+            merge_pipelines_enabled = kwargs['mergePipelinesEnabled']
+        if merge_pipelines_enabled is None:
+            raise TypeError("Missing 'merge_pipelines_enabled' argument")
+        if merge_requests_access_level is None and 'mergeRequestsAccessLevel' in kwargs:
+            merge_requests_access_level = kwargs['mergeRequestsAccessLevel']
+        if merge_requests_access_level is None:
+            raise TypeError("Missing 'merge_requests_access_level' argument")
+        if merge_requests_enabled is None and 'mergeRequestsEnabled' in kwargs:
+            merge_requests_enabled = kwargs['mergeRequestsEnabled']
+        if merge_requests_enabled is None:
+            raise TypeError("Missing 'merge_requests_enabled' argument")
+        if merge_trains_enabled is None and 'mergeTrainsEnabled' in kwargs:
+            merge_trains_enabled = kwargs['mergeTrainsEnabled']
+        if merge_trains_enabled is None:
+            raise TypeError("Missing 'merge_trains_enabled' argument")
+        if mirror is None:
+            raise TypeError("Missing 'mirror' argument")
+        if mirror_overwrites_diverged_branches is None and 'mirrorOverwritesDivergedBranches' in kwargs:
+            mirror_overwrites_diverged_branches = kwargs['mirrorOverwritesDivergedBranches']
+        if mirror_overwrites_diverged_branches is None:
+            raise TypeError("Missing 'mirror_overwrites_diverged_branches' argument")
+        if mirror_trigger_builds is None and 'mirrorTriggerBuilds' in kwargs:
+            mirror_trigger_builds = kwargs['mirrorTriggerBuilds']
+        if mirror_trigger_builds is None:
+            raise TypeError("Missing 'mirror_trigger_builds' argument")
+        if mirror_user_id is None and 'mirrorUserId' in kwargs:
+            mirror_user_id = kwargs['mirrorUserId']
+        if mirror_user_id is None:
+            raise TypeError("Missing 'mirror_user_id' argument")
+        if monitor_access_level is None and 'monitorAccessLevel' in kwargs:
+            monitor_access_level = kwargs['monitorAccessLevel']
+        if monitor_access_level is None:
+            raise TypeError("Missing 'monitor_access_level' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_with_namespace is None and 'nameWithNamespace' in kwargs:
+            name_with_namespace = kwargs['nameWithNamespace']
+        if name_with_namespace is None:
+            raise TypeError("Missing 'name_with_namespace' argument")
+        if namespaces is None:
+            raise TypeError("Missing 'namespaces' argument")
+        if only_allow_merge_if_all_discussions_are_resolved is None and 'onlyAllowMergeIfAllDiscussionsAreResolved' in kwargs:
+            only_allow_merge_if_all_discussions_are_resolved = kwargs['onlyAllowMergeIfAllDiscussionsAreResolved']
+        if only_allow_merge_if_all_discussions_are_resolved is None:
+            raise TypeError("Missing 'only_allow_merge_if_all_discussions_are_resolved' argument")
+        if only_allow_merge_if_pipeline_succeeds is None and 'onlyAllowMergeIfPipelineSucceeds' in kwargs:
+            only_allow_merge_if_pipeline_succeeds = kwargs['onlyAllowMergeIfPipelineSucceeds']
+        if only_allow_merge_if_pipeline_succeeds is None:
+            raise TypeError("Missing 'only_allow_merge_if_pipeline_succeeds' argument")
+        if only_mirror_protected_branches is None and 'onlyMirrorProtectedBranches' in kwargs:
+            only_mirror_protected_branches = kwargs['onlyMirrorProtectedBranches']
+        if only_mirror_protected_branches is None:
+            raise TypeError("Missing 'only_mirror_protected_branches' argument")
+        if open_issues_count is None and 'openIssuesCount' in kwargs:
+            open_issues_count = kwargs['openIssuesCount']
+        if open_issues_count is None:
+            raise TypeError("Missing 'open_issues_count' argument")
+        if owners is None:
+            raise TypeError("Missing 'owners' argument")
+        if packages_enabled is None and 'packagesEnabled' in kwargs:
+            packages_enabled = kwargs['packagesEnabled']
+        if packages_enabled is None:
+            raise TypeError("Missing 'packages_enabled' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if path_with_namespace is None and 'pathWithNamespace' in kwargs:
+            path_with_namespace = kwargs['pathWithNamespace']
+        if path_with_namespace is None:
+            raise TypeError("Missing 'path_with_namespace' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if public is None:
+            raise TypeError("Missing 'public' argument")
+        if public_builds is None and 'publicBuilds' in kwargs:
+            public_builds = kwargs['publicBuilds']
+        if public_builds is None:
+            raise TypeError("Missing 'public_builds' argument")
+        if readme_url is None and 'readmeUrl' in kwargs:
+            readme_url = kwargs['readmeUrl']
+        if readme_url is None:
+            raise TypeError("Missing 'readme_url' argument")
+        if releases_access_level is None and 'releasesAccessLevel' in kwargs:
+            releases_access_level = kwargs['releasesAccessLevel']
+        if releases_access_level is None:
+            raise TypeError("Missing 'releases_access_level' argument")
+        if repository_access_level is None and 'repositoryAccessLevel' in kwargs:
+            repository_access_level = kwargs['repositoryAccessLevel']
+        if repository_access_level is None:
+            raise TypeError("Missing 'repository_access_level' argument")
+        if repository_storage is None and 'repositoryStorage' in kwargs:
+            repository_storage = kwargs['repositoryStorage']
+        if repository_storage is None:
+            raise TypeError("Missing 'repository_storage' argument")
+        if request_access_enabled is None and 'requestAccessEnabled' in kwargs:
+            request_access_enabled = kwargs['requestAccessEnabled']
+        if request_access_enabled is None:
+            raise TypeError("Missing 'request_access_enabled' argument")
+        if requirements_access_level is None and 'requirementsAccessLevel' in kwargs:
+            requirements_access_level = kwargs['requirementsAccessLevel']
+        if requirements_access_level is None:
+            raise TypeError("Missing 'requirements_access_level' argument")
+        if resolve_outdated_diff_discussions is None and 'resolveOutdatedDiffDiscussions' in kwargs:
+            resolve_outdated_diff_discussions = kwargs['resolveOutdatedDiffDiscussions']
+        if resolve_outdated_diff_discussions is None:
+            raise TypeError("Missing 'resolve_outdated_diff_discussions' argument")
+        if restrict_user_defined_variables is None and 'restrictUserDefinedVariables' in kwargs:
+            restrict_user_defined_variables = kwargs['restrictUserDefinedVariables']
+        if restrict_user_defined_variables is None:
+            raise TypeError("Missing 'restrict_user_defined_variables' argument")
+        if runners_token is None and 'runnersToken' in kwargs:
+            runners_token = kwargs['runnersToken']
+        if runners_token is None:
+            raise TypeError("Missing 'runners_token' argument")
+        if security_and_compliance_access_level is None and 'securityAndComplianceAccessLevel' in kwargs:
+            security_and_compliance_access_level = kwargs['securityAndComplianceAccessLevel']
+        if security_and_compliance_access_level is None:
+            raise TypeError("Missing 'security_and_compliance_access_level' argument")
+        if shared_runners_enabled is None and 'sharedRunnersEnabled' in kwargs:
+            shared_runners_enabled = kwargs['sharedRunnersEnabled']
+        if shared_runners_enabled is None:
+            raise TypeError("Missing 'shared_runners_enabled' argument")
+        if shared_with_groups is None and 'sharedWithGroups' in kwargs:
+            shared_with_groups = kwargs['sharedWithGroups']
+        if shared_with_groups is None:
+            raise TypeError("Missing 'shared_with_groups' argument")
+        if snippets_access_level is None and 'snippetsAccessLevel' in kwargs:
+            snippets_access_level = kwargs['snippetsAccessLevel']
+        if snippets_access_level is None:
+            raise TypeError("Missing 'snippets_access_level' argument")
+        if snippets_enabled is None and 'snippetsEnabled' in kwargs:
+            snippets_enabled = kwargs['snippetsEnabled']
+        if snippets_enabled is None:
+            raise TypeError("Missing 'snippets_enabled' argument")
+        if squash_commit_template is None and 'squashCommitTemplate' in kwargs:
+            squash_commit_template = kwargs['squashCommitTemplate']
+        if squash_commit_template is None:
+            raise TypeError("Missing 'squash_commit_template' argument")
+        if ssh_url_to_repo is None and 'sshUrlToRepo' in kwargs:
+            ssh_url_to_repo = kwargs['sshUrlToRepo']
+        if ssh_url_to_repo is None:
+            raise TypeError("Missing 'ssh_url_to_repo' argument")
+        if star_count is None and 'starCount' in kwargs:
+            star_count = kwargs['starCount']
+        if star_count is None:
+            raise TypeError("Missing 'star_count' argument")
+        if statistics is None:
+            raise TypeError("Missing 'statistics' argument")
+        if suggestion_commit_message is None and 'suggestionCommitMessage' in kwargs:
+            suggestion_commit_message = kwargs['suggestionCommitMessage']
+        if suggestion_commit_message is None:
+            raise TypeError("Missing 'suggestion_commit_message' argument")
+        if tag_lists is None and 'tagLists' in kwargs:
+            tag_lists = kwargs['tagLists']
+        if tag_lists is None:
+            raise TypeError("Missing 'tag_lists' argument")
+        if topics is None:
+            raise TypeError("Missing 'topics' argument")
+        if visibility is None:
+            raise TypeError("Missing 'visibility' argument")
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if web_url is None:
+            raise TypeError("Missing 'web_url' argument")
+        if wiki_access_level is None and 'wikiAccessLevel' in kwargs:
+            wiki_access_level = kwargs['wikiAccessLevel']
+        if wiki_access_level is None:
+            raise TypeError("Missing 'wiki_access_level' argument")
+        if wiki_enabled is None and 'wikiEnabled' in kwargs:
+            wiki_enabled = kwargs['wikiEnabled']
+        if wiki_enabled is None:
+            raise TypeError("Missing 'wiki_enabled' argument")
+
         _setter("_links", _links)
         _setter("allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         _setter("analytics_access_level", analytics_access_level)
@@ -5680,15 +7250,45 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cadence: str,
-             enabled: bool,
-             keep_n: int,
-             name_regex: str,
-             name_regex_delete: str,
-             name_regex_keep: str,
-             next_run_at: str,
-             older_than: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cadence: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             keep_n: Optional[int] = None,
+             name_regex: Optional[str] = None,
+             name_regex_delete: Optional[str] = None,
+             name_regex_keep: Optional[str] = None,
+             next_run_at: Optional[str] = None,
+             older_than: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cadence is None:
+            raise TypeError("Missing 'cadence' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if keep_n is None and 'keepN' in kwargs:
+            keep_n = kwargs['keepN']
+        if keep_n is None:
+            raise TypeError("Missing 'keep_n' argument")
+        if name_regex is None and 'nameRegex' in kwargs:
+            name_regex = kwargs['nameRegex']
+        if name_regex is None:
+            raise TypeError("Missing 'name_regex' argument")
+        if name_regex_delete is None and 'nameRegexDelete' in kwargs:
+            name_regex_delete = kwargs['nameRegexDelete']
+        if name_regex_delete is None:
+            raise TypeError("Missing 'name_regex_delete' argument")
+        if name_regex_keep is None and 'nameRegexKeep' in kwargs:
+            name_regex_keep = kwargs['nameRegexKeep']
+        if name_regex_keep is None:
+            raise TypeError("Missing 'name_regex_keep' argument")
+        if next_run_at is None and 'nextRunAt' in kwargs:
+            next_run_at = kwargs['nextRunAt']
+        if next_run_at is None:
+            raise TypeError("Missing 'next_run_at' argument")
+        if older_than is None and 'olderThan' in kwargs:
+            older_than = kwargs['olderThan']
+        if older_than is None:
+            raise TypeError("Missing 'older_than' argument")
+
         _setter("cadence", cadence)
         _setter("enabled", enabled)
         _setter("keep_n", keep_n)
@@ -5765,14 +7365,38 @@ class GetProjectsProjectForkedFromProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             http_url_to_repo: str,
-             id: int,
-             name: str,
-             name_with_namespace: str,
-             path: str,
-             path_with_namespace: str,
-             web_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             http_url_to_repo: Optional[str] = None,
+             id: Optional[int] = None,
+             name: Optional[str] = None,
+             name_with_namespace: Optional[str] = None,
+             path: Optional[str] = None,
+             path_with_namespace: Optional[str] = None,
+             web_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if http_url_to_repo is None and 'httpUrlToRepo' in kwargs:
+            http_url_to_repo = kwargs['httpUrlToRepo']
+        if http_url_to_repo is None:
+            raise TypeError("Missing 'http_url_to_repo' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_with_namespace is None and 'nameWithNamespace' in kwargs:
+            name_with_namespace = kwargs['nameWithNamespace']
+        if name_with_namespace is None:
+            raise TypeError("Missing 'name_with_namespace' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if path_with_namespace is None and 'pathWithNamespace' in kwargs:
+            path_with_namespace = kwargs['pathWithNamespace']
+        if path_with_namespace is None:
+            raise TypeError("Missing 'path_with_namespace' argument")
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if web_url is None:
+            raise TypeError("Missing 'web_url' argument")
+
         _setter("http_url_to_repo", http_url_to_repo)
         _setter("id", id)
         _setter("name", name)
@@ -5836,12 +7460,26 @@ class GetProjectsProjectNamespaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             full_path: str,
-             id: int,
-             kind: str,
-             name: str,
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             full_path: Optional[str] = None,
+             id: Optional[int] = None,
+             kind: Optional[str] = None,
+             name: Optional[str] = None,
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if full_path is None and 'fullPath' in kwargs:
+            full_path = kwargs['fullPath']
+        if full_path is None:
+            raise TypeError("Missing 'full_path' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("full_path", full_path)
         _setter("id", id)
         _setter("kind", kind)
@@ -5895,13 +7533,31 @@ class GetProjectsProjectOwnerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             avatar_url: str,
-             id: int,
-             name: str,
-             state: str,
-             username: str,
-             website_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             avatar_url: Optional[str] = None,
+             id: Optional[int] = None,
+             name: Optional[str] = None,
+             state: Optional[str] = None,
+             username: Optional[str] = None,
+             website_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if avatar_url is None and 'avatarUrl' in kwargs:
+            avatar_url = kwargs['avatarUrl']
+        if avatar_url is None:
+            raise TypeError("Missing 'avatar_url' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if website_url is None and 'websiteUrl' in kwargs:
+            website_url = kwargs['websiteUrl']
+        if website_url is None:
+            raise TypeError("Missing 'website_url' argument")
+
         _setter("avatar_url", avatar_url)
         _setter("id", id)
         _setter("name", name)
@@ -5953,9 +7609,19 @@ class GetProjectsProjectPermissionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_access: Mapping[str, int],
-             project_access: Mapping[str, int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             group_access: Optional[Mapping[str, int]] = None,
+             project_access: Optional[Mapping[str, int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group_access is None and 'groupAccess' in kwargs:
+            group_access = kwargs['groupAccess']
+        if group_access is None:
+            raise TypeError("Missing 'group_access' argument")
+        if project_access is None and 'projectAccess' in kwargs:
+            project_access = kwargs['projectAccess']
+        if project_access is None:
+            raise TypeError("Missing 'project_access' argument")
+
         _setter("group_access", group_access)
         _setter("project_access", project_access)
 
@@ -5985,10 +7651,24 @@ class GetProjectsProjectSharedWithGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_access_level: str,
-             group_id: int,
-             group_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             group_access_level: Optional[str] = None,
+             group_id: Optional[int] = None,
+             group_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group_access_level is None and 'groupAccessLevel' in kwargs:
+            group_access_level = kwargs['groupAccessLevel']
+        if group_access_level is None:
+            raise TypeError("Missing 'group_access_level' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+
         _setter("group_access_level", group_access_level)
         _setter("group_id", group_id)
         _setter("group_name", group_name)
@@ -6036,16 +7716,44 @@ class GetReleaseLinksReleaseLinkResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             direct_asset_url: str,
-             external: bool,
-             filepath: str,
-             link_id: int,
-             link_type: str,
-             name: str,
-             project: str,
-             tag_name: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             direct_asset_url: Optional[str] = None,
+             external: Optional[bool] = None,
+             filepath: Optional[str] = None,
+             link_id: Optional[int] = None,
+             link_type: Optional[str] = None,
+             name: Optional[str] = None,
+             project: Optional[str] = None,
+             tag_name: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if direct_asset_url is None and 'directAssetUrl' in kwargs:
+            direct_asset_url = kwargs['directAssetUrl']
+        if direct_asset_url is None:
+            raise TypeError("Missing 'direct_asset_url' argument")
+        if external is None:
+            raise TypeError("Missing 'external' argument")
+        if filepath is None:
+            raise TypeError("Missing 'filepath' argument")
+        if link_id is None and 'linkId' in kwargs:
+            link_id = kwargs['linkId']
+        if link_id is None:
+            raise TypeError("Missing 'link_id' argument")
+        if link_type is None and 'linkType' in kwargs:
+            link_type = kwargs['linkType']
+        if link_type is None:
+            raise TypeError("Missing 'link_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+        if tag_name is None:
+            raise TypeError("Missing 'tag_name' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("direct_asset_url", direct_asset_url)
         _setter("external", external)
         _setter("filepath", filepath)
@@ -6121,12 +7829,24 @@ class GetRepositoryTreeTreeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             mode: str,
-             name: str,
-             path: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[str] = None,
+             mode: Optional[str] = None,
+             name: Optional[str] = None,
+             path: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("id", id)
         _setter("mode", mode)
         _setter("name", name)
@@ -6180,13 +7900,35 @@ class GetUserSshkeysKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_at: str,
-             expires_at: str,
-             key: str,
-             key_id: int,
-             title: str,
-             user_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created_at: Optional[str] = None,
+             expires_at: Optional[str] = None,
+             key: Optional[str] = None,
+             key_id: Optional[int] = None,
+             title: Optional[str] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if expires_at is None:
+            raise TypeError("Missing 'expires_at' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("created_at", created_at)
         _setter("expires_at", expires_at)
         _setter("key", key)
@@ -6288,34 +8030,118 @@ class GetUsersUserResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             avatar_url: str,
-             bio: str,
-             can_create_group: bool,
-             can_create_project: bool,
-             color_scheme_id: int,
-             created_at: str,
-             current_sign_in_at: str,
-             email: str,
-             extern_uid: str,
-             external: bool,
-             id: int,
-             is_admin: bool,
-             last_sign_in_at: str,
-             linkedin: str,
-             location: str,
-             name: str,
-             namespace_id: int,
-             organization: str,
-             projects_limit: int,
-             provider: str,
-             skype: str,
-             state: str,
-             theme_id: int,
-             twitter: str,
-             two_factor_enabled: bool,
-             username: str,
-             website_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             avatar_url: Optional[str] = None,
+             bio: Optional[str] = None,
+             can_create_group: Optional[bool] = None,
+             can_create_project: Optional[bool] = None,
+             color_scheme_id: Optional[int] = None,
+             created_at: Optional[str] = None,
+             current_sign_in_at: Optional[str] = None,
+             email: Optional[str] = None,
+             extern_uid: Optional[str] = None,
+             external: Optional[bool] = None,
+             id: Optional[int] = None,
+             is_admin: Optional[bool] = None,
+             last_sign_in_at: Optional[str] = None,
+             linkedin: Optional[str] = None,
+             location: Optional[str] = None,
+             name: Optional[str] = None,
+             namespace_id: Optional[int] = None,
+             organization: Optional[str] = None,
+             projects_limit: Optional[int] = None,
+             provider: Optional[str] = None,
+             skype: Optional[str] = None,
+             state: Optional[str] = None,
+             theme_id: Optional[int] = None,
+             twitter: Optional[str] = None,
+             two_factor_enabled: Optional[bool] = None,
+             username: Optional[str] = None,
+             website_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if avatar_url is None and 'avatarUrl' in kwargs:
+            avatar_url = kwargs['avatarUrl']
+        if avatar_url is None:
+            raise TypeError("Missing 'avatar_url' argument")
+        if bio is None:
+            raise TypeError("Missing 'bio' argument")
+        if can_create_group is None and 'canCreateGroup' in kwargs:
+            can_create_group = kwargs['canCreateGroup']
+        if can_create_group is None:
+            raise TypeError("Missing 'can_create_group' argument")
+        if can_create_project is None and 'canCreateProject' in kwargs:
+            can_create_project = kwargs['canCreateProject']
+        if can_create_project is None:
+            raise TypeError("Missing 'can_create_project' argument")
+        if color_scheme_id is None and 'colorSchemeId' in kwargs:
+            color_scheme_id = kwargs['colorSchemeId']
+        if color_scheme_id is None:
+            raise TypeError("Missing 'color_scheme_id' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if current_sign_in_at is None and 'currentSignInAt' in kwargs:
+            current_sign_in_at = kwargs['currentSignInAt']
+        if current_sign_in_at is None:
+            raise TypeError("Missing 'current_sign_in_at' argument")
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if extern_uid is None and 'externUid' in kwargs:
+            extern_uid = kwargs['externUid']
+        if extern_uid is None:
+            raise TypeError("Missing 'extern_uid' argument")
+        if external is None:
+            raise TypeError("Missing 'external' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_admin is None and 'isAdmin' in kwargs:
+            is_admin = kwargs['isAdmin']
+        if is_admin is None:
+            raise TypeError("Missing 'is_admin' argument")
+        if last_sign_in_at is None and 'lastSignInAt' in kwargs:
+            last_sign_in_at = kwargs['lastSignInAt']
+        if last_sign_in_at is None:
+            raise TypeError("Missing 'last_sign_in_at' argument")
+        if linkedin is None:
+            raise TypeError("Missing 'linkedin' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+        if organization is None:
+            raise TypeError("Missing 'organization' argument")
+        if projects_limit is None and 'projectsLimit' in kwargs:
+            projects_limit = kwargs['projectsLimit']
+        if projects_limit is None:
+            raise TypeError("Missing 'projects_limit' argument")
+        if provider is None:
+            raise TypeError("Missing 'provider' argument")
+        if skype is None:
+            raise TypeError("Missing 'skype' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if theme_id is None and 'themeId' in kwargs:
+            theme_id = kwargs['themeId']
+        if theme_id is None:
+            raise TypeError("Missing 'theme_id' argument")
+        if twitter is None:
+            raise TypeError("Missing 'twitter' argument")
+        if two_factor_enabled is None and 'twoFactorEnabled' in kwargs:
+            two_factor_enabled = kwargs['twoFactorEnabled']
+        if two_factor_enabled is None:
+            raise TypeError("Missing 'two_factor_enabled' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if website_url is None and 'websiteUrl' in kwargs:
+            website_url = kwargs['websiteUrl']
+        if website_url is None:
+            raise TypeError("Missing 'website_url' argument")
+
         _setter("avatar_url", avatar_url)
         _setter("bio", bio)
         _setter("can_create_group", can_create_group)

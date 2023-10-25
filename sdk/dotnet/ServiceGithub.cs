@@ -18,32 +18,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
-    ///     {
-    ///         Description = "My awesome project.",
-    ///         VisibilityLevel = "public",
-    ///     });
-    /// 
-    ///     var github = new GitLab.ServiceGithub("github", new()
-    ///     {
-    ///         Project = awesomeProject.Id,
-    ///         Token = "REDACTED",
-    ///         RepositoryUrl = "https://github.com/gitlabhq/terraform-provider-gitlab",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

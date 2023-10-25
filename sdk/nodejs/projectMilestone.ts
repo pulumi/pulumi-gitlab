@@ -9,23 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * // Create a project for the milestone to use
- * const exampleProject = new gitlab.Project("exampleProject", {
- *     description: "An example project",
- *     namespaceId: gitlab_group.example.id,
- * });
- * const exampleProjectMilestone = new gitlab.ProjectMilestone("exampleProjectMilestone", {
- *     project: exampleProject.id,
- *     title: "example",
- * });
- * ```
- *
  * ## Import
  *
  * Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, e.g.

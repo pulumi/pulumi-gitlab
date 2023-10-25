@@ -32,10 +32,22 @@ class GroupSamlLinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_level: pulumi.Input[str],
-             group: pulumi.Input[str],
-             saml_group_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_level: Optional[pulumi.Input[str]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             saml_group_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if saml_group_name is None and 'samlGroupName' in kwargs:
+            saml_group_name = kwargs['samlGroupName']
+        if saml_group_name is None:
+            raise TypeError("Missing 'saml_group_name' argument")
+
         _setter("access_level", access_level)
         _setter("group", group)
         _setter("saml_group_name", saml_group_name)
@@ -101,7 +113,13 @@ class _GroupSamlLinkState:
              access_level: Optional[pulumi.Input[str]] = None,
              group: Optional[pulumi.Input[str]] = None,
              saml_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if saml_group_name is None and 'samlGroupName' in kwargs:
+            saml_group_name = kwargs['samlGroupName']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if group is not None:
@@ -160,18 +178,6 @@ class GroupSamlLink(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        test = gitlab.GroupSamlLink("test",
-            access_level="developer",
-            group="12345",
-            saml_group_name="samlgroupname1")
-        ```
-
         ## Import
 
         GitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.
@@ -196,18 +202,6 @@ class GroupSamlLink(pulumi.CustomResource):
         The `GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        test = gitlab.GroupSamlLink("test",
-            access_level="developer",
-            group="12345",
-            saml_group_name="samlgroupname1")
-        ```
 
         ## Import
 

@@ -8,15 +8,6 @@ import * as utilities from "./utilities";
  * The `gitlab.getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
  *
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getCurrentUser({});
- * ```
  */
 export function getCurrentUser(opts?: pulumi.InvokeOptions): Promise<GetCurrentUserResult> {
 
@@ -70,15 +61,6 @@ export interface GetCurrentUserResult {
  * The `gitlab.getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
  *
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getCurrentUser({});
- * ```
  */
 export function getCurrentUserOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentUserResult> {
     return pulumi.output(getCurrentUser(opts))

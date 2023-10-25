@@ -11,25 +11,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const test = new gitlab.ProjectMembership("test", {
- *     accessLevel: "guest",
- *     project: "12345",
- *     userId: 1337,
- * });
- * const example = new gitlab.ProjectMembership("example", {
- *     accessLevel: "guest",
- *     expiresAt: "2022-12-31",
- *     project: "67890",
- *     userId: 1234,
- * });
- * ```
- *
  * ## Import
  *
  * GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.

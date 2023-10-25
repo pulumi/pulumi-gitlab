@@ -44,14 +44,30 @@ class ServiceEmailsOnPushArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             recipients: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             recipients: Optional[pulumi.Input[str]] = None,
              branches_to_be_notified: Optional[pulumi.Input[str]] = None,
              disable_diffs: Optional[pulumi.Input[bool]] = None,
              push_events: Optional[pulumi.Input[bool]] = None,
              send_from_committer_email: Optional[pulumi.Input[bool]] = None,
              tag_push_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if recipients is None:
+            raise TypeError("Missing 'recipients' argument")
+        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
+            branches_to_be_notified = kwargs['branchesToBeNotified']
+        if disable_diffs is None and 'disableDiffs' in kwargs:
+            disable_diffs = kwargs['disableDiffs']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if send_from_committer_email is None and 'sendFromCommitterEmail' in kwargs:
+            send_from_committer_email = kwargs['sendFromCommitterEmail']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+
         _setter("project", project)
         _setter("recipients", recipients)
         if branches_to_be_notified is not None:
@@ -210,7 +226,23 @@ class _ServiceEmailsOnPushState:
              tag_push_events: Optional[pulumi.Input[bool]] = None,
              title: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
+            branches_to_be_notified = kwargs['branchesToBeNotified']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if disable_diffs is None and 'disableDiffs' in kwargs:
+            disable_diffs = kwargs['disableDiffs']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if send_from_committer_email is None and 'sendFromCommitterEmail' in kwargs:
+            send_from_committer_email = kwargs['sendFromCommitterEmail']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if active is not None:
             _setter("active", active)
         if branches_to_be_notified is not None:
@@ -401,20 +433,6 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        emails = gitlab.ServiceEmailsOnPush("emails",
-            project=awesome_project.id,
-            recipients="myrecipient@example.com myotherrecipient@example.com")
-        ```
-
         ## Import
 
         You can import a gitlab_service_emails_on_push state using the project ID, e.g.
@@ -445,20 +463,6 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
         > This resource is deprecated. Please use `IntegrationEmailsOnPush` instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        emails = gitlab.ServiceEmailsOnPush("emails",
-            project=awesome_project.id,
-            recipients="myrecipient@example.com myotherrecipient@example.com")
-        ```
 
         ## Import
 

@@ -16,32 +16,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleGroup = new GitLab.Group("exampleGroup", new()
-    ///     {
-    ///         Path = "example",
-    ///         Description = "An example group",
-    ///     });
-    /// 
-    ///     // Create a project in the example group
-    ///     var exampleProject = new GitLab.Project("exampleProject", new()
-    ///     {
-    ///         Description = "An example project",
-    ///         NamespaceId = exampleGroup.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

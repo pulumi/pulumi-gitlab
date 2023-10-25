@@ -15,28 +15,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = GitLab.GetProject.Invoke(new()
-        ///     {
-        ///         PathWithNamespace = "foo/bar/baz",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
@@ -45,28 +23,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = GitLab.GetProject.Invoke(new()
-        ///     {
-        ///         PathWithNamespace = "foo/bar/baz",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());

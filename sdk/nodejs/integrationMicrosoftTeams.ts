@@ -9,23 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const awesomeProject = new gitlab.Project("awesomeProject", {
- *     description: "My awesome project.",
- *     visibilityLevel: "public",
- * });
- * const teams = new gitlab.IntegrationMicrosoftTeams("teams", {
- *     project: awesomeProject.id,
- *     webhook: "https://testurl.com/?token=XYZ",
- *     pushEvents: true,
- * });
- * ```
- *
  * ## Import
  *
  * You can import a gitlab_integration_microsoft_teams state using the project ID, e.g.

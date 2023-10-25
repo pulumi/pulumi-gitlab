@@ -16,30 +16,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new GitLab.SystemHook("example", new()
-    ///     {
-    ///         EnableSslVerification = true,
-    ///         MergeRequestsEvents = true,
-    ///         PushEvents = true,
-    ///         RepositoryUpdateEvents = true,
-    ///         TagPushEvents = true,
-    ///         Token = "secret-token",
-    ///         Url = "https://example.com/hook-%d",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// You can import a system hook using the hook id `{hook-id}`, e.g.

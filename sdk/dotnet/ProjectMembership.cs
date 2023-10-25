@@ -16,34 +16,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new GitLab.ProjectMembership("test", new()
-    ///     {
-    ///         AccessLevel = "guest",
-    ///         Project = "12345",
-    ///         UserId = 1337,
-    ///     });
-    /// 
-    ///     var example = new GitLab.ProjectMembership("example", new()
-    ///     {
-    ///         AccessLevel = "guest",
-    ///         ExpiresAt = "2022-12-31",
-    ///         Project = "67890",
-    ///         UserId = 1234,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.

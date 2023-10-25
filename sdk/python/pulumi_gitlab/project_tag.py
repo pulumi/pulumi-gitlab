@@ -37,11 +37,17 @@ class ProjectTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             ref: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             ref: Optional[pulumi.Input[str]] = None,
              message: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if ref is None:
+            raise TypeError("Missing 'ref' argument")
+
         _setter("project", project)
         _setter("ref", ref)
         if message is not None:
@@ -142,7 +148,9 @@ class _ProjectTagState:
              ref: Optional[pulumi.Input[str]] = None,
              releases: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagReleaseArgs']]]] = None,
              target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if commits is not None:
             _setter("commits", commits)
         if message is not None:
@@ -272,21 +280,6 @@ class ProjectTag(pulumi.CustomResource):
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Create a project for the tag to use
-        example_project = gitlab.Project("exampleProject",
-            description="An example project",
-            namespace_id=gitlab_group["example"]["id"])
-        example_project_tag = gitlab.ProjectTag("exampleProjectTag",
-            ref="main",
-            project=example_project.id)
-        ```
-
         ## Import
 
         Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, e.g.
@@ -314,21 +307,6 @@ class ProjectTag(pulumi.CustomResource):
         The `ProjectTag` resource allows to manage the lifecycle of a tag in a project.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Create a project for the tag to use
-        example_project = gitlab.Project("exampleProject",
-            description="An example project",
-            namespace_id=gitlab_group["example"]["id"])
-        example_project_tag = gitlab.ProjectTag("exampleProjectTag",
-            ref="main",
-            project=example_project.id)
-        ```
 
         ## Import
 

@@ -19,44 +19,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			examplePersonalAccessToken, err := gitlab.NewPersonalAccessToken(ctx, "examplePersonalAccessToken", &gitlab.PersonalAccessTokenArgs{
-//				UserId:    pulumi.Int(25),
-//				ExpiresAt: pulumi.String("2020-03-14"),
-//				Scopes: pulumi.StringArray{
-//					pulumi.String("api"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectVariable(ctx, "exampleProjectVariable", &gitlab.ProjectVariableArgs{
-//				Project: pulumi.Any(gitlab_project.Example.Id),
-//				Key:     pulumi.String("pat"),
-//				Value:   examplePersonalAccessToken.Token,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.

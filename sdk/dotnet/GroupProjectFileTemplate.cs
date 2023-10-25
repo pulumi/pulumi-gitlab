@@ -19,38 +19,6 @@ namespace Pulumi.GitLab
     /// &gt; This resource requires a GitLab Enterprise instance with a Premium license.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#update-group)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new GitLab.Group("foo", new()
-    ///     {
-    ///         Path = "group",
-    ///         Description = "An example group",
-    ///     });
-    /// 
-    ///     var bar = new GitLab.Project("bar", new()
-    ///     {
-    ///         Description = "contains file templates",
-    ///         VisibilityLevel = "public",
-    ///         NamespaceId = foo.Id,
-    ///     });
-    /// 
-    ///     var templateLink = new GitLab.GroupProjectFileTemplate("templateLink", new()
-    ///     {
-    ///         GroupId = foo.Id,
-    ///         FileTemplateProjectId = bar.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate")]
     public partial class GroupProjectFileTemplate : global::Pulumi.CustomResource

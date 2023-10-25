@@ -16,32 +16,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_clusters.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var bar = new GitLab.InstanceCluster("bar", new()
-    ///     {
-    ///         Domain = "example.com",
-    ///         Enabled = true,
-    ///         EnvironmentScope = "*",
-    ///         KubernetesApiUrl = "https://124.124.124",
-    ///         KubernetesAuthorizationType = "rbac",
-    ///         KubernetesCaCert = "some-cert",
-    ///         KubernetesNamespace = "namespace",
-    ///         KubernetesToken = "some-token",
-    ///         ManagementProjectId = "123456",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// GitLab instance clusters can be imported using a `clusterid`, e.g.

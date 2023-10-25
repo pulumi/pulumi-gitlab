@@ -10,18 +10,6 @@ import * as utilities from "./utilities";
  * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const subgroupsGroupSubgroups = gitlab.getGroupSubgroups({
- *     groupId: 123456,
- * });
- * export const subgroups = subgroupsGroupSubgroups;
- * ```
  */
 export function getGroupSubgroups(args: GetGroupSubgroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupSubgroupsResult> {
 
@@ -137,18 +125,6 @@ export interface GetGroupSubgroupsResult {
  * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const subgroupsGroupSubgroups = gitlab.getGroupSubgroups({
- *     groupId: 123456,
- * });
- * export const subgroups = subgroupsGroupSubgroups;
- * ```
  */
 export function getGroupSubgroupsOutput(args: GetGroupSubgroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupSubgroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroupSubgroups(a, opts))

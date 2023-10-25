@@ -41,13 +41,33 @@ class GroupMembershipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_level: pulumi.Input[str],
-             group_id: pulumi.Input[str],
-             user_id: pulumi.Input[int],
+             access_level: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
              expires_at: Optional[pulumi.Input[str]] = None,
              skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
              unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if skip_subresources_on_destroy is None and 'skipSubresourcesOnDestroy' in kwargs:
+            skip_subresources_on_destroy = kwargs['skipSubresourcesOnDestroy']
+        if unassign_issuables_on_destroy is None and 'unassignIssuablesOnDestroy' in kwargs:
+            unassign_issuables_on_destroy = kwargs['unassignIssuablesOnDestroy']
+
         _setter("access_level", access_level)
         _setter("group_id", group_id)
         _setter("user_id", user_id)
@@ -167,7 +187,21 @@ class _GroupMembershipState:
              skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
              unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if skip_subresources_on_destroy is None and 'skipSubresourcesOnDestroy' in kwargs:
+            skip_subresources_on_destroy = kwargs['skipSubresourcesOnDestroy']
+        if unassign_issuables_on_destroy is None and 'unassignIssuablesOnDestroy' in kwargs:
+            unassign_issuables_on_destroy = kwargs['unassignIssuablesOnDestroy']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if expires_at is not None:
@@ -273,19 +307,6 @@ class GroupMembership(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        test = gitlab.GroupMembership("test",
-            access_level="guest",
-            expires_at="2020-12-31",
-            group_id="12345",
-            user_id=1337)
-        ```
-
         ## Import
 
         GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
@@ -315,19 +336,6 @@ class GroupMembership(pulumi.CustomResource):
         > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        test = gitlab.GroupMembership("test",
-            access_level="guest",
-            expires_at="2020-12-31",
-            group_id="12345",
-            user_id=1337)
-        ```
 
         ## Import
 

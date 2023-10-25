@@ -35,11 +35,23 @@ class IntegrationGithubArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             repository_url: pulumi.Input[str],
-             token: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             repository_url: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
              static_context: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if repository_url is None and 'repositoryUrl' in kwargs:
+            repository_url = kwargs['repositoryUrl']
+        if repository_url is None:
+            raise TypeError("Missing 'repository_url' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if static_context is None and 'staticContext' in kwargs:
+            static_context = kwargs['staticContext']
+
         _setter("project", project)
         _setter("repository_url", repository_url)
         _setter("token", token)
@@ -139,7 +151,17 @@ class _IntegrationGithubState:
              title: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if repository_url is None and 'repositoryUrl' in kwargs:
+            repository_url = kwargs['repositoryUrl']
+        if static_context is None and 'staticContext' in kwargs:
+            static_context = kwargs['staticContext']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if active is not None:
             _setter("active", active)
         if created_at is not None:
@@ -271,21 +293,6 @@ class IntegrationGithub(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        github = gitlab.IntegrationGithub("github",
-            project=awesome_project.id,
-            token="REDACTED",
-            repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
-        ```
-
         ## Import
 
         ```sh
@@ -315,21 +322,6 @@ class IntegrationGithub(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        github = gitlab.IntegrationGithub("github",
-            project=awesome_project.id,
-            token="REDACTED",
-            repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
-        ```
 
         ## Import
 

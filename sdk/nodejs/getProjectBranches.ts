@@ -10,17 +10,6 @@ import * as utilities from "./utilities";
  * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getProjectBranches({
- *     project: "foo/bar/baz",
- * });
- * ```
  */
 export function getProjectBranches(args: GetProjectBranchesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectBranchesResult> {
 
@@ -61,17 +50,6 @@ export interface GetProjectBranchesResult {
  * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getProjectBranches({
- *     project: "foo/bar/baz",
- * });
- * ```
  */
 export function getProjectBranchesOutput(args: GetProjectBranchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectBranchesResult> {
     return pulumi.output(args).apply((a: any) => getProjectBranches(a, opts))

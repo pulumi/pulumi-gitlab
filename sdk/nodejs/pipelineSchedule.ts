@@ -9,20 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = new gitlab.PipelineSchedule("example", {
- *     cron: "0 1 * * *",
- *     description: "Used to schedule builds",
- *     project: "12345",
- *     ref: "master",
- * });
- * ```
- *
  * ## Import
  *
  * GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.

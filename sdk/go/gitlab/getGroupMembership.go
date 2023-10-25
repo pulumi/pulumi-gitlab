@@ -15,32 +15,6 @@ import (
 // The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupGroupMembership(ctx, &gitlab.LookupGroupMembershipArgs{
-//				FullPath: pulumi.StringRef("foo/bar"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupGroupMembership(ctx *pulumi.Context, args *LookupGroupMembershipArgs, opts ...pulumi.InvokeOption) (*LookupGroupMembershipResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupMembershipResult

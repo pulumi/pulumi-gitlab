@@ -62,15 +62,6 @@ def get_instance_variables(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     The `get_instance_variables` data source allows to retrieve all instance-level CI/CD variables.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    vars = gitlab.get_instance_variables()
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -87,14 +78,5 @@ def get_instance_variables_output(opts: Optional[pulumi.InvokeOptions] = None) -
     The `get_instance_variables` data source allows to retrieve all instance-level CI/CD variables.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    vars = gitlab.get_instance_variables()
-    ```
     """
     ...

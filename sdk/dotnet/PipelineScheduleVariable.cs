@@ -14,35 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var examplePipelineSchedule = new GitLab.PipelineSchedule("examplePipelineSchedule", new()
-    ///     {
-    ///         Project = "12345",
-    ///         Description = "Used to schedule builds",
-    ///         Ref = "master",
-    ///         Cron = "0 1 * * *",
-    ///     });
-    /// 
-    ///     var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable("examplePipelineScheduleVariable", new()
-    ///     {
-    ///         Project = examplePipelineSchedule.Project,
-    ///         PipelineScheduleId = examplePipelineSchedule.PipelineScheduleId,
-    ///         Key = "EXAMPLE_KEY",
-    ///         Value = "example",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.

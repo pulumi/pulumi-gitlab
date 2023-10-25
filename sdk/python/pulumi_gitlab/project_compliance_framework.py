@@ -29,9 +29,17 @@ class ProjectComplianceFrameworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compliance_framework_id: pulumi.Input[str],
-             project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             compliance_framework_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compliance_framework_id is None and 'complianceFrameworkId' in kwargs:
+            compliance_framework_id = kwargs['complianceFrameworkId']
+        if compliance_framework_id is None:
+            raise TypeError("Missing 'compliance_framework_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("compliance_framework_id", compliance_framework_id)
         _setter("project", project)
 
@@ -80,7 +88,11 @@ class _ProjectComplianceFrameworkState:
              _setter: Callable[[Any, Any], None],
              compliance_framework_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compliance_framework_id is None and 'complianceFrameworkId' in kwargs:
+            compliance_framework_id = kwargs['complianceFrameworkId']
+
         if compliance_framework_id is not None:
             _setter("compliance_framework_id", compliance_framework_id)
         if project is not None:
@@ -126,23 +138,6 @@ class ProjectComplianceFramework(pulumi.CustomResource):
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojectsetcomplianceframework)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        sample_compliance_framework = gitlab.ComplianceFramework("sampleComplianceFramework",
-            namespace_path="top-level-group",
-            description="A HIPAA Compliance Framework",
-            color="#87BEEF",
-            default=False,
-            pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
-        sample_project_compliance_framework = gitlab.ProjectComplianceFramework("sampleProjectComplianceFramework",
-            compliance_framework_id=sample_compliance_framework.framework_id,
-            project="12345678")
-        ```
-
         ## Import
 
         Gitlab project compliance frameworks can be imported with a key composed of `<project_id>`, e.g.
@@ -168,23 +163,6 @@ class ProjectComplianceFramework(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance with a Premium license to set the compliance framework on a project.
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojectsetcomplianceframework)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        sample_compliance_framework = gitlab.ComplianceFramework("sampleComplianceFramework",
-            namespace_path="top-level-group",
-            description="A HIPAA Compliance Framework",
-            color="#87BEEF",
-            default=False,
-            pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
-        sample_project_compliance_framework = gitlab.ProjectComplianceFramework("sampleProjectComplianceFramework",
-            compliance_framework_id=sample_compliance_framework.framework_id,
-            project="12345678")
-        ```
 
         ## Import
 

@@ -119,17 +119,6 @@ def get_groups(order_by: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_groups(order_by="name",
-        sort="desc")
-    example_two = gitlab.get_groups(search="GitLab")
-    ```
-
 
     :param str order_by: Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)
     :param str search: Search groups by name or path.
@@ -167,17 +156,6 @@ def get_groups_output(order_by: Optional[pulumi.Input[Optional[str]]] = None,
     > Some available options require administrator privileges.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_groups(order_by="name",
-        sort="desc")
-    example_two = gitlab.get_groups(search="GitLab")
-    ```
 
 
     :param str order_by: Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)

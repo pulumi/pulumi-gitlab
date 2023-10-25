@@ -29,9 +29,13 @@ class ClusterAgentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("project", project)
         if name is not None:
             _setter("name", name)
@@ -93,7 +97,15 @@ class _ClusterAgentState:
              created_by_user_id: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if agent_id is None and 'agentId' in kwargs:
+            agent_id = kwargs['agentId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by_user_id is None and 'createdByUserId' in kwargs:
+            created_by_user_id = kwargs['createdByUserId']
+
         if agent_id is not None:
             _setter("agent_id", agent_id)
         if created_at is not None:
@@ -188,27 +200,6 @@ class ClusterAgent(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.ClusterAgent("example", project="12345")
-        # Optionally, configure the agent as described in
-        # https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
-        example_agent_config = gitlab.RepositoryFile("exampleAgentConfig",
-            project=example.project,
-            branch="main",
-            file_path=example.name.apply(lambda name: f".gitlab/agents/{name}"),
-            content=\"\"\"  gitops:
-            ...
-        \"\"\",
-            author_email="terraform@example.com",
-            author_name="Terraform",
-            commit_message=example.name.apply(lambda name: f"feature: add agent config for {name}"))
-        ```
-
         ## Import
 
         GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>`
@@ -241,27 +232,6 @@ class ClusterAgent(pulumi.CustomResource):
         > Requires at least GitLab 14.10
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.ClusterAgent("example", project="12345")
-        # Optionally, configure the agent as described in
-        # https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
-        example_agent_config = gitlab.RepositoryFile("exampleAgentConfig",
-            project=example.project,
-            branch="main",
-            file_path=example.name.apply(lambda name: f".gitlab/agents/{name}"),
-            content=\"\"\"  gitops:
-            ...
-        \"\"\",
-            author_email="terraform@example.com",
-            author_name="Terraform",
-            commit_message=example.name.apply(lambda name: f"feature: add agent config for {name}"))
-        ```
 
         ## Import
 

@@ -41,13 +41,25 @@ class PipelineScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cron: pulumi.Input[str],
-             description: pulumi.Input[str],
-             project: pulumi.Input[str],
-             ref: pulumi.Input[str],
+             cron: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             ref: Optional[pulumi.Input[str]] = None,
              active: Optional[pulumi.Input[bool]] = None,
              cron_timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cron is None:
+            raise TypeError("Missing 'cron' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if ref is None:
+            raise TypeError("Missing 'ref' argument")
+        if cron_timezone is None and 'cronTimezone' in kwargs:
+            cron_timezone = kwargs['cronTimezone']
+
         _setter("cron", cron)
         _setter("description", description)
         _setter("project", project)
@@ -170,7 +182,13 @@ class _PipelineScheduleState:
              pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              ref: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cron_timezone is None and 'cronTimezone' in kwargs:
+            cron_timezone = kwargs['cronTimezone']
+        if pipeline_schedule_id is None and 'pipelineScheduleId' in kwargs:
+            pipeline_schedule_id = kwargs['pipelineScheduleId']
+
         if active is not None:
             _setter("active", active)
         if cron is not None:
@@ -288,19 +306,6 @@ class PipelineSchedule(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.PipelineSchedule("example",
-            cron="0 1 * * *",
-            description="Used to schedule builds",
-            project="12345",
-            ref="master")
-        ```
-
         ## Import
 
         GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
@@ -328,19 +333,6 @@ class PipelineSchedule(pulumi.CustomResource):
         The `PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.PipelineSchedule("example",
-            cron="0 1 * * *",
-            description="Used to schedule builds",
-            project="12345",
-            ref="master")
-        ```
 
         ## Import
 

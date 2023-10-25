@@ -44,14 +44,28 @@ class SystemHookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: pulumi.Input[str],
+             url: Optional[pulumi.Input[str]] = None,
              enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
              merge_requests_events: Optional[pulumi.Input[bool]] = None,
              push_events: Optional[pulumi.Input[bool]] = None,
              repository_update_events: Optional[pulumi.Input[bool]] = None,
              tag_push_events: Optional[pulumi.Input[bool]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if repository_update_events is None and 'repositoryUpdateEvents' in kwargs:
+            repository_update_events = kwargs['repositoryUpdateEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+
         _setter("url", url)
         if enable_ssl_verification is not None:
             _setter("enable_ssl_verification", enable_ssl_verification)
@@ -195,7 +209,21 @@ class _SystemHookState:
              tag_push_events: Optional[pulumi.Input[bool]] = None,
              token: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if repository_update_events is None and 'repositoryUpdateEvents' in kwargs:
+            repository_update_events = kwargs['repositoryUpdateEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if enable_ssl_verification is not None:
@@ -330,22 +358,6 @@ class SystemHook(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.SystemHook("example",
-            enable_ssl_verification=True,
-            merge_requests_events=True,
-            push_events=True,
-            repository_update_events=True,
-            tag_push_events=True,
-            token="secret-token",
-            url="https://example.com/hook-%d")
-        ```
-
         ## Import
 
         You can import a system hook using the hook id `{hook-id}`, e.g.
@@ -378,22 +390,6 @@ class SystemHook(pulumi.CustomResource):
         > This resource requires GitLab 14.9
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.SystemHook("example",
-            enable_ssl_verification=True,
-            merge_requests_events=True,
-            push_events=True,
-            repository_update_events=True,
-            tag_push_events=True,
-            token="secret-token",
-            url="https://example.com/hook-%d")
-        ```
 
         ## Import
 

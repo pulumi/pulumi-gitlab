@@ -11,24 +11,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const examplePersonalAccessToken = new gitlab.PersonalAccessToken("examplePersonalAccessToken", {
- *     userId: 25,
- *     expiresAt: "2020-03-14",
- *     scopes: ["api"],
- * });
- * const exampleProjectVariable = new gitlab.ProjectVariable("exampleProjectVariable", {
- *     project: gitlab_project.example.id,
- *     key: "pat",
- *     value: examplePersonalAccessToken.token,
- * });
- * ```
- *
  * ## Import
  *
  * A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.

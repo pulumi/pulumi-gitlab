@@ -47,15 +47,27 @@ class ProjectVariableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             project: pulumi.Input[str],
-             value: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              environment_scope: Optional[pulumi.Input[str]] = None,
              masked: Optional[pulumi.Input[bool]] = None,
              protected: Optional[pulumi.Input[bool]] = None,
              raw: Optional[pulumi.Input[bool]] = None,
              variable_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if environment_scope is None and 'environmentScope' in kwargs:
+            environment_scope = kwargs['environmentScope']
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+
         _setter("key", key)
         _setter("project", project)
         _setter("value", value)
@@ -211,7 +223,13 @@ class _ProjectVariableState:
              raw: Optional[pulumi.Input[bool]] = None,
              value: Optional[pulumi.Input[str]] = None,
              variable_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if environment_scope is None and 'environmentScope' in kwargs:
+            environment_scope = kwargs['environmentScope']
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+
         if environment_scope is not None:
             _setter("environment_scope", environment_scope)
         if key is not None:
@@ -347,19 +365,6 @@ class ProjectVariable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.ProjectVariable("example",
-            key="project_variable_key",
-            project="12345",
-            protected=False,
-            value="project_variable_value")
-        ```
-
         ## Import
 
         GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
@@ -391,19 +396,6 @@ class ProjectVariable(pulumi.CustomResource):
         > **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior when updating or deleting ProjectVariable resources with non-unique keys, for example if there is another variable with the same key and different environment scope. See [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.ProjectVariable("example",
-            key="project_variable_key",
-            project="12345",
-            protected=False,
-            value="project_variable_value")
-        ```
 
         ## Import
 

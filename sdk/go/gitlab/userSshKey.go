@@ -17,41 +17,6 @@ import (
 //
 // **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/users.html#single-ssh-key)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
-//				Username: pulumi.StringRef("example-user"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewUserSshKey(ctx, "exampleUserSshKey", &gitlab.UserSshKeyArgs{
-//				UserId:    *pulumi.String(exampleUser.Id),
-//				Title:     pulumi.String("example-key"),
-//				Key:       pulumi.String("ssh-ed25519 AAAA..."),
-//				ExpiresAt: pulumi.String("2016-01-21T00:00:00.000Z"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.

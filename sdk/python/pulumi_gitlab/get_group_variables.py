@@ -88,17 +88,6 @@ def get_group_variables(environment_scope: Optional[str] = None,
     The `get_group_variables` data source allows to retrieve all group-level CI/CD variables.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    vars = gitlab.get_group_variables(group="my/example/group")
-    staging_vars = gitlab.get_group_variables(environment_scope="staging/*",
-        group="my/example/group")
-    ```
     """
     __args__ = dict()
     __args__['environmentScope'] = environment_scope
@@ -121,16 +110,5 @@ def get_group_variables_output(environment_scope: Optional[pulumi.Input[Optional
     The `get_group_variables` data source allows to retrieve all group-level CI/CD variables.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    vars = gitlab.get_group_variables(group="my/example/group")
-    staging_vars = gitlab.get_group_variables(environment_scope="staging/*",
-        group="my/example/group")
-    ```
     """
     ...

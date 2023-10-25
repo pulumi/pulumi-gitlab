@@ -17,40 +17,6 @@ import (
 //
 // **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
-//				Description: pulumi.String("An example project"),
-//				NamespaceId: pulumi.Any(gitlab_group.Example.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectTag(ctx, "exampleProjectTag", &gitlab.ProjectTagArgs{
-//				Ref:     pulumi.String("main"),
-//				Project: exampleProject.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, e.g.

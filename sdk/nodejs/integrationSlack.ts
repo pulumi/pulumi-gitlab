@@ -9,25 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const awesomeProject = new gitlab.Project("awesomeProject", {
- *     description: "My awesome project.",
- *     visibilityLevel: "public",
- * });
- * const slack = new gitlab.IntegrationSlack("slack", {
- *     project: awesomeProject.id,
- *     webhook: "https://webhook.com",
- *     username: "myuser",
- *     pushEvents: true,
- *     pushChannel: "push_chan",
- * });
- * ```
- *
  * ## Import
  *
  * You can import a gitlab_integration_slack.slack state using the project ID, e.g.
