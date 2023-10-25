@@ -323,6 +323,21 @@ class Branch(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Create a project for the branch to use
+        example_project = gitlab.Project("exampleProject",
+            description="An example project",
+            namespace_id=gitlab_group["example"]["id"])
+        example_branch = gitlab.Branch("exampleBranch",
+            ref="main",
+            project=example_project.id)
+        ```
+
         ## Import
 
         Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
@@ -347,6 +362,21 @@ class Branch(pulumi.CustomResource):
         The `Branch` resource allows to manage the lifecycle of a repository branch.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Create a project for the branch to use
+        example_project = gitlab.Project("exampleProject",
+            description="An example project",
+            namespace_id=gitlab_group["example"]["id"])
+        example_branch = gitlab.Branch("exampleBranch",
+            ref="main",
+            project=example_project.id)
+        ```
 
         ## Import
 

@@ -17,6 +17,37 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewGroupVariable(ctx, "example", &gitlab.GroupVariableArgs{
+//				EnvironmentScope: pulumi.String("*"),
+//				Group:            pulumi.String("12345"),
+//				Key:              pulumi.String("group_variable_key"),
+//				Masked:           pulumi.Bool(false),
+//				Protected:        pulumi.Bool(false),
+//				Value:            pulumi.String("group_variable_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.

@@ -115,6 +115,18 @@ def get_repository_tree(path: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    this = gitlab.get_repository_tree(path="ExampleSubFolder",
+        project="example",
+        recursive=True,
+        ref="main")
+    ```
+
 
     :param str project: The ID or full path of the project owned by the authenticated user.
     :param bool recursive: Boolean value used to get a recursive tree (false by default).
@@ -147,6 +159,18 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
     The `get_repository_tree` data source allows details of directories and files in a repository to be retrieved.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    this = gitlab.get_repository_tree(path="ExampleSubFolder",
+        project="example",
+        recursive=True,
+        ref="main")
+    ```
 
 
     :param str project: The ID or full path of the project owned by the authenticated user.

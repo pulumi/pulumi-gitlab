@@ -340,6 +340,25 @@ class PagesDomain(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Example using auto_ssl_enabled, which uses lets encrypt to generate a certificate
+        this_pages_domain = gitlab.PagesDomain("thisPagesDomain",
+            project="123",
+            domain="example.com",
+            auto_ssl_enabled=True)
+        # Example using a manually generated certificate and key
+        this_index_pages_domain_pages_domain = gitlab.PagesDomain("thisIndex/pagesDomainPagesDomain",
+            project="123",
+            domain="example.com",
+            key=(lambda path: open(path).read())(f"{path['module']}/key.pem"),
+            certificate=(lambda path: open(path).read())(f"{path['module']}/cert.pem"))
+        ```
+
         ## Import
 
         GitLab pages domain can be imported using an id made up of `projectId:domain` _without_ the http protocol, e.g.
@@ -367,6 +386,25 @@ class PagesDomain(pulumi.CustomResource):
         The `PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Example using auto_ssl_enabled, which uses lets encrypt to generate a certificate
+        this_pages_domain = gitlab.PagesDomain("thisPagesDomain",
+            project="123",
+            domain="example.com",
+            auto_ssl_enabled=True)
+        # Example using a manually generated certificate and key
+        this_index_pages_domain_pages_domain = gitlab.PagesDomain("thisIndex/pagesDomainPagesDomain",
+            project="123",
+            domain="example.com",
+            key=(lambda path: open(path).read())(f"{path['module']}/key.pem"),
+            certificate=(lambda path: open(path).read())(f"{path['module']}/cert.pem"))
+        ```
 
         ## Import
 

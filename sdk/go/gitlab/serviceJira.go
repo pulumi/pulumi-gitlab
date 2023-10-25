@@ -19,6 +19,42 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
+//				Description:     pulumi.String("My awesome project."),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewServiceJira(ctx, "jira", &gitlab.ServiceJiraArgs{
+//				Project:  awesomeProject.ID(),
+//				Url:      pulumi.String("https://jira.example.com"),
+//				Username: pulumi.String("user"),
+//				Password: pulumi.String("mypass"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // You can import a gitlab_service_jira state using the project ID, e.g.

@@ -14,6 +14,32 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a project for the tag to use
+    ///     var exampleProject = new GitLab.Project("exampleProject", new()
+    ///     {
+    ///         Description = "An example project",
+    ///         NamespaceId = gitlab_group.Example.Id,
+    ///     });
+    /// 
+    ///     var exampleProjectTag = new GitLab.ProjectTag("exampleProjectTag", new()
+    ///     {
+    ///         Ref = "main",
+    ///         Project = exampleProject.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Gitlab project tags can be imported with a key composed of `&lt;project_id&gt;:&lt;tag_name&gt;`, e.g.

@@ -14,6 +14,37 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Example using auto_ssl_enabled, which uses lets encrypt to generate a certificate
+    ///     var thisPagesDomain = new GitLab.PagesDomain("thisPagesDomain", new()
+    ///     {
+    ///         Project = "123",
+    ///         Domain = "example.com",
+    ///         AutoSslEnabled = true,
+    ///     });
+    /// 
+    ///     // Example using a manually generated certificate and key
+    ///     var thisIndex_pagesDomainPagesDomain = new GitLab.PagesDomain("thisIndex/pagesDomainPagesDomain", new()
+    ///     {
+    ///         Project = "123",
+    ///         Domain = "example.com",
+    ///         Key = File.ReadAllText($"{path.Module}/key.pem"),
+    ///         Certificate = File.ReadAllText($"{path.Module}/cert.pem"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GitLab pages domain can be imported using an id made up of `projectId:domain` _without_ the http protocol, e.g.

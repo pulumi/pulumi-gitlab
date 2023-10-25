@@ -23,6 +23,91 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#register-a-new-runner)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi-local/sdk/go/local"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myGroup, err := gitlab.NewGroup(ctx, "myGroup", &gitlab.GroupArgs{
+//				Description: pulumi.String("group that holds the runners"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewRunner(ctx, "basicRunner", &gitlab.RunnerArgs{
+//				RegistrationToken: myGroup.RunnersToken,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewRunner(ctx, "taggedOnly", &gitlab.RunnerArgs{
+//				RegistrationToken: myGroup.RunnersToken,
+//				Description:       pulumi.String("I only run tagged jobs"),
+//				RunUntagged:       pulumi.Bool(false),
+//				TagLists: pulumi.StringArray{
+//					pulumi.String("tag_one"),
+//					pulumi.String("tag_two"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewRunner(ctx, "protected", &gitlab.RunnerArgs{
+//				RegistrationToken: myGroup.RunnersToken,
+//				Description:       pulumi.String("I only run protected jobs"),
+//				AccessLevel:       pulumi.String("ref_protected"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myCustomGroup, err := gitlab.NewGroup(ctx, "myCustomGroup", &gitlab.GroupArgs{
+//				Description: pulumi.String("group that holds the custom runners"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myRunner, err := gitlab.NewRunner(ctx, "myRunner", &gitlab.RunnerArgs{
+//				RegistrationToken: myCustomGroup.RunnersToken,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = local.NewFile(ctx, "config", &local.FileArgs{
+//				Filename: pulumi.String(fmt.Sprintf("%v/config.toml", path.Module)),
+//				Content: myRunner.AuthenticationToken.ApplyT(func(authenticationToken string) (string, error) {
+//					return fmt.Sprintf(`  concurrent = 1
+//
+//	  [[runners]]
+//	    name = "Hello Terraform"
+//	    url = "https://example.gitlab.com/"
+//	    token = "%v"
+//	    executor = "shell"
+//
+// `, authenticationToken), nil
+//
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # A GitLab Runner can be imported using the runner's ID, eg

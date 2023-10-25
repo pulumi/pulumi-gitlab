@@ -8,6 +8,19 @@ import * as utilities from "./utilities";
  * The `gitlab.RepositoryFile` data source allows details of a file in a repository to be retrieved.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getRepositoryFile({
+ *     filePath: "README.md",
+ *     project: "example",
+ *     ref: "main",
+ * });
+ * ```
  */
 export function getRepositoryFile(args: GetRepositoryFileArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryFileResult> {
 
@@ -98,6 +111,19 @@ export interface GetRepositoryFileResult {
  * The `gitlab.RepositoryFile` data source allows details of a file in a repository to be retrieved.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getRepositoryFile({
+ *     filePath: "README.md",
+ *     project: "example",
+ *     ref: "main",
+ * });
+ * ```
  */
 export function getRepositoryFileOutput(args: GetRepositoryFileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryFileResult> {
     return pulumi.output(args).apply((a: any) => getRepositoryFile(a, opts))

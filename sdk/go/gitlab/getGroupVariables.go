@@ -15,6 +15,39 @@ import (
 // The `getGroupVariables` data source allows to retrieve all group-level CI/CD variables.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.GetGroupVariables(ctx, &gitlab.GetGroupVariablesArgs{
+//				Group: "my/example/group",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.GetGroupVariables(ctx, &gitlab.GetGroupVariablesArgs{
+//				EnvironmentScope: pulumi.StringRef("staging/*"),
+//				Group:            "my/example/group",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGroupVariables(ctx *pulumi.Context, args *GetGroupVariablesArgs, opts ...pulumi.InvokeOption) (*GetGroupVariablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupVariablesResult

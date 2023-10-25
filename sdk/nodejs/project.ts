@@ -7,6 +7,68 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.Project("example", {
+ *     description: "My awesome codebase",
+ *     visibilityLevel: "public",
+ * });
+ * // Project with custom push rules
+ * const example_two = new gitlab.Project("example-two", {pushRules: {
+ *     authorEmailRegex: "@example\\.com$",
+ *     commitCommitterCheck: true,
+ *     memberCheck: true,
+ *     preventSecrets: true,
+ * }});
+ * const peterParker = gitlab.getUser({
+ *     username: "peter_parker",
+ * });
+ * const petersRepo = new gitlab.Project("petersRepo", {
+ *     description: "This is a description",
+ *     namespaceId: peterParker.then(peterParker => peterParker.namespaceId),
+ * });
+ * // Fork a project
+ * const forkProject = new gitlab.Project("forkProject", {
+ *     description: "This is a fork",
+ *     forkedFromProjectId: example.id,
+ * });
+ * // Fork a project and setup a pull mirror
+ * const forkIndex_projectProject = new gitlab.Project("forkIndex/projectProject", {
+ *     description: "This is a fork",
+ *     forkedFromProjectId: example.id,
+ *     importUrl: example.httpUrlToRepo,
+ *     mirror: true,
+ * });
+ * // Create a project by importing it from a public project
+ * const importPublic = new gitlab.Project("importPublic", {importUrl: "https://gitlab.example.com/repo.git"});
+ * // Create a project by importing it from a public project and setup the pull mirror
+ * const importPublicWithMirror = new gitlab.Project("importPublicWithMirror", {
+ *     importUrl: "https://gitlab.example.com/repo.git",
+ *     mirror: true,
+ * });
+ * // Create a project by importing it from a private project
+ * const importPrivateProject = new gitlab.Project("importPrivateProject", {
+ *     importUrl: "https://gitlab.example.com/repo.git",
+ *     importUrlUsername: "user",
+ *     importUrlPassword: "pass",
+ * });
+ * // Create a project by importing it from a private project and setup the pull mirror
+ * const importPrivateWithMirror = new gitlab.Project("importPrivateWithMirror", {
+ *     importUrl: "https://gitlab.example.com/repo.git",
+ *     importUrlUsername: "user",
+ *     importUrlPassword: "pass",
+ *     mirror: true,
+ * });
+ * // Create a project by importing it from a private project and provide credentials in `import_url`
+ * // NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+ * //       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+ * const importPrivateIndex_projectProject = new gitlab.Project("importPrivateIndex/projectProject", {importUrl: "https://user:pass@gitlab.example.com/repo.git"});
+ * ```
+ *
  * ## Import
  *
  * ```sh

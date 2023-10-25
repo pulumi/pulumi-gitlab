@@ -282,6 +282,17 @@ class ProjectMirror(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.ProjectMirror("foo",
+            project="1",
+            url="https://username:password@github.com/org/repository.git")
+        ```
+
         ## Import
 
         GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
@@ -319,6 +330,17 @@ class ProjectMirror(pulumi.CustomResource):
            For older versions, the mirror will be disabled and the resource will be destroyed.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.ProjectMirror("foo",
+            project="1",
+            url="https://username:password@github.com/org/repository.git")
+        ```
 
         ## Import
 

@@ -223,6 +223,19 @@ class GroupShareGroup(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupShareGroup("test",
+            group_id=gitlab_group["foo"]["id"],
+            share_group_id=gitlab_group["bar"]["id"],
+            group_access="guest",
+            expires_at="2099-01-01")
+        ```
+
         ## Import
 
         GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
@@ -248,6 +261,19 @@ class GroupShareGroup(pulumi.CustomResource):
         The `GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupShareGroup("test",
+            group_id=gitlab_group["foo"]["id"],
+            share_group_id=gitlab_group["bar"]["id"],
+            group_access="guest",
+            expires_at="2099-01-01")
+        ```
 
         ## Import
 

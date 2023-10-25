@@ -15,6 +15,32 @@ namespace Pulumi.GitLab
         /// The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var subgroupsGroupSubgroups = GitLab.GetGroupSubgroups.Invoke(new()
+        ///     {
+        ///         GroupId = 123456,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["subgroups"] = subgroupsGroupSubgroups,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupSubgroupsResult> InvokeAsync(GetGroupSubgroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupSubgroupsResult>("gitlab:index/getGroupSubgroups:getGroupSubgroups", args ?? new GetGroupSubgroupsArgs(), options.WithDefaults());
@@ -23,6 +49,32 @@ namespace Pulumi.GitLab
         /// The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var subgroupsGroupSubgroups = GitLab.GetGroupSubgroups.Invoke(new()
+        ///     {
+        ///         GroupId = 123456,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["subgroups"] = subgroupsGroupSubgroups,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupSubgroupsResult> Invoke(GetGroupSubgroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupSubgroupsResult>("gitlab:index/getGroupSubgroups:getGroupSubgroups", args ?? new GetGroupSubgroupsInvokeArgs(), options.WithDefaults());

@@ -571,6 +571,23 @@ class User(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.User("example",
+            can_create_group=False,
+            email="gitlab@user.create",
+            is_admin=True,
+            is_external=True,
+            password="superPassword",
+            projects_limit=4,
+            reset_password=False,
+            username="example")
+        ```
+
         ## Import
 
         ```sh
@@ -613,6 +630,23 @@ class User(pulumi.CustomResource):
         > You must specify either password or reset_password.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.User("example",
+            can_create_group=False,
+            email="gitlab@user.create",
+            is_admin=True,
+            is_external=True,
+            password="superPassword",
+            projects_limit=4,
+            reset_password=False,
+            username="example")
+        ```
 
         ## Import
 

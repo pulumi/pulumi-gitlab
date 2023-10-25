@@ -424,6 +424,21 @@ class ProjectMilestone(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Create a project for the milestone to use
+        example_project = gitlab.Project("exampleProject",
+            description="An example project",
+            namespace_id=gitlab_group["example"]["id"])
+        example_project_milestone = gitlab.ProjectMilestone("exampleProjectMilestone",
+            project=example_project.id,
+            title="example")
+        ```
+
         ## Import
 
         Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, e.g.
@@ -451,6 +466,21 @@ class ProjectMilestone(pulumi.CustomResource):
         The `ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Create a project for the milestone to use
+        example_project = gitlab.Project("exampleProject",
+            description="An example project",
+            namespace_id=gitlab_group["example"]["id"])
+        example_project_milestone = gitlab.ProjectMilestone("exampleProjectMilestone",
+            project=example_project.id,
+            title="example")
+        ```
 
         ## Import
 

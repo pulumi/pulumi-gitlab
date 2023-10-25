@@ -10,6 +10,20 @@ import * as utilities from "./utilities";
  * The `gitlab.getProjectHooks` data source allows to retrieve details about hooks in a project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-project-hooks)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getProject({
+ *     id: "foo/bar/baz",
+ * });
+ * const examples = example.then(example => gitlab.getProjectHooks({
+ *     project: example.id,
+ * }));
+ * ```
  */
 export function getProjectHooks(args: GetProjectHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectHooksResult> {
 
@@ -47,6 +61,20 @@ export interface GetProjectHooksResult {
  * The `gitlab.getProjectHooks` data source allows to retrieve details about hooks in a project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-project-hooks)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getProject({
+ *     id: "foo/bar/baz",
+ * });
+ * const examples = example.then(example => gitlab.getProjectHooks({
+ *     project: example.id,
+ * }));
+ * ```
  */
 export function getProjectHooksOutput(args: GetProjectHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectHooksResult> {
     return pulumi.output(args).apply((a: any) => getProjectHooks(a, opts))

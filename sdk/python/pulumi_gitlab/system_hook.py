@@ -358,6 +358,22 @@ class SystemHook(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.SystemHook("example",
+            enable_ssl_verification=True,
+            merge_requests_events=True,
+            push_events=True,
+            repository_update_events=True,
+            tag_push_events=True,
+            token="secret-token",
+            url="https://example.com/hook-%d")
+        ```
+
         ## Import
 
         You can import a system hook using the hook id `{hook-id}`, e.g.
@@ -390,6 +406,22 @@ class SystemHook(pulumi.CustomResource):
         > This resource requires GitLab 14.9
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.SystemHook("example",
+            enable_ssl_verification=True,
+            merge_requests_events=True,
+            push_events=True,
+            repository_update_events=True,
+            tag_push_events=True,
+            token="secret-token",
+            url="https://example.com/hook-%d")
+        ```
 
         ## Import
 

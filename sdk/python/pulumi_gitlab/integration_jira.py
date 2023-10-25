@@ -776,6 +776,22 @@ class IntegrationJira(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        jira = gitlab.IntegrationJira("jira",
+            project=awesome_project.id,
+            url="https://jira.example.com",
+            username="user",
+            password="mypass")
+        ```
+
         ## Import
 
         You can import a gitlab_integration_jira state using the project ID, e.g.
@@ -813,6 +829,22 @@ class IntegrationJira(pulumi.CustomResource):
         The `IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        jira = gitlab.IntegrationJira("jira",
+            project=awesome_project.id,
+            url="https://jira.example.com",
+            username="user",
+            password="mypass")
+        ```
 
         ## Import
 

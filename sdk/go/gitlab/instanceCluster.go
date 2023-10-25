@@ -19,6 +19,40 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_clusters.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewInstanceCluster(ctx, "bar", &gitlab.InstanceClusterArgs{
+//				Domain:                      pulumi.String("example.com"),
+//				Enabled:                     pulumi.Bool(true),
+//				EnvironmentScope:            pulumi.String("*"),
+//				KubernetesApiUrl:            pulumi.String("https://124.124.124"),
+//				KubernetesAuthorizationType: pulumi.String("rbac"),
+//				KubernetesCaCert:            pulumi.String("some-cert"),
+//				KubernetesNamespace:         pulumi.String("namespace"),
+//				KubernetesToken:             pulumi.String("some-token"),
+//				ManagementProjectId:         pulumi.String("123456"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // GitLab instance clusters can be imported using a `clusterid`, e.g.

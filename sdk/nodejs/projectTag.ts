@@ -11,6 +11,23 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * // Create a project for the tag to use
+ * const exampleProject = new gitlab.Project("exampleProject", {
+ *     description: "An example project",
+ *     namespaceId: gitlab_group.example.id,
+ * });
+ * const exampleProjectTag = new gitlab.ProjectTag("exampleProjectTag", {
+ *     ref: "main",
+ *     project: exampleProject.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, e.g.

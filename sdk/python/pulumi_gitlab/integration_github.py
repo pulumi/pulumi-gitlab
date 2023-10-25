@@ -293,6 +293,21 @@ class IntegrationGithub(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        github = gitlab.IntegrationGithub("github",
+            project=awesome_project.id,
+            token="REDACTED",
+            repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
+        ```
+
         ## Import
 
         ```sh
@@ -322,6 +337,21 @@ class IntegrationGithub(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        github = gitlab.IntegrationGithub("github",
+            project=awesome_project.id,
+            token="REDACTED",
+            repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
+        ```
 
         ## Import
 

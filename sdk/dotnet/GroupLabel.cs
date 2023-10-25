@@ -14,6 +14,26 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/labels.html#group-labels)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fixme = new GitLab.GroupLabel("fixme", new()
+    ///     {
+    ///         Color = "#ffcc00",
+    ///         Description = "issue with failing tests",
+    ///         Group = "example",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.

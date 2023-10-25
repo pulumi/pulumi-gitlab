@@ -643,6 +643,21 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        teams = gitlab.ServiceMicrosoftTeams("teams",
+            project=awesome_project.id,
+            webhook="https://testurl.com/?token=XYZ",
+            push_events=True)
+        ```
+
         ## Import
 
         You can import a gitlab_service_microsoft_teams state using the project ID, e.g.
@@ -679,6 +694,21 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
         > This resource is deprecated. use `IntegrationMicrosoftTeams`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        teams = gitlab.ServiceMicrosoftTeams("teams",
+            project=awesome_project.id,
+            webhook="https://testurl.com/?token=XYZ",
+            push_events=True)
+        ```
 
         ## Import
 

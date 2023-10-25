@@ -9,6 +9,20 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const test = new gitlab.GroupShareGroup("test", {
+ *     groupId: gitlab_group.foo.id,
+ *     shareGroupId: gitlab_group.bar.id,
+ *     groupAccess: "guest",
+ *     expiresAt: "2099-01-01",
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.

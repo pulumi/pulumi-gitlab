@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const fixme = new gitlab.ProjectLabel("fixme", {
+ *     project: "example",
+ *     description: "issue with failing tests",
+ *     color: "#ffcc00",
+ * });
+ * // Scoped label
+ * const devopsCreate = new gitlab.ProjectLabel("devopsCreate", {
+ *     project: gitlab_project.example.id,
+ *     description: "issue for creating infrastructure resources",
+ *     color: "#ffa500",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.

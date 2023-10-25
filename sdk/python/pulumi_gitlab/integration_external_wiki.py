@@ -230,6 +230,20 @@ class IntegrationExternalWiki(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        wiki = gitlab.IntegrationExternalWiki("wiki",
+            project=awesome_project.id,
+            external_wiki_url="https://MyAwesomeExternalWikiURL.com")
+        ```
+
         ## Import
 
         You can import a gitlab_integration_external_wiki state using the project ID, e.g.
@@ -253,6 +267,20 @@ class IntegrationExternalWiki(pulumi.CustomResource):
         The `IntegrationExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        wiki = gitlab.IntegrationExternalWiki("wiki",
+            project=awesome_project.id,
+            external_wiki_url="https://MyAwesomeExternalWikiURL.com")
+        ```
 
         ## Import
 

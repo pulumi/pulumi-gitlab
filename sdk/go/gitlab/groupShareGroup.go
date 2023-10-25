@@ -17,6 +17,35 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewGroupShareGroup(ctx, "test", &gitlab.GroupShareGroupArgs{
+//				GroupId:      pulumi.Any(gitlab_group.Foo.Id),
+//				ShareGroupId: pulumi.Any(gitlab_group.Bar.Id),
+//				GroupAccess:  pulumi.String("guest"),
+//				ExpiresAt:    pulumi.String("2099-01-01"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.

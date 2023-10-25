@@ -254,6 +254,21 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#custom-issue-tracker)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        tracker = gitlab.IntegrationCustomIssueTracker("tracker",
+            project=awesome_project.id,
+            project_url="https://customtracker.com/issues",
+            issues_url="https://customtracker.com/TEST-:id")
+        ```
+
         ## Import
 
         You can import a gitlab_integration_custom_issue_tracker state using the project ID, e.g.
@@ -278,6 +293,21 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
         The `IntegrationCustomIssueTracker` resource allows to manage the lifecycle of a project integration with Custom Issue Tracker.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#custom-issue-tracker)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        tracker = gitlab.IntegrationCustomIssueTracker("tracker",
+            project=awesome_project.id,
+            project_url="https://customtracker.com/issues",
+            issues_url="https://customtracker.com/TEST-:id")
+        ```
 
         ## Import
 

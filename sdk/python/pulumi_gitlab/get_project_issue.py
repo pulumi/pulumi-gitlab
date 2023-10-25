@@ -521,6 +521,18 @@ def get_project_issue(iid: Optional[int] = None,
 
     **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    foo = gitlab.get_project(path_with_namespace="foo/bar/baz")
+    welcome_issue = gitlab.get_project_issue(project=foo.id,
+        iid=1)
+    pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
+    ```
+
 
     :param int iid: The internal ID of the project's issue.
     :param str project: The name or ID of the project.
@@ -582,6 +594,18 @@ def get_project_issue_output(iid: Optional[pulumi.Input[int]] = None,
     The `ProjectIssue` data source allows to retrieve details about an issue in a project.
 
     **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    foo = gitlab.get_project(path_with_namespace="foo/bar/baz")
+    welcome_issue = gitlab.get_project_issue(project=foo.id,
+        iid=1)
+    pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
+    ```
 
 
     :param int iid: The internal ID of the project's issue.

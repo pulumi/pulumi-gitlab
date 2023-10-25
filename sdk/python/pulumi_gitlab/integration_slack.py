@@ -1021,6 +1021,23 @@ class IntegrationSlack(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        slack = gitlab.IntegrationSlack("slack",
+            project=awesome_project.id,
+            webhook="https://webhook.com",
+            username="myuser",
+            push_events=True,
+            push_channel="push_chan")
+        ```
+
         ## Import
 
         You can import a gitlab_integration_slack.slack state using the project ID, e.g.
@@ -1065,6 +1082,23 @@ class IntegrationSlack(pulumi.CustomResource):
         The `IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        slack = gitlab.IntegrationSlack("slack",
+            project=awesome_project.id,
+            webhook="https://webhook.com",
+            username="myuser",
+            push_events=True,
+            push_channel="push_chan")
+        ```
 
         ## Import
 

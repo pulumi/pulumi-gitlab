@@ -13,6 +13,24 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.User("example", {
+ *     canCreateGroup: false,
+ *     email: "gitlab@user.create",
+ *     isAdmin: true,
+ *     isExternal: true,
+ *     password: "superPassword",
+ *     projectsLimit: 4,
+ *     resetPassword: false,
+ *     username: "example",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

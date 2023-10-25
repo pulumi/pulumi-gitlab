@@ -251,6 +251,27 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#enable-a-deploy-key)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # A repo to host the deployment key
+        parent_project = gitlab.Project("parentProject")
+        # A second repo to use the deployment key from the parent project
+        foo_project = gitlab.Project("fooProject")
+        # Upload a deployment key for the parent repo
+        parent_deploy_key = gitlab.DeployKey("parentDeployKey",
+            project=parent_project.id,
+            title="Example deploy key",
+            key="ssh-ed25519 AAAA...")
+        # Enable the deployment key on the second repo
+        foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
+            project=foo_project.id,
+            key_id=parent_deploy_key.deploy_key_id)
+        ```
+
         ## Import
 
         GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
@@ -281,6 +302,27 @@ class DeployKeyEnable(pulumi.CustomResource):
         The `DeployKeyEnable` resource allows to enable an already existing deploy key (see `DeployKey resource`) for a specific project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#enable-a-deploy-key)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # A repo to host the deployment key
+        parent_project = gitlab.Project("parentProject")
+        # A second repo to use the deployment key from the parent project
+        foo_project = gitlab.Project("fooProject")
+        # Upload a deployment key for the parent repo
+        parent_deploy_key = gitlab.DeployKey("parentDeployKey",
+            project=parent_project.id,
+            title="Example deploy key",
+            key="ssh-ed25519 AAAA...")
+        # Enable the deployment key on the second repo
+        foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
+            project=foo_project.id,
+            key_id=parent_deploy_key.deploy_key_id)
+        ```
 
         ## Import
 

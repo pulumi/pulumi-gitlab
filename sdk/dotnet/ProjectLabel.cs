@@ -14,6 +14,34 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fixme = new GitLab.ProjectLabel("fixme", new()
+    ///     {
+    ///         Project = "example",
+    ///         Description = "issue with failing tests",
+    ///         Color = "#ffcc00",
+    ///     });
+    /// 
+    ///     // Scoped label
+    ///     var devopsCreate = new GitLab.ProjectLabel("devopsCreate", new()
+    ///     {
+    ///         Project = gitlab_project.Example.Id,
+    ///         Description = "issue for creating infrastructure resources",
+    ///         Color = "#ffa500",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.

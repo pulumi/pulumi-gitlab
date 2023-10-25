@@ -19,6 +19,42 @@ namespace Pulumi.GitLab
         /// &gt; The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mygroup = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         FullPath = "mygroup",
+        ///     });
+        /// 
+        ///     var groupProjects = GitLab.GetProjects.Invoke(new()
+        ///     {
+        ///         GroupId = mygroup.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         OrderBy = "name",
+        ///         IncludeSubgroups = true,
+        ///         WithShared = false,
+        ///     });
+        /// 
+        ///     var projects = GitLab.GetProjects.Invoke(new()
+        ///     {
+        ///         Search = "postgresql",
+        ///         Visibility = "private",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("gitlab:index/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithDefaults());
@@ -31,6 +67,42 @@ namespace Pulumi.GitLab
         /// &gt; The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mygroup = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         FullPath = "mygroup",
+        ///     });
+        /// 
+        ///     var groupProjects = GitLab.GetProjects.Invoke(new()
+        ///     {
+        ///         GroupId = mygroup.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         OrderBy = "name",
+        ///         IncludeSubgroups = true,
+        ///         WithShared = false,
+        ///     });
+        /// 
+        ///     var projects = GitLab.GetProjects.Invoke(new()
+        ///     {
+        ///         Search = "postgresql",
+        ///         Visibility = "private",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("gitlab:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());

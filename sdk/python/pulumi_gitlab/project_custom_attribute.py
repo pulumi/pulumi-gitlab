@@ -170,6 +170,18 @@ class ProjectCustomAttribute(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        attr = gitlab.ProjectCustomAttribute("attr",
+            key="location",
+            project=42,
+            value="Greenland")
+        ```
+
         ## Import
 
         You can import a project custom attribute using an id made up of `{project-id}:{key}`, e.g.
@@ -194,6 +206,18 @@ class ProjectCustomAttribute(pulumi.CustomResource):
         The `ProjectCustomAttribute` resource allows to manage custom attributes for a project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        attr = gitlab.ProjectCustomAttribute("attr",
+            key="location",
+            project=42,
+            value="Greenland")
+        ```
 
         ## Import
 

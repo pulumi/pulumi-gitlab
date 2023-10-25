@@ -14,6 +14,27 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/freeze_periods.html)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var schedule = new GitLab.ProjectFreezePeriod("schedule", new()
+    ///     {
+    ///         Project = gitlab_project.Foo.Id,
+    ///         FreezeStart = "0 23 * * 5",
+    ///         FreezeEnd = "0 7 * * 1",
+    ///         CronTimezone = "UTC",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.

@@ -9,6 +9,26 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const examplePipelineSchedule = new gitlab.PipelineSchedule("examplePipelineSchedule", {
+ *     project: "12345",
+ *     description: "Used to schedule builds",
+ *     ref: "master",
+ *     cron: "0 1 * * *",
+ * });
+ * const examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable("examplePipelineScheduleVariable", {
+ *     project: examplePipelineSchedule.project,
+ *     pipelineScheduleId: examplePipelineSchedule.pipelineScheduleId,
+ *     key: "EXAMPLE_KEY",
+ *     value: "example",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.

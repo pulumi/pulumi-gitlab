@@ -989,6 +989,23 @@ class IntegrationMattermost(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        mattermost = gitlab.IntegrationMattermost("mattermost",
+            project=awesome_project.id,
+            webhook="https://webhook.com",
+            username="myuser",
+            push_events=True,
+            push_channel="push_chan")
+        ```
+
         ## Import
 
         You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
@@ -1033,6 +1050,23 @@ class IntegrationMattermost(pulumi.CustomResource):
         The `IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        mattermost = gitlab.IntegrationMattermost("mattermost",
+            project=awesome_project.id,
+            webhook="https://webhook.com",
+            username="myuser",
+            push_events=True,
+            push_channel="push_chan")
+        ```
 
         ## Import
 

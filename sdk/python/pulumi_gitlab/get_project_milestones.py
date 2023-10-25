@@ -141,6 +141,15 @@ def get_project_milestones(iids: Optional[Sequence[int]] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_project_milestones(project="foo/bar")
+    ```
+
 
     :param Sequence[int] iids: Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
     :param bool include_parent_milestones: Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
@@ -179,6 +188,15 @@ def get_project_milestones_output(iids: Optional[pulumi.Input[Optional[Sequence[
     The `get_project_milestones` data source allows get details of a project milestones.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_project_milestones(project="foo/bar")
+    ```
 
 
     :param Sequence[int] iids: Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).

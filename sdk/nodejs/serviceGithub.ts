@@ -13,6 +13,23 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const awesomeProject = new gitlab.Project("awesomeProject", {
+ *     description: "My awesome project.",
+ *     visibilityLevel: "public",
+ * });
+ * const github = new gitlab.ServiceGithub("github", {
+ *     project: awesomeProject.id,
+ *     token: "REDACTED",
+ *     repositoryUrl: "https://github.com/gitlabhq/terraform-provider-gitlab",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

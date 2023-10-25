@@ -363,6 +363,21 @@ class GroupVariable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.GroupVariable("example",
+            environment_scope="*",
+            group="12345",
+            key="group_variable_key",
+            masked=False,
+            protected=False,
+            value="group_variable_value")
+        ```
+
         ## Import
 
         GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
@@ -392,6 +407,21 @@ class GroupVariable(pulumi.CustomResource):
         The `GroupVariable` resource allows to manage the lifecycle of a CI/CD variable for a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.GroupVariable("example",
+            environment_scope="*",
+            group="12345",
+            key="group_variable_key",
+            masked=False,
+            protected=False,
+            value="group_variable_value")
+        ```
 
         ## Import
 

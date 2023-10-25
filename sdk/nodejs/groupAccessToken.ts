@@ -11,6 +11,25 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const exampleGroupAccessToken = new gitlab.GroupAccessToken("exampleGroupAccessToken", {
+ *     group: "25",
+ *     expiresAt: "2020-03-14",
+ *     accessLevel: "developer",
+ *     scopes: ["api"],
+ * });
+ * const exampleGroupVariable = new gitlab.GroupVariable("exampleGroupVariable", {
+ *     group: "25",
+ *     key: "gat",
+ *     value: exampleGroupAccessToken.token,
+ * });
+ * ```
+ *
  * ## Import
  *
  * A GitLab Group Access Token can be imported using a key composed of `<group-id>:<token-id>`, e.g.

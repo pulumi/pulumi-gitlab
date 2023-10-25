@@ -12,6 +12,18 @@ import * as utilities from "./utilities";
  * > **Note** exactly one of projectId or fullPath must be provided.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getProjectMembership({
+ *     inherited: true,
+ *     projectId: 123,
+ * });
+ * ```
  */
 export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMembershipResult> {
     args = args || {};
@@ -82,6 +94,18 @@ export interface GetProjectMembershipResult {
  * > **Note** exactly one of projectId or fullPath must be provided.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getProjectMembership({
+ *     inherited: true,
+ *     projectId: 123,
+ * });
+ * ```
  */
 export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMembershipResult> {
     return pulumi.output(args).apply((a: any) => getProjectMembership(a, opts))

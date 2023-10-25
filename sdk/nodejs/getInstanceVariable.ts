@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
  * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = gitlab.getInstanceVariable({
+ *     key: "foo",
+ * });
+ * ```
  */
 export function getInstanceVariable(args: GetInstanceVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceVariableResult> {
 
@@ -64,6 +75,17 @@ export interface GetInstanceVariableResult {
  * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = gitlab.getInstanceVariable({
+ *     key: "foo",
+ * });
+ * ```
  */
 export function getInstanceVariableOutput(args: GetInstanceVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceVariableResult> {
     return pulumi.output(args).apply((a: any) => getInstanceVariable(a, opts))

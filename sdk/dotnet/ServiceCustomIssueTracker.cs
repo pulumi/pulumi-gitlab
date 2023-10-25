@@ -16,6 +16,32 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#custom-issue-tracker)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
+    ///     {
+    ///         Description = "My awesome project.",
+    ///         VisibilityLevel = "public",
+    ///     });
+    /// 
+    ///     var tracker = new GitLab.ServiceCustomIssueTracker("tracker", new()
+    ///     {
+    ///         Project = awesomeProject.Id,
+    ///         ProjectUrl = "https://customtracker.com/issues",
+    ///         IssuesUrl = "https://customtracker.com/TEST-:id",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// You can import a gitlab_service_custom_issue_tracker state using the project ID, e.g.

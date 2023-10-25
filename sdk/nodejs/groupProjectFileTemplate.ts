@@ -14,6 +14,27 @@ import * as utilities from "./utilities";
  * > This resource requires a GitLab Enterprise instance with a Premium license.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#update-group)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = new gitlab.Group("foo", {
+ *     path: "group",
+ *     description: "An example group",
+ * });
+ * const bar = new gitlab.Project("bar", {
+ *     description: "contains file templates",
+ *     visibilityLevel: "public",
+ *     namespaceId: foo.id,
+ * });
+ * const templateLink = new gitlab.GroupProjectFileTemplate("templateLink", {
+ *     groupId: foo.id,
+ *     fileTemplateProjectId: bar.id,
+ * });
+ * ```
  */
 export class GroupProjectFileTemplate extends pulumi.CustomResource {
     /**

@@ -184,6 +184,18 @@ def get_users(active: Optional[bool] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_users(created_before="2019-01-01",
+        order_by="name",
+        sort="desc")
+    example_two = gitlab.get_users(search="username")
+    ```
+
 
     :param bool active: Filter users that are active.
     :param bool blocked: Filter users that are blocked.
@@ -240,6 +252,18 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
     > Some available options require administrator privileges.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_users(created_before="2019-01-01",
+        order_by="name",
+        sort="desc")
+    example_two = gitlab.get_users(search="username")
+    ```
 
 
     :param bool active: Filter users that are active.

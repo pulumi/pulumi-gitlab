@@ -16,6 +16,33 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fooProject = new GitLab.Project("fooProject", new()
+    ///     {
+    ///         Description = "My example project",
+    ///     });
+    /// 
+    ///     var fooProjectLevelMrApprovals = new GitLab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals", new()
+    ///     {
+    ///         Project = fooProject.Id,
+    ///         ResetApprovalsOnPush = true,
+    ///         DisableOverridingApproversPerMergeRequest = false,
+    ///         MergeRequestsAuthorApproval = false,
+    ///         MergeRequestsDisableCommittersApproval = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

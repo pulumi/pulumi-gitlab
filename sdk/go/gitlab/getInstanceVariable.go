@@ -15,6 +15,32 @@ import (
 // The `InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.LookupInstanceVariable(ctx, &gitlab.LookupInstanceVariableArgs{
+//				Key: "foo",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupInstanceVariable(ctx *pulumi.Context, args *LookupInstanceVariableArgs, opts ...pulumi.InvokeOption) (*LookupInstanceVariableResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceVariableResult

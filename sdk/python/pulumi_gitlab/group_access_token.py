@@ -348,6 +348,23 @@ class GroupAccessToken(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_group_access_token = gitlab.GroupAccessToken("exampleGroupAccessToken",
+            group="25",
+            expires_at="2020-03-14",
+            access_level="developer",
+            scopes=["api"])
+        example_group_variable = gitlab.GroupVariable("exampleGroupVariable",
+            group="25",
+            key="gat",
+            value=example_group_access_token.token)
+        ```
+
         ## Import
 
         A GitLab Group Access Token can be imported using a key composed of `<group-id>:<token-id>`, e.g.
@@ -378,6 +395,23 @@ class GroupAccessToken(pulumi.CustomResource):
         > Group Access Token were introduced in GitLab 14.7
 
         **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_group_access_token = gitlab.GroupAccessToken("exampleGroupAccessToken",
+            group="25",
+            expires_at="2020-03-14",
+            access_level="developer",
+            scopes=["api"])
+        example_group_variable = gitlab.GroupVariable("exampleGroupVariable",
+            group="25",
+            key="gat",
+            value=example_group_access_token.token)
+        ```
 
         ## Import
 

@@ -76,6 +76,15 @@ def get_project_branches(project: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_project_branches(project="foo/bar/baz")
+    ```
+
 
     :param str project: ID or URL-encoded path of the project owned by the authenticated user.
     """
@@ -97,6 +106,15 @@ def get_project_branches_output(project: Optional[pulumi.Input[str]] = None,
     The `get_project_branches` data source allows details of the branches of a given project to be retrieved.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_project_branches(project="foo/bar/baz")
+    ```
 
 
     :param str project: ID or URL-encoded path of the project owned by the authenticated user.

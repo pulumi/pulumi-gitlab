@@ -12,6 +12,17 @@ import * as utilities from "./utilities";
  * > This data source requires administration privileges.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getInstanceDeployKeys({
+ *     "public": true,
+ * });
+ * ```
  */
 export function getInstanceDeployKeys(args?: GetInstanceDeployKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceDeployKeysResult> {
     args = args || {};
@@ -55,6 +66,17 @@ export interface GetInstanceDeployKeysResult {
  * > This data source requires administration privileges.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getInstanceDeployKeys({
+ *     "public": true,
+ * });
+ * ```
  */
 export function getInstanceDeployKeysOutput(args?: GetInstanceDeployKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceDeployKeysResult> {
     return pulumi.output(args).apply((a: any) => getInstanceDeployKeys(a, opts))

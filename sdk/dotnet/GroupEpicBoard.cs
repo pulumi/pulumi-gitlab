@@ -16,6 +16,49 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new GitLab.Group("example", new()
+    ///     {
+    ///         Path = "test_group",
+    ///         Description = "An example group",
+    ///     });
+    /// 
+    ///     var label1 = new GitLab.GroupLabel("label1", new()
+    ///     {
+    ///         Group = example.Id,
+    ///         Color = "#FF0000",
+    ///     });
+    /// 
+    ///     var label3 = new GitLab.GroupLabel("label3", new()
+    ///     {
+    ///         Group = example.Id,
+    ///         Color = "#003000",
+    ///     });
+    /// 
+    ///     var epicBoard = new GitLab.GroupEpicBoard("epicBoard", new()
+    ///     {
+    ///         Group = example.Path,
+    ///         Lists = new[]
+    ///         {
+    ///             new GitLab.Inputs.GroupEpicBoardListArgs
+    ///             {
+    ///                 LabelId = label1.LabelId,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// You can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.

@@ -11,6 +11,20 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.ProjectVariable("example", {
+ *     key: "project_variable_key",
+ *     project: "12345",
+ *     "protected": false,
+ *     value: "project_variable_value",
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.

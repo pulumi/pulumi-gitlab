@@ -14,6 +14,32 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/users.html#single-ssh-key)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleUser = GitLab.GetUser.Invoke(new()
+    ///     {
+    ///         Username = "example-user",
+    ///     });
+    /// 
+    ///     var exampleUserSshKey = new GitLab.UserSshKey("exampleUserSshKey", new()
+    ///     {
+    ///         UserId = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
+    ///         Title = "example-key",
+    ///         Key = "ssh-ed25519 AAAA...",
+    ///         ExpiresAt = "2016-01-21T00:00:00.000Z",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.

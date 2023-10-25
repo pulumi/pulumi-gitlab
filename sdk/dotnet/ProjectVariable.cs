@@ -16,6 +16,27 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new GitLab.ProjectVariable("example", new()
+    ///     {
+    ///         Key = "project_variable_key",
+    ///         Project = "12345",
+    ///         Protected = false,
+    ///         Value = "project_variable_value",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.

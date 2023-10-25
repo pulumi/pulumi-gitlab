@@ -13,6 +13,42 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html#create-an-agent-token)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ * import * as helm from "@pulumi/helm";
+ *
+ * // Create token for an agent
+ * const example = new gitlab.ClusterAgentToken("example", {
+ *     project: "12345",
+ *     agentId: 42,
+ *     description: "some token",
+ * });
+ * const thisProject = gitlab.getProject({
+ *     pathWithNamespace: "my-org/example",
+ * });
+ * const thisClusterAgent = new gitlab.ClusterAgent("thisClusterAgent", {project: thisProject.then(thisProject => thisProject.id)});
+ * const thisClusterAgentToken = new gitlab.ClusterAgentToken("thisClusterAgentToken", {
+ *     project: thisProject.then(thisProject => thisProject.id),
+ *     agentId: thisClusterAgent.agentId,
+ *     description: "Token for the my-agent used with `gitlab-agent` Helm Chart",
+ * });
+ * const gitlabAgent = new helm.index.Helm_release("gitlabAgent", {
+ *     name: "gitlab-agent",
+ *     namespace: "gitlab-agent",
+ *     createNamespace: true,
+ *     repository: "https://charts.gitlab.io",
+ *     chart: "gitlab-agent",
+ *     version: "1.2.0",
+ *     set: [{
+ *         name: "config.token",
+ *         value: thisClusterAgentToken.token,
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>:<token-id>`

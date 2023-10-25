@@ -255,6 +255,34 @@ class ProjectBadge(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Project("foo")
+        example = gitlab.ProjectBadge("example",
+            project=foo.id,
+            link_url="https://example.com/badge-123",
+            image_url="https://example.com/badge-123.svg")
+        # Pipeline status badges with placeholders will be enabled
+        gitlab_pipeline = gitlab.ProjectBadge("gitlabPipeline",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
+        # Test coverage report badges with placeholders will be enabled
+        gitlab_coverage = gitlab.ProjectBadge("gitlabCoverage",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/jobs",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
+        # Latest release badges with placeholders will be enabled
+        gitlab_release = gitlab.ProjectBadge("gitlabRelease",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/releases",
+            image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
+        ```
+
         ## Import
 
         GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
@@ -280,6 +308,34 @@ class ProjectBadge(pulumi.CustomResource):
         The `ProjectBadge` resource allows to manage the lifecycle of project badges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Project("foo")
+        example = gitlab.ProjectBadge("example",
+            project=foo.id,
+            link_url="https://example.com/badge-123",
+            image_url="https://example.com/badge-123.svg")
+        # Pipeline status badges with placeholders will be enabled
+        gitlab_pipeline = gitlab.ProjectBadge("gitlabPipeline",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
+        # Test coverage report badges with placeholders will be enabled
+        gitlab_coverage = gitlab.ProjectBadge("gitlabCoverage",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/jobs",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
+        # Latest release badges with placeholders will be enabled
+        gitlab_release = gitlab.ProjectBadge("gitlabRelease",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/releases",
+            image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
+        ```
 
         ## Import
 

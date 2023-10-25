@@ -7,6 +7,27 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const tagProtect = new gitlab.TagProtection("tagProtect", {
+ *     allowedToCreates: [
+ *         {
+ *             userId: 42,
+ *         },
+ *         {
+ *             groupId: 43,
+ *         },
+ *     ],
+ *     createAccessLevel: "developer",
+ *     project: "12345",
+ *     tag: "TagProtected",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.

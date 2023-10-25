@@ -177,6 +177,25 @@ class UserGpgKey(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#get-a-specific-gpg-key)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_user = gitlab.get_user(username="example-user")
+        # Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
+        example_user_gpg_key = gitlab.UserGpgKey("exampleUserGpgKey",
+            user_id=example_user.id,
+            key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
+        ...
+        -----END PGP PUBLIC KEY BLOCK-----\"\"\")
+        # Manages a GPG key for the current user
+        example_user_user_gpg_key = gitlab.UserGpgKey("exampleUserUserGpgKey", key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
+        ...
+        -----END PGP PUBLIC KEY BLOCK-----\"\"\")
+        ```
+
         ## Import
 
         You can import a GPG key for a specific user using an id made up of `{user-id}:{key}`, e.g.
@@ -208,6 +227,25 @@ class UserGpgKey(pulumi.CustomResource):
         > Managing GPG keys for arbitrary users requires admin privileges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#get-a-specific-gpg-key)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_user = gitlab.get_user(username="example-user")
+        # Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
+        example_user_gpg_key = gitlab.UserGpgKey("exampleUserGpgKey",
+            user_id=example_user.id,
+            key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
+        ...
+        -----END PGP PUBLIC KEY BLOCK-----\"\"\")
+        # Manages a GPG key for the current user
+        example_user_user_gpg_key = gitlab.UserGpgKey("exampleUserUserGpgKey", key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
+        ...
+        -----END PGP PUBLIC KEY BLOCK-----\"\"\")
+        ```
 
         ## Import
 

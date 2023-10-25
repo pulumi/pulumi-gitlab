@@ -11,6 +11,23 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const exampleGroup = new gitlab.Group("exampleGroup", {
+ *     path: "example",
+ *     description: "An example group",
+ * });
+ * // Create a project in the example group
+ * const exampleProject = new gitlab.Project("exampleProject", {
+ *     description: "An example project",
+ *     namespaceId: exampleGroup.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

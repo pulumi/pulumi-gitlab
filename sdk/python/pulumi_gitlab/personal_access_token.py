@@ -291,6 +291,22 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_personal_access_token = gitlab.PersonalAccessToken("examplePersonalAccessToken",
+            user_id=25,
+            expires_at="2020-03-14",
+            scopes=["api"])
+        example_project_variable = gitlab.ProjectVariable("exampleProjectVariable",
+            project=gitlab_project["example"]["id"],
+            key="pat",
+            value=example_personal_access_token.token)
+        ```
+
         ## Import
 
         A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
@@ -320,6 +336,22 @@ class PersonalAccessToken(pulumi.CustomResource):
         > This resource requires administration privileges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_personal_access_token = gitlab.PersonalAccessToken("examplePersonalAccessToken",
+            user_id=25,
+            expires_at="2020-03-14",
+            scopes=["api"])
+        example_project_variable = gitlab.ProjectVariable("exampleProjectVariable",
+            project=gitlab_project["example"]["id"],
+            key="pat",
+            value=example_personal_access_token.token)
+        ```
 
         ## Import
 

@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const test = new gitlab.ProjectShareGroup("test", {
+ *     groupAccess: "guest",
+ *     groupId: 1337,
+ *     project: "12345",
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.

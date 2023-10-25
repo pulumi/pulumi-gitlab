@@ -8,6 +8,23 @@ import * as utilities from "./utilities";
  * The `gitlab.GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = gitlab.getGroupVariable({
+ *     group: "my/example/group",
+ *     key: "foo",
+ * });
+ * const bar = gitlab.getGroupVariable({
+ *     environmentScope: "staging/*",
+ *     group: "my/example/group",
+ *     key: "bar",
+ * });
+ * ```
  */
 export function getGroupVariable(args: GetGroupVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupVariableResult> {
 
@@ -82,6 +99,23 @@ export interface GetGroupVariableResult {
  * The `gitlab.GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = gitlab.getGroupVariable({
+ *     group: "my/example/group",
+ *     key: "foo",
+ * });
+ * const bar = gitlab.getGroupVariable({
+ *     environmentScope: "staging/*",
+ *     group: "my/example/group",
+ *     key: "bar",
+ * });
+ * ```
  */
 export function getGroupVariableOutput(args: GetGroupVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupVariableResult> {
     return pulumi.output(args).apply((a: any) => getGroupVariable(a, opts))

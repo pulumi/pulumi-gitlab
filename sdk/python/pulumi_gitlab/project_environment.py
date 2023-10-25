@@ -285,6 +285,23 @@ class ProjectEnvironment(pulumi.CustomResource):
                  stop_before_destroy: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        this_group = gitlab.Group("thisGroup",
+            path="example",
+            description="An example group")
+        this_project = gitlab.Project("thisProject",
+            namespace_id=this_group.id,
+            initialize_with_readme=True)
+        this_project_environment = gitlab.ProjectEnvironment("thisProjectEnvironment",
+            project=this_project.id,
+            external_url="www.example.com")
+        ```
+
         ## Import
 
         GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
@@ -307,6 +324,23 @@ class ProjectEnvironment(pulumi.CustomResource):
                  args: ProjectEnvironmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        this_group = gitlab.Group("thisGroup",
+            path="example",
+            description="An example group")
+        this_project = gitlab.Project("thisProject",
+            namespace_id=this_group.id,
+            initialize_with_readme=True)
+        this_project_environment = gitlab.ProjectEnvironment("thisProjectEnvironment",
+            project=this_project.id,
+            external_url="www.example.com")
+        ```
+
         ## Import
 
         GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.

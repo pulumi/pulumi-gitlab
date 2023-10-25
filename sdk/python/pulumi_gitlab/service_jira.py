@@ -778,6 +778,22 @@ class ServiceJira(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        jira = gitlab.ServiceJira("jira",
+            project=awesome_project.id,
+            url="https://jira.example.com",
+            username="user",
+            password="mypass")
+        ```
+
         ## Import
 
         You can import a gitlab_service_jira state using the project ID, e.g.
@@ -817,6 +833,22 @@ class ServiceJira(pulumi.CustomResource):
         > This resource is deprecated. use `IntegrationJira`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        jira = gitlab.ServiceJira("jira",
+            project=awesome_project.id,
+            url="https://jira.example.com",
+            username="user",
+            password="mypass")
+        ```
 
         ## Import
 

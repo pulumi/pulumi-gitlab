@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.ProjectHook("example", {
+ *     mergeRequestsEvents: true,
+ *     project: "example/hooked",
+ *     url: "https://example.com/hook/example",
+ * });
+ * ```
+ *
  * ## Import
  *
  * A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.

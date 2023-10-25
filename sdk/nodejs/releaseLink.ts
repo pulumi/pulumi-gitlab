@@ -9,6 +9,22 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * // Create a project
+ * const exampleProject = new gitlab.Project("exampleProject", {description: "An example project"});
+ * // Can create release link only to a tag associated with a release
+ * const exampleReleaseLink = new gitlab.ReleaseLink("exampleReleaseLink", {
+ *     project: exampleProject.id,
+ *     tagName: "tag_name_associated_with_release",
+ *     url: "https://test/",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, e.g.

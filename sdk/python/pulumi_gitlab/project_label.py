@@ -226,6 +226,23 @@ class ProjectLabel(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        fixme = gitlab.ProjectLabel("fixme",
+            project="example",
+            description="issue with failing tests",
+            color="#ffcc00")
+        # Scoped label
+        devops_create = gitlab.ProjectLabel("devopsCreate",
+            project=gitlab_project["example"]["id"],
+            description="issue for creating infrastructure resources",
+            color="#ffa500")
+        ```
+
         ## Import
 
         Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
@@ -251,6 +268,23 @@ class ProjectLabel(pulumi.CustomResource):
         The `ProjectLabel` resource allows to manage the lifecycle of a project label.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        fixme = gitlab.ProjectLabel("fixme",
+            project="example",
+            description="issue with failing tests",
+            color="#ffcc00")
+        # Scoped label
+        devops_create = gitlab.ProjectLabel("devopsCreate",
+            project=gitlab_project["example"]["id"],
+            description="issue for creating infrastructure resources",
+            color="#ffa500")
+        ```
 
         ## Import
 

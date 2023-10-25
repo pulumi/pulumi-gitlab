@@ -78,6 +78,15 @@ def get_instance_deploy_keys(public: Optional[bool] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_instance_deploy_keys(public=True)
+    ```
+
 
     :param bool public: Only return deploy keys that are public.
     """
@@ -101,6 +110,15 @@ def get_instance_deploy_keys_output(public: Optional[pulumi.Input[Optional[bool]
     > This data source requires administration privileges.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_instance_deploy_keys(public=True)
+    ```
 
 
     :param bool public: Only return deploy keys that are public.

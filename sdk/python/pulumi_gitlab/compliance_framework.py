@@ -315,6 +315,20 @@ class ComplianceFramework(pulumi.CustomResource):
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationcreatecomplianceframework)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        sample = gitlab.ComplianceFramework("sample",
+            color="#87BEEF",
+            default=False,
+            description="A HIPAA Compliance Framework",
+            namespace_path="top-level-group",
+            pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
+        ```
+
         ## Import
 
         Gitlab compliance frameworks can be imported with a key composed of `<namespace_path>:<framework_id>`, e.g.
@@ -348,6 +362,20 @@ class ComplianceFramework(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance with an Ultimate license to specify a compliance pipeline configuration in the compliance framework.
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationcreatecomplianceframework)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        sample = gitlab.ComplianceFramework("sample",
+            color="#87BEEF",
+            default=False,
+            description="A HIPAA Compliance Framework",
+            namespace_path="top-level-group",
+            pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
+        ```
 
         ## Import
 

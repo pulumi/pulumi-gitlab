@@ -17,6 +17,40 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//				Description: pulumi.String("An example project"),
+//				NamespaceId: pulumi.Any(gitlab_group.Example.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectMilestone(ctx, "exampleProjectMilestone", &gitlab.ProjectMilestoneArgs{
+//				Project: exampleProject.ID(),
+//				Title:   pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, e.g.

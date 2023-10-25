@@ -11,6 +11,24 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const awesomeProject = new gitlab.Project("awesomeProject", {
+ *     description: "My awesome project.",
+ *     visibilityLevel: "public",
+ * });
+ * const jira = new gitlab.ServiceJira("jira", {
+ *     project: awesomeProject.id,
+ *     url: "https://jira.example.com",
+ *     username: "user",
+ *     password: "mypass",
+ * });
+ * ```
+ *
  * ## Import
  *
  * You can import a gitlab_service_jira state using the project ID, e.g.

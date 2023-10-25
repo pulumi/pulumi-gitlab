@@ -221,6 +221,23 @@ class ProjectMembership(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.ProjectMembership("test",
+            access_level="guest",
+            project="12345",
+            user_id=1337)
+        example = gitlab.ProjectMembership("example",
+            access_level="guest",
+            expires_at="2022-12-31",
+            project="67890",
+            user_id=1234)
+        ```
+
         ## Import
 
         GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
@@ -248,6 +265,23 @@ class ProjectMembership(pulumi.CustomResource):
         > If a project should grant membership to an entire group use the `ProjectShareGroup` resource instead.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.ProjectMembership("test",
+            access_level="guest",
+            project="12345",
+            user_id=1337)
+        example = gitlab.ProjectMembership("example",
+            access_level="guest",
+            expires_at="2022-12-31",
+            project="67890",
+            user_id=1234)
+        ```
 
         ## Import
 

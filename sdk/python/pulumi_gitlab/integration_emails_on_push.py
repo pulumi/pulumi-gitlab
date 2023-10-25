@@ -431,6 +431,20 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        emails = gitlab.IntegrationEmailsOnPush("emails",
+            project=awesome_project.id,
+            recipients="myrecipient@example.com myotherrecipient@example.com")
+        ```
+
         ## Import
 
         You can import a gitlab_integration_emails_on_push state using the project ID, e.g.
@@ -459,6 +473,20 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
         The `IntegrationEmailsOnPush` resource allows to manage the lifecycle of a project integration with Emails on Push Service.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        emails = gitlab.IntegrationEmailsOnPush("emails",
+            project=awesome_project.id,
+            recipients="myrecipient@example.com myotherrecipient@example.com")
+        ```
 
         ## Import
 

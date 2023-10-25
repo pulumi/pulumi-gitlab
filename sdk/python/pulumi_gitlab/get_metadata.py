@@ -98,6 +98,15 @@ def get_metadata(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMet
     The `get_metadata` data source retrieves the metadata of the GitLab instance.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    this = gitlab.get_metadata()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -117,5 +126,14 @@ def get_metadata_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
     The `get_metadata` data source retrieves the metadata of the GitLab instance.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    this = gitlab.get_metadata()
+    ```
     """
     ...
