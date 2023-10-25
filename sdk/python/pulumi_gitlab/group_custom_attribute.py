@@ -32,10 +32,18 @@ class GroupCustomAttributeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[int],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             group: Optional[pulumi.Input[int]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("group", group)
         _setter("key", key)
         _setter("value", value)
@@ -101,7 +109,9 @@ class _GroupCustomAttributeState:
              group: Optional[pulumi.Input[int]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if group is not None:
             _setter("group", group)
         if key is not None:
@@ -160,18 +170,6 @@ class GroupCustomAttribute(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        attr = gitlab.GroupCustomAttribute("attr",
-            group=42,
-            key="location",
-            value="Greenland")
-        ```
-
         ## Import
 
         You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.
@@ -196,18 +194,6 @@ class GroupCustomAttribute(pulumi.CustomResource):
         The `GroupCustomAttribute` resource allows to manage custom attributes for a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        attr = gitlab.GroupCustomAttribute("attr",
-            group=42,
-            key="location",
-            value="Greenland")
-        ```
 
         ## Import
 

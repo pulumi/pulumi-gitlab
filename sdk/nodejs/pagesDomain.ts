@@ -9,28 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * // Example using auto_ssl_enabled, which uses lets encrypt to generate a certificate
- * const thisPagesDomain = new gitlab.PagesDomain("thisPagesDomain", {
- *     project: "123",
- *     domain: "example.com",
- *     autoSslEnabled: true,
- * });
- * // Example using a manually generated certificate and key
- * const thisIndex_pagesDomainPagesDomain = new gitlab.PagesDomain("thisIndex/pagesDomainPagesDomain", {
- *     project: "123",
- *     domain: "example.com",
- *     key: fs.readFileSync(`${path.module}/key.pem`),
- *     certificate: fs.readFileSync(`${path.module}/cert.pem`),
- * });
- * ```
- *
  * ## Import
  *
  * GitLab pages domain can be imported using an id made up of `projectId:domain` _without_ the http protocol, e.g.

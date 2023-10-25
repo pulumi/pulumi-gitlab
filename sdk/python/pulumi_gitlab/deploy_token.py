@@ -41,13 +41,19 @@ class DeployTokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              expires_at: Optional[pulumi.Input[str]] = None,
              group: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+
         _setter("scopes", scopes)
         if expires_at is not None:
             _setter("expires_at", expires_at)
@@ -177,7 +183,13 @@ class _DeployTokenState:
              scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              token: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_token_id is None and 'deployTokenId' in kwargs:
+            deploy_token_id = kwargs['deployTokenId']
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+
         if deploy_token_id is not None:
             _setter("deploy_token_id", deploy_token_id)
         if expires_at is not None:

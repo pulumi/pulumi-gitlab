@@ -10,39 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new GitLab.Project("foo", new()
-    ///     {
-    ///         Description = "Lorem Ipsum",
-    ///         VisibilityLevel = "public",
-    ///     });
-    /// 
-    ///     var welcomeIssue = new GitLab.ProjectIssue("welcomeIssue", new()
-    ///     {
-    ///         Project = foo.Id,
-    ///         Title = "Welcome!",
-    ///         Description = foo.Name.Apply(name =&gt; @$"  Welcome to the {name} project!
-    /// 
-    /// "),
-    ///         DiscussionLocked = true,
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["welcomeIssueWebUrl"] = data.Gitlab_project_issue.Web_url,
-    ///     };
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.

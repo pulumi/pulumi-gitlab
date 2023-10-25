@@ -193,16 +193,6 @@ def get_group_subgroups(all_available: Optional[bool] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    subgroups_group_subgroups = gitlab.get_group_subgroups(group_id=123456)
-    pulumi.export("subgroups", subgroups_group_subgroups)
-    ```
-
 
     :param bool all_available: Show all the groups you have access to.
     :param str min_access_level: Limit to groups where current user has at least this access level.
@@ -258,16 +248,6 @@ def get_group_subgroups_output(all_available: Optional[pulumi.Input[Optional[boo
     The `get_group_subgroups` data source allows to get subgroups of a group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    subgroups_group_subgroups = gitlab.get_group_subgroups(group_id=123456)
-    pulumi.export("subgroups", subgroups_group_subgroups)
-    ```
 
 
     :param bool all_available: Show all the groups you have access to.

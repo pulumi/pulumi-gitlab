@@ -69,7 +69,25 @@ class BranchCommitArgs:
              parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              short_id: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email is None and 'authorEmail' in kwargs:
+            author_email = kwargs['authorEmail']
+        if author_name is None and 'authorName' in kwargs:
+            author_name = kwargs['authorName']
+        if authored_date is None and 'authoredDate' in kwargs:
+            authored_date = kwargs['authoredDate']
+        if committed_date is None and 'committedDate' in kwargs:
+            committed_date = kwargs['committedDate']
+        if committer_email is None and 'committerEmail' in kwargs:
+            committer_email = kwargs['committerEmail']
+        if committer_name is None and 'committerName' in kwargs:
+            committer_name = kwargs['committerName']
+        if parent_ids is None and 'parentIds' in kwargs:
+            parent_ids = kwargs['parentIds']
+        if short_id is None and 'shortId' in kwargs:
+            short_id = kwargs['shortId']
+
         if author_email is not None:
             _setter("author_email", author_email)
         if author_name is not None:
@@ -220,7 +238,17 @@ class BranchProtectionAllowedToMergeArgs:
              access_level_description: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -306,7 +334,17 @@ class BranchProtectionAllowedToPushArgs:
              access_level_description: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -392,7 +430,17 @@ class BranchProtectionAllowedToUnprotectArgs:
              access_level_description: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -474,7 +522,11 @@ class GroupEpicBoardListArgs:
              id: Optional[pulumi.Input[int]] = None,
              label_id: Optional[pulumi.Input[int]] = None,
              position: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label_id is None and 'labelId' in kwargs:
+            label_id = kwargs['labelId']
+
         if id is not None:
             _setter("id", id)
         if label_id is not None:
@@ -542,7 +594,11 @@ class GroupIssueBoardListArgs:
              id: Optional[pulumi.Input[int]] = None,
              label_id: Optional[pulumi.Input[int]] = None,
              position: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label_id is None and 'labelId' in kwargs:
+            label_id = kwargs['labelId']
+
         if id is not None:
             _setter("id", id)
         if label_id is not None:
@@ -630,7 +686,21 @@ class ProjectContainerExpirationPolicyArgs:
              name_regex_keep: Optional[pulumi.Input[str]] = None,
              next_run_at: Optional[pulumi.Input[str]] = None,
              older_than: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if keep_n is None and 'keepN' in kwargs:
+            keep_n = kwargs['keepN']
+        if name_regex is None and 'nameRegex' in kwargs:
+            name_regex = kwargs['nameRegex']
+        if name_regex_delete is None and 'nameRegexDelete' in kwargs:
+            name_regex_delete = kwargs['nameRegexDelete']
+        if name_regex_keep is None and 'nameRegexKeep' in kwargs:
+            name_regex_keep = kwargs['nameRegexKeep']
+        if next_run_at is None and 'nextRunAt' in kwargs:
+            next_run_at = kwargs['nextRunAt']
+        if older_than is None and 'olderThan' in kwargs:
+            older_than = kwargs['olderThan']
+
         if cadence is not None:
             _setter("cadence", cadence)
         if enabled is not None:
@@ -786,7 +856,17 @@ class ProjectIssueBoardListArgs:
              label_id: Optional[pulumi.Input[int]] = None,
              milestone_id: Optional[pulumi.Input[int]] = None,
              position: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assignee_id is None and 'assigneeId' in kwargs:
+            assignee_id = kwargs['assigneeId']
+        if iteration_id is None and 'iterationId' in kwargs:
+            iteration_id = kwargs['iterationId']
+        if label_id is None and 'labelId' in kwargs:
+            label_id = kwargs['labelId']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+
         if assignee_id is not None:
             _setter("assignee_id", assignee_id)
         if id is not None:
@@ -888,7 +968,11 @@ class ProjectIssueTaskCompletionStatusArgs:
              _setter: Callable[[Any, Any], None],
              completed_count: Optional[pulumi.Input[int]] = None,
              count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if completed_count is None and 'completedCount' in kwargs:
+            completed_count = kwargs['completedCount']
+
         if completed_count is not None:
             _setter("completed_count", completed_count)
         if count is not None:
@@ -948,7 +1032,19 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
              id: Optional[pulumi.Input[int]] = None,
              required_approvals: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if required_approvals is None and 'requiredApprovals' in kwargs:
+            required_approvals = kwargs['requiredApprovals']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -1066,7 +1162,17 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
              group_id: Optional[pulumi.Input[int]] = None,
              id: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:
@@ -1194,7 +1300,31 @@ class ProjectPushRulesArgs:
              member_check: Optional[pulumi.Input[bool]] = None,
              prevent_secrets: Optional[pulumi.Input[bool]] = None,
              reject_unsigned_commits: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email_regex is None and 'authorEmailRegex' in kwargs:
+            author_email_regex = kwargs['authorEmailRegex']
+        if branch_name_regex is None and 'branchNameRegex' in kwargs:
+            branch_name_regex = kwargs['branchNameRegex']
+        if commit_committer_check is None and 'commitCommitterCheck' in kwargs:
+            commit_committer_check = kwargs['commitCommitterCheck']
+        if commit_message_negative_regex is None and 'commitMessageNegativeRegex' in kwargs:
+            commit_message_negative_regex = kwargs['commitMessageNegativeRegex']
+        if commit_message_regex is None and 'commitMessageRegex' in kwargs:
+            commit_message_regex = kwargs['commitMessageRegex']
+        if deny_delete_tag is None and 'denyDeleteTag' in kwargs:
+            deny_delete_tag = kwargs['denyDeleteTag']
+        if file_name_regex is None and 'fileNameRegex' in kwargs:
+            file_name_regex = kwargs['fileNameRegex']
+        if max_file_size is None and 'maxFileSize' in kwargs:
+            max_file_size = kwargs['maxFileSize']
+        if member_check is None and 'memberCheck' in kwargs:
+            member_check = kwargs['memberCheck']
+        if prevent_secrets is None and 'preventSecrets' in kwargs:
+            prevent_secrets = kwargs['preventSecrets']
+        if reject_unsigned_commits is None and 'rejectUnsignedCommits' in kwargs:
+            reject_unsigned_commits = kwargs['rejectUnsignedCommits']
+
         if author_email_regex is not None:
             _setter("author_email_regex", author_email_regex)
         if branch_name_regex is not None:
@@ -1393,7 +1523,25 @@ class ProjectTagCommitArgs:
              parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              short_id: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if author_email is None and 'authorEmail' in kwargs:
+            author_email = kwargs['authorEmail']
+        if author_name is None and 'authorName' in kwargs:
+            author_name = kwargs['authorName']
+        if authored_date is None and 'authoredDate' in kwargs:
+            authored_date = kwargs['authoredDate']
+        if committed_date is None and 'committedDate' in kwargs:
+            committed_date = kwargs['committedDate']
+        if committer_email is None and 'committerEmail' in kwargs:
+            committer_email = kwargs['committerEmail']
+        if committer_name is None and 'committerName' in kwargs:
+            committer_name = kwargs['committerName']
+        if parent_ids is None and 'parentIds' in kwargs:
+            parent_ids = kwargs['parentIds']
+        if short_id is None and 'shortId' in kwargs:
+            short_id = kwargs['shortId']
+
         if author_email is not None:
             _setter("author_email", author_email)
         if author_name is not None:
@@ -1532,7 +1680,11 @@ class ProjectTagReleaseArgs:
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
              tag_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+
         if description is not None:
             _setter("description", description)
         if tag_name is not None:
@@ -1584,7 +1736,17 @@ class TagProtectionAllowedToCreateArgs:
              access_level_description: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level_description is None and 'accessLevelDescription' in kwargs:
+            access_level_description = kwargs['accessLevelDescription']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if access_level_description is not None:

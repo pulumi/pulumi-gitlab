@@ -10,17 +10,6 @@ import * as utilities from "./utilities";
  * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getProjectProtectedBranches({
- *     projectId: "foo/bar/baz",
- * });
- * ```
  */
 export function getProjectProtectedBranches(args: GetProjectProtectedBranchesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectProtectedBranchesResult> {
 
@@ -61,17 +50,6 @@ export interface GetProjectProtectedBranchesResult {
  * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getProjectProtectedBranches({
- *     projectId: "foo/bar/baz",
- * });
- * ```
  */
 export function getProjectProtectedBranchesOutput(args: GetProjectProtectedBranchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectProtectedBranchesResult> {
     return pulumi.output(args).apply((a: any) => getProjectProtectedBranches(a, opts))

@@ -29,9 +29,15 @@ class PipelineTriggerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             description: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("description", description)
         _setter("project", project)
 
@@ -88,7 +94,11 @@ class _PipelineTriggerState:
              pipeline_trigger_id: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pipeline_trigger_id is None and 'pipelineTriggerId' in kwargs:
+            pipeline_trigger_id = kwargs['pipelineTriggerId']
+
         if description is not None:
             _setter("description", description)
         if pipeline_trigger_id is not None:
@@ -160,17 +170,6 @@ class PipelineTrigger(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_triggers.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.PipelineTrigger("example",
-            description="Used to trigger builds",
-            project="12345")
-        ```
-
         ## Import
 
         GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
@@ -194,17 +193,6 @@ class PipelineTrigger(pulumi.CustomResource):
         The `PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_triggers.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.PipelineTrigger("example",
-            description="Used to trigger builds",
-            project="12345")
-        ```
 
         ## Import
 

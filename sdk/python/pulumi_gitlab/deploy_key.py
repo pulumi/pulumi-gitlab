@@ -35,11 +35,21 @@ class DeployKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             project: pulumi.Input[str],
-             title: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              can_push: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if can_push is None and 'canPush' in kwargs:
+            can_push = kwargs['canPush']
+
         _setter("key", key)
         _setter("project", project)
         _setter("title", title)
@@ -127,7 +137,13 @@ class _DeployKeyState:
              key: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if can_push is None and 'canPush' in kwargs:
+            can_push = kwargs['canPush']
+        if deploy_key_id is None and 'deployKeyId' in kwargs:
+            deploy_key_id = kwargs['deployKeyId']
+
         if can_push is not None:
             _setter("can_push", can_push)
         if deploy_key_id is not None:
@@ -217,18 +233,6 @@ class DeployKey(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.DeployKey("example",
-            key="ssh-ed25519 AAAA...",
-            project="example/deploying",
-            title="Example deploy key")
-        ```
-
         ## Import
 
         GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
@@ -260,18 +264,6 @@ class DeployKey(pulumi.CustomResource):
         > To enable an already existing deploy key for another project use the `gitlab_project_deploy_key` resource.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.DeployKey("example",
-            key="ssh-ed25519 AAAA...",
-            project="example/deploying",
-            title="Example deploy key")
-        ```
 
         ## Import
 

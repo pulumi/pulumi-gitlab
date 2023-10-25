@@ -35,11 +35,19 @@ class ProjectEnvironmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
              external_url: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              stop_before_destroy: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if external_url is None and 'externalUrl' in kwargs:
+            external_url = kwargs['externalUrl']
+        if stop_before_destroy is None and 'stopBeforeDestroy' in kwargs:
+            stop_before_destroy = kwargs['stopBeforeDestroy']
+
         _setter("project", project)
         if external_url is not None:
             _setter("external_url", external_url)
@@ -141,7 +149,17 @@ class _ProjectEnvironmentState:
              state: Optional[pulumi.Input[str]] = None,
              stop_before_destroy: Optional[pulumi.Input[bool]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if external_url is None and 'externalUrl' in kwargs:
+            external_url = kwargs['externalUrl']
+        if stop_before_destroy is None and 'stopBeforeDestroy' in kwargs:
+            stop_before_destroy = kwargs['stopBeforeDestroy']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if external_url is not None:
@@ -267,23 +285,6 @@ class ProjectEnvironment(pulumi.CustomResource):
                  stop_before_destroy: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        this_group = gitlab.Group("thisGroup",
-            path="example",
-            description="An example group")
-        this_project = gitlab.Project("thisProject",
-            namespace_id=this_group.id,
-            initialize_with_readme=True)
-        this_project_environment = gitlab.ProjectEnvironment("thisProjectEnvironment",
-            project=this_project.id,
-            external_url="www.example.com")
-        ```
-
         ## Import
 
         GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
@@ -306,23 +307,6 @@ class ProjectEnvironment(pulumi.CustomResource):
                  args: ProjectEnvironmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        this_group = gitlab.Group("thisGroup",
-            path="example",
-            description="An example group")
-        this_project = gitlab.Project("thisProject",
-            namespace_id=this_group.id,
-            initialize_with_readme=True)
-        this_project_environment = gitlab.ProjectEnvironment("thisProjectEnvironment",
-            project=this_project.id,
-            external_url="www.example.com")
-        ```
-
         ## Import
 
         GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.

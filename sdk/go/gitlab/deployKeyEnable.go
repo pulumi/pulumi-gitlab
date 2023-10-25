@@ -17,49 +17,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#enable-a-deploy-key)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			parentProject, err := gitlab.NewProject(ctx, "parentProject", nil)
-//			if err != nil {
-//				return err
-//			}
-//			fooProject, err := gitlab.NewProject(ctx, "fooProject", nil)
-//			if err != nil {
-//				return err
-//			}
-//			parentDeployKey, err := gitlab.NewDeployKey(ctx, "parentDeployKey", &gitlab.DeployKeyArgs{
-//				Project: parentProject.ID(),
-//				Title:   pulumi.String("Example deploy key"),
-//				Key:     pulumi.String("ssh-ed25519 AAAA..."),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewDeployKeyEnable(ctx, "fooDeployKeyEnable", &gitlab.DeployKeyEnableArgs{
-//				Project: fooProject.ID(),
-//				KeyId:   parentDeployKey.DeployKeyId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example

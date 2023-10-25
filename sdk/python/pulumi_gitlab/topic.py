@@ -47,7 +47,13 @@ class TopicArgs:
              name: Optional[pulumi.Input[str]] = None,
              soft_destroy: Optional[pulumi.Input[bool]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if avatar_hash is None and 'avatarHash' in kwargs:
+            avatar_hash = kwargs['avatarHash']
+        if soft_destroy is None and 'softDestroy' in kwargs:
+            soft_destroy = kwargs['softDestroy']
+
         if avatar is not None:
             _setter("avatar", avatar)
         if avatar_hash is not None:
@@ -180,7 +186,15 @@ class _TopicState:
              name: Optional[pulumi.Input[str]] = None,
              soft_destroy: Optional[pulumi.Input[bool]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if avatar_hash is None and 'avatarHash' in kwargs:
+            avatar_hash = kwargs['avatarHash']
+        if avatar_url is None and 'avatarUrl' in kwargs:
+            avatar_url = kwargs['avatarUrl']
+        if soft_destroy is None and 'softDestroy' in kwargs:
+            soft_destroy = kwargs['softDestroy']
+
         if avatar is not None:
             _setter("avatar", avatar)
         if avatar_hash is not None:

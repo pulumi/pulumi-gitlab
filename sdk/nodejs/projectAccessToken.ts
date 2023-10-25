@@ -9,25 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const exampleProjectAccessToken = new gitlab.ProjectAccessToken("exampleProjectAccessToken", {
- *     project: "25",
- *     expiresAt: "2020-03-14",
- *     accessLevel: "reporter",
- *     scopes: ["api"],
- * });
- * const exampleProjectVariable = new gitlab.ProjectVariable("exampleProjectVariable", {
- *     project: gitlab_project.example.id,
- *     key: "pat",
- *     value: exampleProjectAccessToken.token,
- * });
- * ```
- *
  * ## Import
  *
  * A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.

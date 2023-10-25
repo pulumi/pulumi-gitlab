@@ -47,15 +47,27 @@ class GroupVariableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
+             group: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              environment_scope: Optional[pulumi.Input[str]] = None,
              masked: Optional[pulumi.Input[bool]] = None,
              protected: Optional[pulumi.Input[bool]] = None,
              raw: Optional[pulumi.Input[bool]] = None,
              variable_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if environment_scope is None and 'environmentScope' in kwargs:
+            environment_scope = kwargs['environmentScope']
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+
         _setter("group", group)
         _setter("key", key)
         _setter("value", value)
@@ -211,7 +223,13 @@ class _GroupVariableState:
              raw: Optional[pulumi.Input[bool]] = None,
              value: Optional[pulumi.Input[str]] = None,
              variable_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if environment_scope is None and 'environmentScope' in kwargs:
+            environment_scope = kwargs['environmentScope']
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+
         if environment_scope is not None:
             _setter("environment_scope", environment_scope)
         if group is not None:
@@ -345,21 +363,6 @@ class GroupVariable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.GroupVariable("example",
-            environment_scope="*",
-            group="12345",
-            key="group_variable_key",
-            masked=False,
-            protected=False,
-            value="group_variable_value")
-        ```
-
         ## Import
 
         GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
@@ -389,21 +392,6 @@ class GroupVariable(pulumi.CustomResource):
         The `GroupVariable` resource allows to manage the lifecycle of a CI/CD variable for a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.GroupVariable("example",
-            environment_scope="*",
-            group="12345",
-            key="group_variable_key",
-            masked=False,
-            protected=False,
-            value="group_variable_value")
-        ```
 
         ## Import
 

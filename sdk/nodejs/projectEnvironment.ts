@@ -5,26 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const thisGroup = new gitlab.Group("thisGroup", {
- *     path: "example",
- *     description: "An example group",
- * });
- * const thisProject = new gitlab.Project("thisProject", {
- *     namespaceId: thisGroup.id,
- *     initializeWithReadme: true,
- * });
- * const thisProjectEnvironment = new gitlab.ProjectEnvironment("thisProjectEnvironment", {
- *     project: thisProject.id,
- *     externalUrl: "www.example.com",
- * });
- * ```
- *
  * ## Import
  *
  * GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.

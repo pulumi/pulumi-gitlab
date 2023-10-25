@@ -29,9 +29,17 @@ class ServiceExternalWikiArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             external_wiki_url: pulumi.Input[str],
-             project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             external_wiki_url: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_wiki_url is None and 'externalWikiUrl' in kwargs:
+            external_wiki_url = kwargs['externalWikiUrl']
+        if external_wiki_url is None:
+            raise TypeError("Missing 'external_wiki_url' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("external_wiki_url", external_wiki_url)
         _setter("project", project)
 
@@ -100,7 +108,15 @@ class _ServiceExternalWikiState:
              slug: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if external_wiki_url is None and 'externalWikiUrl' in kwargs:
+            external_wiki_url = kwargs['externalWikiUrl']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if active is not None:
             _setter("active", active)
         if created_at is not None:
@@ -216,20 +232,6 @@ class ServiceExternalWiki(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        wiki = gitlab.ServiceExternalWiki("wiki",
-            project=awesome_project.id,
-            external_wiki_url="https://MyAwesomeExternalWikiURL.com")
-        ```
-
         ## Import
 
         You can import a gitlab_service_external_wiki state using the project ID, e.g.
@@ -255,20 +257,6 @@ class ServiceExternalWiki(pulumi.CustomResource):
         > This resource is deprecated. use `IntegrationExternalWiki`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        wiki = gitlab.ServiceExternalWiki("wiki",
-            project=awesome_project.id,
-            external_wiki_url="https://MyAwesomeExternalWikiURL.com")
-        ```
 
         ## Import
 

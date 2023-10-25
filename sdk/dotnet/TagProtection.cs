@@ -10,37 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var tagProtect = new GitLab.TagProtection("tagProtect", new()
-    ///     {
-    ///         AllowedToCreates = new[]
-    ///         {
-    ///             new GitLab.Inputs.TagProtectionAllowedToCreateArgs
-    ///             {
-    ///                 UserId = 42,
-    ///             },
-    ///             new GitLab.Inputs.TagProtectionAllowedToCreateArgs
-    ///             {
-    ///                 GroupId = 43,
-    ///             },
-    ///         },
-    ///         CreateAccessLevel = "developer",
-    ///         Project = "12345",
-    ///         Tag = "TagProtected",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.

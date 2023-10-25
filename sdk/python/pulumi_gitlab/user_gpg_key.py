@@ -29,9 +29,15 @@ class UserGpgKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("key", key)
         if user_id is not None:
             _setter("user_id", user_id)
@@ -89,7 +95,15 @@ class _UserGpgKeyState:
              key: Optional[pulumi.Input[str]] = None,
              key_id: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if key is not None:
@@ -163,25 +177,6 @@ class UserGpgKey(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#get-a-specific-gpg-key)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_user = gitlab.get_user(username="example-user")
-        # Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
-        example_user_gpg_key = gitlab.UserGpgKey("exampleUserGpgKey",
-            user_id=example_user.id,
-            key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
-        ...
-        -----END PGP PUBLIC KEY BLOCK-----\"\"\")
-        # Manages a GPG key for the current user
-        example_user_user_gpg_key = gitlab.UserGpgKey("exampleUserUserGpgKey", key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
-        ...
-        -----END PGP PUBLIC KEY BLOCK-----\"\"\")
-        ```
-
         ## Import
 
         You can import a GPG key for a specific user using an id made up of `{user-id}:{key}`, e.g.
@@ -213,25 +208,6 @@ class UserGpgKey(pulumi.CustomResource):
         > Managing GPG keys for arbitrary users requires admin privileges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#get-a-specific-gpg-key)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_user = gitlab.get_user(username="example-user")
-        # Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
-        example_user_gpg_key = gitlab.UserGpgKey("exampleUserGpgKey",
-            user_id=example_user.id,
-            key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
-        ...
-        -----END PGP PUBLIC KEY BLOCK-----\"\"\")
-        # Manages a GPG key for the current user
-        example_user_user_gpg_key = gitlab.UserGpgKey("exampleUserUserGpgKey", key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
-        ...
-        -----END PGP PUBLIC KEY BLOCK-----\"\"\")
-        ```
 
         ## Import
 

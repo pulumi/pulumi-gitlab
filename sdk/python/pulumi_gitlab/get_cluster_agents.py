@@ -77,15 +77,6 @@ def get_cluster_agents(project: Optional[str] = None,
     > Requires at least GitLab 14.10
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    agents = gitlab.get_cluster_agents(project="12345")
-    ```
     """
     __args__ = dict()
     __args__['project'] = project
@@ -107,14 +98,5 @@ def get_cluster_agents_output(project: Optional[pulumi.Input[str]] = None,
     > Requires at least GitLab 14.10
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    agents = gitlab.get_cluster_agents(project="12345")
-    ```
     """
     ...

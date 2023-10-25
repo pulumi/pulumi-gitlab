@@ -17,40 +17,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
-//				Description: pulumi.String("An example project"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewReleaseLink(ctx, "exampleReleaseLink", &gitlab.ReleaseLinkArgs{
-//				Project: exampleProject.ID(),
-//				TagName: pulumi.String("tag_name_associated_with_release"),
-//				Url:     pulumi.String("https://test/"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, e.g.

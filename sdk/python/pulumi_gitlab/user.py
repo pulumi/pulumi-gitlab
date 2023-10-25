@@ -62,8 +62,8 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             email: pulumi.Input[str],
-             username: pulumi.Input[str],
+             email: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              can_create_group: Optional[pulumi.Input[bool]] = None,
              is_admin: Optional[pulumi.Input[bool]] = None,
              is_external: Optional[pulumi.Input[bool]] = None,
@@ -75,7 +75,27 @@ class UserArgs:
              reset_password: Optional[pulumi.Input[bool]] = None,
              skip_confirmation: Optional[pulumi.Input[bool]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if can_create_group is None and 'canCreateGroup' in kwargs:
+            can_create_group = kwargs['canCreateGroup']
+        if is_admin is None and 'isAdmin' in kwargs:
+            is_admin = kwargs['isAdmin']
+        if is_external is None and 'isExternal' in kwargs:
+            is_external = kwargs['isExternal']
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if projects_limit is None and 'projectsLimit' in kwargs:
+            projects_limit = kwargs['projectsLimit']
+        if reset_password is None and 'resetPassword' in kwargs:
+            reset_password = kwargs['resetPassword']
+        if skip_confirmation is None and 'skipConfirmation' in kwargs:
+            skip_confirmation = kwargs['skipConfirmation']
+
         _setter("email", email)
         _setter("username", username)
         if can_create_group is not None:
@@ -322,7 +342,23 @@ class _UserState:
              skip_confirmation: Optional[pulumi.Input[bool]] = None,
              state: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if can_create_group is None and 'canCreateGroup' in kwargs:
+            can_create_group = kwargs['canCreateGroup']
+        if is_admin is None and 'isAdmin' in kwargs:
+            is_admin = kwargs['isAdmin']
+        if is_external is None and 'isExternal' in kwargs:
+            is_external = kwargs['isExternal']
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if projects_limit is None and 'projectsLimit' in kwargs:
+            projects_limit = kwargs['projectsLimit']
+        if reset_password is None and 'resetPassword' in kwargs:
+            reset_password = kwargs['resetPassword']
+        if skip_confirmation is None and 'skipConfirmation' in kwargs:
+            skip_confirmation = kwargs['skipConfirmation']
+
         if can_create_group is not None:
             _setter("can_create_group", can_create_group)
         if email is not None:
@@ -535,23 +571,6 @@ class User(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.User("example",
-            can_create_group=False,
-            email="gitlab@user.create",
-            is_admin=True,
-            is_external=True,
-            password="superPassword",
-            projects_limit=4,
-            reset_password=False,
-            username="example")
-        ```
-
         ## Import
 
         ```sh
@@ -594,23 +613,6 @@ class User(pulumi.CustomResource):
         > You must specify either password or reset_password.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.User("example",
-            can_create_group=False,
-            email="gitlab@user.create",
-            is_admin=True,
-            is_external=True,
-            password="superPassword",
-            projects_limit=4,
-            reset_password=False,
-            username="example")
-        ```
 
         ## Import
 

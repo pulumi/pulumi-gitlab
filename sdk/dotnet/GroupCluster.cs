@@ -16,37 +16,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_clusters.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new GitLab.Group("foo", new()
-    ///     {
-    ///         Path = "foo-path",
-    ///     });
-    /// 
-    ///     var bar = new GitLab.GroupCluster("bar", new()
-    ///     {
-    ///         Group = foo.Id,
-    ///         Domain = "example.com",
-    ///         Enabled = true,
-    ///         KubernetesApiUrl = "https://124.124.124",
-    ///         KubernetesToken = "some-token",
-    ///         KubernetesCaCert = "some-cert",
-    ///         KubernetesAuthorizationType = "rbac",
-    ///         EnvironmentScope = "*",
-    ///         ManagementProjectId = "123456",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.

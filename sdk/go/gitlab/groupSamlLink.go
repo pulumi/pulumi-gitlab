@@ -17,34 +17,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewGroupSamlLink(ctx, "test", &gitlab.GroupSamlLinkArgs{
-//				AccessLevel:   pulumi.String("developer"),
-//				Group:         pulumi.String("12345"),
-//				SamlGroupName: pulumi.String("samlgroupname1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // GitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.

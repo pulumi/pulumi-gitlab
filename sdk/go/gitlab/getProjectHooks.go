@@ -15,38 +15,6 @@ import (
 // The `getProjectHooks` data source allows to retrieve details about hooks in a project.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-project-hooks)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
-//				Id: pulumi.StringRef("foo/bar/baz"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.GetProjectHooks(ctx, &gitlab.GetProjectHooksArgs{
-//				Project: example.Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetProjectHooks(ctx *pulumi.Context, args *GetProjectHooksArgs, opts ...pulumi.InvokeOption) (*GetProjectHooksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectHooksResult

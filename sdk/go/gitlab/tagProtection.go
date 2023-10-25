@@ -13,42 +13,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewTagProtection(ctx, "tagProtect", &gitlab.TagProtectionArgs{
-//				AllowedToCreates: gitlab.TagProtectionAllowedToCreateArray{
-//					&gitlab.TagProtectionAllowedToCreateArgs{
-//						UserId: pulumi.Int(42),
-//					},
-//					&gitlab.TagProtectionAllowedToCreateArgs{
-//						GroupId: pulumi.Int(43),
-//					},
-//				},
-//				CreateAccessLevel: pulumi.String("developer"),
-//				Project:           pulumi.String("12345"),
-//				Tag:               pulumi.String("TagProtected"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.

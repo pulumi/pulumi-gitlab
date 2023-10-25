@@ -17,35 +17,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/freeze_periods.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewProjectFreezePeriod(ctx, "schedule", &gitlab.ProjectFreezePeriodArgs{
-//				Project:      pulumi.Any(gitlab_project.Foo.Id),
-//				FreezeStart:  pulumi.String("0 23 * * 5"),
-//				FreezeEnd:    pulumi.String("0 7 * * 1"),
-//				CronTimezone: pulumi.String("UTC"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.

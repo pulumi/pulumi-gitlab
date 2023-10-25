@@ -15,39 +15,6 @@ import (
 // The `getProjectIssues` data source allows to retrieve details about issues in a project.
 //
 // **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
-//				Id: pulumi.StringRef("foo/bar/baz"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.GetProjectIssues(ctx, &gitlab.GetProjectIssuesArgs{
-//				Project: foo.Id,
-//				Search:  pulumi.StringRef("foo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetProjectIssues(ctx *pulumi.Context, args *GetProjectIssuesArgs, opts ...pulumi.InvokeOption) (*GetProjectIssuesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectIssuesResult

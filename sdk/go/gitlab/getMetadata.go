@@ -4,37 +4,17 @@
 package gitlab
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getMetadata` data source retrieves the metadata of the GitLab instance.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.GetMetadata(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetMetadata(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetMetadataResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetadataResult
@@ -57,4 +37,65 @@ type GetMetadataResult struct {
 	Revision string `pulumi:"revision"`
 	// Version of the GitLab instance.
 	Version string `pulumi:"version"`
+}
+
+func GetMetadataOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetMetadataResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetMetadataResult, error) {
+		r, err := GetMetadata(ctx, opts...)
+		var s GetMetadataResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetMetadataResultOutput)
+}
+
+// A collection of values returned by getMetadata.
+type GetMetadataResultOutput struct{ *pulumi.OutputState }
+
+func (GetMetadataResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetadataResult)(nil)).Elem()
+}
+
+func (o GetMetadataResultOutput) ToGetMetadataResultOutput() GetMetadataResultOutput {
+	return o
+}
+
+func (o GetMetadataResultOutput) ToGetMetadataResultOutputWithContext(ctx context.Context) GetMetadataResultOutput {
+	return o
+}
+
+func (o GetMetadataResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetadataResult] {
+	return pulumix.Output[GetMetadataResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If the GitLab instance is an enterprise instance or not. Supported for GitLab 15.6 onwards.
+func (o GetMetadataResultOutput) Enterprise() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMetadataResult) bool { return v.Enterprise }).(pulumi.BoolOutput)
+}
+
+// The id of the data source. It will always be `1`
+func (o GetMetadataResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Metadata about the GitLab agent server for Kubernetes (KAS).
+func (o GetMetadataResultOutput) Kas() GetMetadataKasOutput {
+	return o.ApplyT(func(v GetMetadataResult) GetMetadataKas { return v.Kas }).(GetMetadataKasOutput)
+}
+
+// Revision of the GitLab instance.
+func (o GetMetadataResultOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataResult) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+// Version of the GitLab instance.
+func (o GetMetadataResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetadataResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMetadataResultOutput{})
 }

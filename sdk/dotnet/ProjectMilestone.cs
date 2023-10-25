@@ -14,32 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a project for the milestone to use
-    ///     var exampleProject = new GitLab.Project("exampleProject", new()
-    ///     {
-    ///         Description = "An example project",
-    ///         NamespaceId = gitlab_group.Example.Id,
-    ///     });
-    /// 
-    ///     var exampleProjectMilestone = new GitLab.ProjectMilestone("exampleProjectMilestone", new()
-    ///     {
-    ///         Project = exampleProject.Id,
-    ///         Title = "example",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Gitlab project milestone can be imported with a key composed of `&lt;project&gt;:&lt;milestone_id&gt;`, e.g.

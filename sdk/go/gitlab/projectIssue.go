@@ -13,47 +13,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := gitlab.NewProject(ctx, "foo", &gitlab.ProjectArgs{
-//				Description:     pulumi.String("Lorem Ipsum"),
-//				VisibilityLevel: pulumi.String("public"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectIssue(ctx, "welcomeIssue", &gitlab.ProjectIssueArgs{
-//				Project: foo.ID(),
-//				Title:   pulumi.String("Welcome!"),
-//				Description: foo.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("  Welcome to the %v project!\n\n", name), nil
-//				}).(pulumi.StringOutput),
-//				DiscussionLocked: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("welcomeIssueWebUrl", data.Gitlab_project_issue.Web_url)
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.

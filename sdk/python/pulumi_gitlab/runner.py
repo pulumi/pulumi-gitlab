@@ -47,7 +47,7 @@ class RunnerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             registration_token: pulumi.Input[str],
+             registration_token: Optional[pulumi.Input[str]] = None,
              access_level: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              locked: Optional[pulumi.Input[bool]] = None,
@@ -55,7 +55,21 @@ class RunnerArgs:
              paused: Optional[pulumi.Input[bool]] = None,
              run_untagged: Optional[pulumi.Input[bool]] = None,
              tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if registration_token is None and 'registrationToken' in kwargs:
+            registration_token = kwargs['registrationToken']
+        if registration_token is None:
+            raise TypeError("Missing 'registration_token' argument")
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if maximum_timeout is None and 'maximumTimeout' in kwargs:
+            maximum_timeout = kwargs['maximumTimeout']
+        if run_untagged is None and 'runUntagged' in kwargs:
+            run_untagged = kwargs['runUntagged']
+        if tag_lists is None and 'tagLists' in kwargs:
+            tag_lists = kwargs['tagLists']
+
         _setter("registration_token", registration_token)
         if access_level is not None:
             _setter("access_level", access_level)
@@ -222,7 +236,21 @@ class _RunnerState:
              run_untagged: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if authentication_token is None and 'authenticationToken' in kwargs:
+            authentication_token = kwargs['authenticationToken']
+        if maximum_timeout is None and 'maximumTimeout' in kwargs:
+            maximum_timeout = kwargs['maximumTimeout']
+        if registration_token is None and 'registrationToken' in kwargs:
+            registration_token = kwargs['registrationToken']
+        if run_untagged is None and 'runUntagged' in kwargs:
+            run_untagged = kwargs['runUntagged']
+        if tag_lists is None and 'tagLists' in kwargs:
+            tag_lists = kwargs['tagLists']
+
         if access_level is not None:
             _setter("access_level", access_level)
         if authentication_token is not None:
@@ -391,51 +419,6 @@ class Runner(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#register-a-new-runner)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-        import pulumi_local as local
-
-        # Basic GitLab Group Runner
-        my_group = gitlab.Group("myGroup", description="group that holds the runners")
-        basic_runner = gitlab.Runner("basicRunner", registration_token=my_group.runners_token)
-        # GitLab Runner that runs only tagged jobs
-        tagged_only = gitlab.Runner("taggedOnly",
-            registration_token=my_group.runners_token,
-            description="I only run tagged jobs",
-            run_untagged=False,
-            tag_lists=[
-                "tag_one",
-                "tag_two",
-            ])
-        # GitLab Runner that only runs on protected branches
-        protected = gitlab.Runner("protected",
-            registration_token=my_group.runners_token,
-            description="I only run protected jobs",
-            access_level="ref_protected")
-        # Generate a `config.toml` file that you can use to create a runner
-        # This is the typical workflow for this resource, using it to create an authentication_token which can then be used
-        # to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.
-        my_custom_group = gitlab.Group("myCustomGroup", description="group that holds the custom runners")
-        my_runner = gitlab.Runner("myRunner", registration_token=my_custom_group.runners_token)
-        # This creates a configuration for a local "shell" runner, but can be changed to generate whatever is needed.
-        # Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.
-        # See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.
-        config = local.File("config",
-            filename=f"{path['module']}/config.toml",
-            content=my_runner.authentication_token.apply(lambda authentication_token: f\"\"\"  concurrent = 1
-
-          [[runners]]
-            name = "Hello Terraform"
-            url = "https://example.gitlab.com/"
-            token = "{authentication_token}"
-            executor = "shell"
-            
-        \"\"\"))
-        ```
-
         ## Import
 
         A GitLab Runner can be imported using the runner's ID, eg
@@ -471,51 +454,6 @@ class Runner(pulumi.CustomResource):
         use the `UserRunner` resource!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#register-a-new-runner)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-        import pulumi_local as local
-
-        # Basic GitLab Group Runner
-        my_group = gitlab.Group("myGroup", description="group that holds the runners")
-        basic_runner = gitlab.Runner("basicRunner", registration_token=my_group.runners_token)
-        # GitLab Runner that runs only tagged jobs
-        tagged_only = gitlab.Runner("taggedOnly",
-            registration_token=my_group.runners_token,
-            description="I only run tagged jobs",
-            run_untagged=False,
-            tag_lists=[
-                "tag_one",
-                "tag_two",
-            ])
-        # GitLab Runner that only runs on protected branches
-        protected = gitlab.Runner("protected",
-            registration_token=my_group.runners_token,
-            description="I only run protected jobs",
-            access_level="ref_protected")
-        # Generate a `config.toml` file that you can use to create a runner
-        # This is the typical workflow for this resource, using it to create an authentication_token which can then be used
-        # to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.
-        my_custom_group = gitlab.Group("myCustomGroup", description="group that holds the custom runners")
-        my_runner = gitlab.Runner("myRunner", registration_token=my_custom_group.runners_token)
-        # This creates a configuration for a local "shell" runner, but can be changed to generate whatever is needed.
-        # Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.
-        # See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.
-        config = local.File("config",
-            filename=f"{path['module']}/config.toml",
-            content=my_runner.authentication_token.apply(lambda authentication_token: f\"\"\"  concurrent = 1
-
-          [[runners]]
-            name = "Hello Terraform"
-            url = "https://example.gitlab.com/"
-            token = "{authentication_token}"
-            executor = "shell"
-            
-        \"\"\"))
-        ```
 
         ## Import
 

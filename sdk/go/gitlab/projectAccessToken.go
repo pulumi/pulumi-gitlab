@@ -17,45 +17,6 @@ import (
 //
 // **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleProjectAccessToken, err := gitlab.NewProjectAccessToken(ctx, "exampleProjectAccessToken", &gitlab.ProjectAccessTokenArgs{
-//				Project:     pulumi.String("25"),
-//				ExpiresAt:   pulumi.String("2020-03-14"),
-//				AccessLevel: pulumi.String("reporter"),
-//				Scopes: pulumi.StringArray{
-//					pulumi.String("api"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectVariable(ctx, "exampleProjectVariable", &gitlab.ProjectVariableArgs{
-//				Project: pulumi.Any(gitlab_project.Example.Id),
-//				Key:     pulumi.String("pat"),
-//				Value:   exampleProjectAccessToken.Token,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.

@@ -35,11 +35,21 @@ class IntegrationPipelinesEmailArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             recipients: pulumi.Input[Sequence[pulumi.Input[str]]],
+             project: Optional[pulumi.Input[str]] = None,
+             recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              branches_to_be_notified: Optional[pulumi.Input[str]] = None,
              notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if recipients is None:
+            raise TypeError("Missing 'recipients' argument")
+        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
+            branches_to_be_notified = kwargs['branchesToBeNotified']
+        if notify_only_broken_pipelines is None and 'notifyOnlyBrokenPipelines' in kwargs:
+            notify_only_broken_pipelines = kwargs['notifyOnlyBrokenPipelines']
+
         _setter("project", project)
         _setter("recipients", recipients)
         if branches_to_be_notified is not None:
@@ -124,7 +134,13 @@ class _IntegrationPipelinesEmailState:
              notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
+            branches_to_be_notified = kwargs['branchesToBeNotified']
+        if notify_only_broken_pipelines is None and 'notifyOnlyBrokenPipelines' in kwargs:
+            notify_only_broken_pipelines = kwargs['notifyOnlyBrokenPipelines']
+
         if branches_to_be_notified is not None:
             _setter("branches_to_be_notified", branches_to_be_notified)
         if notify_only_broken_pipelines is not None:
@@ -198,22 +214,6 @@ class IntegrationPipelinesEmail(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#pipeline-emails)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        email = gitlab.IntegrationPipelinesEmail("email",
-            project=awesome_project.id,
-            recipients=["gitlab@user.create"],
-            notify_only_broken_pipelines=True,
-            branches_to_be_notified="all")
-        ```
-
         ## Import
 
         You can import a gitlab_integration_pipelines_email state using the project ID, e.g.
@@ -239,22 +239,6 @@ class IntegrationPipelinesEmail(pulumi.CustomResource):
         The `IntegrationPipelinesEmail` resource allows to manage the lifecycle of a project integration with Pipeline Emails Service.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#pipeline-emails)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        email = gitlab.IntegrationPipelinesEmail("email",
-            project=awesome_project.id,
-            recipients=["gitlab@user.create"],
-            notify_only_broken_pipelines=True,
-            branches_to_be_notified="all")
-        ```
 
         ## Import
 

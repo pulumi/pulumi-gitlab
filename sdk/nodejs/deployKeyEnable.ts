@@ -9,29 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#enable-a-deploy-key)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * // A repo to host the deployment key
- * const parentProject = new gitlab.Project("parentProject", {});
- * // A second repo to use the deployment key from the parent project
- * const fooProject = new gitlab.Project("fooProject", {});
- * // Upload a deployment key for the parent repo
- * const parentDeployKey = new gitlab.DeployKey("parentDeployKey", {
- *     project: parentProject.id,
- *     title: "Example deploy key",
- *     key: "ssh-ed25519 AAAA...",
- * });
- * // Enable the deployment key on the second repo
- * const fooDeployKeyEnable = new gitlab.DeployKeyEnable("fooDeployKeyEnable", {
- *     project: fooProject.id,
- *     keyId: parentDeployKey.deployKeyId,
- * });
- * ```
- *
  * ## Import
  *
  * GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example

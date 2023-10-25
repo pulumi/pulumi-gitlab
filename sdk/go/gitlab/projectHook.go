@@ -17,34 +17,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewProjectHook(ctx, "example", &gitlab.ProjectHookArgs{
-//				MergeRequestsEvents: pulumi.Bool(true),
-//				Project:             pulumi.String("example/hooked"),
-//				Url:                 pulumi.String("https://example.com/hook/example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.

@@ -16,41 +16,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#get-a-specific-gpg-key)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleUser = GitLab.GetUser.Invoke(new()
-    ///     {
-    ///         Username = "example-user",
-    ///     });
-    /// 
-    ///     // Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
-    ///     var exampleUserGpgKey = new GitLab.UserGpgKey("exampleUserGpgKey", new()
-    ///     {
-    ///         UserId = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
-    ///         Key = @"-----BEGIN PGP PUBLIC KEY BLOCK-----
-    /// ...
-    /// -----END PGP PUBLIC KEY BLOCK-----",
-    ///     });
-    /// 
-    ///     // Manages a GPG key for the current user
-    ///     var exampleUserUserGpgKey = new GitLab.UserGpgKey("exampleUserUserGpgKey", new()
-    ///     {
-    ///         Key = @"-----BEGIN PGP PUBLIC KEY BLOCK-----
-    /// ...
-    /// -----END PGP PUBLIC KEY BLOCK-----",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// You can import a GPG key for a specific user using an id made up of `{user-id}:{key}`, e.g.

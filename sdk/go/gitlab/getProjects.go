@@ -19,48 +19,6 @@ import (
 // > The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mygroup, err := gitlab.LookupGroup(ctx, &gitlab.LookupGroupArgs{
-//				FullPath: pulumi.StringRef("mygroup"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
-//				GroupId:          pulumi.IntRef(mygroup.Id),
-//				OrderBy:          pulumi.StringRef("name"),
-//				IncludeSubgroups: pulumi.BoolRef(true),
-//				WithShared:       pulumi.BoolRef(false),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
-//				Search:     pulumi.StringRef("postgresql"),
-//				Visibility: pulumi.StringRef("private"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectsResult

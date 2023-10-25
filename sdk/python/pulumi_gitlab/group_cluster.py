@@ -56,9 +56,9 @@ class GroupClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
-             kubernetes_api_url: pulumi.Input[str],
-             kubernetes_token: pulumi.Input[str],
+             group: Optional[pulumi.Input[str]] = None,
+             kubernetes_api_url: Optional[pulumi.Input[str]] = None,
+             kubernetes_token: Optional[pulumi.Input[str]] = None,
              domain: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              environment_scope: Optional[pulumi.Input[str]] = None,
@@ -67,7 +67,27 @@ class GroupClusterArgs:
              managed: Optional[pulumi.Input[bool]] = None,
              management_project_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if kubernetes_api_url is None and 'kubernetesApiUrl' in kwargs:
+            kubernetes_api_url = kwargs['kubernetesApiUrl']
+        if kubernetes_api_url is None:
+            raise TypeError("Missing 'kubernetes_api_url' argument")
+        if kubernetes_token is None and 'kubernetesToken' in kwargs:
+            kubernetes_token = kwargs['kubernetesToken']
+        if kubernetes_token is None:
+            raise TypeError("Missing 'kubernetes_token' argument")
+        if environment_scope is None and 'environmentScope' in kwargs:
+            environment_scope = kwargs['environmentScope']
+        if kubernetes_authorization_type is None and 'kubernetesAuthorizationType' in kwargs:
+            kubernetes_authorization_type = kwargs['kubernetesAuthorizationType']
+        if kubernetes_ca_cert is None and 'kubernetesCaCert' in kwargs:
+            kubernetes_ca_cert = kwargs['kubernetesCaCert']
+        if management_project_id is None and 'managementProjectId' in kwargs:
+            management_project_id = kwargs['managementProjectId']
+
         _setter("group", group)
         _setter("kubernetes_api_url", kubernetes_api_url)
         _setter("kubernetes_token", kubernetes_token)
@@ -293,7 +313,29 @@ class _GroupClusterState:
              name: Optional[pulumi.Input[str]] = None,
              platform_type: Optional[pulumi.Input[str]] = None,
              provider_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_type is None and 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if environment_scope is None and 'environmentScope' in kwargs:
+            environment_scope = kwargs['environmentScope']
+        if kubernetes_api_url is None and 'kubernetesApiUrl' in kwargs:
+            kubernetes_api_url = kwargs['kubernetesApiUrl']
+        if kubernetes_authorization_type is None and 'kubernetesAuthorizationType' in kwargs:
+            kubernetes_authorization_type = kwargs['kubernetesAuthorizationType']
+        if kubernetes_ca_cert is None and 'kubernetesCaCert' in kwargs:
+            kubernetes_ca_cert = kwargs['kubernetesCaCert']
+        if kubernetes_token is None and 'kubernetesToken' in kwargs:
+            kubernetes_token = kwargs['kubernetesToken']
+        if management_project_id is None and 'managementProjectId' in kwargs:
+            management_project_id = kwargs['managementProjectId']
+        if platform_type is None and 'platformType' in kwargs:
+            platform_type = kwargs['platformType']
+        if provider_type is None and 'providerType' in kwargs:
+            provider_type = kwargs['providerType']
+
         if cluster_type is not None:
             _setter("cluster_type", cluster_type)
         if created_at is not None:
@@ -530,25 +572,6 @@ class GroupCluster(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_clusters.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.Group("foo", path="foo-path")
-        bar = gitlab.GroupCluster("bar",
-            group=foo.id,
-            domain="example.com",
-            enabled=True,
-            kubernetes_api_url="https://124.124.124",
-            kubernetes_token="some-token",
-            kubernetes_ca_cert="some-cert",
-            kubernetes_authorization_type="rbac",
-            environment_scope="*",
-            management_project_id="123456")
-        ```
-
         ## Import
 
         GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
@@ -583,25 +606,6 @@ class GroupCluster(pulumi.CustomResource):
         > This is deprecated GitLab feature since 14.5
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_clusters.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.Group("foo", path="foo-path")
-        bar = gitlab.GroupCluster("bar",
-            group=foo.id,
-            domain="example.com",
-            enabled=True,
-            kubernetes_api_url="https://124.124.124",
-            kubernetes_token="some-token",
-            kubernetes_ca_cert="some-cert",
-            kubernetes_authorization_type="rbac",
-            environment_scope="*",
-            management_project_id="123456")
-        ```
 
         ## Import
 

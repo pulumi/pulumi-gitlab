@@ -35,11 +35,17 @@ class LabelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             color: pulumi.Input[str],
-             project: pulumi.Input[str],
+             color: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if color is None:
+            raise TypeError("Missing 'color' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("color", color)
         _setter("project", project)
         if description is not None:
@@ -128,7 +134,11 @@ class _LabelState:
              label_id: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label_id is None and 'labelId' in kwargs:
+            label_id = kwargs['labelId']
+
         if color is not None:
             _setter("color", color)
         if description is not None:

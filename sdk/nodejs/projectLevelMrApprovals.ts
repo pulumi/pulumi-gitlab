@@ -11,22 +11,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const fooProject = new gitlab.Project("fooProject", {description: "My example project"});
- * const fooProjectLevelMrApprovals = new gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals", {
- *     project: fooProject.id,
- *     resetApprovalsOnPush: true,
- *     disableOverridingApproversPerMergeRequest: false,
- *     mergeRequestsAuthorApproval: false,
- *     mergeRequestsDisableCommittersApproval: true,
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

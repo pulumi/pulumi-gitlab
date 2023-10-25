@@ -35,11 +35,23 @@ class PipelineScheduleVariableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             pipeline_schedule_id: pulumi.Input[int],
-             project: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if pipeline_schedule_id is None and 'pipelineScheduleId' in kwargs:
+            pipeline_schedule_id = kwargs['pipelineScheduleId']
+        if pipeline_schedule_id is None:
+            raise TypeError("Missing 'pipeline_schedule_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("pipeline_schedule_id", pipeline_schedule_id)
         _setter("project", project)
@@ -122,7 +134,11 @@ class _PipelineScheduleVariableState:
              pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pipeline_schedule_id is None and 'pipelineScheduleId' in kwargs:
+            pipeline_schedule_id = kwargs['pipelineScheduleId']
+
         if key is not None:
             _setter("key", key)
         if pipeline_schedule_id is not None:
@@ -196,24 +212,6 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_pipeline_schedule = gitlab.PipelineSchedule("examplePipelineSchedule",
-            project="12345",
-            description="Used to schedule builds",
-            ref="master",
-            cron="0 1 * * *")
-        example_pipeline_schedule_variable = gitlab.PipelineScheduleVariable("examplePipelineScheduleVariable",
-            project=example_pipeline_schedule.project,
-            pipeline_schedule_id=example_pipeline_schedule.pipeline_schedule_id,
-            key="EXAMPLE_KEY",
-            value="example")
-        ```
-
         ## Import
 
         Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
@@ -239,24 +237,6 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         The `PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_pipeline_schedule = gitlab.PipelineSchedule("examplePipelineSchedule",
-            project="12345",
-            description="Used to schedule builds",
-            ref="master",
-            cron="0 1 * * *")
-        example_pipeline_schedule_variable = gitlab.PipelineScheduleVariable("examplePipelineScheduleVariable",
-            project=example_pipeline_schedule.project,
-            pipeline_schedule_id=example_pipeline_schedule.pipeline_schedule_id,
-            key="EXAMPLE_KEY",
-            value="example")
-        ```
 
         ## Import
 

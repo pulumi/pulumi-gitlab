@@ -35,11 +35,27 @@ class GroupShareGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_access: pulumi.Input[str],
-             group_id: pulumi.Input[str],
-             share_group_id: pulumi.Input[int],
+             group_access: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             share_group_id: Optional[pulumi.Input[int]] = None,
              expires_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group_access is None and 'groupAccess' in kwargs:
+            group_access = kwargs['groupAccess']
+        if group_access is None:
+            raise TypeError("Missing 'group_access' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if share_group_id is None and 'shareGroupId' in kwargs:
+            share_group_id = kwargs['shareGroupId']
+        if share_group_id is None:
+            raise TypeError("Missing 'share_group_id' argument")
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+
         _setter("group_access", group_access)
         _setter("group_id", group_id)
         _setter("share_group_id", share_group_id)
@@ -123,7 +139,17 @@ class _GroupShareGroupState:
              group_access: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[str]] = None,
              share_group_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if group_access is None and 'groupAccess' in kwargs:
+            group_access = kwargs['groupAccess']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if share_group_id is None and 'shareGroupId' in kwargs:
+            share_group_id = kwargs['shareGroupId']
+
         if expires_at is not None:
             _setter("expires_at", expires_at)
         if group_access is not None:
@@ -197,19 +223,6 @@ class GroupShareGroup(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        test = gitlab.GroupShareGroup("test",
-            group_id=gitlab_group["foo"]["id"],
-            share_group_id=gitlab_group["bar"]["id"],
-            group_access="guest",
-            expires_at="2099-01-01")
-        ```
-
         ## Import
 
         GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
@@ -235,19 +248,6 @@ class GroupShareGroup(pulumi.CustomResource):
         The `GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        test = gitlab.GroupShareGroup("test",
-            group_id=gitlab_group["foo"]["id"],
-            share_group_id=gitlab_group["bar"]["id"],
-            group_access="guest",
-            expires_at="2099-01-01")
-        ```
 
         ## Import
 

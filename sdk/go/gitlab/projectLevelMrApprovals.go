@@ -19,42 +19,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooProject, err := gitlab.NewProject(ctx, "fooProject", &gitlab.ProjectArgs{
-//				Description: pulumi.String("My example project"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectLevelMrApprovals(ctx, "fooProjectLevelMrApprovals", &gitlab.ProjectLevelMrApprovalsArgs{
-//				Project:              fooProject.ID(),
-//				ResetApprovalsOnPush: pulumi.Bool(true),
-//				DisableOverridingApproversPerMergeRequest: pulumi.Bool(false),
-//				MergeRequestsAuthorApproval:               pulumi.Bool(false),
-//				MergeRequestsDisableCommittersApproval:    pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

@@ -19,58 +19,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := gitlab.NewGroup(ctx, "example", &gitlab.GroupArgs{
-//				Path:        pulumi.String("test_group"),
-//				Description: pulumi.String("An example group"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			label1, err := gitlab.NewGroupLabel(ctx, "label1", &gitlab.GroupLabelArgs{
-//				Group: example.ID(),
-//				Color: pulumi.String("#FF0000"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewGroupLabel(ctx, "label3", &gitlab.GroupLabelArgs{
-//				Group: example.ID(),
-//				Color: pulumi.String("#003000"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewGroupEpicBoard(ctx, "epicBoard", &gitlab.GroupEpicBoardArgs{
-//				Group: example.Path,
-//				Lists: gitlab.GroupEpicBoardListArray{
-//					&gitlab.GroupEpicBoardListArgs{
-//						LabelId: label1.LabelId,
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // You can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.

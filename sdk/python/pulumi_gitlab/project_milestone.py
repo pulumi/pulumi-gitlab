@@ -41,13 +41,23 @@ class ProjectMilestoneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             title: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              due_date: Optional[pulumi.Input[str]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if due_date is None and 'dueDate' in kwargs:
+            due_date = kwargs['dueDate']
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         _setter("project", project)
         _setter("title", title)
         if description is not None:
@@ -196,7 +206,23 @@ class _ProjectMilestoneState:
              title: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
              web_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if due_date is None and 'dueDate' in kwargs:
+            due_date = kwargs['dueDate']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if description is not None:
@@ -398,21 +424,6 @@ class ProjectMilestone(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Create a project for the milestone to use
-        example_project = gitlab.Project("exampleProject",
-            description="An example project",
-            namespace_id=gitlab_group["example"]["id"])
-        example_project_milestone = gitlab.ProjectMilestone("exampleProjectMilestone",
-            project=example_project.id,
-            title="example")
-        ```
-
         ## Import
 
         Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, e.g.
@@ -440,21 +451,6 @@ class ProjectMilestone(pulumi.CustomResource):
         The `ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Create a project for the milestone to use
-        example_project = gitlab.Project("exampleProject",
-            description="An example project",
-            namespace_id=gitlab_group["example"]["id"])
-        example_project_milestone = gitlab.ProjectMilestone("exampleProjectMilestone",
-            project=example_project.id,
-            title="example")
-        ```
 
         ## Import
 

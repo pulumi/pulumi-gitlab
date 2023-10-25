@@ -47,15 +47,33 @@ class ProjectApprovalRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             approvals_required: pulumi.Input[int],
-             project: pulumi.Input[str],
+             approvals_required: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              disable_importing_default_any_approver_rule_on_create: Optional[pulumi.Input[bool]] = None,
              group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              rule_type: Optional[pulumi.Input[str]] = None,
              user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if approvals_required is None and 'approvalsRequired' in kwargs:
+            approvals_required = kwargs['approvalsRequired']
+        if approvals_required is None:
+            raise TypeError("Missing 'approvals_required' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if disable_importing_default_any_approver_rule_on_create is None and 'disableImportingDefaultAnyApproverRuleOnCreate' in kwargs:
+            disable_importing_default_any_approver_rule_on_create = kwargs['disableImportingDefaultAnyApproverRuleOnCreate']
+        if group_ids is None and 'groupIds' in kwargs:
+            group_ids = kwargs['groupIds']
+        if protected_branch_ids is None and 'protectedBranchIds' in kwargs:
+            protected_branch_ids = kwargs['protectedBranchIds']
+        if rule_type is None and 'ruleType' in kwargs:
+            rule_type = kwargs['ruleType']
+        if user_ids is None and 'userIds' in kwargs:
+            user_ids = kwargs['userIds']
+
         _setter("approvals_required", approvals_required)
         _setter("project", project)
         if disable_importing_default_any_approver_rule_on_create is not None:
@@ -212,7 +230,21 @@ class _ProjectApprovalRuleState:
              protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              rule_type: Optional[pulumi.Input[str]] = None,
              user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if approvals_required is None and 'approvalsRequired' in kwargs:
+            approvals_required = kwargs['approvalsRequired']
+        if disable_importing_default_any_approver_rule_on_create is None and 'disableImportingDefaultAnyApproverRuleOnCreate' in kwargs:
+            disable_importing_default_any_approver_rule_on_create = kwargs['disableImportingDefaultAnyApproverRuleOnCreate']
+        if group_ids is None and 'groupIds' in kwargs:
+            group_ids = kwargs['groupIds']
+        if protected_branch_ids is None and 'protectedBranchIds' in kwargs:
+            protected_branch_ids = kwargs['protectedBranchIds']
+        if rule_type is None and 'ruleType' in kwargs:
+            rule_type = kwargs['ruleType']
+        if user_ids is None and 'userIds' in kwargs:
+            user_ids = kwargs['userIds']
+
         if approvals_required is not None:
             _setter("approvals_required", approvals_required)
         if disable_importing_default_any_approver_rule_on_create is not None:

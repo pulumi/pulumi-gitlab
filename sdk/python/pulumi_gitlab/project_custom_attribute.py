@@ -32,10 +32,18 @@ class ProjectCustomAttributeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             project: pulumi.Input[int],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[int]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("project", project)
         _setter("value", value)
@@ -101,7 +109,9 @@ class _ProjectCustomAttributeState:
              key: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if project is not None:
@@ -160,18 +170,6 @@ class ProjectCustomAttribute(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        attr = gitlab.ProjectCustomAttribute("attr",
-            key="location",
-            project=42,
-            value="Greenland")
-        ```
-
         ## Import
 
         You can import a project custom attribute using an id made up of `{project-id}:{key}`, e.g.
@@ -196,18 +194,6 @@ class ProjectCustomAttribute(pulumi.CustomResource):
         The `ProjectCustomAttribute` resource allows to manage custom attributes for a project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        attr = gitlab.ProjectCustomAttribute("attr",
-            key="location",
-            project=42,
-            value="Greenland")
-        ```
 
         ## Import
 

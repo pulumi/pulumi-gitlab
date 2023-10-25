@@ -396,7 +396,171 @@ class ProjectArgs:
              visibility_level: Optional[pulumi.Input[str]] = None,
              wiki_access_level: Optional[pulumi.Input[str]] = None,
              wiki_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_merge_on_skipped_pipeline is None and 'allowMergeOnSkippedPipeline' in kwargs:
+            allow_merge_on_skipped_pipeline = kwargs['allowMergeOnSkippedPipeline']
+        if analytics_access_level is None and 'analyticsAccessLevel' in kwargs:
+            analytics_access_level = kwargs['analyticsAccessLevel']
+        if approvals_before_merge is None and 'approvalsBeforeMerge' in kwargs:
+            approvals_before_merge = kwargs['approvalsBeforeMerge']
+        if archive_on_destroy is None and 'archiveOnDestroy' in kwargs:
+            archive_on_destroy = kwargs['archiveOnDestroy']
+        if auto_cancel_pending_pipelines is None and 'autoCancelPendingPipelines' in kwargs:
+            auto_cancel_pending_pipelines = kwargs['autoCancelPendingPipelines']
+        if auto_devops_deploy_strategy is None and 'autoDevopsDeployStrategy' in kwargs:
+            auto_devops_deploy_strategy = kwargs['autoDevopsDeployStrategy']
+        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
+            auto_devops_enabled = kwargs['autoDevopsEnabled']
+        if autoclose_referenced_issues is None and 'autocloseReferencedIssues' in kwargs:
+            autoclose_referenced_issues = kwargs['autocloseReferencedIssues']
+        if avatar_hash is None and 'avatarHash' in kwargs:
+            avatar_hash = kwargs['avatarHash']
+        if build_coverage_regex is None and 'buildCoverageRegex' in kwargs:
+            build_coverage_regex = kwargs['buildCoverageRegex']
+        if build_git_strategy is None and 'buildGitStrategy' in kwargs:
+            build_git_strategy = kwargs['buildGitStrategy']
+        if build_timeout is None and 'buildTimeout' in kwargs:
+            build_timeout = kwargs['buildTimeout']
+        if builds_access_level is None and 'buildsAccessLevel' in kwargs:
+            builds_access_level = kwargs['buildsAccessLevel']
+        if ci_config_path is None and 'ciConfigPath' in kwargs:
+            ci_config_path = kwargs['ciConfigPath']
+        if ci_default_git_depth is None and 'ciDefaultGitDepth' in kwargs:
+            ci_default_git_depth = kwargs['ciDefaultGitDepth']
+        if ci_forward_deployment_enabled is None and 'ciForwardDeploymentEnabled' in kwargs:
+            ci_forward_deployment_enabled = kwargs['ciForwardDeploymentEnabled']
+        if ci_separated_caches is None and 'ciSeparatedCaches' in kwargs:
+            ci_separated_caches = kwargs['ciSeparatedCaches']
+        if container_expiration_policy is None and 'containerExpirationPolicy' in kwargs:
+            container_expiration_policy = kwargs['containerExpirationPolicy']
+        if container_registry_access_level is None and 'containerRegistryAccessLevel' in kwargs:
+            container_registry_access_level = kwargs['containerRegistryAccessLevel']
+        if container_registry_enabled is None and 'containerRegistryEnabled' in kwargs:
+            container_registry_enabled = kwargs['containerRegistryEnabled']
+        if default_branch is None and 'defaultBranch' in kwargs:
+            default_branch = kwargs['defaultBranch']
+        if emails_disabled is None and 'emailsDisabled' in kwargs:
+            emails_disabled = kwargs['emailsDisabled']
+        if environments_access_level is None and 'environmentsAccessLevel' in kwargs:
+            environments_access_level = kwargs['environmentsAccessLevel']
+        if external_authorization_classification_label is None and 'externalAuthorizationClassificationLabel' in kwargs:
+            external_authorization_classification_label = kwargs['externalAuthorizationClassificationLabel']
+        if feature_flags_access_level is None and 'featureFlagsAccessLevel' in kwargs:
+            feature_flags_access_level = kwargs['featureFlagsAccessLevel']
+        if forked_from_project_id is None and 'forkedFromProjectId' in kwargs:
+            forked_from_project_id = kwargs['forkedFromProjectId']
+        if forking_access_level is None and 'forkingAccessLevel' in kwargs:
+            forking_access_level = kwargs['forkingAccessLevel']
+        if group_with_project_templates_id is None and 'groupWithProjectTemplatesId' in kwargs:
+            group_with_project_templates_id = kwargs['groupWithProjectTemplatesId']
+        if import_url is None and 'importUrl' in kwargs:
+            import_url = kwargs['importUrl']
+        if import_url_password is None and 'importUrlPassword' in kwargs:
+            import_url_password = kwargs['importUrlPassword']
+        if import_url_username is None and 'importUrlUsername' in kwargs:
+            import_url_username = kwargs['importUrlUsername']
+        if infrastructure_access_level is None and 'infrastructureAccessLevel' in kwargs:
+            infrastructure_access_level = kwargs['infrastructureAccessLevel']
+        if initialize_with_readme is None and 'initializeWithReadme' in kwargs:
+            initialize_with_readme = kwargs['initializeWithReadme']
+        if issues_access_level is None and 'issuesAccessLevel' in kwargs:
+            issues_access_level = kwargs['issuesAccessLevel']
+        if issues_enabled is None and 'issuesEnabled' in kwargs:
+            issues_enabled = kwargs['issuesEnabled']
+        if issues_template is None and 'issuesTemplate' in kwargs:
+            issues_template = kwargs['issuesTemplate']
+        if keep_latest_artifact is None and 'keepLatestArtifact' in kwargs:
+            keep_latest_artifact = kwargs['keepLatestArtifact']
+        if lfs_enabled is None and 'lfsEnabled' in kwargs:
+            lfs_enabled = kwargs['lfsEnabled']
+        if merge_commit_template is None and 'mergeCommitTemplate' in kwargs:
+            merge_commit_template = kwargs['mergeCommitTemplate']
+        if merge_method is None and 'mergeMethod' in kwargs:
+            merge_method = kwargs['mergeMethod']
+        if merge_pipelines_enabled is None and 'mergePipelinesEnabled' in kwargs:
+            merge_pipelines_enabled = kwargs['mergePipelinesEnabled']
+        if merge_requests_access_level is None and 'mergeRequestsAccessLevel' in kwargs:
+            merge_requests_access_level = kwargs['mergeRequestsAccessLevel']
+        if merge_requests_enabled is None and 'mergeRequestsEnabled' in kwargs:
+            merge_requests_enabled = kwargs['mergeRequestsEnabled']
+        if merge_requests_template is None and 'mergeRequestsTemplate' in kwargs:
+            merge_requests_template = kwargs['mergeRequestsTemplate']
+        if merge_trains_enabled is None and 'mergeTrainsEnabled' in kwargs:
+            merge_trains_enabled = kwargs['mergeTrainsEnabled']
+        if mirror_overwrites_diverged_branches is None and 'mirrorOverwritesDivergedBranches' in kwargs:
+            mirror_overwrites_diverged_branches = kwargs['mirrorOverwritesDivergedBranches']
+        if mirror_trigger_builds is None and 'mirrorTriggerBuilds' in kwargs:
+            mirror_trigger_builds = kwargs['mirrorTriggerBuilds']
+        if monitor_access_level is None and 'monitorAccessLevel' in kwargs:
+            monitor_access_level = kwargs['monitorAccessLevel']
+        if mr_default_target_self is None and 'mrDefaultTargetSelf' in kwargs:
+            mr_default_target_self = kwargs['mrDefaultTargetSelf']
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if only_allow_merge_if_all_discussions_are_resolved is None and 'onlyAllowMergeIfAllDiscussionsAreResolved' in kwargs:
+            only_allow_merge_if_all_discussions_are_resolved = kwargs['onlyAllowMergeIfAllDiscussionsAreResolved']
+        if only_allow_merge_if_pipeline_succeeds is None and 'onlyAllowMergeIfPipelineSucceeds' in kwargs:
+            only_allow_merge_if_pipeline_succeeds = kwargs['onlyAllowMergeIfPipelineSucceeds']
+        if only_mirror_protected_branches is None and 'onlyMirrorProtectedBranches' in kwargs:
+            only_mirror_protected_branches = kwargs['onlyMirrorProtectedBranches']
+        if packages_enabled is None and 'packagesEnabled' in kwargs:
+            packages_enabled = kwargs['packagesEnabled']
+        if pages_access_level is None and 'pagesAccessLevel' in kwargs:
+            pages_access_level = kwargs['pagesAccessLevel']
+        if pipelines_enabled is None and 'pipelinesEnabled' in kwargs:
+            pipelines_enabled = kwargs['pipelinesEnabled']
+        if printing_merge_request_link_enabled is None and 'printingMergeRequestLinkEnabled' in kwargs:
+            printing_merge_request_link_enabled = kwargs['printingMergeRequestLinkEnabled']
+        if public_builds is None and 'publicBuilds' in kwargs:
+            public_builds = kwargs['publicBuilds']
+        if push_rules is None and 'pushRules' in kwargs:
+            push_rules = kwargs['pushRules']
+        if releases_access_level is None and 'releasesAccessLevel' in kwargs:
+            releases_access_level = kwargs['releasesAccessLevel']
+        if remove_source_branch_after_merge is None and 'removeSourceBranchAfterMerge' in kwargs:
+            remove_source_branch_after_merge = kwargs['removeSourceBranchAfterMerge']
+        if repository_access_level is None and 'repositoryAccessLevel' in kwargs:
+            repository_access_level = kwargs['repositoryAccessLevel']
+        if repository_storage is None and 'repositoryStorage' in kwargs:
+            repository_storage = kwargs['repositoryStorage']
+        if request_access_enabled is None and 'requestAccessEnabled' in kwargs:
+            request_access_enabled = kwargs['requestAccessEnabled']
+        if requirements_access_level is None and 'requirementsAccessLevel' in kwargs:
+            requirements_access_level = kwargs['requirementsAccessLevel']
+        if resolve_outdated_diff_discussions is None and 'resolveOutdatedDiffDiscussions' in kwargs:
+            resolve_outdated_diff_discussions = kwargs['resolveOutdatedDiffDiscussions']
+        if restrict_user_defined_variables is None and 'restrictUserDefinedVariables' in kwargs:
+            restrict_user_defined_variables = kwargs['restrictUserDefinedVariables']
+        if security_and_compliance_access_level is None and 'securityAndComplianceAccessLevel' in kwargs:
+            security_and_compliance_access_level = kwargs['securityAndComplianceAccessLevel']
+        if shared_runners_enabled is None and 'sharedRunnersEnabled' in kwargs:
+            shared_runners_enabled = kwargs['sharedRunnersEnabled']
+        if skip_wait_for_default_branch_protection is None and 'skipWaitForDefaultBranchProtection' in kwargs:
+            skip_wait_for_default_branch_protection = kwargs['skipWaitForDefaultBranchProtection']
+        if snippets_access_level is None and 'snippetsAccessLevel' in kwargs:
+            snippets_access_level = kwargs['snippetsAccessLevel']
+        if snippets_enabled is None and 'snippetsEnabled' in kwargs:
+            snippets_enabled = kwargs['snippetsEnabled']
+        if squash_commit_template is None and 'squashCommitTemplate' in kwargs:
+            squash_commit_template = kwargs['squashCommitTemplate']
+        if squash_option is None and 'squashOption' in kwargs:
+            squash_option = kwargs['squashOption']
+        if suggestion_commit_message is None and 'suggestionCommitMessage' in kwargs:
+            suggestion_commit_message = kwargs['suggestionCommitMessage']
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_project_id is None and 'templateProjectId' in kwargs:
+            template_project_id = kwargs['templateProjectId']
+        if use_custom_template is None and 'useCustomTemplate' in kwargs:
+            use_custom_template = kwargs['useCustomTemplate']
+        if visibility_level is None and 'visibilityLevel' in kwargs:
+            visibility_level = kwargs['visibilityLevel']
+        if wiki_access_level is None and 'wikiAccessLevel' in kwargs:
+            wiki_access_level = kwargs['wikiAccessLevel']
+        if wiki_enabled is None and 'wikiEnabled' in kwargs:
+            wiki_enabled = kwargs['wikiEnabled']
+
         if allow_merge_on_skipped_pipeline is not None:
             _setter("allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if analytics_access_level is not None:
@@ -2085,7 +2249,183 @@ class _ProjectState:
              web_url: Optional[pulumi.Input[str]] = None,
              wiki_access_level: Optional[pulumi.Input[str]] = None,
              wiki_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_merge_on_skipped_pipeline is None and 'allowMergeOnSkippedPipeline' in kwargs:
+            allow_merge_on_skipped_pipeline = kwargs['allowMergeOnSkippedPipeline']
+        if analytics_access_level is None and 'analyticsAccessLevel' in kwargs:
+            analytics_access_level = kwargs['analyticsAccessLevel']
+        if approvals_before_merge is None and 'approvalsBeforeMerge' in kwargs:
+            approvals_before_merge = kwargs['approvalsBeforeMerge']
+        if archive_on_destroy is None and 'archiveOnDestroy' in kwargs:
+            archive_on_destroy = kwargs['archiveOnDestroy']
+        if auto_cancel_pending_pipelines is None and 'autoCancelPendingPipelines' in kwargs:
+            auto_cancel_pending_pipelines = kwargs['autoCancelPendingPipelines']
+        if auto_devops_deploy_strategy is None and 'autoDevopsDeployStrategy' in kwargs:
+            auto_devops_deploy_strategy = kwargs['autoDevopsDeployStrategy']
+        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
+            auto_devops_enabled = kwargs['autoDevopsEnabled']
+        if autoclose_referenced_issues is None and 'autocloseReferencedIssues' in kwargs:
+            autoclose_referenced_issues = kwargs['autocloseReferencedIssues']
+        if avatar_hash is None and 'avatarHash' in kwargs:
+            avatar_hash = kwargs['avatarHash']
+        if avatar_url is None and 'avatarUrl' in kwargs:
+            avatar_url = kwargs['avatarUrl']
+        if build_coverage_regex is None and 'buildCoverageRegex' in kwargs:
+            build_coverage_regex = kwargs['buildCoverageRegex']
+        if build_git_strategy is None and 'buildGitStrategy' in kwargs:
+            build_git_strategy = kwargs['buildGitStrategy']
+        if build_timeout is None and 'buildTimeout' in kwargs:
+            build_timeout = kwargs['buildTimeout']
+        if builds_access_level is None and 'buildsAccessLevel' in kwargs:
+            builds_access_level = kwargs['buildsAccessLevel']
+        if ci_config_path is None and 'ciConfigPath' in kwargs:
+            ci_config_path = kwargs['ciConfigPath']
+        if ci_default_git_depth is None and 'ciDefaultGitDepth' in kwargs:
+            ci_default_git_depth = kwargs['ciDefaultGitDepth']
+        if ci_forward_deployment_enabled is None and 'ciForwardDeploymentEnabled' in kwargs:
+            ci_forward_deployment_enabled = kwargs['ciForwardDeploymentEnabled']
+        if ci_separated_caches is None and 'ciSeparatedCaches' in kwargs:
+            ci_separated_caches = kwargs['ciSeparatedCaches']
+        if container_expiration_policy is None and 'containerExpirationPolicy' in kwargs:
+            container_expiration_policy = kwargs['containerExpirationPolicy']
+        if container_registry_access_level is None and 'containerRegistryAccessLevel' in kwargs:
+            container_registry_access_level = kwargs['containerRegistryAccessLevel']
+        if container_registry_enabled is None and 'containerRegistryEnabled' in kwargs:
+            container_registry_enabled = kwargs['containerRegistryEnabled']
+        if default_branch is None and 'defaultBranch' in kwargs:
+            default_branch = kwargs['defaultBranch']
+        if emails_disabled is None and 'emailsDisabled' in kwargs:
+            emails_disabled = kwargs['emailsDisabled']
+        if environments_access_level is None and 'environmentsAccessLevel' in kwargs:
+            environments_access_level = kwargs['environmentsAccessLevel']
+        if external_authorization_classification_label is None and 'externalAuthorizationClassificationLabel' in kwargs:
+            external_authorization_classification_label = kwargs['externalAuthorizationClassificationLabel']
+        if feature_flags_access_level is None and 'featureFlagsAccessLevel' in kwargs:
+            feature_flags_access_level = kwargs['featureFlagsAccessLevel']
+        if forked_from_project_id is None and 'forkedFromProjectId' in kwargs:
+            forked_from_project_id = kwargs['forkedFromProjectId']
+        if forking_access_level is None and 'forkingAccessLevel' in kwargs:
+            forking_access_level = kwargs['forkingAccessLevel']
+        if group_with_project_templates_id is None and 'groupWithProjectTemplatesId' in kwargs:
+            group_with_project_templates_id = kwargs['groupWithProjectTemplatesId']
+        if http_url_to_repo is None and 'httpUrlToRepo' in kwargs:
+            http_url_to_repo = kwargs['httpUrlToRepo']
+        if import_url is None and 'importUrl' in kwargs:
+            import_url = kwargs['importUrl']
+        if import_url_password is None and 'importUrlPassword' in kwargs:
+            import_url_password = kwargs['importUrlPassword']
+        if import_url_username is None and 'importUrlUsername' in kwargs:
+            import_url_username = kwargs['importUrlUsername']
+        if infrastructure_access_level is None and 'infrastructureAccessLevel' in kwargs:
+            infrastructure_access_level = kwargs['infrastructureAccessLevel']
+        if initialize_with_readme is None and 'initializeWithReadme' in kwargs:
+            initialize_with_readme = kwargs['initializeWithReadme']
+        if issues_access_level is None and 'issuesAccessLevel' in kwargs:
+            issues_access_level = kwargs['issuesAccessLevel']
+        if issues_enabled is None and 'issuesEnabled' in kwargs:
+            issues_enabled = kwargs['issuesEnabled']
+        if issues_template is None and 'issuesTemplate' in kwargs:
+            issues_template = kwargs['issuesTemplate']
+        if keep_latest_artifact is None and 'keepLatestArtifact' in kwargs:
+            keep_latest_artifact = kwargs['keepLatestArtifact']
+        if lfs_enabled is None and 'lfsEnabled' in kwargs:
+            lfs_enabled = kwargs['lfsEnabled']
+        if merge_commit_template is None and 'mergeCommitTemplate' in kwargs:
+            merge_commit_template = kwargs['mergeCommitTemplate']
+        if merge_method is None and 'mergeMethod' in kwargs:
+            merge_method = kwargs['mergeMethod']
+        if merge_pipelines_enabled is None and 'mergePipelinesEnabled' in kwargs:
+            merge_pipelines_enabled = kwargs['mergePipelinesEnabled']
+        if merge_requests_access_level is None and 'mergeRequestsAccessLevel' in kwargs:
+            merge_requests_access_level = kwargs['mergeRequestsAccessLevel']
+        if merge_requests_enabled is None and 'mergeRequestsEnabled' in kwargs:
+            merge_requests_enabled = kwargs['mergeRequestsEnabled']
+        if merge_requests_template is None and 'mergeRequestsTemplate' in kwargs:
+            merge_requests_template = kwargs['mergeRequestsTemplate']
+        if merge_trains_enabled is None and 'mergeTrainsEnabled' in kwargs:
+            merge_trains_enabled = kwargs['mergeTrainsEnabled']
+        if mirror_overwrites_diverged_branches is None and 'mirrorOverwritesDivergedBranches' in kwargs:
+            mirror_overwrites_diverged_branches = kwargs['mirrorOverwritesDivergedBranches']
+        if mirror_trigger_builds is None and 'mirrorTriggerBuilds' in kwargs:
+            mirror_trigger_builds = kwargs['mirrorTriggerBuilds']
+        if monitor_access_level is None and 'monitorAccessLevel' in kwargs:
+            monitor_access_level = kwargs['monitorAccessLevel']
+        if mr_default_target_self is None and 'mrDefaultTargetSelf' in kwargs:
+            mr_default_target_self = kwargs['mrDefaultTargetSelf']
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if only_allow_merge_if_all_discussions_are_resolved is None and 'onlyAllowMergeIfAllDiscussionsAreResolved' in kwargs:
+            only_allow_merge_if_all_discussions_are_resolved = kwargs['onlyAllowMergeIfAllDiscussionsAreResolved']
+        if only_allow_merge_if_pipeline_succeeds is None and 'onlyAllowMergeIfPipelineSucceeds' in kwargs:
+            only_allow_merge_if_pipeline_succeeds = kwargs['onlyAllowMergeIfPipelineSucceeds']
+        if only_mirror_protected_branches is None and 'onlyMirrorProtectedBranches' in kwargs:
+            only_mirror_protected_branches = kwargs['onlyMirrorProtectedBranches']
+        if packages_enabled is None and 'packagesEnabled' in kwargs:
+            packages_enabled = kwargs['packagesEnabled']
+        if pages_access_level is None and 'pagesAccessLevel' in kwargs:
+            pages_access_level = kwargs['pagesAccessLevel']
+        if path_with_namespace is None and 'pathWithNamespace' in kwargs:
+            path_with_namespace = kwargs['pathWithNamespace']
+        if pipelines_enabled is None and 'pipelinesEnabled' in kwargs:
+            pipelines_enabled = kwargs['pipelinesEnabled']
+        if printing_merge_request_link_enabled is None and 'printingMergeRequestLinkEnabled' in kwargs:
+            printing_merge_request_link_enabled = kwargs['printingMergeRequestLinkEnabled']
+        if public_builds is None and 'publicBuilds' in kwargs:
+            public_builds = kwargs['publicBuilds']
+        if push_rules is None and 'pushRules' in kwargs:
+            push_rules = kwargs['pushRules']
+        if releases_access_level is None and 'releasesAccessLevel' in kwargs:
+            releases_access_level = kwargs['releasesAccessLevel']
+        if remove_source_branch_after_merge is None and 'removeSourceBranchAfterMerge' in kwargs:
+            remove_source_branch_after_merge = kwargs['removeSourceBranchAfterMerge']
+        if repository_access_level is None and 'repositoryAccessLevel' in kwargs:
+            repository_access_level = kwargs['repositoryAccessLevel']
+        if repository_storage is None and 'repositoryStorage' in kwargs:
+            repository_storage = kwargs['repositoryStorage']
+        if request_access_enabled is None and 'requestAccessEnabled' in kwargs:
+            request_access_enabled = kwargs['requestAccessEnabled']
+        if requirements_access_level is None and 'requirementsAccessLevel' in kwargs:
+            requirements_access_level = kwargs['requirementsAccessLevel']
+        if resolve_outdated_diff_discussions is None and 'resolveOutdatedDiffDiscussions' in kwargs:
+            resolve_outdated_diff_discussions = kwargs['resolveOutdatedDiffDiscussions']
+        if restrict_user_defined_variables is None and 'restrictUserDefinedVariables' in kwargs:
+            restrict_user_defined_variables = kwargs['restrictUserDefinedVariables']
+        if runners_token is None and 'runnersToken' in kwargs:
+            runners_token = kwargs['runnersToken']
+        if security_and_compliance_access_level is None and 'securityAndComplianceAccessLevel' in kwargs:
+            security_and_compliance_access_level = kwargs['securityAndComplianceAccessLevel']
+        if shared_runners_enabled is None and 'sharedRunnersEnabled' in kwargs:
+            shared_runners_enabled = kwargs['sharedRunnersEnabled']
+        if skip_wait_for_default_branch_protection is None and 'skipWaitForDefaultBranchProtection' in kwargs:
+            skip_wait_for_default_branch_protection = kwargs['skipWaitForDefaultBranchProtection']
+        if snippets_access_level is None and 'snippetsAccessLevel' in kwargs:
+            snippets_access_level = kwargs['snippetsAccessLevel']
+        if snippets_enabled is None and 'snippetsEnabled' in kwargs:
+            snippets_enabled = kwargs['snippetsEnabled']
+        if squash_commit_template is None and 'squashCommitTemplate' in kwargs:
+            squash_commit_template = kwargs['squashCommitTemplate']
+        if squash_option is None and 'squashOption' in kwargs:
+            squash_option = kwargs['squashOption']
+        if ssh_url_to_repo is None and 'sshUrlToRepo' in kwargs:
+            ssh_url_to_repo = kwargs['sshUrlToRepo']
+        if suggestion_commit_message is None and 'suggestionCommitMessage' in kwargs:
+            suggestion_commit_message = kwargs['suggestionCommitMessage']
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_project_id is None and 'templateProjectId' in kwargs:
+            template_project_id = kwargs['templateProjectId']
+        if use_custom_template is None and 'useCustomTemplate' in kwargs:
+            use_custom_template = kwargs['useCustomTemplate']
+        if visibility_level is None and 'visibilityLevel' in kwargs:
+            visibility_level = kwargs['visibilityLevel']
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+        if wiki_access_level is None and 'wikiAccessLevel' in kwargs:
+            wiki_access_level = kwargs['wikiAccessLevel']
+        if wiki_enabled is None and 'wikiEnabled' in kwargs:
+            wiki_enabled = kwargs['wikiEnabled']
+
         if allow_merge_on_skipped_pipeline is not None:
             _setter("allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if analytics_access_level is not None:
@@ -3547,59 +3887,6 @@ class Project(pulumi.CustomResource):
                  wiki_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.Project("example",
-            description="My awesome codebase",
-            visibility_level="public")
-        # Project with custom push rules
-        example_two = gitlab.Project("example-two", push_rules=gitlab.ProjectPushRulesArgs(
-            author_email_regex="@example\\\\.com$",
-            commit_committer_check=True,
-            member_check=True,
-            prevent_secrets=True,
-        ))
-        peter_parker = gitlab.get_user(username="peter_parker")
-        peters_repo = gitlab.Project("petersRepo",
-            description="This is a description",
-            namespace_id=peter_parker.namespace_id)
-        # Fork a project
-        fork_project = gitlab.Project("forkProject",
-            description="This is a fork",
-            forked_from_project_id=example.id)
-        # Fork a project and setup a pull mirror
-        fork_index_project_project = gitlab.Project("forkIndex/projectProject",
-            description="This is a fork",
-            forked_from_project_id=example.id,
-            import_url=example.http_url_to_repo,
-            mirror=True)
-        # Create a project by importing it from a public project
-        import_public = gitlab.Project("importPublic", import_url="https://gitlab.example.com/repo.git")
-        # Create a project by importing it from a public project and setup the pull mirror
-        import_public_with_mirror = gitlab.Project("importPublicWithMirror",
-            import_url="https://gitlab.example.com/repo.git",
-            mirror=True)
-        # Create a project by importing it from a private project
-        import_private_project = gitlab.Project("importPrivateProject",
-            import_url="https://gitlab.example.com/repo.git",
-            import_url_username="user",
-            import_url_password="pass")
-        # Create a project by importing it from a private project and setup the pull mirror
-        import_private_with_mirror = gitlab.Project("importPrivateWithMirror",
-            import_url="https://gitlab.example.com/repo.git",
-            import_url_username="user",
-            import_url_password="pass",
-            mirror=True)
-        # Create a project by importing it from a private project and provide credentials in `import_url`
-        # NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
-        #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
-        import_private_index_project_project = gitlab.Project("importPrivateIndex/projectProject", import_url="https://user:pass@gitlab.example.com/repo.git")
-        ```
-
         ## Import
 
         ```sh
@@ -3728,59 +4015,6 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.Project("example",
-            description="My awesome codebase",
-            visibility_level="public")
-        # Project with custom push rules
-        example_two = gitlab.Project("example-two", push_rules=gitlab.ProjectPushRulesArgs(
-            author_email_regex="@example\\\\.com$",
-            commit_committer_check=True,
-            member_check=True,
-            prevent_secrets=True,
-        ))
-        peter_parker = gitlab.get_user(username="peter_parker")
-        peters_repo = gitlab.Project("petersRepo",
-            description="This is a description",
-            namespace_id=peter_parker.namespace_id)
-        # Fork a project
-        fork_project = gitlab.Project("forkProject",
-            description="This is a fork",
-            forked_from_project_id=example.id)
-        # Fork a project and setup a pull mirror
-        fork_index_project_project = gitlab.Project("forkIndex/projectProject",
-            description="This is a fork",
-            forked_from_project_id=example.id,
-            import_url=example.http_url_to_repo,
-            mirror=True)
-        # Create a project by importing it from a public project
-        import_public = gitlab.Project("importPublic", import_url="https://gitlab.example.com/repo.git")
-        # Create a project by importing it from a public project and setup the pull mirror
-        import_public_with_mirror = gitlab.Project("importPublicWithMirror",
-            import_url="https://gitlab.example.com/repo.git",
-            mirror=True)
-        # Create a project by importing it from a private project
-        import_private_project = gitlab.Project("importPrivateProject",
-            import_url="https://gitlab.example.com/repo.git",
-            import_url_username="user",
-            import_url_password="pass")
-        # Create a project by importing it from a private project and setup the pull mirror
-        import_private_with_mirror = gitlab.Project("importPrivateWithMirror",
-            import_url="https://gitlab.example.com/repo.git",
-            import_url_username="user",
-            import_url_password="pass",
-            mirror=True)
-        # Create a project by importing it from a private project and provide credentials in `import_url`
-        # NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
-        #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
-        import_private_index_project_project = gitlab.Project("importPrivateIndex/projectProject", import_url="https://user:pass@gitlab.example.com/repo.git")
-        ```
-
         ## Import
 
         ```sh
@@ -3931,11 +4165,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
             __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
             __props__.__dict__["ci_separated_caches"] = ci_separated_caches
-            if container_expiration_policy is not None and not isinstance(container_expiration_policy, ProjectContainerExpirationPolicyArgs):
-                container_expiration_policy = container_expiration_policy or {}
-                def _setter(key, value):
-                    container_expiration_policy[key] = value
-                ProjectContainerExpirationPolicyArgs._configure(_setter, **container_expiration_policy)
+            container_expiration_policy = _utilities.configure(container_expiration_policy, ProjectContainerExpirationPolicyArgs, True)
             __props__.__dict__["container_expiration_policy"] = container_expiration_policy
             __props__.__dict__["container_registry_access_level"] = container_registry_access_level
             __props__.__dict__["container_registry_enabled"] = container_registry_enabled
@@ -3981,11 +4211,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["pipelines_enabled"] = pipelines_enabled
             __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
             __props__.__dict__["public_builds"] = public_builds
-            if push_rules is not None and not isinstance(push_rules, ProjectPushRulesArgs):
-                push_rules = push_rules or {}
-                def _setter(key, value):
-                    push_rules[key] = value
-                ProjectPushRulesArgs._configure(_setter, **push_rules)
+            push_rules = _utilities.configure(push_rules, ProjectPushRulesArgs, True)
             __props__.__dict__["push_rules"] = push_rules
             __props__.__dict__["releases_access_level"] = releases_access_level
             __props__.__dict__["remove_source_branch_after_merge"] = remove_source_branch_after_merge

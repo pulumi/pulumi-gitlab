@@ -14,27 +14,6 @@ import * as utilities from "./utilities";
  * > The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const mygroup = gitlab.getGroup({
- *     fullPath: "mygroup",
- * });
- * const groupProjects = mygroup.then(mygroup => gitlab.getProjects({
- *     groupId: mygroup.id,
- *     orderBy: "name",
- *     includeSubgroups: true,
- *     withShared: false,
- * }));
- * const projects = gitlab.getProjects({
- *     search: "postgresql",
- *     visibility: "private",
- * });
- * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
@@ -257,27 +236,6 @@ export interface GetProjectsResult {
  * > The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const mygroup = gitlab.getGroup({
- *     fullPath: "mygroup",
- * });
- * const groupProjects = mygroup.then(mygroup => gitlab.getProjects({
- *     groupId: mygroup.id,
- *     orderBy: "name",
- *     includeSubgroups: true,
- *     withShared: false,
- * }));
- * const projects = gitlab.getProjects({
- *     search: "postgresql",
- *     visibility: "private",
- * });
- * ```
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
     return pulumi.output(args).apply((a: any) => getProjects(a, opts))

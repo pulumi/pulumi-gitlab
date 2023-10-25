@@ -44,14 +44,26 @@ class GroupLdapLinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
-             ldap_provider: pulumi.Input[str],
+             group: Optional[pulumi.Input[str]] = None,
+             ldap_provider: Optional[pulumi.Input[str]] = None,
              access_level: Optional[pulumi.Input[str]] = None,
              cn: Optional[pulumi.Input[str]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              group_access: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if ldap_provider is None and 'ldapProvider' in kwargs:
+            ldap_provider = kwargs['ldapProvider']
+        if ldap_provider is None:
+            raise TypeError("Missing 'ldap_provider' argument")
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if group_access is None and 'groupAccess' in kwargs:
+            group_access = kwargs['groupAccess']
+
         _setter("group", group)
         _setter("ldap_provider", ldap_provider)
         if access_level is not None:
@@ -196,7 +208,15 @@ class _GroupLdapLinkState:
              group: Optional[pulumi.Input[str]] = None,
              group_access: Optional[pulumi.Input[str]] = None,
              ldap_provider: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if group_access is None and 'groupAccess' in kwargs:
+            group_access = kwargs['groupAccess']
+        if ldap_provider is None and 'ldapProvider' in kwargs:
+            ldap_provider = kwargs['ldapProvider']
+
         if access_level is not None:
             warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
             pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")

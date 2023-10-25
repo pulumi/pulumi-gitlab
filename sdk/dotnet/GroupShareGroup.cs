@@ -14,27 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new GitLab.GroupShareGroup("test", new()
-    ///     {
-    ///         GroupId = gitlab_group.Foo.Id,
-    ///         ShareGroupId = gitlab_group.Bar.Id,
-    ///         GroupAccess = "guest",
-    ///         ExpiresAt = "2099-01-01",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.

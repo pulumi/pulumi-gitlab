@@ -4,37 +4,17 @@
 package gitlab
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
 //
 // **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.GetCurrentUser(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCurrentUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCurrentUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentUserResult
@@ -65,4 +45,85 @@ type GetCurrentUserResult struct {
 	PublicEmail string `pulumi:"publicEmail"`
 	// Username of the user. Unique within this instance of GitLab.
 	Username string `pulumi:"username"`
+}
+
+func GetCurrentUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCurrentUserResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetCurrentUserResult, error) {
+		r, err := GetCurrentUser(ctx, opts...)
+		var s GetCurrentUserResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetCurrentUserResultOutput)
+}
+
+// A collection of values returned by getCurrentUser.
+type GetCurrentUserResultOutput struct{ *pulumi.OutputState }
+
+func (GetCurrentUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCurrentUserResult)(nil)).Elem()
+}
+
+func (o GetCurrentUserResultOutput) ToGetCurrentUserResultOutput() GetCurrentUserResultOutput {
+	return o
+}
+
+func (o GetCurrentUserResultOutput) ToGetCurrentUserResultOutputWithContext(ctx context.Context) GetCurrentUserResultOutput {
+	return o
+}
+
+func (o GetCurrentUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCurrentUserResult] {
+	return pulumix.Output[GetCurrentUserResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Indicates if the user is a bot.
+func (o GetCurrentUserResultOutput) Bot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) bool { return v.Bot }).(pulumi.BoolOutput)
+}
+
+// Global ID of the user. This is in the form of a GraphQL globally unique ID.
+func (o GetCurrentUserResultOutput) GlobalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.GlobalId }).(pulumi.StringOutput)
+}
+
+// Personal namespace of the user. This is in the form of a GraphQL globally unique ID.
+func (o GetCurrentUserResultOutput) GlobalNamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.GlobalNamespaceId }).(pulumi.StringOutput)
+}
+
+// Group count for the user.
+func (o GetCurrentUserResultOutput) GroupCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) int { return v.GroupCount }).(pulumi.IntOutput)
+}
+
+// ID of the user.
+func (o GetCurrentUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Human-readable name of the user. Returns **** if the user is a project bot and the requester does not have permission to view the project.
+func (o GetCurrentUserResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Personal namespace of the user.
+func (o GetCurrentUserResultOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// User’s public email.
+func (o GetCurrentUserResultOutput) PublicEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.PublicEmail }).(pulumi.StringOutput)
+}
+
+// Username of the user. Unique within this instance of GitLab.
+func (o GetCurrentUserResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCurrentUserResultOutput{})
 }

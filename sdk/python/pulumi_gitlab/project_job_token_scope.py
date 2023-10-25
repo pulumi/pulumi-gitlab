@@ -29,9 +29,17 @@ class ProjectJobTokenScopeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             target_project_id: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project: Optional[pulumi.Input[str]] = None,
+             target_project_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if target_project_id is None and 'targetProjectId' in kwargs:
+            target_project_id = kwargs['targetProjectId']
+        if target_project_id is None:
+            raise TypeError("Missing 'target_project_id' argument")
+
         _setter("project", project)
         _setter("target_project_id", target_project_id)
 
@@ -80,7 +88,11 @@ class _ProjectJobTokenScopeState:
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
              target_project_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_project_id is None and 'targetProjectId' in kwargs:
+            target_project_id = kwargs['targetProjectId']
+
         if project is not None:
             _setter("project", project)
         if target_project_id is not None:

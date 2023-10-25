@@ -55,8 +55,8 @@ class BranchProtectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch: pulumi.Input[str],
-             project: pulumi.Input[str],
+             branch: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              allow_force_push: Optional[pulumi.Input[bool]] = None,
              allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]] = None,
              allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]] = None,
@@ -65,7 +65,29 @@ class BranchProtectionArgs:
              merge_access_level: Optional[pulumi.Input[str]] = None,
              push_access_level: Optional[pulumi.Input[str]] = None,
              unprotect_access_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch is None:
+            raise TypeError("Missing 'branch' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if allow_force_push is None and 'allowForcePush' in kwargs:
+            allow_force_push = kwargs['allowForcePush']
+        if allowed_to_merges is None and 'allowedToMerges' in kwargs:
+            allowed_to_merges = kwargs['allowedToMerges']
+        if allowed_to_pushes is None and 'allowedToPushes' in kwargs:
+            allowed_to_pushes = kwargs['allowedToPushes']
+        if allowed_to_unprotects is None and 'allowedToUnprotects' in kwargs:
+            allowed_to_unprotects = kwargs['allowedToUnprotects']
+        if code_owner_approval_required is None and 'codeOwnerApprovalRequired' in kwargs:
+            code_owner_approval_required = kwargs['codeOwnerApprovalRequired']
+        if merge_access_level is None and 'mergeAccessLevel' in kwargs:
+            merge_access_level = kwargs['mergeAccessLevel']
+        if push_access_level is None and 'pushAccessLevel' in kwargs:
+            push_access_level = kwargs['pushAccessLevel']
+        if unprotect_access_level is None and 'unprotectAccessLevel' in kwargs:
+            unprotect_access_level = kwargs['unprotectAccessLevel']
+
         _setter("branch", branch)
         _setter("project", project)
         if allow_force_push is not None:
@@ -262,7 +284,27 @@ class _BranchProtectionState:
              project: Optional[pulumi.Input[str]] = None,
              push_access_level: Optional[pulumi.Input[str]] = None,
              unprotect_access_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_force_push is None and 'allowForcePush' in kwargs:
+            allow_force_push = kwargs['allowForcePush']
+        if allowed_to_merges is None and 'allowedToMerges' in kwargs:
+            allowed_to_merges = kwargs['allowedToMerges']
+        if allowed_to_pushes is None and 'allowedToPushes' in kwargs:
+            allowed_to_pushes = kwargs['allowedToPushes']
+        if allowed_to_unprotects is None and 'allowedToUnprotects' in kwargs:
+            allowed_to_unprotects = kwargs['allowedToUnprotects']
+        if branch_protection_id is None and 'branchProtectionId' in kwargs:
+            branch_protection_id = kwargs['branchProtectionId']
+        if code_owner_approval_required is None and 'codeOwnerApprovalRequired' in kwargs:
+            code_owner_approval_required = kwargs['codeOwnerApprovalRequired']
+        if merge_access_level is None and 'mergeAccessLevel' in kwargs:
+            merge_access_level = kwargs['mergeAccessLevel']
+        if push_access_level is None and 'pushAccessLevel' in kwargs:
+            push_access_level = kwargs['pushAccessLevel']
+        if unprotect_access_level is None and 'unprotectAccessLevel' in kwargs:
+            unprotect_access_level = kwargs['unprotectAccessLevel']
+
         if allow_force_push is not None:
             _setter("allow_force_push", allow_force_push)
         if allowed_to_merges is not None:

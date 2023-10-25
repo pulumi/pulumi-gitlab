@@ -14,33 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a project
-    ///     var exampleProject = new GitLab.Project("exampleProject", new()
-    ///     {
-    ///         Description = "An example project",
-    ///     });
-    /// 
-    ///     // Can create release link only to a tag associated with a release
-    ///     var exampleReleaseLink = new GitLab.ReleaseLink("exampleReleaseLink", new()
-    ///     {
-    ///         Project = exampleProject.Id,
-    ///         TagName = "tag_name_associated_with_release",
-    ///         Url = "https://test/",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Gitlab release link can be imported with a key composed of `&lt;project&gt;:&lt;tag_name&gt;:&lt;link_id&gt;`, e.g.

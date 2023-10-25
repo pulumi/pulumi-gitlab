@@ -36,11 +36,19 @@ class ApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             redirect_url: pulumi.Input[str],
-             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             redirect_url: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              confidential: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if redirect_url is None and 'redirectUrl' in kwargs:
+            redirect_url = kwargs['redirectUrl']
+        if redirect_url is None:
+            raise TypeError("Missing 'redirect_url' argument")
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+
         _setter("redirect_url", redirect_url)
         _setter("scopes", scopes)
         if confidential is not None:
@@ -135,7 +143,13 @@ class _ApplicationState:
              redirect_url: Optional[pulumi.Input[str]] = None,
              scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              secret: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if redirect_url is None and 'redirectUrl' in kwargs:
+            redirect_url = kwargs['redirectUrl']
+
         if application_id is not None:
             _setter("application_id", application_id)
         if confidential is not None:
@@ -241,18 +255,6 @@ class Application(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        oidc = gitlab.Application("oidc",
-            confidential=True,
-            redirect_url="https://mycompany.com",
-            scopes=["openid"])
-        ```
-
         ## Import
 
         Gitlab applications can be imported with their id, e.g.
@@ -284,18 +286,6 @@ class Application(pulumi.CustomResource):
         To create an OIDC application, a scope of "openid".
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        oidc = gitlab.Application("oidc",
-            confidential=True,
-            redirect_url="https://mycompany.com",
-            scopes=["openid"])
-        ```
 
         ## Import
 

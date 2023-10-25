@@ -41,13 +41,25 @@ class ComplianceFrameworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             color: pulumi.Input[str],
-             description: pulumi.Input[str],
-             namespace_path: pulumi.Input[str],
+             color: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             namespace_path: Optional[pulumi.Input[str]] = None,
              default: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              pipeline_configuration_full_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if color is None:
+            raise TypeError("Missing 'color' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if namespace_path is None and 'namespacePath' in kwargs:
+            namespace_path = kwargs['namespacePath']
+        if namespace_path is None:
+            raise TypeError("Missing 'namespace_path' argument")
+        if pipeline_configuration_full_path is None and 'pipelineConfigurationFullPath' in kwargs:
+            pipeline_configuration_full_path = kwargs['pipelineConfigurationFullPath']
+
         _setter("color", color)
         _setter("description", description)
         _setter("namespace_path", namespace_path)
@@ -171,7 +183,15 @@ class _ComplianceFrameworkState:
              name: Optional[pulumi.Input[str]] = None,
              namespace_path: Optional[pulumi.Input[str]] = None,
              pipeline_configuration_full_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if framework_id is None and 'frameworkId' in kwargs:
+            framework_id = kwargs['frameworkId']
+        if namespace_path is None and 'namespacePath' in kwargs:
+            namespace_path = kwargs['namespacePath']
+        if pipeline_configuration_full_path is None and 'pipelineConfigurationFullPath' in kwargs:
+            pipeline_configuration_full_path = kwargs['pipelineConfigurationFullPath']
+
         if color is not None:
             _setter("color", color)
         if default is not None:
@@ -295,20 +315,6 @@ class ComplianceFramework(pulumi.CustomResource):
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationcreatecomplianceframework)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        sample = gitlab.ComplianceFramework("sample",
-            color="#87BEEF",
-            default=False,
-            description="A HIPAA Compliance Framework",
-            namespace_path="top-level-group",
-            pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
-        ```
-
         ## Import
 
         Gitlab compliance frameworks can be imported with a key composed of `<namespace_path>:<framework_id>`, e.g.
@@ -342,20 +348,6 @@ class ComplianceFramework(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance with an Ultimate license to specify a compliance pipeline configuration in the compliance framework.
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationcreatecomplianceframework)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        sample = gitlab.ComplianceFramework("sample",
-            color="#87BEEF",
-            default=False,
-            description="A HIPAA Compliance Framework",
-            namespace_path="top-level-group",
-            pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
-        ```
 
         ## Import
 

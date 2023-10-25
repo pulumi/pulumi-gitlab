@@ -82,8 +82,8 @@ class ProjectIssueArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             title: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              confidential: Optional[pulumi.Input[bool]] = None,
              created_at: Optional[pulumi.Input[str]] = None,
@@ -101,7 +101,35 @@ class ProjectIssueArgs:
              state: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if assignee_ids is None and 'assigneeIds' in kwargs:
+            assignee_ids = kwargs['assigneeIds']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if delete_on_destroy is None and 'deleteOnDestroy' in kwargs:
+            delete_on_destroy = kwargs['deleteOnDestroy']
+        if discussion_locked is None and 'discussionLocked' in kwargs:
+            discussion_locked = kwargs['discussionLocked']
+        if discussion_to_resolve is None and 'discussionToResolve' in kwargs:
+            discussion_to_resolve = kwargs['discussionToResolve']
+        if due_date is None and 'dueDate' in kwargs:
+            due_date = kwargs['dueDate']
+        if epic_issue_id is None and 'epicIssueId' in kwargs:
+            epic_issue_id = kwargs['epicIssueId']
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+        if merge_request_to_resolve_discussions_of is None and 'mergeRequestToResolveDiscussionsOf' in kwargs:
+            merge_request_to_resolve_discussions_of = kwargs['mergeRequestToResolveDiscussionsOf']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         _setter("project", project)
         _setter("title", title)
         if assignee_ids is not None:
@@ -540,7 +568,63 @@ class _ProjectIssueState:
              user_notes_count: Optional[pulumi.Input[int]] = None,
              web_url: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assignee_ids is None and 'assigneeIds' in kwargs:
+            assignee_ids = kwargs['assigneeIds']
+        if author_id is None and 'authorId' in kwargs:
+            author_id = kwargs['authorId']
+        if closed_at is None and 'closedAt' in kwargs:
+            closed_at = kwargs['closedAt']
+        if closed_by_user_id is None and 'closedByUserId' in kwargs:
+            closed_by_user_id = kwargs['closedByUserId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if delete_on_destroy is None and 'deleteOnDestroy' in kwargs:
+            delete_on_destroy = kwargs['deleteOnDestroy']
+        if discussion_locked is None and 'discussionLocked' in kwargs:
+            discussion_locked = kwargs['discussionLocked']
+        if discussion_to_resolve is None and 'discussionToResolve' in kwargs:
+            discussion_to_resolve = kwargs['discussionToResolve']
+        if due_date is None and 'dueDate' in kwargs:
+            due_date = kwargs['dueDate']
+        if epic_id is None and 'epicId' in kwargs:
+            epic_id = kwargs['epicId']
+        if epic_issue_id is None and 'epicIssueId' in kwargs:
+            epic_issue_id = kwargs['epicIssueId']
+        if external_id is None and 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if human_time_estimate is None and 'humanTimeEstimate' in kwargs:
+            human_time_estimate = kwargs['humanTimeEstimate']
+        if human_total_time_spent is None and 'humanTotalTimeSpent' in kwargs:
+            human_total_time_spent = kwargs['humanTotalTimeSpent']
+        if issue_id is None and 'issueId' in kwargs:
+            issue_id = kwargs['issueId']
+        if issue_link_id is None and 'issueLinkId' in kwargs:
+            issue_link_id = kwargs['issueLinkId']
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+        if merge_request_to_resolve_discussions_of is None and 'mergeRequestToResolveDiscussionsOf' in kwargs:
+            merge_request_to_resolve_discussions_of = kwargs['mergeRequestToResolveDiscussionsOf']
+        if merge_requests_count is None and 'mergeRequestsCount' in kwargs:
+            merge_requests_count = kwargs['mergeRequestsCount']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+        if moved_to_id is None and 'movedToId' in kwargs:
+            moved_to_id = kwargs['movedToId']
+        if task_completion_statuses is None and 'taskCompletionStatuses' in kwargs:
+            task_completion_statuses = kwargs['taskCompletionStatuses']
+        if time_estimate is None and 'timeEstimate' in kwargs:
+            time_estimate = kwargs['timeEstimate']
+        if total_time_spent is None and 'totalTimeSpent' in kwargs:
+            total_time_spent = kwargs['totalTimeSpent']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if user_notes_count is None and 'userNotesCount' in kwargs:
+            user_notes_count = kwargs['userNotesCount']
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+
         if assignee_ids is not None:
             _setter("assignee_ids", assignee_ids)
         if author_id is not None:
@@ -1129,25 +1213,6 @@ class ProjectIssue(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.Project("foo",
-            description="Lorem Ipsum",
-            visibility_level="public")
-        welcome_issue = gitlab.ProjectIssue("welcomeIssue",
-            project=foo.id,
-            title="Welcome!",
-            description=foo.name.apply(lambda name: f\"\"\"  Welcome to the {name} project!
-
-        \"\"\"),
-            discussion_locked=True)
-        pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
-        ```
-
         ## Import
 
         You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
@@ -1185,25 +1250,6 @@ class ProjectIssue(pulumi.CustomResource):
                  args: ProjectIssueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.Project("foo",
-            description="Lorem Ipsum",
-            visibility_level="public")
-        welcome_issue = gitlab.ProjectIssue("welcomeIssue",
-            project=foo.id,
-            title="Welcome!",
-            description=foo.name.apply(lambda name: f\"\"\"  Welcome to the {name} project!
-
-        \"\"\"),
-            discussion_locked=True)
-        pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
-        ```
-
         ## Import
 
         You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.

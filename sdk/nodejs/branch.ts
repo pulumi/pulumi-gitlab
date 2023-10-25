@@ -11,23 +11,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * // Create a project for the branch to use
- * const exampleProject = new gitlab.Project("exampleProject", {
- *     description: "An example project",
- *     namespaceId: gitlab_group.example.id,
- * });
- * const exampleBranch = new gitlab.Branch("exampleBranch", {
- *     ref: "main",
- *     project: exampleProject.id,
- * });
- * ```
- *
  * ## Import
  *
  * Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.

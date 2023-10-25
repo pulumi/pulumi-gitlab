@@ -31,9 +31,19 @@ class GroupProjectFileTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_template_project_id: pulumi.Input[int],
-             group_id: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             file_template_project_id: Optional[pulumi.Input[int]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if file_template_project_id is None and 'fileTemplateProjectId' in kwargs:
+            file_template_project_id = kwargs['fileTemplateProjectId']
+        if file_template_project_id is None:
+            raise TypeError("Missing 'file_template_project_id' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+
         _setter("file_template_project_id", file_template_project_id)
         _setter("group_id", group_id)
 
@@ -86,7 +96,13 @@ class _GroupProjectFileTemplateState:
              _setter: Callable[[Any, Any], None],
              file_template_project_id: Optional[pulumi.Input[int]] = None,
              group_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if file_template_project_id is None and 'fileTemplateProjectId' in kwargs:
+            file_template_project_id = kwargs['fileTemplateProjectId']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         if file_template_project_id is not None:
             _setter("file_template_project_id", file_template_project_id)
         if group_id is not None:
@@ -138,24 +154,6 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#update-group)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.Group("foo",
-            path="group",
-            description="An example group")
-        bar = gitlab.Project("bar",
-            description="contains file templates",
-            visibility_level="public",
-            namespace_id=foo.id)
-        template_link = gitlab.GroupProjectFileTemplate("templateLink",
-            group_id=foo.id,
-            file_template_project_id=bar.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] file_template_project_id: The ID of the project that will be used for file templates. This project must be the direct
@@ -179,24 +177,6 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance with a Premium license.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#update-group)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.Group("foo",
-            path="group",
-            description="An example group")
-        bar = gitlab.Project("bar",
-            description="contains file templates",
-            visibility_level="public",
-            namespace_id=foo.id)
-        template_link = gitlab.GroupProjectFileTemplate("templateLink",
-            group_id=foo.id,
-            file_template_project_id=bar.id)
-        ```
 
         :param str resource_name: The name of the resource.
         :param GroupProjectFileTemplateArgs args: The arguments to use to populate this resource's properties.

@@ -41,13 +41,21 @@ class PagesDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             project: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              auto_ssl_enabled: Optional[pulumi.Input[bool]] = None,
              certificate: Optional[pulumi.Input[str]] = None,
              expired: Optional[pulumi.Input[bool]] = None,
              key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if auto_ssl_enabled is None and 'autoSslEnabled' in kwargs:
+            auto_ssl_enabled = kwargs['autoSslEnabled']
+
         _setter("domain", domain)
         _setter("project", project)
         if auto_ssl_enabled is not None:
@@ -180,7 +188,13 @@ class _PagesDomainState:
              url: Optional[pulumi.Input[str]] = None,
              verification_code: Optional[pulumi.Input[str]] = None,
              verified: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auto_ssl_enabled is None and 'autoSslEnabled' in kwargs:
+            auto_ssl_enabled = kwargs['autoSslEnabled']
+        if verification_code is None and 'verificationCode' in kwargs:
+            verification_code = kwargs['verificationCode']
+
         if auto_ssl_enabled is not None:
             _setter("auto_ssl_enabled", auto_ssl_enabled)
         if certificate is not None:
@@ -326,25 +340,6 @@ class PagesDomain(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Example using auto_ssl_enabled, which uses lets encrypt to generate a certificate
-        this_pages_domain = gitlab.PagesDomain("thisPagesDomain",
-            project="123",
-            domain="example.com",
-            auto_ssl_enabled=True)
-        # Example using a manually generated certificate and key
-        this_index_pages_domain_pages_domain = gitlab.PagesDomain("thisIndex/pagesDomainPagesDomain",
-            project="123",
-            domain="example.com",
-            key=(lambda path: open(path).read())(f"{path['module']}/key.pem"),
-            certificate=(lambda path: open(path).read())(f"{path['module']}/cert.pem"))
-        ```
-
         ## Import
 
         GitLab pages domain can be imported using an id made up of `projectId:domain` _without_ the http protocol, e.g.
@@ -372,25 +367,6 @@ class PagesDomain(pulumi.CustomResource):
         The `PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Example using auto_ssl_enabled, which uses lets encrypt to generate a certificate
-        this_pages_domain = gitlab.PagesDomain("thisPagesDomain",
-            project="123",
-            domain="example.com",
-            auto_ssl_enabled=True)
-        # Example using a manually generated certificate and key
-        this_index_pages_domain_pages_domain = gitlab.PagesDomain("thisIndex/pagesDomainPagesDomain",
-            project="123",
-            domain="example.com",
-            key=(lambda path: open(path).read())(f"{path['module']}/key.pem"),
-            certificate=(lambda path: open(path).read())(f"{path['module']}/cert.pem"))
-        ```
 
         ## Import
 

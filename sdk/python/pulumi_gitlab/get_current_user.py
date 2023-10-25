@@ -145,15 +145,6 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     The `get_current_user` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
 
     **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_current_user()
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -177,14 +168,5 @@ def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
     The `get_current_user` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
 
     **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_current_user()
-    ```
     """
     ...

@@ -41,13 +41,21 @@ class InstanceVariableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              masked: Optional[pulumi.Input[bool]] = None,
              protected: Optional[pulumi.Input[bool]] = None,
              raw: Optional[pulumi.Input[bool]] = None,
              variable_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+
         _setter("key", key)
         _setter("value", value)
         if masked is not None:
@@ -168,7 +176,11 @@ class _InstanceVariableState:
              raw: Optional[pulumi.Input[bool]] = None,
              value: Optional[pulumi.Input[str]] = None,
              variable_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+
         if key is not None:
             _setter("key", key)
         if masked is not None:
@@ -272,19 +284,6 @@ class InstanceVariable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.InstanceVariable("example",
-            key="instance_variable_key",
-            masked=False,
-            protected=False,
-            value="instance_variable_value")
-        ```
-
         ## Import
 
         GitLab instance variables can be imported using an id made up of `variablename`, e.g.
@@ -312,19 +311,6 @@ class InstanceVariable(pulumi.CustomResource):
         The `InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.InstanceVariable("example",
-            key="instance_variable_key",
-            masked=False,
-            protected=False,
-            value="instance_variable_value")
-        ```
 
         ## Import
 

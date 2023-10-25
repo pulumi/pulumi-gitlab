@@ -15,34 +15,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.getProjectIssues` data source allows to retrieve details about issues in a project.
         /// 
         /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = GitLab.GetProject.Invoke(new()
-        ///     {
-        ///         Id = "foo/bar/baz",
-        ///     });
-        /// 
-        ///     var allWithFoo = GitLab.GetProjectIssues.Invoke(new()
-        ///     {
-        ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Id),
-        ///         Search = "foo",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectIssuesResult> InvokeAsync(GetProjectIssuesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectIssuesResult>("gitlab:index/getProjectIssues:getProjectIssues", args ?? new GetProjectIssuesArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.getProjectIssues` data source allows to retrieve details about issues in a project.
         /// 
         /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = GitLab.GetProject.Invoke(new()
-        ///     {
-        ///         Id = "foo/bar/baz",
-        ///     });
-        /// 
-        ///     var allWithFoo = GitLab.GetProjectIssues.Invoke(new()
-        ///     {
-        ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Id),
-        ///         Search = "foo",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectIssuesResult> Invoke(GetProjectIssuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectIssuesResult>("gitlab:index/getProjectIssues:getProjectIssues", args ?? new GetProjectIssuesInvokeArgs(), options.WithDefaults());

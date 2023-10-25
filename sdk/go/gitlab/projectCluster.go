@@ -19,45 +19,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_clusters.html)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := gitlab.NewProject(ctx, "foo", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectCluster(ctx, "bar", &gitlab.ProjectClusterArgs{
-//				Project:                     foo.ID(),
-//				Domain:                      pulumi.String("example.com"),
-//				Enabled:                     pulumi.Bool(true),
-//				KubernetesApiUrl:            pulumi.String("https://124.124.124"),
-//				KubernetesToken:             pulumi.String("some-token"),
-//				KubernetesCaCert:            pulumi.String("some-cert"),
-//				KubernetesNamespace:         pulumi.String("namespace"),
-//				KubernetesAuthorizationType: pulumi.String("rbac"),
-//				EnvironmentScope:            pulumi.String("*"),
-//				ManagementProjectId:         pulumi.String("123456"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.

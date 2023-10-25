@@ -35,11 +35,23 @@ class ProjectShareGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_id: pulumi.Input[int],
-             project: pulumi.Input[str],
+             group_id: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              access_level: Optional[pulumi.Input[str]] = None,
              group_access: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if group_access is None and 'groupAccess' in kwargs:
+            group_access = kwargs['groupAccess']
+
         _setter("group_id", group_id)
         _setter("project", project)
         if access_level is not None:
@@ -130,7 +142,15 @@ class _ProjectShareGroupState:
              group_access: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if group_access is None and 'groupAccess' in kwargs:
+            group_access = kwargs['groupAccess']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         if access_level is not None:
             warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
             pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
@@ -210,18 +230,6 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        test = gitlab.ProjectShareGroup("test",
-            group_access="guest",
-            group_id=1337,
-            project="12345")
-        ```
-
         ## Import
 
         GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
@@ -247,18 +255,6 @@ class ProjectShareGroup(pulumi.CustomResource):
         The `ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        test = gitlab.ProjectShareGroup("test",
-            group_access="guest",
-            group_id=1337,
-            project="12345")
-        ```
 
         ## Import
 

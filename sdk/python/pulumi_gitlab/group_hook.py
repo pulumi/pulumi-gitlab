@@ -77,8 +77,8 @@ class GroupHookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
-             url: pulumi.Input[str],
+             group: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              confidential_issues_events: Optional[pulumi.Input[bool]] = None,
              confidential_note_events: Optional[pulumi.Input[bool]] = None,
              deployment_events: Optional[pulumi.Input[bool]] = None,
@@ -95,7 +95,43 @@ class GroupHookArgs:
              tag_push_events: Optional[pulumi.Input[bool]] = None,
              token: Optional[pulumi.Input[str]] = None,
              wiki_page_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
+            confidential_issues_events = kwargs['confidentialIssuesEvents']
+        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
+            confidential_note_events = kwargs['confidentialNoteEvents']
+        if deployment_events is None and 'deploymentEvents' in kwargs:
+            deployment_events = kwargs['deploymentEvents']
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if job_events is None and 'jobEvents' in kwargs:
+            job_events = kwargs['jobEvents']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if push_events_branch_filter is None and 'pushEventsBranchFilter' in kwargs:
+            push_events_branch_filter = kwargs['pushEventsBranchFilter']
+        if releases_events is None and 'releasesEvents' in kwargs:
+            releases_events = kwargs['releasesEvents']
+        if subgroup_events is None and 'subgroupEvents' in kwargs:
+            subgroup_events = kwargs['subgroupEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
+            wiki_page_events = kwargs['wikiPageEvents']
+
         _setter("group", group)
         _setter("url", url)
         if confidential_issues_events is not None:
@@ -440,7 +476,43 @@ class _GroupHookState:
              token: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              wiki_page_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
+            confidential_issues_events = kwargs['confidentialIssuesEvents']
+        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
+            confidential_note_events = kwargs['confidentialNoteEvents']
+        if deployment_events is None and 'deploymentEvents' in kwargs:
+            deployment_events = kwargs['deploymentEvents']
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if hook_id is None and 'hookId' in kwargs:
+            hook_id = kwargs['hookId']
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if job_events is None and 'jobEvents' in kwargs:
+            job_events = kwargs['jobEvents']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if push_events_branch_filter is None and 'pushEventsBranchFilter' in kwargs:
+            push_events_branch_filter = kwargs['pushEventsBranchFilter']
+        if releases_events is None and 'releasesEvents' in kwargs:
+            releases_events = kwargs['releasesEvents']
+        if subgroup_events is None and 'subgroupEvents' in kwargs:
+            subgroup_events = kwargs['subgroupEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
+            wiki_page_events = kwargs['wikiPageEvents']
+
         if confidential_issues_events is not None:
             _setter("confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
@@ -752,38 +824,6 @@ class GroupHook(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.GroupHook("example",
-            group="example/hooked",
-            merge_requests_events=True,
-            url="https://example.com/hook/example")
-        # Setting all attributes
-        all_attributes = gitlab.GroupHook("allAttributes",
-            confidential_issues_events=False,
-            confidential_note_events=True,
-            deployment_events=True,
-            enable_ssl_verification=False,
-            group="1",
-            issues_events=False,
-            job_events=True,
-            merge_requests_events=True,
-            note_events=True,
-            pipeline_events=True,
-            push_events=True,
-            push_events_branch_filter="devel",
-            releases_events=True,
-            subgroup_events=True,
-            tag_push_events=True,
-            token="supersecret",
-            url="http://example.com",
-            wiki_page_events=True)
-        ```
-
         ## Import
 
         A GitLab Group Hook can be imported using a key composed of `<group-id>:<hook-id>`, e.g.
@@ -825,38 +865,6 @@ class GroupHook(pulumi.CustomResource):
         The `GroupHook` resource allows to manage the lifecycle of a group hook.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.GroupHook("example",
-            group="example/hooked",
-            merge_requests_events=True,
-            url="https://example.com/hook/example")
-        # Setting all attributes
-        all_attributes = gitlab.GroupHook("allAttributes",
-            confidential_issues_events=False,
-            confidential_note_events=True,
-            deployment_events=True,
-            enable_ssl_verification=False,
-            group="1",
-            issues_events=False,
-            job_events=True,
-            merge_requests_events=True,
-            note_events=True,
-            pipeline_events=True,
-            push_events=True,
-            push_events_branch_filter="devel",
-            releases_events=True,
-            subgroup_events=True,
-            tag_push_events=True,
-            token="supersecret",
-            url="http://example.com",
-            wiki_page_events=True)
-        ```
 
         ## Import
 

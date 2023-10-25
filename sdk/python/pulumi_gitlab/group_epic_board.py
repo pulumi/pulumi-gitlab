@@ -34,10 +34,14 @@ class GroupEpicBoardArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
+             group: Optional[pulumi.Input[str]] = None,
              lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+
         _setter("group", group)
         if lists is not None:
             _setter("lists", lists)
@@ -105,7 +109,9 @@ class _GroupEpicBoardState:
              group: Optional[pulumi.Input[str]] = None,
              lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if group is not None:
             _setter("group", group)
         if lists is not None:
@@ -166,28 +172,6 @@ class GroupEpicBoard(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.Group("example",
-            path="test_group",
-            description="An example group")
-        label1 = gitlab.GroupLabel("label1",
-            group=example.id,
-            color="#FF0000")
-        label3 = gitlab.GroupLabel("label3",
-            group=example.id,
-            color="#003000")
-        epic_board = gitlab.GroupEpicBoard("epicBoard",
-            group=example.path,
-            lists=[gitlab.GroupEpicBoardListArgs(
-                label_id=label1.label_id,
-            )])
-        ```
-
         ## Import
 
         You can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.
@@ -214,28 +198,6 @@ class GroupEpicBoard(pulumi.CustomResource):
         > Multiple epic boards on one group requires a GitLab Premium or above License.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.Group("example",
-            path="test_group",
-            description="An example group")
-        label1 = gitlab.GroupLabel("label1",
-            group=example.id,
-            color="#FF0000")
-        label3 = gitlab.GroupLabel("label3",
-            group=example.id,
-            color="#003000")
-        epic_board = gitlab.GroupEpicBoard("epicBoard",
-            group=example.path,
-            lists=[gitlab.GroupEpicBoardListArgs(
-                label_id=label1.label_id,
-            )])
-        ```
 
         ## Import
 

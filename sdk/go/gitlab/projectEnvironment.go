@@ -13,47 +13,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisGroup, err := gitlab.NewGroup(ctx, "thisGroup", &gitlab.GroupArgs{
-//				Path:        pulumi.String("example"),
-//				Description: pulumi.String("An example group"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			thisProject, err := gitlab.NewProject(ctx, "thisProject", &gitlab.ProjectArgs{
-//				NamespaceId:          thisGroup.ID(),
-//				InitializeWithReadme: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectEnvironment(ctx, "thisProjectEnvironment", &gitlab.ProjectEnvironmentArgs{
-//				Project:     thisProject.ID(),
-//				ExternalUrl: pulumi.String("www.example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.

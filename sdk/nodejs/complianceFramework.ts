@@ -15,21 +15,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationcreatecomplianceframework)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const sample = new gitlab.ComplianceFramework("sample", {
- *     color: "#87BEEF",
- *     "default": false,
- *     description: "A HIPAA Compliance Framework",
- *     namespacePath: "top-level-group",
- *     pipelineConfigurationFullPath: ".hipaa.yml@top-level-group/compliance-frameworks",
- * });
- * ```
- *
  * ## Import
  *
  * Gitlab compliance frameworks can be imported with a key composed of `<namespace_path>:<framework_id>`, e.g.

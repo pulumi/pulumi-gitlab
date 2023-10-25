@@ -991,7 +991,491 @@ class ApplicationSettingsArgs:
              web_ide_clientside_preview_enabled: Optional[pulumi.Input[bool]] = None,
              whats_new_variant: Optional[pulumi.Input[str]] = None,
              wiki_page_max_content_bytes: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if abuse_notification_email is None and 'abuseNotificationEmail' in kwargs:
+            abuse_notification_email = kwargs['abuseNotificationEmail']
+        if admin_mode is None and 'adminMode' in kwargs:
+            admin_mode = kwargs['adminMode']
+        if after_sign_out_path is None and 'afterSignOutPath' in kwargs:
+            after_sign_out_path = kwargs['afterSignOutPath']
+        if after_sign_up_text is None and 'afterSignUpText' in kwargs:
+            after_sign_up_text = kwargs['afterSignUpText']
+        if akismet_api_key is None and 'akismetApiKey' in kwargs:
+            akismet_api_key = kwargs['akismetApiKey']
+        if akismet_enabled is None and 'akismetEnabled' in kwargs:
+            akismet_enabled = kwargs['akismetEnabled']
+        if allow_group_owners_to_manage_ldap is None and 'allowGroupOwnersToManageLdap' in kwargs:
+            allow_group_owners_to_manage_ldap = kwargs['allowGroupOwnersToManageLdap']
+        if allow_local_requests_from_system_hooks is None and 'allowLocalRequestsFromSystemHooks' in kwargs:
+            allow_local_requests_from_system_hooks = kwargs['allowLocalRequestsFromSystemHooks']
+        if allow_local_requests_from_web_hooks_and_services is None and 'allowLocalRequestsFromWebHooksAndServices' in kwargs:
+            allow_local_requests_from_web_hooks_and_services = kwargs['allowLocalRequestsFromWebHooksAndServices']
+        if archive_builds_in_human_readable is None and 'archiveBuildsInHumanReadable' in kwargs:
+            archive_builds_in_human_readable = kwargs['archiveBuildsInHumanReadable']
+        if asset_proxy_allowlists is None and 'assetProxyAllowlists' in kwargs:
+            asset_proxy_allowlists = kwargs['assetProxyAllowlists']
+        if asset_proxy_enabled is None and 'assetProxyEnabled' in kwargs:
+            asset_proxy_enabled = kwargs['assetProxyEnabled']
+        if asset_proxy_secret_key is None and 'assetProxySecretKey' in kwargs:
+            asset_proxy_secret_key = kwargs['assetProxySecretKey']
+        if asset_proxy_url is None and 'assetProxyUrl' in kwargs:
+            asset_proxy_url = kwargs['assetProxyUrl']
+        if authorized_keys_enabled is None and 'authorizedKeysEnabled' in kwargs:
+            authorized_keys_enabled = kwargs['authorizedKeysEnabled']
+        if auto_devops_domain is None and 'autoDevopsDomain' in kwargs:
+            auto_devops_domain = kwargs['autoDevopsDomain']
+        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
+            auto_devops_enabled = kwargs['autoDevopsEnabled']
+        if automatic_purchased_storage_allocation is None and 'automaticPurchasedStorageAllocation' in kwargs:
+            automatic_purchased_storage_allocation = kwargs['automaticPurchasedStorageAllocation']
+        if can_create_group is None and 'canCreateGroup' in kwargs:
+            can_create_group = kwargs['canCreateGroup']
+        if check_namespace_plan is None and 'checkNamespacePlan' in kwargs:
+            check_namespace_plan = kwargs['checkNamespacePlan']
+        if commit_email_hostname is None and 'commitEmailHostname' in kwargs:
+            commit_email_hostname = kwargs['commitEmailHostname']
+        if container_expiration_policies_enable_historic_entries is None and 'containerExpirationPoliciesEnableHistoricEntries' in kwargs:
+            container_expiration_policies_enable_historic_entries = kwargs['containerExpirationPoliciesEnableHistoricEntries']
+        if container_registry_cleanup_tags_service_max_list_size is None and 'containerRegistryCleanupTagsServiceMaxListSize' in kwargs:
+            container_registry_cleanup_tags_service_max_list_size = kwargs['containerRegistryCleanupTagsServiceMaxListSize']
+        if container_registry_delete_tags_service_timeout is None and 'containerRegistryDeleteTagsServiceTimeout' in kwargs:
+            container_registry_delete_tags_service_timeout = kwargs['containerRegistryDeleteTagsServiceTimeout']
+        if container_registry_expiration_policies_caching is None and 'containerRegistryExpirationPoliciesCaching' in kwargs:
+            container_registry_expiration_policies_caching = kwargs['containerRegistryExpirationPoliciesCaching']
+        if container_registry_expiration_policies_worker_capacity is None and 'containerRegistryExpirationPoliciesWorkerCapacity' in kwargs:
+            container_registry_expiration_policies_worker_capacity = kwargs['containerRegistryExpirationPoliciesWorkerCapacity']
+        if container_registry_token_expire_delay is None and 'containerRegistryTokenExpireDelay' in kwargs:
+            container_registry_token_expire_delay = kwargs['containerRegistryTokenExpireDelay']
+        if deactivate_dormant_users is None and 'deactivateDormantUsers' in kwargs:
+            deactivate_dormant_users = kwargs['deactivateDormantUsers']
+        if default_artifacts_expire_in is None and 'defaultArtifactsExpireIn' in kwargs:
+            default_artifacts_expire_in = kwargs['defaultArtifactsExpireIn']
+        if default_branch_name is None and 'defaultBranchName' in kwargs:
+            default_branch_name = kwargs['defaultBranchName']
+        if default_branch_protection is None and 'defaultBranchProtection' in kwargs:
+            default_branch_protection = kwargs['defaultBranchProtection']
+        if default_ci_config_path is None and 'defaultCiConfigPath' in kwargs:
+            default_ci_config_path = kwargs['defaultCiConfigPath']
+        if default_group_visibility is None and 'defaultGroupVisibility' in kwargs:
+            default_group_visibility = kwargs['defaultGroupVisibility']
+        if default_project_creation is None and 'defaultProjectCreation' in kwargs:
+            default_project_creation = kwargs['defaultProjectCreation']
+        if default_project_visibility is None and 'defaultProjectVisibility' in kwargs:
+            default_project_visibility = kwargs['defaultProjectVisibility']
+        if default_projects_limit is None and 'defaultProjectsLimit' in kwargs:
+            default_projects_limit = kwargs['defaultProjectsLimit']
+        if default_snippet_visibility is None and 'defaultSnippetVisibility' in kwargs:
+            default_snippet_visibility = kwargs['defaultSnippetVisibility']
+        if delayed_group_deletion is None and 'delayedGroupDeletion' in kwargs:
+            delayed_group_deletion = kwargs['delayedGroupDeletion']
+        if delayed_project_deletion is None and 'delayedProjectDeletion' in kwargs:
+            delayed_project_deletion = kwargs['delayedProjectDeletion']
+        if delete_inactive_projects is None and 'deleteInactiveProjects' in kwargs:
+            delete_inactive_projects = kwargs['deleteInactiveProjects']
+        if deletion_adjourned_period is None and 'deletionAdjournedPeriod' in kwargs:
+            deletion_adjourned_period = kwargs['deletionAdjournedPeriod']
+        if diff_max_files is None and 'diffMaxFiles' in kwargs:
+            diff_max_files = kwargs['diffMaxFiles']
+        if diff_max_lines is None and 'diffMaxLines' in kwargs:
+            diff_max_lines = kwargs['diffMaxLines']
+        if diff_max_patch_bytes is None and 'diffMaxPatchBytes' in kwargs:
+            diff_max_patch_bytes = kwargs['diffMaxPatchBytes']
+        if disable_feed_token is None and 'disableFeedToken' in kwargs:
+            disable_feed_token = kwargs['disableFeedToken']
+        if disabled_oauth_sign_in_sources is None and 'disabledOauthSignInSources' in kwargs:
+            disabled_oauth_sign_in_sources = kwargs['disabledOauthSignInSources']
+        if dns_rebinding_protection_enabled is None and 'dnsRebindingProtectionEnabled' in kwargs:
+            dns_rebinding_protection_enabled = kwargs['dnsRebindingProtectionEnabled']
+        if domain_allowlists is None and 'domainAllowlists' in kwargs:
+            domain_allowlists = kwargs['domainAllowlists']
+        if domain_denylist_enabled is None and 'domainDenylistEnabled' in kwargs:
+            domain_denylist_enabled = kwargs['domainDenylistEnabled']
+        if domain_denylists is None and 'domainDenylists' in kwargs:
+            domain_denylists = kwargs['domainDenylists']
+        if dsa_key_restriction is None and 'dsaKeyRestriction' in kwargs:
+            dsa_key_restriction = kwargs['dsaKeyRestriction']
+        if ecdsa_key_restriction is None and 'ecdsaKeyRestriction' in kwargs:
+            ecdsa_key_restriction = kwargs['ecdsaKeyRestriction']
+        if ecdsa_sk_key_restriction is None and 'ecdsaSkKeyRestriction' in kwargs:
+            ecdsa_sk_key_restriction = kwargs['ecdsaSkKeyRestriction']
+        if ed25519_key_restriction is None and 'ed25519KeyRestriction' in kwargs:
+            ed25519_key_restriction = kwargs['ed25519KeyRestriction']
+        if ed25519_sk_key_restriction is None and 'ed25519SkKeyRestriction' in kwargs:
+            ed25519_sk_key_restriction = kwargs['ed25519SkKeyRestriction']
+        if eks_access_key_id is None and 'eksAccessKeyId' in kwargs:
+            eks_access_key_id = kwargs['eksAccessKeyId']
+        if eks_account_id is None and 'eksAccountId' in kwargs:
+            eks_account_id = kwargs['eksAccountId']
+        if eks_integration_enabled is None and 'eksIntegrationEnabled' in kwargs:
+            eks_integration_enabled = kwargs['eksIntegrationEnabled']
+        if eks_secret_access_key is None and 'eksSecretAccessKey' in kwargs:
+            eks_secret_access_key = kwargs['eksSecretAccessKey']
+        if elasticsearch_aws is None and 'elasticsearchAws' in kwargs:
+            elasticsearch_aws = kwargs['elasticsearchAws']
+        if elasticsearch_aws_access_key is None and 'elasticsearchAwsAccessKey' in kwargs:
+            elasticsearch_aws_access_key = kwargs['elasticsearchAwsAccessKey']
+        if elasticsearch_aws_region is None and 'elasticsearchAwsRegion' in kwargs:
+            elasticsearch_aws_region = kwargs['elasticsearchAwsRegion']
+        if elasticsearch_aws_secret_access_key is None and 'elasticsearchAwsSecretAccessKey' in kwargs:
+            elasticsearch_aws_secret_access_key = kwargs['elasticsearchAwsSecretAccessKey']
+        if elasticsearch_indexed_field_length_limit is None and 'elasticsearchIndexedFieldLengthLimit' in kwargs:
+            elasticsearch_indexed_field_length_limit = kwargs['elasticsearchIndexedFieldLengthLimit']
+        if elasticsearch_indexed_file_size_limit_kb is None and 'elasticsearchIndexedFileSizeLimitKb' in kwargs:
+            elasticsearch_indexed_file_size_limit_kb = kwargs['elasticsearchIndexedFileSizeLimitKb']
+        if elasticsearch_indexing is None and 'elasticsearchIndexing' in kwargs:
+            elasticsearch_indexing = kwargs['elasticsearchIndexing']
+        if elasticsearch_limit_indexing is None and 'elasticsearchLimitIndexing' in kwargs:
+            elasticsearch_limit_indexing = kwargs['elasticsearchLimitIndexing']
+        if elasticsearch_max_bulk_concurrency is None and 'elasticsearchMaxBulkConcurrency' in kwargs:
+            elasticsearch_max_bulk_concurrency = kwargs['elasticsearchMaxBulkConcurrency']
+        if elasticsearch_max_bulk_size_mb is None and 'elasticsearchMaxBulkSizeMb' in kwargs:
+            elasticsearch_max_bulk_size_mb = kwargs['elasticsearchMaxBulkSizeMb']
+        if elasticsearch_namespace_ids is None and 'elasticsearchNamespaceIds' in kwargs:
+            elasticsearch_namespace_ids = kwargs['elasticsearchNamespaceIds']
+        if elasticsearch_password is None and 'elasticsearchPassword' in kwargs:
+            elasticsearch_password = kwargs['elasticsearchPassword']
+        if elasticsearch_project_ids is None and 'elasticsearchProjectIds' in kwargs:
+            elasticsearch_project_ids = kwargs['elasticsearchProjectIds']
+        if elasticsearch_search is None and 'elasticsearchSearch' in kwargs:
+            elasticsearch_search = kwargs['elasticsearchSearch']
+        if elasticsearch_urls is None and 'elasticsearchUrls' in kwargs:
+            elasticsearch_urls = kwargs['elasticsearchUrls']
+        if elasticsearch_username is None and 'elasticsearchUsername' in kwargs:
+            elasticsearch_username = kwargs['elasticsearchUsername']
+        if email_additional_text is None and 'emailAdditionalText' in kwargs:
+            email_additional_text = kwargs['emailAdditionalText']
+        if email_author_in_body is None and 'emailAuthorInBody' in kwargs:
+            email_author_in_body = kwargs['emailAuthorInBody']
+        if enabled_git_access_protocol is None and 'enabledGitAccessProtocol' in kwargs:
+            enabled_git_access_protocol = kwargs['enabledGitAccessProtocol']
+        if enforce_namespace_storage_limit is None and 'enforceNamespaceStorageLimit' in kwargs:
+            enforce_namespace_storage_limit = kwargs['enforceNamespaceStorageLimit']
+        if enforce_terms is None and 'enforceTerms' in kwargs:
+            enforce_terms = kwargs['enforceTerms']
+        if external_auth_client_cert is None and 'externalAuthClientCert' in kwargs:
+            external_auth_client_cert = kwargs['externalAuthClientCert']
+        if external_auth_client_key is None and 'externalAuthClientKey' in kwargs:
+            external_auth_client_key = kwargs['externalAuthClientKey']
+        if external_auth_client_key_pass is None and 'externalAuthClientKeyPass' in kwargs:
+            external_auth_client_key_pass = kwargs['externalAuthClientKeyPass']
+        if external_authorization_service_default_label is None and 'externalAuthorizationServiceDefaultLabel' in kwargs:
+            external_authorization_service_default_label = kwargs['externalAuthorizationServiceDefaultLabel']
+        if external_authorization_service_enabled is None and 'externalAuthorizationServiceEnabled' in kwargs:
+            external_authorization_service_enabled = kwargs['externalAuthorizationServiceEnabled']
+        if external_authorization_service_timeout is None and 'externalAuthorizationServiceTimeout' in kwargs:
+            external_authorization_service_timeout = kwargs['externalAuthorizationServiceTimeout']
+        if external_authorization_service_url is None and 'externalAuthorizationServiceUrl' in kwargs:
+            external_authorization_service_url = kwargs['externalAuthorizationServiceUrl']
+        if external_pipeline_validation_service_timeout is None and 'externalPipelineValidationServiceTimeout' in kwargs:
+            external_pipeline_validation_service_timeout = kwargs['externalPipelineValidationServiceTimeout']
+        if external_pipeline_validation_service_token is None and 'externalPipelineValidationServiceToken' in kwargs:
+            external_pipeline_validation_service_token = kwargs['externalPipelineValidationServiceToken']
+        if external_pipeline_validation_service_url is None and 'externalPipelineValidationServiceUrl' in kwargs:
+            external_pipeline_validation_service_url = kwargs['externalPipelineValidationServiceUrl']
+        if file_template_project_id is None and 'fileTemplateProjectId' in kwargs:
+            file_template_project_id = kwargs['fileTemplateProjectId']
+        if first_day_of_week is None and 'firstDayOfWeek' in kwargs:
+            first_day_of_week = kwargs['firstDayOfWeek']
+        if geo_node_allowed_ips is None and 'geoNodeAllowedIps' in kwargs:
+            geo_node_allowed_ips = kwargs['geoNodeAllowedIps']
+        if geo_status_timeout is None and 'geoStatusTimeout' in kwargs:
+            geo_status_timeout = kwargs['geoStatusTimeout']
+        if git_rate_limit_users_allowlists is None and 'gitRateLimitUsersAllowlists' in kwargs:
+            git_rate_limit_users_allowlists = kwargs['gitRateLimitUsersAllowlists']
+        if git_two_factor_session_expiry is None and 'gitTwoFactorSessionExpiry' in kwargs:
+            git_two_factor_session_expiry = kwargs['gitTwoFactorSessionExpiry']
+        if gitaly_timeout_default is None and 'gitalyTimeoutDefault' in kwargs:
+            gitaly_timeout_default = kwargs['gitalyTimeoutDefault']
+        if gitaly_timeout_fast is None and 'gitalyTimeoutFast' in kwargs:
+            gitaly_timeout_fast = kwargs['gitalyTimeoutFast']
+        if gitaly_timeout_medium is None and 'gitalyTimeoutMedium' in kwargs:
+            gitaly_timeout_medium = kwargs['gitalyTimeoutMedium']
+        if grafana_enabled is None and 'grafanaEnabled' in kwargs:
+            grafana_enabled = kwargs['grafanaEnabled']
+        if grafana_url is None and 'grafanaUrl' in kwargs:
+            grafana_url = kwargs['grafanaUrl']
+        if gravatar_enabled is None and 'gravatarEnabled' in kwargs:
+            gravatar_enabled = kwargs['gravatarEnabled']
+        if group_owners_can_manage_default_branch_protection is None and 'groupOwnersCanManageDefaultBranchProtection' in kwargs:
+            group_owners_can_manage_default_branch_protection = kwargs['groupOwnersCanManageDefaultBranchProtection']
+        if hashed_storage_enabled is None and 'hashedStorageEnabled' in kwargs:
+            hashed_storage_enabled = kwargs['hashedStorageEnabled']
+        if help_page_hide_commercial_content is None and 'helpPageHideCommercialContent' in kwargs:
+            help_page_hide_commercial_content = kwargs['helpPageHideCommercialContent']
+        if help_page_support_url is None and 'helpPageSupportUrl' in kwargs:
+            help_page_support_url = kwargs['helpPageSupportUrl']
+        if help_page_text is None and 'helpPageText' in kwargs:
+            help_page_text = kwargs['helpPageText']
+        if help_text is None and 'helpText' in kwargs:
+            help_text = kwargs['helpText']
+        if hide_third_party_offers is None and 'hideThirdPartyOffers' in kwargs:
+            hide_third_party_offers = kwargs['hideThirdPartyOffers']
+        if home_page_url is None and 'homePageUrl' in kwargs:
+            home_page_url = kwargs['homePageUrl']
+        if housekeeping_enabled is None and 'housekeepingEnabled' in kwargs:
+            housekeeping_enabled = kwargs['housekeepingEnabled']
+        if housekeeping_full_repack_period is None and 'housekeepingFullRepackPeriod' in kwargs:
+            housekeeping_full_repack_period = kwargs['housekeepingFullRepackPeriod']
+        if housekeeping_gc_period is None and 'housekeepingGcPeriod' in kwargs:
+            housekeeping_gc_period = kwargs['housekeepingGcPeriod']
+        if housekeeping_incremental_repack_period is None and 'housekeepingIncrementalRepackPeriod' in kwargs:
+            housekeeping_incremental_repack_period = kwargs['housekeepingIncrementalRepackPeriod']
+        if html_emails_enabled is None and 'htmlEmailsEnabled' in kwargs:
+            html_emails_enabled = kwargs['htmlEmailsEnabled']
+        if import_sources is None and 'importSources' in kwargs:
+            import_sources = kwargs['importSources']
+        if in_product_marketing_emails_enabled is None and 'inProductMarketingEmailsEnabled' in kwargs:
+            in_product_marketing_emails_enabled = kwargs['inProductMarketingEmailsEnabled']
+        if inactive_projects_delete_after_months is None and 'inactiveProjectsDeleteAfterMonths' in kwargs:
+            inactive_projects_delete_after_months = kwargs['inactiveProjectsDeleteAfterMonths']
+        if inactive_projects_min_size_mb is None and 'inactiveProjectsMinSizeMb' in kwargs:
+            inactive_projects_min_size_mb = kwargs['inactiveProjectsMinSizeMb']
+        if inactive_projects_send_warning_email_after_months is None and 'inactiveProjectsSendWarningEmailAfterMonths' in kwargs:
+            inactive_projects_send_warning_email_after_months = kwargs['inactiveProjectsSendWarningEmailAfterMonths']
+        if invisible_captcha_enabled is None and 'invisibleCaptchaEnabled' in kwargs:
+            invisible_captcha_enabled = kwargs['invisibleCaptchaEnabled']
+        if issues_create_limit is None and 'issuesCreateLimit' in kwargs:
+            issues_create_limit = kwargs['issuesCreateLimit']
+        if keep_latest_artifact is None and 'keepLatestArtifact' in kwargs:
+            keep_latest_artifact = kwargs['keepLatestArtifact']
+        if local_markdown_version is None and 'localMarkdownVersion' in kwargs:
+            local_markdown_version = kwargs['localMarkdownVersion']
+        if mailgun_events_enabled is None and 'mailgunEventsEnabled' in kwargs:
+            mailgun_events_enabled = kwargs['mailgunEventsEnabled']
+        if mailgun_signing_key is None and 'mailgunSigningKey' in kwargs:
+            mailgun_signing_key = kwargs['mailgunSigningKey']
+        if maintenance_mode is None and 'maintenanceMode' in kwargs:
+            maintenance_mode = kwargs['maintenanceMode']
+        if maintenance_mode_message is None and 'maintenanceModeMessage' in kwargs:
+            maintenance_mode_message = kwargs['maintenanceModeMessage']
+        if max_artifacts_size is None and 'maxArtifactsSize' in kwargs:
+            max_artifacts_size = kwargs['maxArtifactsSize']
+        if max_attachment_size is None and 'maxAttachmentSize' in kwargs:
+            max_attachment_size = kwargs['maxAttachmentSize']
+        if max_export_size is None and 'maxExportSize' in kwargs:
+            max_export_size = kwargs['maxExportSize']
+        if max_import_size is None and 'maxImportSize' in kwargs:
+            max_import_size = kwargs['maxImportSize']
+        if max_number_of_repository_downloads is None and 'maxNumberOfRepositoryDownloads' in kwargs:
+            max_number_of_repository_downloads = kwargs['maxNumberOfRepositoryDownloads']
+        if max_number_of_repository_downloads_within_time_period is None and 'maxNumberOfRepositoryDownloadsWithinTimePeriod' in kwargs:
+            max_number_of_repository_downloads_within_time_period = kwargs['maxNumberOfRepositoryDownloadsWithinTimePeriod']
+        if max_pages_size is None and 'maxPagesSize' in kwargs:
+            max_pages_size = kwargs['maxPagesSize']
+        if max_personal_access_token_lifetime is None and 'maxPersonalAccessTokenLifetime' in kwargs:
+            max_personal_access_token_lifetime = kwargs['maxPersonalAccessTokenLifetime']
+        if max_ssh_key_lifetime is None and 'maxSshKeyLifetime' in kwargs:
+            max_ssh_key_lifetime = kwargs['maxSshKeyLifetime']
+        if metrics_method_call_threshold is None and 'metricsMethodCallThreshold' in kwargs:
+            metrics_method_call_threshold = kwargs['metricsMethodCallThreshold']
+        if mirror_available is None and 'mirrorAvailable' in kwargs:
+            mirror_available = kwargs['mirrorAvailable']
+        if mirror_capacity_threshold is None and 'mirrorCapacityThreshold' in kwargs:
+            mirror_capacity_threshold = kwargs['mirrorCapacityThreshold']
+        if mirror_max_capacity is None and 'mirrorMaxCapacity' in kwargs:
+            mirror_max_capacity = kwargs['mirrorMaxCapacity']
+        if mirror_max_delay is None and 'mirrorMaxDelay' in kwargs:
+            mirror_max_delay = kwargs['mirrorMaxDelay']
+        if npm_package_requests_forwarding is None and 'npmPackageRequestsForwarding' in kwargs:
+            npm_package_requests_forwarding = kwargs['npmPackageRequestsForwarding']
+        if outbound_local_requests_whitelists is None and 'outboundLocalRequestsWhitelists' in kwargs:
+            outbound_local_requests_whitelists = kwargs['outboundLocalRequestsWhitelists']
+        if package_registry_cleanup_policies_worker_capacity is None and 'packageRegistryCleanupPoliciesWorkerCapacity' in kwargs:
+            package_registry_cleanup_policies_worker_capacity = kwargs['packageRegistryCleanupPoliciesWorkerCapacity']
+        if pages_domain_verification_enabled is None and 'pagesDomainVerificationEnabled' in kwargs:
+            pages_domain_verification_enabled = kwargs['pagesDomainVerificationEnabled']
+        if password_authentication_enabled_for_git is None and 'passwordAuthenticationEnabledForGit' in kwargs:
+            password_authentication_enabled_for_git = kwargs['passwordAuthenticationEnabledForGit']
+        if password_authentication_enabled_for_web is None and 'passwordAuthenticationEnabledForWeb' in kwargs:
+            password_authentication_enabled_for_web = kwargs['passwordAuthenticationEnabledForWeb']
+        if password_lowercase_required is None and 'passwordLowercaseRequired' in kwargs:
+            password_lowercase_required = kwargs['passwordLowercaseRequired']
+        if password_number_required is None and 'passwordNumberRequired' in kwargs:
+            password_number_required = kwargs['passwordNumberRequired']
+        if password_symbol_required is None and 'passwordSymbolRequired' in kwargs:
+            password_symbol_required = kwargs['passwordSymbolRequired']
+        if password_uppercase_required is None and 'passwordUppercaseRequired' in kwargs:
+            password_uppercase_required = kwargs['passwordUppercaseRequired']
+        if performance_bar_allowed_group_path is None and 'performanceBarAllowedGroupPath' in kwargs:
+            performance_bar_allowed_group_path = kwargs['performanceBarAllowedGroupPath']
+        if personal_access_token_prefix is None and 'personalAccessTokenPrefix' in kwargs:
+            personal_access_token_prefix = kwargs['personalAccessTokenPrefix']
+        if pipeline_limit_per_project_user_sha is None and 'pipelineLimitPerProjectUserSha' in kwargs:
+            pipeline_limit_per_project_user_sha = kwargs['pipelineLimitPerProjectUserSha']
+        if plantuml_enabled is None and 'plantumlEnabled' in kwargs:
+            plantuml_enabled = kwargs['plantumlEnabled']
+        if plantuml_url is None and 'plantumlUrl' in kwargs:
+            plantuml_url = kwargs['plantumlUrl']
+        if polling_interval_multiplier is None and 'pollingIntervalMultiplier' in kwargs:
+            polling_interval_multiplier = kwargs['pollingIntervalMultiplier']
+        if project_export_enabled is None and 'projectExportEnabled' in kwargs:
+            project_export_enabled = kwargs['projectExportEnabled']
+        if prometheus_metrics_enabled is None and 'prometheusMetricsEnabled' in kwargs:
+            prometheus_metrics_enabled = kwargs['prometheusMetricsEnabled']
+        if protected_ci_variables is None and 'protectedCiVariables' in kwargs:
+            protected_ci_variables = kwargs['protectedCiVariables']
+        if push_event_activities_limit is None and 'pushEventActivitiesLimit' in kwargs:
+            push_event_activities_limit = kwargs['pushEventActivitiesLimit']
+        if push_event_hooks_limit is None and 'pushEventHooksLimit' in kwargs:
+            push_event_hooks_limit = kwargs['pushEventHooksLimit']
+        if pypi_package_requests_forwarding is None and 'pypiPackageRequestsForwarding' in kwargs:
+            pypi_package_requests_forwarding = kwargs['pypiPackageRequestsForwarding']
+        if rate_limiting_response_text is None and 'rateLimitingResponseText' in kwargs:
+            rate_limiting_response_text = kwargs['rateLimitingResponseText']
+        if raw_blob_request_limit is None and 'rawBlobRequestLimit' in kwargs:
+            raw_blob_request_limit = kwargs['rawBlobRequestLimit']
+        if recaptcha_enabled is None and 'recaptchaEnabled' in kwargs:
+            recaptcha_enabled = kwargs['recaptchaEnabled']
+        if recaptcha_private_key is None and 'recaptchaPrivateKey' in kwargs:
+            recaptcha_private_key = kwargs['recaptchaPrivateKey']
+        if recaptcha_site_key is None and 'recaptchaSiteKey' in kwargs:
+            recaptcha_site_key = kwargs['recaptchaSiteKey']
+        if receive_max_input_size is None and 'receiveMaxInputSize' in kwargs:
+            receive_max_input_size = kwargs['receiveMaxInputSize']
+        if repository_checks_enabled is None and 'repositoryChecksEnabled' in kwargs:
+            repository_checks_enabled = kwargs['repositoryChecksEnabled']
+        if repository_size_limit is None and 'repositorySizeLimit' in kwargs:
+            repository_size_limit = kwargs['repositorySizeLimit']
+        if repository_storages is None and 'repositoryStorages' in kwargs:
+            repository_storages = kwargs['repositoryStorages']
+        if repository_storages_weighted is None and 'repositoryStoragesWeighted' in kwargs:
+            repository_storages_weighted = kwargs['repositoryStoragesWeighted']
+        if require_admin_approval_after_user_signup is None and 'requireAdminApprovalAfterUserSignup' in kwargs:
+            require_admin_approval_after_user_signup = kwargs['requireAdminApprovalAfterUserSignup']
+        if require_two_factor_authentication is None and 'requireTwoFactorAuthentication' in kwargs:
+            require_two_factor_authentication = kwargs['requireTwoFactorAuthentication']
+        if restricted_visibility_levels is None and 'restrictedVisibilityLevels' in kwargs:
+            restricted_visibility_levels = kwargs['restrictedVisibilityLevels']
+        if rsa_key_restriction is None and 'rsaKeyRestriction' in kwargs:
+            rsa_key_restriction = kwargs['rsaKeyRestriction']
+        if search_rate_limit is None and 'searchRateLimit' in kwargs:
+            search_rate_limit = kwargs['searchRateLimit']
+        if search_rate_limit_unauthenticated is None and 'searchRateLimitUnauthenticated' in kwargs:
+            search_rate_limit_unauthenticated = kwargs['searchRateLimitUnauthenticated']
+        if send_user_confirmation_email is None and 'sendUserConfirmationEmail' in kwargs:
+            send_user_confirmation_email = kwargs['sendUserConfirmationEmail']
+        if session_expire_delay is None and 'sessionExpireDelay' in kwargs:
+            session_expire_delay = kwargs['sessionExpireDelay']
+        if shared_runners_enabled is None and 'sharedRunnersEnabled' in kwargs:
+            shared_runners_enabled = kwargs['sharedRunnersEnabled']
+        if shared_runners_minutes is None and 'sharedRunnersMinutes' in kwargs:
+            shared_runners_minutes = kwargs['sharedRunnersMinutes']
+        if shared_runners_text is None and 'sharedRunnersText' in kwargs:
+            shared_runners_text = kwargs['sharedRunnersText']
+        if sidekiq_job_limiter_compression_threshold_bytes is None and 'sidekiqJobLimiterCompressionThresholdBytes' in kwargs:
+            sidekiq_job_limiter_compression_threshold_bytes = kwargs['sidekiqJobLimiterCompressionThresholdBytes']
+        if sidekiq_job_limiter_limit_bytes is None and 'sidekiqJobLimiterLimitBytes' in kwargs:
+            sidekiq_job_limiter_limit_bytes = kwargs['sidekiqJobLimiterLimitBytes']
+        if sidekiq_job_limiter_mode is None and 'sidekiqJobLimiterMode' in kwargs:
+            sidekiq_job_limiter_mode = kwargs['sidekiqJobLimiterMode']
+        if sign_in_text is None and 'signInText' in kwargs:
+            sign_in_text = kwargs['signInText']
+        if signup_enabled is None and 'signupEnabled' in kwargs:
+            signup_enabled = kwargs['signupEnabled']
+        if slack_app_enabled is None and 'slackAppEnabled' in kwargs:
+            slack_app_enabled = kwargs['slackAppEnabled']
+        if slack_app_id is None and 'slackAppId' in kwargs:
+            slack_app_id = kwargs['slackAppId']
+        if slack_app_secret is None and 'slackAppSecret' in kwargs:
+            slack_app_secret = kwargs['slackAppSecret']
+        if slack_app_signing_secret is None and 'slackAppSigningSecret' in kwargs:
+            slack_app_signing_secret = kwargs['slackAppSigningSecret']
+        if slack_app_verification_token is None and 'slackAppVerificationToken' in kwargs:
+            slack_app_verification_token = kwargs['slackAppVerificationToken']
+        if snippet_size_limit is None and 'snippetSizeLimit' in kwargs:
+            snippet_size_limit = kwargs['snippetSizeLimit']
+        if snowplow_app_id is None and 'snowplowAppId' in kwargs:
+            snowplow_app_id = kwargs['snowplowAppId']
+        if snowplow_collector_hostname is None and 'snowplowCollectorHostname' in kwargs:
+            snowplow_collector_hostname = kwargs['snowplowCollectorHostname']
+        if snowplow_cookie_domain is None and 'snowplowCookieDomain' in kwargs:
+            snowplow_cookie_domain = kwargs['snowplowCookieDomain']
+        if snowplow_enabled is None and 'snowplowEnabled' in kwargs:
+            snowplow_enabled = kwargs['snowplowEnabled']
+        if sourcegraph_enabled is None and 'sourcegraphEnabled' in kwargs:
+            sourcegraph_enabled = kwargs['sourcegraphEnabled']
+        if sourcegraph_public_only is None and 'sourcegraphPublicOnly' in kwargs:
+            sourcegraph_public_only = kwargs['sourcegraphPublicOnly']
+        if sourcegraph_url is None and 'sourcegraphUrl' in kwargs:
+            sourcegraph_url = kwargs['sourcegraphUrl']
+        if spam_check_api_key is None and 'spamCheckApiKey' in kwargs:
+            spam_check_api_key = kwargs['spamCheckApiKey']
+        if spam_check_endpoint_enabled is None and 'spamCheckEndpointEnabled' in kwargs:
+            spam_check_endpoint_enabled = kwargs['spamCheckEndpointEnabled']
+        if spam_check_endpoint_url is None and 'spamCheckEndpointUrl' in kwargs:
+            spam_check_endpoint_url = kwargs['spamCheckEndpointUrl']
+        if suggest_pipeline_enabled is None and 'suggestPipelineEnabled' in kwargs:
+            suggest_pipeline_enabled = kwargs['suggestPipelineEnabled']
+        if terminal_max_session_time is None and 'terminalMaxSessionTime' in kwargs:
+            terminal_max_session_time = kwargs['terminalMaxSessionTime']
+        if throttle_authenticated_api_enabled is None and 'throttleAuthenticatedApiEnabled' in kwargs:
+            throttle_authenticated_api_enabled = kwargs['throttleAuthenticatedApiEnabled']
+        if throttle_authenticated_api_period_in_seconds is None and 'throttleAuthenticatedApiPeriodInSeconds' in kwargs:
+            throttle_authenticated_api_period_in_seconds = kwargs['throttleAuthenticatedApiPeriodInSeconds']
+        if throttle_authenticated_api_requests_per_period is None and 'throttleAuthenticatedApiRequestsPerPeriod' in kwargs:
+            throttle_authenticated_api_requests_per_period = kwargs['throttleAuthenticatedApiRequestsPerPeriod']
+        if throttle_authenticated_packages_api_enabled is None and 'throttleAuthenticatedPackagesApiEnabled' in kwargs:
+            throttle_authenticated_packages_api_enabled = kwargs['throttleAuthenticatedPackagesApiEnabled']
+        if throttle_authenticated_packages_api_period_in_seconds is None and 'throttleAuthenticatedPackagesApiPeriodInSeconds' in kwargs:
+            throttle_authenticated_packages_api_period_in_seconds = kwargs['throttleAuthenticatedPackagesApiPeriodInSeconds']
+        if throttle_authenticated_packages_api_requests_per_period is None and 'throttleAuthenticatedPackagesApiRequestsPerPeriod' in kwargs:
+            throttle_authenticated_packages_api_requests_per_period = kwargs['throttleAuthenticatedPackagesApiRequestsPerPeriod']
+        if throttle_authenticated_web_enabled is None and 'throttleAuthenticatedWebEnabled' in kwargs:
+            throttle_authenticated_web_enabled = kwargs['throttleAuthenticatedWebEnabled']
+        if throttle_authenticated_web_period_in_seconds is None and 'throttleAuthenticatedWebPeriodInSeconds' in kwargs:
+            throttle_authenticated_web_period_in_seconds = kwargs['throttleAuthenticatedWebPeriodInSeconds']
+        if throttle_authenticated_web_requests_per_period is None and 'throttleAuthenticatedWebRequestsPerPeriod' in kwargs:
+            throttle_authenticated_web_requests_per_period = kwargs['throttleAuthenticatedWebRequestsPerPeriod']
+        if throttle_unauthenticated_api_enabled is None and 'throttleUnauthenticatedApiEnabled' in kwargs:
+            throttle_unauthenticated_api_enabled = kwargs['throttleUnauthenticatedApiEnabled']
+        if throttle_unauthenticated_api_period_in_seconds is None and 'throttleUnauthenticatedApiPeriodInSeconds' in kwargs:
+            throttle_unauthenticated_api_period_in_seconds = kwargs['throttleUnauthenticatedApiPeriodInSeconds']
+        if throttle_unauthenticated_api_requests_per_period is None and 'throttleUnauthenticatedApiRequestsPerPeriod' in kwargs:
+            throttle_unauthenticated_api_requests_per_period = kwargs['throttleUnauthenticatedApiRequestsPerPeriod']
+        if throttle_unauthenticated_packages_api_enabled is None and 'throttleUnauthenticatedPackagesApiEnabled' in kwargs:
+            throttle_unauthenticated_packages_api_enabled = kwargs['throttleUnauthenticatedPackagesApiEnabled']
+        if throttle_unauthenticated_packages_api_period_in_seconds is None and 'throttleUnauthenticatedPackagesApiPeriodInSeconds' in kwargs:
+            throttle_unauthenticated_packages_api_period_in_seconds = kwargs['throttleUnauthenticatedPackagesApiPeriodInSeconds']
+        if throttle_unauthenticated_packages_api_requests_per_period is None and 'throttleUnauthenticatedPackagesApiRequestsPerPeriod' in kwargs:
+            throttle_unauthenticated_packages_api_requests_per_period = kwargs['throttleUnauthenticatedPackagesApiRequestsPerPeriod']
+        if throttle_unauthenticated_web_enabled is None and 'throttleUnauthenticatedWebEnabled' in kwargs:
+            throttle_unauthenticated_web_enabled = kwargs['throttleUnauthenticatedWebEnabled']
+        if throttle_unauthenticated_web_period_in_seconds is None and 'throttleUnauthenticatedWebPeriodInSeconds' in kwargs:
+            throttle_unauthenticated_web_period_in_seconds = kwargs['throttleUnauthenticatedWebPeriodInSeconds']
+        if throttle_unauthenticated_web_requests_per_period is None and 'throttleUnauthenticatedWebRequestsPerPeriod' in kwargs:
+            throttle_unauthenticated_web_requests_per_period = kwargs['throttleUnauthenticatedWebRequestsPerPeriod']
+        if time_tracking_limit_to_hours is None and 'timeTrackingLimitToHours' in kwargs:
+            time_tracking_limit_to_hours = kwargs['timeTrackingLimitToHours']
+        if two_factor_grace_period is None and 'twoFactorGracePeriod' in kwargs:
+            two_factor_grace_period = kwargs['twoFactorGracePeriod']
+        if unique_ips_limit_enabled is None and 'uniqueIpsLimitEnabled' in kwargs:
+            unique_ips_limit_enabled = kwargs['uniqueIpsLimitEnabled']
+        if unique_ips_limit_per_user is None and 'uniqueIpsLimitPerUser' in kwargs:
+            unique_ips_limit_per_user = kwargs['uniqueIpsLimitPerUser']
+        if unique_ips_limit_time_window is None and 'uniqueIpsLimitTimeWindow' in kwargs:
+            unique_ips_limit_time_window = kwargs['uniqueIpsLimitTimeWindow']
+        if usage_ping_enabled is None and 'usagePingEnabled' in kwargs:
+            usage_ping_enabled = kwargs['usagePingEnabled']
+        if user_deactivation_emails_enabled is None and 'userDeactivationEmailsEnabled' in kwargs:
+            user_deactivation_emails_enabled = kwargs['userDeactivationEmailsEnabled']
+        if user_default_external is None and 'userDefaultExternal' in kwargs:
+            user_default_external = kwargs['userDefaultExternal']
+        if user_default_internal_regex is None and 'userDefaultInternalRegex' in kwargs:
+            user_default_internal_regex = kwargs['userDefaultInternalRegex']
+        if user_oauth_applications is None and 'userOauthApplications' in kwargs:
+            user_oauth_applications = kwargs['userOauthApplications']
+        if user_show_add_ssh_key_message is None and 'userShowAddSshKeyMessage' in kwargs:
+            user_show_add_ssh_key_message = kwargs['userShowAddSshKeyMessage']
+        if version_check_enabled is None and 'versionCheckEnabled' in kwargs:
+            version_check_enabled = kwargs['versionCheckEnabled']
+        if web_ide_clientside_preview_enabled is None and 'webIdeClientsidePreviewEnabled' in kwargs:
+            web_ide_clientside_preview_enabled = kwargs['webIdeClientsidePreviewEnabled']
+        if whats_new_variant is None and 'whatsNewVariant' in kwargs:
+            whats_new_variant = kwargs['whatsNewVariant']
+        if wiki_page_max_content_bytes is None and 'wikiPageMaxContentBytes' in kwargs:
+            wiki_page_max_content_bytes = kwargs['wikiPageMaxContentBytes']
+
         if abuse_notification_email is not None:
             _setter("abuse_notification_email", abuse_notification_email)
         if admin_mode is not None:
@@ -5362,7 +5846,491 @@ class _ApplicationSettingsState:
              web_ide_clientside_preview_enabled: Optional[pulumi.Input[bool]] = None,
              whats_new_variant: Optional[pulumi.Input[str]] = None,
              wiki_page_max_content_bytes: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if abuse_notification_email is None and 'abuseNotificationEmail' in kwargs:
+            abuse_notification_email = kwargs['abuseNotificationEmail']
+        if admin_mode is None and 'adminMode' in kwargs:
+            admin_mode = kwargs['adminMode']
+        if after_sign_out_path is None and 'afterSignOutPath' in kwargs:
+            after_sign_out_path = kwargs['afterSignOutPath']
+        if after_sign_up_text is None and 'afterSignUpText' in kwargs:
+            after_sign_up_text = kwargs['afterSignUpText']
+        if akismet_api_key is None and 'akismetApiKey' in kwargs:
+            akismet_api_key = kwargs['akismetApiKey']
+        if akismet_enabled is None and 'akismetEnabled' in kwargs:
+            akismet_enabled = kwargs['akismetEnabled']
+        if allow_group_owners_to_manage_ldap is None and 'allowGroupOwnersToManageLdap' in kwargs:
+            allow_group_owners_to_manage_ldap = kwargs['allowGroupOwnersToManageLdap']
+        if allow_local_requests_from_system_hooks is None and 'allowLocalRequestsFromSystemHooks' in kwargs:
+            allow_local_requests_from_system_hooks = kwargs['allowLocalRequestsFromSystemHooks']
+        if allow_local_requests_from_web_hooks_and_services is None and 'allowLocalRequestsFromWebHooksAndServices' in kwargs:
+            allow_local_requests_from_web_hooks_and_services = kwargs['allowLocalRequestsFromWebHooksAndServices']
+        if archive_builds_in_human_readable is None and 'archiveBuildsInHumanReadable' in kwargs:
+            archive_builds_in_human_readable = kwargs['archiveBuildsInHumanReadable']
+        if asset_proxy_allowlists is None and 'assetProxyAllowlists' in kwargs:
+            asset_proxy_allowlists = kwargs['assetProxyAllowlists']
+        if asset_proxy_enabled is None and 'assetProxyEnabled' in kwargs:
+            asset_proxy_enabled = kwargs['assetProxyEnabled']
+        if asset_proxy_secret_key is None and 'assetProxySecretKey' in kwargs:
+            asset_proxy_secret_key = kwargs['assetProxySecretKey']
+        if asset_proxy_url is None and 'assetProxyUrl' in kwargs:
+            asset_proxy_url = kwargs['assetProxyUrl']
+        if authorized_keys_enabled is None and 'authorizedKeysEnabled' in kwargs:
+            authorized_keys_enabled = kwargs['authorizedKeysEnabled']
+        if auto_devops_domain is None and 'autoDevopsDomain' in kwargs:
+            auto_devops_domain = kwargs['autoDevopsDomain']
+        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
+            auto_devops_enabled = kwargs['autoDevopsEnabled']
+        if automatic_purchased_storage_allocation is None and 'automaticPurchasedStorageAllocation' in kwargs:
+            automatic_purchased_storage_allocation = kwargs['automaticPurchasedStorageAllocation']
+        if can_create_group is None and 'canCreateGroup' in kwargs:
+            can_create_group = kwargs['canCreateGroup']
+        if check_namespace_plan is None and 'checkNamespacePlan' in kwargs:
+            check_namespace_plan = kwargs['checkNamespacePlan']
+        if commit_email_hostname is None and 'commitEmailHostname' in kwargs:
+            commit_email_hostname = kwargs['commitEmailHostname']
+        if container_expiration_policies_enable_historic_entries is None and 'containerExpirationPoliciesEnableHistoricEntries' in kwargs:
+            container_expiration_policies_enable_historic_entries = kwargs['containerExpirationPoliciesEnableHistoricEntries']
+        if container_registry_cleanup_tags_service_max_list_size is None and 'containerRegistryCleanupTagsServiceMaxListSize' in kwargs:
+            container_registry_cleanup_tags_service_max_list_size = kwargs['containerRegistryCleanupTagsServiceMaxListSize']
+        if container_registry_delete_tags_service_timeout is None and 'containerRegistryDeleteTagsServiceTimeout' in kwargs:
+            container_registry_delete_tags_service_timeout = kwargs['containerRegistryDeleteTagsServiceTimeout']
+        if container_registry_expiration_policies_caching is None and 'containerRegistryExpirationPoliciesCaching' in kwargs:
+            container_registry_expiration_policies_caching = kwargs['containerRegistryExpirationPoliciesCaching']
+        if container_registry_expiration_policies_worker_capacity is None and 'containerRegistryExpirationPoliciesWorkerCapacity' in kwargs:
+            container_registry_expiration_policies_worker_capacity = kwargs['containerRegistryExpirationPoliciesWorkerCapacity']
+        if container_registry_token_expire_delay is None and 'containerRegistryTokenExpireDelay' in kwargs:
+            container_registry_token_expire_delay = kwargs['containerRegistryTokenExpireDelay']
+        if deactivate_dormant_users is None and 'deactivateDormantUsers' in kwargs:
+            deactivate_dormant_users = kwargs['deactivateDormantUsers']
+        if default_artifacts_expire_in is None and 'defaultArtifactsExpireIn' in kwargs:
+            default_artifacts_expire_in = kwargs['defaultArtifactsExpireIn']
+        if default_branch_name is None and 'defaultBranchName' in kwargs:
+            default_branch_name = kwargs['defaultBranchName']
+        if default_branch_protection is None and 'defaultBranchProtection' in kwargs:
+            default_branch_protection = kwargs['defaultBranchProtection']
+        if default_ci_config_path is None and 'defaultCiConfigPath' in kwargs:
+            default_ci_config_path = kwargs['defaultCiConfigPath']
+        if default_group_visibility is None and 'defaultGroupVisibility' in kwargs:
+            default_group_visibility = kwargs['defaultGroupVisibility']
+        if default_project_creation is None and 'defaultProjectCreation' in kwargs:
+            default_project_creation = kwargs['defaultProjectCreation']
+        if default_project_visibility is None and 'defaultProjectVisibility' in kwargs:
+            default_project_visibility = kwargs['defaultProjectVisibility']
+        if default_projects_limit is None and 'defaultProjectsLimit' in kwargs:
+            default_projects_limit = kwargs['defaultProjectsLimit']
+        if default_snippet_visibility is None and 'defaultSnippetVisibility' in kwargs:
+            default_snippet_visibility = kwargs['defaultSnippetVisibility']
+        if delayed_group_deletion is None and 'delayedGroupDeletion' in kwargs:
+            delayed_group_deletion = kwargs['delayedGroupDeletion']
+        if delayed_project_deletion is None and 'delayedProjectDeletion' in kwargs:
+            delayed_project_deletion = kwargs['delayedProjectDeletion']
+        if delete_inactive_projects is None and 'deleteInactiveProjects' in kwargs:
+            delete_inactive_projects = kwargs['deleteInactiveProjects']
+        if deletion_adjourned_period is None and 'deletionAdjournedPeriod' in kwargs:
+            deletion_adjourned_period = kwargs['deletionAdjournedPeriod']
+        if diff_max_files is None and 'diffMaxFiles' in kwargs:
+            diff_max_files = kwargs['diffMaxFiles']
+        if diff_max_lines is None and 'diffMaxLines' in kwargs:
+            diff_max_lines = kwargs['diffMaxLines']
+        if diff_max_patch_bytes is None and 'diffMaxPatchBytes' in kwargs:
+            diff_max_patch_bytes = kwargs['diffMaxPatchBytes']
+        if disable_feed_token is None and 'disableFeedToken' in kwargs:
+            disable_feed_token = kwargs['disableFeedToken']
+        if disabled_oauth_sign_in_sources is None and 'disabledOauthSignInSources' in kwargs:
+            disabled_oauth_sign_in_sources = kwargs['disabledOauthSignInSources']
+        if dns_rebinding_protection_enabled is None and 'dnsRebindingProtectionEnabled' in kwargs:
+            dns_rebinding_protection_enabled = kwargs['dnsRebindingProtectionEnabled']
+        if domain_allowlists is None and 'domainAllowlists' in kwargs:
+            domain_allowlists = kwargs['domainAllowlists']
+        if domain_denylist_enabled is None and 'domainDenylistEnabled' in kwargs:
+            domain_denylist_enabled = kwargs['domainDenylistEnabled']
+        if domain_denylists is None and 'domainDenylists' in kwargs:
+            domain_denylists = kwargs['domainDenylists']
+        if dsa_key_restriction is None and 'dsaKeyRestriction' in kwargs:
+            dsa_key_restriction = kwargs['dsaKeyRestriction']
+        if ecdsa_key_restriction is None and 'ecdsaKeyRestriction' in kwargs:
+            ecdsa_key_restriction = kwargs['ecdsaKeyRestriction']
+        if ecdsa_sk_key_restriction is None and 'ecdsaSkKeyRestriction' in kwargs:
+            ecdsa_sk_key_restriction = kwargs['ecdsaSkKeyRestriction']
+        if ed25519_key_restriction is None and 'ed25519KeyRestriction' in kwargs:
+            ed25519_key_restriction = kwargs['ed25519KeyRestriction']
+        if ed25519_sk_key_restriction is None and 'ed25519SkKeyRestriction' in kwargs:
+            ed25519_sk_key_restriction = kwargs['ed25519SkKeyRestriction']
+        if eks_access_key_id is None and 'eksAccessKeyId' in kwargs:
+            eks_access_key_id = kwargs['eksAccessKeyId']
+        if eks_account_id is None and 'eksAccountId' in kwargs:
+            eks_account_id = kwargs['eksAccountId']
+        if eks_integration_enabled is None and 'eksIntegrationEnabled' in kwargs:
+            eks_integration_enabled = kwargs['eksIntegrationEnabled']
+        if eks_secret_access_key is None and 'eksSecretAccessKey' in kwargs:
+            eks_secret_access_key = kwargs['eksSecretAccessKey']
+        if elasticsearch_aws is None and 'elasticsearchAws' in kwargs:
+            elasticsearch_aws = kwargs['elasticsearchAws']
+        if elasticsearch_aws_access_key is None and 'elasticsearchAwsAccessKey' in kwargs:
+            elasticsearch_aws_access_key = kwargs['elasticsearchAwsAccessKey']
+        if elasticsearch_aws_region is None and 'elasticsearchAwsRegion' in kwargs:
+            elasticsearch_aws_region = kwargs['elasticsearchAwsRegion']
+        if elasticsearch_aws_secret_access_key is None and 'elasticsearchAwsSecretAccessKey' in kwargs:
+            elasticsearch_aws_secret_access_key = kwargs['elasticsearchAwsSecretAccessKey']
+        if elasticsearch_indexed_field_length_limit is None and 'elasticsearchIndexedFieldLengthLimit' in kwargs:
+            elasticsearch_indexed_field_length_limit = kwargs['elasticsearchIndexedFieldLengthLimit']
+        if elasticsearch_indexed_file_size_limit_kb is None and 'elasticsearchIndexedFileSizeLimitKb' in kwargs:
+            elasticsearch_indexed_file_size_limit_kb = kwargs['elasticsearchIndexedFileSizeLimitKb']
+        if elasticsearch_indexing is None and 'elasticsearchIndexing' in kwargs:
+            elasticsearch_indexing = kwargs['elasticsearchIndexing']
+        if elasticsearch_limit_indexing is None and 'elasticsearchLimitIndexing' in kwargs:
+            elasticsearch_limit_indexing = kwargs['elasticsearchLimitIndexing']
+        if elasticsearch_max_bulk_concurrency is None and 'elasticsearchMaxBulkConcurrency' in kwargs:
+            elasticsearch_max_bulk_concurrency = kwargs['elasticsearchMaxBulkConcurrency']
+        if elasticsearch_max_bulk_size_mb is None and 'elasticsearchMaxBulkSizeMb' in kwargs:
+            elasticsearch_max_bulk_size_mb = kwargs['elasticsearchMaxBulkSizeMb']
+        if elasticsearch_namespace_ids is None and 'elasticsearchNamespaceIds' in kwargs:
+            elasticsearch_namespace_ids = kwargs['elasticsearchNamespaceIds']
+        if elasticsearch_password is None and 'elasticsearchPassword' in kwargs:
+            elasticsearch_password = kwargs['elasticsearchPassword']
+        if elasticsearch_project_ids is None and 'elasticsearchProjectIds' in kwargs:
+            elasticsearch_project_ids = kwargs['elasticsearchProjectIds']
+        if elasticsearch_search is None and 'elasticsearchSearch' in kwargs:
+            elasticsearch_search = kwargs['elasticsearchSearch']
+        if elasticsearch_urls is None and 'elasticsearchUrls' in kwargs:
+            elasticsearch_urls = kwargs['elasticsearchUrls']
+        if elasticsearch_username is None and 'elasticsearchUsername' in kwargs:
+            elasticsearch_username = kwargs['elasticsearchUsername']
+        if email_additional_text is None and 'emailAdditionalText' in kwargs:
+            email_additional_text = kwargs['emailAdditionalText']
+        if email_author_in_body is None and 'emailAuthorInBody' in kwargs:
+            email_author_in_body = kwargs['emailAuthorInBody']
+        if enabled_git_access_protocol is None and 'enabledGitAccessProtocol' in kwargs:
+            enabled_git_access_protocol = kwargs['enabledGitAccessProtocol']
+        if enforce_namespace_storage_limit is None and 'enforceNamespaceStorageLimit' in kwargs:
+            enforce_namespace_storage_limit = kwargs['enforceNamespaceStorageLimit']
+        if enforce_terms is None and 'enforceTerms' in kwargs:
+            enforce_terms = kwargs['enforceTerms']
+        if external_auth_client_cert is None and 'externalAuthClientCert' in kwargs:
+            external_auth_client_cert = kwargs['externalAuthClientCert']
+        if external_auth_client_key is None and 'externalAuthClientKey' in kwargs:
+            external_auth_client_key = kwargs['externalAuthClientKey']
+        if external_auth_client_key_pass is None and 'externalAuthClientKeyPass' in kwargs:
+            external_auth_client_key_pass = kwargs['externalAuthClientKeyPass']
+        if external_authorization_service_default_label is None and 'externalAuthorizationServiceDefaultLabel' in kwargs:
+            external_authorization_service_default_label = kwargs['externalAuthorizationServiceDefaultLabel']
+        if external_authorization_service_enabled is None and 'externalAuthorizationServiceEnabled' in kwargs:
+            external_authorization_service_enabled = kwargs['externalAuthorizationServiceEnabled']
+        if external_authorization_service_timeout is None and 'externalAuthorizationServiceTimeout' in kwargs:
+            external_authorization_service_timeout = kwargs['externalAuthorizationServiceTimeout']
+        if external_authorization_service_url is None and 'externalAuthorizationServiceUrl' in kwargs:
+            external_authorization_service_url = kwargs['externalAuthorizationServiceUrl']
+        if external_pipeline_validation_service_timeout is None and 'externalPipelineValidationServiceTimeout' in kwargs:
+            external_pipeline_validation_service_timeout = kwargs['externalPipelineValidationServiceTimeout']
+        if external_pipeline_validation_service_token is None and 'externalPipelineValidationServiceToken' in kwargs:
+            external_pipeline_validation_service_token = kwargs['externalPipelineValidationServiceToken']
+        if external_pipeline_validation_service_url is None and 'externalPipelineValidationServiceUrl' in kwargs:
+            external_pipeline_validation_service_url = kwargs['externalPipelineValidationServiceUrl']
+        if file_template_project_id is None and 'fileTemplateProjectId' in kwargs:
+            file_template_project_id = kwargs['fileTemplateProjectId']
+        if first_day_of_week is None and 'firstDayOfWeek' in kwargs:
+            first_day_of_week = kwargs['firstDayOfWeek']
+        if geo_node_allowed_ips is None and 'geoNodeAllowedIps' in kwargs:
+            geo_node_allowed_ips = kwargs['geoNodeAllowedIps']
+        if geo_status_timeout is None and 'geoStatusTimeout' in kwargs:
+            geo_status_timeout = kwargs['geoStatusTimeout']
+        if git_rate_limit_users_allowlists is None and 'gitRateLimitUsersAllowlists' in kwargs:
+            git_rate_limit_users_allowlists = kwargs['gitRateLimitUsersAllowlists']
+        if git_two_factor_session_expiry is None and 'gitTwoFactorSessionExpiry' in kwargs:
+            git_two_factor_session_expiry = kwargs['gitTwoFactorSessionExpiry']
+        if gitaly_timeout_default is None and 'gitalyTimeoutDefault' in kwargs:
+            gitaly_timeout_default = kwargs['gitalyTimeoutDefault']
+        if gitaly_timeout_fast is None and 'gitalyTimeoutFast' in kwargs:
+            gitaly_timeout_fast = kwargs['gitalyTimeoutFast']
+        if gitaly_timeout_medium is None and 'gitalyTimeoutMedium' in kwargs:
+            gitaly_timeout_medium = kwargs['gitalyTimeoutMedium']
+        if grafana_enabled is None and 'grafanaEnabled' in kwargs:
+            grafana_enabled = kwargs['grafanaEnabled']
+        if grafana_url is None and 'grafanaUrl' in kwargs:
+            grafana_url = kwargs['grafanaUrl']
+        if gravatar_enabled is None and 'gravatarEnabled' in kwargs:
+            gravatar_enabled = kwargs['gravatarEnabled']
+        if group_owners_can_manage_default_branch_protection is None and 'groupOwnersCanManageDefaultBranchProtection' in kwargs:
+            group_owners_can_manage_default_branch_protection = kwargs['groupOwnersCanManageDefaultBranchProtection']
+        if hashed_storage_enabled is None and 'hashedStorageEnabled' in kwargs:
+            hashed_storage_enabled = kwargs['hashedStorageEnabled']
+        if help_page_hide_commercial_content is None and 'helpPageHideCommercialContent' in kwargs:
+            help_page_hide_commercial_content = kwargs['helpPageHideCommercialContent']
+        if help_page_support_url is None and 'helpPageSupportUrl' in kwargs:
+            help_page_support_url = kwargs['helpPageSupportUrl']
+        if help_page_text is None and 'helpPageText' in kwargs:
+            help_page_text = kwargs['helpPageText']
+        if help_text is None and 'helpText' in kwargs:
+            help_text = kwargs['helpText']
+        if hide_third_party_offers is None and 'hideThirdPartyOffers' in kwargs:
+            hide_third_party_offers = kwargs['hideThirdPartyOffers']
+        if home_page_url is None and 'homePageUrl' in kwargs:
+            home_page_url = kwargs['homePageUrl']
+        if housekeeping_enabled is None and 'housekeepingEnabled' in kwargs:
+            housekeeping_enabled = kwargs['housekeepingEnabled']
+        if housekeeping_full_repack_period is None and 'housekeepingFullRepackPeriod' in kwargs:
+            housekeeping_full_repack_period = kwargs['housekeepingFullRepackPeriod']
+        if housekeeping_gc_period is None and 'housekeepingGcPeriod' in kwargs:
+            housekeeping_gc_period = kwargs['housekeepingGcPeriod']
+        if housekeeping_incremental_repack_period is None and 'housekeepingIncrementalRepackPeriod' in kwargs:
+            housekeeping_incremental_repack_period = kwargs['housekeepingIncrementalRepackPeriod']
+        if html_emails_enabled is None and 'htmlEmailsEnabled' in kwargs:
+            html_emails_enabled = kwargs['htmlEmailsEnabled']
+        if import_sources is None and 'importSources' in kwargs:
+            import_sources = kwargs['importSources']
+        if in_product_marketing_emails_enabled is None and 'inProductMarketingEmailsEnabled' in kwargs:
+            in_product_marketing_emails_enabled = kwargs['inProductMarketingEmailsEnabled']
+        if inactive_projects_delete_after_months is None and 'inactiveProjectsDeleteAfterMonths' in kwargs:
+            inactive_projects_delete_after_months = kwargs['inactiveProjectsDeleteAfterMonths']
+        if inactive_projects_min_size_mb is None and 'inactiveProjectsMinSizeMb' in kwargs:
+            inactive_projects_min_size_mb = kwargs['inactiveProjectsMinSizeMb']
+        if inactive_projects_send_warning_email_after_months is None and 'inactiveProjectsSendWarningEmailAfterMonths' in kwargs:
+            inactive_projects_send_warning_email_after_months = kwargs['inactiveProjectsSendWarningEmailAfterMonths']
+        if invisible_captcha_enabled is None and 'invisibleCaptchaEnabled' in kwargs:
+            invisible_captcha_enabled = kwargs['invisibleCaptchaEnabled']
+        if issues_create_limit is None and 'issuesCreateLimit' in kwargs:
+            issues_create_limit = kwargs['issuesCreateLimit']
+        if keep_latest_artifact is None and 'keepLatestArtifact' in kwargs:
+            keep_latest_artifact = kwargs['keepLatestArtifact']
+        if local_markdown_version is None and 'localMarkdownVersion' in kwargs:
+            local_markdown_version = kwargs['localMarkdownVersion']
+        if mailgun_events_enabled is None and 'mailgunEventsEnabled' in kwargs:
+            mailgun_events_enabled = kwargs['mailgunEventsEnabled']
+        if mailgun_signing_key is None and 'mailgunSigningKey' in kwargs:
+            mailgun_signing_key = kwargs['mailgunSigningKey']
+        if maintenance_mode is None and 'maintenanceMode' in kwargs:
+            maintenance_mode = kwargs['maintenanceMode']
+        if maintenance_mode_message is None and 'maintenanceModeMessage' in kwargs:
+            maintenance_mode_message = kwargs['maintenanceModeMessage']
+        if max_artifacts_size is None and 'maxArtifactsSize' in kwargs:
+            max_artifacts_size = kwargs['maxArtifactsSize']
+        if max_attachment_size is None and 'maxAttachmentSize' in kwargs:
+            max_attachment_size = kwargs['maxAttachmentSize']
+        if max_export_size is None and 'maxExportSize' in kwargs:
+            max_export_size = kwargs['maxExportSize']
+        if max_import_size is None and 'maxImportSize' in kwargs:
+            max_import_size = kwargs['maxImportSize']
+        if max_number_of_repository_downloads is None and 'maxNumberOfRepositoryDownloads' in kwargs:
+            max_number_of_repository_downloads = kwargs['maxNumberOfRepositoryDownloads']
+        if max_number_of_repository_downloads_within_time_period is None and 'maxNumberOfRepositoryDownloadsWithinTimePeriod' in kwargs:
+            max_number_of_repository_downloads_within_time_period = kwargs['maxNumberOfRepositoryDownloadsWithinTimePeriod']
+        if max_pages_size is None and 'maxPagesSize' in kwargs:
+            max_pages_size = kwargs['maxPagesSize']
+        if max_personal_access_token_lifetime is None and 'maxPersonalAccessTokenLifetime' in kwargs:
+            max_personal_access_token_lifetime = kwargs['maxPersonalAccessTokenLifetime']
+        if max_ssh_key_lifetime is None and 'maxSshKeyLifetime' in kwargs:
+            max_ssh_key_lifetime = kwargs['maxSshKeyLifetime']
+        if metrics_method_call_threshold is None and 'metricsMethodCallThreshold' in kwargs:
+            metrics_method_call_threshold = kwargs['metricsMethodCallThreshold']
+        if mirror_available is None and 'mirrorAvailable' in kwargs:
+            mirror_available = kwargs['mirrorAvailable']
+        if mirror_capacity_threshold is None and 'mirrorCapacityThreshold' in kwargs:
+            mirror_capacity_threshold = kwargs['mirrorCapacityThreshold']
+        if mirror_max_capacity is None and 'mirrorMaxCapacity' in kwargs:
+            mirror_max_capacity = kwargs['mirrorMaxCapacity']
+        if mirror_max_delay is None and 'mirrorMaxDelay' in kwargs:
+            mirror_max_delay = kwargs['mirrorMaxDelay']
+        if npm_package_requests_forwarding is None and 'npmPackageRequestsForwarding' in kwargs:
+            npm_package_requests_forwarding = kwargs['npmPackageRequestsForwarding']
+        if outbound_local_requests_whitelists is None and 'outboundLocalRequestsWhitelists' in kwargs:
+            outbound_local_requests_whitelists = kwargs['outboundLocalRequestsWhitelists']
+        if package_registry_cleanup_policies_worker_capacity is None and 'packageRegistryCleanupPoliciesWorkerCapacity' in kwargs:
+            package_registry_cleanup_policies_worker_capacity = kwargs['packageRegistryCleanupPoliciesWorkerCapacity']
+        if pages_domain_verification_enabled is None and 'pagesDomainVerificationEnabled' in kwargs:
+            pages_domain_verification_enabled = kwargs['pagesDomainVerificationEnabled']
+        if password_authentication_enabled_for_git is None and 'passwordAuthenticationEnabledForGit' in kwargs:
+            password_authentication_enabled_for_git = kwargs['passwordAuthenticationEnabledForGit']
+        if password_authentication_enabled_for_web is None and 'passwordAuthenticationEnabledForWeb' in kwargs:
+            password_authentication_enabled_for_web = kwargs['passwordAuthenticationEnabledForWeb']
+        if password_lowercase_required is None and 'passwordLowercaseRequired' in kwargs:
+            password_lowercase_required = kwargs['passwordLowercaseRequired']
+        if password_number_required is None and 'passwordNumberRequired' in kwargs:
+            password_number_required = kwargs['passwordNumberRequired']
+        if password_symbol_required is None and 'passwordSymbolRequired' in kwargs:
+            password_symbol_required = kwargs['passwordSymbolRequired']
+        if password_uppercase_required is None and 'passwordUppercaseRequired' in kwargs:
+            password_uppercase_required = kwargs['passwordUppercaseRequired']
+        if performance_bar_allowed_group_path is None and 'performanceBarAllowedGroupPath' in kwargs:
+            performance_bar_allowed_group_path = kwargs['performanceBarAllowedGroupPath']
+        if personal_access_token_prefix is None and 'personalAccessTokenPrefix' in kwargs:
+            personal_access_token_prefix = kwargs['personalAccessTokenPrefix']
+        if pipeline_limit_per_project_user_sha is None and 'pipelineLimitPerProjectUserSha' in kwargs:
+            pipeline_limit_per_project_user_sha = kwargs['pipelineLimitPerProjectUserSha']
+        if plantuml_enabled is None and 'plantumlEnabled' in kwargs:
+            plantuml_enabled = kwargs['plantumlEnabled']
+        if plantuml_url is None and 'plantumlUrl' in kwargs:
+            plantuml_url = kwargs['plantumlUrl']
+        if polling_interval_multiplier is None and 'pollingIntervalMultiplier' in kwargs:
+            polling_interval_multiplier = kwargs['pollingIntervalMultiplier']
+        if project_export_enabled is None and 'projectExportEnabled' in kwargs:
+            project_export_enabled = kwargs['projectExportEnabled']
+        if prometheus_metrics_enabled is None and 'prometheusMetricsEnabled' in kwargs:
+            prometheus_metrics_enabled = kwargs['prometheusMetricsEnabled']
+        if protected_ci_variables is None and 'protectedCiVariables' in kwargs:
+            protected_ci_variables = kwargs['protectedCiVariables']
+        if push_event_activities_limit is None and 'pushEventActivitiesLimit' in kwargs:
+            push_event_activities_limit = kwargs['pushEventActivitiesLimit']
+        if push_event_hooks_limit is None and 'pushEventHooksLimit' in kwargs:
+            push_event_hooks_limit = kwargs['pushEventHooksLimit']
+        if pypi_package_requests_forwarding is None and 'pypiPackageRequestsForwarding' in kwargs:
+            pypi_package_requests_forwarding = kwargs['pypiPackageRequestsForwarding']
+        if rate_limiting_response_text is None and 'rateLimitingResponseText' in kwargs:
+            rate_limiting_response_text = kwargs['rateLimitingResponseText']
+        if raw_blob_request_limit is None and 'rawBlobRequestLimit' in kwargs:
+            raw_blob_request_limit = kwargs['rawBlobRequestLimit']
+        if recaptcha_enabled is None and 'recaptchaEnabled' in kwargs:
+            recaptcha_enabled = kwargs['recaptchaEnabled']
+        if recaptcha_private_key is None and 'recaptchaPrivateKey' in kwargs:
+            recaptcha_private_key = kwargs['recaptchaPrivateKey']
+        if recaptcha_site_key is None and 'recaptchaSiteKey' in kwargs:
+            recaptcha_site_key = kwargs['recaptchaSiteKey']
+        if receive_max_input_size is None and 'receiveMaxInputSize' in kwargs:
+            receive_max_input_size = kwargs['receiveMaxInputSize']
+        if repository_checks_enabled is None and 'repositoryChecksEnabled' in kwargs:
+            repository_checks_enabled = kwargs['repositoryChecksEnabled']
+        if repository_size_limit is None and 'repositorySizeLimit' in kwargs:
+            repository_size_limit = kwargs['repositorySizeLimit']
+        if repository_storages is None and 'repositoryStorages' in kwargs:
+            repository_storages = kwargs['repositoryStorages']
+        if repository_storages_weighted is None and 'repositoryStoragesWeighted' in kwargs:
+            repository_storages_weighted = kwargs['repositoryStoragesWeighted']
+        if require_admin_approval_after_user_signup is None and 'requireAdminApprovalAfterUserSignup' in kwargs:
+            require_admin_approval_after_user_signup = kwargs['requireAdminApprovalAfterUserSignup']
+        if require_two_factor_authentication is None and 'requireTwoFactorAuthentication' in kwargs:
+            require_two_factor_authentication = kwargs['requireTwoFactorAuthentication']
+        if restricted_visibility_levels is None and 'restrictedVisibilityLevels' in kwargs:
+            restricted_visibility_levels = kwargs['restrictedVisibilityLevels']
+        if rsa_key_restriction is None and 'rsaKeyRestriction' in kwargs:
+            rsa_key_restriction = kwargs['rsaKeyRestriction']
+        if search_rate_limit is None and 'searchRateLimit' in kwargs:
+            search_rate_limit = kwargs['searchRateLimit']
+        if search_rate_limit_unauthenticated is None and 'searchRateLimitUnauthenticated' in kwargs:
+            search_rate_limit_unauthenticated = kwargs['searchRateLimitUnauthenticated']
+        if send_user_confirmation_email is None and 'sendUserConfirmationEmail' in kwargs:
+            send_user_confirmation_email = kwargs['sendUserConfirmationEmail']
+        if session_expire_delay is None and 'sessionExpireDelay' in kwargs:
+            session_expire_delay = kwargs['sessionExpireDelay']
+        if shared_runners_enabled is None and 'sharedRunnersEnabled' in kwargs:
+            shared_runners_enabled = kwargs['sharedRunnersEnabled']
+        if shared_runners_minutes is None and 'sharedRunnersMinutes' in kwargs:
+            shared_runners_minutes = kwargs['sharedRunnersMinutes']
+        if shared_runners_text is None and 'sharedRunnersText' in kwargs:
+            shared_runners_text = kwargs['sharedRunnersText']
+        if sidekiq_job_limiter_compression_threshold_bytes is None and 'sidekiqJobLimiterCompressionThresholdBytes' in kwargs:
+            sidekiq_job_limiter_compression_threshold_bytes = kwargs['sidekiqJobLimiterCompressionThresholdBytes']
+        if sidekiq_job_limiter_limit_bytes is None and 'sidekiqJobLimiterLimitBytes' in kwargs:
+            sidekiq_job_limiter_limit_bytes = kwargs['sidekiqJobLimiterLimitBytes']
+        if sidekiq_job_limiter_mode is None and 'sidekiqJobLimiterMode' in kwargs:
+            sidekiq_job_limiter_mode = kwargs['sidekiqJobLimiterMode']
+        if sign_in_text is None and 'signInText' in kwargs:
+            sign_in_text = kwargs['signInText']
+        if signup_enabled is None and 'signupEnabled' in kwargs:
+            signup_enabled = kwargs['signupEnabled']
+        if slack_app_enabled is None and 'slackAppEnabled' in kwargs:
+            slack_app_enabled = kwargs['slackAppEnabled']
+        if slack_app_id is None and 'slackAppId' in kwargs:
+            slack_app_id = kwargs['slackAppId']
+        if slack_app_secret is None and 'slackAppSecret' in kwargs:
+            slack_app_secret = kwargs['slackAppSecret']
+        if slack_app_signing_secret is None and 'slackAppSigningSecret' in kwargs:
+            slack_app_signing_secret = kwargs['slackAppSigningSecret']
+        if slack_app_verification_token is None and 'slackAppVerificationToken' in kwargs:
+            slack_app_verification_token = kwargs['slackAppVerificationToken']
+        if snippet_size_limit is None and 'snippetSizeLimit' in kwargs:
+            snippet_size_limit = kwargs['snippetSizeLimit']
+        if snowplow_app_id is None and 'snowplowAppId' in kwargs:
+            snowplow_app_id = kwargs['snowplowAppId']
+        if snowplow_collector_hostname is None and 'snowplowCollectorHostname' in kwargs:
+            snowplow_collector_hostname = kwargs['snowplowCollectorHostname']
+        if snowplow_cookie_domain is None and 'snowplowCookieDomain' in kwargs:
+            snowplow_cookie_domain = kwargs['snowplowCookieDomain']
+        if snowplow_enabled is None and 'snowplowEnabled' in kwargs:
+            snowplow_enabled = kwargs['snowplowEnabled']
+        if sourcegraph_enabled is None and 'sourcegraphEnabled' in kwargs:
+            sourcegraph_enabled = kwargs['sourcegraphEnabled']
+        if sourcegraph_public_only is None and 'sourcegraphPublicOnly' in kwargs:
+            sourcegraph_public_only = kwargs['sourcegraphPublicOnly']
+        if sourcegraph_url is None and 'sourcegraphUrl' in kwargs:
+            sourcegraph_url = kwargs['sourcegraphUrl']
+        if spam_check_api_key is None and 'spamCheckApiKey' in kwargs:
+            spam_check_api_key = kwargs['spamCheckApiKey']
+        if spam_check_endpoint_enabled is None and 'spamCheckEndpointEnabled' in kwargs:
+            spam_check_endpoint_enabled = kwargs['spamCheckEndpointEnabled']
+        if spam_check_endpoint_url is None and 'spamCheckEndpointUrl' in kwargs:
+            spam_check_endpoint_url = kwargs['spamCheckEndpointUrl']
+        if suggest_pipeline_enabled is None and 'suggestPipelineEnabled' in kwargs:
+            suggest_pipeline_enabled = kwargs['suggestPipelineEnabled']
+        if terminal_max_session_time is None and 'terminalMaxSessionTime' in kwargs:
+            terminal_max_session_time = kwargs['terminalMaxSessionTime']
+        if throttle_authenticated_api_enabled is None and 'throttleAuthenticatedApiEnabled' in kwargs:
+            throttle_authenticated_api_enabled = kwargs['throttleAuthenticatedApiEnabled']
+        if throttle_authenticated_api_period_in_seconds is None and 'throttleAuthenticatedApiPeriodInSeconds' in kwargs:
+            throttle_authenticated_api_period_in_seconds = kwargs['throttleAuthenticatedApiPeriodInSeconds']
+        if throttle_authenticated_api_requests_per_period is None and 'throttleAuthenticatedApiRequestsPerPeriod' in kwargs:
+            throttle_authenticated_api_requests_per_period = kwargs['throttleAuthenticatedApiRequestsPerPeriod']
+        if throttle_authenticated_packages_api_enabled is None and 'throttleAuthenticatedPackagesApiEnabled' in kwargs:
+            throttle_authenticated_packages_api_enabled = kwargs['throttleAuthenticatedPackagesApiEnabled']
+        if throttle_authenticated_packages_api_period_in_seconds is None and 'throttleAuthenticatedPackagesApiPeriodInSeconds' in kwargs:
+            throttle_authenticated_packages_api_period_in_seconds = kwargs['throttleAuthenticatedPackagesApiPeriodInSeconds']
+        if throttle_authenticated_packages_api_requests_per_period is None and 'throttleAuthenticatedPackagesApiRequestsPerPeriod' in kwargs:
+            throttle_authenticated_packages_api_requests_per_period = kwargs['throttleAuthenticatedPackagesApiRequestsPerPeriod']
+        if throttle_authenticated_web_enabled is None and 'throttleAuthenticatedWebEnabled' in kwargs:
+            throttle_authenticated_web_enabled = kwargs['throttleAuthenticatedWebEnabled']
+        if throttle_authenticated_web_period_in_seconds is None and 'throttleAuthenticatedWebPeriodInSeconds' in kwargs:
+            throttle_authenticated_web_period_in_seconds = kwargs['throttleAuthenticatedWebPeriodInSeconds']
+        if throttle_authenticated_web_requests_per_period is None and 'throttleAuthenticatedWebRequestsPerPeriod' in kwargs:
+            throttle_authenticated_web_requests_per_period = kwargs['throttleAuthenticatedWebRequestsPerPeriod']
+        if throttle_unauthenticated_api_enabled is None and 'throttleUnauthenticatedApiEnabled' in kwargs:
+            throttle_unauthenticated_api_enabled = kwargs['throttleUnauthenticatedApiEnabled']
+        if throttle_unauthenticated_api_period_in_seconds is None and 'throttleUnauthenticatedApiPeriodInSeconds' in kwargs:
+            throttle_unauthenticated_api_period_in_seconds = kwargs['throttleUnauthenticatedApiPeriodInSeconds']
+        if throttle_unauthenticated_api_requests_per_period is None and 'throttleUnauthenticatedApiRequestsPerPeriod' in kwargs:
+            throttle_unauthenticated_api_requests_per_period = kwargs['throttleUnauthenticatedApiRequestsPerPeriod']
+        if throttle_unauthenticated_packages_api_enabled is None and 'throttleUnauthenticatedPackagesApiEnabled' in kwargs:
+            throttle_unauthenticated_packages_api_enabled = kwargs['throttleUnauthenticatedPackagesApiEnabled']
+        if throttle_unauthenticated_packages_api_period_in_seconds is None and 'throttleUnauthenticatedPackagesApiPeriodInSeconds' in kwargs:
+            throttle_unauthenticated_packages_api_period_in_seconds = kwargs['throttleUnauthenticatedPackagesApiPeriodInSeconds']
+        if throttle_unauthenticated_packages_api_requests_per_period is None and 'throttleUnauthenticatedPackagesApiRequestsPerPeriod' in kwargs:
+            throttle_unauthenticated_packages_api_requests_per_period = kwargs['throttleUnauthenticatedPackagesApiRequestsPerPeriod']
+        if throttle_unauthenticated_web_enabled is None and 'throttleUnauthenticatedWebEnabled' in kwargs:
+            throttle_unauthenticated_web_enabled = kwargs['throttleUnauthenticatedWebEnabled']
+        if throttle_unauthenticated_web_period_in_seconds is None and 'throttleUnauthenticatedWebPeriodInSeconds' in kwargs:
+            throttle_unauthenticated_web_period_in_seconds = kwargs['throttleUnauthenticatedWebPeriodInSeconds']
+        if throttle_unauthenticated_web_requests_per_period is None and 'throttleUnauthenticatedWebRequestsPerPeriod' in kwargs:
+            throttle_unauthenticated_web_requests_per_period = kwargs['throttleUnauthenticatedWebRequestsPerPeriod']
+        if time_tracking_limit_to_hours is None and 'timeTrackingLimitToHours' in kwargs:
+            time_tracking_limit_to_hours = kwargs['timeTrackingLimitToHours']
+        if two_factor_grace_period is None and 'twoFactorGracePeriod' in kwargs:
+            two_factor_grace_period = kwargs['twoFactorGracePeriod']
+        if unique_ips_limit_enabled is None and 'uniqueIpsLimitEnabled' in kwargs:
+            unique_ips_limit_enabled = kwargs['uniqueIpsLimitEnabled']
+        if unique_ips_limit_per_user is None and 'uniqueIpsLimitPerUser' in kwargs:
+            unique_ips_limit_per_user = kwargs['uniqueIpsLimitPerUser']
+        if unique_ips_limit_time_window is None and 'uniqueIpsLimitTimeWindow' in kwargs:
+            unique_ips_limit_time_window = kwargs['uniqueIpsLimitTimeWindow']
+        if usage_ping_enabled is None and 'usagePingEnabled' in kwargs:
+            usage_ping_enabled = kwargs['usagePingEnabled']
+        if user_deactivation_emails_enabled is None and 'userDeactivationEmailsEnabled' in kwargs:
+            user_deactivation_emails_enabled = kwargs['userDeactivationEmailsEnabled']
+        if user_default_external is None and 'userDefaultExternal' in kwargs:
+            user_default_external = kwargs['userDefaultExternal']
+        if user_default_internal_regex is None and 'userDefaultInternalRegex' in kwargs:
+            user_default_internal_regex = kwargs['userDefaultInternalRegex']
+        if user_oauth_applications is None and 'userOauthApplications' in kwargs:
+            user_oauth_applications = kwargs['userOauthApplications']
+        if user_show_add_ssh_key_message is None and 'userShowAddSshKeyMessage' in kwargs:
+            user_show_add_ssh_key_message = kwargs['userShowAddSshKeyMessage']
+        if version_check_enabled is None and 'versionCheckEnabled' in kwargs:
+            version_check_enabled = kwargs['versionCheckEnabled']
+        if web_ide_clientside_preview_enabled is None and 'webIdeClientsidePreviewEnabled' in kwargs:
+            web_ide_clientside_preview_enabled = kwargs['webIdeClientsidePreviewEnabled']
+        if whats_new_variant is None and 'whatsNewVariant' in kwargs:
+            whats_new_variant = kwargs['whatsNewVariant']
+        if wiki_page_max_content_bytes is None and 'wikiPageMaxContentBytes' in kwargs:
+            wiki_page_max_content_bytes = kwargs['wikiPageMaxContentBytes']
+
         if abuse_notification_email is not None:
             _setter("abuse_notification_email", abuse_notification_email)
         if admin_mode is not None:
@@ -9002,18 +9970,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  wiki_page_max_content_bytes: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Set the 2FA settings
-        this = gitlab.ApplicationSettings("this",
-            require_two_factor_authentication=True,
-            two_factor_grace_period=24)
-        ```
-
+        Create a ApplicationSettings resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] abuse_notification_email: If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
@@ -9266,18 +10223,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  args: Optional[ApplicationSettingsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Set the 2FA settings
-        this = gitlab.ApplicationSettings("this",
-            require_two_factor_authentication=True,
-            two_factor_grace_period=24)
-        ```
-
+        Create a ApplicationSettings resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ApplicationSettingsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -32,10 +32,22 @@ class IntegrationCustomIssueTrackerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             issues_url: pulumi.Input[str],
-             project: pulumi.Input[str],
-             project_url: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             issues_url: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             project_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if issues_url is None and 'issuesUrl' in kwargs:
+            issues_url = kwargs['issuesUrl']
+        if issues_url is None:
+            raise TypeError("Missing 'issues_url' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if project_url is None and 'projectUrl' in kwargs:
+            project_url = kwargs['projectUrl']
+        if project_url is None:
+            raise TypeError("Missing 'project_url' argument")
+
         _setter("issues_url", issues_url)
         _setter("project", project)
         _setter("project_url", project_url)
@@ -117,7 +129,17 @@ class _IntegrationCustomIssueTrackerState:
              project_url: Optional[pulumi.Input[str]] = None,
              slug: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if issues_url is None and 'issuesUrl' in kwargs:
+            issues_url = kwargs['issuesUrl']
+        if project_url is None and 'projectUrl' in kwargs:
+            project_url = kwargs['projectUrl']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if active is not None:
             _setter("active", active)
         if created_at is not None:
@@ -232,21 +254,6 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#custom-issue-tracker)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        tracker = gitlab.IntegrationCustomIssueTracker("tracker",
-            project=awesome_project.id,
-            project_url="https://customtracker.com/issues",
-            issues_url="https://customtracker.com/TEST-:id")
-        ```
-
         ## Import
 
         You can import a gitlab_integration_custom_issue_tracker state using the project ID, e.g.
@@ -271,21 +278,6 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
         The `IntegrationCustomIssueTracker` resource allows to manage the lifecycle of a project integration with Custom Issue Tracker.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#custom-issue-tracker)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        awesome_project = gitlab.Project("awesomeProject",
-            description="My awesome project.",
-            visibility_level="public")
-        tracker = gitlab.IntegrationCustomIssueTracker("tracker",
-            project=awesome_project.id,
-            project_url="https://customtracker.com/issues",
-            issues_url="https://customtracker.com/TEST-:id")
-        ```
 
         ## Import
 
