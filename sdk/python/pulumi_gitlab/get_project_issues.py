@@ -401,6 +401,17 @@ def get_project_issues(assignee_id: Optional[int] = None,
 
     **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    foo = gitlab.get_project(id="foo/bar/baz")
+    all_with_foo = gitlab.get_project_issues(project=foo.id,
+        search="foo")
+    ```
+
 
     :param int assignee_id: Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.
     :param str assignee_username: Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
@@ -515,6 +526,17 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
     The `get_project_issues` data source allows to retrieve details about issues in a project.
 
     **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    foo = gitlab.get_project(id="foo/bar/baz")
+    all_with_foo = gitlab.get_project_issues(project=foo.id,
+        search="foo")
+    ```
 
 
     :param int assignee_id: Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.

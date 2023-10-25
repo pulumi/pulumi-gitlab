@@ -280,6 +280,17 @@ def get_project_hook(hook_id: Optional[int] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-project-hook)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example_project = gitlab.get_project(id="foo/bar/baz")
+    example_project_hook = gitlab.get_project_hook(project=example_project.id,
+        hook_id=1)
+    ```
+
 
     :param int hook_id: The id of the project hook.
     :param str project: The name or id of the project to add the hook to.
@@ -321,6 +332,17 @@ def get_project_hook_output(hook_id: Optional[pulumi.Input[int]] = None,
     The `ProjectHook` data source allows to retrieve details about a hook in a project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-project-hook)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example_project = gitlab.get_project(id="foo/bar/baz")
+    example_project_hook = gitlab.get_project_hook(project=example_project.id,
+        hook_id=1)
+    ```
 
 
     :param int hook_id: The id of the project hook.

@@ -342,6 +342,21 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo_project = gitlab.Project("fooProject", description="My example project")
+        foo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals",
+            project=foo_project.id,
+            reset_approvals_on_push=True,
+            disable_overriding_approvers_per_merge_request=False,
+            merge_requests_author_approval=False,
+            merge_requests_disable_committers_approval=True)
+        ```
+
         ## Import
 
         ```sh
@@ -376,6 +391,21 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo_project = gitlab.Project("fooProject", description="My example project")
+        foo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals",
+            project=foo_project.id,
+            reset_approvals_on_push=True,
+            disable_overriding_approvers_per_merge_request=False,
+            merge_requests_author_approval=False,
+            merge_requests_disable_committers_approval=True)
+        ```
 
         ## Import
 

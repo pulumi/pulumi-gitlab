@@ -170,6 +170,18 @@ class GroupCustomAttribute(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        attr = gitlab.GroupCustomAttribute("attr",
+            group=42,
+            key="location",
+            value="Greenland")
+        ```
+
         ## Import
 
         You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.
@@ -194,6 +206,18 @@ class GroupCustomAttribute(pulumi.CustomResource):
         The `GroupCustomAttribute` resource allows to manage custom attributes for a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        attr = gitlab.GroupCustomAttribute("attr",
+            group=42,
+            key="location",
+            value="Greenland")
+        ```
 
         ## Import
 

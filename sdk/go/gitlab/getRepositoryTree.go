@@ -15,6 +15,35 @@ import (
 // The `getRepositoryTree` data source allows details of directories and files in a repository to be retrieved.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.GetRepositoryTree(ctx, &gitlab.GetRepositoryTreeArgs{
+//				Path:      pulumi.StringRef("ExampleSubFolder"),
+//				Project:   "example",
+//				Recursive: pulumi.BoolRef(true),
+//				Ref:       "main",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRepositoryTree(ctx *pulumi.Context, args *GetRepositoryTreeArgs, opts ...pulumi.InvokeOption) (*GetRepositoryTreeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRepositoryTreeResult

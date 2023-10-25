@@ -17,6 +17,62 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := gitlab.NewGroup(ctx, "foo", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupBadge(ctx, "example", &gitlab.GroupBadgeArgs{
+//				Group:    foo.ID(),
+//				LinkUrl:  pulumi.String("https://example.com/badge-123"),
+//				ImageUrl: pulumi.String("https://example.com/badge-123.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupBadge(ctx, "gitlabPipeline", &gitlab.GroupBadgeArgs{
+//				Group:    foo.ID(),
+//				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}"),
+//				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupBadge(ctx, "gitlabCoverage", &gitlab.GroupBadgeArgs{
+//				Group:    foo.ID(),
+//				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/jobs"),
+//				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupBadge(ctx, "gitlabRelease", &gitlab.GroupBadgeArgs{
+//				Group:    foo.ID(),
+//				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/releases"),
+//				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/-/badges/release.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.

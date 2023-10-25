@@ -280,6 +280,21 @@ class ProjectTag(pulumi.CustomResource):
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Create a project for the tag to use
+        example_project = gitlab.Project("exampleProject",
+            description="An example project",
+            namespace_id=gitlab_group["example"]["id"])
+        example_project_tag = gitlab.ProjectTag("exampleProjectTag",
+            ref="main",
+            project=example_project.id)
+        ```
+
         ## Import
 
         Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, e.g.
@@ -307,6 +322,21 @@ class ProjectTag(pulumi.CustomResource):
         The `ProjectTag` resource allows to manage the lifecycle of a tag in a project.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Create a project for the tag to use
+        example_project = gitlab.Project("exampleProject",
+            description="An example project",
+            namespace_id=gitlab_group["example"]["id"])
+        example_project_tag = gitlab.ProjectTag("exampleProjectTag",
+            ref="main",
+            project=example_project.id)
+        ```
 
         ## Import
 

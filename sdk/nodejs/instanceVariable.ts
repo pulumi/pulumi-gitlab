@@ -9,6 +9,20 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.InstanceVariable("example", {
+ *     key: "instance_variable_key",
+ *     masked: false,
+ *     "protected": false,
+ *     value: "instance_variable_value",
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab instance variables can be imported using an id made up of `variablename`, e.g.

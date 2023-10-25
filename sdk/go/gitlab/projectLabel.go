@@ -17,6 +17,42 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectLabel(ctx, "fixme", &gitlab.ProjectLabelArgs{
+//				Project:     pulumi.String("example"),
+//				Description: pulumi.String("issue with failing tests"),
+//				Color:       pulumi.String("#ffcc00"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectLabel(ctx, "devopsCreate", &gitlab.ProjectLabelArgs{
+//				Project:     pulumi.Any(gitlab_project.Example.Id),
+//				Description: pulumi.String("issue for creating infrastructure resources"),
+//				Color:       pulumi.String("#ffa500"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.

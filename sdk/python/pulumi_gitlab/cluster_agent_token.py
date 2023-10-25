@@ -330,6 +330,37 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html#create-an-agent-token)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+        import pulumi_helm as helm
+
+        # Create token for an agent
+        example = gitlab.ClusterAgentToken("example",
+            project="12345",
+            agent_id=42,
+            description="some token")
+        this_project = gitlab.get_project(path_with_namespace="my-org/example")
+        this_cluster_agent = gitlab.ClusterAgent("thisClusterAgent", project=this_project.id)
+        this_cluster_agent_token = gitlab.ClusterAgentToken("thisClusterAgentToken",
+            project=this_project.id,
+            agent_id=this_cluster_agent.agent_id,
+            description="Token for the my-agent used with `gitlab-agent` Helm Chart")
+        gitlab_agent = helm.index.Helm_release("gitlabAgent",
+            name=gitlab-agent,
+            namespace=gitlab-agent,
+            create_namespace=True,
+            repository=https://charts.gitlab.io,
+            chart=gitlab-agent,
+            version=1.2.0,
+            set=[{
+                name: config.token,
+                value: this_cluster_agent_token.token,
+            }])
+        ```
+
         ## Import
 
         A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>:<token-id>`
@@ -361,6 +392,37 @@ class ClusterAgentToken(pulumi.CustomResource):
         > Requires at least GitLab 15.0
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html#create-an-agent-token)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+        import pulumi_helm as helm
+
+        # Create token for an agent
+        example = gitlab.ClusterAgentToken("example",
+            project="12345",
+            agent_id=42,
+            description="some token")
+        this_project = gitlab.get_project(path_with_namespace="my-org/example")
+        this_cluster_agent = gitlab.ClusterAgent("thisClusterAgent", project=this_project.id)
+        this_cluster_agent_token = gitlab.ClusterAgentToken("thisClusterAgentToken",
+            project=this_project.id,
+            agent_id=this_cluster_agent.agent_id,
+            description="Token for the my-agent used with `gitlab-agent` Helm Chart")
+        gitlab_agent = helm.index.Helm_release("gitlabAgent",
+            name=gitlab-agent,
+            namespace=gitlab-agent,
+            create_namespace=True,
+            repository=https://charts.gitlab.io,
+            chart=gitlab-agent,
+            version=1.2.0,
+            set=[{
+                name: config.token,
+                value: this_cluster_agent_token.token,
+            }])
+        ```
 
         ## Import
 

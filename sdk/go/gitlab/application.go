@@ -20,6 +20,36 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewApplication(ctx, "oidc", &gitlab.ApplicationArgs{
+//				Confidential: pulumi.Bool(true),
+//				RedirectUrl:  pulumi.String("https://mycompany.com"),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("openid"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Gitlab applications can be imported with their id, e.g.

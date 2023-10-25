@@ -17,6 +17,57 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewGroupHook(ctx, "example", &gitlab.GroupHookArgs{
+//				Group:               pulumi.String("example/hooked"),
+//				MergeRequestsEvents: pulumi.Bool(true),
+//				Url:                 pulumi.String("https://example.com/hook/example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupHook(ctx, "allAttributes", &gitlab.GroupHookArgs{
+//				ConfidentialIssuesEvents: pulumi.Bool(false),
+//				ConfidentialNoteEvents:   pulumi.Bool(true),
+//				DeploymentEvents:         pulumi.Bool(true),
+//				EnableSslVerification:    pulumi.Bool(false),
+//				Group:                    pulumi.String("1"),
+//				IssuesEvents:             pulumi.Bool(false),
+//				JobEvents:                pulumi.Bool(true),
+//				MergeRequestsEvents:      pulumi.Bool(true),
+//				NoteEvents:               pulumi.Bool(true),
+//				PipelineEvents:           pulumi.Bool(true),
+//				PushEvents:               pulumi.Bool(true),
+//				PushEventsBranchFilter:   pulumi.String("devel"),
+//				ReleasesEvents:           pulumi.Bool(true),
+//				SubgroupEvents:           pulumi.Bool(true),
+//				TagPushEvents:            pulumi.Bool(true),
+//				Token:                    pulumi.String("supersecret"),
+//				Url:                      pulumi.String("http://example.com"),
+//				WikiPageEvents:           pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A GitLab Group Hook can be imported using a key composed of `<group-id>:<hook-id>`, e.g.

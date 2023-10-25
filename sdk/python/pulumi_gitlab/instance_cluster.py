@@ -575,6 +575,24 @@ class InstanceCluster(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_clusters.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        bar = gitlab.InstanceCluster("bar",
+            domain="example.com",
+            enabled=True,
+            environment_scope="*",
+            kubernetes_api_url="https://124.124.124",
+            kubernetes_authorization_type="rbac",
+            kubernetes_ca_cert="some-cert",
+            kubernetes_namespace="namespace",
+            kubernetes_token="some-token",
+            management_project_id="123456")
+        ```
+
         ## Import
 
         GitLab instance clusters can be imported using a `clusterid`, e.g.
@@ -609,6 +627,24 @@ class InstanceCluster(pulumi.CustomResource):
         > This is deprecated GitLab feature since 14.5
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_clusters.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        bar = gitlab.InstanceCluster("bar",
+            domain="example.com",
+            enabled=True,
+            environment_scope="*",
+            kubernetes_api_url="https://124.124.124",
+            kubernetes_authorization_type="rbac",
+            kubernetes_ca_cert="some-cert",
+            kubernetes_namespace="namespace",
+            kubernetes_token="some-token",
+            management_project_id="123456")
+        ```
 
         ## Import
 

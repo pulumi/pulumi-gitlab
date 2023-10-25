@@ -613,6 +613,26 @@ class ProjectCluster(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_clusters.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Project("foo")
+        bar = gitlab.ProjectCluster("bar",
+            project=foo.id,
+            domain="example.com",
+            enabled=True,
+            kubernetes_api_url="https://124.124.124",
+            kubernetes_token="some-token",
+            kubernetes_ca_cert="some-cert",
+            kubernetes_namespace="namespace",
+            kubernetes_authorization_type="rbac",
+            environment_scope="*",
+            management_project_id="123456")
+        ```
+
         ## Import
 
         GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
@@ -648,6 +668,26 @@ class ProjectCluster(pulumi.CustomResource):
         > This is deprecated GitLab feature since 14.5
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_clusters.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Project("foo")
+        bar = gitlab.ProjectCluster("bar",
+            project=foo.id,
+            domain="example.com",
+            enabled=True,
+            kubernetes_api_url="https://124.124.124",
+            kubernetes_token="some-token",
+            kubernetes_ca_cert="some-cert",
+            kubernetes_namespace="namespace",
+            kubernetes_authorization_type="rbac",
+            environment_scope="*",
+            management_project_id="123456")
+        ```
 
         ## Import
 

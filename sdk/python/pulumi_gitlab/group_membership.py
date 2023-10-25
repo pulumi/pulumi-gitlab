@@ -307,6 +307,19 @@ class GroupMembership(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupMembership("test",
+            access_level="guest",
+            expires_at="2020-12-31",
+            group_id="12345",
+            user_id=1337)
+        ```
+
         ## Import
 
         GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
@@ -336,6 +349,19 @@ class GroupMembership(pulumi.CustomResource):
         > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupMembership("test",
+            access_level="guest",
+            expires_at="2020-12-31",
+            group_id="12345",
+            user_id=1337)
+        ```
 
         ## Import
 

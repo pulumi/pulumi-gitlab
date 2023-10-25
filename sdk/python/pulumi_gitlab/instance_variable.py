@@ -284,6 +284,19 @@ class InstanceVariable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.InstanceVariable("example",
+            key="instance_variable_key",
+            masked=False,
+            protected=False,
+            value="instance_variable_value")
+        ```
+
         ## Import
 
         GitLab instance variables can be imported using an id made up of `variablename`, e.g.
@@ -311,6 +324,19 @@ class InstanceVariable(pulumi.CustomResource):
         The `InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.InstanceVariable("example",
+            key="instance_variable_key",
+            masked=False,
+            protected=False,
+            value="instance_variable_value")
+        ```
 
         ## Import
 

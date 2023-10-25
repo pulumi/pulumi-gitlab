@@ -114,6 +114,16 @@ def get_cluster_agent(agent_id: Optional[int] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_cluster_agent(agent_id=1,
+        project="12345")
+    ```
+
 
     :param int agent_id: The ID of the agent.
     :param str project: ID or full path of the project maintained by the authenticated user.
@@ -143,6 +153,16 @@ def get_cluster_agent_output(agent_id: Optional[pulumi.Input[int]] = None,
     > Requires at least GitLab 14.10
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_cluster_agent(agent_id=1,
+        project="12345")
+    ```
 
 
     :param int agent_id: The ID of the agent.

@@ -7,6 +7,27 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = new gitlab.Project("foo", {
+ *     description: "Lorem Ipsum",
+ *     visibilityLevel: "public",
+ * });
+ * const welcomeIssue = new gitlab.ProjectIssue("welcomeIssue", {
+ *     project: foo.id,
+ *     title: "Welcome!",
+ *     description: pulumi.interpolate`  Welcome to the ${foo.name} project!
+ *
+ * `,
+ *     discussionLocked: true,
+ * });
+ * export const welcomeIssueWebUrl = data.gitlab_project_issue.web_url;
+ * ```
+ *
  * ## Import
  *
  * You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.

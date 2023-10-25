@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const attr = new gitlab.GroupCustomAttribute("attr", {
+ *     group: 42,
+ *     key: "location",
+ *     value: "Greenland",
+ * });
+ * ```
+ *
  * ## Import
  *
  * You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.

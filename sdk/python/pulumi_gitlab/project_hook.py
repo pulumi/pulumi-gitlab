@@ -783,6 +783,18 @@ class ProjectHook(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.ProjectHook("example",
+            merge_requests_events=True,
+            project="example/hooked",
+            url="https://example.com/hook/example")
+        ```
+
         ## Import
 
         A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
@@ -823,6 +835,18 @@ class ProjectHook(pulumi.CustomResource):
         The `ProjectHook` resource allows to manage the lifecycle of a project hook.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.ProjectHook("example",
+            merge_requests_events=True,
+            project="example/hooked",
+            url="https://example.com/hook/example")
+        ```
 
         ## Import
 

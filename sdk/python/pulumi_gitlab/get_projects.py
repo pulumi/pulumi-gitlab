@@ -353,6 +353,21 @@ def get_projects(archived: Optional[bool] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    mygroup = gitlab.get_group(full_path="mygroup")
+    group_projects = gitlab.get_projects(group_id=mygroup.id,
+        order_by="name",
+        include_subgroups=True,
+        with_shared=False)
+    projects = gitlab.get_projects(search="postgresql",
+        visibility="private")
+    ```
+
 
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
     :param int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
@@ -458,6 +473,21 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     > The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    mygroup = gitlab.get_group(full_path="mygroup")
+    group_projects = gitlab.get_projects(group_id=mygroup.id,
+        order_by="name",
+        include_subgroups=True,
+        with_shared=False)
+    projects = gitlab.get_projects(search="postgresql",
+        visibility="private")
+    ```
 
 
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.

@@ -9,6 +9,20 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/freeze_periods.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const schedule = new gitlab.ProjectFreezePeriod("schedule", {
+ *     project: gitlab_project.foo.id,
+ *     freezeStart: "0 23 * * 5",
+ *     freezeEnd: "0 7 * * 1",
+ *     cronTimezone: "UTC",
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.

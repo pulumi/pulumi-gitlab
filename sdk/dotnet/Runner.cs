@@ -20,6 +20,82 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#register-a-new-runner)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// using Local = Pulumi.Local;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Basic GitLab Group Runner
+    ///     var myGroup = new GitLab.Group("myGroup", new()
+    ///     {
+    ///         Description = "group that holds the runners",
+    ///     });
+    /// 
+    ///     var basicRunner = new GitLab.Runner("basicRunner", new()
+    ///     {
+    ///         RegistrationToken = myGroup.RunnersToken,
+    ///     });
+    /// 
+    ///     // GitLab Runner that runs only tagged jobs
+    ///     var taggedOnly = new GitLab.Runner("taggedOnly", new()
+    ///     {
+    ///         RegistrationToken = myGroup.RunnersToken,
+    ///         Description = "I only run tagged jobs",
+    ///         RunUntagged = false,
+    ///         TagLists = new[]
+    ///         {
+    ///             "tag_one",
+    ///             "tag_two",
+    ///         },
+    ///     });
+    /// 
+    ///     // GitLab Runner that only runs on protected branches
+    ///     var @protected = new GitLab.Runner("protected", new()
+    ///     {
+    ///         RegistrationToken = myGroup.RunnersToken,
+    ///         Description = "I only run protected jobs",
+    ///         AccessLevel = "ref_protected",
+    ///     });
+    /// 
+    ///     // Generate a `config.toml` file that you can use to create a runner
+    ///     // This is the typical workflow for this resource, using it to create an authentication_token which can then be used
+    ///     // to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.
+    ///     var myCustomGroup = new GitLab.Group("myCustomGroup", new()
+    ///     {
+    ///         Description = "group that holds the custom runners",
+    ///     });
+    /// 
+    ///     var myRunner = new GitLab.Runner("myRunner", new()
+    ///     {
+    ///         RegistrationToken = myCustomGroup.RunnersToken,
+    ///     });
+    /// 
+    ///     // This creates a configuration for a local "shell" runner, but can be changed to generate whatever is needed.
+    ///     // Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.
+    ///     // See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.
+    ///     var config = new Local.File("config", new()
+    ///     {
+    ///         Filename = $"{path.Module}/config.toml",
+    ///         Content = myRunner.AuthenticationToken.Apply(authenticationToken =&gt; @$"  concurrent = 1
+    /// 
+    ///   [[runners]]
+    ///     name = ""Hello Terraform""
+    ///     url = ""https://example.gitlab.com/""
+    ///     token = ""{authenticationToken}""
+    ///     executor = ""shell""
+    ///     
+    /// "),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A GitLab Runner can be imported using the runner's ID, eg

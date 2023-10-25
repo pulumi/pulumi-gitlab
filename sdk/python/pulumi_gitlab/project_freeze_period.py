@@ -219,6 +219,19 @@ class ProjectFreezePeriod(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/freeze_periods.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        schedule = gitlab.ProjectFreezePeriod("schedule",
+            project=gitlab_project["foo"]["id"],
+            freeze_start="0 23 * * 5",
+            freeze_end="0 7 * * 1",
+            cron_timezone="UTC")
+        ```
+
         ## Import
 
         GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
@@ -244,6 +257,19 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         The `ProjectFreezePeriod` resource allows to manage the lifecycle of a freeze period for a project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/freeze_periods.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        schedule = gitlab.ProjectFreezePeriod("schedule",
+            project=gitlab_project["foo"]["id"],
+            freeze_start="0 23 * * 5",
+            freeze_end="0 7 * * 1",
+            cron_timezone="UTC")
+        ```
 
         ## Import
 

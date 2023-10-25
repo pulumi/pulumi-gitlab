@@ -123,6 +123,15 @@ def get_instance_variable(key: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    foo = gitlab.get_instance_variable(key="foo")
+    ```
+
 
     :param str key: The name of the variable.
     """
@@ -148,6 +157,15 @@ def get_instance_variable_output(key: Optional[pulumi.Input[str]] = None,
     The `InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    foo = gitlab.get_instance_variable(key="foo")
+    ```
 
 
     :param str key: The name of the variable.

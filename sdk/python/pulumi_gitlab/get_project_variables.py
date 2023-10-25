@@ -88,6 +88,17 @@ def get_project_variables(environment_scope: Optional[str] = None,
     The `get_project_variables` data source allows to retrieve all project-level CI/CD variables.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    vars = gitlab.get_project_variables(project="my/example/project")
+    staging_vars = gitlab.get_project_variables(environment_scope="staging/*",
+        project="my/example/project")
+    ```
     """
     __args__ = dict()
     __args__['environmentScope'] = environment_scope
@@ -110,5 +121,16 @@ def get_project_variables_output(environment_scope: Optional[pulumi.Input[Option
     The `get_project_variables` data source allows to retrieve all project-level CI/CD variables.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    vars = gitlab.get_project_variables(project="my/example/project")
+    staging_vars = gitlab.get_project_variables(environment_scope="staging/*",
+        project="my/example/project")
+    ```
     """
     ...

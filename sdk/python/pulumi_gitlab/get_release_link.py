@@ -161,6 +161,17 @@ def get_release_link(link_id: Optional[int] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_release_link(link_id=11,
+        project="foo/bar",
+        tag_name="v1.0.1")
+    ```
+
 
     :param int link_id: The ID of the link.
     :param str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
@@ -195,6 +206,17 @@ def get_release_link_output(link_id: Optional[pulumi.Input[int]] = None,
     The `ReleaseLink` data source allows get details of a release link.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_release_link(link_id=11,
+        project="foo/bar",
+        tag_name="v1.0.1")
+    ```
 
 
     :param int link_id: The ID of the link.

@@ -14,6 +14,29 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new GitLab.GroupVariable("example", new()
+    ///     {
+    ///         EnvironmentScope = "*",
+    ///         Group = "12345",
+    ///         Key = "group_variable_key",
+    ///         Masked = false,
+    ///         Protected = false,
+    ///         Value = "group_variable_value",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.

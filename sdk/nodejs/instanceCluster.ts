@@ -11,6 +11,25 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_clusters.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const bar = new gitlab.InstanceCluster("bar", {
+ *     domain: "example.com",
+ *     enabled: true,
+ *     environmentScope: "*",
+ *     kubernetesApiUrl: "https://124.124.124",
+ *     kubernetesAuthorizationType: "rbac",
+ *     kubernetesCaCert: "some-cert",
+ *     kubernetesNamespace: "namespace",
+ *     kubernetesToken: "some-token",
+ *     managementProjectId: "123456",
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab instance clusters can be imported using a `clusterid`, e.g.

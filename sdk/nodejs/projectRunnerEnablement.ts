@@ -9,6 +9,18 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#enable-a-runner-in-project)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = new gitlab.ProjectRunnerEnablement("foo", {
+ *     project: "5",
+ *     runnerId: 7,
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.

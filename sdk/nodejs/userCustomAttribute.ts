@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const attr = new gitlab.UserCustomAttribute("attr", {
+ *     key: "location",
+ *     user: 42,
+ *     value: "Greenland",
+ * });
+ * ```
+ *
  * ## Import
  *
  * You can import a user custom attribute using an id made up of `{user-id}:{key}`, e.g.

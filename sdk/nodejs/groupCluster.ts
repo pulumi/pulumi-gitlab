@@ -11,6 +11,26 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_clusters.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = new gitlab.Group("foo", {path: "foo-path"});
+ * const bar = new gitlab.GroupCluster("bar", {
+ *     group: foo.id,
+ *     domain: "example.com",
+ *     enabled: true,
+ *     kubernetesApiUrl: "https://124.124.124",
+ *     kubernetesToken: "some-token",
+ *     kubernetesCaCert: "some-cert",
+ *     kubernetesAuthorizationType: "rbac",
+ *     environmentScope: "*",
+ *     managementProjectId: "123456",
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.

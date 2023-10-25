@@ -15,6 +15,33 @@ import (
 // The `getGroupSubgroups` data source allows to get subgroups of a group.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			subgroupsGroupSubgroups, err := gitlab.GetGroupSubgroups(ctx, &gitlab.GetGroupSubgroupsArgs{
+//				GroupId: 123456,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("subgroups", subgroupsGroupSubgroups)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGroupSubgroups(ctx *pulumi.Context, args *GetGroupSubgroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupSubgroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupSubgroupsResult

@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const attr = new gitlab.ProjectCustomAttribute("attr", {
+ *     key: "location",
+ *     project: 42,
+ *     value: "Greenland",
+ * });
+ * ```
+ *
  * ## Import
  *
  * You can import a project custom attribute using an id made up of `{project-id}:{key}`, e.g.

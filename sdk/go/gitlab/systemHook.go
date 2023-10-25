@@ -19,6 +19,38 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewSystemHook(ctx, "example", &gitlab.SystemHookArgs{
+//				EnableSslVerification:  pulumi.Bool(true),
+//				MergeRequestsEvents:    pulumi.Bool(true),
+//				PushEvents:             pulumi.Bool(true),
+//				RepositoryUpdateEvents: pulumi.Bool(true),
+//				TagPushEvents:          pulumi.Bool(true),
+//				Token:                  pulumi.String("secret-token"),
+//				Url:                    pulumi.String("https://example.com/hook-%d"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // You can import a system hook using the hook id `{hook-id}`, e.g.

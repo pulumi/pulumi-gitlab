@@ -306,6 +306,19 @@ class PipelineSchedule(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.PipelineSchedule("example",
+            cron="0 1 * * *",
+            description="Used to schedule builds",
+            project="12345",
+            ref="master")
+        ```
+
         ## Import
 
         GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
@@ -333,6 +346,19 @@ class PipelineSchedule(pulumi.CustomResource):
         The `PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.PipelineSchedule("example",
+            cron="0 1 * * *",
+            description="Used to schedule builds",
+            project="12345",
+            ref="master")
+        ```
 
         ## Import
 

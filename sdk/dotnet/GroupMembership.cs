@@ -16,6 +16,27 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new GitLab.GroupMembership("test", new()
+    ///     {
+    ///         AccessLevel = "guest",
+    ///         ExpiresAt = "2020-12-31",
+    ///         GroupId = "12345",
+    ///         UserId = 1337,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.

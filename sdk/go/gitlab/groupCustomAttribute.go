@@ -17,6 +17,34 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewGroupCustomAttribute(ctx, "attr", &gitlab.GroupCustomAttributeArgs{
+//				Group: pulumi.Int(42),
+//				Key:   pulumi.String("location"),
+//				Value: pulumi.String("Greenland"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.

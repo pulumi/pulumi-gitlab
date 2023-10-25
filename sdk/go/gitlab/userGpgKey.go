@@ -19,6 +19,45 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#get-a-specific-gpg-key)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleUser, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
+//				Username: pulumi.StringRef("example-user"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewUserGpgKey(ctx, "exampleUserGpgKey", &gitlab.UserGpgKeyArgs{
+//				UserId: *pulumi.String(exampleUser.Id),
+//				Key:    pulumi.String("-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewUserGpgKey(ctx, "exampleUserUserGpgKey", &gitlab.UserGpgKeyArgs{
+//				Key: pulumi.String("-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // You can import a GPG key for a specific user using an id made up of `{user-id}:{key}`, e.g.

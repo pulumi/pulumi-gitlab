@@ -824,6 +824,38 @@ class GroupHook(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.GroupHook("example",
+            group="example/hooked",
+            merge_requests_events=True,
+            url="https://example.com/hook/example")
+        # Setting all attributes
+        all_attributes = gitlab.GroupHook("allAttributes",
+            confidential_issues_events=False,
+            confidential_note_events=True,
+            deployment_events=True,
+            enable_ssl_verification=False,
+            group="1",
+            issues_events=False,
+            job_events=True,
+            merge_requests_events=True,
+            note_events=True,
+            pipeline_events=True,
+            push_events=True,
+            push_events_branch_filter="devel",
+            releases_events=True,
+            subgroup_events=True,
+            tag_push_events=True,
+            token="supersecret",
+            url="http://example.com",
+            wiki_page_events=True)
+        ```
+
         ## Import
 
         A GitLab Group Hook can be imported using a key composed of `<group-id>:<hook-id>`, e.g.
@@ -865,6 +897,38 @@ class GroupHook(pulumi.CustomResource):
         The `GroupHook` resource allows to manage the lifecycle of a group hook.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.GroupHook("example",
+            group="example/hooked",
+            merge_requests_events=True,
+            url="https://example.com/hook/example")
+        # Setting all attributes
+        all_attributes = gitlab.GroupHook("allAttributes",
+            confidential_issues_events=False,
+            confidential_note_events=True,
+            deployment_events=True,
+            enable_ssl_verification=False,
+            group="1",
+            issues_events=False,
+            job_events=True,
+            merge_requests_events=True,
+            note_events=True,
+            pipeline_events=True,
+            push_events=True,
+            push_events_branch_filter="devel",
+            releases_events=True,
+            subgroup_events=True,
+            tag_push_events=True,
+            token="supersecret",
+            url="http://example.com",
+            wiki_page_events=True)
+        ```
 
         ## Import
 

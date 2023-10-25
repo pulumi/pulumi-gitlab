@@ -16,6 +16,31 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
+    ///     {
+    ///         Description = "My awesome project.",
+    ///         VisibilityLevel = "public",
+    ///     });
+    /// 
+    ///     var emails = new GitLab.ServiceEmailsOnPush("emails", new()
+    ///     {
+    ///         Project = awesomeProject.Id,
+    ///         Recipients = "myrecipient@example.com myotherrecipient@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// You can import a gitlab_service_emails_on_push state using the project ID, e.g.

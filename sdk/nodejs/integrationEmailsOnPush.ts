@@ -9,6 +9,22 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const awesomeProject = new gitlab.Project("awesomeProject", {
+ *     description: "My awesome project.",
+ *     visibilityLevel: "public",
+ * });
+ * const emails = new gitlab.IntegrationEmailsOnPush("emails", {
+ *     project: awesomeProject.id,
+ *     recipients: "myrecipient@example.com myotherrecipient@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * You can import a gitlab_integration_emails_on_push state using the project ID, e.g.

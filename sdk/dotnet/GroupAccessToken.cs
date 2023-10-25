@@ -16,6 +16,37 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleGroupAccessToken = new GitLab.GroupAccessToken("exampleGroupAccessToken", new()
+    ///     {
+    ///         Group = "25",
+    ///         ExpiresAt = "2020-03-14",
+    ///         AccessLevel = "developer",
+    ///         Scopes = new[]
+    ///         {
+    ///             "api",
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleGroupVariable = new GitLab.GroupVariable("exampleGroupVariable", new()
+    ///     {
+    ///         Group = "25",
+    ///         Key = "gat",
+    ///         Value = exampleGroupAccessToken.Token,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A GitLab Group Access Token can be imported using a key composed of `&lt;group-id&gt;:&lt;token-id&gt;`, e.g.

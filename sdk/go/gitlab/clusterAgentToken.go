@@ -21,6 +21,72 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html#create-an-agent-token)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi-helm/sdk/v1/go/helm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewClusterAgentToken(ctx, "example", &gitlab.ClusterAgentTokenArgs{
+//				Project:     pulumi.String("12345"),
+//				AgentId:     pulumi.Int(42),
+//				Description: pulumi.String("some token"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisProject, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
+//				PathWithNamespace: pulumi.StringRef("my-org/example"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisClusterAgent, err := gitlab.NewClusterAgent(ctx, "thisClusterAgent", &gitlab.ClusterAgentArgs{
+//				Project: *pulumi.String(thisProject.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisClusterAgentToken, err := gitlab.NewClusterAgentToken(ctx, "thisClusterAgentToken", &gitlab.ClusterAgentTokenArgs{
+//				Project:     *pulumi.String(thisProject.Id),
+//				AgentId:     thisClusterAgent.AgentId,
+//				Description: pulumi.String("Token for the my-agent used with `gitlab-agent` Helm Chart"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = index.NewHelm_release(ctx, "gitlabAgent", &index.Helm_releaseArgs{
+//				Name:            "gitlab-agent",
+//				Namespace:       "gitlab-agent",
+//				CreateNamespace: true,
+//				Repository:      "https://charts.gitlab.io",
+//				Chart:           "gitlab-agent",
+//				Version:         "1.2.0",
+//				Set: []map[string]interface{}{
+//					map[string]interface{}{
+//						"name":  "config.token",
+//						"value": thisClusterAgentToken.Token,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>:<token-id>`

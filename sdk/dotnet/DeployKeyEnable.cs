@@ -14,6 +14,40 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#enable-a-deploy-key)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // A repo to host the deployment key
+    ///     var parentProject = new GitLab.Project("parentProject");
+    /// 
+    ///     // A second repo to use the deployment key from the parent project
+    ///     var fooProject = new GitLab.Project("fooProject");
+    /// 
+    ///     // Upload a deployment key for the parent repo
+    ///     var parentDeployKey = new GitLab.DeployKey("parentDeployKey", new()
+    ///     {
+    ///         Project = parentProject.Id,
+    ///         Title = "Example deploy key",
+    ///         Key = "ssh-ed25519 AAAA...",
+    ///     });
+    /// 
+    ///     // Enable the deployment key on the second repo
+    ///     var fooDeployKeyEnable = new GitLab.DeployKeyEnable("fooDeployKeyEnable", new()
+    ///     {
+    ///         Project = fooProject.Id,
+    ///         KeyId = parentDeployKey.DeployKeyId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example

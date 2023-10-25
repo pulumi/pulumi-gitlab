@@ -295,6 +295,21 @@ class ServiceGithub(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        github = gitlab.ServiceGithub("github",
+            project=awesome_project.id,
+            token="REDACTED",
+            repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
+        ```
+
         ## Import
 
         ```sh
@@ -326,6 +341,21 @@ class ServiceGithub(pulumi.CustomResource):
         > This resource is deprecated. use `IntegrationGithub`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        github = gitlab.ServiceGithub("github",
+            project=awesome_project.id,
+            token="REDACTED",
+            repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
+        ```
 
         ## Import
 

@@ -347,6 +347,21 @@ class ReleaseLink(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Create a project
+        example_project = gitlab.Project("exampleProject", description="An example project")
+        # Can create release link only to a tag associated with a release
+        example_release_link = gitlab.ReleaseLink("exampleReleaseLink",
+            project=example_project.id,
+            tag_name="tag_name_associated_with_release",
+            url="https://test/")
+        ```
+
         ## Import
 
         Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, e.g.
@@ -374,6 +389,21 @@ class ReleaseLink(pulumi.CustomResource):
         The `ReleaseLink` resource allows to manage the lifecycle of a release link.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Create a project
+        example_project = gitlab.Project("exampleProject", description="An example project")
+        # Can create release link only to a tag associated with a release
+        example_release_link = gitlab.ReleaseLink("exampleReleaseLink",
+            project=example_project.id,
+            tag_name="tag_name_associated_with_release",
+            url="https://test/")
+        ```
 
         ## Import
 

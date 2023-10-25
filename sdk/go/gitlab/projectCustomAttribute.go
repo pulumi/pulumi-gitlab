@@ -17,6 +17,34 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectCustomAttribute(ctx, "attr", &gitlab.ProjectCustomAttributeArgs{
+//				Key:     pulumi.String("location"),
+//				Project: pulumi.Int(42),
+//				Value:   pulumi.String("Greenland"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // You can import a project custom attribute using an id made up of `{project-id}:{key}`, e.g.

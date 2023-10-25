@@ -230,6 +230,18 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.ProjectShareGroup("test",
+            group_access="guest",
+            group_id=1337,
+            project="12345")
+        ```
+
         ## Import
 
         GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
@@ -255,6 +267,18 @@ class ProjectShareGroup(pulumi.CustomResource):
         The `ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.ProjectShareGroup("test",
+            group_access="guest",
+            group_id=1337,
+            project="12345")
+        ```
 
         ## Import
 

@@ -1127,6 +1127,21 @@ class Group(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_group = gitlab.Group("exampleGroup",
+            path="example",
+            description="An example group")
+        # Create a project in the example group
+        example_project = gitlab.Project("exampleProject",
+            description="An example project",
+            namespace_id=example_group.id)
+        ```
+
         ## Import
 
         ```sh
@@ -1178,6 +1193,21 @@ class Group(pulumi.CustomResource):
         > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_group = gitlab.Group("exampleGroup",
+            path="example",
+            description="An example group")
+        # Create a project in the example group
+        example_project = gitlab.Project("exampleProject",
+            description="An example project",
+            namespace_id=example_group.id)
+        ```
 
         ## Import
 

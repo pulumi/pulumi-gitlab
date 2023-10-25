@@ -255,6 +255,18 @@ class Application(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        oidc = gitlab.Application("oidc",
+            confidential=True,
+            redirect_url="https://mycompany.com",
+            scopes=["openid"])
+        ```
+
         ## Import
 
         Gitlab applications can be imported with their id, e.g.
@@ -286,6 +298,18 @@ class Application(pulumi.CustomResource):
         To create an OIDC application, a scope of "openid".
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        oidc = gitlab.Application("oidc",
+            confidential=True,
+            redirect_url="https://mycompany.com",
+            scopes=["openid"])
+        ```
 
         ## Import
 

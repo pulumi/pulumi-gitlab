@@ -10,6 +10,18 @@ import * as utilities from "./utilities";
  * The `gitlab.getReleaseLinks` data source allows get details of release links.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getReleaseLinks({
+ *     project: "foo/bar",
+ *     tagName: "v1.0.1",
+ * });
+ * ```
  */
 export function getReleaseLinks(args: GetReleaseLinksArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseLinksResult> {
 
@@ -53,6 +65,18 @@ export interface GetReleaseLinksResult {
  * The `gitlab.getReleaseLinks` data source allows get details of release links.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getReleaseLinks({
+ *     project: "foo/bar",
+ *     tagName: "v1.0.1",
+ * });
+ * ```
  */
 export function getReleaseLinksOutput(args: GetReleaseLinksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseLinksResult> {
     return pulumi.output(args).apply((a: any) => getReleaseLinks(a, opts))

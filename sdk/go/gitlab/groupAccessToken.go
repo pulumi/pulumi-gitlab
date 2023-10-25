@@ -19,6 +19,45 @@ import (
 //
 // **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleGroupAccessToken, err := gitlab.NewGroupAccessToken(ctx, "exampleGroupAccessToken", &gitlab.GroupAccessTokenArgs{
+//				Group:       pulumi.String("25"),
+//				ExpiresAt:   pulumi.String("2020-03-14"),
+//				AccessLevel: pulumi.String("developer"),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("api"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupVariable(ctx, "exampleGroupVariable", &gitlab.GroupVariableArgs{
+//				Group: pulumi.String("25"),
+//				Key:   pulumi.String("gat"),
+//				Value: exampleGroupAccessToken.Token,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A GitLab Group Access Token can be imported using a key composed of `<group-id>:<token-id>`, e.g.

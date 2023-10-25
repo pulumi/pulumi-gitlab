@@ -213,6 +213,26 @@ class TagProtection(pulumi.CustomResource):
                  tag: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        tag_protect = gitlab.TagProtection("tagProtect",
+            allowed_to_creates=[
+                gitlab.TagProtectionAllowedToCreateArgs(
+                    user_id=42,
+                ),
+                gitlab.TagProtectionAllowedToCreateArgs(
+                    group_id=43,
+                ),
+            ],
+            create_access_level="developer",
+            project="12345",
+            tag="TagProtected")
+        ```
+
         ## Import
 
         Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
@@ -235,6 +255,26 @@ class TagProtection(pulumi.CustomResource):
                  args: TagProtectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        tag_protect = gitlab.TagProtection("tagProtect",
+            allowed_to_creates=[
+                gitlab.TagProtectionAllowedToCreateArgs(
+                    user_id=42,
+                ),
+                gitlab.TagProtectionAllowedToCreateArgs(
+                    group_id=43,
+                ),
+            ],
+            create_access_level="developer",
+            project="12345",
+            tag="TagProtected")
+        ```
+
         ## Import
 
         Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.

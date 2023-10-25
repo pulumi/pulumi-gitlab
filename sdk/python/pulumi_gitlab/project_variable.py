@@ -365,6 +365,19 @@ class ProjectVariable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.ProjectVariable("example",
+            key="project_variable_key",
+            project="12345",
+            protected=False,
+            value="project_variable_value")
+        ```
+
         ## Import
 
         GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
@@ -396,6 +409,19 @@ class ProjectVariable(pulumi.CustomResource):
         > **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior when updating or deleting ProjectVariable resources with non-unique keys, for example if there is another variable with the same key and different environment scope. See [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.ProjectVariable("example",
+            key="project_variable_key",
+            project="12345",
+            protected=False,
+            value="project_variable_value")
+        ```
 
         ## Import
 

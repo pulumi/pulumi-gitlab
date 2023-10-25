@@ -170,6 +170,17 @@ class PipelineTrigger(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_triggers.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.PipelineTrigger("example",
+            description="Used to trigger builds",
+            project="12345")
+        ```
+
         ## Import
 
         GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
@@ -193,6 +204,17 @@ class PipelineTrigger(pulumi.CustomResource):
         The `PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_triggers.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.PipelineTrigger("example",
+            description="Used to trigger builds",
+            project="12345")
+        ```
 
         ## Import
 

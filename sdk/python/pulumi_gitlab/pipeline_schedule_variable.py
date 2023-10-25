@@ -212,6 +212,24 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_pipeline_schedule = gitlab.PipelineSchedule("examplePipelineSchedule",
+            project="12345",
+            description="Used to schedule builds",
+            ref="master",
+            cron="0 1 * * *")
+        example_pipeline_schedule_variable = gitlab.PipelineScheduleVariable("examplePipelineScheduleVariable",
+            project=example_pipeline_schedule.project,
+            pipeline_schedule_id=example_pipeline_schedule.pipeline_schedule_id,
+            key="EXAMPLE_KEY",
+            value="example")
+        ```
+
         ## Import
 
         Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
@@ -237,6 +255,24 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         The `PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_pipeline_schedule = gitlab.PipelineSchedule("examplePipelineSchedule",
+            project="12345",
+            description="Used to schedule builds",
+            ref="master",
+            cron="0 1 * * *")
+        example_pipeline_schedule_variable = gitlab.PipelineScheduleVariable("examplePipelineScheduleVariable",
+            project=example_pipeline_schedule.project,
+            pipeline_schedule_id=example_pipeline_schedule.pipeline_schedule_id,
+            key="EXAMPLE_KEY",
+            value="example")
+        ```
 
         ## Import
 

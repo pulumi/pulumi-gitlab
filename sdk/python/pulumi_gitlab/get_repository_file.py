@@ -197,6 +197,17 @@ def get_repository_file(file_path: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_repository_file(file_path="README.md",
+        project="example",
+        ref="main")
+    ```
+
 
     :param str file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
     :param str project: The name or ID of the project.
@@ -234,6 +245,17 @@ def get_repository_file_output(file_path: Optional[pulumi.Input[str]] = None,
     The `RepositoryFile` data source allows details of a file in a repository to be retrieved.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_repository_file(file_path="README.md",
+        project="example",
+        ref="main")
+    ```
 
 
     :param str file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.

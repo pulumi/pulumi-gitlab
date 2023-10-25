@@ -14,6 +14,37 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleProjectAccessToken = new GitLab.ProjectAccessToken("exampleProjectAccessToken", new()
+    ///     {
+    ///         Project = "25",
+    ///         ExpiresAt = "2020-03-14",
+    ///         AccessLevel = "reporter",
+    ///         Scopes = new[]
+    ///         {
+    ///             "api",
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleProjectVariable = new GitLab.ProjectVariable("exampleProjectVariable", new()
+    ///     {
+    ///         Project = gitlab_project.Example.Id,
+    ///         Key = "pat",
+    ///         Value = exampleProjectAccessToken.Token,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A GitLab Project Access Token can be imported using a key composed of `&lt;project-id&gt;:&lt;token-id&gt;`, e.g.

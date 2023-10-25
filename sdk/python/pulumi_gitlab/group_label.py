@@ -226,6 +226,18 @@ class GroupLabel(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/labels.html#group-labels)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        fixme = gitlab.GroupLabel("fixme",
+            color="#ffcc00",
+            description="issue with failing tests",
+            group="example")
+        ```
+
         ## Import
 
         Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
@@ -251,6 +263,18 @@ class GroupLabel(pulumi.CustomResource):
         The `GroupLabel` resource allows to manage the lifecycle of labels within a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/labels.html#group-labels)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        fixme = gitlab.GroupLabel("fixme",
+            color="#ffcc00",
+            description="issue with failing tests",
+            group="example")
+        ```
 
         ## Import
 

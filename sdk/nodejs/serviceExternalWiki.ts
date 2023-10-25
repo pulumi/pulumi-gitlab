@@ -11,6 +11,22 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const awesomeProject = new gitlab.Project("awesomeProject", {
+ *     description: "My awesome project.",
+ *     visibilityLevel: "public",
+ * });
+ * const wiki = new gitlab.ServiceExternalWiki("wiki", {
+ *     project: awesomeProject.id,
+ *     externalWikiUrl: "https://MyAwesomeExternalWikiURL.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * You can import a gitlab_service_external_wiki state using the project ID, e.g.

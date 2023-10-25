@@ -11,6 +11,20 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const test = new gitlab.GroupMembership("test", {
+ *     accessLevel: "guest",
+ *     expiresAt: "2020-12-31",
+ *     groupId: "12345",
+ *     userId: 1337,
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.

@@ -11,6 +11,19 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.DeployKey("example", {
+ *     key: "ssh-ed25519 AAAA...",
+ *     project: "example/deploying",
+ *     title: "Example deploy key",
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example

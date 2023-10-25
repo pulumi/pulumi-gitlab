@@ -572,6 +572,25 @@ class GroupCluster(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_clusters.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Group("foo", path="foo-path")
+        bar = gitlab.GroupCluster("bar",
+            group=foo.id,
+            domain="example.com",
+            enabled=True,
+            kubernetes_api_url="https://124.124.124",
+            kubernetes_token="some-token",
+            kubernetes_ca_cert="some-cert",
+            kubernetes_authorization_type="rbac",
+            environment_scope="*",
+            management_project_id="123456")
+        ```
+
         ## Import
 
         GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
@@ -606,6 +625,25 @@ class GroupCluster(pulumi.CustomResource):
         > This is deprecated GitLab feature since 14.5
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_clusters.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Group("foo", path="foo-path")
+        bar = gitlab.GroupCluster("bar",
+            group=foo.id,
+            domain="example.com",
+            enabled=True,
+            kubernetes_api_url="https://124.124.124",
+            kubernetes_token="some-token",
+            kubernetes_ca_cert="some-cert",
+            kubernetes_authorization_type="rbac",
+            environment_scope="*",
+            management_project_id="123456")
+        ```
 
         ## Import
 

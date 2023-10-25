@@ -255,6 +255,20 @@ class UserSshKey(pulumi.CustomResource):
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/users.html#single-ssh-key)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_user = gitlab.get_user(username="example-user")
+        example_user_ssh_key = gitlab.UserSshKey("exampleUserSshKey",
+            user_id=example_user.id,
+            title="example-key",
+            key="ssh-ed25519 AAAA...",
+            expires_at="2016-01-21T00:00:00.000Z")
+        ```
+
         ## Import
 
         You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
@@ -280,6 +294,20 @@ class UserSshKey(pulumi.CustomResource):
         The `UserSshKey` resource allows to manage the lifecycle of an SSH key assigned to a user.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/users.html#single-ssh-key)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_user = gitlab.get_user(username="example-user")
+        example_user_ssh_key = gitlab.UserSshKey("exampleUserSshKey",
+            user_id=example_user.id,
+            title="example-key",
+            key="ssh-ed25519 AAAA...",
+            expires_at="2016-01-21T00:00:00.000Z")
+        ```
 
         ## Import
 

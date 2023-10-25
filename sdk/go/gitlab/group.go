@@ -19,6 +19,40 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleGroup, err := gitlab.NewGroup(ctx, "exampleGroup", &gitlab.GroupArgs{
+//				Path:        pulumi.String("example"),
+//				Description: pulumi.String("An example group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//				Description: pulumi.String("An example project"),
+//				NamespaceId: exampleGroup.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

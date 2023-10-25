@@ -18,6 +18,63 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html#create-an-agent-token)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// using Helm = Pulumi.Helm;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create token for an agent
+    ///     var example = new GitLab.ClusterAgentToken("example", new()
+    ///     {
+    ///         Project = "12345",
+    ///         AgentId = 42,
+    ///         Description = "some token",
+    ///     });
+    /// 
+    ///     var thisProject = GitLab.GetProject.Invoke(new()
+    ///     {
+    ///         PathWithNamespace = "my-org/example",
+    ///     });
+    /// 
+    ///     var thisClusterAgent = new GitLab.ClusterAgent("thisClusterAgent", new()
+    ///     {
+    ///         Project = thisProject.Apply(getProjectResult =&gt; getProjectResult.Id),
+    ///     });
+    /// 
+    ///     var thisClusterAgentToken = new GitLab.ClusterAgentToken("thisClusterAgentToken", new()
+    ///     {
+    ///         Project = thisProject.Apply(getProjectResult =&gt; getProjectResult.Id),
+    ///         AgentId = thisClusterAgent.AgentId,
+    ///         Description = "Token for the my-agent used with `gitlab-agent` Helm Chart",
+    ///     });
+    /// 
+    ///     var gitlabAgent = new Helm.Index.Helm_release("gitlabAgent", new()
+    ///     {
+    ///         Name = "gitlab-agent",
+    ///         Namespace = "gitlab-agent",
+    ///         CreateNamespace = true,
+    ///         Repository = "https://charts.gitlab.io",
+    ///         Chart = "gitlab-agent",
+    ///         Version = "1.2.0",
+    ///         Set = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "name", "config.token" },
+    ///                 { "value", thisClusterAgentToken.Token },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;:&lt;token-id&gt;`
