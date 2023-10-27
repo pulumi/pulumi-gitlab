@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectClusterArgs', 'ProjectCluster']
@@ -41,80 +41,27 @@ class ProjectClusterArgs:
         :param pulumi.Input[str] management_project_id: The ID of the management project for the cluster.
         :param pulumi.Input[str] name: The name of cluster.
         """
-        ProjectClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kubernetes_api_url=kubernetes_api_url,
-            kubernetes_token=kubernetes_token,
-            project=project,
-            domain=domain,
-            enabled=enabled,
-            environment_scope=environment_scope,
-            kubernetes_authorization_type=kubernetes_authorization_type,
-            kubernetes_ca_cert=kubernetes_ca_cert,
-            kubernetes_namespace=kubernetes_namespace,
-            managed=managed,
-            management_project_id=management_project_id,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kubernetes_api_url: Optional[pulumi.Input[str]] = None,
-             kubernetes_token: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             environment_scope: Optional[pulumi.Input[str]] = None,
-             kubernetes_authorization_type: Optional[pulumi.Input[str]] = None,
-             kubernetes_ca_cert: Optional[pulumi.Input[str]] = None,
-             kubernetes_namespace: Optional[pulumi.Input[str]] = None,
-             managed: Optional[pulumi.Input[bool]] = None,
-             management_project_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kubernetes_api_url is None and 'kubernetesApiUrl' in kwargs:
-            kubernetes_api_url = kwargs['kubernetesApiUrl']
-        if kubernetes_api_url is None:
-            raise TypeError("Missing 'kubernetes_api_url' argument")
-        if kubernetes_token is None and 'kubernetesToken' in kwargs:
-            kubernetes_token = kwargs['kubernetesToken']
-        if kubernetes_token is None:
-            raise TypeError("Missing 'kubernetes_token' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if environment_scope is None and 'environmentScope' in kwargs:
-            environment_scope = kwargs['environmentScope']
-        if kubernetes_authorization_type is None and 'kubernetesAuthorizationType' in kwargs:
-            kubernetes_authorization_type = kwargs['kubernetesAuthorizationType']
-        if kubernetes_ca_cert is None and 'kubernetesCaCert' in kwargs:
-            kubernetes_ca_cert = kwargs['kubernetesCaCert']
-        if kubernetes_namespace is None and 'kubernetesNamespace' in kwargs:
-            kubernetes_namespace = kwargs['kubernetesNamespace']
-        if management_project_id is None and 'managementProjectId' in kwargs:
-            management_project_id = kwargs['managementProjectId']
-
-        _setter("kubernetes_api_url", kubernetes_api_url)
-        _setter("kubernetes_token", kubernetes_token)
-        _setter("project", project)
+        pulumi.set(__self__, "kubernetes_api_url", kubernetes_api_url)
+        pulumi.set(__self__, "kubernetes_token", kubernetes_token)
+        pulumi.set(__self__, "project", project)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if environment_scope is not None:
-            _setter("environment_scope", environment_scope)
+            pulumi.set(__self__, "environment_scope", environment_scope)
         if kubernetes_authorization_type is not None:
-            _setter("kubernetes_authorization_type", kubernetes_authorization_type)
+            pulumi.set(__self__, "kubernetes_authorization_type", kubernetes_authorization_type)
         if kubernetes_ca_cert is not None:
-            _setter("kubernetes_ca_cert", kubernetes_ca_cert)
+            pulumi.set(__self__, "kubernetes_ca_cert", kubernetes_ca_cert)
         if kubernetes_namespace is not None:
-            _setter("kubernetes_namespace", kubernetes_namespace)
+            pulumi.set(__self__, "kubernetes_namespace", kubernetes_namespace)
         if managed is not None:
-            _setter("managed", managed)
+            pulumi.set(__self__, "managed", managed)
         if management_project_id is not None:
-            _setter("management_project_id", management_project_id)
+            pulumi.set(__self__, "management_project_id", management_project_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="kubernetesApiUrl")
@@ -299,101 +246,38 @@ class _ProjectClusterState:
         :param pulumi.Input[str] project: The id of the project to add the cluster to.
         :param pulumi.Input[str] provider_type: Provider type.
         """
-        _ProjectClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_type=cluster_type,
-            created_at=created_at,
-            domain=domain,
-            enabled=enabled,
-            environment_scope=environment_scope,
-            kubernetes_api_url=kubernetes_api_url,
-            kubernetes_authorization_type=kubernetes_authorization_type,
-            kubernetes_ca_cert=kubernetes_ca_cert,
-            kubernetes_namespace=kubernetes_namespace,
-            kubernetes_token=kubernetes_token,
-            managed=managed,
-            management_project_id=management_project_id,
-            name=name,
-            platform_type=platform_type,
-            project=project,
-            provider_type=provider_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_type: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             environment_scope: Optional[pulumi.Input[str]] = None,
-             kubernetes_api_url: Optional[pulumi.Input[str]] = None,
-             kubernetes_authorization_type: Optional[pulumi.Input[str]] = None,
-             kubernetes_ca_cert: Optional[pulumi.Input[str]] = None,
-             kubernetes_namespace: Optional[pulumi.Input[str]] = None,
-             kubernetes_token: Optional[pulumi.Input[str]] = None,
-             managed: Optional[pulumi.Input[bool]] = None,
-             management_project_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             platform_type: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             provider_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if environment_scope is None and 'environmentScope' in kwargs:
-            environment_scope = kwargs['environmentScope']
-        if kubernetes_api_url is None and 'kubernetesApiUrl' in kwargs:
-            kubernetes_api_url = kwargs['kubernetesApiUrl']
-        if kubernetes_authorization_type is None and 'kubernetesAuthorizationType' in kwargs:
-            kubernetes_authorization_type = kwargs['kubernetesAuthorizationType']
-        if kubernetes_ca_cert is None and 'kubernetesCaCert' in kwargs:
-            kubernetes_ca_cert = kwargs['kubernetesCaCert']
-        if kubernetes_namespace is None and 'kubernetesNamespace' in kwargs:
-            kubernetes_namespace = kwargs['kubernetesNamespace']
-        if kubernetes_token is None and 'kubernetesToken' in kwargs:
-            kubernetes_token = kwargs['kubernetesToken']
-        if management_project_id is None and 'managementProjectId' in kwargs:
-            management_project_id = kwargs['managementProjectId']
-        if platform_type is None and 'platformType' in kwargs:
-            platform_type = kwargs['platformType']
-        if provider_type is None and 'providerType' in kwargs:
-            provider_type = kwargs['providerType']
-
         if cluster_type is not None:
-            _setter("cluster_type", cluster_type)
+            pulumi.set(__self__, "cluster_type", cluster_type)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if environment_scope is not None:
-            _setter("environment_scope", environment_scope)
+            pulumi.set(__self__, "environment_scope", environment_scope)
         if kubernetes_api_url is not None:
-            _setter("kubernetes_api_url", kubernetes_api_url)
+            pulumi.set(__self__, "kubernetes_api_url", kubernetes_api_url)
         if kubernetes_authorization_type is not None:
-            _setter("kubernetes_authorization_type", kubernetes_authorization_type)
+            pulumi.set(__self__, "kubernetes_authorization_type", kubernetes_authorization_type)
         if kubernetes_ca_cert is not None:
-            _setter("kubernetes_ca_cert", kubernetes_ca_cert)
+            pulumi.set(__self__, "kubernetes_ca_cert", kubernetes_ca_cert)
         if kubernetes_namespace is not None:
-            _setter("kubernetes_namespace", kubernetes_namespace)
+            pulumi.set(__self__, "kubernetes_namespace", kubernetes_namespace)
         if kubernetes_token is not None:
-            _setter("kubernetes_token", kubernetes_token)
+            pulumi.set(__self__, "kubernetes_token", kubernetes_token)
         if managed is not None:
-            _setter("managed", managed)
+            pulumi.set(__self__, "managed", managed)
         if management_project_id is not None:
-            _setter("management_project_id", management_project_id)
+            pulumi.set(__self__, "management_project_id", management_project_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if platform_type is not None:
-            _setter("platform_type", platform_type)
+            pulumi.set(__self__, "platform_type", platform_type)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if provider_type is not None:
-            _setter("provider_type", provider_type)
+            pulumi.set(__self__, "provider_type", provider_type)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -707,10 +591,6 @@ class ProjectCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

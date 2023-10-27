@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupBadgeArgs', 'GroupBadge']
@@ -25,38 +25,11 @@ class GroupBadgeArgs:
         :param pulumi.Input[str] link_url: The url linked with the badge.
         :param pulumi.Input[str] name: The name of the badge.
         """
-        GroupBadgeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group=group,
-            image_url=image_url,
-            link_url=link_url,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group: Optional[pulumi.Input[str]] = None,
-             image_url: Optional[pulumi.Input[str]] = None,
-             link_url: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group is None:
-            raise TypeError("Missing 'group' argument")
-        if image_url is None and 'imageUrl' in kwargs:
-            image_url = kwargs['imageUrl']
-        if image_url is None:
-            raise TypeError("Missing 'image_url' argument")
-        if link_url is None and 'linkUrl' in kwargs:
-            link_url = kwargs['linkUrl']
-        if link_url is None:
-            raise TypeError("Missing 'link_url' argument")
-
-        _setter("group", group)
-        _setter("image_url", image_url)
-        _setter("link_url", link_url)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "image_url", image_url)
+        pulumi.set(__self__, "link_url", link_url)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -125,47 +98,18 @@ class _GroupBadgeState:
         :param pulumi.Input[str] rendered_image_url: The image_url argument rendered (in case of use of placeholders).
         :param pulumi.Input[str] rendered_link_url: The link_url argument rendered (in case of use of placeholders).
         """
-        _GroupBadgeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group=group,
-            image_url=image_url,
-            link_url=link_url,
-            name=name,
-            rendered_image_url=rendered_image_url,
-            rendered_link_url=rendered_link_url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group: Optional[pulumi.Input[str]] = None,
-             image_url: Optional[pulumi.Input[str]] = None,
-             link_url: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             rendered_image_url: Optional[pulumi.Input[str]] = None,
-             rendered_link_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if image_url is None and 'imageUrl' in kwargs:
-            image_url = kwargs['imageUrl']
-        if link_url is None and 'linkUrl' in kwargs:
-            link_url = kwargs['linkUrl']
-        if rendered_image_url is None and 'renderedImageUrl' in kwargs:
-            rendered_image_url = kwargs['renderedImageUrl']
-        if rendered_link_url is None and 'renderedLinkUrl' in kwargs:
-            rendered_link_url = kwargs['renderedLinkUrl']
-
         if group is not None:
-            _setter("group", group)
+            pulumi.set(__self__, "group", group)
         if image_url is not None:
-            _setter("image_url", image_url)
+            pulumi.set(__self__, "image_url", image_url)
         if link_url is not None:
-            _setter("link_url", link_url)
+            pulumi.set(__self__, "link_url", link_url)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if rendered_image_url is not None:
-            _setter("rendered_image_url", rendered_image_url)
+            pulumi.set(__self__, "rendered_image_url", rendered_image_url)
         if rendered_link_url is not None:
-            _setter("rendered_link_url", rendered_link_url)
+            pulumi.set(__self__, "rendered_link_url", rendered_link_url)
 
     @property
     @pulumi.getter
@@ -355,10 +299,6 @@ class GroupBadge(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupBadgeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

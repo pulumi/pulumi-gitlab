@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -42,53 +42,20 @@ class ProviderArgs:
                https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
                variable.
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_url=base_url,
-            cacert_file=cacert_file,
-            client_cert=client_cert,
-            client_key=client_key,
-            early_auth_check=early_auth_check,
-            insecure=insecure,
-            token=token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_url: Optional[pulumi.Input[str]] = None,
-             cacert_file: Optional[pulumi.Input[str]] = None,
-             client_cert: Optional[pulumi.Input[str]] = None,
-             client_key: Optional[pulumi.Input[str]] = None,
-             early_auth_check: Optional[pulumi.Input[bool]] = None,
-             insecure: Optional[pulumi.Input[bool]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_url is None and 'baseUrl' in kwargs:
-            base_url = kwargs['baseUrl']
-        if cacert_file is None and 'cacertFile' in kwargs:
-            cacert_file = kwargs['cacertFile']
-        if client_cert is None and 'clientCert' in kwargs:
-            client_cert = kwargs['clientCert']
-        if client_key is None and 'clientKey' in kwargs:
-            client_key = kwargs['clientKey']
-        if early_auth_check is None and 'earlyAuthCheck' in kwargs:
-            early_auth_check = kwargs['earlyAuthCheck']
-
         if base_url is not None:
-            _setter("base_url", base_url)
+            pulumi.set(__self__, "base_url", base_url)
         if cacert_file is not None:
-            _setter("cacert_file", cacert_file)
+            pulumi.set(__self__, "cacert_file", cacert_file)
         if client_cert is not None:
-            _setter("client_cert", client_cert)
+            pulumi.set(__self__, "client_cert", client_cert)
         if client_key is not None:
-            _setter("client_key", client_key)
+            pulumi.set(__self__, "client_key", client_key)
         if early_auth_check is not None:
-            _setter("early_auth_check", early_auth_check)
+            pulumi.set(__self__, "early_auth_check", early_auth_check)
         if insecure is not None:
-            _setter("insecure", insecure)
+            pulumi.set(__self__, "insecure", insecure)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -248,10 +215,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

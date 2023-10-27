@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -43,83 +43,30 @@ class UserArgs:
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] state: String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
         """
-        UserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            email=email,
-            username=username,
-            can_create_group=can_create_group,
-            is_admin=is_admin,
-            is_external=is_external,
-            name=name,
-            namespace_id=namespace_id,
-            note=note,
-            password=password,
-            projects_limit=projects_limit,
-            reset_password=reset_password,
-            skip_confirmation=skip_confirmation,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             email: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             can_create_group: Optional[pulumi.Input[bool]] = None,
-             is_admin: Optional[pulumi.Input[bool]] = None,
-             is_external: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[int]] = None,
-             note: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             projects_limit: Optional[pulumi.Input[int]] = None,
-             reset_password: Optional[pulumi.Input[bool]] = None,
-             skip_confirmation: Optional[pulumi.Input[bool]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if email is None:
-            raise TypeError("Missing 'email' argument")
-        if username is None:
-            raise TypeError("Missing 'username' argument")
-        if can_create_group is None and 'canCreateGroup' in kwargs:
-            can_create_group = kwargs['canCreateGroup']
-        if is_admin is None and 'isAdmin' in kwargs:
-            is_admin = kwargs['isAdmin']
-        if is_external is None and 'isExternal' in kwargs:
-            is_external = kwargs['isExternal']
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if projects_limit is None and 'projectsLimit' in kwargs:
-            projects_limit = kwargs['projectsLimit']
-        if reset_password is None and 'resetPassword' in kwargs:
-            reset_password = kwargs['resetPassword']
-        if skip_confirmation is None and 'skipConfirmation' in kwargs:
-            skip_confirmation = kwargs['skipConfirmation']
-
-        _setter("email", email)
-        _setter("username", username)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "username", username)
         if can_create_group is not None:
-            _setter("can_create_group", can_create_group)
+            pulumi.set(__self__, "can_create_group", can_create_group)
         if is_admin is not None:
-            _setter("is_admin", is_admin)
+            pulumi.set(__self__, "is_admin", is_admin)
         if is_external is not None:
-            _setter("is_external", is_external)
+            pulumi.set(__self__, "is_external", is_external)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if note is not None:
-            _setter("note", note)
+            pulumi.set(__self__, "note", note)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if projects_limit is not None:
-            _setter("projects_limit", projects_limit)
+            pulumi.set(__self__, "projects_limit", projects_limit)
         if reset_password is not None:
-            _setter("reset_password", reset_password)
+            pulumi.set(__self__, "reset_password", reset_password)
         if skip_confirmation is not None:
-            _setter("skip_confirmation", skip_confirmation)
+            pulumi.set(__self__, "skip_confirmation", skip_confirmation)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -310,81 +257,32 @@ class _UserState:
         :param pulumi.Input[str] state: String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
         :param pulumi.Input[str] username: The username of the user.
         """
-        _UserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            can_create_group=can_create_group,
-            email=email,
-            is_admin=is_admin,
-            is_external=is_external,
-            name=name,
-            namespace_id=namespace_id,
-            note=note,
-            password=password,
-            projects_limit=projects_limit,
-            reset_password=reset_password,
-            skip_confirmation=skip_confirmation,
-            state=state,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             can_create_group: Optional[pulumi.Input[bool]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             is_admin: Optional[pulumi.Input[bool]] = None,
-             is_external: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[int]] = None,
-             note: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             projects_limit: Optional[pulumi.Input[int]] = None,
-             reset_password: Optional[pulumi.Input[bool]] = None,
-             skip_confirmation: Optional[pulumi.Input[bool]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if can_create_group is None and 'canCreateGroup' in kwargs:
-            can_create_group = kwargs['canCreateGroup']
-        if is_admin is None and 'isAdmin' in kwargs:
-            is_admin = kwargs['isAdmin']
-        if is_external is None and 'isExternal' in kwargs:
-            is_external = kwargs['isExternal']
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if projects_limit is None and 'projectsLimit' in kwargs:
-            projects_limit = kwargs['projectsLimit']
-        if reset_password is None and 'resetPassword' in kwargs:
-            reset_password = kwargs['resetPassword']
-        if skip_confirmation is None and 'skipConfirmation' in kwargs:
-            skip_confirmation = kwargs['skipConfirmation']
-
         if can_create_group is not None:
-            _setter("can_create_group", can_create_group)
+            pulumi.set(__self__, "can_create_group", can_create_group)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if is_admin is not None:
-            _setter("is_admin", is_admin)
+            pulumi.set(__self__, "is_admin", is_admin)
         if is_external is not None:
-            _setter("is_external", is_external)
+            pulumi.set(__self__, "is_external", is_external)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if note is not None:
-            _setter("note", note)
+            pulumi.set(__self__, "note", note)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if projects_limit is not None:
-            _setter("projects_limit", projects_limit)
+            pulumi.set(__self__, "projects_limit", projects_limit)
         if reset_password is not None:
-            _setter("reset_password", reset_password)
+            pulumi.set(__self__, "reset_password", reset_password)
         if skip_confirmation is not None:
-            _setter("skip_confirmation", skip_confirmation)
+            pulumi.set(__self__, "skip_confirmation", skip_confirmation)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="canCreateGroup")
@@ -670,10 +568,6 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

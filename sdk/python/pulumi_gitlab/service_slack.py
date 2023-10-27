@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServiceSlackArgs', 'ServiceSlack']
@@ -63,152 +63,53 @@ class ServiceSlackArgs:
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
-        ServiceSlackArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            webhook=webhook,
-            branches_to_be_notified=branches_to_be_notified,
-            confidential_issue_channel=confidential_issue_channel,
-            confidential_issues_events=confidential_issues_events,
-            confidential_note_events=confidential_note_events,
-            issue_channel=issue_channel,
-            issues_events=issues_events,
-            merge_request_channel=merge_request_channel,
-            merge_requests_events=merge_requests_events,
-            note_channel=note_channel,
-            note_events=note_events,
-            notify_only_broken_pipelines=notify_only_broken_pipelines,
-            notify_only_default_branch=notify_only_default_branch,
-            pipeline_channel=pipeline_channel,
-            pipeline_events=pipeline_events,
-            push_channel=push_channel,
-            push_events=push_events,
-            tag_push_channel=tag_push_channel,
-            tag_push_events=tag_push_events,
-            username=username,
-            wiki_page_channel=wiki_page_channel,
-            wiki_page_events=wiki_page_events,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             webhook: Optional[pulumi.Input[str]] = None,
-             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
-             confidential_issue_channel: Optional[pulumi.Input[str]] = None,
-             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
-             confidential_note_events: Optional[pulumi.Input[bool]] = None,
-             issue_channel: Optional[pulumi.Input[str]] = None,
-             issues_events: Optional[pulumi.Input[bool]] = None,
-             merge_request_channel: Optional[pulumi.Input[str]] = None,
-             merge_requests_events: Optional[pulumi.Input[bool]] = None,
-             note_channel: Optional[pulumi.Input[str]] = None,
-             note_events: Optional[pulumi.Input[bool]] = None,
-             notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
-             notify_only_default_branch: Optional[pulumi.Input[bool]] = None,
-             pipeline_channel: Optional[pulumi.Input[str]] = None,
-             pipeline_events: Optional[pulumi.Input[bool]] = None,
-             push_channel: Optional[pulumi.Input[str]] = None,
-             push_events: Optional[pulumi.Input[bool]] = None,
-             tag_push_channel: Optional[pulumi.Input[str]] = None,
-             tag_push_events: Optional[pulumi.Input[bool]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             wiki_page_channel: Optional[pulumi.Input[str]] = None,
-             wiki_page_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if webhook is None:
-            raise TypeError("Missing 'webhook' argument")
-        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
-            branches_to_be_notified = kwargs['branchesToBeNotified']
-        if confidential_issue_channel is None and 'confidentialIssueChannel' in kwargs:
-            confidential_issue_channel = kwargs['confidentialIssueChannel']
-        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
-            confidential_issues_events = kwargs['confidentialIssuesEvents']
-        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
-            confidential_note_events = kwargs['confidentialNoteEvents']
-        if issue_channel is None and 'issueChannel' in kwargs:
-            issue_channel = kwargs['issueChannel']
-        if issues_events is None and 'issuesEvents' in kwargs:
-            issues_events = kwargs['issuesEvents']
-        if merge_request_channel is None and 'mergeRequestChannel' in kwargs:
-            merge_request_channel = kwargs['mergeRequestChannel']
-        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
-            merge_requests_events = kwargs['mergeRequestsEvents']
-        if note_channel is None and 'noteChannel' in kwargs:
-            note_channel = kwargs['noteChannel']
-        if note_events is None and 'noteEvents' in kwargs:
-            note_events = kwargs['noteEvents']
-        if notify_only_broken_pipelines is None and 'notifyOnlyBrokenPipelines' in kwargs:
-            notify_only_broken_pipelines = kwargs['notifyOnlyBrokenPipelines']
-        if notify_only_default_branch is None and 'notifyOnlyDefaultBranch' in kwargs:
-            notify_only_default_branch = kwargs['notifyOnlyDefaultBranch']
-        if pipeline_channel is None and 'pipelineChannel' in kwargs:
-            pipeline_channel = kwargs['pipelineChannel']
-        if pipeline_events is None and 'pipelineEvents' in kwargs:
-            pipeline_events = kwargs['pipelineEvents']
-        if push_channel is None and 'pushChannel' in kwargs:
-            push_channel = kwargs['pushChannel']
-        if push_events is None and 'pushEvents' in kwargs:
-            push_events = kwargs['pushEvents']
-        if tag_push_channel is None and 'tagPushChannel' in kwargs:
-            tag_push_channel = kwargs['tagPushChannel']
-        if tag_push_events is None and 'tagPushEvents' in kwargs:
-            tag_push_events = kwargs['tagPushEvents']
-        if wiki_page_channel is None and 'wikiPageChannel' in kwargs:
-            wiki_page_channel = kwargs['wikiPageChannel']
-        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
-            wiki_page_events = kwargs['wikiPageEvents']
-
-        _setter("project", project)
-        _setter("webhook", webhook)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "webhook", webhook)
         if branches_to_be_notified is not None:
-            _setter("branches_to_be_notified", branches_to_be_notified)
+            pulumi.set(__self__, "branches_to_be_notified", branches_to_be_notified)
         if confidential_issue_channel is not None:
-            _setter("confidential_issue_channel", confidential_issue_channel)
+            pulumi.set(__self__, "confidential_issue_channel", confidential_issue_channel)
         if confidential_issues_events is not None:
-            _setter("confidential_issues_events", confidential_issues_events)
+            pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
-            _setter("confidential_note_events", confidential_note_events)
+            pulumi.set(__self__, "confidential_note_events", confidential_note_events)
         if issue_channel is not None:
-            _setter("issue_channel", issue_channel)
+            pulumi.set(__self__, "issue_channel", issue_channel)
         if issues_events is not None:
-            _setter("issues_events", issues_events)
+            pulumi.set(__self__, "issues_events", issues_events)
         if merge_request_channel is not None:
-            _setter("merge_request_channel", merge_request_channel)
+            pulumi.set(__self__, "merge_request_channel", merge_request_channel)
         if merge_requests_events is not None:
-            _setter("merge_requests_events", merge_requests_events)
+            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
         if note_channel is not None:
-            _setter("note_channel", note_channel)
+            pulumi.set(__self__, "note_channel", note_channel)
         if note_events is not None:
-            _setter("note_events", note_events)
+            pulumi.set(__self__, "note_events", note_events)
         if notify_only_broken_pipelines is not None:
-            _setter("notify_only_broken_pipelines", notify_only_broken_pipelines)
+            pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
         if notify_only_default_branch is not None:
             warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
             pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
         if notify_only_default_branch is not None:
-            _setter("notify_only_default_branch", notify_only_default_branch)
+            pulumi.set(__self__, "notify_only_default_branch", notify_only_default_branch)
         if pipeline_channel is not None:
-            _setter("pipeline_channel", pipeline_channel)
+            pulumi.set(__self__, "pipeline_channel", pipeline_channel)
         if pipeline_events is not None:
-            _setter("pipeline_events", pipeline_events)
+            pulumi.set(__self__, "pipeline_events", pipeline_events)
         if push_channel is not None:
-            _setter("push_channel", push_channel)
+            pulumi.set(__self__, "push_channel", push_channel)
         if push_events is not None:
-            _setter("push_events", push_events)
+            pulumi.set(__self__, "push_events", push_events)
         if tag_push_channel is not None:
-            _setter("tag_push_channel", tag_push_channel)
+            pulumi.set(__self__, "tag_push_channel", tag_push_channel)
         if tag_push_events is not None:
-            _setter("tag_push_events", tag_push_events)
+            pulumi.set(__self__, "tag_push_events", tag_push_events)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
         if wiki_page_channel is not None:
-            _setter("wiki_page_channel", wiki_page_channel)
+            pulumi.set(__self__, "wiki_page_channel", wiki_page_channel)
         if wiki_page_events is not None:
-            _setter("wiki_page_events", wiki_page_events)
+            pulumi.set(__self__, "wiki_page_events", wiki_page_events)
 
     @property
     @pulumi.getter
@@ -544,156 +445,57 @@ class _ServiceSlackState:
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
-        _ServiceSlackState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            branches_to_be_notified=branches_to_be_notified,
-            confidential_issue_channel=confidential_issue_channel,
-            confidential_issues_events=confidential_issues_events,
-            confidential_note_events=confidential_note_events,
-            issue_channel=issue_channel,
-            issues_events=issues_events,
-            job_events=job_events,
-            merge_request_channel=merge_request_channel,
-            merge_requests_events=merge_requests_events,
-            note_channel=note_channel,
-            note_events=note_events,
-            notify_only_broken_pipelines=notify_only_broken_pipelines,
-            notify_only_default_branch=notify_only_default_branch,
-            pipeline_channel=pipeline_channel,
-            pipeline_events=pipeline_events,
-            project=project,
-            push_channel=push_channel,
-            push_events=push_events,
-            tag_push_channel=tag_push_channel,
-            tag_push_events=tag_push_events,
-            username=username,
-            webhook=webhook,
-            wiki_page_channel=wiki_page_channel,
-            wiki_page_events=wiki_page_events,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
-             confidential_issue_channel: Optional[pulumi.Input[str]] = None,
-             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
-             confidential_note_events: Optional[pulumi.Input[bool]] = None,
-             issue_channel: Optional[pulumi.Input[str]] = None,
-             issues_events: Optional[pulumi.Input[bool]] = None,
-             job_events: Optional[pulumi.Input[bool]] = None,
-             merge_request_channel: Optional[pulumi.Input[str]] = None,
-             merge_requests_events: Optional[pulumi.Input[bool]] = None,
-             note_channel: Optional[pulumi.Input[str]] = None,
-             note_events: Optional[pulumi.Input[bool]] = None,
-             notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
-             notify_only_default_branch: Optional[pulumi.Input[bool]] = None,
-             pipeline_channel: Optional[pulumi.Input[str]] = None,
-             pipeline_events: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             push_channel: Optional[pulumi.Input[str]] = None,
-             push_events: Optional[pulumi.Input[bool]] = None,
-             tag_push_channel: Optional[pulumi.Input[str]] = None,
-             tag_push_events: Optional[pulumi.Input[bool]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             webhook: Optional[pulumi.Input[str]] = None,
-             wiki_page_channel: Optional[pulumi.Input[str]] = None,
-             wiki_page_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
-            branches_to_be_notified = kwargs['branchesToBeNotified']
-        if confidential_issue_channel is None and 'confidentialIssueChannel' in kwargs:
-            confidential_issue_channel = kwargs['confidentialIssueChannel']
-        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
-            confidential_issues_events = kwargs['confidentialIssuesEvents']
-        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
-            confidential_note_events = kwargs['confidentialNoteEvents']
-        if issue_channel is None and 'issueChannel' in kwargs:
-            issue_channel = kwargs['issueChannel']
-        if issues_events is None and 'issuesEvents' in kwargs:
-            issues_events = kwargs['issuesEvents']
-        if job_events is None and 'jobEvents' in kwargs:
-            job_events = kwargs['jobEvents']
-        if merge_request_channel is None and 'mergeRequestChannel' in kwargs:
-            merge_request_channel = kwargs['mergeRequestChannel']
-        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
-            merge_requests_events = kwargs['mergeRequestsEvents']
-        if note_channel is None and 'noteChannel' in kwargs:
-            note_channel = kwargs['noteChannel']
-        if note_events is None and 'noteEvents' in kwargs:
-            note_events = kwargs['noteEvents']
-        if notify_only_broken_pipelines is None and 'notifyOnlyBrokenPipelines' in kwargs:
-            notify_only_broken_pipelines = kwargs['notifyOnlyBrokenPipelines']
-        if notify_only_default_branch is None and 'notifyOnlyDefaultBranch' in kwargs:
-            notify_only_default_branch = kwargs['notifyOnlyDefaultBranch']
-        if pipeline_channel is None and 'pipelineChannel' in kwargs:
-            pipeline_channel = kwargs['pipelineChannel']
-        if pipeline_events is None and 'pipelineEvents' in kwargs:
-            pipeline_events = kwargs['pipelineEvents']
-        if push_channel is None and 'pushChannel' in kwargs:
-            push_channel = kwargs['pushChannel']
-        if push_events is None and 'pushEvents' in kwargs:
-            push_events = kwargs['pushEvents']
-        if tag_push_channel is None and 'tagPushChannel' in kwargs:
-            tag_push_channel = kwargs['tagPushChannel']
-        if tag_push_events is None and 'tagPushEvents' in kwargs:
-            tag_push_events = kwargs['tagPushEvents']
-        if wiki_page_channel is None and 'wikiPageChannel' in kwargs:
-            wiki_page_channel = kwargs['wikiPageChannel']
-        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
-            wiki_page_events = kwargs['wikiPageEvents']
-
         if branches_to_be_notified is not None:
-            _setter("branches_to_be_notified", branches_to_be_notified)
+            pulumi.set(__self__, "branches_to_be_notified", branches_to_be_notified)
         if confidential_issue_channel is not None:
-            _setter("confidential_issue_channel", confidential_issue_channel)
+            pulumi.set(__self__, "confidential_issue_channel", confidential_issue_channel)
         if confidential_issues_events is not None:
-            _setter("confidential_issues_events", confidential_issues_events)
+            pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
-            _setter("confidential_note_events", confidential_note_events)
+            pulumi.set(__self__, "confidential_note_events", confidential_note_events)
         if issue_channel is not None:
-            _setter("issue_channel", issue_channel)
+            pulumi.set(__self__, "issue_channel", issue_channel)
         if issues_events is not None:
-            _setter("issues_events", issues_events)
+            pulumi.set(__self__, "issues_events", issues_events)
         if job_events is not None:
-            _setter("job_events", job_events)
+            pulumi.set(__self__, "job_events", job_events)
         if merge_request_channel is not None:
-            _setter("merge_request_channel", merge_request_channel)
+            pulumi.set(__self__, "merge_request_channel", merge_request_channel)
         if merge_requests_events is not None:
-            _setter("merge_requests_events", merge_requests_events)
+            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
         if note_channel is not None:
-            _setter("note_channel", note_channel)
+            pulumi.set(__self__, "note_channel", note_channel)
         if note_events is not None:
-            _setter("note_events", note_events)
+            pulumi.set(__self__, "note_events", note_events)
         if notify_only_broken_pipelines is not None:
-            _setter("notify_only_broken_pipelines", notify_only_broken_pipelines)
+            pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
         if notify_only_default_branch is not None:
             warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
             pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
         if notify_only_default_branch is not None:
-            _setter("notify_only_default_branch", notify_only_default_branch)
+            pulumi.set(__self__, "notify_only_default_branch", notify_only_default_branch)
         if pipeline_channel is not None:
-            _setter("pipeline_channel", pipeline_channel)
+            pulumi.set(__self__, "pipeline_channel", pipeline_channel)
         if pipeline_events is not None:
-            _setter("pipeline_events", pipeline_events)
+            pulumi.set(__self__, "pipeline_events", pipeline_events)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if push_channel is not None:
-            _setter("push_channel", push_channel)
+            pulumi.set(__self__, "push_channel", push_channel)
         if push_events is not None:
-            _setter("push_events", push_events)
+            pulumi.set(__self__, "push_events", push_events)
         if tag_push_channel is not None:
-            _setter("tag_push_channel", tag_push_channel)
+            pulumi.set(__self__, "tag_push_channel", tag_push_channel)
         if tag_push_events is not None:
-            _setter("tag_push_events", tag_push_events)
+            pulumi.set(__self__, "tag_push_events", tag_push_events)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
         if webhook is not None:
-            _setter("webhook", webhook)
+            pulumi.set(__self__, "webhook", webhook)
         if wiki_page_channel is not None:
-            _setter("wiki_page_channel", wiki_page_channel)
+            pulumi.set(__self__, "wiki_page_channel", wiki_page_channel)
         if wiki_page_events is not None:
-            _setter("wiki_page_events", wiki_page_events)
+            pulumi.set(__self__, "wiki_page_events", wiki_page_events)
 
     @property
     @pulumi.getter(name="branchesToBeNotified")
@@ -1122,10 +924,6 @@ class ServiceSlack(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceSlackArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

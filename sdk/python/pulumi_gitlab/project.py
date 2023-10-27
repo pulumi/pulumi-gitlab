@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -212,542 +212,193 @@ class ProjectArgs:
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
         """
-        ProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_merge_on_skipped_pipeline=allow_merge_on_skipped_pipeline,
-            analytics_access_level=analytics_access_level,
-            approvals_before_merge=approvals_before_merge,
-            archive_on_destroy=archive_on_destroy,
-            archived=archived,
-            auto_cancel_pending_pipelines=auto_cancel_pending_pipelines,
-            auto_devops_deploy_strategy=auto_devops_deploy_strategy,
-            auto_devops_enabled=auto_devops_enabled,
-            autoclose_referenced_issues=autoclose_referenced_issues,
-            avatar=avatar,
-            avatar_hash=avatar_hash,
-            build_coverage_regex=build_coverage_regex,
-            build_git_strategy=build_git_strategy,
-            build_timeout=build_timeout,
-            builds_access_level=builds_access_level,
-            ci_config_path=ci_config_path,
-            ci_default_git_depth=ci_default_git_depth,
-            ci_forward_deployment_enabled=ci_forward_deployment_enabled,
-            ci_separated_caches=ci_separated_caches,
-            container_expiration_policy=container_expiration_policy,
-            container_registry_access_level=container_registry_access_level,
-            container_registry_enabled=container_registry_enabled,
-            default_branch=default_branch,
-            description=description,
-            emails_disabled=emails_disabled,
-            environments_access_level=environments_access_level,
-            external_authorization_classification_label=external_authorization_classification_label,
-            feature_flags_access_level=feature_flags_access_level,
-            forked_from_project_id=forked_from_project_id,
-            forking_access_level=forking_access_level,
-            group_with_project_templates_id=group_with_project_templates_id,
-            import_url=import_url,
-            import_url_password=import_url_password,
-            import_url_username=import_url_username,
-            infrastructure_access_level=infrastructure_access_level,
-            initialize_with_readme=initialize_with_readme,
-            issues_access_level=issues_access_level,
-            issues_enabled=issues_enabled,
-            issues_template=issues_template,
-            keep_latest_artifact=keep_latest_artifact,
-            lfs_enabled=lfs_enabled,
-            merge_commit_template=merge_commit_template,
-            merge_method=merge_method,
-            merge_pipelines_enabled=merge_pipelines_enabled,
-            merge_requests_access_level=merge_requests_access_level,
-            merge_requests_enabled=merge_requests_enabled,
-            merge_requests_template=merge_requests_template,
-            merge_trains_enabled=merge_trains_enabled,
-            mirror=mirror,
-            mirror_overwrites_diverged_branches=mirror_overwrites_diverged_branches,
-            mirror_trigger_builds=mirror_trigger_builds,
-            monitor_access_level=monitor_access_level,
-            mr_default_target_self=mr_default_target_self,
-            name=name,
-            namespace_id=namespace_id,
-            only_allow_merge_if_all_discussions_are_resolved=only_allow_merge_if_all_discussions_are_resolved,
-            only_allow_merge_if_pipeline_succeeds=only_allow_merge_if_pipeline_succeeds,
-            only_mirror_protected_branches=only_mirror_protected_branches,
-            packages_enabled=packages_enabled,
-            pages_access_level=pages_access_level,
-            path=path,
-            pipelines_enabled=pipelines_enabled,
-            printing_merge_request_link_enabled=printing_merge_request_link_enabled,
-            public_builds=public_builds,
-            push_rules=push_rules,
-            releases_access_level=releases_access_level,
-            remove_source_branch_after_merge=remove_source_branch_after_merge,
-            repository_access_level=repository_access_level,
-            repository_storage=repository_storage,
-            request_access_enabled=request_access_enabled,
-            requirements_access_level=requirements_access_level,
-            resolve_outdated_diff_discussions=resolve_outdated_diff_discussions,
-            restrict_user_defined_variables=restrict_user_defined_variables,
-            security_and_compliance_access_level=security_and_compliance_access_level,
-            shared_runners_enabled=shared_runners_enabled,
-            skip_wait_for_default_branch_protection=skip_wait_for_default_branch_protection,
-            snippets_access_level=snippets_access_level,
-            snippets_enabled=snippets_enabled,
-            squash_commit_template=squash_commit_template,
-            squash_option=squash_option,
-            suggestion_commit_message=suggestion_commit_message,
-            tags=tags,
-            template_name=template_name,
-            template_project_id=template_project_id,
-            topics=topics,
-            use_custom_template=use_custom_template,
-            visibility_level=visibility_level,
-            wiki_access_level=wiki_access_level,
-            wiki_enabled=wiki_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
-             analytics_access_level: Optional[pulumi.Input[str]] = None,
-             approvals_before_merge: Optional[pulumi.Input[int]] = None,
-             archive_on_destroy: Optional[pulumi.Input[bool]] = None,
-             archived: Optional[pulumi.Input[bool]] = None,
-             auto_cancel_pending_pipelines: Optional[pulumi.Input[str]] = None,
-             auto_devops_deploy_strategy: Optional[pulumi.Input[str]] = None,
-             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
-             autoclose_referenced_issues: Optional[pulumi.Input[bool]] = None,
-             avatar: Optional[pulumi.Input[str]] = None,
-             avatar_hash: Optional[pulumi.Input[str]] = None,
-             build_coverage_regex: Optional[pulumi.Input[str]] = None,
-             build_git_strategy: Optional[pulumi.Input[str]] = None,
-             build_timeout: Optional[pulumi.Input[int]] = None,
-             builds_access_level: Optional[pulumi.Input[str]] = None,
-             ci_config_path: Optional[pulumi.Input[str]] = None,
-             ci_default_git_depth: Optional[pulumi.Input[int]] = None,
-             ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
-             ci_separated_caches: Optional[pulumi.Input[bool]] = None,
-             container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
-             container_registry_access_level: Optional[pulumi.Input[str]] = None,
-             container_registry_enabled: Optional[pulumi.Input[bool]] = None,
-             default_branch: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             emails_disabled: Optional[pulumi.Input[bool]] = None,
-             environments_access_level: Optional[pulumi.Input[str]] = None,
-             external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
-             feature_flags_access_level: Optional[pulumi.Input[str]] = None,
-             forked_from_project_id: Optional[pulumi.Input[int]] = None,
-             forking_access_level: Optional[pulumi.Input[str]] = None,
-             group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
-             import_url: Optional[pulumi.Input[str]] = None,
-             import_url_password: Optional[pulumi.Input[str]] = None,
-             import_url_username: Optional[pulumi.Input[str]] = None,
-             infrastructure_access_level: Optional[pulumi.Input[str]] = None,
-             initialize_with_readme: Optional[pulumi.Input[bool]] = None,
-             issues_access_level: Optional[pulumi.Input[str]] = None,
-             issues_enabled: Optional[pulumi.Input[bool]] = None,
-             issues_template: Optional[pulumi.Input[str]] = None,
-             keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
-             lfs_enabled: Optional[pulumi.Input[bool]] = None,
-             merge_commit_template: Optional[pulumi.Input[str]] = None,
-             merge_method: Optional[pulumi.Input[str]] = None,
-             merge_pipelines_enabled: Optional[pulumi.Input[bool]] = None,
-             merge_requests_access_level: Optional[pulumi.Input[str]] = None,
-             merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
-             merge_requests_template: Optional[pulumi.Input[str]] = None,
-             merge_trains_enabled: Optional[pulumi.Input[bool]] = None,
-             mirror: Optional[pulumi.Input[bool]] = None,
-             mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
-             mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
-             monitor_access_level: Optional[pulumi.Input[str]] = None,
-             mr_default_target_self: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[int]] = None,
-             only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
-             only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
-             only_mirror_protected_branches: Optional[pulumi.Input[bool]] = None,
-             packages_enabled: Optional[pulumi.Input[bool]] = None,
-             pages_access_level: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             pipelines_enabled: Optional[pulumi.Input[bool]] = None,
-             printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
-             public_builds: Optional[pulumi.Input[bool]] = None,
-             push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
-             releases_access_level: Optional[pulumi.Input[str]] = None,
-             remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
-             repository_access_level: Optional[pulumi.Input[str]] = None,
-             repository_storage: Optional[pulumi.Input[str]] = None,
-             request_access_enabled: Optional[pulumi.Input[bool]] = None,
-             requirements_access_level: Optional[pulumi.Input[str]] = None,
-             resolve_outdated_diff_discussions: Optional[pulumi.Input[bool]] = None,
-             restrict_user_defined_variables: Optional[pulumi.Input[bool]] = None,
-             security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
-             shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
-             skip_wait_for_default_branch_protection: Optional[pulumi.Input[bool]] = None,
-             snippets_access_level: Optional[pulumi.Input[str]] = None,
-             snippets_enabled: Optional[pulumi.Input[bool]] = None,
-             squash_commit_template: Optional[pulumi.Input[str]] = None,
-             squash_option: Optional[pulumi.Input[str]] = None,
-             suggestion_commit_message: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             template_name: Optional[pulumi.Input[str]] = None,
-             template_project_id: Optional[pulumi.Input[int]] = None,
-             topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             use_custom_template: Optional[pulumi.Input[bool]] = None,
-             visibility_level: Optional[pulumi.Input[str]] = None,
-             wiki_access_level: Optional[pulumi.Input[str]] = None,
-             wiki_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_merge_on_skipped_pipeline is None and 'allowMergeOnSkippedPipeline' in kwargs:
-            allow_merge_on_skipped_pipeline = kwargs['allowMergeOnSkippedPipeline']
-        if analytics_access_level is None and 'analyticsAccessLevel' in kwargs:
-            analytics_access_level = kwargs['analyticsAccessLevel']
-        if approvals_before_merge is None and 'approvalsBeforeMerge' in kwargs:
-            approvals_before_merge = kwargs['approvalsBeforeMerge']
-        if archive_on_destroy is None and 'archiveOnDestroy' in kwargs:
-            archive_on_destroy = kwargs['archiveOnDestroy']
-        if auto_cancel_pending_pipelines is None and 'autoCancelPendingPipelines' in kwargs:
-            auto_cancel_pending_pipelines = kwargs['autoCancelPendingPipelines']
-        if auto_devops_deploy_strategy is None and 'autoDevopsDeployStrategy' in kwargs:
-            auto_devops_deploy_strategy = kwargs['autoDevopsDeployStrategy']
-        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
-            auto_devops_enabled = kwargs['autoDevopsEnabled']
-        if autoclose_referenced_issues is None and 'autocloseReferencedIssues' in kwargs:
-            autoclose_referenced_issues = kwargs['autocloseReferencedIssues']
-        if avatar_hash is None and 'avatarHash' in kwargs:
-            avatar_hash = kwargs['avatarHash']
-        if build_coverage_regex is None and 'buildCoverageRegex' in kwargs:
-            build_coverage_regex = kwargs['buildCoverageRegex']
-        if build_git_strategy is None and 'buildGitStrategy' in kwargs:
-            build_git_strategy = kwargs['buildGitStrategy']
-        if build_timeout is None and 'buildTimeout' in kwargs:
-            build_timeout = kwargs['buildTimeout']
-        if builds_access_level is None and 'buildsAccessLevel' in kwargs:
-            builds_access_level = kwargs['buildsAccessLevel']
-        if ci_config_path is None and 'ciConfigPath' in kwargs:
-            ci_config_path = kwargs['ciConfigPath']
-        if ci_default_git_depth is None and 'ciDefaultGitDepth' in kwargs:
-            ci_default_git_depth = kwargs['ciDefaultGitDepth']
-        if ci_forward_deployment_enabled is None and 'ciForwardDeploymentEnabled' in kwargs:
-            ci_forward_deployment_enabled = kwargs['ciForwardDeploymentEnabled']
-        if ci_separated_caches is None and 'ciSeparatedCaches' in kwargs:
-            ci_separated_caches = kwargs['ciSeparatedCaches']
-        if container_expiration_policy is None and 'containerExpirationPolicy' in kwargs:
-            container_expiration_policy = kwargs['containerExpirationPolicy']
-        if container_registry_access_level is None and 'containerRegistryAccessLevel' in kwargs:
-            container_registry_access_level = kwargs['containerRegistryAccessLevel']
-        if container_registry_enabled is None and 'containerRegistryEnabled' in kwargs:
-            container_registry_enabled = kwargs['containerRegistryEnabled']
-        if default_branch is None and 'defaultBranch' in kwargs:
-            default_branch = kwargs['defaultBranch']
-        if emails_disabled is None and 'emailsDisabled' in kwargs:
-            emails_disabled = kwargs['emailsDisabled']
-        if environments_access_level is None and 'environmentsAccessLevel' in kwargs:
-            environments_access_level = kwargs['environmentsAccessLevel']
-        if external_authorization_classification_label is None and 'externalAuthorizationClassificationLabel' in kwargs:
-            external_authorization_classification_label = kwargs['externalAuthorizationClassificationLabel']
-        if feature_flags_access_level is None and 'featureFlagsAccessLevel' in kwargs:
-            feature_flags_access_level = kwargs['featureFlagsAccessLevel']
-        if forked_from_project_id is None and 'forkedFromProjectId' in kwargs:
-            forked_from_project_id = kwargs['forkedFromProjectId']
-        if forking_access_level is None and 'forkingAccessLevel' in kwargs:
-            forking_access_level = kwargs['forkingAccessLevel']
-        if group_with_project_templates_id is None and 'groupWithProjectTemplatesId' in kwargs:
-            group_with_project_templates_id = kwargs['groupWithProjectTemplatesId']
-        if import_url is None and 'importUrl' in kwargs:
-            import_url = kwargs['importUrl']
-        if import_url_password is None and 'importUrlPassword' in kwargs:
-            import_url_password = kwargs['importUrlPassword']
-        if import_url_username is None and 'importUrlUsername' in kwargs:
-            import_url_username = kwargs['importUrlUsername']
-        if infrastructure_access_level is None and 'infrastructureAccessLevel' in kwargs:
-            infrastructure_access_level = kwargs['infrastructureAccessLevel']
-        if initialize_with_readme is None and 'initializeWithReadme' in kwargs:
-            initialize_with_readme = kwargs['initializeWithReadme']
-        if issues_access_level is None and 'issuesAccessLevel' in kwargs:
-            issues_access_level = kwargs['issuesAccessLevel']
-        if issues_enabled is None and 'issuesEnabled' in kwargs:
-            issues_enabled = kwargs['issuesEnabled']
-        if issues_template is None and 'issuesTemplate' in kwargs:
-            issues_template = kwargs['issuesTemplate']
-        if keep_latest_artifact is None and 'keepLatestArtifact' in kwargs:
-            keep_latest_artifact = kwargs['keepLatestArtifact']
-        if lfs_enabled is None and 'lfsEnabled' in kwargs:
-            lfs_enabled = kwargs['lfsEnabled']
-        if merge_commit_template is None and 'mergeCommitTemplate' in kwargs:
-            merge_commit_template = kwargs['mergeCommitTemplate']
-        if merge_method is None and 'mergeMethod' in kwargs:
-            merge_method = kwargs['mergeMethod']
-        if merge_pipelines_enabled is None and 'mergePipelinesEnabled' in kwargs:
-            merge_pipelines_enabled = kwargs['mergePipelinesEnabled']
-        if merge_requests_access_level is None and 'mergeRequestsAccessLevel' in kwargs:
-            merge_requests_access_level = kwargs['mergeRequestsAccessLevel']
-        if merge_requests_enabled is None and 'mergeRequestsEnabled' in kwargs:
-            merge_requests_enabled = kwargs['mergeRequestsEnabled']
-        if merge_requests_template is None and 'mergeRequestsTemplate' in kwargs:
-            merge_requests_template = kwargs['mergeRequestsTemplate']
-        if merge_trains_enabled is None and 'mergeTrainsEnabled' in kwargs:
-            merge_trains_enabled = kwargs['mergeTrainsEnabled']
-        if mirror_overwrites_diverged_branches is None and 'mirrorOverwritesDivergedBranches' in kwargs:
-            mirror_overwrites_diverged_branches = kwargs['mirrorOverwritesDivergedBranches']
-        if mirror_trigger_builds is None and 'mirrorTriggerBuilds' in kwargs:
-            mirror_trigger_builds = kwargs['mirrorTriggerBuilds']
-        if monitor_access_level is None and 'monitorAccessLevel' in kwargs:
-            monitor_access_level = kwargs['monitorAccessLevel']
-        if mr_default_target_self is None and 'mrDefaultTargetSelf' in kwargs:
-            mr_default_target_self = kwargs['mrDefaultTargetSelf']
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if only_allow_merge_if_all_discussions_are_resolved is None and 'onlyAllowMergeIfAllDiscussionsAreResolved' in kwargs:
-            only_allow_merge_if_all_discussions_are_resolved = kwargs['onlyAllowMergeIfAllDiscussionsAreResolved']
-        if only_allow_merge_if_pipeline_succeeds is None and 'onlyAllowMergeIfPipelineSucceeds' in kwargs:
-            only_allow_merge_if_pipeline_succeeds = kwargs['onlyAllowMergeIfPipelineSucceeds']
-        if only_mirror_protected_branches is None and 'onlyMirrorProtectedBranches' in kwargs:
-            only_mirror_protected_branches = kwargs['onlyMirrorProtectedBranches']
-        if packages_enabled is None and 'packagesEnabled' in kwargs:
-            packages_enabled = kwargs['packagesEnabled']
-        if pages_access_level is None and 'pagesAccessLevel' in kwargs:
-            pages_access_level = kwargs['pagesAccessLevel']
-        if pipelines_enabled is None and 'pipelinesEnabled' in kwargs:
-            pipelines_enabled = kwargs['pipelinesEnabled']
-        if printing_merge_request_link_enabled is None and 'printingMergeRequestLinkEnabled' in kwargs:
-            printing_merge_request_link_enabled = kwargs['printingMergeRequestLinkEnabled']
-        if public_builds is None and 'publicBuilds' in kwargs:
-            public_builds = kwargs['publicBuilds']
-        if push_rules is None and 'pushRules' in kwargs:
-            push_rules = kwargs['pushRules']
-        if releases_access_level is None and 'releasesAccessLevel' in kwargs:
-            releases_access_level = kwargs['releasesAccessLevel']
-        if remove_source_branch_after_merge is None and 'removeSourceBranchAfterMerge' in kwargs:
-            remove_source_branch_after_merge = kwargs['removeSourceBranchAfterMerge']
-        if repository_access_level is None and 'repositoryAccessLevel' in kwargs:
-            repository_access_level = kwargs['repositoryAccessLevel']
-        if repository_storage is None and 'repositoryStorage' in kwargs:
-            repository_storage = kwargs['repositoryStorage']
-        if request_access_enabled is None and 'requestAccessEnabled' in kwargs:
-            request_access_enabled = kwargs['requestAccessEnabled']
-        if requirements_access_level is None and 'requirementsAccessLevel' in kwargs:
-            requirements_access_level = kwargs['requirementsAccessLevel']
-        if resolve_outdated_diff_discussions is None and 'resolveOutdatedDiffDiscussions' in kwargs:
-            resolve_outdated_diff_discussions = kwargs['resolveOutdatedDiffDiscussions']
-        if restrict_user_defined_variables is None and 'restrictUserDefinedVariables' in kwargs:
-            restrict_user_defined_variables = kwargs['restrictUserDefinedVariables']
-        if security_and_compliance_access_level is None and 'securityAndComplianceAccessLevel' in kwargs:
-            security_and_compliance_access_level = kwargs['securityAndComplianceAccessLevel']
-        if shared_runners_enabled is None and 'sharedRunnersEnabled' in kwargs:
-            shared_runners_enabled = kwargs['sharedRunnersEnabled']
-        if skip_wait_for_default_branch_protection is None and 'skipWaitForDefaultBranchProtection' in kwargs:
-            skip_wait_for_default_branch_protection = kwargs['skipWaitForDefaultBranchProtection']
-        if snippets_access_level is None and 'snippetsAccessLevel' in kwargs:
-            snippets_access_level = kwargs['snippetsAccessLevel']
-        if snippets_enabled is None and 'snippetsEnabled' in kwargs:
-            snippets_enabled = kwargs['snippetsEnabled']
-        if squash_commit_template is None and 'squashCommitTemplate' in kwargs:
-            squash_commit_template = kwargs['squashCommitTemplate']
-        if squash_option is None and 'squashOption' in kwargs:
-            squash_option = kwargs['squashOption']
-        if suggestion_commit_message is None and 'suggestionCommitMessage' in kwargs:
-            suggestion_commit_message = kwargs['suggestionCommitMessage']
-        if template_name is None and 'templateName' in kwargs:
-            template_name = kwargs['templateName']
-        if template_project_id is None and 'templateProjectId' in kwargs:
-            template_project_id = kwargs['templateProjectId']
-        if use_custom_template is None and 'useCustomTemplate' in kwargs:
-            use_custom_template = kwargs['useCustomTemplate']
-        if visibility_level is None and 'visibilityLevel' in kwargs:
-            visibility_level = kwargs['visibilityLevel']
-        if wiki_access_level is None and 'wikiAccessLevel' in kwargs:
-            wiki_access_level = kwargs['wikiAccessLevel']
-        if wiki_enabled is None and 'wikiEnabled' in kwargs:
-            wiki_enabled = kwargs['wikiEnabled']
-
         if allow_merge_on_skipped_pipeline is not None:
-            _setter("allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
+            pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if analytics_access_level is not None:
-            _setter("analytics_access_level", analytics_access_level)
+            pulumi.set(__self__, "analytics_access_level", analytics_access_level)
         if approvals_before_merge is not None:
-            _setter("approvals_before_merge", approvals_before_merge)
+            pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         if archive_on_destroy is not None:
-            _setter("archive_on_destroy", archive_on_destroy)
+            pulumi.set(__self__, "archive_on_destroy", archive_on_destroy)
         if archived is not None:
-            _setter("archived", archived)
+            pulumi.set(__self__, "archived", archived)
         if auto_cancel_pending_pipelines is not None:
-            _setter("auto_cancel_pending_pipelines", auto_cancel_pending_pipelines)
+            pulumi.set(__self__, "auto_cancel_pending_pipelines", auto_cancel_pending_pipelines)
         if auto_devops_deploy_strategy is not None:
-            _setter("auto_devops_deploy_strategy", auto_devops_deploy_strategy)
+            pulumi.set(__self__, "auto_devops_deploy_strategy", auto_devops_deploy_strategy)
         if auto_devops_enabled is not None:
-            _setter("auto_devops_enabled", auto_devops_enabled)
+            pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if autoclose_referenced_issues is not None:
-            _setter("autoclose_referenced_issues", autoclose_referenced_issues)
+            pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
         if avatar is not None:
-            _setter("avatar", avatar)
+            pulumi.set(__self__, "avatar", avatar)
         if avatar_hash is not None:
-            _setter("avatar_hash", avatar_hash)
+            pulumi.set(__self__, "avatar_hash", avatar_hash)
         if build_coverage_regex is not None:
             warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
             pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
         if build_coverage_regex is not None:
-            _setter("build_coverage_regex", build_coverage_regex)
+            pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         if build_git_strategy is not None:
-            _setter("build_git_strategy", build_git_strategy)
+            pulumi.set(__self__, "build_git_strategy", build_git_strategy)
         if build_timeout is not None:
-            _setter("build_timeout", build_timeout)
+            pulumi.set(__self__, "build_timeout", build_timeout)
         if builds_access_level is not None:
-            _setter("builds_access_level", builds_access_level)
+            pulumi.set(__self__, "builds_access_level", builds_access_level)
         if ci_config_path is not None:
-            _setter("ci_config_path", ci_config_path)
+            pulumi.set(__self__, "ci_config_path", ci_config_path)
         if ci_default_git_depth is not None:
-            _setter("ci_default_git_depth", ci_default_git_depth)
+            pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         if ci_forward_deployment_enabled is not None:
-            _setter("ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+            pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
         if ci_separated_caches is not None:
-            _setter("ci_separated_caches", ci_separated_caches)
+            pulumi.set(__self__, "ci_separated_caches", ci_separated_caches)
         if container_expiration_policy is not None:
-            _setter("container_expiration_policy", container_expiration_policy)
+            pulumi.set(__self__, "container_expiration_policy", container_expiration_policy)
         if container_registry_access_level is not None:
-            _setter("container_registry_access_level", container_registry_access_level)
+            pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
         if container_registry_enabled is not None:
             warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
             pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
         if container_registry_enabled is not None:
-            _setter("container_registry_enabled", container_registry_enabled)
+            pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         if default_branch is not None:
-            _setter("default_branch", default_branch)
+            pulumi.set(__self__, "default_branch", default_branch)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if emails_disabled is not None:
-            _setter("emails_disabled", emails_disabled)
+            pulumi.set(__self__, "emails_disabled", emails_disabled)
         if environments_access_level is not None:
-            _setter("environments_access_level", environments_access_level)
+            pulumi.set(__self__, "environments_access_level", environments_access_level)
         if external_authorization_classification_label is not None:
-            _setter("external_authorization_classification_label", external_authorization_classification_label)
+            pulumi.set(__self__, "external_authorization_classification_label", external_authorization_classification_label)
         if feature_flags_access_level is not None:
-            _setter("feature_flags_access_level", feature_flags_access_level)
+            pulumi.set(__self__, "feature_flags_access_level", feature_flags_access_level)
         if forked_from_project_id is not None:
-            _setter("forked_from_project_id", forked_from_project_id)
+            pulumi.set(__self__, "forked_from_project_id", forked_from_project_id)
         if forking_access_level is not None:
-            _setter("forking_access_level", forking_access_level)
+            pulumi.set(__self__, "forking_access_level", forking_access_level)
         if group_with_project_templates_id is not None:
-            _setter("group_with_project_templates_id", group_with_project_templates_id)
+            pulumi.set(__self__, "group_with_project_templates_id", group_with_project_templates_id)
         if import_url is not None:
-            _setter("import_url", import_url)
+            pulumi.set(__self__, "import_url", import_url)
         if import_url_password is not None:
-            _setter("import_url_password", import_url_password)
+            pulumi.set(__self__, "import_url_password", import_url_password)
         if import_url_username is not None:
-            _setter("import_url_username", import_url_username)
+            pulumi.set(__self__, "import_url_username", import_url_username)
         if infrastructure_access_level is not None:
-            _setter("infrastructure_access_level", infrastructure_access_level)
+            pulumi.set(__self__, "infrastructure_access_level", infrastructure_access_level)
         if initialize_with_readme is not None:
-            _setter("initialize_with_readme", initialize_with_readme)
+            pulumi.set(__self__, "initialize_with_readme", initialize_with_readme)
         if issues_access_level is not None:
-            _setter("issues_access_level", issues_access_level)
+            pulumi.set(__self__, "issues_access_level", issues_access_level)
         if issues_enabled is not None:
-            _setter("issues_enabled", issues_enabled)
+            pulumi.set(__self__, "issues_enabled", issues_enabled)
         if issues_template is not None:
-            _setter("issues_template", issues_template)
+            pulumi.set(__self__, "issues_template", issues_template)
         if keep_latest_artifact is not None:
-            _setter("keep_latest_artifact", keep_latest_artifact)
+            pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if lfs_enabled is not None:
-            _setter("lfs_enabled", lfs_enabled)
+            pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         if merge_commit_template is not None:
-            _setter("merge_commit_template", merge_commit_template)
+            pulumi.set(__self__, "merge_commit_template", merge_commit_template)
         if merge_method is not None:
-            _setter("merge_method", merge_method)
+            pulumi.set(__self__, "merge_method", merge_method)
         if merge_pipelines_enabled is not None:
-            _setter("merge_pipelines_enabled", merge_pipelines_enabled)
+            pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
         if merge_requests_access_level is not None:
-            _setter("merge_requests_access_level", merge_requests_access_level)
+            pulumi.set(__self__, "merge_requests_access_level", merge_requests_access_level)
         if merge_requests_enabled is not None:
-            _setter("merge_requests_enabled", merge_requests_enabled)
+            pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
         if merge_requests_template is not None:
-            _setter("merge_requests_template", merge_requests_template)
+            pulumi.set(__self__, "merge_requests_template", merge_requests_template)
         if merge_trains_enabled is not None:
-            _setter("merge_trains_enabled", merge_trains_enabled)
+            pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
         if mirror is not None:
-            _setter("mirror", mirror)
+            pulumi.set(__self__, "mirror", mirror)
         if mirror_overwrites_diverged_branches is not None:
-            _setter("mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
+            pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
         if mirror_trigger_builds is not None:
-            _setter("mirror_trigger_builds", mirror_trigger_builds)
+            pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
         if monitor_access_level is not None:
-            _setter("monitor_access_level", monitor_access_level)
+            pulumi.set(__self__, "monitor_access_level", monitor_access_level)
         if mr_default_target_self is not None:
-            _setter("mr_default_target_self", mr_default_target_self)
+            pulumi.set(__self__, "mr_default_target_self", mr_default_target_self)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if only_allow_merge_if_all_discussions_are_resolved is not None:
-            _setter("only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
+            pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
         if only_allow_merge_if_pipeline_succeeds is not None:
-            _setter("only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
+            pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         if only_mirror_protected_branches is not None:
-            _setter("only_mirror_protected_branches", only_mirror_protected_branches)
+            pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
         if packages_enabled is not None:
-            _setter("packages_enabled", packages_enabled)
+            pulumi.set(__self__, "packages_enabled", packages_enabled)
         if pages_access_level is not None:
-            _setter("pages_access_level", pages_access_level)
+            pulumi.set(__self__, "pages_access_level", pages_access_level)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if pipelines_enabled is not None:
             warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
             pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
         if pipelines_enabled is not None:
-            _setter("pipelines_enabled", pipelines_enabled)
+            pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
         if printing_merge_request_link_enabled is not None:
-            _setter("printing_merge_request_link_enabled", printing_merge_request_link_enabled)
+            pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
         if public_builds is not None:
-            _setter("public_builds", public_builds)
+            pulumi.set(__self__, "public_builds", public_builds)
         if push_rules is not None:
-            _setter("push_rules", push_rules)
+            pulumi.set(__self__, "push_rules", push_rules)
         if releases_access_level is not None:
-            _setter("releases_access_level", releases_access_level)
+            pulumi.set(__self__, "releases_access_level", releases_access_level)
         if remove_source_branch_after_merge is not None:
-            _setter("remove_source_branch_after_merge", remove_source_branch_after_merge)
+            pulumi.set(__self__, "remove_source_branch_after_merge", remove_source_branch_after_merge)
         if repository_access_level is not None:
-            _setter("repository_access_level", repository_access_level)
+            pulumi.set(__self__, "repository_access_level", repository_access_level)
         if repository_storage is not None:
-            _setter("repository_storage", repository_storage)
+            pulumi.set(__self__, "repository_storage", repository_storage)
         if request_access_enabled is not None:
-            _setter("request_access_enabled", request_access_enabled)
+            pulumi.set(__self__, "request_access_enabled", request_access_enabled)
         if requirements_access_level is not None:
-            _setter("requirements_access_level", requirements_access_level)
+            pulumi.set(__self__, "requirements_access_level", requirements_access_level)
         if resolve_outdated_diff_discussions is not None:
-            _setter("resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
+            pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
         if restrict_user_defined_variables is not None:
-            _setter("restrict_user_defined_variables", restrict_user_defined_variables)
+            pulumi.set(__self__, "restrict_user_defined_variables", restrict_user_defined_variables)
         if security_and_compliance_access_level is not None:
-            _setter("security_and_compliance_access_level", security_and_compliance_access_level)
+            pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
         if shared_runners_enabled is not None:
-            _setter("shared_runners_enabled", shared_runners_enabled)
+            pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         if skip_wait_for_default_branch_protection is not None:
-            _setter("skip_wait_for_default_branch_protection", skip_wait_for_default_branch_protection)
+            pulumi.set(__self__, "skip_wait_for_default_branch_protection", skip_wait_for_default_branch_protection)
         if snippets_access_level is not None:
-            _setter("snippets_access_level", snippets_access_level)
+            pulumi.set(__self__, "snippets_access_level", snippets_access_level)
         if snippets_enabled is not None:
-            _setter("snippets_enabled", snippets_enabled)
+            pulumi.set(__self__, "snippets_enabled", snippets_enabled)
         if squash_commit_template is not None:
-            _setter("squash_commit_template", squash_commit_template)
+            pulumi.set(__self__, "squash_commit_template", squash_commit_template)
         if squash_option is not None:
-            _setter("squash_option", squash_option)
+            pulumi.set(__self__, "squash_option", squash_option)
         if suggestion_commit_message is not None:
-            _setter("suggestion_commit_message", suggestion_commit_message)
+            pulumi.set(__self__, "suggestion_commit_message", suggestion_commit_message)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template_name is not None:
-            _setter("template_name", template_name)
+            pulumi.set(__self__, "template_name", template_name)
         if template_project_id is not None:
-            _setter("template_project_id", template_project_id)
+            pulumi.set(__self__, "template_project_id", template_project_id)
         if topics is not None:
-            _setter("topics", topics)
+            pulumi.set(__self__, "topics", topics)
         if use_custom_template is not None:
-            _setter("use_custom_template", use_custom_template)
+            pulumi.set(__self__, "use_custom_template", use_custom_template)
         if visibility_level is not None:
-            _setter("visibility_level", visibility_level)
+            pulumi.set(__self__, "visibility_level", visibility_level)
         if wiki_access_level is not None:
-            _setter("wiki_access_level", wiki_access_level)
+            pulumi.set(__self__, "wiki_access_level", wiki_access_level)
         if wiki_enabled is not None:
-            _setter("wiki_enabled", wiki_enabled)
+            pulumi.set(__self__, "wiki_enabled", wiki_enabled)
 
     @property
     @pulumi.getter(name="allowMergeOnSkippedPipeline")
@@ -2053,578 +1704,205 @@ class _ProjectState:
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
         """
-        _ProjectState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_merge_on_skipped_pipeline=allow_merge_on_skipped_pipeline,
-            analytics_access_level=analytics_access_level,
-            approvals_before_merge=approvals_before_merge,
-            archive_on_destroy=archive_on_destroy,
-            archived=archived,
-            auto_cancel_pending_pipelines=auto_cancel_pending_pipelines,
-            auto_devops_deploy_strategy=auto_devops_deploy_strategy,
-            auto_devops_enabled=auto_devops_enabled,
-            autoclose_referenced_issues=autoclose_referenced_issues,
-            avatar=avatar,
-            avatar_hash=avatar_hash,
-            avatar_url=avatar_url,
-            build_coverage_regex=build_coverage_regex,
-            build_git_strategy=build_git_strategy,
-            build_timeout=build_timeout,
-            builds_access_level=builds_access_level,
-            ci_config_path=ci_config_path,
-            ci_default_git_depth=ci_default_git_depth,
-            ci_forward_deployment_enabled=ci_forward_deployment_enabled,
-            ci_separated_caches=ci_separated_caches,
-            container_expiration_policy=container_expiration_policy,
-            container_registry_access_level=container_registry_access_level,
-            container_registry_enabled=container_registry_enabled,
-            default_branch=default_branch,
-            description=description,
-            emails_disabled=emails_disabled,
-            environments_access_level=environments_access_level,
-            external_authorization_classification_label=external_authorization_classification_label,
-            feature_flags_access_level=feature_flags_access_level,
-            forked_from_project_id=forked_from_project_id,
-            forking_access_level=forking_access_level,
-            group_with_project_templates_id=group_with_project_templates_id,
-            http_url_to_repo=http_url_to_repo,
-            import_url=import_url,
-            import_url_password=import_url_password,
-            import_url_username=import_url_username,
-            infrastructure_access_level=infrastructure_access_level,
-            initialize_with_readme=initialize_with_readme,
-            issues_access_level=issues_access_level,
-            issues_enabled=issues_enabled,
-            issues_template=issues_template,
-            keep_latest_artifact=keep_latest_artifact,
-            lfs_enabled=lfs_enabled,
-            merge_commit_template=merge_commit_template,
-            merge_method=merge_method,
-            merge_pipelines_enabled=merge_pipelines_enabled,
-            merge_requests_access_level=merge_requests_access_level,
-            merge_requests_enabled=merge_requests_enabled,
-            merge_requests_template=merge_requests_template,
-            merge_trains_enabled=merge_trains_enabled,
-            mirror=mirror,
-            mirror_overwrites_diverged_branches=mirror_overwrites_diverged_branches,
-            mirror_trigger_builds=mirror_trigger_builds,
-            monitor_access_level=monitor_access_level,
-            mr_default_target_self=mr_default_target_self,
-            name=name,
-            namespace_id=namespace_id,
-            only_allow_merge_if_all_discussions_are_resolved=only_allow_merge_if_all_discussions_are_resolved,
-            only_allow_merge_if_pipeline_succeeds=only_allow_merge_if_pipeline_succeeds,
-            only_mirror_protected_branches=only_mirror_protected_branches,
-            packages_enabled=packages_enabled,
-            pages_access_level=pages_access_level,
-            path=path,
-            path_with_namespace=path_with_namespace,
-            pipelines_enabled=pipelines_enabled,
-            printing_merge_request_link_enabled=printing_merge_request_link_enabled,
-            public_builds=public_builds,
-            push_rules=push_rules,
-            releases_access_level=releases_access_level,
-            remove_source_branch_after_merge=remove_source_branch_after_merge,
-            repository_access_level=repository_access_level,
-            repository_storage=repository_storage,
-            request_access_enabled=request_access_enabled,
-            requirements_access_level=requirements_access_level,
-            resolve_outdated_diff_discussions=resolve_outdated_diff_discussions,
-            restrict_user_defined_variables=restrict_user_defined_variables,
-            runners_token=runners_token,
-            security_and_compliance_access_level=security_and_compliance_access_level,
-            shared_runners_enabled=shared_runners_enabled,
-            skip_wait_for_default_branch_protection=skip_wait_for_default_branch_protection,
-            snippets_access_level=snippets_access_level,
-            snippets_enabled=snippets_enabled,
-            squash_commit_template=squash_commit_template,
-            squash_option=squash_option,
-            ssh_url_to_repo=ssh_url_to_repo,
-            suggestion_commit_message=suggestion_commit_message,
-            tags=tags,
-            template_name=template_name,
-            template_project_id=template_project_id,
-            topics=topics,
-            use_custom_template=use_custom_template,
-            visibility_level=visibility_level,
-            web_url=web_url,
-            wiki_access_level=wiki_access_level,
-            wiki_enabled=wiki_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
-             analytics_access_level: Optional[pulumi.Input[str]] = None,
-             approvals_before_merge: Optional[pulumi.Input[int]] = None,
-             archive_on_destroy: Optional[pulumi.Input[bool]] = None,
-             archived: Optional[pulumi.Input[bool]] = None,
-             auto_cancel_pending_pipelines: Optional[pulumi.Input[str]] = None,
-             auto_devops_deploy_strategy: Optional[pulumi.Input[str]] = None,
-             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
-             autoclose_referenced_issues: Optional[pulumi.Input[bool]] = None,
-             avatar: Optional[pulumi.Input[str]] = None,
-             avatar_hash: Optional[pulumi.Input[str]] = None,
-             avatar_url: Optional[pulumi.Input[str]] = None,
-             build_coverage_regex: Optional[pulumi.Input[str]] = None,
-             build_git_strategy: Optional[pulumi.Input[str]] = None,
-             build_timeout: Optional[pulumi.Input[int]] = None,
-             builds_access_level: Optional[pulumi.Input[str]] = None,
-             ci_config_path: Optional[pulumi.Input[str]] = None,
-             ci_default_git_depth: Optional[pulumi.Input[int]] = None,
-             ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
-             ci_separated_caches: Optional[pulumi.Input[bool]] = None,
-             container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
-             container_registry_access_level: Optional[pulumi.Input[str]] = None,
-             container_registry_enabled: Optional[pulumi.Input[bool]] = None,
-             default_branch: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             emails_disabled: Optional[pulumi.Input[bool]] = None,
-             environments_access_level: Optional[pulumi.Input[str]] = None,
-             external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
-             feature_flags_access_level: Optional[pulumi.Input[str]] = None,
-             forked_from_project_id: Optional[pulumi.Input[int]] = None,
-             forking_access_level: Optional[pulumi.Input[str]] = None,
-             group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
-             http_url_to_repo: Optional[pulumi.Input[str]] = None,
-             import_url: Optional[pulumi.Input[str]] = None,
-             import_url_password: Optional[pulumi.Input[str]] = None,
-             import_url_username: Optional[pulumi.Input[str]] = None,
-             infrastructure_access_level: Optional[pulumi.Input[str]] = None,
-             initialize_with_readme: Optional[pulumi.Input[bool]] = None,
-             issues_access_level: Optional[pulumi.Input[str]] = None,
-             issues_enabled: Optional[pulumi.Input[bool]] = None,
-             issues_template: Optional[pulumi.Input[str]] = None,
-             keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
-             lfs_enabled: Optional[pulumi.Input[bool]] = None,
-             merge_commit_template: Optional[pulumi.Input[str]] = None,
-             merge_method: Optional[pulumi.Input[str]] = None,
-             merge_pipelines_enabled: Optional[pulumi.Input[bool]] = None,
-             merge_requests_access_level: Optional[pulumi.Input[str]] = None,
-             merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
-             merge_requests_template: Optional[pulumi.Input[str]] = None,
-             merge_trains_enabled: Optional[pulumi.Input[bool]] = None,
-             mirror: Optional[pulumi.Input[bool]] = None,
-             mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
-             mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
-             monitor_access_level: Optional[pulumi.Input[str]] = None,
-             mr_default_target_self: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[int]] = None,
-             only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
-             only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
-             only_mirror_protected_branches: Optional[pulumi.Input[bool]] = None,
-             packages_enabled: Optional[pulumi.Input[bool]] = None,
-             pages_access_level: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             path_with_namespace: Optional[pulumi.Input[str]] = None,
-             pipelines_enabled: Optional[pulumi.Input[bool]] = None,
-             printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
-             public_builds: Optional[pulumi.Input[bool]] = None,
-             push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
-             releases_access_level: Optional[pulumi.Input[str]] = None,
-             remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
-             repository_access_level: Optional[pulumi.Input[str]] = None,
-             repository_storage: Optional[pulumi.Input[str]] = None,
-             request_access_enabled: Optional[pulumi.Input[bool]] = None,
-             requirements_access_level: Optional[pulumi.Input[str]] = None,
-             resolve_outdated_diff_discussions: Optional[pulumi.Input[bool]] = None,
-             restrict_user_defined_variables: Optional[pulumi.Input[bool]] = None,
-             runners_token: Optional[pulumi.Input[str]] = None,
-             security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
-             shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
-             skip_wait_for_default_branch_protection: Optional[pulumi.Input[bool]] = None,
-             snippets_access_level: Optional[pulumi.Input[str]] = None,
-             snippets_enabled: Optional[pulumi.Input[bool]] = None,
-             squash_commit_template: Optional[pulumi.Input[str]] = None,
-             squash_option: Optional[pulumi.Input[str]] = None,
-             ssh_url_to_repo: Optional[pulumi.Input[str]] = None,
-             suggestion_commit_message: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             template_name: Optional[pulumi.Input[str]] = None,
-             template_project_id: Optional[pulumi.Input[int]] = None,
-             topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             use_custom_template: Optional[pulumi.Input[bool]] = None,
-             visibility_level: Optional[pulumi.Input[str]] = None,
-             web_url: Optional[pulumi.Input[str]] = None,
-             wiki_access_level: Optional[pulumi.Input[str]] = None,
-             wiki_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_merge_on_skipped_pipeline is None and 'allowMergeOnSkippedPipeline' in kwargs:
-            allow_merge_on_skipped_pipeline = kwargs['allowMergeOnSkippedPipeline']
-        if analytics_access_level is None and 'analyticsAccessLevel' in kwargs:
-            analytics_access_level = kwargs['analyticsAccessLevel']
-        if approvals_before_merge is None and 'approvalsBeforeMerge' in kwargs:
-            approvals_before_merge = kwargs['approvalsBeforeMerge']
-        if archive_on_destroy is None and 'archiveOnDestroy' in kwargs:
-            archive_on_destroy = kwargs['archiveOnDestroy']
-        if auto_cancel_pending_pipelines is None and 'autoCancelPendingPipelines' in kwargs:
-            auto_cancel_pending_pipelines = kwargs['autoCancelPendingPipelines']
-        if auto_devops_deploy_strategy is None and 'autoDevopsDeployStrategy' in kwargs:
-            auto_devops_deploy_strategy = kwargs['autoDevopsDeployStrategy']
-        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
-            auto_devops_enabled = kwargs['autoDevopsEnabled']
-        if autoclose_referenced_issues is None and 'autocloseReferencedIssues' in kwargs:
-            autoclose_referenced_issues = kwargs['autocloseReferencedIssues']
-        if avatar_hash is None and 'avatarHash' in kwargs:
-            avatar_hash = kwargs['avatarHash']
-        if avatar_url is None and 'avatarUrl' in kwargs:
-            avatar_url = kwargs['avatarUrl']
-        if build_coverage_regex is None and 'buildCoverageRegex' in kwargs:
-            build_coverage_regex = kwargs['buildCoverageRegex']
-        if build_git_strategy is None and 'buildGitStrategy' in kwargs:
-            build_git_strategy = kwargs['buildGitStrategy']
-        if build_timeout is None and 'buildTimeout' in kwargs:
-            build_timeout = kwargs['buildTimeout']
-        if builds_access_level is None and 'buildsAccessLevel' in kwargs:
-            builds_access_level = kwargs['buildsAccessLevel']
-        if ci_config_path is None and 'ciConfigPath' in kwargs:
-            ci_config_path = kwargs['ciConfigPath']
-        if ci_default_git_depth is None and 'ciDefaultGitDepth' in kwargs:
-            ci_default_git_depth = kwargs['ciDefaultGitDepth']
-        if ci_forward_deployment_enabled is None and 'ciForwardDeploymentEnabled' in kwargs:
-            ci_forward_deployment_enabled = kwargs['ciForwardDeploymentEnabled']
-        if ci_separated_caches is None and 'ciSeparatedCaches' in kwargs:
-            ci_separated_caches = kwargs['ciSeparatedCaches']
-        if container_expiration_policy is None and 'containerExpirationPolicy' in kwargs:
-            container_expiration_policy = kwargs['containerExpirationPolicy']
-        if container_registry_access_level is None and 'containerRegistryAccessLevel' in kwargs:
-            container_registry_access_level = kwargs['containerRegistryAccessLevel']
-        if container_registry_enabled is None and 'containerRegistryEnabled' in kwargs:
-            container_registry_enabled = kwargs['containerRegistryEnabled']
-        if default_branch is None and 'defaultBranch' in kwargs:
-            default_branch = kwargs['defaultBranch']
-        if emails_disabled is None and 'emailsDisabled' in kwargs:
-            emails_disabled = kwargs['emailsDisabled']
-        if environments_access_level is None and 'environmentsAccessLevel' in kwargs:
-            environments_access_level = kwargs['environmentsAccessLevel']
-        if external_authorization_classification_label is None and 'externalAuthorizationClassificationLabel' in kwargs:
-            external_authorization_classification_label = kwargs['externalAuthorizationClassificationLabel']
-        if feature_flags_access_level is None and 'featureFlagsAccessLevel' in kwargs:
-            feature_flags_access_level = kwargs['featureFlagsAccessLevel']
-        if forked_from_project_id is None and 'forkedFromProjectId' in kwargs:
-            forked_from_project_id = kwargs['forkedFromProjectId']
-        if forking_access_level is None and 'forkingAccessLevel' in kwargs:
-            forking_access_level = kwargs['forkingAccessLevel']
-        if group_with_project_templates_id is None and 'groupWithProjectTemplatesId' in kwargs:
-            group_with_project_templates_id = kwargs['groupWithProjectTemplatesId']
-        if http_url_to_repo is None and 'httpUrlToRepo' in kwargs:
-            http_url_to_repo = kwargs['httpUrlToRepo']
-        if import_url is None and 'importUrl' in kwargs:
-            import_url = kwargs['importUrl']
-        if import_url_password is None and 'importUrlPassword' in kwargs:
-            import_url_password = kwargs['importUrlPassword']
-        if import_url_username is None and 'importUrlUsername' in kwargs:
-            import_url_username = kwargs['importUrlUsername']
-        if infrastructure_access_level is None and 'infrastructureAccessLevel' in kwargs:
-            infrastructure_access_level = kwargs['infrastructureAccessLevel']
-        if initialize_with_readme is None and 'initializeWithReadme' in kwargs:
-            initialize_with_readme = kwargs['initializeWithReadme']
-        if issues_access_level is None and 'issuesAccessLevel' in kwargs:
-            issues_access_level = kwargs['issuesAccessLevel']
-        if issues_enabled is None and 'issuesEnabled' in kwargs:
-            issues_enabled = kwargs['issuesEnabled']
-        if issues_template is None and 'issuesTemplate' in kwargs:
-            issues_template = kwargs['issuesTemplate']
-        if keep_latest_artifact is None and 'keepLatestArtifact' in kwargs:
-            keep_latest_artifact = kwargs['keepLatestArtifact']
-        if lfs_enabled is None and 'lfsEnabled' in kwargs:
-            lfs_enabled = kwargs['lfsEnabled']
-        if merge_commit_template is None and 'mergeCommitTemplate' in kwargs:
-            merge_commit_template = kwargs['mergeCommitTemplate']
-        if merge_method is None and 'mergeMethod' in kwargs:
-            merge_method = kwargs['mergeMethod']
-        if merge_pipelines_enabled is None and 'mergePipelinesEnabled' in kwargs:
-            merge_pipelines_enabled = kwargs['mergePipelinesEnabled']
-        if merge_requests_access_level is None and 'mergeRequestsAccessLevel' in kwargs:
-            merge_requests_access_level = kwargs['mergeRequestsAccessLevel']
-        if merge_requests_enabled is None and 'mergeRequestsEnabled' in kwargs:
-            merge_requests_enabled = kwargs['mergeRequestsEnabled']
-        if merge_requests_template is None and 'mergeRequestsTemplate' in kwargs:
-            merge_requests_template = kwargs['mergeRequestsTemplate']
-        if merge_trains_enabled is None and 'mergeTrainsEnabled' in kwargs:
-            merge_trains_enabled = kwargs['mergeTrainsEnabled']
-        if mirror_overwrites_diverged_branches is None and 'mirrorOverwritesDivergedBranches' in kwargs:
-            mirror_overwrites_diverged_branches = kwargs['mirrorOverwritesDivergedBranches']
-        if mirror_trigger_builds is None and 'mirrorTriggerBuilds' in kwargs:
-            mirror_trigger_builds = kwargs['mirrorTriggerBuilds']
-        if monitor_access_level is None and 'monitorAccessLevel' in kwargs:
-            monitor_access_level = kwargs['monitorAccessLevel']
-        if mr_default_target_self is None and 'mrDefaultTargetSelf' in kwargs:
-            mr_default_target_self = kwargs['mrDefaultTargetSelf']
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if only_allow_merge_if_all_discussions_are_resolved is None and 'onlyAllowMergeIfAllDiscussionsAreResolved' in kwargs:
-            only_allow_merge_if_all_discussions_are_resolved = kwargs['onlyAllowMergeIfAllDiscussionsAreResolved']
-        if only_allow_merge_if_pipeline_succeeds is None and 'onlyAllowMergeIfPipelineSucceeds' in kwargs:
-            only_allow_merge_if_pipeline_succeeds = kwargs['onlyAllowMergeIfPipelineSucceeds']
-        if only_mirror_protected_branches is None and 'onlyMirrorProtectedBranches' in kwargs:
-            only_mirror_protected_branches = kwargs['onlyMirrorProtectedBranches']
-        if packages_enabled is None and 'packagesEnabled' in kwargs:
-            packages_enabled = kwargs['packagesEnabled']
-        if pages_access_level is None and 'pagesAccessLevel' in kwargs:
-            pages_access_level = kwargs['pagesAccessLevel']
-        if path_with_namespace is None and 'pathWithNamespace' in kwargs:
-            path_with_namespace = kwargs['pathWithNamespace']
-        if pipelines_enabled is None and 'pipelinesEnabled' in kwargs:
-            pipelines_enabled = kwargs['pipelinesEnabled']
-        if printing_merge_request_link_enabled is None and 'printingMergeRequestLinkEnabled' in kwargs:
-            printing_merge_request_link_enabled = kwargs['printingMergeRequestLinkEnabled']
-        if public_builds is None and 'publicBuilds' in kwargs:
-            public_builds = kwargs['publicBuilds']
-        if push_rules is None and 'pushRules' in kwargs:
-            push_rules = kwargs['pushRules']
-        if releases_access_level is None and 'releasesAccessLevel' in kwargs:
-            releases_access_level = kwargs['releasesAccessLevel']
-        if remove_source_branch_after_merge is None and 'removeSourceBranchAfterMerge' in kwargs:
-            remove_source_branch_after_merge = kwargs['removeSourceBranchAfterMerge']
-        if repository_access_level is None and 'repositoryAccessLevel' in kwargs:
-            repository_access_level = kwargs['repositoryAccessLevel']
-        if repository_storage is None and 'repositoryStorage' in kwargs:
-            repository_storage = kwargs['repositoryStorage']
-        if request_access_enabled is None and 'requestAccessEnabled' in kwargs:
-            request_access_enabled = kwargs['requestAccessEnabled']
-        if requirements_access_level is None and 'requirementsAccessLevel' in kwargs:
-            requirements_access_level = kwargs['requirementsAccessLevel']
-        if resolve_outdated_diff_discussions is None and 'resolveOutdatedDiffDiscussions' in kwargs:
-            resolve_outdated_diff_discussions = kwargs['resolveOutdatedDiffDiscussions']
-        if restrict_user_defined_variables is None and 'restrictUserDefinedVariables' in kwargs:
-            restrict_user_defined_variables = kwargs['restrictUserDefinedVariables']
-        if runners_token is None and 'runnersToken' in kwargs:
-            runners_token = kwargs['runnersToken']
-        if security_and_compliance_access_level is None and 'securityAndComplianceAccessLevel' in kwargs:
-            security_and_compliance_access_level = kwargs['securityAndComplianceAccessLevel']
-        if shared_runners_enabled is None and 'sharedRunnersEnabled' in kwargs:
-            shared_runners_enabled = kwargs['sharedRunnersEnabled']
-        if skip_wait_for_default_branch_protection is None and 'skipWaitForDefaultBranchProtection' in kwargs:
-            skip_wait_for_default_branch_protection = kwargs['skipWaitForDefaultBranchProtection']
-        if snippets_access_level is None and 'snippetsAccessLevel' in kwargs:
-            snippets_access_level = kwargs['snippetsAccessLevel']
-        if snippets_enabled is None and 'snippetsEnabled' in kwargs:
-            snippets_enabled = kwargs['snippetsEnabled']
-        if squash_commit_template is None and 'squashCommitTemplate' in kwargs:
-            squash_commit_template = kwargs['squashCommitTemplate']
-        if squash_option is None and 'squashOption' in kwargs:
-            squash_option = kwargs['squashOption']
-        if ssh_url_to_repo is None and 'sshUrlToRepo' in kwargs:
-            ssh_url_to_repo = kwargs['sshUrlToRepo']
-        if suggestion_commit_message is None and 'suggestionCommitMessage' in kwargs:
-            suggestion_commit_message = kwargs['suggestionCommitMessage']
-        if template_name is None and 'templateName' in kwargs:
-            template_name = kwargs['templateName']
-        if template_project_id is None and 'templateProjectId' in kwargs:
-            template_project_id = kwargs['templateProjectId']
-        if use_custom_template is None and 'useCustomTemplate' in kwargs:
-            use_custom_template = kwargs['useCustomTemplate']
-        if visibility_level is None and 'visibilityLevel' in kwargs:
-            visibility_level = kwargs['visibilityLevel']
-        if web_url is None and 'webUrl' in kwargs:
-            web_url = kwargs['webUrl']
-        if wiki_access_level is None and 'wikiAccessLevel' in kwargs:
-            wiki_access_level = kwargs['wikiAccessLevel']
-        if wiki_enabled is None and 'wikiEnabled' in kwargs:
-            wiki_enabled = kwargs['wikiEnabled']
-
         if allow_merge_on_skipped_pipeline is not None:
-            _setter("allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
+            pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if analytics_access_level is not None:
-            _setter("analytics_access_level", analytics_access_level)
+            pulumi.set(__self__, "analytics_access_level", analytics_access_level)
         if approvals_before_merge is not None:
-            _setter("approvals_before_merge", approvals_before_merge)
+            pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         if archive_on_destroy is not None:
-            _setter("archive_on_destroy", archive_on_destroy)
+            pulumi.set(__self__, "archive_on_destroy", archive_on_destroy)
         if archived is not None:
-            _setter("archived", archived)
+            pulumi.set(__self__, "archived", archived)
         if auto_cancel_pending_pipelines is not None:
-            _setter("auto_cancel_pending_pipelines", auto_cancel_pending_pipelines)
+            pulumi.set(__self__, "auto_cancel_pending_pipelines", auto_cancel_pending_pipelines)
         if auto_devops_deploy_strategy is not None:
-            _setter("auto_devops_deploy_strategy", auto_devops_deploy_strategy)
+            pulumi.set(__self__, "auto_devops_deploy_strategy", auto_devops_deploy_strategy)
         if auto_devops_enabled is not None:
-            _setter("auto_devops_enabled", auto_devops_enabled)
+            pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if autoclose_referenced_issues is not None:
-            _setter("autoclose_referenced_issues", autoclose_referenced_issues)
+            pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
         if avatar is not None:
-            _setter("avatar", avatar)
+            pulumi.set(__self__, "avatar", avatar)
         if avatar_hash is not None:
-            _setter("avatar_hash", avatar_hash)
+            pulumi.set(__self__, "avatar_hash", avatar_hash)
         if avatar_url is not None:
-            _setter("avatar_url", avatar_url)
+            pulumi.set(__self__, "avatar_url", avatar_url)
         if build_coverage_regex is not None:
             warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
             pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
         if build_coverage_regex is not None:
-            _setter("build_coverage_regex", build_coverage_regex)
+            pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         if build_git_strategy is not None:
-            _setter("build_git_strategy", build_git_strategy)
+            pulumi.set(__self__, "build_git_strategy", build_git_strategy)
         if build_timeout is not None:
-            _setter("build_timeout", build_timeout)
+            pulumi.set(__self__, "build_timeout", build_timeout)
         if builds_access_level is not None:
-            _setter("builds_access_level", builds_access_level)
+            pulumi.set(__self__, "builds_access_level", builds_access_level)
         if ci_config_path is not None:
-            _setter("ci_config_path", ci_config_path)
+            pulumi.set(__self__, "ci_config_path", ci_config_path)
         if ci_default_git_depth is not None:
-            _setter("ci_default_git_depth", ci_default_git_depth)
+            pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         if ci_forward_deployment_enabled is not None:
-            _setter("ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+            pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
         if ci_separated_caches is not None:
-            _setter("ci_separated_caches", ci_separated_caches)
+            pulumi.set(__self__, "ci_separated_caches", ci_separated_caches)
         if container_expiration_policy is not None:
-            _setter("container_expiration_policy", container_expiration_policy)
+            pulumi.set(__self__, "container_expiration_policy", container_expiration_policy)
         if container_registry_access_level is not None:
-            _setter("container_registry_access_level", container_registry_access_level)
+            pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
         if container_registry_enabled is not None:
             warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
             pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
         if container_registry_enabled is not None:
-            _setter("container_registry_enabled", container_registry_enabled)
+            pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         if default_branch is not None:
-            _setter("default_branch", default_branch)
+            pulumi.set(__self__, "default_branch", default_branch)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if emails_disabled is not None:
-            _setter("emails_disabled", emails_disabled)
+            pulumi.set(__self__, "emails_disabled", emails_disabled)
         if environments_access_level is not None:
-            _setter("environments_access_level", environments_access_level)
+            pulumi.set(__self__, "environments_access_level", environments_access_level)
         if external_authorization_classification_label is not None:
-            _setter("external_authorization_classification_label", external_authorization_classification_label)
+            pulumi.set(__self__, "external_authorization_classification_label", external_authorization_classification_label)
         if feature_flags_access_level is not None:
-            _setter("feature_flags_access_level", feature_flags_access_level)
+            pulumi.set(__self__, "feature_flags_access_level", feature_flags_access_level)
         if forked_from_project_id is not None:
-            _setter("forked_from_project_id", forked_from_project_id)
+            pulumi.set(__self__, "forked_from_project_id", forked_from_project_id)
         if forking_access_level is not None:
-            _setter("forking_access_level", forking_access_level)
+            pulumi.set(__self__, "forking_access_level", forking_access_level)
         if group_with_project_templates_id is not None:
-            _setter("group_with_project_templates_id", group_with_project_templates_id)
+            pulumi.set(__self__, "group_with_project_templates_id", group_with_project_templates_id)
         if http_url_to_repo is not None:
-            _setter("http_url_to_repo", http_url_to_repo)
+            pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
         if import_url is not None:
-            _setter("import_url", import_url)
+            pulumi.set(__self__, "import_url", import_url)
         if import_url_password is not None:
-            _setter("import_url_password", import_url_password)
+            pulumi.set(__self__, "import_url_password", import_url_password)
         if import_url_username is not None:
-            _setter("import_url_username", import_url_username)
+            pulumi.set(__self__, "import_url_username", import_url_username)
         if infrastructure_access_level is not None:
-            _setter("infrastructure_access_level", infrastructure_access_level)
+            pulumi.set(__self__, "infrastructure_access_level", infrastructure_access_level)
         if initialize_with_readme is not None:
-            _setter("initialize_with_readme", initialize_with_readme)
+            pulumi.set(__self__, "initialize_with_readme", initialize_with_readme)
         if issues_access_level is not None:
-            _setter("issues_access_level", issues_access_level)
+            pulumi.set(__self__, "issues_access_level", issues_access_level)
         if issues_enabled is not None:
-            _setter("issues_enabled", issues_enabled)
+            pulumi.set(__self__, "issues_enabled", issues_enabled)
         if issues_template is not None:
-            _setter("issues_template", issues_template)
+            pulumi.set(__self__, "issues_template", issues_template)
         if keep_latest_artifact is not None:
-            _setter("keep_latest_artifact", keep_latest_artifact)
+            pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if lfs_enabled is not None:
-            _setter("lfs_enabled", lfs_enabled)
+            pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         if merge_commit_template is not None:
-            _setter("merge_commit_template", merge_commit_template)
+            pulumi.set(__self__, "merge_commit_template", merge_commit_template)
         if merge_method is not None:
-            _setter("merge_method", merge_method)
+            pulumi.set(__self__, "merge_method", merge_method)
         if merge_pipelines_enabled is not None:
-            _setter("merge_pipelines_enabled", merge_pipelines_enabled)
+            pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
         if merge_requests_access_level is not None:
-            _setter("merge_requests_access_level", merge_requests_access_level)
+            pulumi.set(__self__, "merge_requests_access_level", merge_requests_access_level)
         if merge_requests_enabled is not None:
-            _setter("merge_requests_enabled", merge_requests_enabled)
+            pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
         if merge_requests_template is not None:
-            _setter("merge_requests_template", merge_requests_template)
+            pulumi.set(__self__, "merge_requests_template", merge_requests_template)
         if merge_trains_enabled is not None:
-            _setter("merge_trains_enabled", merge_trains_enabled)
+            pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
         if mirror is not None:
-            _setter("mirror", mirror)
+            pulumi.set(__self__, "mirror", mirror)
         if mirror_overwrites_diverged_branches is not None:
-            _setter("mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
+            pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
         if mirror_trigger_builds is not None:
-            _setter("mirror_trigger_builds", mirror_trigger_builds)
+            pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
         if monitor_access_level is not None:
-            _setter("monitor_access_level", monitor_access_level)
+            pulumi.set(__self__, "monitor_access_level", monitor_access_level)
         if mr_default_target_self is not None:
-            _setter("mr_default_target_self", mr_default_target_self)
+            pulumi.set(__self__, "mr_default_target_self", mr_default_target_self)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if only_allow_merge_if_all_discussions_are_resolved is not None:
-            _setter("only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
+            pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
         if only_allow_merge_if_pipeline_succeeds is not None:
-            _setter("only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
+            pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         if only_mirror_protected_branches is not None:
-            _setter("only_mirror_protected_branches", only_mirror_protected_branches)
+            pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
         if packages_enabled is not None:
-            _setter("packages_enabled", packages_enabled)
+            pulumi.set(__self__, "packages_enabled", packages_enabled)
         if pages_access_level is not None:
-            _setter("pages_access_level", pages_access_level)
+            pulumi.set(__self__, "pages_access_level", pages_access_level)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if path_with_namespace is not None:
-            _setter("path_with_namespace", path_with_namespace)
+            pulumi.set(__self__, "path_with_namespace", path_with_namespace)
         if pipelines_enabled is not None:
             warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
             pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
         if pipelines_enabled is not None:
-            _setter("pipelines_enabled", pipelines_enabled)
+            pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
         if printing_merge_request_link_enabled is not None:
-            _setter("printing_merge_request_link_enabled", printing_merge_request_link_enabled)
+            pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
         if public_builds is not None:
-            _setter("public_builds", public_builds)
+            pulumi.set(__self__, "public_builds", public_builds)
         if push_rules is not None:
-            _setter("push_rules", push_rules)
+            pulumi.set(__self__, "push_rules", push_rules)
         if releases_access_level is not None:
-            _setter("releases_access_level", releases_access_level)
+            pulumi.set(__self__, "releases_access_level", releases_access_level)
         if remove_source_branch_after_merge is not None:
-            _setter("remove_source_branch_after_merge", remove_source_branch_after_merge)
+            pulumi.set(__self__, "remove_source_branch_after_merge", remove_source_branch_after_merge)
         if repository_access_level is not None:
-            _setter("repository_access_level", repository_access_level)
+            pulumi.set(__self__, "repository_access_level", repository_access_level)
         if repository_storage is not None:
-            _setter("repository_storage", repository_storage)
+            pulumi.set(__self__, "repository_storage", repository_storage)
         if request_access_enabled is not None:
-            _setter("request_access_enabled", request_access_enabled)
+            pulumi.set(__self__, "request_access_enabled", request_access_enabled)
         if requirements_access_level is not None:
-            _setter("requirements_access_level", requirements_access_level)
+            pulumi.set(__self__, "requirements_access_level", requirements_access_level)
         if resolve_outdated_diff_discussions is not None:
-            _setter("resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
+            pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
         if restrict_user_defined_variables is not None:
-            _setter("restrict_user_defined_variables", restrict_user_defined_variables)
+            pulumi.set(__self__, "restrict_user_defined_variables", restrict_user_defined_variables)
         if runners_token is not None:
-            _setter("runners_token", runners_token)
+            pulumi.set(__self__, "runners_token", runners_token)
         if security_and_compliance_access_level is not None:
-            _setter("security_and_compliance_access_level", security_and_compliance_access_level)
+            pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
         if shared_runners_enabled is not None:
-            _setter("shared_runners_enabled", shared_runners_enabled)
+            pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         if skip_wait_for_default_branch_protection is not None:
-            _setter("skip_wait_for_default_branch_protection", skip_wait_for_default_branch_protection)
+            pulumi.set(__self__, "skip_wait_for_default_branch_protection", skip_wait_for_default_branch_protection)
         if snippets_access_level is not None:
-            _setter("snippets_access_level", snippets_access_level)
+            pulumi.set(__self__, "snippets_access_level", snippets_access_level)
         if snippets_enabled is not None:
-            _setter("snippets_enabled", snippets_enabled)
+            pulumi.set(__self__, "snippets_enabled", snippets_enabled)
         if squash_commit_template is not None:
-            _setter("squash_commit_template", squash_commit_template)
+            pulumi.set(__self__, "squash_commit_template", squash_commit_template)
         if squash_option is not None:
-            _setter("squash_option", squash_option)
+            pulumi.set(__self__, "squash_option", squash_option)
         if ssh_url_to_repo is not None:
-            _setter("ssh_url_to_repo", ssh_url_to_repo)
+            pulumi.set(__self__, "ssh_url_to_repo", ssh_url_to_repo)
         if suggestion_commit_message is not None:
-            _setter("suggestion_commit_message", suggestion_commit_message)
+            pulumi.set(__self__, "suggestion_commit_message", suggestion_commit_message)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template_name is not None:
-            _setter("template_name", template_name)
+            pulumi.set(__self__, "template_name", template_name)
         if template_project_id is not None:
-            _setter("template_project_id", template_project_id)
+            pulumi.set(__self__, "template_project_id", template_project_id)
         if topics is not None:
-            _setter("topics", topics)
+            pulumi.set(__self__, "topics", topics)
         if use_custom_template is not None:
-            _setter("use_custom_template", use_custom_template)
+            pulumi.set(__self__, "use_custom_template", use_custom_template)
         if visibility_level is not None:
-            _setter("visibility_level", visibility_level)
+            pulumi.set(__self__, "visibility_level", visibility_level)
         if web_url is not None:
-            _setter("web_url", web_url)
+            pulumi.set(__self__, "web_url", web_url)
         if wiki_access_level is not None:
-            _setter("wiki_access_level", wiki_access_level)
+            pulumi.set(__self__, "wiki_access_level", wiki_access_level)
         if wiki_enabled is not None:
-            _setter("wiki_enabled", wiki_enabled)
+            pulumi.set(__self__, "wiki_enabled", wiki_enabled)
 
     @property
     @pulumi.getter(name="allowMergeOnSkippedPipeline")
@@ -4145,10 +3423,6 @@ class Project(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -4271,7 +3545,6 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
             __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
             __props__.__dict__["ci_separated_caches"] = ci_separated_caches
-            container_expiration_policy = _utilities.configure(container_expiration_policy, ProjectContainerExpirationPolicyArgs, True)
             __props__.__dict__["container_expiration_policy"] = container_expiration_policy
             __props__.__dict__["container_registry_access_level"] = container_registry_access_level
             __props__.__dict__["container_registry_enabled"] = container_registry_enabled
@@ -4317,7 +3590,6 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["pipelines_enabled"] = pipelines_enabled
             __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
             __props__.__dict__["public_builds"] = public_builds
-            push_rules = _utilities.configure(push_rules, ProjectPushRulesArgs, True)
             __props__.__dict__["push_rules"] = push_rules
             __props__.__dict__["releases_access_level"] = releases_access_level
             __props__.__dict__["remove_source_branch_after_merge"] = remove_source_branch_after_merge

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectMirrorArgs', 'ProjectMirror']
@@ -27,41 +27,14 @@ class ProjectMirrorArgs:
         :param pulumi.Input[bool] keep_divergent_refs: Determines if divergent refs are skipped.
         :param pulumi.Input[bool] only_protected_branches: Determines if only protected branches are mirrored.
         """
-        ProjectMirrorArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            url=url,
-            enabled=enabled,
-            keep_divergent_refs=keep_divergent_refs,
-            only_protected_branches=only_protected_branches,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
-             only_protected_branches: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-        if keep_divergent_refs is None and 'keepDivergentRefs' in kwargs:
-            keep_divergent_refs = kwargs['keepDivergentRefs']
-        if only_protected_branches is None and 'onlyProtectedBranches' in kwargs:
-            only_protected_branches = kwargs['onlyProtectedBranches']
-
-        _setter("project", project)
-        _setter("url", url)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "url", url)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if keep_divergent_refs is not None:
-            _setter("keep_divergent_refs", keep_divergent_refs)
+            pulumi.set(__self__, "keep_divergent_refs", keep_divergent_refs)
         if only_protected_branches is not None:
-            _setter("only_protected_branches", only_protected_branches)
+            pulumi.set(__self__, "only_protected_branches", only_protected_branches)
 
     @property
     @pulumi.getter
@@ -142,45 +115,18 @@ class _ProjectMirrorState:
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] url: The URL of the remote repository to be mirrored.
         """
-        _ProjectMirrorState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            keep_divergent_refs=keep_divergent_refs,
-            mirror_id=mirror_id,
-            only_protected_branches=only_protected_branches,
-            project=project,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
-             mirror_id: Optional[pulumi.Input[int]] = None,
-             only_protected_branches: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if keep_divergent_refs is None and 'keepDivergentRefs' in kwargs:
-            keep_divergent_refs = kwargs['keepDivergentRefs']
-        if mirror_id is None and 'mirrorId' in kwargs:
-            mirror_id = kwargs['mirrorId']
-        if only_protected_branches is None and 'onlyProtectedBranches' in kwargs:
-            only_protected_branches = kwargs['onlyProtectedBranches']
-
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if keep_divergent_refs is not None:
-            _setter("keep_divergent_refs", keep_divergent_refs)
+            pulumi.set(__self__, "keep_divergent_refs", keep_divergent_refs)
         if mirror_id is not None:
-            _setter("mirror_id", mirror_id)
+            pulumi.set(__self__, "mirror_id", mirror_id)
         if only_protected_branches is not None:
-            _setter("only_protected_branches", only_protected_branches)
+            pulumi.set(__self__, "only_protected_branches", only_protected_branches)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
@@ -360,10 +306,6 @@ class ProjectMirror(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectMirrorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

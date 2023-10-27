@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PagesDomainArgs', 'PagesDomain']
@@ -29,43 +29,16 @@ class PagesDomainArgs:
         :param pulumi.Input[bool] expired: Whether the certificate is expired.
         :param pulumi.Input[str] key: The certificate key in PEM format.
         """
-        PagesDomainArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            project=project,
-            auto_ssl_enabled=auto_ssl_enabled,
-            certificate=certificate,
-            expired=expired,
-            key=key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             auto_ssl_enabled: Optional[pulumi.Input[bool]] = None,
-             certificate: Optional[pulumi.Input[str]] = None,
-             expired: Optional[pulumi.Input[bool]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if auto_ssl_enabled is None and 'autoSslEnabled' in kwargs:
-            auto_ssl_enabled = kwargs['autoSslEnabled']
-
-        _setter("domain", domain)
-        _setter("project", project)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "project", project)
         if auto_ssl_enabled is not None:
-            _setter("auto_ssl_enabled", auto_ssl_enabled)
+            pulumi.set(__self__, "auto_ssl_enabled", auto_ssl_enabled)
         if certificate is not None:
-            _setter("certificate", certificate)
+            pulumi.set(__self__, "certificate", certificate)
         if expired is not None:
-            _setter("expired", expired)
+            pulumi.set(__self__, "expired", expired)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
@@ -164,55 +137,24 @@ class _PagesDomainState:
         :param pulumi.Input[str] verification_code: The verification code for the domain.
         :param pulumi.Input[bool] verified: The certificate data.
         """
-        _PagesDomainState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_ssl_enabled=auto_ssl_enabled,
-            certificate=certificate,
-            domain=domain,
-            expired=expired,
-            key=key,
-            project=project,
-            url=url,
-            verification_code=verification_code,
-            verified=verified,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_ssl_enabled: Optional[pulumi.Input[bool]] = None,
-             certificate: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             expired: Optional[pulumi.Input[bool]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             verification_code: Optional[pulumi.Input[str]] = None,
-             verified: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_ssl_enabled is None and 'autoSslEnabled' in kwargs:
-            auto_ssl_enabled = kwargs['autoSslEnabled']
-        if verification_code is None and 'verificationCode' in kwargs:
-            verification_code = kwargs['verificationCode']
-
         if auto_ssl_enabled is not None:
-            _setter("auto_ssl_enabled", auto_ssl_enabled)
+            pulumi.set(__self__, "auto_ssl_enabled", auto_ssl_enabled)
         if certificate is not None:
-            _setter("certificate", certificate)
+            pulumi.set(__self__, "certificate", certificate)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if expired is not None:
-            _setter("expired", expired)
+            pulumi.set(__self__, "expired", expired)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
         if verification_code is not None:
-            _setter("verification_code", verification_code)
+            pulumi.set(__self__, "verification_code", verification_code)
         if verified is not None:
-            _setter("verified", verified)
+            pulumi.set(__self__, "verified", verified)
 
     @property
     @pulumi.getter(name="autoSslEnabled")
@@ -424,10 +366,6 @@ class PagesDomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PagesDomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

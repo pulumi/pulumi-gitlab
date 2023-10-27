@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServicePipelinesEmailArgs', 'ServicePipelinesEmail']
@@ -25,37 +25,12 @@ class ServicePipelinesEmailArgs:
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
         :param pulumi.Input[bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         """
-        ServicePipelinesEmailArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            recipients=recipients,
-            branches_to_be_notified=branches_to_be_notified,
-            notify_only_broken_pipelines=notify_only_broken_pipelines,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
-             notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if recipients is None:
-            raise TypeError("Missing 'recipients' argument")
-        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
-            branches_to_be_notified = kwargs['branchesToBeNotified']
-        if notify_only_broken_pipelines is None and 'notifyOnlyBrokenPipelines' in kwargs:
-            notify_only_broken_pipelines = kwargs['notifyOnlyBrokenPipelines']
-
-        _setter("project", project)
-        _setter("recipients", recipients)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "recipients", recipients)
         if branches_to_be_notified is not None:
-            _setter("branches_to_be_notified", branches_to_be_notified)
+            pulumi.set(__self__, "branches_to_be_notified", branches_to_be_notified)
         if notify_only_broken_pipelines is not None:
-            _setter("notify_only_broken_pipelines", notify_only_broken_pipelines)
+            pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
 
     @property
     @pulumi.getter
@@ -120,35 +95,14 @@ class _ServicePipelinesEmailState:
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: ) email addresses where notifications are sent.
         """
-        _ServicePipelinesEmailState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            branches_to_be_notified=branches_to_be_notified,
-            notify_only_broken_pipelines=notify_only_broken_pipelines,
-            project=project,
-            recipients=recipients,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
-             notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
-            branches_to_be_notified = kwargs['branchesToBeNotified']
-        if notify_only_broken_pipelines is None and 'notifyOnlyBrokenPipelines' in kwargs:
-            notify_only_broken_pipelines = kwargs['notifyOnlyBrokenPipelines']
-
         if branches_to_be_notified is not None:
-            _setter("branches_to_be_notified", branches_to_be_notified)
+            pulumi.set(__self__, "branches_to_be_notified", branches_to_be_notified)
         if notify_only_broken_pipelines is not None:
-            _setter("notify_only_broken_pipelines", notify_only_broken_pipelines)
+            pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if recipients is not None:
-            _setter("recipients", recipients)
+            pulumi.set(__self__, "recipients", recipients)
 
     @property
     @pulumi.getter(name="branchesToBeNotified")
@@ -294,10 +248,6 @@ class ServicePipelinesEmail(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServicePipelinesEmailArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
