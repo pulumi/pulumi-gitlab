@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ClusterAgentArgs', 'ClusterAgent']
@@ -21,24 +21,9 @@ class ClusterAgentArgs:
         :param pulumi.Input[str] project: ID or full path of the project maintained by the authenticated user.
         :param pulumi.Input[str] name: The Name of the agent.
         """
-        ClusterAgentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-
-        _setter("project", project)
+        pulumi.set(__self__, "project", project)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -81,41 +66,16 @@ class _ClusterAgentState:
         :param pulumi.Input[str] name: The Name of the agent.
         :param pulumi.Input[str] project: ID or full path of the project maintained by the authenticated user.
         """
-        _ClusterAgentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            agent_id=agent_id,
-            created_at=created_at,
-            created_by_user_id=created_by_user_id,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             agent_id: Optional[pulumi.Input[int]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             created_by_user_id: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if agent_id is None and 'agentId' in kwargs:
-            agent_id = kwargs['agentId']
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if created_by_user_id is None and 'createdByUserId' in kwargs:
-            created_by_user_id = kwargs['createdByUserId']
-
         if agent_id is not None:
-            _setter("agent_id", agent_id)
+            pulumi.set(__self__, "agent_id", agent_id)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if created_by_user_id is not None:
-            _setter("created_by_user_id", created_by_user_id)
+            pulumi.set(__self__, "created_by_user_id", created_by_user_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="agentId")
@@ -293,10 +253,6 @@ class ClusterAgent(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterAgentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

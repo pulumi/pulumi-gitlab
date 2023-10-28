@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IntegrationJiraArgs', 'IntegrationJira']
@@ -49,107 +49,34 @@ class IntegrationJiraArgs:
         :param pulumi.Input[bool] push_events: Enable notifications for push events.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag_push events.
         """
-        IntegrationJiraArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            password=password,
-            project=project,
-            url=url,
-            username=username,
-            api_url=api_url,
-            comment_on_event_enabled=comment_on_event_enabled,
-            commit_events=commit_events,
-            issues_events=issues_events,
-            jira_issue_transition_id=jira_issue_transition_id,
-            job_events=job_events,
-            merge_requests_events=merge_requests_events,
-            note_events=note_events,
-            pipeline_events=pipeline_events,
-            project_key=project_key,
-            push_events=push_events,
-            tag_push_events=tag_push_events,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             password: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             api_url: Optional[pulumi.Input[str]] = None,
-             comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
-             commit_events: Optional[pulumi.Input[bool]] = None,
-             issues_events: Optional[pulumi.Input[bool]] = None,
-             jira_issue_transition_id: Optional[pulumi.Input[str]] = None,
-             job_events: Optional[pulumi.Input[bool]] = None,
-             merge_requests_events: Optional[pulumi.Input[bool]] = None,
-             note_events: Optional[pulumi.Input[bool]] = None,
-             pipeline_events: Optional[pulumi.Input[bool]] = None,
-             project_key: Optional[pulumi.Input[str]] = None,
-             push_events: Optional[pulumi.Input[bool]] = None,
-             tag_push_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-        if username is None:
-            raise TypeError("Missing 'username' argument")
-        if api_url is None and 'apiUrl' in kwargs:
-            api_url = kwargs['apiUrl']
-        if comment_on_event_enabled is None and 'commentOnEventEnabled' in kwargs:
-            comment_on_event_enabled = kwargs['commentOnEventEnabled']
-        if commit_events is None and 'commitEvents' in kwargs:
-            commit_events = kwargs['commitEvents']
-        if issues_events is None and 'issuesEvents' in kwargs:
-            issues_events = kwargs['issuesEvents']
-        if jira_issue_transition_id is None and 'jiraIssueTransitionId' in kwargs:
-            jira_issue_transition_id = kwargs['jiraIssueTransitionId']
-        if job_events is None and 'jobEvents' in kwargs:
-            job_events = kwargs['jobEvents']
-        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
-            merge_requests_events = kwargs['mergeRequestsEvents']
-        if note_events is None and 'noteEvents' in kwargs:
-            note_events = kwargs['noteEvents']
-        if pipeline_events is None and 'pipelineEvents' in kwargs:
-            pipeline_events = kwargs['pipelineEvents']
-        if project_key is None and 'projectKey' in kwargs:
-            project_key = kwargs['projectKey']
-        if push_events is None and 'pushEvents' in kwargs:
-            push_events = kwargs['pushEvents']
-        if tag_push_events is None and 'tagPushEvents' in kwargs:
-            tag_push_events = kwargs['tagPushEvents']
-
-        _setter("password", password)
-        _setter("project", project)
-        _setter("url", url)
-        _setter("username", username)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "username", username)
         if api_url is not None:
-            _setter("api_url", api_url)
+            pulumi.set(__self__, "api_url", api_url)
         if comment_on_event_enabled is not None:
-            _setter("comment_on_event_enabled", comment_on_event_enabled)
+            pulumi.set(__self__, "comment_on_event_enabled", comment_on_event_enabled)
         if commit_events is not None:
-            _setter("commit_events", commit_events)
+            pulumi.set(__self__, "commit_events", commit_events)
         if issues_events is not None:
-            _setter("issues_events", issues_events)
+            pulumi.set(__self__, "issues_events", issues_events)
         if jira_issue_transition_id is not None:
-            _setter("jira_issue_transition_id", jira_issue_transition_id)
+            pulumi.set(__self__, "jira_issue_transition_id", jira_issue_transition_id)
         if job_events is not None:
-            _setter("job_events", job_events)
+            pulumi.set(__self__, "job_events", job_events)
         if merge_requests_events is not None:
-            _setter("merge_requests_events", merge_requests_events)
+            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
         if note_events is not None:
-            _setter("note_events", note_events)
+            pulumi.set(__self__, "note_events", note_events)
         if pipeline_events is not None:
-            _setter("pipeline_events", pipeline_events)
+            pulumi.set(__self__, "pipeline_events", pipeline_events)
         if project_key is not None:
-            _setter("project_key", project_key)
+            pulumi.set(__self__, "project_key", project_key)
         if push_events is not None:
-            _setter("push_events", push_events)
+            pulumi.set(__self__, "push_events", push_events)
         if tag_push_events is not None:
-            _setter("tag_push_events", tag_push_events)
+            pulumi.set(__self__, "tag_push_events", tag_push_events)
 
     @property
     @pulumi.getter
@@ -390,123 +317,46 @@ class _IntegrationJiraState:
         :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
         """
-        _IntegrationJiraState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active=active,
-            api_url=api_url,
-            comment_on_event_enabled=comment_on_event_enabled,
-            commit_events=commit_events,
-            created_at=created_at,
-            issues_events=issues_events,
-            jira_issue_transition_id=jira_issue_transition_id,
-            job_events=job_events,
-            merge_requests_events=merge_requests_events,
-            note_events=note_events,
-            password=password,
-            pipeline_events=pipeline_events,
-            project=project,
-            project_key=project_key,
-            push_events=push_events,
-            tag_push_events=tag_push_events,
-            title=title,
-            updated_at=updated_at,
-            url=url,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active: Optional[pulumi.Input[bool]] = None,
-             api_url: Optional[pulumi.Input[str]] = None,
-             comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
-             commit_events: Optional[pulumi.Input[bool]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             issues_events: Optional[pulumi.Input[bool]] = None,
-             jira_issue_transition_id: Optional[pulumi.Input[str]] = None,
-             job_events: Optional[pulumi.Input[bool]] = None,
-             merge_requests_events: Optional[pulumi.Input[bool]] = None,
-             note_events: Optional[pulumi.Input[bool]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             pipeline_events: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             project_key: Optional[pulumi.Input[str]] = None,
-             push_events: Optional[pulumi.Input[bool]] = None,
-             tag_push_events: Optional[pulumi.Input[bool]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_url is None and 'apiUrl' in kwargs:
-            api_url = kwargs['apiUrl']
-        if comment_on_event_enabled is None and 'commentOnEventEnabled' in kwargs:
-            comment_on_event_enabled = kwargs['commentOnEventEnabled']
-        if commit_events is None and 'commitEvents' in kwargs:
-            commit_events = kwargs['commitEvents']
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if issues_events is None and 'issuesEvents' in kwargs:
-            issues_events = kwargs['issuesEvents']
-        if jira_issue_transition_id is None and 'jiraIssueTransitionId' in kwargs:
-            jira_issue_transition_id = kwargs['jiraIssueTransitionId']
-        if job_events is None and 'jobEvents' in kwargs:
-            job_events = kwargs['jobEvents']
-        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
-            merge_requests_events = kwargs['mergeRequestsEvents']
-        if note_events is None and 'noteEvents' in kwargs:
-            note_events = kwargs['noteEvents']
-        if pipeline_events is None and 'pipelineEvents' in kwargs:
-            pipeline_events = kwargs['pipelineEvents']
-        if project_key is None and 'projectKey' in kwargs:
-            project_key = kwargs['projectKey']
-        if push_events is None and 'pushEvents' in kwargs:
-            push_events = kwargs['pushEvents']
-        if tag_push_events is None and 'tagPushEvents' in kwargs:
-            tag_push_events = kwargs['tagPushEvents']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-
         if active is not None:
-            _setter("active", active)
+            pulumi.set(__self__, "active", active)
         if api_url is not None:
-            _setter("api_url", api_url)
+            pulumi.set(__self__, "api_url", api_url)
         if comment_on_event_enabled is not None:
-            _setter("comment_on_event_enabled", comment_on_event_enabled)
+            pulumi.set(__self__, "comment_on_event_enabled", comment_on_event_enabled)
         if commit_events is not None:
-            _setter("commit_events", commit_events)
+            pulumi.set(__self__, "commit_events", commit_events)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if issues_events is not None:
-            _setter("issues_events", issues_events)
+            pulumi.set(__self__, "issues_events", issues_events)
         if jira_issue_transition_id is not None:
-            _setter("jira_issue_transition_id", jira_issue_transition_id)
+            pulumi.set(__self__, "jira_issue_transition_id", jira_issue_transition_id)
         if job_events is not None:
-            _setter("job_events", job_events)
+            pulumi.set(__self__, "job_events", job_events)
         if merge_requests_events is not None:
-            _setter("merge_requests_events", merge_requests_events)
+            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
         if note_events is not None:
-            _setter("note_events", note_events)
+            pulumi.set(__self__, "note_events", note_events)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if pipeline_events is not None:
-            _setter("pipeline_events", pipeline_events)
+            pulumi.set(__self__, "pipeline_events", pipeline_events)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if project_key is not None:
-            _setter("project_key", project_key)
+            pulumi.set(__self__, "project_key", project_key)
         if push_events is not None:
-            _setter("push_events", push_events)
+            pulumi.set(__self__, "push_events", push_events)
         if tag_push_events is not None:
-            _setter("tag_push_events", tag_push_events)
+            pulumi.set(__self__, "tag_push_events", tag_push_events)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -864,10 +714,6 @@ class IntegrationJira(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IntegrationJiraArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

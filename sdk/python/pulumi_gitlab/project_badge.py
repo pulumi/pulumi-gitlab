@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectBadgeArgs', 'ProjectBadge']
@@ -25,38 +25,11 @@ class ProjectBadgeArgs:
         :param pulumi.Input[str] project: The id of the project to add the badge to.
         :param pulumi.Input[str] name: The name of the badge.
         """
-        ProjectBadgeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image_url=image_url,
-            link_url=link_url,
-            project=project,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image_url: Optional[pulumi.Input[str]] = None,
-             link_url: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if image_url is None and 'imageUrl' in kwargs:
-            image_url = kwargs['imageUrl']
-        if image_url is None:
-            raise TypeError("Missing 'image_url' argument")
-        if link_url is None and 'linkUrl' in kwargs:
-            link_url = kwargs['linkUrl']
-        if link_url is None:
-            raise TypeError("Missing 'link_url' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-
-        _setter("image_url", image_url)
-        _setter("link_url", link_url)
-        _setter("project", project)
+        pulumi.set(__self__, "image_url", image_url)
+        pulumi.set(__self__, "link_url", link_url)
+        pulumi.set(__self__, "project", project)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -125,47 +98,18 @@ class _ProjectBadgeState:
         :param pulumi.Input[str] rendered_image_url: The image_url argument rendered (in case of use of placeholders).
         :param pulumi.Input[str] rendered_link_url: The link_url argument rendered (in case of use of placeholders).
         """
-        _ProjectBadgeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image_url=image_url,
-            link_url=link_url,
-            name=name,
-            project=project,
-            rendered_image_url=rendered_image_url,
-            rendered_link_url=rendered_link_url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image_url: Optional[pulumi.Input[str]] = None,
-             link_url: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             rendered_image_url: Optional[pulumi.Input[str]] = None,
-             rendered_link_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if image_url is None and 'imageUrl' in kwargs:
-            image_url = kwargs['imageUrl']
-        if link_url is None and 'linkUrl' in kwargs:
-            link_url = kwargs['linkUrl']
-        if rendered_image_url is None and 'renderedImageUrl' in kwargs:
-            rendered_image_url = kwargs['renderedImageUrl']
-        if rendered_link_url is None and 'renderedLinkUrl' in kwargs:
-            rendered_link_url = kwargs['renderedLinkUrl']
-
         if image_url is not None:
-            _setter("image_url", image_url)
+            pulumi.set(__self__, "image_url", image_url)
         if link_url is not None:
-            _setter("link_url", link_url)
+            pulumi.set(__self__, "link_url", link_url)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if rendered_image_url is not None:
-            _setter("rendered_image_url", rendered_image_url)
+            pulumi.set(__self__, "rendered_image_url", rendered_image_url)
         if rendered_link_url is not None:
-            _setter("rendered_link_url", rendered_link_url)
+            pulumi.set(__self__, "rendered_link_url", rendered_link_url)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -355,10 +299,6 @@ class ProjectBadge(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectBadgeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

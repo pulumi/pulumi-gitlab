@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ReleaseLinkArgs', 'ReleaseLink']
@@ -29,46 +29,15 @@ class ReleaseLinkArgs:
         :param pulumi.Input[str] link_type: The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
         :param pulumi.Input[str] name: The name of the link. Link names must be unique within the release.
         """
-        ReleaseLinkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            tag_name=tag_name,
-            url=url,
-            filepath=filepath,
-            link_type=link_type,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             tag_name: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             filepath: Optional[pulumi.Input[str]] = None,
-             link_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if tag_name is None and 'tagName' in kwargs:
-            tag_name = kwargs['tagName']
-        if tag_name is None:
-            raise TypeError("Missing 'tag_name' argument")
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-        if link_type is None and 'linkType' in kwargs:
-            link_type = kwargs['linkType']
-
-        _setter("project", project)
-        _setter("tag_name", tag_name)
-        _setter("url", url)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "tag_name", tag_name)
+        pulumi.set(__self__, "url", url)
         if filepath is not None:
-            _setter("filepath", filepath)
+            pulumi.set(__self__, "filepath", filepath)
         if link_type is not None:
-            _setter("link_type", link_type)
+            pulumi.set(__self__, "link_type", link_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -167,59 +136,24 @@ class _ReleaseLinkState:
         :param pulumi.Input[str] tag_name: The tag associated with the Release.
         :param pulumi.Input[str] url: The URL of the link. Link URLs must be unique within the release.
         """
-        _ReleaseLinkState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            direct_asset_url=direct_asset_url,
-            external=external,
-            filepath=filepath,
-            link_id=link_id,
-            link_type=link_type,
-            name=name,
-            project=project,
-            tag_name=tag_name,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             direct_asset_url: Optional[pulumi.Input[str]] = None,
-             external: Optional[pulumi.Input[bool]] = None,
-             filepath: Optional[pulumi.Input[str]] = None,
-             link_id: Optional[pulumi.Input[int]] = None,
-             link_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             tag_name: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if direct_asset_url is None and 'directAssetUrl' in kwargs:
-            direct_asset_url = kwargs['directAssetUrl']
-        if link_id is None and 'linkId' in kwargs:
-            link_id = kwargs['linkId']
-        if link_type is None and 'linkType' in kwargs:
-            link_type = kwargs['linkType']
-        if tag_name is None and 'tagName' in kwargs:
-            tag_name = kwargs['tagName']
-
         if direct_asset_url is not None:
-            _setter("direct_asset_url", direct_asset_url)
+            pulumi.set(__self__, "direct_asset_url", direct_asset_url)
         if external is not None:
-            _setter("external", external)
+            pulumi.set(__self__, "external", external)
         if filepath is not None:
-            _setter("filepath", filepath)
+            pulumi.set(__self__, "filepath", filepath)
         if link_id is not None:
-            _setter("link_id", link_id)
+            pulumi.set(__self__, "link_id", link_id)
         if link_type is not None:
-            _setter("link_type", link_type)
+            pulumi.set(__self__, "link_type", link_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if tag_name is not None:
-            _setter("tag_name", tag_name)
+            pulumi.set(__self__, "tag_name", tag_name)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="directAssetUrl")
@@ -423,10 +357,6 @@ class ReleaseLink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ReleaseLinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

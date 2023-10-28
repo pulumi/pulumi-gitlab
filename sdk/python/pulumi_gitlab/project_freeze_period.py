@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectFreezePeriodArgs', 'ProjectFreezePeriod']
@@ -25,40 +25,11 @@ class ProjectFreezePeriodArgs:
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project to add the schedule to.
         :param pulumi.Input[str] cron_timezone: The timezone.
         """
-        ProjectFreezePeriodArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            freeze_end=freeze_end,
-            freeze_start=freeze_start,
-            project=project,
-            cron_timezone=cron_timezone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             freeze_end: Optional[pulumi.Input[str]] = None,
-             freeze_start: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             cron_timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if freeze_end is None and 'freezeEnd' in kwargs:
-            freeze_end = kwargs['freezeEnd']
-        if freeze_end is None:
-            raise TypeError("Missing 'freeze_end' argument")
-        if freeze_start is None and 'freezeStart' in kwargs:
-            freeze_start = kwargs['freezeStart']
-        if freeze_start is None:
-            raise TypeError("Missing 'freeze_start' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if cron_timezone is None and 'cronTimezone' in kwargs:
-            cron_timezone = kwargs['cronTimezone']
-
-        _setter("freeze_end", freeze_end)
-        _setter("freeze_start", freeze_start)
-        _setter("project", project)
+        pulumi.set(__self__, "freeze_end", freeze_end)
+        pulumi.set(__self__, "freeze_start", freeze_start)
+        pulumi.set(__self__, "project", project)
         if cron_timezone is not None:
-            _setter("cron_timezone", cron_timezone)
+            pulumi.set(__self__, "cron_timezone", cron_timezone)
 
     @property
     @pulumi.getter(name="freezeEnd")
@@ -123,37 +94,14 @@ class _ProjectFreezePeriodState:
         :param pulumi.Input[str] freeze_start: Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project to add the schedule to.
         """
-        _ProjectFreezePeriodState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cron_timezone=cron_timezone,
-            freeze_end=freeze_end,
-            freeze_start=freeze_start,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cron_timezone: Optional[pulumi.Input[str]] = None,
-             freeze_end: Optional[pulumi.Input[str]] = None,
-             freeze_start: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cron_timezone is None and 'cronTimezone' in kwargs:
-            cron_timezone = kwargs['cronTimezone']
-        if freeze_end is None and 'freezeEnd' in kwargs:
-            freeze_end = kwargs['freezeEnd']
-        if freeze_start is None and 'freezeStart' in kwargs:
-            freeze_start = kwargs['freezeStart']
-
         if cron_timezone is not None:
-            _setter("cron_timezone", cron_timezone)
+            pulumi.set(__self__, "cron_timezone", cron_timezone)
         if freeze_end is not None:
-            _setter("freeze_end", freeze_end)
+            pulumi.set(__self__, "freeze_end", freeze_end)
         if freeze_start is not None:
-            _setter("freeze_start", freeze_start)
+            pulumi.set(__self__, "freeze_start", freeze_start)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="cronTimezone")
@@ -289,10 +237,6 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectFreezePeriodArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

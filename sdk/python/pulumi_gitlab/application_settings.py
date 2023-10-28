@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationSettingsArgs', 'ApplicationSettings']
@@ -501,1465 +501,490 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] whats_new_variant: What’s new variant, possible values: all*tiers, current*tier, and disabled.
         :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
-        ApplicationSettingsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            abuse_notification_email=abuse_notification_email,
-            admin_mode=admin_mode,
-            after_sign_out_path=after_sign_out_path,
-            after_sign_up_text=after_sign_up_text,
-            akismet_api_key=akismet_api_key,
-            akismet_enabled=akismet_enabled,
-            allow_group_owners_to_manage_ldap=allow_group_owners_to_manage_ldap,
-            allow_local_requests_from_system_hooks=allow_local_requests_from_system_hooks,
-            allow_local_requests_from_web_hooks_and_services=allow_local_requests_from_web_hooks_and_services,
-            archive_builds_in_human_readable=archive_builds_in_human_readable,
-            asset_proxy_allowlists=asset_proxy_allowlists,
-            asset_proxy_enabled=asset_proxy_enabled,
-            asset_proxy_secret_key=asset_proxy_secret_key,
-            asset_proxy_url=asset_proxy_url,
-            authorized_keys_enabled=authorized_keys_enabled,
-            auto_devops_domain=auto_devops_domain,
-            auto_devops_enabled=auto_devops_enabled,
-            automatic_purchased_storage_allocation=automatic_purchased_storage_allocation,
-            can_create_group=can_create_group,
-            check_namespace_plan=check_namespace_plan,
-            commit_email_hostname=commit_email_hostname,
-            container_expiration_policies_enable_historic_entries=container_expiration_policies_enable_historic_entries,
-            container_registry_cleanup_tags_service_max_list_size=container_registry_cleanup_tags_service_max_list_size,
-            container_registry_delete_tags_service_timeout=container_registry_delete_tags_service_timeout,
-            container_registry_expiration_policies_caching=container_registry_expiration_policies_caching,
-            container_registry_expiration_policies_worker_capacity=container_registry_expiration_policies_worker_capacity,
-            container_registry_token_expire_delay=container_registry_token_expire_delay,
-            deactivate_dormant_users=deactivate_dormant_users,
-            default_artifacts_expire_in=default_artifacts_expire_in,
-            default_branch_name=default_branch_name,
-            default_branch_protection=default_branch_protection,
-            default_ci_config_path=default_ci_config_path,
-            default_group_visibility=default_group_visibility,
-            default_project_creation=default_project_creation,
-            default_project_visibility=default_project_visibility,
-            default_projects_limit=default_projects_limit,
-            default_snippet_visibility=default_snippet_visibility,
-            delayed_group_deletion=delayed_group_deletion,
-            delayed_project_deletion=delayed_project_deletion,
-            delete_inactive_projects=delete_inactive_projects,
-            deletion_adjourned_period=deletion_adjourned_period,
-            diff_max_files=diff_max_files,
-            diff_max_lines=diff_max_lines,
-            diff_max_patch_bytes=diff_max_patch_bytes,
-            disable_feed_token=disable_feed_token,
-            disabled_oauth_sign_in_sources=disabled_oauth_sign_in_sources,
-            dns_rebinding_protection_enabled=dns_rebinding_protection_enabled,
-            domain_allowlists=domain_allowlists,
-            domain_denylist_enabled=domain_denylist_enabled,
-            domain_denylists=domain_denylists,
-            dsa_key_restriction=dsa_key_restriction,
-            ecdsa_key_restriction=ecdsa_key_restriction,
-            ecdsa_sk_key_restriction=ecdsa_sk_key_restriction,
-            ed25519_key_restriction=ed25519_key_restriction,
-            ed25519_sk_key_restriction=ed25519_sk_key_restriction,
-            eks_access_key_id=eks_access_key_id,
-            eks_account_id=eks_account_id,
-            eks_integration_enabled=eks_integration_enabled,
-            eks_secret_access_key=eks_secret_access_key,
-            elasticsearch_aws=elasticsearch_aws,
-            elasticsearch_aws_access_key=elasticsearch_aws_access_key,
-            elasticsearch_aws_region=elasticsearch_aws_region,
-            elasticsearch_aws_secret_access_key=elasticsearch_aws_secret_access_key,
-            elasticsearch_indexed_field_length_limit=elasticsearch_indexed_field_length_limit,
-            elasticsearch_indexed_file_size_limit_kb=elasticsearch_indexed_file_size_limit_kb,
-            elasticsearch_indexing=elasticsearch_indexing,
-            elasticsearch_limit_indexing=elasticsearch_limit_indexing,
-            elasticsearch_max_bulk_concurrency=elasticsearch_max_bulk_concurrency,
-            elasticsearch_max_bulk_size_mb=elasticsearch_max_bulk_size_mb,
-            elasticsearch_namespace_ids=elasticsearch_namespace_ids,
-            elasticsearch_password=elasticsearch_password,
-            elasticsearch_project_ids=elasticsearch_project_ids,
-            elasticsearch_search=elasticsearch_search,
-            elasticsearch_urls=elasticsearch_urls,
-            elasticsearch_username=elasticsearch_username,
-            email_additional_text=email_additional_text,
-            email_author_in_body=email_author_in_body,
-            enabled_git_access_protocol=enabled_git_access_protocol,
-            enforce_namespace_storage_limit=enforce_namespace_storage_limit,
-            enforce_terms=enforce_terms,
-            external_auth_client_cert=external_auth_client_cert,
-            external_auth_client_key=external_auth_client_key,
-            external_auth_client_key_pass=external_auth_client_key_pass,
-            external_authorization_service_default_label=external_authorization_service_default_label,
-            external_authorization_service_enabled=external_authorization_service_enabled,
-            external_authorization_service_timeout=external_authorization_service_timeout,
-            external_authorization_service_url=external_authorization_service_url,
-            external_pipeline_validation_service_timeout=external_pipeline_validation_service_timeout,
-            external_pipeline_validation_service_token=external_pipeline_validation_service_token,
-            external_pipeline_validation_service_url=external_pipeline_validation_service_url,
-            file_template_project_id=file_template_project_id,
-            first_day_of_week=first_day_of_week,
-            geo_node_allowed_ips=geo_node_allowed_ips,
-            geo_status_timeout=geo_status_timeout,
-            git_rate_limit_users_allowlists=git_rate_limit_users_allowlists,
-            git_two_factor_session_expiry=git_two_factor_session_expiry,
-            gitaly_timeout_default=gitaly_timeout_default,
-            gitaly_timeout_fast=gitaly_timeout_fast,
-            gitaly_timeout_medium=gitaly_timeout_medium,
-            grafana_enabled=grafana_enabled,
-            grafana_url=grafana_url,
-            gravatar_enabled=gravatar_enabled,
-            group_owners_can_manage_default_branch_protection=group_owners_can_manage_default_branch_protection,
-            hashed_storage_enabled=hashed_storage_enabled,
-            help_page_hide_commercial_content=help_page_hide_commercial_content,
-            help_page_support_url=help_page_support_url,
-            help_page_text=help_page_text,
-            help_text=help_text,
-            hide_third_party_offers=hide_third_party_offers,
-            home_page_url=home_page_url,
-            housekeeping_enabled=housekeeping_enabled,
-            housekeeping_full_repack_period=housekeeping_full_repack_period,
-            housekeeping_gc_period=housekeeping_gc_period,
-            housekeeping_incremental_repack_period=housekeeping_incremental_repack_period,
-            html_emails_enabled=html_emails_enabled,
-            import_sources=import_sources,
-            in_product_marketing_emails_enabled=in_product_marketing_emails_enabled,
-            inactive_projects_delete_after_months=inactive_projects_delete_after_months,
-            inactive_projects_min_size_mb=inactive_projects_min_size_mb,
-            inactive_projects_send_warning_email_after_months=inactive_projects_send_warning_email_after_months,
-            invisible_captcha_enabled=invisible_captcha_enabled,
-            issues_create_limit=issues_create_limit,
-            keep_latest_artifact=keep_latest_artifact,
-            local_markdown_version=local_markdown_version,
-            mailgun_events_enabled=mailgun_events_enabled,
-            mailgun_signing_key=mailgun_signing_key,
-            maintenance_mode=maintenance_mode,
-            maintenance_mode_message=maintenance_mode_message,
-            max_artifacts_size=max_artifacts_size,
-            max_attachment_size=max_attachment_size,
-            max_export_size=max_export_size,
-            max_import_size=max_import_size,
-            max_number_of_repository_downloads=max_number_of_repository_downloads,
-            max_number_of_repository_downloads_within_time_period=max_number_of_repository_downloads_within_time_period,
-            max_pages_size=max_pages_size,
-            max_personal_access_token_lifetime=max_personal_access_token_lifetime,
-            max_ssh_key_lifetime=max_ssh_key_lifetime,
-            metrics_method_call_threshold=metrics_method_call_threshold,
-            mirror_available=mirror_available,
-            mirror_capacity_threshold=mirror_capacity_threshold,
-            mirror_max_capacity=mirror_max_capacity,
-            mirror_max_delay=mirror_max_delay,
-            npm_package_requests_forwarding=npm_package_requests_forwarding,
-            outbound_local_requests_whitelists=outbound_local_requests_whitelists,
-            package_registry_cleanup_policies_worker_capacity=package_registry_cleanup_policies_worker_capacity,
-            pages_domain_verification_enabled=pages_domain_verification_enabled,
-            password_authentication_enabled_for_git=password_authentication_enabled_for_git,
-            password_authentication_enabled_for_web=password_authentication_enabled_for_web,
-            password_lowercase_required=password_lowercase_required,
-            password_number_required=password_number_required,
-            password_symbol_required=password_symbol_required,
-            password_uppercase_required=password_uppercase_required,
-            performance_bar_allowed_group_path=performance_bar_allowed_group_path,
-            personal_access_token_prefix=personal_access_token_prefix,
-            pipeline_limit_per_project_user_sha=pipeline_limit_per_project_user_sha,
-            plantuml_enabled=plantuml_enabled,
-            plantuml_url=plantuml_url,
-            polling_interval_multiplier=polling_interval_multiplier,
-            project_export_enabled=project_export_enabled,
-            prometheus_metrics_enabled=prometheus_metrics_enabled,
-            protected_ci_variables=protected_ci_variables,
-            push_event_activities_limit=push_event_activities_limit,
-            push_event_hooks_limit=push_event_hooks_limit,
-            pypi_package_requests_forwarding=pypi_package_requests_forwarding,
-            rate_limiting_response_text=rate_limiting_response_text,
-            raw_blob_request_limit=raw_blob_request_limit,
-            recaptcha_enabled=recaptcha_enabled,
-            recaptcha_private_key=recaptcha_private_key,
-            recaptcha_site_key=recaptcha_site_key,
-            receive_max_input_size=receive_max_input_size,
-            repository_checks_enabled=repository_checks_enabled,
-            repository_size_limit=repository_size_limit,
-            repository_storages=repository_storages,
-            repository_storages_weighted=repository_storages_weighted,
-            require_admin_approval_after_user_signup=require_admin_approval_after_user_signup,
-            require_two_factor_authentication=require_two_factor_authentication,
-            restricted_visibility_levels=restricted_visibility_levels,
-            rsa_key_restriction=rsa_key_restriction,
-            search_rate_limit=search_rate_limit,
-            search_rate_limit_unauthenticated=search_rate_limit_unauthenticated,
-            send_user_confirmation_email=send_user_confirmation_email,
-            session_expire_delay=session_expire_delay,
-            shared_runners_enabled=shared_runners_enabled,
-            shared_runners_minutes=shared_runners_minutes,
-            shared_runners_text=shared_runners_text,
-            sidekiq_job_limiter_compression_threshold_bytes=sidekiq_job_limiter_compression_threshold_bytes,
-            sidekiq_job_limiter_limit_bytes=sidekiq_job_limiter_limit_bytes,
-            sidekiq_job_limiter_mode=sidekiq_job_limiter_mode,
-            sign_in_text=sign_in_text,
-            signup_enabled=signup_enabled,
-            slack_app_enabled=slack_app_enabled,
-            slack_app_id=slack_app_id,
-            slack_app_secret=slack_app_secret,
-            slack_app_signing_secret=slack_app_signing_secret,
-            slack_app_verification_token=slack_app_verification_token,
-            snippet_size_limit=snippet_size_limit,
-            snowplow_app_id=snowplow_app_id,
-            snowplow_collector_hostname=snowplow_collector_hostname,
-            snowplow_cookie_domain=snowplow_cookie_domain,
-            snowplow_enabled=snowplow_enabled,
-            sourcegraph_enabled=sourcegraph_enabled,
-            sourcegraph_public_only=sourcegraph_public_only,
-            sourcegraph_url=sourcegraph_url,
-            spam_check_api_key=spam_check_api_key,
-            spam_check_endpoint_enabled=spam_check_endpoint_enabled,
-            spam_check_endpoint_url=spam_check_endpoint_url,
-            suggest_pipeline_enabled=suggest_pipeline_enabled,
-            terminal_max_session_time=terminal_max_session_time,
-            terms=terms,
-            throttle_authenticated_api_enabled=throttle_authenticated_api_enabled,
-            throttle_authenticated_api_period_in_seconds=throttle_authenticated_api_period_in_seconds,
-            throttle_authenticated_api_requests_per_period=throttle_authenticated_api_requests_per_period,
-            throttle_authenticated_packages_api_enabled=throttle_authenticated_packages_api_enabled,
-            throttle_authenticated_packages_api_period_in_seconds=throttle_authenticated_packages_api_period_in_seconds,
-            throttle_authenticated_packages_api_requests_per_period=throttle_authenticated_packages_api_requests_per_period,
-            throttle_authenticated_web_enabled=throttle_authenticated_web_enabled,
-            throttle_authenticated_web_period_in_seconds=throttle_authenticated_web_period_in_seconds,
-            throttle_authenticated_web_requests_per_period=throttle_authenticated_web_requests_per_period,
-            throttle_unauthenticated_api_enabled=throttle_unauthenticated_api_enabled,
-            throttle_unauthenticated_api_period_in_seconds=throttle_unauthenticated_api_period_in_seconds,
-            throttle_unauthenticated_api_requests_per_period=throttle_unauthenticated_api_requests_per_period,
-            throttle_unauthenticated_packages_api_enabled=throttle_unauthenticated_packages_api_enabled,
-            throttle_unauthenticated_packages_api_period_in_seconds=throttle_unauthenticated_packages_api_period_in_seconds,
-            throttle_unauthenticated_packages_api_requests_per_period=throttle_unauthenticated_packages_api_requests_per_period,
-            throttle_unauthenticated_web_enabled=throttle_unauthenticated_web_enabled,
-            throttle_unauthenticated_web_period_in_seconds=throttle_unauthenticated_web_period_in_seconds,
-            throttle_unauthenticated_web_requests_per_period=throttle_unauthenticated_web_requests_per_period,
-            time_tracking_limit_to_hours=time_tracking_limit_to_hours,
-            two_factor_grace_period=two_factor_grace_period,
-            unique_ips_limit_enabled=unique_ips_limit_enabled,
-            unique_ips_limit_per_user=unique_ips_limit_per_user,
-            unique_ips_limit_time_window=unique_ips_limit_time_window,
-            usage_ping_enabled=usage_ping_enabled,
-            user_deactivation_emails_enabled=user_deactivation_emails_enabled,
-            user_default_external=user_default_external,
-            user_default_internal_regex=user_default_internal_regex,
-            user_oauth_applications=user_oauth_applications,
-            user_show_add_ssh_key_message=user_show_add_ssh_key_message,
-            version_check_enabled=version_check_enabled,
-            web_ide_clientside_preview_enabled=web_ide_clientside_preview_enabled,
-            whats_new_variant=whats_new_variant,
-            wiki_page_max_content_bytes=wiki_page_max_content_bytes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             abuse_notification_email: Optional[pulumi.Input[str]] = None,
-             admin_mode: Optional[pulumi.Input[bool]] = None,
-             after_sign_out_path: Optional[pulumi.Input[str]] = None,
-             after_sign_up_text: Optional[pulumi.Input[str]] = None,
-             akismet_api_key: Optional[pulumi.Input[str]] = None,
-             akismet_enabled: Optional[pulumi.Input[bool]] = None,
-             allow_group_owners_to_manage_ldap: Optional[pulumi.Input[bool]] = None,
-             allow_local_requests_from_system_hooks: Optional[pulumi.Input[bool]] = None,
-             allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[bool]] = None,
-             archive_builds_in_human_readable: Optional[pulumi.Input[str]] = None,
-             asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             asset_proxy_enabled: Optional[pulumi.Input[bool]] = None,
-             asset_proxy_secret_key: Optional[pulumi.Input[str]] = None,
-             asset_proxy_url: Optional[pulumi.Input[str]] = None,
-             authorized_keys_enabled: Optional[pulumi.Input[bool]] = None,
-             auto_devops_domain: Optional[pulumi.Input[str]] = None,
-             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
-             automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
-             can_create_group: Optional[pulumi.Input[bool]] = None,
-             check_namespace_plan: Optional[pulumi.Input[bool]] = None,
-             commit_email_hostname: Optional[pulumi.Input[str]] = None,
-             container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
-             container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[int]] = None,
-             container_registry_delete_tags_service_timeout: Optional[pulumi.Input[int]] = None,
-             container_registry_expiration_policies_caching: Optional[pulumi.Input[bool]] = None,
-             container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
-             container_registry_token_expire_delay: Optional[pulumi.Input[int]] = None,
-             deactivate_dormant_users: Optional[pulumi.Input[bool]] = None,
-             default_artifacts_expire_in: Optional[pulumi.Input[str]] = None,
-             default_branch_name: Optional[pulumi.Input[str]] = None,
-             default_branch_protection: Optional[pulumi.Input[int]] = None,
-             default_ci_config_path: Optional[pulumi.Input[str]] = None,
-             default_group_visibility: Optional[pulumi.Input[str]] = None,
-             default_project_creation: Optional[pulumi.Input[int]] = None,
-             default_project_visibility: Optional[pulumi.Input[str]] = None,
-             default_projects_limit: Optional[pulumi.Input[int]] = None,
-             default_snippet_visibility: Optional[pulumi.Input[str]] = None,
-             delayed_group_deletion: Optional[pulumi.Input[bool]] = None,
-             delayed_project_deletion: Optional[pulumi.Input[bool]] = None,
-             delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
-             deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
-             diff_max_files: Optional[pulumi.Input[int]] = None,
-             diff_max_lines: Optional[pulumi.Input[int]] = None,
-             diff_max_patch_bytes: Optional[pulumi.Input[int]] = None,
-             disable_feed_token: Optional[pulumi.Input[bool]] = None,
-             disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             dns_rebinding_protection_enabled: Optional[pulumi.Input[bool]] = None,
-             domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             domain_denylist_enabled: Optional[pulumi.Input[bool]] = None,
-             domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             dsa_key_restriction: Optional[pulumi.Input[int]] = None,
-             ecdsa_key_restriction: Optional[pulumi.Input[int]] = None,
-             ecdsa_sk_key_restriction: Optional[pulumi.Input[int]] = None,
-             ed25519_key_restriction: Optional[pulumi.Input[int]] = None,
-             ed25519_sk_key_restriction: Optional[pulumi.Input[int]] = None,
-             eks_access_key_id: Optional[pulumi.Input[str]] = None,
-             eks_account_id: Optional[pulumi.Input[str]] = None,
-             eks_integration_enabled: Optional[pulumi.Input[bool]] = None,
-             eks_secret_access_key: Optional[pulumi.Input[str]] = None,
-             elasticsearch_aws: Optional[pulumi.Input[bool]] = None,
-             elasticsearch_aws_access_key: Optional[pulumi.Input[str]] = None,
-             elasticsearch_aws_region: Optional[pulumi.Input[str]] = None,
-             elasticsearch_aws_secret_access_key: Optional[pulumi.Input[str]] = None,
-             elasticsearch_indexed_field_length_limit: Optional[pulumi.Input[int]] = None,
-             elasticsearch_indexed_file_size_limit_kb: Optional[pulumi.Input[int]] = None,
-             elasticsearch_indexing: Optional[pulumi.Input[bool]] = None,
-             elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
-             elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
-             elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
-             elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             elasticsearch_password: Optional[pulumi.Input[str]] = None,
-             elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             elasticsearch_search: Optional[pulumi.Input[bool]] = None,
-             elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             elasticsearch_username: Optional[pulumi.Input[str]] = None,
-             email_additional_text: Optional[pulumi.Input[str]] = None,
-             email_author_in_body: Optional[pulumi.Input[bool]] = None,
-             enabled_git_access_protocol: Optional[pulumi.Input[str]] = None,
-             enforce_namespace_storage_limit: Optional[pulumi.Input[bool]] = None,
-             enforce_terms: Optional[pulumi.Input[bool]] = None,
-             external_auth_client_cert: Optional[pulumi.Input[str]] = None,
-             external_auth_client_key: Optional[pulumi.Input[str]] = None,
-             external_auth_client_key_pass: Optional[pulumi.Input[str]] = None,
-             external_authorization_service_default_label: Optional[pulumi.Input[str]] = None,
-             external_authorization_service_enabled: Optional[pulumi.Input[bool]] = None,
-             external_authorization_service_timeout: Optional[pulumi.Input[float]] = None,
-             external_authorization_service_url: Optional[pulumi.Input[str]] = None,
-             external_pipeline_validation_service_timeout: Optional[pulumi.Input[int]] = None,
-             external_pipeline_validation_service_token: Optional[pulumi.Input[str]] = None,
-             external_pipeline_validation_service_url: Optional[pulumi.Input[str]] = None,
-             file_template_project_id: Optional[pulumi.Input[int]] = None,
-             first_day_of_week: Optional[pulumi.Input[int]] = None,
-             geo_node_allowed_ips: Optional[pulumi.Input[str]] = None,
-             geo_status_timeout: Optional[pulumi.Input[int]] = None,
-             git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             git_two_factor_session_expiry: Optional[pulumi.Input[int]] = None,
-             gitaly_timeout_default: Optional[pulumi.Input[int]] = None,
-             gitaly_timeout_fast: Optional[pulumi.Input[int]] = None,
-             gitaly_timeout_medium: Optional[pulumi.Input[int]] = None,
-             grafana_enabled: Optional[pulumi.Input[bool]] = None,
-             grafana_url: Optional[pulumi.Input[str]] = None,
-             gravatar_enabled: Optional[pulumi.Input[bool]] = None,
-             group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[bool]] = None,
-             hashed_storage_enabled: Optional[pulumi.Input[bool]] = None,
-             help_page_hide_commercial_content: Optional[pulumi.Input[bool]] = None,
-             help_page_support_url: Optional[pulumi.Input[str]] = None,
-             help_page_text: Optional[pulumi.Input[str]] = None,
-             help_text: Optional[pulumi.Input[str]] = None,
-             hide_third_party_offers: Optional[pulumi.Input[bool]] = None,
-             home_page_url: Optional[pulumi.Input[str]] = None,
-             housekeeping_enabled: Optional[pulumi.Input[bool]] = None,
-             housekeeping_full_repack_period: Optional[pulumi.Input[int]] = None,
-             housekeeping_gc_period: Optional[pulumi.Input[int]] = None,
-             housekeeping_incremental_repack_period: Optional[pulumi.Input[int]] = None,
-             html_emails_enabled: Optional[pulumi.Input[bool]] = None,
-             import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             in_product_marketing_emails_enabled: Optional[pulumi.Input[bool]] = None,
-             inactive_projects_delete_after_months: Optional[pulumi.Input[int]] = None,
-             inactive_projects_min_size_mb: Optional[pulumi.Input[int]] = None,
-             inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[int]] = None,
-             invisible_captcha_enabled: Optional[pulumi.Input[bool]] = None,
-             issues_create_limit: Optional[pulumi.Input[int]] = None,
-             keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
-             local_markdown_version: Optional[pulumi.Input[int]] = None,
-             mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
-             mailgun_signing_key: Optional[pulumi.Input[str]] = None,
-             maintenance_mode: Optional[pulumi.Input[bool]] = None,
-             maintenance_mode_message: Optional[pulumi.Input[str]] = None,
-             max_artifacts_size: Optional[pulumi.Input[int]] = None,
-             max_attachment_size: Optional[pulumi.Input[int]] = None,
-             max_export_size: Optional[pulumi.Input[int]] = None,
-             max_import_size: Optional[pulumi.Input[int]] = None,
-             max_number_of_repository_downloads: Optional[pulumi.Input[int]] = None,
-             max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[int]] = None,
-             max_pages_size: Optional[pulumi.Input[int]] = None,
-             max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
-             max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
-             metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
-             mirror_available: Optional[pulumi.Input[bool]] = None,
-             mirror_capacity_threshold: Optional[pulumi.Input[int]] = None,
-             mirror_max_capacity: Optional[pulumi.Input[int]] = None,
-             mirror_max_delay: Optional[pulumi.Input[int]] = None,
-             npm_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
-             outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
-             pages_domain_verification_enabled: Optional[pulumi.Input[bool]] = None,
-             password_authentication_enabled_for_git: Optional[pulumi.Input[bool]] = None,
-             password_authentication_enabled_for_web: Optional[pulumi.Input[bool]] = None,
-             password_lowercase_required: Optional[pulumi.Input[bool]] = None,
-             password_number_required: Optional[pulumi.Input[bool]] = None,
-             password_symbol_required: Optional[pulumi.Input[bool]] = None,
-             password_uppercase_required: Optional[pulumi.Input[bool]] = None,
-             performance_bar_allowed_group_path: Optional[pulumi.Input[str]] = None,
-             personal_access_token_prefix: Optional[pulumi.Input[str]] = None,
-             pipeline_limit_per_project_user_sha: Optional[pulumi.Input[int]] = None,
-             plantuml_enabled: Optional[pulumi.Input[bool]] = None,
-             plantuml_url: Optional[pulumi.Input[str]] = None,
-             polling_interval_multiplier: Optional[pulumi.Input[float]] = None,
-             project_export_enabled: Optional[pulumi.Input[bool]] = None,
-             prometheus_metrics_enabled: Optional[pulumi.Input[bool]] = None,
-             protected_ci_variables: Optional[pulumi.Input[bool]] = None,
-             push_event_activities_limit: Optional[pulumi.Input[int]] = None,
-             push_event_hooks_limit: Optional[pulumi.Input[int]] = None,
-             pypi_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
-             rate_limiting_response_text: Optional[pulumi.Input[str]] = None,
-             raw_blob_request_limit: Optional[pulumi.Input[int]] = None,
-             recaptcha_enabled: Optional[pulumi.Input[bool]] = None,
-             recaptcha_private_key: Optional[pulumi.Input[str]] = None,
-             recaptcha_site_key: Optional[pulumi.Input[str]] = None,
-             receive_max_input_size: Optional[pulumi.Input[int]] = None,
-             repository_checks_enabled: Optional[pulumi.Input[bool]] = None,
-             repository_size_limit: Optional[pulumi.Input[int]] = None,
-             repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
-             require_admin_approval_after_user_signup: Optional[pulumi.Input[bool]] = None,
-             require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
-             restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             rsa_key_restriction: Optional[pulumi.Input[int]] = None,
-             search_rate_limit: Optional[pulumi.Input[int]] = None,
-             search_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
-             send_user_confirmation_email: Optional[pulumi.Input[bool]] = None,
-             session_expire_delay: Optional[pulumi.Input[int]] = None,
-             shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
-             shared_runners_minutes: Optional[pulumi.Input[int]] = None,
-             shared_runners_text: Optional[pulumi.Input[str]] = None,
-             sidekiq_job_limiter_compression_threshold_bytes: Optional[pulumi.Input[int]] = None,
-             sidekiq_job_limiter_limit_bytes: Optional[pulumi.Input[int]] = None,
-             sidekiq_job_limiter_mode: Optional[pulumi.Input[str]] = None,
-             sign_in_text: Optional[pulumi.Input[str]] = None,
-             signup_enabled: Optional[pulumi.Input[bool]] = None,
-             slack_app_enabled: Optional[pulumi.Input[bool]] = None,
-             slack_app_id: Optional[pulumi.Input[str]] = None,
-             slack_app_secret: Optional[pulumi.Input[str]] = None,
-             slack_app_signing_secret: Optional[pulumi.Input[str]] = None,
-             slack_app_verification_token: Optional[pulumi.Input[str]] = None,
-             snippet_size_limit: Optional[pulumi.Input[int]] = None,
-             snowplow_app_id: Optional[pulumi.Input[str]] = None,
-             snowplow_collector_hostname: Optional[pulumi.Input[str]] = None,
-             snowplow_cookie_domain: Optional[pulumi.Input[str]] = None,
-             snowplow_enabled: Optional[pulumi.Input[bool]] = None,
-             sourcegraph_enabled: Optional[pulumi.Input[bool]] = None,
-             sourcegraph_public_only: Optional[pulumi.Input[bool]] = None,
-             sourcegraph_url: Optional[pulumi.Input[str]] = None,
-             spam_check_api_key: Optional[pulumi.Input[str]] = None,
-             spam_check_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
-             spam_check_endpoint_url: Optional[pulumi.Input[str]] = None,
-             suggest_pipeline_enabled: Optional[pulumi.Input[bool]] = None,
-             terminal_max_session_time: Optional[pulumi.Input[int]] = None,
-             terms: Optional[pulumi.Input[str]] = None,
-             throttle_authenticated_api_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_authenticated_api_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_authenticated_api_requests_per_period: Optional[pulumi.Input[int]] = None,
-             throttle_authenticated_packages_api_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_authenticated_packages_api_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_authenticated_packages_api_requests_per_period: Optional[pulumi.Input[int]] = None,
-             throttle_authenticated_web_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_authenticated_web_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_authenticated_web_requests_per_period: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_api_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_unauthenticated_api_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_api_requests_per_period: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_packages_api_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_unauthenticated_packages_api_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_packages_api_requests_per_period: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_web_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_unauthenticated_web_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[int]] = None,
-             time_tracking_limit_to_hours: Optional[pulumi.Input[bool]] = None,
-             two_factor_grace_period: Optional[pulumi.Input[int]] = None,
-             unique_ips_limit_enabled: Optional[pulumi.Input[bool]] = None,
-             unique_ips_limit_per_user: Optional[pulumi.Input[int]] = None,
-             unique_ips_limit_time_window: Optional[pulumi.Input[int]] = None,
-             usage_ping_enabled: Optional[pulumi.Input[bool]] = None,
-             user_deactivation_emails_enabled: Optional[pulumi.Input[bool]] = None,
-             user_default_external: Optional[pulumi.Input[bool]] = None,
-             user_default_internal_regex: Optional[pulumi.Input[str]] = None,
-             user_oauth_applications: Optional[pulumi.Input[bool]] = None,
-             user_show_add_ssh_key_message: Optional[pulumi.Input[bool]] = None,
-             version_check_enabled: Optional[pulumi.Input[bool]] = None,
-             web_ide_clientside_preview_enabled: Optional[pulumi.Input[bool]] = None,
-             whats_new_variant: Optional[pulumi.Input[str]] = None,
-             wiki_page_max_content_bytes: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if abuse_notification_email is None and 'abuseNotificationEmail' in kwargs:
-            abuse_notification_email = kwargs['abuseNotificationEmail']
-        if admin_mode is None and 'adminMode' in kwargs:
-            admin_mode = kwargs['adminMode']
-        if after_sign_out_path is None and 'afterSignOutPath' in kwargs:
-            after_sign_out_path = kwargs['afterSignOutPath']
-        if after_sign_up_text is None and 'afterSignUpText' in kwargs:
-            after_sign_up_text = kwargs['afterSignUpText']
-        if akismet_api_key is None and 'akismetApiKey' in kwargs:
-            akismet_api_key = kwargs['akismetApiKey']
-        if akismet_enabled is None and 'akismetEnabled' in kwargs:
-            akismet_enabled = kwargs['akismetEnabled']
-        if allow_group_owners_to_manage_ldap is None and 'allowGroupOwnersToManageLdap' in kwargs:
-            allow_group_owners_to_manage_ldap = kwargs['allowGroupOwnersToManageLdap']
-        if allow_local_requests_from_system_hooks is None and 'allowLocalRequestsFromSystemHooks' in kwargs:
-            allow_local_requests_from_system_hooks = kwargs['allowLocalRequestsFromSystemHooks']
-        if allow_local_requests_from_web_hooks_and_services is None and 'allowLocalRequestsFromWebHooksAndServices' in kwargs:
-            allow_local_requests_from_web_hooks_and_services = kwargs['allowLocalRequestsFromWebHooksAndServices']
-        if archive_builds_in_human_readable is None and 'archiveBuildsInHumanReadable' in kwargs:
-            archive_builds_in_human_readable = kwargs['archiveBuildsInHumanReadable']
-        if asset_proxy_allowlists is None and 'assetProxyAllowlists' in kwargs:
-            asset_proxy_allowlists = kwargs['assetProxyAllowlists']
-        if asset_proxy_enabled is None and 'assetProxyEnabled' in kwargs:
-            asset_proxy_enabled = kwargs['assetProxyEnabled']
-        if asset_proxy_secret_key is None and 'assetProxySecretKey' in kwargs:
-            asset_proxy_secret_key = kwargs['assetProxySecretKey']
-        if asset_proxy_url is None and 'assetProxyUrl' in kwargs:
-            asset_proxy_url = kwargs['assetProxyUrl']
-        if authorized_keys_enabled is None and 'authorizedKeysEnabled' in kwargs:
-            authorized_keys_enabled = kwargs['authorizedKeysEnabled']
-        if auto_devops_domain is None and 'autoDevopsDomain' in kwargs:
-            auto_devops_domain = kwargs['autoDevopsDomain']
-        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
-            auto_devops_enabled = kwargs['autoDevopsEnabled']
-        if automatic_purchased_storage_allocation is None and 'automaticPurchasedStorageAllocation' in kwargs:
-            automatic_purchased_storage_allocation = kwargs['automaticPurchasedStorageAllocation']
-        if can_create_group is None and 'canCreateGroup' in kwargs:
-            can_create_group = kwargs['canCreateGroup']
-        if check_namespace_plan is None and 'checkNamespacePlan' in kwargs:
-            check_namespace_plan = kwargs['checkNamespacePlan']
-        if commit_email_hostname is None and 'commitEmailHostname' in kwargs:
-            commit_email_hostname = kwargs['commitEmailHostname']
-        if container_expiration_policies_enable_historic_entries is None and 'containerExpirationPoliciesEnableHistoricEntries' in kwargs:
-            container_expiration_policies_enable_historic_entries = kwargs['containerExpirationPoliciesEnableHistoricEntries']
-        if container_registry_cleanup_tags_service_max_list_size is None and 'containerRegistryCleanupTagsServiceMaxListSize' in kwargs:
-            container_registry_cleanup_tags_service_max_list_size = kwargs['containerRegistryCleanupTagsServiceMaxListSize']
-        if container_registry_delete_tags_service_timeout is None and 'containerRegistryDeleteTagsServiceTimeout' in kwargs:
-            container_registry_delete_tags_service_timeout = kwargs['containerRegistryDeleteTagsServiceTimeout']
-        if container_registry_expiration_policies_caching is None and 'containerRegistryExpirationPoliciesCaching' in kwargs:
-            container_registry_expiration_policies_caching = kwargs['containerRegistryExpirationPoliciesCaching']
-        if container_registry_expiration_policies_worker_capacity is None and 'containerRegistryExpirationPoliciesWorkerCapacity' in kwargs:
-            container_registry_expiration_policies_worker_capacity = kwargs['containerRegistryExpirationPoliciesWorkerCapacity']
-        if container_registry_token_expire_delay is None and 'containerRegistryTokenExpireDelay' in kwargs:
-            container_registry_token_expire_delay = kwargs['containerRegistryTokenExpireDelay']
-        if deactivate_dormant_users is None and 'deactivateDormantUsers' in kwargs:
-            deactivate_dormant_users = kwargs['deactivateDormantUsers']
-        if default_artifacts_expire_in is None and 'defaultArtifactsExpireIn' in kwargs:
-            default_artifacts_expire_in = kwargs['defaultArtifactsExpireIn']
-        if default_branch_name is None and 'defaultBranchName' in kwargs:
-            default_branch_name = kwargs['defaultBranchName']
-        if default_branch_protection is None and 'defaultBranchProtection' in kwargs:
-            default_branch_protection = kwargs['defaultBranchProtection']
-        if default_ci_config_path is None and 'defaultCiConfigPath' in kwargs:
-            default_ci_config_path = kwargs['defaultCiConfigPath']
-        if default_group_visibility is None and 'defaultGroupVisibility' in kwargs:
-            default_group_visibility = kwargs['defaultGroupVisibility']
-        if default_project_creation is None and 'defaultProjectCreation' in kwargs:
-            default_project_creation = kwargs['defaultProjectCreation']
-        if default_project_visibility is None and 'defaultProjectVisibility' in kwargs:
-            default_project_visibility = kwargs['defaultProjectVisibility']
-        if default_projects_limit is None and 'defaultProjectsLimit' in kwargs:
-            default_projects_limit = kwargs['defaultProjectsLimit']
-        if default_snippet_visibility is None and 'defaultSnippetVisibility' in kwargs:
-            default_snippet_visibility = kwargs['defaultSnippetVisibility']
-        if delayed_group_deletion is None and 'delayedGroupDeletion' in kwargs:
-            delayed_group_deletion = kwargs['delayedGroupDeletion']
-        if delayed_project_deletion is None and 'delayedProjectDeletion' in kwargs:
-            delayed_project_deletion = kwargs['delayedProjectDeletion']
-        if delete_inactive_projects is None and 'deleteInactiveProjects' in kwargs:
-            delete_inactive_projects = kwargs['deleteInactiveProjects']
-        if deletion_adjourned_period is None and 'deletionAdjournedPeriod' in kwargs:
-            deletion_adjourned_period = kwargs['deletionAdjournedPeriod']
-        if diff_max_files is None and 'diffMaxFiles' in kwargs:
-            diff_max_files = kwargs['diffMaxFiles']
-        if diff_max_lines is None and 'diffMaxLines' in kwargs:
-            diff_max_lines = kwargs['diffMaxLines']
-        if diff_max_patch_bytes is None and 'diffMaxPatchBytes' in kwargs:
-            diff_max_patch_bytes = kwargs['diffMaxPatchBytes']
-        if disable_feed_token is None and 'disableFeedToken' in kwargs:
-            disable_feed_token = kwargs['disableFeedToken']
-        if disabled_oauth_sign_in_sources is None and 'disabledOauthSignInSources' in kwargs:
-            disabled_oauth_sign_in_sources = kwargs['disabledOauthSignInSources']
-        if dns_rebinding_protection_enabled is None and 'dnsRebindingProtectionEnabled' in kwargs:
-            dns_rebinding_protection_enabled = kwargs['dnsRebindingProtectionEnabled']
-        if domain_allowlists is None and 'domainAllowlists' in kwargs:
-            domain_allowlists = kwargs['domainAllowlists']
-        if domain_denylist_enabled is None and 'domainDenylistEnabled' in kwargs:
-            domain_denylist_enabled = kwargs['domainDenylistEnabled']
-        if domain_denylists is None and 'domainDenylists' in kwargs:
-            domain_denylists = kwargs['domainDenylists']
-        if dsa_key_restriction is None and 'dsaKeyRestriction' in kwargs:
-            dsa_key_restriction = kwargs['dsaKeyRestriction']
-        if ecdsa_key_restriction is None and 'ecdsaKeyRestriction' in kwargs:
-            ecdsa_key_restriction = kwargs['ecdsaKeyRestriction']
-        if ecdsa_sk_key_restriction is None and 'ecdsaSkKeyRestriction' in kwargs:
-            ecdsa_sk_key_restriction = kwargs['ecdsaSkKeyRestriction']
-        if ed25519_key_restriction is None and 'ed25519KeyRestriction' in kwargs:
-            ed25519_key_restriction = kwargs['ed25519KeyRestriction']
-        if ed25519_sk_key_restriction is None and 'ed25519SkKeyRestriction' in kwargs:
-            ed25519_sk_key_restriction = kwargs['ed25519SkKeyRestriction']
-        if eks_access_key_id is None and 'eksAccessKeyId' in kwargs:
-            eks_access_key_id = kwargs['eksAccessKeyId']
-        if eks_account_id is None and 'eksAccountId' in kwargs:
-            eks_account_id = kwargs['eksAccountId']
-        if eks_integration_enabled is None and 'eksIntegrationEnabled' in kwargs:
-            eks_integration_enabled = kwargs['eksIntegrationEnabled']
-        if eks_secret_access_key is None and 'eksSecretAccessKey' in kwargs:
-            eks_secret_access_key = kwargs['eksSecretAccessKey']
-        if elasticsearch_aws is None and 'elasticsearchAws' in kwargs:
-            elasticsearch_aws = kwargs['elasticsearchAws']
-        if elasticsearch_aws_access_key is None and 'elasticsearchAwsAccessKey' in kwargs:
-            elasticsearch_aws_access_key = kwargs['elasticsearchAwsAccessKey']
-        if elasticsearch_aws_region is None and 'elasticsearchAwsRegion' in kwargs:
-            elasticsearch_aws_region = kwargs['elasticsearchAwsRegion']
-        if elasticsearch_aws_secret_access_key is None and 'elasticsearchAwsSecretAccessKey' in kwargs:
-            elasticsearch_aws_secret_access_key = kwargs['elasticsearchAwsSecretAccessKey']
-        if elasticsearch_indexed_field_length_limit is None and 'elasticsearchIndexedFieldLengthLimit' in kwargs:
-            elasticsearch_indexed_field_length_limit = kwargs['elasticsearchIndexedFieldLengthLimit']
-        if elasticsearch_indexed_file_size_limit_kb is None and 'elasticsearchIndexedFileSizeLimitKb' in kwargs:
-            elasticsearch_indexed_file_size_limit_kb = kwargs['elasticsearchIndexedFileSizeLimitKb']
-        if elasticsearch_indexing is None and 'elasticsearchIndexing' in kwargs:
-            elasticsearch_indexing = kwargs['elasticsearchIndexing']
-        if elasticsearch_limit_indexing is None and 'elasticsearchLimitIndexing' in kwargs:
-            elasticsearch_limit_indexing = kwargs['elasticsearchLimitIndexing']
-        if elasticsearch_max_bulk_concurrency is None and 'elasticsearchMaxBulkConcurrency' in kwargs:
-            elasticsearch_max_bulk_concurrency = kwargs['elasticsearchMaxBulkConcurrency']
-        if elasticsearch_max_bulk_size_mb is None and 'elasticsearchMaxBulkSizeMb' in kwargs:
-            elasticsearch_max_bulk_size_mb = kwargs['elasticsearchMaxBulkSizeMb']
-        if elasticsearch_namespace_ids is None and 'elasticsearchNamespaceIds' in kwargs:
-            elasticsearch_namespace_ids = kwargs['elasticsearchNamespaceIds']
-        if elasticsearch_password is None and 'elasticsearchPassword' in kwargs:
-            elasticsearch_password = kwargs['elasticsearchPassword']
-        if elasticsearch_project_ids is None and 'elasticsearchProjectIds' in kwargs:
-            elasticsearch_project_ids = kwargs['elasticsearchProjectIds']
-        if elasticsearch_search is None and 'elasticsearchSearch' in kwargs:
-            elasticsearch_search = kwargs['elasticsearchSearch']
-        if elasticsearch_urls is None and 'elasticsearchUrls' in kwargs:
-            elasticsearch_urls = kwargs['elasticsearchUrls']
-        if elasticsearch_username is None and 'elasticsearchUsername' in kwargs:
-            elasticsearch_username = kwargs['elasticsearchUsername']
-        if email_additional_text is None and 'emailAdditionalText' in kwargs:
-            email_additional_text = kwargs['emailAdditionalText']
-        if email_author_in_body is None and 'emailAuthorInBody' in kwargs:
-            email_author_in_body = kwargs['emailAuthorInBody']
-        if enabled_git_access_protocol is None and 'enabledGitAccessProtocol' in kwargs:
-            enabled_git_access_protocol = kwargs['enabledGitAccessProtocol']
-        if enforce_namespace_storage_limit is None and 'enforceNamespaceStorageLimit' in kwargs:
-            enforce_namespace_storage_limit = kwargs['enforceNamespaceStorageLimit']
-        if enforce_terms is None and 'enforceTerms' in kwargs:
-            enforce_terms = kwargs['enforceTerms']
-        if external_auth_client_cert is None and 'externalAuthClientCert' in kwargs:
-            external_auth_client_cert = kwargs['externalAuthClientCert']
-        if external_auth_client_key is None and 'externalAuthClientKey' in kwargs:
-            external_auth_client_key = kwargs['externalAuthClientKey']
-        if external_auth_client_key_pass is None and 'externalAuthClientKeyPass' in kwargs:
-            external_auth_client_key_pass = kwargs['externalAuthClientKeyPass']
-        if external_authorization_service_default_label is None and 'externalAuthorizationServiceDefaultLabel' in kwargs:
-            external_authorization_service_default_label = kwargs['externalAuthorizationServiceDefaultLabel']
-        if external_authorization_service_enabled is None and 'externalAuthorizationServiceEnabled' in kwargs:
-            external_authorization_service_enabled = kwargs['externalAuthorizationServiceEnabled']
-        if external_authorization_service_timeout is None and 'externalAuthorizationServiceTimeout' in kwargs:
-            external_authorization_service_timeout = kwargs['externalAuthorizationServiceTimeout']
-        if external_authorization_service_url is None and 'externalAuthorizationServiceUrl' in kwargs:
-            external_authorization_service_url = kwargs['externalAuthorizationServiceUrl']
-        if external_pipeline_validation_service_timeout is None and 'externalPipelineValidationServiceTimeout' in kwargs:
-            external_pipeline_validation_service_timeout = kwargs['externalPipelineValidationServiceTimeout']
-        if external_pipeline_validation_service_token is None and 'externalPipelineValidationServiceToken' in kwargs:
-            external_pipeline_validation_service_token = kwargs['externalPipelineValidationServiceToken']
-        if external_pipeline_validation_service_url is None and 'externalPipelineValidationServiceUrl' in kwargs:
-            external_pipeline_validation_service_url = kwargs['externalPipelineValidationServiceUrl']
-        if file_template_project_id is None and 'fileTemplateProjectId' in kwargs:
-            file_template_project_id = kwargs['fileTemplateProjectId']
-        if first_day_of_week is None and 'firstDayOfWeek' in kwargs:
-            first_day_of_week = kwargs['firstDayOfWeek']
-        if geo_node_allowed_ips is None and 'geoNodeAllowedIps' in kwargs:
-            geo_node_allowed_ips = kwargs['geoNodeAllowedIps']
-        if geo_status_timeout is None and 'geoStatusTimeout' in kwargs:
-            geo_status_timeout = kwargs['geoStatusTimeout']
-        if git_rate_limit_users_allowlists is None and 'gitRateLimitUsersAllowlists' in kwargs:
-            git_rate_limit_users_allowlists = kwargs['gitRateLimitUsersAllowlists']
-        if git_two_factor_session_expiry is None and 'gitTwoFactorSessionExpiry' in kwargs:
-            git_two_factor_session_expiry = kwargs['gitTwoFactorSessionExpiry']
-        if gitaly_timeout_default is None and 'gitalyTimeoutDefault' in kwargs:
-            gitaly_timeout_default = kwargs['gitalyTimeoutDefault']
-        if gitaly_timeout_fast is None and 'gitalyTimeoutFast' in kwargs:
-            gitaly_timeout_fast = kwargs['gitalyTimeoutFast']
-        if gitaly_timeout_medium is None and 'gitalyTimeoutMedium' in kwargs:
-            gitaly_timeout_medium = kwargs['gitalyTimeoutMedium']
-        if grafana_enabled is None and 'grafanaEnabled' in kwargs:
-            grafana_enabled = kwargs['grafanaEnabled']
-        if grafana_url is None and 'grafanaUrl' in kwargs:
-            grafana_url = kwargs['grafanaUrl']
-        if gravatar_enabled is None and 'gravatarEnabled' in kwargs:
-            gravatar_enabled = kwargs['gravatarEnabled']
-        if group_owners_can_manage_default_branch_protection is None and 'groupOwnersCanManageDefaultBranchProtection' in kwargs:
-            group_owners_can_manage_default_branch_protection = kwargs['groupOwnersCanManageDefaultBranchProtection']
-        if hashed_storage_enabled is None and 'hashedStorageEnabled' in kwargs:
-            hashed_storage_enabled = kwargs['hashedStorageEnabled']
-        if help_page_hide_commercial_content is None and 'helpPageHideCommercialContent' in kwargs:
-            help_page_hide_commercial_content = kwargs['helpPageHideCommercialContent']
-        if help_page_support_url is None and 'helpPageSupportUrl' in kwargs:
-            help_page_support_url = kwargs['helpPageSupportUrl']
-        if help_page_text is None and 'helpPageText' in kwargs:
-            help_page_text = kwargs['helpPageText']
-        if help_text is None and 'helpText' in kwargs:
-            help_text = kwargs['helpText']
-        if hide_third_party_offers is None and 'hideThirdPartyOffers' in kwargs:
-            hide_third_party_offers = kwargs['hideThirdPartyOffers']
-        if home_page_url is None and 'homePageUrl' in kwargs:
-            home_page_url = kwargs['homePageUrl']
-        if housekeeping_enabled is None and 'housekeepingEnabled' in kwargs:
-            housekeeping_enabled = kwargs['housekeepingEnabled']
-        if housekeeping_full_repack_period is None and 'housekeepingFullRepackPeriod' in kwargs:
-            housekeeping_full_repack_period = kwargs['housekeepingFullRepackPeriod']
-        if housekeeping_gc_period is None and 'housekeepingGcPeriod' in kwargs:
-            housekeeping_gc_period = kwargs['housekeepingGcPeriod']
-        if housekeeping_incremental_repack_period is None and 'housekeepingIncrementalRepackPeriod' in kwargs:
-            housekeeping_incremental_repack_period = kwargs['housekeepingIncrementalRepackPeriod']
-        if html_emails_enabled is None and 'htmlEmailsEnabled' in kwargs:
-            html_emails_enabled = kwargs['htmlEmailsEnabled']
-        if import_sources is None and 'importSources' in kwargs:
-            import_sources = kwargs['importSources']
-        if in_product_marketing_emails_enabled is None and 'inProductMarketingEmailsEnabled' in kwargs:
-            in_product_marketing_emails_enabled = kwargs['inProductMarketingEmailsEnabled']
-        if inactive_projects_delete_after_months is None and 'inactiveProjectsDeleteAfterMonths' in kwargs:
-            inactive_projects_delete_after_months = kwargs['inactiveProjectsDeleteAfterMonths']
-        if inactive_projects_min_size_mb is None and 'inactiveProjectsMinSizeMb' in kwargs:
-            inactive_projects_min_size_mb = kwargs['inactiveProjectsMinSizeMb']
-        if inactive_projects_send_warning_email_after_months is None and 'inactiveProjectsSendWarningEmailAfterMonths' in kwargs:
-            inactive_projects_send_warning_email_after_months = kwargs['inactiveProjectsSendWarningEmailAfterMonths']
-        if invisible_captcha_enabled is None and 'invisibleCaptchaEnabled' in kwargs:
-            invisible_captcha_enabled = kwargs['invisibleCaptchaEnabled']
-        if issues_create_limit is None and 'issuesCreateLimit' in kwargs:
-            issues_create_limit = kwargs['issuesCreateLimit']
-        if keep_latest_artifact is None and 'keepLatestArtifact' in kwargs:
-            keep_latest_artifact = kwargs['keepLatestArtifact']
-        if local_markdown_version is None and 'localMarkdownVersion' in kwargs:
-            local_markdown_version = kwargs['localMarkdownVersion']
-        if mailgun_events_enabled is None and 'mailgunEventsEnabled' in kwargs:
-            mailgun_events_enabled = kwargs['mailgunEventsEnabled']
-        if mailgun_signing_key is None and 'mailgunSigningKey' in kwargs:
-            mailgun_signing_key = kwargs['mailgunSigningKey']
-        if maintenance_mode is None and 'maintenanceMode' in kwargs:
-            maintenance_mode = kwargs['maintenanceMode']
-        if maintenance_mode_message is None and 'maintenanceModeMessage' in kwargs:
-            maintenance_mode_message = kwargs['maintenanceModeMessage']
-        if max_artifacts_size is None and 'maxArtifactsSize' in kwargs:
-            max_artifacts_size = kwargs['maxArtifactsSize']
-        if max_attachment_size is None and 'maxAttachmentSize' in kwargs:
-            max_attachment_size = kwargs['maxAttachmentSize']
-        if max_export_size is None and 'maxExportSize' in kwargs:
-            max_export_size = kwargs['maxExportSize']
-        if max_import_size is None and 'maxImportSize' in kwargs:
-            max_import_size = kwargs['maxImportSize']
-        if max_number_of_repository_downloads is None and 'maxNumberOfRepositoryDownloads' in kwargs:
-            max_number_of_repository_downloads = kwargs['maxNumberOfRepositoryDownloads']
-        if max_number_of_repository_downloads_within_time_period is None and 'maxNumberOfRepositoryDownloadsWithinTimePeriod' in kwargs:
-            max_number_of_repository_downloads_within_time_period = kwargs['maxNumberOfRepositoryDownloadsWithinTimePeriod']
-        if max_pages_size is None and 'maxPagesSize' in kwargs:
-            max_pages_size = kwargs['maxPagesSize']
-        if max_personal_access_token_lifetime is None and 'maxPersonalAccessTokenLifetime' in kwargs:
-            max_personal_access_token_lifetime = kwargs['maxPersonalAccessTokenLifetime']
-        if max_ssh_key_lifetime is None and 'maxSshKeyLifetime' in kwargs:
-            max_ssh_key_lifetime = kwargs['maxSshKeyLifetime']
-        if metrics_method_call_threshold is None and 'metricsMethodCallThreshold' in kwargs:
-            metrics_method_call_threshold = kwargs['metricsMethodCallThreshold']
-        if mirror_available is None and 'mirrorAvailable' in kwargs:
-            mirror_available = kwargs['mirrorAvailable']
-        if mirror_capacity_threshold is None and 'mirrorCapacityThreshold' in kwargs:
-            mirror_capacity_threshold = kwargs['mirrorCapacityThreshold']
-        if mirror_max_capacity is None and 'mirrorMaxCapacity' in kwargs:
-            mirror_max_capacity = kwargs['mirrorMaxCapacity']
-        if mirror_max_delay is None and 'mirrorMaxDelay' in kwargs:
-            mirror_max_delay = kwargs['mirrorMaxDelay']
-        if npm_package_requests_forwarding is None and 'npmPackageRequestsForwarding' in kwargs:
-            npm_package_requests_forwarding = kwargs['npmPackageRequestsForwarding']
-        if outbound_local_requests_whitelists is None and 'outboundLocalRequestsWhitelists' in kwargs:
-            outbound_local_requests_whitelists = kwargs['outboundLocalRequestsWhitelists']
-        if package_registry_cleanup_policies_worker_capacity is None and 'packageRegistryCleanupPoliciesWorkerCapacity' in kwargs:
-            package_registry_cleanup_policies_worker_capacity = kwargs['packageRegistryCleanupPoliciesWorkerCapacity']
-        if pages_domain_verification_enabled is None and 'pagesDomainVerificationEnabled' in kwargs:
-            pages_domain_verification_enabled = kwargs['pagesDomainVerificationEnabled']
-        if password_authentication_enabled_for_git is None and 'passwordAuthenticationEnabledForGit' in kwargs:
-            password_authentication_enabled_for_git = kwargs['passwordAuthenticationEnabledForGit']
-        if password_authentication_enabled_for_web is None and 'passwordAuthenticationEnabledForWeb' in kwargs:
-            password_authentication_enabled_for_web = kwargs['passwordAuthenticationEnabledForWeb']
-        if password_lowercase_required is None and 'passwordLowercaseRequired' in kwargs:
-            password_lowercase_required = kwargs['passwordLowercaseRequired']
-        if password_number_required is None and 'passwordNumberRequired' in kwargs:
-            password_number_required = kwargs['passwordNumberRequired']
-        if password_symbol_required is None and 'passwordSymbolRequired' in kwargs:
-            password_symbol_required = kwargs['passwordSymbolRequired']
-        if password_uppercase_required is None and 'passwordUppercaseRequired' in kwargs:
-            password_uppercase_required = kwargs['passwordUppercaseRequired']
-        if performance_bar_allowed_group_path is None and 'performanceBarAllowedGroupPath' in kwargs:
-            performance_bar_allowed_group_path = kwargs['performanceBarAllowedGroupPath']
-        if personal_access_token_prefix is None and 'personalAccessTokenPrefix' in kwargs:
-            personal_access_token_prefix = kwargs['personalAccessTokenPrefix']
-        if pipeline_limit_per_project_user_sha is None and 'pipelineLimitPerProjectUserSha' in kwargs:
-            pipeline_limit_per_project_user_sha = kwargs['pipelineLimitPerProjectUserSha']
-        if plantuml_enabled is None and 'plantumlEnabled' in kwargs:
-            plantuml_enabled = kwargs['plantumlEnabled']
-        if plantuml_url is None and 'plantumlUrl' in kwargs:
-            plantuml_url = kwargs['plantumlUrl']
-        if polling_interval_multiplier is None and 'pollingIntervalMultiplier' in kwargs:
-            polling_interval_multiplier = kwargs['pollingIntervalMultiplier']
-        if project_export_enabled is None and 'projectExportEnabled' in kwargs:
-            project_export_enabled = kwargs['projectExportEnabled']
-        if prometheus_metrics_enabled is None and 'prometheusMetricsEnabled' in kwargs:
-            prometheus_metrics_enabled = kwargs['prometheusMetricsEnabled']
-        if protected_ci_variables is None and 'protectedCiVariables' in kwargs:
-            protected_ci_variables = kwargs['protectedCiVariables']
-        if push_event_activities_limit is None and 'pushEventActivitiesLimit' in kwargs:
-            push_event_activities_limit = kwargs['pushEventActivitiesLimit']
-        if push_event_hooks_limit is None and 'pushEventHooksLimit' in kwargs:
-            push_event_hooks_limit = kwargs['pushEventHooksLimit']
-        if pypi_package_requests_forwarding is None and 'pypiPackageRequestsForwarding' in kwargs:
-            pypi_package_requests_forwarding = kwargs['pypiPackageRequestsForwarding']
-        if rate_limiting_response_text is None and 'rateLimitingResponseText' in kwargs:
-            rate_limiting_response_text = kwargs['rateLimitingResponseText']
-        if raw_blob_request_limit is None and 'rawBlobRequestLimit' in kwargs:
-            raw_blob_request_limit = kwargs['rawBlobRequestLimit']
-        if recaptcha_enabled is None and 'recaptchaEnabled' in kwargs:
-            recaptcha_enabled = kwargs['recaptchaEnabled']
-        if recaptcha_private_key is None and 'recaptchaPrivateKey' in kwargs:
-            recaptcha_private_key = kwargs['recaptchaPrivateKey']
-        if recaptcha_site_key is None and 'recaptchaSiteKey' in kwargs:
-            recaptcha_site_key = kwargs['recaptchaSiteKey']
-        if receive_max_input_size is None and 'receiveMaxInputSize' in kwargs:
-            receive_max_input_size = kwargs['receiveMaxInputSize']
-        if repository_checks_enabled is None and 'repositoryChecksEnabled' in kwargs:
-            repository_checks_enabled = kwargs['repositoryChecksEnabled']
-        if repository_size_limit is None and 'repositorySizeLimit' in kwargs:
-            repository_size_limit = kwargs['repositorySizeLimit']
-        if repository_storages is None and 'repositoryStorages' in kwargs:
-            repository_storages = kwargs['repositoryStorages']
-        if repository_storages_weighted is None and 'repositoryStoragesWeighted' in kwargs:
-            repository_storages_weighted = kwargs['repositoryStoragesWeighted']
-        if require_admin_approval_after_user_signup is None and 'requireAdminApprovalAfterUserSignup' in kwargs:
-            require_admin_approval_after_user_signup = kwargs['requireAdminApprovalAfterUserSignup']
-        if require_two_factor_authentication is None and 'requireTwoFactorAuthentication' in kwargs:
-            require_two_factor_authentication = kwargs['requireTwoFactorAuthentication']
-        if restricted_visibility_levels is None and 'restrictedVisibilityLevels' in kwargs:
-            restricted_visibility_levels = kwargs['restrictedVisibilityLevels']
-        if rsa_key_restriction is None and 'rsaKeyRestriction' in kwargs:
-            rsa_key_restriction = kwargs['rsaKeyRestriction']
-        if search_rate_limit is None and 'searchRateLimit' in kwargs:
-            search_rate_limit = kwargs['searchRateLimit']
-        if search_rate_limit_unauthenticated is None and 'searchRateLimitUnauthenticated' in kwargs:
-            search_rate_limit_unauthenticated = kwargs['searchRateLimitUnauthenticated']
-        if send_user_confirmation_email is None and 'sendUserConfirmationEmail' in kwargs:
-            send_user_confirmation_email = kwargs['sendUserConfirmationEmail']
-        if session_expire_delay is None and 'sessionExpireDelay' in kwargs:
-            session_expire_delay = kwargs['sessionExpireDelay']
-        if shared_runners_enabled is None and 'sharedRunnersEnabled' in kwargs:
-            shared_runners_enabled = kwargs['sharedRunnersEnabled']
-        if shared_runners_minutes is None and 'sharedRunnersMinutes' in kwargs:
-            shared_runners_minutes = kwargs['sharedRunnersMinutes']
-        if shared_runners_text is None and 'sharedRunnersText' in kwargs:
-            shared_runners_text = kwargs['sharedRunnersText']
-        if sidekiq_job_limiter_compression_threshold_bytes is None and 'sidekiqJobLimiterCompressionThresholdBytes' in kwargs:
-            sidekiq_job_limiter_compression_threshold_bytes = kwargs['sidekiqJobLimiterCompressionThresholdBytes']
-        if sidekiq_job_limiter_limit_bytes is None and 'sidekiqJobLimiterLimitBytes' in kwargs:
-            sidekiq_job_limiter_limit_bytes = kwargs['sidekiqJobLimiterLimitBytes']
-        if sidekiq_job_limiter_mode is None and 'sidekiqJobLimiterMode' in kwargs:
-            sidekiq_job_limiter_mode = kwargs['sidekiqJobLimiterMode']
-        if sign_in_text is None and 'signInText' in kwargs:
-            sign_in_text = kwargs['signInText']
-        if signup_enabled is None and 'signupEnabled' in kwargs:
-            signup_enabled = kwargs['signupEnabled']
-        if slack_app_enabled is None and 'slackAppEnabled' in kwargs:
-            slack_app_enabled = kwargs['slackAppEnabled']
-        if slack_app_id is None and 'slackAppId' in kwargs:
-            slack_app_id = kwargs['slackAppId']
-        if slack_app_secret is None and 'slackAppSecret' in kwargs:
-            slack_app_secret = kwargs['slackAppSecret']
-        if slack_app_signing_secret is None and 'slackAppSigningSecret' in kwargs:
-            slack_app_signing_secret = kwargs['slackAppSigningSecret']
-        if slack_app_verification_token is None and 'slackAppVerificationToken' in kwargs:
-            slack_app_verification_token = kwargs['slackAppVerificationToken']
-        if snippet_size_limit is None and 'snippetSizeLimit' in kwargs:
-            snippet_size_limit = kwargs['snippetSizeLimit']
-        if snowplow_app_id is None and 'snowplowAppId' in kwargs:
-            snowplow_app_id = kwargs['snowplowAppId']
-        if snowplow_collector_hostname is None and 'snowplowCollectorHostname' in kwargs:
-            snowplow_collector_hostname = kwargs['snowplowCollectorHostname']
-        if snowplow_cookie_domain is None and 'snowplowCookieDomain' in kwargs:
-            snowplow_cookie_domain = kwargs['snowplowCookieDomain']
-        if snowplow_enabled is None and 'snowplowEnabled' in kwargs:
-            snowplow_enabled = kwargs['snowplowEnabled']
-        if sourcegraph_enabled is None and 'sourcegraphEnabled' in kwargs:
-            sourcegraph_enabled = kwargs['sourcegraphEnabled']
-        if sourcegraph_public_only is None and 'sourcegraphPublicOnly' in kwargs:
-            sourcegraph_public_only = kwargs['sourcegraphPublicOnly']
-        if sourcegraph_url is None and 'sourcegraphUrl' in kwargs:
-            sourcegraph_url = kwargs['sourcegraphUrl']
-        if spam_check_api_key is None and 'spamCheckApiKey' in kwargs:
-            spam_check_api_key = kwargs['spamCheckApiKey']
-        if spam_check_endpoint_enabled is None and 'spamCheckEndpointEnabled' in kwargs:
-            spam_check_endpoint_enabled = kwargs['spamCheckEndpointEnabled']
-        if spam_check_endpoint_url is None and 'spamCheckEndpointUrl' in kwargs:
-            spam_check_endpoint_url = kwargs['spamCheckEndpointUrl']
-        if suggest_pipeline_enabled is None and 'suggestPipelineEnabled' in kwargs:
-            suggest_pipeline_enabled = kwargs['suggestPipelineEnabled']
-        if terminal_max_session_time is None and 'terminalMaxSessionTime' in kwargs:
-            terminal_max_session_time = kwargs['terminalMaxSessionTime']
-        if throttle_authenticated_api_enabled is None and 'throttleAuthenticatedApiEnabled' in kwargs:
-            throttle_authenticated_api_enabled = kwargs['throttleAuthenticatedApiEnabled']
-        if throttle_authenticated_api_period_in_seconds is None and 'throttleAuthenticatedApiPeriodInSeconds' in kwargs:
-            throttle_authenticated_api_period_in_seconds = kwargs['throttleAuthenticatedApiPeriodInSeconds']
-        if throttle_authenticated_api_requests_per_period is None and 'throttleAuthenticatedApiRequestsPerPeriod' in kwargs:
-            throttle_authenticated_api_requests_per_period = kwargs['throttleAuthenticatedApiRequestsPerPeriod']
-        if throttle_authenticated_packages_api_enabled is None and 'throttleAuthenticatedPackagesApiEnabled' in kwargs:
-            throttle_authenticated_packages_api_enabled = kwargs['throttleAuthenticatedPackagesApiEnabled']
-        if throttle_authenticated_packages_api_period_in_seconds is None and 'throttleAuthenticatedPackagesApiPeriodInSeconds' in kwargs:
-            throttle_authenticated_packages_api_period_in_seconds = kwargs['throttleAuthenticatedPackagesApiPeriodInSeconds']
-        if throttle_authenticated_packages_api_requests_per_period is None and 'throttleAuthenticatedPackagesApiRequestsPerPeriod' in kwargs:
-            throttle_authenticated_packages_api_requests_per_period = kwargs['throttleAuthenticatedPackagesApiRequestsPerPeriod']
-        if throttle_authenticated_web_enabled is None and 'throttleAuthenticatedWebEnabled' in kwargs:
-            throttle_authenticated_web_enabled = kwargs['throttleAuthenticatedWebEnabled']
-        if throttle_authenticated_web_period_in_seconds is None and 'throttleAuthenticatedWebPeriodInSeconds' in kwargs:
-            throttle_authenticated_web_period_in_seconds = kwargs['throttleAuthenticatedWebPeriodInSeconds']
-        if throttle_authenticated_web_requests_per_period is None and 'throttleAuthenticatedWebRequestsPerPeriod' in kwargs:
-            throttle_authenticated_web_requests_per_period = kwargs['throttleAuthenticatedWebRequestsPerPeriod']
-        if throttle_unauthenticated_api_enabled is None and 'throttleUnauthenticatedApiEnabled' in kwargs:
-            throttle_unauthenticated_api_enabled = kwargs['throttleUnauthenticatedApiEnabled']
-        if throttle_unauthenticated_api_period_in_seconds is None and 'throttleUnauthenticatedApiPeriodInSeconds' in kwargs:
-            throttle_unauthenticated_api_period_in_seconds = kwargs['throttleUnauthenticatedApiPeriodInSeconds']
-        if throttle_unauthenticated_api_requests_per_period is None and 'throttleUnauthenticatedApiRequestsPerPeriod' in kwargs:
-            throttle_unauthenticated_api_requests_per_period = kwargs['throttleUnauthenticatedApiRequestsPerPeriod']
-        if throttle_unauthenticated_packages_api_enabled is None and 'throttleUnauthenticatedPackagesApiEnabled' in kwargs:
-            throttle_unauthenticated_packages_api_enabled = kwargs['throttleUnauthenticatedPackagesApiEnabled']
-        if throttle_unauthenticated_packages_api_period_in_seconds is None and 'throttleUnauthenticatedPackagesApiPeriodInSeconds' in kwargs:
-            throttle_unauthenticated_packages_api_period_in_seconds = kwargs['throttleUnauthenticatedPackagesApiPeriodInSeconds']
-        if throttle_unauthenticated_packages_api_requests_per_period is None and 'throttleUnauthenticatedPackagesApiRequestsPerPeriod' in kwargs:
-            throttle_unauthenticated_packages_api_requests_per_period = kwargs['throttleUnauthenticatedPackagesApiRequestsPerPeriod']
-        if throttle_unauthenticated_web_enabled is None and 'throttleUnauthenticatedWebEnabled' in kwargs:
-            throttle_unauthenticated_web_enabled = kwargs['throttleUnauthenticatedWebEnabled']
-        if throttle_unauthenticated_web_period_in_seconds is None and 'throttleUnauthenticatedWebPeriodInSeconds' in kwargs:
-            throttle_unauthenticated_web_period_in_seconds = kwargs['throttleUnauthenticatedWebPeriodInSeconds']
-        if throttle_unauthenticated_web_requests_per_period is None and 'throttleUnauthenticatedWebRequestsPerPeriod' in kwargs:
-            throttle_unauthenticated_web_requests_per_period = kwargs['throttleUnauthenticatedWebRequestsPerPeriod']
-        if time_tracking_limit_to_hours is None and 'timeTrackingLimitToHours' in kwargs:
-            time_tracking_limit_to_hours = kwargs['timeTrackingLimitToHours']
-        if two_factor_grace_period is None and 'twoFactorGracePeriod' in kwargs:
-            two_factor_grace_period = kwargs['twoFactorGracePeriod']
-        if unique_ips_limit_enabled is None and 'uniqueIpsLimitEnabled' in kwargs:
-            unique_ips_limit_enabled = kwargs['uniqueIpsLimitEnabled']
-        if unique_ips_limit_per_user is None and 'uniqueIpsLimitPerUser' in kwargs:
-            unique_ips_limit_per_user = kwargs['uniqueIpsLimitPerUser']
-        if unique_ips_limit_time_window is None and 'uniqueIpsLimitTimeWindow' in kwargs:
-            unique_ips_limit_time_window = kwargs['uniqueIpsLimitTimeWindow']
-        if usage_ping_enabled is None and 'usagePingEnabled' in kwargs:
-            usage_ping_enabled = kwargs['usagePingEnabled']
-        if user_deactivation_emails_enabled is None and 'userDeactivationEmailsEnabled' in kwargs:
-            user_deactivation_emails_enabled = kwargs['userDeactivationEmailsEnabled']
-        if user_default_external is None and 'userDefaultExternal' in kwargs:
-            user_default_external = kwargs['userDefaultExternal']
-        if user_default_internal_regex is None and 'userDefaultInternalRegex' in kwargs:
-            user_default_internal_regex = kwargs['userDefaultInternalRegex']
-        if user_oauth_applications is None and 'userOauthApplications' in kwargs:
-            user_oauth_applications = kwargs['userOauthApplications']
-        if user_show_add_ssh_key_message is None and 'userShowAddSshKeyMessage' in kwargs:
-            user_show_add_ssh_key_message = kwargs['userShowAddSshKeyMessage']
-        if version_check_enabled is None and 'versionCheckEnabled' in kwargs:
-            version_check_enabled = kwargs['versionCheckEnabled']
-        if web_ide_clientside_preview_enabled is None and 'webIdeClientsidePreviewEnabled' in kwargs:
-            web_ide_clientside_preview_enabled = kwargs['webIdeClientsidePreviewEnabled']
-        if whats_new_variant is None and 'whatsNewVariant' in kwargs:
-            whats_new_variant = kwargs['whatsNewVariant']
-        if wiki_page_max_content_bytes is None and 'wikiPageMaxContentBytes' in kwargs:
-            wiki_page_max_content_bytes = kwargs['wikiPageMaxContentBytes']
-
         if abuse_notification_email is not None:
-            _setter("abuse_notification_email", abuse_notification_email)
+            pulumi.set(__self__, "abuse_notification_email", abuse_notification_email)
         if admin_mode is not None:
-            _setter("admin_mode", admin_mode)
+            pulumi.set(__self__, "admin_mode", admin_mode)
         if after_sign_out_path is not None:
-            _setter("after_sign_out_path", after_sign_out_path)
+            pulumi.set(__self__, "after_sign_out_path", after_sign_out_path)
         if after_sign_up_text is not None:
-            _setter("after_sign_up_text", after_sign_up_text)
+            pulumi.set(__self__, "after_sign_up_text", after_sign_up_text)
         if akismet_api_key is not None:
-            _setter("akismet_api_key", akismet_api_key)
+            pulumi.set(__self__, "akismet_api_key", akismet_api_key)
         if akismet_enabled is not None:
-            _setter("akismet_enabled", akismet_enabled)
+            pulumi.set(__self__, "akismet_enabled", akismet_enabled)
         if allow_group_owners_to_manage_ldap is not None:
-            _setter("allow_group_owners_to_manage_ldap", allow_group_owners_to_manage_ldap)
+            pulumi.set(__self__, "allow_group_owners_to_manage_ldap", allow_group_owners_to_manage_ldap)
         if allow_local_requests_from_system_hooks is not None:
-            _setter("allow_local_requests_from_system_hooks", allow_local_requests_from_system_hooks)
+            pulumi.set(__self__, "allow_local_requests_from_system_hooks", allow_local_requests_from_system_hooks)
         if allow_local_requests_from_web_hooks_and_services is not None:
-            _setter("allow_local_requests_from_web_hooks_and_services", allow_local_requests_from_web_hooks_and_services)
+            pulumi.set(__self__, "allow_local_requests_from_web_hooks_and_services", allow_local_requests_from_web_hooks_and_services)
         if archive_builds_in_human_readable is not None:
-            _setter("archive_builds_in_human_readable", archive_builds_in_human_readable)
+            pulumi.set(__self__, "archive_builds_in_human_readable", archive_builds_in_human_readable)
         if asset_proxy_allowlists is not None:
-            _setter("asset_proxy_allowlists", asset_proxy_allowlists)
+            pulumi.set(__self__, "asset_proxy_allowlists", asset_proxy_allowlists)
         if asset_proxy_enabled is not None:
-            _setter("asset_proxy_enabled", asset_proxy_enabled)
+            pulumi.set(__self__, "asset_proxy_enabled", asset_proxy_enabled)
         if asset_proxy_secret_key is not None:
-            _setter("asset_proxy_secret_key", asset_proxy_secret_key)
+            pulumi.set(__self__, "asset_proxy_secret_key", asset_proxy_secret_key)
         if asset_proxy_url is not None:
-            _setter("asset_proxy_url", asset_proxy_url)
+            pulumi.set(__self__, "asset_proxy_url", asset_proxy_url)
         if authorized_keys_enabled is not None:
-            _setter("authorized_keys_enabled", authorized_keys_enabled)
+            pulumi.set(__self__, "authorized_keys_enabled", authorized_keys_enabled)
         if auto_devops_domain is not None:
-            _setter("auto_devops_domain", auto_devops_domain)
+            pulumi.set(__self__, "auto_devops_domain", auto_devops_domain)
         if auto_devops_enabled is not None:
-            _setter("auto_devops_enabled", auto_devops_enabled)
+            pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if automatic_purchased_storage_allocation is not None:
-            _setter("automatic_purchased_storage_allocation", automatic_purchased_storage_allocation)
+            pulumi.set(__self__, "automatic_purchased_storage_allocation", automatic_purchased_storage_allocation)
         if can_create_group is not None:
-            _setter("can_create_group", can_create_group)
+            pulumi.set(__self__, "can_create_group", can_create_group)
         if check_namespace_plan is not None:
-            _setter("check_namespace_plan", check_namespace_plan)
+            pulumi.set(__self__, "check_namespace_plan", check_namespace_plan)
         if commit_email_hostname is not None:
-            _setter("commit_email_hostname", commit_email_hostname)
+            pulumi.set(__self__, "commit_email_hostname", commit_email_hostname)
         if container_expiration_policies_enable_historic_entries is not None:
-            _setter("container_expiration_policies_enable_historic_entries", container_expiration_policies_enable_historic_entries)
+            pulumi.set(__self__, "container_expiration_policies_enable_historic_entries", container_expiration_policies_enable_historic_entries)
         if container_registry_cleanup_tags_service_max_list_size is not None:
-            _setter("container_registry_cleanup_tags_service_max_list_size", container_registry_cleanup_tags_service_max_list_size)
+            pulumi.set(__self__, "container_registry_cleanup_tags_service_max_list_size", container_registry_cleanup_tags_service_max_list_size)
         if container_registry_delete_tags_service_timeout is not None:
-            _setter("container_registry_delete_tags_service_timeout", container_registry_delete_tags_service_timeout)
+            pulumi.set(__self__, "container_registry_delete_tags_service_timeout", container_registry_delete_tags_service_timeout)
         if container_registry_expiration_policies_caching is not None:
-            _setter("container_registry_expiration_policies_caching", container_registry_expiration_policies_caching)
+            pulumi.set(__self__, "container_registry_expiration_policies_caching", container_registry_expiration_policies_caching)
         if container_registry_expiration_policies_worker_capacity is not None:
-            _setter("container_registry_expiration_policies_worker_capacity", container_registry_expiration_policies_worker_capacity)
+            pulumi.set(__self__, "container_registry_expiration_policies_worker_capacity", container_registry_expiration_policies_worker_capacity)
         if container_registry_token_expire_delay is not None:
-            _setter("container_registry_token_expire_delay", container_registry_token_expire_delay)
+            pulumi.set(__self__, "container_registry_token_expire_delay", container_registry_token_expire_delay)
         if deactivate_dormant_users is not None:
-            _setter("deactivate_dormant_users", deactivate_dormant_users)
+            pulumi.set(__self__, "deactivate_dormant_users", deactivate_dormant_users)
         if default_artifacts_expire_in is not None:
-            _setter("default_artifacts_expire_in", default_artifacts_expire_in)
+            pulumi.set(__self__, "default_artifacts_expire_in", default_artifacts_expire_in)
         if default_branch_name is not None:
-            _setter("default_branch_name", default_branch_name)
+            pulumi.set(__self__, "default_branch_name", default_branch_name)
         if default_branch_protection is not None:
-            _setter("default_branch_protection", default_branch_protection)
+            pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if default_ci_config_path is not None:
-            _setter("default_ci_config_path", default_ci_config_path)
+            pulumi.set(__self__, "default_ci_config_path", default_ci_config_path)
         if default_group_visibility is not None:
-            _setter("default_group_visibility", default_group_visibility)
+            pulumi.set(__self__, "default_group_visibility", default_group_visibility)
         if default_project_creation is not None:
-            _setter("default_project_creation", default_project_creation)
+            pulumi.set(__self__, "default_project_creation", default_project_creation)
         if default_project_visibility is not None:
-            _setter("default_project_visibility", default_project_visibility)
+            pulumi.set(__self__, "default_project_visibility", default_project_visibility)
         if default_projects_limit is not None:
-            _setter("default_projects_limit", default_projects_limit)
+            pulumi.set(__self__, "default_projects_limit", default_projects_limit)
         if default_snippet_visibility is not None:
-            _setter("default_snippet_visibility", default_snippet_visibility)
+            pulumi.set(__self__, "default_snippet_visibility", default_snippet_visibility)
         if delayed_group_deletion is not None:
-            _setter("delayed_group_deletion", delayed_group_deletion)
+            pulumi.set(__self__, "delayed_group_deletion", delayed_group_deletion)
         if delayed_project_deletion is not None:
-            _setter("delayed_project_deletion", delayed_project_deletion)
+            pulumi.set(__self__, "delayed_project_deletion", delayed_project_deletion)
         if delete_inactive_projects is not None:
-            _setter("delete_inactive_projects", delete_inactive_projects)
+            pulumi.set(__self__, "delete_inactive_projects", delete_inactive_projects)
         if deletion_adjourned_period is not None:
-            _setter("deletion_adjourned_period", deletion_adjourned_period)
+            pulumi.set(__self__, "deletion_adjourned_period", deletion_adjourned_period)
         if diff_max_files is not None:
-            _setter("diff_max_files", diff_max_files)
+            pulumi.set(__self__, "diff_max_files", diff_max_files)
         if diff_max_lines is not None:
-            _setter("diff_max_lines", diff_max_lines)
+            pulumi.set(__self__, "diff_max_lines", diff_max_lines)
         if diff_max_patch_bytes is not None:
-            _setter("diff_max_patch_bytes", diff_max_patch_bytes)
+            pulumi.set(__self__, "diff_max_patch_bytes", diff_max_patch_bytes)
         if disable_feed_token is not None:
-            _setter("disable_feed_token", disable_feed_token)
+            pulumi.set(__self__, "disable_feed_token", disable_feed_token)
         if disabled_oauth_sign_in_sources is not None:
-            _setter("disabled_oauth_sign_in_sources", disabled_oauth_sign_in_sources)
+            pulumi.set(__self__, "disabled_oauth_sign_in_sources", disabled_oauth_sign_in_sources)
         if dns_rebinding_protection_enabled is not None:
-            _setter("dns_rebinding_protection_enabled", dns_rebinding_protection_enabled)
+            pulumi.set(__self__, "dns_rebinding_protection_enabled", dns_rebinding_protection_enabled)
         if domain_allowlists is not None:
-            _setter("domain_allowlists", domain_allowlists)
+            pulumi.set(__self__, "domain_allowlists", domain_allowlists)
         if domain_denylist_enabled is not None:
-            _setter("domain_denylist_enabled", domain_denylist_enabled)
+            pulumi.set(__self__, "domain_denylist_enabled", domain_denylist_enabled)
         if domain_denylists is not None:
-            _setter("domain_denylists", domain_denylists)
+            pulumi.set(__self__, "domain_denylists", domain_denylists)
         if dsa_key_restriction is not None:
-            _setter("dsa_key_restriction", dsa_key_restriction)
+            pulumi.set(__self__, "dsa_key_restriction", dsa_key_restriction)
         if ecdsa_key_restriction is not None:
-            _setter("ecdsa_key_restriction", ecdsa_key_restriction)
+            pulumi.set(__self__, "ecdsa_key_restriction", ecdsa_key_restriction)
         if ecdsa_sk_key_restriction is not None:
-            _setter("ecdsa_sk_key_restriction", ecdsa_sk_key_restriction)
+            pulumi.set(__self__, "ecdsa_sk_key_restriction", ecdsa_sk_key_restriction)
         if ed25519_key_restriction is not None:
-            _setter("ed25519_key_restriction", ed25519_key_restriction)
+            pulumi.set(__self__, "ed25519_key_restriction", ed25519_key_restriction)
         if ed25519_sk_key_restriction is not None:
-            _setter("ed25519_sk_key_restriction", ed25519_sk_key_restriction)
+            pulumi.set(__self__, "ed25519_sk_key_restriction", ed25519_sk_key_restriction)
         if eks_access_key_id is not None:
-            _setter("eks_access_key_id", eks_access_key_id)
+            pulumi.set(__self__, "eks_access_key_id", eks_access_key_id)
         if eks_account_id is not None:
-            _setter("eks_account_id", eks_account_id)
+            pulumi.set(__self__, "eks_account_id", eks_account_id)
         if eks_integration_enabled is not None:
-            _setter("eks_integration_enabled", eks_integration_enabled)
+            pulumi.set(__self__, "eks_integration_enabled", eks_integration_enabled)
         if eks_secret_access_key is not None:
-            _setter("eks_secret_access_key", eks_secret_access_key)
+            pulumi.set(__self__, "eks_secret_access_key", eks_secret_access_key)
         if elasticsearch_aws is not None:
-            _setter("elasticsearch_aws", elasticsearch_aws)
+            pulumi.set(__self__, "elasticsearch_aws", elasticsearch_aws)
         if elasticsearch_aws_access_key is not None:
-            _setter("elasticsearch_aws_access_key", elasticsearch_aws_access_key)
+            pulumi.set(__self__, "elasticsearch_aws_access_key", elasticsearch_aws_access_key)
         if elasticsearch_aws_region is not None:
-            _setter("elasticsearch_aws_region", elasticsearch_aws_region)
+            pulumi.set(__self__, "elasticsearch_aws_region", elasticsearch_aws_region)
         if elasticsearch_aws_secret_access_key is not None:
-            _setter("elasticsearch_aws_secret_access_key", elasticsearch_aws_secret_access_key)
+            pulumi.set(__self__, "elasticsearch_aws_secret_access_key", elasticsearch_aws_secret_access_key)
         if elasticsearch_indexed_field_length_limit is not None:
-            _setter("elasticsearch_indexed_field_length_limit", elasticsearch_indexed_field_length_limit)
+            pulumi.set(__self__, "elasticsearch_indexed_field_length_limit", elasticsearch_indexed_field_length_limit)
         if elasticsearch_indexed_file_size_limit_kb is not None:
-            _setter("elasticsearch_indexed_file_size_limit_kb", elasticsearch_indexed_file_size_limit_kb)
+            pulumi.set(__self__, "elasticsearch_indexed_file_size_limit_kb", elasticsearch_indexed_file_size_limit_kb)
         if elasticsearch_indexing is not None:
-            _setter("elasticsearch_indexing", elasticsearch_indexing)
+            pulumi.set(__self__, "elasticsearch_indexing", elasticsearch_indexing)
         if elasticsearch_limit_indexing is not None:
-            _setter("elasticsearch_limit_indexing", elasticsearch_limit_indexing)
+            pulumi.set(__self__, "elasticsearch_limit_indexing", elasticsearch_limit_indexing)
         if elasticsearch_max_bulk_concurrency is not None:
-            _setter("elasticsearch_max_bulk_concurrency", elasticsearch_max_bulk_concurrency)
+            pulumi.set(__self__, "elasticsearch_max_bulk_concurrency", elasticsearch_max_bulk_concurrency)
         if elasticsearch_max_bulk_size_mb is not None:
-            _setter("elasticsearch_max_bulk_size_mb", elasticsearch_max_bulk_size_mb)
+            pulumi.set(__self__, "elasticsearch_max_bulk_size_mb", elasticsearch_max_bulk_size_mb)
         if elasticsearch_namespace_ids is not None:
-            _setter("elasticsearch_namespace_ids", elasticsearch_namespace_ids)
+            pulumi.set(__self__, "elasticsearch_namespace_ids", elasticsearch_namespace_ids)
         if elasticsearch_password is not None:
-            _setter("elasticsearch_password", elasticsearch_password)
+            pulumi.set(__self__, "elasticsearch_password", elasticsearch_password)
         if elasticsearch_project_ids is not None:
-            _setter("elasticsearch_project_ids", elasticsearch_project_ids)
+            pulumi.set(__self__, "elasticsearch_project_ids", elasticsearch_project_ids)
         if elasticsearch_search is not None:
-            _setter("elasticsearch_search", elasticsearch_search)
+            pulumi.set(__self__, "elasticsearch_search", elasticsearch_search)
         if elasticsearch_urls is not None:
-            _setter("elasticsearch_urls", elasticsearch_urls)
+            pulumi.set(__self__, "elasticsearch_urls", elasticsearch_urls)
         if elasticsearch_username is not None:
-            _setter("elasticsearch_username", elasticsearch_username)
+            pulumi.set(__self__, "elasticsearch_username", elasticsearch_username)
         if email_additional_text is not None:
-            _setter("email_additional_text", email_additional_text)
+            pulumi.set(__self__, "email_additional_text", email_additional_text)
         if email_author_in_body is not None:
-            _setter("email_author_in_body", email_author_in_body)
+            pulumi.set(__self__, "email_author_in_body", email_author_in_body)
         if enabled_git_access_protocol is not None:
-            _setter("enabled_git_access_protocol", enabled_git_access_protocol)
+            pulumi.set(__self__, "enabled_git_access_protocol", enabled_git_access_protocol)
         if enforce_namespace_storage_limit is not None:
-            _setter("enforce_namespace_storage_limit", enforce_namespace_storage_limit)
+            pulumi.set(__self__, "enforce_namespace_storage_limit", enforce_namespace_storage_limit)
         if enforce_terms is not None:
-            _setter("enforce_terms", enforce_terms)
+            pulumi.set(__self__, "enforce_terms", enforce_terms)
         if external_auth_client_cert is not None:
-            _setter("external_auth_client_cert", external_auth_client_cert)
+            pulumi.set(__self__, "external_auth_client_cert", external_auth_client_cert)
         if external_auth_client_key is not None:
-            _setter("external_auth_client_key", external_auth_client_key)
+            pulumi.set(__self__, "external_auth_client_key", external_auth_client_key)
         if external_auth_client_key_pass is not None:
-            _setter("external_auth_client_key_pass", external_auth_client_key_pass)
+            pulumi.set(__self__, "external_auth_client_key_pass", external_auth_client_key_pass)
         if external_authorization_service_default_label is not None:
-            _setter("external_authorization_service_default_label", external_authorization_service_default_label)
+            pulumi.set(__self__, "external_authorization_service_default_label", external_authorization_service_default_label)
         if external_authorization_service_enabled is not None:
-            _setter("external_authorization_service_enabled", external_authorization_service_enabled)
+            pulumi.set(__self__, "external_authorization_service_enabled", external_authorization_service_enabled)
         if external_authorization_service_timeout is not None:
-            _setter("external_authorization_service_timeout", external_authorization_service_timeout)
+            pulumi.set(__self__, "external_authorization_service_timeout", external_authorization_service_timeout)
         if external_authorization_service_url is not None:
-            _setter("external_authorization_service_url", external_authorization_service_url)
+            pulumi.set(__self__, "external_authorization_service_url", external_authorization_service_url)
         if external_pipeline_validation_service_timeout is not None:
-            _setter("external_pipeline_validation_service_timeout", external_pipeline_validation_service_timeout)
+            pulumi.set(__self__, "external_pipeline_validation_service_timeout", external_pipeline_validation_service_timeout)
         if external_pipeline_validation_service_token is not None:
-            _setter("external_pipeline_validation_service_token", external_pipeline_validation_service_token)
+            pulumi.set(__self__, "external_pipeline_validation_service_token", external_pipeline_validation_service_token)
         if external_pipeline_validation_service_url is not None:
-            _setter("external_pipeline_validation_service_url", external_pipeline_validation_service_url)
+            pulumi.set(__self__, "external_pipeline_validation_service_url", external_pipeline_validation_service_url)
         if file_template_project_id is not None:
-            _setter("file_template_project_id", file_template_project_id)
+            pulumi.set(__self__, "file_template_project_id", file_template_project_id)
         if first_day_of_week is not None:
-            _setter("first_day_of_week", first_day_of_week)
+            pulumi.set(__self__, "first_day_of_week", first_day_of_week)
         if geo_node_allowed_ips is not None:
-            _setter("geo_node_allowed_ips", geo_node_allowed_ips)
+            pulumi.set(__self__, "geo_node_allowed_ips", geo_node_allowed_ips)
         if geo_status_timeout is not None:
-            _setter("geo_status_timeout", geo_status_timeout)
+            pulumi.set(__self__, "geo_status_timeout", geo_status_timeout)
         if git_rate_limit_users_allowlists is not None:
-            _setter("git_rate_limit_users_allowlists", git_rate_limit_users_allowlists)
+            pulumi.set(__self__, "git_rate_limit_users_allowlists", git_rate_limit_users_allowlists)
         if git_two_factor_session_expiry is not None:
-            _setter("git_two_factor_session_expiry", git_two_factor_session_expiry)
+            pulumi.set(__self__, "git_two_factor_session_expiry", git_two_factor_session_expiry)
         if gitaly_timeout_default is not None:
-            _setter("gitaly_timeout_default", gitaly_timeout_default)
+            pulumi.set(__self__, "gitaly_timeout_default", gitaly_timeout_default)
         if gitaly_timeout_fast is not None:
-            _setter("gitaly_timeout_fast", gitaly_timeout_fast)
+            pulumi.set(__self__, "gitaly_timeout_fast", gitaly_timeout_fast)
         if gitaly_timeout_medium is not None:
-            _setter("gitaly_timeout_medium", gitaly_timeout_medium)
+            pulumi.set(__self__, "gitaly_timeout_medium", gitaly_timeout_medium)
         if grafana_enabled is not None:
-            _setter("grafana_enabled", grafana_enabled)
+            pulumi.set(__self__, "grafana_enabled", grafana_enabled)
         if grafana_url is not None:
-            _setter("grafana_url", grafana_url)
+            pulumi.set(__self__, "grafana_url", grafana_url)
         if gravatar_enabled is not None:
-            _setter("gravatar_enabled", gravatar_enabled)
+            pulumi.set(__self__, "gravatar_enabled", gravatar_enabled)
         if group_owners_can_manage_default_branch_protection is not None:
-            _setter("group_owners_can_manage_default_branch_protection", group_owners_can_manage_default_branch_protection)
+            pulumi.set(__self__, "group_owners_can_manage_default_branch_protection", group_owners_can_manage_default_branch_protection)
         if hashed_storage_enabled is not None:
-            _setter("hashed_storage_enabled", hashed_storage_enabled)
+            pulumi.set(__self__, "hashed_storage_enabled", hashed_storage_enabled)
         if help_page_hide_commercial_content is not None:
-            _setter("help_page_hide_commercial_content", help_page_hide_commercial_content)
+            pulumi.set(__self__, "help_page_hide_commercial_content", help_page_hide_commercial_content)
         if help_page_support_url is not None:
-            _setter("help_page_support_url", help_page_support_url)
+            pulumi.set(__self__, "help_page_support_url", help_page_support_url)
         if help_page_text is not None:
-            _setter("help_page_text", help_page_text)
+            pulumi.set(__self__, "help_page_text", help_page_text)
         if help_text is not None:
-            _setter("help_text", help_text)
+            pulumi.set(__self__, "help_text", help_text)
         if hide_third_party_offers is not None:
-            _setter("hide_third_party_offers", hide_third_party_offers)
+            pulumi.set(__self__, "hide_third_party_offers", hide_third_party_offers)
         if home_page_url is not None:
-            _setter("home_page_url", home_page_url)
+            pulumi.set(__self__, "home_page_url", home_page_url)
         if housekeeping_enabled is not None:
-            _setter("housekeeping_enabled", housekeeping_enabled)
+            pulumi.set(__self__, "housekeeping_enabled", housekeeping_enabled)
         if housekeeping_full_repack_period is not None:
-            _setter("housekeeping_full_repack_period", housekeeping_full_repack_period)
+            pulumi.set(__self__, "housekeeping_full_repack_period", housekeeping_full_repack_period)
         if housekeeping_gc_period is not None:
-            _setter("housekeeping_gc_period", housekeeping_gc_period)
+            pulumi.set(__self__, "housekeeping_gc_period", housekeeping_gc_period)
         if housekeeping_incremental_repack_period is not None:
-            _setter("housekeeping_incremental_repack_period", housekeeping_incremental_repack_period)
+            pulumi.set(__self__, "housekeeping_incremental_repack_period", housekeeping_incremental_repack_period)
         if html_emails_enabled is not None:
-            _setter("html_emails_enabled", html_emails_enabled)
+            pulumi.set(__self__, "html_emails_enabled", html_emails_enabled)
         if import_sources is not None:
-            _setter("import_sources", import_sources)
+            pulumi.set(__self__, "import_sources", import_sources)
         if in_product_marketing_emails_enabled is not None:
-            _setter("in_product_marketing_emails_enabled", in_product_marketing_emails_enabled)
+            pulumi.set(__self__, "in_product_marketing_emails_enabled", in_product_marketing_emails_enabled)
         if inactive_projects_delete_after_months is not None:
-            _setter("inactive_projects_delete_after_months", inactive_projects_delete_after_months)
+            pulumi.set(__self__, "inactive_projects_delete_after_months", inactive_projects_delete_after_months)
         if inactive_projects_min_size_mb is not None:
-            _setter("inactive_projects_min_size_mb", inactive_projects_min_size_mb)
+            pulumi.set(__self__, "inactive_projects_min_size_mb", inactive_projects_min_size_mb)
         if inactive_projects_send_warning_email_after_months is not None:
-            _setter("inactive_projects_send_warning_email_after_months", inactive_projects_send_warning_email_after_months)
+            pulumi.set(__self__, "inactive_projects_send_warning_email_after_months", inactive_projects_send_warning_email_after_months)
         if invisible_captcha_enabled is not None:
-            _setter("invisible_captcha_enabled", invisible_captcha_enabled)
+            pulumi.set(__self__, "invisible_captcha_enabled", invisible_captcha_enabled)
         if issues_create_limit is not None:
-            _setter("issues_create_limit", issues_create_limit)
+            pulumi.set(__self__, "issues_create_limit", issues_create_limit)
         if keep_latest_artifact is not None:
-            _setter("keep_latest_artifact", keep_latest_artifact)
+            pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if local_markdown_version is not None:
-            _setter("local_markdown_version", local_markdown_version)
+            pulumi.set(__self__, "local_markdown_version", local_markdown_version)
         if mailgun_events_enabled is not None:
-            _setter("mailgun_events_enabled", mailgun_events_enabled)
+            pulumi.set(__self__, "mailgun_events_enabled", mailgun_events_enabled)
         if mailgun_signing_key is not None:
-            _setter("mailgun_signing_key", mailgun_signing_key)
+            pulumi.set(__self__, "mailgun_signing_key", mailgun_signing_key)
         if maintenance_mode is not None:
-            _setter("maintenance_mode", maintenance_mode)
+            pulumi.set(__self__, "maintenance_mode", maintenance_mode)
         if maintenance_mode_message is not None:
-            _setter("maintenance_mode_message", maintenance_mode_message)
+            pulumi.set(__self__, "maintenance_mode_message", maintenance_mode_message)
         if max_artifacts_size is not None:
-            _setter("max_artifacts_size", max_artifacts_size)
+            pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if max_attachment_size is not None:
-            _setter("max_attachment_size", max_attachment_size)
+            pulumi.set(__self__, "max_attachment_size", max_attachment_size)
         if max_export_size is not None:
-            _setter("max_export_size", max_export_size)
+            pulumi.set(__self__, "max_export_size", max_export_size)
         if max_import_size is not None:
-            _setter("max_import_size", max_import_size)
+            pulumi.set(__self__, "max_import_size", max_import_size)
         if max_number_of_repository_downloads is not None:
-            _setter("max_number_of_repository_downloads", max_number_of_repository_downloads)
+            pulumi.set(__self__, "max_number_of_repository_downloads", max_number_of_repository_downloads)
         if max_number_of_repository_downloads_within_time_period is not None:
-            _setter("max_number_of_repository_downloads_within_time_period", max_number_of_repository_downloads_within_time_period)
+            pulumi.set(__self__, "max_number_of_repository_downloads_within_time_period", max_number_of_repository_downloads_within_time_period)
         if max_pages_size is not None:
-            _setter("max_pages_size", max_pages_size)
+            pulumi.set(__self__, "max_pages_size", max_pages_size)
         if max_personal_access_token_lifetime is not None:
-            _setter("max_personal_access_token_lifetime", max_personal_access_token_lifetime)
+            pulumi.set(__self__, "max_personal_access_token_lifetime", max_personal_access_token_lifetime)
         if max_ssh_key_lifetime is not None:
-            _setter("max_ssh_key_lifetime", max_ssh_key_lifetime)
+            pulumi.set(__self__, "max_ssh_key_lifetime", max_ssh_key_lifetime)
         if metrics_method_call_threshold is not None:
-            _setter("metrics_method_call_threshold", metrics_method_call_threshold)
+            pulumi.set(__self__, "metrics_method_call_threshold", metrics_method_call_threshold)
         if mirror_available is not None:
-            _setter("mirror_available", mirror_available)
+            pulumi.set(__self__, "mirror_available", mirror_available)
         if mirror_capacity_threshold is not None:
-            _setter("mirror_capacity_threshold", mirror_capacity_threshold)
+            pulumi.set(__self__, "mirror_capacity_threshold", mirror_capacity_threshold)
         if mirror_max_capacity is not None:
-            _setter("mirror_max_capacity", mirror_max_capacity)
+            pulumi.set(__self__, "mirror_max_capacity", mirror_max_capacity)
         if mirror_max_delay is not None:
-            _setter("mirror_max_delay", mirror_max_delay)
+            pulumi.set(__self__, "mirror_max_delay", mirror_max_delay)
         if npm_package_requests_forwarding is not None:
-            _setter("npm_package_requests_forwarding", npm_package_requests_forwarding)
+            pulumi.set(__self__, "npm_package_requests_forwarding", npm_package_requests_forwarding)
         if outbound_local_requests_whitelists is not None:
-            _setter("outbound_local_requests_whitelists", outbound_local_requests_whitelists)
+            pulumi.set(__self__, "outbound_local_requests_whitelists", outbound_local_requests_whitelists)
         if package_registry_cleanup_policies_worker_capacity is not None:
-            _setter("package_registry_cleanup_policies_worker_capacity", package_registry_cleanup_policies_worker_capacity)
+            pulumi.set(__self__, "package_registry_cleanup_policies_worker_capacity", package_registry_cleanup_policies_worker_capacity)
         if pages_domain_verification_enabled is not None:
-            _setter("pages_domain_verification_enabled", pages_domain_verification_enabled)
+            pulumi.set(__self__, "pages_domain_verification_enabled", pages_domain_verification_enabled)
         if password_authentication_enabled_for_git is not None:
-            _setter("password_authentication_enabled_for_git", password_authentication_enabled_for_git)
+            pulumi.set(__self__, "password_authentication_enabled_for_git", password_authentication_enabled_for_git)
         if password_authentication_enabled_for_web is not None:
-            _setter("password_authentication_enabled_for_web", password_authentication_enabled_for_web)
+            pulumi.set(__self__, "password_authentication_enabled_for_web", password_authentication_enabled_for_web)
         if password_lowercase_required is not None:
-            _setter("password_lowercase_required", password_lowercase_required)
+            pulumi.set(__self__, "password_lowercase_required", password_lowercase_required)
         if password_number_required is not None:
-            _setter("password_number_required", password_number_required)
+            pulumi.set(__self__, "password_number_required", password_number_required)
         if password_symbol_required is not None:
-            _setter("password_symbol_required", password_symbol_required)
+            pulumi.set(__self__, "password_symbol_required", password_symbol_required)
         if password_uppercase_required is not None:
-            _setter("password_uppercase_required", password_uppercase_required)
+            pulumi.set(__self__, "password_uppercase_required", password_uppercase_required)
         if performance_bar_allowed_group_path is not None:
-            _setter("performance_bar_allowed_group_path", performance_bar_allowed_group_path)
+            pulumi.set(__self__, "performance_bar_allowed_group_path", performance_bar_allowed_group_path)
         if personal_access_token_prefix is not None:
-            _setter("personal_access_token_prefix", personal_access_token_prefix)
+            pulumi.set(__self__, "personal_access_token_prefix", personal_access_token_prefix)
         if pipeline_limit_per_project_user_sha is not None:
-            _setter("pipeline_limit_per_project_user_sha", pipeline_limit_per_project_user_sha)
+            pulumi.set(__self__, "pipeline_limit_per_project_user_sha", pipeline_limit_per_project_user_sha)
         if plantuml_enabled is not None:
-            _setter("plantuml_enabled", plantuml_enabled)
+            pulumi.set(__self__, "plantuml_enabled", plantuml_enabled)
         if plantuml_url is not None:
-            _setter("plantuml_url", plantuml_url)
+            pulumi.set(__self__, "plantuml_url", plantuml_url)
         if polling_interval_multiplier is not None:
-            _setter("polling_interval_multiplier", polling_interval_multiplier)
+            pulumi.set(__self__, "polling_interval_multiplier", polling_interval_multiplier)
         if project_export_enabled is not None:
-            _setter("project_export_enabled", project_export_enabled)
+            pulumi.set(__self__, "project_export_enabled", project_export_enabled)
         if prometheus_metrics_enabled is not None:
-            _setter("prometheus_metrics_enabled", prometheus_metrics_enabled)
+            pulumi.set(__self__, "prometheus_metrics_enabled", prometheus_metrics_enabled)
         if protected_ci_variables is not None:
-            _setter("protected_ci_variables", protected_ci_variables)
+            pulumi.set(__self__, "protected_ci_variables", protected_ci_variables)
         if push_event_activities_limit is not None:
-            _setter("push_event_activities_limit", push_event_activities_limit)
+            pulumi.set(__self__, "push_event_activities_limit", push_event_activities_limit)
         if push_event_hooks_limit is not None:
-            _setter("push_event_hooks_limit", push_event_hooks_limit)
+            pulumi.set(__self__, "push_event_hooks_limit", push_event_hooks_limit)
         if pypi_package_requests_forwarding is not None:
-            _setter("pypi_package_requests_forwarding", pypi_package_requests_forwarding)
+            pulumi.set(__self__, "pypi_package_requests_forwarding", pypi_package_requests_forwarding)
         if rate_limiting_response_text is not None:
-            _setter("rate_limiting_response_text", rate_limiting_response_text)
+            pulumi.set(__self__, "rate_limiting_response_text", rate_limiting_response_text)
         if raw_blob_request_limit is not None:
-            _setter("raw_blob_request_limit", raw_blob_request_limit)
+            pulumi.set(__self__, "raw_blob_request_limit", raw_blob_request_limit)
         if recaptcha_enabled is not None:
-            _setter("recaptcha_enabled", recaptcha_enabled)
+            pulumi.set(__self__, "recaptcha_enabled", recaptcha_enabled)
         if recaptcha_private_key is not None:
-            _setter("recaptcha_private_key", recaptcha_private_key)
+            pulumi.set(__self__, "recaptcha_private_key", recaptcha_private_key)
         if recaptcha_site_key is not None:
-            _setter("recaptcha_site_key", recaptcha_site_key)
+            pulumi.set(__self__, "recaptcha_site_key", recaptcha_site_key)
         if receive_max_input_size is not None:
-            _setter("receive_max_input_size", receive_max_input_size)
+            pulumi.set(__self__, "receive_max_input_size", receive_max_input_size)
         if repository_checks_enabled is not None:
-            _setter("repository_checks_enabled", repository_checks_enabled)
+            pulumi.set(__self__, "repository_checks_enabled", repository_checks_enabled)
         if repository_size_limit is not None:
-            _setter("repository_size_limit", repository_size_limit)
+            pulumi.set(__self__, "repository_size_limit", repository_size_limit)
         if repository_storages is not None:
-            _setter("repository_storages", repository_storages)
+            pulumi.set(__self__, "repository_storages", repository_storages)
         if repository_storages_weighted is not None:
-            _setter("repository_storages_weighted", repository_storages_weighted)
+            pulumi.set(__self__, "repository_storages_weighted", repository_storages_weighted)
         if require_admin_approval_after_user_signup is not None:
-            _setter("require_admin_approval_after_user_signup", require_admin_approval_after_user_signup)
+            pulumi.set(__self__, "require_admin_approval_after_user_signup", require_admin_approval_after_user_signup)
         if require_two_factor_authentication is not None:
-            _setter("require_two_factor_authentication", require_two_factor_authentication)
+            pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
         if restricted_visibility_levels is not None:
-            _setter("restricted_visibility_levels", restricted_visibility_levels)
+            pulumi.set(__self__, "restricted_visibility_levels", restricted_visibility_levels)
         if rsa_key_restriction is not None:
-            _setter("rsa_key_restriction", rsa_key_restriction)
+            pulumi.set(__self__, "rsa_key_restriction", rsa_key_restriction)
         if search_rate_limit is not None:
-            _setter("search_rate_limit", search_rate_limit)
+            pulumi.set(__self__, "search_rate_limit", search_rate_limit)
         if search_rate_limit_unauthenticated is not None:
-            _setter("search_rate_limit_unauthenticated", search_rate_limit_unauthenticated)
+            pulumi.set(__self__, "search_rate_limit_unauthenticated", search_rate_limit_unauthenticated)
         if send_user_confirmation_email is not None:
-            _setter("send_user_confirmation_email", send_user_confirmation_email)
+            pulumi.set(__self__, "send_user_confirmation_email", send_user_confirmation_email)
         if session_expire_delay is not None:
-            _setter("session_expire_delay", session_expire_delay)
+            pulumi.set(__self__, "session_expire_delay", session_expire_delay)
         if shared_runners_enabled is not None:
-            _setter("shared_runners_enabled", shared_runners_enabled)
+            pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         if shared_runners_minutes is not None:
-            _setter("shared_runners_minutes", shared_runners_minutes)
+            pulumi.set(__self__, "shared_runners_minutes", shared_runners_minutes)
         if shared_runners_text is not None:
-            _setter("shared_runners_text", shared_runners_text)
+            pulumi.set(__self__, "shared_runners_text", shared_runners_text)
         if sidekiq_job_limiter_compression_threshold_bytes is not None:
-            _setter("sidekiq_job_limiter_compression_threshold_bytes", sidekiq_job_limiter_compression_threshold_bytes)
+            pulumi.set(__self__, "sidekiq_job_limiter_compression_threshold_bytes", sidekiq_job_limiter_compression_threshold_bytes)
         if sidekiq_job_limiter_limit_bytes is not None:
-            _setter("sidekiq_job_limiter_limit_bytes", sidekiq_job_limiter_limit_bytes)
+            pulumi.set(__self__, "sidekiq_job_limiter_limit_bytes", sidekiq_job_limiter_limit_bytes)
         if sidekiq_job_limiter_mode is not None:
-            _setter("sidekiq_job_limiter_mode", sidekiq_job_limiter_mode)
+            pulumi.set(__self__, "sidekiq_job_limiter_mode", sidekiq_job_limiter_mode)
         if sign_in_text is not None:
-            _setter("sign_in_text", sign_in_text)
+            pulumi.set(__self__, "sign_in_text", sign_in_text)
         if signup_enabled is not None:
-            _setter("signup_enabled", signup_enabled)
+            pulumi.set(__self__, "signup_enabled", signup_enabled)
         if slack_app_enabled is not None:
-            _setter("slack_app_enabled", slack_app_enabled)
+            pulumi.set(__self__, "slack_app_enabled", slack_app_enabled)
         if slack_app_id is not None:
-            _setter("slack_app_id", slack_app_id)
+            pulumi.set(__self__, "slack_app_id", slack_app_id)
         if slack_app_secret is not None:
-            _setter("slack_app_secret", slack_app_secret)
+            pulumi.set(__self__, "slack_app_secret", slack_app_secret)
         if slack_app_signing_secret is not None:
-            _setter("slack_app_signing_secret", slack_app_signing_secret)
+            pulumi.set(__self__, "slack_app_signing_secret", slack_app_signing_secret)
         if slack_app_verification_token is not None:
-            _setter("slack_app_verification_token", slack_app_verification_token)
+            pulumi.set(__self__, "slack_app_verification_token", slack_app_verification_token)
         if snippet_size_limit is not None:
-            _setter("snippet_size_limit", snippet_size_limit)
+            pulumi.set(__self__, "snippet_size_limit", snippet_size_limit)
         if snowplow_app_id is not None:
-            _setter("snowplow_app_id", snowplow_app_id)
+            pulumi.set(__self__, "snowplow_app_id", snowplow_app_id)
         if snowplow_collector_hostname is not None:
-            _setter("snowplow_collector_hostname", snowplow_collector_hostname)
+            pulumi.set(__self__, "snowplow_collector_hostname", snowplow_collector_hostname)
         if snowplow_cookie_domain is not None:
-            _setter("snowplow_cookie_domain", snowplow_cookie_domain)
+            pulumi.set(__self__, "snowplow_cookie_domain", snowplow_cookie_domain)
         if snowplow_enabled is not None:
-            _setter("snowplow_enabled", snowplow_enabled)
+            pulumi.set(__self__, "snowplow_enabled", snowplow_enabled)
         if sourcegraph_enabled is not None:
-            _setter("sourcegraph_enabled", sourcegraph_enabled)
+            pulumi.set(__self__, "sourcegraph_enabled", sourcegraph_enabled)
         if sourcegraph_public_only is not None:
-            _setter("sourcegraph_public_only", sourcegraph_public_only)
+            pulumi.set(__self__, "sourcegraph_public_only", sourcegraph_public_only)
         if sourcegraph_url is not None:
-            _setter("sourcegraph_url", sourcegraph_url)
+            pulumi.set(__self__, "sourcegraph_url", sourcegraph_url)
         if spam_check_api_key is not None:
-            _setter("spam_check_api_key", spam_check_api_key)
+            pulumi.set(__self__, "spam_check_api_key", spam_check_api_key)
         if spam_check_endpoint_enabled is not None:
-            _setter("spam_check_endpoint_enabled", spam_check_endpoint_enabled)
+            pulumi.set(__self__, "spam_check_endpoint_enabled", spam_check_endpoint_enabled)
         if spam_check_endpoint_url is not None:
-            _setter("spam_check_endpoint_url", spam_check_endpoint_url)
+            pulumi.set(__self__, "spam_check_endpoint_url", spam_check_endpoint_url)
         if suggest_pipeline_enabled is not None:
-            _setter("suggest_pipeline_enabled", suggest_pipeline_enabled)
+            pulumi.set(__self__, "suggest_pipeline_enabled", suggest_pipeline_enabled)
         if terminal_max_session_time is not None:
-            _setter("terminal_max_session_time", terminal_max_session_time)
+            pulumi.set(__self__, "terminal_max_session_time", terminal_max_session_time)
         if terms is not None:
-            _setter("terms", terms)
+            pulumi.set(__self__, "terms", terms)
         if throttle_authenticated_api_enabled is not None:
-            _setter("throttle_authenticated_api_enabled", throttle_authenticated_api_enabled)
+            pulumi.set(__self__, "throttle_authenticated_api_enabled", throttle_authenticated_api_enabled)
         if throttle_authenticated_api_period_in_seconds is not None:
-            _setter("throttle_authenticated_api_period_in_seconds", throttle_authenticated_api_period_in_seconds)
+            pulumi.set(__self__, "throttle_authenticated_api_period_in_seconds", throttle_authenticated_api_period_in_seconds)
         if throttle_authenticated_api_requests_per_period is not None:
-            _setter("throttle_authenticated_api_requests_per_period", throttle_authenticated_api_requests_per_period)
+            pulumi.set(__self__, "throttle_authenticated_api_requests_per_period", throttle_authenticated_api_requests_per_period)
         if throttle_authenticated_packages_api_enabled is not None:
-            _setter("throttle_authenticated_packages_api_enabled", throttle_authenticated_packages_api_enabled)
+            pulumi.set(__self__, "throttle_authenticated_packages_api_enabled", throttle_authenticated_packages_api_enabled)
         if throttle_authenticated_packages_api_period_in_seconds is not None:
-            _setter("throttle_authenticated_packages_api_period_in_seconds", throttle_authenticated_packages_api_period_in_seconds)
+            pulumi.set(__self__, "throttle_authenticated_packages_api_period_in_seconds", throttle_authenticated_packages_api_period_in_seconds)
         if throttle_authenticated_packages_api_requests_per_period is not None:
-            _setter("throttle_authenticated_packages_api_requests_per_period", throttle_authenticated_packages_api_requests_per_period)
+            pulumi.set(__self__, "throttle_authenticated_packages_api_requests_per_period", throttle_authenticated_packages_api_requests_per_period)
         if throttle_authenticated_web_enabled is not None:
-            _setter("throttle_authenticated_web_enabled", throttle_authenticated_web_enabled)
+            pulumi.set(__self__, "throttle_authenticated_web_enabled", throttle_authenticated_web_enabled)
         if throttle_authenticated_web_period_in_seconds is not None:
-            _setter("throttle_authenticated_web_period_in_seconds", throttle_authenticated_web_period_in_seconds)
+            pulumi.set(__self__, "throttle_authenticated_web_period_in_seconds", throttle_authenticated_web_period_in_seconds)
         if throttle_authenticated_web_requests_per_period is not None:
-            _setter("throttle_authenticated_web_requests_per_period", throttle_authenticated_web_requests_per_period)
+            pulumi.set(__self__, "throttle_authenticated_web_requests_per_period", throttle_authenticated_web_requests_per_period)
         if throttle_unauthenticated_api_enabled is not None:
-            _setter("throttle_unauthenticated_api_enabled", throttle_unauthenticated_api_enabled)
+            pulumi.set(__self__, "throttle_unauthenticated_api_enabled", throttle_unauthenticated_api_enabled)
         if throttle_unauthenticated_api_period_in_seconds is not None:
-            _setter("throttle_unauthenticated_api_period_in_seconds", throttle_unauthenticated_api_period_in_seconds)
+            pulumi.set(__self__, "throttle_unauthenticated_api_period_in_seconds", throttle_unauthenticated_api_period_in_seconds)
         if throttle_unauthenticated_api_requests_per_period is not None:
-            _setter("throttle_unauthenticated_api_requests_per_period", throttle_unauthenticated_api_requests_per_period)
+            pulumi.set(__self__, "throttle_unauthenticated_api_requests_per_period", throttle_unauthenticated_api_requests_per_period)
         if throttle_unauthenticated_packages_api_enabled is not None:
-            _setter("throttle_unauthenticated_packages_api_enabled", throttle_unauthenticated_packages_api_enabled)
+            pulumi.set(__self__, "throttle_unauthenticated_packages_api_enabled", throttle_unauthenticated_packages_api_enabled)
         if throttle_unauthenticated_packages_api_period_in_seconds is not None:
-            _setter("throttle_unauthenticated_packages_api_period_in_seconds", throttle_unauthenticated_packages_api_period_in_seconds)
+            pulumi.set(__self__, "throttle_unauthenticated_packages_api_period_in_seconds", throttle_unauthenticated_packages_api_period_in_seconds)
         if throttle_unauthenticated_packages_api_requests_per_period is not None:
-            _setter("throttle_unauthenticated_packages_api_requests_per_period", throttle_unauthenticated_packages_api_requests_per_period)
+            pulumi.set(__self__, "throttle_unauthenticated_packages_api_requests_per_period", throttle_unauthenticated_packages_api_requests_per_period)
         if throttle_unauthenticated_web_enabled is not None:
-            _setter("throttle_unauthenticated_web_enabled", throttle_unauthenticated_web_enabled)
+            pulumi.set(__self__, "throttle_unauthenticated_web_enabled", throttle_unauthenticated_web_enabled)
         if throttle_unauthenticated_web_period_in_seconds is not None:
-            _setter("throttle_unauthenticated_web_period_in_seconds", throttle_unauthenticated_web_period_in_seconds)
+            pulumi.set(__self__, "throttle_unauthenticated_web_period_in_seconds", throttle_unauthenticated_web_period_in_seconds)
         if throttle_unauthenticated_web_requests_per_period is not None:
-            _setter("throttle_unauthenticated_web_requests_per_period", throttle_unauthenticated_web_requests_per_period)
+            pulumi.set(__self__, "throttle_unauthenticated_web_requests_per_period", throttle_unauthenticated_web_requests_per_period)
         if time_tracking_limit_to_hours is not None:
-            _setter("time_tracking_limit_to_hours", time_tracking_limit_to_hours)
+            pulumi.set(__self__, "time_tracking_limit_to_hours", time_tracking_limit_to_hours)
         if two_factor_grace_period is not None:
-            _setter("two_factor_grace_period", two_factor_grace_period)
+            pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
         if unique_ips_limit_enabled is not None:
-            _setter("unique_ips_limit_enabled", unique_ips_limit_enabled)
+            pulumi.set(__self__, "unique_ips_limit_enabled", unique_ips_limit_enabled)
         if unique_ips_limit_per_user is not None:
-            _setter("unique_ips_limit_per_user", unique_ips_limit_per_user)
+            pulumi.set(__self__, "unique_ips_limit_per_user", unique_ips_limit_per_user)
         if unique_ips_limit_time_window is not None:
-            _setter("unique_ips_limit_time_window", unique_ips_limit_time_window)
+            pulumi.set(__self__, "unique_ips_limit_time_window", unique_ips_limit_time_window)
         if usage_ping_enabled is not None:
-            _setter("usage_ping_enabled", usage_ping_enabled)
+            pulumi.set(__self__, "usage_ping_enabled", usage_ping_enabled)
         if user_deactivation_emails_enabled is not None:
-            _setter("user_deactivation_emails_enabled", user_deactivation_emails_enabled)
+            pulumi.set(__self__, "user_deactivation_emails_enabled", user_deactivation_emails_enabled)
         if user_default_external is not None:
-            _setter("user_default_external", user_default_external)
+            pulumi.set(__self__, "user_default_external", user_default_external)
         if user_default_internal_regex is not None:
-            _setter("user_default_internal_regex", user_default_internal_regex)
+            pulumi.set(__self__, "user_default_internal_regex", user_default_internal_regex)
         if user_oauth_applications is not None:
-            _setter("user_oauth_applications", user_oauth_applications)
+            pulumi.set(__self__, "user_oauth_applications", user_oauth_applications)
         if user_show_add_ssh_key_message is not None:
-            _setter("user_show_add_ssh_key_message", user_show_add_ssh_key_message)
+            pulumi.set(__self__, "user_show_add_ssh_key_message", user_show_add_ssh_key_message)
         if version_check_enabled is not None:
-            _setter("version_check_enabled", version_check_enabled)
+            pulumi.set(__self__, "version_check_enabled", version_check_enabled)
         if web_ide_clientside_preview_enabled is not None:
-            _setter("web_ide_clientside_preview_enabled", web_ide_clientside_preview_enabled)
+            pulumi.set(__self__, "web_ide_clientside_preview_enabled", web_ide_clientside_preview_enabled)
         if whats_new_variant is not None:
-            _setter("whats_new_variant", whats_new_variant)
+            pulumi.set(__self__, "whats_new_variant", whats_new_variant)
         if wiki_page_max_content_bytes is not None:
-            _setter("wiki_page_max_content_bytes", wiki_page_max_content_bytes)
+            pulumi.set(__self__, "wiki_page_max_content_bytes", wiki_page_max_content_bytes)
 
     @property
     @pulumi.getter(name="abuseNotificationEmail")
@@ -5356,1465 +4381,490 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] whats_new_variant: What’s new variant, possible values: all*tiers, current*tier, and disabled.
         :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
-        _ApplicationSettingsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            abuse_notification_email=abuse_notification_email,
-            admin_mode=admin_mode,
-            after_sign_out_path=after_sign_out_path,
-            after_sign_up_text=after_sign_up_text,
-            akismet_api_key=akismet_api_key,
-            akismet_enabled=akismet_enabled,
-            allow_group_owners_to_manage_ldap=allow_group_owners_to_manage_ldap,
-            allow_local_requests_from_system_hooks=allow_local_requests_from_system_hooks,
-            allow_local_requests_from_web_hooks_and_services=allow_local_requests_from_web_hooks_and_services,
-            archive_builds_in_human_readable=archive_builds_in_human_readable,
-            asset_proxy_allowlists=asset_proxy_allowlists,
-            asset_proxy_enabled=asset_proxy_enabled,
-            asset_proxy_secret_key=asset_proxy_secret_key,
-            asset_proxy_url=asset_proxy_url,
-            authorized_keys_enabled=authorized_keys_enabled,
-            auto_devops_domain=auto_devops_domain,
-            auto_devops_enabled=auto_devops_enabled,
-            automatic_purchased_storage_allocation=automatic_purchased_storage_allocation,
-            can_create_group=can_create_group,
-            check_namespace_plan=check_namespace_plan,
-            commit_email_hostname=commit_email_hostname,
-            container_expiration_policies_enable_historic_entries=container_expiration_policies_enable_historic_entries,
-            container_registry_cleanup_tags_service_max_list_size=container_registry_cleanup_tags_service_max_list_size,
-            container_registry_delete_tags_service_timeout=container_registry_delete_tags_service_timeout,
-            container_registry_expiration_policies_caching=container_registry_expiration_policies_caching,
-            container_registry_expiration_policies_worker_capacity=container_registry_expiration_policies_worker_capacity,
-            container_registry_token_expire_delay=container_registry_token_expire_delay,
-            deactivate_dormant_users=deactivate_dormant_users,
-            default_artifacts_expire_in=default_artifacts_expire_in,
-            default_branch_name=default_branch_name,
-            default_branch_protection=default_branch_protection,
-            default_ci_config_path=default_ci_config_path,
-            default_group_visibility=default_group_visibility,
-            default_project_creation=default_project_creation,
-            default_project_visibility=default_project_visibility,
-            default_projects_limit=default_projects_limit,
-            default_snippet_visibility=default_snippet_visibility,
-            delayed_group_deletion=delayed_group_deletion,
-            delayed_project_deletion=delayed_project_deletion,
-            delete_inactive_projects=delete_inactive_projects,
-            deletion_adjourned_period=deletion_adjourned_period,
-            diff_max_files=diff_max_files,
-            diff_max_lines=diff_max_lines,
-            diff_max_patch_bytes=diff_max_patch_bytes,
-            disable_feed_token=disable_feed_token,
-            disabled_oauth_sign_in_sources=disabled_oauth_sign_in_sources,
-            dns_rebinding_protection_enabled=dns_rebinding_protection_enabled,
-            domain_allowlists=domain_allowlists,
-            domain_denylist_enabled=domain_denylist_enabled,
-            domain_denylists=domain_denylists,
-            dsa_key_restriction=dsa_key_restriction,
-            ecdsa_key_restriction=ecdsa_key_restriction,
-            ecdsa_sk_key_restriction=ecdsa_sk_key_restriction,
-            ed25519_key_restriction=ed25519_key_restriction,
-            ed25519_sk_key_restriction=ed25519_sk_key_restriction,
-            eks_access_key_id=eks_access_key_id,
-            eks_account_id=eks_account_id,
-            eks_integration_enabled=eks_integration_enabled,
-            eks_secret_access_key=eks_secret_access_key,
-            elasticsearch_aws=elasticsearch_aws,
-            elasticsearch_aws_access_key=elasticsearch_aws_access_key,
-            elasticsearch_aws_region=elasticsearch_aws_region,
-            elasticsearch_aws_secret_access_key=elasticsearch_aws_secret_access_key,
-            elasticsearch_indexed_field_length_limit=elasticsearch_indexed_field_length_limit,
-            elasticsearch_indexed_file_size_limit_kb=elasticsearch_indexed_file_size_limit_kb,
-            elasticsearch_indexing=elasticsearch_indexing,
-            elasticsearch_limit_indexing=elasticsearch_limit_indexing,
-            elasticsearch_max_bulk_concurrency=elasticsearch_max_bulk_concurrency,
-            elasticsearch_max_bulk_size_mb=elasticsearch_max_bulk_size_mb,
-            elasticsearch_namespace_ids=elasticsearch_namespace_ids,
-            elasticsearch_password=elasticsearch_password,
-            elasticsearch_project_ids=elasticsearch_project_ids,
-            elasticsearch_search=elasticsearch_search,
-            elasticsearch_urls=elasticsearch_urls,
-            elasticsearch_username=elasticsearch_username,
-            email_additional_text=email_additional_text,
-            email_author_in_body=email_author_in_body,
-            enabled_git_access_protocol=enabled_git_access_protocol,
-            enforce_namespace_storage_limit=enforce_namespace_storage_limit,
-            enforce_terms=enforce_terms,
-            external_auth_client_cert=external_auth_client_cert,
-            external_auth_client_key=external_auth_client_key,
-            external_auth_client_key_pass=external_auth_client_key_pass,
-            external_authorization_service_default_label=external_authorization_service_default_label,
-            external_authorization_service_enabled=external_authorization_service_enabled,
-            external_authorization_service_timeout=external_authorization_service_timeout,
-            external_authorization_service_url=external_authorization_service_url,
-            external_pipeline_validation_service_timeout=external_pipeline_validation_service_timeout,
-            external_pipeline_validation_service_token=external_pipeline_validation_service_token,
-            external_pipeline_validation_service_url=external_pipeline_validation_service_url,
-            file_template_project_id=file_template_project_id,
-            first_day_of_week=first_day_of_week,
-            geo_node_allowed_ips=geo_node_allowed_ips,
-            geo_status_timeout=geo_status_timeout,
-            git_rate_limit_users_allowlists=git_rate_limit_users_allowlists,
-            git_two_factor_session_expiry=git_two_factor_session_expiry,
-            gitaly_timeout_default=gitaly_timeout_default,
-            gitaly_timeout_fast=gitaly_timeout_fast,
-            gitaly_timeout_medium=gitaly_timeout_medium,
-            grafana_enabled=grafana_enabled,
-            grafana_url=grafana_url,
-            gravatar_enabled=gravatar_enabled,
-            group_owners_can_manage_default_branch_protection=group_owners_can_manage_default_branch_protection,
-            hashed_storage_enabled=hashed_storage_enabled,
-            help_page_hide_commercial_content=help_page_hide_commercial_content,
-            help_page_support_url=help_page_support_url,
-            help_page_text=help_page_text,
-            help_text=help_text,
-            hide_third_party_offers=hide_third_party_offers,
-            home_page_url=home_page_url,
-            housekeeping_enabled=housekeeping_enabled,
-            housekeeping_full_repack_period=housekeeping_full_repack_period,
-            housekeeping_gc_period=housekeeping_gc_period,
-            housekeeping_incremental_repack_period=housekeeping_incremental_repack_period,
-            html_emails_enabled=html_emails_enabled,
-            import_sources=import_sources,
-            in_product_marketing_emails_enabled=in_product_marketing_emails_enabled,
-            inactive_projects_delete_after_months=inactive_projects_delete_after_months,
-            inactive_projects_min_size_mb=inactive_projects_min_size_mb,
-            inactive_projects_send_warning_email_after_months=inactive_projects_send_warning_email_after_months,
-            invisible_captcha_enabled=invisible_captcha_enabled,
-            issues_create_limit=issues_create_limit,
-            keep_latest_artifact=keep_latest_artifact,
-            local_markdown_version=local_markdown_version,
-            mailgun_events_enabled=mailgun_events_enabled,
-            mailgun_signing_key=mailgun_signing_key,
-            maintenance_mode=maintenance_mode,
-            maintenance_mode_message=maintenance_mode_message,
-            max_artifacts_size=max_artifacts_size,
-            max_attachment_size=max_attachment_size,
-            max_export_size=max_export_size,
-            max_import_size=max_import_size,
-            max_number_of_repository_downloads=max_number_of_repository_downloads,
-            max_number_of_repository_downloads_within_time_period=max_number_of_repository_downloads_within_time_period,
-            max_pages_size=max_pages_size,
-            max_personal_access_token_lifetime=max_personal_access_token_lifetime,
-            max_ssh_key_lifetime=max_ssh_key_lifetime,
-            metrics_method_call_threshold=metrics_method_call_threshold,
-            mirror_available=mirror_available,
-            mirror_capacity_threshold=mirror_capacity_threshold,
-            mirror_max_capacity=mirror_max_capacity,
-            mirror_max_delay=mirror_max_delay,
-            npm_package_requests_forwarding=npm_package_requests_forwarding,
-            outbound_local_requests_whitelists=outbound_local_requests_whitelists,
-            package_registry_cleanup_policies_worker_capacity=package_registry_cleanup_policies_worker_capacity,
-            pages_domain_verification_enabled=pages_domain_verification_enabled,
-            password_authentication_enabled_for_git=password_authentication_enabled_for_git,
-            password_authentication_enabled_for_web=password_authentication_enabled_for_web,
-            password_lowercase_required=password_lowercase_required,
-            password_number_required=password_number_required,
-            password_symbol_required=password_symbol_required,
-            password_uppercase_required=password_uppercase_required,
-            performance_bar_allowed_group_path=performance_bar_allowed_group_path,
-            personal_access_token_prefix=personal_access_token_prefix,
-            pipeline_limit_per_project_user_sha=pipeline_limit_per_project_user_sha,
-            plantuml_enabled=plantuml_enabled,
-            plantuml_url=plantuml_url,
-            polling_interval_multiplier=polling_interval_multiplier,
-            project_export_enabled=project_export_enabled,
-            prometheus_metrics_enabled=prometheus_metrics_enabled,
-            protected_ci_variables=protected_ci_variables,
-            push_event_activities_limit=push_event_activities_limit,
-            push_event_hooks_limit=push_event_hooks_limit,
-            pypi_package_requests_forwarding=pypi_package_requests_forwarding,
-            rate_limiting_response_text=rate_limiting_response_text,
-            raw_blob_request_limit=raw_blob_request_limit,
-            recaptcha_enabled=recaptcha_enabled,
-            recaptcha_private_key=recaptcha_private_key,
-            recaptcha_site_key=recaptcha_site_key,
-            receive_max_input_size=receive_max_input_size,
-            repository_checks_enabled=repository_checks_enabled,
-            repository_size_limit=repository_size_limit,
-            repository_storages=repository_storages,
-            repository_storages_weighted=repository_storages_weighted,
-            require_admin_approval_after_user_signup=require_admin_approval_after_user_signup,
-            require_two_factor_authentication=require_two_factor_authentication,
-            restricted_visibility_levels=restricted_visibility_levels,
-            rsa_key_restriction=rsa_key_restriction,
-            search_rate_limit=search_rate_limit,
-            search_rate_limit_unauthenticated=search_rate_limit_unauthenticated,
-            send_user_confirmation_email=send_user_confirmation_email,
-            session_expire_delay=session_expire_delay,
-            shared_runners_enabled=shared_runners_enabled,
-            shared_runners_minutes=shared_runners_minutes,
-            shared_runners_text=shared_runners_text,
-            sidekiq_job_limiter_compression_threshold_bytes=sidekiq_job_limiter_compression_threshold_bytes,
-            sidekiq_job_limiter_limit_bytes=sidekiq_job_limiter_limit_bytes,
-            sidekiq_job_limiter_mode=sidekiq_job_limiter_mode,
-            sign_in_text=sign_in_text,
-            signup_enabled=signup_enabled,
-            slack_app_enabled=slack_app_enabled,
-            slack_app_id=slack_app_id,
-            slack_app_secret=slack_app_secret,
-            slack_app_signing_secret=slack_app_signing_secret,
-            slack_app_verification_token=slack_app_verification_token,
-            snippet_size_limit=snippet_size_limit,
-            snowplow_app_id=snowplow_app_id,
-            snowplow_collector_hostname=snowplow_collector_hostname,
-            snowplow_cookie_domain=snowplow_cookie_domain,
-            snowplow_enabled=snowplow_enabled,
-            sourcegraph_enabled=sourcegraph_enabled,
-            sourcegraph_public_only=sourcegraph_public_only,
-            sourcegraph_url=sourcegraph_url,
-            spam_check_api_key=spam_check_api_key,
-            spam_check_endpoint_enabled=spam_check_endpoint_enabled,
-            spam_check_endpoint_url=spam_check_endpoint_url,
-            suggest_pipeline_enabled=suggest_pipeline_enabled,
-            terminal_max_session_time=terminal_max_session_time,
-            terms=terms,
-            throttle_authenticated_api_enabled=throttle_authenticated_api_enabled,
-            throttle_authenticated_api_period_in_seconds=throttle_authenticated_api_period_in_seconds,
-            throttle_authenticated_api_requests_per_period=throttle_authenticated_api_requests_per_period,
-            throttle_authenticated_packages_api_enabled=throttle_authenticated_packages_api_enabled,
-            throttle_authenticated_packages_api_period_in_seconds=throttle_authenticated_packages_api_period_in_seconds,
-            throttle_authenticated_packages_api_requests_per_period=throttle_authenticated_packages_api_requests_per_period,
-            throttle_authenticated_web_enabled=throttle_authenticated_web_enabled,
-            throttle_authenticated_web_period_in_seconds=throttle_authenticated_web_period_in_seconds,
-            throttle_authenticated_web_requests_per_period=throttle_authenticated_web_requests_per_period,
-            throttle_unauthenticated_api_enabled=throttle_unauthenticated_api_enabled,
-            throttle_unauthenticated_api_period_in_seconds=throttle_unauthenticated_api_period_in_seconds,
-            throttle_unauthenticated_api_requests_per_period=throttle_unauthenticated_api_requests_per_period,
-            throttle_unauthenticated_packages_api_enabled=throttle_unauthenticated_packages_api_enabled,
-            throttle_unauthenticated_packages_api_period_in_seconds=throttle_unauthenticated_packages_api_period_in_seconds,
-            throttle_unauthenticated_packages_api_requests_per_period=throttle_unauthenticated_packages_api_requests_per_period,
-            throttle_unauthenticated_web_enabled=throttle_unauthenticated_web_enabled,
-            throttle_unauthenticated_web_period_in_seconds=throttle_unauthenticated_web_period_in_seconds,
-            throttle_unauthenticated_web_requests_per_period=throttle_unauthenticated_web_requests_per_period,
-            time_tracking_limit_to_hours=time_tracking_limit_to_hours,
-            two_factor_grace_period=two_factor_grace_period,
-            unique_ips_limit_enabled=unique_ips_limit_enabled,
-            unique_ips_limit_per_user=unique_ips_limit_per_user,
-            unique_ips_limit_time_window=unique_ips_limit_time_window,
-            usage_ping_enabled=usage_ping_enabled,
-            user_deactivation_emails_enabled=user_deactivation_emails_enabled,
-            user_default_external=user_default_external,
-            user_default_internal_regex=user_default_internal_regex,
-            user_oauth_applications=user_oauth_applications,
-            user_show_add_ssh_key_message=user_show_add_ssh_key_message,
-            version_check_enabled=version_check_enabled,
-            web_ide_clientside_preview_enabled=web_ide_clientside_preview_enabled,
-            whats_new_variant=whats_new_variant,
-            wiki_page_max_content_bytes=wiki_page_max_content_bytes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             abuse_notification_email: Optional[pulumi.Input[str]] = None,
-             admin_mode: Optional[pulumi.Input[bool]] = None,
-             after_sign_out_path: Optional[pulumi.Input[str]] = None,
-             after_sign_up_text: Optional[pulumi.Input[str]] = None,
-             akismet_api_key: Optional[pulumi.Input[str]] = None,
-             akismet_enabled: Optional[pulumi.Input[bool]] = None,
-             allow_group_owners_to_manage_ldap: Optional[pulumi.Input[bool]] = None,
-             allow_local_requests_from_system_hooks: Optional[pulumi.Input[bool]] = None,
-             allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[bool]] = None,
-             archive_builds_in_human_readable: Optional[pulumi.Input[str]] = None,
-             asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             asset_proxy_enabled: Optional[pulumi.Input[bool]] = None,
-             asset_proxy_secret_key: Optional[pulumi.Input[str]] = None,
-             asset_proxy_url: Optional[pulumi.Input[str]] = None,
-             authorized_keys_enabled: Optional[pulumi.Input[bool]] = None,
-             auto_devops_domain: Optional[pulumi.Input[str]] = None,
-             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
-             automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
-             can_create_group: Optional[pulumi.Input[bool]] = None,
-             check_namespace_plan: Optional[pulumi.Input[bool]] = None,
-             commit_email_hostname: Optional[pulumi.Input[str]] = None,
-             container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
-             container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[int]] = None,
-             container_registry_delete_tags_service_timeout: Optional[pulumi.Input[int]] = None,
-             container_registry_expiration_policies_caching: Optional[pulumi.Input[bool]] = None,
-             container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
-             container_registry_token_expire_delay: Optional[pulumi.Input[int]] = None,
-             deactivate_dormant_users: Optional[pulumi.Input[bool]] = None,
-             default_artifacts_expire_in: Optional[pulumi.Input[str]] = None,
-             default_branch_name: Optional[pulumi.Input[str]] = None,
-             default_branch_protection: Optional[pulumi.Input[int]] = None,
-             default_ci_config_path: Optional[pulumi.Input[str]] = None,
-             default_group_visibility: Optional[pulumi.Input[str]] = None,
-             default_project_creation: Optional[pulumi.Input[int]] = None,
-             default_project_visibility: Optional[pulumi.Input[str]] = None,
-             default_projects_limit: Optional[pulumi.Input[int]] = None,
-             default_snippet_visibility: Optional[pulumi.Input[str]] = None,
-             delayed_group_deletion: Optional[pulumi.Input[bool]] = None,
-             delayed_project_deletion: Optional[pulumi.Input[bool]] = None,
-             delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
-             deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
-             diff_max_files: Optional[pulumi.Input[int]] = None,
-             diff_max_lines: Optional[pulumi.Input[int]] = None,
-             diff_max_patch_bytes: Optional[pulumi.Input[int]] = None,
-             disable_feed_token: Optional[pulumi.Input[bool]] = None,
-             disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             dns_rebinding_protection_enabled: Optional[pulumi.Input[bool]] = None,
-             domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             domain_denylist_enabled: Optional[pulumi.Input[bool]] = None,
-             domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             dsa_key_restriction: Optional[pulumi.Input[int]] = None,
-             ecdsa_key_restriction: Optional[pulumi.Input[int]] = None,
-             ecdsa_sk_key_restriction: Optional[pulumi.Input[int]] = None,
-             ed25519_key_restriction: Optional[pulumi.Input[int]] = None,
-             ed25519_sk_key_restriction: Optional[pulumi.Input[int]] = None,
-             eks_access_key_id: Optional[pulumi.Input[str]] = None,
-             eks_account_id: Optional[pulumi.Input[str]] = None,
-             eks_integration_enabled: Optional[pulumi.Input[bool]] = None,
-             eks_secret_access_key: Optional[pulumi.Input[str]] = None,
-             elasticsearch_aws: Optional[pulumi.Input[bool]] = None,
-             elasticsearch_aws_access_key: Optional[pulumi.Input[str]] = None,
-             elasticsearch_aws_region: Optional[pulumi.Input[str]] = None,
-             elasticsearch_aws_secret_access_key: Optional[pulumi.Input[str]] = None,
-             elasticsearch_indexed_field_length_limit: Optional[pulumi.Input[int]] = None,
-             elasticsearch_indexed_file_size_limit_kb: Optional[pulumi.Input[int]] = None,
-             elasticsearch_indexing: Optional[pulumi.Input[bool]] = None,
-             elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
-             elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
-             elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
-             elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             elasticsearch_password: Optional[pulumi.Input[str]] = None,
-             elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             elasticsearch_search: Optional[pulumi.Input[bool]] = None,
-             elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             elasticsearch_username: Optional[pulumi.Input[str]] = None,
-             email_additional_text: Optional[pulumi.Input[str]] = None,
-             email_author_in_body: Optional[pulumi.Input[bool]] = None,
-             enabled_git_access_protocol: Optional[pulumi.Input[str]] = None,
-             enforce_namespace_storage_limit: Optional[pulumi.Input[bool]] = None,
-             enforce_terms: Optional[pulumi.Input[bool]] = None,
-             external_auth_client_cert: Optional[pulumi.Input[str]] = None,
-             external_auth_client_key: Optional[pulumi.Input[str]] = None,
-             external_auth_client_key_pass: Optional[pulumi.Input[str]] = None,
-             external_authorization_service_default_label: Optional[pulumi.Input[str]] = None,
-             external_authorization_service_enabled: Optional[pulumi.Input[bool]] = None,
-             external_authorization_service_timeout: Optional[pulumi.Input[float]] = None,
-             external_authorization_service_url: Optional[pulumi.Input[str]] = None,
-             external_pipeline_validation_service_timeout: Optional[pulumi.Input[int]] = None,
-             external_pipeline_validation_service_token: Optional[pulumi.Input[str]] = None,
-             external_pipeline_validation_service_url: Optional[pulumi.Input[str]] = None,
-             file_template_project_id: Optional[pulumi.Input[int]] = None,
-             first_day_of_week: Optional[pulumi.Input[int]] = None,
-             geo_node_allowed_ips: Optional[pulumi.Input[str]] = None,
-             geo_status_timeout: Optional[pulumi.Input[int]] = None,
-             git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             git_two_factor_session_expiry: Optional[pulumi.Input[int]] = None,
-             gitaly_timeout_default: Optional[pulumi.Input[int]] = None,
-             gitaly_timeout_fast: Optional[pulumi.Input[int]] = None,
-             gitaly_timeout_medium: Optional[pulumi.Input[int]] = None,
-             grafana_enabled: Optional[pulumi.Input[bool]] = None,
-             grafana_url: Optional[pulumi.Input[str]] = None,
-             gravatar_enabled: Optional[pulumi.Input[bool]] = None,
-             group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[bool]] = None,
-             hashed_storage_enabled: Optional[pulumi.Input[bool]] = None,
-             help_page_hide_commercial_content: Optional[pulumi.Input[bool]] = None,
-             help_page_support_url: Optional[pulumi.Input[str]] = None,
-             help_page_text: Optional[pulumi.Input[str]] = None,
-             help_text: Optional[pulumi.Input[str]] = None,
-             hide_third_party_offers: Optional[pulumi.Input[bool]] = None,
-             home_page_url: Optional[pulumi.Input[str]] = None,
-             housekeeping_enabled: Optional[pulumi.Input[bool]] = None,
-             housekeeping_full_repack_period: Optional[pulumi.Input[int]] = None,
-             housekeeping_gc_period: Optional[pulumi.Input[int]] = None,
-             housekeeping_incremental_repack_period: Optional[pulumi.Input[int]] = None,
-             html_emails_enabled: Optional[pulumi.Input[bool]] = None,
-             import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             in_product_marketing_emails_enabled: Optional[pulumi.Input[bool]] = None,
-             inactive_projects_delete_after_months: Optional[pulumi.Input[int]] = None,
-             inactive_projects_min_size_mb: Optional[pulumi.Input[int]] = None,
-             inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[int]] = None,
-             invisible_captcha_enabled: Optional[pulumi.Input[bool]] = None,
-             issues_create_limit: Optional[pulumi.Input[int]] = None,
-             keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
-             local_markdown_version: Optional[pulumi.Input[int]] = None,
-             mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
-             mailgun_signing_key: Optional[pulumi.Input[str]] = None,
-             maintenance_mode: Optional[pulumi.Input[bool]] = None,
-             maintenance_mode_message: Optional[pulumi.Input[str]] = None,
-             max_artifacts_size: Optional[pulumi.Input[int]] = None,
-             max_attachment_size: Optional[pulumi.Input[int]] = None,
-             max_export_size: Optional[pulumi.Input[int]] = None,
-             max_import_size: Optional[pulumi.Input[int]] = None,
-             max_number_of_repository_downloads: Optional[pulumi.Input[int]] = None,
-             max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[int]] = None,
-             max_pages_size: Optional[pulumi.Input[int]] = None,
-             max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
-             max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
-             metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
-             mirror_available: Optional[pulumi.Input[bool]] = None,
-             mirror_capacity_threshold: Optional[pulumi.Input[int]] = None,
-             mirror_max_capacity: Optional[pulumi.Input[int]] = None,
-             mirror_max_delay: Optional[pulumi.Input[int]] = None,
-             npm_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
-             outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
-             pages_domain_verification_enabled: Optional[pulumi.Input[bool]] = None,
-             password_authentication_enabled_for_git: Optional[pulumi.Input[bool]] = None,
-             password_authentication_enabled_for_web: Optional[pulumi.Input[bool]] = None,
-             password_lowercase_required: Optional[pulumi.Input[bool]] = None,
-             password_number_required: Optional[pulumi.Input[bool]] = None,
-             password_symbol_required: Optional[pulumi.Input[bool]] = None,
-             password_uppercase_required: Optional[pulumi.Input[bool]] = None,
-             performance_bar_allowed_group_path: Optional[pulumi.Input[str]] = None,
-             personal_access_token_prefix: Optional[pulumi.Input[str]] = None,
-             pipeline_limit_per_project_user_sha: Optional[pulumi.Input[int]] = None,
-             plantuml_enabled: Optional[pulumi.Input[bool]] = None,
-             plantuml_url: Optional[pulumi.Input[str]] = None,
-             polling_interval_multiplier: Optional[pulumi.Input[float]] = None,
-             project_export_enabled: Optional[pulumi.Input[bool]] = None,
-             prometheus_metrics_enabled: Optional[pulumi.Input[bool]] = None,
-             protected_ci_variables: Optional[pulumi.Input[bool]] = None,
-             push_event_activities_limit: Optional[pulumi.Input[int]] = None,
-             push_event_hooks_limit: Optional[pulumi.Input[int]] = None,
-             pypi_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
-             rate_limiting_response_text: Optional[pulumi.Input[str]] = None,
-             raw_blob_request_limit: Optional[pulumi.Input[int]] = None,
-             recaptcha_enabled: Optional[pulumi.Input[bool]] = None,
-             recaptcha_private_key: Optional[pulumi.Input[str]] = None,
-             recaptcha_site_key: Optional[pulumi.Input[str]] = None,
-             receive_max_input_size: Optional[pulumi.Input[int]] = None,
-             repository_checks_enabled: Optional[pulumi.Input[bool]] = None,
-             repository_size_limit: Optional[pulumi.Input[int]] = None,
-             repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
-             require_admin_approval_after_user_signup: Optional[pulumi.Input[bool]] = None,
-             require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
-             restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             rsa_key_restriction: Optional[pulumi.Input[int]] = None,
-             search_rate_limit: Optional[pulumi.Input[int]] = None,
-             search_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
-             send_user_confirmation_email: Optional[pulumi.Input[bool]] = None,
-             session_expire_delay: Optional[pulumi.Input[int]] = None,
-             shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
-             shared_runners_minutes: Optional[pulumi.Input[int]] = None,
-             shared_runners_text: Optional[pulumi.Input[str]] = None,
-             sidekiq_job_limiter_compression_threshold_bytes: Optional[pulumi.Input[int]] = None,
-             sidekiq_job_limiter_limit_bytes: Optional[pulumi.Input[int]] = None,
-             sidekiq_job_limiter_mode: Optional[pulumi.Input[str]] = None,
-             sign_in_text: Optional[pulumi.Input[str]] = None,
-             signup_enabled: Optional[pulumi.Input[bool]] = None,
-             slack_app_enabled: Optional[pulumi.Input[bool]] = None,
-             slack_app_id: Optional[pulumi.Input[str]] = None,
-             slack_app_secret: Optional[pulumi.Input[str]] = None,
-             slack_app_signing_secret: Optional[pulumi.Input[str]] = None,
-             slack_app_verification_token: Optional[pulumi.Input[str]] = None,
-             snippet_size_limit: Optional[pulumi.Input[int]] = None,
-             snowplow_app_id: Optional[pulumi.Input[str]] = None,
-             snowplow_collector_hostname: Optional[pulumi.Input[str]] = None,
-             snowplow_cookie_domain: Optional[pulumi.Input[str]] = None,
-             snowplow_enabled: Optional[pulumi.Input[bool]] = None,
-             sourcegraph_enabled: Optional[pulumi.Input[bool]] = None,
-             sourcegraph_public_only: Optional[pulumi.Input[bool]] = None,
-             sourcegraph_url: Optional[pulumi.Input[str]] = None,
-             spam_check_api_key: Optional[pulumi.Input[str]] = None,
-             spam_check_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
-             spam_check_endpoint_url: Optional[pulumi.Input[str]] = None,
-             suggest_pipeline_enabled: Optional[pulumi.Input[bool]] = None,
-             terminal_max_session_time: Optional[pulumi.Input[int]] = None,
-             terms: Optional[pulumi.Input[str]] = None,
-             throttle_authenticated_api_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_authenticated_api_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_authenticated_api_requests_per_period: Optional[pulumi.Input[int]] = None,
-             throttle_authenticated_packages_api_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_authenticated_packages_api_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_authenticated_packages_api_requests_per_period: Optional[pulumi.Input[int]] = None,
-             throttle_authenticated_web_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_authenticated_web_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_authenticated_web_requests_per_period: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_api_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_unauthenticated_api_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_api_requests_per_period: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_packages_api_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_unauthenticated_packages_api_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_packages_api_requests_per_period: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_web_enabled: Optional[pulumi.Input[bool]] = None,
-             throttle_unauthenticated_web_period_in_seconds: Optional[pulumi.Input[int]] = None,
-             throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[int]] = None,
-             time_tracking_limit_to_hours: Optional[pulumi.Input[bool]] = None,
-             two_factor_grace_period: Optional[pulumi.Input[int]] = None,
-             unique_ips_limit_enabled: Optional[pulumi.Input[bool]] = None,
-             unique_ips_limit_per_user: Optional[pulumi.Input[int]] = None,
-             unique_ips_limit_time_window: Optional[pulumi.Input[int]] = None,
-             usage_ping_enabled: Optional[pulumi.Input[bool]] = None,
-             user_deactivation_emails_enabled: Optional[pulumi.Input[bool]] = None,
-             user_default_external: Optional[pulumi.Input[bool]] = None,
-             user_default_internal_regex: Optional[pulumi.Input[str]] = None,
-             user_oauth_applications: Optional[pulumi.Input[bool]] = None,
-             user_show_add_ssh_key_message: Optional[pulumi.Input[bool]] = None,
-             version_check_enabled: Optional[pulumi.Input[bool]] = None,
-             web_ide_clientside_preview_enabled: Optional[pulumi.Input[bool]] = None,
-             whats_new_variant: Optional[pulumi.Input[str]] = None,
-             wiki_page_max_content_bytes: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if abuse_notification_email is None and 'abuseNotificationEmail' in kwargs:
-            abuse_notification_email = kwargs['abuseNotificationEmail']
-        if admin_mode is None and 'adminMode' in kwargs:
-            admin_mode = kwargs['adminMode']
-        if after_sign_out_path is None and 'afterSignOutPath' in kwargs:
-            after_sign_out_path = kwargs['afterSignOutPath']
-        if after_sign_up_text is None and 'afterSignUpText' in kwargs:
-            after_sign_up_text = kwargs['afterSignUpText']
-        if akismet_api_key is None and 'akismetApiKey' in kwargs:
-            akismet_api_key = kwargs['akismetApiKey']
-        if akismet_enabled is None and 'akismetEnabled' in kwargs:
-            akismet_enabled = kwargs['akismetEnabled']
-        if allow_group_owners_to_manage_ldap is None and 'allowGroupOwnersToManageLdap' in kwargs:
-            allow_group_owners_to_manage_ldap = kwargs['allowGroupOwnersToManageLdap']
-        if allow_local_requests_from_system_hooks is None and 'allowLocalRequestsFromSystemHooks' in kwargs:
-            allow_local_requests_from_system_hooks = kwargs['allowLocalRequestsFromSystemHooks']
-        if allow_local_requests_from_web_hooks_and_services is None and 'allowLocalRequestsFromWebHooksAndServices' in kwargs:
-            allow_local_requests_from_web_hooks_and_services = kwargs['allowLocalRequestsFromWebHooksAndServices']
-        if archive_builds_in_human_readable is None and 'archiveBuildsInHumanReadable' in kwargs:
-            archive_builds_in_human_readable = kwargs['archiveBuildsInHumanReadable']
-        if asset_proxy_allowlists is None and 'assetProxyAllowlists' in kwargs:
-            asset_proxy_allowlists = kwargs['assetProxyAllowlists']
-        if asset_proxy_enabled is None and 'assetProxyEnabled' in kwargs:
-            asset_proxy_enabled = kwargs['assetProxyEnabled']
-        if asset_proxy_secret_key is None and 'assetProxySecretKey' in kwargs:
-            asset_proxy_secret_key = kwargs['assetProxySecretKey']
-        if asset_proxy_url is None and 'assetProxyUrl' in kwargs:
-            asset_proxy_url = kwargs['assetProxyUrl']
-        if authorized_keys_enabled is None and 'authorizedKeysEnabled' in kwargs:
-            authorized_keys_enabled = kwargs['authorizedKeysEnabled']
-        if auto_devops_domain is None and 'autoDevopsDomain' in kwargs:
-            auto_devops_domain = kwargs['autoDevopsDomain']
-        if auto_devops_enabled is None and 'autoDevopsEnabled' in kwargs:
-            auto_devops_enabled = kwargs['autoDevopsEnabled']
-        if automatic_purchased_storage_allocation is None and 'automaticPurchasedStorageAllocation' in kwargs:
-            automatic_purchased_storage_allocation = kwargs['automaticPurchasedStorageAllocation']
-        if can_create_group is None and 'canCreateGroup' in kwargs:
-            can_create_group = kwargs['canCreateGroup']
-        if check_namespace_plan is None and 'checkNamespacePlan' in kwargs:
-            check_namespace_plan = kwargs['checkNamespacePlan']
-        if commit_email_hostname is None and 'commitEmailHostname' in kwargs:
-            commit_email_hostname = kwargs['commitEmailHostname']
-        if container_expiration_policies_enable_historic_entries is None and 'containerExpirationPoliciesEnableHistoricEntries' in kwargs:
-            container_expiration_policies_enable_historic_entries = kwargs['containerExpirationPoliciesEnableHistoricEntries']
-        if container_registry_cleanup_tags_service_max_list_size is None and 'containerRegistryCleanupTagsServiceMaxListSize' in kwargs:
-            container_registry_cleanup_tags_service_max_list_size = kwargs['containerRegistryCleanupTagsServiceMaxListSize']
-        if container_registry_delete_tags_service_timeout is None and 'containerRegistryDeleteTagsServiceTimeout' in kwargs:
-            container_registry_delete_tags_service_timeout = kwargs['containerRegistryDeleteTagsServiceTimeout']
-        if container_registry_expiration_policies_caching is None and 'containerRegistryExpirationPoliciesCaching' in kwargs:
-            container_registry_expiration_policies_caching = kwargs['containerRegistryExpirationPoliciesCaching']
-        if container_registry_expiration_policies_worker_capacity is None and 'containerRegistryExpirationPoliciesWorkerCapacity' in kwargs:
-            container_registry_expiration_policies_worker_capacity = kwargs['containerRegistryExpirationPoliciesWorkerCapacity']
-        if container_registry_token_expire_delay is None and 'containerRegistryTokenExpireDelay' in kwargs:
-            container_registry_token_expire_delay = kwargs['containerRegistryTokenExpireDelay']
-        if deactivate_dormant_users is None and 'deactivateDormantUsers' in kwargs:
-            deactivate_dormant_users = kwargs['deactivateDormantUsers']
-        if default_artifacts_expire_in is None and 'defaultArtifactsExpireIn' in kwargs:
-            default_artifacts_expire_in = kwargs['defaultArtifactsExpireIn']
-        if default_branch_name is None and 'defaultBranchName' in kwargs:
-            default_branch_name = kwargs['defaultBranchName']
-        if default_branch_protection is None and 'defaultBranchProtection' in kwargs:
-            default_branch_protection = kwargs['defaultBranchProtection']
-        if default_ci_config_path is None and 'defaultCiConfigPath' in kwargs:
-            default_ci_config_path = kwargs['defaultCiConfigPath']
-        if default_group_visibility is None and 'defaultGroupVisibility' in kwargs:
-            default_group_visibility = kwargs['defaultGroupVisibility']
-        if default_project_creation is None and 'defaultProjectCreation' in kwargs:
-            default_project_creation = kwargs['defaultProjectCreation']
-        if default_project_visibility is None and 'defaultProjectVisibility' in kwargs:
-            default_project_visibility = kwargs['defaultProjectVisibility']
-        if default_projects_limit is None and 'defaultProjectsLimit' in kwargs:
-            default_projects_limit = kwargs['defaultProjectsLimit']
-        if default_snippet_visibility is None and 'defaultSnippetVisibility' in kwargs:
-            default_snippet_visibility = kwargs['defaultSnippetVisibility']
-        if delayed_group_deletion is None and 'delayedGroupDeletion' in kwargs:
-            delayed_group_deletion = kwargs['delayedGroupDeletion']
-        if delayed_project_deletion is None and 'delayedProjectDeletion' in kwargs:
-            delayed_project_deletion = kwargs['delayedProjectDeletion']
-        if delete_inactive_projects is None and 'deleteInactiveProjects' in kwargs:
-            delete_inactive_projects = kwargs['deleteInactiveProjects']
-        if deletion_adjourned_period is None and 'deletionAdjournedPeriod' in kwargs:
-            deletion_adjourned_period = kwargs['deletionAdjournedPeriod']
-        if diff_max_files is None and 'diffMaxFiles' in kwargs:
-            diff_max_files = kwargs['diffMaxFiles']
-        if diff_max_lines is None and 'diffMaxLines' in kwargs:
-            diff_max_lines = kwargs['diffMaxLines']
-        if diff_max_patch_bytes is None and 'diffMaxPatchBytes' in kwargs:
-            diff_max_patch_bytes = kwargs['diffMaxPatchBytes']
-        if disable_feed_token is None and 'disableFeedToken' in kwargs:
-            disable_feed_token = kwargs['disableFeedToken']
-        if disabled_oauth_sign_in_sources is None and 'disabledOauthSignInSources' in kwargs:
-            disabled_oauth_sign_in_sources = kwargs['disabledOauthSignInSources']
-        if dns_rebinding_protection_enabled is None and 'dnsRebindingProtectionEnabled' in kwargs:
-            dns_rebinding_protection_enabled = kwargs['dnsRebindingProtectionEnabled']
-        if domain_allowlists is None and 'domainAllowlists' in kwargs:
-            domain_allowlists = kwargs['domainAllowlists']
-        if domain_denylist_enabled is None and 'domainDenylistEnabled' in kwargs:
-            domain_denylist_enabled = kwargs['domainDenylistEnabled']
-        if domain_denylists is None and 'domainDenylists' in kwargs:
-            domain_denylists = kwargs['domainDenylists']
-        if dsa_key_restriction is None and 'dsaKeyRestriction' in kwargs:
-            dsa_key_restriction = kwargs['dsaKeyRestriction']
-        if ecdsa_key_restriction is None and 'ecdsaKeyRestriction' in kwargs:
-            ecdsa_key_restriction = kwargs['ecdsaKeyRestriction']
-        if ecdsa_sk_key_restriction is None and 'ecdsaSkKeyRestriction' in kwargs:
-            ecdsa_sk_key_restriction = kwargs['ecdsaSkKeyRestriction']
-        if ed25519_key_restriction is None and 'ed25519KeyRestriction' in kwargs:
-            ed25519_key_restriction = kwargs['ed25519KeyRestriction']
-        if ed25519_sk_key_restriction is None and 'ed25519SkKeyRestriction' in kwargs:
-            ed25519_sk_key_restriction = kwargs['ed25519SkKeyRestriction']
-        if eks_access_key_id is None and 'eksAccessKeyId' in kwargs:
-            eks_access_key_id = kwargs['eksAccessKeyId']
-        if eks_account_id is None and 'eksAccountId' in kwargs:
-            eks_account_id = kwargs['eksAccountId']
-        if eks_integration_enabled is None and 'eksIntegrationEnabled' in kwargs:
-            eks_integration_enabled = kwargs['eksIntegrationEnabled']
-        if eks_secret_access_key is None and 'eksSecretAccessKey' in kwargs:
-            eks_secret_access_key = kwargs['eksSecretAccessKey']
-        if elasticsearch_aws is None and 'elasticsearchAws' in kwargs:
-            elasticsearch_aws = kwargs['elasticsearchAws']
-        if elasticsearch_aws_access_key is None and 'elasticsearchAwsAccessKey' in kwargs:
-            elasticsearch_aws_access_key = kwargs['elasticsearchAwsAccessKey']
-        if elasticsearch_aws_region is None and 'elasticsearchAwsRegion' in kwargs:
-            elasticsearch_aws_region = kwargs['elasticsearchAwsRegion']
-        if elasticsearch_aws_secret_access_key is None and 'elasticsearchAwsSecretAccessKey' in kwargs:
-            elasticsearch_aws_secret_access_key = kwargs['elasticsearchAwsSecretAccessKey']
-        if elasticsearch_indexed_field_length_limit is None and 'elasticsearchIndexedFieldLengthLimit' in kwargs:
-            elasticsearch_indexed_field_length_limit = kwargs['elasticsearchIndexedFieldLengthLimit']
-        if elasticsearch_indexed_file_size_limit_kb is None and 'elasticsearchIndexedFileSizeLimitKb' in kwargs:
-            elasticsearch_indexed_file_size_limit_kb = kwargs['elasticsearchIndexedFileSizeLimitKb']
-        if elasticsearch_indexing is None and 'elasticsearchIndexing' in kwargs:
-            elasticsearch_indexing = kwargs['elasticsearchIndexing']
-        if elasticsearch_limit_indexing is None and 'elasticsearchLimitIndexing' in kwargs:
-            elasticsearch_limit_indexing = kwargs['elasticsearchLimitIndexing']
-        if elasticsearch_max_bulk_concurrency is None and 'elasticsearchMaxBulkConcurrency' in kwargs:
-            elasticsearch_max_bulk_concurrency = kwargs['elasticsearchMaxBulkConcurrency']
-        if elasticsearch_max_bulk_size_mb is None and 'elasticsearchMaxBulkSizeMb' in kwargs:
-            elasticsearch_max_bulk_size_mb = kwargs['elasticsearchMaxBulkSizeMb']
-        if elasticsearch_namespace_ids is None and 'elasticsearchNamespaceIds' in kwargs:
-            elasticsearch_namespace_ids = kwargs['elasticsearchNamespaceIds']
-        if elasticsearch_password is None and 'elasticsearchPassword' in kwargs:
-            elasticsearch_password = kwargs['elasticsearchPassword']
-        if elasticsearch_project_ids is None and 'elasticsearchProjectIds' in kwargs:
-            elasticsearch_project_ids = kwargs['elasticsearchProjectIds']
-        if elasticsearch_search is None and 'elasticsearchSearch' in kwargs:
-            elasticsearch_search = kwargs['elasticsearchSearch']
-        if elasticsearch_urls is None and 'elasticsearchUrls' in kwargs:
-            elasticsearch_urls = kwargs['elasticsearchUrls']
-        if elasticsearch_username is None and 'elasticsearchUsername' in kwargs:
-            elasticsearch_username = kwargs['elasticsearchUsername']
-        if email_additional_text is None and 'emailAdditionalText' in kwargs:
-            email_additional_text = kwargs['emailAdditionalText']
-        if email_author_in_body is None and 'emailAuthorInBody' in kwargs:
-            email_author_in_body = kwargs['emailAuthorInBody']
-        if enabled_git_access_protocol is None and 'enabledGitAccessProtocol' in kwargs:
-            enabled_git_access_protocol = kwargs['enabledGitAccessProtocol']
-        if enforce_namespace_storage_limit is None and 'enforceNamespaceStorageLimit' in kwargs:
-            enforce_namespace_storage_limit = kwargs['enforceNamespaceStorageLimit']
-        if enforce_terms is None and 'enforceTerms' in kwargs:
-            enforce_terms = kwargs['enforceTerms']
-        if external_auth_client_cert is None and 'externalAuthClientCert' in kwargs:
-            external_auth_client_cert = kwargs['externalAuthClientCert']
-        if external_auth_client_key is None and 'externalAuthClientKey' in kwargs:
-            external_auth_client_key = kwargs['externalAuthClientKey']
-        if external_auth_client_key_pass is None and 'externalAuthClientKeyPass' in kwargs:
-            external_auth_client_key_pass = kwargs['externalAuthClientKeyPass']
-        if external_authorization_service_default_label is None and 'externalAuthorizationServiceDefaultLabel' in kwargs:
-            external_authorization_service_default_label = kwargs['externalAuthorizationServiceDefaultLabel']
-        if external_authorization_service_enabled is None and 'externalAuthorizationServiceEnabled' in kwargs:
-            external_authorization_service_enabled = kwargs['externalAuthorizationServiceEnabled']
-        if external_authorization_service_timeout is None and 'externalAuthorizationServiceTimeout' in kwargs:
-            external_authorization_service_timeout = kwargs['externalAuthorizationServiceTimeout']
-        if external_authorization_service_url is None and 'externalAuthorizationServiceUrl' in kwargs:
-            external_authorization_service_url = kwargs['externalAuthorizationServiceUrl']
-        if external_pipeline_validation_service_timeout is None and 'externalPipelineValidationServiceTimeout' in kwargs:
-            external_pipeline_validation_service_timeout = kwargs['externalPipelineValidationServiceTimeout']
-        if external_pipeline_validation_service_token is None and 'externalPipelineValidationServiceToken' in kwargs:
-            external_pipeline_validation_service_token = kwargs['externalPipelineValidationServiceToken']
-        if external_pipeline_validation_service_url is None and 'externalPipelineValidationServiceUrl' in kwargs:
-            external_pipeline_validation_service_url = kwargs['externalPipelineValidationServiceUrl']
-        if file_template_project_id is None and 'fileTemplateProjectId' in kwargs:
-            file_template_project_id = kwargs['fileTemplateProjectId']
-        if first_day_of_week is None and 'firstDayOfWeek' in kwargs:
-            first_day_of_week = kwargs['firstDayOfWeek']
-        if geo_node_allowed_ips is None and 'geoNodeAllowedIps' in kwargs:
-            geo_node_allowed_ips = kwargs['geoNodeAllowedIps']
-        if geo_status_timeout is None and 'geoStatusTimeout' in kwargs:
-            geo_status_timeout = kwargs['geoStatusTimeout']
-        if git_rate_limit_users_allowlists is None and 'gitRateLimitUsersAllowlists' in kwargs:
-            git_rate_limit_users_allowlists = kwargs['gitRateLimitUsersAllowlists']
-        if git_two_factor_session_expiry is None and 'gitTwoFactorSessionExpiry' in kwargs:
-            git_two_factor_session_expiry = kwargs['gitTwoFactorSessionExpiry']
-        if gitaly_timeout_default is None and 'gitalyTimeoutDefault' in kwargs:
-            gitaly_timeout_default = kwargs['gitalyTimeoutDefault']
-        if gitaly_timeout_fast is None and 'gitalyTimeoutFast' in kwargs:
-            gitaly_timeout_fast = kwargs['gitalyTimeoutFast']
-        if gitaly_timeout_medium is None and 'gitalyTimeoutMedium' in kwargs:
-            gitaly_timeout_medium = kwargs['gitalyTimeoutMedium']
-        if grafana_enabled is None and 'grafanaEnabled' in kwargs:
-            grafana_enabled = kwargs['grafanaEnabled']
-        if grafana_url is None and 'grafanaUrl' in kwargs:
-            grafana_url = kwargs['grafanaUrl']
-        if gravatar_enabled is None and 'gravatarEnabled' in kwargs:
-            gravatar_enabled = kwargs['gravatarEnabled']
-        if group_owners_can_manage_default_branch_protection is None and 'groupOwnersCanManageDefaultBranchProtection' in kwargs:
-            group_owners_can_manage_default_branch_protection = kwargs['groupOwnersCanManageDefaultBranchProtection']
-        if hashed_storage_enabled is None and 'hashedStorageEnabled' in kwargs:
-            hashed_storage_enabled = kwargs['hashedStorageEnabled']
-        if help_page_hide_commercial_content is None and 'helpPageHideCommercialContent' in kwargs:
-            help_page_hide_commercial_content = kwargs['helpPageHideCommercialContent']
-        if help_page_support_url is None and 'helpPageSupportUrl' in kwargs:
-            help_page_support_url = kwargs['helpPageSupportUrl']
-        if help_page_text is None and 'helpPageText' in kwargs:
-            help_page_text = kwargs['helpPageText']
-        if help_text is None and 'helpText' in kwargs:
-            help_text = kwargs['helpText']
-        if hide_third_party_offers is None and 'hideThirdPartyOffers' in kwargs:
-            hide_third_party_offers = kwargs['hideThirdPartyOffers']
-        if home_page_url is None and 'homePageUrl' in kwargs:
-            home_page_url = kwargs['homePageUrl']
-        if housekeeping_enabled is None and 'housekeepingEnabled' in kwargs:
-            housekeeping_enabled = kwargs['housekeepingEnabled']
-        if housekeeping_full_repack_period is None and 'housekeepingFullRepackPeriod' in kwargs:
-            housekeeping_full_repack_period = kwargs['housekeepingFullRepackPeriod']
-        if housekeeping_gc_period is None and 'housekeepingGcPeriod' in kwargs:
-            housekeeping_gc_period = kwargs['housekeepingGcPeriod']
-        if housekeeping_incremental_repack_period is None and 'housekeepingIncrementalRepackPeriod' in kwargs:
-            housekeeping_incremental_repack_period = kwargs['housekeepingIncrementalRepackPeriod']
-        if html_emails_enabled is None and 'htmlEmailsEnabled' in kwargs:
-            html_emails_enabled = kwargs['htmlEmailsEnabled']
-        if import_sources is None and 'importSources' in kwargs:
-            import_sources = kwargs['importSources']
-        if in_product_marketing_emails_enabled is None and 'inProductMarketingEmailsEnabled' in kwargs:
-            in_product_marketing_emails_enabled = kwargs['inProductMarketingEmailsEnabled']
-        if inactive_projects_delete_after_months is None and 'inactiveProjectsDeleteAfterMonths' in kwargs:
-            inactive_projects_delete_after_months = kwargs['inactiveProjectsDeleteAfterMonths']
-        if inactive_projects_min_size_mb is None and 'inactiveProjectsMinSizeMb' in kwargs:
-            inactive_projects_min_size_mb = kwargs['inactiveProjectsMinSizeMb']
-        if inactive_projects_send_warning_email_after_months is None and 'inactiveProjectsSendWarningEmailAfterMonths' in kwargs:
-            inactive_projects_send_warning_email_after_months = kwargs['inactiveProjectsSendWarningEmailAfterMonths']
-        if invisible_captcha_enabled is None and 'invisibleCaptchaEnabled' in kwargs:
-            invisible_captcha_enabled = kwargs['invisibleCaptchaEnabled']
-        if issues_create_limit is None and 'issuesCreateLimit' in kwargs:
-            issues_create_limit = kwargs['issuesCreateLimit']
-        if keep_latest_artifact is None and 'keepLatestArtifact' in kwargs:
-            keep_latest_artifact = kwargs['keepLatestArtifact']
-        if local_markdown_version is None and 'localMarkdownVersion' in kwargs:
-            local_markdown_version = kwargs['localMarkdownVersion']
-        if mailgun_events_enabled is None and 'mailgunEventsEnabled' in kwargs:
-            mailgun_events_enabled = kwargs['mailgunEventsEnabled']
-        if mailgun_signing_key is None and 'mailgunSigningKey' in kwargs:
-            mailgun_signing_key = kwargs['mailgunSigningKey']
-        if maintenance_mode is None and 'maintenanceMode' in kwargs:
-            maintenance_mode = kwargs['maintenanceMode']
-        if maintenance_mode_message is None and 'maintenanceModeMessage' in kwargs:
-            maintenance_mode_message = kwargs['maintenanceModeMessage']
-        if max_artifacts_size is None and 'maxArtifactsSize' in kwargs:
-            max_artifacts_size = kwargs['maxArtifactsSize']
-        if max_attachment_size is None and 'maxAttachmentSize' in kwargs:
-            max_attachment_size = kwargs['maxAttachmentSize']
-        if max_export_size is None and 'maxExportSize' in kwargs:
-            max_export_size = kwargs['maxExportSize']
-        if max_import_size is None and 'maxImportSize' in kwargs:
-            max_import_size = kwargs['maxImportSize']
-        if max_number_of_repository_downloads is None and 'maxNumberOfRepositoryDownloads' in kwargs:
-            max_number_of_repository_downloads = kwargs['maxNumberOfRepositoryDownloads']
-        if max_number_of_repository_downloads_within_time_period is None and 'maxNumberOfRepositoryDownloadsWithinTimePeriod' in kwargs:
-            max_number_of_repository_downloads_within_time_period = kwargs['maxNumberOfRepositoryDownloadsWithinTimePeriod']
-        if max_pages_size is None and 'maxPagesSize' in kwargs:
-            max_pages_size = kwargs['maxPagesSize']
-        if max_personal_access_token_lifetime is None and 'maxPersonalAccessTokenLifetime' in kwargs:
-            max_personal_access_token_lifetime = kwargs['maxPersonalAccessTokenLifetime']
-        if max_ssh_key_lifetime is None and 'maxSshKeyLifetime' in kwargs:
-            max_ssh_key_lifetime = kwargs['maxSshKeyLifetime']
-        if metrics_method_call_threshold is None and 'metricsMethodCallThreshold' in kwargs:
-            metrics_method_call_threshold = kwargs['metricsMethodCallThreshold']
-        if mirror_available is None and 'mirrorAvailable' in kwargs:
-            mirror_available = kwargs['mirrorAvailable']
-        if mirror_capacity_threshold is None and 'mirrorCapacityThreshold' in kwargs:
-            mirror_capacity_threshold = kwargs['mirrorCapacityThreshold']
-        if mirror_max_capacity is None and 'mirrorMaxCapacity' in kwargs:
-            mirror_max_capacity = kwargs['mirrorMaxCapacity']
-        if mirror_max_delay is None and 'mirrorMaxDelay' in kwargs:
-            mirror_max_delay = kwargs['mirrorMaxDelay']
-        if npm_package_requests_forwarding is None and 'npmPackageRequestsForwarding' in kwargs:
-            npm_package_requests_forwarding = kwargs['npmPackageRequestsForwarding']
-        if outbound_local_requests_whitelists is None and 'outboundLocalRequestsWhitelists' in kwargs:
-            outbound_local_requests_whitelists = kwargs['outboundLocalRequestsWhitelists']
-        if package_registry_cleanup_policies_worker_capacity is None and 'packageRegistryCleanupPoliciesWorkerCapacity' in kwargs:
-            package_registry_cleanup_policies_worker_capacity = kwargs['packageRegistryCleanupPoliciesWorkerCapacity']
-        if pages_domain_verification_enabled is None and 'pagesDomainVerificationEnabled' in kwargs:
-            pages_domain_verification_enabled = kwargs['pagesDomainVerificationEnabled']
-        if password_authentication_enabled_for_git is None and 'passwordAuthenticationEnabledForGit' in kwargs:
-            password_authentication_enabled_for_git = kwargs['passwordAuthenticationEnabledForGit']
-        if password_authentication_enabled_for_web is None and 'passwordAuthenticationEnabledForWeb' in kwargs:
-            password_authentication_enabled_for_web = kwargs['passwordAuthenticationEnabledForWeb']
-        if password_lowercase_required is None and 'passwordLowercaseRequired' in kwargs:
-            password_lowercase_required = kwargs['passwordLowercaseRequired']
-        if password_number_required is None and 'passwordNumberRequired' in kwargs:
-            password_number_required = kwargs['passwordNumberRequired']
-        if password_symbol_required is None and 'passwordSymbolRequired' in kwargs:
-            password_symbol_required = kwargs['passwordSymbolRequired']
-        if password_uppercase_required is None and 'passwordUppercaseRequired' in kwargs:
-            password_uppercase_required = kwargs['passwordUppercaseRequired']
-        if performance_bar_allowed_group_path is None and 'performanceBarAllowedGroupPath' in kwargs:
-            performance_bar_allowed_group_path = kwargs['performanceBarAllowedGroupPath']
-        if personal_access_token_prefix is None and 'personalAccessTokenPrefix' in kwargs:
-            personal_access_token_prefix = kwargs['personalAccessTokenPrefix']
-        if pipeline_limit_per_project_user_sha is None and 'pipelineLimitPerProjectUserSha' in kwargs:
-            pipeline_limit_per_project_user_sha = kwargs['pipelineLimitPerProjectUserSha']
-        if plantuml_enabled is None and 'plantumlEnabled' in kwargs:
-            plantuml_enabled = kwargs['plantumlEnabled']
-        if plantuml_url is None and 'plantumlUrl' in kwargs:
-            plantuml_url = kwargs['plantumlUrl']
-        if polling_interval_multiplier is None and 'pollingIntervalMultiplier' in kwargs:
-            polling_interval_multiplier = kwargs['pollingIntervalMultiplier']
-        if project_export_enabled is None and 'projectExportEnabled' in kwargs:
-            project_export_enabled = kwargs['projectExportEnabled']
-        if prometheus_metrics_enabled is None and 'prometheusMetricsEnabled' in kwargs:
-            prometheus_metrics_enabled = kwargs['prometheusMetricsEnabled']
-        if protected_ci_variables is None and 'protectedCiVariables' in kwargs:
-            protected_ci_variables = kwargs['protectedCiVariables']
-        if push_event_activities_limit is None and 'pushEventActivitiesLimit' in kwargs:
-            push_event_activities_limit = kwargs['pushEventActivitiesLimit']
-        if push_event_hooks_limit is None and 'pushEventHooksLimit' in kwargs:
-            push_event_hooks_limit = kwargs['pushEventHooksLimit']
-        if pypi_package_requests_forwarding is None and 'pypiPackageRequestsForwarding' in kwargs:
-            pypi_package_requests_forwarding = kwargs['pypiPackageRequestsForwarding']
-        if rate_limiting_response_text is None and 'rateLimitingResponseText' in kwargs:
-            rate_limiting_response_text = kwargs['rateLimitingResponseText']
-        if raw_blob_request_limit is None and 'rawBlobRequestLimit' in kwargs:
-            raw_blob_request_limit = kwargs['rawBlobRequestLimit']
-        if recaptcha_enabled is None and 'recaptchaEnabled' in kwargs:
-            recaptcha_enabled = kwargs['recaptchaEnabled']
-        if recaptcha_private_key is None and 'recaptchaPrivateKey' in kwargs:
-            recaptcha_private_key = kwargs['recaptchaPrivateKey']
-        if recaptcha_site_key is None and 'recaptchaSiteKey' in kwargs:
-            recaptcha_site_key = kwargs['recaptchaSiteKey']
-        if receive_max_input_size is None and 'receiveMaxInputSize' in kwargs:
-            receive_max_input_size = kwargs['receiveMaxInputSize']
-        if repository_checks_enabled is None and 'repositoryChecksEnabled' in kwargs:
-            repository_checks_enabled = kwargs['repositoryChecksEnabled']
-        if repository_size_limit is None and 'repositorySizeLimit' in kwargs:
-            repository_size_limit = kwargs['repositorySizeLimit']
-        if repository_storages is None and 'repositoryStorages' in kwargs:
-            repository_storages = kwargs['repositoryStorages']
-        if repository_storages_weighted is None and 'repositoryStoragesWeighted' in kwargs:
-            repository_storages_weighted = kwargs['repositoryStoragesWeighted']
-        if require_admin_approval_after_user_signup is None and 'requireAdminApprovalAfterUserSignup' in kwargs:
-            require_admin_approval_after_user_signup = kwargs['requireAdminApprovalAfterUserSignup']
-        if require_two_factor_authentication is None and 'requireTwoFactorAuthentication' in kwargs:
-            require_two_factor_authentication = kwargs['requireTwoFactorAuthentication']
-        if restricted_visibility_levels is None and 'restrictedVisibilityLevels' in kwargs:
-            restricted_visibility_levels = kwargs['restrictedVisibilityLevels']
-        if rsa_key_restriction is None and 'rsaKeyRestriction' in kwargs:
-            rsa_key_restriction = kwargs['rsaKeyRestriction']
-        if search_rate_limit is None and 'searchRateLimit' in kwargs:
-            search_rate_limit = kwargs['searchRateLimit']
-        if search_rate_limit_unauthenticated is None and 'searchRateLimitUnauthenticated' in kwargs:
-            search_rate_limit_unauthenticated = kwargs['searchRateLimitUnauthenticated']
-        if send_user_confirmation_email is None and 'sendUserConfirmationEmail' in kwargs:
-            send_user_confirmation_email = kwargs['sendUserConfirmationEmail']
-        if session_expire_delay is None and 'sessionExpireDelay' in kwargs:
-            session_expire_delay = kwargs['sessionExpireDelay']
-        if shared_runners_enabled is None and 'sharedRunnersEnabled' in kwargs:
-            shared_runners_enabled = kwargs['sharedRunnersEnabled']
-        if shared_runners_minutes is None and 'sharedRunnersMinutes' in kwargs:
-            shared_runners_minutes = kwargs['sharedRunnersMinutes']
-        if shared_runners_text is None and 'sharedRunnersText' in kwargs:
-            shared_runners_text = kwargs['sharedRunnersText']
-        if sidekiq_job_limiter_compression_threshold_bytes is None and 'sidekiqJobLimiterCompressionThresholdBytes' in kwargs:
-            sidekiq_job_limiter_compression_threshold_bytes = kwargs['sidekiqJobLimiterCompressionThresholdBytes']
-        if sidekiq_job_limiter_limit_bytes is None and 'sidekiqJobLimiterLimitBytes' in kwargs:
-            sidekiq_job_limiter_limit_bytes = kwargs['sidekiqJobLimiterLimitBytes']
-        if sidekiq_job_limiter_mode is None and 'sidekiqJobLimiterMode' in kwargs:
-            sidekiq_job_limiter_mode = kwargs['sidekiqJobLimiterMode']
-        if sign_in_text is None and 'signInText' in kwargs:
-            sign_in_text = kwargs['signInText']
-        if signup_enabled is None and 'signupEnabled' in kwargs:
-            signup_enabled = kwargs['signupEnabled']
-        if slack_app_enabled is None and 'slackAppEnabled' in kwargs:
-            slack_app_enabled = kwargs['slackAppEnabled']
-        if slack_app_id is None and 'slackAppId' in kwargs:
-            slack_app_id = kwargs['slackAppId']
-        if slack_app_secret is None and 'slackAppSecret' in kwargs:
-            slack_app_secret = kwargs['slackAppSecret']
-        if slack_app_signing_secret is None and 'slackAppSigningSecret' in kwargs:
-            slack_app_signing_secret = kwargs['slackAppSigningSecret']
-        if slack_app_verification_token is None and 'slackAppVerificationToken' in kwargs:
-            slack_app_verification_token = kwargs['slackAppVerificationToken']
-        if snippet_size_limit is None and 'snippetSizeLimit' in kwargs:
-            snippet_size_limit = kwargs['snippetSizeLimit']
-        if snowplow_app_id is None and 'snowplowAppId' in kwargs:
-            snowplow_app_id = kwargs['snowplowAppId']
-        if snowplow_collector_hostname is None and 'snowplowCollectorHostname' in kwargs:
-            snowplow_collector_hostname = kwargs['snowplowCollectorHostname']
-        if snowplow_cookie_domain is None and 'snowplowCookieDomain' in kwargs:
-            snowplow_cookie_domain = kwargs['snowplowCookieDomain']
-        if snowplow_enabled is None and 'snowplowEnabled' in kwargs:
-            snowplow_enabled = kwargs['snowplowEnabled']
-        if sourcegraph_enabled is None and 'sourcegraphEnabled' in kwargs:
-            sourcegraph_enabled = kwargs['sourcegraphEnabled']
-        if sourcegraph_public_only is None and 'sourcegraphPublicOnly' in kwargs:
-            sourcegraph_public_only = kwargs['sourcegraphPublicOnly']
-        if sourcegraph_url is None and 'sourcegraphUrl' in kwargs:
-            sourcegraph_url = kwargs['sourcegraphUrl']
-        if spam_check_api_key is None and 'spamCheckApiKey' in kwargs:
-            spam_check_api_key = kwargs['spamCheckApiKey']
-        if spam_check_endpoint_enabled is None and 'spamCheckEndpointEnabled' in kwargs:
-            spam_check_endpoint_enabled = kwargs['spamCheckEndpointEnabled']
-        if spam_check_endpoint_url is None and 'spamCheckEndpointUrl' in kwargs:
-            spam_check_endpoint_url = kwargs['spamCheckEndpointUrl']
-        if suggest_pipeline_enabled is None and 'suggestPipelineEnabled' in kwargs:
-            suggest_pipeline_enabled = kwargs['suggestPipelineEnabled']
-        if terminal_max_session_time is None and 'terminalMaxSessionTime' in kwargs:
-            terminal_max_session_time = kwargs['terminalMaxSessionTime']
-        if throttle_authenticated_api_enabled is None and 'throttleAuthenticatedApiEnabled' in kwargs:
-            throttle_authenticated_api_enabled = kwargs['throttleAuthenticatedApiEnabled']
-        if throttle_authenticated_api_period_in_seconds is None and 'throttleAuthenticatedApiPeriodInSeconds' in kwargs:
-            throttle_authenticated_api_period_in_seconds = kwargs['throttleAuthenticatedApiPeriodInSeconds']
-        if throttle_authenticated_api_requests_per_period is None and 'throttleAuthenticatedApiRequestsPerPeriod' in kwargs:
-            throttle_authenticated_api_requests_per_period = kwargs['throttleAuthenticatedApiRequestsPerPeriod']
-        if throttle_authenticated_packages_api_enabled is None and 'throttleAuthenticatedPackagesApiEnabled' in kwargs:
-            throttle_authenticated_packages_api_enabled = kwargs['throttleAuthenticatedPackagesApiEnabled']
-        if throttle_authenticated_packages_api_period_in_seconds is None and 'throttleAuthenticatedPackagesApiPeriodInSeconds' in kwargs:
-            throttle_authenticated_packages_api_period_in_seconds = kwargs['throttleAuthenticatedPackagesApiPeriodInSeconds']
-        if throttle_authenticated_packages_api_requests_per_period is None and 'throttleAuthenticatedPackagesApiRequestsPerPeriod' in kwargs:
-            throttle_authenticated_packages_api_requests_per_period = kwargs['throttleAuthenticatedPackagesApiRequestsPerPeriod']
-        if throttle_authenticated_web_enabled is None and 'throttleAuthenticatedWebEnabled' in kwargs:
-            throttle_authenticated_web_enabled = kwargs['throttleAuthenticatedWebEnabled']
-        if throttle_authenticated_web_period_in_seconds is None and 'throttleAuthenticatedWebPeriodInSeconds' in kwargs:
-            throttle_authenticated_web_period_in_seconds = kwargs['throttleAuthenticatedWebPeriodInSeconds']
-        if throttle_authenticated_web_requests_per_period is None and 'throttleAuthenticatedWebRequestsPerPeriod' in kwargs:
-            throttle_authenticated_web_requests_per_period = kwargs['throttleAuthenticatedWebRequestsPerPeriod']
-        if throttle_unauthenticated_api_enabled is None and 'throttleUnauthenticatedApiEnabled' in kwargs:
-            throttle_unauthenticated_api_enabled = kwargs['throttleUnauthenticatedApiEnabled']
-        if throttle_unauthenticated_api_period_in_seconds is None and 'throttleUnauthenticatedApiPeriodInSeconds' in kwargs:
-            throttle_unauthenticated_api_period_in_seconds = kwargs['throttleUnauthenticatedApiPeriodInSeconds']
-        if throttle_unauthenticated_api_requests_per_period is None and 'throttleUnauthenticatedApiRequestsPerPeriod' in kwargs:
-            throttle_unauthenticated_api_requests_per_period = kwargs['throttleUnauthenticatedApiRequestsPerPeriod']
-        if throttle_unauthenticated_packages_api_enabled is None and 'throttleUnauthenticatedPackagesApiEnabled' in kwargs:
-            throttle_unauthenticated_packages_api_enabled = kwargs['throttleUnauthenticatedPackagesApiEnabled']
-        if throttle_unauthenticated_packages_api_period_in_seconds is None and 'throttleUnauthenticatedPackagesApiPeriodInSeconds' in kwargs:
-            throttle_unauthenticated_packages_api_period_in_seconds = kwargs['throttleUnauthenticatedPackagesApiPeriodInSeconds']
-        if throttle_unauthenticated_packages_api_requests_per_period is None and 'throttleUnauthenticatedPackagesApiRequestsPerPeriod' in kwargs:
-            throttle_unauthenticated_packages_api_requests_per_period = kwargs['throttleUnauthenticatedPackagesApiRequestsPerPeriod']
-        if throttle_unauthenticated_web_enabled is None and 'throttleUnauthenticatedWebEnabled' in kwargs:
-            throttle_unauthenticated_web_enabled = kwargs['throttleUnauthenticatedWebEnabled']
-        if throttle_unauthenticated_web_period_in_seconds is None and 'throttleUnauthenticatedWebPeriodInSeconds' in kwargs:
-            throttle_unauthenticated_web_period_in_seconds = kwargs['throttleUnauthenticatedWebPeriodInSeconds']
-        if throttle_unauthenticated_web_requests_per_period is None and 'throttleUnauthenticatedWebRequestsPerPeriod' in kwargs:
-            throttle_unauthenticated_web_requests_per_period = kwargs['throttleUnauthenticatedWebRequestsPerPeriod']
-        if time_tracking_limit_to_hours is None and 'timeTrackingLimitToHours' in kwargs:
-            time_tracking_limit_to_hours = kwargs['timeTrackingLimitToHours']
-        if two_factor_grace_period is None and 'twoFactorGracePeriod' in kwargs:
-            two_factor_grace_period = kwargs['twoFactorGracePeriod']
-        if unique_ips_limit_enabled is None and 'uniqueIpsLimitEnabled' in kwargs:
-            unique_ips_limit_enabled = kwargs['uniqueIpsLimitEnabled']
-        if unique_ips_limit_per_user is None and 'uniqueIpsLimitPerUser' in kwargs:
-            unique_ips_limit_per_user = kwargs['uniqueIpsLimitPerUser']
-        if unique_ips_limit_time_window is None and 'uniqueIpsLimitTimeWindow' in kwargs:
-            unique_ips_limit_time_window = kwargs['uniqueIpsLimitTimeWindow']
-        if usage_ping_enabled is None and 'usagePingEnabled' in kwargs:
-            usage_ping_enabled = kwargs['usagePingEnabled']
-        if user_deactivation_emails_enabled is None and 'userDeactivationEmailsEnabled' in kwargs:
-            user_deactivation_emails_enabled = kwargs['userDeactivationEmailsEnabled']
-        if user_default_external is None and 'userDefaultExternal' in kwargs:
-            user_default_external = kwargs['userDefaultExternal']
-        if user_default_internal_regex is None and 'userDefaultInternalRegex' in kwargs:
-            user_default_internal_regex = kwargs['userDefaultInternalRegex']
-        if user_oauth_applications is None and 'userOauthApplications' in kwargs:
-            user_oauth_applications = kwargs['userOauthApplications']
-        if user_show_add_ssh_key_message is None and 'userShowAddSshKeyMessage' in kwargs:
-            user_show_add_ssh_key_message = kwargs['userShowAddSshKeyMessage']
-        if version_check_enabled is None and 'versionCheckEnabled' in kwargs:
-            version_check_enabled = kwargs['versionCheckEnabled']
-        if web_ide_clientside_preview_enabled is None and 'webIdeClientsidePreviewEnabled' in kwargs:
-            web_ide_clientside_preview_enabled = kwargs['webIdeClientsidePreviewEnabled']
-        if whats_new_variant is None and 'whatsNewVariant' in kwargs:
-            whats_new_variant = kwargs['whatsNewVariant']
-        if wiki_page_max_content_bytes is None and 'wikiPageMaxContentBytes' in kwargs:
-            wiki_page_max_content_bytes = kwargs['wikiPageMaxContentBytes']
-
         if abuse_notification_email is not None:
-            _setter("abuse_notification_email", abuse_notification_email)
+            pulumi.set(__self__, "abuse_notification_email", abuse_notification_email)
         if admin_mode is not None:
-            _setter("admin_mode", admin_mode)
+            pulumi.set(__self__, "admin_mode", admin_mode)
         if after_sign_out_path is not None:
-            _setter("after_sign_out_path", after_sign_out_path)
+            pulumi.set(__self__, "after_sign_out_path", after_sign_out_path)
         if after_sign_up_text is not None:
-            _setter("after_sign_up_text", after_sign_up_text)
+            pulumi.set(__self__, "after_sign_up_text", after_sign_up_text)
         if akismet_api_key is not None:
-            _setter("akismet_api_key", akismet_api_key)
+            pulumi.set(__self__, "akismet_api_key", akismet_api_key)
         if akismet_enabled is not None:
-            _setter("akismet_enabled", akismet_enabled)
+            pulumi.set(__self__, "akismet_enabled", akismet_enabled)
         if allow_group_owners_to_manage_ldap is not None:
-            _setter("allow_group_owners_to_manage_ldap", allow_group_owners_to_manage_ldap)
+            pulumi.set(__self__, "allow_group_owners_to_manage_ldap", allow_group_owners_to_manage_ldap)
         if allow_local_requests_from_system_hooks is not None:
-            _setter("allow_local_requests_from_system_hooks", allow_local_requests_from_system_hooks)
+            pulumi.set(__self__, "allow_local_requests_from_system_hooks", allow_local_requests_from_system_hooks)
         if allow_local_requests_from_web_hooks_and_services is not None:
-            _setter("allow_local_requests_from_web_hooks_and_services", allow_local_requests_from_web_hooks_and_services)
+            pulumi.set(__self__, "allow_local_requests_from_web_hooks_and_services", allow_local_requests_from_web_hooks_and_services)
         if archive_builds_in_human_readable is not None:
-            _setter("archive_builds_in_human_readable", archive_builds_in_human_readable)
+            pulumi.set(__self__, "archive_builds_in_human_readable", archive_builds_in_human_readable)
         if asset_proxy_allowlists is not None:
-            _setter("asset_proxy_allowlists", asset_proxy_allowlists)
+            pulumi.set(__self__, "asset_proxy_allowlists", asset_proxy_allowlists)
         if asset_proxy_enabled is not None:
-            _setter("asset_proxy_enabled", asset_proxy_enabled)
+            pulumi.set(__self__, "asset_proxy_enabled", asset_proxy_enabled)
         if asset_proxy_secret_key is not None:
-            _setter("asset_proxy_secret_key", asset_proxy_secret_key)
+            pulumi.set(__self__, "asset_proxy_secret_key", asset_proxy_secret_key)
         if asset_proxy_url is not None:
-            _setter("asset_proxy_url", asset_proxy_url)
+            pulumi.set(__self__, "asset_proxy_url", asset_proxy_url)
         if authorized_keys_enabled is not None:
-            _setter("authorized_keys_enabled", authorized_keys_enabled)
+            pulumi.set(__self__, "authorized_keys_enabled", authorized_keys_enabled)
         if auto_devops_domain is not None:
-            _setter("auto_devops_domain", auto_devops_domain)
+            pulumi.set(__self__, "auto_devops_domain", auto_devops_domain)
         if auto_devops_enabled is not None:
-            _setter("auto_devops_enabled", auto_devops_enabled)
+            pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if automatic_purchased_storage_allocation is not None:
-            _setter("automatic_purchased_storage_allocation", automatic_purchased_storage_allocation)
+            pulumi.set(__self__, "automatic_purchased_storage_allocation", automatic_purchased_storage_allocation)
         if can_create_group is not None:
-            _setter("can_create_group", can_create_group)
+            pulumi.set(__self__, "can_create_group", can_create_group)
         if check_namespace_plan is not None:
-            _setter("check_namespace_plan", check_namespace_plan)
+            pulumi.set(__self__, "check_namespace_plan", check_namespace_plan)
         if commit_email_hostname is not None:
-            _setter("commit_email_hostname", commit_email_hostname)
+            pulumi.set(__self__, "commit_email_hostname", commit_email_hostname)
         if container_expiration_policies_enable_historic_entries is not None:
-            _setter("container_expiration_policies_enable_historic_entries", container_expiration_policies_enable_historic_entries)
+            pulumi.set(__self__, "container_expiration_policies_enable_historic_entries", container_expiration_policies_enable_historic_entries)
         if container_registry_cleanup_tags_service_max_list_size is not None:
-            _setter("container_registry_cleanup_tags_service_max_list_size", container_registry_cleanup_tags_service_max_list_size)
+            pulumi.set(__self__, "container_registry_cleanup_tags_service_max_list_size", container_registry_cleanup_tags_service_max_list_size)
         if container_registry_delete_tags_service_timeout is not None:
-            _setter("container_registry_delete_tags_service_timeout", container_registry_delete_tags_service_timeout)
+            pulumi.set(__self__, "container_registry_delete_tags_service_timeout", container_registry_delete_tags_service_timeout)
         if container_registry_expiration_policies_caching is not None:
-            _setter("container_registry_expiration_policies_caching", container_registry_expiration_policies_caching)
+            pulumi.set(__self__, "container_registry_expiration_policies_caching", container_registry_expiration_policies_caching)
         if container_registry_expiration_policies_worker_capacity is not None:
-            _setter("container_registry_expiration_policies_worker_capacity", container_registry_expiration_policies_worker_capacity)
+            pulumi.set(__self__, "container_registry_expiration_policies_worker_capacity", container_registry_expiration_policies_worker_capacity)
         if container_registry_token_expire_delay is not None:
-            _setter("container_registry_token_expire_delay", container_registry_token_expire_delay)
+            pulumi.set(__self__, "container_registry_token_expire_delay", container_registry_token_expire_delay)
         if deactivate_dormant_users is not None:
-            _setter("deactivate_dormant_users", deactivate_dormant_users)
+            pulumi.set(__self__, "deactivate_dormant_users", deactivate_dormant_users)
         if default_artifacts_expire_in is not None:
-            _setter("default_artifacts_expire_in", default_artifacts_expire_in)
+            pulumi.set(__self__, "default_artifacts_expire_in", default_artifacts_expire_in)
         if default_branch_name is not None:
-            _setter("default_branch_name", default_branch_name)
+            pulumi.set(__self__, "default_branch_name", default_branch_name)
         if default_branch_protection is not None:
-            _setter("default_branch_protection", default_branch_protection)
+            pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if default_ci_config_path is not None:
-            _setter("default_ci_config_path", default_ci_config_path)
+            pulumi.set(__self__, "default_ci_config_path", default_ci_config_path)
         if default_group_visibility is not None:
-            _setter("default_group_visibility", default_group_visibility)
+            pulumi.set(__self__, "default_group_visibility", default_group_visibility)
         if default_project_creation is not None:
-            _setter("default_project_creation", default_project_creation)
+            pulumi.set(__self__, "default_project_creation", default_project_creation)
         if default_project_visibility is not None:
-            _setter("default_project_visibility", default_project_visibility)
+            pulumi.set(__self__, "default_project_visibility", default_project_visibility)
         if default_projects_limit is not None:
-            _setter("default_projects_limit", default_projects_limit)
+            pulumi.set(__self__, "default_projects_limit", default_projects_limit)
         if default_snippet_visibility is not None:
-            _setter("default_snippet_visibility", default_snippet_visibility)
+            pulumi.set(__self__, "default_snippet_visibility", default_snippet_visibility)
         if delayed_group_deletion is not None:
-            _setter("delayed_group_deletion", delayed_group_deletion)
+            pulumi.set(__self__, "delayed_group_deletion", delayed_group_deletion)
         if delayed_project_deletion is not None:
-            _setter("delayed_project_deletion", delayed_project_deletion)
+            pulumi.set(__self__, "delayed_project_deletion", delayed_project_deletion)
         if delete_inactive_projects is not None:
-            _setter("delete_inactive_projects", delete_inactive_projects)
+            pulumi.set(__self__, "delete_inactive_projects", delete_inactive_projects)
         if deletion_adjourned_period is not None:
-            _setter("deletion_adjourned_period", deletion_adjourned_period)
+            pulumi.set(__self__, "deletion_adjourned_period", deletion_adjourned_period)
         if diff_max_files is not None:
-            _setter("diff_max_files", diff_max_files)
+            pulumi.set(__self__, "diff_max_files", diff_max_files)
         if diff_max_lines is not None:
-            _setter("diff_max_lines", diff_max_lines)
+            pulumi.set(__self__, "diff_max_lines", diff_max_lines)
         if diff_max_patch_bytes is not None:
-            _setter("diff_max_patch_bytes", diff_max_patch_bytes)
+            pulumi.set(__self__, "diff_max_patch_bytes", diff_max_patch_bytes)
         if disable_feed_token is not None:
-            _setter("disable_feed_token", disable_feed_token)
+            pulumi.set(__self__, "disable_feed_token", disable_feed_token)
         if disabled_oauth_sign_in_sources is not None:
-            _setter("disabled_oauth_sign_in_sources", disabled_oauth_sign_in_sources)
+            pulumi.set(__self__, "disabled_oauth_sign_in_sources", disabled_oauth_sign_in_sources)
         if dns_rebinding_protection_enabled is not None:
-            _setter("dns_rebinding_protection_enabled", dns_rebinding_protection_enabled)
+            pulumi.set(__self__, "dns_rebinding_protection_enabled", dns_rebinding_protection_enabled)
         if domain_allowlists is not None:
-            _setter("domain_allowlists", domain_allowlists)
+            pulumi.set(__self__, "domain_allowlists", domain_allowlists)
         if domain_denylist_enabled is not None:
-            _setter("domain_denylist_enabled", domain_denylist_enabled)
+            pulumi.set(__self__, "domain_denylist_enabled", domain_denylist_enabled)
         if domain_denylists is not None:
-            _setter("domain_denylists", domain_denylists)
+            pulumi.set(__self__, "domain_denylists", domain_denylists)
         if dsa_key_restriction is not None:
-            _setter("dsa_key_restriction", dsa_key_restriction)
+            pulumi.set(__self__, "dsa_key_restriction", dsa_key_restriction)
         if ecdsa_key_restriction is not None:
-            _setter("ecdsa_key_restriction", ecdsa_key_restriction)
+            pulumi.set(__self__, "ecdsa_key_restriction", ecdsa_key_restriction)
         if ecdsa_sk_key_restriction is not None:
-            _setter("ecdsa_sk_key_restriction", ecdsa_sk_key_restriction)
+            pulumi.set(__self__, "ecdsa_sk_key_restriction", ecdsa_sk_key_restriction)
         if ed25519_key_restriction is not None:
-            _setter("ed25519_key_restriction", ed25519_key_restriction)
+            pulumi.set(__self__, "ed25519_key_restriction", ed25519_key_restriction)
         if ed25519_sk_key_restriction is not None:
-            _setter("ed25519_sk_key_restriction", ed25519_sk_key_restriction)
+            pulumi.set(__self__, "ed25519_sk_key_restriction", ed25519_sk_key_restriction)
         if eks_access_key_id is not None:
-            _setter("eks_access_key_id", eks_access_key_id)
+            pulumi.set(__self__, "eks_access_key_id", eks_access_key_id)
         if eks_account_id is not None:
-            _setter("eks_account_id", eks_account_id)
+            pulumi.set(__self__, "eks_account_id", eks_account_id)
         if eks_integration_enabled is not None:
-            _setter("eks_integration_enabled", eks_integration_enabled)
+            pulumi.set(__self__, "eks_integration_enabled", eks_integration_enabled)
         if eks_secret_access_key is not None:
-            _setter("eks_secret_access_key", eks_secret_access_key)
+            pulumi.set(__self__, "eks_secret_access_key", eks_secret_access_key)
         if elasticsearch_aws is not None:
-            _setter("elasticsearch_aws", elasticsearch_aws)
+            pulumi.set(__self__, "elasticsearch_aws", elasticsearch_aws)
         if elasticsearch_aws_access_key is not None:
-            _setter("elasticsearch_aws_access_key", elasticsearch_aws_access_key)
+            pulumi.set(__self__, "elasticsearch_aws_access_key", elasticsearch_aws_access_key)
         if elasticsearch_aws_region is not None:
-            _setter("elasticsearch_aws_region", elasticsearch_aws_region)
+            pulumi.set(__self__, "elasticsearch_aws_region", elasticsearch_aws_region)
         if elasticsearch_aws_secret_access_key is not None:
-            _setter("elasticsearch_aws_secret_access_key", elasticsearch_aws_secret_access_key)
+            pulumi.set(__self__, "elasticsearch_aws_secret_access_key", elasticsearch_aws_secret_access_key)
         if elasticsearch_indexed_field_length_limit is not None:
-            _setter("elasticsearch_indexed_field_length_limit", elasticsearch_indexed_field_length_limit)
+            pulumi.set(__self__, "elasticsearch_indexed_field_length_limit", elasticsearch_indexed_field_length_limit)
         if elasticsearch_indexed_file_size_limit_kb is not None:
-            _setter("elasticsearch_indexed_file_size_limit_kb", elasticsearch_indexed_file_size_limit_kb)
+            pulumi.set(__self__, "elasticsearch_indexed_file_size_limit_kb", elasticsearch_indexed_file_size_limit_kb)
         if elasticsearch_indexing is not None:
-            _setter("elasticsearch_indexing", elasticsearch_indexing)
+            pulumi.set(__self__, "elasticsearch_indexing", elasticsearch_indexing)
         if elasticsearch_limit_indexing is not None:
-            _setter("elasticsearch_limit_indexing", elasticsearch_limit_indexing)
+            pulumi.set(__self__, "elasticsearch_limit_indexing", elasticsearch_limit_indexing)
         if elasticsearch_max_bulk_concurrency is not None:
-            _setter("elasticsearch_max_bulk_concurrency", elasticsearch_max_bulk_concurrency)
+            pulumi.set(__self__, "elasticsearch_max_bulk_concurrency", elasticsearch_max_bulk_concurrency)
         if elasticsearch_max_bulk_size_mb is not None:
-            _setter("elasticsearch_max_bulk_size_mb", elasticsearch_max_bulk_size_mb)
+            pulumi.set(__self__, "elasticsearch_max_bulk_size_mb", elasticsearch_max_bulk_size_mb)
         if elasticsearch_namespace_ids is not None:
-            _setter("elasticsearch_namespace_ids", elasticsearch_namespace_ids)
+            pulumi.set(__self__, "elasticsearch_namespace_ids", elasticsearch_namespace_ids)
         if elasticsearch_password is not None:
-            _setter("elasticsearch_password", elasticsearch_password)
+            pulumi.set(__self__, "elasticsearch_password", elasticsearch_password)
         if elasticsearch_project_ids is not None:
-            _setter("elasticsearch_project_ids", elasticsearch_project_ids)
+            pulumi.set(__self__, "elasticsearch_project_ids", elasticsearch_project_ids)
         if elasticsearch_search is not None:
-            _setter("elasticsearch_search", elasticsearch_search)
+            pulumi.set(__self__, "elasticsearch_search", elasticsearch_search)
         if elasticsearch_urls is not None:
-            _setter("elasticsearch_urls", elasticsearch_urls)
+            pulumi.set(__self__, "elasticsearch_urls", elasticsearch_urls)
         if elasticsearch_username is not None:
-            _setter("elasticsearch_username", elasticsearch_username)
+            pulumi.set(__self__, "elasticsearch_username", elasticsearch_username)
         if email_additional_text is not None:
-            _setter("email_additional_text", email_additional_text)
+            pulumi.set(__self__, "email_additional_text", email_additional_text)
         if email_author_in_body is not None:
-            _setter("email_author_in_body", email_author_in_body)
+            pulumi.set(__self__, "email_author_in_body", email_author_in_body)
         if enabled_git_access_protocol is not None:
-            _setter("enabled_git_access_protocol", enabled_git_access_protocol)
+            pulumi.set(__self__, "enabled_git_access_protocol", enabled_git_access_protocol)
         if enforce_namespace_storage_limit is not None:
-            _setter("enforce_namespace_storage_limit", enforce_namespace_storage_limit)
+            pulumi.set(__self__, "enforce_namespace_storage_limit", enforce_namespace_storage_limit)
         if enforce_terms is not None:
-            _setter("enforce_terms", enforce_terms)
+            pulumi.set(__self__, "enforce_terms", enforce_terms)
         if external_auth_client_cert is not None:
-            _setter("external_auth_client_cert", external_auth_client_cert)
+            pulumi.set(__self__, "external_auth_client_cert", external_auth_client_cert)
         if external_auth_client_key is not None:
-            _setter("external_auth_client_key", external_auth_client_key)
+            pulumi.set(__self__, "external_auth_client_key", external_auth_client_key)
         if external_auth_client_key_pass is not None:
-            _setter("external_auth_client_key_pass", external_auth_client_key_pass)
+            pulumi.set(__self__, "external_auth_client_key_pass", external_auth_client_key_pass)
         if external_authorization_service_default_label is not None:
-            _setter("external_authorization_service_default_label", external_authorization_service_default_label)
+            pulumi.set(__self__, "external_authorization_service_default_label", external_authorization_service_default_label)
         if external_authorization_service_enabled is not None:
-            _setter("external_authorization_service_enabled", external_authorization_service_enabled)
+            pulumi.set(__self__, "external_authorization_service_enabled", external_authorization_service_enabled)
         if external_authorization_service_timeout is not None:
-            _setter("external_authorization_service_timeout", external_authorization_service_timeout)
+            pulumi.set(__self__, "external_authorization_service_timeout", external_authorization_service_timeout)
         if external_authorization_service_url is not None:
-            _setter("external_authorization_service_url", external_authorization_service_url)
+            pulumi.set(__self__, "external_authorization_service_url", external_authorization_service_url)
         if external_pipeline_validation_service_timeout is not None:
-            _setter("external_pipeline_validation_service_timeout", external_pipeline_validation_service_timeout)
+            pulumi.set(__self__, "external_pipeline_validation_service_timeout", external_pipeline_validation_service_timeout)
         if external_pipeline_validation_service_token is not None:
-            _setter("external_pipeline_validation_service_token", external_pipeline_validation_service_token)
+            pulumi.set(__self__, "external_pipeline_validation_service_token", external_pipeline_validation_service_token)
         if external_pipeline_validation_service_url is not None:
-            _setter("external_pipeline_validation_service_url", external_pipeline_validation_service_url)
+            pulumi.set(__self__, "external_pipeline_validation_service_url", external_pipeline_validation_service_url)
         if file_template_project_id is not None:
-            _setter("file_template_project_id", file_template_project_id)
+            pulumi.set(__self__, "file_template_project_id", file_template_project_id)
         if first_day_of_week is not None:
-            _setter("first_day_of_week", first_day_of_week)
+            pulumi.set(__self__, "first_day_of_week", first_day_of_week)
         if geo_node_allowed_ips is not None:
-            _setter("geo_node_allowed_ips", geo_node_allowed_ips)
+            pulumi.set(__self__, "geo_node_allowed_ips", geo_node_allowed_ips)
         if geo_status_timeout is not None:
-            _setter("geo_status_timeout", geo_status_timeout)
+            pulumi.set(__self__, "geo_status_timeout", geo_status_timeout)
         if git_rate_limit_users_allowlists is not None:
-            _setter("git_rate_limit_users_allowlists", git_rate_limit_users_allowlists)
+            pulumi.set(__self__, "git_rate_limit_users_allowlists", git_rate_limit_users_allowlists)
         if git_two_factor_session_expiry is not None:
-            _setter("git_two_factor_session_expiry", git_two_factor_session_expiry)
+            pulumi.set(__self__, "git_two_factor_session_expiry", git_two_factor_session_expiry)
         if gitaly_timeout_default is not None:
-            _setter("gitaly_timeout_default", gitaly_timeout_default)
+            pulumi.set(__self__, "gitaly_timeout_default", gitaly_timeout_default)
         if gitaly_timeout_fast is not None:
-            _setter("gitaly_timeout_fast", gitaly_timeout_fast)
+            pulumi.set(__self__, "gitaly_timeout_fast", gitaly_timeout_fast)
         if gitaly_timeout_medium is not None:
-            _setter("gitaly_timeout_medium", gitaly_timeout_medium)
+            pulumi.set(__self__, "gitaly_timeout_medium", gitaly_timeout_medium)
         if grafana_enabled is not None:
-            _setter("grafana_enabled", grafana_enabled)
+            pulumi.set(__self__, "grafana_enabled", grafana_enabled)
         if grafana_url is not None:
-            _setter("grafana_url", grafana_url)
+            pulumi.set(__self__, "grafana_url", grafana_url)
         if gravatar_enabled is not None:
-            _setter("gravatar_enabled", gravatar_enabled)
+            pulumi.set(__self__, "gravatar_enabled", gravatar_enabled)
         if group_owners_can_manage_default_branch_protection is not None:
-            _setter("group_owners_can_manage_default_branch_protection", group_owners_can_manage_default_branch_protection)
+            pulumi.set(__self__, "group_owners_can_manage_default_branch_protection", group_owners_can_manage_default_branch_protection)
         if hashed_storage_enabled is not None:
-            _setter("hashed_storage_enabled", hashed_storage_enabled)
+            pulumi.set(__self__, "hashed_storage_enabled", hashed_storage_enabled)
         if help_page_hide_commercial_content is not None:
-            _setter("help_page_hide_commercial_content", help_page_hide_commercial_content)
+            pulumi.set(__self__, "help_page_hide_commercial_content", help_page_hide_commercial_content)
         if help_page_support_url is not None:
-            _setter("help_page_support_url", help_page_support_url)
+            pulumi.set(__self__, "help_page_support_url", help_page_support_url)
         if help_page_text is not None:
-            _setter("help_page_text", help_page_text)
+            pulumi.set(__self__, "help_page_text", help_page_text)
         if help_text is not None:
-            _setter("help_text", help_text)
+            pulumi.set(__self__, "help_text", help_text)
         if hide_third_party_offers is not None:
-            _setter("hide_third_party_offers", hide_third_party_offers)
+            pulumi.set(__self__, "hide_third_party_offers", hide_third_party_offers)
         if home_page_url is not None:
-            _setter("home_page_url", home_page_url)
+            pulumi.set(__self__, "home_page_url", home_page_url)
         if housekeeping_enabled is not None:
-            _setter("housekeeping_enabled", housekeeping_enabled)
+            pulumi.set(__self__, "housekeeping_enabled", housekeeping_enabled)
         if housekeeping_full_repack_period is not None:
-            _setter("housekeeping_full_repack_period", housekeeping_full_repack_period)
+            pulumi.set(__self__, "housekeeping_full_repack_period", housekeeping_full_repack_period)
         if housekeeping_gc_period is not None:
-            _setter("housekeeping_gc_period", housekeeping_gc_period)
+            pulumi.set(__self__, "housekeeping_gc_period", housekeeping_gc_period)
         if housekeeping_incremental_repack_period is not None:
-            _setter("housekeeping_incremental_repack_period", housekeeping_incremental_repack_period)
+            pulumi.set(__self__, "housekeeping_incremental_repack_period", housekeeping_incremental_repack_period)
         if html_emails_enabled is not None:
-            _setter("html_emails_enabled", html_emails_enabled)
+            pulumi.set(__self__, "html_emails_enabled", html_emails_enabled)
         if import_sources is not None:
-            _setter("import_sources", import_sources)
+            pulumi.set(__self__, "import_sources", import_sources)
         if in_product_marketing_emails_enabled is not None:
-            _setter("in_product_marketing_emails_enabled", in_product_marketing_emails_enabled)
+            pulumi.set(__self__, "in_product_marketing_emails_enabled", in_product_marketing_emails_enabled)
         if inactive_projects_delete_after_months is not None:
-            _setter("inactive_projects_delete_after_months", inactive_projects_delete_after_months)
+            pulumi.set(__self__, "inactive_projects_delete_after_months", inactive_projects_delete_after_months)
         if inactive_projects_min_size_mb is not None:
-            _setter("inactive_projects_min_size_mb", inactive_projects_min_size_mb)
+            pulumi.set(__self__, "inactive_projects_min_size_mb", inactive_projects_min_size_mb)
         if inactive_projects_send_warning_email_after_months is not None:
-            _setter("inactive_projects_send_warning_email_after_months", inactive_projects_send_warning_email_after_months)
+            pulumi.set(__self__, "inactive_projects_send_warning_email_after_months", inactive_projects_send_warning_email_after_months)
         if invisible_captcha_enabled is not None:
-            _setter("invisible_captcha_enabled", invisible_captcha_enabled)
+            pulumi.set(__self__, "invisible_captcha_enabled", invisible_captcha_enabled)
         if issues_create_limit is not None:
-            _setter("issues_create_limit", issues_create_limit)
+            pulumi.set(__self__, "issues_create_limit", issues_create_limit)
         if keep_latest_artifact is not None:
-            _setter("keep_latest_artifact", keep_latest_artifact)
+            pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if local_markdown_version is not None:
-            _setter("local_markdown_version", local_markdown_version)
+            pulumi.set(__self__, "local_markdown_version", local_markdown_version)
         if mailgun_events_enabled is not None:
-            _setter("mailgun_events_enabled", mailgun_events_enabled)
+            pulumi.set(__self__, "mailgun_events_enabled", mailgun_events_enabled)
         if mailgun_signing_key is not None:
-            _setter("mailgun_signing_key", mailgun_signing_key)
+            pulumi.set(__self__, "mailgun_signing_key", mailgun_signing_key)
         if maintenance_mode is not None:
-            _setter("maintenance_mode", maintenance_mode)
+            pulumi.set(__self__, "maintenance_mode", maintenance_mode)
         if maintenance_mode_message is not None:
-            _setter("maintenance_mode_message", maintenance_mode_message)
+            pulumi.set(__self__, "maintenance_mode_message", maintenance_mode_message)
         if max_artifacts_size is not None:
-            _setter("max_artifacts_size", max_artifacts_size)
+            pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if max_attachment_size is not None:
-            _setter("max_attachment_size", max_attachment_size)
+            pulumi.set(__self__, "max_attachment_size", max_attachment_size)
         if max_export_size is not None:
-            _setter("max_export_size", max_export_size)
+            pulumi.set(__self__, "max_export_size", max_export_size)
         if max_import_size is not None:
-            _setter("max_import_size", max_import_size)
+            pulumi.set(__self__, "max_import_size", max_import_size)
         if max_number_of_repository_downloads is not None:
-            _setter("max_number_of_repository_downloads", max_number_of_repository_downloads)
+            pulumi.set(__self__, "max_number_of_repository_downloads", max_number_of_repository_downloads)
         if max_number_of_repository_downloads_within_time_period is not None:
-            _setter("max_number_of_repository_downloads_within_time_period", max_number_of_repository_downloads_within_time_period)
+            pulumi.set(__self__, "max_number_of_repository_downloads_within_time_period", max_number_of_repository_downloads_within_time_period)
         if max_pages_size is not None:
-            _setter("max_pages_size", max_pages_size)
+            pulumi.set(__self__, "max_pages_size", max_pages_size)
         if max_personal_access_token_lifetime is not None:
-            _setter("max_personal_access_token_lifetime", max_personal_access_token_lifetime)
+            pulumi.set(__self__, "max_personal_access_token_lifetime", max_personal_access_token_lifetime)
         if max_ssh_key_lifetime is not None:
-            _setter("max_ssh_key_lifetime", max_ssh_key_lifetime)
+            pulumi.set(__self__, "max_ssh_key_lifetime", max_ssh_key_lifetime)
         if metrics_method_call_threshold is not None:
-            _setter("metrics_method_call_threshold", metrics_method_call_threshold)
+            pulumi.set(__self__, "metrics_method_call_threshold", metrics_method_call_threshold)
         if mirror_available is not None:
-            _setter("mirror_available", mirror_available)
+            pulumi.set(__self__, "mirror_available", mirror_available)
         if mirror_capacity_threshold is not None:
-            _setter("mirror_capacity_threshold", mirror_capacity_threshold)
+            pulumi.set(__self__, "mirror_capacity_threshold", mirror_capacity_threshold)
         if mirror_max_capacity is not None:
-            _setter("mirror_max_capacity", mirror_max_capacity)
+            pulumi.set(__self__, "mirror_max_capacity", mirror_max_capacity)
         if mirror_max_delay is not None:
-            _setter("mirror_max_delay", mirror_max_delay)
+            pulumi.set(__self__, "mirror_max_delay", mirror_max_delay)
         if npm_package_requests_forwarding is not None:
-            _setter("npm_package_requests_forwarding", npm_package_requests_forwarding)
+            pulumi.set(__self__, "npm_package_requests_forwarding", npm_package_requests_forwarding)
         if outbound_local_requests_whitelists is not None:
-            _setter("outbound_local_requests_whitelists", outbound_local_requests_whitelists)
+            pulumi.set(__self__, "outbound_local_requests_whitelists", outbound_local_requests_whitelists)
         if package_registry_cleanup_policies_worker_capacity is not None:
-            _setter("package_registry_cleanup_policies_worker_capacity", package_registry_cleanup_policies_worker_capacity)
+            pulumi.set(__self__, "package_registry_cleanup_policies_worker_capacity", package_registry_cleanup_policies_worker_capacity)
         if pages_domain_verification_enabled is not None:
-            _setter("pages_domain_verification_enabled", pages_domain_verification_enabled)
+            pulumi.set(__self__, "pages_domain_verification_enabled", pages_domain_verification_enabled)
         if password_authentication_enabled_for_git is not None:
-            _setter("password_authentication_enabled_for_git", password_authentication_enabled_for_git)
+            pulumi.set(__self__, "password_authentication_enabled_for_git", password_authentication_enabled_for_git)
         if password_authentication_enabled_for_web is not None:
-            _setter("password_authentication_enabled_for_web", password_authentication_enabled_for_web)
+            pulumi.set(__self__, "password_authentication_enabled_for_web", password_authentication_enabled_for_web)
         if password_lowercase_required is not None:
-            _setter("password_lowercase_required", password_lowercase_required)
+            pulumi.set(__self__, "password_lowercase_required", password_lowercase_required)
         if password_number_required is not None:
-            _setter("password_number_required", password_number_required)
+            pulumi.set(__self__, "password_number_required", password_number_required)
         if password_symbol_required is not None:
-            _setter("password_symbol_required", password_symbol_required)
+            pulumi.set(__self__, "password_symbol_required", password_symbol_required)
         if password_uppercase_required is not None:
-            _setter("password_uppercase_required", password_uppercase_required)
+            pulumi.set(__self__, "password_uppercase_required", password_uppercase_required)
         if performance_bar_allowed_group_path is not None:
-            _setter("performance_bar_allowed_group_path", performance_bar_allowed_group_path)
+            pulumi.set(__self__, "performance_bar_allowed_group_path", performance_bar_allowed_group_path)
         if personal_access_token_prefix is not None:
-            _setter("personal_access_token_prefix", personal_access_token_prefix)
+            pulumi.set(__self__, "personal_access_token_prefix", personal_access_token_prefix)
         if pipeline_limit_per_project_user_sha is not None:
-            _setter("pipeline_limit_per_project_user_sha", pipeline_limit_per_project_user_sha)
+            pulumi.set(__self__, "pipeline_limit_per_project_user_sha", pipeline_limit_per_project_user_sha)
         if plantuml_enabled is not None:
-            _setter("plantuml_enabled", plantuml_enabled)
+            pulumi.set(__self__, "plantuml_enabled", plantuml_enabled)
         if plantuml_url is not None:
-            _setter("plantuml_url", plantuml_url)
+            pulumi.set(__self__, "plantuml_url", plantuml_url)
         if polling_interval_multiplier is not None:
-            _setter("polling_interval_multiplier", polling_interval_multiplier)
+            pulumi.set(__self__, "polling_interval_multiplier", polling_interval_multiplier)
         if project_export_enabled is not None:
-            _setter("project_export_enabled", project_export_enabled)
+            pulumi.set(__self__, "project_export_enabled", project_export_enabled)
         if prometheus_metrics_enabled is not None:
-            _setter("prometheus_metrics_enabled", prometheus_metrics_enabled)
+            pulumi.set(__self__, "prometheus_metrics_enabled", prometheus_metrics_enabled)
         if protected_ci_variables is not None:
-            _setter("protected_ci_variables", protected_ci_variables)
+            pulumi.set(__self__, "protected_ci_variables", protected_ci_variables)
         if push_event_activities_limit is not None:
-            _setter("push_event_activities_limit", push_event_activities_limit)
+            pulumi.set(__self__, "push_event_activities_limit", push_event_activities_limit)
         if push_event_hooks_limit is not None:
-            _setter("push_event_hooks_limit", push_event_hooks_limit)
+            pulumi.set(__self__, "push_event_hooks_limit", push_event_hooks_limit)
         if pypi_package_requests_forwarding is not None:
-            _setter("pypi_package_requests_forwarding", pypi_package_requests_forwarding)
+            pulumi.set(__self__, "pypi_package_requests_forwarding", pypi_package_requests_forwarding)
         if rate_limiting_response_text is not None:
-            _setter("rate_limiting_response_text", rate_limiting_response_text)
+            pulumi.set(__self__, "rate_limiting_response_text", rate_limiting_response_text)
         if raw_blob_request_limit is not None:
-            _setter("raw_blob_request_limit", raw_blob_request_limit)
+            pulumi.set(__self__, "raw_blob_request_limit", raw_blob_request_limit)
         if recaptcha_enabled is not None:
-            _setter("recaptcha_enabled", recaptcha_enabled)
+            pulumi.set(__self__, "recaptcha_enabled", recaptcha_enabled)
         if recaptcha_private_key is not None:
-            _setter("recaptcha_private_key", recaptcha_private_key)
+            pulumi.set(__self__, "recaptcha_private_key", recaptcha_private_key)
         if recaptcha_site_key is not None:
-            _setter("recaptcha_site_key", recaptcha_site_key)
+            pulumi.set(__self__, "recaptcha_site_key", recaptcha_site_key)
         if receive_max_input_size is not None:
-            _setter("receive_max_input_size", receive_max_input_size)
+            pulumi.set(__self__, "receive_max_input_size", receive_max_input_size)
         if repository_checks_enabled is not None:
-            _setter("repository_checks_enabled", repository_checks_enabled)
+            pulumi.set(__self__, "repository_checks_enabled", repository_checks_enabled)
         if repository_size_limit is not None:
-            _setter("repository_size_limit", repository_size_limit)
+            pulumi.set(__self__, "repository_size_limit", repository_size_limit)
         if repository_storages is not None:
-            _setter("repository_storages", repository_storages)
+            pulumi.set(__self__, "repository_storages", repository_storages)
         if repository_storages_weighted is not None:
-            _setter("repository_storages_weighted", repository_storages_weighted)
+            pulumi.set(__self__, "repository_storages_weighted", repository_storages_weighted)
         if require_admin_approval_after_user_signup is not None:
-            _setter("require_admin_approval_after_user_signup", require_admin_approval_after_user_signup)
+            pulumi.set(__self__, "require_admin_approval_after_user_signup", require_admin_approval_after_user_signup)
         if require_two_factor_authentication is not None:
-            _setter("require_two_factor_authentication", require_two_factor_authentication)
+            pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
         if restricted_visibility_levels is not None:
-            _setter("restricted_visibility_levels", restricted_visibility_levels)
+            pulumi.set(__self__, "restricted_visibility_levels", restricted_visibility_levels)
         if rsa_key_restriction is not None:
-            _setter("rsa_key_restriction", rsa_key_restriction)
+            pulumi.set(__self__, "rsa_key_restriction", rsa_key_restriction)
         if search_rate_limit is not None:
-            _setter("search_rate_limit", search_rate_limit)
+            pulumi.set(__self__, "search_rate_limit", search_rate_limit)
         if search_rate_limit_unauthenticated is not None:
-            _setter("search_rate_limit_unauthenticated", search_rate_limit_unauthenticated)
+            pulumi.set(__self__, "search_rate_limit_unauthenticated", search_rate_limit_unauthenticated)
         if send_user_confirmation_email is not None:
-            _setter("send_user_confirmation_email", send_user_confirmation_email)
+            pulumi.set(__self__, "send_user_confirmation_email", send_user_confirmation_email)
         if session_expire_delay is not None:
-            _setter("session_expire_delay", session_expire_delay)
+            pulumi.set(__self__, "session_expire_delay", session_expire_delay)
         if shared_runners_enabled is not None:
-            _setter("shared_runners_enabled", shared_runners_enabled)
+            pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         if shared_runners_minutes is not None:
-            _setter("shared_runners_minutes", shared_runners_minutes)
+            pulumi.set(__self__, "shared_runners_minutes", shared_runners_minutes)
         if shared_runners_text is not None:
-            _setter("shared_runners_text", shared_runners_text)
+            pulumi.set(__self__, "shared_runners_text", shared_runners_text)
         if sidekiq_job_limiter_compression_threshold_bytes is not None:
-            _setter("sidekiq_job_limiter_compression_threshold_bytes", sidekiq_job_limiter_compression_threshold_bytes)
+            pulumi.set(__self__, "sidekiq_job_limiter_compression_threshold_bytes", sidekiq_job_limiter_compression_threshold_bytes)
         if sidekiq_job_limiter_limit_bytes is not None:
-            _setter("sidekiq_job_limiter_limit_bytes", sidekiq_job_limiter_limit_bytes)
+            pulumi.set(__self__, "sidekiq_job_limiter_limit_bytes", sidekiq_job_limiter_limit_bytes)
         if sidekiq_job_limiter_mode is not None:
-            _setter("sidekiq_job_limiter_mode", sidekiq_job_limiter_mode)
+            pulumi.set(__self__, "sidekiq_job_limiter_mode", sidekiq_job_limiter_mode)
         if sign_in_text is not None:
-            _setter("sign_in_text", sign_in_text)
+            pulumi.set(__self__, "sign_in_text", sign_in_text)
         if signup_enabled is not None:
-            _setter("signup_enabled", signup_enabled)
+            pulumi.set(__self__, "signup_enabled", signup_enabled)
         if slack_app_enabled is not None:
-            _setter("slack_app_enabled", slack_app_enabled)
+            pulumi.set(__self__, "slack_app_enabled", slack_app_enabled)
         if slack_app_id is not None:
-            _setter("slack_app_id", slack_app_id)
+            pulumi.set(__self__, "slack_app_id", slack_app_id)
         if slack_app_secret is not None:
-            _setter("slack_app_secret", slack_app_secret)
+            pulumi.set(__self__, "slack_app_secret", slack_app_secret)
         if slack_app_signing_secret is not None:
-            _setter("slack_app_signing_secret", slack_app_signing_secret)
+            pulumi.set(__self__, "slack_app_signing_secret", slack_app_signing_secret)
         if slack_app_verification_token is not None:
-            _setter("slack_app_verification_token", slack_app_verification_token)
+            pulumi.set(__self__, "slack_app_verification_token", slack_app_verification_token)
         if snippet_size_limit is not None:
-            _setter("snippet_size_limit", snippet_size_limit)
+            pulumi.set(__self__, "snippet_size_limit", snippet_size_limit)
         if snowplow_app_id is not None:
-            _setter("snowplow_app_id", snowplow_app_id)
+            pulumi.set(__self__, "snowplow_app_id", snowplow_app_id)
         if snowplow_collector_hostname is not None:
-            _setter("snowplow_collector_hostname", snowplow_collector_hostname)
+            pulumi.set(__self__, "snowplow_collector_hostname", snowplow_collector_hostname)
         if snowplow_cookie_domain is not None:
-            _setter("snowplow_cookie_domain", snowplow_cookie_domain)
+            pulumi.set(__self__, "snowplow_cookie_domain", snowplow_cookie_domain)
         if snowplow_enabled is not None:
-            _setter("snowplow_enabled", snowplow_enabled)
+            pulumi.set(__self__, "snowplow_enabled", snowplow_enabled)
         if sourcegraph_enabled is not None:
-            _setter("sourcegraph_enabled", sourcegraph_enabled)
+            pulumi.set(__self__, "sourcegraph_enabled", sourcegraph_enabled)
         if sourcegraph_public_only is not None:
-            _setter("sourcegraph_public_only", sourcegraph_public_only)
+            pulumi.set(__self__, "sourcegraph_public_only", sourcegraph_public_only)
         if sourcegraph_url is not None:
-            _setter("sourcegraph_url", sourcegraph_url)
+            pulumi.set(__self__, "sourcegraph_url", sourcegraph_url)
         if spam_check_api_key is not None:
-            _setter("spam_check_api_key", spam_check_api_key)
+            pulumi.set(__self__, "spam_check_api_key", spam_check_api_key)
         if spam_check_endpoint_enabled is not None:
-            _setter("spam_check_endpoint_enabled", spam_check_endpoint_enabled)
+            pulumi.set(__self__, "spam_check_endpoint_enabled", spam_check_endpoint_enabled)
         if spam_check_endpoint_url is not None:
-            _setter("spam_check_endpoint_url", spam_check_endpoint_url)
+            pulumi.set(__self__, "spam_check_endpoint_url", spam_check_endpoint_url)
         if suggest_pipeline_enabled is not None:
-            _setter("suggest_pipeline_enabled", suggest_pipeline_enabled)
+            pulumi.set(__self__, "suggest_pipeline_enabled", suggest_pipeline_enabled)
         if terminal_max_session_time is not None:
-            _setter("terminal_max_session_time", terminal_max_session_time)
+            pulumi.set(__self__, "terminal_max_session_time", terminal_max_session_time)
         if terms is not None:
-            _setter("terms", terms)
+            pulumi.set(__self__, "terms", terms)
         if throttle_authenticated_api_enabled is not None:
-            _setter("throttle_authenticated_api_enabled", throttle_authenticated_api_enabled)
+            pulumi.set(__self__, "throttle_authenticated_api_enabled", throttle_authenticated_api_enabled)
         if throttle_authenticated_api_period_in_seconds is not None:
-            _setter("throttle_authenticated_api_period_in_seconds", throttle_authenticated_api_period_in_seconds)
+            pulumi.set(__self__, "throttle_authenticated_api_period_in_seconds", throttle_authenticated_api_period_in_seconds)
         if throttle_authenticated_api_requests_per_period is not None:
-            _setter("throttle_authenticated_api_requests_per_period", throttle_authenticated_api_requests_per_period)
+            pulumi.set(__self__, "throttle_authenticated_api_requests_per_period", throttle_authenticated_api_requests_per_period)
         if throttle_authenticated_packages_api_enabled is not None:
-            _setter("throttle_authenticated_packages_api_enabled", throttle_authenticated_packages_api_enabled)
+            pulumi.set(__self__, "throttle_authenticated_packages_api_enabled", throttle_authenticated_packages_api_enabled)
         if throttle_authenticated_packages_api_period_in_seconds is not None:
-            _setter("throttle_authenticated_packages_api_period_in_seconds", throttle_authenticated_packages_api_period_in_seconds)
+            pulumi.set(__self__, "throttle_authenticated_packages_api_period_in_seconds", throttle_authenticated_packages_api_period_in_seconds)
         if throttle_authenticated_packages_api_requests_per_period is not None:
-            _setter("throttle_authenticated_packages_api_requests_per_period", throttle_authenticated_packages_api_requests_per_period)
+            pulumi.set(__self__, "throttle_authenticated_packages_api_requests_per_period", throttle_authenticated_packages_api_requests_per_period)
         if throttle_authenticated_web_enabled is not None:
-            _setter("throttle_authenticated_web_enabled", throttle_authenticated_web_enabled)
+            pulumi.set(__self__, "throttle_authenticated_web_enabled", throttle_authenticated_web_enabled)
         if throttle_authenticated_web_period_in_seconds is not None:
-            _setter("throttle_authenticated_web_period_in_seconds", throttle_authenticated_web_period_in_seconds)
+            pulumi.set(__self__, "throttle_authenticated_web_period_in_seconds", throttle_authenticated_web_period_in_seconds)
         if throttle_authenticated_web_requests_per_period is not None:
-            _setter("throttle_authenticated_web_requests_per_period", throttle_authenticated_web_requests_per_period)
+            pulumi.set(__self__, "throttle_authenticated_web_requests_per_period", throttle_authenticated_web_requests_per_period)
         if throttle_unauthenticated_api_enabled is not None:
-            _setter("throttle_unauthenticated_api_enabled", throttle_unauthenticated_api_enabled)
+            pulumi.set(__self__, "throttle_unauthenticated_api_enabled", throttle_unauthenticated_api_enabled)
         if throttle_unauthenticated_api_period_in_seconds is not None:
-            _setter("throttle_unauthenticated_api_period_in_seconds", throttle_unauthenticated_api_period_in_seconds)
+            pulumi.set(__self__, "throttle_unauthenticated_api_period_in_seconds", throttle_unauthenticated_api_period_in_seconds)
         if throttle_unauthenticated_api_requests_per_period is not None:
-            _setter("throttle_unauthenticated_api_requests_per_period", throttle_unauthenticated_api_requests_per_period)
+            pulumi.set(__self__, "throttle_unauthenticated_api_requests_per_period", throttle_unauthenticated_api_requests_per_period)
         if throttle_unauthenticated_packages_api_enabled is not None:
-            _setter("throttle_unauthenticated_packages_api_enabled", throttle_unauthenticated_packages_api_enabled)
+            pulumi.set(__self__, "throttle_unauthenticated_packages_api_enabled", throttle_unauthenticated_packages_api_enabled)
         if throttle_unauthenticated_packages_api_period_in_seconds is not None:
-            _setter("throttle_unauthenticated_packages_api_period_in_seconds", throttle_unauthenticated_packages_api_period_in_seconds)
+            pulumi.set(__self__, "throttle_unauthenticated_packages_api_period_in_seconds", throttle_unauthenticated_packages_api_period_in_seconds)
         if throttle_unauthenticated_packages_api_requests_per_period is not None:
-            _setter("throttle_unauthenticated_packages_api_requests_per_period", throttle_unauthenticated_packages_api_requests_per_period)
+            pulumi.set(__self__, "throttle_unauthenticated_packages_api_requests_per_period", throttle_unauthenticated_packages_api_requests_per_period)
         if throttle_unauthenticated_web_enabled is not None:
-            _setter("throttle_unauthenticated_web_enabled", throttle_unauthenticated_web_enabled)
+            pulumi.set(__self__, "throttle_unauthenticated_web_enabled", throttle_unauthenticated_web_enabled)
         if throttle_unauthenticated_web_period_in_seconds is not None:
-            _setter("throttle_unauthenticated_web_period_in_seconds", throttle_unauthenticated_web_period_in_seconds)
+            pulumi.set(__self__, "throttle_unauthenticated_web_period_in_seconds", throttle_unauthenticated_web_period_in_seconds)
         if throttle_unauthenticated_web_requests_per_period is not None:
-            _setter("throttle_unauthenticated_web_requests_per_period", throttle_unauthenticated_web_requests_per_period)
+            pulumi.set(__self__, "throttle_unauthenticated_web_requests_per_period", throttle_unauthenticated_web_requests_per_period)
         if time_tracking_limit_to_hours is not None:
-            _setter("time_tracking_limit_to_hours", time_tracking_limit_to_hours)
+            pulumi.set(__self__, "time_tracking_limit_to_hours", time_tracking_limit_to_hours)
         if two_factor_grace_period is not None:
-            _setter("two_factor_grace_period", two_factor_grace_period)
+            pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
         if unique_ips_limit_enabled is not None:
-            _setter("unique_ips_limit_enabled", unique_ips_limit_enabled)
+            pulumi.set(__self__, "unique_ips_limit_enabled", unique_ips_limit_enabled)
         if unique_ips_limit_per_user is not None:
-            _setter("unique_ips_limit_per_user", unique_ips_limit_per_user)
+            pulumi.set(__self__, "unique_ips_limit_per_user", unique_ips_limit_per_user)
         if unique_ips_limit_time_window is not None:
-            _setter("unique_ips_limit_time_window", unique_ips_limit_time_window)
+            pulumi.set(__self__, "unique_ips_limit_time_window", unique_ips_limit_time_window)
         if usage_ping_enabled is not None:
-            _setter("usage_ping_enabled", usage_ping_enabled)
+            pulumi.set(__self__, "usage_ping_enabled", usage_ping_enabled)
         if user_deactivation_emails_enabled is not None:
-            _setter("user_deactivation_emails_enabled", user_deactivation_emails_enabled)
+            pulumi.set(__self__, "user_deactivation_emails_enabled", user_deactivation_emails_enabled)
         if user_default_external is not None:
-            _setter("user_default_external", user_default_external)
+            pulumi.set(__self__, "user_default_external", user_default_external)
         if user_default_internal_regex is not None:
-            _setter("user_default_internal_regex", user_default_internal_regex)
+            pulumi.set(__self__, "user_default_internal_regex", user_default_internal_regex)
         if user_oauth_applications is not None:
-            _setter("user_oauth_applications", user_oauth_applications)
+            pulumi.set(__self__, "user_oauth_applications", user_oauth_applications)
         if user_show_add_ssh_key_message is not None:
-            _setter("user_show_add_ssh_key_message", user_show_add_ssh_key_message)
+            pulumi.set(__self__, "user_show_add_ssh_key_message", user_show_add_ssh_key_message)
         if version_check_enabled is not None:
-            _setter("version_check_enabled", version_check_enabled)
+            pulumi.set(__self__, "version_check_enabled", version_check_enabled)
         if web_ide_clientside_preview_enabled is not None:
-            _setter("web_ide_clientside_preview_enabled", web_ide_clientside_preview_enabled)
+            pulumi.set(__self__, "web_ide_clientside_preview_enabled", web_ide_clientside_preview_enabled)
         if whats_new_variant is not None:
-            _setter("whats_new_variant", whats_new_variant)
+            pulumi.set(__self__, "whats_new_variant", whats_new_variant)
         if wiki_page_max_content_bytes is not None:
-            _setter("wiki_page_max_content_bytes", wiki_page_max_content_bytes)
+            pulumi.set(__self__, "wiki_page_max_content_bytes", wiki_page_max_content_bytes)
 
     @property
     @pulumi.getter(name="abuseNotificationEmail")
@@ -10256,10 +8306,6 @@ class ApplicationSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

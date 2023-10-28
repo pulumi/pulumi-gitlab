@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServiceEmailsOnPushArgs', 'ServiceEmailsOnPush']
@@ -31,55 +31,18 @@ class ServiceEmailsOnPushArgs:
         :param pulumi.Input[bool] send_from_committer_email: Send from committer.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         """
-        ServiceEmailsOnPushArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            recipients=recipients,
-            branches_to_be_notified=branches_to_be_notified,
-            disable_diffs=disable_diffs,
-            push_events=push_events,
-            send_from_committer_email=send_from_committer_email,
-            tag_push_events=tag_push_events,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             recipients: Optional[pulumi.Input[str]] = None,
-             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
-             disable_diffs: Optional[pulumi.Input[bool]] = None,
-             push_events: Optional[pulumi.Input[bool]] = None,
-             send_from_committer_email: Optional[pulumi.Input[bool]] = None,
-             tag_push_events: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if recipients is None:
-            raise TypeError("Missing 'recipients' argument")
-        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
-            branches_to_be_notified = kwargs['branchesToBeNotified']
-        if disable_diffs is None and 'disableDiffs' in kwargs:
-            disable_diffs = kwargs['disableDiffs']
-        if push_events is None and 'pushEvents' in kwargs:
-            push_events = kwargs['pushEvents']
-        if send_from_committer_email is None and 'sendFromCommitterEmail' in kwargs:
-            send_from_committer_email = kwargs['sendFromCommitterEmail']
-        if tag_push_events is None and 'tagPushEvents' in kwargs:
-            tag_push_events = kwargs['tagPushEvents']
-
-        _setter("project", project)
-        _setter("recipients", recipients)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "recipients", recipients)
         if branches_to_be_notified is not None:
-            _setter("branches_to_be_notified", branches_to_be_notified)
+            pulumi.set(__self__, "branches_to_be_notified", branches_to_be_notified)
         if disable_diffs is not None:
-            _setter("disable_diffs", disable_diffs)
+            pulumi.set(__self__, "disable_diffs", disable_diffs)
         if push_events is not None:
-            _setter("push_events", push_events)
+            pulumi.set(__self__, "push_events", push_events)
         if send_from_committer_email is not None:
-            _setter("send_from_committer_email", send_from_committer_email)
+            pulumi.set(__self__, "send_from_committer_email", send_from_committer_email)
         if tag_push_events is not None:
-            _setter("tag_push_events", tag_push_events)
+            pulumi.set(__self__, "tag_push_events", tag_push_events)
 
     @property
     @pulumi.getter
@@ -196,77 +159,30 @@ class _ServiceEmailsOnPushState:
         :param pulumi.Input[str] title: Title of the integration.
         :param pulumi.Input[str] updated_at: The ISO8601 date/time that this integration was last updated at in UTC.
         """
-        _ServiceEmailsOnPushState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active=active,
-            branches_to_be_notified=branches_to_be_notified,
-            created_at=created_at,
-            disable_diffs=disable_diffs,
-            project=project,
-            push_events=push_events,
-            recipients=recipients,
-            send_from_committer_email=send_from_committer_email,
-            slug=slug,
-            tag_push_events=tag_push_events,
-            title=title,
-            updated_at=updated_at,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active: Optional[pulumi.Input[bool]] = None,
-             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             disable_diffs: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             push_events: Optional[pulumi.Input[bool]] = None,
-             recipients: Optional[pulumi.Input[str]] = None,
-             send_from_committer_email: Optional[pulumi.Input[bool]] = None,
-             slug: Optional[pulumi.Input[str]] = None,
-             tag_push_events: Optional[pulumi.Input[bool]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if branches_to_be_notified is None and 'branchesToBeNotified' in kwargs:
-            branches_to_be_notified = kwargs['branchesToBeNotified']
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if disable_diffs is None and 'disableDiffs' in kwargs:
-            disable_diffs = kwargs['disableDiffs']
-        if push_events is None and 'pushEvents' in kwargs:
-            push_events = kwargs['pushEvents']
-        if send_from_committer_email is None and 'sendFromCommitterEmail' in kwargs:
-            send_from_committer_email = kwargs['sendFromCommitterEmail']
-        if tag_push_events is None and 'tagPushEvents' in kwargs:
-            tag_push_events = kwargs['tagPushEvents']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-
         if active is not None:
-            _setter("active", active)
+            pulumi.set(__self__, "active", active)
         if branches_to_be_notified is not None:
-            _setter("branches_to_be_notified", branches_to_be_notified)
+            pulumi.set(__self__, "branches_to_be_notified", branches_to_be_notified)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if disable_diffs is not None:
-            _setter("disable_diffs", disable_diffs)
+            pulumi.set(__self__, "disable_diffs", disable_diffs)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if push_events is not None:
-            _setter("push_events", push_events)
+            pulumi.set(__self__, "push_events", push_events)
         if recipients is not None:
-            _setter("recipients", recipients)
+            pulumi.set(__self__, "recipients", recipients)
         if send_from_committer_email is not None:
-            _setter("send_from_committer_email", send_from_committer_email)
+            pulumi.set(__self__, "send_from_committer_email", send_from_committer_email)
         if slug is not None:
-            _setter("slug", slug)
+            pulumi.set(__self__, "slug", slug)
         if tag_push_events is not None:
-            _setter("tag_push_events", tag_push_events)
+            pulumi.set(__self__, "tag_push_events", tag_push_events)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter
@@ -510,10 +426,6 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceEmailsOnPushArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

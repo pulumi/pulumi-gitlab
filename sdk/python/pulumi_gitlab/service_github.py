@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServiceGithubArgs', 'ServiceGithub']
@@ -25,38 +25,11 @@ class ServiceGithubArgs:
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
         :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         """
-        ServiceGithubArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            repository_url=repository_url,
-            token=token,
-            static_context=static_context,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             repository_url: Optional[pulumi.Input[str]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             static_context: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if repository_url is None and 'repositoryUrl' in kwargs:
-            repository_url = kwargs['repositoryUrl']
-        if repository_url is None:
-            raise TypeError("Missing 'repository_url' argument")
-        if token is None:
-            raise TypeError("Missing 'token' argument")
-        if static_context is None and 'staticContext' in kwargs:
-            static_context = kwargs['staticContext']
-
-        _setter("project", project)
-        _setter("repository_url", repository_url)
-        _setter("token", token)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "repository_url", repository_url)
+        pulumi.set(__self__, "token", token)
         if static_context is not None:
-            _setter("static_context", static_context)
+            pulumi.set(__self__, "static_context", static_context)
 
     @property
     @pulumi.getter
@@ -129,55 +102,22 @@ class _ServiceGithubState:
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
         :param pulumi.Input[str] updated_at: Update time.
         """
-        _ServiceGithubState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active=active,
-            created_at=created_at,
-            project=project,
-            repository_url=repository_url,
-            static_context=static_context,
-            title=title,
-            token=token,
-            updated_at=updated_at,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active: Optional[pulumi.Input[bool]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             repository_url: Optional[pulumi.Input[str]] = None,
-             static_context: Optional[pulumi.Input[bool]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if repository_url is None and 'repositoryUrl' in kwargs:
-            repository_url = kwargs['repositoryUrl']
-        if static_context is None and 'staticContext' in kwargs:
-            static_context = kwargs['staticContext']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-
         if active is not None:
-            _setter("active", active)
+            pulumi.set(__self__, "active", active)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if repository_url is not None:
-            _setter("repository_url", repository_url)
+            pulumi.set(__self__, "repository_url", repository_url)
         if static_context is not None:
-            _setter("static_context", static_context)
+            pulumi.set(__self__, "static_context", static_context)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter
@@ -377,10 +317,6 @@ class ServiceGithub(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceGithubArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

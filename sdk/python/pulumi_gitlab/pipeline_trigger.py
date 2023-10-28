@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PipelineTriggerArgs', 'PipelineTrigger']
@@ -21,25 +21,8 @@ class PipelineTriggerArgs:
         :param pulumi.Input[str] description: The description of the pipeline trigger.
         :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
         """
-        PipelineTriggerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-
-        _setter("description", description)
-        _setter("project", project)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -80,33 +63,14 @@ class _PipelineTriggerState:
         :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
         :param pulumi.Input[str] token: The pipeline trigger token.
         """
-        _PipelineTriggerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            pipeline_trigger_id=pipeline_trigger_id,
-            project=project,
-            token=token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             pipeline_trigger_id: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pipeline_trigger_id is None and 'pipelineTriggerId' in kwargs:
-            pipeline_trigger_id = kwargs['pipelineTriggerId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if pipeline_trigger_id is not None:
-            _setter("pipeline_trigger_id", pipeline_trigger_id)
+            pulumi.set(__self__, "pipeline_trigger_id", pipeline_trigger_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter
@@ -234,10 +198,6 @@ class PipelineTrigger(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PipelineTriggerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
