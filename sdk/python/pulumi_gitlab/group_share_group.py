@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupShareGroupArgs', 'GroupShareGroup']
@@ -25,42 +25,11 @@ class GroupShareGroupArgs:
         :param pulumi.Input[int] share_group_id: The id of the additional group with which the main group will be shared.
         :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         """
-        GroupShareGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_access=group_access,
-            group_id=group_id,
-            share_group_id=share_group_id,
-            expires_at=expires_at,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_access: Optional[pulumi.Input[str]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             share_group_id: Optional[pulumi.Input[int]] = None,
-             expires_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_access is None and 'groupAccess' in kwargs:
-            group_access = kwargs['groupAccess']
-        if group_access is None:
-            raise TypeError("Missing 'group_access' argument")
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_id is None:
-            raise TypeError("Missing 'group_id' argument")
-        if share_group_id is None and 'shareGroupId' in kwargs:
-            share_group_id = kwargs['shareGroupId']
-        if share_group_id is None:
-            raise TypeError("Missing 'share_group_id' argument")
-        if expires_at is None and 'expiresAt' in kwargs:
-            expires_at = kwargs['expiresAt']
-
-        _setter("group_access", group_access)
-        _setter("group_id", group_id)
-        _setter("share_group_id", share_group_id)
+        pulumi.set(__self__, "group_access", group_access)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "share_group_id", share_group_id)
         if expires_at is not None:
-            _setter("expires_at", expires_at)
+            pulumi.set(__self__, "expires_at", expires_at)
 
     @property
     @pulumi.getter(name="groupAccess")
@@ -125,39 +94,14 @@ class _GroupShareGroupState:
         :param pulumi.Input[str] group_id: The id of the main group to be shared.
         :param pulumi.Input[int] share_group_id: The id of the additional group with which the main group will be shared.
         """
-        _GroupShareGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expires_at=expires_at,
-            group_access=group_access,
-            group_id=group_id,
-            share_group_id=share_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expires_at: Optional[pulumi.Input[str]] = None,
-             group_access: Optional[pulumi.Input[str]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             share_group_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expires_at is None and 'expiresAt' in kwargs:
-            expires_at = kwargs['expiresAt']
-        if group_access is None and 'groupAccess' in kwargs:
-            group_access = kwargs['groupAccess']
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if share_group_id is None and 'shareGroupId' in kwargs:
-            share_group_id = kwargs['shareGroupId']
-
         if expires_at is not None:
-            _setter("expires_at", expires_at)
+            pulumi.set(__self__, "expires_at", expires_at)
         if group_access is not None:
-            _setter("group_access", group_access)
+            pulumi.set(__self__, "group_access", group_access)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if share_group_id is not None:
-            _setter("share_group_id", share_group_id)
+            pulumi.set(__self__, "share_group_id", share_group_id)
 
     @property
     @pulumi.getter(name="expiresAt")
@@ -293,10 +237,6 @@ class GroupShareGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupShareGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

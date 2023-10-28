@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserSshKeyArgs', 'UserSshKey']
@@ -25,38 +25,11 @@ class UserSshKeyArgs:
         :param pulumi.Input[int] user_id: The ID or username of the user.
         :param pulumi.Input[str] expires_at: The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
         """
-        UserSshKeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            title=title,
-            user_id=user_id,
-            expires_at=expires_at,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[int]] = None,
-             expires_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-        if expires_at is None and 'expiresAt' in kwargs:
-            expires_at = kwargs['expiresAt']
-
-        _setter("key", key)
-        _setter("title", title)
-        _setter("user_id", user_id)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "user_id", user_id)
         if expires_at is not None:
-            _setter("expires_at", expires_at)
+            pulumi.set(__self__, "expires_at", expires_at)
 
     @property
     @pulumi.getter
@@ -125,47 +98,18 @@ class _UserSshKeyState:
         :param pulumi.Input[str] title: The title of the ssh key.
         :param pulumi.Input[int] user_id: The ID or username of the user.
         """
-        _UserSshKeyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_at=created_at,
-            expires_at=expires_at,
-            key=key,
-            key_id=key_id,
-            title=title,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_at: Optional[pulumi.Input[str]] = None,
-             expires_at: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             key_id: Optional[pulumi.Input[int]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if expires_at is None and 'expiresAt' in kwargs:
-            expires_at = kwargs['expiresAt']
-        if key_id is None and 'keyId' in kwargs:
-            key_id = kwargs['keyId']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if expires_at is not None:
-            _setter("expires_at", expires_at)
+            pulumi.set(__self__, "expires_at", expires_at)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if key_id is not None:
-            _setter("key_id", key_id)
+            pulumi.set(__self__, "key_id", key_id)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -327,10 +271,6 @@ class UserSshKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserSshKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

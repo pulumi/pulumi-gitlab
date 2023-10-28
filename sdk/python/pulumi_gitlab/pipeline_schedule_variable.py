@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PipelineScheduleVariableArgs', 'PipelineScheduleVariable']
@@ -25,37 +25,10 @@ class PipelineScheduleVariableArgs:
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
         """
-        PipelineScheduleVariableArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            pipeline_schedule_id=pipeline_schedule_id,
-            project=project,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if pipeline_schedule_id is None and 'pipelineScheduleId' in kwargs:
-            pipeline_schedule_id = kwargs['pipelineScheduleId']
-        if pipeline_schedule_id is None:
-            raise TypeError("Missing 'pipeline_schedule_id' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("pipeline_schedule_id", pipeline_schedule_id)
-        _setter("project", project)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "pipeline_schedule_id", pipeline_schedule_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -120,33 +93,14 @@ class _PipelineScheduleVariableState:
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
         """
-        _PipelineScheduleVariableState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            pipeline_schedule_id=pipeline_schedule_id,
-            project=project,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pipeline_schedule_id is None and 'pipelineScheduleId' in kwargs:
-            pipeline_schedule_id = kwargs['pipelineScheduleId']
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if pipeline_schedule_id is not None:
-            _setter("pipeline_schedule_id", pipeline_schedule_id)
+            pulumi.set(__self__, "pipeline_schedule_id", pipeline_schedule_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -292,10 +246,6 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PipelineScheduleVariableArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

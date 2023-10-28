@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,28 +25,11 @@ class GroupEpicBoardArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]] lists: The list of epic board lists.
         :param pulumi.Input[str] name: The name of the board.
         """
-        GroupEpicBoardArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group=group,
-            lists=lists,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group: Optional[pulumi.Input[str]] = None,
-             lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group is None:
-            raise TypeError("Missing 'group' argument")
-
-        _setter("group", group)
+        pulumi.set(__self__, "group", group)
         if lists is not None:
-            _setter("lists", lists)
+            pulumi.set(__self__, "lists", lists)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -97,27 +80,12 @@ class _GroupEpicBoardState:
         :param pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]] lists: The list of epic board lists.
         :param pulumi.Input[str] name: The name of the board.
         """
-        _GroupEpicBoardState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group=group,
-            lists=lists,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group: Optional[pulumi.Input[str]] = None,
-             lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if group is not None:
-            _setter("group", group)
+            pulumi.set(__self__, "group", group)
         if lists is not None:
-            _setter("lists", lists)
+            pulumi.set(__self__, "lists", lists)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -261,10 +229,6 @@ class GroupEpicBoard(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupEpicBoardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

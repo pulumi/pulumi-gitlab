@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ComplianceFrameworkArgs', 'ComplianceFramework']
@@ -29,46 +29,15 @@ class ComplianceFrameworkArgs:
         :param pulumi.Input[str] name: Name for the compliance framework.
         :param pulumi.Input[str] pipeline_configuration_full_path: Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
         """
-        ComplianceFrameworkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            color=color,
-            description=description,
-            namespace_path=namespace_path,
-            default=default,
-            name=name,
-            pipeline_configuration_full_path=pipeline_configuration_full_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             color: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             namespace_path: Optional[pulumi.Input[str]] = None,
-             default: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             pipeline_configuration_full_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if color is None:
-            raise TypeError("Missing 'color' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if namespace_path is None and 'namespacePath' in kwargs:
-            namespace_path = kwargs['namespacePath']
-        if namespace_path is None:
-            raise TypeError("Missing 'namespace_path' argument")
-        if pipeline_configuration_full_path is None and 'pipelineConfigurationFullPath' in kwargs:
-            pipeline_configuration_full_path = kwargs['pipelineConfigurationFullPath']
-
-        _setter("color", color)
-        _setter("description", description)
-        _setter("namespace_path", namespace_path)
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "namespace_path", namespace_path)
         if default is not None:
-            _setter("default", default)
+            pulumi.set(__self__, "default", default)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if pipeline_configuration_full_path is not None:
-            _setter("pipeline_configuration_full_path", pipeline_configuration_full_path)
+            pulumi.set(__self__, "pipeline_configuration_full_path", pipeline_configuration_full_path)
 
     @property
     @pulumi.getter
@@ -163,49 +132,20 @@ class _ComplianceFrameworkState:
         :param pulumi.Input[str] namespace_path: Full path of the namespace to add the compliance framework to.
         :param pulumi.Input[str] pipeline_configuration_full_path: Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
         """
-        _ComplianceFrameworkState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            color=color,
-            default=default,
-            description=description,
-            framework_id=framework_id,
-            name=name,
-            namespace_path=namespace_path,
-            pipeline_configuration_full_path=pipeline_configuration_full_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             color: Optional[pulumi.Input[str]] = None,
-             default: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             framework_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_path: Optional[pulumi.Input[str]] = None,
-             pipeline_configuration_full_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if framework_id is None and 'frameworkId' in kwargs:
-            framework_id = kwargs['frameworkId']
-        if namespace_path is None and 'namespacePath' in kwargs:
-            namespace_path = kwargs['namespacePath']
-        if pipeline_configuration_full_path is None and 'pipelineConfigurationFullPath' in kwargs:
-            pipeline_configuration_full_path = kwargs['pipelineConfigurationFullPath']
-
         if color is not None:
-            _setter("color", color)
+            pulumi.set(__self__, "color", color)
         if default is not None:
-            _setter("default", default)
+            pulumi.set(__self__, "default", default)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if framework_id is not None:
-            _setter("framework_id", framework_id)
+            pulumi.set(__self__, "framework_id", framework_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_path is not None:
-            _setter("namespace_path", namespace_path)
+            pulumi.set(__self__, "namespace_path", namespace_path)
         if pipeline_configuration_full_path is not None:
-            _setter("pipeline_configuration_full_path", pipeline_configuration_full_path)
+            pulumi.set(__self__, "pipeline_configuration_full_path", pipeline_configuration_full_path)
 
     @property
     @pulumi.getter
@@ -395,10 +335,6 @@ class ComplianceFramework(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ComplianceFrameworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

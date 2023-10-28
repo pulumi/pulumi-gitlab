@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PersonalAccessTokenArgs', 'PersonalAccessToken']
@@ -25,38 +25,11 @@ class PersonalAccessTokenArgs:
         :param pulumi.Input[int] user_id: The id of the user.
         :param pulumi.Input[str] name: The name of the personal access token.
         """
-        PersonalAccessTokenArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expires_at=expires_at,
-            scopes=scopes,
-            user_id=user_id,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expires_at: Optional[pulumi.Input[str]] = None,
-             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             user_id: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expires_at is None and 'expiresAt' in kwargs:
-            expires_at = kwargs['expiresAt']
-        if expires_at is None:
-            raise TypeError("Missing 'expires_at' argument")
-        if scopes is None:
-            raise TypeError("Missing 'scopes' argument")
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-
-        _setter("expires_at", expires_at)
-        _setter("scopes", scopes)
-        _setter("user_id", user_id)
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "user_id", user_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="expiresAt")
@@ -129,53 +102,22 @@ class _PersonalAccessTokenState:
         :param pulumi.Input[str] token: The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
         :param pulumi.Input[int] user_id: The id of the user.
         """
-        _PersonalAccessTokenState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active=active,
-            created_at=created_at,
-            expires_at=expires_at,
-            name=name,
-            revoked=revoked,
-            scopes=scopes,
-            token=token,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active: Optional[pulumi.Input[bool]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             expires_at: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             revoked: Optional[pulumi.Input[bool]] = None,
-             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if expires_at is None and 'expiresAt' in kwargs:
-            expires_at = kwargs['expiresAt']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if active is not None:
-            _setter("active", active)
+            pulumi.set(__self__, "active", active)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if expires_at is not None:
-            _setter("expires_at", expires_at)
+            pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if revoked is not None:
-            _setter("revoked", revoked)
+            pulumi.set(__self__, "revoked", revoked)
         if scopes is not None:
-            _setter("scopes", scopes)
+            pulumi.set(__self__, "scopes", scopes)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -373,10 +315,6 @@ class PersonalAccessToken(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PersonalAccessTokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

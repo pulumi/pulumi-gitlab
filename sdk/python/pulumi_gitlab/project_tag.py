@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,33 +27,12 @@ class ProjectTagArgs:
         :param pulumi.Input[str] message: The message of the annotated tag.
         :param pulumi.Input[str] name: The name of a tag.
         """
-        ProjectTagArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            ref=ref,
-            message=message,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             ref: Optional[pulumi.Input[str]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if ref is None:
-            raise TypeError("Missing 'ref' argument")
-
-        _setter("project", project)
-        _setter("ref", ref)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "ref", ref)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -126,47 +105,22 @@ class _ProjectTagState:
         :param pulumi.Input[Sequence[pulumi.Input['ProjectTagReleaseArgs']]] releases: The release associated with the tag.
         :param pulumi.Input[str] target: The unique id assigned to the commit by Gitlab.
         """
-        _ProjectTagState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            commits=commits,
-            message=message,
-            name=name,
-            project=project,
-            protected=protected,
-            ref=ref,
-            releases=releases,
-            target=target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             commits: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagCommitArgs']]]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             protected: Optional[pulumi.Input[bool]] = None,
-             ref: Optional[pulumi.Input[str]] = None,
-             releases: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagReleaseArgs']]]] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if commits is not None:
-            _setter("commits", commits)
+            pulumi.set(__self__, "commits", commits)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if protected is not None:
-            _setter("protected", protected)
+            pulumi.set(__self__, "protected", protected)
         if ref is not None:
-            _setter("ref", ref)
+            pulumi.set(__self__, "ref", ref)
         if releases is not None:
-            _setter("releases", releases)
+            pulumi.set(__self__, "releases", releases)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
 
     @property
     @pulumi.getter
@@ -358,10 +312,6 @@ class ProjectTag(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectTagArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
