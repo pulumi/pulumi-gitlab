@@ -166,7 +166,7 @@ type Project struct {
 	//
 	// Deprecated: build_coverage_regex is removed in GitLab 15.0.
 	BuildCoverageRegex pulumi.StringPtrOutput `pulumi:"buildCoverageRegex"`
-	// The Git strategy. Defaults to fetch.
+	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy pulumi.StringOutput `pulumi:"buildGitStrategy"`
 	// The maximum amount of time, in seconds, that a job can run.
 	BuildTimeout pulumi.IntOutput `pulumi:"buildTimeout"`
@@ -194,6 +194,8 @@ type Project struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disable email notifications.
 	EmailsDisabled pulumi.BoolOutput `pulumi:"emailsDisabled"`
+	// Whether the project is empty.
+	EmptyRepo pulumi.BoolOutput `pulumi:"emptyRepo"`
 	// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
 	EnvironmentsAccessLevel pulumi.StringOutput `pulumi:"environmentsAccessLevel"`
 	// The classification label for the project.
@@ -272,7 +274,7 @@ type Project struct {
 	OnlyMirrorProtectedBranches pulumi.BoolOutput `pulumi:"onlyMirrorProtectedBranches"`
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolOutput `pulumi:"packagesEnabled"`
-	// Enable pages access control
+	// Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
 	PagesAccessLevel pulumi.StringOutput `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path pulumi.StringPtrOutput `pulumi:"path"`
@@ -285,7 +287,11 @@ type Project struct {
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolOutput `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
+	//
+	// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
 	PublicBuilds pulumi.BoolOutput `pulumi:"publicBuilds"`
+	// If true, jobs can be viewed by non-project members.
+	PublicJobs pulumi.BoolOutput `pulumi:"publicJobs"`
 	// Push rules for the project.
 	PushRules ProjectPushRulesOutput `pulumi:"pushRules"`
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
@@ -338,7 +344,7 @@ type Project struct {
 	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 	UseCustomTemplate pulumi.BoolPtrOutput `pulumi:"useCustomTemplate"`
-	// Set to `public` to create a public project.
+	// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 	VisibilityLevel pulumi.StringOutput `pulumi:"visibilityLevel"`
 	// URL that can be used to find the project in a browser.
 	WebUrl pulumi.StringOutput `pulumi:"webUrl"`
@@ -417,7 +423,7 @@ type projectState struct {
 	//
 	// Deprecated: build_coverage_regex is removed in GitLab 15.0.
 	BuildCoverageRegex *string `pulumi:"buildCoverageRegex"`
-	// The Git strategy. Defaults to fetch.
+	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy *string `pulumi:"buildGitStrategy"`
 	// The maximum amount of time, in seconds, that a job can run.
 	BuildTimeout *int `pulumi:"buildTimeout"`
@@ -445,6 +451,8 @@ type projectState struct {
 	Description *string `pulumi:"description"`
 	// Disable email notifications.
 	EmailsDisabled *bool `pulumi:"emailsDisabled"`
+	// Whether the project is empty.
+	EmptyRepo *bool `pulumi:"emptyRepo"`
 	// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
 	EnvironmentsAccessLevel *string `pulumi:"environmentsAccessLevel"`
 	// The classification label for the project.
@@ -523,7 +531,7 @@ type projectState struct {
 	OnlyMirrorProtectedBranches *bool `pulumi:"onlyMirrorProtectedBranches"`
 	// Enable packages repository for the project.
 	PackagesEnabled *bool `pulumi:"packagesEnabled"`
-	// Enable pages access control
+	// Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
 	PagesAccessLevel *string `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
@@ -536,7 +544,11 @@ type projectState struct {
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
+	//
+	// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
 	PublicBuilds *bool `pulumi:"publicBuilds"`
+	// If true, jobs can be viewed by non-project members.
+	PublicJobs *bool `pulumi:"publicJobs"`
 	// Push rules for the project.
 	PushRules *ProjectPushRules `pulumi:"pushRules"`
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
@@ -589,7 +601,7 @@ type projectState struct {
 	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 	UseCustomTemplate *bool `pulumi:"useCustomTemplate"`
-	// Set to `public` to create a public project.
+	// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
 	// URL that can be used to find the project in a browser.
 	WebUrl *string `pulumi:"webUrl"`
@@ -631,7 +643,7 @@ type ProjectState struct {
 	//
 	// Deprecated: build_coverage_regex is removed in GitLab 15.0.
 	BuildCoverageRegex pulumi.StringPtrInput
-	// The Git strategy. Defaults to fetch.
+	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy pulumi.StringPtrInput
 	// The maximum amount of time, in seconds, that a job can run.
 	BuildTimeout pulumi.IntPtrInput
@@ -659,6 +671,8 @@ type ProjectState struct {
 	Description pulumi.StringPtrInput
 	// Disable email notifications.
 	EmailsDisabled pulumi.BoolPtrInput
+	// Whether the project is empty.
+	EmptyRepo pulumi.BoolPtrInput
 	// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
 	EnvironmentsAccessLevel pulumi.StringPtrInput
 	// The classification label for the project.
@@ -737,7 +751,7 @@ type ProjectState struct {
 	OnlyMirrorProtectedBranches pulumi.BoolPtrInput
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrInput
-	// Enable pages access control
+	// Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
 	PagesAccessLevel pulumi.StringPtrInput
 	// The path of the repository.
 	Path pulumi.StringPtrInput
@@ -750,7 +764,11 @@ type ProjectState struct {
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
+	//
+	// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
 	PublicBuilds pulumi.BoolPtrInput
+	// If true, jobs can be viewed by non-project members.
+	PublicJobs pulumi.BoolPtrInput
 	// Push rules for the project.
 	PushRules ProjectPushRulesPtrInput
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
@@ -803,7 +821,7 @@ type ProjectState struct {
 	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 	UseCustomTemplate pulumi.BoolPtrInput
-	// Set to `public` to create a public project.
+	// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 	VisibilityLevel pulumi.StringPtrInput
 	// URL that can be used to find the project in a browser.
 	WebUrl pulumi.StringPtrInput
@@ -847,7 +865,7 @@ type projectArgs struct {
 	//
 	// Deprecated: build_coverage_regex is removed in GitLab 15.0.
 	BuildCoverageRegex *string `pulumi:"buildCoverageRegex"`
-	// The Git strategy. Defaults to fetch.
+	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy *string `pulumi:"buildGitStrategy"`
 	// The maximum amount of time, in seconds, that a job can run.
 	BuildTimeout *int `pulumi:"buildTimeout"`
@@ -951,7 +969,7 @@ type projectArgs struct {
 	OnlyMirrorProtectedBranches *bool `pulumi:"onlyMirrorProtectedBranches"`
 	// Enable packages repository for the project.
 	PackagesEnabled *bool `pulumi:"packagesEnabled"`
-	// Enable pages access control
+	// Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
 	PagesAccessLevel *string `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
@@ -962,7 +980,11 @@ type projectArgs struct {
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
+	//
+	// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
 	PublicBuilds *bool `pulumi:"publicBuilds"`
+	// If true, jobs can be viewed by non-project members.
+	PublicJobs *bool `pulumi:"publicJobs"`
 	// Push rules for the project.
 	PushRules *ProjectPushRules `pulumi:"pushRules"`
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1011,7 +1033,7 @@ type projectArgs struct {
 	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 	UseCustomTemplate *bool `pulumi:"useCustomTemplate"`
-	// Set to `public` to create a public project.
+	// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
 	// Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
 	WikiAccessLevel *string `pulumi:"wikiAccessLevel"`
@@ -1050,7 +1072,7 @@ type ProjectArgs struct {
 	//
 	// Deprecated: build_coverage_regex is removed in GitLab 15.0.
 	BuildCoverageRegex pulumi.StringPtrInput
-	// The Git strategy. Defaults to fetch.
+	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy pulumi.StringPtrInput
 	// The maximum amount of time, in seconds, that a job can run.
 	BuildTimeout pulumi.IntPtrInput
@@ -1154,7 +1176,7 @@ type ProjectArgs struct {
 	OnlyMirrorProtectedBranches pulumi.BoolPtrInput
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrInput
-	// Enable pages access control
+	// Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
 	PagesAccessLevel pulumi.StringPtrInput
 	// The path of the repository.
 	Path pulumi.StringPtrInput
@@ -1165,7 +1187,11 @@ type ProjectArgs struct {
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
+	//
+	// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
 	PublicBuilds pulumi.BoolPtrInput
+	// If true, jobs can be viewed by non-project members.
+	PublicJobs pulumi.BoolPtrInput
 	// Push rules for the project.
 	PushRules ProjectPushRulesPtrInput
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1214,7 +1240,7 @@ type ProjectArgs struct {
 	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 	UseCustomTemplate pulumi.BoolPtrInput
-	// Set to `public` to create a public project.
+	// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 	VisibilityLevel pulumi.StringPtrInput
 	// Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
 	WikiAccessLevel pulumi.StringPtrInput
@@ -1403,7 +1429,7 @@ func (o ProjectOutput) BuildCoverageRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.BuildCoverageRegex }).(pulumi.StringPtrOutput)
 }
 
-// The Git strategy. Defaults to fetch.
+// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 func (o ProjectOutput) BuildGitStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.BuildGitStrategy }).(pulumi.StringOutput)
 }
@@ -1468,6 +1494,11 @@ func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 // Disable email notifications.
 func (o ProjectOutput) EmailsDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.EmailsDisabled }).(pulumi.BoolOutput)
+}
+
+// Whether the project is empty.
+func (o ProjectOutput) EmptyRepo() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.EmptyRepo }).(pulumi.BoolOutput)
 }
 
 // Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1653,7 +1684,7 @@ func (o ProjectOutput) PackagesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PackagesEnabled }).(pulumi.BoolOutput)
 }
 
-// Enable pages access control
+// Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
 func (o ProjectOutput) PagesAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.PagesAccessLevel }).(pulumi.StringOutput)
 }
@@ -1681,8 +1712,15 @@ func (o ProjectOutput) PrintingMergeRequestLinkEnabled() pulumi.BoolOutput {
 }
 
 // If true, jobs can be viewed by non-project members.
+//
+// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
 func (o ProjectOutput) PublicBuilds() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PublicBuilds }).(pulumi.BoolOutput)
+}
+
+// If true, jobs can be viewed by non-project members.
+func (o ProjectOutput) PublicJobs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PublicJobs }).(pulumi.BoolOutput)
 }
 
 // Push rules for the project.
@@ -1810,7 +1848,7 @@ func (o ProjectOutput) UseCustomTemplate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.UseCustomTemplate }).(pulumi.BoolPtrOutput)
 }
 
-// Set to `public` to create a public project.
+// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 func (o ProjectOutput) VisibilityLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.VisibilityLevel }).(pulumi.StringOutput)
 }

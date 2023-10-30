@@ -34,6 +34,7 @@ class GroupArgs:
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
                  shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+                 shared_runners_setting: Optional[pulumi.Input[str]] = None,
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
@@ -41,28 +42,29 @@ class GroupArgs:
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] path: The path of the group.
-        :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
-        :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
-        :param pulumi.Input[str] description: The description of the group.
-        :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
+        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[str] description: The group's description.
+        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
-        :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
         :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
-        :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
-        :param pulumi.Input[str] name: The name of this group.
+        :param pulumi.Input[bool] mentions_disabled: Disable the capability of a group from getting mentioned.
+        :param pulumi.Input[str] name: The name of the group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: Defaults to maintainer. Determine if developers can create projects in the group.
-        :param pulumi.Input[bool] request_access_enabled: Defaults to false. Allow users to request member access.
-        :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
-        :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
+        :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
+        :param pulumi.Input[bool] share_with_group_lock: Prevent sharing a project with another group within this group.
         :param pulumi.Input[int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
-        :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
+        :param pulumi.Input[str] shared_runners_setting: Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        :param pulumi.Input[str] subgroup_creation_level: Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
-        :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
+        :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
         :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         pulumi.set(__self__, "path", path)
@@ -104,6 +106,8 @@ class GroupArgs:
             pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
         if shared_runners_minutes_limit is not None:
             pulumi.set(__self__, "shared_runners_minutes_limit", shared_runners_minutes_limit)
+        if shared_runners_setting is not None:
+            pulumi.set(__self__, "shared_runners_setting", shared_runners_setting)
         if subgroup_creation_level is not None:
             pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
         if two_factor_grace_period is not None:
@@ -129,7 +133,7 @@ class GroupArgs:
     @pulumi.getter(name="autoDevopsEnabled")
     def auto_devops_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        Default to Auto DevOps pipeline for all projects within this group.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
@@ -165,7 +169,7 @@ class GroupArgs:
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
-        Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
+        See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -177,7 +181,7 @@ class GroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the group.
+        The group's description.
         """
         return pulumi.get(self, "description")
 
@@ -189,7 +193,7 @@ class GroupArgs:
     @pulumi.getter(name="emailsDisabled")
     def emails_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Disable email notifications.
+        Disable email notifications.
         """
         return pulumi.get(self, "emails_disabled")
 
@@ -225,7 +229,7 @@ class GroupArgs:
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
 
@@ -249,7 +253,7 @@ class GroupArgs:
     @pulumi.getter(name="mentionsDisabled")
     def mentions_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Disable the capability of a group from getting mentioned.
+        Disable the capability of a group from getting mentioned.
         """
         return pulumi.get(self, "mentions_disabled")
 
@@ -261,7 +265,7 @@ class GroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this group.
+        The name of the group.
         """
         return pulumi.get(self, "name")
 
@@ -297,7 +301,7 @@ class GroupArgs:
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Defaults to maintainer. Determine if developers can create projects in the group.
+        Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
         """
         return pulumi.get(self, "project_creation_level")
 
@@ -309,7 +313,7 @@ class GroupArgs:
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Allow users to request member access.
+        Allow users to request member access.
         """
         return pulumi.get(self, "request_access_enabled")
 
@@ -321,7 +325,7 @@ class GroupArgs:
     @pulumi.getter(name="requireTwoFactorAuthentication")
     def require_two_factor_authentication(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Require all users in this group to setup Two-factor authentication.
+        Require all users in this group to setup Two-factor authentication.
         """
         return pulumi.get(self, "require_two_factor_authentication")
 
@@ -333,7 +337,7 @@ class GroupArgs:
     @pulumi.getter(name="shareWithGroupLock")
     def share_with_group_lock(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Prevent sharing a project with another group within this group.
+        Prevent sharing a project with another group within this group.
         """
         return pulumi.get(self, "share_with_group_lock")
 
@@ -354,10 +358,22 @@ class GroupArgs:
         pulumi.set(self, "shared_runners_minutes_limit", value)
 
     @property
+    @pulumi.getter(name="sharedRunnersSetting")
+    def shared_runners_setting(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        """
+        return pulumi.get(self, "shared_runners_setting")
+
+    @shared_runners_setting.setter
+    def shared_runners_setting(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_runners_setting", value)
+
+    @property
     @pulumi.getter(name="subgroupCreationLevel")
     def subgroup_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Defaults to owner. Allowed to create subgroups.
+        Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         """
         return pulumi.get(self, "subgroup_creation_level")
 
@@ -381,7 +397,7 @@ class GroupArgs:
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The group's visibility. Can be `private`, `internal`, or `public`.
+        The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
         """
         return pulumi.get(self, "visibility_level")
 
@@ -429,6 +445,7 @@ class _GroupState:
                  runners_token: Optional[pulumi.Input[str]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
                  shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+                 shared_runners_setting: Optional[pulumi.Input[str]] = None,
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
@@ -436,33 +453,34 @@ class _GroupState:
                  wiki_access_level: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
-        :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
-        :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
-        :param pulumi.Input[str] description: The description of the group.
-        :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
+        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[str] description: The group's description.
+        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[str] full_name: The full name of the group.
         :param pulumi.Input[str] full_path: The full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
-        :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
         :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
-        :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
-        :param pulumi.Input[str] name: The name of this group.
+        :param pulumi.Input[bool] mentions_disabled: Disable the capability of a group from getting mentioned.
+        :param pulumi.Input[str] name: The name of the group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: Defaults to maintainer. Determine if developers can create projects in the group.
-        :param pulumi.Input[bool] request_access_enabled: Defaults to false. Allow users to request member access.
-        :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
+        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
+        :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[str] runners_token: The group level registration token to use during runner setup.
-        :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[bool] share_with_group_lock: Prevent sharing a project with another group within this group.
         :param pulumi.Input[int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
-        :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
+        :param pulumi.Input[str] shared_runners_setting: Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        :param pulumi.Input[str] subgroup_creation_level: Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
-        :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
+        :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
         :param pulumi.Input[str] web_url: Web URL of the group.
         :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
@@ -514,6 +532,8 @@ class _GroupState:
             pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
         if shared_runners_minutes_limit is not None:
             pulumi.set(__self__, "shared_runners_minutes_limit", shared_runners_minutes_limit)
+        if shared_runners_setting is not None:
+            pulumi.set(__self__, "shared_runners_setting", shared_runners_setting)
         if subgroup_creation_level is not None:
             pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
         if two_factor_grace_period is not None:
@@ -529,7 +549,7 @@ class _GroupState:
     @pulumi.getter(name="autoDevopsEnabled")
     def auto_devops_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        Default to Auto DevOps pipeline for all projects within this group.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
@@ -577,7 +597,7 @@ class _GroupState:
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
-        Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
+        See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -589,7 +609,7 @@ class _GroupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the group.
+        The group's description.
         """
         return pulumi.get(self, "description")
 
@@ -601,7 +621,7 @@ class _GroupState:
     @pulumi.getter(name="emailsDisabled")
     def emails_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Disable email notifications.
+        Disable email notifications.
         """
         return pulumi.get(self, "emails_disabled")
 
@@ -661,7 +681,7 @@ class _GroupState:
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
 
@@ -685,7 +705,7 @@ class _GroupState:
     @pulumi.getter(name="mentionsDisabled")
     def mentions_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Disable the capability of a group from getting mentioned.
+        Disable the capability of a group from getting mentioned.
         """
         return pulumi.get(self, "mentions_disabled")
 
@@ -697,7 +717,7 @@ class _GroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this group.
+        The name of the group.
         """
         return pulumi.get(self, "name")
 
@@ -745,7 +765,7 @@ class _GroupState:
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Defaults to maintainer. Determine if developers can create projects in the group.
+        Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
         """
         return pulumi.get(self, "project_creation_level")
 
@@ -757,7 +777,7 @@ class _GroupState:
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Allow users to request member access.
+        Allow users to request member access.
         """
         return pulumi.get(self, "request_access_enabled")
 
@@ -769,7 +789,7 @@ class _GroupState:
     @pulumi.getter(name="requireTwoFactorAuthentication")
     def require_two_factor_authentication(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Require all users in this group to setup Two-factor authentication.
+        Require all users in this group to setup Two-factor authentication.
         """
         return pulumi.get(self, "require_two_factor_authentication")
 
@@ -793,7 +813,7 @@ class _GroupState:
     @pulumi.getter(name="shareWithGroupLock")
     def share_with_group_lock(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defaults to false. Prevent sharing a project with another group within this group.
+        Prevent sharing a project with another group within this group.
         """
         return pulumi.get(self, "share_with_group_lock")
 
@@ -814,10 +834,22 @@ class _GroupState:
         pulumi.set(self, "shared_runners_minutes_limit", value)
 
     @property
+    @pulumi.getter(name="sharedRunnersSetting")
+    def shared_runners_setting(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        """
+        return pulumi.get(self, "shared_runners_setting")
+
+    @shared_runners_setting.setter
+    def shared_runners_setting(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_runners_setting", value)
+
+    @property
     @pulumi.getter(name="subgroupCreationLevel")
     def subgroup_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Defaults to owner. Allowed to create subgroups.
+        Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         """
         return pulumi.get(self, "subgroup_creation_level")
 
@@ -841,7 +873,7 @@ class _GroupState:
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The group's visibility. Can be `private`, `internal`, or `public`.
+        The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
         """
         return pulumi.get(self, "visibility_level")
 
@@ -899,6 +931,7 @@ class Group(pulumi.CustomResource):
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
                  shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+                 shared_runners_setting: Optional[pulumi.Input[str]] = None,
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
@@ -940,29 +973,30 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
-        :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
-        :param pulumi.Input[str] description: The description of the group.
-        :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
+        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[str] description: The group's description.
+        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
-        :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
         :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
-        :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
-        :param pulumi.Input[str] name: The name of this group.
+        :param pulumi.Input[bool] mentions_disabled: Disable the capability of a group from getting mentioned.
+        :param pulumi.Input[str] name: The name of the group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: Defaults to maintainer. Determine if developers can create projects in the group.
-        :param pulumi.Input[bool] request_access_enabled: Defaults to false. Allow users to request member access.
-        :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
-        :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
+        :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
+        :param pulumi.Input[bool] share_with_group_lock: Prevent sharing a project with another group within this group.
         :param pulumi.Input[int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
-        :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
+        :param pulumi.Input[str] shared_runners_setting: Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        :param pulumi.Input[str] subgroup_creation_level: Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
-        :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
+        :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
         :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         ...
@@ -1040,6 +1074,7 @@ class Group(pulumi.CustomResource):
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
                  shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+                 shared_runners_setting: Optional[pulumi.Input[str]] = None,
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
@@ -1075,6 +1110,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
             __props__.__dict__["share_with_group_lock"] = share_with_group_lock
             __props__.__dict__["shared_runners_minutes_limit"] = shared_runners_minutes_limit
+            __props__.__dict__["shared_runners_setting"] = shared_runners_setting
             __props__.__dict__["subgroup_creation_level"] = subgroup_creation_level
             __props__.__dict__["two_factor_grace_period"] = two_factor_grace_period
             __props__.__dict__["visibility_level"] = visibility_level
@@ -1120,6 +1156,7 @@ class Group(pulumi.CustomResource):
             runners_token: Optional[pulumi.Input[str]] = None,
             share_with_group_lock: Optional[pulumi.Input[bool]] = None,
             shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+            shared_runners_setting: Optional[pulumi.Input[str]] = None,
             subgroup_creation_level: Optional[pulumi.Input[str]] = None,
             two_factor_grace_period: Optional[pulumi.Input[int]] = None,
             visibility_level: Optional[pulumi.Input[str]] = None,
@@ -1132,33 +1169,34 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
-        :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
-        :param pulumi.Input[str] description: The description of the group.
-        :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
+        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[str] description: The group's description.
+        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[str] full_name: The full name of the group.
         :param pulumi.Input[str] full_path: The full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
-        :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
         :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
-        :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
-        :param pulumi.Input[str] name: The name of this group.
+        :param pulumi.Input[bool] mentions_disabled: Disable the capability of a group from getting mentioned.
+        :param pulumi.Input[str] name: The name of the group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: Defaults to maintainer. Determine if developers can create projects in the group.
-        :param pulumi.Input[bool] request_access_enabled: Defaults to false. Allow users to request member access.
-        :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
+        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
+        :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[str] runners_token: The group level registration token to use during runner setup.
-        :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[bool] share_with_group_lock: Prevent sharing a project with another group within this group.
         :param pulumi.Input[int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
-        :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
+        :param pulumi.Input[str] shared_runners_setting: Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        :param pulumi.Input[str] subgroup_creation_level: Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
-        :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
+        :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
         :param pulumi.Input[str] web_url: Web URL of the group.
         :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
@@ -1190,6 +1228,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["runners_token"] = runners_token
         __props__.__dict__["share_with_group_lock"] = share_with_group_lock
         __props__.__dict__["shared_runners_minutes_limit"] = shared_runners_minutes_limit
+        __props__.__dict__["shared_runners_setting"] = shared_runners_setting
         __props__.__dict__["subgroup_creation_level"] = subgroup_creation_level
         __props__.__dict__["two_factor_grace_period"] = two_factor_grace_period
         __props__.__dict__["visibility_level"] = visibility_level
@@ -1201,7 +1240,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="autoDevopsEnabled")
     def auto_devops_enabled(self) -> pulumi.Output[bool]:
         """
-        Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        Default to Auto DevOps pipeline for all projects within this group.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
@@ -1233,7 +1272,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> pulumi.Output[int]:
         """
-        Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
+        See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -1241,7 +1280,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the group.
+        The group's description.
         """
         return pulumi.get(self, "description")
 
@@ -1249,7 +1288,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="emailsDisabled")
     def emails_disabled(self) -> pulumi.Output[bool]:
         """
-        Defaults to false. Disable email notifications.
+        Disable email notifications.
         """
         return pulumi.get(self, "emails_disabled")
 
@@ -1289,7 +1328,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> pulumi.Output[bool]:
         """
-        Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
 
@@ -1305,7 +1344,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="mentionsDisabled")
     def mentions_disabled(self) -> pulumi.Output[bool]:
         """
-        Defaults to false. Disable the capability of a group from getting mentioned.
+        Disable the capability of a group from getting mentioned.
         """
         return pulumi.get(self, "mentions_disabled")
 
@@ -1313,7 +1352,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of this group.
+        The name of the group.
         """
         return pulumi.get(self, "name")
 
@@ -1345,7 +1384,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> pulumi.Output[str]:
         """
-        Defaults to maintainer. Determine if developers can create projects in the group.
+        Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
         """
         return pulumi.get(self, "project_creation_level")
 
@@ -1353,7 +1392,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> pulumi.Output[bool]:
         """
-        Defaults to false. Allow users to request member access.
+        Allow users to request member access.
         """
         return pulumi.get(self, "request_access_enabled")
 
@@ -1361,7 +1400,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="requireTwoFactorAuthentication")
     def require_two_factor_authentication(self) -> pulumi.Output[bool]:
         """
-        Defaults to false. Require all users in this group to setup Two-factor authentication.
+        Require all users in this group to setup Two-factor authentication.
         """
         return pulumi.get(self, "require_two_factor_authentication")
 
@@ -1377,7 +1416,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="shareWithGroupLock")
     def share_with_group_lock(self) -> pulumi.Output[bool]:
         """
-        Defaults to false. Prevent sharing a project with another group within this group.
+        Prevent sharing a project with another group within this group.
         """
         return pulumi.get(self, "share_with_group_lock")
 
@@ -1390,10 +1429,18 @@ class Group(pulumi.CustomResource):
         return pulumi.get(self, "shared_runners_minutes_limit")
 
     @property
+    @pulumi.getter(name="sharedRunnersSetting")
+    def shared_runners_setting(self) -> pulumi.Output[str]:
+        """
+        Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        """
+        return pulumi.get(self, "shared_runners_setting")
+
+    @property
     @pulumi.getter(name="subgroupCreationLevel")
     def subgroup_creation_level(self) -> pulumi.Output[str]:
         """
-        Defaults to owner. Allowed to create subgroups.
+        Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         """
         return pulumi.get(self, "subgroup_creation_level")
 
@@ -1409,7 +1456,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> pulumi.Output[str]:
         """
-        The group's visibility. Can be `private`, `internal`, or `public`.
+        The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
         """
         return pulumi.get(self, "visibility_level")
 

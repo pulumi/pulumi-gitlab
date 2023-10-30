@@ -914,6 +914,329 @@ func (o GroupIssueBoardListArrayOutput) Index(i pulumi.IntInput) GroupIssueBoard
 	}).(GroupIssueBoardListOutput)
 }
 
+type GroupProtectedEnvironmentApprovalRule struct {
+	// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// Readable description of level of access.
+	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
+	// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+	GroupId *int `pulumi:"groupId"`
+	// The unique ID of the Approval Rules object.
+	Id *int `pulumi:"id"`
+	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+	RequiredApprovals *int `pulumi:"requiredApprovals"`
+	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+	UserId *int `pulumi:"userId"`
+}
+
+// GroupProtectedEnvironmentApprovalRuleInput is an input type that accepts GroupProtectedEnvironmentApprovalRuleArgs and GroupProtectedEnvironmentApprovalRuleOutput values.
+// You can construct a concrete instance of `GroupProtectedEnvironmentApprovalRuleInput` via:
+//
+//	GroupProtectedEnvironmentApprovalRuleArgs{...}
+type GroupProtectedEnvironmentApprovalRuleInput interface {
+	pulumi.Input
+
+	ToGroupProtectedEnvironmentApprovalRuleOutput() GroupProtectedEnvironmentApprovalRuleOutput
+	ToGroupProtectedEnvironmentApprovalRuleOutputWithContext(context.Context) GroupProtectedEnvironmentApprovalRuleOutput
+}
+
+type GroupProtectedEnvironmentApprovalRuleArgs struct {
+	// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// Readable description of level of access.
+	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
+	// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The unique ID of the Approval Rules object.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+	RequiredApprovals pulumi.IntPtrInput `pulumi:"requiredApprovals"`
+	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (GroupProtectedEnvironmentApprovalRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupProtectedEnvironmentApprovalRule)(nil)).Elem()
+}
+
+func (i GroupProtectedEnvironmentApprovalRuleArgs) ToGroupProtectedEnvironmentApprovalRuleOutput() GroupProtectedEnvironmentApprovalRuleOutput {
+	return i.ToGroupProtectedEnvironmentApprovalRuleOutputWithContext(context.Background())
+}
+
+func (i GroupProtectedEnvironmentApprovalRuleArgs) ToGroupProtectedEnvironmentApprovalRuleOutputWithContext(ctx context.Context) GroupProtectedEnvironmentApprovalRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupProtectedEnvironmentApprovalRuleOutput)
+}
+
+func (i GroupProtectedEnvironmentApprovalRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GroupProtectedEnvironmentApprovalRule] {
+	return pulumix.Output[GroupProtectedEnvironmentApprovalRule]{
+		OutputState: i.ToGroupProtectedEnvironmentApprovalRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GroupProtectedEnvironmentApprovalRuleArrayInput is an input type that accepts GroupProtectedEnvironmentApprovalRuleArray and GroupProtectedEnvironmentApprovalRuleArrayOutput values.
+// You can construct a concrete instance of `GroupProtectedEnvironmentApprovalRuleArrayInput` via:
+//
+//	GroupProtectedEnvironmentApprovalRuleArray{ GroupProtectedEnvironmentApprovalRuleArgs{...} }
+type GroupProtectedEnvironmentApprovalRuleArrayInput interface {
+	pulumi.Input
+
+	ToGroupProtectedEnvironmentApprovalRuleArrayOutput() GroupProtectedEnvironmentApprovalRuleArrayOutput
+	ToGroupProtectedEnvironmentApprovalRuleArrayOutputWithContext(context.Context) GroupProtectedEnvironmentApprovalRuleArrayOutput
+}
+
+type GroupProtectedEnvironmentApprovalRuleArray []GroupProtectedEnvironmentApprovalRuleInput
+
+func (GroupProtectedEnvironmentApprovalRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupProtectedEnvironmentApprovalRule)(nil)).Elem()
+}
+
+func (i GroupProtectedEnvironmentApprovalRuleArray) ToGroupProtectedEnvironmentApprovalRuleArrayOutput() GroupProtectedEnvironmentApprovalRuleArrayOutput {
+	return i.ToGroupProtectedEnvironmentApprovalRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GroupProtectedEnvironmentApprovalRuleArray) ToGroupProtectedEnvironmentApprovalRuleArrayOutputWithContext(ctx context.Context) GroupProtectedEnvironmentApprovalRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupProtectedEnvironmentApprovalRuleArrayOutput)
+}
+
+func (i GroupProtectedEnvironmentApprovalRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GroupProtectedEnvironmentApprovalRule] {
+	return pulumix.Output[[]GroupProtectedEnvironmentApprovalRule]{
+		OutputState: i.ToGroupProtectedEnvironmentApprovalRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GroupProtectedEnvironmentApprovalRuleOutput struct{ *pulumi.OutputState }
+
+func (GroupProtectedEnvironmentApprovalRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupProtectedEnvironmentApprovalRule)(nil)).Elem()
+}
+
+func (o GroupProtectedEnvironmentApprovalRuleOutput) ToGroupProtectedEnvironmentApprovalRuleOutput() GroupProtectedEnvironmentApprovalRuleOutput {
+	return o
+}
+
+func (o GroupProtectedEnvironmentApprovalRuleOutput) ToGroupProtectedEnvironmentApprovalRuleOutputWithContext(ctx context.Context) GroupProtectedEnvironmentApprovalRuleOutput {
+	return o
+}
+
+func (o GroupProtectedEnvironmentApprovalRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GroupProtectedEnvironmentApprovalRule] {
+	return pulumix.Output[GroupProtectedEnvironmentApprovalRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+func (o GroupProtectedEnvironmentApprovalRuleOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// Readable description of level of access.
+func (o GroupProtectedEnvironmentApprovalRuleOutput) AccessLevelDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+func (o GroupProtectedEnvironmentApprovalRuleOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The unique ID of the Approval Rules object.
+func (o GroupProtectedEnvironmentApprovalRuleOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+func (o GroupProtectedEnvironmentApprovalRuleOutput) RequiredApprovals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *int { return v.RequiredApprovals }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+func (o GroupProtectedEnvironmentApprovalRuleOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type GroupProtectedEnvironmentApprovalRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupProtectedEnvironmentApprovalRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupProtectedEnvironmentApprovalRule)(nil)).Elem()
+}
+
+func (o GroupProtectedEnvironmentApprovalRuleArrayOutput) ToGroupProtectedEnvironmentApprovalRuleArrayOutput() GroupProtectedEnvironmentApprovalRuleArrayOutput {
+	return o
+}
+
+func (o GroupProtectedEnvironmentApprovalRuleArrayOutput) ToGroupProtectedEnvironmentApprovalRuleArrayOutputWithContext(ctx context.Context) GroupProtectedEnvironmentApprovalRuleArrayOutput {
+	return o
+}
+
+func (o GroupProtectedEnvironmentApprovalRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupProtectedEnvironmentApprovalRule] {
+	return pulumix.Output[[]GroupProtectedEnvironmentApprovalRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GroupProtectedEnvironmentApprovalRuleArrayOutput) Index(i pulumi.IntInput) GroupProtectedEnvironmentApprovalRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupProtectedEnvironmentApprovalRule {
+		return vs[0].([]GroupProtectedEnvironmentApprovalRule)[vs[1].(int)]
+	}).(GroupProtectedEnvironmentApprovalRuleOutput)
+}
+
+type GroupProtectedEnvironmentDeployAccessLevel struct {
+	// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// Readable description of level of access.
+	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
+	// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+	GroupId *int `pulumi:"groupId"`
+	// The unique ID of the Deploy Access Level object.
+	Id *int `pulumi:"id"`
+	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+	UserId *int `pulumi:"userId"`
+}
+
+// GroupProtectedEnvironmentDeployAccessLevelInput is an input type that accepts GroupProtectedEnvironmentDeployAccessLevelArgs and GroupProtectedEnvironmentDeployAccessLevelOutput values.
+// You can construct a concrete instance of `GroupProtectedEnvironmentDeployAccessLevelInput` via:
+//
+//	GroupProtectedEnvironmentDeployAccessLevelArgs{...}
+type GroupProtectedEnvironmentDeployAccessLevelInput interface {
+	pulumi.Input
+
+	ToGroupProtectedEnvironmentDeployAccessLevelOutput() GroupProtectedEnvironmentDeployAccessLevelOutput
+	ToGroupProtectedEnvironmentDeployAccessLevelOutputWithContext(context.Context) GroupProtectedEnvironmentDeployAccessLevelOutput
+}
+
+type GroupProtectedEnvironmentDeployAccessLevelArgs struct {
+	// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// Readable description of level of access.
+	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
+	// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The unique ID of the Deploy Access Level object.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (GroupProtectedEnvironmentDeployAccessLevelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupProtectedEnvironmentDeployAccessLevel)(nil)).Elem()
+}
+
+func (i GroupProtectedEnvironmentDeployAccessLevelArgs) ToGroupProtectedEnvironmentDeployAccessLevelOutput() GroupProtectedEnvironmentDeployAccessLevelOutput {
+	return i.ToGroupProtectedEnvironmentDeployAccessLevelOutputWithContext(context.Background())
+}
+
+func (i GroupProtectedEnvironmentDeployAccessLevelArgs) ToGroupProtectedEnvironmentDeployAccessLevelOutputWithContext(ctx context.Context) GroupProtectedEnvironmentDeployAccessLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupProtectedEnvironmentDeployAccessLevelOutput)
+}
+
+func (i GroupProtectedEnvironmentDeployAccessLevelArgs) ToOutput(ctx context.Context) pulumix.Output[GroupProtectedEnvironmentDeployAccessLevel] {
+	return pulumix.Output[GroupProtectedEnvironmentDeployAccessLevel]{
+		OutputState: i.ToGroupProtectedEnvironmentDeployAccessLevelOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GroupProtectedEnvironmentDeployAccessLevelArrayInput is an input type that accepts GroupProtectedEnvironmentDeployAccessLevelArray and GroupProtectedEnvironmentDeployAccessLevelArrayOutput values.
+// You can construct a concrete instance of `GroupProtectedEnvironmentDeployAccessLevelArrayInput` via:
+//
+//	GroupProtectedEnvironmentDeployAccessLevelArray{ GroupProtectedEnvironmentDeployAccessLevelArgs{...} }
+type GroupProtectedEnvironmentDeployAccessLevelArrayInput interface {
+	pulumi.Input
+
+	ToGroupProtectedEnvironmentDeployAccessLevelArrayOutput() GroupProtectedEnvironmentDeployAccessLevelArrayOutput
+	ToGroupProtectedEnvironmentDeployAccessLevelArrayOutputWithContext(context.Context) GroupProtectedEnvironmentDeployAccessLevelArrayOutput
+}
+
+type GroupProtectedEnvironmentDeployAccessLevelArray []GroupProtectedEnvironmentDeployAccessLevelInput
+
+func (GroupProtectedEnvironmentDeployAccessLevelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupProtectedEnvironmentDeployAccessLevel)(nil)).Elem()
+}
+
+func (i GroupProtectedEnvironmentDeployAccessLevelArray) ToGroupProtectedEnvironmentDeployAccessLevelArrayOutput() GroupProtectedEnvironmentDeployAccessLevelArrayOutput {
+	return i.ToGroupProtectedEnvironmentDeployAccessLevelArrayOutputWithContext(context.Background())
+}
+
+func (i GroupProtectedEnvironmentDeployAccessLevelArray) ToGroupProtectedEnvironmentDeployAccessLevelArrayOutputWithContext(ctx context.Context) GroupProtectedEnvironmentDeployAccessLevelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupProtectedEnvironmentDeployAccessLevelArrayOutput)
+}
+
+func (i GroupProtectedEnvironmentDeployAccessLevelArray) ToOutput(ctx context.Context) pulumix.Output[[]GroupProtectedEnvironmentDeployAccessLevel] {
+	return pulumix.Output[[]GroupProtectedEnvironmentDeployAccessLevel]{
+		OutputState: i.ToGroupProtectedEnvironmentDeployAccessLevelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GroupProtectedEnvironmentDeployAccessLevelOutput struct{ *pulumi.OutputState }
+
+func (GroupProtectedEnvironmentDeployAccessLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupProtectedEnvironmentDeployAccessLevel)(nil)).Elem()
+}
+
+func (o GroupProtectedEnvironmentDeployAccessLevelOutput) ToGroupProtectedEnvironmentDeployAccessLevelOutput() GroupProtectedEnvironmentDeployAccessLevelOutput {
+	return o
+}
+
+func (o GroupProtectedEnvironmentDeployAccessLevelOutput) ToGroupProtectedEnvironmentDeployAccessLevelOutputWithContext(ctx context.Context) GroupProtectedEnvironmentDeployAccessLevelOutput {
+	return o
+}
+
+func (o GroupProtectedEnvironmentDeployAccessLevelOutput) ToOutput(ctx context.Context) pulumix.Output[GroupProtectedEnvironmentDeployAccessLevel] {
+	return pulumix.Output[GroupProtectedEnvironmentDeployAccessLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+func (o GroupProtectedEnvironmentDeployAccessLevelOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// Readable description of level of access.
+func (o GroupProtectedEnvironmentDeployAccessLevelOutput) AccessLevelDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+func (o GroupProtectedEnvironmentDeployAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The unique ID of the Deploy Access Level object.
+func (o GroupProtectedEnvironmentDeployAccessLevelOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+func (o GroupProtectedEnvironmentDeployAccessLevelOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type GroupProtectedEnvironmentDeployAccessLevelArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupProtectedEnvironmentDeployAccessLevelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupProtectedEnvironmentDeployAccessLevel)(nil)).Elem()
+}
+
+func (o GroupProtectedEnvironmentDeployAccessLevelArrayOutput) ToGroupProtectedEnvironmentDeployAccessLevelArrayOutput() GroupProtectedEnvironmentDeployAccessLevelArrayOutput {
+	return o
+}
+
+func (o GroupProtectedEnvironmentDeployAccessLevelArrayOutput) ToGroupProtectedEnvironmentDeployAccessLevelArrayOutputWithContext(ctx context.Context) GroupProtectedEnvironmentDeployAccessLevelArrayOutput {
+	return o
+}
+
+func (o GroupProtectedEnvironmentDeployAccessLevelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupProtectedEnvironmentDeployAccessLevel] {
+	return pulumix.Output[[]GroupProtectedEnvironmentDeployAccessLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GroupProtectedEnvironmentDeployAccessLevelArrayOutput) Index(i pulumi.IntInput) GroupProtectedEnvironmentDeployAccessLevelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupProtectedEnvironmentDeployAccessLevel {
+		return vs[0].([]GroupProtectedEnvironmentDeployAccessLevel)[vs[1].(int)]
+	}).(GroupProtectedEnvironmentDeployAccessLevelOutput)
+}
+
 type ProjectContainerExpirationPolicy struct {
 	// The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
 	Cadence *string `pulumi:"cadence"`
@@ -3363,6 +3686,7 @@ type GetGroupSubgroupsSubgroup struct {
 	RequestAccessEnabled           bool              `pulumi:"requestAccessEnabled"`
 	RequireTwoFactorAuthentication bool              `pulumi:"requireTwoFactorAuthentication"`
 	ShareWithGroupLock             bool              `pulumi:"shareWithGroupLock"`
+	SharedRunnersSetting           string            `pulumi:"sharedRunnersSetting"`
 	Statistics                     map[string]string `pulumi:"statistics"`
 	SubgroupCreationLevel          string            `pulumi:"subgroupCreationLevel"`
 	TwoFactorGracePeriod           int               `pulumi:"twoFactorGracePeriod"`
@@ -3403,6 +3727,7 @@ type GetGroupSubgroupsSubgroupArgs struct {
 	RequestAccessEnabled           pulumi.BoolInput      `pulumi:"requestAccessEnabled"`
 	RequireTwoFactorAuthentication pulumi.BoolInput      `pulumi:"requireTwoFactorAuthentication"`
 	ShareWithGroupLock             pulumi.BoolInput      `pulumi:"shareWithGroupLock"`
+	SharedRunnersSetting           pulumi.StringInput    `pulumi:"sharedRunnersSetting"`
 	Statistics                     pulumi.StringMapInput `pulumi:"statistics"`
 	SubgroupCreationLevel          pulumi.StringInput    `pulumi:"subgroupCreationLevel"`
 	TwoFactorGracePeriod           pulumi.IntInput       `pulumi:"twoFactorGracePeriod"`
@@ -3558,6 +3883,10 @@ func (o GetGroupSubgroupsSubgroupOutput) RequireTwoFactorAuthentication() pulumi
 
 func (o GetGroupSubgroupsSubgroupOutput) ShareWithGroupLock() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.ShareWithGroupLock }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) SharedRunnersSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.SharedRunnersSetting }).(pulumi.StringOutput)
 }
 
 func (o GetGroupSubgroupsSubgroupOutput) Statistics() pulumi.StringMapOutput {
@@ -3783,6 +4112,7 @@ type GetGroupsGroup struct {
 	PreventForkingOutsideGroup bool   `pulumi:"preventForkingOutsideGroup"`
 	RequestAccessEnabled       bool   `pulumi:"requestAccessEnabled"`
 	RunnersToken               string `pulumi:"runnersToken"`
+	SharedRunnersSetting       string `pulumi:"sharedRunnersSetting"`
 	VisibilityLevel            string `pulumi:"visibilityLevel"`
 	WebUrl                     string `pulumi:"webUrl"`
 	WikiAccessLevel            string `pulumi:"wikiAccessLevel"`
@@ -3812,6 +4142,7 @@ type GetGroupsGroupArgs struct {
 	PreventForkingOutsideGroup pulumi.BoolInput   `pulumi:"preventForkingOutsideGroup"`
 	RequestAccessEnabled       pulumi.BoolInput   `pulumi:"requestAccessEnabled"`
 	RunnersToken               pulumi.StringInput `pulumi:"runnersToken"`
+	SharedRunnersSetting       pulumi.StringInput `pulumi:"sharedRunnersSetting"`
 	VisibilityLevel            pulumi.StringInput `pulumi:"visibilityLevel"`
 	WebUrl                     pulumi.StringInput `pulumi:"webUrl"`
 	WikiAccessLevel            pulumi.StringInput `pulumi:"wikiAccessLevel"`
@@ -3932,6 +4263,10 @@ func (o GetGroupsGroupOutput) RequestAccessEnabled() pulumi.BoolOutput {
 
 func (o GetGroupsGroupOutput) RunnersToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.RunnersToken }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsGroupOutput) SharedRunnersSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.SharedRunnersSetting }).(pulumi.StringOutput)
 }
 
 func (o GetGroupsGroupOutput) VisibilityLevel() pulumi.StringOutput {
@@ -8002,6 +8337,7 @@ type GetProjectsProject struct {
 	DefaultBranch                             string                                        `pulumi:"defaultBranch"`
 	Description                               string                                        `pulumi:"description"`
 	EmailsDisabled                            bool                                          `pulumi:"emailsDisabled"`
+	EmptyRepo                                 bool                                          `pulumi:"emptyRepo"`
 	EnvironmentsAccessLevel                   string                                        `pulumi:"environmentsAccessLevel"`
 	ExternalAuthorizationClassificationLabel  string                                        `pulumi:"externalAuthorizationClassificationLabel"`
 	FeatureFlagsAccessLevel                   string                                        `pulumi:"featureFlagsAccessLevel"`
@@ -8110,6 +8446,7 @@ type GetProjectsProjectArgs struct {
 	DefaultBranch                             pulumi.StringInput                                    `pulumi:"defaultBranch"`
 	Description                               pulumi.StringInput                                    `pulumi:"description"`
 	EmailsDisabled                            pulumi.BoolInput                                      `pulumi:"emailsDisabled"`
+	EmptyRepo                                 pulumi.BoolInput                                      `pulumi:"emptyRepo"`
 	EnvironmentsAccessLevel                   pulumi.StringInput                                    `pulumi:"environmentsAccessLevel"`
 	ExternalAuthorizationClassificationLabel  pulumi.StringInput                                    `pulumi:"externalAuthorizationClassificationLabel"`
 	FeatureFlagsAccessLevel                   pulumi.StringInput                                    `pulumi:"featureFlagsAccessLevel"`
@@ -8353,6 +8690,10 @@ func (o GetProjectsProjectOutput) Description() pulumi.StringOutput {
 
 func (o GetProjectsProjectOutput) EmailsDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) EmptyRepo() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.EmptyRepo }).(pulumi.BoolOutput)
 }
 
 func (o GetProjectsProjectOutput) EnvironmentsAccessLevel() pulumi.StringOutput {
@@ -10257,6 +10598,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupEpicBoardListArrayInput)(nil)).Elem(), GroupEpicBoardListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupIssueBoardListInput)(nil)).Elem(), GroupIssueBoardListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupIssueBoardListArrayInput)(nil)).Elem(), GroupIssueBoardListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentApprovalRuleInput)(nil)).Elem(), GroupProtectedEnvironmentApprovalRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentApprovalRuleArrayInput)(nil)).Elem(), GroupProtectedEnvironmentApprovalRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentDeployAccessLevelInput)(nil)).Elem(), GroupProtectedEnvironmentDeployAccessLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentDeployAccessLevelArrayInput)(nil)).Elem(), GroupProtectedEnvironmentDeployAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyPtrInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueBoardListInput)(nil)).Elem(), ProjectIssueBoardListArgs{})
@@ -10372,6 +10717,10 @@ func init() {
 	pulumi.RegisterOutputType(GroupEpicBoardListArrayOutput{})
 	pulumi.RegisterOutputType(GroupIssueBoardListOutput{})
 	pulumi.RegisterOutputType(GroupIssueBoardListArrayOutput{})
+	pulumi.RegisterOutputType(GroupProtectedEnvironmentApprovalRuleOutput{})
+	pulumi.RegisterOutputType(GroupProtectedEnvironmentApprovalRuleArrayOutput{})
+	pulumi.RegisterOutputType(GroupProtectedEnvironmentDeployAccessLevelOutput{})
+	pulumi.RegisterOutputType(GroupProtectedEnvironmentDeployAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ProjectIssueBoardListOutput{})

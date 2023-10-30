@@ -182,6 +182,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int SharedRunnersMinutesLimit;
         /// <summary>
+        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        /// </summary>
+        public readonly string SharedRunnersSetting;
+        /// <summary>
         /// Visibility level of the group. Possible values are `private`, `internal`, `public`.
         /// </summary>
         public readonly string VisibilityLevel;
@@ -228,6 +232,8 @@ namespace Pulumi.GitLab
 
             int sharedRunnersMinutesLimit,
 
+            string sharedRunnersSetting,
+
             string visibilityLevel,
 
             string webUrl,
@@ -250,6 +256,7 @@ namespace Pulumi.GitLab
             RequestAccessEnabled = requestAccessEnabled;
             RunnersToken = runnersToken;
             SharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
+            SharedRunnersSetting = sharedRunnersSetting;
             VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
             WikiAccessLevel = wikiAccessLevel;

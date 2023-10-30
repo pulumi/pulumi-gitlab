@@ -92,6 +92,11 @@ public final class GetGroupResult {
      */
     private Integer sharedRunnersMinutesLimit;
     /**
+     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * 
+     */
+    private String sharedRunnersSetting;
+    /**
      * @return Visibility level of the group. Possible values are `private`, `internal`, `public`.
      * 
      */
@@ -221,6 +226,13 @@ public final class GetGroupResult {
         return this.sharedRunnersMinutesLimit;
     }
     /**
+     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * 
+     */
+    public String sharedRunnersSetting() {
+        return this.sharedRunnersSetting;
+    }
+    /**
      * @return Visibility level of the group. Possible values are `private`, `internal`, `public`.
      * 
      */
@@ -267,6 +279,7 @@ public final class GetGroupResult {
         private Boolean requestAccessEnabled;
         private String runnersToken;
         private Integer sharedRunnersMinutesLimit;
+        private String sharedRunnersSetting;
         private String visibilityLevel;
         private String webUrl;
         private String wikiAccessLevel;
@@ -289,6 +302,7 @@ public final class GetGroupResult {
     	      this.requestAccessEnabled = defaults.requestAccessEnabled;
     	      this.runnersToken = defaults.runnersToken;
     	      this.sharedRunnersMinutesLimit = defaults.sharedRunnersMinutesLimit;
+    	      this.sharedRunnersSetting = defaults.sharedRunnersSetting;
     	      this.visibilityLevel = defaults.visibilityLevel;
     	      this.webUrl = defaults.webUrl;
     	      this.wikiAccessLevel = defaults.wikiAccessLevel;
@@ -375,6 +389,11 @@ public final class GetGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sharedRunnersSetting(String sharedRunnersSetting) {
+            this.sharedRunnersSetting = Objects.requireNonNull(sharedRunnersSetting);
+            return this;
+        }
+        @CustomType.Setter
         public Builder visibilityLevel(String visibilityLevel) {
             this.visibilityLevel = Objects.requireNonNull(visibilityLevel);
             return this;
@@ -407,6 +426,7 @@ public final class GetGroupResult {
             o.requestAccessEnabled = requestAccessEnabled;
             o.runnersToken = runnersToken;
             o.sharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
+            o.sharedRunnersSetting = sharedRunnersSetting;
             o.visibilityLevel = visibilityLevel;
             o.webUrl = webUrl;
             o.wikiAccessLevel = wikiAccessLevel;

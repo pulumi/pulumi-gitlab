@@ -19,14 +19,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     public static final GroupState Empty = new GroupState();
 
     /**
-     * Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+     * Default to Auto DevOps pipeline for all projects within this group.
      * 
      */
     @Import(name="autoDevopsEnabled")
     private @Nullable Output<Boolean> autoDevopsEnabled;
 
     /**
-     * @return Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+     * @return Default to Auto DevOps pipeline for all projects within this group.
      * 
      */
     public Optional<Output<Boolean>> autoDevopsEnabled() {
@@ -79,14 +79,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
+     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      */
     @Import(name="defaultBranchProtection")
     private @Nullable Output<Integer> defaultBranchProtection;
 
     /**
-     * @return Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
+     * @return See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      */
     public Optional<Output<Integer>> defaultBranchProtection() {
@@ -94,14 +94,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the group.
+     * The group&#39;s description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the group.
+     * @return The group&#39;s description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -109,14 +109,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defaults to false. Disable email notifications.
+     * Disable email notifications.
      * 
      */
     @Import(name="emailsDisabled")
     private @Nullable Output<Boolean> emailsDisabled;
 
     /**
-     * @return Defaults to false. Disable email notifications.
+     * @return Disable email notifications.
      * 
      */
     public Optional<Output<Boolean>> emailsDisabled() {
@@ -184,14 +184,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+     * Enable/disable Large File Storage (LFS) for the projects in this group.
      * 
      */
     @Import(name="lfsEnabled")
     private @Nullable Output<Boolean> lfsEnabled;
 
     /**
-     * @return Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+     * @return Enable/disable Large File Storage (LFS) for the projects in this group.
      * 
      */
     public Optional<Output<Boolean>> lfsEnabled() {
@@ -214,14 +214,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defaults to false. Disable the capability of a group from getting mentioned.
+     * Disable the capability of a group from getting mentioned.
      * 
      */
     @Import(name="mentionsDisabled")
     private @Nullable Output<Boolean> mentionsDisabled;
 
     /**
-     * @return Defaults to false. Disable the capability of a group from getting mentioned.
+     * @return Disable the capability of a group from getting mentioned.
      * 
      */
     public Optional<Output<Boolean>> mentionsDisabled() {
@@ -229,14 +229,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of this group.
+     * The name of the group.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of this group.
+     * @return The name of the group.
      * 
      */
     public Optional<Output<String>> name() {
@@ -289,14 +289,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defaults to maintainer. Determine if developers can create projects in the group.
+     * Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
      * 
      */
     @Import(name="projectCreationLevel")
     private @Nullable Output<String> projectCreationLevel;
 
     /**
-     * @return Defaults to maintainer. Determine if developers can create projects in the group.
+     * @return Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
      * 
      */
     public Optional<Output<String>> projectCreationLevel() {
@@ -304,14 +304,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defaults to false. Allow users to request member access.
+     * Allow users to request member access.
      * 
      */
     @Import(name="requestAccessEnabled")
     private @Nullable Output<Boolean> requestAccessEnabled;
 
     /**
-     * @return Defaults to false. Allow users to request member access.
+     * @return Allow users to request member access.
      * 
      */
     public Optional<Output<Boolean>> requestAccessEnabled() {
@@ -319,14 +319,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defaults to false. Require all users in this group to setup Two-factor authentication.
+     * Require all users in this group to setup Two-factor authentication.
      * 
      */
     @Import(name="requireTwoFactorAuthentication")
     private @Nullable Output<Boolean> requireTwoFactorAuthentication;
 
     /**
-     * @return Defaults to false. Require all users in this group to setup Two-factor authentication.
+     * @return Require all users in this group to setup Two-factor authentication.
      * 
      */
     public Optional<Output<Boolean>> requireTwoFactorAuthentication() {
@@ -349,14 +349,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defaults to false. Prevent sharing a project with another group within this group.
+     * Prevent sharing a project with another group within this group.
      * 
      */
     @Import(name="shareWithGroupLock")
     private @Nullable Output<Boolean> shareWithGroupLock;
 
     /**
-     * @return Defaults to false. Prevent sharing a project with another group within this group.
+     * @return Prevent sharing a project with another group within this group.
      * 
      */
     public Optional<Output<Boolean>> shareWithGroupLock() {
@@ -379,14 +379,29 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defaults to owner. Allowed to create subgroups.
+     * Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * 
+     */
+    @Import(name="sharedRunnersSetting")
+    private @Nullable Output<String> sharedRunnersSetting;
+
+    /**
+     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * 
+     */
+    public Optional<Output<String>> sharedRunnersSetting() {
+        return Optional.ofNullable(this.sharedRunnersSetting);
+    }
+
+    /**
+     * Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
      * 
      */
     @Import(name="subgroupCreationLevel")
     private @Nullable Output<String> subgroupCreationLevel;
 
     /**
-     * @return Defaults to owner. Allowed to create subgroups.
+     * @return Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
      * 
      */
     public Optional<Output<String>> subgroupCreationLevel() {
@@ -409,14 +424,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The group&#39;s visibility. Can be `private`, `internal`, or `public`.
+     * The group&#39;s visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
      * 
      */
     @Import(name="visibilityLevel")
     private @Nullable Output<String> visibilityLevel;
 
     /**
-     * @return The group&#39;s visibility. Can be `private`, `internal`, or `public`.
+     * @return The group&#39;s visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
      * 
      */
     public Optional<Output<String>> visibilityLevel() {
@@ -480,6 +495,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.runnersToken = $.runnersToken;
         this.shareWithGroupLock = $.shareWithGroupLock;
         this.sharedRunnersMinutesLimit = $.sharedRunnersMinutesLimit;
+        this.sharedRunnersSetting = $.sharedRunnersSetting;
         this.subgroupCreationLevel = $.subgroupCreationLevel;
         this.twoFactorGracePeriod = $.twoFactorGracePeriod;
         this.visibilityLevel = $.visibilityLevel;
@@ -506,7 +522,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoDevopsEnabled Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+         * @param autoDevopsEnabled Default to Auto DevOps pipeline for all projects within this group.
          * 
          * @return builder
          * 
@@ -517,7 +533,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoDevopsEnabled Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+         * @param autoDevopsEnabled Default to Auto DevOps pipeline for all projects within this group.
          * 
          * @return builder
          * 
@@ -590,7 +606,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultBranchProtection Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
+         * @param defaultBranchProtection See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
          * 
          * @return builder
          * 
@@ -601,7 +617,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultBranchProtection Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
+         * @param defaultBranchProtection See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
          * 
          * @return builder
          * 
@@ -611,7 +627,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the group.
+         * @param description The group&#39;s description.
          * 
          * @return builder
          * 
@@ -622,7 +638,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the group.
+         * @param description The group&#39;s description.
          * 
          * @return builder
          * 
@@ -632,7 +648,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailsDisabled Defaults to false. Disable email notifications.
+         * @param emailsDisabled Disable email notifications.
          * 
          * @return builder
          * 
@@ -643,7 +659,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailsDisabled Defaults to false. Disable email notifications.
+         * @param emailsDisabled Disable email notifications.
          * 
          * @return builder
          * 
@@ -747,7 +763,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lfsEnabled Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+         * @param lfsEnabled Enable/disable Large File Storage (LFS) for the projects in this group.
          * 
          * @return builder
          * 
@@ -758,7 +774,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lfsEnabled Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+         * @param lfsEnabled Enable/disable Large File Storage (LFS) for the projects in this group.
          * 
          * @return builder
          * 
@@ -789,7 +805,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mentionsDisabled Defaults to false. Disable the capability of a group from getting mentioned.
+         * @param mentionsDisabled Disable the capability of a group from getting mentioned.
          * 
          * @return builder
          * 
@@ -800,7 +816,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mentionsDisabled Defaults to false. Disable the capability of a group from getting mentioned.
+         * @param mentionsDisabled Disable the capability of a group from getting mentioned.
          * 
          * @return builder
          * 
@@ -810,7 +826,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of this group.
+         * @param name The name of the group.
          * 
          * @return builder
          * 
@@ -821,7 +837,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of this group.
+         * @param name The name of the group.
          * 
          * @return builder
          * 
@@ -894,7 +910,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectCreationLevel Defaults to maintainer. Determine if developers can create projects in the group.
+         * @param projectCreationLevel Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
          * 
          * @return builder
          * 
@@ -905,7 +921,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectCreationLevel Defaults to maintainer. Determine if developers can create projects in the group.
+         * @param projectCreationLevel Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
          * 
          * @return builder
          * 
@@ -915,7 +931,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestAccessEnabled Defaults to false. Allow users to request member access.
+         * @param requestAccessEnabled Allow users to request member access.
          * 
          * @return builder
          * 
@@ -926,7 +942,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestAccessEnabled Defaults to false. Allow users to request member access.
+         * @param requestAccessEnabled Allow users to request member access.
          * 
          * @return builder
          * 
@@ -936,7 +952,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requireTwoFactorAuthentication Defaults to false. Require all users in this group to setup Two-factor authentication.
+         * @param requireTwoFactorAuthentication Require all users in this group to setup Two-factor authentication.
          * 
          * @return builder
          * 
@@ -947,7 +963,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requireTwoFactorAuthentication Defaults to false. Require all users in this group to setup Two-factor authentication.
+         * @param requireTwoFactorAuthentication Require all users in this group to setup Two-factor authentication.
          * 
          * @return builder
          * 
@@ -978,7 +994,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param shareWithGroupLock Defaults to false. Prevent sharing a project with another group within this group.
+         * @param shareWithGroupLock Prevent sharing a project with another group within this group.
          * 
          * @return builder
          * 
@@ -989,7 +1005,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param shareWithGroupLock Defaults to false. Prevent sharing a project with another group within this group.
+         * @param shareWithGroupLock Prevent sharing a project with another group within this group.
          * 
          * @return builder
          * 
@@ -1020,7 +1036,28 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subgroupCreationLevel Defaults to owner. Allowed to create subgroups.
+         * @param sharedRunnersSetting Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedRunnersSetting(@Nullable Output<String> sharedRunnersSetting) {
+            $.sharedRunnersSetting = sharedRunnersSetting;
+            return this;
+        }
+
+        /**
+         * @param sharedRunnersSetting Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedRunnersSetting(String sharedRunnersSetting) {
+            return sharedRunnersSetting(Output.of(sharedRunnersSetting));
+        }
+
+        /**
+         * @param subgroupCreationLevel Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
          * 
          * @return builder
          * 
@@ -1031,7 +1068,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subgroupCreationLevel Defaults to owner. Allowed to create subgroups.
+         * @param subgroupCreationLevel Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
          * 
          * @return builder
          * 
@@ -1062,7 +1099,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param visibilityLevel The group&#39;s visibility. Can be `private`, `internal`, or `public`.
+         * @param visibilityLevel The group&#39;s visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
          * 
          * @return builder
          * 
@@ -1073,7 +1110,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param visibilityLevel The group&#39;s visibility. Can be `private`, `internal`, or `public`.
+         * @param visibilityLevel The group&#39;s visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
          * 
          * @return builder
          * 

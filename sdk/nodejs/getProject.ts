@@ -129,6 +129,10 @@ export interface GetProjectResult {
      */
     readonly emailsDisabled: boolean;
     /**
+     * Whether the project is empty.
+     */
+    readonly emptyRepo: boolean;
+    /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      */
     readonly environmentsAccessLevel: string;

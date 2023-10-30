@@ -25,6 +25,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool PreventForkingOutsideGroup;
         public readonly bool RequestAccessEnabled;
         public readonly string RunnersToken;
+        public readonly string SharedRunnersSetting;
         public readonly string VisibilityLevel;
         public readonly string WebUrl;
         public readonly string WikiAccessLevel;
@@ -55,6 +56,8 @@ namespace Pulumi.GitLab.Outputs
 
             string runnersToken,
 
+            string sharedRunnersSetting,
+
             string visibilityLevel,
 
             string webUrl,
@@ -73,6 +76,7 @@ namespace Pulumi.GitLab.Outputs
             PreventForkingOutsideGroup = preventForkingOutsideGroup;
             RequestAccessEnabled = requestAccessEnabled;
             RunnersToken = runnersToken;
+            SharedRunnersSetting = sharedRunnersSetting;
             VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
             WikiAccessLevel = wikiAccessLevel;

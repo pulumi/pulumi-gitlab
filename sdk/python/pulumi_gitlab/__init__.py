@@ -67,6 +67,7 @@ from .group_label import *
 from .group_ldap_link import *
 from .group_membership import *
 from .group_project_file_template import *
+from .group_protected_environment import *
 from .group_saml_link import *
 from .group_share_group import *
 from .group_variable import *
@@ -317,6 +318,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate": "GroupProjectFileTemplate"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupProtectedEnvironment",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment": "GroupProtectedEnvironment"
   }
  },
  {

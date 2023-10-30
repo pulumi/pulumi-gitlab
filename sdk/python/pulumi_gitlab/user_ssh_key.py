@@ -16,20 +16,21 @@ class UserSshKeyArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  title: pulumi.Input[str],
-                 user_id: pulumi.Input[int],
-                 expires_at: Optional[pulumi.Input[str]] = None):
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a UserSshKey resource.
         :param pulumi.Input[str] key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         :param pulumi.Input[str] title: The title of the ssh key.
-        :param pulumi.Input[int] user_id: The ID or username of the user.
         :param pulumi.Input[str] expires_at: The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
+        :param pulumi.Input[int] user_id: The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "title", title)
-        pulumi.set(__self__, "user_id", user_id)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -56,18 +57,6 @@ class UserSshKeyArgs:
         pulumi.set(self, "title", value)
 
     @property
-    @pulumi.getter(name="userId")
-    def user_id(self) -> pulumi.Input[int]:
-        """
-        The ID or username of the user.
-        """
-        return pulumi.get(self, "user_id")
-
-    @user_id.setter
-    def user_id(self, value: pulumi.Input[int]):
-        pulumi.set(self, "user_id", value)
-
-    @property
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
@@ -78,6 +67,18 @@ class UserSshKeyArgs:
     @expires_at.setter
     def expires_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "expires_at", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "user_id", value)
 
 
 @pulumi.input_type
@@ -96,7 +97,7 @@ class _UserSshKeyState:
         :param pulumi.Input[str] key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         :param pulumi.Input[int] key_id: The ID of the ssh key.
         :param pulumi.Input[str] title: The title of the ssh key.
-        :param pulumi.Input[int] user_id: The ID or username of the user.
+        :param pulumi.Input[int] user_id: The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -175,7 +176,7 @@ class _UserSshKeyState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID or username of the user.
+        The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
         """
         return pulumi.get(self, "user_id")
 
@@ -226,7 +227,7 @@ class UserSshKey(pulumi.CustomResource):
         :param pulumi.Input[str] expires_at: The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
         :param pulumi.Input[str] key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         :param pulumi.Input[str] title: The title of the ssh key.
-        :param pulumi.Input[int] user_id: The ID or username of the user.
+        :param pulumi.Input[int] user_id: The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
         """
         ...
     @overload
@@ -296,8 +297,6 @@ class UserSshKey(pulumi.CustomResource):
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
-            if user_id is None and not opts.urn:
-                raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["key_id"] = None
@@ -329,7 +328,7 @@ class UserSshKey(pulumi.CustomResource):
         :param pulumi.Input[str] key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         :param pulumi.Input[int] key_id: The ID of the ssh key.
         :param pulumi.Input[str] title: The title of the ssh key.
-        :param pulumi.Input[int] user_id: The ID or username of the user.
+        :param pulumi.Input[int] user_id: The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -387,7 +386,7 @@ class UserSshKey(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[int]:
         """
-        The ID or username of the user.
+        The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
         """
         return pulumi.get(self, "user_id")
 

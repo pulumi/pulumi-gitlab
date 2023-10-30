@@ -99,6 +99,8 @@ type LookupProjectResult struct {
 	Description string `pulumi:"description"`
 	// Disable email notifications.
 	EmailsDisabled bool `pulumi:"emailsDisabled"`
+	// Whether the project is empty.
+	EmptyRepo bool `pulumi:"emptyRepo"`
 	// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
 	EnvironmentsAccessLevel string `pulumi:"environmentsAccessLevel"`
 	// The classification label for the project.
@@ -328,6 +330,11 @@ func (o LookupProjectResultOutput) Description() pulumi.StringOutput {
 // Disable email notifications.
 func (o LookupProjectResultOutput) EmailsDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
+}
+
+// Whether the project is empty.
+func (o LookupProjectResultOutput) EmptyRepo() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.EmptyRepo }).(pulumi.BoolOutput)
 }
 
 // Set the environments access level. Valid values are `disabled`, `private`, `enabled`.

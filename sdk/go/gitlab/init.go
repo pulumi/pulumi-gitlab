@@ -65,6 +65,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupMembership{}
 	case "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate":
 		r = &GroupProjectFileTemplate{}
+	case "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment":
+		r = &GroupProtectedEnvironment{}
 	case "gitlab:index/groupSamlLink:GroupSamlLink":
 		r = &GroupSamlLink{}
 	case "gitlab:index/groupShareGroup:GroupShareGroup":
@@ -328,6 +330,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupProjectFileTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupProtectedEnvironment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

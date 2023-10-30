@@ -23,6 +23,7 @@ public final class GetGroupsGroup {
     private Boolean preventForkingOutsideGroup;
     private Boolean requestAccessEnabled;
     private String runnersToken;
+    private String sharedRunnersSetting;
     private String visibilityLevel;
     private String webUrl;
     private String wikiAccessLevel;
@@ -64,6 +65,9 @@ public final class GetGroupsGroup {
     public String runnersToken() {
         return this.runnersToken;
     }
+    public String sharedRunnersSetting() {
+        return this.sharedRunnersSetting;
+    }
     public String visibilityLevel() {
         return this.visibilityLevel;
     }
@@ -95,6 +99,7 @@ public final class GetGroupsGroup {
         private Boolean preventForkingOutsideGroup;
         private Boolean requestAccessEnabled;
         private String runnersToken;
+        private String sharedRunnersSetting;
         private String visibilityLevel;
         private String webUrl;
         private String wikiAccessLevel;
@@ -113,6 +118,7 @@ public final class GetGroupsGroup {
     	      this.preventForkingOutsideGroup = defaults.preventForkingOutsideGroup;
     	      this.requestAccessEnabled = defaults.requestAccessEnabled;
     	      this.runnersToken = defaults.runnersToken;
+    	      this.sharedRunnersSetting = defaults.sharedRunnersSetting;
     	      this.visibilityLevel = defaults.visibilityLevel;
     	      this.webUrl = defaults.webUrl;
     	      this.wikiAccessLevel = defaults.wikiAccessLevel;
@@ -179,6 +185,11 @@ public final class GetGroupsGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder sharedRunnersSetting(String sharedRunnersSetting) {
+            this.sharedRunnersSetting = Objects.requireNonNull(sharedRunnersSetting);
+            return this;
+        }
+        @CustomType.Setter
         public Builder visibilityLevel(String visibilityLevel) {
             this.visibilityLevel = Objects.requireNonNull(visibilityLevel);
             return this;
@@ -207,6 +218,7 @@ public final class GetGroupsGroup {
             o.preventForkingOutsideGroup = preventForkingOutsideGroup;
             o.requestAccessEnabled = requestAccessEnabled;
             o.runnersToken = runnersToken;
+            o.sharedRunnersSetting = sharedRunnersSetting;
             o.visibilityLevel = visibilityLevel;
             o.webUrl = webUrl;
             o.wikiAccessLevel = wikiAccessLevel;

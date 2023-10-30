@@ -215,14 +215,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Git strategy. Defaults to fetch.
+     * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      * 
      */
     @Import(name="buildGitStrategy")
     private @Nullable Output<String> buildGitStrategy;
 
     /**
-     * @return The Git strategy. Defaults to fetch.
+     * @return The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      * 
      */
     public Optional<Output<String>> buildGitStrategy() {
@@ -944,14 +944,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable pages access control
+     * Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
      * 
      */
     @Import(name="pagesAccessLevel")
     private @Nullable Output<String> pagesAccessLevel;
 
     /**
-     * @return Enable pages access control
+     * @return Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
      * 
      */
     public Optional<Output<String>> pagesAccessLevel() {
@@ -1014,16 +1014,39 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, jobs can be viewed by non-project members.
      * 
+     * @deprecated
+     * The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+     * 
      */
+    @Deprecated /* The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider. */
     @Import(name="publicBuilds")
     private @Nullable Output<Boolean> publicBuilds;
 
     /**
      * @return If true, jobs can be viewed by non-project members.
      * 
+     * @deprecated
+     * The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+     * 
      */
+    @Deprecated /* The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider. */
     public Optional<Output<Boolean>> publicBuilds() {
         return Optional.ofNullable(this.publicBuilds);
+    }
+
+    /**
+     * If true, jobs can be viewed by non-project members.
+     * 
+     */
+    @Import(name="publicJobs")
+    private @Nullable Output<Boolean> publicJobs;
+
+    /**
+     * @return If true, jobs can be viewed by non-project members.
+     * 
+     */
+    public Optional<Output<Boolean>> publicJobs() {
+        return Optional.ofNullable(this.publicJobs);
     }
 
     /**
@@ -1365,14 +1388,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set to `public` to create a public project.
+     * Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
      * 
      */
     @Import(name="visibilityLevel")
     private @Nullable Output<String> visibilityLevel;
 
     /**
-     * @return Set to `public` to create a public project.
+     * @return Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
      * 
      */
     public Optional<Output<String>> visibilityLevel() {
@@ -1476,6 +1499,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.pipelinesEnabled = $.pipelinesEnabled;
         this.printingMergeRequestLinkEnabled = $.printingMergeRequestLinkEnabled;
         this.publicBuilds = $.publicBuilds;
+        this.publicJobs = $.publicJobs;
         this.pushRules = $.pushRules;
         this.releasesAccessLevel = $.releasesAccessLevel;
         this.removeSourceBranchAfterMerge = $.removeSourceBranchAfterMerge;
@@ -1788,7 +1812,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param buildGitStrategy The Git strategy. Defaults to fetch.
+         * @param buildGitStrategy The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
          * 
          * @return builder
          * 
@@ -1799,7 +1823,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param buildGitStrategy The Git strategy. Defaults to fetch.
+         * @param buildGitStrategy The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
          * 
          * @return builder
          * 
@@ -2799,7 +2823,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pagesAccessLevel Enable pages access control
+         * @param pagesAccessLevel Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
          * 
          * @return builder
          * 
@@ -2810,7 +2834,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pagesAccessLevel Enable pages access control
+         * @param pagesAccessLevel Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
          * 
          * @return builder
          * 
@@ -2895,7 +2919,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+         * 
          */
+        @Deprecated /* The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider. */
         public Builder publicBuilds(@Nullable Output<Boolean> publicBuilds) {
             $.publicBuilds = publicBuilds;
             return this;
@@ -2906,9 +2934,34 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+         * 
          */
+        @Deprecated /* The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider. */
         public Builder publicBuilds(Boolean publicBuilds) {
             return publicBuilds(Output.of(publicBuilds));
+        }
+
+        /**
+         * @param publicJobs If true, jobs can be viewed by non-project members.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicJobs(@Nullable Output<Boolean> publicJobs) {
+            $.publicJobs = publicJobs;
+            return this;
+        }
+
+        /**
+         * @param publicJobs If true, jobs can be viewed by non-project members.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicJobs(Boolean publicJobs) {
+            return publicJobs(Output.of(publicJobs));
         }
 
         /**
@@ -3402,7 +3455,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param visibilityLevel Set to `public` to create a public project.
+         * @param visibilityLevel Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
          * 
          * @return builder
          * 
@@ -3413,7 +3466,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param visibilityLevel Set to `public` to create a public project.
+         * @param visibilityLevel Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
          * 
          * @return builder
          * 

@@ -33,6 +33,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool RequestAccessEnabled;
         public readonly bool RequireTwoFactorAuthentication;
         public readonly bool ShareWithGroupLock;
+        public readonly string SharedRunnersSetting;
         public readonly ImmutableDictionary<string, string> Statistics;
         public readonly string SubgroupCreationLevel;
         public readonly int TwoFactorGracePeriod;
@@ -82,6 +83,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool shareWithGroupLock,
 
+            string sharedRunnersSetting,
+
             ImmutableDictionary<string, string> statistics,
 
             string subgroupCreationLevel,
@@ -114,6 +117,7 @@ namespace Pulumi.GitLab.Outputs
             RequestAccessEnabled = requestAccessEnabled;
             RequireTwoFactorAuthentication = requireTwoFactorAuthentication;
             ShareWithGroupLock = shareWithGroupLock;
+            SharedRunnersSetting = sharedRunnersSetting;
             Statistics = statistics;
             SubgroupCreationLevel = subgroupCreationLevel;
             TwoFactorGracePeriod = twoFactorGracePeriod;
