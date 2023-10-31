@@ -78,14 +78,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {
     /**
-     * Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+     * Default to Auto DevOps pipeline for all projects within this group.
      * 
      */
     @Export(name="autoDevopsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoDevopsEnabled;
 
     /**
-     * @return Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+     * @return Default to Auto DevOps pipeline for all projects within this group.
      * 
      */
     public Output<Boolean> autoDevopsEnabled() {
@@ -134,42 +134,42 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.avatarUrl;
     }
     /**
-     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
+     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      */
     @Export(name="defaultBranchProtection", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultBranchProtection;
 
     /**
-     * @return Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
+     * @return See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      */
     public Output<Integer> defaultBranchProtection() {
         return this.defaultBranchProtection;
     }
     /**
-     * The description of the group.
+     * The group&#39;s description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the group.
+     * @return The group&#39;s description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Defaults to false. Disable email notifications.
+     * Disable email notifications.
      * 
      */
     @Export(name="emailsDisabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> emailsDisabled;
 
     /**
-     * @return Defaults to false. Disable email notifications.
+     * @return Disable email notifications.
      * 
      */
     public Output<Boolean> emailsDisabled() {
@@ -232,14 +232,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipRestrictionRanges);
     }
     /**
-     * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+     * Enable/disable Large File Storage (LFS) for the projects in this group.
      * 
      */
     @Export(name="lfsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> lfsEnabled;
 
     /**
-     * @return Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+     * @return Enable/disable Large File Storage (LFS) for the projects in this group.
      * 
      */
     public Output<Boolean> lfsEnabled() {
@@ -260,28 +260,28 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.membershipLock);
     }
     /**
-     * Defaults to false. Disable the capability of a group from getting mentioned.
+     * Disable the capability of a group from getting mentioned.
      * 
      */
     @Export(name="mentionsDisabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mentionsDisabled;
 
     /**
-     * @return Defaults to false. Disable the capability of a group from getting mentioned.
+     * @return Disable the capability of a group from getting mentioned.
      * 
      */
     public Output<Boolean> mentionsDisabled() {
         return this.mentionsDisabled;
     }
     /**
-     * The name of this group.
+     * The name of the group.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of this group.
+     * @return The name of the group.
      * 
      */
     public Output<String> name() {
@@ -330,42 +330,42 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.preventForkingOutsideGroup;
     }
     /**
-     * Defaults to maintainer. Determine if developers can create projects in the group.
+     * Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
      * 
      */
     @Export(name="projectCreationLevel", refs={String.class}, tree="[0]")
     private Output<String> projectCreationLevel;
 
     /**
-     * @return Defaults to maintainer. Determine if developers can create projects in the group.
+     * @return Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
      * 
      */
     public Output<String> projectCreationLevel() {
         return this.projectCreationLevel;
     }
     /**
-     * Defaults to false. Allow users to request member access.
+     * Allow users to request member access.
      * 
      */
     @Export(name="requestAccessEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requestAccessEnabled;
 
     /**
-     * @return Defaults to false. Allow users to request member access.
+     * @return Allow users to request member access.
      * 
      */
     public Output<Boolean> requestAccessEnabled() {
         return this.requestAccessEnabled;
     }
     /**
-     * Defaults to false. Require all users in this group to setup Two-factor authentication.
+     * Require all users in this group to setup Two-factor authentication.
      * 
      */
     @Export(name="requireTwoFactorAuthentication", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requireTwoFactorAuthentication;
 
     /**
-     * @return Defaults to false. Require all users in this group to setup Two-factor authentication.
+     * @return Require all users in this group to setup Two-factor authentication.
      * 
      */
     public Output<Boolean> requireTwoFactorAuthentication() {
@@ -386,14 +386,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.runnersToken;
     }
     /**
-     * Defaults to false. Prevent sharing a project with another group within this group.
+     * Prevent sharing a project with another group within this group.
      * 
      */
     @Export(name="shareWithGroupLock", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> shareWithGroupLock;
 
     /**
-     * @return Defaults to false. Prevent sharing a project with another group within this group.
+     * @return Prevent sharing a project with another group within this group.
      * 
      */
     public Output<Boolean> shareWithGroupLock() {
@@ -414,14 +414,28 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.sharedRunnersMinutesLimit;
     }
     /**
-     * Defaults to owner. Allowed to create subgroups.
+     * Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * 
+     */
+    @Export(name="sharedRunnersSetting", refs={String.class}, tree="[0]")
+    private Output<String> sharedRunnersSetting;
+
+    /**
+     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * 
+     */
+    public Output<String> sharedRunnersSetting() {
+        return this.sharedRunnersSetting;
+    }
+    /**
+     * Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
      * 
      */
     @Export(name="subgroupCreationLevel", refs={String.class}, tree="[0]")
     private Output<String> subgroupCreationLevel;
 
     /**
-     * @return Defaults to owner. Allowed to create subgroups.
+     * @return Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
      * 
      */
     public Output<String> subgroupCreationLevel() {
@@ -442,14 +456,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.twoFactorGracePeriod;
     }
     /**
-     * The group&#39;s visibility. Can be `private`, `internal`, or `public`.
+     * The group&#39;s visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
      * 
      */
     @Export(name="visibilityLevel", refs={String.class}, tree="[0]")
     private Output<String> visibilityLevel;
 
     /**
-     * @return The group&#39;s visibility. Can be `private`, `internal`, or `public`.
+     * @return The group&#39;s visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
      * 
      */
     public Output<String> visibilityLevel() {

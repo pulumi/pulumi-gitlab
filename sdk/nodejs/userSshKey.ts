@@ -83,7 +83,7 @@ export class UserSshKey extends pulumi.CustomResource {
      */
     public readonly title!: pulumi.Output<string>;
     /**
-     * The ID or username of the user.
+     * The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      */
     public readonly userId!: pulumi.Output<number>;
 
@@ -113,9 +113,6 @@ export class UserSshKey extends pulumi.CustomResource {
             }
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
-            }
-            if ((!args || args.userId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'userId'");
             }
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
@@ -154,7 +151,7 @@ export interface UserSshKeyState {
      */
     title?: pulumi.Input<string>;
     /**
-     * The ID or username of the user.
+     * The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      */
     userId?: pulumi.Input<number>;
 }
@@ -176,7 +173,7 @@ export interface UserSshKeyArgs {
      */
     title: pulumi.Input<string>;
     /**
-     * The ID or username of the user.
+     * The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      */
-    userId: pulumi.Input<number>;
+    userId?: pulumi.Input<number>;
 }

@@ -45,6 +45,7 @@ public final class GetProjectsProject {
     private String defaultBranch;
     private String description;
     private Boolean emailsDisabled;
+    private Boolean emptyRepo;
     private String environmentsAccessLevel;
     private String externalAuthorizationClassificationLabel;
     private String featureFlagsAccessLevel;
@@ -192,6 +193,9 @@ public final class GetProjectsProject {
     }
     public Boolean emailsDisabled() {
         return this.emailsDisabled;
+    }
+    public Boolean emptyRepo() {
+        return this.emptyRepo;
     }
     public String environmentsAccessLevel() {
         return this.environmentsAccessLevel;
@@ -433,6 +437,7 @@ public final class GetProjectsProject {
         private String defaultBranch;
         private String description;
         private Boolean emailsDisabled;
+        private Boolean emptyRepo;
         private String environmentsAccessLevel;
         private String externalAuthorizationClassificationLabel;
         private String featureFlagsAccessLevel;
@@ -530,6 +535,7 @@ public final class GetProjectsProject {
     	      this.defaultBranch = defaults.defaultBranch;
     	      this.description = defaults.description;
     	      this.emailsDisabled = defaults.emailsDisabled;
+    	      this.emptyRepo = defaults.emptyRepo;
     	      this.environmentsAccessLevel = defaults.environmentsAccessLevel;
     	      this.externalAuthorizationClassificationLabel = defaults.externalAuthorizationClassificationLabel;
     	      this.featureFlagsAccessLevel = defaults.featureFlagsAccessLevel;
@@ -731,6 +737,11 @@ public final class GetProjectsProject {
         @CustomType.Setter
         public Builder emailsDisabled(Boolean emailsDisabled) {
             this.emailsDisabled = Objects.requireNonNull(emailsDisabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emptyRepo(Boolean emptyRepo) {
+            this.emptyRepo = Objects.requireNonNull(emptyRepo);
             return this;
         }
         @CustomType.Setter
@@ -1122,6 +1133,7 @@ public final class GetProjectsProject {
             o.defaultBranch = defaultBranch;
             o.description = description;
             o.emailsDisabled = emailsDisabled;
+            o.emptyRepo = emptyRepo;
             o.environmentsAccessLevel = environmentsAccessLevel;
             o.externalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
             o.featureFlagsAccessLevel = featureFlagsAccessLevel;

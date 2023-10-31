@@ -93,6 +93,8 @@ type LookupGroupResult struct {
 	RunnersToken string `pulumi:"runnersToken"`
 	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 	SharedRunnersMinutesLimit int `pulumi:"sharedRunnersMinutesLimit"`
+	// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+	SharedRunnersSetting string `pulumi:"sharedRunnersSetting"`
 	// Visibility level of the group. Possible values are `private`, `internal`, `public`.
 	VisibilityLevel string `pulumi:"visibilityLevel"`
 	// Web URL of the group.
@@ -225,6 +227,11 @@ func (o LookupGroupResultOutput) RunnersToken() pulumi.StringOutput {
 // Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 func (o LookupGroupResultOutput) SharedRunnersMinutesLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupResult) int { return v.SharedRunnersMinutesLimit }).(pulumi.IntOutput)
+}
+
+// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+func (o LookupGroupResultOutput) SharedRunnersSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.SharedRunnersSetting }).(pulumi.StringOutput)
 }
 
 // Visibility level of the group. Possible values are `private`, `internal`, `public`.

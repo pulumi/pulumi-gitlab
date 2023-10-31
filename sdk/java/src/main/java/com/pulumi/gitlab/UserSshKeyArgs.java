@@ -62,18 +62,18 @@ public final class UserSshKeyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID or username of the user.
+     * The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      * 
      */
-    @Import(name="userId", required=true)
-    private Output<Integer> userId;
+    @Import(name="userId")
+    private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID or username of the user.
+     * @return The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      * 
      */
-    public Output<Integer> userId() {
-        return this.userId;
+    public Optional<Output<Integer>> userId() {
+        return Optional.ofNullable(this.userId);
     }
 
     private UserSshKeyArgs() {}
@@ -167,18 +167,18 @@ public final class UserSshKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId The ID or username of the user.
+         * @param userId The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
          * 
          * @return builder
          * 
          */
-        public Builder userId(Output<Integer> userId) {
+        public Builder userId(@Nullable Output<Integer> userId) {
             $.userId = userId;
             return this;
         }
 
         /**
-         * @param userId The ID or username of the user.
+         * @param userId The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
          * 
          * @return builder
          * 
@@ -190,7 +190,6 @@ public final class UserSshKeyArgs extends com.pulumi.resources.ResourceArgs {
         public UserSshKeyArgs build() {
             $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
             return $;
         }
     }

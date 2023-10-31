@@ -80,6 +80,7 @@ class ProjectArgs:
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
+                 public_jobs: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
                  releases_access_level: Optional[pulumi.Input[str]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
@@ -122,7 +123,7 @@ class ProjectArgs:
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-        :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
+        :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
@@ -177,11 +178,12 @@ class ProjectArgs:
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
-        :param pulumi.Input[str] pages_access_level: Enable pages access control
+        :param pulumi.Input[str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
+        :param pulumi.Input[bool] public_jobs: If true, jobs can be viewed by non-project members.
         :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
         :param pulumi.Input[str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
@@ -208,7 +210,7 @@ class ProjectArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
                	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
-        :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
+        :param pulumi.Input[str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
         """
@@ -348,7 +350,12 @@ class ProjectArgs:
         if printing_merge_request_link_enabled is not None:
             pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
         if public_builds is not None:
+            warnings.warn("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""public_builds is deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
+        if public_builds is not None:
             pulumi.set(__self__, "public_builds", public_builds)
+        if public_jobs is not None:
+            pulumi.set(__self__, "public_jobs", public_jobs)
         if push_rules is not None:
             pulumi.set(__self__, "push_rules", push_rules)
         if releases_access_level is not None:
@@ -554,7 +561,7 @@ class ProjectArgs:
     @pulumi.getter(name="buildGitStrategy")
     def build_git_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The Git strategy. Defaults to fetch.
+        The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         """
         return pulumi.get(self, "build_git_strategy")
 
@@ -1129,7 +1136,7 @@ class ProjectArgs:
     @pulumi.getter(name="pagesAccessLevel")
     def pages_access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable pages access control
+        Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         """
         return pulumi.get(self, "pages_access_level")
 
@@ -1182,11 +1189,26 @@ class ProjectArgs:
         """
         If true, jobs can be viewed by non-project members.
         """
+        warnings.warn("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""", DeprecationWarning)
+        pulumi.log.warn("""public_builds is deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
+
         return pulumi.get(self, "public_builds")
 
     @public_builds.setter
     def public_builds(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "public_builds", value)
+
+    @property
+    @pulumi.getter(name="publicJobs")
+    def public_jobs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, jobs can be viewed by non-project members.
+        """
+        return pulumi.get(self, "public_jobs")
+
+    @public_jobs.setter
+    def public_jobs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "public_jobs", value)
 
     @property
     @pulumi.getter(name="pushRules")
@@ -1460,7 +1482,7 @@ class ProjectArgs:
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Set to `public` to create a public project.
+        Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         """
         return pulumi.get(self, "visibility_level")
 
@@ -1522,6 +1544,7 @@ class _ProjectState:
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 empty_repo: Optional[pulumi.Input[bool]] = None,
                  environments_access_level: Optional[pulumi.Input[str]] = None,
                  external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
                  feature_flags_access_level: Optional[pulumi.Input[str]] = None,
@@ -1563,6 +1586,7 @@ class _ProjectState:
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
+                 public_jobs: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
                  releases_access_level: Optional[pulumi.Input[str]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
@@ -1609,7 +1633,7 @@ class _ProjectState:
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-        :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
+        :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
@@ -1622,6 +1646,7 @@ class _ProjectState:
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[bool] emails_disabled: Disable email notifications.
+        :param pulumi.Input[bool] empty_repo: Whether the project is empty.
         :param pulumi.Input[str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] external_authorization_classification_label: The classification label for the project.
         :param pulumi.Input[str] feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1665,12 +1690,13 @@ class _ProjectState:
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
-        :param pulumi.Input[str] pages_access_level: Enable pages access control
+        :param pulumi.Input[str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
+        :param pulumi.Input[bool] public_jobs: If true, jobs can be viewed by non-project members.
         :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
         :param pulumi.Input[str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
@@ -1699,7 +1725,7 @@ class _ProjectState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
                	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
-        :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
+        :param pulumi.Input[str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
@@ -1762,6 +1788,8 @@ class _ProjectState:
             pulumi.set(__self__, "description", description)
         if emails_disabled is not None:
             pulumi.set(__self__, "emails_disabled", emails_disabled)
+        if empty_repo is not None:
+            pulumi.set(__self__, "empty_repo", empty_repo)
         if environments_access_level is not None:
             pulumi.set(__self__, "environments_access_level", environments_access_level)
         if external_authorization_classification_label is not None:
@@ -1846,7 +1874,12 @@ class _ProjectState:
         if printing_merge_request_link_enabled is not None:
             pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
         if public_builds is not None:
+            warnings.warn("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""public_builds is deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
+        if public_builds is not None:
             pulumi.set(__self__, "public_builds", public_builds)
+        if public_jobs is not None:
+            pulumi.set(__self__, "public_jobs", public_jobs)
         if push_rules is not None:
             pulumi.set(__self__, "push_rules", push_rules)
         if releases_access_level is not None:
@@ -2070,7 +2103,7 @@ class _ProjectState:
     @pulumi.getter(name="buildGitStrategy")
     def build_git_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The Git strategy. Defaults to fetch.
+        The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         """
         return pulumi.get(self, "build_git_strategy")
 
@@ -2224,6 +2257,18 @@ class _ProjectState:
     @emails_disabled.setter
     def emails_disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "emails_disabled", value)
+
+    @property
+    @pulumi.getter(name="emptyRepo")
+    def empty_repo(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the project is empty.
+        """
+        return pulumi.get(self, "empty_repo")
+
+    @empty_repo.setter
+    def empty_repo(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "empty_repo", value)
 
     @property
     @pulumi.getter(name="environmentsAccessLevel")
@@ -2657,7 +2702,7 @@ class _ProjectState:
     @pulumi.getter(name="pagesAccessLevel")
     def pages_access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable pages access control
+        Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         """
         return pulumi.get(self, "pages_access_level")
 
@@ -2722,11 +2767,26 @@ class _ProjectState:
         """
         If true, jobs can be viewed by non-project members.
         """
+        warnings.warn("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""", DeprecationWarning)
+        pulumi.log.warn("""public_builds is deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
+
         return pulumi.get(self, "public_builds")
 
     @public_builds.setter
     def public_builds(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "public_builds", value)
+
+    @property
+    @pulumi.getter(name="publicJobs")
+    def public_jobs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, jobs can be viewed by non-project members.
+        """
+        return pulumi.get(self, "public_jobs")
+
+    @public_jobs.setter
+    def public_jobs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "public_jobs", value)
 
     @property
     @pulumi.getter(name="pushRules")
@@ -3024,7 +3084,7 @@ class _ProjectState:
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Set to `public` to create a public project.
+        Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         """
         return pulumi.get(self, "visibility_level")
 
@@ -3138,6 +3198,7 @@ class Project(pulumi.CustomResource):
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
+                 public_jobs: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
                  releases_access_level: Optional[pulumi.Input[str]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
@@ -3249,7 +3310,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-        :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
+        :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
@@ -3304,11 +3365,12 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
-        :param pulumi.Input[str] pages_access_level: Enable pages access control
+        :param pulumi.Input[str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
+        :param pulumi.Input[bool] public_jobs: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
         :param pulumi.Input[str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
@@ -3335,7 +3397,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
                	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
-        :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
+        :param pulumi.Input[str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
         """
@@ -3492,6 +3554,7 @@ class Project(pulumi.CustomResource):
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
+                 public_jobs: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
                  releases_access_level: Optional[pulumi.Input[str]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
@@ -3590,6 +3653,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["pipelines_enabled"] = pipelines_enabled
             __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
             __props__.__dict__["public_builds"] = public_builds
+            __props__.__dict__["public_jobs"] = public_jobs
             __props__.__dict__["push_rules"] = push_rules
             __props__.__dict__["releases_access_level"] = releases_access_level
             __props__.__dict__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
@@ -3616,6 +3680,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["wiki_access_level"] = wiki_access_level
             __props__.__dict__["wiki_enabled"] = wiki_enabled
             __props__.__dict__["avatar_url"] = None
+            __props__.__dict__["empty_repo"] = None
             __props__.__dict__["http_url_to_repo"] = None
             __props__.__dict__["path_with_namespace"] = None
             __props__.__dict__["runners_token"] = None
@@ -3659,6 +3724,7 @@ class Project(pulumi.CustomResource):
             default_branch: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             emails_disabled: Optional[pulumi.Input[bool]] = None,
+            empty_repo: Optional[pulumi.Input[bool]] = None,
             environments_access_level: Optional[pulumi.Input[str]] = None,
             external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
             feature_flags_access_level: Optional[pulumi.Input[str]] = None,
@@ -3700,6 +3766,7 @@ class Project(pulumi.CustomResource):
             pipelines_enabled: Optional[pulumi.Input[bool]] = None,
             printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
             public_builds: Optional[pulumi.Input[bool]] = None,
+            public_jobs: Optional[pulumi.Input[bool]] = None,
             push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
             releases_access_level: Optional[pulumi.Input[str]] = None,
             remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
@@ -3751,7 +3818,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-        :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
+        :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
@@ -3764,6 +3831,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[bool] emails_disabled: Disable email notifications.
+        :param pulumi.Input[bool] empty_repo: Whether the project is empty.
         :param pulumi.Input[str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] external_authorization_classification_label: The classification label for the project.
         :param pulumi.Input[str] feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3807,12 +3875,13 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
-        :param pulumi.Input[str] pages_access_level: Enable pages access control
+        :param pulumi.Input[str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
+        :param pulumi.Input[bool] public_jobs: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
         :param pulumi.Input[str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
@@ -3841,7 +3910,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
                	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
-        :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
+        :param pulumi.Input[str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
@@ -3876,6 +3945,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["default_branch"] = default_branch
         __props__.__dict__["description"] = description
         __props__.__dict__["emails_disabled"] = emails_disabled
+        __props__.__dict__["empty_repo"] = empty_repo
         __props__.__dict__["environments_access_level"] = environments_access_level
         __props__.__dict__["external_authorization_classification_label"] = external_authorization_classification_label
         __props__.__dict__["feature_flags_access_level"] = feature_flags_access_level
@@ -3917,6 +3987,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["pipelines_enabled"] = pipelines_enabled
         __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
         __props__.__dict__["public_builds"] = public_builds
+        __props__.__dict__["public_jobs"] = public_jobs
         __props__.__dict__["push_rules"] = push_rules
         __props__.__dict__["releases_access_level"] = releases_access_level
         __props__.__dict__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
@@ -4061,7 +4132,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="buildGitStrategy")
     def build_git_strategy(self) -> pulumi.Output[str]:
         """
-        The Git strategy. Defaults to fetch.
+        The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         """
         return pulumi.get(self, "build_git_strategy")
 
@@ -4163,6 +4234,14 @@ class Project(pulumi.CustomResource):
         Disable email notifications.
         """
         return pulumi.get(self, "emails_disabled")
+
+    @property
+    @pulumi.getter(name="emptyRepo")
+    def empty_repo(self) -> pulumi.Output[bool]:
+        """
+        Whether the project is empty.
+        """
+        return pulumi.get(self, "empty_repo")
 
     @property
     @pulumi.getter(name="environmentsAccessLevel")
@@ -4456,7 +4535,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="pagesAccessLevel")
     def pages_access_level(self) -> pulumi.Output[str]:
         """
-        Enable pages access control
+        Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         """
         return pulumi.get(self, "pages_access_level")
 
@@ -4501,7 +4580,18 @@ class Project(pulumi.CustomResource):
         """
         If true, jobs can be viewed by non-project members.
         """
+        warnings.warn("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""", DeprecationWarning)
+        pulumi.log.warn("""public_builds is deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
+
         return pulumi.get(self, "public_builds")
+
+    @property
+    @pulumi.getter(name="publicJobs")
+    def public_jobs(self) -> pulumi.Output[bool]:
+        """
+        If true, jobs can be viewed by non-project members.
+        """
+        return pulumi.get(self, "public_jobs")
 
     @property
     @pulumi.getter(name="pushRules")
@@ -4703,7 +4793,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> pulumi.Output[str]:
         """
-        Set to `public` to create a public project.
+        Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         """
         return pulumi.get(self, "visibility_level")
 

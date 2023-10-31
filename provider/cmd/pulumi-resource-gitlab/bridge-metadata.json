@@ -180,6 +180,18 @@
                 "current": "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate",
                 "majorVersion": 6
             },
+            "gitlab_group_protected_environment": {
+                "current": "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment",
+                "majorVersion": 6,
+                "fields": {
+                    "approval_rules": {
+                        "maxItemsOne": false
+                    },
+                    "deploy_access_levels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_group_saml_link": {
                 "current": "gitlab:index/groupSamlLink:GroupSamlLink",
                 "majorVersion": 6
@@ -1003,6 +1015,7 @@
             "gitlab:index/groupLdapLink:GroupLdapLink": 0,
             "gitlab:index/groupMembership:GroupMembership": 0,
             "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate": 0,
+            "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment": 1,
             "gitlab:index/groupSamlLink:GroupSamlLink": 0,
             "gitlab:index/groupShareGroup:GroupShareGroup": 0,
             "gitlab:index/groupVariable:GroupVariable": 0,
@@ -1133,6 +1146,7 @@
             "gitlab:index/groupLdapLink:GroupLdapLink": "gitlab_group_ldap_link",
             "gitlab:index/groupMembership:GroupMembership": "gitlab_group_membership",
             "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate": "gitlab_group_project_file_template",
+            "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment": "gitlab_group_protected_environment",
             "gitlab:index/groupSamlLink:GroupSamlLink": "gitlab_group_saml_link",
             "gitlab:index/groupShareGroup:GroupShareGroup": "gitlab_group_share_group",
             "gitlab:index/groupVariable:GroupVariable": "gitlab_group_variable",
@@ -1272,6 +1286,19 @@
             },
             "gitlab:index/GroupIssueBoardList:GroupIssueBoardList": {
                 "labelId": "label_id"
+            },
+            "gitlab:index/GroupProtectedEnvironmentApprovalRule:GroupProtectedEnvironmentApprovalRule": {
+                "accessLevel": "access_level",
+                "accessLevelDescription": "access_level_description",
+                "groupId": "group_id",
+                "requiredApprovals": "required_approvals",
+                "userId": "user_id"
+            },
+            "gitlab:index/GroupProtectedEnvironmentDeployAccessLevel:GroupProtectedEnvironmentDeployAccessLevel": {
+                "accessLevel": "access_level",
+                "accessLevelDescription": "access_level_description",
+                "groupId": "group_id",
+                "userId": "user_id"
             },
             "gitlab:index/ProjectContainerExpirationPolicy:ProjectContainerExpirationPolicy": {
                 "keepN": "keep_n",
@@ -1683,6 +1710,7 @@
                 "requestAccessEnabled": "request_access_enabled",
                 "runnersToken": "runners_token",
                 "sharedRunnersMinutesLimit": "shared_runners_minutes_limit",
+                "sharedRunnersSetting": "shared_runners_setting",
                 "visibilityLevel": "visibility_level",
                 "webUrl": "web_url",
                 "wikiAccessLevel": "wiki_access_level"
@@ -1762,6 +1790,7 @@
                 "requestAccessEnabled": "request_access_enabled",
                 "requireTwoFactorAuthentication": "require_two_factor_authentication",
                 "shareWithGroupLock": "share_with_group_lock",
+                "sharedRunnersSetting": "shared_runners_setting",
                 "subgroupCreationLevel": "subgroup_creation_level",
                 "twoFactorGracePeriod": "two_factor_grace_period",
                 "webUrl": "web_url",
@@ -1792,6 +1821,7 @@
                 "preventForkingOutsideGroup": "prevent_forking_outside_group",
                 "requestAccessEnabled": "request_access_enabled",
                 "runnersToken": "runners_token",
+                "sharedRunnersSetting": "shared_runners_setting",
                 "visibilityLevel": "visibility_level",
                 "webUrl": "web_url",
                 "wikiAccessLevel": "wiki_access_level"
@@ -1833,6 +1863,7 @@
                 "containerRegistryAccessLevel": "container_registry_access_level",
                 "defaultBranch": "default_branch",
                 "emailsDisabled": "emails_disabled",
+                "emptyRepo": "empty_repo",
                 "environmentsAccessLevel": "environments_access_level",
                 "externalAuthorizationClassificationLabel": "external_authorization_classification_label",
                 "featureFlagsAccessLevel": "feature_flags_access_level",
@@ -2189,6 +2220,7 @@
                 "customAttributes": "custom_attributes",
                 "defaultBranch": "default_branch",
                 "emailsDisabled": "emails_disabled",
+                "emptyRepo": "empty_repo",
                 "environmentsAccessLevel": "environments_access_level",
                 "externalAuthorizationClassificationLabel": "external_authorization_classification_label",
                 "featureFlagsAccessLevel": "feature_flags_access_level",
@@ -2378,6 +2410,7 @@
                 "runnersToken": "runners_token",
                 "shareWithGroupLock": "share_with_group_lock",
                 "sharedRunnersMinutesLimit": "shared_runners_minutes_limit",
+                "sharedRunnersSetting": "shared_runners_setting",
                 "subgroupCreationLevel": "subgroup_creation_level",
                 "twoFactorGracePeriod": "two_factor_grace_period",
                 "visibilityLevel": "visibility_level",
@@ -2449,6 +2482,11 @@
             "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate": {
                 "fileTemplateProjectId": "file_template_project_id",
                 "groupId": "group_id"
+            },
+            "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment": {
+                "approvalRules": "approval_rules",
+                "deployAccessLevels": "deploy_access_levels",
+                "requiredApprovalCount": "required_approval_count"
             },
             "gitlab:index/groupSamlLink:GroupSamlLink": {
                 "accessLevel": "access_level",
@@ -2632,6 +2670,7 @@
                 "containerRegistryEnabled": "container_registry_enabled",
                 "defaultBranch": "default_branch",
                 "emailsDisabled": "emails_disabled",
+                "emptyRepo": "empty_repo",
                 "environmentsAccessLevel": "environments_access_level",
                 "externalAuthorizationClassificationLabel": "external_authorization_classification_label",
                 "featureFlagsAccessLevel": "feature_flags_access_level",
@@ -2670,6 +2709,7 @@
                 "pipelinesEnabled": "pipelines_enabled",
                 "printingMergeRequestLinkEnabled": "printing_merge_request_link_enabled",
                 "publicBuilds": "public_builds",
+                "publicJobs": "public_jobs",
                 "pushRules": "push_rules",
                 "releasesAccessLevel": "releases_access_level",
                 "removeSourceBranchAfterMerge": "remove_source_branch_after_merge",

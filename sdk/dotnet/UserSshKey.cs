@@ -82,7 +82,7 @@ namespace Pulumi.GitLab
         public Output<string> Title { get; private set; } = null!;
 
         /// <summary>
-        /// The ID or username of the user.
+        /// The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
         /// </summary>
         [Output("userId")]
         public Output<int> UserId { get; private set; } = null!;
@@ -152,10 +152,10 @@ namespace Pulumi.GitLab
         public Input<string> Title { get; set; } = null!;
 
         /// <summary>
-        /// The ID or username of the user.
+        /// The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
         /// </summary>
-        [Input("userId", required: true)]
-        public Input<int> UserId { get; set; } = null!;
+        [Input("userId")]
+        public Input<int>? UserId { get; set; }
 
         public UserSshKeyArgs()
         {
@@ -196,7 +196,7 @@ namespace Pulumi.GitLab
         public Input<string>? Title { get; set; }
 
         /// <summary>
-        /// The ID or username of the user.
+        /// The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }

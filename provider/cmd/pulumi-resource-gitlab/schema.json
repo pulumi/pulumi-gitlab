@@ -282,6 +282,77 @@
                 }
             }
         },
+        "gitlab:index/GroupProtectedEnvironmentApprovalRule:GroupProtectedEnvironmentApprovalRule": {
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.\n"
+                },
+                "accessLevelDescription": {
+                    "type": "string",
+                    "description": "Readable description of level of access.\n"
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique ID of the Approval Rules object.\n"
+                },
+                "requiredApprovals": {
+                    "type": "integer",
+                    "description": "The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accessLevelDescription",
+                        "id",
+                        "requiredApprovals"
+                    ]
+                }
+            }
+        },
+        "gitlab:index/GroupProtectedEnvironmentDeployAccessLevel:GroupProtectedEnvironmentDeployAccessLevel": {
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.\n"
+                },
+                "accessLevelDescription": {
+                    "type": "string",
+                    "description": "Readable description of level of access.\n"
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique ID of the Deploy Access Level object.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accessLevelDescription",
+                        "id"
+                    ]
+                }
+            }
+        },
         "gitlab:index/ProjectContainerExpirationPolicy:ProjectContainerExpirationPolicy": {
             "properties": {
                 "cadence": {
@@ -907,6 +978,9 @@
                 "shareWithGroupLock": {
                     "type": "boolean"
                 },
+                "sharedRunnersSetting": {
+                    "type": "string"
+                },
                 "statistics": {
                     "type": "object",
                     "additionalProperties": {
@@ -951,6 +1025,7 @@
                 "requestAccessEnabled",
                 "requireTwoFactorAuthentication",
                 "shareWithGroupLock",
+                "sharedRunnersSetting",
                 "statistics",
                 "subgroupCreationLevel",
                 "twoFactorGracePeriod",
@@ -1047,6 +1122,9 @@
                     "type": "string",
                     "secret": true
                 },
+                "sharedRunnersSetting": {
+                    "type": "string"
+                },
                 "visibilityLevel": {
                     "type": "string"
                 },
@@ -1071,6 +1149,7 @@
                 "preventForkingOutsideGroup",
                 "requestAccessEnabled",
                 "runnersToken",
+                "sharedRunnersSetting",
                 "visibilityLevel",
                 "webUrl",
                 "wikiAccessLevel"
@@ -2343,6 +2422,9 @@
                 "emailsDisabled": {
                     "type": "boolean"
                 },
+                "emptyRepo": {
+                    "type": "boolean"
+                },
                 "environmentsAccessLevel": {
                     "type": "string"
                 },
@@ -2601,6 +2683,7 @@
                 "defaultBranch",
                 "description",
                 "emailsDisabled",
+                "emptyRepo",
                 "environmentsAccessLevel",
                 "externalAuthorizationClassificationLabel",
                 "featureFlagsAccessLevel",
@@ -7571,7 +7654,7 @@
             "properties": {
                 "autoDevopsEnabled": {
                     "type": "boolean",
-                    "description": "Defaults to false. Default to Auto DevOps pipeline for all projects within this group.\n"
+                    "description": "Default to Auto DevOps pipeline for all projects within this group.\n"
                 },
                 "avatar": {
                     "type": "string",
@@ -7587,15 +7670,15 @@
                 },
                 "defaultBranchProtection": {
                     "type": "integer",
-                    "description": "Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection\n"
+                    "description": "See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the group.\n"
+                    "description": "The group's description.\n"
                 },
                 "emailsDisabled": {
                     "type": "boolean",
-                    "description": "Defaults to false. Disable email notifications.\n"
+                    "description": "Disable email notifications.\n"
                 },
                 "extraSharedRunnersMinutesLimit": {
                     "type": "integer",
@@ -7618,7 +7701,7 @@
                 },
                 "lfsEnabled": {
                     "type": "boolean",
-                    "description": "Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.\n"
+                    "description": "Enable/disable Large File Storage (LFS) for the projects in this group.\n"
                 },
                 "membershipLock": {
                     "type": "boolean",
@@ -7626,11 +7709,11 @@
                 },
                 "mentionsDisabled": {
                     "type": "boolean",
-                    "description": "Defaults to false. Disable the capability of a group from getting mentioned.\n"
+                    "description": "Disable the capability of a group from getting mentioned.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of this group.\n"
+                    "description": "The name of the group.\n"
                 },
                 "parentId": {
                     "type": "integer",
@@ -7646,15 +7729,15 @@
                 },
                 "projectCreationLevel": {
                     "type": "string",
-                    "description": "Defaults to maintainer. Determine if developers can create projects in the group.\n"
+                    "description": "Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`\n"
                 },
                 "requestAccessEnabled": {
                     "type": "boolean",
-                    "description": "Defaults to false. Allow users to request member access.\n"
+                    "description": "Allow users to request member access.\n"
                 },
                 "requireTwoFactorAuthentication": {
                     "type": "boolean",
-                    "description": "Defaults to false. Require all users in this group to setup Two-factor authentication.\n"
+                    "description": "Require all users in this group to setup Two-factor authentication.\n"
                 },
                 "runnersToken": {
                     "type": "string",
@@ -7663,15 +7746,19 @@
                 },
                 "shareWithGroupLock": {
                     "type": "boolean",
-                    "description": "Defaults to false. Prevent sharing a project with another group within this group.\n"
+                    "description": "Prevent sharing a project with another group within this group.\n"
                 },
                 "sharedRunnersMinutesLimit": {
                     "type": "integer",
                     "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or \u003e 0.\n"
                 },
+                "sharedRunnersSetting": {
+                    "type": "string",
+                    "description": "Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.\n"
+                },
                 "subgroupCreationLevel": {
                     "type": "string",
-                    "description": "Defaults to owner. Allowed to create subgroups.\n"
+                    "description": "Allowed to create subgroups. Valid values are: `owner`, `maintainer`.\n"
                 },
                 "twoFactorGracePeriod": {
                     "type": "integer",
@@ -7679,7 +7766,7 @@
                 },
                 "visibilityLevel": {
                     "type": "string",
-                    "description": "The group's visibility. Can be `private`, `internal`, or `public`.\n"
+                    "description": "The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.\n"
                 },
                 "webUrl": {
                     "type": "string",
@@ -7711,6 +7798,7 @@
                 "runnersToken",
                 "shareWithGroupLock",
                 "sharedRunnersMinutesLimit",
+                "sharedRunnersSetting",
                 "subgroupCreationLevel",
                 "twoFactorGracePeriod",
                 "visibilityLevel",
@@ -7720,7 +7808,7 @@
             "inputProperties": {
                 "autoDevopsEnabled": {
                     "type": "boolean",
-                    "description": "Defaults to false. Default to Auto DevOps pipeline for all projects within this group.\n"
+                    "description": "Default to Auto DevOps pipeline for all projects within this group.\n"
                 },
                 "avatar": {
                     "type": "string",
@@ -7732,15 +7820,15 @@
                 },
                 "defaultBranchProtection": {
                     "type": "integer",
-                    "description": "Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection\n"
+                    "description": "See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the group.\n"
+                    "description": "The group's description.\n"
                 },
                 "emailsDisabled": {
                     "type": "boolean",
-                    "description": "Defaults to false. Disable email notifications.\n"
+                    "description": "Disable email notifications.\n"
                 },
                 "extraSharedRunnersMinutesLimit": {
                     "type": "integer",
@@ -7755,7 +7843,7 @@
                 },
                 "lfsEnabled": {
                     "type": "boolean",
-                    "description": "Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.\n"
+                    "description": "Enable/disable Large File Storage (LFS) for the projects in this group.\n"
                 },
                 "membershipLock": {
                     "type": "boolean",
@@ -7763,11 +7851,11 @@
                 },
                 "mentionsDisabled": {
                     "type": "boolean",
-                    "description": "Defaults to false. Disable the capability of a group from getting mentioned.\n"
+                    "description": "Disable the capability of a group from getting mentioned.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of this group.\n"
+                    "description": "The name of the group.\n"
                 },
                 "parentId": {
                     "type": "integer",
@@ -7783,27 +7871,31 @@
                 },
                 "projectCreationLevel": {
                     "type": "string",
-                    "description": "Defaults to maintainer. Determine if developers can create projects in the group.\n"
+                    "description": "Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`\n"
                 },
                 "requestAccessEnabled": {
                     "type": "boolean",
-                    "description": "Defaults to false. Allow users to request member access.\n"
+                    "description": "Allow users to request member access.\n"
                 },
                 "requireTwoFactorAuthentication": {
                     "type": "boolean",
-                    "description": "Defaults to false. Require all users in this group to setup Two-factor authentication.\n"
+                    "description": "Require all users in this group to setup Two-factor authentication.\n"
                 },
                 "shareWithGroupLock": {
                     "type": "boolean",
-                    "description": "Defaults to false. Prevent sharing a project with another group within this group.\n"
+                    "description": "Prevent sharing a project with another group within this group.\n"
                 },
                 "sharedRunnersMinutesLimit": {
                     "type": "integer",
                     "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or \u003e 0.\n"
                 },
+                "sharedRunnersSetting": {
+                    "type": "string",
+                    "description": "Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.\n"
+                },
                 "subgroupCreationLevel": {
                     "type": "string",
-                    "description": "Defaults to owner. Allowed to create subgroups.\n"
+                    "description": "Allowed to create subgroups. Valid values are: `owner`, `maintainer`.\n"
                 },
                 "twoFactorGracePeriod": {
                     "type": "integer",
@@ -7811,7 +7903,7 @@
                 },
                 "visibilityLevel": {
                     "type": "string",
-                    "description": "The group's visibility. Can be `private`, `internal`, or `public`.\n"
+                    "description": "The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.\n"
                 },
                 "wikiAccessLevel": {
                     "type": "string",
@@ -7826,7 +7918,7 @@
                 "properties": {
                     "autoDevopsEnabled": {
                         "type": "boolean",
-                        "description": "Defaults to false. Default to Auto DevOps pipeline for all projects within this group.\n"
+                        "description": "Default to Auto DevOps pipeline for all projects within this group.\n"
                     },
                     "avatar": {
                         "type": "string",
@@ -7842,15 +7934,15 @@
                     },
                     "defaultBranchProtection": {
                         "type": "integer",
-                        "description": "Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection\n"
+                        "description": "See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.\n"
                     },
                     "description": {
                         "type": "string",
-                        "description": "The description of the group.\n"
+                        "description": "The group's description.\n"
                     },
                     "emailsDisabled": {
                         "type": "boolean",
-                        "description": "Defaults to false. Disable email notifications.\n"
+                        "description": "Disable email notifications.\n"
                     },
                     "extraSharedRunnersMinutesLimit": {
                         "type": "integer",
@@ -7873,7 +7965,7 @@
                     },
                     "lfsEnabled": {
                         "type": "boolean",
-                        "description": "Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.\n"
+                        "description": "Enable/disable Large File Storage (LFS) for the projects in this group.\n"
                     },
                     "membershipLock": {
                         "type": "boolean",
@@ -7881,11 +7973,11 @@
                     },
                     "mentionsDisabled": {
                         "type": "boolean",
-                        "description": "Defaults to false. Disable the capability of a group from getting mentioned.\n"
+                        "description": "Disable the capability of a group from getting mentioned.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of this group.\n"
+                        "description": "The name of the group.\n"
                     },
                     "parentId": {
                         "type": "integer",
@@ -7901,15 +7993,15 @@
                     },
                     "projectCreationLevel": {
                         "type": "string",
-                        "description": "Defaults to maintainer. Determine if developers can create projects in the group.\n"
+                        "description": "Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`\n"
                     },
                     "requestAccessEnabled": {
                         "type": "boolean",
-                        "description": "Defaults to false. Allow users to request member access.\n"
+                        "description": "Allow users to request member access.\n"
                     },
                     "requireTwoFactorAuthentication": {
                         "type": "boolean",
-                        "description": "Defaults to false. Require all users in this group to setup Two-factor authentication.\n"
+                        "description": "Require all users in this group to setup Two-factor authentication.\n"
                     },
                     "runnersToken": {
                         "type": "string",
@@ -7918,15 +8010,19 @@
                     },
                     "shareWithGroupLock": {
                         "type": "boolean",
-                        "description": "Defaults to false. Prevent sharing a project with another group within this group.\n"
+                        "description": "Prevent sharing a project with another group within this group.\n"
                     },
                     "sharedRunnersMinutesLimit": {
                         "type": "integer",
                         "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or \u003e 0.\n"
                     },
+                    "sharedRunnersSetting": {
+                        "type": "string",
+                        "description": "Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.\n"
+                    },
                     "subgroupCreationLevel": {
                         "type": "string",
-                        "description": "Defaults to owner. Allowed to create subgroups.\n"
+                        "description": "Allowed to create subgroups. Valid values are: `owner`, `maintainer`.\n"
                     },
                     "twoFactorGracePeriod": {
                         "type": "integer",
@@ -7934,7 +8030,7 @@
                     },
                     "visibilityLevel": {
                         "type": "string",
-                        "description": "The group's visibility. Can be `private`, `internal`, or `public`.\n"
+                        "description": "The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.\n"
                     },
                     "webUrl": {
                         "type": "string",
@@ -8979,11 +9075,13 @@
                 },
                 "cn": {
                     "type": "string",
-                    "description": "The CN of the LDAP group to link with. Required if `filter` is not provided.\n"
+                    "description": "The CN of the LDAP group to link with. Required if `filter` is not provided.\n",
+                    "willReplaceOnChanges": true
                 },
                 "filter": {
                     "type": "string",
-                    "description": "The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.\n"
+                    "description": "The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.\n",
+                    "willReplaceOnChanges": true
                 },
                 "force": {
                     "type": "boolean",
@@ -9021,11 +9119,13 @@
                     },
                     "cn": {
                         "type": "string",
-                        "description": "The CN of the LDAP group to link with. Required if `filter` is not provided.\n"
+                        "description": "The CN of the LDAP group to link with. Required if `filter` is not provided.\n",
+                        "willReplaceOnChanges": true
                     },
                     "filter": {
                         "type": "string",
-                        "description": "The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.\n"
+                        "description": "The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.\n",
+                        "willReplaceOnChanges": true
                     },
                     "force": {
                         "type": "boolean",
@@ -9192,6 +9292,109 @@
                         "type": "integer",
                         "description": "The ID of the group that will use the file template project. This group must be the direct\n            parent of the project defined by project_id\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment": {
+            "description": "The `gitlab.GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.\n\n\u003e In order to use a user_id in the `deploy_access_levels` configuration,\n   you need to make sure that users have access to the group with Maintainer role or higher.\n   In order to use a group_id in the `deploy_access_levels` configuration,\n   the group_id must be a sub-group under the given group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_protected_environments.html)\n\n\n## Import\n\nGitLab group protected environments can be imported using an id made up of `groupId:environmentName`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment bar 123:production\n```\n\n ",
+            "properties": {
+                "approvalRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentApprovalRule:GroupProtectedEnvironmentApprovalRule"
+                    },
+                    "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                },
+                "deployAccessLevels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentDeployAccessLevel:GroupProtectedEnvironmentDeployAccessLevel"
+                    },
+                    "description": "Array of access levels allowed to deploy, with each described by a hash.\n"
+                },
+                "environment": {
+                    "type": "string",
+                    "description": "The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The ID or full path of the group which the protected environment is created against.\n"
+                },
+                "requiredApprovalCount": {
+                    "type": "integer",
+                    "description": "The number of approvals required to deploy to this environment.\n"
+                }
+            },
+            "required": [
+                "approvalRules",
+                "deployAccessLevels",
+                "environment",
+                "group",
+                "requiredApprovalCount"
+            ],
+            "inputProperties": {
+                "approvalRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentApprovalRule:GroupProtectedEnvironmentApprovalRule"
+                    },
+                    "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                },
+                "deployAccessLevels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentDeployAccessLevel:GroupProtectedEnvironmentDeployAccessLevel"
+                    },
+                    "description": "Array of access levels allowed to deploy, with each described by a hash.\n"
+                },
+                "environment": {
+                    "type": "string",
+                    "description": "The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The ID or full path of the group which the protected environment is created against.\n"
+                },
+                "requiredApprovalCount": {
+                    "type": "integer",
+                    "description": "The number of approvals required to deploy to this environment.\n"
+                }
+            },
+            "requiredInputs": [
+                "deployAccessLevels",
+                "environment",
+                "group"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupProtectedEnvironment resources.\n",
+                "properties": {
+                    "approvalRules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentApprovalRule:GroupProtectedEnvironmentApprovalRule"
+                        },
+                        "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                    },
+                    "deployAccessLevels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentDeployAccessLevel:GroupProtectedEnvironmentDeployAccessLevel"
+                        },
+                        "description": "Array of access levels allowed to deploy, with each described by a hash.\n"
+                    },
+                    "environment": {
+                        "type": "string",
+                        "description": "The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The ID or full path of the group which the protected environment is created against.\n"
+                    },
+                    "requiredApprovalCount": {
+                        "type": "integer",
+                        "description": "The number of approvals required to deploy to this environment.\n"
                     }
                 },
                 "type": "object"
@@ -12041,7 +12244,7 @@
                 },
                 "buildGitStrategy": {
                     "type": "string",
-                    "description": "The Git strategy. Defaults to fetch.\n"
+                    "description": "The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.\n"
                 },
                 "buildTimeout": {
                     "type": "integer",
@@ -12091,6 +12294,10 @@
                 "emailsDisabled": {
                     "type": "boolean",
                     "description": "Disable email notifications.\n"
+                },
+                "emptyRepo": {
+                    "type": "boolean",
+                    "description": "Whether the project is empty.\n"
                 },
                 "environmentsAccessLevel": {
                     "type": "string",
@@ -12235,7 +12442,7 @@
                 },
                 "pagesAccessLevel": {
                     "type": "string",
-                    "description": "Enable pages access control\n"
+                    "description": "Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.\n"
                 },
                 "path": {
                     "type": "string",
@@ -12255,6 +12462,11 @@
                     "description": "Show link to create/view merge request when pushing from the command line\n"
                 },
                 "publicBuilds": {
+                    "type": "boolean",
+                    "description": "If true, jobs can be viewed by non-project members.\n",
+                    "deprecationMessage": "The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider."
+                },
+                "publicJobs": {
                     "type": "boolean",
                     "description": "If true, jobs can be viewed by non-project members.\n"
                 },
@@ -12363,7 +12575,7 @@
                 },
                 "visibilityLevel": {
                     "type": "string",
-                    "description": "Set to `public` to create a public project.\n"
+                    "description": "Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.\n"
                 },
                 "webUrl": {
                     "type": "string",
@@ -12398,6 +12610,7 @@
                 "containerRegistryEnabled",
                 "defaultBranch",
                 "emailsDisabled",
+                "emptyRepo",
                 "environmentsAccessLevel",
                 "featureFlagsAccessLevel",
                 "forkingAccessLevel",
@@ -12426,6 +12639,7 @@
                 "pipelinesEnabled",
                 "printingMergeRequestLinkEnabled",
                 "publicBuilds",
+                "publicJobs",
                 "pushRules",
                 "releasesAccessLevel",
                 "removeSourceBranchAfterMerge",
@@ -12499,7 +12713,7 @@
                 },
                 "buildGitStrategy": {
                     "type": "string",
-                    "description": "The Git strategy. Defaults to fetch.\n"
+                    "description": "The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.\n"
                 },
                 "buildTimeout": {
                     "type": "integer",
@@ -12689,7 +12903,7 @@
                 },
                 "pagesAccessLevel": {
                     "type": "string",
-                    "description": "Enable pages access control\n"
+                    "description": "Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.\n"
                 },
                 "path": {
                     "type": "string",
@@ -12705,6 +12919,11 @@
                     "description": "Show link to create/view merge request when pushing from the command line\n"
                 },
                 "publicBuilds": {
+                    "type": "boolean",
+                    "description": "If true, jobs can be viewed by non-project members.\n",
+                    "deprecationMessage": "The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider."
+                },
+                "publicJobs": {
                     "type": "boolean",
                     "description": "If true, jobs can be viewed by non-project members.\n"
                 },
@@ -12806,7 +13025,7 @@
                 },
                 "visibilityLevel": {
                     "type": "string",
-                    "description": "Set to `public` to create a public project.\n"
+                    "description": "Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.\n"
                 },
                 "wikiAccessLevel": {
                     "type": "string",
@@ -12875,7 +13094,7 @@
                     },
                     "buildGitStrategy": {
                         "type": "string",
-                        "description": "The Git strategy. Defaults to fetch.\n"
+                        "description": "The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.\n"
                     },
                     "buildTimeout": {
                         "type": "integer",
@@ -12925,6 +13144,10 @@
                     "emailsDisabled": {
                         "type": "boolean",
                         "description": "Disable email notifications.\n"
+                    },
+                    "emptyRepo": {
+                        "type": "boolean",
+                        "description": "Whether the project is empty.\n"
                     },
                     "environmentsAccessLevel": {
                         "type": "string",
@@ -13069,7 +13292,7 @@
                     },
                     "pagesAccessLevel": {
                         "type": "string",
-                        "description": "Enable pages access control\n"
+                        "description": "Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.\n"
                     },
                     "path": {
                         "type": "string",
@@ -13089,6 +13312,11 @@
                         "description": "Show link to create/view merge request when pushing from the command line\n"
                     },
                     "publicBuilds": {
+                        "type": "boolean",
+                        "description": "If true, jobs can be viewed by non-project members.\n",
+                        "deprecationMessage": "The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider."
+                    },
+                    "publicJobs": {
                         "type": "boolean",
                         "description": "If true, jobs can be viewed by non-project members.\n"
                     },
@@ -13199,7 +13427,7 @@
                     },
                     "visibilityLevel": {
                         "type": "string",
-                        "description": "Set to `public` to create a public project.\n"
+                        "description": "Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.\n"
                     },
                     "webUrl": {
                         "type": "string",
@@ -18697,7 +18925,7 @@
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The ID or username of the user.\n"
+                    "description": "The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.\n"
                 }
             },
             "required": [
@@ -18725,14 +18953,13 @@
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The ID or username of the user.\n",
+                    "description": "The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.\n",
                     "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
                 "key",
-                "title",
-                "userId"
+                "title"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering UserSshKey resources.\n",
@@ -18762,7 +18989,7 @@
                     },
                     "userId": {
                         "type": "integer",
-                        "description": "The ID or username of the user.\n",
+                        "description": "The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -19145,6 +19372,10 @@
                         "type": "integer",
                         "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or \u003e 0.\n"
                     },
+                    "sharedRunnersSetting": {
+                        "type": "string",
+                        "description": "Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.\n"
+                    },
                     "visibilityLevel": {
                         "type": "string",
                         "description": "Visibility level of the group. Possible values are `private`, `internal`, `public`.\n"
@@ -19175,6 +19406,7 @@
                     "requestAccessEnabled",
                     "runnersToken",
                     "sharedRunnersMinutesLimit",
+                    "sharedRunnersSetting",
                     "visibilityLevel",
                     "webUrl",
                     "wikiAccessLevel",
@@ -19992,6 +20224,10 @@
                         "type": "boolean",
                         "description": "Disable email notifications.\n"
                     },
+                    "emptyRepo": {
+                        "type": "boolean",
+                        "description": "Whether the project is empty.\n"
+                    },
                     "environmentsAccessLevel": {
                         "type": "string",
                         "description": "Set the environments access level. Valid values are `disabled`, `private`, `enabled`.\n"
@@ -20203,6 +20439,7 @@
                     "defaultBranch",
                     "description",
                     "emailsDisabled",
+                    "emptyRepo",
                     "environmentsAccessLevel",
                     "externalAuthorizationClassificationLabel",
                     "featureFlagsAccessLevel",

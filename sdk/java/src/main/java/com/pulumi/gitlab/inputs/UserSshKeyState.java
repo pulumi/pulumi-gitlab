@@ -92,14 +92,14 @@ public final class UserSshKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID or username of the user.
+     * The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID or username of the user.
+     * @return The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -241,7 +241,7 @@ public final class UserSshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId The ID or username of the user.
+         * @param userId The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class UserSshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId The ID or username of the user.
+         * @param userId The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
          * 
          * @return builder
          * 

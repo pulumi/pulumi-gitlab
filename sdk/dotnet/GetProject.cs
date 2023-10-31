@@ -210,6 +210,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool EmailsDisabled;
         /// <summary>
+        /// Whether the project is empty.
+        /// </summary>
+        public readonly bool EmptyRepo;
+        /// <summary>
         /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         public readonly string EnvironmentsAccessLevel;
@@ -430,6 +434,8 @@ namespace Pulumi.GitLab
 
             bool emailsDisabled,
 
+            bool emptyRepo,
+
             string environmentsAccessLevel,
 
             string externalAuthorizationClassificationLabel,
@@ -539,6 +545,7 @@ namespace Pulumi.GitLab
             DefaultBranch = defaultBranch;
             Description = description;
             EmailsDisabled = emailsDisabled;
+            EmptyRepo = emptyRepo;
             EnvironmentsAccessLevel = environmentsAccessLevel;
             ExternalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
             FeatureFlagsAccessLevel = featureFlagsAccessLevel;

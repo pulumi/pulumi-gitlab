@@ -320,14 +320,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.buildCoverageRegex);
     }
     /**
-     * The Git strategy. Defaults to fetch.
+     * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      * 
      */
     @Export(name="buildGitStrategy", refs={String.class}, tree="[0]")
     private Output<String> buildGitStrategy;
 
     /**
-     * @return The Git strategy. Defaults to fetch.
+     * @return The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      * 
      */
     public Output<String> buildGitStrategy() {
@@ -504,6 +504,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> emailsDisabled() {
         return this.emailsDisabled;
+    }
+    /**
+     * Whether the project is empty.
+     * 
+     */
+    @Export(name="emptyRepo", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> emptyRepo;
+
+    /**
+     * @return Whether the project is empty.
+     * 
+     */
+    public Output<Boolean> emptyRepo() {
+        return this.emptyRepo;
     }
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1012,14 +1026,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.packagesEnabled;
     }
     /**
-     * Enable pages access control
+     * Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
      * 
      */
     @Export(name="pagesAccessLevel", refs={String.class}, tree="[0]")
     private Output<String> pagesAccessLevel;
 
     /**
-     * @return Enable pages access control
+     * @return Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
      * 
      */
     public Output<String> pagesAccessLevel() {
@@ -1088,7 +1102,11 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * If true, jobs can be viewed by non-project members.
      * 
+     * @deprecated
+     * The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+     * 
      */
+    @Deprecated /* The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider. */
     @Export(name="publicBuilds", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> publicBuilds;
 
@@ -1098,6 +1116,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> publicBuilds() {
         return this.publicBuilds;
+    }
+    /**
+     * If true, jobs can be viewed by non-project members.
+     * 
+     */
+    @Export(name="publicJobs", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> publicJobs;
+
+    /**
+     * @return If true, jobs can be viewed by non-project members.
+     * 
+     */
+    public Output<Boolean> publicJobs() {
+        return this.publicJobs;
     }
     /**
      * Push rules for the project.
@@ -1444,14 +1476,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.useCustomTemplate);
     }
     /**
-     * Set to `public` to create a public project.
+     * Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
      * 
      */
     @Export(name="visibilityLevel", refs={String.class}, tree="[0]")
     private Output<String> visibilityLevel;
 
     /**
-     * @return Set to `public` to create a public project.
+     * @return Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
      * 
      */
     public Output<String> visibilityLevel() {

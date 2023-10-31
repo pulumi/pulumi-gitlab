@@ -106,6 +106,56 @@ export interface GroupIssueBoardList {
     position?: pulumi.Input<number>;
 }
 
+export interface GroupProtectedEnvironmentApprovalRule {
+    /**
+     * Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * Readable description of level of access.
+     */
+    accessLevelDescription?: pulumi.Input<string>;
+    /**
+     * The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * The unique ID of the Approval Rules object.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+     */
+    requiredApprovals?: pulumi.Input<number>;
+    /**
+     * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+     */
+    userId?: pulumi.Input<number>;
+}
+
+export interface GroupProtectedEnvironmentDeployAccessLevel {
+    /**
+     * Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * Readable description of level of access.
+     */
+    accessLevelDescription?: pulumi.Input<string>;
+    /**
+     * The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * The unique ID of the Deploy Access Level object.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+     */
+    userId?: pulumi.Input<number>;
+}
+
 export interface ProjectContainerExpirationPolicy {
     /**
      * The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.

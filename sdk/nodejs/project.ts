@@ -169,7 +169,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly buildCoverageRegex!: pulumi.Output<string | undefined>;
     /**
-     * The Git strategy. Defaults to fetch.
+     * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
     public readonly buildGitStrategy!: pulumi.Output<string>;
     /**
@@ -222,6 +222,10 @@ export class Project extends pulumi.CustomResource {
      * Disable email notifications.
      */
     public readonly emailsDisabled!: pulumi.Output<boolean>;
+    /**
+     * Whether the project is empty.
+     */
+    public /*out*/ readonly emptyRepo!: pulumi.Output<boolean>;
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -371,7 +375,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly packagesEnabled!: pulumi.Output<boolean>;
     /**
-     * Enable pages access control
+     * Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
      */
     public readonly pagesAccessLevel!: pulumi.Output<string>;
     /**
@@ -394,8 +398,14 @@ export class Project extends pulumi.CustomResource {
     public readonly printingMergeRequestLinkEnabled!: pulumi.Output<boolean>;
     /**
      * If true, jobs can be viewed by non-project members.
+     *
+     * @deprecated The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
      */
     public readonly publicBuilds!: pulumi.Output<boolean>;
+    /**
+     * If true, jobs can be viewed by non-project members.
+     */
+    public readonly publicJobs!: pulumi.Output<boolean>;
     /**
      * Push rules for the project.
      */
@@ -497,7 +507,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly useCustomTemplate!: pulumi.Output<boolean | undefined>;
     /**
-     * Set to `public` to create a public project.
+     * Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
      */
     public readonly visibilityLevel!: pulumi.Output<string>;
     /**
@@ -552,6 +562,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["defaultBranch"] = state ? state.defaultBranch : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["emailsDisabled"] = state ? state.emailsDisabled : undefined;
+            resourceInputs["emptyRepo"] = state ? state.emptyRepo : undefined;
             resourceInputs["environmentsAccessLevel"] = state ? state.environmentsAccessLevel : undefined;
             resourceInputs["externalAuthorizationClassificationLabel"] = state ? state.externalAuthorizationClassificationLabel : undefined;
             resourceInputs["featureFlagsAccessLevel"] = state ? state.featureFlagsAccessLevel : undefined;
@@ -593,6 +604,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["pipelinesEnabled"] = state ? state.pipelinesEnabled : undefined;
             resourceInputs["printingMergeRequestLinkEnabled"] = state ? state.printingMergeRequestLinkEnabled : undefined;
             resourceInputs["publicBuilds"] = state ? state.publicBuilds : undefined;
+            resourceInputs["publicJobs"] = state ? state.publicJobs : undefined;
             resourceInputs["pushRules"] = state ? state.pushRules : undefined;
             resourceInputs["releasesAccessLevel"] = state ? state.releasesAccessLevel : undefined;
             resourceInputs["removeSourceBranchAfterMerge"] = state ? state.removeSourceBranchAfterMerge : undefined;
@@ -687,6 +699,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["pipelinesEnabled"] = args ? args.pipelinesEnabled : undefined;
             resourceInputs["printingMergeRequestLinkEnabled"] = args ? args.printingMergeRequestLinkEnabled : undefined;
             resourceInputs["publicBuilds"] = args ? args.publicBuilds : undefined;
+            resourceInputs["publicJobs"] = args ? args.publicJobs : undefined;
             resourceInputs["pushRules"] = args ? args.pushRules : undefined;
             resourceInputs["releasesAccessLevel"] = args ? args.releasesAccessLevel : undefined;
             resourceInputs["removeSourceBranchAfterMerge"] = args ? args.removeSourceBranchAfterMerge : undefined;
@@ -713,6 +726,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["wikiAccessLevel"] = args ? args.wikiAccessLevel : undefined;
             resourceInputs["wikiEnabled"] = args ? args.wikiEnabled : undefined;
             resourceInputs["avatarUrl"] = undefined /*out*/;
+            resourceInputs["emptyRepo"] = undefined /*out*/;
             resourceInputs["httpUrlToRepo"] = undefined /*out*/;
             resourceInputs["pathWithNamespace"] = undefined /*out*/;
             resourceInputs["runnersToken"] = undefined /*out*/;
@@ -788,7 +802,7 @@ export interface ProjectState {
      */
     buildCoverageRegex?: pulumi.Input<string>;
     /**
-     * The Git strategy. Defaults to fetch.
+     * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
     buildGitStrategy?: pulumi.Input<string>;
     /**
@@ -841,6 +855,10 @@ export interface ProjectState {
      * Disable email notifications.
      */
     emailsDisabled?: pulumi.Input<boolean>;
+    /**
+     * Whether the project is empty.
+     */
+    emptyRepo?: pulumi.Input<boolean>;
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -990,7 +1008,7 @@ export interface ProjectState {
      */
     packagesEnabled?: pulumi.Input<boolean>;
     /**
-     * Enable pages access control
+     * Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
      */
     pagesAccessLevel?: pulumi.Input<string>;
     /**
@@ -1013,8 +1031,14 @@ export interface ProjectState {
     printingMergeRequestLinkEnabled?: pulumi.Input<boolean>;
     /**
      * If true, jobs can be viewed by non-project members.
+     *
+     * @deprecated The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
      */
     publicBuilds?: pulumi.Input<boolean>;
+    /**
+     * If true, jobs can be viewed by non-project members.
+     */
+    publicJobs?: pulumi.Input<boolean>;
     /**
      * Push rules for the project.
      */
@@ -1116,7 +1140,7 @@ export interface ProjectState {
      */
     useCustomTemplate?: pulumi.Input<boolean>;
     /**
-     * Set to `public` to create a public project.
+     * Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
      */
     visibilityLevel?: pulumi.Input<string>;
     /**
@@ -1191,7 +1215,7 @@ export interface ProjectArgs {
      */
     buildCoverageRegex?: pulumi.Input<string>;
     /**
-     * The Git strategy. Defaults to fetch.
+     * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
     buildGitStrategy?: pulumi.Input<string>;
     /**
@@ -1389,7 +1413,7 @@ export interface ProjectArgs {
      */
     packagesEnabled?: pulumi.Input<boolean>;
     /**
-     * Enable pages access control
+     * Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
      */
     pagesAccessLevel?: pulumi.Input<string>;
     /**
@@ -1408,8 +1432,14 @@ export interface ProjectArgs {
     printingMergeRequestLinkEnabled?: pulumi.Input<boolean>;
     /**
      * If true, jobs can be viewed by non-project members.
+     *
+     * @deprecated The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
      */
     publicBuilds?: pulumi.Input<boolean>;
+    /**
+     * If true, jobs can be viewed by non-project members.
+     */
+    publicJobs?: pulumi.Input<boolean>;
     /**
      * Push rules for the project.
      */
@@ -1503,7 +1533,7 @@ export interface ProjectArgs {
      */
     useCustomTemplate?: pulumi.Input<boolean>;
     /**
-     * Set to `public` to create a public project.
+     * Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
      */
     visibilityLevel?: pulumi.Input<string>;
     /**

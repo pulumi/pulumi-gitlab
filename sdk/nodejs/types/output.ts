@@ -153,6 +153,7 @@ export interface GetGroupSubgroupsSubgroup {
     requestAccessEnabled: boolean;
     requireTwoFactorAuthentication: boolean;
     shareWithGroupLock: boolean;
+    sharedRunnersSetting: string;
     statistics: {[key: string]: string};
     subgroupCreationLevel: string;
     twoFactorGracePeriod: number;
@@ -185,6 +186,7 @@ export interface GetGroupsGroup {
     preventForkingOutsideGroup: boolean;
     requestAccessEnabled: boolean;
     runnersToken: string;
+    sharedRunnersSetting: string;
     visibilityLevel: string;
     webUrl: string;
     wikiAccessLevel: string;
@@ -510,6 +512,7 @@ export interface GetProjectsProject {
     defaultBranch: string;
     description: string;
     emailsDisabled: boolean;
+    emptyRepo: boolean;
     environmentsAccessLevel: string;
     externalAuthorizationClassificationLabel: string;
     featureFlagsAccessLevel: string;
@@ -719,6 +722,56 @@ export interface GroupIssueBoardList {
      * The position of the list within the board. The position for the list is based on the its position in the `lists` array.
      */
     position: number;
+}
+
+export interface GroupProtectedEnvironmentApprovalRule {
+    /**
+     * Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+     */
+    accessLevel?: string;
+    /**
+     * Readable description of level of access.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+     */
+    groupId?: number;
+    /**
+     * The unique ID of the Approval Rules object.
+     */
+    id: number;
+    /**
+     * The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+     */
+    requiredApprovals: number;
+    /**
+     * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+     */
+    userId?: number;
+}
+
+export interface GroupProtectedEnvironmentDeployAccessLevel {
+    /**
+     * Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+     */
+    accessLevel?: string;
+    /**
+     * Readable description of level of access.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+     */
+    groupId?: number;
+    /**
+     * The unique ID of the Deploy Access Level object.
+     */
+    id: number;
+    /**
+     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+     */
+    userId?: number;
 }
 
 export interface ProjectContainerExpirationPolicy {

@@ -141,14 +141,14 @@ public class UserSshKey extends com.pulumi.resources.CustomResource {
         return this.title;
     }
     /**
-     * The ID or username of the user.
+     * The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      * 
      */
     @Export(name="userId", refs={Integer.class}, tree="[0]")
     private Output<Integer> userId;
 
     /**
-     * @return The ID or username of the user.
+     * @return The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      * 
      */
     public Output<Integer> userId() {

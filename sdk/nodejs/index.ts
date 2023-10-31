@@ -315,6 +315,11 @@ export type GroupProjectFileTemplate = import("./groupProjectFileTemplate").Grou
 export const GroupProjectFileTemplate: typeof import("./groupProjectFileTemplate").GroupProjectFileTemplate = null as any;
 utilities.lazyLoad(exports, ["GroupProjectFileTemplate"], () => require("./groupProjectFileTemplate"));
 
+export { GroupProtectedEnvironmentArgs, GroupProtectedEnvironmentState } from "./groupProtectedEnvironment";
+export type GroupProtectedEnvironment = import("./groupProtectedEnvironment").GroupProtectedEnvironment;
+export const GroupProtectedEnvironment: typeof import("./groupProtectedEnvironment").GroupProtectedEnvironment = null as any;
+utilities.lazyLoad(exports, ["GroupProtectedEnvironment"], () => require("./groupProtectedEnvironment"));
+
 export { GroupSamlLinkArgs, GroupSamlLinkState } from "./groupSamlLink";
 export type GroupSamlLink = import("./groupSamlLink").GroupSamlLink;
 export const GroupSamlLink: typeof import("./groupSamlLink").GroupSamlLink = null as any;
@@ -688,6 +693,8 @@ const _module = {
                 return new GroupMembership(name, <any>undefined, { urn })
             case "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate":
                 return new GroupProjectFileTemplate(name, <any>undefined, { urn })
+            case "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment":
+                return new GroupProtectedEnvironment(name, <any>undefined, { urn })
             case "gitlab:index/groupSamlLink:GroupSamlLink":
                 return new GroupSamlLink(name, <any>undefined, { urn })
             case "gitlab:index/groupShareGroup:GroupShareGroup":
@@ -839,6 +846,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLdapLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupMembership", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupProjectFileTemplate", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupProtectedEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupSamlLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupVariable", _module)

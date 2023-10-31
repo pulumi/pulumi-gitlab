@@ -113,6 +113,10 @@ export interface GetGroupResult {
      */
     readonly sharedRunnersMinutesLimit: number;
     /**
+     * Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+     */
+    readonly sharedRunnersSetting: string;
+    /**
      * Visibility level of the group. Possible values are `private`, `internal`, `public`.
      */
     readonly visibilityLevel: string;

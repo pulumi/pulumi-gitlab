@@ -32,6 +32,7 @@ public final class GetGroupSubgroupsSubgroup {
     private Boolean requestAccessEnabled;
     private Boolean requireTwoFactorAuthentication;
     private Boolean shareWithGroupLock;
+    private String sharedRunnersSetting;
     private Map<String,String> statistics;
     private String subgroupCreationLevel;
     private Integer twoFactorGracePeriod;
@@ -100,6 +101,9 @@ public final class GetGroupSubgroupsSubgroup {
     public Boolean shareWithGroupLock() {
         return this.shareWithGroupLock;
     }
+    public String sharedRunnersSetting() {
+        return this.sharedRunnersSetting;
+    }
     public Map<String,String> statistics() {
         return this.statistics;
     }
@@ -148,6 +152,7 @@ public final class GetGroupSubgroupsSubgroup {
         private Boolean requestAccessEnabled;
         private Boolean requireTwoFactorAuthentication;
         private Boolean shareWithGroupLock;
+        private String sharedRunnersSetting;
         private Map<String,String> statistics;
         private String subgroupCreationLevel;
         private Integer twoFactorGracePeriod;
@@ -177,6 +182,7 @@ public final class GetGroupSubgroupsSubgroup {
     	      this.requestAccessEnabled = defaults.requestAccessEnabled;
     	      this.requireTwoFactorAuthentication = defaults.requireTwoFactorAuthentication;
     	      this.shareWithGroupLock = defaults.shareWithGroupLock;
+    	      this.sharedRunnersSetting = defaults.sharedRunnersSetting;
     	      this.statistics = defaults.statistics;
     	      this.subgroupCreationLevel = defaults.subgroupCreationLevel;
     	      this.twoFactorGracePeriod = defaults.twoFactorGracePeriod;
@@ -286,6 +292,11 @@ public final class GetGroupSubgroupsSubgroup {
             return this;
         }
         @CustomType.Setter
+        public Builder sharedRunnersSetting(String sharedRunnersSetting) {
+            this.sharedRunnersSetting = Objects.requireNonNull(sharedRunnersSetting);
+            return this;
+        }
+        @CustomType.Setter
         public Builder statistics(Map<String,String> statistics) {
             this.statistics = Objects.requireNonNull(statistics);
             return this;
@@ -337,6 +348,7 @@ public final class GetGroupSubgroupsSubgroup {
             o.requestAccessEnabled = requestAccessEnabled;
             o.requireTwoFactorAuthentication = requireTwoFactorAuthentication;
             o.shareWithGroupLock = shareWithGroupLock;
+            o.sharedRunnersSetting = sharedRunnersSetting;
             o.statistics = statistics;
             o.subgroupCreationLevel = subgroupCreationLevel;
             o.twoFactorGracePeriod = twoFactorGracePeriod;

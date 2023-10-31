@@ -74,7 +74,7 @@ type UserSshKey struct {
 	KeyId pulumi.IntOutput `pulumi:"keyId"`
 	// The title of the ssh key.
 	Title pulumi.StringOutput `pulumi:"title"`
-	// The ID or username of the user.
+	// The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
 	UserId pulumi.IntOutput `pulumi:"userId"`
 }
 
@@ -90,9 +90,6 @@ func NewUserSshKey(ctx *pulumi.Context,
 	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
-	}
-	if args.UserId == nil {
-		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserSshKey
@@ -127,7 +124,7 @@ type userSshKeyState struct {
 	KeyId *int `pulumi:"keyId"`
 	// The title of the ssh key.
 	Title *string `pulumi:"title"`
-	// The ID or username of the user.
+	// The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
 	UserId *int `pulumi:"userId"`
 }
 
@@ -142,7 +139,7 @@ type UserSshKeyState struct {
 	KeyId pulumi.IntPtrInput
 	// The title of the ssh key.
 	Title pulumi.StringPtrInput
-	// The ID or username of the user.
+	// The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
 	UserId pulumi.IntPtrInput
 }
 
@@ -157,8 +154,8 @@ type userSshKeyArgs struct {
 	Key string `pulumi:"key"`
 	// The title of the ssh key.
 	Title string `pulumi:"title"`
-	// The ID or username of the user.
-	UserId int `pulumi:"userId"`
+	// The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
+	UserId *int `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a UserSshKey resource.
@@ -169,8 +166,8 @@ type UserSshKeyArgs struct {
 	Key pulumi.StringInput
 	// The title of the ssh key.
 	Title pulumi.StringInput
-	// The ID or username of the user.
-	UserId pulumi.IntInput
+	// The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
+	UserId pulumi.IntPtrInput
 }
 
 func (UserSshKeyArgs) ElementType() reflect.Type {
@@ -309,7 +306,7 @@ func (o UserSshKeyOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserSshKey) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
-// The ID or username of the user.
+// The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
 func (o UserSshKeyOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *UserSshKey) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
 }

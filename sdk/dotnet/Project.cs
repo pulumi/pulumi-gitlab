@@ -205,7 +205,7 @@ namespace Pulumi.GitLab
         public Output<string?> BuildCoverageRegex { get; private set; } = null!;
 
         /// <summary>
-        /// The Git strategy. Defaults to fetch.
+        /// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         /// </summary>
         [Output("buildGitStrategy")]
         public Output<string> BuildGitStrategy { get; private set; } = null!;
@@ -281,6 +281,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("emailsDisabled")]
         public Output<bool> EmailsDisabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the project is empty.
+        /// </summary>
+        [Output("emptyRepo")]
+        public Output<bool> EmptyRepo { get; private set; } = null!;
 
         /// <summary>
         /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -501,7 +507,7 @@ namespace Pulumi.GitLab
         public Output<bool> PackagesEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Enable pages access control
+        /// Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         /// </summary>
         [Output("pagesAccessLevel")]
         public Output<string> PagesAccessLevel { get; private set; } = null!;
@@ -535,6 +541,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("publicBuilds")]
         public Output<bool> PublicBuilds { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, jobs can be viewed by non-project members.
+        /// </summary>
+        [Output("publicJobs")]
+        public Output<bool> PublicJobs { get; private set; } = null!;
 
         /// <summary>
         /// Push rules for the project.
@@ -685,7 +697,7 @@ namespace Pulumi.GitLab
         public Output<bool?> UseCustomTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `public` to create a public project.
+        /// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         /// </summary>
         [Output("visibilityLevel")]
         public Output<string> VisibilityLevel { get; private set; } = null!;
@@ -835,7 +847,7 @@ namespace Pulumi.GitLab
         public Input<string>? BuildCoverageRegex { get; set; }
 
         /// <summary>
-        /// The Git strategy. Defaults to fetch.
+        /// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         /// </summary>
         [Input("buildGitStrategy")]
         public Input<string>? BuildGitStrategy { get; set; }
@@ -1135,7 +1147,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PackagesEnabled { get; set; }
 
         /// <summary>
-        /// Enable pages access control
+        /// Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         /// </summary>
         [Input("pagesAccessLevel")]
         public Input<string>? PagesAccessLevel { get; set; }
@@ -1163,6 +1175,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("publicBuilds")]
         public Input<bool>? PublicBuilds { get; set; }
+
+        /// <summary>
+        /// If true, jobs can be viewed by non-project members.
+        /// </summary>
+        [Input("publicJobs")]
+        public Input<bool>? PublicJobs { get; set; }
 
         /// <summary>
         /// Push rules for the project.
@@ -1313,7 +1331,7 @@ namespace Pulumi.GitLab
         public Input<bool>? UseCustomTemplate { get; set; }
 
         /// <summary>
-        /// Set to `public` to create a public project.
+        /// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         /// </summary>
         [Input("visibilityLevel")]
         public Input<string>? VisibilityLevel { get; set; }
@@ -1420,7 +1438,7 @@ namespace Pulumi.GitLab
         public Input<string>? BuildCoverageRegex { get; set; }
 
         /// <summary>
-        /// The Git strategy. Defaults to fetch.
+        /// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         /// </summary>
         [Input("buildGitStrategy")]
         public Input<string>? BuildGitStrategy { get; set; }
@@ -1496,6 +1514,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("emailsDisabled")]
         public Input<bool>? EmailsDisabled { get; set; }
+
+        /// <summary>
+        /// Whether the project is empty.
+        /// </summary>
+        [Input("emptyRepo")]
+        public Input<bool>? EmptyRepo { get; set; }
 
         /// <summary>
         /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1726,7 +1750,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PackagesEnabled { get; set; }
 
         /// <summary>
-        /// Enable pages access control
+        /// Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         /// </summary>
         [Input("pagesAccessLevel")]
         public Input<string>? PagesAccessLevel { get; set; }
@@ -1760,6 +1784,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("publicBuilds")]
         public Input<bool>? PublicBuilds { get; set; }
+
+        /// <summary>
+        /// If true, jobs can be viewed by non-project members.
+        /// </summary>
+        [Input("publicJobs")]
+        public Input<bool>? PublicJobs { get; set; }
 
         /// <summary>
         /// Push rules for the project.
@@ -1932,7 +1962,7 @@ namespace Pulumi.GitLab
         public Input<bool>? UseCustomTemplate { get; set; }
 
         /// <summary>
-        /// Set to `public` to create a public project.
+        /// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         /// </summary>
         [Input("visibilityLevel")]
         public Input<string>? VisibilityLevel { get; set; }

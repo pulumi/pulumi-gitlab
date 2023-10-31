@@ -17,6 +17,8 @@ __all__ = [
     'BranchProtectionAllowedToUnprotect',
     'GroupEpicBoardList',
     'GroupIssueBoardList',
+    'GroupProtectedEnvironmentApprovalRule',
+    'GroupProtectedEnvironmentDeployAccessLevel',
     'ProjectContainerExpirationPolicy',
     'ProjectIssueBoardList',
     'ProjectIssueTaskCompletionStatus',
@@ -547,6 +549,200 @@ class GroupIssueBoardList(dict):
         The position of the list within the board. The position for the list is based on the its position in the `lists` array.
         """
         return pulumi.get(self, "position")
+
+
+@pulumi.output_type
+class GroupProtectedEnvironmentApprovalRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessLevelDescription":
+            suggest = "access_level_description"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "requiredApprovals":
+            suggest = "required_approvals"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupProtectedEnvironmentApprovalRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupProtectedEnvironmentApprovalRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupProtectedEnvironmentApprovalRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None,
+                 access_level_description: Optional[str] = None,
+                 group_id: Optional[int] = None,
+                 id: Optional[int] = None,
+                 required_approvals: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param str access_level: Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+        :param str access_level_description: Readable description of level of access.
+        :param int group_id: The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+        :param int id: The unique ID of the Approval Rules object.
+        :param int required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+        :param int user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if required_approvals is not None:
+            pulumi.set(__self__, "required_approvals", required_approvals)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        """
+        Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+        """
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[str]:
+        """
+        Readable description of level of access.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The unique ID of the Approval Rules object.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="requiredApprovals")
+    def required_approvals(self) -> Optional[int]:
+        """
+        The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+        """
+        return pulumi.get(self, "required_approvals")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GroupProtectedEnvironmentDeployAccessLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessLevelDescription":
+            suggest = "access_level_description"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupProtectedEnvironmentDeployAccessLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupProtectedEnvironmentDeployAccessLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupProtectedEnvironmentDeployAccessLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None,
+                 access_level_description: Optional[str] = None,
+                 group_id: Optional[int] = None,
+                 id: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param str access_level: Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+        :param str access_level_description: Readable description of level of access.
+        :param int group_id: The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+        :param int id: The unique ID of the Deploy Access Level object.
+        :param int user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        """
+        Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+        """
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[str]:
+        """
+        Readable description of level of access.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The unique ID of the Deploy Access Level object.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+        """
+        return pulumi.get(self, "user_id")
 
 
 @pulumi.output_type
@@ -1783,6 +1979,7 @@ class GetGroupSubgroupsSubgroupResult(dict):
                  request_access_enabled: bool,
                  require_two_factor_authentication: bool,
                  share_with_group_lock: bool,
+                 shared_runners_setting: str,
                  statistics: Mapping[str, str],
                  subgroup_creation_level: str,
                  two_factor_grace_period: int,
@@ -1809,6 +2006,7 @@ class GetGroupSubgroupsSubgroupResult(dict):
         pulumi.set(__self__, "request_access_enabled", request_access_enabled)
         pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
         pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
+        pulumi.set(__self__, "shared_runners_setting", shared_runners_setting)
         pulumi.set(__self__, "statistics", statistics)
         pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
         pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
@@ -1917,6 +2115,11 @@ class GetGroupSubgroupsSubgroupResult(dict):
         return pulumi.get(self, "share_with_group_lock")
 
     @property
+    @pulumi.getter(name="sharedRunnersSetting")
+    def shared_runners_setting(self) -> str:
+        return pulumi.get(self, "shared_runners_setting")
+
+    @property
     @pulumi.getter
     def statistics(self) -> Mapping[str, str]:
         return pulumi.get(self, "statistics")
@@ -2023,6 +2226,7 @@ class GetGroupsGroupResult(dict):
                  prevent_forking_outside_group: bool,
                  request_access_enabled: bool,
                  runners_token: str,
+                 shared_runners_setting: str,
                  visibility_level: str,
                  web_url: str,
                  wiki_access_level: str):
@@ -2038,6 +2242,7 @@ class GetGroupsGroupResult(dict):
         pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
         pulumi.set(__self__, "request_access_enabled", request_access_enabled)
         pulumi.set(__self__, "runners_token", runners_token)
+        pulumi.set(__self__, "shared_runners_setting", shared_runners_setting)
         pulumi.set(__self__, "visibility_level", visibility_level)
         pulumi.set(__self__, "web_url", web_url)
         pulumi.set(__self__, "wiki_access_level", wiki_access_level)
@@ -2101,6 +2306,11 @@ class GetGroupsGroupResult(dict):
     @pulumi.getter(name="runnersToken")
     def runners_token(self) -> str:
         return pulumi.get(self, "runners_token")
+
+    @property
+    @pulumi.getter(name="sharedRunnersSetting")
+    def shared_runners_setting(self) -> str:
+        return pulumi.get(self, "shared_runners_setting")
 
     @property
     @pulumi.getter(name="visibilityLevel")
@@ -3731,6 +3941,7 @@ class GetProjectsProjectResult(dict):
                  default_branch: str,
                  description: str,
                  emails_disabled: bool,
+                 empty_repo: bool,
                  environments_access_level: str,
                  external_authorization_classification_label: str,
                  feature_flags_access_level: str,
@@ -3825,6 +4036,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "emails_disabled", emails_disabled)
+        pulumi.set(__self__, "empty_repo", empty_repo)
         pulumi.set(__self__, "environments_access_level", environments_access_level)
         pulumi.set(__self__, "external_authorization_classification_label", external_authorization_classification_label)
         pulumi.set(__self__, "feature_flags_access_level", feature_flags_access_level)
@@ -4023,6 +4235,11 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="emailsDisabled")
     def emails_disabled(self) -> bool:
         return pulumi.get(self, "emails_disabled")
+
+    @property
+    @pulumi.getter(name="emptyRepo")
+    def empty_repo(self) -> bool:
+        return pulumi.get(self, "empty_repo")
 
     @property
     @pulumi.getter(name="environmentsAccessLevel")

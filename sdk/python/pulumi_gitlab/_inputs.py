@@ -16,6 +16,8 @@ __all__ = [
     'BranchProtectionAllowedToUnprotectArgs',
     'GroupEpicBoardListArgs',
     'GroupIssueBoardListArgs',
+    'GroupProtectedEnvironmentApprovalRuleArgs',
+    'GroupProtectedEnvironmentDeployAccessLevelArgs',
     'ProjectContainerExpirationPolicyArgs',
     'ProjectIssueBoardListArgs',
     'ProjectIssueTaskCompletionStatusArgs',
@@ -485,6 +487,196 @@ class GroupIssueBoardListArgs:
     @position.setter
     def position(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "position", value)
+
+
+@pulumi.input_type
+class GroupProtectedEnvironmentApprovalRuleArgs:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 access_level_description: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
+                 id: Optional[pulumi.Input[int]] = None,
+                 required_approvals: Optional[pulumi.Input[int]] = None,
+                 user_id: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] access_level: Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+        :param pulumi.Input[str] access_level_description: Readable description of level of access.
+        :param pulumi.Input[int] group_id: The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+        :param pulumi.Input[int] id: The unique ID of the Approval Rules object.
+        :param pulumi.Input[int] required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+        :param pulumi.Input[int] user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if required_approvals is not None:
+            pulumi.set(__self__, "required_approvals", required_approvals)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Readable description of level of access.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @access_level_description.setter
+    def access_level_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level_description", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique ID of the Approval Rules object.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="requiredApprovals")
+    def required_approvals(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+        """
+        return pulumi.get(self, "required_approvals")
+
+    @required_approvals.setter
+    def required_approvals(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "required_approvals", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "user_id", value)
+
+
+@pulumi.input_type
+class GroupProtectedEnvironmentDeployAccessLevelArgs:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 access_level_description: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
+                 id: Optional[pulumi.Input[int]] = None,
+                 user_id: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] access_level: Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+        :param pulumi.Input[str] access_level_description: Readable description of level of access.
+        :param pulumi.Input[int] group_id: The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+        :param pulumi.Input[int] id: The unique ID of the Deploy Access Level object.
+        :param pulumi.Input[int] user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Readable description of level of access.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @access_level_description.setter
+    def access_level_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level_description", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique ID of the Deploy Access Level object.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "user_id", value)
 
 
 @pulumi.input_type

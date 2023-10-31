@@ -39,6 +39,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly string DefaultBranch;
         public readonly string Description;
         public readonly bool EmailsDisabled;
+        public readonly bool EmptyRepo;
         public readonly string EnvironmentsAccessLevel;
         public readonly string ExternalAuthorizationClassificationLabel;
         public readonly string FeatureFlagsAccessLevel;
@@ -161,6 +162,8 @@ namespace Pulumi.GitLab.Outputs
             string description,
 
             bool emailsDisabled,
+
+            bool emptyRepo,
 
             string environmentsAccessLevel,
 
@@ -324,6 +327,7 @@ namespace Pulumi.GitLab.Outputs
             DefaultBranch = defaultBranch;
             Description = description;
             EmailsDisabled = emailsDisabled;
+            EmptyRepo = emptyRepo;
             EnvironmentsAccessLevel = environmentsAccessLevel;
             ExternalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
             FeatureFlagsAccessLevel = featureFlagsAccessLevel;
