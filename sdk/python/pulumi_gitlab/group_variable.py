@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupVariableArgs', 'GroupVariable']
@@ -33,19 +33,54 @@ class GroupVariableArgs:
         :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GroupVariableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            key=key,
+            value=value,
+            environment_scope=environment_scope,
+            masked=masked,
+            protected=protected,
+            raw=raw,
+            variable_type=variable_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             environment_scope: Optional[pulumi.Input[str]] = None,
+             masked: Optional[pulumi.Input[bool]] = None,
+             protected: Optional[pulumi.Input[bool]] = None,
+             raw: Optional[pulumi.Input[bool]] = None,
+             variable_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if environment_scope is None and 'environmentScope' in kwargs:
+            environment_scope = kwargs['environmentScope']
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+
+        _setter("group", group)
+        _setter("key", key)
+        _setter("value", value)
         if environment_scope is not None:
-            pulumi.set(__self__, "environment_scope", environment_scope)
+            _setter("environment_scope", environment_scope)
         if masked is not None:
-            pulumi.set(__self__, "masked", masked)
+            _setter("masked", masked)
         if protected is not None:
-            pulumi.set(__self__, "protected", protected)
+            _setter("protected", protected)
         if raw is not None:
-            pulumi.set(__self__, "raw", raw)
+            _setter("raw", raw)
         if variable_type is not None:
-            pulumi.set(__self__, "variable_type", variable_type)
+            _setter("variable_type", variable_type)
 
     @property
     @pulumi.getter
@@ -166,22 +201,51 @@ class _GroupVariableState:
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
+        _GroupVariableState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            environment_scope=environment_scope,
+            group=group,
+            key=key,
+            masked=masked,
+            protected=protected,
+            raw=raw,
+            value=value,
+            variable_type=variable_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             environment_scope: Optional[pulumi.Input[str]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             masked: Optional[pulumi.Input[bool]] = None,
+             protected: Optional[pulumi.Input[bool]] = None,
+             raw: Optional[pulumi.Input[bool]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             variable_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if environment_scope is None and 'environmentScope' in kwargs:
+            environment_scope = kwargs['environmentScope']
+        if variable_type is None and 'variableType' in kwargs:
+            variable_type = kwargs['variableType']
+
         if environment_scope is not None:
-            pulumi.set(__self__, "environment_scope", environment_scope)
+            _setter("environment_scope", environment_scope)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if masked is not None:
-            pulumi.set(__self__, "masked", masked)
+            _setter("masked", masked)
         if protected is not None:
-            pulumi.set(__self__, "protected", protected)
+            _setter("protected", protected)
         if raw is not None:
-            pulumi.set(__self__, "raw", raw)
+            _setter("raw", raw)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
         if variable_type is not None:
-            pulumi.set(__self__, "variable_type", variable_type)
+            _setter("variable_type", variable_type)
 
     @property
     @pulumi.getter(name="environmentScope")
@@ -377,6 +441,10 @@ class GroupVariable(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupVariableArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

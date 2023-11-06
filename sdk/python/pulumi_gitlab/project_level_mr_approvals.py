@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectLevelMrApprovalsArgs', 'ProjectLevelMrApprovals']
@@ -31,19 +31,56 @@ class ProjectLevelMrApprovalsArgs:
         :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         :param pulumi.Input[bool] selective_code_owner_removals: Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
         """
-        pulumi.set(__self__, "project", project)
+        ProjectLevelMrApprovalsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            disable_overriding_approvers_per_merge_request=disable_overriding_approvers_per_merge_request,
+            merge_requests_author_approval=merge_requests_author_approval,
+            merge_requests_disable_committers_approval=merge_requests_disable_committers_approval,
+            require_password_to_approve=require_password_to_approve,
+            reset_approvals_on_push=reset_approvals_on_push,
+            selective_code_owner_removals=selective_code_owner_removals,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[bool]] = None,
+             merge_requests_author_approval: Optional[pulumi.Input[bool]] = None,
+             merge_requests_disable_committers_approval: Optional[pulumi.Input[bool]] = None,
+             require_password_to_approve: Optional[pulumi.Input[bool]] = None,
+             reset_approvals_on_push: Optional[pulumi.Input[bool]] = None,
+             selective_code_owner_removals: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if disable_overriding_approvers_per_merge_request is None and 'disableOverridingApproversPerMergeRequest' in kwargs:
+            disable_overriding_approvers_per_merge_request = kwargs['disableOverridingApproversPerMergeRequest']
+        if merge_requests_author_approval is None and 'mergeRequestsAuthorApproval' in kwargs:
+            merge_requests_author_approval = kwargs['mergeRequestsAuthorApproval']
+        if merge_requests_disable_committers_approval is None and 'mergeRequestsDisableCommittersApproval' in kwargs:
+            merge_requests_disable_committers_approval = kwargs['mergeRequestsDisableCommittersApproval']
+        if require_password_to_approve is None and 'requirePasswordToApprove' in kwargs:
+            require_password_to_approve = kwargs['requirePasswordToApprove']
+        if reset_approvals_on_push is None and 'resetApprovalsOnPush' in kwargs:
+            reset_approvals_on_push = kwargs['resetApprovalsOnPush']
+        if selective_code_owner_removals is None and 'selectiveCodeOwnerRemovals' in kwargs:
+            selective_code_owner_removals = kwargs['selectiveCodeOwnerRemovals']
+
+        _setter("project", project)
         if disable_overriding_approvers_per_merge_request is not None:
-            pulumi.set(__self__, "disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
+            _setter("disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
         if merge_requests_author_approval is not None:
-            pulumi.set(__self__, "merge_requests_author_approval", merge_requests_author_approval)
+            _setter("merge_requests_author_approval", merge_requests_author_approval)
         if merge_requests_disable_committers_approval is not None:
-            pulumi.set(__self__, "merge_requests_disable_committers_approval", merge_requests_disable_committers_approval)
+            _setter("merge_requests_disable_committers_approval", merge_requests_disable_committers_approval)
         if require_password_to_approve is not None:
-            pulumi.set(__self__, "require_password_to_approve", require_password_to_approve)
+            _setter("require_password_to_approve", require_password_to_approve)
         if reset_approvals_on_push is not None:
-            pulumi.set(__self__, "reset_approvals_on_push", reset_approvals_on_push)
+            _setter("reset_approvals_on_push", reset_approvals_on_push)
         if selective_code_owner_removals is not None:
-            pulumi.set(__self__, "selective_code_owner_removals", selective_code_owner_removals)
+            _setter("selective_code_owner_removals", selective_code_owner_removals)
 
     @property
     @pulumi.getter
@@ -150,20 +187,55 @@ class _ProjectLevelMrApprovalsState:
         :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         :param pulumi.Input[bool] selective_code_owner_removals: Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
         """
+        _ProjectLevelMrApprovalsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disable_overriding_approvers_per_merge_request=disable_overriding_approvers_per_merge_request,
+            merge_requests_author_approval=merge_requests_author_approval,
+            merge_requests_disable_committers_approval=merge_requests_disable_committers_approval,
+            project=project,
+            require_password_to_approve=require_password_to_approve,
+            reset_approvals_on_push=reset_approvals_on_push,
+            selective_code_owner_removals=selective_code_owner_removals,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[bool]] = None,
+             merge_requests_author_approval: Optional[pulumi.Input[bool]] = None,
+             merge_requests_disable_committers_approval: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             require_password_to_approve: Optional[pulumi.Input[bool]] = None,
+             reset_approvals_on_push: Optional[pulumi.Input[bool]] = None,
+             selective_code_owner_removals: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disable_overriding_approvers_per_merge_request is None and 'disableOverridingApproversPerMergeRequest' in kwargs:
+            disable_overriding_approvers_per_merge_request = kwargs['disableOverridingApproversPerMergeRequest']
+        if merge_requests_author_approval is None and 'mergeRequestsAuthorApproval' in kwargs:
+            merge_requests_author_approval = kwargs['mergeRequestsAuthorApproval']
+        if merge_requests_disable_committers_approval is None and 'mergeRequestsDisableCommittersApproval' in kwargs:
+            merge_requests_disable_committers_approval = kwargs['mergeRequestsDisableCommittersApproval']
+        if require_password_to_approve is None and 'requirePasswordToApprove' in kwargs:
+            require_password_to_approve = kwargs['requirePasswordToApprove']
+        if reset_approvals_on_push is None and 'resetApprovalsOnPush' in kwargs:
+            reset_approvals_on_push = kwargs['resetApprovalsOnPush']
+        if selective_code_owner_removals is None and 'selectiveCodeOwnerRemovals' in kwargs:
+            selective_code_owner_removals = kwargs['selectiveCodeOwnerRemovals']
+
         if disable_overriding_approvers_per_merge_request is not None:
-            pulumi.set(__self__, "disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
+            _setter("disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
         if merge_requests_author_approval is not None:
-            pulumi.set(__self__, "merge_requests_author_approval", merge_requests_author_approval)
+            _setter("merge_requests_author_approval", merge_requests_author_approval)
         if merge_requests_disable_committers_approval is not None:
-            pulumi.set(__self__, "merge_requests_disable_committers_approval", merge_requests_disable_committers_approval)
+            _setter("merge_requests_disable_committers_approval", merge_requests_disable_committers_approval)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if require_password_to_approve is not None:
-            pulumi.set(__self__, "require_password_to_approve", require_password_to_approve)
+            _setter("require_password_to_approve", require_password_to_approve)
         if reset_approvals_on_push is not None:
-            pulumi.set(__self__, "reset_approvals_on_push", reset_approvals_on_push)
+            _setter("reset_approvals_on_push", reset_approvals_on_push)
         if selective_code_owner_removals is not None:
-            pulumi.set(__self__, "selective_code_owner_removals", selective_code_owner_removals)
+            _setter("selective_code_owner_removals", selective_code_owner_removals)
 
     @property
     @pulumi.getter(name="disableOverridingApproversPerMergeRequest")
@@ -357,6 +429,10 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectLevelMrApprovalsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RunnerArgs', 'Runner']
@@ -33,21 +33,58 @@ class RunnerArgs:
         :param pulumi.Input[bool] run_untagged: Whether the runner should handle untagged jobs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tag_lists: List of runner’s tags.
         """
-        pulumi.set(__self__, "registration_token", registration_token)
+        RunnerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            registration_token=registration_token,
+            access_level=access_level,
+            description=description,
+            locked=locked,
+            maximum_timeout=maximum_timeout,
+            paused=paused,
+            run_untagged=run_untagged,
+            tag_lists=tag_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             registration_token: Optional[pulumi.Input[str]] = None,
+             access_level: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             locked: Optional[pulumi.Input[bool]] = None,
+             maximum_timeout: Optional[pulumi.Input[int]] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             run_untagged: Optional[pulumi.Input[bool]] = None,
+             tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if registration_token is None and 'registrationToken' in kwargs:
+            registration_token = kwargs['registrationToken']
+        if registration_token is None:
+            raise TypeError("Missing 'registration_token' argument")
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if maximum_timeout is None and 'maximumTimeout' in kwargs:
+            maximum_timeout = kwargs['maximumTimeout']
+        if run_untagged is None and 'runUntagged' in kwargs:
+            run_untagged = kwargs['runUntagged']
+        if tag_lists is None and 'tagLists' in kwargs:
+            tag_lists = kwargs['tagLists']
+
+        _setter("registration_token", registration_token)
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if locked is not None:
-            pulumi.set(__self__, "locked", locked)
+            _setter("locked", locked)
         if maximum_timeout is not None:
-            pulumi.set(__self__, "maximum_timeout", maximum_timeout)
+            _setter("maximum_timeout", maximum_timeout)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if run_untagged is not None:
-            pulumi.set(__self__, "run_untagged", run_untagged)
+            _setter("run_untagged", run_untagged)
         if tag_lists is not None:
-            pulumi.set(__self__, "tag_lists", tag_lists)
+            _setter("tag_lists", tag_lists)
 
     @property
     @pulumi.getter(name="registrationToken")
@@ -173,26 +210,67 @@ class _RunnerState:
                			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tag_lists: List of runner’s tags.
         """
+        _RunnerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            authentication_token=authentication_token,
+            description=description,
+            locked=locked,
+            maximum_timeout=maximum_timeout,
+            paused=paused,
+            registration_token=registration_token,
+            run_untagged=run_untagged,
+            status=status,
+            tag_lists=tag_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             authentication_token: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             locked: Optional[pulumi.Input[bool]] = None,
+             maximum_timeout: Optional[pulumi.Input[int]] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             registration_token: Optional[pulumi.Input[str]] = None,
+             run_untagged: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if authentication_token is None and 'authenticationToken' in kwargs:
+            authentication_token = kwargs['authenticationToken']
+        if maximum_timeout is None and 'maximumTimeout' in kwargs:
+            maximum_timeout = kwargs['maximumTimeout']
+        if registration_token is None and 'registrationToken' in kwargs:
+            registration_token = kwargs['registrationToken']
+        if run_untagged is None and 'runUntagged' in kwargs:
+            run_untagged = kwargs['runUntagged']
+        if tag_lists is None and 'tagLists' in kwargs:
+            tag_lists = kwargs['tagLists']
+
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if authentication_token is not None:
-            pulumi.set(__self__, "authentication_token", authentication_token)
+            _setter("authentication_token", authentication_token)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if locked is not None:
-            pulumi.set(__self__, "locked", locked)
+            _setter("locked", locked)
         if maximum_timeout is not None:
-            pulumi.set(__self__, "maximum_timeout", maximum_timeout)
+            _setter("maximum_timeout", maximum_timeout)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if registration_token is not None:
-            pulumi.set(__self__, "registration_token", registration_token)
+            _setter("registration_token", registration_token)
         if run_untagged is not None:
-            pulumi.set(__self__, "run_untagged", run_untagged)
+            _setter("run_untagged", run_untagged)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tag_lists is not None:
-            pulumi.set(__self__, "tag_lists", tag_lists)
+            _setter("tag_lists", tag_lists)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -485,6 +563,10 @@ class Runner(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RunnerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

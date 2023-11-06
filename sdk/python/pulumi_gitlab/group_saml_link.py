@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupSamlLinkArgs', 'GroupSamlLink']
@@ -23,9 +23,34 @@ class GroupSamlLinkArgs:
         :param pulumi.Input[str] group: The ID or path of the group to add the SAML Group Link to.
         :param pulumi.Input[str] saml_group_name: The name of the SAML group.
         """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "saml_group_name", saml_group_name)
+        GroupSamlLinkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            group=group,
+            saml_group_name=saml_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             saml_group_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if saml_group_name is None and 'samlGroupName' in kwargs:
+            saml_group_name = kwargs['samlGroupName']
+        if saml_group_name is None:
+            raise TypeError("Missing 'saml_group_name' argument")
+
+        _setter("access_level", access_level)
+        _setter("group", group)
+        _setter("saml_group_name", saml_group_name)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -76,12 +101,31 @@ class _GroupSamlLinkState:
         :param pulumi.Input[str] group: The ID or path of the group to add the SAML Group Link to.
         :param pulumi.Input[str] saml_group_name: The name of the SAML group.
         """
+        _GroupSamlLinkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            group=group,
+            saml_group_name=saml_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             saml_group_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if saml_group_name is None and 'samlGroupName' in kwargs:
+            saml_group_name = kwargs['samlGroupName']
+
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if saml_group_name is not None:
-            pulumi.set(__self__, "saml_group_name", saml_group_name)
+            _setter("saml_group_name", saml_group_name)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -201,6 +245,10 @@ class GroupSamlLink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupSamlLinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

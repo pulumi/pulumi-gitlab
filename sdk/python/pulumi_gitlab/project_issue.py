@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -57,42 +57,115 @@ class ProjectIssueArgs:
         :param pulumi.Input[str] updated_at: When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         :param pulumi.Input[int] weight: The weight of the issue. Valid values are greater than or equal to 0.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "title", title)
+        ProjectIssueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            title=title,
+            assignee_ids=assignee_ids,
+            confidential=confidential,
+            created_at=created_at,
+            delete_on_destroy=delete_on_destroy,
+            description=description,
+            discussion_locked=discussion_locked,
+            discussion_to_resolve=discussion_to_resolve,
+            due_date=due_date,
+            epic_issue_id=epic_issue_id,
+            iid=iid,
+            issue_type=issue_type,
+            labels=labels,
+            merge_request_to_resolve_discussions_of=merge_request_to_resolve_discussions_of,
+            milestone_id=milestone_id,
+            state=state,
+            updated_at=updated_at,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             confidential: Optional[pulumi.Input[bool]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             delete_on_destroy: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             discussion_locked: Optional[pulumi.Input[bool]] = None,
+             discussion_to_resolve: Optional[pulumi.Input[str]] = None,
+             due_date: Optional[pulumi.Input[str]] = None,
+             epic_issue_id: Optional[pulumi.Input[int]] = None,
+             iid: Optional[pulumi.Input[int]] = None,
+             issue_type: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             merge_request_to_resolve_discussions_of: Optional[pulumi.Input[int]] = None,
+             milestone_id: Optional[pulumi.Input[int]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if assignee_ids is None and 'assigneeIds' in kwargs:
+            assignee_ids = kwargs['assigneeIds']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if delete_on_destroy is None and 'deleteOnDestroy' in kwargs:
+            delete_on_destroy = kwargs['deleteOnDestroy']
+        if discussion_locked is None and 'discussionLocked' in kwargs:
+            discussion_locked = kwargs['discussionLocked']
+        if discussion_to_resolve is None and 'discussionToResolve' in kwargs:
+            discussion_to_resolve = kwargs['discussionToResolve']
+        if due_date is None and 'dueDate' in kwargs:
+            due_date = kwargs['dueDate']
+        if epic_issue_id is None and 'epicIssueId' in kwargs:
+            epic_issue_id = kwargs['epicIssueId']
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+        if merge_request_to_resolve_discussions_of is None and 'mergeRequestToResolveDiscussionsOf' in kwargs:
+            merge_request_to_resolve_discussions_of = kwargs['mergeRequestToResolveDiscussionsOf']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
+        _setter("project", project)
+        _setter("title", title)
         if assignee_ids is not None:
-            pulumi.set(__self__, "assignee_ids", assignee_ids)
+            _setter("assignee_ids", assignee_ids)
         if confidential is not None:
-            pulumi.set(__self__, "confidential", confidential)
+            _setter("confidential", confidential)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if delete_on_destroy is not None:
-            pulumi.set(__self__, "delete_on_destroy", delete_on_destroy)
+            _setter("delete_on_destroy", delete_on_destroy)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if discussion_locked is not None:
-            pulumi.set(__self__, "discussion_locked", discussion_locked)
+            _setter("discussion_locked", discussion_locked)
         if discussion_to_resolve is not None:
-            pulumi.set(__self__, "discussion_to_resolve", discussion_to_resolve)
+            _setter("discussion_to_resolve", discussion_to_resolve)
         if due_date is not None:
-            pulumi.set(__self__, "due_date", due_date)
+            _setter("due_date", due_date)
         if epic_issue_id is not None:
-            pulumi.set(__self__, "epic_issue_id", epic_issue_id)
+            _setter("epic_issue_id", epic_issue_id)
         if iid is not None:
-            pulumi.set(__self__, "iid", iid)
+            _setter("iid", iid)
         if issue_type is not None:
-            pulumi.set(__self__, "issue_type", issue_type)
+            _setter("issue_type", issue_type)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if merge_request_to_resolve_discussions_of is not None:
-            pulumi.set(__self__, "merge_request_to_resolve_discussions_of", merge_request_to_resolve_discussions_of)
+            _setter("merge_request_to_resolve_discussions_of", merge_request_to_resolve_discussions_of)
         if milestone_id is not None:
-            pulumi.set(__self__, "milestone_id", milestone_id)
+            _setter("milestone_id", milestone_id)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -409,86 +482,229 @@ class _ProjectIssueState:
         :param pulumi.Input[str] web_url: The web URL of the issue.
         :param pulumi.Input[int] weight: The weight of the issue. Valid values are greater than or equal to 0.
         """
+        _ProjectIssueState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assignee_ids=assignee_ids,
+            author_id=author_id,
+            closed_at=closed_at,
+            closed_by_user_id=closed_by_user_id,
+            confidential=confidential,
+            created_at=created_at,
+            delete_on_destroy=delete_on_destroy,
+            description=description,
+            discussion_locked=discussion_locked,
+            discussion_to_resolve=discussion_to_resolve,
+            downvotes=downvotes,
+            due_date=due_date,
+            epic_id=epic_id,
+            epic_issue_id=epic_issue_id,
+            external_id=external_id,
+            human_time_estimate=human_time_estimate,
+            human_total_time_spent=human_total_time_spent,
+            iid=iid,
+            issue_id=issue_id,
+            issue_link_id=issue_link_id,
+            issue_type=issue_type,
+            labels=labels,
+            links=links,
+            merge_request_to_resolve_discussions_of=merge_request_to_resolve_discussions_of,
+            merge_requests_count=merge_requests_count,
+            milestone_id=milestone_id,
+            moved_to_id=moved_to_id,
+            project=project,
+            references=references,
+            state=state,
+            subscribed=subscribed,
+            task_completion_statuses=task_completion_statuses,
+            time_estimate=time_estimate,
+            title=title,
+            total_time_spent=total_time_spent,
+            updated_at=updated_at,
+            upvotes=upvotes,
+            user_notes_count=user_notes_count,
+            web_url=web_url,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             author_id: Optional[pulumi.Input[int]] = None,
+             closed_at: Optional[pulumi.Input[str]] = None,
+             closed_by_user_id: Optional[pulumi.Input[int]] = None,
+             confidential: Optional[pulumi.Input[bool]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             delete_on_destroy: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             discussion_locked: Optional[pulumi.Input[bool]] = None,
+             discussion_to_resolve: Optional[pulumi.Input[str]] = None,
+             downvotes: Optional[pulumi.Input[int]] = None,
+             due_date: Optional[pulumi.Input[str]] = None,
+             epic_id: Optional[pulumi.Input[int]] = None,
+             epic_issue_id: Optional[pulumi.Input[int]] = None,
+             external_id: Optional[pulumi.Input[str]] = None,
+             human_time_estimate: Optional[pulumi.Input[str]] = None,
+             human_total_time_spent: Optional[pulumi.Input[str]] = None,
+             iid: Optional[pulumi.Input[int]] = None,
+             issue_id: Optional[pulumi.Input[int]] = None,
+             issue_link_id: Optional[pulumi.Input[int]] = None,
+             issue_type: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             links: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             merge_request_to_resolve_discussions_of: Optional[pulumi.Input[int]] = None,
+             merge_requests_count: Optional[pulumi.Input[int]] = None,
+             milestone_id: Optional[pulumi.Input[int]] = None,
+             moved_to_id: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             references: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             subscribed: Optional[pulumi.Input[bool]] = None,
+             task_completion_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]]] = None,
+             time_estimate: Optional[pulumi.Input[int]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             total_time_spent: Optional[pulumi.Input[int]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             upvotes: Optional[pulumi.Input[int]] = None,
+             user_notes_count: Optional[pulumi.Input[int]] = None,
+             web_url: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assignee_ids is None and 'assigneeIds' in kwargs:
+            assignee_ids = kwargs['assigneeIds']
+        if author_id is None and 'authorId' in kwargs:
+            author_id = kwargs['authorId']
+        if closed_at is None and 'closedAt' in kwargs:
+            closed_at = kwargs['closedAt']
+        if closed_by_user_id is None and 'closedByUserId' in kwargs:
+            closed_by_user_id = kwargs['closedByUserId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if delete_on_destroy is None and 'deleteOnDestroy' in kwargs:
+            delete_on_destroy = kwargs['deleteOnDestroy']
+        if discussion_locked is None and 'discussionLocked' in kwargs:
+            discussion_locked = kwargs['discussionLocked']
+        if discussion_to_resolve is None and 'discussionToResolve' in kwargs:
+            discussion_to_resolve = kwargs['discussionToResolve']
+        if due_date is None and 'dueDate' in kwargs:
+            due_date = kwargs['dueDate']
+        if epic_id is None and 'epicId' in kwargs:
+            epic_id = kwargs['epicId']
+        if epic_issue_id is None and 'epicIssueId' in kwargs:
+            epic_issue_id = kwargs['epicIssueId']
+        if external_id is None and 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if human_time_estimate is None and 'humanTimeEstimate' in kwargs:
+            human_time_estimate = kwargs['humanTimeEstimate']
+        if human_total_time_spent is None and 'humanTotalTimeSpent' in kwargs:
+            human_total_time_spent = kwargs['humanTotalTimeSpent']
+        if issue_id is None and 'issueId' in kwargs:
+            issue_id = kwargs['issueId']
+        if issue_link_id is None and 'issueLinkId' in kwargs:
+            issue_link_id = kwargs['issueLinkId']
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+        if merge_request_to_resolve_discussions_of is None and 'mergeRequestToResolveDiscussionsOf' in kwargs:
+            merge_request_to_resolve_discussions_of = kwargs['mergeRequestToResolveDiscussionsOf']
+        if merge_requests_count is None and 'mergeRequestsCount' in kwargs:
+            merge_requests_count = kwargs['mergeRequestsCount']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+        if moved_to_id is None and 'movedToId' in kwargs:
+            moved_to_id = kwargs['movedToId']
+        if task_completion_statuses is None and 'taskCompletionStatuses' in kwargs:
+            task_completion_statuses = kwargs['taskCompletionStatuses']
+        if time_estimate is None and 'timeEstimate' in kwargs:
+            time_estimate = kwargs['timeEstimate']
+        if total_time_spent is None and 'totalTimeSpent' in kwargs:
+            total_time_spent = kwargs['totalTimeSpent']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if user_notes_count is None and 'userNotesCount' in kwargs:
+            user_notes_count = kwargs['userNotesCount']
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+
         if assignee_ids is not None:
-            pulumi.set(__self__, "assignee_ids", assignee_ids)
+            _setter("assignee_ids", assignee_ids)
         if author_id is not None:
-            pulumi.set(__self__, "author_id", author_id)
+            _setter("author_id", author_id)
         if closed_at is not None:
-            pulumi.set(__self__, "closed_at", closed_at)
+            _setter("closed_at", closed_at)
         if closed_by_user_id is not None:
-            pulumi.set(__self__, "closed_by_user_id", closed_by_user_id)
+            _setter("closed_by_user_id", closed_by_user_id)
         if confidential is not None:
-            pulumi.set(__self__, "confidential", confidential)
+            _setter("confidential", confidential)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if delete_on_destroy is not None:
-            pulumi.set(__self__, "delete_on_destroy", delete_on_destroy)
+            _setter("delete_on_destroy", delete_on_destroy)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if discussion_locked is not None:
-            pulumi.set(__self__, "discussion_locked", discussion_locked)
+            _setter("discussion_locked", discussion_locked)
         if discussion_to_resolve is not None:
-            pulumi.set(__self__, "discussion_to_resolve", discussion_to_resolve)
+            _setter("discussion_to_resolve", discussion_to_resolve)
         if downvotes is not None:
-            pulumi.set(__self__, "downvotes", downvotes)
+            _setter("downvotes", downvotes)
         if due_date is not None:
-            pulumi.set(__self__, "due_date", due_date)
+            _setter("due_date", due_date)
         if epic_id is not None:
-            pulumi.set(__self__, "epic_id", epic_id)
+            _setter("epic_id", epic_id)
         if epic_issue_id is not None:
-            pulumi.set(__self__, "epic_issue_id", epic_issue_id)
+            _setter("epic_issue_id", epic_issue_id)
         if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
+            _setter("external_id", external_id)
         if human_time_estimate is not None:
-            pulumi.set(__self__, "human_time_estimate", human_time_estimate)
+            _setter("human_time_estimate", human_time_estimate)
         if human_total_time_spent is not None:
-            pulumi.set(__self__, "human_total_time_spent", human_total_time_spent)
+            _setter("human_total_time_spent", human_total_time_spent)
         if iid is not None:
-            pulumi.set(__self__, "iid", iid)
+            _setter("iid", iid)
         if issue_id is not None:
-            pulumi.set(__self__, "issue_id", issue_id)
+            _setter("issue_id", issue_id)
         if issue_link_id is not None:
-            pulumi.set(__self__, "issue_link_id", issue_link_id)
+            _setter("issue_link_id", issue_link_id)
         if issue_type is not None:
-            pulumi.set(__self__, "issue_type", issue_type)
+            _setter("issue_type", issue_type)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if links is not None:
-            pulumi.set(__self__, "links", links)
+            _setter("links", links)
         if merge_request_to_resolve_discussions_of is not None:
-            pulumi.set(__self__, "merge_request_to_resolve_discussions_of", merge_request_to_resolve_discussions_of)
+            _setter("merge_request_to_resolve_discussions_of", merge_request_to_resolve_discussions_of)
         if merge_requests_count is not None:
-            pulumi.set(__self__, "merge_requests_count", merge_requests_count)
+            _setter("merge_requests_count", merge_requests_count)
         if milestone_id is not None:
-            pulumi.set(__self__, "milestone_id", milestone_id)
+            _setter("milestone_id", milestone_id)
         if moved_to_id is not None:
-            pulumi.set(__self__, "moved_to_id", moved_to_id)
+            _setter("moved_to_id", moved_to_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if references is not None:
-            pulumi.set(__self__, "references", references)
+            _setter("references", references)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if subscribed is not None:
-            pulumi.set(__self__, "subscribed", subscribed)
+            _setter("subscribed", subscribed)
         if task_completion_statuses is not None:
-            pulumi.set(__self__, "task_completion_statuses", task_completion_statuses)
+            _setter("task_completion_statuses", task_completion_statuses)
         if time_estimate is not None:
-            pulumi.set(__self__, "time_estimate", time_estimate)
+            _setter("time_estimate", time_estimate)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if total_time_spent is not None:
-            pulumi.set(__self__, "total_time_spent", total_time_spent)
+            _setter("total_time_spent", total_time_spent)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if upvotes is not None:
-            pulumi.set(__self__, "upvotes", upvotes)
+            _setter("upvotes", upvotes)
         if user_notes_count is not None:
-            pulumi.set(__self__, "user_notes_count", user_notes_count)
+            _setter("user_notes_count", user_notes_count)
         if web_url is not None:
-            pulumi.set(__self__, "web_url", web_url)
+            _setter("web_url", web_url)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="assigneeIds")
@@ -1090,6 +1306,10 @@ class ProjectIssue(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectIssueArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

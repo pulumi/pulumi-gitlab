@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServiceCustomIssueTrackerArgs', 'ServiceCustomIssueTracker']
@@ -23,9 +23,34 @@ class ServiceCustomIssueTrackerArgs:
         :param pulumi.Input[str] project: The ID or full path of the project for the custom issue tracker.
         :param pulumi.Input[str] project_url: The URL to the project in the external issue tracker.
         """
-        pulumi.set(__self__, "issues_url", issues_url)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "project_url", project_url)
+        ServiceCustomIssueTrackerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            issues_url=issues_url,
+            project=project,
+            project_url=project_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             issues_url: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             project_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if issues_url is None and 'issuesUrl' in kwargs:
+            issues_url = kwargs['issuesUrl']
+        if issues_url is None:
+            raise TypeError("Missing 'issues_url' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if project_url is None and 'projectUrl' in kwargs:
+            project_url = kwargs['projectUrl']
+        if project_url is None:
+            raise TypeError("Missing 'project_url' argument")
+
+        _setter("issues_url", issues_url)
+        _setter("project", project)
+        _setter("project_url", project_url)
 
     @property
     @pulumi.getter(name="issuesUrl")
@@ -84,20 +109,51 @@ class _ServiceCustomIssueTrackerState:
         :param pulumi.Input[str] slug: The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         :param pulumi.Input[str] updated_at: The ISO8601 date/time that this integration was last updated at in UTC.
         """
+        _ServiceCustomIssueTrackerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            created_at=created_at,
+            issues_url=issues_url,
+            project=project,
+            project_url=project_url,
+            slug=slug,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             issues_url: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             project_url: Optional[pulumi.Input[str]] = None,
+             slug: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if issues_url is None and 'issuesUrl' in kwargs:
+            issues_url = kwargs['issuesUrl']
+        if project_url is None and 'projectUrl' in kwargs:
+            project_url = kwargs['projectUrl']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if issues_url is not None:
-            pulumi.set(__self__, "issues_url", issues_url)
+            _setter("issues_url", issues_url)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if project_url is not None:
-            pulumi.set(__self__, "project_url", project_url)
+            _setter("project_url", project_url)
         if slug is not None:
-            pulumi.set(__self__, "slug", slug)
+            _setter("slug", slug)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter
@@ -275,6 +331,10 @@ class ServiceCustomIssueTracker(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceCustomIssueTrackerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserRunnerArgs', 'UserRunner']
@@ -37,25 +37,68 @@ class UserRunnerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tag_lists: A list of runner tags.
         :param pulumi.Input[bool] untagged: Specifies if the runner should handle untagged jobs.
         """
-        pulumi.set(__self__, "runner_type", runner_type)
+        UserRunnerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            runner_type=runner_type,
+            access_level=access_level,
+            description=description,
+            group_id=group_id,
+            locked=locked,
+            maximum_timeout=maximum_timeout,
+            paused=paused,
+            project_id=project_id,
+            tag_lists=tag_lists,
+            untagged=untagged,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             runner_type: Optional[pulumi.Input[str]] = None,
+             access_level: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             locked: Optional[pulumi.Input[bool]] = None,
+             maximum_timeout: Optional[pulumi.Input[int]] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             project_id: Optional[pulumi.Input[int]] = None,
+             tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             untagged: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if runner_type is None and 'runnerType' in kwargs:
+            runner_type = kwargs['runnerType']
+        if runner_type is None:
+            raise TypeError("Missing 'runner_type' argument")
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if maximum_timeout is None and 'maximumTimeout' in kwargs:
+            maximum_timeout = kwargs['maximumTimeout']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if tag_lists is None and 'tagLists' in kwargs:
+            tag_lists = kwargs['tagLists']
+
+        _setter("runner_type", runner_type)
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if locked is not None:
-            pulumi.set(__self__, "locked", locked)
+            _setter("locked", locked)
         if maximum_timeout is not None:
-            pulumi.set(__self__, "maximum_timeout", maximum_timeout)
+            _setter("maximum_timeout", maximum_timeout)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if tag_lists is not None:
-            pulumi.set(__self__, "tag_lists", tag_lists)
+            _setter("tag_lists", tag_lists)
         if untagged is not None:
-            pulumi.set(__self__, "untagged", untagged)
+            _setter("untagged", untagged)
 
     @property
     @pulumi.getter(name="runnerType")
@@ -206,28 +249,71 @@ class _UserRunnerState:
         :param pulumi.Input[str] token: The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.
         :param pulumi.Input[bool] untagged: Specifies if the runner should handle untagged jobs.
         """
+        _UserRunnerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            description=description,
+            group_id=group_id,
+            locked=locked,
+            maximum_timeout=maximum_timeout,
+            paused=paused,
+            project_id=project_id,
+            runner_type=runner_type,
+            tag_lists=tag_lists,
+            token=token,
+            untagged=untagged,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             locked: Optional[pulumi.Input[bool]] = None,
+             maximum_timeout: Optional[pulumi.Input[int]] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             project_id: Optional[pulumi.Input[int]] = None,
+             runner_type: Optional[pulumi.Input[str]] = None,
+             tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             untagged: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if maximum_timeout is None and 'maximumTimeout' in kwargs:
+            maximum_timeout = kwargs['maximumTimeout']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if runner_type is None and 'runnerType' in kwargs:
+            runner_type = kwargs['runnerType']
+        if tag_lists is None and 'tagLists' in kwargs:
+            tag_lists = kwargs['tagLists']
+
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if locked is not None:
-            pulumi.set(__self__, "locked", locked)
+            _setter("locked", locked)
         if maximum_timeout is not None:
-            pulumi.set(__self__, "maximum_timeout", maximum_timeout)
+            _setter("maximum_timeout", maximum_timeout)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if runner_type is not None:
-            pulumi.set(__self__, "runner_type", runner_type)
+            _setter("runner_type", runner_type)
         if tag_lists is not None:
-            pulumi.set(__self__, "tag_lists", tag_lists)
+            _setter("tag_lists", tag_lists)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if untagged is not None:
-            pulumi.set(__self__, "untagged", untagged)
+            _setter("untagged", untagged)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -417,6 +503,10 @@ class UserRunner(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserRunnerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,19 +33,48 @@ class ProjectIssueBoardArgs:
         :param pulumi.Input[str] name: The name of the board.
         :param pulumi.Input[int] weight: The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
         """
-        pulumi.set(__self__, "project", project)
+        ProjectIssueBoardArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            assignee_id=assignee_id,
+            labels=labels,
+            lists=lists,
+            milestone_id=milestone_id,
+            name=name,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             assignee_id: Optional[pulumi.Input[int]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             lists: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]] = None,
+             milestone_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if assignee_id is None and 'assigneeId' in kwargs:
+            assignee_id = kwargs['assigneeId']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+
+        _setter("project", project)
         if assignee_id is not None:
-            pulumi.set(__self__, "assignee_id", assignee_id)
+            _setter("assignee_id", assignee_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if lists is not None:
-            pulumi.set(__self__, "lists", lists)
+            _setter("lists", lists)
         if milestone_id is not None:
-            pulumi.set(__self__, "milestone_id", milestone_id)
+            _setter("milestone_id", milestone_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -152,20 +181,47 @@ class _ProjectIssueBoardState:
         :param pulumi.Input[str] project: The ID or full path of the project maintained by the authenticated user.
         :param pulumi.Input[int] weight: The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
         """
+        _ProjectIssueBoardState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assignee_id=assignee_id,
+            labels=labels,
+            lists=lists,
+            milestone_id=milestone_id,
+            name=name,
+            project=project,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assignee_id: Optional[pulumi.Input[int]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             lists: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]] = None,
+             milestone_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assignee_id is None and 'assigneeId' in kwargs:
+            assignee_id = kwargs['assigneeId']
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+
         if assignee_id is not None:
-            pulumi.set(__self__, "assignee_id", assignee_id)
+            _setter("assignee_id", assignee_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if lists is not None:
-            pulumi.set(__self__, "lists", lists)
+            _setter("lists", lists)
         if milestone_id is not None:
-            pulumi.set(__self__, "milestone_id", milestone_id)
+            _setter("milestone_id", milestone_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="assigneeId")
@@ -321,6 +377,10 @@ class ProjectIssueBoard(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectIssueBoardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,29 @@ class BranchArgs:
         :param pulumi.Input[str] ref: The ref which the branch is created from.
         :param pulumi.Input[str] name: The name for this branch.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "ref", ref)
+        BranchArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            ref=ref,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             ref: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if ref is None:
+            raise TypeError("Missing 'ref' argument")
+
+        _setter("project", project)
+        _setter("ref", ref)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -95,28 +114,67 @@ class _BranchState:
         :param pulumi.Input[str] ref: The ref which the branch is created from.
         :param pulumi.Input[str] web_url: The url of the created branch (https).
         """
+        _BranchState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            can_push=can_push,
+            commits=commits,
+            default=default,
+            developer_can_merge=developer_can_merge,
+            developer_can_push=developer_can_push,
+            merged=merged,
+            name=name,
+            project=project,
+            protected=protected,
+            ref=ref,
+            web_url=web_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             can_push: Optional[pulumi.Input[bool]] = None,
+             commits: Optional[pulumi.Input[Sequence[pulumi.Input['BranchCommitArgs']]]] = None,
+             default: Optional[pulumi.Input[bool]] = None,
+             developer_can_merge: Optional[pulumi.Input[bool]] = None,
+             developer_can_push: Optional[pulumi.Input[bool]] = None,
+             merged: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             protected: Optional[pulumi.Input[bool]] = None,
+             ref: Optional[pulumi.Input[str]] = None,
+             web_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if can_push is None and 'canPush' in kwargs:
+            can_push = kwargs['canPush']
+        if developer_can_merge is None and 'developerCanMerge' in kwargs:
+            developer_can_merge = kwargs['developerCanMerge']
+        if developer_can_push is None and 'developerCanPush' in kwargs:
+            developer_can_push = kwargs['developerCanPush']
+        if web_url is None and 'webUrl' in kwargs:
+            web_url = kwargs['webUrl']
+
         if can_push is not None:
-            pulumi.set(__self__, "can_push", can_push)
+            _setter("can_push", can_push)
         if commits is not None:
-            pulumi.set(__self__, "commits", commits)
+            _setter("commits", commits)
         if default is not None:
-            pulumi.set(__self__, "default", default)
+            _setter("default", default)
         if developer_can_merge is not None:
-            pulumi.set(__self__, "developer_can_merge", developer_can_merge)
+            _setter("developer_can_merge", developer_can_merge)
         if developer_can_push is not None:
-            pulumi.set(__self__, "developer_can_push", developer_can_push)
+            _setter("developer_can_push", developer_can_push)
         if merged is not None:
-            pulumi.set(__self__, "merged", merged)
+            _setter("merged", merged)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if protected is not None:
-            pulumi.set(__self__, "protected", protected)
+            _setter("protected", protected)
         if ref is not None:
-            pulumi.set(__self__, "ref", ref)
+            _setter("ref", ref)
         if web_url is not None:
-            pulumi.set(__self__, "web_url", web_url)
+            _setter("web_url", web_url)
 
     @property
     @pulumi.getter(name="canPush")
@@ -338,6 +396,10 @@ class Branch(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BranchArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

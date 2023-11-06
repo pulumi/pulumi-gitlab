@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectComplianceFrameworkArgs', 'ProjectComplianceFramework']
@@ -21,8 +21,27 @@ class ProjectComplianceFrameworkArgs:
         :param pulumi.Input[str] compliance_framework_id: Globally unique ID of the compliance framework to assign to the project.
         :param pulumi.Input[str] project: The ID or full path of the project to change the compliance framework of.
         """
-        pulumi.set(__self__, "compliance_framework_id", compliance_framework_id)
-        pulumi.set(__self__, "project", project)
+        ProjectComplianceFrameworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliance_framework_id=compliance_framework_id,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliance_framework_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compliance_framework_id is None and 'complianceFrameworkId' in kwargs:
+            compliance_framework_id = kwargs['complianceFrameworkId']
+        if compliance_framework_id is None:
+            raise TypeError("Missing 'compliance_framework_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
+        _setter("compliance_framework_id", compliance_framework_id)
+        _setter("project", project)
 
     @property
     @pulumi.getter(name="complianceFrameworkId")
@@ -59,10 +78,25 @@ class _ProjectComplianceFrameworkState:
         :param pulumi.Input[str] compliance_framework_id: Globally unique ID of the compliance framework to assign to the project.
         :param pulumi.Input[str] project: The ID or full path of the project to change the compliance framework of.
         """
+        _ProjectComplianceFrameworkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliance_framework_id=compliance_framework_id,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliance_framework_id: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compliance_framework_id is None and 'complianceFrameworkId' in kwargs:
+            compliance_framework_id = kwargs['complianceFrameworkId']
+
         if compliance_framework_id is not None:
-            pulumi.set(__self__, "compliance_framework_id", compliance_framework_id)
+            _setter("compliance_framework_id", compliance_framework_id)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="complianceFrameworkId")
@@ -182,6 +216,10 @@ class ProjectComplianceFramework(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectComplianceFrameworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

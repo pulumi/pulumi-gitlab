@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,13 +27,34 @@ class GroupIssueBoardArgs:
         :param pulumi.Input[int] milestone_id: The milestone the board should be scoped to.
         :param pulumi.Input[str] name: The name of the board.
         """
-        pulumi.set(__self__, "group", group)
+        GroupIssueBoardArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            lists=lists,
+            milestone_id=milestone_id,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: Optional[pulumi.Input[str]] = None,
+             lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]] = None,
+             milestone_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+
+        _setter("group", group)
         if lists is not None:
-            pulumi.set(__self__, "lists", lists)
+            _setter("lists", lists)
         if milestone_id is not None:
-            pulumi.set(__self__, "milestone_id", milestone_id)
+            _setter("milestone_id", milestone_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -98,14 +119,33 @@ class _GroupIssueBoardState:
         :param pulumi.Input[int] milestone_id: The milestone the board should be scoped to.
         :param pulumi.Input[str] name: The name of the board.
         """
+        _GroupIssueBoardState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            lists=lists,
+            milestone_id=milestone_id,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: Optional[pulumi.Input[str]] = None,
+             lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]] = None,
+             milestone_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if milestone_id is None and 'milestoneId' in kwargs:
+            milestone_id = kwargs['milestoneId']
+
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if lists is not None:
-            pulumi.set(__self__, "lists", lists)
+            _setter("lists", lists)
         if milestone_id is not None:
-            pulumi.set(__self__, "milestone_id", milestone_id)
+            _setter("milestone_id", milestone_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -203,6 +243,10 @@ class GroupIssueBoard(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupIssueBoardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

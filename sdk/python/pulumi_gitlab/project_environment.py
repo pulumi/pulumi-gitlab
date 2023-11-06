@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectEnvironmentArgs', 'ProjectEnvironment']
@@ -25,13 +25,36 @@ class ProjectEnvironmentArgs:
         :param pulumi.Input[str] name: The name of the environment.
         :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted.
         """
-        pulumi.set(__self__, "project", project)
+        ProjectEnvironmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            external_url=external_url,
+            name=name,
+            stop_before_destroy=stop_before_destroy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             external_url: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             stop_before_destroy: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if external_url is None and 'externalUrl' in kwargs:
+            external_url = kwargs['externalUrl']
+        if stop_before_destroy is None and 'stopBeforeDestroy' in kwargs:
+            stop_before_destroy = kwargs['stopBeforeDestroy']
+
+        _setter("project", project)
         if external_url is not None:
-            pulumi.set(__self__, "external_url", external_url)
+            _setter("external_url", external_url)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if stop_before_destroy is not None:
-            pulumi.set(__self__, "stop_before_destroy", stop_before_destroy)
+            _setter("stop_before_destroy", stop_before_destroy)
 
     @property
     @pulumi.getter
@@ -104,22 +127,55 @@ class _ProjectEnvironmentState:
         :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted.
         :param pulumi.Input[str] updated_at: The ISO8601 date/time that this environment was last updated at in UTC.
         """
+        _ProjectEnvironmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            external_url=external_url,
+            name=name,
+            project=project,
+            slug=slug,
+            state=state,
+            stop_before_destroy=stop_before_destroy,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             external_url: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             slug: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             stop_before_destroy: Optional[pulumi.Input[bool]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if external_url is None and 'externalUrl' in kwargs:
+            external_url = kwargs['externalUrl']
+        if stop_before_destroy is None and 'stopBeforeDestroy' in kwargs:
+            stop_before_destroy = kwargs['stopBeforeDestroy']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if external_url is not None:
-            pulumi.set(__self__, "external_url", external_url)
+            _setter("external_url", external_url)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if slug is not None:
-            pulumi.set(__self__, "slug", slug)
+            _setter("slug", slug)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if stop_before_destroy is not None:
-            pulumi.set(__self__, "stop_before_destroy", stop_before_destroy)
+            _setter("stop_before_destroy", stop_before_destroy)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -303,6 +359,10 @@ class ProjectEnvironment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectEnvironmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServiceExternalWikiArgs', 'ServiceExternalWiki']
@@ -21,8 +21,27 @@ class ServiceExternalWikiArgs:
         :param pulumi.Input[str] external_wiki_url: The URL of the external wiki.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         """
-        pulumi.set(__self__, "external_wiki_url", external_wiki_url)
-        pulumi.set(__self__, "project", project)
+        ServiceExternalWikiArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            external_wiki_url=external_wiki_url,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             external_wiki_url: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if external_wiki_url is None and 'externalWikiUrl' in kwargs:
+            external_wiki_url = kwargs['externalWikiUrl']
+        if external_wiki_url is None:
+            raise TypeError("Missing 'external_wiki_url' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
+        _setter("external_wiki_url", external_wiki_url)
+        _setter("project", project)
 
     @property
     @pulumi.getter(name="externalWikiUrl")
@@ -69,20 +88,49 @@ class _ServiceExternalWikiState:
         :param pulumi.Input[str] title: Title of the integration.
         :param pulumi.Input[str] updated_at: The ISO8601 date/time that this integration was last updated at in UTC.
         """
+        _ServiceExternalWikiState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            created_at=created_at,
+            external_wiki_url=external_wiki_url,
+            project=project,
+            slug=slug,
+            title=title,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             external_wiki_url: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             slug: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if external_wiki_url is None and 'externalWikiUrl' in kwargs:
+            external_wiki_url = kwargs['externalWikiUrl']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if external_wiki_url is not None:
-            pulumi.set(__self__, "external_wiki_url", external_wiki_url)
+            _setter("external_wiki_url", external_wiki_url)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if slug is not None:
-            pulumi.set(__self__, "slug", slug)
+            _setter("slug", slug)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter
@@ -256,6 +304,10 @@ class ServiceExternalWiki(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceExternalWikiArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

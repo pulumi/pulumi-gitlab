@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,11 +27,38 @@ class TagProtectionArgs:
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
         :param pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]] allowed_to_creates: User or group which are allowed to create.
         """
-        pulumi.set(__self__, "create_access_level", create_access_level)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "tag", tag)
+        TagProtectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_access_level=create_access_level,
+            project=project,
+            tag=tag,
+            allowed_to_creates=allowed_to_creates,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_access_level: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_access_level is None and 'createAccessLevel' in kwargs:
+            create_access_level = kwargs['createAccessLevel']
+        if create_access_level is None:
+            raise TypeError("Missing 'create_access_level' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
+        if allowed_to_creates is None and 'allowedToCreates' in kwargs:
+            allowed_to_creates = kwargs['allowedToCreates']
+
+        _setter("create_access_level", create_access_level)
+        _setter("project", project)
+        _setter("tag", tag)
         if allowed_to_creates is not None:
-            pulumi.set(__self__, "allowed_to_creates", allowed_to_creates)
+            _setter("allowed_to_creates", allowed_to_creates)
 
     @property
     @pulumi.getter(name="createAccessLevel")
@@ -96,14 +123,35 @@ class _TagProtectionState:
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
         """
+        _TagProtectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_to_creates=allowed_to_creates,
+            create_access_level=create_access_level,
+            project=project,
+            tag=tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]] = None,
+             create_access_level: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_to_creates is None and 'allowedToCreates' in kwargs:
+            allowed_to_creates = kwargs['allowedToCreates']
+        if create_access_level is None and 'createAccessLevel' in kwargs:
+            create_access_level = kwargs['createAccessLevel']
+
         if allowed_to_creates is not None:
-            pulumi.set(__self__, "allowed_to_creates", allowed_to_creates)
+            _setter("allowed_to_creates", allowed_to_creates)
         if create_access_level is not None:
-            pulumi.set(__self__, "create_access_level", create_access_level)
+            _setter("create_access_level", create_access_level)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
 
     @property
     @pulumi.getter(name="allowedToCreates")
@@ -245,6 +293,10 @@ class TagProtection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TagProtectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

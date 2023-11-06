@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectMembershipArgs', 'ProjectMembership']
@@ -25,11 +25,40 @@ class ProjectMembershipArgs:
         :param pulumi.Input[int] user_id: The id of the user.
         :param pulumi.Input[str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
         """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "user_id", user_id)
+        ProjectMembershipArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            project=project,
+            user_id=user_id,
+            expires_at=expires_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             expires_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if access_level is None:
+            raise TypeError("Missing 'access_level' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+
+        _setter("access_level", access_level)
+        _setter("project", project)
+        _setter("user_id", user_id)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -94,14 +123,37 @@ class _ProjectMembershipState:
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
+        _ProjectMembershipState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            expires_at=expires_at,
+            project=project,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: Optional[pulumi.Input[str]] = None,
+             expires_at: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_level is None and 'accessLevel' in kwargs:
+            access_level = kwargs['accessLevel']
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -249,6 +301,10 @@ class ProjectMembership(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectMembershipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

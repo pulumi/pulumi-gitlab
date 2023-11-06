@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectHookArgs', 'ProjectHook']
@@ -51,38 +51,113 @@ class ProjectHookArgs:
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "url", url)
+        ProjectHookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            url=url,
+            confidential_issues_events=confidential_issues_events,
+            confidential_note_events=confidential_note_events,
+            deployment_events=deployment_events,
+            enable_ssl_verification=enable_ssl_verification,
+            issues_events=issues_events,
+            job_events=job_events,
+            merge_requests_events=merge_requests_events,
+            note_events=note_events,
+            pipeline_events=pipeline_events,
+            push_events=push_events,
+            push_events_branch_filter=push_events_branch_filter,
+            releases_events=releases_events,
+            tag_push_events=tag_push_events,
+            token=token,
+            wiki_page_events=wiki_page_events,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+             confidential_note_events: Optional[pulumi.Input[bool]] = None,
+             deployment_events: Optional[pulumi.Input[bool]] = None,
+             enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+             issues_events: Optional[pulumi.Input[bool]] = None,
+             job_events: Optional[pulumi.Input[bool]] = None,
+             merge_requests_events: Optional[pulumi.Input[bool]] = None,
+             note_events: Optional[pulumi.Input[bool]] = None,
+             pipeline_events: Optional[pulumi.Input[bool]] = None,
+             push_events: Optional[pulumi.Input[bool]] = None,
+             push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+             releases_events: Optional[pulumi.Input[bool]] = None,
+             tag_push_events: Optional[pulumi.Input[bool]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             wiki_page_events: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
+            confidential_issues_events = kwargs['confidentialIssuesEvents']
+        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
+            confidential_note_events = kwargs['confidentialNoteEvents']
+        if deployment_events is None and 'deploymentEvents' in kwargs:
+            deployment_events = kwargs['deploymentEvents']
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if job_events is None and 'jobEvents' in kwargs:
+            job_events = kwargs['jobEvents']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if push_events_branch_filter is None and 'pushEventsBranchFilter' in kwargs:
+            push_events_branch_filter = kwargs['pushEventsBranchFilter']
+        if releases_events is None and 'releasesEvents' in kwargs:
+            releases_events = kwargs['releasesEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
+            wiki_page_events = kwargs['wikiPageEvents']
+
+        _setter("project", project)
+        _setter("url", url)
         if confidential_issues_events is not None:
-            pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+            _setter("confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
-            pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+            _setter("confidential_note_events", confidential_note_events)
         if deployment_events is not None:
-            pulumi.set(__self__, "deployment_events", deployment_events)
+            _setter("deployment_events", deployment_events)
         if enable_ssl_verification is not None:
-            pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+            _setter("enable_ssl_verification", enable_ssl_verification)
         if issues_events is not None:
-            pulumi.set(__self__, "issues_events", issues_events)
+            _setter("issues_events", issues_events)
         if job_events is not None:
-            pulumi.set(__self__, "job_events", job_events)
+            _setter("job_events", job_events)
         if merge_requests_events is not None:
-            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+            _setter("merge_requests_events", merge_requests_events)
         if note_events is not None:
-            pulumi.set(__self__, "note_events", note_events)
+            _setter("note_events", note_events)
         if pipeline_events is not None:
-            pulumi.set(__self__, "pipeline_events", pipeline_events)
+            _setter("pipeline_events", pipeline_events)
         if push_events is not None:
-            pulumi.set(__self__, "push_events", push_events)
+            _setter("push_events", push_events)
         if push_events_branch_filter is not None:
-            pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
+            _setter("push_events_branch_filter", push_events_branch_filter)
         if releases_events is not None:
-            pulumi.set(__self__, "releases_events", releases_events)
+            _setter("releases_events", releases_events)
         if tag_push_events is not None:
-            pulumi.set(__self__, "tag_push_events", tag_push_events)
+            _setter("tag_push_events", tag_push_events)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if wiki_page_events is not None:
-            pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+            _setter("wiki_page_events", wiki_page_events)
 
     @property
     @pulumi.getter
@@ -333,44 +408,123 @@ class _ProjectHookState:
         :param pulumi.Input[str] url: The url of the hook to invoke.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
+        _ProjectHookState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            confidential_issues_events=confidential_issues_events,
+            confidential_note_events=confidential_note_events,
+            deployment_events=deployment_events,
+            enable_ssl_verification=enable_ssl_verification,
+            hook_id=hook_id,
+            issues_events=issues_events,
+            job_events=job_events,
+            merge_requests_events=merge_requests_events,
+            note_events=note_events,
+            pipeline_events=pipeline_events,
+            project=project,
+            project_id=project_id,
+            push_events=push_events,
+            push_events_branch_filter=push_events_branch_filter,
+            releases_events=releases_events,
+            tag_push_events=tag_push_events,
+            token=token,
+            url=url,
+            wiki_page_events=wiki_page_events,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+             confidential_note_events: Optional[pulumi.Input[bool]] = None,
+             deployment_events: Optional[pulumi.Input[bool]] = None,
+             enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+             hook_id: Optional[pulumi.Input[int]] = None,
+             issues_events: Optional[pulumi.Input[bool]] = None,
+             job_events: Optional[pulumi.Input[bool]] = None,
+             merge_requests_events: Optional[pulumi.Input[bool]] = None,
+             note_events: Optional[pulumi.Input[bool]] = None,
+             pipeline_events: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[int]] = None,
+             push_events: Optional[pulumi.Input[bool]] = None,
+             push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+             releases_events: Optional[pulumi.Input[bool]] = None,
+             tag_push_events: Optional[pulumi.Input[bool]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             wiki_page_events: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if confidential_issues_events is None and 'confidentialIssuesEvents' in kwargs:
+            confidential_issues_events = kwargs['confidentialIssuesEvents']
+        if confidential_note_events is None and 'confidentialNoteEvents' in kwargs:
+            confidential_note_events = kwargs['confidentialNoteEvents']
+        if deployment_events is None and 'deploymentEvents' in kwargs:
+            deployment_events = kwargs['deploymentEvents']
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if hook_id is None and 'hookId' in kwargs:
+            hook_id = kwargs['hookId']
+        if issues_events is None and 'issuesEvents' in kwargs:
+            issues_events = kwargs['issuesEvents']
+        if job_events is None and 'jobEvents' in kwargs:
+            job_events = kwargs['jobEvents']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if note_events is None and 'noteEvents' in kwargs:
+            note_events = kwargs['noteEvents']
+        if pipeline_events is None and 'pipelineEvents' in kwargs:
+            pipeline_events = kwargs['pipelineEvents']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if push_events_branch_filter is None and 'pushEventsBranchFilter' in kwargs:
+            push_events_branch_filter = kwargs['pushEventsBranchFilter']
+        if releases_events is None and 'releasesEvents' in kwargs:
+            releases_events = kwargs['releasesEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+        if wiki_page_events is None and 'wikiPageEvents' in kwargs:
+            wiki_page_events = kwargs['wikiPageEvents']
+
         if confidential_issues_events is not None:
-            pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+            _setter("confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
-            pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+            _setter("confidential_note_events", confidential_note_events)
         if deployment_events is not None:
-            pulumi.set(__self__, "deployment_events", deployment_events)
+            _setter("deployment_events", deployment_events)
         if enable_ssl_verification is not None:
-            pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+            _setter("enable_ssl_verification", enable_ssl_verification)
         if hook_id is not None:
-            pulumi.set(__self__, "hook_id", hook_id)
+            _setter("hook_id", hook_id)
         if issues_events is not None:
-            pulumi.set(__self__, "issues_events", issues_events)
+            _setter("issues_events", issues_events)
         if job_events is not None:
-            pulumi.set(__self__, "job_events", job_events)
+            _setter("job_events", job_events)
         if merge_requests_events is not None:
-            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+            _setter("merge_requests_events", merge_requests_events)
         if note_events is not None:
-            pulumi.set(__self__, "note_events", note_events)
+            _setter("note_events", note_events)
         if pipeline_events is not None:
-            pulumi.set(__self__, "pipeline_events", pipeline_events)
+            _setter("pipeline_events", pipeline_events)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if push_events is not None:
-            pulumi.set(__self__, "push_events", push_events)
+            _setter("push_events", push_events)
         if push_events_branch_filter is not None:
-            pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
+            _setter("push_events_branch_filter", push_events_branch_filter)
         if releases_events is not None:
-            pulumi.set(__self__, "releases_events", releases_events)
+            _setter("releases_events", releases_events)
         if tag_push_events is not None:
-            pulumi.set(__self__, "tag_push_events", tag_push_events)
+            _setter("tag_push_events", tag_push_events)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if wiki_page_events is not None:
-            pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+            _setter("wiki_page_events", wiki_page_events)
 
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -714,6 +868,10 @@ class ProjectHook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectHookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

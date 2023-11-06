@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SystemHookArgs', 'SystemHook']
@@ -31,19 +31,54 @@ class SystemHookArgs:
         :param pulumi.Input[bool] tag_push_events: When true, the hook fires on new tags being pushed.
         :param pulumi.Input[str] token: Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
         """
-        pulumi.set(__self__, "url", url)
+        SystemHookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            enable_ssl_verification=enable_ssl_verification,
+            merge_requests_events=merge_requests_events,
+            push_events=push_events,
+            repository_update_events=repository_update_events,
+            tag_push_events=tag_push_events,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: Optional[pulumi.Input[str]] = None,
+             enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+             merge_requests_events: Optional[pulumi.Input[bool]] = None,
+             push_events: Optional[pulumi.Input[bool]] = None,
+             repository_update_events: Optional[pulumi.Input[bool]] = None,
+             tag_push_events: Optional[pulumi.Input[bool]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if repository_update_events is None and 'repositoryUpdateEvents' in kwargs:
+            repository_update_events = kwargs['repositoryUpdateEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+
+        _setter("url", url)
         if enable_ssl_verification is not None:
-            pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+            _setter("enable_ssl_verification", enable_ssl_verification)
         if merge_requests_events is not None:
-            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+            _setter("merge_requests_events", merge_requests_events)
         if push_events is not None:
-            pulumi.set(__self__, "push_events", push_events)
+            _setter("push_events", push_events)
         if repository_update_events is not None:
-            pulumi.set(__self__, "repository_update_events", repository_update_events)
+            _setter("repository_update_events", repository_update_events)
         if tag_push_events is not None:
-            pulumi.set(__self__, "tag_push_events", tag_push_events)
+            _setter("tag_push_events", tag_push_events)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -152,22 +187,59 @@ class _SystemHookState:
         :param pulumi.Input[str] token: Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
         :param pulumi.Input[str] url: The hook URL.
         """
+        _SystemHookState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            enable_ssl_verification=enable_ssl_verification,
+            merge_requests_events=merge_requests_events,
+            push_events=push_events,
+            repository_update_events=repository_update_events,
+            tag_push_events=tag_push_events,
+            token=token,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+             merge_requests_events: Optional[pulumi.Input[bool]] = None,
+             push_events: Optional[pulumi.Input[bool]] = None,
+             repository_update_events: Optional[pulumi.Input[bool]] = None,
+             tag_push_events: Optional[pulumi.Input[bool]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if enable_ssl_verification is None and 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+        if merge_requests_events is None and 'mergeRequestsEvents' in kwargs:
+            merge_requests_events = kwargs['mergeRequestsEvents']
+        if push_events is None and 'pushEvents' in kwargs:
+            push_events = kwargs['pushEvents']
+        if repository_update_events is None and 'repositoryUpdateEvents' in kwargs:
+            repository_update_events = kwargs['repositoryUpdateEvents']
+        if tag_push_events is None and 'tagPushEvents' in kwargs:
+            tag_push_events = kwargs['tagPushEvents']
+
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if enable_ssl_verification is not None:
-            pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+            _setter("enable_ssl_verification", enable_ssl_verification)
         if merge_requests_events is not None:
-            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+            _setter("merge_requests_events", merge_requests_events)
         if push_events is not None:
-            pulumi.set(__self__, "push_events", push_events)
+            _setter("push_events", push_events)
         if repository_update_events is not None:
-            pulumi.set(__self__, "repository_update_events", repository_update_events)
+            _setter("repository_update_events", repository_update_events)
         if tag_push_events is not None:
-            pulumi.set(__self__, "tag_push_events", tag_push_events)
+            _setter("tag_push_events", tag_push_events)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -371,6 +443,10 @@ class SystemHook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SystemHookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

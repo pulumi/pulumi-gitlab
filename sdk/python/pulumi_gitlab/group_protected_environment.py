@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,13 +29,44 @@ class GroupProtectedEnvironmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash.
         :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
-        pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
-        pulumi.set(__self__, "environment", environment)
-        pulumi.set(__self__, "group", group)
+        GroupProtectedEnvironmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deploy_access_levels=deploy_access_levels,
+            environment=environment,
+            group=group,
+            approval_rules=approval_rules,
+            required_approval_count=required_approval_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None,
+             required_approval_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deploy_access_levels is None and 'deployAccessLevels' in kwargs:
+            deploy_access_levels = kwargs['deployAccessLevels']
+        if deploy_access_levels is None:
+            raise TypeError("Missing 'deploy_access_levels' argument")
+        if environment is None:
+            raise TypeError("Missing 'environment' argument")
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if approval_rules is None and 'approvalRules' in kwargs:
+            approval_rules = kwargs['approvalRules']
+        if required_approval_count is None and 'requiredApprovalCount' in kwargs:
+            required_approval_count = kwargs['requiredApprovalCount']
+
+        _setter("deploy_access_levels", deploy_access_levels)
+        _setter("environment", environment)
+        _setter("group", group)
         if approval_rules is not None:
-            pulumi.set(__self__, "approval_rules", approval_rules)
+            _setter("approval_rules", approval_rules)
         if required_approval_count is not None:
-            pulumi.set(__self__, "required_approval_count", required_approval_count)
+            _setter("required_approval_count", required_approval_count)
 
     @property
     @pulumi.getter(name="deployAccessLevels")
@@ -114,16 +145,41 @@ class _GroupProtectedEnvironmentState:
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
         :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
+        _GroupProtectedEnvironmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approval_rules=approval_rules,
+            deploy_access_levels=deploy_access_levels,
+            environment=environment,
+            group=group,
+            required_approval_count=required_approval_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None,
+             deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             required_approval_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if approval_rules is None and 'approvalRules' in kwargs:
+            approval_rules = kwargs['approvalRules']
+        if deploy_access_levels is None and 'deployAccessLevels' in kwargs:
+            deploy_access_levels = kwargs['deployAccessLevels']
+        if required_approval_count is None and 'requiredApprovalCount' in kwargs:
+            required_approval_count = kwargs['requiredApprovalCount']
+
         if approval_rules is not None:
-            pulumi.set(__self__, "approval_rules", approval_rules)
+            _setter("approval_rules", approval_rules)
         if deploy_access_levels is not None:
-            pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
+            _setter("deploy_access_levels", deploy_access_levels)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if required_approval_count is not None:
-            pulumi.set(__self__, "required_approval_count", required_approval_count)
+            _setter("required_approval_count", required_approval_count)
 
     @property
     @pulumi.getter(name="approvalRules")
@@ -257,6 +313,10 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupProtectedEnvironmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

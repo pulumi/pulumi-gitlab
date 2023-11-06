@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupProjectFileTemplateArgs', 'GroupProjectFileTemplate']
@@ -23,8 +23,29 @@ class GroupProjectFileTemplateArgs:
         :param pulumi.Input[int] group_id: The ID of the group that will use the file template project. This group must be the direct
                            parent of the project defined by project_id
         """
-        pulumi.set(__self__, "file_template_project_id", file_template_project_id)
-        pulumi.set(__self__, "group_id", group_id)
+        GroupProjectFileTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_template_project_id=file_template_project_id,
+            group_id=group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_template_project_id: Optional[pulumi.Input[int]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_template_project_id is None and 'fileTemplateProjectId' in kwargs:
+            file_template_project_id = kwargs['fileTemplateProjectId']
+        if file_template_project_id is None:
+            raise TypeError("Missing 'file_template_project_id' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+
+        _setter("file_template_project_id", file_template_project_id)
+        _setter("group_id", group_id)
 
     @property
     @pulumi.getter(name="fileTemplateProjectId")
@@ -65,10 +86,27 @@ class _GroupProjectFileTemplateState:
         :param pulumi.Input[int] group_id: The ID of the group that will use the file template project. This group must be the direct
                            parent of the project defined by project_id
         """
+        _GroupProjectFileTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_template_project_id=file_template_project_id,
+            group_id=group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_template_project_id: Optional[pulumi.Input[int]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_template_project_id is None and 'fileTemplateProjectId' in kwargs:
+            file_template_project_id = kwargs['fileTemplateProjectId']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         if file_template_project_id is not None:
-            pulumi.set(__self__, "file_template_project_id", file_template_project_id)
+            _setter("file_template_project_id", file_template_project_id)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
 
     @property
     @pulumi.getter(name="fileTemplateProjectId")
@@ -186,6 +224,10 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupProjectFileTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
