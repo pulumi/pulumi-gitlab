@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getGroups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
@@ -132,12 +131,6 @@ func (o GetGroupsResultOutput) ToGetGroupsResultOutput() GetGroupsResultOutput {
 
 func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Context) GetGroupsResultOutput {
 	return o
-}
-
-func (o GetGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsResult] {
-	return pulumix.Output[GetGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of groups.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ComplianceFramework` resource allows to manage the lifecycle of a compliance framework on top-level groups.
@@ -211,12 +210,6 @@ func (i *ComplianceFramework) ToComplianceFrameworkOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ComplianceFrameworkOutput)
 }
 
-func (i *ComplianceFramework) ToOutput(ctx context.Context) pulumix.Output[*ComplianceFramework] {
-	return pulumix.Output[*ComplianceFramework]{
-		OutputState: i.ToComplianceFrameworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ComplianceFrameworkArrayInput is an input type that accepts ComplianceFrameworkArray and ComplianceFrameworkArrayOutput values.
 // You can construct a concrete instance of `ComplianceFrameworkArrayInput` via:
 //
@@ -240,12 +233,6 @@ func (i ComplianceFrameworkArray) ToComplianceFrameworkArrayOutput() ComplianceF
 
 func (i ComplianceFrameworkArray) ToComplianceFrameworkArrayOutputWithContext(ctx context.Context) ComplianceFrameworkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComplianceFrameworkArrayOutput)
-}
-
-func (i ComplianceFrameworkArray) ToOutput(ctx context.Context) pulumix.Output[[]*ComplianceFramework] {
-	return pulumix.Output[[]*ComplianceFramework]{
-		OutputState: i.ToComplianceFrameworkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ComplianceFrameworkMapInput is an input type that accepts ComplianceFrameworkMap and ComplianceFrameworkMapOutput values.
@@ -273,12 +260,6 @@ func (i ComplianceFrameworkMap) ToComplianceFrameworkMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ComplianceFrameworkMapOutput)
 }
 
-func (i ComplianceFrameworkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComplianceFramework] {
-	return pulumix.Output[map[string]*ComplianceFramework]{
-		OutputState: i.ToComplianceFrameworkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ComplianceFrameworkOutput struct{ *pulumi.OutputState }
 
 func (ComplianceFrameworkOutput) ElementType() reflect.Type {
@@ -291,12 +272,6 @@ func (o ComplianceFrameworkOutput) ToComplianceFrameworkOutput() ComplianceFrame
 
 func (o ComplianceFrameworkOutput) ToComplianceFrameworkOutputWithContext(ctx context.Context) ComplianceFrameworkOutput {
 	return o
-}
-
-func (o ComplianceFrameworkOutput) ToOutput(ctx context.Context) pulumix.Output[*ComplianceFramework] {
-	return pulumix.Output[*ComplianceFramework]{
-		OutputState: o.OutputState,
-	}
 }
 
 // New color representation of the compliance framework in hex format. e.g. #FCA121.
@@ -348,12 +323,6 @@ func (o ComplianceFrameworkArrayOutput) ToComplianceFrameworkArrayOutputWithCont
 	return o
 }
 
-func (o ComplianceFrameworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ComplianceFramework] {
-	return pulumix.Output[[]*ComplianceFramework]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComplianceFrameworkArrayOutput) Index(i pulumi.IntInput) ComplianceFrameworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ComplianceFramework {
 		return vs[0].([]*ComplianceFramework)[vs[1].(int)]
@@ -372,12 +341,6 @@ func (o ComplianceFrameworkMapOutput) ToComplianceFrameworkMapOutput() Complianc
 
 func (o ComplianceFrameworkMapOutput) ToComplianceFrameworkMapOutputWithContext(ctx context.Context) ComplianceFrameworkMapOutput {
 	return o
-}
-
-func (o ComplianceFrameworkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComplianceFramework] {
-	return pulumix.Output[map[string]*ComplianceFramework]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComplianceFrameworkMapOutput) MapIndex(k pulumi.StringInput) ComplianceFrameworkOutput {

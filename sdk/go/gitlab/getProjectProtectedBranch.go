@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `gitlabProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
@@ -116,12 +115,6 @@ func (o GetProjectProtectedBranchResultOutput) ToGetProjectProtectedBranchResult
 
 func (o GetProjectProtectedBranchResultOutput) ToGetProjectProtectedBranchResultOutputWithContext(ctx context.Context) GetProjectProtectedBranchResultOutput {
 	return o
-}
-
-func (o GetProjectProtectedBranchResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectProtectedBranchResult] {
-	return pulumix.Output[GetProjectProtectedBranchResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether force push is allowed.

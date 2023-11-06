@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupCluster` resource allows to manage the lifecycle of a group cluster.
@@ -292,12 +291,6 @@ func (i *GroupCluster) ToGroupClusterOutputWithContext(ctx context.Context) Grou
 	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterOutput)
 }
 
-func (i *GroupCluster) ToOutput(ctx context.Context) pulumix.Output[*GroupCluster] {
-	return pulumix.Output[*GroupCluster]{
-		OutputState: i.ToGroupClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupClusterArrayInput is an input type that accepts GroupClusterArray and GroupClusterArrayOutput values.
 // You can construct a concrete instance of `GroupClusterArrayInput` via:
 //
@@ -321,12 +314,6 @@ func (i GroupClusterArray) ToGroupClusterArrayOutput() GroupClusterArrayOutput {
 
 func (i GroupClusterArray) ToGroupClusterArrayOutputWithContext(ctx context.Context) GroupClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterArrayOutput)
-}
-
-func (i GroupClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupCluster] {
-	return pulumix.Output[[]*GroupCluster]{
-		OutputState: i.ToGroupClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupClusterMapInput is an input type that accepts GroupClusterMap and GroupClusterMapOutput values.
@@ -354,12 +341,6 @@ func (i GroupClusterMap) ToGroupClusterMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterMapOutput)
 }
 
-func (i GroupClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupCluster] {
-	return pulumix.Output[map[string]*GroupCluster]{
-		OutputState: i.ToGroupClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupClusterOutput struct{ *pulumi.OutputState }
 
 func (GroupClusterOutput) ElementType() reflect.Type {
@@ -372,12 +353,6 @@ func (o GroupClusterOutput) ToGroupClusterOutput() GroupClusterOutput {
 
 func (o GroupClusterOutput) ToGroupClusterOutputWithContext(ctx context.Context) GroupClusterOutput {
 	return o
-}
-
-func (o GroupClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupCluster] {
-	return pulumix.Output[*GroupCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cluster type.
@@ -469,12 +444,6 @@ func (o GroupClusterArrayOutput) ToGroupClusterArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o GroupClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupCluster] {
-	return pulumix.Output[[]*GroupCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupClusterArrayOutput) Index(i pulumi.IntInput) GroupClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupCluster {
 		return vs[0].([]*GroupCluster)[vs[1].(int)]
@@ -493,12 +462,6 @@ func (o GroupClusterMapOutput) ToGroupClusterMapOutput() GroupClusterMapOutput {
 
 func (o GroupClusterMapOutput) ToGroupClusterMapOutputWithContext(ctx context.Context) GroupClusterMapOutput {
 	return o
-}
-
-func (o GroupClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupCluster] {
-	return pulumix.Output[map[string]*GroupCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupClusterMapOutput) MapIndex(k pulumi.StringInput) GroupClusterOutput {

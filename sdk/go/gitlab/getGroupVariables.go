@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getGroupVariables` data source allows to retrieve all group-level CI/CD variables.
@@ -112,12 +111,6 @@ func (o GetGroupVariablesResultOutput) ToGetGroupVariablesResultOutput() GetGrou
 
 func (o GetGroupVariablesResultOutput) ToGetGroupVariablesResultOutputWithContext(ctx context.Context) GetGroupVariablesResultOutput {
 	return o
-}
-
-func (o GetGroupVariablesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupVariablesResult] {
-	return pulumix.Output[GetGroupVariablesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`).

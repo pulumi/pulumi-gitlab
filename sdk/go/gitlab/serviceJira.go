@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ServiceJira` resource allows to manage the lifecycle of a project integration with Jira.
@@ -341,12 +340,6 @@ func (i *ServiceJira) ToServiceJiraOutputWithContext(ctx context.Context) Servic
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraOutput)
 }
 
-func (i *ServiceJira) ToOutput(ctx context.Context) pulumix.Output[*ServiceJira] {
-	return pulumix.Output[*ServiceJira]{
-		OutputState: i.ToServiceJiraOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceJiraArrayInput is an input type that accepts ServiceJiraArray and ServiceJiraArrayOutput values.
 // You can construct a concrete instance of `ServiceJiraArrayInput` via:
 //
@@ -370,12 +363,6 @@ func (i ServiceJiraArray) ToServiceJiraArrayOutput() ServiceJiraArrayOutput {
 
 func (i ServiceJiraArray) ToServiceJiraArrayOutputWithContext(ctx context.Context) ServiceJiraArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraArrayOutput)
-}
-
-func (i ServiceJiraArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceJira] {
-	return pulumix.Output[[]*ServiceJira]{
-		OutputState: i.ToServiceJiraArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceJiraMapInput is an input type that accepts ServiceJiraMap and ServiceJiraMapOutput values.
@@ -403,12 +390,6 @@ func (i ServiceJiraMap) ToServiceJiraMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraMapOutput)
 }
 
-func (i ServiceJiraMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceJira] {
-	return pulumix.Output[map[string]*ServiceJira]{
-		OutputState: i.ToServiceJiraMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceJiraOutput struct{ *pulumi.OutputState }
 
 func (ServiceJiraOutput) ElementType() reflect.Type {
@@ -421,12 +402,6 @@ func (o ServiceJiraOutput) ToServiceJiraOutput() ServiceJiraOutput {
 
 func (o ServiceJiraOutput) ToServiceJiraOutputWithContext(ctx context.Context) ServiceJiraOutput {
 	return o
-}
-
-func (o ServiceJiraOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceJira] {
-	return pulumix.Output[*ServiceJira]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the integration is active.
@@ -543,12 +518,6 @@ func (o ServiceJiraArrayOutput) ToServiceJiraArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ServiceJiraArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceJira] {
-	return pulumix.Output[[]*ServiceJira]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceJiraArrayOutput) Index(i pulumi.IntInput) ServiceJiraOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceJira {
 		return vs[0].([]*ServiceJira)[vs[1].(int)]
@@ -567,12 +536,6 @@ func (o ServiceJiraMapOutput) ToServiceJiraMapOutput() ServiceJiraMapOutput {
 
 func (o ServiceJiraMapOutput) ToServiceJiraMapOutputWithContext(ctx context.Context) ServiceJiraMapOutput {
 	return o
-}
-
-func (o ServiceJiraMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceJira] {
-	return pulumix.Output[map[string]*ServiceJira]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceJiraMapOutput) MapIndex(k pulumi.StringInput) ServiceJiraOutput {

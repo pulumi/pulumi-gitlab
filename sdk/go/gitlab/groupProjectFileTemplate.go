@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupProjectFileTemplate` resource allows setting a project from which
@@ -174,12 +173,6 @@ func (i *GroupProjectFileTemplate) ToGroupProjectFileTemplateOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(GroupProjectFileTemplateOutput)
 }
 
-func (i *GroupProjectFileTemplate) ToOutput(ctx context.Context) pulumix.Output[*GroupProjectFileTemplate] {
-	return pulumix.Output[*GroupProjectFileTemplate]{
-		OutputState: i.ToGroupProjectFileTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupProjectFileTemplateArrayInput is an input type that accepts GroupProjectFileTemplateArray and GroupProjectFileTemplateArrayOutput values.
 // You can construct a concrete instance of `GroupProjectFileTemplateArrayInput` via:
 //
@@ -203,12 +196,6 @@ func (i GroupProjectFileTemplateArray) ToGroupProjectFileTemplateArrayOutput() G
 
 func (i GroupProjectFileTemplateArray) ToGroupProjectFileTemplateArrayOutputWithContext(ctx context.Context) GroupProjectFileTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupProjectFileTemplateArrayOutput)
-}
-
-func (i GroupProjectFileTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupProjectFileTemplate] {
-	return pulumix.Output[[]*GroupProjectFileTemplate]{
-		OutputState: i.ToGroupProjectFileTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupProjectFileTemplateMapInput is an input type that accepts GroupProjectFileTemplateMap and GroupProjectFileTemplateMapOutput values.
@@ -236,12 +223,6 @@ func (i GroupProjectFileTemplateMap) ToGroupProjectFileTemplateMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GroupProjectFileTemplateMapOutput)
 }
 
-func (i GroupProjectFileTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupProjectFileTemplate] {
-	return pulumix.Output[map[string]*GroupProjectFileTemplate]{
-		OutputState: i.ToGroupProjectFileTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupProjectFileTemplateOutput struct{ *pulumi.OutputState }
 
 func (GroupProjectFileTemplateOutput) ElementType() reflect.Type {
@@ -254,12 +235,6 @@ func (o GroupProjectFileTemplateOutput) ToGroupProjectFileTemplateOutput() Group
 
 func (o GroupProjectFileTemplateOutput) ToGroupProjectFileTemplateOutputWithContext(ctx context.Context) GroupProjectFileTemplateOutput {
 	return o
-}
-
-func (o GroupProjectFileTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupProjectFileTemplate] {
-	return pulumix.Output[*GroupProjectFileTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the project that will be used for file templates. This project must be the direct
@@ -290,12 +265,6 @@ func (o GroupProjectFileTemplateArrayOutput) ToGroupProjectFileTemplateArrayOutp
 	return o
 }
 
-func (o GroupProjectFileTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupProjectFileTemplate] {
-	return pulumix.Output[[]*GroupProjectFileTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupProjectFileTemplateArrayOutput) Index(i pulumi.IntInput) GroupProjectFileTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupProjectFileTemplate {
 		return vs[0].([]*GroupProjectFileTemplate)[vs[1].(int)]
@@ -314,12 +283,6 @@ func (o GroupProjectFileTemplateMapOutput) ToGroupProjectFileTemplateMapOutput()
 
 func (o GroupProjectFileTemplateMapOutput) ToGroupProjectFileTemplateMapOutputWithContext(ctx context.Context) GroupProjectFileTemplateMapOutput {
 	return o
-}
-
-func (o GroupProjectFileTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupProjectFileTemplate] {
-	return pulumix.Output[map[string]*GroupProjectFileTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupProjectFileTemplateMapOutput) MapIndex(k pulumi.StringInput) GroupProjectFileTemplateOutput {
