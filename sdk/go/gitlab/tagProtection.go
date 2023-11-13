@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -181,12 +180,6 @@ func (i *TagProtection) ToTagProtectionOutputWithContext(ctx context.Context) Ta
 	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionOutput)
 }
 
-func (i *TagProtection) ToOutput(ctx context.Context) pulumix.Output[*TagProtection] {
-	return pulumix.Output[*TagProtection]{
-		OutputState: i.ToTagProtectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TagProtectionArrayInput is an input type that accepts TagProtectionArray and TagProtectionArrayOutput values.
 // You can construct a concrete instance of `TagProtectionArrayInput` via:
 //
@@ -210,12 +203,6 @@ func (i TagProtectionArray) ToTagProtectionArrayOutput() TagProtectionArrayOutpu
 
 func (i TagProtectionArray) ToTagProtectionArrayOutputWithContext(ctx context.Context) TagProtectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionArrayOutput)
-}
-
-func (i TagProtectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*TagProtection] {
-	return pulumix.Output[[]*TagProtection]{
-		OutputState: i.ToTagProtectionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TagProtectionMapInput is an input type that accepts TagProtectionMap and TagProtectionMapOutput values.
@@ -243,12 +230,6 @@ func (i TagProtectionMap) ToTagProtectionMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionMapOutput)
 }
 
-func (i TagProtectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagProtection] {
-	return pulumix.Output[map[string]*TagProtection]{
-		OutputState: i.ToTagProtectionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagProtectionOutput struct{ *pulumi.OutputState }
 
 func (TagProtectionOutput) ElementType() reflect.Type {
@@ -261,12 +242,6 @@ func (o TagProtectionOutput) ToTagProtectionOutput() TagProtectionOutput {
 
 func (o TagProtectionOutput) ToTagProtectionOutputWithContext(ctx context.Context) TagProtectionOutput {
 	return o
-}
-
-func (o TagProtectionOutput) ToOutput(ctx context.Context) pulumix.Output[*TagProtection] {
-	return pulumix.Output[*TagProtection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User or group which are allowed to create.
@@ -303,12 +278,6 @@ func (o TagProtectionArrayOutput) ToTagProtectionArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o TagProtectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TagProtection] {
-	return pulumix.Output[[]*TagProtection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TagProtectionArrayOutput) Index(i pulumi.IntInput) TagProtectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagProtection {
 		return vs[0].([]*TagProtection)[vs[1].(int)]
@@ -327,12 +296,6 @@ func (o TagProtectionMapOutput) ToTagProtectionMapOutput() TagProtectionMapOutpu
 
 func (o TagProtectionMapOutput) ToTagProtectionMapOutputWithContext(ctx context.Context) TagProtectionMapOutput {
 	return o
-}
-
-func (o TagProtectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagProtection] {
-	return pulumix.Output[map[string]*TagProtection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagProtectionMapOutput) MapIndex(k pulumi.StringInput) TagProtectionOutput {

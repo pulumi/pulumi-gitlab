@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `gitlabProjectLevelMrApprovalRule` resource allows to manage the lifecycle of a Merge Request-level approval rule.
@@ -217,12 +216,6 @@ func (i *ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLevelMrApprovalsOutput)
 }
 
-func (i *ProjectLevelMrApprovals) ToOutput(ctx context.Context) pulumix.Output[*ProjectLevelMrApprovals] {
-	return pulumix.Output[*ProjectLevelMrApprovals]{
-		OutputState: i.ToProjectLevelMrApprovalsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectLevelMrApprovalsArrayInput is an input type that accepts ProjectLevelMrApprovalsArray and ProjectLevelMrApprovalsArrayOutput values.
 // You can construct a concrete instance of `ProjectLevelMrApprovalsArrayInput` via:
 //
@@ -246,12 +239,6 @@ func (i ProjectLevelMrApprovalsArray) ToProjectLevelMrApprovalsArrayOutput() Pro
 
 func (i ProjectLevelMrApprovalsArray) ToProjectLevelMrApprovalsArrayOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLevelMrApprovalsArrayOutput)
-}
-
-func (i ProjectLevelMrApprovalsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectLevelMrApprovals] {
-	return pulumix.Output[[]*ProjectLevelMrApprovals]{
-		OutputState: i.ToProjectLevelMrApprovalsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectLevelMrApprovalsMapInput is an input type that accepts ProjectLevelMrApprovalsMap and ProjectLevelMrApprovalsMapOutput values.
@@ -279,12 +266,6 @@ func (i ProjectLevelMrApprovalsMap) ToProjectLevelMrApprovalsMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLevelMrApprovalsMapOutput)
 }
 
-func (i ProjectLevelMrApprovalsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectLevelMrApprovals] {
-	return pulumix.Output[map[string]*ProjectLevelMrApprovals]{
-		OutputState: i.ToProjectLevelMrApprovalsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectLevelMrApprovalsOutput struct{ *pulumi.OutputState }
 
 func (ProjectLevelMrApprovalsOutput) ElementType() reflect.Type {
@@ -297,12 +278,6 @@ func (o ProjectLevelMrApprovalsOutput) ToProjectLevelMrApprovalsOutput() Project
 
 func (o ProjectLevelMrApprovalsOutput) ToProjectLevelMrApprovalsOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsOutput {
 	return o
-}
-
-func (o ProjectLevelMrApprovalsOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectLevelMrApprovals] {
-	return pulumix.Output[*ProjectLevelMrApprovals]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set to `true` to disable overriding approvers per merge request.
@@ -354,12 +329,6 @@ func (o ProjectLevelMrApprovalsArrayOutput) ToProjectLevelMrApprovalsArrayOutput
 	return o
 }
 
-func (o ProjectLevelMrApprovalsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectLevelMrApprovals] {
-	return pulumix.Output[[]*ProjectLevelMrApprovals]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectLevelMrApprovalsArrayOutput) Index(i pulumi.IntInput) ProjectLevelMrApprovalsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectLevelMrApprovals {
 		return vs[0].([]*ProjectLevelMrApprovals)[vs[1].(int)]
@@ -378,12 +347,6 @@ func (o ProjectLevelMrApprovalsMapOutput) ToProjectLevelMrApprovalsMapOutput() P
 
 func (o ProjectLevelMrApprovalsMapOutput) ToProjectLevelMrApprovalsMapOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsMapOutput {
 	return o
-}
-
-func (o ProjectLevelMrApprovalsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectLevelMrApprovals] {
-	return pulumix.Output[map[string]*ProjectLevelMrApprovals]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectLevelMrApprovalsMapOutput) MapIndex(k pulumi.StringInput) ProjectLevelMrApprovalsOutput {

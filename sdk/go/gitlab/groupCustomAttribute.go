@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupCustomAttribute` resource allows to manage custom attributes for a group.
@@ -167,12 +166,6 @@ func (i *GroupCustomAttribute) ToGroupCustomAttributeOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GroupCustomAttributeOutput)
 }
 
-func (i *GroupCustomAttribute) ToOutput(ctx context.Context) pulumix.Output[*GroupCustomAttribute] {
-	return pulumix.Output[*GroupCustomAttribute]{
-		OutputState: i.ToGroupCustomAttributeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupCustomAttributeArrayInput is an input type that accepts GroupCustomAttributeArray and GroupCustomAttributeArrayOutput values.
 // You can construct a concrete instance of `GroupCustomAttributeArrayInput` via:
 //
@@ -196,12 +189,6 @@ func (i GroupCustomAttributeArray) ToGroupCustomAttributeArrayOutput() GroupCust
 
 func (i GroupCustomAttributeArray) ToGroupCustomAttributeArrayOutputWithContext(ctx context.Context) GroupCustomAttributeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupCustomAttributeArrayOutput)
-}
-
-func (i GroupCustomAttributeArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupCustomAttribute] {
-	return pulumix.Output[[]*GroupCustomAttribute]{
-		OutputState: i.ToGroupCustomAttributeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupCustomAttributeMapInput is an input type that accepts GroupCustomAttributeMap and GroupCustomAttributeMapOutput values.
@@ -229,12 +216,6 @@ func (i GroupCustomAttributeMap) ToGroupCustomAttributeMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GroupCustomAttributeMapOutput)
 }
 
-func (i GroupCustomAttributeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupCustomAttribute] {
-	return pulumix.Output[map[string]*GroupCustomAttribute]{
-		OutputState: i.ToGroupCustomAttributeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupCustomAttributeOutput struct{ *pulumi.OutputState }
 
 func (GroupCustomAttributeOutput) ElementType() reflect.Type {
@@ -247,12 +228,6 @@ func (o GroupCustomAttributeOutput) ToGroupCustomAttributeOutput() GroupCustomAt
 
 func (o GroupCustomAttributeOutput) ToGroupCustomAttributeOutputWithContext(ctx context.Context) GroupCustomAttributeOutput {
 	return o
-}
-
-func (o GroupCustomAttributeOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupCustomAttribute] {
-	return pulumix.Output[*GroupCustomAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the group.
@@ -284,12 +259,6 @@ func (o GroupCustomAttributeArrayOutput) ToGroupCustomAttributeArrayOutputWithCo
 	return o
 }
 
-func (o GroupCustomAttributeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupCustomAttribute] {
-	return pulumix.Output[[]*GroupCustomAttribute]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupCustomAttributeArrayOutput) Index(i pulumi.IntInput) GroupCustomAttributeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupCustomAttribute {
 		return vs[0].([]*GroupCustomAttribute)[vs[1].(int)]
@@ -308,12 +277,6 @@ func (o GroupCustomAttributeMapOutput) ToGroupCustomAttributeMapOutput() GroupCu
 
 func (o GroupCustomAttributeMapOutput) ToGroupCustomAttributeMapOutputWithContext(ctx context.Context) GroupCustomAttributeMapOutput {
 	return o
-}
-
-func (o GroupCustomAttributeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupCustomAttribute] {
-	return pulumix.Output[map[string]*GroupCustomAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupCustomAttributeMapOutput) MapIndex(k pulumi.StringInput) GroupCustomAttributeOutput {

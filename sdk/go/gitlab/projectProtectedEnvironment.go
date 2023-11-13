@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
@@ -163,12 +162,6 @@ func (i *ProjectProtectedEnvironment) ToProjectProtectedEnvironmentOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectProtectedEnvironmentOutput)
 }
 
-func (i *ProjectProtectedEnvironment) ToOutput(ctx context.Context) pulumix.Output[*ProjectProtectedEnvironment] {
-	return pulumix.Output[*ProjectProtectedEnvironment]{
-		OutputState: i.ToProjectProtectedEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectProtectedEnvironmentArrayInput is an input type that accepts ProjectProtectedEnvironmentArray and ProjectProtectedEnvironmentArrayOutput values.
 // You can construct a concrete instance of `ProjectProtectedEnvironmentArrayInput` via:
 //
@@ -192,12 +185,6 @@ func (i ProjectProtectedEnvironmentArray) ToProjectProtectedEnvironmentArrayOutp
 
 func (i ProjectProtectedEnvironmentArray) ToProjectProtectedEnvironmentArrayOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectProtectedEnvironmentArrayOutput)
-}
-
-func (i ProjectProtectedEnvironmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectProtectedEnvironment] {
-	return pulumix.Output[[]*ProjectProtectedEnvironment]{
-		OutputState: i.ToProjectProtectedEnvironmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectProtectedEnvironmentMapInput is an input type that accepts ProjectProtectedEnvironmentMap and ProjectProtectedEnvironmentMapOutput values.
@@ -225,12 +212,6 @@ func (i ProjectProtectedEnvironmentMap) ToProjectProtectedEnvironmentMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectProtectedEnvironmentMapOutput)
 }
 
-func (i ProjectProtectedEnvironmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectProtectedEnvironment] {
-	return pulumix.Output[map[string]*ProjectProtectedEnvironment]{
-		OutputState: i.ToProjectProtectedEnvironmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectProtectedEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (ProjectProtectedEnvironmentOutput) ElementType() reflect.Type {
@@ -243,12 +224,6 @@ func (o ProjectProtectedEnvironmentOutput) ToProjectProtectedEnvironmentOutput()
 
 func (o ProjectProtectedEnvironmentOutput) ToProjectProtectedEnvironmentOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentOutput {
 	return o
-}
-
-func (o ProjectProtectedEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectProtectedEnvironment] {
-	return pulumix.Output[*ProjectProtectedEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of approval rules to deploy, with each described by a hash.
@@ -294,12 +269,6 @@ func (o ProjectProtectedEnvironmentArrayOutput) ToProjectProtectedEnvironmentArr
 	return o
 }
 
-func (o ProjectProtectedEnvironmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectProtectedEnvironment] {
-	return pulumix.Output[[]*ProjectProtectedEnvironment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectProtectedEnvironmentArrayOutput) Index(i pulumi.IntInput) ProjectProtectedEnvironmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectProtectedEnvironment {
 		return vs[0].([]*ProjectProtectedEnvironment)[vs[1].(int)]
@@ -318,12 +287,6 @@ func (o ProjectProtectedEnvironmentMapOutput) ToProjectProtectedEnvironmentMapOu
 
 func (o ProjectProtectedEnvironmentMapOutput) ToProjectProtectedEnvironmentMapOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentMapOutput {
 	return o
-}
-
-func (o ProjectProtectedEnvironmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectProtectedEnvironment] {
-	return pulumix.Output[map[string]*ProjectProtectedEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectProtectedEnvironmentMapOutput) MapIndex(k pulumi.StringInput) ProjectProtectedEnvironmentOutput {

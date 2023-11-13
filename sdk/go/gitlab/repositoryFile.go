@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -290,12 +289,6 @@ func (i *RepositoryFile) ToRepositoryFileOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryFileOutput)
 }
 
-func (i *RepositoryFile) ToOutput(ctx context.Context) pulumix.Output[*RepositoryFile] {
-	return pulumix.Output[*RepositoryFile]{
-		OutputState: i.ToRepositoryFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryFileArrayInput is an input type that accepts RepositoryFileArray and RepositoryFileArrayOutput values.
 // You can construct a concrete instance of `RepositoryFileArrayInput` via:
 //
@@ -319,12 +312,6 @@ func (i RepositoryFileArray) ToRepositoryFileArrayOutput() RepositoryFileArrayOu
 
 func (i RepositoryFileArray) ToRepositoryFileArrayOutputWithContext(ctx context.Context) RepositoryFileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryFileArrayOutput)
-}
-
-func (i RepositoryFileArray) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryFile] {
-	return pulumix.Output[[]*RepositoryFile]{
-		OutputState: i.ToRepositoryFileArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RepositoryFileMapInput is an input type that accepts RepositoryFileMap and RepositoryFileMapOutput values.
@@ -352,12 +339,6 @@ func (i RepositoryFileMap) ToRepositoryFileMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryFileMapOutput)
 }
 
-func (i RepositoryFileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryFile] {
-	return pulumix.Output[map[string]*RepositoryFile]{
-		OutputState: i.ToRepositoryFileMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryFileOutput struct{ *pulumi.OutputState }
 
 func (RepositoryFileOutput) ElementType() reflect.Type {
@@ -370,12 +351,6 @@ func (o RepositoryFileOutput) ToRepositoryFileOutput() RepositoryFileOutput {
 
 func (o RepositoryFileOutput) ToRepositoryFileOutputWithContext(ctx context.Context) RepositoryFileOutput {
 	return o
-}
-
-func (o RepositoryFileOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryFile] {
-	return pulumix.Output[*RepositoryFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email of the commit author.
@@ -497,12 +472,6 @@ func (o RepositoryFileArrayOutput) ToRepositoryFileArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o RepositoryFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryFile] {
-	return pulumix.Output[[]*RepositoryFile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryFileArrayOutput) Index(i pulumi.IntInput) RepositoryFileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RepositoryFile {
 		return vs[0].([]*RepositoryFile)[vs[1].(int)]
@@ -521,12 +490,6 @@ func (o RepositoryFileMapOutput) ToRepositoryFileMapOutput() RepositoryFileMapOu
 
 func (o RepositoryFileMapOutput) ToRepositoryFileMapOutputWithContext(ctx context.Context) RepositoryFileMapOutput {
 	return o
-}
-
-func (o RepositoryFileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryFile] {
-	return pulumix.Output[map[string]*RepositoryFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryFileMapOutput) MapIndex(k pulumi.StringInput) RepositoryFileOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getInstanceDeployKeys` data source allows to retrieve a list of deploy keys for a GitLab instance.
@@ -105,12 +104,6 @@ func (o GetInstanceDeployKeysResultOutput) ToGetInstanceDeployKeysResultOutput()
 
 func (o GetInstanceDeployKeysResultOutput) ToGetInstanceDeployKeysResultOutputWithContext(ctx context.Context) GetInstanceDeployKeysResultOutput {
 	return o
-}
-
-func (o GetInstanceDeployKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceDeployKeysResult] {
-	return pulumix.Output[GetInstanceDeployKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of all deploy keys across all projects of the GitLab instance.

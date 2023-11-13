@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectCustomAttribute` resource allows to manage custom attributes for a project.
@@ -167,12 +166,6 @@ func (i *ProjectCustomAttribute) ToProjectCustomAttributeOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomAttributeOutput)
 }
 
-func (i *ProjectCustomAttribute) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomAttribute] {
-	return pulumix.Output[*ProjectCustomAttribute]{
-		OutputState: i.ToProjectCustomAttributeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectCustomAttributeArrayInput is an input type that accepts ProjectCustomAttributeArray and ProjectCustomAttributeArrayOutput values.
 // You can construct a concrete instance of `ProjectCustomAttributeArrayInput` via:
 //
@@ -196,12 +189,6 @@ func (i ProjectCustomAttributeArray) ToProjectCustomAttributeArrayOutput() Proje
 
 func (i ProjectCustomAttributeArray) ToProjectCustomAttributeArrayOutputWithContext(ctx context.Context) ProjectCustomAttributeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomAttributeArrayOutput)
-}
-
-func (i ProjectCustomAttributeArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectCustomAttribute] {
-	return pulumix.Output[[]*ProjectCustomAttribute]{
-		OutputState: i.ToProjectCustomAttributeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectCustomAttributeMapInput is an input type that accepts ProjectCustomAttributeMap and ProjectCustomAttributeMapOutput values.
@@ -229,12 +216,6 @@ func (i ProjectCustomAttributeMap) ToProjectCustomAttributeMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectCustomAttributeMapOutput)
 }
 
-func (i ProjectCustomAttributeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectCustomAttribute] {
-	return pulumix.Output[map[string]*ProjectCustomAttribute]{
-		OutputState: i.ToProjectCustomAttributeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectCustomAttributeOutput struct{ *pulumi.OutputState }
 
 func (ProjectCustomAttributeOutput) ElementType() reflect.Type {
@@ -247,12 +228,6 @@ func (o ProjectCustomAttributeOutput) ToProjectCustomAttributeOutput() ProjectCu
 
 func (o ProjectCustomAttributeOutput) ToProjectCustomAttributeOutputWithContext(ctx context.Context) ProjectCustomAttributeOutput {
 	return o
-}
-
-func (o ProjectCustomAttributeOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectCustomAttribute] {
-	return pulumix.Output[*ProjectCustomAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key for the Custom Attribute.
@@ -284,12 +259,6 @@ func (o ProjectCustomAttributeArrayOutput) ToProjectCustomAttributeArrayOutputWi
 	return o
 }
 
-func (o ProjectCustomAttributeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectCustomAttribute] {
-	return pulumix.Output[[]*ProjectCustomAttribute]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectCustomAttributeArrayOutput) Index(i pulumi.IntInput) ProjectCustomAttributeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectCustomAttribute {
 		return vs[0].([]*ProjectCustomAttribute)[vs[1].(int)]
@@ -308,12 +277,6 @@ func (o ProjectCustomAttributeMapOutput) ToProjectCustomAttributeMapOutput() Pro
 
 func (o ProjectCustomAttributeMapOutput) ToProjectCustomAttributeMapOutputWithContext(ctx context.Context) ProjectCustomAttributeMapOutput {
 	return o
-}
-
-func (o ProjectCustomAttributeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectCustomAttribute] {
-	return pulumix.Output[map[string]*ProjectCustomAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectCustomAttributeMapOutput) MapIndex(k pulumi.StringInput) ProjectCustomAttributeOutput {

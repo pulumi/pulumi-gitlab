@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
@@ -81,12 +80,6 @@ func (o GetUserSshkeysResultOutput) ToGetUserSshkeysResultOutput() GetUserSshkey
 
 func (o GetUserSshkeysResultOutput) ToGetUserSshkeysResultOutputWithContext(ctx context.Context) GetUserSshkeysResultOutput {
 	return o
-}
-
-func (o GetUserSshkeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserSshkeysResult] {
-	return pulumix.Output[GetUserSshkeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

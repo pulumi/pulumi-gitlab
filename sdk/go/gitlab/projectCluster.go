@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectCluster` resource allows to manage the lifecycle of a project cluster.
@@ -301,12 +300,6 @@ func (i *ProjectCluster) ToProjectClusterOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectClusterOutput)
 }
 
-func (i *ProjectCluster) ToOutput(ctx context.Context) pulumix.Output[*ProjectCluster] {
-	return pulumix.Output[*ProjectCluster]{
-		OutputState: i.ToProjectClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectClusterArrayInput is an input type that accepts ProjectClusterArray and ProjectClusterArrayOutput values.
 // You can construct a concrete instance of `ProjectClusterArrayInput` via:
 //
@@ -330,12 +323,6 @@ func (i ProjectClusterArray) ToProjectClusterArrayOutput() ProjectClusterArrayOu
 
 func (i ProjectClusterArray) ToProjectClusterArrayOutputWithContext(ctx context.Context) ProjectClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectClusterArrayOutput)
-}
-
-func (i ProjectClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectCluster] {
-	return pulumix.Output[[]*ProjectCluster]{
-		OutputState: i.ToProjectClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectClusterMapInput is an input type that accepts ProjectClusterMap and ProjectClusterMapOutput values.
@@ -363,12 +350,6 @@ func (i ProjectClusterMap) ToProjectClusterMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectClusterMapOutput)
 }
 
-func (i ProjectClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectCluster] {
-	return pulumix.Output[map[string]*ProjectCluster]{
-		OutputState: i.ToProjectClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectClusterOutput struct{ *pulumi.OutputState }
 
 func (ProjectClusterOutput) ElementType() reflect.Type {
@@ -381,12 +362,6 @@ func (o ProjectClusterOutput) ToProjectClusterOutput() ProjectClusterOutput {
 
 func (o ProjectClusterOutput) ToProjectClusterOutputWithContext(ctx context.Context) ProjectClusterOutput {
 	return o
-}
-
-func (o ProjectClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectCluster] {
-	return pulumix.Output[*ProjectCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cluster type.
@@ -483,12 +458,6 @@ func (o ProjectClusterArrayOutput) ToProjectClusterArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ProjectClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectCluster] {
-	return pulumix.Output[[]*ProjectCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectClusterArrayOutput) Index(i pulumi.IntInput) ProjectClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectCluster {
 		return vs[0].([]*ProjectCluster)[vs[1].(int)]
@@ -507,12 +476,6 @@ func (o ProjectClusterMapOutput) ToProjectClusterMapOutput() ProjectClusterMapOu
 
 func (o ProjectClusterMapOutput) ToProjectClusterMapOutputWithContext(ctx context.Context) ProjectClusterMapOutput {
 	return o
-}
-
-func (o ProjectClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectCluster] {
-	return pulumix.Output[map[string]*ProjectCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectClusterMapOutput) MapIndex(k pulumi.StringInput) ProjectClusterOutput {

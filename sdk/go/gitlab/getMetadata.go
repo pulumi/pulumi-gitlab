@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getMetadata` data source retrieves the metadata of the GitLab instance.
@@ -87,12 +86,6 @@ func (o GetMetadataResultOutput) ToGetMetadataResultOutput() GetMetadataResultOu
 
 func (o GetMetadataResultOutput) ToGetMetadataResultOutputWithContext(ctx context.Context) GetMetadataResultOutput {
 	return o
-}
-
-func (o GetMetadataResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetadataResult] {
-	return pulumix.Output[GetMetadataResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the GitLab instance is an enterprise instance or not. Supported for GitLab 15.6 onwards.
