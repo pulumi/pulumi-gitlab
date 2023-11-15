@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `DeployKeyEnable` resource allows to enable an already existing deploy key (see `DeployKey resource`) for a specific project.
@@ -205,12 +204,6 @@ func (i *DeployKeyEnable) ToDeployKeyEnableOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DeployKeyEnableOutput)
 }
 
-func (i *DeployKeyEnable) ToOutput(ctx context.Context) pulumix.Output[*DeployKeyEnable] {
-	return pulumix.Output[*DeployKeyEnable]{
-		OutputState: i.ToDeployKeyEnableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeployKeyEnableArrayInput is an input type that accepts DeployKeyEnableArray and DeployKeyEnableArrayOutput values.
 // You can construct a concrete instance of `DeployKeyEnableArrayInput` via:
 //
@@ -234,12 +227,6 @@ func (i DeployKeyEnableArray) ToDeployKeyEnableArrayOutput() DeployKeyEnableArra
 
 func (i DeployKeyEnableArray) ToDeployKeyEnableArrayOutputWithContext(ctx context.Context) DeployKeyEnableArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeployKeyEnableArrayOutput)
-}
-
-func (i DeployKeyEnableArray) ToOutput(ctx context.Context) pulumix.Output[[]*DeployKeyEnable] {
-	return pulumix.Output[[]*DeployKeyEnable]{
-		OutputState: i.ToDeployKeyEnableArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DeployKeyEnableMapInput is an input type that accepts DeployKeyEnableMap and DeployKeyEnableMapOutput values.
@@ -267,12 +254,6 @@ func (i DeployKeyEnableMap) ToDeployKeyEnableMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DeployKeyEnableMapOutput)
 }
 
-func (i DeployKeyEnableMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeployKeyEnable] {
-	return pulumix.Output[map[string]*DeployKeyEnable]{
-		OutputState: i.ToDeployKeyEnableMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeployKeyEnableOutput struct{ *pulumi.OutputState }
 
 func (DeployKeyEnableOutput) ElementType() reflect.Type {
@@ -285,12 +266,6 @@ func (o DeployKeyEnableOutput) ToDeployKeyEnableOutput() DeployKeyEnableOutput {
 
 func (o DeployKeyEnableOutput) ToDeployKeyEnableOutputWithContext(ctx context.Context) DeployKeyEnableOutput {
 	return o
-}
-
-func (o DeployKeyEnableOutput) ToOutput(ctx context.Context) pulumix.Output[*DeployKeyEnable] {
-	return pulumix.Output[*DeployKeyEnable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Can deploy key push to the project's repository.
@@ -332,12 +307,6 @@ func (o DeployKeyEnableArrayOutput) ToDeployKeyEnableArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o DeployKeyEnableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DeployKeyEnable] {
-	return pulumix.Output[[]*DeployKeyEnable]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeployKeyEnableArrayOutput) Index(i pulumi.IntInput) DeployKeyEnableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeployKeyEnable {
 		return vs[0].([]*DeployKeyEnable)[vs[1].(int)]
@@ -356,12 +325,6 @@ func (o DeployKeyEnableMapOutput) ToDeployKeyEnableMapOutput() DeployKeyEnableMa
 
 func (o DeployKeyEnableMapOutput) ToDeployKeyEnableMapOutputWithContext(ctx context.Context) DeployKeyEnableMapOutput {
 	return o
-}
-
-func (o DeployKeyEnableMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeployKeyEnable] {
-	return pulumix.Output[map[string]*DeployKeyEnable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeployKeyEnableMapOutput) MapIndex(k pulumi.StringInput) DeployKeyEnableOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
@@ -132,12 +131,6 @@ func (o LookupGroupVariableResultOutput) ToLookupGroupVariableResultOutput() Loo
 
 func (o LookupGroupVariableResultOutput) ToLookupGroupVariableResultOutputWithContext(ctx context.Context) LookupGroupVariableResultOutput {
 	return o
-}
-
-func (o LookupGroupVariableResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupVariableResult] {
-	return pulumix.Output[LookupGroupVariableResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.

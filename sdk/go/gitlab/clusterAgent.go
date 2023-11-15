@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ClusterAgent` resource allows to manage the lifecycle of a GitLab Agent for Kubernetes.
@@ -195,12 +194,6 @@ func (i *ClusterAgent) ToClusterAgentOutputWithContext(ctx context.Context) Clus
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAgentOutput)
 }
 
-func (i *ClusterAgent) ToOutput(ctx context.Context) pulumix.Output[*ClusterAgent] {
-	return pulumix.Output[*ClusterAgent]{
-		OutputState: i.ToClusterAgentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterAgentArrayInput is an input type that accepts ClusterAgentArray and ClusterAgentArrayOutput values.
 // You can construct a concrete instance of `ClusterAgentArrayInput` via:
 //
@@ -224,12 +217,6 @@ func (i ClusterAgentArray) ToClusterAgentArrayOutput() ClusterAgentArrayOutput {
 
 func (i ClusterAgentArray) ToClusterAgentArrayOutputWithContext(ctx context.Context) ClusterAgentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAgentArrayOutput)
-}
-
-func (i ClusterAgentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterAgent] {
-	return pulumix.Output[[]*ClusterAgent]{
-		OutputState: i.ToClusterAgentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClusterAgentMapInput is an input type that accepts ClusterAgentMap and ClusterAgentMapOutput values.
@@ -257,12 +244,6 @@ func (i ClusterAgentMap) ToClusterAgentMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAgentMapOutput)
 }
 
-func (i ClusterAgentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterAgent] {
-	return pulumix.Output[map[string]*ClusterAgent]{
-		OutputState: i.ToClusterAgentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterAgentOutput struct{ *pulumi.OutputState }
 
 func (ClusterAgentOutput) ElementType() reflect.Type {
@@ -275,12 +256,6 @@ func (o ClusterAgentOutput) ToClusterAgentOutput() ClusterAgentOutput {
 
 func (o ClusterAgentOutput) ToClusterAgentOutputWithContext(ctx context.Context) ClusterAgentOutput {
 	return o
-}
-
-func (o ClusterAgentOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterAgent] {
-	return pulumix.Output[*ClusterAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the agent.
@@ -322,12 +297,6 @@ func (o ClusterAgentArrayOutput) ToClusterAgentArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o ClusterAgentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterAgent] {
-	return pulumix.Output[[]*ClusterAgent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterAgentArrayOutput) Index(i pulumi.IntInput) ClusterAgentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterAgent {
 		return vs[0].([]*ClusterAgent)[vs[1].(int)]
@@ -346,12 +315,6 @@ func (o ClusterAgentMapOutput) ToClusterAgentMapOutput() ClusterAgentMapOutput {
 
 func (o ClusterAgentMapOutput) ToClusterAgentMapOutputWithContext(ctx context.Context) ClusterAgentMapOutput {
 	return o
-}
-
-func (o ClusterAgentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterAgent] {
-	return pulumix.Output[map[string]*ClusterAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterAgentMapOutput) MapIndex(k pulumi.StringInput) ClusterAgentOutput {

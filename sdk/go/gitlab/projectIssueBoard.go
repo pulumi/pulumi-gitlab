@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectIssueBoard` resource allows to manage the lifecycle of a Project Issue Board.
@@ -175,12 +174,6 @@ func (i *ProjectIssueBoard) ToProjectIssueBoardOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectIssueBoardOutput)
 }
 
-func (i *ProjectIssueBoard) ToOutput(ctx context.Context) pulumix.Output[*ProjectIssueBoard] {
-	return pulumix.Output[*ProjectIssueBoard]{
-		OutputState: i.ToProjectIssueBoardOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectIssueBoardArrayInput is an input type that accepts ProjectIssueBoardArray and ProjectIssueBoardArrayOutput values.
 // You can construct a concrete instance of `ProjectIssueBoardArrayInput` via:
 //
@@ -204,12 +197,6 @@ func (i ProjectIssueBoardArray) ToProjectIssueBoardArrayOutput() ProjectIssueBoa
 
 func (i ProjectIssueBoardArray) ToProjectIssueBoardArrayOutputWithContext(ctx context.Context) ProjectIssueBoardArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectIssueBoardArrayOutput)
-}
-
-func (i ProjectIssueBoardArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectIssueBoard] {
-	return pulumix.Output[[]*ProjectIssueBoard]{
-		OutputState: i.ToProjectIssueBoardArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectIssueBoardMapInput is an input type that accepts ProjectIssueBoardMap and ProjectIssueBoardMapOutput values.
@@ -237,12 +224,6 @@ func (i ProjectIssueBoardMap) ToProjectIssueBoardMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectIssueBoardMapOutput)
 }
 
-func (i ProjectIssueBoardMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectIssueBoard] {
-	return pulumix.Output[map[string]*ProjectIssueBoard]{
-		OutputState: i.ToProjectIssueBoardMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectIssueBoardOutput struct{ *pulumi.OutputState }
 
 func (ProjectIssueBoardOutput) ElementType() reflect.Type {
@@ -255,12 +236,6 @@ func (o ProjectIssueBoardOutput) ToProjectIssueBoardOutput() ProjectIssueBoardOu
 
 func (o ProjectIssueBoardOutput) ToProjectIssueBoardOutputWithContext(ctx context.Context) ProjectIssueBoardOutput {
 	return o
-}
-
-func (o ProjectIssueBoardOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectIssueBoard] {
-	return pulumix.Output[*ProjectIssueBoard]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
@@ -312,12 +287,6 @@ func (o ProjectIssueBoardArrayOutput) ToProjectIssueBoardArrayOutputWithContext(
 	return o
 }
 
-func (o ProjectIssueBoardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectIssueBoard] {
-	return pulumix.Output[[]*ProjectIssueBoard]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectIssueBoardArrayOutput) Index(i pulumi.IntInput) ProjectIssueBoardOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectIssueBoard {
 		return vs[0].([]*ProjectIssueBoard)[vs[1].(int)]
@@ -336,12 +305,6 @@ func (o ProjectIssueBoardMapOutput) ToProjectIssueBoardMapOutput() ProjectIssueB
 
 func (o ProjectIssueBoardMapOutput) ToProjectIssueBoardMapOutputWithContext(ctx context.Context) ProjectIssueBoardMapOutput {
 	return o
-}
-
-func (o ProjectIssueBoardMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectIssueBoard] {
-	return pulumix.Output[map[string]*ProjectIssueBoard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectIssueBoardMapOutput) MapIndex(k pulumi.StringInput) ProjectIssueBoardOutput {

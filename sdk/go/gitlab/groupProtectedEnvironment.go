@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
@@ -165,12 +164,6 @@ func (i *GroupProtectedEnvironment) ToGroupProtectedEnvironmentOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(GroupProtectedEnvironmentOutput)
 }
 
-func (i *GroupProtectedEnvironment) ToOutput(ctx context.Context) pulumix.Output[*GroupProtectedEnvironment] {
-	return pulumix.Output[*GroupProtectedEnvironment]{
-		OutputState: i.ToGroupProtectedEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupProtectedEnvironmentArrayInput is an input type that accepts GroupProtectedEnvironmentArray and GroupProtectedEnvironmentArrayOutput values.
 // You can construct a concrete instance of `GroupProtectedEnvironmentArrayInput` via:
 //
@@ -194,12 +187,6 @@ func (i GroupProtectedEnvironmentArray) ToGroupProtectedEnvironmentArrayOutput()
 
 func (i GroupProtectedEnvironmentArray) ToGroupProtectedEnvironmentArrayOutputWithContext(ctx context.Context) GroupProtectedEnvironmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupProtectedEnvironmentArrayOutput)
-}
-
-func (i GroupProtectedEnvironmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupProtectedEnvironment] {
-	return pulumix.Output[[]*GroupProtectedEnvironment]{
-		OutputState: i.ToGroupProtectedEnvironmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupProtectedEnvironmentMapInput is an input type that accepts GroupProtectedEnvironmentMap and GroupProtectedEnvironmentMapOutput values.
@@ -227,12 +214,6 @@ func (i GroupProtectedEnvironmentMap) ToGroupProtectedEnvironmentMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GroupProtectedEnvironmentMapOutput)
 }
 
-func (i GroupProtectedEnvironmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupProtectedEnvironment] {
-	return pulumix.Output[map[string]*GroupProtectedEnvironment]{
-		OutputState: i.ToGroupProtectedEnvironmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupProtectedEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (GroupProtectedEnvironmentOutput) ElementType() reflect.Type {
@@ -245,12 +226,6 @@ func (o GroupProtectedEnvironmentOutput) ToGroupProtectedEnvironmentOutput() Gro
 
 func (o GroupProtectedEnvironmentOutput) ToGroupProtectedEnvironmentOutputWithContext(ctx context.Context) GroupProtectedEnvironmentOutput {
 	return o
-}
-
-func (o GroupProtectedEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupProtectedEnvironment] {
-	return pulumix.Output[*GroupProtectedEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of approval rules to deploy, with each described by a hash.
@@ -296,12 +271,6 @@ func (o GroupProtectedEnvironmentArrayOutput) ToGroupProtectedEnvironmentArrayOu
 	return o
 }
 
-func (o GroupProtectedEnvironmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupProtectedEnvironment] {
-	return pulumix.Output[[]*GroupProtectedEnvironment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupProtectedEnvironmentArrayOutput) Index(i pulumi.IntInput) GroupProtectedEnvironmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupProtectedEnvironment {
 		return vs[0].([]*GroupProtectedEnvironment)[vs[1].(int)]
@@ -320,12 +289,6 @@ func (o GroupProtectedEnvironmentMapOutput) ToGroupProtectedEnvironmentMapOutput
 
 func (o GroupProtectedEnvironmentMapOutput) ToGroupProtectedEnvironmentMapOutputWithContext(ctx context.Context) GroupProtectedEnvironmentMapOutput {
 	return o
-}
-
-func (o GroupProtectedEnvironmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupProtectedEnvironment] {
-	return pulumix.Output[map[string]*GroupProtectedEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupProtectedEnvironmentMapOutput) MapIndex(k pulumi.StringInput) GroupProtectedEnvironmentOutput {

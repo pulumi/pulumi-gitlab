@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `Branch` data source allows details of a repository branch to be retrieved by its name and project.
@@ -124,12 +123,6 @@ func (o LookupBranchResultOutput) ToLookupBranchResultOutput() LookupBranchResul
 
 func (o LookupBranchResultOutput) ToLookupBranchResultOutputWithContext(ctx context.Context) LookupBranchResultOutput {
 	return o
-}
-
-func (o LookupBranchResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBranchResult] {
-	return pulumix.Output[LookupBranchResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bool, true if you can push to the branch.

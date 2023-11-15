@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.
@@ -190,12 +189,6 @@ func (i *PipelineScheduleVariable) ToPipelineScheduleVariableOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariableOutput)
 }
 
-func (i *PipelineScheduleVariable) ToOutput(ctx context.Context) pulumix.Output[*PipelineScheduleVariable] {
-	return pulumix.Output[*PipelineScheduleVariable]{
-		OutputState: i.ToPipelineScheduleVariableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PipelineScheduleVariableArrayInput is an input type that accepts PipelineScheduleVariableArray and PipelineScheduleVariableArrayOutput values.
 // You can construct a concrete instance of `PipelineScheduleVariableArrayInput` via:
 //
@@ -219,12 +212,6 @@ func (i PipelineScheduleVariableArray) ToPipelineScheduleVariableArrayOutput() P
 
 func (i PipelineScheduleVariableArray) ToPipelineScheduleVariableArrayOutputWithContext(ctx context.Context) PipelineScheduleVariableArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariableArrayOutput)
-}
-
-func (i PipelineScheduleVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]*PipelineScheduleVariable] {
-	return pulumix.Output[[]*PipelineScheduleVariable]{
-		OutputState: i.ToPipelineScheduleVariableArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PipelineScheduleVariableMapInput is an input type that accepts PipelineScheduleVariableMap and PipelineScheduleVariableMapOutput values.
@@ -252,12 +239,6 @@ func (i PipelineScheduleVariableMap) ToPipelineScheduleVariableMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariableMapOutput)
 }
 
-func (i PipelineScheduleVariableMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PipelineScheduleVariable] {
-	return pulumix.Output[map[string]*PipelineScheduleVariable]{
-		OutputState: i.ToPipelineScheduleVariableMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PipelineScheduleVariableOutput struct{ *pulumi.OutputState }
 
 func (PipelineScheduleVariableOutput) ElementType() reflect.Type {
@@ -270,12 +251,6 @@ func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariableOutput() Pipel
 
 func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariableOutputWithContext(ctx context.Context) PipelineScheduleVariableOutput {
 	return o
-}
-
-func (o PipelineScheduleVariableOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineScheduleVariable] {
-	return pulumix.Output[*PipelineScheduleVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the variable.
@@ -312,12 +287,6 @@ func (o PipelineScheduleVariableArrayOutput) ToPipelineScheduleVariableArrayOutp
 	return o
 }
 
-func (o PipelineScheduleVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PipelineScheduleVariable] {
-	return pulumix.Output[[]*PipelineScheduleVariable]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PipelineScheduleVariableArrayOutput) Index(i pulumi.IntInput) PipelineScheduleVariableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PipelineScheduleVariable {
 		return vs[0].([]*PipelineScheduleVariable)[vs[1].(int)]
@@ -336,12 +305,6 @@ func (o PipelineScheduleVariableMapOutput) ToPipelineScheduleVariableMapOutput()
 
 func (o PipelineScheduleVariableMapOutput) ToPipelineScheduleVariableMapOutputWithContext(ctx context.Context) PipelineScheduleVariableMapOutput {
 	return o
-}
-
-func (o PipelineScheduleVariableMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PipelineScheduleVariable] {
-	return pulumix.Output[map[string]*PipelineScheduleVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineScheduleVariableMapOutput) MapIndex(k pulumi.StringInput) PipelineScheduleVariableOutput {

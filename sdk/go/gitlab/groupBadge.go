@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupBadge` resource allows to manage the lifecycle of group badges.
@@ -217,12 +216,6 @@ func (i *GroupBadge) ToGroupBadgeOutputWithContext(ctx context.Context) GroupBad
 	return pulumi.ToOutputWithContext(ctx, i).(GroupBadgeOutput)
 }
 
-func (i *GroupBadge) ToOutput(ctx context.Context) pulumix.Output[*GroupBadge] {
-	return pulumix.Output[*GroupBadge]{
-		OutputState: i.ToGroupBadgeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupBadgeArrayInput is an input type that accepts GroupBadgeArray and GroupBadgeArrayOutput values.
 // You can construct a concrete instance of `GroupBadgeArrayInput` via:
 //
@@ -246,12 +239,6 @@ func (i GroupBadgeArray) ToGroupBadgeArrayOutput() GroupBadgeArrayOutput {
 
 func (i GroupBadgeArray) ToGroupBadgeArrayOutputWithContext(ctx context.Context) GroupBadgeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupBadgeArrayOutput)
-}
-
-func (i GroupBadgeArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupBadge] {
-	return pulumix.Output[[]*GroupBadge]{
-		OutputState: i.ToGroupBadgeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupBadgeMapInput is an input type that accepts GroupBadgeMap and GroupBadgeMapOutput values.
@@ -279,12 +266,6 @@ func (i GroupBadgeMap) ToGroupBadgeMapOutputWithContext(ctx context.Context) Gro
 	return pulumi.ToOutputWithContext(ctx, i).(GroupBadgeMapOutput)
 }
 
-func (i GroupBadgeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupBadge] {
-	return pulumix.Output[map[string]*GroupBadge]{
-		OutputState: i.ToGroupBadgeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupBadgeOutput struct{ *pulumi.OutputState }
 
 func (GroupBadgeOutput) ElementType() reflect.Type {
@@ -297,12 +278,6 @@ func (o GroupBadgeOutput) ToGroupBadgeOutput() GroupBadgeOutput {
 
 func (o GroupBadgeOutput) ToGroupBadgeOutputWithContext(ctx context.Context) GroupBadgeOutput {
 	return o
-}
-
-func (o GroupBadgeOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupBadge] {
-	return pulumix.Output[*GroupBadge]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the group to add the badge to.
@@ -349,12 +324,6 @@ func (o GroupBadgeArrayOutput) ToGroupBadgeArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o GroupBadgeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupBadge] {
-	return pulumix.Output[[]*GroupBadge]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupBadgeArrayOutput) Index(i pulumi.IntInput) GroupBadgeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupBadge {
 		return vs[0].([]*GroupBadge)[vs[1].(int)]
@@ -373,12 +342,6 @@ func (o GroupBadgeMapOutput) ToGroupBadgeMapOutput() GroupBadgeMapOutput {
 
 func (o GroupBadgeMapOutput) ToGroupBadgeMapOutputWithContext(ctx context.Context) GroupBadgeMapOutput {
 	return o
-}
-
-func (o GroupBadgeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupBadge] {
-	return pulumix.Output[map[string]*GroupBadge]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupBadgeMapOutput) MapIndex(k pulumi.StringInput) GroupBadgeOutput {

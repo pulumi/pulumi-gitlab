@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getProjectMilestones` data source allows get details of a project milestones.
@@ -127,12 +126,6 @@ func (o GetProjectMilestonesResultOutput) ToGetProjectMilestonesResultOutput() G
 
 func (o GetProjectMilestonesResultOutput) ToGetProjectMilestonesResultOutputWithContext(ctx context.Context) GetProjectMilestonesResultOutput {
 	return o
-}
-
-func (o GetProjectMilestonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectMilestonesResult] {
-	return pulumix.Output[GetProjectMilestonesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

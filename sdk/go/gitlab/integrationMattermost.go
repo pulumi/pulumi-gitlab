@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
@@ -373,12 +372,6 @@ func (i *IntegrationMattermost) ToIntegrationMattermostOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMattermostOutput)
 }
 
-func (i *IntegrationMattermost) ToOutput(ctx context.Context) pulumix.Output[*IntegrationMattermost] {
-	return pulumix.Output[*IntegrationMattermost]{
-		OutputState: i.ToIntegrationMattermostOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IntegrationMattermostArrayInput is an input type that accepts IntegrationMattermostArray and IntegrationMattermostArrayOutput values.
 // You can construct a concrete instance of `IntegrationMattermostArrayInput` via:
 //
@@ -402,12 +395,6 @@ func (i IntegrationMattermostArray) ToIntegrationMattermostArrayOutput() Integra
 
 func (i IntegrationMattermostArray) ToIntegrationMattermostArrayOutputWithContext(ctx context.Context) IntegrationMattermostArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMattermostArrayOutput)
-}
-
-func (i IntegrationMattermostArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationMattermost] {
-	return pulumix.Output[[]*IntegrationMattermost]{
-		OutputState: i.ToIntegrationMattermostArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IntegrationMattermostMapInput is an input type that accepts IntegrationMattermostMap and IntegrationMattermostMapOutput values.
@@ -435,12 +422,6 @@ func (i IntegrationMattermostMap) ToIntegrationMattermostMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMattermostMapOutput)
 }
 
-func (i IntegrationMattermostMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationMattermost] {
-	return pulumix.Output[map[string]*IntegrationMattermost]{
-		OutputState: i.ToIntegrationMattermostMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationMattermostOutput struct{ *pulumi.OutputState }
 
 func (IntegrationMattermostOutput) ElementType() reflect.Type {
@@ -453,12 +434,6 @@ func (o IntegrationMattermostOutput) ToIntegrationMattermostOutput() Integration
 
 func (o IntegrationMattermostOutput) ToIntegrationMattermostOutputWithContext(ctx context.Context) IntegrationMattermostOutput {
 	return o
-}
-
-func (o IntegrationMattermostOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationMattermost] {
-	return pulumix.Output[*IntegrationMattermost]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
@@ -590,12 +565,6 @@ func (o IntegrationMattermostArrayOutput) ToIntegrationMattermostArrayOutputWith
 	return o
 }
 
-func (o IntegrationMattermostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationMattermost] {
-	return pulumix.Output[[]*IntegrationMattermost]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IntegrationMattermostArrayOutput) Index(i pulumi.IntInput) IntegrationMattermostOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationMattermost {
 		return vs[0].([]*IntegrationMattermost)[vs[1].(int)]
@@ -614,12 +583,6 @@ func (o IntegrationMattermostMapOutput) ToIntegrationMattermostMapOutput() Integ
 
 func (o IntegrationMattermostMapOutput) ToIntegrationMattermostMapOutputWithContext(ctx context.Context) IntegrationMattermostMapOutput {
 	return o
-}
-
-func (o IntegrationMattermostMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationMattermost] {
-	return pulumix.Output[map[string]*IntegrationMattermost]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntegrationMattermostMapOutput) MapIndex(k pulumi.StringInput) IntegrationMattermostOutput {

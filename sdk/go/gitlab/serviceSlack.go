@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ServiceSlack` resource allows to manage the lifecycle of a project integration with Slack.
@@ -391,12 +390,6 @@ func (i *ServiceSlack) ToServiceSlackOutputWithContext(ctx context.Context) Serv
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSlackOutput)
 }
 
-func (i *ServiceSlack) ToOutput(ctx context.Context) pulumix.Output[*ServiceSlack] {
-	return pulumix.Output[*ServiceSlack]{
-		OutputState: i.ToServiceSlackOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceSlackArrayInput is an input type that accepts ServiceSlackArray and ServiceSlackArrayOutput values.
 // You can construct a concrete instance of `ServiceSlackArrayInput` via:
 //
@@ -420,12 +413,6 @@ func (i ServiceSlackArray) ToServiceSlackArrayOutput() ServiceSlackArrayOutput {
 
 func (i ServiceSlackArray) ToServiceSlackArrayOutputWithContext(ctx context.Context) ServiceSlackArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSlackArrayOutput)
-}
-
-func (i ServiceSlackArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceSlack] {
-	return pulumix.Output[[]*ServiceSlack]{
-		OutputState: i.ToServiceSlackArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceSlackMapInput is an input type that accepts ServiceSlackMap and ServiceSlackMapOutput values.
@@ -453,12 +440,6 @@ func (i ServiceSlackMap) ToServiceSlackMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSlackMapOutput)
 }
 
-func (i ServiceSlackMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceSlack] {
-	return pulumix.Output[map[string]*ServiceSlack]{
-		OutputState: i.ToServiceSlackMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceSlackOutput struct{ *pulumi.OutputState }
 
 func (ServiceSlackOutput) ElementType() reflect.Type {
@@ -471,12 +452,6 @@ func (o ServiceSlackOutput) ToServiceSlackOutput() ServiceSlackOutput {
 
 func (o ServiceSlackOutput) ToServiceSlackOutputWithContext(ctx context.Context) ServiceSlackOutput {
 	return o
-}
-
-func (o ServiceSlackOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceSlack] {
-	return pulumix.Output[*ServiceSlack]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
@@ -615,12 +590,6 @@ func (o ServiceSlackArrayOutput) ToServiceSlackArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o ServiceSlackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceSlack] {
-	return pulumix.Output[[]*ServiceSlack]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceSlackArrayOutput) Index(i pulumi.IntInput) ServiceSlackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceSlack {
 		return vs[0].([]*ServiceSlack)[vs[1].(int)]
@@ -639,12 +608,6 @@ func (o ServiceSlackMapOutput) ToServiceSlackMapOutput() ServiceSlackMapOutput {
 
 func (o ServiceSlackMapOutput) ToServiceSlackMapOutputWithContext(ctx context.Context) ServiceSlackMapOutput {
 	return o
-}
-
-func (o ServiceSlackMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceSlack] {
-	return pulumix.Output[map[string]*ServiceSlack]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceSlackMapOutput) MapIndex(k pulumi.StringInput) ServiceSlackOutput {
