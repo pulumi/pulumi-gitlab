@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectBadge` resource allows to manage the lifecycle of project badges.
@@ -217,12 +216,6 @@ func (i *ProjectBadge) ToProjectBadgeOutputWithContext(ctx context.Context) Proj
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBadgeOutput)
 }
 
-func (i *ProjectBadge) ToOutput(ctx context.Context) pulumix.Output[*ProjectBadge] {
-	return pulumix.Output[*ProjectBadge]{
-		OutputState: i.ToProjectBadgeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectBadgeArrayInput is an input type that accepts ProjectBadgeArray and ProjectBadgeArrayOutput values.
 // You can construct a concrete instance of `ProjectBadgeArrayInput` via:
 //
@@ -246,12 +239,6 @@ func (i ProjectBadgeArray) ToProjectBadgeArrayOutput() ProjectBadgeArrayOutput {
 
 func (i ProjectBadgeArray) ToProjectBadgeArrayOutputWithContext(ctx context.Context) ProjectBadgeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBadgeArrayOutput)
-}
-
-func (i ProjectBadgeArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectBadge] {
-	return pulumix.Output[[]*ProjectBadge]{
-		OutputState: i.ToProjectBadgeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectBadgeMapInput is an input type that accepts ProjectBadgeMap and ProjectBadgeMapOutput values.
@@ -279,12 +266,6 @@ func (i ProjectBadgeMap) ToProjectBadgeMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBadgeMapOutput)
 }
 
-func (i ProjectBadgeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectBadge] {
-	return pulumix.Output[map[string]*ProjectBadge]{
-		OutputState: i.ToProjectBadgeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectBadgeOutput struct{ *pulumi.OutputState }
 
 func (ProjectBadgeOutput) ElementType() reflect.Type {
@@ -297,12 +278,6 @@ func (o ProjectBadgeOutput) ToProjectBadgeOutput() ProjectBadgeOutput {
 
 func (o ProjectBadgeOutput) ToProjectBadgeOutputWithContext(ctx context.Context) ProjectBadgeOutput {
 	return o
-}
-
-func (o ProjectBadgeOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectBadge] {
-	return pulumix.Output[*ProjectBadge]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The image url which will be presented on project overview.
@@ -349,12 +324,6 @@ func (o ProjectBadgeArrayOutput) ToProjectBadgeArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o ProjectBadgeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectBadge] {
-	return pulumix.Output[[]*ProjectBadge]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectBadgeArrayOutput) Index(i pulumi.IntInput) ProjectBadgeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectBadge {
 		return vs[0].([]*ProjectBadge)[vs[1].(int)]
@@ -373,12 +342,6 @@ func (o ProjectBadgeMapOutput) ToProjectBadgeMapOutput() ProjectBadgeMapOutput {
 
 func (o ProjectBadgeMapOutput) ToProjectBadgeMapOutputWithContext(ctx context.Context) ProjectBadgeMapOutput {
 	return o
-}
-
-func (o ProjectBadgeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectBadge] {
-	return pulumix.Output[map[string]*ProjectBadge]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectBadgeMapOutput) MapIndex(k pulumi.StringInput) ProjectBadgeOutput {

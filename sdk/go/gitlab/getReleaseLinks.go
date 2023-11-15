@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getReleaseLinks` data source allows get details of release links.
@@ -106,12 +105,6 @@ func (o GetReleaseLinksResultOutput) ToGetReleaseLinksResultOutput() GetReleaseL
 
 func (o GetReleaseLinksResultOutput) ToGetReleaseLinksResultOutputWithContext(ctx context.Context) GetReleaseLinksResultOutput {
 	return o
-}
-
-func (o GetReleaseLinksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetReleaseLinksResult] {
-	return pulumix.Output[GetReleaseLinksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

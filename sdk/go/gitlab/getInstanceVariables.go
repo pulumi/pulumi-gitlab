@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
@@ -81,12 +80,6 @@ func (o GetInstanceVariablesResultOutput) ToGetInstanceVariablesResultOutput() G
 
 func (o GetInstanceVariablesResultOutput) ToGetInstanceVariablesResultOutputWithContext(ctx context.Context) GetInstanceVariablesResultOutput {
 	return o
-}
-
-func (o GetInstanceVariablesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceVariablesResult] {
-	return pulumix.Output[GetInstanceVariablesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getProjectProtectedBranches` data source allows details of the protected branches of a given project.
@@ -103,12 +102,6 @@ func (o GetProjectProtectedBranchesResultOutput) ToGetProjectProtectedBranchesRe
 
 func (o GetProjectProtectedBranchesResultOutput) ToGetProjectProtectedBranchesResultOutputWithContext(ctx context.Context) GetProjectProtectedBranchesResultOutput {
 	return o
-}
-
-func (o GetProjectProtectedBranchesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectProtectedBranchesResult] {
-	return pulumix.Output[GetProjectProtectedBranchesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

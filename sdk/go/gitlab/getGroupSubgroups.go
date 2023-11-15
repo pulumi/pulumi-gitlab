@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getGroupSubgroups` data source allows to get subgroups of a group.
@@ -154,12 +153,6 @@ func (o GetGroupSubgroupsResultOutput) ToGetGroupSubgroupsResultOutput() GetGrou
 
 func (o GetGroupSubgroupsResultOutput) ToGetGroupSubgroupsResultOutputWithContext(ctx context.Context) GetGroupSubgroupsResultOutput {
 	return o
-}
-
-func (o GetGroupSubgroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupSubgroupsResult] {
-	return pulumix.Output[GetGroupSubgroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Show all the groups you have access to.

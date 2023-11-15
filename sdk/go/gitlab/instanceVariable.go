@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
@@ -195,12 +194,6 @@ func (i *InstanceVariable) ToInstanceVariableOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVariableOutput)
 }
 
-func (i *InstanceVariable) ToOutput(ctx context.Context) pulumix.Output[*InstanceVariable] {
-	return pulumix.Output[*InstanceVariable]{
-		OutputState: i.ToInstanceVariableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceVariableArrayInput is an input type that accepts InstanceVariableArray and InstanceVariableArrayOutput values.
 // You can construct a concrete instance of `InstanceVariableArrayInput` via:
 //
@@ -224,12 +217,6 @@ func (i InstanceVariableArray) ToInstanceVariableArrayOutput() InstanceVariableA
 
 func (i InstanceVariableArray) ToInstanceVariableArrayOutputWithContext(ctx context.Context) InstanceVariableArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVariableArrayOutput)
-}
-
-func (i InstanceVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceVariable] {
-	return pulumix.Output[[]*InstanceVariable]{
-		OutputState: i.ToInstanceVariableArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceVariableMapInput is an input type that accepts InstanceVariableMap and InstanceVariableMapOutput values.
@@ -257,12 +244,6 @@ func (i InstanceVariableMap) ToInstanceVariableMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVariableMapOutput)
 }
 
-func (i InstanceVariableMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceVariable] {
-	return pulumix.Output[map[string]*InstanceVariable]{
-		OutputState: i.ToInstanceVariableMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceVariableOutput struct{ *pulumi.OutputState }
 
 func (InstanceVariableOutput) ElementType() reflect.Type {
@@ -275,12 +256,6 @@ func (o InstanceVariableOutput) ToInstanceVariableOutput() InstanceVariableOutpu
 
 func (o InstanceVariableOutput) ToInstanceVariableOutputWithContext(ctx context.Context) InstanceVariableOutput {
 	return o
-}
-
-func (o InstanceVariableOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceVariable] {
-	return pulumix.Output[*InstanceVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the variable.
@@ -327,12 +302,6 @@ func (o InstanceVariableArrayOutput) ToInstanceVariableArrayOutputWithContext(ct
 	return o
 }
 
-func (o InstanceVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceVariable] {
-	return pulumix.Output[[]*InstanceVariable]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceVariableArrayOutput) Index(i pulumi.IntInput) InstanceVariableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceVariable {
 		return vs[0].([]*InstanceVariable)[vs[1].(int)]
@@ -351,12 +320,6 @@ func (o InstanceVariableMapOutput) ToInstanceVariableMapOutput() InstanceVariabl
 
 func (o InstanceVariableMapOutput) ToInstanceVariableMapOutputWithContext(ctx context.Context) InstanceVariableMapOutput {
 	return o
-}
-
-func (o InstanceVariableMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceVariable] {
-	return pulumix.Output[map[string]*InstanceVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceVariableMapOutput) MapIndex(k pulumi.StringInput) InstanceVariableOutput {

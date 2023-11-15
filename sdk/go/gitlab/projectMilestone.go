@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
@@ -242,12 +241,6 @@ func (i *ProjectMilestone) ToProjectMilestoneOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMilestoneOutput)
 }
 
-func (i *ProjectMilestone) ToOutput(ctx context.Context) pulumix.Output[*ProjectMilestone] {
-	return pulumix.Output[*ProjectMilestone]{
-		OutputState: i.ToProjectMilestoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectMilestoneArrayInput is an input type that accepts ProjectMilestoneArray and ProjectMilestoneArrayOutput values.
 // You can construct a concrete instance of `ProjectMilestoneArrayInput` via:
 //
@@ -271,12 +264,6 @@ func (i ProjectMilestoneArray) ToProjectMilestoneArrayOutput() ProjectMilestoneA
 
 func (i ProjectMilestoneArray) ToProjectMilestoneArrayOutputWithContext(ctx context.Context) ProjectMilestoneArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMilestoneArrayOutput)
-}
-
-func (i ProjectMilestoneArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMilestone] {
-	return pulumix.Output[[]*ProjectMilestone]{
-		OutputState: i.ToProjectMilestoneArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectMilestoneMapInput is an input type that accepts ProjectMilestoneMap and ProjectMilestoneMapOutput values.
@@ -304,12 +291,6 @@ func (i ProjectMilestoneMap) ToProjectMilestoneMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMilestoneMapOutput)
 }
 
-func (i ProjectMilestoneMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMilestone] {
-	return pulumix.Output[map[string]*ProjectMilestone]{
-		OutputState: i.ToProjectMilestoneMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectMilestoneOutput struct{ *pulumi.OutputState }
 
 func (ProjectMilestoneOutput) ElementType() reflect.Type {
@@ -322,12 +303,6 @@ func (o ProjectMilestoneOutput) ToProjectMilestoneOutput() ProjectMilestoneOutpu
 
 func (o ProjectMilestoneOutput) ToProjectMilestoneOutputWithContext(ctx context.Context) ProjectMilestoneOutput {
 	return o
-}
-
-func (o ProjectMilestoneOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectMilestone] {
-	return pulumix.Output[*ProjectMilestone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
@@ -409,12 +384,6 @@ func (o ProjectMilestoneArrayOutput) ToProjectMilestoneArrayOutputWithContext(ct
 	return o
 }
 
-func (o ProjectMilestoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMilestone] {
-	return pulumix.Output[[]*ProjectMilestone]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectMilestoneArrayOutput) Index(i pulumi.IntInput) ProjectMilestoneOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectMilestone {
 		return vs[0].([]*ProjectMilestone)[vs[1].(int)]
@@ -433,12 +402,6 @@ func (o ProjectMilestoneMapOutput) ToProjectMilestoneMapOutput() ProjectMileston
 
 func (o ProjectMilestoneMapOutput) ToProjectMilestoneMapOutputWithContext(ctx context.Context) ProjectMilestoneMapOutput {
 	return o
-}
-
-func (o ProjectMilestoneMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMilestone] {
-	return pulumix.Output[map[string]*ProjectMilestone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectMilestoneMapOutput) MapIndex(k pulumi.StringInput) ProjectMilestoneOutput {

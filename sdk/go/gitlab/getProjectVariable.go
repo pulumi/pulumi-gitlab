@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectVariable` data source allows to retrieve details about a project-level CI/CD variable.
@@ -132,12 +131,6 @@ func (o LookupProjectVariableResultOutput) ToLookupProjectVariableResultOutput()
 
 func (o LookupProjectVariableResultOutput) ToLookupProjectVariableResultOutputWithContext(ctx context.Context) LookupProjectVariableResultOutput {
 	return o
-}
-
-func (o LookupProjectVariableResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectVariableResult] {
-	return pulumix.Output[LookupProjectVariableResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.

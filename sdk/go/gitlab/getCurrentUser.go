@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
@@ -95,12 +94,6 @@ func (o GetCurrentUserResultOutput) ToGetCurrentUserResultOutput() GetCurrentUse
 
 func (o GetCurrentUserResultOutput) ToGetCurrentUserResultOutputWithContext(ctx context.Context) GetCurrentUserResultOutput {
 	return o
-}
-
-func (o GetCurrentUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCurrentUserResult] {
-	return pulumix.Output[GetCurrentUserResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates if the user is a bot.

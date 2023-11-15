@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `RepositoryFile` data source allows details of a file in a repository to be retrieved.
@@ -133,12 +132,6 @@ func (o LookupRepositoryFileResultOutput) ToLookupRepositoryFileResultOutput() L
 
 func (o LookupRepositoryFileResultOutput) ToLookupRepositoryFileResultOutputWithContext(ctx context.Context) LookupRepositoryFileResultOutput {
 	return o
-}
-
-func (o LookupRepositoryFileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRepositoryFileResult] {
-	return pulumix.Output[LookupRepositoryFileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The blob id.

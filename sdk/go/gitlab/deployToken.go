@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
@@ -187,12 +186,6 @@ func (i *DeployToken) ToDeployTokenOutputWithContext(ctx context.Context) Deploy
 	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenOutput)
 }
 
-func (i *DeployToken) ToOutput(ctx context.Context) pulumix.Output[*DeployToken] {
-	return pulumix.Output[*DeployToken]{
-		OutputState: i.ToDeployTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeployTokenArrayInput is an input type that accepts DeployTokenArray and DeployTokenArrayOutput values.
 // You can construct a concrete instance of `DeployTokenArrayInput` via:
 //
@@ -216,12 +209,6 @@ func (i DeployTokenArray) ToDeployTokenArrayOutput() DeployTokenArrayOutput {
 
 func (i DeployTokenArray) ToDeployTokenArrayOutputWithContext(ctx context.Context) DeployTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenArrayOutput)
-}
-
-func (i DeployTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*DeployToken] {
-	return pulumix.Output[[]*DeployToken]{
-		OutputState: i.ToDeployTokenArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DeployTokenMapInput is an input type that accepts DeployTokenMap and DeployTokenMapOutput values.
@@ -249,12 +236,6 @@ func (i DeployTokenMap) ToDeployTokenMapOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenMapOutput)
 }
 
-func (i DeployTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeployToken] {
-	return pulumix.Output[map[string]*DeployToken]{
-		OutputState: i.ToDeployTokenMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeployTokenOutput struct{ *pulumi.OutputState }
 
 func (DeployTokenOutput) ElementType() reflect.Type {
@@ -267,12 +248,6 @@ func (o DeployTokenOutput) ToDeployTokenOutput() DeployTokenOutput {
 
 func (o DeployTokenOutput) ToDeployTokenOutputWithContext(ctx context.Context) DeployTokenOutput {
 	return o
-}
-
-func (o DeployTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*DeployToken] {
-	return pulumix.Output[*DeployToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the deploy token.
@@ -329,12 +304,6 @@ func (o DeployTokenArrayOutput) ToDeployTokenArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o DeployTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DeployToken] {
-	return pulumix.Output[[]*DeployToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeployTokenArrayOutput) Index(i pulumi.IntInput) DeployTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeployToken {
 		return vs[0].([]*DeployToken)[vs[1].(int)]
@@ -353,12 +322,6 @@ func (o DeployTokenMapOutput) ToDeployTokenMapOutput() DeployTokenMapOutput {
 
 func (o DeployTokenMapOutput) ToDeployTokenMapOutputWithContext(ctx context.Context) DeployTokenMapOutput {
 	return o
-}
-
-func (o DeployTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeployToken] {
-	return pulumix.Output[map[string]*DeployToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeployTokenMapOutput) MapIndex(k pulumi.StringInput) DeployTokenOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
@@ -184,12 +183,6 @@ func (i *ProjectShareGroup) ToProjectShareGroupOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupOutput)
 }
 
-func (i *ProjectShareGroup) ToOutput(ctx context.Context) pulumix.Output[*ProjectShareGroup] {
-	return pulumix.Output[*ProjectShareGroup]{
-		OutputState: i.ToProjectShareGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectShareGroupArrayInput is an input type that accepts ProjectShareGroupArray and ProjectShareGroupArrayOutput values.
 // You can construct a concrete instance of `ProjectShareGroupArrayInput` via:
 //
@@ -213,12 +206,6 @@ func (i ProjectShareGroupArray) ToProjectShareGroupArrayOutput() ProjectShareGro
 
 func (i ProjectShareGroupArray) ToProjectShareGroupArrayOutputWithContext(ctx context.Context) ProjectShareGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupArrayOutput)
-}
-
-func (i ProjectShareGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectShareGroup] {
-	return pulumix.Output[[]*ProjectShareGroup]{
-		OutputState: i.ToProjectShareGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectShareGroupMapInput is an input type that accepts ProjectShareGroupMap and ProjectShareGroupMapOutput values.
@@ -246,12 +233,6 @@ func (i ProjectShareGroupMap) ToProjectShareGroupMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupMapOutput)
 }
 
-func (i ProjectShareGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectShareGroup] {
-	return pulumix.Output[map[string]*ProjectShareGroup]{
-		OutputState: i.ToProjectShareGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectShareGroupOutput struct{ *pulumi.OutputState }
 
 func (ProjectShareGroupOutput) ElementType() reflect.Type {
@@ -264,12 +245,6 @@ func (o ProjectShareGroupOutput) ToProjectShareGroupOutput() ProjectShareGroupOu
 
 func (o ProjectShareGroupOutput) ToProjectShareGroupOutputWithContext(ctx context.Context) ProjectShareGroupOutput {
 	return o
-}
-
-func (o ProjectShareGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectShareGroup] {
-	return pulumix.Output[*ProjectShareGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
@@ -308,12 +283,6 @@ func (o ProjectShareGroupArrayOutput) ToProjectShareGroupArrayOutputWithContext(
 	return o
 }
 
-func (o ProjectShareGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectShareGroup] {
-	return pulumix.Output[[]*ProjectShareGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectShareGroupArrayOutput) Index(i pulumi.IntInput) ProjectShareGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectShareGroup {
 		return vs[0].([]*ProjectShareGroup)[vs[1].(int)]
@@ -332,12 +301,6 @@ func (o ProjectShareGroupMapOutput) ToProjectShareGroupMapOutput() ProjectShareG
 
 func (o ProjectShareGroupMapOutput) ToProjectShareGroupMapOutputWithContext(ctx context.Context) ProjectShareGroupMapOutput {
 	return o
-}
-
-func (o ProjectShareGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectShareGroup] {
-	return pulumix.Output[map[string]*ProjectShareGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectShareGroupMapOutput) MapIndex(k pulumi.StringInput) ProjectShareGroupOutput {

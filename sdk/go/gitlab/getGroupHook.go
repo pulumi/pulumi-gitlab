@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupHook` data source allows to retrieve details about a hook in a group.
@@ -117,12 +116,6 @@ func (o LookupGroupHookResultOutput) ToLookupGroupHookResultOutput() LookupGroup
 
 func (o LookupGroupHookResultOutput) ToLookupGroupHookResultOutputWithContext(ctx context.Context) LookupGroupHookResultOutput {
 	return o
-}
-
-func (o LookupGroupHookResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupHookResult] {
-	return pulumix.Output[LookupGroupHookResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Invoke the hook for confidential issues events.

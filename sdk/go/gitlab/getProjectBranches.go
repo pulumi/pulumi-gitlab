@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getProjectBranches` data source allows details of the branches of a given project to be retrieved.
@@ -103,12 +102,6 @@ func (o GetProjectBranchesResultOutput) ToGetProjectBranchesResultOutput() GetPr
 
 func (o GetProjectBranchesResultOutput) ToGetProjectBranchesResultOutputWithContext(ctx context.Context) GetProjectBranchesResultOutput {
 	return o
-}
-
-func (o GetProjectBranchesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectBranchesResult] {
-	return pulumix.Output[GetProjectBranchesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of branches of the project, as defined below.

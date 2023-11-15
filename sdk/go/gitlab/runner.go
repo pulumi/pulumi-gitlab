@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `Runner` resource allows to manage the lifecycle of a runner.
@@ -297,12 +296,6 @@ func (i *Runner) ToRunnerOutputWithContext(ctx context.Context) RunnerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RunnerOutput)
 }
 
-func (i *Runner) ToOutput(ctx context.Context) pulumix.Output[*Runner] {
-	return pulumix.Output[*Runner]{
-		OutputState: i.ToRunnerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RunnerArrayInput is an input type that accepts RunnerArray and RunnerArrayOutput values.
 // You can construct a concrete instance of `RunnerArrayInput` via:
 //
@@ -326,12 +319,6 @@ func (i RunnerArray) ToRunnerArrayOutput() RunnerArrayOutput {
 
 func (i RunnerArray) ToRunnerArrayOutputWithContext(ctx context.Context) RunnerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RunnerArrayOutput)
-}
-
-func (i RunnerArray) ToOutput(ctx context.Context) pulumix.Output[[]*Runner] {
-	return pulumix.Output[[]*Runner]{
-		OutputState: i.ToRunnerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RunnerMapInput is an input type that accepts RunnerMap and RunnerMapOutput values.
@@ -359,12 +346,6 @@ func (i RunnerMap) ToRunnerMapOutputWithContext(ctx context.Context) RunnerMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(RunnerMapOutput)
 }
 
-func (i RunnerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Runner] {
-	return pulumix.Output[map[string]*Runner]{
-		OutputState: i.ToRunnerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RunnerOutput struct{ *pulumi.OutputState }
 
 func (RunnerOutput) ElementType() reflect.Type {
@@ -377,12 +358,6 @@ func (o RunnerOutput) ToRunnerOutput() RunnerOutput {
 
 func (o RunnerOutput) ToRunnerOutputWithContext(ctx context.Context) RunnerOutput {
 	return o
-}
-
-func (o RunnerOutput) ToOutput(ctx context.Context) pulumix.Output[*Runner] {
-	return pulumix.Output[*Runner]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
@@ -451,12 +426,6 @@ func (o RunnerArrayOutput) ToRunnerArrayOutputWithContext(ctx context.Context) R
 	return o
 }
 
-func (o RunnerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Runner] {
-	return pulumix.Output[[]*Runner]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RunnerArrayOutput) Index(i pulumi.IntInput) RunnerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Runner {
 		return vs[0].([]*Runner)[vs[1].(int)]
@@ -475,12 +444,6 @@ func (o RunnerMapOutput) ToRunnerMapOutput() RunnerMapOutput {
 
 func (o RunnerMapOutput) ToRunnerMapOutputWithContext(ctx context.Context) RunnerMapOutput {
 	return o
-}
-
-func (o RunnerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Runner] {
-	return pulumix.Output[map[string]*Runner]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RunnerMapOutput) MapIndex(k pulumi.StringInput) RunnerOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `SystemHook` resource allows to manage the lifecycle of a system hook.
@@ -222,12 +221,6 @@ func (i *SystemHook) ToSystemHookOutputWithContext(ctx context.Context) SystemHo
 	return pulumi.ToOutputWithContext(ctx, i).(SystemHookOutput)
 }
 
-func (i *SystemHook) ToOutput(ctx context.Context) pulumix.Output[*SystemHook] {
-	return pulumix.Output[*SystemHook]{
-		OutputState: i.ToSystemHookOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SystemHookArrayInput is an input type that accepts SystemHookArray and SystemHookArrayOutput values.
 // You can construct a concrete instance of `SystemHookArrayInput` via:
 //
@@ -251,12 +244,6 @@ func (i SystemHookArray) ToSystemHookArrayOutput() SystemHookArrayOutput {
 
 func (i SystemHookArray) ToSystemHookArrayOutputWithContext(ctx context.Context) SystemHookArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SystemHookArrayOutput)
-}
-
-func (i SystemHookArray) ToOutput(ctx context.Context) pulumix.Output[[]*SystemHook] {
-	return pulumix.Output[[]*SystemHook]{
-		OutputState: i.ToSystemHookArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SystemHookMapInput is an input type that accepts SystemHookMap and SystemHookMapOutput values.
@@ -284,12 +271,6 @@ func (i SystemHookMap) ToSystemHookMapOutputWithContext(ctx context.Context) Sys
 	return pulumi.ToOutputWithContext(ctx, i).(SystemHookMapOutput)
 }
 
-func (i SystemHookMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SystemHook] {
-	return pulumix.Output[map[string]*SystemHook]{
-		OutputState: i.ToSystemHookMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SystemHookOutput struct{ *pulumi.OutputState }
 
 func (SystemHookOutput) ElementType() reflect.Type {
@@ -302,12 +283,6 @@ func (o SystemHookOutput) ToSystemHookOutput() SystemHookOutput {
 
 func (o SystemHookOutput) ToSystemHookOutputWithContext(ctx context.Context) SystemHookOutput {
 	return o
-}
-
-func (o SystemHookOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemHook] {
-	return pulumix.Output[*SystemHook]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time the hook was created in ISO8601 format.
@@ -364,12 +339,6 @@ func (o SystemHookArrayOutput) ToSystemHookArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SystemHookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SystemHook] {
-	return pulumix.Output[[]*SystemHook]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SystemHookArrayOutput) Index(i pulumi.IntInput) SystemHookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SystemHook {
 		return vs[0].([]*SystemHook)[vs[1].(int)]
@@ -388,12 +357,6 @@ func (o SystemHookMapOutput) ToSystemHookMapOutput() SystemHookMapOutput {
 
 func (o SystemHookMapOutput) ToSystemHookMapOutputWithContext(ctx context.Context) SystemHookMapOutput {
 	return o
-}
-
-func (o SystemHookMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SystemHook] {
-	return pulumix.Output[map[string]*SystemHook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemHookMapOutput) MapIndex(k pulumi.StringInput) SystemHookOutput {

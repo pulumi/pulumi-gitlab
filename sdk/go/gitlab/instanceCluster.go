@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `InstanceCluster` resource allows to manage the lifecycle of an instance cluster.
@@ -283,12 +282,6 @@ func (i *InstanceCluster) ToInstanceClusterOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterOutput)
 }
 
-func (i *InstanceCluster) ToOutput(ctx context.Context) pulumix.Output[*InstanceCluster] {
-	return pulumix.Output[*InstanceCluster]{
-		OutputState: i.ToInstanceClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceClusterArrayInput is an input type that accepts InstanceClusterArray and InstanceClusterArrayOutput values.
 // You can construct a concrete instance of `InstanceClusterArrayInput` via:
 //
@@ -312,12 +305,6 @@ func (i InstanceClusterArray) ToInstanceClusterArrayOutput() InstanceClusterArra
 
 func (i InstanceClusterArray) ToInstanceClusterArrayOutputWithContext(ctx context.Context) InstanceClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterArrayOutput)
-}
-
-func (i InstanceClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceCluster] {
-	return pulumix.Output[[]*InstanceCluster]{
-		OutputState: i.ToInstanceClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceClusterMapInput is an input type that accepts InstanceClusterMap and InstanceClusterMapOutput values.
@@ -345,12 +332,6 @@ func (i InstanceClusterMap) ToInstanceClusterMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterMapOutput)
 }
 
-func (i InstanceClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceCluster] {
-	return pulumix.Output[map[string]*InstanceCluster]{
-		OutputState: i.ToInstanceClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceClusterOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterOutput) ElementType() reflect.Type {
@@ -363,12 +344,6 @@ func (o InstanceClusterOutput) ToInstanceClusterOutput() InstanceClusterOutput {
 
 func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Context) InstanceClusterOutput {
 	return o
-}
-
-func (o InstanceClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceCluster] {
-	return pulumix.Output[*InstanceCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cluster type.
@@ -460,12 +435,6 @@ func (o InstanceClusterArrayOutput) ToInstanceClusterArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o InstanceClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceCluster] {
-	return pulumix.Output[[]*InstanceCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceClusterArrayOutput) Index(i pulumi.IntInput) InstanceClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceCluster {
 		return vs[0].([]*InstanceCluster)[vs[1].(int)]
@@ -484,12 +453,6 @@ func (o InstanceClusterMapOutput) ToInstanceClusterMapOutput() InstanceClusterMa
 
 func (o InstanceClusterMapOutput) ToInstanceClusterMapOutputWithContext(ctx context.Context) InstanceClusterMapOutput {
 	return o
-}
-
-func (o InstanceClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceCluster] {
-	return pulumix.Output[map[string]*InstanceCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceClusterMapOutput) MapIndex(k pulumi.StringInput) InstanceClusterOutput {
