@@ -46,6 +46,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = gitlab.NewGroup(ctx, "example-two", &gitlab.GroupArgs{
+//				Path:        pulumi.String("example-two"),
+//				Description: pulumi.String("An example group with push rules"),
+//				PushRules: &gitlab.GroupPushRulesArgs{
+//					AuthorEmailRegex:     pulumi.String("@example\\.com$"),
+//					CommitCommitterCheck: pulumi.Bool(true),
+//					MemberCheck:          pulumi.Bool(true),
+//					PreventSecrets:       pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -108,6 +121,8 @@ type Group struct {
 	PreventForkingOutsideGroup pulumi.BoolOutput `pulumi:"preventForkingOutsideGroup"`
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
 	ProjectCreationLevel pulumi.StringOutput `pulumi:"projectCreationLevel"`
+	// Push rules for the group.
+	PushRules GroupPushRulesOutput `pulumi:"pushRules"`
 	// Allow users to request member access.
 	RequestAccessEnabled pulumi.BoolOutput `pulumi:"requestAccessEnabled"`
 	// Require all users in this group to setup Two-factor authentication.
@@ -207,6 +222,8 @@ type groupState struct {
 	PreventForkingOutsideGroup *bool `pulumi:"preventForkingOutsideGroup"`
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
 	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
+	// Push rules for the group.
+	PushRules *GroupPushRules `pulumi:"pushRules"`
 	// Allow users to request member access.
 	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
 	// Require all users in this group to setup Two-factor authentication.
@@ -270,6 +287,8 @@ type GroupState struct {
 	PreventForkingOutsideGroup pulumi.BoolPtrInput
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
 	ProjectCreationLevel pulumi.StringPtrInput
+	// Push rules for the group.
+	PushRules GroupPushRulesPtrInput
 	// Allow users to request member access.
 	RequestAccessEnabled pulumi.BoolPtrInput
 	// Require all users in this group to setup Two-factor authentication.
@@ -331,6 +350,8 @@ type groupArgs struct {
 	PreventForkingOutsideGroup *bool `pulumi:"preventForkingOutsideGroup"`
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
 	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
+	// Push rules for the group.
+	PushRules *GroupPushRules `pulumi:"pushRules"`
 	// Allow users to request member access.
 	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
 	// Require all users in this group to setup Two-factor authentication.
@@ -385,6 +406,8 @@ type GroupArgs struct {
 	PreventForkingOutsideGroup pulumi.BoolPtrInput
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
 	ProjectCreationLevel pulumi.StringPtrInput
+	// Push rules for the group.
+	PushRules GroupPushRulesPtrInput
 	// Allow users to request member access.
 	RequestAccessEnabled pulumi.BoolPtrInput
 	// Require all users in this group to setup Two-factor authentication.
@@ -585,6 +608,11 @@ func (o GroupOutput) PreventForkingOutsideGroup() pulumi.BoolOutput {
 // Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
 func (o GroupOutput) ProjectCreationLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.ProjectCreationLevel }).(pulumi.StringOutput)
+}
+
+// Push rules for the group.
+func (o GroupOutput) PushRules() GroupPushRulesOutput {
+	return o.ApplyT(func(v *Group) GroupPushRulesOutput { return v.PushRules }).(GroupPushRulesOutput)
 }
 
 // Allow users to request member access.

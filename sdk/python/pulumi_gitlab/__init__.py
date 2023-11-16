@@ -103,6 +103,7 @@ from .project_issue_board import *
 from .project_job_token_scope import *
 from .project_label import *
 from .project_level_mr_approvals import *
+from .project_level_notifications import *
 from .project_membership import *
 from .project_milestone import *
 from .project_mirror import *
@@ -606,6 +607,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals": "ProjectLevelMrApprovals"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectLevelNotifications",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectLevelNotifications:ProjectLevelNotifications": "ProjectLevelNotifications"
   }
  },
  {

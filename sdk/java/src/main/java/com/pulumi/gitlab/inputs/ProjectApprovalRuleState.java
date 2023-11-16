@@ -19,6 +19,21 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
     public static final ProjectApprovalRuleState Empty = new ProjectApprovalRuleState();
 
     /**
+     * Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+     * 
+     */
+    @Import(name="appliesToAllProtectedBranches")
+    private @Nullable Output<Boolean> appliesToAllProtectedBranches;
+
+    /**
+     * @return Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+     * 
+     */
+    public Optional<Output<Boolean>> appliesToAllProtectedBranches() {
+        return Optional.ofNullable(this.appliesToAllProtectedBranches);
+    }
+
+    /**
      * The number of approvals required for this rule.
      * 
      */
@@ -141,6 +156,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
     private ProjectApprovalRuleState() {}
 
     private ProjectApprovalRuleState(ProjectApprovalRuleState $) {
+        this.appliesToAllProtectedBranches = $.appliesToAllProtectedBranches;
         this.approvalsRequired = $.approvalsRequired;
         this.disableImportingDefaultAnyApproverRuleOnCreate = $.disableImportingDefaultAnyApproverRuleOnCreate;
         this.groupIds = $.groupIds;
@@ -167,6 +183,27 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
 
         public Builder(ProjectApprovalRuleState defaults) {
             $ = new ProjectApprovalRuleState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param appliesToAllProtectedBranches Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appliesToAllProtectedBranches(@Nullable Output<Boolean> appliesToAllProtectedBranches) {
+            $.appliesToAllProtectedBranches = appliesToAllProtectedBranches;
+            return this;
+        }
+
+        /**
+         * @param appliesToAllProtectedBranches Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appliesToAllProtectedBranches(Boolean appliesToAllProtectedBranches) {
+            return appliesToAllProtectedBranches(Output.of(appliesToAllProtectedBranches));
         }
 
         /**

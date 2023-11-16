@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.GroupArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupState;
+import com.pulumi.gitlab.outputs.GroupPushRules;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -35,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gitlab.GroupArgs;
  * import com.pulumi.gitlab.Project;
  * import com.pulumi.gitlab.ProjectArgs;
+ * import com.pulumi.gitlab.inputs.GroupPushRulesArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,6 +58,17 @@ import javax.annotation.Nullable;
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
  *             .description(&#34;An example project&#34;)
  *             .namespaceId(exampleGroup.id())
+ *             .build());
+ * 
+ *         var example_two = new Group(&#34;example-two&#34;, GroupArgs.builder()        
+ *             .path(&#34;example-two&#34;)
+ *             .description(&#34;An example group with push rules&#34;)
+ *             .pushRules(GroupPushRulesArgs.builder()
+ *                 .authorEmailRegex(&#34;@example\\.com$&#34;)
+ *                 .commitCommitterCheck(true)
+ *                 .memberCheck(true)
+ *                 .preventSecrets(true)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -342,6 +355,20 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<String> projectCreationLevel() {
         return this.projectCreationLevel;
+    }
+    /**
+     * Push rules for the group.
+     * 
+     */
+    @Export(name="pushRules", refs={GroupPushRules.class}, tree="[0]")
+    private Output<GroupPushRules> pushRules;
+
+    /**
+     * @return Push rules for the group.
+     * 
+     */
+    public Output<GroupPushRules> pushRules() {
+        return this.pushRules;
     }
     /**
      * Allow users to request member access.

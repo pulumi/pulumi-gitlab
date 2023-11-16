@@ -156,6 +156,53 @@ export interface GroupProtectedEnvironmentDeployAccessLevel {
     userId?: pulumi.Input<number>;
 }
 
+export interface GroupPushRules {
+    /**
+     * All commit author emails must match this regex, e.g. `@my-company.com$`.
+     */
+    authorEmailRegex?: pulumi.Input<string>;
+    /**
+     * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     */
+    branchNameRegex?: pulumi.Input<string>;
+    /**
+     * Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+     */
+    commitCommitterCheck?: pulumi.Input<boolean>;
+    /**
+     * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     */
+    commitMessageNegativeRegex?: pulumi.Input<string>;
+    /**
+     * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     */
+    commitMessageRegex?: pulumi.Input<string>;
+    /**
+     * Deny deleting a tag.
+     */
+    denyDeleteTag?: pulumi.Input<boolean>;
+    /**
+     * Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
+     */
+    fileNameRegex?: pulumi.Input<string>;
+    /**
+     * Maximum file size (MB) allowed.
+     */
+    maxFileSize?: pulumi.Input<number>;
+    /**
+     * Allows only GitLab users to author commits.
+     */
+    memberCheck?: pulumi.Input<boolean>;
+    /**
+     * GitLab will reject any files that are likely to contain secrets.
+     */
+    preventSecrets?: pulumi.Input<boolean>;
+    /**
+     * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+     */
+    rejectUnsignedCommits?: pulumi.Input<boolean>;
+}
+
 export interface ProjectContainerExpirationPolicy {
     /**
      * The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.

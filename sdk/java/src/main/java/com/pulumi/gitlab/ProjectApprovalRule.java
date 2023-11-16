@@ -30,6 +30,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectApprovalRule:ProjectApprovalRule")
 public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
     /**
+     * Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+     * 
+     */
+    @Export(name="appliesToAllProtectedBranches", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> appliesToAllProtectedBranches;
+
+    /**
+     * @return Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+     * 
+     */
+    public Output<Optional<Boolean>> appliesToAllProtectedBranches() {
+        return Codegen.optional(this.appliesToAllProtectedBranches);
+    }
+    /**
      * The number of approvals required for this rule.
      * 
      */

@@ -65,12 +65,18 @@ type PipelineSchedule struct {
 	CronTimezone pulumi.StringPtrOutput `pulumi:"cronTimezone"`
 	// The description of the pipeline schedule.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The ID of the user that owns the pipeline schedule.
+	Owner pulumi.IntOutput `pulumi:"owner"`
 	// The pipeline schedule id.
 	PipelineScheduleId pulumi.IntOutput `pulumi:"pipelineScheduleId"`
 	// The name or id of the project to add the schedule to.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The branch/tag name to be triggered.
 	Ref pulumi.StringOutput `pulumi:"ref"`
+	// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+	// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+	// Terraform.
+	TakeOwnership pulumi.BoolPtrOutput `pulumi:"takeOwnership"`
 }
 
 // NewPipelineSchedule registers a new resource with the given unique name, arguments, and options.
@@ -123,12 +129,18 @@ type pipelineScheduleState struct {
 	CronTimezone *string `pulumi:"cronTimezone"`
 	// The description of the pipeline schedule.
 	Description *string `pulumi:"description"`
+	// The ID of the user that owns the pipeline schedule.
+	Owner *int `pulumi:"owner"`
 	// The pipeline schedule id.
 	PipelineScheduleId *int `pulumi:"pipelineScheduleId"`
 	// The name or id of the project to add the schedule to.
 	Project *string `pulumi:"project"`
 	// The branch/tag name to be triggered.
 	Ref *string `pulumi:"ref"`
+	// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+	// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+	// Terraform.
+	TakeOwnership *bool `pulumi:"takeOwnership"`
 }
 
 type PipelineScheduleState struct {
@@ -140,12 +152,18 @@ type PipelineScheduleState struct {
 	CronTimezone pulumi.StringPtrInput
 	// The description of the pipeline schedule.
 	Description pulumi.StringPtrInput
+	// The ID of the user that owns the pipeline schedule.
+	Owner pulumi.IntPtrInput
 	// The pipeline schedule id.
 	PipelineScheduleId pulumi.IntPtrInput
 	// The name or id of the project to add the schedule to.
 	Project pulumi.StringPtrInput
 	// The branch/tag name to be triggered.
 	Ref pulumi.StringPtrInput
+	// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+	// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+	// Terraform.
+	TakeOwnership pulumi.BoolPtrInput
 }
 
 func (PipelineScheduleState) ElementType() reflect.Type {
@@ -165,6 +183,10 @@ type pipelineScheduleArgs struct {
 	Project string `pulumi:"project"`
 	// The branch/tag name to be triggered.
 	Ref string `pulumi:"ref"`
+	// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+	// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+	// Terraform.
+	TakeOwnership *bool `pulumi:"takeOwnership"`
 }
 
 // The set of arguments for constructing a PipelineSchedule resource.
@@ -181,6 +203,10 @@ type PipelineScheduleArgs struct {
 	Project pulumi.StringInput
 	// The branch/tag name to be triggered.
 	Ref pulumi.StringInput
+	// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+	// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+	// Terraform.
+	TakeOwnership pulumi.BoolPtrInput
 }
 
 func (PipelineScheduleArgs) ElementType() reflect.Type {
@@ -290,6 +316,11 @@ func (o PipelineScheduleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// The ID of the user that owns the pipeline schedule.
+func (o PipelineScheduleOutput) Owner() pulumi.IntOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.IntOutput { return v.Owner }).(pulumi.IntOutput)
+}
+
 // The pipeline schedule id.
 func (o PipelineScheduleOutput) PipelineScheduleId() pulumi.IntOutput {
 	return o.ApplyT(func(v *PipelineSchedule) pulumi.IntOutput { return v.PipelineScheduleId }).(pulumi.IntOutput)
@@ -303,6 +334,13 @@ func (o PipelineScheduleOutput) Project() pulumi.StringOutput {
 // The branch/tag name to be triggered.
 func (o PipelineScheduleOutput) Ref() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
+}
+
+// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+// Terraform.
+func (o PipelineScheduleOutput) TakeOwnership() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.BoolPtrOutput { return v.TakeOwnership }).(pulumi.BoolPtrOutput)
 }
 
 type PipelineScheduleArrayOutput struct{ *pulumi.OutputState }

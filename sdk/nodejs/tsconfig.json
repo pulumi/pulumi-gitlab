@@ -114,6 +114,7 @@
         "projectJobTokenScope.ts",
         "projectLabel.ts",
         "projectLevelMrApprovals.ts",
+        "projectLevelNotifications.ts",
         "projectMembership.ts",
         "projectMilestone.ts",
         "projectMirror.ts",

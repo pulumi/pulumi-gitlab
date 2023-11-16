@@ -76,6 +76,10 @@ export class PipelineSchedule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The ID of the user that owns the pipeline schedule.
+     */
+    public /*out*/ readonly owner!: pulumi.Output<number>;
+    /**
      * The pipeline schedule id.
      */
     public /*out*/ readonly pipelineScheduleId!: pulumi.Output<number>;
@@ -87,6 +91,12 @@ export class PipelineSchedule extends pulumi.CustomResource {
      * The branch/tag name to be triggered.
      */
     public readonly ref!: pulumi.Output<string>;
+    /**
+     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+     * Terraform.
+     */
+    public readonly takeOwnership!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a PipelineSchedule resource with the given unique name, arguments, and options.
@@ -105,9 +115,11 @@ export class PipelineSchedule extends pulumi.CustomResource {
             resourceInputs["cron"] = state ? state.cron : undefined;
             resourceInputs["cronTimezone"] = state ? state.cronTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["pipelineScheduleId"] = state ? state.pipelineScheduleId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["ref"] = state ? state.ref : undefined;
+            resourceInputs["takeOwnership"] = state ? state.takeOwnership : undefined;
         } else {
             const args = argsOrState as PipelineScheduleArgs | undefined;
             if ((!args || args.cron === undefined) && !opts.urn) {
@@ -128,6 +140,8 @@ export class PipelineSchedule extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["ref"] = args ? args.ref : undefined;
+            resourceInputs["takeOwnership"] = args ? args.takeOwnership : undefined;
+            resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["pipelineScheduleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -156,6 +170,10 @@ export interface PipelineScheduleState {
      */
     description?: pulumi.Input<string>;
     /**
+     * The ID of the user that owns the pipeline schedule.
+     */
+    owner?: pulumi.Input<number>;
+    /**
      * The pipeline schedule id.
      */
     pipelineScheduleId?: pulumi.Input<number>;
@@ -167,6 +185,12 @@ export interface PipelineScheduleState {
      * The branch/tag name to be triggered.
      */
     ref?: pulumi.Input<string>;
+    /**
+     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+     * Terraform.
+     */
+    takeOwnership?: pulumi.Input<boolean>;
 }
 
 /**
@@ -197,4 +221,10 @@ export interface PipelineScheduleArgs {
      * The branch/tag name to be triggered.
      */
     ref: pulumi.Input<string>;
+    /**
+     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+     * Terraform.
+     */
+    takeOwnership?: pulumi.Input<boolean>;
 }

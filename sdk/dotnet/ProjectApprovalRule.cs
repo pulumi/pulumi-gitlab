@@ -22,6 +22,12 @@ namespace Pulumi.GitLab
     public partial class ProjectApprovalRule : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
+        /// </summary>
+        [Output("appliesToAllProtectedBranches")]
+        public Output<bool?> AppliesToAllProtectedBranches { get; private set; } = null!;
+
+        /// <summary>
         /// The number of approvals required for this rule.
         /// </summary>
         [Output("approvalsRequired")]
@@ -116,6 +122,12 @@ namespace Pulumi.GitLab
     public sealed class ProjectApprovalRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
+        /// </summary>
+        [Input("appliesToAllProtectedBranches")]
+        public Input<bool>? AppliesToAllProtectedBranches { get; set; }
+
+        /// <summary>
         /// The number of approvals required for this rule.
         /// </summary>
         [Input("approvalsRequired", required: true)]
@@ -189,6 +201,12 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectApprovalRuleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
+        /// </summary>
+        [Input("appliesToAllProtectedBranches")]
+        public Input<bool>? AppliesToAllProtectedBranches { get; set; }
+
         /// <summary>
         /// The number of approvals required for this rule.
         /// </summary>

@@ -71,6 +71,12 @@ namespace Pulumi.GitLab
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the user that owns the pipeline schedule.
+        /// </summary>
+        [Output("owner")]
+        public Output<int> Owner { get; private set; } = null!;
+
+        /// <summary>
         /// The pipeline schedule id.
         /// </summary>
         [Output("pipelineScheduleId")]
@@ -87,6 +93,14 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("ref")]
         public Output<string> Ref { get; private set; } = null!;
+
+        /// <summary>
+        /// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+        /// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+        /// Terraform.
+        /// </summary>
+        [Output("takeOwnership")]
+        public Output<bool?> TakeOwnership { get; private set; } = null!;
 
 
         /// <summary>
@@ -170,6 +184,14 @@ namespace Pulumi.GitLab
         [Input("ref", required: true)]
         public Input<string> Ref { get; set; } = null!;
 
+        /// <summary>
+        /// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+        /// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+        /// Terraform.
+        /// </summary>
+        [Input("takeOwnership")]
+        public Input<bool>? TakeOwnership { get; set; }
+
         public PipelineScheduleArgs()
         {
         }
@@ -203,6 +225,12 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The ID of the user that owns the pipeline schedule.
+        /// </summary>
+        [Input("owner")]
+        public Input<int>? Owner { get; set; }
+
+        /// <summary>
         /// The pipeline schedule id.
         /// </summary>
         [Input("pipelineScheduleId")]
@@ -219,6 +247,14 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ref")]
         public Input<string>? Ref { get; set; }
+
+        /// <summary>
+        /// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+        /// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+        /// Terraform.
+        /// </summary>
+        [Input("takeOwnership")]
+        public Input<bool>? TakeOwnership { get; set; }
 
         public PipelineScheduleState()
         {

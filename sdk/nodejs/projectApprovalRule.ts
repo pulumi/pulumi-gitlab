@@ -42,6 +42,10 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
     }
 
     /**
+     * Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
+     */
+    public readonly appliesToAllProtectedBranches!: pulumi.Output<boolean | undefined>;
+    /**
      * The number of approvals required for this rule.
      */
     public readonly approvalsRequired!: pulumi.Output<number>;
@@ -87,6 +91,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectApprovalRuleState | undefined;
+            resourceInputs["appliesToAllProtectedBranches"] = state ? state.appliesToAllProtectedBranches : undefined;
             resourceInputs["approvalsRequired"] = state ? state.approvalsRequired : undefined;
             resourceInputs["disableImportingDefaultAnyApproverRuleOnCreate"] = state ? state.disableImportingDefaultAnyApproverRuleOnCreate : undefined;
             resourceInputs["groupIds"] = state ? state.groupIds : undefined;
@@ -103,6 +108,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            resourceInputs["appliesToAllProtectedBranches"] = args ? args.appliesToAllProtectedBranches : undefined;
             resourceInputs["approvalsRequired"] = args ? args.approvalsRequired : undefined;
             resourceInputs["disableImportingDefaultAnyApproverRuleOnCreate"] = args ? args.disableImportingDefaultAnyApproverRuleOnCreate : undefined;
             resourceInputs["groupIds"] = args ? args.groupIds : undefined;
@@ -121,6 +127,10 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectApprovalRule resources.
  */
 export interface ProjectApprovalRuleState {
+    /**
+     * Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
+     */
+    appliesToAllProtectedBranches?: pulumi.Input<boolean>;
     /**
      * The number of approvals required for this rule.
      */
@@ -159,6 +169,10 @@ export interface ProjectApprovalRuleState {
  * The set of arguments for constructing a ProjectApprovalRule resource.
  */
 export interface ProjectApprovalRuleArgs {
+    /**
+     * Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
+     */
+    appliesToAllProtectedBranches?: pulumi.Input<boolean>;
     /**
      * The number of approvals required for this rule.
      */
