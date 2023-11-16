@@ -122,6 +122,20 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
+     * The ID of the user that owns the pipeline schedule.
+     * 
+     */
+    @Export(name="owner", refs={Integer.class}, tree="[0]")
+    private Output<Integer> owner;
+
+    /**
+     * @return The ID of the user that owns the pipeline schedule.
+     * 
+     */
+    public Output<Integer> owner() {
+        return this.owner;
+    }
+    /**
      * The pipeline schedule id.
      * 
      */
@@ -162,6 +176,24 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ref() {
         return this.ref;
+    }
+    /**
+     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+     * Terraform.
+     * 
+     */
+    @Export(name="takeOwnership", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> takeOwnership;
+
+    /**
+     * @return When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+     * Terraform.
+     * 
+     */
+    public Output<Optional<Boolean>> takeOwnership() {
+        return Codegen.optional(this.takeOwnership);
     }
 
     /**

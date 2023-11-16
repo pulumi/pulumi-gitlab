@@ -78,6 +78,21 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The ID of the user that owns the pipeline schedule.
+     * 
+     */
+    @Import(name="owner")
+    private @Nullable Output<Integer> owner;
+
+    /**
+     * @return The ID of the user that owns the pipeline schedule.
+     * 
+     */
+    public Optional<Output<Integer>> owner() {
+        return Optional.ofNullable(this.owner);
+    }
+
+    /**
      * The pipeline schedule id.
      * 
      */
@@ -122,6 +137,25 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.ref);
     }
 
+    /**
+     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+     * Terraform.
+     * 
+     */
+    @Import(name="takeOwnership")
+    private @Nullable Output<Boolean> takeOwnership;
+
+    /**
+     * @return When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+     * Terraform.
+     * 
+     */
+    public Optional<Output<Boolean>> takeOwnership() {
+        return Optional.ofNullable(this.takeOwnership);
+    }
+
     private PipelineScheduleState() {}
 
     private PipelineScheduleState(PipelineScheduleState $) {
@@ -129,9 +163,11 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
         this.cron = $.cron;
         this.cronTimezone = $.cronTimezone;
         this.description = $.description;
+        this.owner = $.owner;
         this.pipelineScheduleId = $.pipelineScheduleId;
         this.project = $.project;
         this.ref = $.ref;
+        this.takeOwnership = $.takeOwnership;
     }
 
     public static Builder builder() {
@@ -237,6 +273,27 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param owner The ID of the user that owns the pipeline schedule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(@Nullable Output<Integer> owner) {
+            $.owner = owner;
+            return this;
+        }
+
+        /**
+         * @param owner The ID of the user that owns the pipeline schedule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(Integer owner) {
+            return owner(Output.of(owner));
+        }
+
+        /**
          * @param pipelineScheduleId The pipeline schedule id.
          * 
          * @return builder
@@ -297,6 +354,31 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
          */
         public Builder ref(String ref) {
             return ref(Output.of(ref));
+        }
+
+        /**
+         * @param takeOwnership When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+         * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+         * Terraform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder takeOwnership(@Nullable Output<Boolean> takeOwnership) {
+            $.takeOwnership = takeOwnership;
+            return this;
+        }
+
+        /**
+         * @param takeOwnership When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
+         * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
+         * Terraform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder takeOwnership(Boolean takeOwnership) {
+            return takeOwnership(Output.of(takeOwnership));
         }
 
         public PipelineScheduleState build() {

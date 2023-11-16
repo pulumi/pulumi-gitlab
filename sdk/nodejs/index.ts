@@ -495,6 +495,11 @@ export type ProjectLevelMrApprovals = import("./projectLevelMrApprovals").Projec
 export const ProjectLevelMrApprovals: typeof import("./projectLevelMrApprovals").ProjectLevelMrApprovals = null as any;
 utilities.lazyLoad(exports, ["ProjectLevelMrApprovals"], () => require("./projectLevelMrApprovals"));
 
+export { ProjectLevelNotificationsArgs, ProjectLevelNotificationsState } from "./projectLevelNotifications";
+export type ProjectLevelNotifications = import("./projectLevelNotifications").ProjectLevelNotifications;
+export const ProjectLevelNotifications: typeof import("./projectLevelNotifications").ProjectLevelNotifications = null as any;
+utilities.lazyLoad(exports, ["ProjectLevelNotifications"], () => require("./projectLevelNotifications"));
+
 export { ProjectMembershipArgs, ProjectMembershipState } from "./projectMembership";
 export type ProjectMembership = import("./projectMembership").ProjectMembership;
 export const ProjectMembership: typeof import("./projectMembership").ProjectMembership = null as any;
@@ -765,6 +770,8 @@ const _module = {
                 return new ProjectLabel(name, <any>undefined, { urn })
             case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
                 return new ProjectLevelMrApprovals(name, <any>undefined, { urn })
+            case "gitlab:index/projectLevelNotifications:ProjectLevelNotifications":
+                return new ProjectLevelNotifications(name, <any>undefined, { urn })
             case "gitlab:index/projectMembership:ProjectMembership":
                 return new ProjectMembership(name, <any>undefined, { urn })
             case "gitlab:index/projectMilestone:ProjectMilestone":
@@ -882,6 +889,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectIssueBoard", _modu
 pulumi.runtime.registerResourceModule("gitlab", "index/projectJobTokenScope", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelMrApprovals", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelNotifications", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMilestone", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMirror", _module)

@@ -137,6 +137,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectLabel{}
 	case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
 		r = &ProjectLevelMrApprovals{}
+	case "gitlab:index/projectLevelNotifications:ProjectLevelNotifications":
+		r = &ProjectLevelNotifications{}
 	case "gitlab:index/projectMembership:ProjectMembership":
 		r = &ProjectMembership{}
 	case "gitlab:index/projectMilestone:ProjectMilestone":
@@ -510,6 +512,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectLevelMrApprovals",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectLevelNotifications",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

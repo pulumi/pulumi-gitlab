@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GroupArgs', 'Group']
 
@@ -30,6 +32,7 @@ class GroupArgs:
                  parent_id: Optional[pulumi.Input[int]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
+                 push_rules: Optional[pulumi.Input['GroupPushRulesArgs']] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
@@ -57,6 +60,7 @@ class GroupArgs:
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input['GroupPushRulesArgs'] push_rules: Push rules for the group.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[bool] share_with_group_lock: Prevent sharing a project with another group within this group.
@@ -98,6 +102,8 @@ class GroupArgs:
             pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
         if project_creation_level is not None:
             pulumi.set(__self__, "project_creation_level", project_creation_level)
+        if push_rules is not None:
+            pulumi.set(__self__, "push_rules", push_rules)
         if request_access_enabled is not None:
             pulumi.set(__self__, "request_access_enabled", request_access_enabled)
         if require_two_factor_authentication is not None:
@@ -310,6 +316,18 @@ class GroupArgs:
         pulumi.set(self, "project_creation_level", value)
 
     @property
+    @pulumi.getter(name="pushRules")
+    def push_rules(self) -> Optional[pulumi.Input['GroupPushRulesArgs']]:
+        """
+        Push rules for the group.
+        """
+        return pulumi.get(self, "push_rules")
+
+    @push_rules.setter
+    def push_rules(self, value: Optional[pulumi.Input['GroupPushRulesArgs']]):
+        pulumi.set(self, "push_rules", value)
+
+    @property
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -440,6 +458,7 @@ class _GroupState:
                  path: Optional[pulumi.Input[str]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
+                 push_rules: Optional[pulumi.Input['GroupPushRulesArgs']] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  runners_token: Optional[pulumi.Input[str]] = None,
@@ -472,6 +491,7 @@ class _GroupState:
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input['GroupPushRulesArgs'] push_rules: Push rules for the group.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[str] runners_token: The group level registration token to use during runner setup.
@@ -522,6 +542,8 @@ class _GroupState:
             pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
         if project_creation_level is not None:
             pulumi.set(__self__, "project_creation_level", project_creation_level)
+        if push_rules is not None:
+            pulumi.set(__self__, "push_rules", push_rules)
         if request_access_enabled is not None:
             pulumi.set(__self__, "request_access_enabled", request_access_enabled)
         if require_two_factor_authentication is not None:
@@ -774,6 +796,18 @@ class _GroupState:
         pulumi.set(self, "project_creation_level", value)
 
     @property
+    @pulumi.getter(name="pushRules")
+    def push_rules(self) -> Optional[pulumi.Input['GroupPushRulesArgs']]:
+        """
+        Push rules for the group.
+        """
+        return pulumi.get(self, "push_rules")
+
+    @push_rules.setter
+    def push_rules(self, value: Optional[pulumi.Input['GroupPushRulesArgs']]):
+        pulumi.set(self, "push_rules", value)
+
+    @property
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -927,6 +961,7 @@ class Group(pulumi.CustomResource):
                  path: Optional[pulumi.Input[str]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
+                 push_rules: Optional[pulumi.Input[pulumi.InputType['GroupPushRulesArgs']]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
@@ -957,6 +992,16 @@ class Group(pulumi.CustomResource):
         example_project = gitlab.Project("exampleProject",
             description="An example project",
             namespace_id=example_group.id)
+        # Group with custom push rules
+        example_two = gitlab.Group("example-two",
+            path="example-two",
+            description="An example group with push rules",
+            push_rules=gitlab.GroupPushRulesArgs(
+                author_email_regex="@example\\\\.com$",
+                commit_committer_check=True,
+                member_check=True,
+                prevent_secrets=True,
+            ))
         ```
 
         ## Import
@@ -989,6 +1034,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input[pulumi.InputType['GroupPushRulesArgs']] push_rules: Push rules for the group.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[bool] share_with_group_lock: Prevent sharing a project with another group within this group.
@@ -1025,6 +1071,16 @@ class Group(pulumi.CustomResource):
         example_project = gitlab.Project("exampleProject",
             description="An example project",
             namespace_id=example_group.id)
+        # Group with custom push rules
+        example_two = gitlab.Group("example-two",
+            path="example-two",
+            description="An example group with push rules",
+            push_rules=gitlab.GroupPushRulesArgs(
+                author_email_regex="@example\\\\.com$",
+                commit_committer_check=True,
+                member_check=True,
+                prevent_secrets=True,
+            ))
         ```
 
         ## Import
@@ -1070,6 +1126,7 @@ class Group(pulumi.CustomResource):
                  path: Optional[pulumi.Input[str]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
+                 push_rules: Optional[pulumi.Input[pulumi.InputType['GroupPushRulesArgs']]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
@@ -1106,6 +1163,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["path"] = path
             __props__.__dict__["prevent_forking_outside_group"] = prevent_forking_outside_group
             __props__.__dict__["project_creation_level"] = project_creation_level
+            __props__.__dict__["push_rules"] = push_rules
             __props__.__dict__["request_access_enabled"] = request_access_enabled
             __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
             __props__.__dict__["share_with_group_lock"] = share_with_group_lock
@@ -1151,6 +1209,7 @@ class Group(pulumi.CustomResource):
             path: Optional[pulumi.Input[str]] = None,
             prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
             project_creation_level: Optional[pulumi.Input[str]] = None,
+            push_rules: Optional[pulumi.Input[pulumi.InputType['GroupPushRulesArgs']]] = None,
             request_access_enabled: Optional[pulumi.Input[bool]] = None,
             require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
             runners_token: Optional[pulumi.Input[str]] = None,
@@ -1188,6 +1247,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input[pulumi.InputType['GroupPushRulesArgs']] push_rules: Push rules for the group.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[str] runners_token: The group level registration token to use during runner setup.
@@ -1223,6 +1283,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["path"] = path
         __props__.__dict__["prevent_forking_outside_group"] = prevent_forking_outside_group
         __props__.__dict__["project_creation_level"] = project_creation_level
+        __props__.__dict__["push_rules"] = push_rules
         __props__.__dict__["request_access_enabled"] = request_access_enabled
         __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
         __props__.__dict__["runners_token"] = runners_token
@@ -1387,6 +1448,14 @@ class Group(pulumi.CustomResource):
         Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
         """
         return pulumi.get(self, "project_creation_level")
+
+    @property
+    @pulumi.getter(name="pushRules")
+    def push_rules(self) -> pulumi.Output['outputs.GroupPushRules']:
+        """
+        Push rules for the group.
+        """
+        return pulumi.get(self, "push_rules")
 
     @property
     @pulumi.getter(name="requestAccessEnabled")

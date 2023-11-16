@@ -19,6 +19,7 @@ __all__ = [
     'GroupIssueBoardList',
     'GroupProtectedEnvironmentApprovalRule',
     'GroupProtectedEnvironmentDeployAccessLevel',
+    'GroupPushRules',
     'ProjectContainerExpirationPolicy',
     'ProjectIssueBoardList',
     'ProjectIssueTaskCompletionStatus',
@@ -743,6 +744,182 @@ class GroupProtectedEnvironmentDeployAccessLevel(dict):
         The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
         """
         return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GroupPushRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorEmailRegex":
+            suggest = "author_email_regex"
+        elif key == "branchNameRegex":
+            suggest = "branch_name_regex"
+        elif key == "commitCommitterCheck":
+            suggest = "commit_committer_check"
+        elif key == "commitMessageNegativeRegex":
+            suggest = "commit_message_negative_regex"
+        elif key == "commitMessageRegex":
+            suggest = "commit_message_regex"
+        elif key == "denyDeleteTag":
+            suggest = "deny_delete_tag"
+        elif key == "fileNameRegex":
+            suggest = "file_name_regex"
+        elif key == "maxFileSize":
+            suggest = "max_file_size"
+        elif key == "memberCheck":
+            suggest = "member_check"
+        elif key == "preventSecrets":
+            suggest = "prevent_secrets"
+        elif key == "rejectUnsignedCommits":
+            suggest = "reject_unsigned_commits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupPushRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupPushRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupPushRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 author_email_regex: Optional[str] = None,
+                 branch_name_regex: Optional[str] = None,
+                 commit_committer_check: Optional[bool] = None,
+                 commit_message_negative_regex: Optional[str] = None,
+                 commit_message_regex: Optional[str] = None,
+                 deny_delete_tag: Optional[bool] = None,
+                 file_name_regex: Optional[str] = None,
+                 max_file_size: Optional[int] = None,
+                 member_check: Optional[bool] = None,
+                 prevent_secrets: Optional[bool] = None,
+                 reject_unsigned_commits: Optional[bool] = None):
+        """
+        :param str author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
+        :param str branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
+        :param bool commit_committer_check: Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        :param str commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        :param str commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
+        :param bool deny_delete_tag: Deny deleting a tag.
+        :param str file_name_regex: Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
+        :param int max_file_size: Maximum file size (MB) allowed.
+        :param bool member_check: Allows only GitLab users to author commits.
+        :param bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
+        :param bool reject_unsigned_commits: Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        """
+        if author_email_regex is not None:
+            pulumi.set(__self__, "author_email_regex", author_email_regex)
+        if branch_name_regex is not None:
+            pulumi.set(__self__, "branch_name_regex", branch_name_regex)
+        if commit_committer_check is not None:
+            pulumi.set(__self__, "commit_committer_check", commit_committer_check)
+        if commit_message_negative_regex is not None:
+            pulumi.set(__self__, "commit_message_negative_regex", commit_message_negative_regex)
+        if commit_message_regex is not None:
+            pulumi.set(__self__, "commit_message_regex", commit_message_regex)
+        if deny_delete_tag is not None:
+            pulumi.set(__self__, "deny_delete_tag", deny_delete_tag)
+        if file_name_regex is not None:
+            pulumi.set(__self__, "file_name_regex", file_name_regex)
+        if max_file_size is not None:
+            pulumi.set(__self__, "max_file_size", max_file_size)
+        if member_check is not None:
+            pulumi.set(__self__, "member_check", member_check)
+        if prevent_secrets is not None:
+            pulumi.set(__self__, "prevent_secrets", prevent_secrets)
+        if reject_unsigned_commits is not None:
+            pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
+
+    @property
+    @pulumi.getter(name="authorEmailRegex")
+    def author_email_regex(self) -> Optional[str]:
+        """
+        All commit author emails must match this regex, e.g. `@my-company.com$`.
+        """
+        return pulumi.get(self, "author_email_regex")
+
+    @property
+    @pulumi.getter(name="branchNameRegex")
+    def branch_name_regex(self) -> Optional[str]:
+        """
+        All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
+        """
+        return pulumi.get(self, "branch_name_regex")
+
+    @property
+    @pulumi.getter(name="commitCommitterCheck")
+    def commit_committer_check(self) -> Optional[bool]:
+        """
+        Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        """
+        return pulumi.get(self, "commit_committer_check")
+
+    @property
+    @pulumi.getter(name="commitMessageNegativeRegex")
+    def commit_message_negative_regex(self) -> Optional[str]:
+        """
+        No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        """
+        return pulumi.get(self, "commit_message_negative_regex")
+
+    @property
+    @pulumi.getter(name="commitMessageRegex")
+    def commit_message_regex(self) -> Optional[str]:
+        """
+        All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
+        """
+        return pulumi.get(self, "commit_message_regex")
+
+    @property
+    @pulumi.getter(name="denyDeleteTag")
+    def deny_delete_tag(self) -> Optional[bool]:
+        """
+        Deny deleting a tag.
+        """
+        return pulumi.get(self, "deny_delete_tag")
+
+    @property
+    @pulumi.getter(name="fileNameRegex")
+    def file_name_regex(self) -> Optional[str]:
+        """
+        Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
+        """
+        return pulumi.get(self, "file_name_regex")
+
+    @property
+    @pulumi.getter(name="maxFileSize")
+    def max_file_size(self) -> Optional[int]:
+        """
+        Maximum file size (MB) allowed.
+        """
+        return pulumi.get(self, "max_file_size")
+
+    @property
+    @pulumi.getter(name="memberCheck")
+    def member_check(self) -> Optional[bool]:
+        """
+        Allows only GitLab users to author commits.
+        """
+        return pulumi.get(self, "member_check")
+
+    @property
+    @pulumi.getter(name="preventSecrets")
+    def prevent_secrets(self) -> Optional[bool]:
+        """
+        GitLab will reject any files that are likely to contain secrets.
+        """
+        return pulumi.get(self, "prevent_secrets")
+
+    @property
+    @pulumi.getter(name="rejectUnsignedCommits")
+    def reject_unsigned_commits(self) -> Optional[bool]:
+        """
+        Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        """
+        return pulumi.get(self, "reject_unsigned_commits")
 
 
 @pulumi.output_type

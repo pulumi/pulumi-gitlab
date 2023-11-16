@@ -7135,6 +7135,9 @@ public final class GitlabFunctions {
      * 
      * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
      * 
+     * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+     * the most related match will prioritize an exact match if one is available.
+     * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
      * 
      */
@@ -7145,6 +7148,9 @@ public final class GitlabFunctions {
      * The `gitlab.User` data source allows details of a user to be retrieved by either the user ID, username or email address.
      * 
      * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
+     * 
+     * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+     * the most related match will prioritize an exact match if one is available.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
      * 
@@ -7157,6 +7163,9 @@ public final class GitlabFunctions {
      * 
      * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
      * 
+     * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+     * the most related match will prioritize an exact match if one is available.
+     * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
      * 
      */
@@ -7167,6 +7176,9 @@ public final class GitlabFunctions {
      * The `gitlab.User` data source allows details of a user to be retrieved by either the user ID, username or email address.
      * 
      * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
+     * 
+     * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+     * the most related match will prioritize an exact match if one is available.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
      * 
@@ -7179,6 +7191,9 @@ public final class GitlabFunctions {
      * 
      * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
      * 
+     * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+     * the most related match will prioritize an exact match if one is available.
+     * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
      * 
      */
@@ -7189,6 +7204,9 @@ public final class GitlabFunctions {
      * The `gitlab.User` data source allows details of a user to be retrieved by either the user ID, username or email address.
      * 
      * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
+     * 
+     * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+     * the most related match will prioritize an exact match if one is available.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
      * 

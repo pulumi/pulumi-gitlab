@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -25,6 +27,17 @@ import * as utilities from "./utilities";
  * const exampleProject = new gitlab.Project("exampleProject", {
  *     description: "An example project",
  *     namespaceId: exampleGroup.id,
+ * });
+ * // Group with custom push rules
+ * const example_two = new gitlab.Group("example-two", {
+ *     path: "example-two",
+ *     description: "An example group with push rules",
+ *     pushRules: {
+ *         authorEmailRegex: "@example\\.com$",
+ *         commitCommitterCheck: true,
+ *         memberCheck: true,
+ *         preventSecrets: true,
+ *     },
  * });
  * ```
  *
@@ -145,6 +158,10 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly projectCreationLevel!: pulumi.Output<string>;
     /**
+     * Push rules for the group.
+     */
+    public readonly pushRules!: pulumi.Output<outputs.GroupPushRules>;
+    /**
      * Allow users to request member access.
      */
     public readonly requestAccessEnabled!: pulumi.Output<boolean>;
@@ -221,6 +238,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["path"] = state ? state.path : undefined;
             resourceInputs["preventForkingOutsideGroup"] = state ? state.preventForkingOutsideGroup : undefined;
             resourceInputs["projectCreationLevel"] = state ? state.projectCreationLevel : undefined;
+            resourceInputs["pushRules"] = state ? state.pushRules : undefined;
             resourceInputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
             resourceInputs["requireTwoFactorAuthentication"] = state ? state.requireTwoFactorAuthentication : undefined;
             resourceInputs["runnersToken"] = state ? state.runnersToken : undefined;
@@ -253,6 +271,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["path"] = args ? args.path : undefined;
             resourceInputs["preventForkingOutsideGroup"] = args ? args.preventForkingOutsideGroup : undefined;
             resourceInputs["projectCreationLevel"] = args ? args.projectCreationLevel : undefined;
+            resourceInputs["pushRules"] = args ? args.pushRules : undefined;
             resourceInputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
             resourceInputs["requireTwoFactorAuthentication"] = args ? args.requireTwoFactorAuthentication : undefined;
             resourceInputs["shareWithGroupLock"] = args ? args.shareWithGroupLock : undefined;
@@ -355,6 +374,10 @@ export interface GroupState {
      * Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
      */
     projectCreationLevel?: pulumi.Input<string>;
+    /**
+     * Push rules for the group.
+     */
+    pushRules?: pulumi.Input<inputs.GroupPushRules>;
     /**
      * Allow users to request member access.
      */
@@ -469,6 +492,10 @@ export interface GroupArgs {
      * Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
      */
     projectCreationLevel?: pulumi.Input<string>;
+    /**
+     * Push rules for the group.
+     */
+    pushRules?: pulumi.Input<inputs.GroupPushRules>;
     /**
      * Allow users to request member access.
      */

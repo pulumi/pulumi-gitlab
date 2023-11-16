@@ -1044,6 +1044,333 @@ func (o GroupProtectedEnvironmentDeployAccessLevelArrayOutput) Index(i pulumi.In
 	}).(GroupProtectedEnvironmentDeployAccessLevelOutput)
 }
 
+type GroupPushRules struct {
+	// All commit author emails must match this regex, e.g. `@my-company.com$`.
+	AuthorEmailRegex *string `pulumi:"authorEmailRegex"`
+	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+	BranchNameRegex *string `pulumi:"branchNameRegex"`
+	// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+	CommitCommitterCheck *bool `pulumi:"commitCommitterCheck"`
+	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+	CommitMessageNegativeRegex *string `pulumi:"commitMessageNegativeRegex"`
+	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+	CommitMessageRegex *string `pulumi:"commitMessageRegex"`
+	// Deny deleting a tag.
+	DenyDeleteTag *bool `pulumi:"denyDeleteTag"`
+	// Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
+	FileNameRegex *string `pulumi:"fileNameRegex"`
+	// Maximum file size (MB) allowed.
+	MaxFileSize *int `pulumi:"maxFileSize"`
+	// Allows only GitLab users to author commits.
+	MemberCheck *bool `pulumi:"memberCheck"`
+	// GitLab will reject any files that are likely to contain secrets.
+	PreventSecrets *bool `pulumi:"preventSecrets"`
+	// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+	RejectUnsignedCommits *bool `pulumi:"rejectUnsignedCommits"`
+}
+
+// GroupPushRulesInput is an input type that accepts GroupPushRulesArgs and GroupPushRulesOutput values.
+// You can construct a concrete instance of `GroupPushRulesInput` via:
+//
+//	GroupPushRulesArgs{...}
+type GroupPushRulesInput interface {
+	pulumi.Input
+
+	ToGroupPushRulesOutput() GroupPushRulesOutput
+	ToGroupPushRulesOutputWithContext(context.Context) GroupPushRulesOutput
+}
+
+type GroupPushRulesArgs struct {
+	// All commit author emails must match this regex, e.g. `@my-company.com$`.
+	AuthorEmailRegex pulumi.StringPtrInput `pulumi:"authorEmailRegex"`
+	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+	BranchNameRegex pulumi.StringPtrInput `pulumi:"branchNameRegex"`
+	// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+	CommitCommitterCheck pulumi.BoolPtrInput `pulumi:"commitCommitterCheck"`
+	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+	CommitMessageNegativeRegex pulumi.StringPtrInput `pulumi:"commitMessageNegativeRegex"`
+	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+	CommitMessageRegex pulumi.StringPtrInput `pulumi:"commitMessageRegex"`
+	// Deny deleting a tag.
+	DenyDeleteTag pulumi.BoolPtrInput `pulumi:"denyDeleteTag"`
+	// Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
+	FileNameRegex pulumi.StringPtrInput `pulumi:"fileNameRegex"`
+	// Maximum file size (MB) allowed.
+	MaxFileSize pulumi.IntPtrInput `pulumi:"maxFileSize"`
+	// Allows only GitLab users to author commits.
+	MemberCheck pulumi.BoolPtrInput `pulumi:"memberCheck"`
+	// GitLab will reject any files that are likely to contain secrets.
+	PreventSecrets pulumi.BoolPtrInput `pulumi:"preventSecrets"`
+	// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+	RejectUnsignedCommits pulumi.BoolPtrInput `pulumi:"rejectUnsignedCommits"`
+}
+
+func (GroupPushRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupPushRules)(nil)).Elem()
+}
+
+func (i GroupPushRulesArgs) ToGroupPushRulesOutput() GroupPushRulesOutput {
+	return i.ToGroupPushRulesOutputWithContext(context.Background())
+}
+
+func (i GroupPushRulesArgs) ToGroupPushRulesOutputWithContext(ctx context.Context) GroupPushRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupPushRulesOutput)
+}
+
+func (i GroupPushRulesArgs) ToGroupPushRulesPtrOutput() GroupPushRulesPtrOutput {
+	return i.ToGroupPushRulesPtrOutputWithContext(context.Background())
+}
+
+func (i GroupPushRulesArgs) ToGroupPushRulesPtrOutputWithContext(ctx context.Context) GroupPushRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupPushRulesOutput).ToGroupPushRulesPtrOutputWithContext(ctx)
+}
+
+// GroupPushRulesPtrInput is an input type that accepts GroupPushRulesArgs, GroupPushRulesPtr and GroupPushRulesPtrOutput values.
+// You can construct a concrete instance of `GroupPushRulesPtrInput` via:
+//
+//	        GroupPushRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupPushRulesPtrInput interface {
+	pulumi.Input
+
+	ToGroupPushRulesPtrOutput() GroupPushRulesPtrOutput
+	ToGroupPushRulesPtrOutputWithContext(context.Context) GroupPushRulesPtrOutput
+}
+
+type groupPushRulesPtrType GroupPushRulesArgs
+
+func GroupPushRulesPtr(v *GroupPushRulesArgs) GroupPushRulesPtrInput {
+	return (*groupPushRulesPtrType)(v)
+}
+
+func (*groupPushRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupPushRules)(nil)).Elem()
+}
+
+func (i *groupPushRulesPtrType) ToGroupPushRulesPtrOutput() GroupPushRulesPtrOutput {
+	return i.ToGroupPushRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *groupPushRulesPtrType) ToGroupPushRulesPtrOutputWithContext(ctx context.Context) GroupPushRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupPushRulesPtrOutput)
+}
+
+type GroupPushRulesOutput struct{ *pulumi.OutputState }
+
+func (GroupPushRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupPushRules)(nil)).Elem()
+}
+
+func (o GroupPushRulesOutput) ToGroupPushRulesOutput() GroupPushRulesOutput {
+	return o
+}
+
+func (o GroupPushRulesOutput) ToGroupPushRulesOutputWithContext(ctx context.Context) GroupPushRulesOutput {
+	return o
+}
+
+func (o GroupPushRulesOutput) ToGroupPushRulesPtrOutput() GroupPushRulesPtrOutput {
+	return o.ToGroupPushRulesPtrOutputWithContext(context.Background())
+}
+
+func (o GroupPushRulesOutput) ToGroupPushRulesPtrOutputWithContext(ctx context.Context) GroupPushRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupPushRules) *GroupPushRules {
+		return &v
+	}).(GroupPushRulesPtrOutput)
+}
+
+// All commit author emails must match this regex, e.g. `@my-company.com$`.
+func (o GroupPushRulesOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *string { return v.AuthorEmailRegex }).(pulumi.StringPtrOutput)
+}
+
+// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+func (o GroupPushRulesOutput) BranchNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *string { return v.BranchNameRegex }).(pulumi.StringPtrOutput)
+}
+
+// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+func (o GroupPushRulesOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *bool { return v.CommitCommitterCheck }).(pulumi.BoolPtrOutput)
+}
+
+// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+func (o GroupPushRulesOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *string { return v.CommitMessageNegativeRegex }).(pulumi.StringPtrOutput)
+}
+
+// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+func (o GroupPushRulesOutput) CommitMessageRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *string { return v.CommitMessageRegex }).(pulumi.StringPtrOutput)
+}
+
+// Deny deleting a tag.
+func (o GroupPushRulesOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *bool { return v.DenyDeleteTag }).(pulumi.BoolPtrOutput)
+}
+
+// Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
+func (o GroupPushRulesOutput) FileNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *string { return v.FileNameRegex }).(pulumi.StringPtrOutput)
+}
+
+// Maximum file size (MB) allowed.
+func (o GroupPushRulesOutput) MaxFileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *int { return v.MaxFileSize }).(pulumi.IntPtrOutput)
+}
+
+// Allows only GitLab users to author commits.
+func (o GroupPushRulesOutput) MemberCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *bool { return v.MemberCheck }).(pulumi.BoolPtrOutput)
+}
+
+// GitLab will reject any files that are likely to contain secrets.
+func (o GroupPushRulesOutput) PreventSecrets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *bool { return v.PreventSecrets }).(pulumi.BoolPtrOutput)
+}
+
+// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+func (o GroupPushRulesOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *bool { return v.RejectUnsignedCommits }).(pulumi.BoolPtrOutput)
+}
+
+type GroupPushRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupPushRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupPushRules)(nil)).Elem()
+}
+
+func (o GroupPushRulesPtrOutput) ToGroupPushRulesPtrOutput() GroupPushRulesPtrOutput {
+	return o
+}
+
+func (o GroupPushRulesPtrOutput) ToGroupPushRulesPtrOutputWithContext(ctx context.Context) GroupPushRulesPtrOutput {
+	return o
+}
+
+func (o GroupPushRulesPtrOutput) Elem() GroupPushRulesOutput {
+	return o.ApplyT(func(v *GroupPushRules) GroupPushRules {
+		if v != nil {
+			return *v
+		}
+		var ret GroupPushRules
+		return ret
+	}).(GroupPushRulesOutput)
+}
+
+// All commit author emails must match this regex, e.g. `@my-company.com$`.
+func (o GroupPushRulesPtrOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorEmailRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+func (o GroupPushRulesPtrOutput) BranchNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BranchNameRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+func (o GroupPushRulesPtrOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CommitCommitterCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+func (o GroupPushRulesPtrOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitMessageNegativeRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+func (o GroupPushRulesPtrOutput) CommitMessageRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitMessageRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deny deleting a tag.
+func (o GroupPushRulesPtrOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DenyDeleteTag
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
+func (o GroupPushRulesPtrOutput) FileNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileNameRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum file size (MB) allowed.
+func (o GroupPushRulesPtrOutput) MaxFileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFileSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Allows only GitLab users to author commits.
+func (o GroupPushRulesPtrOutput) MemberCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MemberCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// GitLab will reject any files that are likely to contain secrets.
+func (o GroupPushRulesPtrOutput) PreventSecrets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreventSecrets
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+func (o GroupPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RejectUnsignedCommits
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ProjectContainerExpirationPolicy struct {
 	// The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
 	Cadence *string `pulumi:"cadence"`
@@ -9173,6 +9500,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentApprovalRuleArrayInput)(nil)).Elem(), GroupProtectedEnvironmentApprovalRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentDeployAccessLevelInput)(nil)).Elem(), GroupProtectedEnvironmentDeployAccessLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentDeployAccessLevelArrayInput)(nil)).Elem(), GroupProtectedEnvironmentDeployAccessLevelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesInput)(nil)).Elem(), GroupPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesPtrInput)(nil)).Elem(), GroupPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyPtrInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueBoardListInput)(nil)).Elem(), ProjectIssueBoardListArgs{})
@@ -9292,6 +9621,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupProtectedEnvironmentApprovalRuleArrayOutput{})
 	pulumi.RegisterOutputType(GroupProtectedEnvironmentDeployAccessLevelOutput{})
 	pulumi.RegisterOutputType(GroupProtectedEnvironmentDeployAccessLevelArrayOutput{})
+	pulumi.RegisterOutputType(GroupPushRulesOutput{})
+	pulumi.RegisterOutputType(GroupPushRulesPtrOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ProjectIssueBoardListOutput{})

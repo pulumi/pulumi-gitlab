@@ -390,6 +390,9 @@ def get_user(email: Optional[str] = None,
 
     > Some attributes might not be returned depending on if you're an admin or not.
 
+    > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+    the most related match will prioritize an exact match if one is available.
+
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
 
 
@@ -448,6 +451,9 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
     The `User` data source allows details of a user to be retrieved by either the user ID, username or email address.
 
     > Some attributes might not be returned depending on if you're an admin or not.
+
+    > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+    the most related match will prioritize an exact match if one is available.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
 

@@ -24,6 +24,8 @@ import (
 type ProjectApprovalRule struct {
 	pulumi.CustomResourceState
 
+	// Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
+	AppliesToAllProtectedBranches pulumi.BoolPtrOutput `pulumi:"appliesToAllProtectedBranches"`
 	// The number of approvals required for this rule.
 	ApprovalsRequired pulumi.IntOutput `pulumi:"approvalsRequired"`
 	// When this flag is set, the default `anyApprover` rule will not be imported if present.
@@ -78,6 +80,8 @@ func GetProjectApprovalRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectApprovalRule resources.
 type projectApprovalRuleState struct {
+	// Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
+	AppliesToAllProtectedBranches *bool `pulumi:"appliesToAllProtectedBranches"`
 	// The number of approvals required for this rule.
 	ApprovalsRequired *int `pulumi:"approvalsRequired"`
 	// When this flag is set, the default `anyApprover` rule will not be imported if present.
@@ -97,6 +101,8 @@ type projectApprovalRuleState struct {
 }
 
 type ProjectApprovalRuleState struct {
+	// Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
+	AppliesToAllProtectedBranches pulumi.BoolPtrInput
 	// The number of approvals required for this rule.
 	ApprovalsRequired pulumi.IntPtrInput
 	// When this flag is set, the default `anyApprover` rule will not be imported if present.
@@ -120,6 +126,8 @@ func (ProjectApprovalRuleState) ElementType() reflect.Type {
 }
 
 type projectApprovalRuleArgs struct {
+	// Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
+	AppliesToAllProtectedBranches *bool `pulumi:"appliesToAllProtectedBranches"`
 	// The number of approvals required for this rule.
 	ApprovalsRequired int `pulumi:"approvalsRequired"`
 	// When this flag is set, the default `anyApprover` rule will not be imported if present.
@@ -140,6 +148,8 @@ type projectApprovalRuleArgs struct {
 
 // The set of arguments for constructing a ProjectApprovalRule resource.
 type ProjectApprovalRuleArgs struct {
+	// Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
+	AppliesToAllProtectedBranches pulumi.BoolPtrInput
 	// The number of approvals required for this rule.
 	ApprovalsRequired pulumi.IntInput
 	// When this flag is set, the default `anyApprover` rule will not be imported if present.
@@ -243,6 +253,11 @@ func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutput() ProjectApproval
 
 func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutputWithContext(ctx context.Context) ProjectApprovalRuleOutput {
 	return o
+}
+
+// Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
+func (o ProjectApprovalRuleOutput) AppliesToAllProtectedBranches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.BoolPtrOutput { return v.AppliesToAllProtectedBranches }).(pulumi.BoolPtrOutput)
 }
 
 // The number of approvals required for this rule.

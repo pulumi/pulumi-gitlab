@@ -118,6 +118,9 @@
                 "fields": {
                     "ip_restriction_ranges": {
                         "maxItemsOne": false
+                    },
+                    "push_rules": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -393,6 +396,10 @@
             },
             "gitlab_project_level_mr_approvals": {
                 "current": "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals",
+                "majorVersion": 6
+            },
+            "gitlab_project_level_notifications": {
+                "current": "gitlab:index/projectLevelNotifications:ProjectLevelNotifications",
                 "majorVersion": 6
             },
             "gitlab_project_membership": {
@@ -1051,6 +1058,7 @@
             "gitlab:index/projectJobTokenScope:ProjectJobTokenScope": 1,
             "gitlab:index/projectLabel:ProjectLabel": 0,
             "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals": 1,
+            "gitlab:index/projectLevelNotifications:ProjectLevelNotifications": 1,
             "gitlab:index/projectMembership:ProjectMembership": 0,
             "gitlab:index/projectMilestone:ProjectMilestone": 0,
             "gitlab:index/projectMirror:ProjectMirror": 0,
@@ -1182,6 +1190,7 @@
             "gitlab:index/projectJobTokenScope:ProjectJobTokenScope": "gitlab_project_job_token_scope",
             "gitlab:index/projectLabel:ProjectLabel": "gitlab_project_label",
             "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals": "gitlab_project_level_mr_approvals",
+            "gitlab:index/projectLevelNotifications:ProjectLevelNotifications": "gitlab_project_level_notifications",
             "gitlab:index/projectMembership:ProjectMembership": "gitlab_project_membership",
             "gitlab:index/projectMilestone:ProjectMilestone": "gitlab_project_milestone",
             "gitlab:index/projectMirror:ProjectMirror": "gitlab_project_mirror",
@@ -1299,6 +1308,19 @@
                 "accessLevelDescription": "access_level_description",
                 "groupId": "group_id",
                 "userId": "user_id"
+            },
+            "gitlab:index/GroupPushRules:GroupPushRules": {
+                "authorEmailRegex": "author_email_regex",
+                "branchNameRegex": "branch_name_regex",
+                "commitCommitterCheck": "commit_committer_check",
+                "commitMessageNegativeRegex": "commit_message_negative_regex",
+                "commitMessageRegex": "commit_message_regex",
+                "denyDeleteTag": "deny_delete_tag",
+                "fileNameRegex": "file_name_regex",
+                "maxFileSize": "max_file_size",
+                "memberCheck": "member_check",
+                "preventSecrets": "prevent_secrets",
+                "rejectUnsignedCommits": "reject_unsigned_commits"
             },
             "gitlab:index/ProjectContainerExpirationPolicy:ProjectContainerExpirationPolicy": {
                 "keepN": "keep_n",
@@ -2405,6 +2427,7 @@
                 "parentId": "parent_id",
                 "preventForkingOutsideGroup": "prevent_forking_outside_group",
                 "projectCreationLevel": "project_creation_level",
+                "pushRules": "push_rules",
                 "requestAccessEnabled": "request_access_enabled",
                 "requireTwoFactorAuthentication": "require_two_factor_authentication",
                 "runnersToken": "runners_token",
@@ -2638,7 +2661,8 @@
             },
             "gitlab:index/pipelineSchedule:PipelineSchedule": {
                 "cronTimezone": "cron_timezone",
-                "pipelineScheduleId": "pipeline_schedule_id"
+                "pipelineScheduleId": "pipeline_schedule_id",
+                "takeOwnership": "take_ownership"
             },
             "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable": {
                 "pipelineScheduleId": "pipeline_schedule_id"
@@ -2744,6 +2768,7 @@
                 "userId": "user_id"
             },
             "gitlab:index/projectApprovalRule:ProjectApprovalRule": {
+                "appliesToAllProtectedBranches": "applies_to_all_protected_branches",
                 "approvalsRequired": "approvals_required",
                 "disableImportingDefaultAnyApproverRuleOnCreate": "disable_importing_default_any_approver_rule_on_create",
                 "groupIds": "group_ids",
@@ -2848,6 +2873,25 @@
                 "requirePasswordToApprove": "require_password_to_approve",
                 "resetApprovalsOnPush": "reset_approvals_on_push",
                 "selectiveCodeOwnerRemovals": "selective_code_owner_removals"
+            },
+            "gitlab:index/projectLevelNotifications:ProjectLevelNotifications": {
+                "closeIssue": "close_issue",
+                "closeMergeRequest": "close_merge_request",
+                "failedPipeline": "failed_pipeline",
+                "fixedPipeline": "fixed_pipeline",
+                "issueDue": "issue_due",
+                "mergeMergeRequest": "merge_merge_request",
+                "mergeWhenPipelineSucceeds": "merge_when_pipeline_succeeds",
+                "movedProject": "moved_project",
+                "newIssue": "new_issue",
+                "newMergeRequest": "new_merge_request",
+                "newNote": "new_note",
+                "pushToMergeRequest": "push_to_merge_request",
+                "reassignIssue": "reassign_issue",
+                "reassignMergeRequest": "reassign_merge_request",
+                "reopenIssue": "reopen_issue",
+                "reopenMergeRequest": "reopen_merge_request",
+                "successPipeline": "success_pipeline"
             },
             "gitlab:index/projectMembership:ProjectMembership": {
                 "accessLevel": "access_level",

@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.GroupPushRulesArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -259,6 +260,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Push rules for the group.
+     * 
+     */
+    @Import(name="pushRules")
+    private @Nullable Output<GroupPushRulesArgs> pushRules;
+
+    /**
+     * @return Push rules for the group.
+     * 
+     */
+    public Optional<Output<GroupPushRulesArgs>> pushRules() {
+        return Optional.ofNullable(this.pushRules);
+    }
+
+    /**
      * Allow users to request member access.
      * 
      */
@@ -412,6 +428,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         this.path = $.path;
         this.preventForkingOutsideGroup = $.preventForkingOutsideGroup;
         this.projectCreationLevel = $.projectCreationLevel;
+        this.pushRules = $.pushRules;
         this.requestAccessEnabled = $.requestAccessEnabled;
         this.requireTwoFactorAuthentication = $.requireTwoFactorAuthentication;
         this.shareWithGroupLock = $.shareWithGroupLock;
@@ -785,6 +802,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectCreationLevel(String projectCreationLevel) {
             return projectCreationLevel(Output.of(projectCreationLevel));
+        }
+
+        /**
+         * @param pushRules Push rules for the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pushRules(@Nullable Output<GroupPushRulesArgs> pushRules) {
+            $.pushRules = pushRules;
+            return this;
+        }
+
+        /**
+         * @param pushRules Push rules for the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pushRules(GroupPushRulesArgs pushRules) {
+            return pushRules(Output.of(pushRules));
         }
 
         /**

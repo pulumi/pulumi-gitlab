@@ -39,6 +39,20 @@ namespace Pulumi.GitLab
     ///         NamespaceId = exampleGroup.Id,
     ///     });
     /// 
+    ///     // Group with custom push rules
+    ///     var example_two = new GitLab.Group("example-two", new()
+    ///     {
+    ///         Path = "example-two",
+    ///         Description = "An example group with push rules",
+    ///         PushRules = new GitLab.Inputs.GroupPushRulesArgs
+    ///         {
+    ///             AuthorEmailRegex = "@example\\.com$",
+    ///             CommitCommitterCheck = true,
+    ///             MemberCheck = true,
+    ///             PreventSecrets = true,
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -170,6 +184,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("projectCreationLevel")]
         public Output<string> ProjectCreationLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Push rules for the group.
+        /// </summary>
+        [Output("pushRules")]
+        public Output<Outputs.GroupPushRules> PushRules { get; private set; } = null!;
 
         /// <summary>
         /// Allow users to request member access.
@@ -390,6 +410,12 @@ namespace Pulumi.GitLab
         public Input<string>? ProjectCreationLevel { get; set; }
 
         /// <summary>
+        /// Push rules for the group.
+        /// </summary>
+        [Input("pushRules")]
+        public Input<Inputs.GroupPushRulesArgs>? PushRules { get; set; }
+
+        /// <summary>
         /// Allow users to request member access.
         /// </summary>
         [Input("requestAccessEnabled")]
@@ -570,6 +596,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("projectCreationLevel")]
         public Input<string>? ProjectCreationLevel { get; set; }
+
+        /// <summary>
+        /// Push rules for the group.
+        /// </summary>
+        [Input("pushRules")]
+        public Input<Inputs.GroupPushRulesGetArgs>? PushRules { get; set; }
 
         /// <summary>
         /// Allow users to request member access.
