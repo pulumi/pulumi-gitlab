@@ -26,8 +26,8 @@ import * as utilities from "./utilities";
  * const thisIndex_pagesDomainPagesDomain = new gitlab.PagesDomain("thisIndex/pagesDomainPagesDomain", {
  *     project: "123",
  *     domain: "example.com",
- *     key: fs.readFileSync(`${path.module}/key.pem`),
- *     certificate: fs.readFileSync(`${path.module}/cert.pem`),
+ *     key: fs.readFileSync(`${path.module}/key.pem`, "utf8"),
+ *     certificate: fs.readFileSync(`${path.module}/cert.pem`, "utf8"),
  * });
  * ```
  *
