@@ -99,14 +99,14 @@ public final class GetInstanceDeployKeysDeployKey {
             return this;
         }
         public GetInstanceDeployKeysDeployKey build() {
-            final var o = new GetInstanceDeployKeysDeployKey();
-            o.createdAt = createdAt;
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.key = key;
-            o.projectsWithWriteAccesses = projectsWithWriteAccesses;
-            o.title = title;
-            return o;
+            final var _resultValue = new GetInstanceDeployKeysDeployKey();
+            _resultValue.createdAt = createdAt;
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.id = id;
+            _resultValue.key = key;
+            _resultValue.projectsWithWriteAccesses = projectsWithWriteAccesses;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

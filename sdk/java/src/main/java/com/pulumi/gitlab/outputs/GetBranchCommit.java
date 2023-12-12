@@ -152,19 +152,19 @@ public final class GetBranchCommit {
             return this;
         }
         public GetBranchCommit build() {
-            final var o = new GetBranchCommit();
-            o.authorEmail = authorEmail;
-            o.authorName = authorName;
-            o.authoredDate = authoredDate;
-            o.committedDate = committedDate;
-            o.committerEmail = committerEmail;
-            o.committerName = committerName;
-            o.id = id;
-            o.message = message;
-            o.parentIds = parentIds;
-            o.shortId = shortId;
-            o.title = title;
-            return o;
+            final var _resultValue = new GetBranchCommit();
+            _resultValue.authorEmail = authorEmail;
+            _resultValue.authorName = authorName;
+            _resultValue.authoredDate = authoredDate;
+            _resultValue.committedDate = committedDate;
+            _resultValue.committerEmail = committerEmail;
+            _resultValue.committerName = committerName;
+            _resultValue.id = id;
+            _resultValue.message = message;
+            _resultValue.parentIds = parentIds;
+            _resultValue.shortId = shortId;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

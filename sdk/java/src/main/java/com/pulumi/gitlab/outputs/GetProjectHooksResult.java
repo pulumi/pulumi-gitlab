@@ -89,11 +89,11 @@ public final class GetProjectHooksResult {
             return this;
         }
         public GetProjectHooksResult build() {
-            final var o = new GetProjectHooksResult();
-            o.hooks = hooks;
-            o.id = id;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetProjectHooksResult();
+            _resultValue.hooks = hooks;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

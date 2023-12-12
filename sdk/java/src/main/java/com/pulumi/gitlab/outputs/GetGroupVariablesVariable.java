@@ -116,16 +116,16 @@ public final class GetGroupVariablesVariable {
             return this;
         }
         public GetGroupVariablesVariable build() {
-            final var o = new GetGroupVariablesVariable();
-            o.environmentScope = environmentScope;
-            o.group = group;
-            o.key = key;
-            o.masked = masked;
-            o.protected_ = protected_;
-            o.raw = raw;
-            o.value = value;
-            o.variableType = variableType;
-            return o;
+            final var _resultValue = new GetGroupVariablesVariable();
+            _resultValue.environmentScope = environmentScope;
+            _resultValue.group = group;
+            _resultValue.key = key;
+            _resultValue.masked = masked;
+            _resultValue.protected_ = protected_;
+            _resultValue.raw = raw;
+            _resultValue.value = value;
+            _resultValue.variableType = variableType;
+            return _resultValue;
         }
     }
 }

@@ -238,27 +238,27 @@ public final class GetProjectHooksHook {
             return this;
         }
         public GetProjectHooksHook build() {
-            final var o = new GetProjectHooksHook();
-            o.confidentialIssuesEvents = confidentialIssuesEvents;
-            o.confidentialNoteEvents = confidentialNoteEvents;
-            o.deploymentEvents = deploymentEvents;
-            o.enableSslVerification = enableSslVerification;
-            o.hookId = hookId;
-            o.issuesEvents = issuesEvents;
-            o.jobEvents = jobEvents;
-            o.mergeRequestsEvents = mergeRequestsEvents;
-            o.noteEvents = noteEvents;
-            o.pipelineEvents = pipelineEvents;
-            o.project = project;
-            o.projectId = projectId;
-            o.pushEvents = pushEvents;
-            o.pushEventsBranchFilter = pushEventsBranchFilter;
-            o.releasesEvents = releasesEvents;
-            o.tagPushEvents = tagPushEvents;
-            o.token = token;
-            o.url = url;
-            o.wikiPageEvents = wikiPageEvents;
-            return o;
+            final var _resultValue = new GetProjectHooksHook();
+            _resultValue.confidentialIssuesEvents = confidentialIssuesEvents;
+            _resultValue.confidentialNoteEvents = confidentialNoteEvents;
+            _resultValue.deploymentEvents = deploymentEvents;
+            _resultValue.enableSslVerification = enableSslVerification;
+            _resultValue.hookId = hookId;
+            _resultValue.issuesEvents = issuesEvents;
+            _resultValue.jobEvents = jobEvents;
+            _resultValue.mergeRequestsEvents = mergeRequestsEvents;
+            _resultValue.noteEvents = noteEvents;
+            _resultValue.pipelineEvents = pipelineEvents;
+            _resultValue.project = project;
+            _resultValue.projectId = projectId;
+            _resultValue.pushEvents = pushEvents;
+            _resultValue.pushEventsBranchFilter = pushEventsBranchFilter;
+            _resultValue.releasesEvents = releasesEvents;
+            _resultValue.tagPushEvents = tagPushEvents;
+            _resultValue.token = token;
+            _resultValue.url = url;
+            _resultValue.wikiPageEvents = wikiPageEvents;
+            return _resultValue;
         }
     }
 }

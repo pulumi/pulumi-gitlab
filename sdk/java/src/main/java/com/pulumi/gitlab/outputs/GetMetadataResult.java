@@ -124,13 +124,13 @@ public final class GetMetadataResult {
             return this;
         }
         public GetMetadataResult build() {
-            final var o = new GetMetadataResult();
-            o.enterprise = enterprise;
-            o.id = id;
-            o.kas = kas;
-            o.revision = revision;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetMetadataResult();
+            _resultValue.enterprise = enterprise;
+            _resultValue.id = id;
+            _resultValue.kas = kas;
+            _resultValue.revision = revision;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

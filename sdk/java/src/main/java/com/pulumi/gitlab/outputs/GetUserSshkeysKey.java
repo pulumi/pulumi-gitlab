@@ -94,14 +94,14 @@ public final class GetUserSshkeysKey {
             return this;
         }
         public GetUserSshkeysKey build() {
-            final var o = new GetUserSshkeysKey();
-            o.createdAt = createdAt;
-            o.expiresAt = expiresAt;
-            o.key = key;
-            o.keyId = keyId;
-            o.title = title;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetUserSshkeysKey();
+            _resultValue.createdAt = createdAt;
+            _resultValue.expiresAt = expiresAt;
+            _resultValue.key = key;
+            _resultValue.keyId = keyId;
+            _resultValue.title = title;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

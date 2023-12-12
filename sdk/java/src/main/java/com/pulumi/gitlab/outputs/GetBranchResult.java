@@ -242,19 +242,19 @@ public final class GetBranchResult {
             return this;
         }
         public GetBranchResult build() {
-            final var o = new GetBranchResult();
-            o.canPush = canPush;
-            o.commits = commits;
-            o.default_ = default_;
-            o.developerCanMerge = developerCanMerge;
-            o.developerCanPush = developerCanPush;
-            o.id = id;
-            o.merged = merged;
-            o.name = name;
-            o.project = project;
-            o.protected_ = protected_;
-            o.webUrl = webUrl;
-            return o;
+            final var _resultValue = new GetBranchResult();
+            _resultValue.canPush = canPush;
+            _resultValue.commits = commits;
+            _resultValue.default_ = default_;
+            _resultValue.developerCanMerge = developerCanMerge;
+            _resultValue.developerCanPush = developerCanPush;
+            _resultValue.id = id;
+            _resultValue.merged = merged;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.protected_ = protected_;
+            _resultValue.webUrl = webUrl;
+            return _resultValue;
         }
     }
 }

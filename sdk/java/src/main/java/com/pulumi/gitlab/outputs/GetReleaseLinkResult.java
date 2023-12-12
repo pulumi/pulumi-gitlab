@@ -219,18 +219,18 @@ public final class GetReleaseLinkResult {
             return this;
         }
         public GetReleaseLinkResult build() {
-            final var o = new GetReleaseLinkResult();
-            o.directAssetUrl = directAssetUrl;
-            o.external = external;
-            o.filepath = filepath;
-            o.id = id;
-            o.linkId = linkId;
-            o.linkType = linkType;
-            o.name = name;
-            o.project = project;
-            o.tagName = tagName;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetReleaseLinkResult();
+            _resultValue.directAssetUrl = directAssetUrl;
+            _resultValue.external = external;
+            _resultValue.filepath = filepath;
+            _resultValue.id = id;
+            _resultValue.linkId = linkId;
+            _resultValue.linkType = linkType;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.tagName = tagName;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

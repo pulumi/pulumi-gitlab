@@ -110,12 +110,12 @@ public final class GetProjectVariablesResult {
             return variables(List.of(variables));
         }
         public GetProjectVariablesResult build() {
-            final var o = new GetProjectVariablesResult();
-            o.environmentScope = environmentScope;
-            o.id = id;
-            o.project = project;
-            o.variables = variables;
-            return o;
+            final var _resultValue = new GetProjectVariablesResult();
+            _resultValue.environmentScope = environmentScope;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.variables = variables;
+            return _resultValue;
         }
     }
 }

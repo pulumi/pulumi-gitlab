@@ -106,12 +106,12 @@ public final class TagProtectionAllowedToCreate {
             return this;
         }
         public TagProtectionAllowedToCreate build() {
-            final var o = new TagProtectionAllowedToCreate();
-            o.accessLevel = accessLevel;
-            o.accessLevelDescription = accessLevelDescription;
-            o.groupId = groupId;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new TagProtectionAllowedToCreate();
+            _resultValue.accessLevel = accessLevel;
+            _resultValue.accessLevelDescription = accessLevelDescription;
+            _resultValue.groupId = groupId;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

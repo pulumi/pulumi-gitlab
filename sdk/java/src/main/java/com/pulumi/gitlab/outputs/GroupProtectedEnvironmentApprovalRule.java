@@ -144,14 +144,14 @@ public final class GroupProtectedEnvironmentApprovalRule {
             return this;
         }
         public GroupProtectedEnvironmentApprovalRule build() {
-            final var o = new GroupProtectedEnvironmentApprovalRule();
-            o.accessLevel = accessLevel;
-            o.accessLevelDescription = accessLevelDescription;
-            o.groupId = groupId;
-            o.id = id;
-            o.requiredApprovals = requiredApprovals;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GroupProtectedEnvironmentApprovalRule();
+            _resultValue.accessLevel = accessLevel;
+            _resultValue.accessLevelDescription = accessLevelDescription;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.requiredApprovals = requiredApprovals;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

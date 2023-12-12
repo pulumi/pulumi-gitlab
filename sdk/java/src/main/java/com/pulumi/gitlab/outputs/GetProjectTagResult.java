@@ -189,16 +189,16 @@ public final class GetProjectTagResult {
             return this;
         }
         public GetProjectTagResult build() {
-            final var o = new GetProjectTagResult();
-            o.commits = commits;
-            o.id = id;
-            o.message = message;
-            o.name = name;
-            o.project = project;
-            o.protected_ = protected_;
-            o.releases = releases;
-            o.target = target;
-            return o;
+            final var _resultValue = new GetProjectTagResult();
+            _resultValue.commits = commits;
+            _resultValue.id = id;
+            _resultValue.message = message;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.protected_ = protected_;
+            _resultValue.releases = releases;
+            _resultValue.target = target;
+            return _resultValue;
         }
     }
 }

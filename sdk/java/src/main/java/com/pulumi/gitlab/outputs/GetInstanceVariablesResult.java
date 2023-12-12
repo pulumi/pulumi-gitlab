@@ -70,10 +70,10 @@ public final class GetInstanceVariablesResult {
             return variables(List.of(variables));
         }
         public GetInstanceVariablesResult build() {
-            final var o = new GetInstanceVariablesResult();
-            o.id = id;
-            o.variables = variables;
-            return o;
+            final var _resultValue = new GetInstanceVariablesResult();
+            _resultValue.id = id;
+            _resultValue.variables = variables;
+            return _resultValue;
         }
     }
 }

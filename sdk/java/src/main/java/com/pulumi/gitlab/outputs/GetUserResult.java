@@ -580,37 +580,37 @@ public final class GetUserResult {
             return this;
         }
         public GetUserResult build() {
-            final var o = new GetUserResult();
-            o.avatarUrl = avatarUrl;
-            o.bio = bio;
-            o.canCreateGroup = canCreateGroup;
-            o.canCreateProject = canCreateProject;
-            o.colorSchemeId = colorSchemeId;
-            o.createdAt = createdAt;
-            o.currentSignInAt = currentSignInAt;
-            o.email = email;
-            o.externUid = externUid;
-            o.external = external;
-            o.id = id;
-            o.isAdmin = isAdmin;
-            o.lastSignInAt = lastSignInAt;
-            o.linkedin = linkedin;
-            o.location = location;
-            o.name = name;
-            o.namespaceId = namespaceId;
-            o.note = note;
-            o.organization = organization;
-            o.projectsLimit = projectsLimit;
-            o.skype = skype;
-            o.state = state;
-            o.themeId = themeId;
-            o.twitter = twitter;
-            o.twoFactorEnabled = twoFactorEnabled;
-            o.userId = userId;
-            o.userProvider = userProvider;
-            o.username = username;
-            o.websiteUrl = websiteUrl;
-            return o;
+            final var _resultValue = new GetUserResult();
+            _resultValue.avatarUrl = avatarUrl;
+            _resultValue.bio = bio;
+            _resultValue.canCreateGroup = canCreateGroup;
+            _resultValue.canCreateProject = canCreateProject;
+            _resultValue.colorSchemeId = colorSchemeId;
+            _resultValue.createdAt = createdAt;
+            _resultValue.currentSignInAt = currentSignInAt;
+            _resultValue.email = email;
+            _resultValue.externUid = externUid;
+            _resultValue.external = external;
+            _resultValue.id = id;
+            _resultValue.isAdmin = isAdmin;
+            _resultValue.lastSignInAt = lastSignInAt;
+            _resultValue.linkedin = linkedin;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.note = note;
+            _resultValue.organization = organization;
+            _resultValue.projectsLimit = projectsLimit;
+            _resultValue.skype = skype;
+            _resultValue.state = state;
+            _resultValue.themeId = themeId;
+            _resultValue.twitter = twitter;
+            _resultValue.twoFactorEnabled = twoFactorEnabled;
+            _resultValue.userId = userId;
+            _resultValue.userProvider = userProvider;
+            _resultValue.username = username;
+            _resultValue.websiteUrl = websiteUrl;
+            return _resultValue;
         }
     }
 }

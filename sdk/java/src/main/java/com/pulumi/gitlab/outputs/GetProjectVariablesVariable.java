@@ -116,16 +116,16 @@ public final class GetProjectVariablesVariable {
             return this;
         }
         public GetProjectVariablesVariable build() {
-            final var o = new GetProjectVariablesVariable();
-            o.environmentScope = environmentScope;
-            o.key = key;
-            o.masked = masked;
-            o.project = project;
-            o.protected_ = protected_;
-            o.raw = raw;
-            o.value = value;
-            o.variableType = variableType;
-            return o;
+            final var _resultValue = new GetProjectVariablesVariable();
+            _resultValue.environmentScope = environmentScope;
+            _resultValue.key = key;
+            _resultValue.masked = masked;
+            _resultValue.project = project;
+            _resultValue.protected_ = protected_;
+            _resultValue.raw = raw;
+            _resultValue.value = value;
+            _resultValue.variableType = variableType;
+            return _resultValue;
         }
     }
 }

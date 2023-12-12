@@ -150,19 +150,19 @@ public final class GetProjectPushRule {
             return this;
         }
         public GetProjectPushRule build() {
-            final var o = new GetProjectPushRule();
-            o.authorEmailRegex = authorEmailRegex;
-            o.branchNameRegex = branchNameRegex;
-            o.commitCommitterCheck = commitCommitterCheck;
-            o.commitMessageNegativeRegex = commitMessageNegativeRegex;
-            o.commitMessageRegex = commitMessageRegex;
-            o.denyDeleteTag = denyDeleteTag;
-            o.fileNameRegex = fileNameRegex;
-            o.maxFileSize = maxFileSize;
-            o.memberCheck = memberCheck;
-            o.preventSecrets = preventSecrets;
-            o.rejectUnsignedCommits = rejectUnsignedCommits;
-            return o;
+            final var _resultValue = new GetProjectPushRule();
+            _resultValue.authorEmailRegex = authorEmailRegex;
+            _resultValue.branchNameRegex = branchNameRegex;
+            _resultValue.commitCommitterCheck = commitCommitterCheck;
+            _resultValue.commitMessageNegativeRegex = commitMessageNegativeRegex;
+            _resultValue.commitMessageRegex = commitMessageRegex;
+            _resultValue.denyDeleteTag = denyDeleteTag;
+            _resultValue.fileNameRegex = fileNameRegex;
+            _resultValue.maxFileSize = maxFileSize;
+            _resultValue.memberCheck = memberCheck;
+            _resultValue.preventSecrets = preventSecrets;
+            _resultValue.rejectUnsignedCommits = rejectUnsignedCommits;
+            return _resultValue;
         }
     }
 }

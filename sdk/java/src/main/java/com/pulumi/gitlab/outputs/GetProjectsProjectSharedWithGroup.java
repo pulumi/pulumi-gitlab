@@ -61,11 +61,11 @@ public final class GetProjectsProjectSharedWithGroup {
             return this;
         }
         public GetProjectsProjectSharedWithGroup build() {
-            final var o = new GetProjectsProjectSharedWithGroup();
-            o.groupAccessLevel = groupAccessLevel;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            return o;
+            final var _resultValue = new GetProjectsProjectSharedWithGroup();
+            _resultValue.groupAccessLevel = groupAccessLevel;
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            return _resultValue;
         }
     }
 }

@@ -200,17 +200,17 @@ public final class GetCurrentUserResult {
             return this;
         }
         public GetCurrentUserResult build() {
-            final var o = new GetCurrentUserResult();
-            o.bot = bot;
-            o.globalId = globalId;
-            o.globalNamespaceId = globalNamespaceId;
-            o.groupCount = groupCount;
-            o.id = id;
-            o.name = name;
-            o.namespaceId = namespaceId;
-            o.publicEmail = publicEmail;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetCurrentUserResult();
+            _resultValue.bot = bot;
+            _resultValue.globalId = globalId;
+            _resultValue.globalNamespaceId = globalNamespaceId;
+            _resultValue.groupCount = groupCount;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.publicEmail = publicEmail;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

@@ -149,14 +149,14 @@ public final class GetGroupsResult {
             return this;
         }
         public GetGroupsResult build() {
-            final var o = new GetGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.orderBy = orderBy;
-            o.search = search;
-            o.sort = sort;
-            o.topLevelOnly = topLevelOnly;
-            return o;
+            final var _resultValue = new GetGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.orderBy = orderBy;
+            _resultValue.search = search;
+            _resultValue.sort = sort;
+            _resultValue.topLevelOnly = topLevelOnly;
+            return _resultValue;
         }
     }
 }

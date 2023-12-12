@@ -191,16 +191,16 @@ public final class GetProjectMilestonesResult {
             return this;
         }
         public GetProjectMilestonesResult build() {
-            final var o = new GetProjectMilestonesResult();
-            o.id = id;
-            o.iids = iids;
-            o.includeParentMilestones = includeParentMilestones;
-            o.milestones = milestones;
-            o.project = project;
-            o.search = search;
-            o.state = state;
-            o.title = title;
-            return o;
+            final var _resultValue = new GetProjectMilestonesResult();
+            _resultValue.id = id;
+            _resultValue.iids = iids;
+            _resultValue.includeParentMilestones = includeParentMilestones;
+            _resultValue.milestones = milestones;
+            _resultValue.project = project;
+            _resultValue.search = search;
+            _resultValue.state = state;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

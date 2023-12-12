@@ -149,14 +149,14 @@ public final class GetRepositoryTreeResult {
             return trees(List.of(trees));
         }
         public GetRepositoryTreeResult build() {
-            final var o = new GetRepositoryTreeResult();
-            o.id = id;
-            o.path = path;
-            o.project = project;
-            o.recursive = recursive;
-            o.ref = ref;
-            o.trees = trees;
-            return o;
+            final var _resultValue = new GetRepositoryTreeResult();
+            _resultValue.id = id;
+            _resultValue.path = path;
+            _resultValue.project = project;
+            _resultValue.recursive = recursive;
+            _resultValue.ref = ref;
+            _resultValue.trees = trees;
+            return _resultValue;
         }
     }
 }

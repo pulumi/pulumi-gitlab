@@ -49,10 +49,10 @@ public final class GetProjectIssuesIssueTaskCompletionStatus {
             return this;
         }
         public GetProjectIssuesIssueTaskCompletionStatus build() {
-            final var o = new GetProjectIssuesIssueTaskCompletionStatus();
-            o.completedCount = completedCount;
-            o.count = count;
-            return o;
+            final var _resultValue = new GetProjectIssuesIssueTaskCompletionStatus();
+            _resultValue.completedCount = completedCount;
+            _resultValue.count = count;
+            return _resultValue;
         }
     }
 }

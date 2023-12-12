@@ -150,14 +150,14 @@ public final class GetProjectMembershipResult {
             return this;
         }
         public GetProjectMembershipResult build() {
-            final var o = new GetProjectMembershipResult();
-            o.fullPath = fullPath;
-            o.id = id;
-            o.inherited = inherited;
-            o.members = members;
-            o.projectId = projectId;
-            o.query = query;
-            return o;
+            final var _resultValue = new GetProjectMembershipResult();
+            _resultValue.fullPath = fullPath;
+            _resultValue.id = id;
+            _resultValue.inherited = inherited;
+            _resultValue.members = members;
+            _resultValue.projectId = projectId;
+            _resultValue.query = query;
+            return _resultValue;
         }
     }
 }

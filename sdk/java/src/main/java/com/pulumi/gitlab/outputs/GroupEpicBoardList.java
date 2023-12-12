@@ -86,11 +86,11 @@ public final class GroupEpicBoardList {
             return this;
         }
         public GroupEpicBoardList build() {
-            final var o = new GroupEpicBoardList();
-            o.id = id;
-            o.labelId = labelId;
-            o.position = position;
-            return o;
+            final var _resultValue = new GroupEpicBoardList();
+            _resultValue.id = id;
+            _resultValue.labelId = labelId;
+            _resultValue.position = position;
+            return _resultValue;
         }
     }
 }

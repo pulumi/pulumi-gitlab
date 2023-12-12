@@ -110,12 +110,12 @@ public final class GetGroupVariablesResult {
             return variables(List.of(variables));
         }
         public GetGroupVariablesResult build() {
-            final var o = new GetGroupVariablesResult();
-            o.environmentScope = environmentScope;
-            o.group = group;
-            o.id = id;
-            o.variables = variables;
-            return o;
+            final var _resultValue = new GetGroupVariablesResult();
+            _resultValue.environmentScope = environmentScope;
+            _resultValue.group = group;
+            _resultValue.id = id;
+            _resultValue.variables = variables;
+            return _resultValue;
         }
     }
 }

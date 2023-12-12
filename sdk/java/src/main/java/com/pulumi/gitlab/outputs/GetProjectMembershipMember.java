@@ -116,16 +116,16 @@ public final class GetProjectMembershipMember {
             return this;
         }
         public GetProjectMembershipMember build() {
-            final var o = new GetProjectMembershipMember();
-            o.accessLevel = accessLevel;
-            o.avatarUrl = avatarUrl;
-            o.expiresAt = expiresAt;
-            o.id = id;
-            o.name = name;
-            o.state = state;
-            o.username = username;
-            o.webUrl = webUrl;
-            return o;
+            final var _resultValue = new GetProjectMembershipMember();
+            _resultValue.accessLevel = accessLevel;
+            _resultValue.avatarUrl = avatarUrl;
+            _resultValue.expiresAt = expiresAt;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.state = state;
+            _resultValue.username = username;
+            _resultValue.webUrl = webUrl;
+            return _resultValue;
         }
     }
 }

@@ -148,14 +148,14 @@ public final class GetProjectTagsResult {
             return tags(List.of(tags));
         }
         public GetProjectTagsResult build() {
-            final var o = new GetProjectTagsResult();
-            o.id = id;
-            o.orderBy = orderBy;
-            o.project = project;
-            o.search = search;
-            o.sort = sort;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetProjectTagsResult();
+            _resultValue.id = id;
+            _resultValue.orderBy = orderBy;
+            _resultValue.project = project;
+            _resultValue.search = search;
+            _resultValue.sort = sort;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }
