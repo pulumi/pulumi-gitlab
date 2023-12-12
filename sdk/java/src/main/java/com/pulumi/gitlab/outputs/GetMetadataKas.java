@@ -85,11 +85,11 @@ public final class GetMetadataKas {
             return this;
         }
         public GetMetadataKas build() {
-            final var o = new GetMetadataKas();
-            o.enabled = enabled;
-            o.externalUrl = externalUrl;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetMetadataKas();
+            _resultValue.enabled = enabled;
+            _resultValue.externalUrl = externalUrl;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

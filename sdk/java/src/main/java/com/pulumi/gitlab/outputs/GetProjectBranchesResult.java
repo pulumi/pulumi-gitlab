@@ -89,11 +89,11 @@ public final class GetProjectBranchesResult {
             return this;
         }
         public GetProjectBranchesResult build() {
-            final var o = new GetProjectBranchesResult();
-            o.branches = branches;
-            o.id = id;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetProjectBranchesResult();
+            _resultValue.branches = branches;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

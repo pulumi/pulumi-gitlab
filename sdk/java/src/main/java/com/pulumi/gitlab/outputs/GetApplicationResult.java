@@ -115,13 +115,13 @@ public final class GetApplicationResult {
             return this;
         }
         public GetApplicationResult build() {
-            final var o = new GetApplicationResult();
-            o.applicationId = applicationId;
-            o.confidential = confidential;
-            o.id = id;
-            o.name = name;
-            o.redirectUrl = redirectUrl;
-            return o;
+            final var _resultValue = new GetApplicationResult();
+            _resultValue.applicationId = applicationId;
+            _resultValue.confidential = confidential;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.redirectUrl = redirectUrl;
+            return _resultValue;
         }
     }
 }

@@ -89,11 +89,11 @@ public final class GetClusterAgentsResult {
             return this;
         }
         public GetClusterAgentsResult build() {
-            final var o = new GetClusterAgentsResult();
-            o.clusterAgents = clusterAgents;
-            o.id = id;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetClusterAgentsResult();
+            _resultValue.clusterAgents = clusterAgents;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

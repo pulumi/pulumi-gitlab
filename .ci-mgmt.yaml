@@ -4,7 +4,6 @@ env:
   PULUMI_GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
 makeTemplate: bridged
 team: ecosystem
-javaGenVersion: "v0.9.3"
 plugins:
   - name: local
     version: "0.0.1"

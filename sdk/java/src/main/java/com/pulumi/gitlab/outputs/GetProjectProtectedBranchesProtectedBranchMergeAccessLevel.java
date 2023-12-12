@@ -72,12 +72,12 @@ public final class GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
             return this;
         }
         public GetProjectProtectedBranchesProtectedBranchMergeAccessLevel build() {
-            final var o = new GetProjectProtectedBranchesProtectedBranchMergeAccessLevel();
-            o.accessLevel = accessLevel;
-            o.accessLevelDescription = accessLevelDescription;
-            o.groupId = groupId;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetProjectProtectedBranchesProtectedBranchMergeAccessLevel();
+            _resultValue.accessLevel = accessLevel;
+            _resultValue.accessLevelDescription = accessLevelDescription;
+            _resultValue.groupId = groupId;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

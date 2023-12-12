@@ -89,11 +89,11 @@ public final class GetGroupHooksResult {
             return this;
         }
         public GetGroupHooksResult build() {
-            final var o = new GetGroupHooksResult();
-            o.group = group;
-            o.hooks = hooks;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetGroupHooksResult();
+            _resultValue.group = group;
+            _resultValue.hooks = hooks;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

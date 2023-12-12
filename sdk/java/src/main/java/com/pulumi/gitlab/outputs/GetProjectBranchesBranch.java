@@ -132,17 +132,17 @@ public final class GetProjectBranchesBranch {
             return this;
         }
         public GetProjectBranchesBranch build() {
-            final var o = new GetProjectBranchesBranch();
-            o.canPush = canPush;
-            o.commits = commits;
-            o.default_ = default_;
-            o.developersCanMerge = developersCanMerge;
-            o.developersCanPush = developersCanPush;
-            o.merged = merged;
-            o.name = name;
-            o.protected_ = protected_;
-            o.webUrl = webUrl;
-            return o;
+            final var _resultValue = new GetProjectBranchesBranch();
+            _resultValue.canPush = canPush;
+            _resultValue.commits = commits;
+            _resultValue.default_ = default_;
+            _resultValue.developersCanMerge = developersCanMerge;
+            _resultValue.developersCanPush = developersCanPush;
+            _resultValue.merged = merged;
+            _resultValue.name = name;
+            _resultValue.protected_ = protected_;
+            _resultValue.webUrl = webUrl;
+            return _resultValue;
         }
     }
 }

@@ -295,22 +295,22 @@ public final class GetProjectMilestoneResult {
             return this;
         }
         public GetProjectMilestoneResult build() {
-            final var o = new GetProjectMilestoneResult();
-            o.createdAt = createdAt;
-            o.description = description;
-            o.dueDate = dueDate;
-            o.expired = expired;
-            o.id = id;
-            o.iid = iid;
-            o.milestoneId = milestoneId;
-            o.project = project;
-            o.projectId = projectId;
-            o.startDate = startDate;
-            o.state = state;
-            o.title = title;
-            o.updatedAt = updatedAt;
-            o.webUrl = webUrl;
-            return o;
+            final var _resultValue = new GetProjectMilestoneResult();
+            _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
+            _resultValue.dueDate = dueDate;
+            _resultValue.expired = expired;
+            _resultValue.id = id;
+            _resultValue.iid = iid;
+            _resultValue.milestoneId = milestoneId;
+            _resultValue.project = project;
+            _resultValue.projectId = projectId;
+            _resultValue.startDate = startDate;
+            _resultValue.state = state;
+            _resultValue.title = title;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.webUrl = webUrl;
+            return _resultValue;
         }
     }
 }

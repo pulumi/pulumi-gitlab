@@ -104,14 +104,14 @@ public final class GetProjectProtectedBranchesProtectedBranch {
             return pushAccessLevels(List.of(pushAccessLevels));
         }
         public GetProjectProtectedBranchesProtectedBranch build() {
-            final var o = new GetProjectProtectedBranchesProtectedBranch();
-            o.allowForcePush = allowForcePush;
-            o.codeOwnerApprovalRequired = codeOwnerApprovalRequired;
-            o.id = id;
-            o.mergeAccessLevels = mergeAccessLevels;
-            o.name = name;
-            o.pushAccessLevels = pushAccessLevels;
-            return o;
+            final var _resultValue = new GetProjectProtectedBranchesProtectedBranch();
+            _resultValue.allowForcePush = allowForcePush;
+            _resultValue.codeOwnerApprovalRequired = codeOwnerApprovalRequired;
+            _resultValue.id = id;
+            _resultValue.mergeAccessLevels = mergeAccessLevels;
+            _resultValue.name = name;
+            _resultValue.pushAccessLevels = pushAccessLevels;
+            return _resultValue;
         }
     }
 }

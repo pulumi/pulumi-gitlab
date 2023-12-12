@@ -150,14 +150,14 @@ public final class GetGroupMembershipResult {
             return members(List.of(members));
         }
         public GetGroupMembershipResult build() {
-            final var o = new GetGroupMembershipResult();
-            o.accessLevel = accessLevel;
-            o.fullPath = fullPath;
-            o.groupId = groupId;
-            o.id = id;
-            o.inherited = inherited;
-            o.members = members;
-            return o;
+            final var _resultValue = new GetGroupMembershipResult();
+            _resultValue.accessLevel = accessLevel;
+            _resultValue.fullPath = fullPath;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.inherited = inherited;
+            _resultValue.members = members;
+            return _resultValue;
         }
     }
 }

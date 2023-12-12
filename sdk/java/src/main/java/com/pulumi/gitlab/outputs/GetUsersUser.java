@@ -326,35 +326,35 @@ public final class GetUsersUser {
             return this;
         }
         public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.avatarUrl = avatarUrl;
-            o.bio = bio;
-            o.canCreateGroup = canCreateGroup;
-            o.canCreateProject = canCreateProject;
-            o.colorSchemeId = colorSchemeId;
-            o.createdAt = createdAt;
-            o.currentSignInAt = currentSignInAt;
-            o.email = email;
-            o.externUid = externUid;
-            o.external = external;
-            o.id = id;
-            o.isAdmin = isAdmin;
-            o.lastSignInAt = lastSignInAt;
-            o.linkedin = linkedin;
-            o.location = location;
-            o.name = name;
-            o.namespaceId = namespaceId;
-            o.organization = organization;
-            o.projectsLimit = projectsLimit;
-            o.provider = provider;
-            o.skype = skype;
-            o.state = state;
-            o.themeId = themeId;
-            o.twitter = twitter;
-            o.twoFactorEnabled = twoFactorEnabled;
-            o.username = username;
-            o.websiteUrl = websiteUrl;
-            return o;
+            final var _resultValue = new GetUsersUser();
+            _resultValue.avatarUrl = avatarUrl;
+            _resultValue.bio = bio;
+            _resultValue.canCreateGroup = canCreateGroup;
+            _resultValue.canCreateProject = canCreateProject;
+            _resultValue.colorSchemeId = colorSchemeId;
+            _resultValue.createdAt = createdAt;
+            _resultValue.currentSignInAt = currentSignInAt;
+            _resultValue.email = email;
+            _resultValue.externUid = externUid;
+            _resultValue.external = external;
+            _resultValue.id = id;
+            _resultValue.isAdmin = isAdmin;
+            _resultValue.lastSignInAt = lastSignInAt;
+            _resultValue.linkedin = linkedin;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.organization = organization;
+            _resultValue.projectsLimit = projectsLimit;
+            _resultValue.provider = provider;
+            _resultValue.skype = skype;
+            _resultValue.state = state;
+            _resultValue.themeId = themeId;
+            _resultValue.twitter = twitter;
+            _resultValue.twoFactorEnabled = twoFactorEnabled;
+            _resultValue.username = username;
+            _resultValue.websiteUrl = websiteUrl;
+            return _resultValue;
         }
     }
 }

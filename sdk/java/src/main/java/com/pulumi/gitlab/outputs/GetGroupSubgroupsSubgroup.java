@@ -327,35 +327,35 @@ public final class GetGroupSubgroupsSubgroup {
             return this;
         }
         public GetGroupSubgroupsSubgroup build() {
-            final var o = new GetGroupSubgroupsSubgroup();
-            o.autoDevopsEnabled = autoDevopsEnabled;
-            o.avatarUrl = avatarUrl;
-            o.createdAt = createdAt;
-            o.defaultBranchProtection = defaultBranchProtection;
-            o.description = description;
-            o.emailsDisabled = emailsDisabled;
-            o.fileTemplateProjectId = fileTemplateProjectId;
-            o.fullName = fullName;
-            o.fullPath = fullPath;
-            o.groupId = groupId;
-            o.ipRestrictionRanges = ipRestrictionRanges;
-            o.lfsEnabled = lfsEnabled;
-            o.mentionsDisabled = mentionsDisabled;
-            o.name = name;
-            o.parentId = parentId;
-            o.path = path;
-            o.projectCreationLevel = projectCreationLevel;
-            o.requestAccessEnabled = requestAccessEnabled;
-            o.requireTwoFactorAuthentication = requireTwoFactorAuthentication;
-            o.shareWithGroupLock = shareWithGroupLock;
-            o.sharedRunnersSetting = sharedRunnersSetting;
-            o.statistics = statistics;
-            o.subgroupCreationLevel = subgroupCreationLevel;
-            o.twoFactorGracePeriod = twoFactorGracePeriod;
-            o.visibility = visibility;
-            o.webUrl = webUrl;
-            o.wikiAccessLevel = wikiAccessLevel;
-            return o;
+            final var _resultValue = new GetGroupSubgroupsSubgroup();
+            _resultValue.autoDevopsEnabled = autoDevopsEnabled;
+            _resultValue.avatarUrl = avatarUrl;
+            _resultValue.createdAt = createdAt;
+            _resultValue.defaultBranchProtection = defaultBranchProtection;
+            _resultValue.description = description;
+            _resultValue.emailsDisabled = emailsDisabled;
+            _resultValue.fileTemplateProjectId = fileTemplateProjectId;
+            _resultValue.fullName = fullName;
+            _resultValue.fullPath = fullPath;
+            _resultValue.groupId = groupId;
+            _resultValue.ipRestrictionRanges = ipRestrictionRanges;
+            _resultValue.lfsEnabled = lfsEnabled;
+            _resultValue.mentionsDisabled = mentionsDisabled;
+            _resultValue.name = name;
+            _resultValue.parentId = parentId;
+            _resultValue.path = path;
+            _resultValue.projectCreationLevel = projectCreationLevel;
+            _resultValue.requestAccessEnabled = requestAccessEnabled;
+            _resultValue.requireTwoFactorAuthentication = requireTwoFactorAuthentication;
+            _resultValue.shareWithGroupLock = shareWithGroupLock;
+            _resultValue.sharedRunnersSetting = sharedRunnersSetting;
+            _resultValue.statistics = statistics;
+            _resultValue.subgroupCreationLevel = subgroupCreationLevel;
+            _resultValue.twoFactorGracePeriod = twoFactorGracePeriod;
+            _resultValue.visibility = visibility;
+            _resultValue.webUrl = webUrl;
+            _resultValue.wikiAccessLevel = wikiAccessLevel;
+            return _resultValue;
         }
     }
 }

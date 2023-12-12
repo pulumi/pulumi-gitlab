@@ -105,15 +105,15 @@ public final class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
             return this;
         }
         public GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess build() {
-            final var o = new GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess();
-            o.createdAt = createdAt;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.nameWithNamespace = nameWithNamespace;
-            o.path = path;
-            o.pathWithNamespace = pathWithNamespace;
-            return o;
+            final var _resultValue = new GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess();
+            _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.nameWithNamespace = nameWithNamespace;
+            _resultValue.path = path;
+            _resultValue.pathWithNamespace = pathWithNamespace;
+            return _resultValue;
         }
     }
 }

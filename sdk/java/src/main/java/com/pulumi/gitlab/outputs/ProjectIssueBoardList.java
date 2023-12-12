@@ -143,14 +143,14 @@ public final class ProjectIssueBoardList {
             return this;
         }
         public ProjectIssueBoardList build() {
-            final var o = new ProjectIssueBoardList();
-            o.assigneeId = assigneeId;
-            o.id = id;
-            o.iterationId = iterationId;
-            o.labelId = labelId;
-            o.milestoneId = milestoneId;
-            o.position = position;
-            return o;
+            final var _resultValue = new ProjectIssueBoardList();
+            _resultValue.assigneeId = assigneeId;
+            _resultValue.id = id;
+            _resultValue.iterationId = iterationId;
+            _resultValue.labelId = labelId;
+            _resultValue.milestoneId = milestoneId;
+            _resultValue.position = position;
+            return _resultValue;
         }
     }
 }

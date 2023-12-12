@@ -89,11 +89,11 @@ public final class GetProjectProtectedBranchesResult {
             return protectedBranches(List.of(protectedBranches));
         }
         public GetProjectProtectedBranchesResult build() {
-            final var o = new GetProjectProtectedBranchesResult();
-            o.id = id;
-            o.projectId = projectId;
-            o.protectedBranches = protectedBranches;
-            return o;
+            final var _resultValue = new GetProjectProtectedBranchesResult();
+            _resultValue.id = id;
+            _resultValue.projectId = projectId;
+            _resultValue.protectedBranches = protectedBranches;
+            return _resultValue;
         }
     }
 }

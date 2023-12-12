@@ -409,28 +409,28 @@ public final class GetGroupResult {
             return this;
         }
         public GetGroupResult build() {
-            final var o = new GetGroupResult();
-            o.defaultBranchProtection = defaultBranchProtection;
-            o.description = description;
-            o.extraSharedRunnersMinutesLimit = extraSharedRunnersMinutesLimit;
-            o.fullName = fullName;
-            o.fullPath = fullPath;
-            o.groupId = groupId;
-            o.id = id;
-            o.lfsEnabled = lfsEnabled;
-            o.membershipLock = membershipLock;
-            o.name = name;
-            o.parentId = parentId;
-            o.path = path;
-            o.preventForkingOutsideGroup = preventForkingOutsideGroup;
-            o.requestAccessEnabled = requestAccessEnabled;
-            o.runnersToken = runnersToken;
-            o.sharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
-            o.sharedRunnersSetting = sharedRunnersSetting;
-            o.visibilityLevel = visibilityLevel;
-            o.webUrl = webUrl;
-            o.wikiAccessLevel = wikiAccessLevel;
-            return o;
+            final var _resultValue = new GetGroupResult();
+            _resultValue.defaultBranchProtection = defaultBranchProtection;
+            _resultValue.description = description;
+            _resultValue.extraSharedRunnersMinutesLimit = extraSharedRunnersMinutesLimit;
+            _resultValue.fullName = fullName;
+            _resultValue.fullPath = fullPath;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.lfsEnabled = lfsEnabled;
+            _resultValue.membershipLock = membershipLock;
+            _resultValue.name = name;
+            _resultValue.parentId = parentId;
+            _resultValue.path = path;
+            _resultValue.preventForkingOutsideGroup = preventForkingOutsideGroup;
+            _resultValue.requestAccessEnabled = requestAccessEnabled;
+            _resultValue.runnersToken = runnersToken;
+            _resultValue.sharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
+            _resultValue.sharedRunnersSetting = sharedRunnersSetting;
+            _resultValue.visibilityLevel = visibilityLevel;
+            _resultValue.webUrl = webUrl;
+            _resultValue.wikiAccessLevel = wikiAccessLevel;
+            return _resultValue;
         }
     }
 }

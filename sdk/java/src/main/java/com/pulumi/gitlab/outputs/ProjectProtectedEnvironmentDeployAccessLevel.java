@@ -125,13 +125,13 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
             return this;
         }
         public ProjectProtectedEnvironmentDeployAccessLevel build() {
-            final var o = new ProjectProtectedEnvironmentDeployAccessLevel();
-            o.accessLevel = accessLevel;
-            o.accessLevelDescription = accessLevelDescription;
-            o.groupId = groupId;
-            o.id = id;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new ProjectProtectedEnvironmentDeployAccessLevel();
+            _resultValue.accessLevel = accessLevel;
+            _resultValue.accessLevelDescription = accessLevelDescription;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

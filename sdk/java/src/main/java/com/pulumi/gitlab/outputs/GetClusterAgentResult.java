@@ -142,14 +142,14 @@ public final class GetClusterAgentResult {
             return this;
         }
         public GetClusterAgentResult build() {
-            final var o = new GetClusterAgentResult();
-            o.agentId = agentId;
-            o.createdAt = createdAt;
-            o.createdByUserId = createdByUserId;
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetClusterAgentResult();
+            _resultValue.agentId = agentId;
+            _resultValue.createdAt = createdAt;
+            _resultValue.createdByUserId = createdByUserId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

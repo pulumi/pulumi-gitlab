@@ -106,12 +106,12 @@ public final class BranchProtectionAllowedToPush {
             return this;
         }
         public BranchProtectionAllowedToPush build() {
-            final var o = new BranchProtectionAllowedToPush();
-            o.accessLevel = accessLevel;
-            o.accessLevelDescription = accessLevelDescription;
-            o.groupId = groupId;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new BranchProtectionAllowedToPush();
+            _resultValue.accessLevel = accessLevel;
+            _resultValue.accessLevelDescription = accessLevelDescription;
+            _resultValue.groupId = groupId;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

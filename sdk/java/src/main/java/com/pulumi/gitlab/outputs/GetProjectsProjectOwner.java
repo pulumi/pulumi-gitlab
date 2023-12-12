@@ -94,14 +94,14 @@ public final class GetProjectsProjectOwner {
             return this;
         }
         public GetProjectsProjectOwner build() {
-            final var o = new GetProjectsProjectOwner();
-            o.avatarUrl = avatarUrl;
-            o.id = id;
-            o.name = name;
-            o.state = state;
-            o.username = username;
-            o.websiteUrl = websiteUrl;
-            return o;
+            final var _resultValue = new GetProjectsProjectOwner();
+            _resultValue.avatarUrl = avatarUrl;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.state = state;
+            _resultValue.username = username;
+            _resultValue.websiteUrl = websiteUrl;
+            return _resultValue;
         }
     }
 }

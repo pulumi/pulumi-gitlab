@@ -265,20 +265,20 @@ public final class GetGroupSubgroupsResult {
             return this;
         }
         public GetGroupSubgroupsResult build() {
-            final var o = new GetGroupSubgroupsResult();
-            o.allAvailable = allAvailable;
-            o.groupId = groupId;
-            o.id = id;
-            o.minAccessLevel = minAccessLevel;
-            o.orderBy = orderBy;
-            o.owned = owned;
-            o.search = search;
-            o.skipGroups = skipGroups;
-            o.sort = sort;
-            o.statistics = statistics;
-            o.subgroups = subgroups;
-            o.withCustomAttributes = withCustomAttributes;
-            return o;
+            final var _resultValue = new GetGroupSubgroupsResult();
+            _resultValue.allAvailable = allAvailable;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.minAccessLevel = minAccessLevel;
+            _resultValue.orderBy = orderBy;
+            _resultValue.owned = owned;
+            _resultValue.search = search;
+            _resultValue.skipGroups = skipGroups;
+            _resultValue.sort = sort;
+            _resultValue.statistics = statistics;
+            _resultValue.subgroups = subgroups;
+            _resultValue.withCustomAttributes = withCustomAttributes;
+            return _resultValue;
         }
     }
 }

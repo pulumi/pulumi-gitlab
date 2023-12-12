@@ -108,12 +108,12 @@ public final class GetReleaseLinksResult {
             return this;
         }
         public GetReleaseLinksResult build() {
-            final var o = new GetReleaseLinksResult();
-            o.id = id;
-            o.project = project;
-            o.releaseLinks = releaseLinks;
-            o.tagName = tagName;
-            return o;
+            final var _resultValue = new GetReleaseLinksResult();
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.releaseLinks = releaseLinks;
+            _resultValue.tagName = tagName;
+            return _resultValue;
         }
     }
 }

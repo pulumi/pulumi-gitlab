@@ -49,10 +49,10 @@ public final class GetProjectTagsTagRelease {
             return this;
         }
         public GetProjectTagsTagRelease build() {
-            final var o = new GetProjectTagsTagRelease();
-            o.description = description;
-            o.tagName = tagName;
-            return o;
+            final var _resultValue = new GetProjectTagsTagRelease();
+            _resultValue.description = description;
+            _resultValue.tagName = tagName;
+            return _resultValue;
         }
     }
 }

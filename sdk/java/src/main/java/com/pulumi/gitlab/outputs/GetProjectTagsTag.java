@@ -103,14 +103,14 @@ public final class GetProjectTagsTag {
             return this;
         }
         public GetProjectTagsTag build() {
-            final var o = new GetProjectTagsTag();
-            o.commits = commits;
-            o.message = message;
-            o.name = name;
-            o.protected_ = protected_;
-            o.releases = releases;
-            o.target = target;
-            return o;
+            final var _resultValue = new GetProjectTagsTag();
+            _resultValue.commits = commits;
+            _resultValue.message = message;
+            _resultValue.name = name;
+            _resultValue.protected_ = protected_;
+            _resultValue.releases = releases;
+            _resultValue.target = target;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class GetProjectsProjectPermission {
             return this;
         }
         public GetProjectsProjectPermission build() {
-            final var o = new GetProjectsProjectPermission();
-            o.groupAccess = groupAccess;
-            o.projectAccess = projectAccess;
-            return o;
+            final var _resultValue = new GetProjectsProjectPermission();
+            _resultValue.groupAccess = groupAccess;
+            _resultValue.projectAccess = projectAccess;
+            return _resultValue;
         }
     }
 }

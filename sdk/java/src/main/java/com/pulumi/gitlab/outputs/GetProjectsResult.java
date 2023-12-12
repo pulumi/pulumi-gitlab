@@ -495,32 +495,32 @@ public final class GetProjectsResult {
             return this;
         }
         public GetProjectsResult build() {
-            final var o = new GetProjectsResult();
-            o.archived = archived;
-            o.groupId = groupId;
-            o.id = id;
-            o.includeSubgroups = includeSubgroups;
-            o.maxQueryablePages = maxQueryablePages;
-            o.membership = membership;
-            o.minAccessLevel = minAccessLevel;
-            o.orderBy = orderBy;
-            o.owned = owned;
-            o.page = page;
-            o.perPage = perPage;
-            o.projects = projects;
-            o.search = search;
-            o.simple = simple;
-            o.sort = sort;
-            o.starred = starred;
-            o.statistics = statistics;
-            o.topics = topics;
-            o.visibility = visibility;
-            o.withCustomAttributes = withCustomAttributes;
-            o.withIssuesEnabled = withIssuesEnabled;
-            o.withMergeRequestsEnabled = withMergeRequestsEnabled;
-            o.withProgrammingLanguage = withProgrammingLanguage;
-            o.withShared = withShared;
-            return o;
+            final var _resultValue = new GetProjectsResult();
+            _resultValue.archived = archived;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.includeSubgroups = includeSubgroups;
+            _resultValue.maxQueryablePages = maxQueryablePages;
+            _resultValue.membership = membership;
+            _resultValue.minAccessLevel = minAccessLevel;
+            _resultValue.orderBy = orderBy;
+            _resultValue.owned = owned;
+            _resultValue.page = page;
+            _resultValue.perPage = perPage;
+            _resultValue.projects = projects;
+            _resultValue.search = search;
+            _resultValue.simple = simple;
+            _resultValue.sort = sort;
+            _resultValue.starred = starred;
+            _resultValue.statistics = statistics;
+            _resultValue.topics = topics;
+            _resultValue.visibility = visibility;
+            _resultValue.withCustomAttributes = withCustomAttributes;
+            _resultValue.withIssuesEnabled = withIssuesEnabled;
+            _resultValue.withMergeRequestsEnabled = withMergeRequestsEnabled;
+            _resultValue.withProgrammingLanguage = withProgrammingLanguage;
+            _resultValue.withShared = withShared;
+            return _resultValue;
         }
     }
 }

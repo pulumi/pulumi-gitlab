@@ -109,12 +109,12 @@ public final class GetUserSshkeysResult {
             return this;
         }
         public GetUserSshkeysResult build() {
-            final var o = new GetUserSshkeysResult();
-            o.id = id;
-            o.keys = keys;
-            o.userId = userId;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetUserSshkeysResult();
+            _resultValue.id = id;
+            _resultValue.keys = keys;
+            _resultValue.userId = userId;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

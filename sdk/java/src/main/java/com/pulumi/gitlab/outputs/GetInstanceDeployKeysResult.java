@@ -92,11 +92,11 @@ public final class GetInstanceDeployKeysResult {
             return this;
         }
         public GetInstanceDeployKeysResult build() {
-            final var o = new GetInstanceDeployKeysResult();
-            o.deployKeys = deployKeys;
-            o.id = id;
-            o.public_ = public_;
-            return o;
+            final var _resultValue = new GetInstanceDeployKeysResult();
+            _resultValue.deployKeys = deployKeys;
+            _resultValue.id = id;
+            _resultValue.public_ = public_;
+            return _resultValue;
         }
     }
 }

@@ -244,19 +244,19 @@ public final class GetUsersResult {
             return users(List.of(users));
         }
         public GetUsersResult build() {
-            final var o = new GetUsersResult();
-            o.active = active;
-            o.blocked = blocked;
-            o.createdAfter = createdAfter;
-            o.createdBefore = createdBefore;
-            o.externProvider = externProvider;
-            o.externUid = externUid;
-            o.id = id;
-            o.orderBy = orderBy;
-            o.search = search;
-            o.sort = sort;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetUsersResult();
+            _resultValue.active = active;
+            _resultValue.blocked = blocked;
+            _resultValue.createdAfter = createdAfter;
+            _resultValue.createdBefore = createdBefore;
+            _resultValue.externProvider = externProvider;
+            _resultValue.externUid = externUid;
+            _resultValue.id = id;
+            _resultValue.orderBy = orderBy;
+            _resultValue.search = search;
+            _resultValue.sort = sort;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

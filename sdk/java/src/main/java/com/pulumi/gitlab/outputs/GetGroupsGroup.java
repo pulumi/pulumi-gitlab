@@ -205,24 +205,24 @@ public final class GetGroupsGroup {
             return this;
         }
         public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.defaultBranchProtection = defaultBranchProtection;
-            o.description = description;
-            o.fullName = fullName;
-            o.fullPath = fullPath;
-            o.groupId = groupId;
-            o.lfsEnabled = lfsEnabled;
-            o.name = name;
-            o.parentId = parentId;
-            o.path = path;
-            o.preventForkingOutsideGroup = preventForkingOutsideGroup;
-            o.requestAccessEnabled = requestAccessEnabled;
-            o.runnersToken = runnersToken;
-            o.sharedRunnersSetting = sharedRunnersSetting;
-            o.visibilityLevel = visibilityLevel;
-            o.webUrl = webUrl;
-            o.wikiAccessLevel = wikiAccessLevel;
-            return o;
+            final var _resultValue = new GetGroupsGroup();
+            _resultValue.defaultBranchProtection = defaultBranchProtection;
+            _resultValue.description = description;
+            _resultValue.fullName = fullName;
+            _resultValue.fullPath = fullPath;
+            _resultValue.groupId = groupId;
+            _resultValue.lfsEnabled = lfsEnabled;
+            _resultValue.name = name;
+            _resultValue.parentId = parentId;
+            _resultValue.path = path;
+            _resultValue.preventForkingOutsideGroup = preventForkingOutsideGroup;
+            _resultValue.requestAccessEnabled = requestAccessEnabled;
+            _resultValue.runnersToken = runnersToken;
+            _resultValue.sharedRunnersSetting = sharedRunnersSetting;
+            _resultValue.visibilityLevel = visibilityLevel;
+            _resultValue.webUrl = webUrl;
+            _resultValue.wikiAccessLevel = wikiAccessLevel;
+            return _resultValue;
         }
     }
 }

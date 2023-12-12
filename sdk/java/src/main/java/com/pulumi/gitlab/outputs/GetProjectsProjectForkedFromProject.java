@@ -105,15 +105,15 @@ public final class GetProjectsProjectForkedFromProject {
             return this;
         }
         public GetProjectsProjectForkedFromProject build() {
-            final var o = new GetProjectsProjectForkedFromProject();
-            o.httpUrlToRepo = httpUrlToRepo;
-            o.id = id;
-            o.name = name;
-            o.nameWithNamespace = nameWithNamespace;
-            o.path = path;
-            o.pathWithNamespace = pathWithNamespace;
-            o.webUrl = webUrl;
-            return o;
+            final var _resultValue = new GetProjectsProjectForkedFromProject();
+            _resultValue.httpUrlToRepo = httpUrlToRepo;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.nameWithNamespace = nameWithNamespace;
+            _resultValue.path = path;
+            _resultValue.pathWithNamespace = pathWithNamespace;
+            _resultValue.webUrl = webUrl;
+            return _resultValue;
         }
     }
 }

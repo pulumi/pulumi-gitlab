@@ -82,13 +82,13 @@ public final class GetRepositoryTreeTree {
             return this;
         }
         public GetRepositoryTreeTree build() {
-            final var o = new GetRepositoryTreeTree();
-            o.id = id;
-            o.mode = mode;
-            o.name = name;
-            o.path = path;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRepositoryTreeTree();
+            _resultValue.id = id;
+            _resultValue.mode = mode;
+            _resultValue.name = name;
+            _resultValue.path = path;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

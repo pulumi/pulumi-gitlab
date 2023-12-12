@@ -128,17 +128,17 @@ public final class GetReleaseLinksReleaseLink {
             return this;
         }
         public GetReleaseLinksReleaseLink build() {
-            final var o = new GetReleaseLinksReleaseLink();
-            o.directAssetUrl = directAssetUrl;
-            o.external = external;
-            o.filepath = filepath;
-            o.linkId = linkId;
-            o.linkType = linkType;
-            o.name = name;
-            o.project = project;
-            o.tagName = tagName;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetReleaseLinksReleaseLink();
+            _resultValue.directAssetUrl = directAssetUrl;
+            _resultValue.external = external;
+            _resultValue.filepath = filepath;
+            _resultValue.linkId = linkId;
+            _resultValue.linkType = linkType;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.tagName = tagName;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

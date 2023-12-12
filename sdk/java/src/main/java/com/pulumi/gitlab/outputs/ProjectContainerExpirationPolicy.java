@@ -191,16 +191,16 @@ public final class ProjectContainerExpirationPolicy {
             return this;
         }
         public ProjectContainerExpirationPolicy build() {
-            final var o = new ProjectContainerExpirationPolicy();
-            o.cadence = cadence;
-            o.enabled = enabled;
-            o.keepN = keepN;
-            o.nameRegex = nameRegex;
-            o.nameRegexDelete = nameRegexDelete;
-            o.nameRegexKeep = nameRegexKeep;
-            o.nextRunAt = nextRunAt;
-            o.olderThan = olderThan;
-            return o;
+            final var _resultValue = new ProjectContainerExpirationPolicy();
+            _resultValue.cadence = cadence;
+            _resultValue.enabled = enabled;
+            _resultValue.keepN = keepN;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.nameRegexDelete = nameRegexDelete;
+            _resultValue.nameRegexKeep = nameRegexKeep;
+            _resultValue.nextRunAt = nextRunAt;
+            _resultValue.olderThan = olderThan;
+            return _resultValue;
         }
     }
 }

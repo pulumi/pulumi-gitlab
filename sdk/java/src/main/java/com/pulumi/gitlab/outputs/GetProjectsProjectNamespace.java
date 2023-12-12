@@ -83,13 +83,13 @@ public final class GetProjectsProjectNamespace {
             return this;
         }
         public GetProjectsProjectNamespace build() {
-            final var o = new GetProjectsProjectNamespace();
-            o.fullPath = fullPath;
-            o.id = id;
-            o.kind = kind;
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetProjectsProjectNamespace();
+            _resultValue.fullPath = fullPath;
+            _resultValue.id = id;
+            _resultValue.kind = kind;
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

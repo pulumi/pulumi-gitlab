@@ -276,21 +276,21 @@ public final class GetRepositoryFileResult {
             return this;
         }
         public GetRepositoryFileResult build() {
-            final var o = new GetRepositoryFileResult();
-            o.blobId = blobId;
-            o.commitId = commitId;
-            o.content = content;
-            o.contentSha256 = contentSha256;
-            o.encoding = encoding;
-            o.executeFilemode = executeFilemode;
-            o.fileName = fileName;
-            o.filePath = filePath;
-            o.id = id;
-            o.lastCommitId = lastCommitId;
-            o.project = project;
-            o.ref = ref;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetRepositoryFileResult();
+            _resultValue.blobId = blobId;
+            _resultValue.commitId = commitId;
+            _resultValue.content = content;
+            _resultValue.contentSha256 = contentSha256;
+            _resultValue.encoding = encoding;
+            _resultValue.executeFilemode = executeFilemode;
+            _resultValue.fileName = fileName;
+            _resultValue.filePath = filePath;
+            _resultValue.id = id;
+            _resultValue.lastCommitId = lastCommitId;
+            _resultValue.project = project;
+            _resultValue.ref = ref;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

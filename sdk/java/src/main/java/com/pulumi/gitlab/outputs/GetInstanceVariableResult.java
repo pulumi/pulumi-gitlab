@@ -161,15 +161,15 @@ public final class GetInstanceVariableResult {
             return this;
         }
         public GetInstanceVariableResult build() {
-            final var o = new GetInstanceVariableResult();
-            o.id = id;
-            o.key = key;
-            o.masked = masked;
-            o.protected_ = protected_;
-            o.raw = raw;
-            o.value = value;
-            o.variableType = variableType;
-            return o;
+            final var _resultValue = new GetInstanceVariableResult();
+            _resultValue.id = id;
+            _resultValue.key = key;
+            _resultValue.masked = masked;
+            _resultValue.protected_ = protected_;
+            _resultValue.raw = raw;
+            _resultValue.value = value;
+            _resultValue.variableType = variableType;
+            return _resultValue;
         }
     }
 }

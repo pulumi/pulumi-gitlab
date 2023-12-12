@@ -586,36 +586,36 @@ public final class GetProjectIssuesResult {
             return this;
         }
         public GetProjectIssuesResult build() {
-            final var o = new GetProjectIssuesResult();
-            o.assigneeId = assigneeId;
-            o.assigneeUsername = assigneeUsername;
-            o.authorId = authorId;
-            o.confidential = confidential;
-            o.createdAfter = createdAfter;
-            o.createdBefore = createdBefore;
-            o.dueDate = dueDate;
-            o.id = id;
-            o.iids = iids;
-            o.issueType = issueType;
-            o.issues = issues;
-            o.labels = labels;
-            o.milestone = milestone;
-            o.myReactionEmoji = myReactionEmoji;
-            o.notAssigneeIds = notAssigneeIds;
-            o.notAuthorIds = notAuthorIds;
-            o.notLabels = notLabels;
-            o.notMilestone = notMilestone;
-            o.notMyReactionEmojis = notMyReactionEmojis;
-            o.orderBy = orderBy;
-            o.project = project;
-            o.scope = scope;
-            o.search = search;
-            o.sort = sort;
-            o.updatedAfter = updatedAfter;
-            o.updatedBefore = updatedBefore;
-            o.weight = weight;
-            o.withLabelsDetails = withLabelsDetails;
-            return o;
+            final var _resultValue = new GetProjectIssuesResult();
+            _resultValue.assigneeId = assigneeId;
+            _resultValue.assigneeUsername = assigneeUsername;
+            _resultValue.authorId = authorId;
+            _resultValue.confidential = confidential;
+            _resultValue.createdAfter = createdAfter;
+            _resultValue.createdBefore = createdBefore;
+            _resultValue.dueDate = dueDate;
+            _resultValue.id = id;
+            _resultValue.iids = iids;
+            _resultValue.issueType = issueType;
+            _resultValue.issues = issues;
+            _resultValue.labels = labels;
+            _resultValue.milestone = milestone;
+            _resultValue.myReactionEmoji = myReactionEmoji;
+            _resultValue.notAssigneeIds = notAssigneeIds;
+            _resultValue.notAuthorIds = notAuthorIds;
+            _resultValue.notLabels = notLabels;
+            _resultValue.notMilestone = notMilestone;
+            _resultValue.notMyReactionEmojis = notMyReactionEmojis;
+            _resultValue.orderBy = orderBy;
+            _resultValue.project = project;
+            _resultValue.scope = scope;
+            _resultValue.search = search;
+            _resultValue.sort = sort;
+            _resultValue.updatedAfter = updatedAfter;
+            _resultValue.updatedBefore = updatedBefore;
+            _resultValue.weight = weight;
+            _resultValue.withLabelsDetails = withLabelsDetails;
+            return _resultValue;
         }
     }
 }
