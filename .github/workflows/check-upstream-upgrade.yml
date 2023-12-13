@@ -28,6 +28,9 @@ jobs:
     - name: "Set up git identity: email"
       run: git config --global user.email bot@pulumi.com
       shell: bash
+    - name: "Tell us the repository"
+      run: echo $GITHUB_REPOSITORY
+      shell: bash
     - name: Run upgrade-provider upstream check
       id: upstream_version
       run: |
