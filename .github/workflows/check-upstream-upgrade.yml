@@ -20,7 +20,7 @@ jobs:
       run: git fetch --prune --unshallow --tags
       shell: bash
     - name: Install upgrade-provider
-      run: go install github.com/pulumi/upgrade-provider@main
+      run: go install github.com/pulumi/upgrade-provider@29dae5201e3ded4c5bd34d82adbef18ba1e12df8
       shell: bash
     - name: "Set up git identity: name"
       run: git config --global user.name pulumi-bot
