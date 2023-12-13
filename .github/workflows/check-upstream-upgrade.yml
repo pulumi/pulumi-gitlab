@@ -31,7 +31,7 @@ jobs:
     - name: Run upgrade-provider upstream check
       id: upstream_version
       run: |
-        upgrade-provider ${{ GITHUB_REPOSITORY }} --kind=check-upstream-version
+        upgrade-provider $GITHUB_REPOSITORY --kind=check-upstream-version
       shell: bash
     - name: Send Check Version Failure To Slack
       if: failure()
