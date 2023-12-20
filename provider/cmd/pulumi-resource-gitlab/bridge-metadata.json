@@ -260,10 +260,6 @@
                 "current": "gitlab:index/label:Label",
                 "majorVersion": 6
             },
-            "gitlab_managed_license": {
-                "current": "gitlab:index/managedLicense:ManagedLicense",
-                "majorVersion": 5
-            },
             "gitlab_pages_domain": {
                 "current": "gitlab:index/pagesDomain:PagesDomain",
                 "majorVersion": 6
@@ -998,6 +994,7 @@
             }
         }
     },
+    "auto-settings": {},
     "mux": {
         "resources": {
             "gitlab:index/application:Application": 1,
