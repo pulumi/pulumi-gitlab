@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -171,7 +172,9 @@ public final class GetProjectMilestonesPlainArgs extends com.pulumi.resources.In
         }
 
         public GetProjectMilestonesPlainArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetProjectMilestonesPlainArgs", "project");
+            }
             return $;
         }
     }

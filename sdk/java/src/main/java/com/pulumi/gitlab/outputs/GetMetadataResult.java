@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetMetadataKas;
 import java.lang.Boolean;
 import java.lang.String;
@@ -100,27 +101,42 @@ public final class GetMetadataResult {
 
         @CustomType.Setter
         public Builder enterprise(Boolean enterprise) {
-            this.enterprise = Objects.requireNonNull(enterprise);
+            if (enterprise == null) {
+              throw new MissingRequiredPropertyException("GetMetadataResult", "enterprise");
+            }
+            this.enterprise = enterprise;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMetadataResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kas(GetMetadataKas kas) {
-            this.kas = Objects.requireNonNull(kas);
+            if (kas == null) {
+              throw new MissingRequiredPropertyException("GetMetadataResult", "kas");
+            }
+            this.kas = kas;
             return this;
         }
         @CustomType.Setter
         public Builder revision(String revision) {
-            this.revision = Objects.requireNonNull(revision);
+            if (revision == null) {
+              throw new MissingRequiredPropertyException("GetMetadataResult", "revision");
+            }
+            this.revision = revision;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetMetadataResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetMetadataResult build() {

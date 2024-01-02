@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetGroupVariablesVariable;
 import java.lang.String;
 import java.util.List;
@@ -88,22 +89,32 @@ public final class GetGroupVariablesResult {
 
         @CustomType.Setter
         public Builder environmentScope(@Nullable String environmentScope) {
+
             this.environmentScope = environmentScope;
             return this;
         }
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetGroupVariablesResult", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupVariablesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder variables(List<GetGroupVariablesVariable> variables) {
-            this.variables = Objects.requireNonNull(variables);
+            if (variables == null) {
+              throw new MissingRequiredPropertyException("GetGroupVariablesResult", "variables");
+            }
+            this.variables = variables;
             return this;
         }
         public Builder variables(GetGroupVariablesVariable... variables) {

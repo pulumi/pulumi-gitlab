@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class ProjectJobTokenScopeArgs extends com.pulumi.resources.Resourc
         }
 
         public ProjectJobTokenScopeArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.targetProjectId = Objects.requireNonNull($.targetProjectId, "expected parameter 'targetProjectId' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectJobTokenScopeArgs", "project");
+            }
+            if ($.targetProjectId == null) {
+                throw new MissingRequiredPropertyException("ProjectJobTokenScopeArgs", "targetProjectId");
+            }
             return $;
         }
     }

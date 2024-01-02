@@ -186,56 +186,67 @@ public final class ProjectPushRules {
 
         @CustomType.Setter
         public Builder authorEmailRegex(@Nullable String authorEmailRegex) {
+
             this.authorEmailRegex = authorEmailRegex;
             return this;
         }
         @CustomType.Setter
         public Builder branchNameRegex(@Nullable String branchNameRegex) {
+
             this.branchNameRegex = branchNameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder commitCommitterCheck(@Nullable Boolean commitCommitterCheck) {
+
             this.commitCommitterCheck = commitCommitterCheck;
             return this;
         }
         @CustomType.Setter
         public Builder commitMessageNegativeRegex(@Nullable String commitMessageNegativeRegex) {
+
             this.commitMessageNegativeRegex = commitMessageNegativeRegex;
             return this;
         }
         @CustomType.Setter
         public Builder commitMessageRegex(@Nullable String commitMessageRegex) {
+
             this.commitMessageRegex = commitMessageRegex;
             return this;
         }
         @CustomType.Setter
         public Builder denyDeleteTag(@Nullable Boolean denyDeleteTag) {
+
             this.denyDeleteTag = denyDeleteTag;
             return this;
         }
         @CustomType.Setter
         public Builder fileNameRegex(@Nullable String fileNameRegex) {
+
             this.fileNameRegex = fileNameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder maxFileSize(@Nullable Integer maxFileSize) {
+
             this.maxFileSize = maxFileSize;
             return this;
         }
         @CustomType.Setter
         public Builder memberCheck(@Nullable Boolean memberCheck) {
+
             this.memberCheck = memberCheck;
             return this;
         }
         @CustomType.Setter
         public Builder preventSecrets(@Nullable Boolean preventSecrets) {
+
             this.preventSecrets = preventSecrets;
             return this;
         }
         @CustomType.Setter
         public Builder rejectUnsignedCommits(@Nullable Boolean rejectUnsignedCommits) {
+
             this.rejectUnsignedCommits = rejectUnsignedCommits;
             return this;
         }

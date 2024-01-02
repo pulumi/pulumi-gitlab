@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class ProjectFreezePeriodArgs extends com.pulumi.resources.Resource
         }
 
         public ProjectFreezePeriodArgs build() {
-            $.freezeEnd = Objects.requireNonNull($.freezeEnd, "expected parameter 'freezeEnd' to be non-null");
-            $.freezeStart = Objects.requireNonNull($.freezeStart, "expected parameter 'freezeStart' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.freezeEnd == null) {
+                throw new MissingRequiredPropertyException("ProjectFreezePeriodArgs", "freezeEnd");
+            }
+            if ($.freezeStart == null) {
+                throw new MissingRequiredPropertyException("ProjectFreezePeriodArgs", "freezeStart");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectFreezePeriodArgs", "project");
+            }
             return $;
         }
     }

@@ -152,41 +152,49 @@ public final class ProjectContainerExpirationPolicy {
 
         @CustomType.Setter
         public Builder cadence(@Nullable String cadence) {
+
             this.cadence = cadence;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder keepN(@Nullable Integer keepN) {
+
             this.keepN = keepN;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegexDelete(@Nullable String nameRegexDelete) {
+
             this.nameRegexDelete = nameRegexDelete;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegexKeep(@Nullable String nameRegexKeep) {
+
             this.nameRegexKeep = nameRegexKeep;
             return this;
         }
         @CustomType.Setter
         public Builder nextRunAt(@Nullable String nextRunAt) {
+
             this.nextRunAt = nextRunAt;
             return this;
         }
         @CustomType.Setter
         public Builder olderThan(@Nullable String olderThan) {
+
             this.olderThan = olderThan;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class GetGroupHookArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetGroupHookArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
-            $.hookId = Objects.requireNonNull($.hookId, "expected parameter 'hookId' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GetGroupHookArgs", "group");
+            }
+            if ($.hookId == null) {
+                throw new MissingRequiredPropertyException("GetGroupHookArgs", "hookId");
+            }
             return $;
         }
     }

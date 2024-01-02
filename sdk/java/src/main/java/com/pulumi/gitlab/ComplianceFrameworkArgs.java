@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -262,9 +263,15 @@ public final class ComplianceFrameworkArgs extends com.pulumi.resources.Resource
         }
 
         public ComplianceFrameworkArgs build() {
-            $.color = Objects.requireNonNull($.color, "expected parameter 'color' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.namespacePath = Objects.requireNonNull($.namespacePath, "expected parameter 'namespacePath' to be non-null");
+            if ($.color == null) {
+                throw new MissingRequiredPropertyException("ComplianceFrameworkArgs", "color");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("ComplianceFrameworkArgs", "description");
+            }
+            if ($.namespacePath == null) {
+                throw new MissingRequiredPropertyException("ComplianceFrameworkArgs", "namespacePath");
+            }
             return $;
         }
     }

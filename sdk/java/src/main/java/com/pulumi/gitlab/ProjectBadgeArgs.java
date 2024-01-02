@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class ProjectBadgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectBadgeArgs build() {
-            $.imageUrl = Objects.requireNonNull($.imageUrl, "expected parameter 'imageUrl' to be non-null");
-            $.linkUrl = Objects.requireNonNull($.linkUrl, "expected parameter 'linkUrl' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.imageUrl == null) {
+                throw new MissingRequiredPropertyException("ProjectBadgeArgs", "imageUrl");
+            }
+            if ($.linkUrl == null) {
+                throw new MissingRequiredPropertyException("ProjectBadgeArgs", "linkUrl");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectBadgeArgs", "project");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ServiceExternalWikiArgs extends com.pulumi.resources.Resource
         }
 
         public ServiceExternalWikiArgs build() {
-            $.externalWikiUrl = Objects.requireNonNull($.externalWikiUrl, "expected parameter 'externalWikiUrl' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.externalWikiUrl == null) {
+                throw new MissingRequiredPropertyException("ServiceExternalWikiArgs", "externalWikiUrl");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ServiceExternalWikiArgs", "project");
+            }
             return $;
         }
     }

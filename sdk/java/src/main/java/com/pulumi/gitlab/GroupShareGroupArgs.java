@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class GroupShareGroupArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GroupShareGroupArgs build() {
-            $.groupAccess = Objects.requireNonNull($.groupAccess, "expected parameter 'groupAccess' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.shareGroupId = Objects.requireNonNull($.shareGroupId, "expected parameter 'shareGroupId' to be non-null");
+            if ($.groupAccess == null) {
+                throw new MissingRequiredPropertyException("GroupShareGroupArgs", "groupAccess");
+            }
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("GroupShareGroupArgs", "groupId");
+            }
+            if ($.shareGroupId == null) {
+                throw new MissingRequiredPropertyException("GroupShareGroupArgs", "shareGroupId");
+            }
             return $;
         }
     }

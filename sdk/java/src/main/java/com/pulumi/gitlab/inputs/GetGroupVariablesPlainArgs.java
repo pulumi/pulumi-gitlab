@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,7 +65,9 @@ public final class GetGroupVariablesPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetGroupVariablesPlainArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GetGroupVariablesPlainArgs", "group");
+            }
             return $;
         }
     }

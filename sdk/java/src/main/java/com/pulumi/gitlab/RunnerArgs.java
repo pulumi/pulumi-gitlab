@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -348,7 +349,9 @@ public final class RunnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RunnerArgs build() {
-            $.registrationToken = Objects.requireNonNull($.registrationToken, "expected parameter 'registrationToken' to be non-null");
+            if ($.registrationToken == null) {
+                throw new MissingRequiredPropertyException("RunnerArgs", "registrationToken");
+            }
             return $;
         }
     }

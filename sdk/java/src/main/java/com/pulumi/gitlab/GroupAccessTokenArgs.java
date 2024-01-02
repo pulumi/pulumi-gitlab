@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -235,9 +236,15 @@ public final class GroupAccessTokenArgs extends com.pulumi.resources.ResourceArg
         }
 
         public GroupAccessTokenArgs build() {
-            $.expiresAt = Objects.requireNonNull($.expiresAt, "expected parameter 'expiresAt' to be non-null");
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
-            $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
+            if ($.expiresAt == null) {
+                throw new MissingRequiredPropertyException("GroupAccessTokenArgs", "expiresAt");
+            }
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GroupAccessTokenArgs", "group");
+            }
+            if ($.scopes == null) {
+                throw new MissingRequiredPropertyException("GroupAccessTokenArgs", "scopes");
+            }
             return $;
         }
     }

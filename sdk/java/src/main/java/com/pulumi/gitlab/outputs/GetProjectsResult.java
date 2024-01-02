@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectsProject;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -370,62 +371,78 @@ public final class GetProjectsResult {
 
         @CustomType.Setter
         public Builder archived(@Nullable Boolean archived) {
+
             this.archived = archived;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(@Nullable Integer groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder includeSubgroups(@Nullable Boolean includeSubgroups) {
+
             this.includeSubgroups = includeSubgroups;
             return this;
         }
         @CustomType.Setter
         public Builder maxQueryablePages(@Nullable Integer maxQueryablePages) {
+
             this.maxQueryablePages = maxQueryablePages;
             return this;
         }
         @CustomType.Setter
         public Builder membership(@Nullable Boolean membership) {
+
             this.membership = membership;
             return this;
         }
         @CustomType.Setter
         public Builder minAccessLevel(@Nullable Integer minAccessLevel) {
+
             this.minAccessLevel = minAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
         public Builder owned(@Nullable Boolean owned) {
+
             this.owned = owned;
             return this;
         }
         @CustomType.Setter
         public Builder page(@Nullable Integer page) {
+
             this.page = page;
             return this;
         }
         @CustomType.Setter
         public Builder perPage(@Nullable Integer perPage) {
+
             this.perPage = perPage;
             return this;
         }
         @CustomType.Setter
         public Builder projects(List<GetProjectsProject> projects) {
-            this.projects = Objects.requireNonNull(projects);
+            if (projects == null) {
+              throw new MissingRequiredPropertyException("GetProjectsResult", "projects");
+            }
+            this.projects = projects;
             return this;
         }
         public Builder projects(GetProjectsProject... projects) {
@@ -433,31 +450,37 @@ public final class GetProjectsResult {
         }
         @CustomType.Setter
         public Builder search(@Nullable String search) {
+
             this.search = search;
             return this;
         }
         @CustomType.Setter
         public Builder simple(@Nullable Boolean simple) {
+
             this.simple = simple;
             return this;
         }
         @CustomType.Setter
         public Builder sort(@Nullable String sort) {
+
             this.sort = sort;
             return this;
         }
         @CustomType.Setter
         public Builder starred(@Nullable Boolean starred) {
+
             this.starred = starred;
             return this;
         }
         @CustomType.Setter
         public Builder statistics(@Nullable Boolean statistics) {
+
             this.statistics = statistics;
             return this;
         }
         @CustomType.Setter
         public Builder topics(@Nullable List<String> topics) {
+
             this.topics = topics;
             return this;
         }
@@ -466,31 +489,37 @@ public final class GetProjectsResult {
         }
         @CustomType.Setter
         public Builder visibility(@Nullable String visibility) {
+
             this.visibility = visibility;
             return this;
         }
         @CustomType.Setter
         public Builder withCustomAttributes(@Nullable Boolean withCustomAttributes) {
+
             this.withCustomAttributes = withCustomAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder withIssuesEnabled(@Nullable Boolean withIssuesEnabled) {
+
             this.withIssuesEnabled = withIssuesEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder withMergeRequestsEnabled(@Nullable Boolean withMergeRequestsEnabled) {
+
             this.withMergeRequestsEnabled = withMergeRequestsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder withProgrammingLanguage(@Nullable String withProgrammingLanguage) {
+
             this.withProgrammingLanguage = withProgrammingLanguage;
             return this;
         }
         @CustomType.Setter
         public Builder withShared(@Nullable Boolean withShared) {
+
             this.withShared = withShared;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -293,7 +294,9 @@ public final class GetGroupSubgroupsPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetGroupSubgroupsPlainArgs build() {
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("GetGroupSubgroupsPlainArgs", "groupId");
+            }
             return $;
         }
     }

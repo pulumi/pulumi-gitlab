@@ -114,31 +114,37 @@ public final class ProjectIssueBoardList {
 
         @CustomType.Setter
         public Builder assigneeId(@Nullable Integer assigneeId) {
+
             this.assigneeId = assigneeId;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder iterationId(@Nullable Integer iterationId) {
+
             this.iterationId = iterationId;
             return this;
         }
         @CustomType.Setter
         public Builder labelId(@Nullable Integer labelId) {
+
             this.labelId = labelId;
             return this;
         }
         @CustomType.Setter
         public Builder milestoneId(@Nullable Integer milestoneId) {
+
             this.milestoneId = milestoneId;
             return this;
         }
         @CustomType.Setter
         public Builder position(@Nullable Integer position) {
+
             this.position = position;
             return this;
         }

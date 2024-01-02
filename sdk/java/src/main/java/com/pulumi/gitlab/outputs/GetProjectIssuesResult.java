@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectIssuesIssue;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -426,46 +427,57 @@ public final class GetProjectIssuesResult {
 
         @CustomType.Setter
         public Builder assigneeId(@Nullable Integer assigneeId) {
+
             this.assigneeId = assigneeId;
             return this;
         }
         @CustomType.Setter
         public Builder assigneeUsername(@Nullable String assigneeUsername) {
+
             this.assigneeUsername = assigneeUsername;
             return this;
         }
         @CustomType.Setter
         public Builder authorId(@Nullable Integer authorId) {
+
             this.authorId = authorId;
             return this;
         }
         @CustomType.Setter
         public Builder confidential(@Nullable Boolean confidential) {
+
             this.confidential = confidential;
             return this;
         }
         @CustomType.Setter
         public Builder createdAfter(@Nullable String createdAfter) {
+
             this.createdAfter = createdAfter;
             return this;
         }
         @CustomType.Setter
         public Builder createdBefore(@Nullable String createdBefore) {
+
             this.createdBefore = createdBefore;
             return this;
         }
         @CustomType.Setter
         public Builder dueDate(@Nullable String dueDate) {
+
             this.dueDate = dueDate;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder iids(@Nullable List<Integer> iids) {
+
             this.iids = iids;
             return this;
         }
@@ -474,12 +486,16 @@ public final class GetProjectIssuesResult {
         }
         @CustomType.Setter
         public Builder issueType(@Nullable String issueType) {
+
             this.issueType = issueType;
             return this;
         }
         @CustomType.Setter
         public Builder issues(List<GetProjectIssuesIssue> issues) {
-            this.issues = Objects.requireNonNull(issues);
+            if (issues == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesResult", "issues");
+            }
+            this.issues = issues;
             return this;
         }
         public Builder issues(GetProjectIssuesIssue... issues) {
@@ -487,6 +503,7 @@ public final class GetProjectIssuesResult {
         }
         @CustomType.Setter
         public Builder labels(@Nullable List<String> labels) {
+
             this.labels = labels;
             return this;
         }
@@ -495,16 +512,19 @@ public final class GetProjectIssuesResult {
         }
         @CustomType.Setter
         public Builder milestone(@Nullable String milestone) {
+
             this.milestone = milestone;
             return this;
         }
         @CustomType.Setter
         public Builder myReactionEmoji(@Nullable String myReactionEmoji) {
+
             this.myReactionEmoji = myReactionEmoji;
             return this;
         }
         @CustomType.Setter
         public Builder notAssigneeIds(@Nullable List<Integer> notAssigneeIds) {
+
             this.notAssigneeIds = notAssigneeIds;
             return this;
         }
@@ -513,6 +533,7 @@ public final class GetProjectIssuesResult {
         }
         @CustomType.Setter
         public Builder notAuthorIds(@Nullable List<Integer> notAuthorIds) {
+
             this.notAuthorIds = notAuthorIds;
             return this;
         }
@@ -521,6 +542,7 @@ public final class GetProjectIssuesResult {
         }
         @CustomType.Setter
         public Builder notLabels(@Nullable List<String> notLabels) {
+
             this.notLabels = notLabels;
             return this;
         }
@@ -529,11 +551,13 @@ public final class GetProjectIssuesResult {
         }
         @CustomType.Setter
         public Builder notMilestone(@Nullable String notMilestone) {
+
             this.notMilestone = notMilestone;
             return this;
         }
         @CustomType.Setter
         public Builder notMyReactionEmojis(@Nullable List<String> notMyReactionEmojis) {
+
             this.notMyReactionEmojis = notMyReactionEmojis;
             return this;
         }
@@ -542,46 +566,57 @@ public final class GetProjectIssuesResult {
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder scope(@Nullable String scope) {
+
             this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder search(@Nullable String search) {
+
             this.search = search;
             return this;
         }
         @CustomType.Setter
         public Builder sort(@Nullable String sort) {
+
             this.sort = sort;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAfter(@Nullable String updatedAfter) {
+
             this.updatedAfter = updatedAfter;
             return this;
         }
         @CustomType.Setter
         public Builder updatedBefore(@Nullable String updatedBefore) {
+
             this.updatedBefore = updatedBefore;
             return this;
         }
         @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
+
             this.weight = weight;
             return this;
         }
         @CustomType.Setter
         public Builder withLabelsDetails(@Nullable Boolean withLabelsDetails) {
+
             this.withLabelsDetails = withLabelsDetails;
             return this;
         }

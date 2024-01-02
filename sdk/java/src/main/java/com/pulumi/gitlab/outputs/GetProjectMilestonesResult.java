@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectMilestonesMilestone;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -146,11 +147,15 @@ public final class GetProjectMilestonesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder iids(@Nullable List<Integer> iids) {
+
             this.iids = iids;
             return this;
         }
@@ -159,12 +164,16 @@ public final class GetProjectMilestonesResult {
         }
         @CustomType.Setter
         public Builder includeParentMilestones(@Nullable Boolean includeParentMilestones) {
+
             this.includeParentMilestones = includeParentMilestones;
             return this;
         }
         @CustomType.Setter
         public Builder milestones(List<GetProjectMilestonesMilestone> milestones) {
-            this.milestones = Objects.requireNonNull(milestones);
+            if (milestones == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesResult", "milestones");
+            }
+            this.milestones = milestones;
             return this;
         }
         public Builder milestones(GetProjectMilestonesMilestone... milestones) {
@@ -172,21 +181,27 @@ public final class GetProjectMilestonesResult {
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder search(@Nullable String search) {
+
             this.search = search;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder title(@Nullable String title) {
+
             this.title = title;
             return this;
         }

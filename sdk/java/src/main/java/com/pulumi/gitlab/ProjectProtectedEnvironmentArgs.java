@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentApprovalRuleArgs;
 import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs;
 import java.lang.Integer;
@@ -248,8 +249,12 @@ public final class ProjectProtectedEnvironmentArgs extends com.pulumi.resources.
         }
 
         public ProjectProtectedEnvironmentArgs build() {
-            $.environment = Objects.requireNonNull($.environment, "expected parameter 'environment' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.environment == null) {
+                throw new MissingRequiredPropertyException("ProjectProtectedEnvironmentArgs", "environment");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectProtectedEnvironmentArgs", "project");
+            }
             return $;
         }
     }

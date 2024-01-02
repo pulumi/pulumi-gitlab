@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetInstanceDeployKeysDeployKey;
 import java.lang.Boolean;
 import java.lang.String;
@@ -75,7 +76,10 @@ public final class GetInstanceDeployKeysResult {
 
         @CustomType.Setter
         public Builder deployKeys(List<GetInstanceDeployKeysDeployKey> deployKeys) {
-            this.deployKeys = Objects.requireNonNull(deployKeys);
+            if (deployKeys == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysResult", "deployKeys");
+            }
+            this.deployKeys = deployKeys;
             return this;
         }
         public Builder deployKeys(GetInstanceDeployKeysDeployKey... deployKeys) {
@@ -83,11 +87,15 @@ public final class GetInstanceDeployKeysResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter("public")
         public Builder public_(@Nullable Boolean public_) {
+
             this.public_ = public_;
             return this;
         }

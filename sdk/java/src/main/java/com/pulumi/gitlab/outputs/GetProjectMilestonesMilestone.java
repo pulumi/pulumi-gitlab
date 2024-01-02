@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -108,67 +109,106 @@ public final class GetProjectMilestonesMilestone {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dueDate(String dueDate) {
-            this.dueDate = Objects.requireNonNull(dueDate);
+            if (dueDate == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "dueDate");
+            }
+            this.dueDate = dueDate;
             return this;
         }
         @CustomType.Setter
         public Builder expired(Boolean expired) {
-            this.expired = Objects.requireNonNull(expired);
+            if (expired == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "expired");
+            }
+            this.expired = expired;
             return this;
         }
         @CustomType.Setter
         public Builder iid(Integer iid) {
-            this.iid = Objects.requireNonNull(iid);
+            if (iid == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "iid");
+            }
+            this.iid = iid;
             return this;
         }
         @CustomType.Setter
         public Builder milestoneId(Integer milestoneId) {
-            this.milestoneId = Objects.requireNonNull(milestoneId);
+            if (milestoneId == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "milestoneId");
+            }
+            this.milestoneId = milestoneId;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(Integer projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder startDate(String startDate) {
-            this.startDate = Objects.requireNonNull(startDate);
+            if (startDate == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "startDate");
+            }
+            this.startDate = startDate;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "title");
+            }
+            this.title = title;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder webUrl(String webUrl) {
-            this.webUrl = Objects.requireNonNull(webUrl);
+            if (webUrl == null) {
+              throw new MissingRequiredPropertyException("GetProjectMilestonesMilestone", "webUrl");
+            }
+            this.webUrl = webUrl;
             return this;
         }
         public GetProjectMilestonesMilestone build() {

@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -199,9 +200,15 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
         }
 
         public PersonalAccessTokenArgs build() {
-            $.expiresAt = Objects.requireNonNull($.expiresAt, "expected parameter 'expiresAt' to be non-null");
-            $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.expiresAt == null) {
+                throw new MissingRequiredPropertyException("PersonalAccessTokenArgs", "expiresAt");
+            }
+            if ($.scopes == null) {
+                throw new MissingRequiredPropertyException("PersonalAccessTokenArgs", "scopes");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("PersonalAccessTokenArgs", "userId");
+            }
             return $;
         }
     }

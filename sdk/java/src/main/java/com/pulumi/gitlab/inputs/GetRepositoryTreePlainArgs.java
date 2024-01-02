@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -133,8 +134,12 @@ public final class GetRepositoryTreePlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetRepositoryTreePlainArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.ref = Objects.requireNonNull($.ref, "expected parameter 'ref' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetRepositoryTreePlainArgs", "project");
+            }
+            if ($.ref == null) {
+                throw new MissingRequiredPropertyException("GetRepositoryTreePlainArgs", "ref");
+            }
             return $;
         }
     }

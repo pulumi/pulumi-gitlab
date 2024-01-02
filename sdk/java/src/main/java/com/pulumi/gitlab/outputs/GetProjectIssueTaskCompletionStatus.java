@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetProjectIssueTaskCompletionStatus {
 
         @CustomType.Setter
         public Builder completedCount(Integer completedCount) {
-            this.completedCount = Objects.requireNonNull(completedCount);
+            if (completedCount == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssueTaskCompletionStatus", "completedCount");
+            }
+            this.completedCount = completedCount;
             return this;
         }
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssueTaskCompletionStatus", "count");
+            }
+            this.count = count;
             return this;
         }
         public GetProjectIssueTaskCompletionStatus build() {

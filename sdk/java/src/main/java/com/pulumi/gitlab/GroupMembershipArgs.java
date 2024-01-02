@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -263,9 +264,15 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GroupMembershipArgs build() {
-            $.accessLevel = Objects.requireNonNull($.accessLevel, "expected parameter 'accessLevel' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.accessLevel == null) {
+                throw new MissingRequiredPropertyException("GroupMembershipArgs", "accessLevel");
+            }
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("GroupMembershipArgs", "groupId");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("GroupMembershipArgs", "userId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.inputs.GroupIssueBoardListArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -200,7 +201,9 @@ public final class GroupIssueBoardArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GroupIssueBoardArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GroupIssueBoardArgs", "group");
+            }
             return $;
         }
     }
