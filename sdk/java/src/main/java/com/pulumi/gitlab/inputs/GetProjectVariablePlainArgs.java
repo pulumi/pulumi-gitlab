@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -119,8 +120,12 @@ public final class GetProjectVariablePlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetProjectVariablePlainArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("GetProjectVariablePlainArgs", "key");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetProjectVariablePlainArgs", "project");
+            }
             return $;
         }
     }

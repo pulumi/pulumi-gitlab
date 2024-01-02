@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class ProjectLabelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectLabelArgs build() {
-            $.color = Objects.requireNonNull($.color, "expected parameter 'color' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.color == null) {
+                throw new MissingRequiredPropertyException("ProjectLabelArgs", "color");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectLabelArgs", "project");
+            }
             return $;
         }
     }

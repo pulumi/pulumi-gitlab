@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -156,47 +157,74 @@ public final class GetCurrentUserResult {
 
         @CustomType.Setter
         public Builder bot(Boolean bot) {
-            this.bot = Objects.requireNonNull(bot);
+            if (bot == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "bot");
+            }
+            this.bot = bot;
             return this;
         }
         @CustomType.Setter
         public Builder globalId(String globalId) {
-            this.globalId = Objects.requireNonNull(globalId);
+            if (globalId == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "globalId");
+            }
+            this.globalId = globalId;
             return this;
         }
         @CustomType.Setter
         public Builder globalNamespaceId(String globalNamespaceId) {
-            this.globalNamespaceId = Objects.requireNonNull(globalNamespaceId);
+            if (globalNamespaceId == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "globalNamespaceId");
+            }
+            this.globalNamespaceId = globalNamespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder groupCount(Integer groupCount) {
-            this.groupCount = Objects.requireNonNull(groupCount);
+            if (groupCount == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "groupCount");
+            }
+            this.groupCount = groupCount;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder publicEmail(String publicEmail) {
-            this.publicEmail = Objects.requireNonNull(publicEmail);
+            if (publicEmail == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "publicEmail");
+            }
+            this.publicEmail = publicEmail;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetCurrentUserResult build() {

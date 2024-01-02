@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectTagsTagCommit;
 import com.pulumi.gitlab.outputs.GetProjectTagsTagRelease;
 import java.lang.Boolean;
@@ -68,7 +69,10 @@ public final class GetProjectTagsTag {
 
         @CustomType.Setter
         public Builder commits(List<GetProjectTagsTagCommit> commits) {
-            this.commits = Objects.requireNonNull(commits);
+            if (commits == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagsTag", "commits");
+            }
+            this.commits = commits;
             return this;
         }
         public Builder commits(GetProjectTagsTagCommit... commits) {
@@ -76,22 +80,34 @@ public final class GetProjectTagsTag {
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagsTag", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagsTag", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter("protected")
         public Builder protected_(Boolean protected_) {
-            this.protected_ = Objects.requireNonNull(protected_);
+            if (protected_ == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagsTag", "protected_");
+            }
+            this.protected_ = protected_;
             return this;
         }
         @CustomType.Setter
         public Builder releases(List<GetProjectTagsTagRelease> releases) {
-            this.releases = Objects.requireNonNull(releases);
+            if (releases == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagsTag", "releases");
+            }
+            this.releases = releases;
             return this;
         }
         public Builder releases(GetProjectTagsTagRelease... releases) {
@@ -99,7 +115,10 @@ public final class GetProjectTagsTag {
         }
         @CustomType.Setter
         public Builder target(String target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagsTag", "target");
+            }
+            this.target = target;
             return this;
         }
         public GetProjectTagsTag build() {

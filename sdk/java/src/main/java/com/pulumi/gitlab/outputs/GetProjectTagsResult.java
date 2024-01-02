@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectTagsTag;
 import java.lang.String;
 import java.util.List;
@@ -116,32 +117,44 @@ public final class GetProjectTagsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagsResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder search(@Nullable String search) {
+
             this.search = search;
             return this;
         }
         @CustomType.Setter
         public Builder sort(@Nullable String sort) {
+
             this.sort = sort;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<GetProjectTagsTag> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagsResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(GetProjectTagsTag... tags) {

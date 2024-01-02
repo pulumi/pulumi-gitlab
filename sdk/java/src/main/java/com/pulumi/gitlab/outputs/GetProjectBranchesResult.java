@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectBranchesBranch;
 import java.lang.String;
 import java.util.List;
@@ -72,7 +73,10 @@ public final class GetProjectBranchesResult {
 
         @CustomType.Setter
         public Builder branches(List<GetProjectBranchesBranch> branches) {
-            this.branches = Objects.requireNonNull(branches);
+            if (branches == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesResult", "branches");
+            }
+            this.branches = branches;
             return this;
         }
         public Builder branches(GetProjectBranchesBranch... branches) {
@@ -80,12 +84,18 @@ public final class GetProjectBranchesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetProjectBranchesResult build() {

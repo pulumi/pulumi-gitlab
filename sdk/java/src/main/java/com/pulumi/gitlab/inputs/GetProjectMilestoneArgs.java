@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class GetProjectMilestoneArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetProjectMilestoneArgs build() {
-            $.milestoneId = Objects.requireNonNull($.milestoneId, "expected parameter 'milestoneId' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.milestoneId == null) {
+                throw new MissingRequiredPropertyException("GetProjectMilestoneArgs", "milestoneId");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetProjectMilestoneArgs", "project");
+            }
             return $;
         }
     }

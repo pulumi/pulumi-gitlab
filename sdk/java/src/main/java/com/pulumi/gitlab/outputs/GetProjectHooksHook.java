@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -144,97 +145,154 @@ public final class GetProjectHooksHook {
 
         @CustomType.Setter
         public Builder confidentialIssuesEvents(Boolean confidentialIssuesEvents) {
-            this.confidentialIssuesEvents = Objects.requireNonNull(confidentialIssuesEvents);
+            if (confidentialIssuesEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "confidentialIssuesEvents");
+            }
+            this.confidentialIssuesEvents = confidentialIssuesEvents;
             return this;
         }
         @CustomType.Setter
         public Builder confidentialNoteEvents(Boolean confidentialNoteEvents) {
-            this.confidentialNoteEvents = Objects.requireNonNull(confidentialNoteEvents);
+            if (confidentialNoteEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "confidentialNoteEvents");
+            }
+            this.confidentialNoteEvents = confidentialNoteEvents;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentEvents(Boolean deploymentEvents) {
-            this.deploymentEvents = Objects.requireNonNull(deploymentEvents);
+            if (deploymentEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "deploymentEvents");
+            }
+            this.deploymentEvents = deploymentEvents;
             return this;
         }
         @CustomType.Setter
         public Builder enableSslVerification(Boolean enableSslVerification) {
-            this.enableSslVerification = Objects.requireNonNull(enableSslVerification);
+            if (enableSslVerification == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "enableSslVerification");
+            }
+            this.enableSslVerification = enableSslVerification;
             return this;
         }
         @CustomType.Setter
         public Builder hookId(Integer hookId) {
-            this.hookId = Objects.requireNonNull(hookId);
+            if (hookId == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "hookId");
+            }
+            this.hookId = hookId;
             return this;
         }
         @CustomType.Setter
         public Builder issuesEvents(Boolean issuesEvents) {
-            this.issuesEvents = Objects.requireNonNull(issuesEvents);
+            if (issuesEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "issuesEvents");
+            }
+            this.issuesEvents = issuesEvents;
             return this;
         }
         @CustomType.Setter
         public Builder jobEvents(Boolean jobEvents) {
-            this.jobEvents = Objects.requireNonNull(jobEvents);
+            if (jobEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "jobEvents");
+            }
+            this.jobEvents = jobEvents;
             return this;
         }
         @CustomType.Setter
         public Builder mergeRequestsEvents(Boolean mergeRequestsEvents) {
-            this.mergeRequestsEvents = Objects.requireNonNull(mergeRequestsEvents);
+            if (mergeRequestsEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "mergeRequestsEvents");
+            }
+            this.mergeRequestsEvents = mergeRequestsEvents;
             return this;
         }
         @CustomType.Setter
         public Builder noteEvents(Boolean noteEvents) {
-            this.noteEvents = Objects.requireNonNull(noteEvents);
+            if (noteEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "noteEvents");
+            }
+            this.noteEvents = noteEvents;
             return this;
         }
         @CustomType.Setter
         public Builder pipelineEvents(Boolean pipelineEvents) {
-            this.pipelineEvents = Objects.requireNonNull(pipelineEvents);
+            if (pipelineEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "pipelineEvents");
+            }
+            this.pipelineEvents = pipelineEvents;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(Integer projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder pushEvents(Boolean pushEvents) {
-            this.pushEvents = Objects.requireNonNull(pushEvents);
+            if (pushEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "pushEvents");
+            }
+            this.pushEvents = pushEvents;
             return this;
         }
         @CustomType.Setter
         public Builder pushEventsBranchFilter(String pushEventsBranchFilter) {
-            this.pushEventsBranchFilter = Objects.requireNonNull(pushEventsBranchFilter);
+            if (pushEventsBranchFilter == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "pushEventsBranchFilter");
+            }
+            this.pushEventsBranchFilter = pushEventsBranchFilter;
             return this;
         }
         @CustomType.Setter
         public Builder releasesEvents(Boolean releasesEvents) {
-            this.releasesEvents = Objects.requireNonNull(releasesEvents);
+            if (releasesEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "releasesEvents");
+            }
+            this.releasesEvents = releasesEvents;
             return this;
         }
         @CustomType.Setter
         public Builder tagPushEvents(Boolean tagPushEvents) {
-            this.tagPushEvents = Objects.requireNonNull(tagPushEvents);
+            if (tagPushEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "tagPushEvents");
+            }
+            this.tagPushEvents = tagPushEvents;
             return this;
         }
         @CustomType.Setter
         public Builder token(String token) {
-            this.token = Objects.requireNonNull(token);
+            if (token == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "token");
+            }
+            this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "url");
+            }
+            this.url = url;
             return this;
         }
         @CustomType.Setter
         public Builder wikiPageEvents(Boolean wikiPageEvents) {
-            this.wikiPageEvents = Objects.requireNonNull(wikiPageEvents);
+            if (wikiPageEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "wikiPageEvents");
+            }
+            this.wikiPageEvents = wikiPageEvents;
             return this;
         }
         public GetProjectHooksHook build() {

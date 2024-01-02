@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectMembershipMember;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -118,22 +119,32 @@ public final class GetProjectMembershipResult {
 
         @CustomType.Setter
         public Builder fullPath(String fullPath) {
-            this.fullPath = Objects.requireNonNull(fullPath);
+            if (fullPath == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipResult", "fullPath");
+            }
+            this.fullPath = fullPath;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inherited(@Nullable Boolean inherited) {
+
             this.inherited = inherited;
             return this;
         }
         @CustomType.Setter
         public Builder members(List<GetProjectMembershipMember> members) {
-            this.members = Objects.requireNonNull(members);
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipResult", "members");
+            }
+            this.members = members;
             return this;
         }
         public Builder members(GetProjectMembershipMember... members) {
@@ -141,11 +152,15 @@ public final class GetProjectMembershipResult {
         }
         @CustomType.Setter
         public Builder projectId(Integer projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder query(@Nullable String query) {
+
             this.query = query;
             return this;
         }

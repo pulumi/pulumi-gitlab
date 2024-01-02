@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.inputs.TagProtectionAllowedToCreateArgs;
 import java.lang.String;
 import java.util.List;
@@ -199,9 +200,15 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TagProtectionArgs build() {
-            $.createAccessLevel = Objects.requireNonNull($.createAccessLevel, "expected parameter 'createAccessLevel' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.tag = Objects.requireNonNull($.tag, "expected parameter 'tag' to be non-null");
+            if ($.createAccessLevel == null) {
+                throw new MissingRequiredPropertyException("TagProtectionArgs", "createAccessLevel");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("TagProtectionArgs", "project");
+            }
+            if ($.tag == null) {
+                throw new MissingRequiredPropertyException("TagProtectionArgs", "tag");
+            }
             return $;
         }
     }

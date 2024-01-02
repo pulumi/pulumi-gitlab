@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -77,42 +78,66 @@ public final class GetProjectMembershipMember {
 
         @CustomType.Setter
         public Builder accessLevel(String accessLevel) {
-            this.accessLevel = Objects.requireNonNull(accessLevel);
+            if (accessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipMember", "accessLevel");
+            }
+            this.accessLevel = accessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder avatarUrl(String avatarUrl) {
-            this.avatarUrl = Objects.requireNonNull(avatarUrl);
+            if (avatarUrl == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipMember", "avatarUrl");
+            }
+            this.avatarUrl = avatarUrl;
             return this;
         }
         @CustomType.Setter
         public Builder expiresAt(String expiresAt) {
-            this.expiresAt = Objects.requireNonNull(expiresAt);
+            if (expiresAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipMember", "expiresAt");
+            }
+            this.expiresAt = expiresAt;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipMember", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipMember", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipMember", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipMember", "username");
+            }
+            this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder webUrl(String webUrl) {
-            this.webUrl = Objects.requireNonNull(webUrl);
+            if (webUrl == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipMember", "webUrl");
+            }
+            this.webUrl = webUrl;
             return this;
         }
         public GetProjectMembershipMember build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetInstanceVariablesVariable;
 import java.lang.String;
 import java.util.List;
@@ -58,12 +59,18 @@ public final class GetInstanceVariablesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceVariablesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder variables(List<GetInstanceVariablesVariable> variables) {
-            this.variables = Objects.requireNonNull(variables);
+            if (variables == null) {
+              throw new MissingRequiredPropertyException("GetInstanceVariablesResult", "variables");
+            }
+            this.variables = variables;
             return this;
         }
         public Builder variables(GetInstanceVariablesVariable... variables) {

@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetMetadataKas {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetMetadataKas", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder externalUrl(String externalUrl) {
-            this.externalUrl = Objects.requireNonNull(externalUrl);
+            if (externalUrl == null) {
+              throw new MissingRequiredPropertyException("GetMetadataKas", "externalUrl");
+            }
+            this.externalUrl = externalUrl;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetMetadataKas", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetMetadataKas build() {

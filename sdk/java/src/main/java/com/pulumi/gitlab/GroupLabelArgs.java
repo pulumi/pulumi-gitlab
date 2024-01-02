@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class GroupLabelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GroupLabelArgs build() {
-            $.color = Objects.requireNonNull($.color, "expected parameter 'color' to be non-null");
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
+            if ($.color == null) {
+                throw new MissingRequiredPropertyException("GroupLabelArgs", "color");
+            }
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GroupLabelArgs", "group");
+            }
             return $;
         }
     }

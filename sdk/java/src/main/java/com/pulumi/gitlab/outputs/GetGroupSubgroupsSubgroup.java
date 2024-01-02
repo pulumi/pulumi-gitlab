@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -193,137 +194,218 @@ public final class GetGroupSubgroupsSubgroup {
 
         @CustomType.Setter
         public Builder autoDevopsEnabled(Boolean autoDevopsEnabled) {
-            this.autoDevopsEnabled = Objects.requireNonNull(autoDevopsEnabled);
+            if (autoDevopsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "autoDevopsEnabled");
+            }
+            this.autoDevopsEnabled = autoDevopsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder avatarUrl(String avatarUrl) {
-            this.avatarUrl = Objects.requireNonNull(avatarUrl);
+            if (avatarUrl == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "avatarUrl");
+            }
+            this.avatarUrl = avatarUrl;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder defaultBranchProtection(Integer defaultBranchProtection) {
-            this.defaultBranchProtection = Objects.requireNonNull(defaultBranchProtection);
+            if (defaultBranchProtection == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "defaultBranchProtection");
+            }
+            this.defaultBranchProtection = defaultBranchProtection;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder emailsDisabled(Boolean emailsDisabled) {
-            this.emailsDisabled = Objects.requireNonNull(emailsDisabled);
+            if (emailsDisabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "emailsDisabled");
+            }
+            this.emailsDisabled = emailsDisabled;
             return this;
         }
         @CustomType.Setter
         public Builder fileTemplateProjectId(Integer fileTemplateProjectId) {
-            this.fileTemplateProjectId = Objects.requireNonNull(fileTemplateProjectId);
+            if (fileTemplateProjectId == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "fileTemplateProjectId");
+            }
+            this.fileTemplateProjectId = fileTemplateProjectId;
             return this;
         }
         @CustomType.Setter
         public Builder fullName(String fullName) {
-            this.fullName = Objects.requireNonNull(fullName);
+            if (fullName == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "fullName");
+            }
+            this.fullName = fullName;
             return this;
         }
         @CustomType.Setter
         public Builder fullPath(String fullPath) {
-            this.fullPath = Objects.requireNonNull(fullPath);
+            if (fullPath == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "fullPath");
+            }
+            this.fullPath = fullPath;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(Integer groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder ipRestrictionRanges(String ipRestrictionRanges) {
-            this.ipRestrictionRanges = Objects.requireNonNull(ipRestrictionRanges);
+            if (ipRestrictionRanges == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "ipRestrictionRanges");
+            }
+            this.ipRestrictionRanges = ipRestrictionRanges;
             return this;
         }
         @CustomType.Setter
         public Builder lfsEnabled(Boolean lfsEnabled) {
-            this.lfsEnabled = Objects.requireNonNull(lfsEnabled);
+            if (lfsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "lfsEnabled");
+            }
+            this.lfsEnabled = lfsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder mentionsDisabled(Boolean mentionsDisabled) {
-            this.mentionsDisabled = Objects.requireNonNull(mentionsDisabled);
+            if (mentionsDisabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "mentionsDisabled");
+            }
+            this.mentionsDisabled = mentionsDisabled;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder parentId(Integer parentId) {
-            this.parentId = Objects.requireNonNull(parentId);
+            if (parentId == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "parentId");
+            }
+            this.parentId = parentId;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder projectCreationLevel(String projectCreationLevel) {
-            this.projectCreationLevel = Objects.requireNonNull(projectCreationLevel);
+            if (projectCreationLevel == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "projectCreationLevel");
+            }
+            this.projectCreationLevel = projectCreationLevel;
             return this;
         }
         @CustomType.Setter
         public Builder requestAccessEnabled(Boolean requestAccessEnabled) {
-            this.requestAccessEnabled = Objects.requireNonNull(requestAccessEnabled);
+            if (requestAccessEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "requestAccessEnabled");
+            }
+            this.requestAccessEnabled = requestAccessEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder requireTwoFactorAuthentication(Boolean requireTwoFactorAuthentication) {
-            this.requireTwoFactorAuthentication = Objects.requireNonNull(requireTwoFactorAuthentication);
+            if (requireTwoFactorAuthentication == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "requireTwoFactorAuthentication");
+            }
+            this.requireTwoFactorAuthentication = requireTwoFactorAuthentication;
             return this;
         }
         @CustomType.Setter
         public Builder shareWithGroupLock(Boolean shareWithGroupLock) {
-            this.shareWithGroupLock = Objects.requireNonNull(shareWithGroupLock);
+            if (shareWithGroupLock == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "shareWithGroupLock");
+            }
+            this.shareWithGroupLock = shareWithGroupLock;
             return this;
         }
         @CustomType.Setter
         public Builder sharedRunnersSetting(String sharedRunnersSetting) {
-            this.sharedRunnersSetting = Objects.requireNonNull(sharedRunnersSetting);
+            if (sharedRunnersSetting == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "sharedRunnersSetting");
+            }
+            this.sharedRunnersSetting = sharedRunnersSetting;
             return this;
         }
         @CustomType.Setter
         public Builder statistics(Map<String,String> statistics) {
-            this.statistics = Objects.requireNonNull(statistics);
+            if (statistics == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "statistics");
+            }
+            this.statistics = statistics;
             return this;
         }
         @CustomType.Setter
         public Builder subgroupCreationLevel(String subgroupCreationLevel) {
-            this.subgroupCreationLevel = Objects.requireNonNull(subgroupCreationLevel);
+            if (subgroupCreationLevel == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "subgroupCreationLevel");
+            }
+            this.subgroupCreationLevel = subgroupCreationLevel;
             return this;
         }
         @CustomType.Setter
         public Builder twoFactorGracePeriod(Integer twoFactorGracePeriod) {
-            this.twoFactorGracePeriod = Objects.requireNonNull(twoFactorGracePeriod);
+            if (twoFactorGracePeriod == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "twoFactorGracePeriod");
+            }
+            this.twoFactorGracePeriod = twoFactorGracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder visibility(String visibility) {
-            this.visibility = Objects.requireNonNull(visibility);
+            if (visibility == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "visibility");
+            }
+            this.visibility = visibility;
             return this;
         }
         @CustomType.Setter
         public Builder webUrl(String webUrl) {
-            this.webUrl = Objects.requireNonNull(webUrl);
+            if (webUrl == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "webUrl");
+            }
+            this.webUrl = webUrl;
             return this;
         }
         @CustomType.Setter
         public Builder wikiAccessLevel(String wikiAccessLevel) {
-            this.wikiAccessLevel = Objects.requireNonNull(wikiAccessLevel);
+            if (wikiAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "wikiAccessLevel");
+            }
+            this.wikiAccessLevel = wikiAccessLevel;
             return this;
         }
         public GetGroupSubgroupsSubgroup build() {

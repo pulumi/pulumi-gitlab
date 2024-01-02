@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectHooksHook;
 import java.lang.String;
 import java.util.List;
@@ -72,7 +73,10 @@ public final class GetProjectHooksResult {
 
         @CustomType.Setter
         public Builder hooks(List<GetProjectHooksHook> hooks) {
-            this.hooks = Objects.requireNonNull(hooks);
+            if (hooks == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksResult", "hooks");
+            }
+            this.hooks = hooks;
             return this;
         }
         public Builder hooks(GetProjectHooksHook... hooks) {
@@ -80,12 +84,18 @@ public final class GetProjectHooksResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetProjectHooksResult build() {

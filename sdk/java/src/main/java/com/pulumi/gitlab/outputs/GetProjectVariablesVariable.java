@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -77,42 +78,66 @@ public final class GetProjectVariablesVariable {
 
         @CustomType.Setter
         public Builder environmentScope(String environmentScope) {
-            this.environmentScope = Objects.requireNonNull(environmentScope);
+            if (environmentScope == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesVariable", "environmentScope");
+            }
+            this.environmentScope = environmentScope;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesVariable", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder masked(Boolean masked) {
-            this.masked = Objects.requireNonNull(masked);
+            if (masked == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesVariable", "masked");
+            }
+            this.masked = masked;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesVariable", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter("protected")
         public Builder protected_(Boolean protected_) {
-            this.protected_ = Objects.requireNonNull(protected_);
+            if (protected_ == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesVariable", "protected_");
+            }
+            this.protected_ = protected_;
             return this;
         }
         @CustomType.Setter
         public Builder raw(Boolean raw) {
-            this.raw = Objects.requireNonNull(raw);
+            if (raw == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesVariable", "raw");
+            }
+            this.raw = raw;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesVariable", "value");
+            }
+            this.value = value;
             return this;
         }
         @CustomType.Setter
         public Builder variableType(String variableType) {
-            this.variableType = Objects.requireNonNull(variableType);
+            if (variableType == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesVariable", "variableType");
+            }
+            this.variableType = variableType;
             return this;
         }
         public GetProjectVariablesVariable build() {

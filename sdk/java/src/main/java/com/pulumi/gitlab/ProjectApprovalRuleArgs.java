@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -405,8 +406,12 @@ public final class ProjectApprovalRuleArgs extends com.pulumi.resources.Resource
         }
 
         public ProjectApprovalRuleArgs build() {
-            $.approvalsRequired = Objects.requireNonNull($.approvalsRequired, "expected parameter 'approvalsRequired' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.approvalsRequired == null) {
+                throw new MissingRequiredPropertyException("ProjectApprovalRuleArgs", "approvalsRequired");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectApprovalRuleArgs", "project");
+            }
             return $;
         }
     }

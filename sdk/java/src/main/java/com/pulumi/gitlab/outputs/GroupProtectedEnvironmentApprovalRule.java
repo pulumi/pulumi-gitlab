@@ -115,31 +115,37 @@ public final class GroupProtectedEnvironmentApprovalRule {
 
         @CustomType.Setter
         public Builder accessLevel(@Nullable String accessLevel) {
+
             this.accessLevel = accessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder accessLevelDescription(@Nullable String accessLevelDescription) {
+
             this.accessLevelDescription = accessLevelDescription;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(@Nullable Integer groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder requiredApprovals(@Nullable Integer requiredApprovals) {
+
             this.requiredApprovals = requiredApprovals;
             return this;
         }
         @CustomType.Setter
         public Builder userId(@Nullable Integer userId) {
+
             this.userId = userId;
             return this;
         }

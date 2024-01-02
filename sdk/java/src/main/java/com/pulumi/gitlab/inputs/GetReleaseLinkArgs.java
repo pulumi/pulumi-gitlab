@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class GetReleaseLinkArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetReleaseLinkArgs build() {
-            $.linkId = Objects.requireNonNull($.linkId, "expected parameter 'linkId' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.tagName = Objects.requireNonNull($.tagName, "expected parameter 'tagName' to be non-null");
+            if ($.linkId == null) {
+                throw new MissingRequiredPropertyException("GetReleaseLinkArgs", "linkId");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetReleaseLinkArgs", "project");
+            }
+            if ($.tagName == null) {
+                throw new MissingRequiredPropertyException("GetReleaseLinkArgs", "tagName");
+            }
             return $;
         }
     }

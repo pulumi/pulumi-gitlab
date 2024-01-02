@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectIssuesIssueTaskCompletionStatus;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -267,7 +268,10 @@ public final class GetProjectIssuesIssue {
 
         @CustomType.Setter
         public Builder assigneeIds(List<Integer> assigneeIds) {
-            this.assigneeIds = Objects.requireNonNull(assigneeIds);
+            if (assigneeIds == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "assigneeIds");
+            }
+            this.assigneeIds = assigneeIds;
             return this;
         }
         public Builder assigneeIds(Integer... assigneeIds) {
@@ -275,102 +279,162 @@ public final class GetProjectIssuesIssue {
         }
         @CustomType.Setter
         public Builder authorId(Integer authorId) {
-            this.authorId = Objects.requireNonNull(authorId);
+            if (authorId == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "authorId");
+            }
+            this.authorId = authorId;
             return this;
         }
         @CustomType.Setter
         public Builder closedAt(String closedAt) {
-            this.closedAt = Objects.requireNonNull(closedAt);
+            if (closedAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "closedAt");
+            }
+            this.closedAt = closedAt;
             return this;
         }
         @CustomType.Setter
         public Builder closedByUserId(Integer closedByUserId) {
-            this.closedByUserId = Objects.requireNonNull(closedByUserId);
+            if (closedByUserId == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "closedByUserId");
+            }
+            this.closedByUserId = closedByUserId;
             return this;
         }
         @CustomType.Setter
         public Builder confidential(Boolean confidential) {
-            this.confidential = Objects.requireNonNull(confidential);
+            if (confidential == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "confidential");
+            }
+            this.confidential = confidential;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder discussionLocked(Boolean discussionLocked) {
-            this.discussionLocked = Objects.requireNonNull(discussionLocked);
+            if (discussionLocked == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "discussionLocked");
+            }
+            this.discussionLocked = discussionLocked;
             return this;
         }
         @CustomType.Setter
         public Builder discussionToResolve(String discussionToResolve) {
-            this.discussionToResolve = Objects.requireNonNull(discussionToResolve);
+            if (discussionToResolve == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "discussionToResolve");
+            }
+            this.discussionToResolve = discussionToResolve;
             return this;
         }
         @CustomType.Setter
         public Builder downvotes(Integer downvotes) {
-            this.downvotes = Objects.requireNonNull(downvotes);
+            if (downvotes == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "downvotes");
+            }
+            this.downvotes = downvotes;
             return this;
         }
         @CustomType.Setter
         public Builder dueDate(String dueDate) {
-            this.dueDate = Objects.requireNonNull(dueDate);
+            if (dueDate == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "dueDate");
+            }
+            this.dueDate = dueDate;
             return this;
         }
         @CustomType.Setter
         public Builder epicId(Integer epicId) {
-            this.epicId = Objects.requireNonNull(epicId);
+            if (epicId == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "epicId");
+            }
+            this.epicId = epicId;
             return this;
         }
         @CustomType.Setter
         public Builder epicIssueId(Integer epicIssueId) {
-            this.epicIssueId = Objects.requireNonNull(epicIssueId);
+            if (epicIssueId == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "epicIssueId");
+            }
+            this.epicIssueId = epicIssueId;
             return this;
         }
         @CustomType.Setter
         public Builder externalId(String externalId) {
-            this.externalId = Objects.requireNonNull(externalId);
+            if (externalId == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "externalId");
+            }
+            this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder humanTimeEstimate(String humanTimeEstimate) {
-            this.humanTimeEstimate = Objects.requireNonNull(humanTimeEstimate);
+            if (humanTimeEstimate == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "humanTimeEstimate");
+            }
+            this.humanTimeEstimate = humanTimeEstimate;
             return this;
         }
         @CustomType.Setter
         public Builder humanTotalTimeSpent(String humanTotalTimeSpent) {
-            this.humanTotalTimeSpent = Objects.requireNonNull(humanTotalTimeSpent);
+            if (humanTotalTimeSpent == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "humanTotalTimeSpent");
+            }
+            this.humanTotalTimeSpent = humanTotalTimeSpent;
             return this;
         }
         @CustomType.Setter
         public Builder iid(Integer iid) {
-            this.iid = Objects.requireNonNull(iid);
+            if (iid == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "iid");
+            }
+            this.iid = iid;
             return this;
         }
         @CustomType.Setter
         public Builder issueId(Integer issueId) {
-            this.issueId = Objects.requireNonNull(issueId);
+            if (issueId == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "issueId");
+            }
+            this.issueId = issueId;
             return this;
         }
         @CustomType.Setter
         public Builder issueLinkId(Integer issueLinkId) {
-            this.issueLinkId = Objects.requireNonNull(issueLinkId);
+            if (issueLinkId == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "issueLinkId");
+            }
+            this.issueLinkId = issueLinkId;
             return this;
         }
         @CustomType.Setter
         public Builder issueType(String issueType) {
-            this.issueType = Objects.requireNonNull(issueType);
+            if (issueType == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "issueType");
+            }
+            this.issueType = issueType;
             return this;
         }
         @CustomType.Setter
         public Builder labels(List<String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         public Builder labels(String... labels) {
@@ -378,52 +442,82 @@ public final class GetProjectIssuesIssue {
         }
         @CustomType.Setter
         public Builder links(Map<String,String> links) {
-            this.links = Objects.requireNonNull(links);
+            if (links == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "links");
+            }
+            this.links = links;
             return this;
         }
         @CustomType.Setter
         public Builder mergeRequestToResolveDiscussionsOf(Integer mergeRequestToResolveDiscussionsOf) {
-            this.mergeRequestToResolveDiscussionsOf = Objects.requireNonNull(mergeRequestToResolveDiscussionsOf);
+            if (mergeRequestToResolveDiscussionsOf == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "mergeRequestToResolveDiscussionsOf");
+            }
+            this.mergeRequestToResolveDiscussionsOf = mergeRequestToResolveDiscussionsOf;
             return this;
         }
         @CustomType.Setter
         public Builder mergeRequestsCount(Integer mergeRequestsCount) {
-            this.mergeRequestsCount = Objects.requireNonNull(mergeRequestsCount);
+            if (mergeRequestsCount == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "mergeRequestsCount");
+            }
+            this.mergeRequestsCount = mergeRequestsCount;
             return this;
         }
         @CustomType.Setter
         public Builder milestoneId(Integer milestoneId) {
-            this.milestoneId = Objects.requireNonNull(milestoneId);
+            if (milestoneId == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "milestoneId");
+            }
+            this.milestoneId = milestoneId;
             return this;
         }
         @CustomType.Setter
         public Builder movedToId(Integer movedToId) {
-            this.movedToId = Objects.requireNonNull(movedToId);
+            if (movedToId == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "movedToId");
+            }
+            this.movedToId = movedToId;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder references(Map<String,String> references) {
-            this.references = Objects.requireNonNull(references);
+            if (references == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "references");
+            }
+            this.references = references;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder subscribed(Boolean subscribed) {
-            this.subscribed = Objects.requireNonNull(subscribed);
+            if (subscribed == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "subscribed");
+            }
+            this.subscribed = subscribed;
             return this;
         }
         @CustomType.Setter
         public Builder taskCompletionStatuses(List<GetProjectIssuesIssueTaskCompletionStatus> taskCompletionStatuses) {
-            this.taskCompletionStatuses = Objects.requireNonNull(taskCompletionStatuses);
+            if (taskCompletionStatuses == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "taskCompletionStatuses");
+            }
+            this.taskCompletionStatuses = taskCompletionStatuses;
             return this;
         }
         public Builder taskCompletionStatuses(GetProjectIssuesIssueTaskCompletionStatus... taskCompletionStatuses) {
@@ -431,42 +525,66 @@ public final class GetProjectIssuesIssue {
         }
         @CustomType.Setter
         public Builder timeEstimate(Integer timeEstimate) {
-            this.timeEstimate = Objects.requireNonNull(timeEstimate);
+            if (timeEstimate == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "timeEstimate");
+            }
+            this.timeEstimate = timeEstimate;
             return this;
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "title");
+            }
+            this.title = title;
             return this;
         }
         @CustomType.Setter
         public Builder totalTimeSpent(Integer totalTimeSpent) {
-            this.totalTimeSpent = Objects.requireNonNull(totalTimeSpent);
+            if (totalTimeSpent == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "totalTimeSpent");
+            }
+            this.totalTimeSpent = totalTimeSpent;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder upvotes(Integer upvotes) {
-            this.upvotes = Objects.requireNonNull(upvotes);
+            if (upvotes == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "upvotes");
+            }
+            this.upvotes = upvotes;
             return this;
         }
         @CustomType.Setter
         public Builder userNotesCount(Integer userNotesCount) {
-            this.userNotesCount = Objects.requireNonNull(userNotesCount);
+            if (userNotesCount == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "userNotesCount");
+            }
+            this.userNotesCount = userNotesCount;
             return this;
         }
         @CustomType.Setter
         public Builder webUrl(String webUrl) {
-            this.webUrl = Objects.requireNonNull(webUrl);
+            if (webUrl == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "webUrl");
+            }
+            this.webUrl = webUrl;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("GetProjectIssuesIssue", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public GetProjectIssuesIssue build() {

@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class GroupBadgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GroupBadgeArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
-            $.imageUrl = Objects.requireNonNull($.imageUrl, "expected parameter 'imageUrl' to be non-null");
-            $.linkUrl = Objects.requireNonNull($.linkUrl, "expected parameter 'linkUrl' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GroupBadgeArgs", "group");
+            }
+            if ($.imageUrl == null) {
+                throw new MissingRequiredPropertyException("GroupBadgeArgs", "imageUrl");
+            }
+            if ($.linkUrl == null) {
+                throw new MissingRequiredPropertyException("GroupBadgeArgs", "linkUrl");
+            }
             return $;
         }
     }

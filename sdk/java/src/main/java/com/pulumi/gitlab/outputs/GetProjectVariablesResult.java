@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectVariablesVariable;
 import java.lang.String;
 import java.util.List;
@@ -88,22 +89,32 @@ public final class GetProjectVariablesResult {
 
         @CustomType.Setter
         public Builder environmentScope(@Nullable String environmentScope) {
+
             this.environmentScope = environmentScope;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder variables(List<GetProjectVariablesVariable> variables) {
-            this.variables = Objects.requireNonNull(variables);
+            if (variables == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariablesResult", "variables");
+            }
+            this.variables = variables;
             return this;
         }
         public Builder variables(GetProjectVariablesVariable... variables) {

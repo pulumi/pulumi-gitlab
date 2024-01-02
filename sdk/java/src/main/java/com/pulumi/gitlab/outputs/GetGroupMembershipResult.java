@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetGroupMembershipMember;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -118,32 +119,48 @@ public final class GetGroupMembershipResult {
 
         @CustomType.Setter
         public Builder accessLevel(String accessLevel) {
-            this.accessLevel = Objects.requireNonNull(accessLevel);
+            if (accessLevel == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipResult", "accessLevel");
+            }
+            this.accessLevel = accessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder fullPath(String fullPath) {
-            this.fullPath = Objects.requireNonNull(fullPath);
+            if (fullPath == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipResult", "fullPath");
+            }
+            this.fullPath = fullPath;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(Integer groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inherited(@Nullable Boolean inherited) {
+
             this.inherited = inherited;
             return this;
         }
         @CustomType.Setter
         public Builder members(List<GetGroupMembershipMember> members) {
-            this.members = Objects.requireNonNull(members);
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipResult", "members");
+            }
+            this.members = members;
             return this;
         }
         public Builder members(GetGroupMembershipMember... members) {

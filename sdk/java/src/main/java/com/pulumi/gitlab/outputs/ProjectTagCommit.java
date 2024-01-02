@@ -97,46 +97,55 @@ public final class ProjectTagCommit {
 
         @CustomType.Setter
         public Builder authorEmail(@Nullable String authorEmail) {
+
             this.authorEmail = authorEmail;
             return this;
         }
         @CustomType.Setter
         public Builder authorName(@Nullable String authorName) {
+
             this.authorName = authorName;
             return this;
         }
         @CustomType.Setter
         public Builder authoredDate(@Nullable String authoredDate) {
+
             this.authoredDate = authoredDate;
             return this;
         }
         @CustomType.Setter
         public Builder committedDate(@Nullable String committedDate) {
+
             this.committedDate = committedDate;
             return this;
         }
         @CustomType.Setter
         public Builder committerEmail(@Nullable String committerEmail) {
+
             this.committerEmail = committerEmail;
             return this;
         }
         @CustomType.Setter
         public Builder committerName(@Nullable String committerName) {
+
             this.committerName = committerName;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder parentIds(@Nullable List<String> parentIds) {
+
             this.parentIds = parentIds;
             return this;
         }
@@ -145,11 +154,13 @@ public final class ProjectTagCommit {
         }
         @CustomType.Setter
         public Builder shortId(@Nullable String shortId) {
+
             this.shortId = shortId;
             return this;
         }
         @CustomType.Setter
         public Builder title(@Nullable String title) {
+
             this.title = title;
             return this;
         }

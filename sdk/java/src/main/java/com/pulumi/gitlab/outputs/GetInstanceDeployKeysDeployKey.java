@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess;
 import java.lang.Integer;
 import java.lang.String;
@@ -67,27 +68,42 @@ public final class GetInstanceDeployKeysDeployKey {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKey", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
-            this.fingerprint = Objects.requireNonNull(fingerprint);
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKey", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKey", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKey", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder projectsWithWriteAccesses(List<GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess> projectsWithWriteAccesses) {
-            this.projectsWithWriteAccesses = Objects.requireNonNull(projectsWithWriteAccesses);
+            if (projectsWithWriteAccesses == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKey", "projectsWithWriteAccesses");
+            }
+            this.projectsWithWriteAccesses = projectsWithWriteAccesses;
             return this;
         }
         public Builder projectsWithWriteAccesses(GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess... projectsWithWriteAccesses) {
@@ -95,7 +111,10 @@ public final class GetInstanceDeployKeysDeployKey {
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKey", "title");
+            }
+            this.title = title;
             return this;
         }
         public GetInstanceDeployKeysDeployKey build() {

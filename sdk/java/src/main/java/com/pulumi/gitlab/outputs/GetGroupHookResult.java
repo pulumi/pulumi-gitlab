@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -324,107 +325,170 @@ public final class GetGroupHookResult {
 
         @CustomType.Setter
         public Builder confidentialIssuesEvents(Boolean confidentialIssuesEvents) {
-            this.confidentialIssuesEvents = Objects.requireNonNull(confidentialIssuesEvents);
+            if (confidentialIssuesEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "confidentialIssuesEvents");
+            }
+            this.confidentialIssuesEvents = confidentialIssuesEvents;
             return this;
         }
         @CustomType.Setter
         public Builder confidentialNoteEvents(Boolean confidentialNoteEvents) {
-            this.confidentialNoteEvents = Objects.requireNonNull(confidentialNoteEvents);
+            if (confidentialNoteEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "confidentialNoteEvents");
+            }
+            this.confidentialNoteEvents = confidentialNoteEvents;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentEvents(Boolean deploymentEvents) {
-            this.deploymentEvents = Objects.requireNonNull(deploymentEvents);
+            if (deploymentEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "deploymentEvents");
+            }
+            this.deploymentEvents = deploymentEvents;
             return this;
         }
         @CustomType.Setter
         public Builder enableSslVerification(Boolean enableSslVerification) {
-            this.enableSslVerification = Objects.requireNonNull(enableSslVerification);
+            if (enableSslVerification == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "enableSslVerification");
+            }
+            this.enableSslVerification = enableSslVerification;
             return this;
         }
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(Integer groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder hookId(Integer hookId) {
-            this.hookId = Objects.requireNonNull(hookId);
+            if (hookId == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "hookId");
+            }
+            this.hookId = hookId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder issuesEvents(Boolean issuesEvents) {
-            this.issuesEvents = Objects.requireNonNull(issuesEvents);
+            if (issuesEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "issuesEvents");
+            }
+            this.issuesEvents = issuesEvents;
             return this;
         }
         @CustomType.Setter
         public Builder jobEvents(Boolean jobEvents) {
-            this.jobEvents = Objects.requireNonNull(jobEvents);
+            if (jobEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "jobEvents");
+            }
+            this.jobEvents = jobEvents;
             return this;
         }
         @CustomType.Setter
         public Builder mergeRequestsEvents(Boolean mergeRequestsEvents) {
-            this.mergeRequestsEvents = Objects.requireNonNull(mergeRequestsEvents);
+            if (mergeRequestsEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "mergeRequestsEvents");
+            }
+            this.mergeRequestsEvents = mergeRequestsEvents;
             return this;
         }
         @CustomType.Setter
         public Builder noteEvents(Boolean noteEvents) {
-            this.noteEvents = Objects.requireNonNull(noteEvents);
+            if (noteEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "noteEvents");
+            }
+            this.noteEvents = noteEvents;
             return this;
         }
         @CustomType.Setter
         public Builder pipelineEvents(Boolean pipelineEvents) {
-            this.pipelineEvents = Objects.requireNonNull(pipelineEvents);
+            if (pipelineEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "pipelineEvents");
+            }
+            this.pipelineEvents = pipelineEvents;
             return this;
         }
         @CustomType.Setter
         public Builder pushEvents(Boolean pushEvents) {
-            this.pushEvents = Objects.requireNonNull(pushEvents);
+            if (pushEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "pushEvents");
+            }
+            this.pushEvents = pushEvents;
             return this;
         }
         @CustomType.Setter
         public Builder pushEventsBranchFilter(String pushEventsBranchFilter) {
-            this.pushEventsBranchFilter = Objects.requireNonNull(pushEventsBranchFilter);
+            if (pushEventsBranchFilter == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "pushEventsBranchFilter");
+            }
+            this.pushEventsBranchFilter = pushEventsBranchFilter;
             return this;
         }
         @CustomType.Setter
         public Builder releasesEvents(Boolean releasesEvents) {
-            this.releasesEvents = Objects.requireNonNull(releasesEvents);
+            if (releasesEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "releasesEvents");
+            }
+            this.releasesEvents = releasesEvents;
             return this;
         }
         @CustomType.Setter
         public Builder subgroupEvents(Boolean subgroupEvents) {
-            this.subgroupEvents = Objects.requireNonNull(subgroupEvents);
+            if (subgroupEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "subgroupEvents");
+            }
+            this.subgroupEvents = subgroupEvents;
             return this;
         }
         @CustomType.Setter
         public Builder tagPushEvents(Boolean tagPushEvents) {
-            this.tagPushEvents = Objects.requireNonNull(tagPushEvents);
+            if (tagPushEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "tagPushEvents");
+            }
+            this.tagPushEvents = tagPushEvents;
             return this;
         }
         @CustomType.Setter
         public Builder token(String token) {
-            this.token = Objects.requireNonNull(token);
+            if (token == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "token");
+            }
+            this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "url");
+            }
+            this.url = url;
             return this;
         }
         @CustomType.Setter
         public Builder wikiPageEvents(Boolean wikiPageEvents) {
-            this.wikiPageEvents = Objects.requireNonNull(wikiPageEvents);
+            if (wikiPageEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "wikiPageEvents");
+            }
+            this.wikiPageEvents = wikiPageEvents;
             return this;
         }
         public GetGroupHookResult build() {

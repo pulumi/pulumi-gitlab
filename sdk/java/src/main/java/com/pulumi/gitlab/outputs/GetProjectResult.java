@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectContainerExpirationPolicy;
 import com.pulumi.gitlab.outputs.GetProjectPushRule;
 import java.lang.Boolean;
@@ -931,67 +932,106 @@ public final class GetProjectResult {
 
         @CustomType.Setter
         public Builder analyticsAccessLevel(String analyticsAccessLevel) {
-            this.analyticsAccessLevel = Objects.requireNonNull(analyticsAccessLevel);
+            if (analyticsAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "analyticsAccessLevel");
+            }
+            this.analyticsAccessLevel = analyticsAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder archived(Boolean archived) {
-            this.archived = Objects.requireNonNull(archived);
+            if (archived == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "archived");
+            }
+            this.archived = archived;
             return this;
         }
         @CustomType.Setter
         public Builder autoCancelPendingPipelines(String autoCancelPendingPipelines) {
-            this.autoCancelPendingPipelines = Objects.requireNonNull(autoCancelPendingPipelines);
+            if (autoCancelPendingPipelines == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "autoCancelPendingPipelines");
+            }
+            this.autoCancelPendingPipelines = autoCancelPendingPipelines;
             return this;
         }
         @CustomType.Setter
         public Builder autoDevopsDeployStrategy(String autoDevopsDeployStrategy) {
-            this.autoDevopsDeployStrategy = Objects.requireNonNull(autoDevopsDeployStrategy);
+            if (autoDevopsDeployStrategy == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "autoDevopsDeployStrategy");
+            }
+            this.autoDevopsDeployStrategy = autoDevopsDeployStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder autoDevopsEnabled(Boolean autoDevopsEnabled) {
-            this.autoDevopsEnabled = Objects.requireNonNull(autoDevopsEnabled);
+            if (autoDevopsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "autoDevopsEnabled");
+            }
+            this.autoDevopsEnabled = autoDevopsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder autocloseReferencedIssues(Boolean autocloseReferencedIssues) {
-            this.autocloseReferencedIssues = Objects.requireNonNull(autocloseReferencedIssues);
+            if (autocloseReferencedIssues == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "autocloseReferencedIssues");
+            }
+            this.autocloseReferencedIssues = autocloseReferencedIssues;
             return this;
         }
         @CustomType.Setter
         public Builder buildGitStrategy(String buildGitStrategy) {
-            this.buildGitStrategy = Objects.requireNonNull(buildGitStrategy);
+            if (buildGitStrategy == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "buildGitStrategy");
+            }
+            this.buildGitStrategy = buildGitStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder buildTimeout(Integer buildTimeout) {
-            this.buildTimeout = Objects.requireNonNull(buildTimeout);
+            if (buildTimeout == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "buildTimeout");
+            }
+            this.buildTimeout = buildTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder buildsAccessLevel(String buildsAccessLevel) {
-            this.buildsAccessLevel = Objects.requireNonNull(buildsAccessLevel);
+            if (buildsAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "buildsAccessLevel");
+            }
+            this.buildsAccessLevel = buildsAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder ciConfigPath(String ciConfigPath) {
-            this.ciConfigPath = Objects.requireNonNull(ciConfigPath);
+            if (ciConfigPath == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "ciConfigPath");
+            }
+            this.ciConfigPath = ciConfigPath;
             return this;
         }
         @CustomType.Setter
         public Builder ciDefaultGitDepth(Integer ciDefaultGitDepth) {
-            this.ciDefaultGitDepth = Objects.requireNonNull(ciDefaultGitDepth);
+            if (ciDefaultGitDepth == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "ciDefaultGitDepth");
+            }
+            this.ciDefaultGitDepth = ciDefaultGitDepth;
             return this;
         }
         @CustomType.Setter
         public Builder ciSeparatedCaches(Boolean ciSeparatedCaches) {
-            this.ciSeparatedCaches = Objects.requireNonNull(ciSeparatedCaches);
+            if (ciSeparatedCaches == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "ciSeparatedCaches");
+            }
+            this.ciSeparatedCaches = ciSeparatedCaches;
             return this;
         }
         @CustomType.Setter
         public Builder containerExpirationPolicies(List<GetProjectContainerExpirationPolicy> containerExpirationPolicies) {
-            this.containerExpirationPolicies = Objects.requireNonNull(containerExpirationPolicies);
+            if (containerExpirationPolicies == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "containerExpirationPolicies");
+            }
+            this.containerExpirationPolicies = containerExpirationPolicies;
             return this;
         }
         public Builder containerExpirationPolicies(GetProjectContainerExpirationPolicy... containerExpirationPolicies) {
@@ -999,157 +1039,248 @@ public final class GetProjectResult {
         }
         @CustomType.Setter
         public Builder containerRegistryAccessLevel(String containerRegistryAccessLevel) {
-            this.containerRegistryAccessLevel = Objects.requireNonNull(containerRegistryAccessLevel);
+            if (containerRegistryAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "containerRegistryAccessLevel");
+            }
+            this.containerRegistryAccessLevel = containerRegistryAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder defaultBranch(String defaultBranch) {
-            this.defaultBranch = Objects.requireNonNull(defaultBranch);
+            if (defaultBranch == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "defaultBranch");
+            }
+            this.defaultBranch = defaultBranch;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder emailsDisabled(Boolean emailsDisabled) {
-            this.emailsDisabled = Objects.requireNonNull(emailsDisabled);
+            if (emailsDisabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "emailsDisabled");
+            }
+            this.emailsDisabled = emailsDisabled;
             return this;
         }
         @CustomType.Setter
         public Builder emptyRepo(Boolean emptyRepo) {
-            this.emptyRepo = Objects.requireNonNull(emptyRepo);
+            if (emptyRepo == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "emptyRepo");
+            }
+            this.emptyRepo = emptyRepo;
             return this;
         }
         @CustomType.Setter
         public Builder environmentsAccessLevel(String environmentsAccessLevel) {
-            this.environmentsAccessLevel = Objects.requireNonNull(environmentsAccessLevel);
+            if (environmentsAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "environmentsAccessLevel");
+            }
+            this.environmentsAccessLevel = environmentsAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder externalAuthorizationClassificationLabel(String externalAuthorizationClassificationLabel) {
-            this.externalAuthorizationClassificationLabel = Objects.requireNonNull(externalAuthorizationClassificationLabel);
+            if (externalAuthorizationClassificationLabel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "externalAuthorizationClassificationLabel");
+            }
+            this.externalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
             return this;
         }
         @CustomType.Setter
         public Builder featureFlagsAccessLevel(String featureFlagsAccessLevel) {
-            this.featureFlagsAccessLevel = Objects.requireNonNull(featureFlagsAccessLevel);
+            if (featureFlagsAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "featureFlagsAccessLevel");
+            }
+            this.featureFlagsAccessLevel = featureFlagsAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder forkingAccessLevel(String forkingAccessLevel) {
-            this.forkingAccessLevel = Objects.requireNonNull(forkingAccessLevel);
+            if (forkingAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "forkingAccessLevel");
+            }
+            this.forkingAccessLevel = forkingAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder httpUrlToRepo(String httpUrlToRepo) {
-            this.httpUrlToRepo = Objects.requireNonNull(httpUrlToRepo);
+            if (httpUrlToRepo == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "httpUrlToRepo");
+            }
+            this.httpUrlToRepo = httpUrlToRepo;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder importUrl(String importUrl) {
-            this.importUrl = Objects.requireNonNull(importUrl);
+            if (importUrl == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "importUrl");
+            }
+            this.importUrl = importUrl;
             return this;
         }
         @CustomType.Setter
         public Builder infrastructureAccessLevel(String infrastructureAccessLevel) {
-            this.infrastructureAccessLevel = Objects.requireNonNull(infrastructureAccessLevel);
+            if (infrastructureAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "infrastructureAccessLevel");
+            }
+            this.infrastructureAccessLevel = infrastructureAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder issuesAccessLevel(String issuesAccessLevel) {
-            this.issuesAccessLevel = Objects.requireNonNull(issuesAccessLevel);
+            if (issuesAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "issuesAccessLevel");
+            }
+            this.issuesAccessLevel = issuesAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder issuesEnabled(Boolean issuesEnabled) {
-            this.issuesEnabled = Objects.requireNonNull(issuesEnabled);
+            if (issuesEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "issuesEnabled");
+            }
+            this.issuesEnabled = issuesEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder keepLatestArtifact(Boolean keepLatestArtifact) {
-            this.keepLatestArtifact = Objects.requireNonNull(keepLatestArtifact);
+            if (keepLatestArtifact == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "keepLatestArtifact");
+            }
+            this.keepLatestArtifact = keepLatestArtifact;
             return this;
         }
         @CustomType.Setter
         public Builder lfsEnabled(Boolean lfsEnabled) {
-            this.lfsEnabled = Objects.requireNonNull(lfsEnabled);
+            if (lfsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "lfsEnabled");
+            }
+            this.lfsEnabled = lfsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder mergeCommitTemplate(String mergeCommitTemplate) {
-            this.mergeCommitTemplate = Objects.requireNonNull(mergeCommitTemplate);
+            if (mergeCommitTemplate == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "mergeCommitTemplate");
+            }
+            this.mergeCommitTemplate = mergeCommitTemplate;
             return this;
         }
         @CustomType.Setter
         public Builder mergePipelinesEnabled(Boolean mergePipelinesEnabled) {
-            this.mergePipelinesEnabled = Objects.requireNonNull(mergePipelinesEnabled);
+            if (mergePipelinesEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "mergePipelinesEnabled");
+            }
+            this.mergePipelinesEnabled = mergePipelinesEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder mergeRequestsAccessLevel(String mergeRequestsAccessLevel) {
-            this.mergeRequestsAccessLevel = Objects.requireNonNull(mergeRequestsAccessLevel);
+            if (mergeRequestsAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "mergeRequestsAccessLevel");
+            }
+            this.mergeRequestsAccessLevel = mergeRequestsAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder mergeRequestsEnabled(Boolean mergeRequestsEnabled) {
-            this.mergeRequestsEnabled = Objects.requireNonNull(mergeRequestsEnabled);
+            if (mergeRequestsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "mergeRequestsEnabled");
+            }
+            this.mergeRequestsEnabled = mergeRequestsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder mergeTrainsEnabled(Boolean mergeTrainsEnabled) {
-            this.mergeTrainsEnabled = Objects.requireNonNull(mergeTrainsEnabled);
+            if (mergeTrainsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "mergeTrainsEnabled");
+            }
+            this.mergeTrainsEnabled = mergeTrainsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder monitorAccessLevel(String monitorAccessLevel) {
-            this.monitorAccessLevel = Objects.requireNonNull(monitorAccessLevel);
+            if (monitorAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "monitorAccessLevel");
+            }
+            this.monitorAccessLevel = monitorAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(Integer namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder pathWithNamespace(String pathWithNamespace) {
-            this.pathWithNamespace = Objects.requireNonNull(pathWithNamespace);
+            if (pathWithNamespace == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "pathWithNamespace");
+            }
+            this.pathWithNamespace = pathWithNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder pipelinesEnabled(Boolean pipelinesEnabled) {
-            this.pipelinesEnabled = Objects.requireNonNull(pipelinesEnabled);
+            if (pipelinesEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "pipelinesEnabled");
+            }
+            this.pipelinesEnabled = pipelinesEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder printingMergeRequestLinkEnabled(Boolean printingMergeRequestLinkEnabled) {
-            this.printingMergeRequestLinkEnabled = Objects.requireNonNull(printingMergeRequestLinkEnabled);
+            if (printingMergeRequestLinkEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "printingMergeRequestLinkEnabled");
+            }
+            this.printingMergeRequestLinkEnabled = printingMergeRequestLinkEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder publicBuilds(@Nullable Boolean publicBuilds) {
+
             this.publicBuilds = publicBuilds;
             return this;
         }
         @CustomType.Setter
         public Builder pushRules(List<GetProjectPushRule> pushRules) {
-            this.pushRules = Objects.requireNonNull(pushRules);
+            if (pushRules == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "pushRules");
+            }
+            this.pushRules = pushRules;
             return this;
         }
         public Builder pushRules(GetProjectPushRule... pushRules) {
@@ -1157,82 +1288,130 @@ public final class GetProjectResult {
         }
         @CustomType.Setter
         public Builder releasesAccessLevel(String releasesAccessLevel) {
-            this.releasesAccessLevel = Objects.requireNonNull(releasesAccessLevel);
+            if (releasesAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "releasesAccessLevel");
+            }
+            this.releasesAccessLevel = releasesAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder removeSourceBranchAfterMerge(Boolean removeSourceBranchAfterMerge) {
-            this.removeSourceBranchAfterMerge = Objects.requireNonNull(removeSourceBranchAfterMerge);
+            if (removeSourceBranchAfterMerge == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "removeSourceBranchAfterMerge");
+            }
+            this.removeSourceBranchAfterMerge = removeSourceBranchAfterMerge;
             return this;
         }
         @CustomType.Setter
         public Builder repositoryAccessLevel(String repositoryAccessLevel) {
-            this.repositoryAccessLevel = Objects.requireNonNull(repositoryAccessLevel);
+            if (repositoryAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "repositoryAccessLevel");
+            }
+            this.repositoryAccessLevel = repositoryAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder repositoryStorage(String repositoryStorage) {
-            this.repositoryStorage = Objects.requireNonNull(repositoryStorage);
+            if (repositoryStorage == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "repositoryStorage");
+            }
+            this.repositoryStorage = repositoryStorage;
             return this;
         }
         @CustomType.Setter
         public Builder requestAccessEnabled(Boolean requestAccessEnabled) {
-            this.requestAccessEnabled = Objects.requireNonNull(requestAccessEnabled);
+            if (requestAccessEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "requestAccessEnabled");
+            }
+            this.requestAccessEnabled = requestAccessEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder requirementsAccessLevel(String requirementsAccessLevel) {
-            this.requirementsAccessLevel = Objects.requireNonNull(requirementsAccessLevel);
+            if (requirementsAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "requirementsAccessLevel");
+            }
+            this.requirementsAccessLevel = requirementsAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder resolveOutdatedDiffDiscussions(Boolean resolveOutdatedDiffDiscussions) {
-            this.resolveOutdatedDiffDiscussions = Objects.requireNonNull(resolveOutdatedDiffDiscussions);
+            if (resolveOutdatedDiffDiscussions == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "resolveOutdatedDiffDiscussions");
+            }
+            this.resolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
             return this;
         }
         @CustomType.Setter
         public Builder restrictUserDefinedVariables(Boolean restrictUserDefinedVariables) {
-            this.restrictUserDefinedVariables = Objects.requireNonNull(restrictUserDefinedVariables);
+            if (restrictUserDefinedVariables == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "restrictUserDefinedVariables");
+            }
+            this.restrictUserDefinedVariables = restrictUserDefinedVariables;
             return this;
         }
         @CustomType.Setter
         public Builder runnersToken(String runnersToken) {
-            this.runnersToken = Objects.requireNonNull(runnersToken);
+            if (runnersToken == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "runnersToken");
+            }
+            this.runnersToken = runnersToken;
             return this;
         }
         @CustomType.Setter
         public Builder securityAndComplianceAccessLevel(String securityAndComplianceAccessLevel) {
-            this.securityAndComplianceAccessLevel = Objects.requireNonNull(securityAndComplianceAccessLevel);
+            if (securityAndComplianceAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "securityAndComplianceAccessLevel");
+            }
+            this.securityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder snippetsAccessLevel(String snippetsAccessLevel) {
-            this.snippetsAccessLevel = Objects.requireNonNull(snippetsAccessLevel);
+            if (snippetsAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "snippetsAccessLevel");
+            }
+            this.snippetsAccessLevel = snippetsAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder snippetsEnabled(Boolean snippetsEnabled) {
-            this.snippetsEnabled = Objects.requireNonNull(snippetsEnabled);
+            if (snippetsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "snippetsEnabled");
+            }
+            this.snippetsEnabled = snippetsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder squashCommitTemplate(String squashCommitTemplate) {
-            this.squashCommitTemplate = Objects.requireNonNull(squashCommitTemplate);
+            if (squashCommitTemplate == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "squashCommitTemplate");
+            }
+            this.squashCommitTemplate = squashCommitTemplate;
             return this;
         }
         @CustomType.Setter
         public Builder sshUrlToRepo(String sshUrlToRepo) {
-            this.sshUrlToRepo = Objects.requireNonNull(sshUrlToRepo);
+            if (sshUrlToRepo == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "sshUrlToRepo");
+            }
+            this.sshUrlToRepo = sshUrlToRepo;
             return this;
         }
         @CustomType.Setter
         public Builder suggestionCommitMessage(String suggestionCommitMessage) {
-            this.suggestionCommitMessage = Objects.requireNonNull(suggestionCommitMessage);
+            if (suggestionCommitMessage == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "suggestionCommitMessage");
+            }
+            this.suggestionCommitMessage = suggestionCommitMessage;
             return this;
         }
         @CustomType.Setter
         public Builder topics(List<String> topics) {
-            this.topics = Objects.requireNonNull(topics);
+            if (topics == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "topics");
+            }
+            this.topics = topics;
             return this;
         }
         public Builder topics(String... topics) {
@@ -1240,22 +1419,34 @@ public final class GetProjectResult {
         }
         @CustomType.Setter
         public Builder visibilityLevel(String visibilityLevel) {
-            this.visibilityLevel = Objects.requireNonNull(visibilityLevel);
+            if (visibilityLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "visibilityLevel");
+            }
+            this.visibilityLevel = visibilityLevel;
             return this;
         }
         @CustomType.Setter
         public Builder webUrl(String webUrl) {
-            this.webUrl = Objects.requireNonNull(webUrl);
+            if (webUrl == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "webUrl");
+            }
+            this.webUrl = webUrl;
             return this;
         }
         @CustomType.Setter
         public Builder wikiAccessLevel(String wikiAccessLevel) {
-            this.wikiAccessLevel = Objects.requireNonNull(wikiAccessLevel);
+            if (wikiAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "wikiAccessLevel");
+            }
+            this.wikiAccessLevel = wikiAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder wikiEnabled(Boolean wikiEnabled) {
-            this.wikiEnabled = Objects.requireNonNull(wikiEnabled);
+            if (wikiEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "wikiEnabled");
+            }
+            this.wikiEnabled = wikiEnabled;
             return this;
         }
         public GetProjectResult build() {

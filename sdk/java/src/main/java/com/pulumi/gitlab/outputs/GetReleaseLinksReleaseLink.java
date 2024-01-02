@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -84,47 +85,74 @@ public final class GetReleaseLinksReleaseLink {
 
         @CustomType.Setter
         public Builder directAssetUrl(String directAssetUrl) {
-            this.directAssetUrl = Objects.requireNonNull(directAssetUrl);
+            if (directAssetUrl == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksReleaseLink", "directAssetUrl");
+            }
+            this.directAssetUrl = directAssetUrl;
             return this;
         }
         @CustomType.Setter
         public Builder external(Boolean external) {
-            this.external = Objects.requireNonNull(external);
+            if (external == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksReleaseLink", "external");
+            }
+            this.external = external;
             return this;
         }
         @CustomType.Setter
         public Builder filepath(String filepath) {
-            this.filepath = Objects.requireNonNull(filepath);
+            if (filepath == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksReleaseLink", "filepath");
+            }
+            this.filepath = filepath;
             return this;
         }
         @CustomType.Setter
         public Builder linkId(Integer linkId) {
-            this.linkId = Objects.requireNonNull(linkId);
+            if (linkId == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksReleaseLink", "linkId");
+            }
+            this.linkId = linkId;
             return this;
         }
         @CustomType.Setter
         public Builder linkType(String linkType) {
-            this.linkType = Objects.requireNonNull(linkType);
+            if (linkType == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksReleaseLink", "linkType");
+            }
+            this.linkType = linkType;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksReleaseLink", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksReleaseLink", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder tagName(String tagName) {
-            this.tagName = Objects.requireNonNull(tagName);
+            if (tagName == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksReleaseLink", "tagName");
+            }
+            this.tagName = tagName;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksReleaseLink", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetReleaseLinksReleaseLink build() {

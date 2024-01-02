@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -42,12 +43,18 @@ public final class GetProjectsProjectPermission {
 
         @CustomType.Setter
         public Builder groupAccess(Map<String,Integer> groupAccess) {
-            this.groupAccess = Objects.requireNonNull(groupAccess);
+            if (groupAccess == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectPermission", "groupAccess");
+            }
+            this.groupAccess = groupAccess;
             return this;
         }
         @CustomType.Setter
         public Builder projectAccess(Map<String,Integer> projectAccess) {
-            this.projectAccess = Objects.requireNonNull(projectAccess);
+            if (projectAccess == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectPermission", "projectAccess");
+            }
+            this.projectAccess = projectAccess;
             return this;
         }
         public GetProjectsProjectPermission build() {

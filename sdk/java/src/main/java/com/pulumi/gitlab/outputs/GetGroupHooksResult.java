@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetGroupHooksHook;
 import java.lang.String;
 import java.util.List;
@@ -72,12 +73,18 @@ public final class GetGroupHooksResult {
 
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetGroupHooksResult", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder hooks(List<GetGroupHooksHook> hooks) {
-            this.hooks = Objects.requireNonNull(hooks);
+            if (hooks == null) {
+              throw new MissingRequiredPropertyException("GetGroupHooksResult", "hooks");
+            }
+            this.hooks = hooks;
             return this;
         }
         public Builder hooks(GetGroupHooksHook... hooks) {
@@ -85,7 +92,10 @@ public final class GetGroupHooksResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupHooksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetGroupHooksResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class GroupSamlLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GroupSamlLinkArgs build() {
-            $.accessLevel = Objects.requireNonNull($.accessLevel, "expected parameter 'accessLevel' to be non-null");
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
-            $.samlGroupName = Objects.requireNonNull($.samlGroupName, "expected parameter 'samlGroupName' to be non-null");
+            if ($.accessLevel == null) {
+                throw new MissingRequiredPropertyException("GroupSamlLinkArgs", "accessLevel");
+            }
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GroupSamlLinkArgs", "group");
+            }
+            if ($.samlGroupName == null) {
+                throw new MissingRequiredPropertyException("GroupSamlLinkArgs", "samlGroupName");
+            }
             return $;
         }
     }

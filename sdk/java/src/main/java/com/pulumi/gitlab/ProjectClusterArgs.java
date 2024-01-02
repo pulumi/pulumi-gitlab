@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -484,9 +485,15 @@ public final class ProjectClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ProjectClusterArgs build() {
-            $.kubernetesApiUrl = Objects.requireNonNull($.kubernetesApiUrl, "expected parameter 'kubernetesApiUrl' to be non-null");
-            $.kubernetesToken = Objects.requireNonNull($.kubernetesToken, "expected parameter 'kubernetesToken' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.kubernetesApiUrl == null) {
+                throw new MissingRequiredPropertyException("ProjectClusterArgs", "kubernetesApiUrl");
+            }
+            if ($.kubernetesToken == null) {
+                throw new MissingRequiredPropertyException("ProjectClusterArgs", "kubernetesToken");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectClusterArgs", "project");
+            }
             return $;
         }
     }

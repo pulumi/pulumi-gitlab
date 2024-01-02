@@ -72,16 +72,19 @@ public final class GroupIssueBoardList {
 
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labelId(@Nullable Integer labelId) {
+
             this.labelId = labelId;
             return this;
         }
         @CustomType.Setter
         public Builder position(@Nullable Integer position) {
+
             this.position = position;
             return this;
         }

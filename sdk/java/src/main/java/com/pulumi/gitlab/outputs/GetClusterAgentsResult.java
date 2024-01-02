@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetClusterAgentsClusterAgent;
 import java.lang.String;
 import java.util.List;
@@ -72,7 +73,10 @@ public final class GetClusterAgentsResult {
 
         @CustomType.Setter
         public Builder clusterAgents(List<GetClusterAgentsClusterAgent> clusterAgents) {
-            this.clusterAgents = Objects.requireNonNull(clusterAgents);
+            if (clusterAgents == null) {
+              throw new MissingRequiredPropertyException("GetClusterAgentsResult", "clusterAgents");
+            }
+            this.clusterAgents = clusterAgents;
             return this;
         }
         public Builder clusterAgents(GetClusterAgentsClusterAgent... clusterAgents) {
@@ -80,12 +84,18 @@ public final class GetClusterAgentsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClusterAgentsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetClusterAgentsResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetClusterAgentsResult build() {

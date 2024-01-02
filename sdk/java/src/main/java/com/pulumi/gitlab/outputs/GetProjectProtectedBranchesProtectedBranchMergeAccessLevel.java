@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -53,22 +54,34 @@ public final class GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
 
         @CustomType.Setter
         public Builder accessLevel(String accessLevel) {
-            this.accessLevel = Objects.requireNonNull(accessLevel);
+            if (accessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranchMergeAccessLevel", "accessLevel");
+            }
+            this.accessLevel = accessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder accessLevelDescription(String accessLevelDescription) {
-            this.accessLevelDescription = Objects.requireNonNull(accessLevelDescription);
+            if (accessLevelDescription == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranchMergeAccessLevel", "accessLevelDescription");
+            }
+            this.accessLevelDescription = accessLevelDescription;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(Integer groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranchMergeAccessLevel", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder userId(Integer userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranchMergeAccessLevel", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         public GetProjectProtectedBranchesProtectedBranchMergeAccessLevel build() {

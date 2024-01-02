@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -95,47 +96,74 @@ public final class GetProjectTagCommit {
 
         @CustomType.Setter
         public Builder authorEmail(String authorEmail) {
-            this.authorEmail = Objects.requireNonNull(authorEmail);
+            if (authorEmail == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "authorEmail");
+            }
+            this.authorEmail = authorEmail;
             return this;
         }
         @CustomType.Setter
         public Builder authorName(String authorName) {
-            this.authorName = Objects.requireNonNull(authorName);
+            if (authorName == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "authorName");
+            }
+            this.authorName = authorName;
             return this;
         }
         @CustomType.Setter
         public Builder authoredDate(String authoredDate) {
-            this.authoredDate = Objects.requireNonNull(authoredDate);
+            if (authoredDate == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "authoredDate");
+            }
+            this.authoredDate = authoredDate;
             return this;
         }
         @CustomType.Setter
         public Builder committedDate(String committedDate) {
-            this.committedDate = Objects.requireNonNull(committedDate);
+            if (committedDate == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "committedDate");
+            }
+            this.committedDate = committedDate;
             return this;
         }
         @CustomType.Setter
         public Builder committerEmail(String committerEmail) {
-            this.committerEmail = Objects.requireNonNull(committerEmail);
+            if (committerEmail == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "committerEmail");
+            }
+            this.committerEmail = committerEmail;
             return this;
         }
         @CustomType.Setter
         public Builder committerName(String committerName) {
-            this.committerName = Objects.requireNonNull(committerName);
+            if (committerName == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "committerName");
+            }
+            this.committerName = committerName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder parentIds(List<String> parentIds) {
-            this.parentIds = Objects.requireNonNull(parentIds);
+            if (parentIds == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "parentIds");
+            }
+            this.parentIds = parentIds;
             return this;
         }
         public Builder parentIds(String... parentIds) {
@@ -143,12 +171,18 @@ public final class GetProjectTagCommit {
         }
         @CustomType.Setter
         public Builder shortId(String shortId) {
-            this.shortId = Objects.requireNonNull(shortId);
+            if (shortId == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "shortId");
+            }
+            this.shortId = shortId;
             return this;
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("GetProjectTagCommit", "title");
+            }
+            this.title = title;
             return this;
         }
         public GetProjectTagCommit build() {
