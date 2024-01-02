@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -192,137 +193,218 @@ public final class GetUsersUser {
 
         @CustomType.Setter
         public Builder avatarUrl(String avatarUrl) {
-            this.avatarUrl = Objects.requireNonNull(avatarUrl);
+            if (avatarUrl == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "avatarUrl");
+            }
+            this.avatarUrl = avatarUrl;
             return this;
         }
         @CustomType.Setter
         public Builder bio(String bio) {
-            this.bio = Objects.requireNonNull(bio);
+            if (bio == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "bio");
+            }
+            this.bio = bio;
             return this;
         }
         @CustomType.Setter
         public Builder canCreateGroup(Boolean canCreateGroup) {
-            this.canCreateGroup = Objects.requireNonNull(canCreateGroup);
+            if (canCreateGroup == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "canCreateGroup");
+            }
+            this.canCreateGroup = canCreateGroup;
             return this;
         }
         @CustomType.Setter
         public Builder canCreateProject(Boolean canCreateProject) {
-            this.canCreateProject = Objects.requireNonNull(canCreateProject);
+            if (canCreateProject == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "canCreateProject");
+            }
+            this.canCreateProject = canCreateProject;
             return this;
         }
         @CustomType.Setter
         public Builder colorSchemeId(Integer colorSchemeId) {
-            this.colorSchemeId = Objects.requireNonNull(colorSchemeId);
+            if (colorSchemeId == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "colorSchemeId");
+            }
+            this.colorSchemeId = colorSchemeId;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder currentSignInAt(String currentSignInAt) {
-            this.currentSignInAt = Objects.requireNonNull(currentSignInAt);
+            if (currentSignInAt == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "currentSignInAt");
+            }
+            this.currentSignInAt = currentSignInAt;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder externUid(String externUid) {
-            this.externUid = Objects.requireNonNull(externUid);
+            if (externUid == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "externUid");
+            }
+            this.externUid = externUid;
             return this;
         }
         @CustomType.Setter
         public Builder external(Boolean external) {
-            this.external = Objects.requireNonNull(external);
+            if (external == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "external");
+            }
+            this.external = external;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isAdmin(Boolean isAdmin) {
-            this.isAdmin = Objects.requireNonNull(isAdmin);
+            if (isAdmin == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "isAdmin");
+            }
+            this.isAdmin = isAdmin;
             return this;
         }
         @CustomType.Setter
         public Builder lastSignInAt(String lastSignInAt) {
-            this.lastSignInAt = Objects.requireNonNull(lastSignInAt);
+            if (lastSignInAt == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "lastSignInAt");
+            }
+            this.lastSignInAt = lastSignInAt;
             return this;
         }
         @CustomType.Setter
         public Builder linkedin(String linkedin) {
-            this.linkedin = Objects.requireNonNull(linkedin);
+            if (linkedin == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "linkedin");
+            }
+            this.linkedin = linkedin;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(Integer namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder organization(String organization) {
-            this.organization = Objects.requireNonNull(organization);
+            if (organization == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "organization");
+            }
+            this.organization = organization;
             return this;
         }
         @CustomType.Setter
         public Builder projectsLimit(Integer projectsLimit) {
-            this.projectsLimit = Objects.requireNonNull(projectsLimit);
+            if (projectsLimit == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "projectsLimit");
+            }
+            this.projectsLimit = projectsLimit;
             return this;
         }
         @CustomType.Setter
         public Builder provider(String provider) {
-            this.provider = Objects.requireNonNull(provider);
+            if (provider == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "provider");
+            }
+            this.provider = provider;
             return this;
         }
         @CustomType.Setter
         public Builder skype(String skype) {
-            this.skype = Objects.requireNonNull(skype);
+            if (skype == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "skype");
+            }
+            this.skype = skype;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder themeId(Integer themeId) {
-            this.themeId = Objects.requireNonNull(themeId);
+            if (themeId == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "themeId");
+            }
+            this.themeId = themeId;
             return this;
         }
         @CustomType.Setter
         public Builder twitter(String twitter) {
-            this.twitter = Objects.requireNonNull(twitter);
+            if (twitter == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "twitter");
+            }
+            this.twitter = twitter;
             return this;
         }
         @CustomType.Setter
         public Builder twoFactorEnabled(Boolean twoFactorEnabled) {
-            this.twoFactorEnabled = Objects.requireNonNull(twoFactorEnabled);
+            if (twoFactorEnabled == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "twoFactorEnabled");
+            }
+            this.twoFactorEnabled = twoFactorEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "username");
+            }
+            this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder websiteUrl(String websiteUrl) {
-            this.websiteUrl = Objects.requireNonNull(websiteUrl);
+            if (websiteUrl == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "websiteUrl");
+            }
+            this.websiteUrl = websiteUrl;
             return this;
         }
         public GetUsersUser build() {

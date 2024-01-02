@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,37 +72,58 @@ public final class GetProjectsProjectForkedFromProject {
 
         @CustomType.Setter
         public Builder httpUrlToRepo(String httpUrlToRepo) {
-            this.httpUrlToRepo = Objects.requireNonNull(httpUrlToRepo);
+            if (httpUrlToRepo == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectForkedFromProject", "httpUrlToRepo");
+            }
+            this.httpUrlToRepo = httpUrlToRepo;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectForkedFromProject", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectForkedFromProject", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameWithNamespace(String nameWithNamespace) {
-            this.nameWithNamespace = Objects.requireNonNull(nameWithNamespace);
+            if (nameWithNamespace == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectForkedFromProject", "nameWithNamespace");
+            }
+            this.nameWithNamespace = nameWithNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectForkedFromProject", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder pathWithNamespace(String pathWithNamespace) {
-            this.pathWithNamespace = Objects.requireNonNull(pathWithNamespace);
+            if (pathWithNamespace == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectForkedFromProject", "pathWithNamespace");
+            }
+            this.pathWithNamespace = pathWithNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder webUrl(String webUrl) {
-            this.webUrl = Objects.requireNonNull(webUrl);
+            if (webUrl == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectForkedFromProject", "webUrl");
+            }
+            this.webUrl = webUrl;
             return this;
         }
         public GetProjectsProjectForkedFromProject build() {

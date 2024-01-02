@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetUserSshkeysKey;
 import java.lang.Integer;
 import java.lang.String;
@@ -87,12 +88,18 @@ public final class GetUserSshkeysResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserSshkeysResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keys(List<GetUserSshkeysKey> keys) {
-            this.keys = Objects.requireNonNull(keys);
+            if (keys == null) {
+              throw new MissingRequiredPropertyException("GetUserSshkeysResult", "keys");
+            }
+            this.keys = keys;
             return this;
         }
         public Builder keys(GetUserSshkeysKey... keys) {
@@ -100,12 +107,18 @@ public final class GetUserSshkeysResult {
         }
         @CustomType.Setter
         public Builder userId(Integer userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetUserSshkeysResult", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetUserSshkeysResult", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetUserSshkeysResult build() {

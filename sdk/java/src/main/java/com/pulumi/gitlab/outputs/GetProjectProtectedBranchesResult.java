@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchesProtectedBranch;
 import java.lang.String;
 import java.util.List;
@@ -72,17 +73,26 @@ public final class GetProjectProtectedBranchesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder protectedBranches(List<GetProjectProtectedBranchesProtectedBranch> protectedBranches) {
-            this.protectedBranches = Objects.requireNonNull(protectedBranches);
+            if (protectedBranches == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesResult", "protectedBranches");
+            }
+            this.protectedBranches = protectedBranches;
             return this;
         }
         public Builder protectedBranches(GetProjectProtectedBranchesProtectedBranch... protectedBranches) {

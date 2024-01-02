@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchMergeAccessLevel;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchPushAccessLevel;
 import java.lang.Boolean;
@@ -131,22 +132,34 @@ public final class GetProjectProtectedBranchResult {
 
         @CustomType.Setter
         public Builder allowForcePush(Boolean allowForcePush) {
-            this.allowForcePush = Objects.requireNonNull(allowForcePush);
+            if (allowForcePush == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchResult", "allowForcePush");
+            }
+            this.allowForcePush = allowForcePush;
             return this;
         }
         @CustomType.Setter
         public Builder codeOwnerApprovalRequired(Boolean codeOwnerApprovalRequired) {
-            this.codeOwnerApprovalRequired = Objects.requireNonNull(codeOwnerApprovalRequired);
+            if (codeOwnerApprovalRequired == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchResult", "codeOwnerApprovalRequired");
+            }
+            this.codeOwnerApprovalRequired = codeOwnerApprovalRequired;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mergeAccessLevels(List<GetProjectProtectedBranchMergeAccessLevel> mergeAccessLevels) {
-            this.mergeAccessLevels = Objects.requireNonNull(mergeAccessLevels);
+            if (mergeAccessLevels == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchResult", "mergeAccessLevels");
+            }
+            this.mergeAccessLevels = mergeAccessLevels;
             return this;
         }
         public Builder mergeAccessLevels(GetProjectProtectedBranchMergeAccessLevel... mergeAccessLevels) {
@@ -154,17 +167,26 @@ public final class GetProjectProtectedBranchResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder pushAccessLevels(List<GetProjectProtectedBranchPushAccessLevel> pushAccessLevels) {
-            this.pushAccessLevels = Objects.requireNonNull(pushAccessLevels);
+            if (pushAccessLevels == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchResult", "pushAccessLevels");
+            }
+            this.pushAccessLevels = pushAccessLevels;
             return this;
         }
         public Builder pushAccessLevels(GetProjectProtectedBranchPushAccessLevel... pushAccessLevels) {

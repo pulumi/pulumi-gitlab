@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -96,57 +97,90 @@ public final class GetProjectPushRule {
 
         @CustomType.Setter
         public Builder authorEmailRegex(String authorEmailRegex) {
-            this.authorEmailRegex = Objects.requireNonNull(authorEmailRegex);
+            if (authorEmailRegex == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "authorEmailRegex");
+            }
+            this.authorEmailRegex = authorEmailRegex;
             return this;
         }
         @CustomType.Setter
         public Builder branchNameRegex(String branchNameRegex) {
-            this.branchNameRegex = Objects.requireNonNull(branchNameRegex);
+            if (branchNameRegex == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "branchNameRegex");
+            }
+            this.branchNameRegex = branchNameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder commitCommitterCheck(Boolean commitCommitterCheck) {
-            this.commitCommitterCheck = Objects.requireNonNull(commitCommitterCheck);
+            if (commitCommitterCheck == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "commitCommitterCheck");
+            }
+            this.commitCommitterCheck = commitCommitterCheck;
             return this;
         }
         @CustomType.Setter
         public Builder commitMessageNegativeRegex(String commitMessageNegativeRegex) {
-            this.commitMessageNegativeRegex = Objects.requireNonNull(commitMessageNegativeRegex);
+            if (commitMessageNegativeRegex == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "commitMessageNegativeRegex");
+            }
+            this.commitMessageNegativeRegex = commitMessageNegativeRegex;
             return this;
         }
         @CustomType.Setter
         public Builder commitMessageRegex(String commitMessageRegex) {
-            this.commitMessageRegex = Objects.requireNonNull(commitMessageRegex);
+            if (commitMessageRegex == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "commitMessageRegex");
+            }
+            this.commitMessageRegex = commitMessageRegex;
             return this;
         }
         @CustomType.Setter
         public Builder denyDeleteTag(Boolean denyDeleteTag) {
-            this.denyDeleteTag = Objects.requireNonNull(denyDeleteTag);
+            if (denyDeleteTag == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "denyDeleteTag");
+            }
+            this.denyDeleteTag = denyDeleteTag;
             return this;
         }
         @CustomType.Setter
         public Builder fileNameRegex(String fileNameRegex) {
-            this.fileNameRegex = Objects.requireNonNull(fileNameRegex);
+            if (fileNameRegex == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "fileNameRegex");
+            }
+            this.fileNameRegex = fileNameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder maxFileSize(Integer maxFileSize) {
-            this.maxFileSize = Objects.requireNonNull(maxFileSize);
+            if (maxFileSize == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "maxFileSize");
+            }
+            this.maxFileSize = maxFileSize;
             return this;
         }
         @CustomType.Setter
         public Builder memberCheck(Boolean memberCheck) {
-            this.memberCheck = Objects.requireNonNull(memberCheck);
+            if (memberCheck == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "memberCheck");
+            }
+            this.memberCheck = memberCheck;
             return this;
         }
         @CustomType.Setter
         public Builder preventSecrets(Boolean preventSecrets) {
-            this.preventSecrets = Objects.requireNonNull(preventSecrets);
+            if (preventSecrets == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "preventSecrets");
+            }
+            this.preventSecrets = preventSecrets;
             return this;
         }
         @CustomType.Setter
         public Builder rejectUnsignedCommits(Boolean rejectUnsignedCommits) {
-            this.rejectUnsignedCommits = Objects.requireNonNull(rejectUnsignedCommits);
+            if (rejectUnsignedCommits == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "rejectUnsignedCommits");
+            }
+            this.rejectUnsignedCommits = rejectUnsignedCommits;
             return this;
         }
         public GetProjectPushRule build() {

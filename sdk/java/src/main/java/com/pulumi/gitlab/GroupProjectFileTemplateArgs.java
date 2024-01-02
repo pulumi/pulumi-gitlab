@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -119,8 +120,12 @@ public final class GroupProjectFileTemplateArgs extends com.pulumi.resources.Res
         }
 
         public GroupProjectFileTemplateArgs build() {
-            $.fileTemplateProjectId = Objects.requireNonNull($.fileTemplateProjectId, "expected parameter 'fileTemplateProjectId' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
+            if ($.fileTemplateProjectId == null) {
+                throw new MissingRequiredPropertyException("GroupProjectFileTemplateArgs", "fileTemplateProjectId");
+            }
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("GroupProjectFileTemplateArgs", "groupId");
+            }
             return $;
         }
     }

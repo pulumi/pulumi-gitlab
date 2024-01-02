@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class ServiceGithubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ServiceGithubArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.repositoryUrl = Objects.requireNonNull($.repositoryUrl, "expected parameter 'repositoryUrl' to be non-null");
-            $.token = Objects.requireNonNull($.token, "expected parameter 'token' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ServiceGithubArgs", "project");
+            }
+            if ($.repositoryUrl == null) {
+                throw new MissingRequiredPropertyException("ServiceGithubArgs", "repositoryUrl");
+            }
+            if ($.token == null) {
+                throw new MissingRequiredPropertyException("ServiceGithubArgs", "token");
+            }
             return $;
         }
     }

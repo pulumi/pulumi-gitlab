@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.inputs.GroupProtectedEnvironmentApprovalRuleArgs;
 import com.pulumi.gitlab.inputs.GroupProtectedEnvironmentDeployAccessLevelArgs;
 import java.lang.Integer;
@@ -248,9 +249,15 @@ public final class GroupProtectedEnvironmentArgs extends com.pulumi.resources.Re
         }
 
         public GroupProtectedEnvironmentArgs build() {
-            $.deployAccessLevels = Objects.requireNonNull($.deployAccessLevels, "expected parameter 'deployAccessLevels' to be non-null");
-            $.environment = Objects.requireNonNull($.environment, "expected parameter 'environment' to be non-null");
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
+            if ($.deployAccessLevels == null) {
+                throw new MissingRequiredPropertyException("GroupProtectedEnvironmentArgs", "deployAccessLevels");
+            }
+            if ($.environment == null) {
+                throw new MissingRequiredPropertyException("GroupProtectedEnvironmentArgs", "environment");
+            }
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GroupProtectedEnvironmentArgs", "group");
+            }
             return $;
         }
     }

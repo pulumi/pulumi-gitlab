@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class ServiceCustomIssueTrackerArgs extends com.pulumi.resources.Re
         }
 
         public ServiceCustomIssueTrackerArgs build() {
-            $.issuesUrl = Objects.requireNonNull($.issuesUrl, "expected parameter 'issuesUrl' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.projectUrl = Objects.requireNonNull($.projectUrl, "expected parameter 'projectUrl' to be non-null");
+            if ($.issuesUrl == null) {
+                throw new MissingRequiredPropertyException("ServiceCustomIssueTrackerArgs", "issuesUrl");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ServiceCustomIssueTrackerArgs", "project");
+            }
+            if ($.projectUrl == null) {
+                throw new MissingRequiredPropertyException("ServiceCustomIssueTrackerArgs", "projectUrl");
+            }
             return $;
         }
     }

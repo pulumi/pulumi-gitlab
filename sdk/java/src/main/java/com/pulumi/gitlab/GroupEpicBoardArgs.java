@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.inputs.GroupEpicBoardListArgs;
 import java.lang.String;
 import java.util.List;
@@ -162,7 +163,9 @@ public final class GroupEpicBoardArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public GroupEpicBoardArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GroupEpicBoardArgs", "group");
+            }
             return $;
         }
     }

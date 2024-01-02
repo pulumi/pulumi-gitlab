@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetClusterAgentsClusterAgent {
 
         @CustomType.Setter
         public Builder agentId(Integer agentId) {
-            this.agentId = Objects.requireNonNull(agentId);
+            if (agentId == null) {
+              throw new MissingRequiredPropertyException("GetClusterAgentsClusterAgent", "agentId");
+            }
+            this.agentId = agentId;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetClusterAgentsClusterAgent", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder createdByUserId(Integer createdByUserId) {
-            this.createdByUserId = Objects.requireNonNull(createdByUserId);
+            if (createdByUserId == null) {
+              throw new MissingRequiredPropertyException("GetClusterAgentsClusterAgent", "createdByUserId");
+            }
+            this.createdByUserId = createdByUserId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterAgentsClusterAgent", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetClusterAgentsClusterAgent", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetClusterAgentsClusterAgent build() {

@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class PipelineTriggerArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public PipelineTriggerArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("PipelineTriggerArgs", "description");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("PipelineTriggerArgs", "project");
+            }
             return $;
         }
     }

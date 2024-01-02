@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,37 +72,58 @@ public final class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameWithNamespace(String nameWithNamespace) {
-            this.nameWithNamespace = Objects.requireNonNull(nameWithNamespace);
+            if (nameWithNamespace == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess", "nameWithNamespace");
+            }
+            this.nameWithNamespace = nameWithNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder pathWithNamespace(String pathWithNamespace) {
-            this.pathWithNamespace = Objects.requireNonNull(pathWithNamespace);
+            if (pathWithNamespace == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess", "pathWithNamespace");
+            }
+            this.pathWithNamespace = pathWithNamespace;
             return this;
         }
         public GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess build() {

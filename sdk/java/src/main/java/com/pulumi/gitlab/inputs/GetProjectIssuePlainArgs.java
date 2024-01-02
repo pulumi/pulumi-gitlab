@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -91,8 +92,12 @@ public final class GetProjectIssuePlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetProjectIssuePlainArgs build() {
-            $.iid = Objects.requireNonNull($.iid, "expected parameter 'iid' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.iid == null) {
+                throw new MissingRequiredPropertyException("GetProjectIssuePlainArgs", "iid");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetProjectIssuePlainArgs", "project");
+            }
             return $;
         }
     }

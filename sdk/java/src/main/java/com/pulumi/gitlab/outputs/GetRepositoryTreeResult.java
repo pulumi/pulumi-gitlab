@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetRepositoryTreeTree;
 import java.lang.Boolean;
 import java.lang.String;
@@ -117,32 +118,46 @@ public final class GetRepositoryTreeResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryTreeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryTreeResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder recursive(@Nullable Boolean recursive) {
+
             this.recursive = recursive;
             return this;
         }
         @CustomType.Setter
         public Builder ref(String ref) {
-            this.ref = Objects.requireNonNull(ref);
+            if (ref == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryTreeResult", "ref");
+            }
+            this.ref = ref;
             return this;
         }
         @CustomType.Setter
         public Builder trees(List<GetRepositoryTreeTree> trees) {
-            this.trees = Objects.requireNonNull(trees);
+            if (trees == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryTreeResult", "trees");
+            }
+            this.trees = trees;
             return this;
         }
         public Builder trees(GetRepositoryTreeTree... trees) {

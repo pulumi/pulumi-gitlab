@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.inputs.BranchProtectionAllowedToMergeArgs;
 import com.pulumi.gitlab.inputs.BranchProtectionAllowedToPushArgs;
 import com.pulumi.gitlab.inputs.BranchProtectionAllowedToUnprotectArgs;
@@ -444,8 +445,12 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         public BranchProtectionArgs build() {
-            $.branch = Objects.requireNonNull($.branch, "expected parameter 'branch' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.branch == null) {
+                throw new MissingRequiredPropertyException("BranchProtectionArgs", "branch");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("BranchProtectionArgs", "project");
+            }
             return $;
         }
     }

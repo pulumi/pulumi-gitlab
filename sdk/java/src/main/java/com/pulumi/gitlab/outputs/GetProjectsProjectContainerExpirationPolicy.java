@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -90,42 +91,66 @@ public final class GetProjectsProjectContainerExpirationPolicy {
 
         @CustomType.Setter
         public Builder cadence(String cadence) {
-            this.cadence = Objects.requireNonNull(cadence);
+            if (cadence == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectContainerExpirationPolicy", "cadence");
+            }
+            this.cadence = cadence;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectContainerExpirationPolicy", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder keepN(Integer keepN) {
-            this.keepN = Objects.requireNonNull(keepN);
+            if (keepN == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectContainerExpirationPolicy", "keepN");
+            }
+            this.keepN = keepN;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(String nameRegex) {
-            this.nameRegex = Objects.requireNonNull(nameRegex);
+            if (nameRegex == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectContainerExpirationPolicy", "nameRegex");
+            }
+            this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegexDelete(String nameRegexDelete) {
-            this.nameRegexDelete = Objects.requireNonNull(nameRegexDelete);
+            if (nameRegexDelete == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectContainerExpirationPolicy", "nameRegexDelete");
+            }
+            this.nameRegexDelete = nameRegexDelete;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegexKeep(String nameRegexKeep) {
-            this.nameRegexKeep = Objects.requireNonNull(nameRegexKeep);
+            if (nameRegexKeep == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectContainerExpirationPolicy", "nameRegexKeep");
+            }
+            this.nameRegexKeep = nameRegexKeep;
             return this;
         }
         @CustomType.Setter
         public Builder nextRunAt(String nextRunAt) {
-            this.nextRunAt = Objects.requireNonNull(nextRunAt);
+            if (nextRunAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectContainerExpirationPolicy", "nextRunAt");
+            }
+            this.nextRunAt = nextRunAt;
             return this;
         }
         @CustomType.Setter
         public Builder olderThan(String olderThan) {
-            this.olderThan = Objects.requireNonNull(olderThan);
+            if (olderThan == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectContainerExpirationPolicy", "olderThan");
+            }
+            this.olderThan = olderThan;
             return this;
         }
         public GetProjectsProjectContainerExpirationPolicy build() {

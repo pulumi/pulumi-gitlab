@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class UserCustomAttributeArgs extends com.pulumi.resources.Resource
         }
 
         public UserCustomAttributeArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("UserCustomAttributeArgs", "key");
+            }
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("UserCustomAttributeArgs", "user");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("UserCustomAttributeArgs", "value");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -262,8 +263,12 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PagesDomainArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("PagesDomainArgs", "domain");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("PagesDomainArgs", "project");
+            }
             return $;
         }
     }

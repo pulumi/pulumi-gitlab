@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetGroupSubgroupsSubgroup;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -200,42 +201,66 @@ public final class GetGroupSubgroupsResult {
 
         @CustomType.Setter
         public Builder allAvailable(Boolean allAvailable) {
-            this.allAvailable = Objects.requireNonNull(allAvailable);
+            if (allAvailable == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "allAvailable");
+            }
+            this.allAvailable = allAvailable;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(Integer groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder minAccessLevel(String minAccessLevel) {
-            this.minAccessLevel = Objects.requireNonNull(minAccessLevel);
+            if (minAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "minAccessLevel");
+            }
+            this.minAccessLevel = minAccessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(String orderBy) {
-            this.orderBy = Objects.requireNonNull(orderBy);
+            if (orderBy == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "orderBy");
+            }
+            this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
         public Builder owned(Boolean owned) {
-            this.owned = Objects.requireNonNull(owned);
+            if (owned == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "owned");
+            }
+            this.owned = owned;
             return this;
         }
         @CustomType.Setter
         public Builder search(String search) {
-            this.search = Objects.requireNonNull(search);
+            if (search == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "search");
+            }
+            this.search = search;
             return this;
         }
         @CustomType.Setter
         public Builder skipGroups(List<Integer> skipGroups) {
-            this.skipGroups = Objects.requireNonNull(skipGroups);
+            if (skipGroups == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "skipGroups");
+            }
+            this.skipGroups = skipGroups;
             return this;
         }
         public Builder skipGroups(Integer... skipGroups) {
@@ -243,17 +268,26 @@ public final class GetGroupSubgroupsResult {
         }
         @CustomType.Setter
         public Builder sort(String sort) {
-            this.sort = Objects.requireNonNull(sort);
+            if (sort == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "sort");
+            }
+            this.sort = sort;
             return this;
         }
         @CustomType.Setter
         public Builder statistics(Boolean statistics) {
-            this.statistics = Objects.requireNonNull(statistics);
+            if (statistics == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "statistics");
+            }
+            this.statistics = statistics;
             return this;
         }
         @CustomType.Setter
         public Builder subgroups(List<GetGroupSubgroupsSubgroup> subgroups) {
-            this.subgroups = Objects.requireNonNull(subgroups);
+            if (subgroups == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "subgroups");
+            }
+            this.subgroups = subgroups;
             return this;
         }
         public Builder subgroups(GetGroupSubgroupsSubgroup... subgroups) {
@@ -261,7 +295,10 @@ public final class GetGroupSubgroupsResult {
         }
         @CustomType.Setter
         public Builder withCustomAttributes(Boolean withCustomAttributes) {
-            this.withCustomAttributes = Objects.requireNonNull(withCustomAttributes);
+            if (withCustomAttributes == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsResult", "withCustomAttributes");
+            }
+            this.withCustomAttributes = withCustomAttributes;
             return this;
         }
         public GetGroupSubgroupsResult build() {

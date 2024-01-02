@@ -42,11 +42,13 @@ public final class ProjectIssueTaskCompletionStatus {
 
         @CustomType.Setter
         public Builder completedCount(@Nullable Integer completedCount) {
+
             this.completedCount = completedCount;
             return this;
         }
         @CustomType.Setter
         public Builder count(@Nullable Integer count) {
+
             this.count = count;
             return this;
         }

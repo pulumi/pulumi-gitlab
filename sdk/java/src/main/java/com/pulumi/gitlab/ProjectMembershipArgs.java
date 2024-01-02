@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ProjectMembershipArgs build() {
-            $.accessLevel = Objects.requireNonNull($.accessLevel, "expected parameter 'accessLevel' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.accessLevel == null) {
+                throw new MissingRequiredPropertyException("ProjectMembershipArgs", "accessLevel");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectMembershipArgs", "project");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("ProjectMembershipArgs", "userId");
+            }
             return $;
         }
     }

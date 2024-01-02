@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectBranchesBranchCommit;
 import java.lang.Boolean;
 import java.lang.String;
@@ -85,12 +86,18 @@ public final class GetProjectBranchesBranch {
 
         @CustomType.Setter
         public Builder canPush(Boolean canPush) {
-            this.canPush = Objects.requireNonNull(canPush);
+            if (canPush == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesBranch", "canPush");
+            }
+            this.canPush = canPush;
             return this;
         }
         @CustomType.Setter
         public Builder commits(List<GetProjectBranchesBranchCommit> commits) {
-            this.commits = Objects.requireNonNull(commits);
+            if (commits == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesBranch", "commits");
+            }
+            this.commits = commits;
             return this;
         }
         public Builder commits(GetProjectBranchesBranchCommit... commits) {
@@ -98,37 +105,58 @@ public final class GetProjectBranchesBranch {
         }
         @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
-            this.default_ = Objects.requireNonNull(default_);
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesBranch", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder developersCanMerge(Boolean developersCanMerge) {
-            this.developersCanMerge = Objects.requireNonNull(developersCanMerge);
+            if (developersCanMerge == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesBranch", "developersCanMerge");
+            }
+            this.developersCanMerge = developersCanMerge;
             return this;
         }
         @CustomType.Setter
         public Builder developersCanPush(Boolean developersCanPush) {
-            this.developersCanPush = Objects.requireNonNull(developersCanPush);
+            if (developersCanPush == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesBranch", "developersCanPush");
+            }
+            this.developersCanPush = developersCanPush;
             return this;
         }
         @CustomType.Setter
         public Builder merged(Boolean merged) {
-            this.merged = Objects.requireNonNull(merged);
+            if (merged == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesBranch", "merged");
+            }
+            this.merged = merged;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesBranch", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter("protected")
         public Builder protected_(Boolean protected_) {
-            this.protected_ = Objects.requireNonNull(protected_);
+            if (protected_ == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesBranch", "protected_");
+            }
+            this.protected_ = protected_;
             return this;
         }
         @CustomType.Setter
         public Builder webUrl(String webUrl) {
-            this.webUrl = Objects.requireNonNull(webUrl);
+            if (webUrl == null) {
+              throw new MissingRequiredPropertyException("GetProjectBranchesBranch", "webUrl");
+            }
+            this.webUrl = webUrl;
             return this;
         }
         public GetProjectBranchesBranch build() {

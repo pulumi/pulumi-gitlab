@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -49,7 +50,9 @@ public final class GetProjectHooksPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetProjectHooksPlainArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetProjectHooksPlainArgs", "project");
+            }
             return $;
         }
     }

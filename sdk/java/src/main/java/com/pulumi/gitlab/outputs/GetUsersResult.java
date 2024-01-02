@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetUsersUser;
 import java.lang.Boolean;
 import java.lang.String;
@@ -187,57 +188,72 @@ public final class GetUsersResult {
 
         @CustomType.Setter
         public Builder active(@Nullable Boolean active) {
+
             this.active = active;
             return this;
         }
         @CustomType.Setter
         public Builder blocked(@Nullable Boolean blocked) {
+
             this.blocked = blocked;
             return this;
         }
         @CustomType.Setter
         public Builder createdAfter(@Nullable String createdAfter) {
+
             this.createdAfter = createdAfter;
             return this;
         }
         @CustomType.Setter
         public Builder createdBefore(@Nullable String createdBefore) {
+
             this.createdBefore = createdBefore;
             return this;
         }
         @CustomType.Setter
         public Builder externProvider(@Nullable String externProvider) {
+
             this.externProvider = externProvider;
             return this;
         }
         @CustomType.Setter
         public Builder externUid(@Nullable String externUid) {
+
             this.externUid = externUid;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
         public Builder search(@Nullable String search) {
+
             this.search = search;
             return this;
         }
         @CustomType.Setter
         public Builder sort(@Nullable String sort) {
+
             this.sort = sort;
             return this;
         }
         @CustomType.Setter
         public Builder users(List<GetUsersUser> users) {
-            this.users = Objects.requireNonNull(users);
+            if (users == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "users");
+            }
+            this.users = users;
             return this;
         }
         public Builder users(GetUsersUser... users) {

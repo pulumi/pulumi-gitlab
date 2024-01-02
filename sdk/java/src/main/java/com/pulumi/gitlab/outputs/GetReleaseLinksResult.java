@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetReleaseLinksReleaseLink;
 import java.lang.String;
 import java.util.List;
@@ -86,17 +87,26 @@ public final class GetReleaseLinksResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder releaseLinks(List<GetReleaseLinksReleaseLink> releaseLinks) {
-            this.releaseLinks = Objects.requireNonNull(releaseLinks);
+            if (releaseLinks == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksResult", "releaseLinks");
+            }
+            this.releaseLinks = releaseLinks;
             return this;
         }
         public Builder releaseLinks(GetReleaseLinksReleaseLink... releaseLinks) {
@@ -104,7 +114,10 @@ public final class GetReleaseLinksResult {
         }
         @CustomType.Setter
         public Builder tagName(String tagName) {
-            this.tagName = Objects.requireNonNull(tagName);
+            if (tagName == null) {
+              throw new MissingRequiredPropertyException("GetReleaseLinksResult", "tagName");
+            }
+            this.tagName = tagName;
             return this;
         }
         public GetReleaseLinksResult build() {

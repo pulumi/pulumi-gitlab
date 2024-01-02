@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,7 +74,9 @@ public final class GetProjectVariablesArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetProjectVariablesArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetProjectVariablesArgs", "project");
+            }
             return $;
         }
     }

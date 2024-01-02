@@ -42,11 +42,13 @@ public final class ProjectTagRelease {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder tagName(@Nullable String tagName) {
+
             this.tagName = tagName;
             return this;
         }

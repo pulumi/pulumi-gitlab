@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class GroupCustomAttributeArgs extends com.pulumi.resources.Resourc
         }
 
         public GroupCustomAttributeArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GroupCustomAttributeArgs", "group");
+            }
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("GroupCustomAttributeArgs", "key");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("GroupCustomAttributeArgs", "value");
+            }
             return $;
         }
     }

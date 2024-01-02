@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -307,10 +308,18 @@ public final class PipelineScheduleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public PipelineScheduleArgs build() {
-            $.cron = Objects.requireNonNull($.cron, "expected parameter 'cron' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.ref = Objects.requireNonNull($.ref, "expected parameter 'ref' to be non-null");
+            if ($.cron == null) {
+                throw new MissingRequiredPropertyException("PipelineScheduleArgs", "cron");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("PipelineScheduleArgs", "description");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("PipelineScheduleArgs", "project");
+            }
+            if ($.ref == null) {
+                throw new MissingRequiredPropertyException("PipelineScheduleArgs", "ref");
+            }
             return $;
         }
     }

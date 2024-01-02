@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -310,102 +311,162 @@ public final class GetGroupResult {
 
         @CustomType.Setter
         public Builder defaultBranchProtection(Integer defaultBranchProtection) {
-            this.defaultBranchProtection = Objects.requireNonNull(defaultBranchProtection);
+            if (defaultBranchProtection == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "defaultBranchProtection");
+            }
+            this.defaultBranchProtection = defaultBranchProtection;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder extraSharedRunnersMinutesLimit(Integer extraSharedRunnersMinutesLimit) {
-            this.extraSharedRunnersMinutesLimit = Objects.requireNonNull(extraSharedRunnersMinutesLimit);
+            if (extraSharedRunnersMinutesLimit == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "extraSharedRunnersMinutesLimit");
+            }
+            this.extraSharedRunnersMinutesLimit = extraSharedRunnersMinutesLimit;
             return this;
         }
         @CustomType.Setter
         public Builder fullName(String fullName) {
-            this.fullName = Objects.requireNonNull(fullName);
+            if (fullName == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "fullName");
+            }
+            this.fullName = fullName;
             return this;
         }
         @CustomType.Setter
         public Builder fullPath(String fullPath) {
-            this.fullPath = Objects.requireNonNull(fullPath);
+            if (fullPath == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "fullPath");
+            }
+            this.fullPath = fullPath;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(Integer groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lfsEnabled(Boolean lfsEnabled) {
-            this.lfsEnabled = Objects.requireNonNull(lfsEnabled);
+            if (lfsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "lfsEnabled");
+            }
+            this.lfsEnabled = lfsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder membershipLock(Boolean membershipLock) {
-            this.membershipLock = Objects.requireNonNull(membershipLock);
+            if (membershipLock == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "membershipLock");
+            }
+            this.membershipLock = membershipLock;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder parentId(Integer parentId) {
-            this.parentId = Objects.requireNonNull(parentId);
+            if (parentId == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "parentId");
+            }
+            this.parentId = parentId;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder preventForkingOutsideGroup(Boolean preventForkingOutsideGroup) {
-            this.preventForkingOutsideGroup = Objects.requireNonNull(preventForkingOutsideGroup);
+            if (preventForkingOutsideGroup == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "preventForkingOutsideGroup");
+            }
+            this.preventForkingOutsideGroup = preventForkingOutsideGroup;
             return this;
         }
         @CustomType.Setter
         public Builder requestAccessEnabled(Boolean requestAccessEnabled) {
-            this.requestAccessEnabled = Objects.requireNonNull(requestAccessEnabled);
+            if (requestAccessEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "requestAccessEnabled");
+            }
+            this.requestAccessEnabled = requestAccessEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder runnersToken(String runnersToken) {
-            this.runnersToken = Objects.requireNonNull(runnersToken);
+            if (runnersToken == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "runnersToken");
+            }
+            this.runnersToken = runnersToken;
             return this;
         }
         @CustomType.Setter
         public Builder sharedRunnersMinutesLimit(Integer sharedRunnersMinutesLimit) {
-            this.sharedRunnersMinutesLimit = Objects.requireNonNull(sharedRunnersMinutesLimit);
+            if (sharedRunnersMinutesLimit == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "sharedRunnersMinutesLimit");
+            }
+            this.sharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
             return this;
         }
         @CustomType.Setter
         public Builder sharedRunnersSetting(String sharedRunnersSetting) {
-            this.sharedRunnersSetting = Objects.requireNonNull(sharedRunnersSetting);
+            if (sharedRunnersSetting == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "sharedRunnersSetting");
+            }
+            this.sharedRunnersSetting = sharedRunnersSetting;
             return this;
         }
         @CustomType.Setter
         public Builder visibilityLevel(String visibilityLevel) {
-            this.visibilityLevel = Objects.requireNonNull(visibilityLevel);
+            if (visibilityLevel == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "visibilityLevel");
+            }
+            this.visibilityLevel = visibilityLevel;
             return this;
         }
         @CustomType.Setter
         public Builder webUrl(String webUrl) {
-            this.webUrl = Objects.requireNonNull(webUrl);
+            if (webUrl == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "webUrl");
+            }
+            this.webUrl = webUrl;
             return this;
         }
         @CustomType.Setter
         public Builder wikiAccessLevel(String wikiAccessLevel) {
-            this.wikiAccessLevel = Objects.requireNonNull(wikiAccessLevel);
+            if (wikiAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "wikiAccessLevel");
+            }
+            this.wikiAccessLevel = wikiAccessLevel;
             return this;
         }
         public GetGroupResult build() {

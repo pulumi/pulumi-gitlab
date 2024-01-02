@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -91,8 +92,12 @@ public final class GetClusterAgentPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetClusterAgentPlainArgs build() {
-            $.agentId = Objects.requireNonNull($.agentId, "expected parameter 'agentId' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.agentId == null) {
+                throw new MissingRequiredPropertyException("GetClusterAgentPlainArgs", "agentId");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetClusterAgentPlainArgs", "project");
+            }
             return $;
         }
     }

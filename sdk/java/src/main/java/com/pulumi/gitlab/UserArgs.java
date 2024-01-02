@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -522,8 +523,12 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserArgs build() {
-            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "email");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "username");
+            }
             return $;
         }
     }

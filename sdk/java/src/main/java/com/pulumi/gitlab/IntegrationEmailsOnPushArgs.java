@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -299,8 +300,12 @@ public final class IntegrationEmailsOnPushArgs extends com.pulumi.resources.Reso
         }
 
         public IntegrationEmailsOnPushArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.recipients = Objects.requireNonNull($.recipients, "expected parameter 'recipients' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("IntegrationEmailsOnPushArgs", "project");
+            }
+            if ($.recipients == null) {
+                throw new MissingRequiredPropertyException("IntegrationEmailsOnPushArgs", "recipients");
+            }
             return $;
         }
     }

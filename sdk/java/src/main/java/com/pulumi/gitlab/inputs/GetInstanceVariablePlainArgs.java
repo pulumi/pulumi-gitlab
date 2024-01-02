@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetInstanceVariablePlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetInstanceVariablePlainArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("GetInstanceVariablePlainArgs", "key");
+            }
             return $;
         }
     }

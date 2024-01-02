@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -204,8 +205,12 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ApplicationArgs build() {
-            $.redirectUrl = Objects.requireNonNull($.redirectUrl, "expected parameter 'redirectUrl' to be non-null");
-            $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
+            if ($.redirectUrl == null) {
+                throw new MissingRequiredPropertyException("ApplicationArgs", "redirectUrl");
+            }
+            if ($.scopes == null) {
+                throw new MissingRequiredPropertyException("ApplicationArgs", "scopes");
+            }
             return $;
         }
     }

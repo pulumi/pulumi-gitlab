@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -212,67 +213,106 @@ public final class GetRepositoryFileResult {
 
         @CustomType.Setter
         public Builder blobId(String blobId) {
-            this.blobId = Objects.requireNonNull(blobId);
+            if (blobId == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "blobId");
+            }
+            this.blobId = blobId;
             return this;
         }
         @CustomType.Setter
         public Builder commitId(String commitId) {
-            this.commitId = Objects.requireNonNull(commitId);
+            if (commitId == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "commitId");
+            }
+            this.commitId = commitId;
             return this;
         }
         @CustomType.Setter
         public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+            if (content == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "content");
+            }
+            this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder contentSha256(String contentSha256) {
-            this.contentSha256 = Objects.requireNonNull(contentSha256);
+            if (contentSha256 == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "contentSha256");
+            }
+            this.contentSha256 = contentSha256;
             return this;
         }
         @CustomType.Setter
         public Builder encoding(String encoding) {
-            this.encoding = Objects.requireNonNull(encoding);
+            if (encoding == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "encoding");
+            }
+            this.encoding = encoding;
             return this;
         }
         @CustomType.Setter
         public Builder executeFilemode(Boolean executeFilemode) {
-            this.executeFilemode = Objects.requireNonNull(executeFilemode);
+            if (executeFilemode == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "executeFilemode");
+            }
+            this.executeFilemode = executeFilemode;
             return this;
         }
         @CustomType.Setter
         public Builder fileName(String fileName) {
-            this.fileName = Objects.requireNonNull(fileName);
+            if (fileName == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "fileName");
+            }
+            this.fileName = fileName;
             return this;
         }
         @CustomType.Setter
         public Builder filePath(String filePath) {
-            this.filePath = Objects.requireNonNull(filePath);
+            if (filePath == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "filePath");
+            }
+            this.filePath = filePath;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastCommitId(String lastCommitId) {
-            this.lastCommitId = Objects.requireNonNull(lastCommitId);
+            if (lastCommitId == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "lastCommitId");
+            }
+            this.lastCommitId = lastCommitId;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder ref(String ref) {
-            this.ref = Objects.requireNonNull(ref);
+            if (ref == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "ref");
+            }
+            this.ref = ref;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryFileResult", "size");
+            }
+            this.size = size;
             return this;
         }
         public GetRepositoryFileResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class BranchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BranchArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.ref = Objects.requireNonNull($.ref, "expected parameter 'ref' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("BranchArgs", "project");
+            }
+            if ($.ref == null) {
+                throw new MissingRequiredPropertyException("BranchArgs", "ref");
+            }
             return $;
         }
     }

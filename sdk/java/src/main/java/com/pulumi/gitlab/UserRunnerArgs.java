@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -422,7 +423,9 @@ public final class UserRunnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserRunnerArgs build() {
-            $.runnerType = Objects.requireNonNull($.runnerType, "expected parameter 'runnerType' to be non-null");
+            if ($.runnerType == null) {
+                throw new MissingRequiredPropertyException("UserRunnerArgs", "runnerType");
+            }
             return $;
         }
     }

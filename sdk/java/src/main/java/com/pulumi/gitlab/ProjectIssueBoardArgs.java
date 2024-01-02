@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.inputs.ProjectIssueBoardListArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -321,7 +322,9 @@ public final class ProjectIssueBoardArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ProjectIssueBoardArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectIssueBoardArgs", "project");
+            }
             return $;
         }
     }

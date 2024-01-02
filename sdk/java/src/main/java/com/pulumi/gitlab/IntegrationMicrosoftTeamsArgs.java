@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -521,8 +522,12 @@ public final class IntegrationMicrosoftTeamsArgs extends com.pulumi.resources.Re
         }
 
         public IntegrationMicrosoftTeamsArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.webhook = Objects.requireNonNull($.webhook, "expected parameter 'webhook' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("IntegrationMicrosoftTeamsArgs", "project");
+            }
+            if ($.webhook == null) {
+                throw new MissingRequiredPropertyException("IntegrationMicrosoftTeamsArgs", "webhook");
+            }
             return $;
         }
     }
