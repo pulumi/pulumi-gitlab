@@ -247,6 +247,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly forkingAccessLevel!: pulumi.Output<string>;
     /**
+     * Enable group runners for this project.
+     */
+    public readonly groupRunnersEnabled!: pulumi.Output<boolean>;
+    /**
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
      */
     public readonly groupWithProjectTemplatesId!: pulumi.Output<number | undefined>;
@@ -568,6 +572,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["featureFlagsAccessLevel"] = state ? state.featureFlagsAccessLevel : undefined;
             resourceInputs["forkedFromProjectId"] = state ? state.forkedFromProjectId : undefined;
             resourceInputs["forkingAccessLevel"] = state ? state.forkingAccessLevel : undefined;
+            resourceInputs["groupRunnersEnabled"] = state ? state.groupRunnersEnabled : undefined;
             resourceInputs["groupWithProjectTemplatesId"] = state ? state.groupWithProjectTemplatesId : undefined;
             resourceInputs["httpUrlToRepo"] = state ? state.httpUrlToRepo : undefined;
             resourceInputs["importUrl"] = state ? state.importUrl : undefined;
@@ -665,6 +670,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["featureFlagsAccessLevel"] = args ? args.featureFlagsAccessLevel : undefined;
             resourceInputs["forkedFromProjectId"] = args ? args.forkedFromProjectId : undefined;
             resourceInputs["forkingAccessLevel"] = args ? args.forkingAccessLevel : undefined;
+            resourceInputs["groupRunnersEnabled"] = args ? args.groupRunnersEnabled : undefined;
             resourceInputs["groupWithProjectTemplatesId"] = args ? args.groupWithProjectTemplatesId : undefined;
             resourceInputs["importUrl"] = args ? args.importUrl : undefined;
             resourceInputs["importUrlPassword"] = args?.importUrlPassword ? pulumi.secret(args.importUrlPassword) : undefined;
@@ -879,6 +885,10 @@ export interface ProjectState {
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      */
     forkingAccessLevel?: pulumi.Input<string>;
+    /**
+     * Enable group runners for this project.
+     */
+    groupRunnersEnabled?: pulumi.Input<boolean>;
     /**
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
      */
@@ -1288,6 +1298,10 @@ export interface ProjectArgs {
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      */
     forkingAccessLevel?: pulumi.Input<string>;
+    /**
+     * Enable group runners for this project.
+     */
+    groupRunnersEnabled?: pulumi.Input<boolean>;
     /**
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
      */

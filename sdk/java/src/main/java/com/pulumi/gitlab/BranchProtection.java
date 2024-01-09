@@ -107,52 +107,52 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="allowForcePush", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowForcePush;
+    private Output<Boolean> allowForcePush;
 
     /**
      * @return Can be set to true to allow users with push access to force push.
      * 
      */
-    public Output<Optional<Boolean>> allowForcePush() {
-        return Codegen.optional(this.allowForcePush);
+    public Output<Boolean> allowForcePush() {
+        return this.allowForcePush;
     }
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      * 
      */
     @Export(name="allowedToMerges", refs={List.class,BranchProtectionAllowedToMerge.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BranchProtectionAllowedToMerge>> allowedToMerges;
 
     /**
-     * @return Defines permissions for action.
+     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      * 
      */
     public Output<Optional<List<BranchProtectionAllowedToMerge>>> allowedToMerges() {
         return Codegen.optional(this.allowedToMerges);
     }
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
      * 
      */
     @Export(name="allowedToPushes", refs={List.class,BranchProtectionAllowedToPush.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BranchProtectionAllowedToPush>> allowedToPushes;
 
     /**
-     * @return Defines permissions for action.
+     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
      * 
      */
     public Output<Optional<List<BranchProtectionAllowedToPush>>> allowedToPushes() {
         return Codegen.optional(this.allowedToPushes);
     }
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
      * 
      */
     @Export(name="allowedToUnprotects", refs={List.class,BranchProtectionAllowedToUnprotect.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BranchProtectionAllowedToUnprotect>> allowedToUnprotects;
 
     /**
-     * @return Defines permissions for action.
+     * @return Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
      * 
      */
     public Output<Optional<List<BranchProtectionAllowedToUnprotect>>> allowedToUnprotects() {
@@ -187,32 +187,32 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
         return this.branchProtectionId;
     }
     /**
-     * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+     * Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
      * 
      */
     @Export(name="codeOwnerApprovalRequired", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> codeOwnerApprovalRequired;
+    private Output<Boolean> codeOwnerApprovalRequired;
 
     /**
-     * @return Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+     * @return Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
      * 
      */
-    public Output<Optional<Boolean>> codeOwnerApprovalRequired() {
-        return Codegen.optional(this.codeOwnerApprovalRequired);
+    public Output<Boolean> codeOwnerApprovalRequired() {
+        return this.codeOwnerApprovalRequired;
     }
     /**
      * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
     @Export(name="mergeAccessLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> mergeAccessLevel;
+    private Output<String> mergeAccessLevel;
 
     /**
      * @return Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
-    public Output<Optional<String>> mergeAccessLevel() {
-        return Codegen.optional(this.mergeAccessLevel);
+    public Output<String> mergeAccessLevel() {
+        return this.mergeAccessLevel;
     }
     /**
      * The id of the project.
@@ -233,28 +233,28 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="pushAccessLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> pushAccessLevel;
+    private Output<String> pushAccessLevel;
 
     /**
      * @return Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
-    public Output<Optional<String>> pushAccessLevel() {
-        return Codegen.optional(this.pushAccessLevel);
+    public Output<String> pushAccessLevel() {
+        return this.pushAccessLevel;
     }
     /**
      * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
      * 
      */
     @Export(name="unprotectAccessLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> unprotectAccessLevel;
+    private Output<String> unprotectAccessLevel;
 
     /**
      * @return Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
      * 
      */
-    public Output<Optional<String>> unprotectAccessLevel() {
-        return Codegen.optional(this.unprotectAccessLevel);
+    public Output<String> unprotectAccessLevel() {
+        return this.unprotectAccessLevel;
     }
 
     /**

@@ -229,8 +229,8 @@ class BranchProtectionAllowedToMerge(dict):
                  group_id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
-        :param str access_level: Level of access.
-        :param str access_level_description: Readable description of level of access.
+        :param str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param str access_level_description: Readable description of access level.
         :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
@@ -247,7 +247,7 @@ class BranchProtectionAllowedToMerge(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[str]:
         """
-        Level of access.
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -255,7 +255,7 @@ class BranchProtectionAllowedToMerge(dict):
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> Optional[str]:
         """
-        Readable description of level of access.
+        Readable description of access level.
         """
         return pulumi.get(self, "access_level_description")
 
@@ -307,8 +307,8 @@ class BranchProtectionAllowedToPush(dict):
                  group_id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
-        :param str access_level: Level of access.
-        :param str access_level_description: Readable description of level of access.
+        :param str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param str access_level_description: Readable description of access level.
         :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
@@ -325,7 +325,7 @@ class BranchProtectionAllowedToPush(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[str]:
         """
-        Level of access.
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -333,7 +333,7 @@ class BranchProtectionAllowedToPush(dict):
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> Optional[str]:
         """
-        Readable description of level of access.
+        Readable description of access level.
         """
         return pulumi.get(self, "access_level_description")
 
@@ -385,8 +385,8 @@ class BranchProtectionAllowedToUnprotect(dict):
                  group_id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
-        :param str access_level: Level of access.
-        :param str access_level_description: Readable description of level of access.
+        :param str access_level: Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
+        :param str access_level_description: Readable description of access level.
         :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
@@ -403,7 +403,7 @@ class BranchProtectionAllowedToUnprotect(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[str]:
         """
-        Level of access.
+        Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
@@ -411,7 +411,7 @@ class BranchProtectionAllowedToUnprotect(dict):
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> Optional[str]:
         """
-        Readable description of level of access.
+        Readable description of access level.
         """
         return pulumi.get(self, "access_level_description")
 
@@ -518,7 +518,7 @@ class GroupIssueBoardList(dict):
         """
         :param int id: The ID of the list.
         :param int label_id: The ID of the label the list should be scoped to.
-        :param int position: The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+        :param int position: The explicit position of the list within the board, zero based.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -547,7 +547,7 @@ class GroupIssueBoardList(dict):
     @pulumi.getter
     def position(self) -> Optional[int]:
         """
-        The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+        The explicit position of the list within the board, zero based.
         """
         return pulumi.get(self, "position")
 
@@ -3523,31 +3523,51 @@ class GetProjectProtectedBranchMergeAccessLevelResult(dict):
     def __init__(__self__, *,
                  access_level: str,
                  access_level_description: str,
-                 group_id: int,
-                 user_id: int):
+                 group_id: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param str access_level_description: Readable description of access level.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "user_id", user_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
+        """
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        """
         return pulumi.get(self, "access_level")
 
     @property
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> str:
+        """
+        Readable description of access level.
+        """
         return pulumi.get(self, "access_level_description")
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> int:
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> int:
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
         return pulumi.get(self, "user_id")
 
 
@@ -3556,31 +3576,51 @@ class GetProjectProtectedBranchPushAccessLevelResult(dict):
     def __init__(__self__, *,
                  access_level: str,
                  access_level_description: str,
-                 group_id: int,
-                 user_id: int):
+                 group_id: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param str access_level_description: Readable description of access level.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "user_id", user_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
+        """
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        """
         return pulumi.get(self, "access_level")
 
     @property
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> str:
+        """
+        Readable description of access level.
+        """
         return pulumi.get(self, "access_level_description")
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> int:
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> int:
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
         return pulumi.get(self, "user_id")
 
 
@@ -3590,44 +3630,72 @@ class GetProjectProtectedBranchesProtectedBranchResult(dict):
                  allow_force_push: bool,
                  code_owner_approval_required: bool,
                  id: int,
-                 merge_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult'],
                  name: str,
-                 push_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult']):
+                 merge_access_levels: Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult']] = None,
+                 push_access_levels: Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult']] = None):
+        """
+        :param bool allow_force_push: Whether force push is allowed.
+        :param bool code_owner_approval_required: Reject code pushes that change files listed in the CODEOWNERS file.
+        :param int id: The ID of this resource.
+        :param str name: The name of the protected branch.
+        :param Sequence['GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs'] merge_access_levels: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        :param Sequence['GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs'] push_access_levels: Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        """
         pulumi.set(__self__, "allow_force_push", allow_force_push)
         pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "merge_access_levels", merge_access_levels)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "push_access_levels", push_access_levels)
+        if merge_access_levels is not None:
+            pulumi.set(__self__, "merge_access_levels", merge_access_levels)
+        if push_access_levels is not None:
+            pulumi.set(__self__, "push_access_levels", push_access_levels)
 
     @property
     @pulumi.getter(name="allowForcePush")
     def allow_force_push(self) -> bool:
+        """
+        Whether force push is allowed.
+        """
         return pulumi.get(self, "allow_force_push")
 
     @property
     @pulumi.getter(name="codeOwnerApprovalRequired")
     def code_owner_approval_required(self) -> bool:
+        """
+        Reject code pushes that change files listed in the CODEOWNERS file.
+        """
         return pulumi.get(self, "code_owner_approval_required")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of this resource.
+        """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="mergeAccessLevels")
-    def merge_access_levels(self) -> Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult']:
-        return pulumi.get(self, "merge_access_levels")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the protected branch.
+        """
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="mergeAccessLevels")
+    def merge_access_levels(self) -> Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult']]:
+        """
+        Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        """
+        return pulumi.get(self, "merge_access_levels")
+
+    @property
     @pulumi.getter(name="pushAccessLevels")
-    def push_access_levels(self) -> Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult']:
+    def push_access_levels(self) -> Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult']]:
+        """
+        Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        """
         return pulumi.get(self, "push_access_levels")
 
 
@@ -3636,31 +3704,51 @@ class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult(dict):
     def __init__(__self__, *,
                  access_level: str,
                  access_level_description: str,
-                 group_id: int,
-                 user_id: int):
+                 group_id: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param str access_level_description: Readable description of access level.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "user_id", user_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
+        """
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        """
         return pulumi.get(self, "access_level")
 
     @property
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> str:
+        """
+        Readable description of access level.
+        """
         return pulumi.get(self, "access_level_description")
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> int:
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> int:
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
         return pulumi.get(self, "user_id")
 
 
@@ -3669,31 +3757,51 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
     def __init__(__self__, *,
                  access_level: str,
                  access_level_description: str,
-                 group_id: int,
-                 user_id: int):
+                 group_id: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param str access_level_description: Readable description of access level.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "user_id", user_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
+        """
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        """
         return pulumi.get(self, "access_level")
 
     @property
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> str:
+        """
+        Readable description of access level.
+        """
         return pulumi.get(self, "access_level_description")
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> int:
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> int:
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
         return pulumi.get(self, "user_id")
 
 
@@ -4125,6 +4233,7 @@ class GetProjectsProjectResult(dict):
                  forked_from_projects: Sequence['outputs.GetProjectsProjectForkedFromProjectResult'],
                  forking_access_level: str,
                  forks_count: int,
+                 group_runners_enabled: bool,
                  http_url_to_repo: str,
                  id: int,
                  import_error: str,
@@ -4220,6 +4329,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "forked_from_projects", forked_from_projects)
         pulumi.set(__self__, "forking_access_level", forking_access_level)
         pulumi.set(__self__, "forks_count", forks_count)
+        pulumi.set(__self__, "group_runners_enabled", group_runners_enabled)
         pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "import_error", import_error)
@@ -4447,6 +4557,11 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="forksCount")
     def forks_count(self) -> int:
         return pulumi.get(self, "forks_count")
+
+    @property
+    @pulumi.getter(name="groupRunnersEnabled")
+    def group_runners_enabled(self) -> bool:
+        return pulumi.get(self, "group_runners_enabled")
 
     @property
     @pulumi.getter(name="httpUrlToRepo")

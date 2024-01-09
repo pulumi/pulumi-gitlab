@@ -17,14 +17,14 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
     public static final BranchProtectionAllowedToMergeArgs Empty = new BranchProtectionAllowedToMergeArgs();
 
     /**
-     * Level of access.
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return Level of access.
+     * @return Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -32,14 +32,14 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
     }
 
     /**
-     * Readable description of level of access.
+     * Readable description of access level.
      * 
      */
     @Import(name="accessLevelDescription")
     private @Nullable Output<String> accessLevelDescription;
 
     /**
-     * @return Readable description of level of access.
+     * @return Readable description of access level.
      * 
      */
     public Optional<Output<String>> accessLevelDescription() {
@@ -104,7 +104,7 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accessLevel Level of access.
+         * @param accessLevel Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accessLevel Level of access.
+         * @param accessLevel Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accessLevelDescription Readable description of level of access.
+         * @param accessLevelDescription Readable description of access level.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accessLevelDescription Readable description of level of access.
+         * @param accessLevelDescription Readable description of access level.
          * 
          * @return builder
          * 

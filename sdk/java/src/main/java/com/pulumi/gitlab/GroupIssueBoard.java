@@ -42,6 +42,20 @@ public class GroupIssueBoard extends com.pulumi.resources.CustomResource {
         return this.group;
     }
     /**
+     * The list of label names which the board should be scoped to.
+     * 
+     */
+    @Export(name="labels", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> labels;
+
+    /**
+     * @return The list of label names which the board should be scoped to.
+     * 
+     */
+    public Output<Optional<List<String>>> labels() {
+        return Codegen.optional(this.labels);
+    }
+    /**
      * The list of issue board lists.
      * 
      */

@@ -46,14 +46,14 @@ public final class GroupIssueBoardListArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+     * The explicit position of the list within the board, zero based.
      * 
      */
     @Import(name="position")
     private @Nullable Output<Integer> position;
 
     /**
-     * @return The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+     * @return The explicit position of the list within the board, zero based.
      * 
      */
     public Optional<Output<Integer>> position() {
@@ -129,7 +129,7 @@ public final class GroupIssueBoardListArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param position The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+         * @param position The explicit position of the list within the board, zero based.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GroupIssueBoardListArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param position The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+         * @param position The explicit position of the list within the board, zero based.
          * 
          * @return builder
          * 

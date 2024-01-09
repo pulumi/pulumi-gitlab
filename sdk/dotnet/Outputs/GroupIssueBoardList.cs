@@ -22,7 +22,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int? LabelId;
         /// <summary>
-        /// The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+        /// The explicit position of the list within the board, zero based.
         /// </summary>
         public readonly int? Position;
 

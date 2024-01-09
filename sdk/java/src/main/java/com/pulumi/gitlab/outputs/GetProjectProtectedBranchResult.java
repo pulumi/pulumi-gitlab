@@ -12,6 +12,7 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectProtectedBranchResult {
@@ -31,10 +32,10 @@ public final class GetProjectProtectedBranchResult {
      */
     private Integer id;
     /**
-     * @return Describes which access levels, users, or groups are allowed to perform the action.
+     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      * 
      */
-    private List<GetProjectProtectedBranchMergeAccessLevel> mergeAccessLevels;
+    private @Nullable List<GetProjectProtectedBranchMergeAccessLevel> mergeAccessLevels;
     /**
      * @return The name of the protected branch.
      * 
@@ -46,10 +47,10 @@ public final class GetProjectProtectedBranchResult {
      */
     private String projectId;
     /**
-     * @return Describes which access levels, users, or groups are allowed to perform the action.
+     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
      * 
      */
-    private List<GetProjectProtectedBranchPushAccessLevel> pushAccessLevels;
+    private @Nullable List<GetProjectProtectedBranchPushAccessLevel> pushAccessLevels;
 
     private GetProjectProtectedBranchResult() {}
     /**
@@ -74,11 +75,11 @@ public final class GetProjectProtectedBranchResult {
         return this.id;
     }
     /**
-     * @return Describes which access levels, users, or groups are allowed to perform the action.
+     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      * 
      */
     public List<GetProjectProtectedBranchMergeAccessLevel> mergeAccessLevels() {
-        return this.mergeAccessLevels;
+        return this.mergeAccessLevels == null ? List.of() : this.mergeAccessLevels;
     }
     /**
      * @return The name of the protected branch.
@@ -95,11 +96,11 @@ public final class GetProjectProtectedBranchResult {
         return this.projectId;
     }
     /**
-     * @return Describes which access levels, users, or groups are allowed to perform the action.
+     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
      * 
      */
     public List<GetProjectProtectedBranchPushAccessLevel> pushAccessLevels() {
-        return this.pushAccessLevels;
+        return this.pushAccessLevels == null ? List.of() : this.pushAccessLevels;
     }
 
     public static Builder builder() {
@@ -114,10 +115,10 @@ public final class GetProjectProtectedBranchResult {
         private Boolean allowForcePush;
         private Boolean codeOwnerApprovalRequired;
         private Integer id;
-        private List<GetProjectProtectedBranchMergeAccessLevel> mergeAccessLevels;
+        private @Nullable List<GetProjectProtectedBranchMergeAccessLevel> mergeAccessLevels;
         private String name;
         private String projectId;
-        private List<GetProjectProtectedBranchPushAccessLevel> pushAccessLevels;
+        private @Nullable List<GetProjectProtectedBranchPushAccessLevel> pushAccessLevels;
         public Builder() {}
         public Builder(GetProjectProtectedBranchResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -155,10 +156,8 @@ public final class GetProjectProtectedBranchResult {
             return this;
         }
         @CustomType.Setter
-        public Builder mergeAccessLevels(List<GetProjectProtectedBranchMergeAccessLevel> mergeAccessLevels) {
-            if (mergeAccessLevels == null) {
-              throw new MissingRequiredPropertyException("GetProjectProtectedBranchResult", "mergeAccessLevels");
-            }
+        public Builder mergeAccessLevels(@Nullable List<GetProjectProtectedBranchMergeAccessLevel> mergeAccessLevels) {
+
             this.mergeAccessLevels = mergeAccessLevels;
             return this;
         }
@@ -182,10 +181,8 @@ public final class GetProjectProtectedBranchResult {
             return this;
         }
         @CustomType.Setter
-        public Builder pushAccessLevels(List<GetProjectProtectedBranchPushAccessLevel> pushAccessLevels) {
-            if (pushAccessLevels == null) {
-              throw new MissingRequiredPropertyException("GetProjectProtectedBranchResult", "pushAccessLevels");
-            }
+        public Builder pushAccessLevels(@Nullable List<GetProjectProtectedBranchPushAccessLevel> pushAccessLevels) {
+
             this.pushAccessLevels = pushAccessLevels;
             return this;
         }

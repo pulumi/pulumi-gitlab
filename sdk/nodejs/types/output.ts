@@ -21,11 +21,11 @@ export interface BranchCommit {
 
 export interface BranchProtectionAllowedToMerge {
     /**
-     * Level of access.
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      */
     accessLevel: string;
     /**
-     * Readable description of level of access.
+     * Readable description of access level.
      */
     accessLevelDescription: string;
     /**
@@ -40,11 +40,11 @@ export interface BranchProtectionAllowedToMerge {
 
 export interface BranchProtectionAllowedToPush {
     /**
-     * Level of access.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      */
     accessLevel: string;
     /**
-     * Readable description of level of access.
+     * Readable description of access level.
      */
     accessLevelDescription: string;
     /**
@@ -59,11 +59,11 @@ export interface BranchProtectionAllowedToPush {
 
 export interface BranchProtectionAllowedToUnprotect {
     /**
-     * Level of access.
+     * Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
      */
     accessLevel: string;
     /**
-     * Readable description of level of access.
+     * Readable description of access level.
      */
     accessLevelDescription: string;
     /**
@@ -377,40 +377,106 @@ export interface GetProjectMilestonesMilestone {
 }
 
 export interface GetProjectProtectedBranchMergeAccessLevel {
+    /**
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
     accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
     accessLevelDescription: string;
-    groupId: number;
-    userId: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
 }
 
 export interface GetProjectProtectedBranchPushAccessLevel {
+    /**
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
     accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
     accessLevelDescription: string;
-    groupId: number;
-    userId: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
 }
 
 export interface GetProjectProtectedBranchesProtectedBranch {
+    /**
+     * Whether force push is allowed.
+     */
     allowForcePush: boolean;
+    /**
+     * Reject code pushes that change files listed in the CODEOWNERS file.
+     */
     codeOwnerApprovalRequired: boolean;
+    /**
+     * The ID of this resource.
+     */
     id: number;
-    mergeAccessLevels: outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevel[];
+    /**
+     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     */
+    mergeAccessLevels?: outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevel[];
+    /**
+     * The name of the protected branch.
+     */
     name: string;
-    pushAccessLevels: outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevel[];
+    /**
+     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     */
+    pushAccessLevels?: outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevel[];
 }
 
 export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
+    /**
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
     accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
     accessLevelDescription: string;
-    groupId: number;
-    userId: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
 }
 
 export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
+    /**
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
     accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
     accessLevelDescription: string;
-    groupId: number;
-    userId: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
 }
 
 export interface GetProjectPushRule {
@@ -519,6 +585,7 @@ export interface GetProjectsProject {
     forkedFromProjects: outputs.GetProjectsProjectForkedFromProject[];
     forkingAccessLevel: string;
     forksCount: number;
+    groupRunnersEnabled: boolean;
     httpUrlToRepo: string;
     id: number;
     importError: string;
@@ -719,7 +786,7 @@ export interface GroupIssueBoardList {
      */
     labelId?: number;
     /**
-     * The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+     * The explicit position of the list within the board, zero based.
      */
     position: number;
 }

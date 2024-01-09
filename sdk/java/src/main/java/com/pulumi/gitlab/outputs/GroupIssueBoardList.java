@@ -22,7 +22,7 @@ public final class GroupIssueBoardList {
      */
     private @Nullable Integer labelId;
     /**
-     * @return The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+     * @return The explicit position of the list within the board, zero based.
      * 
      */
     private @Nullable Integer position;
@@ -43,7 +43,7 @@ public final class GroupIssueBoardList {
         return Optional.ofNullable(this.labelId);
     }
     /**
-     * @return The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+     * @return The explicit position of the list within the board, zero based.
      * 
      */
     public Optional<Integer> position() {

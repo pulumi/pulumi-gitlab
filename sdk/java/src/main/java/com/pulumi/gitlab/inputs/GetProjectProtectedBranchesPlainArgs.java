@@ -5,8 +5,12 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gitlab.inputs.GetProjectProtectedBranchesProtectedBranch;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetProjectProtectedBranchesPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +32,26 @@ public final class GetProjectProtectedBranchesPlainArgs extends com.pulumi.resou
         return this.projectId;
     }
 
+    /**
+     * A list of protected branches, as defined below.
+     * 
+     */
+    @Import(name="protectedBranches")
+    private @Nullable List<GetProjectProtectedBranchesProtectedBranch> protectedBranches;
+
+    /**
+     * @return A list of protected branches, as defined below.
+     * 
+     */
+    public Optional<List<GetProjectProtectedBranchesProtectedBranch>> protectedBranches() {
+        return Optional.ofNullable(this.protectedBranches);
+    }
+
     private GetProjectProtectedBranchesPlainArgs() {}
 
     private GetProjectProtectedBranchesPlainArgs(GetProjectProtectedBranchesPlainArgs $) {
         this.projectId = $.projectId;
+        this.protectedBranches = $.protectedBranches;
     }
 
     public static Builder builder() {
@@ -61,6 +81,27 @@ public final class GetProjectProtectedBranchesPlainArgs extends com.pulumi.resou
         public Builder projectId(String projectId) {
             $.projectId = projectId;
             return this;
+        }
+
+        /**
+         * @param protectedBranches A list of protected branches, as defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedBranches(@Nullable List<GetProjectProtectedBranchesProtectedBranch> protectedBranches) {
+            $.protectedBranches = protectedBranches;
+            return this;
+        }
+
+        /**
+         * @param protectedBranches A list of protected branches, as defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedBranches(GetProjectProtectedBranchesProtectedBranch... protectedBranches) {
+            return protectedBranches(List.of(protectedBranches));
         }
 
         public GetProjectProtectedBranchesPlainArgs build() {

@@ -6,17 +6,19 @@ package com.pulumi.gitlab.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchesProtectedBranch;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectProtectedBranchesResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
-    private String id;
+    private Integer id;
     /**
      * @return The integer or path with namespace that uniquely identifies the project.
      * 
@@ -26,14 +28,14 @@ public final class GetProjectProtectedBranchesResult {
      * @return A list of protected branches, as defined below.
      * 
      */
-    private List<GetProjectProtectedBranchesProtectedBranch> protectedBranches;
+    private @Nullable List<GetProjectProtectedBranchesProtectedBranch> protectedBranches;
 
     private GetProjectProtectedBranchesResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
-    public String id() {
+    public Integer id() {
         return this.id;
     }
     /**
@@ -48,7 +50,7 @@ public final class GetProjectProtectedBranchesResult {
      * 
      */
     public List<GetProjectProtectedBranchesProtectedBranch> protectedBranches() {
-        return this.protectedBranches;
+        return this.protectedBranches == null ? List.of() : this.protectedBranches;
     }
 
     public static Builder builder() {
@@ -60,9 +62,9 @@ public final class GetProjectProtectedBranchesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
+        private Integer id;
         private String projectId;
-        private List<GetProjectProtectedBranchesProtectedBranch> protectedBranches;
+        private @Nullable List<GetProjectProtectedBranchesProtectedBranch> protectedBranches;
         public Builder() {}
         public Builder(GetProjectProtectedBranchesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,7 +74,7 @@ public final class GetProjectProtectedBranchesResult {
         }
 
         @CustomType.Setter
-        public Builder id(String id) {
+        public Builder id(Integer id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetProjectProtectedBranchesResult", "id");
             }
@@ -88,10 +90,8 @@ public final class GetProjectProtectedBranchesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder protectedBranches(List<GetProjectProtectedBranchesProtectedBranch> protectedBranches) {
-            if (protectedBranches == null) {
-              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesResult", "protectedBranches");
-            }
+        public Builder protectedBranches(@Nullable List<GetProjectProtectedBranchesProtectedBranch> protectedBranches) {
+
             this.protectedBranches = protectedBranches;
             return this;
         }

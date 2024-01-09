@@ -13,10 +13,22 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult
     {
+        /// <summary>
+        /// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        /// </summary>
         public readonly string AccessLevel;
+        /// <summary>
+        /// Readable description of access level.
+        /// </summary>
         public readonly string AccessLevelDescription;
-        public readonly int GroupId;
-        public readonly int UserId;
+        /// <summary>
+        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        /// </summary>
+        public readonly int? GroupId;
+        /// <summary>
+        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        /// </summary>
+        public readonly int? UserId;
 
         [OutputConstructor]
         private GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(
@@ -24,9 +36,9 @@ namespace Pulumi.GitLab.Outputs
 
             string accessLevelDescription,
 
-            int groupId,
+            int? groupId,
 
-            int userId)
+            int? userId)
         {
             AccessLevel = accessLevel;
             AccessLevelDescription = accessLevelDescription;

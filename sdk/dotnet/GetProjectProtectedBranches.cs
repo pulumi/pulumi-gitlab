@@ -81,6 +81,18 @@ namespace Pulumi.GitLab
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
+        [Input("protectedBranches")]
+        private List<Inputs.GetProjectProtectedBranchesProtectedBranchArgs>? _protectedBranches;
+
+        /// <summary>
+        /// A list of protected branches, as defined below.
+        /// </summary>
+        public List<Inputs.GetProjectProtectedBranchesProtectedBranchArgs> ProtectedBranches
+        {
+            get => _protectedBranches ?? (_protectedBranches = new List<Inputs.GetProjectProtectedBranchesProtectedBranchArgs>());
+            set => _protectedBranches = value;
+        }
+
         public GetProjectProtectedBranchesArgs()
         {
         }
@@ -95,6 +107,18 @@ namespace Pulumi.GitLab
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        [Input("protectedBranches")]
+        private InputList<Inputs.GetProjectProtectedBranchesProtectedBranchInputArgs>? _protectedBranches;
+
+        /// <summary>
+        /// A list of protected branches, as defined below.
+        /// </summary>
+        public InputList<Inputs.GetProjectProtectedBranchesProtectedBranchInputArgs> ProtectedBranches
+        {
+            get => _protectedBranches ?? (_protectedBranches = new InputList<Inputs.GetProjectProtectedBranchesProtectedBranchInputArgs>());
+            set => _protectedBranches = value;
+        }
+
         public GetProjectProtectedBranchesInvokeArgs()
         {
         }
@@ -106,9 +130,9 @@ namespace Pulumi.GitLab
     public sealed class GetProjectProtectedBranchesResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource.
         /// </summary>
-        public readonly string Id;
+        public readonly int Id;
         /// <summary>
         /// The integer or path with namespace that uniquely identifies the project.
         /// </summary>
@@ -120,7 +144,7 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetProjectProtectedBranchesResult(
-            string id,
+            int id,
 
             string projectId,
 

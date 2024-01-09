@@ -590,6 +590,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.forkingAccessLevel;
     }
     /**
+     * Enable group runners for this project.
+     * 
+     */
+    @Export(name="groupRunnersEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> groupRunnersEnabled;
+
+    /**
+     * @return Enable group runners for this project.
+     * 
+     */
+    public Output<Boolean> groupRunnersEnabled() {
+        return this.groupRunnersEnabled;
+    }
+    /**
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
      * 
      */

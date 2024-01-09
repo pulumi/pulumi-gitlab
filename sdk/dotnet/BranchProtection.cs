@@ -25,22 +25,22 @@ namespace Pulumi.GitLab
         /// Can be set to true to allow users with push access to force push.
         /// </summary>
         [Output("allowForcePush")]
-        public Output<bool?> AllowForcePush { get; private set; } = null!;
+        public Output<bool> AllowForcePush { get; private set; } = null!;
 
         /// <summary>
-        /// Defines permissions for action.
+        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
         /// </summary>
         [Output("allowedToMerges")]
         public Output<ImmutableArray<Outputs.BranchProtectionAllowedToMerge>> AllowedToMerges { get; private set; } = null!;
 
         /// <summary>
-        /// Defines permissions for action.
+        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
         /// </summary>
         [Output("allowedToPushes")]
         public Output<ImmutableArray<Outputs.BranchProtectionAllowedToPush>> AllowedToPushes { get; private set; } = null!;
 
         /// <summary>
-        /// Defines permissions for action.
+        /// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
         /// </summary>
         [Output("allowedToUnprotects")]
         public Output<ImmutableArray<Outputs.BranchProtectionAllowedToUnprotect>> AllowedToUnprotects { get; private set; } = null!;
@@ -58,16 +58,16 @@ namespace Pulumi.GitLab
         public Output<int> BranchProtectionId { get; private set; } = null!;
 
         /// <summary>
-        /// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+        /// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
         /// </summary>
         [Output("codeOwnerApprovalRequired")]
-        public Output<bool?> CodeOwnerApprovalRequired { get; private set; } = null!;
+        public Output<bool> CodeOwnerApprovalRequired { get; private set; } = null!;
 
         /// <summary>
         /// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Output("mergeAccessLevel")]
-        public Output<string?> MergeAccessLevel { get; private set; } = null!;
+        public Output<string> MergeAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// The id of the project.
@@ -79,13 +79,13 @@ namespace Pulumi.GitLab
         /// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Output("pushAccessLevel")]
-        public Output<string?> PushAccessLevel { get; private set; } = null!;
+        public Output<string> PushAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
         /// </summary>
         [Output("unprotectAccessLevel")]
-        public Output<string?> UnprotectAccessLevel { get; private set; } = null!;
+        public Output<string> UnprotectAccessLevel { get; private set; } = null!;
 
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToMergeArgs>? _allowedToMerges;
 
         /// <summary>
-        /// Defines permissions for action.
+        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToMergeArgs> AllowedToMerges
         {
@@ -155,7 +155,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToPushArgs>? _allowedToPushes;
 
         /// <summary>
-        /// Defines permissions for action.
+        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToPushArgs> AllowedToPushes
         {
@@ -167,7 +167,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToUnprotectArgs>? _allowedToUnprotects;
 
         /// <summary>
-        /// Defines permissions for action.
+        /// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToUnprotectArgs> AllowedToUnprotects
         {
@@ -182,7 +182,7 @@ namespace Pulumi.GitLab
         public Input<string> Branch { get; set; } = null!;
 
         /// <summary>
-        /// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+        /// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
         /// </summary>
         [Input("codeOwnerApprovalRequired")]
         public Input<bool>? CodeOwnerApprovalRequired { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToMergeGetArgs>? _allowedToMerges;
 
         /// <summary>
-        /// Defines permissions for action.
+        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToMergeGetArgs> AllowedToMerges
         {
@@ -241,7 +241,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToPushGetArgs>? _allowedToPushes;
 
         /// <summary>
-        /// Defines permissions for action.
+        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToPushGetArgs> AllowedToPushes
         {
@@ -253,7 +253,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToUnprotectGetArgs>? _allowedToUnprotects;
 
         /// <summary>
-        /// Defines permissions for action.
+        /// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToUnprotectGetArgs> AllowedToUnprotects
         {
@@ -274,7 +274,7 @@ namespace Pulumi.GitLab
         public Input<int>? BranchProtectionId { get; set; }
 
         /// <summary>
-        /// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+        /// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
         /// </summary>
         [Input("codeOwnerApprovalRequired")]
         public Input<bool>? CodeOwnerApprovalRequired { get; set; }

@@ -54,12 +54,14 @@ func GetProjectProtectedBranches(ctx *pulumi.Context, args *GetProjectProtectedB
 type GetProjectProtectedBranchesArgs struct {
 	// The integer or path with namespace that uniquely identifies the project.
 	ProjectId string `pulumi:"projectId"`
+	// A list of protected branches, as defined below.
+	ProtectedBranches []GetProjectProtectedBranchesProtectedBranch `pulumi:"protectedBranches"`
 }
 
 // A collection of values returned by getProjectProtectedBranches.
 type GetProjectProtectedBranchesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	// The ID of this resource.
+	Id int `pulumi:"id"`
 	// The integer or path with namespace that uniquely identifies the project.
 	ProjectId string `pulumi:"projectId"`
 	// A list of protected branches, as defined below.
@@ -83,6 +85,8 @@ func GetProjectProtectedBranchesOutput(ctx *pulumi.Context, args GetProjectProte
 type GetProjectProtectedBranchesOutputArgs struct {
 	// The integer or path with namespace that uniquely identifies the project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// A list of protected branches, as defined below.
+	ProtectedBranches GetProjectProtectedBranchesProtectedBranchArrayInput `pulumi:"protectedBranches"`
 }
 
 func (GetProjectProtectedBranchesOutputArgs) ElementType() reflect.Type {
@@ -104,9 +108,9 @@ func (o GetProjectProtectedBranchesResultOutput) ToGetProjectProtectedBranchesRe
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o GetProjectProtectedBranchesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectProtectedBranchesResult) string { return v.Id }).(pulumi.StringOutput)
+// The ID of this resource.
+func (o GetProjectProtectedBranchesResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectProtectedBranchesResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // The integer or path with namespace that uniquely identifies the project.

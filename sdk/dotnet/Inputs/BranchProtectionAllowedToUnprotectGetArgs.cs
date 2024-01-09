@@ -13,13 +13,13 @@ namespace Pulumi.GitLab.Inputs
     public sealed class BranchProtectionAllowedToUnprotectGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Level of access.
+        /// Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
-        /// Readable description of level of access.
+        /// Readable description of access level.
         /// </summary>
         [Input("accessLevelDescription")]
         public Input<string>? AccessLevelDescription { get; set; }

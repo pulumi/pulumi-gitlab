@@ -14,11 +14,11 @@ namespace Pulumi.GitLab.Outputs
     public sealed class BranchProtectionAllowedToMerge
     {
         /// <summary>
-        /// Level of access.
+        /// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         public readonly string? AccessLevel;
         /// <summary>
-        /// Readable description of level of access.
+        /// Readable description of access level.
         /// </summary>
         public readonly string? AccessLevelDescription;
         /// <summary>

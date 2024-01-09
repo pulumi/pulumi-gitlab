@@ -21,11 +21,11 @@ export interface BranchCommit {
 
 export interface BranchProtectionAllowedToMerge {
     /**
-     * Level of access.
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
-     * Readable description of level of access.
+     * Readable description of access level.
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
@@ -40,11 +40,11 @@ export interface BranchProtectionAllowedToMerge {
 
 export interface BranchProtectionAllowedToPush {
     /**
-     * Level of access.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
-     * Readable description of level of access.
+     * Readable description of access level.
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
@@ -59,11 +59,217 @@ export interface BranchProtectionAllowedToPush {
 
 export interface BranchProtectionAllowedToUnprotect {
     /**
-     * Level of access.
+     * Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
-     * Readable description of level of access.
+     * Readable description of access level.
+     */
+    accessLevelDescription?: pulumi.Input<string>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: pulumi.Input<number>;
+}
+
+export interface GetProjectProtectedBranchMergeAccessLevel {
+    /**
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
+    accessLevel?: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription?: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
+}
+
+export interface GetProjectProtectedBranchMergeAccessLevelArgs {
+    /**
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription?: pulumi.Input<string>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: pulumi.Input<number>;
+}
+
+export interface GetProjectProtectedBranchPushAccessLevel {
+    /**
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
+    accessLevel?: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription?: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
+}
+
+export interface GetProjectProtectedBranchPushAccessLevelArgs {
+    /**
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription?: pulumi.Input<string>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: pulumi.Input<number>;
+}
+
+export interface GetProjectProtectedBranchesProtectedBranch {
+    /**
+     * Whether force push is allowed.
+     */
+    allowForcePush?: boolean;
+    /**
+     * Reject code pushes that change files listed in the CODEOWNERS file.
+     */
+    codeOwnerApprovalRequired?: boolean;
+    /**
+     * The ID of this resource.
+     */
+    id?: number;
+    /**
+     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     */
+    mergeAccessLevels?: inputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevel[];
+    /**
+     * The name of the protected branch.
+     */
+    name?: string;
+    /**
+     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     */
+    pushAccessLevels?: inputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevel[];
+}
+
+export interface GetProjectProtectedBranchesProtectedBranchArgs {
+    /**
+     * Whether force push is allowed.
+     */
+    allowForcePush?: pulumi.Input<boolean>;
+    /**
+     * Reject code pushes that change files listed in the CODEOWNERS file.
+     */
+    codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    /**
+     * The ID of this resource.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     */
+    mergeAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs>[]>;
+    /**
+     * The name of the protected branch.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     */
+    pushAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs>[]>;
+}
+
+export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
+    /**
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
+    accessLevel?: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription?: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
+}
+
+export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs {
+    /**
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription?: pulumi.Input<string>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: pulumi.Input<number>;
+}
+
+export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
+    /**
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
+    accessLevel?: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription?: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
+}
+
+export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs {
+    /**
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * Readable description of access level.
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
@@ -101,7 +307,7 @@ export interface GroupIssueBoardList {
      */
     labelId?: pulumi.Input<number>;
     /**
-     * The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+     * The explicit position of the list within the board, zero based.
      */
     position?: pulumi.Input<number>;
 }

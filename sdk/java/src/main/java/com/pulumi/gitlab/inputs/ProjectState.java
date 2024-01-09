@@ -523,6 +523,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable group runners for this project.
+     * 
+     */
+    @Import(name="groupRunnersEnabled")
+    private @Nullable Output<Boolean> groupRunnersEnabled;
+
+    /**
+     * @return Enable group runners for this project.
+     * 
+     */
+    public Optional<Output<Boolean>> groupRunnersEnabled() {
+        return Optional.ofNullable(this.groupRunnersEnabled);
+    }
+
+    /**
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
      * 
      */
@@ -1572,6 +1587,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.featureFlagsAccessLevel = $.featureFlagsAccessLevel;
         this.forkedFromProjectId = $.forkedFromProjectId;
         this.forkingAccessLevel = $.forkingAccessLevel;
+        this.groupRunnersEnabled = $.groupRunnersEnabled;
         this.groupWithProjectTemplatesId = $.groupWithProjectTemplatesId;
         this.httpUrlToRepo = $.httpUrlToRepo;
         this.importUrl = $.importUrl;
@@ -2349,6 +2365,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forkingAccessLevel(String forkingAccessLevel) {
             return forkingAccessLevel(Output.of(forkingAccessLevel));
+        }
+
+        /**
+         * @param groupRunnersEnabled Enable group runners for this project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupRunnersEnabled(@Nullable Output<Boolean> groupRunnersEnabled) {
+            $.groupRunnersEnabled = groupRunnersEnabled;
+            return this;
+        }
+
+        /**
+         * @param groupRunnersEnabled Enable group runners for this project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupRunnersEnabled(Boolean groupRunnersEnabled) {
+            return groupRunnersEnabled(Output.of(groupRunnersEnabled));
         }
 
         /**

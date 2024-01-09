@@ -37,14 +37,14 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      * 
      */
     @Import(name="allowedToMerges")
     private @Nullable Output<List<BranchProtectionAllowedToMergeArgs>> allowedToMerges;
 
     /**
-     * @return Defines permissions for action.
+     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      * 
      */
     public Optional<Output<List<BranchProtectionAllowedToMergeArgs>>> allowedToMerges() {
@@ -52,14 +52,14 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
      * 
      */
     @Import(name="allowedToPushes")
     private @Nullable Output<List<BranchProtectionAllowedToPushArgs>> allowedToPushes;
 
     /**
-     * @return Defines permissions for action.
+     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
      * 
      */
     public Optional<Output<List<BranchProtectionAllowedToPushArgs>>> allowedToPushes() {
@@ -67,14 +67,14 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
      * 
      */
     @Import(name="allowedToUnprotects")
     private @Nullable Output<List<BranchProtectionAllowedToUnprotectArgs>> allowedToUnprotects;
 
     /**
-     * @return Defines permissions for action.
+     * @return Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
      * 
      */
     public Optional<Output<List<BranchProtectionAllowedToUnprotectArgs>>> allowedToUnprotects() {
@@ -97,14 +97,14 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+     * Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
      * 
      */
     @Import(name="codeOwnerApprovalRequired")
     private @Nullable Output<Boolean> codeOwnerApprovalRequired;
 
     /**
-     * @return Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+     * @return Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
      * 
      */
     public Optional<Output<Boolean>> codeOwnerApprovalRequired() {
@@ -226,7 +226,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedToMerges Defines permissions for action.
+         * @param allowedToMerges Array of access levels and user(s)/group(s) allowed to merge to protected branch.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedToMerges Defines permissions for action.
+         * @param allowedToMerges Array of access levels and user(s)/group(s) allowed to merge to protected branch.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedToMerges Defines permissions for action.
+         * @param allowedToMerges Array of access levels and user(s)/group(s) allowed to merge to protected branch.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedToPushes Defines permissions for action.
+         * @param allowedToPushes Array of access levels and user(s)/group(s) allowed to push to protected branch.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedToPushes Defines permissions for action.
+         * @param allowedToPushes Array of access levels and user(s)/group(s) allowed to push to protected branch.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedToPushes Defines permissions for action.
+         * @param allowedToPushes Array of access levels and user(s)/group(s) allowed to push to protected branch.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedToUnprotects Defines permissions for action.
+         * @param allowedToUnprotects Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedToUnprotects Defines permissions for action.
+         * @param allowedToUnprotects Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedToUnprotects Defines permissions for action.
+         * @param allowedToUnprotects Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param codeOwnerApprovalRequired Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+         * @param codeOwnerApprovalRequired Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param codeOwnerApprovalRequired Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+         * @param codeOwnerApprovalRequired Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 

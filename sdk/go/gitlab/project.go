@@ -205,6 +205,8 @@ type Project struct {
 	ForkedFromProjectId pulumi.IntPtrOutput `pulumi:"forkedFromProjectId"`
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel pulumi.StringOutput `pulumi:"forkingAccessLevel"`
+	// Enable group runners for this project.
+	GroupRunnersEnabled pulumi.BoolOutput `pulumi:"groupRunnersEnabled"`
 	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId pulumi.IntPtrOutput `pulumi:"groupWithProjectTemplatesId"`
 	// URL that can be provided to `git clone` to clone the
@@ -462,6 +464,8 @@ type projectState struct {
 	ForkedFromProjectId *int `pulumi:"forkedFromProjectId"`
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel *string `pulumi:"forkingAccessLevel"`
+	// Enable group runners for this project.
+	GroupRunnersEnabled *bool `pulumi:"groupRunnersEnabled"`
 	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId *int `pulumi:"groupWithProjectTemplatesId"`
 	// URL that can be provided to `git clone` to clone the
@@ -682,6 +686,8 @@ type ProjectState struct {
 	ForkedFromProjectId pulumi.IntPtrInput
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel pulumi.StringPtrInput
+	// Enable group runners for this project.
+	GroupRunnersEnabled pulumi.BoolPtrInput
 	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId pulumi.IntPtrInput
 	// URL that can be provided to `git clone` to clone the
@@ -902,6 +908,8 @@ type projectArgs struct {
 	ForkedFromProjectId *int `pulumi:"forkedFromProjectId"`
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel *string `pulumi:"forkingAccessLevel"`
+	// Enable group runners for this project.
+	GroupRunnersEnabled *bool `pulumi:"groupRunnersEnabled"`
 	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId *int `pulumi:"groupWithProjectTemplatesId"`
 	// Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
@@ -1109,6 +1117,8 @@ type ProjectArgs struct {
 	ForkedFromProjectId pulumi.IntPtrInput
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel pulumi.StringPtrInput
+	// Enable group runners for this project.
+	GroupRunnersEnabled pulumi.BoolPtrInput
 	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId pulumi.IntPtrInput
 	// Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
@@ -1499,6 +1509,11 @@ func (o ProjectOutput) ForkedFromProjectId() pulumi.IntPtrOutput {
 // Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 func (o ProjectOutput) ForkingAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ForkingAccessLevel }).(pulumi.StringOutput)
+}
+
+// Enable group runners for this project.
+func (o ProjectOutput) GroupRunnersEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.GroupRunnersEnabled }).(pulumi.BoolOutput)
 }
 
 // For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).

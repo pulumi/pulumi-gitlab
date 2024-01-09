@@ -46,17 +46,17 @@ export class BranchProtection extends pulumi.CustomResource {
     /**
      * Can be set to true to allow users with push access to force push.
      */
-    public readonly allowForcePush!: pulumi.Output<boolean | undefined>;
+    public readonly allowForcePush!: pulumi.Output<boolean>;
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      */
     public readonly allowedToMerges!: pulumi.Output<outputs.BranchProtectionAllowedToMerge[] | undefined>;
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
      */
     public readonly allowedToPushes!: pulumi.Output<outputs.BranchProtectionAllowedToPush[] | undefined>;
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
      */
     public readonly allowedToUnprotects!: pulumi.Output<outputs.BranchProtectionAllowedToUnprotect[] | undefined>;
     /**
@@ -68,13 +68,13 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     public /*out*/ readonly branchProtectionId!: pulumi.Output<number>;
     /**
-     * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+     * Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
      */
-    public readonly codeOwnerApprovalRequired!: pulumi.Output<boolean | undefined>;
+    public readonly codeOwnerApprovalRequired!: pulumi.Output<boolean>;
     /**
      * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
      */
-    public readonly mergeAccessLevel!: pulumi.Output<string | undefined>;
+    public readonly mergeAccessLevel!: pulumi.Output<string>;
     /**
      * The id of the project.
      */
@@ -82,11 +82,11 @@ export class BranchProtection extends pulumi.CustomResource {
     /**
      * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
      */
-    public readonly pushAccessLevel!: pulumi.Output<string | undefined>;
+    public readonly pushAccessLevel!: pulumi.Output<string>;
     /**
      * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
      */
-    public readonly unprotectAccessLevel!: pulumi.Output<string | undefined>;
+    public readonly unprotectAccessLevel!: pulumi.Output<string>;
 
     /**
      * Create a BranchProtection resource with the given unique name, arguments, and options.
@@ -146,15 +146,15 @@ export interface BranchProtectionState {
      */
     allowForcePush?: pulumi.Input<boolean>;
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      */
     allowedToMerges?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToMerge>[]>;
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
      */
     allowedToPushes?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToPush>[]>;
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
      */
     allowedToUnprotects?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToUnprotect>[]>;
     /**
@@ -166,7 +166,7 @@ export interface BranchProtectionState {
      */
     branchProtectionId?: pulumi.Input<number>;
     /**
-     * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+     * Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
      */
     codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**
@@ -196,15 +196,15 @@ export interface BranchProtectionArgs {
      */
     allowForcePush?: pulumi.Input<boolean>;
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      */
     allowedToMerges?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToMerge>[]>;
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
      */
     allowedToPushes?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToPush>[]>;
     /**
-     * Defines permissions for action.
+     * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
      */
     allowedToUnprotects?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToUnprotect>[]>;
     /**
@@ -212,7 +212,7 @@ export interface BranchProtectionArgs {
      */
     branch: pulumi.Input<string>;
     /**
-     * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+     * Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
      */
     codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**

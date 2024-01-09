@@ -12,34 +12,83 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectProtectedBranchesProtectedBranch {
+    /**
+     * @return Whether force push is allowed.
+     * 
+     */
     private Boolean allowForcePush;
+    /**
+     * @return Reject code pushes that change files listed in the CODEOWNERS file.
+     * 
+     */
     private Boolean codeOwnerApprovalRequired;
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     private Integer id;
-    private List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels;
+    /**
+     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * 
+     */
+    private @Nullable List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels;
+    /**
+     * @return The name of the protected branch.
+     * 
+     */
     private String name;
-    private List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels;
+    /**
+     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * 
+     */
+    private @Nullable List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels;
 
     private GetProjectProtectedBranchesProtectedBranch() {}
+    /**
+     * @return Whether force push is allowed.
+     * 
+     */
     public Boolean allowForcePush() {
         return this.allowForcePush;
     }
+    /**
+     * @return Reject code pushes that change files listed in the CODEOWNERS file.
+     * 
+     */
     public Boolean codeOwnerApprovalRequired() {
         return this.codeOwnerApprovalRequired;
     }
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * 
+     */
     public List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels() {
-        return this.mergeAccessLevels;
+        return this.mergeAccessLevels == null ? List.of() : this.mergeAccessLevels;
     }
+    /**
+     * @return The name of the protected branch.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * 
+     */
     public List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels() {
-        return this.pushAccessLevels;
+        return this.pushAccessLevels == null ? List.of() : this.pushAccessLevels;
     }
 
     public static Builder builder() {
@@ -54,9 +103,9 @@ public final class GetProjectProtectedBranchesProtectedBranch {
         private Boolean allowForcePush;
         private Boolean codeOwnerApprovalRequired;
         private Integer id;
-        private List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels;
+        private @Nullable List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels;
         private String name;
-        private List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels;
+        private @Nullable List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels;
         public Builder() {}
         public Builder(GetProjectProtectedBranchesProtectedBranch defaults) {
     	      Objects.requireNonNull(defaults);
@@ -93,10 +142,8 @@ public final class GetProjectProtectedBranchesProtectedBranch {
             return this;
         }
         @CustomType.Setter
-        public Builder mergeAccessLevels(List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels) {
-            if (mergeAccessLevels == null) {
-              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranch", "mergeAccessLevels");
-            }
+        public Builder mergeAccessLevels(@Nullable List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels) {
+
             this.mergeAccessLevels = mergeAccessLevels;
             return this;
         }
@@ -112,10 +159,8 @@ public final class GetProjectProtectedBranchesProtectedBranch {
             return this;
         }
         @CustomType.Setter
-        public Builder pushAccessLevels(List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels) {
-            if (pushAccessLevels == null) {
-              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranch", "pushAccessLevels");
-            }
+        public Builder pushAccessLevels(@Nullable List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels) {
+
             this.pushAccessLevels = pushAccessLevels;
             return this;
         }

@@ -13,11 +13,29 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectProtectedBranchesProtectedBranchResult
     {
+        /// <summary>
+        /// Whether force push is allowed.
+        /// </summary>
         public readonly bool AllowForcePush;
+        /// <summary>
+        /// Reject code pushes that change files listed in the CODEOWNERS file.
+        /// </summary>
         public readonly bool CodeOwnerApprovalRequired;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult> MergeAccessLevels;
+        /// <summary>
+        /// The name of the protected branch.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult> PushAccessLevels;
 
         [OutputConstructor]

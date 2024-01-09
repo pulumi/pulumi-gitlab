@@ -14,11 +14,11 @@ namespace Pulumi.GitLab.Outputs
     public sealed class BranchProtectionAllowedToUnprotect
     {
         /// <summary>
-        /// Level of access.
+        /// Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
         /// </summary>
         public readonly string? AccessLevel;
         /// <summary>
-        /// Readable description of level of access.
+        /// Readable description of access level.
         /// </summary>
         public readonly string? AccessLevelDescription;
         /// <summary>

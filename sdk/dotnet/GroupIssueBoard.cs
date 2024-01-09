@@ -26,6 +26,12 @@ namespace Pulumi.GitLab
         public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
+        /// The list of label names which the board should be scoped to.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableArray<string>> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// The list of issue board lists.
         /// </summary>
         [Output("lists")]
@@ -95,6 +101,18 @@ namespace Pulumi.GitLab
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
 
+        [Input("labels")]
+        private InputList<string>? _labels;
+
+        /// <summary>
+        /// The list of label names which the board should be scoped to.
+        /// </summary>
+        public InputList<string> Labels
+        {
+            get => _labels ?? (_labels = new InputList<string>());
+            set => _labels = value;
+        }
+
         [Input("lists")]
         private InputList<Inputs.GroupIssueBoardListArgs>? _lists;
 
@@ -132,6 +150,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
+
+        [Input("labels")]
+        private InputList<string>? _labels;
+
+        /// <summary>
+        /// The list of label names which the board should be scoped to.
+        /// </summary>
+        public InputList<string> Labels
+        {
+            get => _labels ?? (_labels = new InputList<string>());
+            set => _labels = value;
+        }
 
         [Input("lists")]
         private InputList<Inputs.GroupIssueBoardListGetArgs>? _lists;

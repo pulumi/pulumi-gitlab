@@ -46,6 +46,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly ImmutableArray<Outputs.GetProjectsProjectForkedFromProjectResult> ForkedFromProjects;
         public readonly string ForkingAccessLevel;
         public readonly int ForksCount;
+        public readonly bool GroupRunnersEnabled;
         public readonly string HttpUrlToRepo;
         public readonly int Id;
         public readonly string ImportError;
@@ -176,6 +177,8 @@ namespace Pulumi.GitLab.Outputs
             string forkingAccessLevel,
 
             int forksCount,
+
+            bool groupRunnersEnabled,
 
             string httpUrlToRepo,
 
@@ -334,6 +337,7 @@ namespace Pulumi.GitLab.Outputs
             ForkedFromProjects = forkedFromProjects;
             ForkingAccessLevel = forkingAccessLevel;
             ForksCount = forksCount;
+            GroupRunnersEnabled = groupRunnersEnabled;
             HttpUrlToRepo = httpUrlToRepo;
             Id = id;
             ImportError = importError;

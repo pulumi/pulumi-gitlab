@@ -53,6 +53,7 @@ public final class GetProjectsProject {
     private List<GetProjectsProjectForkedFromProject> forkedFromProjects;
     private String forkingAccessLevel;
     private Integer forksCount;
+    private Boolean groupRunnersEnabled;
     private String httpUrlToRepo;
     private Integer id;
     private String importError;
@@ -215,6 +216,9 @@ public final class GetProjectsProject {
     }
     public Integer forksCount() {
         return this.forksCount;
+    }
+    public Boolean groupRunnersEnabled() {
+        return this.groupRunnersEnabled;
     }
     public String httpUrlToRepo() {
         return this.httpUrlToRepo;
@@ -445,6 +449,7 @@ public final class GetProjectsProject {
         private List<GetProjectsProjectForkedFromProject> forkedFromProjects;
         private String forkingAccessLevel;
         private Integer forksCount;
+        private Boolean groupRunnersEnabled;
         private String httpUrlToRepo;
         private Integer id;
         private String importError;
@@ -543,6 +548,7 @@ public final class GetProjectsProject {
     	      this.forkedFromProjects = defaults.forkedFromProjects;
     	      this.forkingAccessLevel = defaults.forkingAccessLevel;
     	      this.forksCount = defaults.forksCount;
+    	      this.groupRunnersEnabled = defaults.groupRunnersEnabled;
     	      this.httpUrlToRepo = defaults.httpUrlToRepo;
     	      this.id = defaults.id;
     	      this.importError = defaults.importError;
@@ -875,6 +881,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "forksCount");
             }
             this.forksCount = forksCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupRunnersEnabled(Boolean groupRunnersEnabled) {
+            if (groupRunnersEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "groupRunnersEnabled");
+            }
+            this.groupRunnersEnabled = groupRunnersEnabled;
             return this;
         }
         @CustomType.Setter
@@ -1426,6 +1440,7 @@ public final class GetProjectsProject {
             _resultValue.forkedFromProjects = forkedFromProjects;
             _resultValue.forkingAccessLevel = forkingAccessLevel;
             _resultValue.forksCount = forksCount;
+            _resultValue.groupRunnersEnabled = groupRunnersEnabled;
             _resultValue.httpUrlToRepo = httpUrlToRepo;
             _resultValue.id = id;
             _resultValue.importError = importError;

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetProjectProtectedBranchesResult',
@@ -23,8 +24,8 @@ class GetProjectProtectedBranchesResult:
     A collection of values returned by getProjectProtectedBranches.
     """
     def __init__(__self__, id=None, project_id=None, protected_branches=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
@@ -35,9 +36,9 @@ class GetProjectProtectedBranchesResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> int:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
@@ -51,7 +52,7 @@ class GetProjectProtectedBranchesResult:
 
     @property
     @pulumi.getter(name="protectedBranches")
-    def protected_branches(self) -> Sequence['outputs.GetProjectProtectedBranchesProtectedBranchResult']:
+    def protected_branches(self) -> Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchResult']]:
         """
         A list of protected branches, as defined below.
         """
@@ -70,6 +71,7 @@ class AwaitableGetProjectProtectedBranchesResult(GetProjectProtectedBranchesResu
 
 
 def get_project_protected_branches(project_id: Optional[str] = None,
+                                   protected_branches: Optional[Sequence[pulumi.InputType['GetProjectProtectedBranchesProtectedBranchArgs']]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectProtectedBranchesResult:
     """
     The `get_project_protected_branches` data source allows details of the protected branches of a given project.
@@ -87,9 +89,11 @@ def get_project_protected_branches(project_id: Optional[str] = None,
 
 
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
+    :param Sequence[pulumi.InputType['GetProjectProtectedBranchesProtectedBranchArgs']] protected_branches: A list of protected branches, as defined below.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
+    __args__['protectedBranches'] = protected_branches
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches', __args__, opts=opts, typ=GetProjectProtectedBranchesResult).value
 
@@ -101,6 +105,7 @@ def get_project_protected_branches(project_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_project_protected_branches)
 def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]] = None,
+                                          protected_branches: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetProjectProtectedBranchesProtectedBranchArgs']]]]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedBranchesResult]:
     """
     The `get_project_protected_branches` data source allows details of the protected branches of a given project.
@@ -118,5 +123,6 @@ def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]
 
 
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
+    :param Sequence[pulumi.InputType['GetProjectProtectedBranchesProtectedBranchArgs']] protected_branches: A list of protected branches, as defined below.
     """
     ...
