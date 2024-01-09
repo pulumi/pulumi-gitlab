@@ -1101,8 +1101,8 @@ github.com/d2g/hardwareaddr v0.0.0-20190221164911-e7d9fbe030e4/go.mod h1:bMl4RjI
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/dcarbone/terraform-plugin-framework-utils/v3 v3.4.1 h1:3NzzG4bNRrMmKHU/gs1gbTNtBNt6d5jCUt1P1SdVKj4=
-github.com/dcarbone/terraform-plugin-framework-utils/v3 v3.4.1/go.mod h1:ip8ktx2UJ2m4zoIg4z1j7wKHWU39O3zh/2evj4HcHRM=
+github.com/dcarbone/terraform-plugin-framework-utils/v3 v3.4.2 h1:aiuV5us866U7GqgHIJqqD1nvbnDi1g8uGxBC3/CuV1o=
+github.com/dcarbone/terraform-plugin-framework-utils/v3 v3.4.2/go.mod h1:qlLkW1km+x3GnUo2gg3jW8Y/0n2idK/nFLGREsQnONc=
 github.com/deckarep/golang-set/v2 v2.5.0 h1:hn6cEZtQ0h3J8kFrHR/NrzyOoTnjgW1+FmNJzQ7y/sA=
 github.com/deckarep/golang-set/v2 v2.5.0/go.mod h1:VAky9rY/yGXJOLEDv3OMci+7wtDpOF4IN+y82NBOac4=
 github.com/denisenkom/go-mssqldb v0.12.2/go.mod h1:lnIw1mZukFRZDJYQ0Pb833QS2IaC3l5HkEfra2LJ+sk=
@@ -1641,8 +1641,8 @@ github.com/hashicorp/golang-lru v0.5.4 h1:YDjusn29QI/Das2iO9M0BHnIbxPeyuCHsjMW+l
 github.com/hashicorp/golang-lru v0.5.4/go.mod h1:iADmTwqILo4mZ8BN3D2Q6+9jd8WM5uGBxy+E8yxSoD4=
 github.com/hashicorp/hc-install v0.4.0/go.mod h1:5d155H8EC5ewegao9A4PUTMNPZaq+TbOzkJJZ4vrXeI=
 github.com/hashicorp/hc-install v0.6.0/go.mod h1:10I912u3nntx9Umo1VAeYPUUuehk0aRQJYpMwbX5wQA=
-github.com/hashicorp/hc-install v0.6.1 h1:IGxShH7AVhPaSuSJpKtVi/EFORNjO+OYVJJrAtGG2mY=
-github.com/hashicorp/hc-install v0.6.1/go.mod h1:0fW3jpg+wraYSnFDJ6Rlie3RvLf1bIqVIkzoon4KoVE=
+github.com/hashicorp/hc-install v0.6.2 h1:V1k+Vraqz4olgZ9UzKiAcbman9i9scg9GgSt/U3mw/M=
+github.com/hashicorp/hc-install v0.6.2/go.mod h1:2JBpd+NCFKiHiu/yYCGaPyPHhZLxXTpz8oreHa/a3Ps=
 github.com/hashicorp/hcl v0.0.0-20170504190234-a4b07c25de5f/go.mod h1:oZtUIOe8dh44I2q6ScRibXws4Ajl+d+nod3AaR9vL5w=
 github.com/hashicorp/hcl v1.0.0 h1:0Anlzjpi4vEasTeNFn2mLJgTSwt0+6sfsiTG8qcWGx4=
 github.com/hashicorp/hcl v1.0.0/go.mod h1:E5yfLk+7swimpb2L/Alb/PJmXilQ/rhwaUYs4T20WEQ=
@@ -1667,8 +1667,9 @@ github.com/hashicorp/terraform-exec v0.17.2 h1:EU7i3Fh7vDUI9nNRdMATCEfnm9axzTnad
 github.com/hashicorp/terraform-exec v0.17.2/go.mod h1:tuIbsL2l4MlwwIZx9HPM+LOV9vVyEfBYu2GsO1uH3/8=
 github.com/hashicorp/terraform-json v0.4.0/go.mod h1:eAbqb4w0pSlRmdvl8fOyHAi/+8jnkVYN28gJkSJrLhU=
 github.com/hashicorp/terraform-json v0.14.0/go.mod h1:5A9HIWPkk4e5aeeXIBbkcOvaZbIYnAIkEyqP2pNSckM=
-github.com/hashicorp/terraform-json v0.17.1 h1:eMfvh/uWggKmY7Pmb3T85u86E2EQg6EQHgyRwf3RkyA=
 github.com/hashicorp/terraform-json v0.17.1/go.mod h1:Huy6zt6euxaY9knPAFKjUITn8QxUFIe9VuSzb4zn/0o=
+github.com/hashicorp/terraform-json v0.18.0 h1:pCjgJEqqDESv4y0Tzdqfxr/edOIGkjs8keY42xfNBwU=
+github.com/hashicorp/terraform-json v0.18.0/go.mod h1:qdeBs11ovMzo5puhrRibdD6d2Dq6TyE/28JiU4tIQxk=
 github.com/hashicorp/terraform-plugin-framework v1.4.2 h1:P7a7VP1GZbjc4rv921Xy5OckzhoiO3ig6SGxwelD2sI=
 github.com/hashicorp/terraform-plugin-framework v1.4.2/go.mod h1:GWl3InPFZi2wVQmdVnINPKys09s9mLmTZr95/ngLnbY=
 github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 h1:HOjBuMbOEzl7snOdOoUfE2Jgeto6JOjLVQ39Ls2nksc=
@@ -2410,8 +2411,8 @@ github.com/vmihailenco/tagparser/v2 v2.0.0/go.mod h1:Wri+At7QHww0WTrCBeu4J6bNtoV
 github.com/vultr/govultr/v2 v2.17.2/go.mod h1:ZFOKGWmgjytfyjeyAdhQlSWwTjh2ig+X49cAp50dzXI=
 github.com/willf/bitset v1.1.11-0.20200630133818-d5bec3311243/go.mod h1:RjeCKbqT1RxIR/KWY6phxZiaY1IyutSBfGjNPySAYV4=
 github.com/willf/bitset v1.1.11/go.mod h1:83CECat5yLh5zVOf4P1ErAgKA5UDvKtgyUABdr3+MjI=
-github.com/xanzy/go-gitlab v0.93.2 h1:kNNf3BYNYn/Zkig0B89fma12l36VLcYSGu7OnaRlRDg=
-github.com/xanzy/go-gitlab v0.93.2/go.mod h1:5ryv+MnpZStBH8I/77HuQBsMbBGANtVpLWC15qOjWAw=
+github.com/xanzy/go-gitlab v0.95.2 h1:4p0IirHqEp5f0baK/aQqr4TR57IsD+8e4fuyAA1yi88=
+github.com/xanzy/go-gitlab v0.95.2/go.mod h1:ETg8tcj4OhrB84UEgeE8dSuV/0h4BBL1uOV/qK0vlyI=
 github.com/xanzy/ssh-agent v0.3.0/go.mod h1:3s9xbODqPuuhK9JV1R321M/FlMZSBvE5aY6eAcqrDh0=
 github.com/xanzy/ssh-agent v0.3.3 h1:+/15pJfg/RsTxqYcX6fHqOXZwwMP+2VyYWJeWM2qQFM=
 github.com/xanzy/ssh-agent v0.3.3/go.mod h1:6dzNDKs0J9rVPHPhaGCukekBHKqfl+L3KghI1Bc68Uw=

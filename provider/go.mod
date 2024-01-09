@@ -80,7 +80,7 @@ require (
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/dcarbone/terraform-plugin-framework-utils/v3 v3.4.1 // indirect
+	github.com/dcarbone/terraform-plugin-framework-utils/v3 v3.4.2 // indirect
 	github.com/deckarep/golang-set/v2 v2.5.0 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
@@ -136,7 +136,7 @@ require (
 	github.com/hashicorp/terraform-plugin-go v0.20.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-mux v0.13.0 // indirect
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.30.0 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.31.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/vault/api v1.8.2 // indirect
@@ -216,7 +216,7 @@ require (
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
-	github.com/xanzy/go-gitlab v0.93.2 // indirect
+	github.com/xanzy/go-gitlab v0.95.2 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
