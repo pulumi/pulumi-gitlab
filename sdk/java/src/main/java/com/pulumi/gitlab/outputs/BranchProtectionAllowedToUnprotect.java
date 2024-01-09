@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BranchProtectionAllowedToUnprotect {
     /**
-     * @return Level of access.
+     * @return Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
      * 
      */
     private @Nullable String accessLevel;
     /**
-     * @return Readable description of level of access.
+     * @return Readable description of access level.
      * 
      */
     private @Nullable String accessLevelDescription;
@@ -35,14 +35,14 @@ public final class BranchProtectionAllowedToUnprotect {
 
     private BranchProtectionAllowedToUnprotect() {}
     /**
-     * @return Level of access.
+     * @return Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<String> accessLevel() {
         return Optional.ofNullable(this.accessLevel);
     }
     /**
-     * @return Readable description of level of access.
+     * @return Readable description of access level.
      * 
      */
     public Optional<String> accessLevelDescription() {

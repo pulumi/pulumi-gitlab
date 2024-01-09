@@ -46,6 +46,10 @@ export class GroupIssueBoard extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string>;
     /**
+     * The list of label names which the board should be scoped to.
+     */
+    public readonly labels!: pulumi.Output<string[] | undefined>;
+    /**
      * The list of issue board lists.
      */
     public readonly lists!: pulumi.Output<outputs.GroupIssueBoardList[] | undefined>;
@@ -72,6 +76,7 @@ export class GroupIssueBoard extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GroupIssueBoardState | undefined;
             resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lists"] = state ? state.lists : undefined;
             resourceInputs["milestoneId"] = state ? state.milestoneId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -81,6 +86,7 @@ export class GroupIssueBoard extends pulumi.CustomResource {
                 throw new Error("Missing required property 'group'");
             }
             resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["lists"] = args ? args.lists : undefined;
             resourceInputs["milestoneId"] = args ? args.milestoneId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -98,6 +104,10 @@ export interface GroupIssueBoardState {
      * The ID or URL-encoded path of the group owned by the authenticated user.
      */
     group?: pulumi.Input<string>;
+    /**
+     * The list of label names which the board should be scoped to.
+     */
+    labels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of issue board lists.
      */
@@ -120,6 +130,10 @@ export interface GroupIssueBoardArgs {
      * The ID or URL-encoded path of the group owned by the authenticated user.
      */
     group: pulumi.Input<string>;
+    /**
+     * The list of label names which the board should be scoped to.
+     */
+    labels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of issue board lists.
      */

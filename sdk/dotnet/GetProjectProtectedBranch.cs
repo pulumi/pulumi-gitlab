@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetProjectProtectedBranch
     {
         /// <summary>
-        /// The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+        /// The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectProtectedBranchResult>("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", args ?? new GetProjectProtectedBranchArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+        /// The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
         /// 
@@ -77,6 +77,18 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectProtectedBranchArgs : global::Pulumi.InvokeArgs
     {
+        [Input("mergeAccessLevels")]
+        private List<Inputs.GetProjectProtectedBranchMergeAccessLevelArgs>? _mergeAccessLevels;
+
+        /// <summary>
+        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        /// </summary>
+        public List<Inputs.GetProjectProtectedBranchMergeAccessLevelArgs> MergeAccessLevels
+        {
+            get => _mergeAccessLevels ?? (_mergeAccessLevels = new List<Inputs.GetProjectProtectedBranchMergeAccessLevelArgs>());
+            set => _mergeAccessLevels = value;
+        }
+
         /// <summary>
         /// The name of the protected branch.
         /// </summary>
@@ -89,6 +101,18 @@ namespace Pulumi.GitLab
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
+        [Input("pushAccessLevels")]
+        private List<Inputs.GetProjectProtectedBranchPushAccessLevelArgs>? _pushAccessLevels;
+
+        /// <summary>
+        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        /// </summary>
+        public List<Inputs.GetProjectProtectedBranchPushAccessLevelArgs> PushAccessLevels
+        {
+            get => _pushAccessLevels ?? (_pushAccessLevels = new List<Inputs.GetProjectProtectedBranchPushAccessLevelArgs>());
+            set => _pushAccessLevels = value;
+        }
+
         public GetProjectProtectedBranchArgs()
         {
         }
@@ -97,6 +121,18 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectProtectedBranchInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("mergeAccessLevels")]
+        private InputList<Inputs.GetProjectProtectedBranchMergeAccessLevelInputArgs>? _mergeAccessLevels;
+
+        /// <summary>
+        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        /// </summary>
+        public InputList<Inputs.GetProjectProtectedBranchMergeAccessLevelInputArgs> MergeAccessLevels
+        {
+            get => _mergeAccessLevels ?? (_mergeAccessLevels = new InputList<Inputs.GetProjectProtectedBranchMergeAccessLevelInputArgs>());
+            set => _mergeAccessLevels = value;
+        }
+
         /// <summary>
         /// The name of the protected branch.
         /// </summary>
@@ -108,6 +144,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        [Input("pushAccessLevels")]
+        private InputList<Inputs.GetProjectProtectedBranchPushAccessLevelInputArgs>? _pushAccessLevels;
+
+        /// <summary>
+        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        /// </summary>
+        public InputList<Inputs.GetProjectProtectedBranchPushAccessLevelInputArgs> PushAccessLevels
+        {
+            get => _pushAccessLevels ?? (_pushAccessLevels = new InputList<Inputs.GetProjectProtectedBranchPushAccessLevelInputArgs>());
+            set => _pushAccessLevels = value;
+        }
 
         public GetProjectProtectedBranchInvokeArgs()
         {
@@ -132,7 +180,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// Describes which access levels, users, or groups are allowed to perform the action.
+        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectProtectedBranchMergeAccessLevelResult> MergeAccessLevels;
         /// <summary>
@@ -144,7 +192,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Describes which access levels, users, or groups are allowed to perform the action.
+        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectProtectedBranchPushAccessLevelResult> PushAccessLevels;
 

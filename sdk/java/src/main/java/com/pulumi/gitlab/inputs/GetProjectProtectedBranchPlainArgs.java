@@ -5,13 +5,33 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gitlab.inputs.GetProjectProtectedBranchMergeAccessLevel;
+import com.pulumi.gitlab.inputs.GetProjectProtectedBranchPushAccessLevel;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetProjectProtectedBranchPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetProjectProtectedBranchPlainArgs Empty = new GetProjectProtectedBranchPlainArgs();
+
+    /**
+     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * 
+     */
+    @Import(name="mergeAccessLevels")
+    private @Nullable List<GetProjectProtectedBranchMergeAccessLevel> mergeAccessLevels;
+
+    /**
+     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * 
+     */
+    public Optional<List<GetProjectProtectedBranchMergeAccessLevel>> mergeAccessLevels() {
+        return Optional.ofNullable(this.mergeAccessLevels);
+    }
 
     /**
      * The name of the protected branch.
@@ -43,11 +63,28 @@ public final class GetProjectProtectedBranchPlainArgs extends com.pulumi.resourc
         return this.projectId;
     }
 
+    /**
+     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * 
+     */
+    @Import(name="pushAccessLevels")
+    private @Nullable List<GetProjectProtectedBranchPushAccessLevel> pushAccessLevels;
+
+    /**
+     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * 
+     */
+    public Optional<List<GetProjectProtectedBranchPushAccessLevel>> pushAccessLevels() {
+        return Optional.ofNullable(this.pushAccessLevels);
+    }
+
     private GetProjectProtectedBranchPlainArgs() {}
 
     private GetProjectProtectedBranchPlainArgs(GetProjectProtectedBranchPlainArgs $) {
+        this.mergeAccessLevels = $.mergeAccessLevels;
         this.name = $.name;
         this.projectId = $.projectId;
+        this.pushAccessLevels = $.pushAccessLevels;
     }
 
     public static Builder builder() {
@@ -66,6 +103,27 @@ public final class GetProjectProtectedBranchPlainArgs extends com.pulumi.resourc
 
         public Builder(GetProjectProtectedBranchPlainArgs defaults) {
             $ = new GetProjectProtectedBranchPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param mergeAccessLevels Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mergeAccessLevels(@Nullable List<GetProjectProtectedBranchMergeAccessLevel> mergeAccessLevels) {
+            $.mergeAccessLevels = mergeAccessLevels;
+            return this;
+        }
+
+        /**
+         * @param mergeAccessLevels Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mergeAccessLevels(GetProjectProtectedBranchMergeAccessLevel... mergeAccessLevels) {
+            return mergeAccessLevels(List.of(mergeAccessLevels));
         }
 
         /**
@@ -88,6 +146,27 @@ public final class GetProjectProtectedBranchPlainArgs extends com.pulumi.resourc
         public Builder projectId(String projectId) {
             $.projectId = projectId;
             return this;
+        }
+
+        /**
+         * @param pushAccessLevels Array of access levels and user(s)/group(s) allowed to push to protected branch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pushAccessLevels(@Nullable List<GetProjectProtectedBranchPushAccessLevel> pushAccessLevels) {
+            $.pushAccessLevels = pushAccessLevels;
+            return this;
+        }
+
+        /**
+         * @param pushAccessLevels Array of access levels and user(s)/group(s) allowed to push to protected branch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pushAccessLevels(GetProjectProtectedBranchPushAccessLevel... pushAccessLevels) {
+            return pushAccessLevels(List.of(pushAccessLevels));
         }
 
         public GetProjectProtectedBranchPlainArgs build() {

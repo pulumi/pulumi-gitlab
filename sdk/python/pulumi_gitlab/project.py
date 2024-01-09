@@ -46,6 +46,7 @@ class ProjectArgs:
                  feature_flags_access_level: Optional[pulumi.Input[str]] = None,
                  forked_from_project_id: Optional[pulumi.Input[int]] = None,
                  forking_access_level: Optional[pulumi.Input[str]] = None,
+                 group_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
                  import_url: Optional[pulumi.Input[str]] = None,
                  import_url_password: Optional[pulumi.Input[str]] = None,
@@ -141,6 +142,7 @@ class ProjectArgs:
         :param pulumi.Input[str] feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] forked_from_project_id: The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
         :param pulumi.Input[str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
                together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
@@ -280,6 +282,8 @@ class ProjectArgs:
             pulumi.set(__self__, "forked_from_project_id", forked_from_project_id)
         if forking_access_level is not None:
             pulumi.set(__self__, "forking_access_level", forking_access_level)
+        if group_runners_enabled is not None:
+            pulumi.set(__self__, "group_runners_enabled", group_runners_enabled)
         if group_with_project_templates_id is not None:
             pulumi.set(__self__, "group_with_project_templates_id", group_with_project_templates_id)
         if import_url is not None:
@@ -775,6 +779,18 @@ class ProjectArgs:
     @forking_access_level.setter
     def forking_access_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "forking_access_level", value)
+
+    @property
+    @pulumi.getter(name="groupRunnersEnabled")
+    def group_runners_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable group runners for this project.
+        """
+        return pulumi.get(self, "group_runners_enabled")
+
+    @group_runners_enabled.setter
+    def group_runners_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "group_runners_enabled", value)
 
     @property
     @pulumi.getter(name="groupWithProjectTemplatesId")
@@ -1550,6 +1566,7 @@ class _ProjectState:
                  feature_flags_access_level: Optional[pulumi.Input[str]] = None,
                  forked_from_project_id: Optional[pulumi.Input[int]] = None,
                  forking_access_level: Optional[pulumi.Input[str]] = None,
+                 group_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
                  http_url_to_repo: Optional[pulumi.Input[str]] = None,
                  import_url: Optional[pulumi.Input[str]] = None,
@@ -1652,6 +1669,7 @@ class _ProjectState:
         :param pulumi.Input[str] feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] forked_from_project_id: The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
         :param pulumi.Input[str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
@@ -1800,6 +1818,8 @@ class _ProjectState:
             pulumi.set(__self__, "forked_from_project_id", forked_from_project_id)
         if forking_access_level is not None:
             pulumi.set(__self__, "forking_access_level", forking_access_level)
+        if group_runners_enabled is not None:
+            pulumi.set(__self__, "group_runners_enabled", group_runners_enabled)
         if group_with_project_templates_id is not None:
             pulumi.set(__self__, "group_with_project_templates_id", group_with_project_templates_id)
         if http_url_to_repo is not None:
@@ -2329,6 +2349,18 @@ class _ProjectState:
     @forking_access_level.setter
     def forking_access_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "forking_access_level", value)
+
+    @property
+    @pulumi.getter(name="groupRunnersEnabled")
+    def group_runners_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable group runners for this project.
+        """
+        return pulumi.get(self, "group_runners_enabled")
+
+    @group_runners_enabled.setter
+    def group_runners_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "group_runners_enabled", value)
 
     @property
     @pulumi.getter(name="groupWithProjectTemplatesId")
@@ -3164,6 +3196,7 @@ class Project(pulumi.CustomResource):
                  feature_flags_access_level: Optional[pulumi.Input[str]] = None,
                  forked_from_project_id: Optional[pulumi.Input[int]] = None,
                  forking_access_level: Optional[pulumi.Input[str]] = None,
+                 group_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
                  import_url: Optional[pulumi.Input[str]] = None,
                  import_url_password: Optional[pulumi.Input[str]] = None,
@@ -3328,6 +3361,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] forked_from_project_id: The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
         :param pulumi.Input[str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
                together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
@@ -3520,6 +3554,7 @@ class Project(pulumi.CustomResource):
                  feature_flags_access_level: Optional[pulumi.Input[str]] = None,
                  forked_from_project_id: Optional[pulumi.Input[int]] = None,
                  forking_access_level: Optional[pulumi.Input[str]] = None,
+                 group_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
                  import_url: Optional[pulumi.Input[str]] = None,
                  import_url_password: Optional[pulumi.Input[str]] = None,
@@ -3619,6 +3654,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["feature_flags_access_level"] = feature_flags_access_level
             __props__.__dict__["forked_from_project_id"] = forked_from_project_id
             __props__.__dict__["forking_access_level"] = forking_access_level
+            __props__.__dict__["group_runners_enabled"] = group_runners_enabled
             __props__.__dict__["group_with_project_templates_id"] = group_with_project_templates_id
             __props__.__dict__["import_url"] = import_url
             __props__.__dict__["import_url_password"] = None if import_url_password is None else pulumi.Output.secret(import_url_password)
@@ -3730,6 +3766,7 @@ class Project(pulumi.CustomResource):
             feature_flags_access_level: Optional[pulumi.Input[str]] = None,
             forked_from_project_id: Optional[pulumi.Input[int]] = None,
             forking_access_level: Optional[pulumi.Input[str]] = None,
+            group_runners_enabled: Optional[pulumi.Input[bool]] = None,
             group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
             http_url_to_repo: Optional[pulumi.Input[str]] = None,
             import_url: Optional[pulumi.Input[str]] = None,
@@ -3837,6 +3874,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] forked_from_project_id: The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
         :param pulumi.Input[str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
@@ -3951,6 +3989,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["feature_flags_access_level"] = feature_flags_access_level
         __props__.__dict__["forked_from_project_id"] = forked_from_project_id
         __props__.__dict__["forking_access_level"] = forking_access_level
+        __props__.__dict__["group_runners_enabled"] = group_runners_enabled
         __props__.__dict__["group_with_project_templates_id"] = group_with_project_templates_id
         __props__.__dict__["http_url_to_repo"] = http_url_to_repo
         __props__.__dict__["import_url"] = import_url
@@ -4282,6 +4321,14 @@ class Project(pulumi.CustomResource):
         Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "forking_access_level")
+
+    @property
+    @pulumi.getter(name="groupRunnersEnabled")
+    def group_runners_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable group runners for this project.
+        """
+        return pulumi.get(self, "group_runners_enabled")
 
     @property
     @pulumi.getter(name="groupWithProjectTemplatesId")

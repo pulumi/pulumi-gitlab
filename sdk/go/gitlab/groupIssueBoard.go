@@ -22,6 +22,8 @@ type GroupIssueBoard struct {
 
 	// The ID or URL-encoded path of the group owned by the authenticated user.
 	Group pulumi.StringOutput `pulumi:"group"`
+	// The list of label names which the board should be scoped to.
+	Labels pulumi.StringArrayOutput `pulumi:"labels"`
 	// The list of issue board lists.
 	Lists GroupIssueBoardListArrayOutput `pulumi:"lists"`
 	// The milestone the board should be scoped to.
@@ -65,6 +67,8 @@ func GetGroupIssueBoard(ctx *pulumi.Context,
 type groupIssueBoardState struct {
 	// The ID or URL-encoded path of the group owned by the authenticated user.
 	Group *string `pulumi:"group"`
+	// The list of label names which the board should be scoped to.
+	Labels []string `pulumi:"labels"`
 	// The list of issue board lists.
 	Lists []GroupIssueBoardList `pulumi:"lists"`
 	// The milestone the board should be scoped to.
@@ -76,6 +80,8 @@ type groupIssueBoardState struct {
 type GroupIssueBoardState struct {
 	// The ID or URL-encoded path of the group owned by the authenticated user.
 	Group pulumi.StringPtrInput
+	// The list of label names which the board should be scoped to.
+	Labels pulumi.StringArrayInput
 	// The list of issue board lists.
 	Lists GroupIssueBoardListArrayInput
 	// The milestone the board should be scoped to.
@@ -91,6 +97,8 @@ func (GroupIssueBoardState) ElementType() reflect.Type {
 type groupIssueBoardArgs struct {
 	// The ID or URL-encoded path of the group owned by the authenticated user.
 	Group string `pulumi:"group"`
+	// The list of label names which the board should be scoped to.
+	Labels []string `pulumi:"labels"`
 	// The list of issue board lists.
 	Lists []GroupIssueBoardList `pulumi:"lists"`
 	// The milestone the board should be scoped to.
@@ -103,6 +111,8 @@ type groupIssueBoardArgs struct {
 type GroupIssueBoardArgs struct {
 	// The ID or URL-encoded path of the group owned by the authenticated user.
 	Group pulumi.StringInput
+	// The list of label names which the board should be scoped to.
+	Labels pulumi.StringArrayInput
 	// The list of issue board lists.
 	Lists GroupIssueBoardListArrayInput
 	// The milestone the board should be scoped to.
@@ -201,6 +211,11 @@ func (o GroupIssueBoardOutput) ToGroupIssueBoardOutputWithContext(ctx context.Co
 // The ID or URL-encoded path of the group owned by the authenticated user.
 func (o GroupIssueBoardOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupIssueBoard) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
+// The list of label names which the board should be scoped to.
+func (o GroupIssueBoardOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupIssueBoard) pulumi.StringArrayOutput { return v.Labels }).(pulumi.StringArrayOutput)
 }
 
 // The list of issue board lists.

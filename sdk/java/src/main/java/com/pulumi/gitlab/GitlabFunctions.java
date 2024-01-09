@@ -5147,7 +5147,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectMilestones:getProjectMilestones", TypeShape.of(GetProjectMilestonesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+     * The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
      * 
@@ -5187,7 +5187,7 @@ public final class GitlabFunctions {
         return getProjectProtectedBranch(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+     * The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
      * 
@@ -5227,7 +5227,7 @@ public final class GitlabFunctions {
         return getProjectProtectedBranchPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+     * The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
      * 
@@ -5267,7 +5267,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", TypeShape.of(GetProjectProtectedBranchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+     * The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
      * 

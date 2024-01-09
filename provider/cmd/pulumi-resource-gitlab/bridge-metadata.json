@@ -162,6 +162,9 @@
                 "current": "gitlab:index/groupIssueBoard:GroupIssueBoard",
                 "majorVersion": 6,
                 "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    },
                     "lists": {
                         "maxItemsOne": false
                     }
@@ -1000,7 +1003,7 @@
             "gitlab:index/application:Application": 1,
             "gitlab:index/applicationSettings:ApplicationSettings": 0,
             "gitlab:index/branch:Branch": 0,
-            "gitlab:index/branchProtection:BranchProtection": 0,
+            "gitlab:index/branchProtection:BranchProtection": 1,
             "gitlab:index/clusterAgent:ClusterAgent": 0,
             "gitlab:index/clusterAgentToken:ClusterAgentToken": 0,
             "gitlab:index/complianceFramework:ComplianceFramework": 1,
@@ -1111,8 +1114,8 @@
             "gitlab:index/getProjectMembership:getProjectMembership": 0,
             "gitlab:index/getProjectMilestone:getProjectMilestone": 0,
             "gitlab:index/getProjectMilestones:getProjectMilestones": 0,
-            "gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch": 0,
-            "gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches": 0,
+            "gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch": 1,
+            "gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches": 1,
             "gitlab:index/getProjectTag:getProjectTag": 0,
             "gitlab:index/getProjectTags:getProjectTags": 0,
             "gitlab:index/getProjectVariable:getProjectVariable": 0,
@@ -2246,6 +2249,7 @@
                 "forkedFromProjects": "forked_from_project",
                 "forkingAccessLevel": "forking_access_level",
                 "forksCount": "forks_count",
+                "groupRunnersEnabled": "group_runners_enabled",
                 "httpUrlToRepo": "http_url_to_repo",
                 "importError": "import_error",
                 "importStatus": "import_status",
@@ -2697,6 +2701,7 @@
                 "featureFlagsAccessLevel": "feature_flags_access_level",
                 "forkedFromProjectId": "forked_from_project_id",
                 "forkingAccessLevel": "forking_access_level",
+                "groupRunnersEnabled": "group_runners_enabled",
                 "groupWithProjectTemplatesId": "group_with_project_templates_id",
                 "httpUrlToRepo": "http_url_to_repo",
                 "importUrl": "import_url",

@@ -25,27 +25,27 @@ type BranchProtection struct {
 	pulumi.CustomResourceState
 
 	// Can be set to true to allow users with push access to force push.
-	AllowForcePush pulumi.BoolPtrOutput `pulumi:"allowForcePush"`
-	// Defines permissions for action.
+	AllowForcePush pulumi.BoolOutput `pulumi:"allowForcePush"`
+	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
 	AllowedToMerges BranchProtectionAllowedToMergeArrayOutput `pulumi:"allowedToMerges"`
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
 	AllowedToPushes BranchProtectionAllowedToPushArrayOutput `pulumi:"allowedToPushes"`
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
 	AllowedToUnprotects BranchProtectionAllowedToUnprotectArrayOutput `pulumi:"allowedToUnprotects"`
 	// Name of the branch.
 	Branch pulumi.StringOutput `pulumi:"branch"`
 	// The ID of the branch protection (not the branch name).
 	BranchProtectionId pulumi.IntOutput `pulumi:"branchProtectionId"`
-	// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
-	CodeOwnerApprovalRequired pulumi.BoolPtrOutput `pulumi:"codeOwnerApprovalRequired"`
+	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
+	CodeOwnerApprovalRequired pulumi.BoolOutput `pulumi:"codeOwnerApprovalRequired"`
 	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
-	MergeAccessLevel pulumi.StringPtrOutput `pulumi:"mergeAccessLevel"`
+	MergeAccessLevel pulumi.StringOutput `pulumi:"mergeAccessLevel"`
 	// The id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
-	PushAccessLevel pulumi.StringPtrOutput `pulumi:"pushAccessLevel"`
+	PushAccessLevel pulumi.StringOutput `pulumi:"pushAccessLevel"`
 	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-	UnprotectAccessLevel pulumi.StringPtrOutput `pulumi:"unprotectAccessLevel"`
+	UnprotectAccessLevel pulumi.StringOutput `pulumi:"unprotectAccessLevel"`
 }
 
 // NewBranchProtection registers a new resource with the given unique name, arguments, and options.
@@ -86,17 +86,17 @@ func GetBranchProtection(ctx *pulumi.Context,
 type branchProtectionState struct {
 	// Can be set to true to allow users with push access to force push.
 	AllowForcePush *bool `pulumi:"allowForcePush"`
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
 	AllowedToMerges []BranchProtectionAllowedToMerge `pulumi:"allowedToMerges"`
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
 	AllowedToPushes []BranchProtectionAllowedToPush `pulumi:"allowedToPushes"`
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
 	AllowedToUnprotects []BranchProtectionAllowedToUnprotect `pulumi:"allowedToUnprotects"`
 	// Name of the branch.
 	Branch *string `pulumi:"branch"`
 	// The ID of the branch protection (not the branch name).
 	BranchProtectionId *int `pulumi:"branchProtectionId"`
-	// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
 	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
 	MergeAccessLevel *string `pulumi:"mergeAccessLevel"`
@@ -111,17 +111,17 @@ type branchProtectionState struct {
 type BranchProtectionState struct {
 	// Can be set to true to allow users with push access to force push.
 	AllowForcePush pulumi.BoolPtrInput
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
 	AllowedToMerges BranchProtectionAllowedToMergeArrayInput
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
 	AllowedToPushes BranchProtectionAllowedToPushArrayInput
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
 	AllowedToUnprotects BranchProtectionAllowedToUnprotectArrayInput
 	// Name of the branch.
 	Branch pulumi.StringPtrInput
 	// The ID of the branch protection (not the branch name).
 	BranchProtectionId pulumi.IntPtrInput
-	// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired pulumi.BoolPtrInput
 	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
 	MergeAccessLevel pulumi.StringPtrInput
@@ -140,15 +140,15 @@ func (BranchProtectionState) ElementType() reflect.Type {
 type branchProtectionArgs struct {
 	// Can be set to true to allow users with push access to force push.
 	AllowForcePush *bool `pulumi:"allowForcePush"`
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
 	AllowedToMerges []BranchProtectionAllowedToMerge `pulumi:"allowedToMerges"`
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
 	AllowedToPushes []BranchProtectionAllowedToPush `pulumi:"allowedToPushes"`
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
 	AllowedToUnprotects []BranchProtectionAllowedToUnprotect `pulumi:"allowedToUnprotects"`
 	// Name of the branch.
 	Branch string `pulumi:"branch"`
-	// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
 	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
 	MergeAccessLevel *string `pulumi:"mergeAccessLevel"`
@@ -164,15 +164,15 @@ type branchProtectionArgs struct {
 type BranchProtectionArgs struct {
 	// Can be set to true to allow users with push access to force push.
 	AllowForcePush pulumi.BoolPtrInput
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
 	AllowedToMerges BranchProtectionAllowedToMergeArrayInput
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
 	AllowedToPushes BranchProtectionAllowedToPushArrayInput
-	// Defines permissions for action.
+	// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
 	AllowedToUnprotects BranchProtectionAllowedToUnprotectArrayInput
 	// Name of the branch.
 	Branch pulumi.StringInput
-	// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
+	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired pulumi.BoolPtrInput
 	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
 	MergeAccessLevel pulumi.StringPtrInput
@@ -272,21 +272,21 @@ func (o BranchProtectionOutput) ToBranchProtectionOutputWithContext(ctx context.
 }
 
 // Can be set to true to allow users with push access to force push.
-func (o BranchProtectionOutput) AllowForcePush() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BranchProtection) pulumi.BoolPtrOutput { return v.AllowForcePush }).(pulumi.BoolPtrOutput)
+func (o BranchProtectionOutput) AllowForcePush() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.BoolOutput { return v.AllowForcePush }).(pulumi.BoolOutput)
 }
 
-// Defines permissions for action.
+// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
 func (o BranchProtectionOutput) AllowedToMerges() BranchProtectionAllowedToMergeArrayOutput {
 	return o.ApplyT(func(v *BranchProtection) BranchProtectionAllowedToMergeArrayOutput { return v.AllowedToMerges }).(BranchProtectionAllowedToMergeArrayOutput)
 }
 
-// Defines permissions for action.
+// Array of access levels and user(s)/group(s) allowed to push to protected branch.
 func (o BranchProtectionOutput) AllowedToPushes() BranchProtectionAllowedToPushArrayOutput {
 	return o.ApplyT(func(v *BranchProtection) BranchProtectionAllowedToPushArrayOutput { return v.AllowedToPushes }).(BranchProtectionAllowedToPushArrayOutput)
 }
 
-// Defines permissions for action.
+// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
 func (o BranchProtectionOutput) AllowedToUnprotects() BranchProtectionAllowedToUnprotectArrayOutput {
 	return o.ApplyT(func(v *BranchProtection) BranchProtectionAllowedToUnprotectArrayOutput { return v.AllowedToUnprotects }).(BranchProtectionAllowedToUnprotectArrayOutput)
 }
@@ -301,14 +301,14 @@ func (o BranchProtectionOutput) BranchProtectionId() pulumi.IntOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.IntOutput { return v.BranchProtectionId }).(pulumi.IntOutput)
 }
 
-// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
-func (o BranchProtectionOutput) CodeOwnerApprovalRequired() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BranchProtection) pulumi.BoolPtrOutput { return v.CodeOwnerApprovalRequired }).(pulumi.BoolPtrOutput)
+// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
+func (o BranchProtectionOutput) CodeOwnerApprovalRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.BoolOutput { return v.CodeOwnerApprovalRequired }).(pulumi.BoolOutput)
 }
 
 // Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
-func (o BranchProtectionOutput) MergeAccessLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BranchProtection) pulumi.StringPtrOutput { return v.MergeAccessLevel }).(pulumi.StringPtrOutput)
+func (o BranchProtectionOutput) MergeAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.MergeAccessLevel }).(pulumi.StringOutput)
 }
 
 // The id of the project.
@@ -317,13 +317,13 @@ func (o BranchProtectionOutput) Project() pulumi.StringOutput {
 }
 
 // Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
-func (o BranchProtectionOutput) PushAccessLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BranchProtection) pulumi.StringPtrOutput { return v.PushAccessLevel }).(pulumi.StringPtrOutput)
+func (o BranchProtectionOutput) PushAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.PushAccessLevel }).(pulumi.StringOutput)
 }
 
 // Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-func (o BranchProtectionOutput) UnprotectAccessLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BranchProtection) pulumi.StringPtrOutput { return v.UnprotectAccessLevel }).(pulumi.StringPtrOutput)
+func (o BranchProtectionOutput) UnprotectAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.UnprotectAccessLevel }).(pulumi.StringOutput)
 }
 
 type BranchProtectionArrayOutput struct{ *pulumi.OutputState }

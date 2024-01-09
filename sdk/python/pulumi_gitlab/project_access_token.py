@@ -278,6 +278,8 @@ class ProjectAccessToken(pulumi.CustomResource):
         """
         The `ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
 
+        >  Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
+
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
 
         ## Example Usage
@@ -323,6 +325,8 @@ class ProjectAccessToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
+
+        >  Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
 

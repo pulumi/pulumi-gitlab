@@ -149,11 +149,11 @@
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "Level of access.\n"
+                    "description": "Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
                     "type": "string",
-                    "description": "Readable description of level of access.\n"
+                    "description": "Readable description of access level.\n"
                 },
                 "groupId": {
                     "type": "integer",
@@ -178,11 +178,11 @@
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "Level of access.\n"
+                    "description": "Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
                     "type": "string",
-                    "description": "Readable description of level of access.\n"
+                    "description": "Readable description of access level.\n"
                 },
                 "groupId": {
                     "type": "integer",
@@ -207,11 +207,11 @@
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "Level of access.\n"
+                    "description": "Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.\n"
                 },
                 "accessLevelDescription": {
                     "type": "string",
-                    "description": "Readable description of level of access.\n"
+                    "description": "Readable description of access level.\n"
                 },
                 "groupId": {
                     "type": "integer",
@@ -269,7 +269,7 @@
                 },
                 "position": {
                     "type": "integer",
-                    "description": "The position of the list within the board. The position for the list is based on the its position in the `lists` array.\n"
+                    "description": "The explicit position of the list within the board, zero based.\n"
                 }
             },
             "type": "object",
@@ -1945,24 +1945,26 @@
         "gitlab:index/getProjectProtectedBranchMergeAccessLevel:getProjectProtectedBranchMergeAccessLevel": {
             "properties": {
                 "accessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Readable description of access level.\n"
                 },
                 "groupId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.\n"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.\n"
                 }
             },
             "type": "object",
             "required": [
                 "accessLevel",
-                "accessLevelDescription",
-                "groupId",
-                "userId"
+                "accessLevelDescription"
             ],
             "language": {
                 "nodejs": {
@@ -1973,24 +1975,26 @@
         "gitlab:index/getProjectProtectedBranchPushAccessLevel:getProjectProtectedBranchPushAccessLevel": {
             "properties": {
                 "accessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Readable description of access level.\n"
                 },
                 "groupId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.\n"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.\n"
                 }
             },
             "type": "object",
             "required": [
                 "accessLevel",
-                "accessLevelDescription",
-                "groupId",
-                "userId"
+                "accessLevelDescription"
             ],
             "language": {
                 "nodejs": {
@@ -2001,28 +2005,34 @@
         "gitlab:index/getProjectProtectedBranchesProtectedBranch:getProjectProtectedBranchesProtectedBranch": {
             "properties": {
                 "allowForcePush": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether force push is allowed.\n"
                 },
                 "codeOwnerApprovalRequired": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Reject code pushes that change files listed in the CODEOWNERS file.\n"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of this resource.\n"
                 },
                 "mergeAccessLevels": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectProtectedBranchesProtectedBranchMergeAccessLevel:getProjectProtectedBranchesProtectedBranchMergeAccessLevel"
-                    }
+                    },
+                    "description": "Array of access levels and user(s)/group(s) allowed to merge to protected branch.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the protected branch.\n"
                 },
                 "pushAccessLevels": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectProtectedBranchesProtectedBranchPushAccessLevel:getProjectProtectedBranchesProtectedBranchPushAccessLevel"
-                    }
+                    },
+                    "description": "Array of access levels and user(s)/group(s) allowed to push to protected branch.\n"
                 }
             },
             "type": "object",
@@ -2030,9 +2040,7 @@
                 "allowForcePush",
                 "codeOwnerApprovalRequired",
                 "id",
-                "mergeAccessLevels",
-                "name",
-                "pushAccessLevels"
+                "name"
             ],
             "language": {
                 "nodejs": {
@@ -2043,24 +2051,26 @@
         "gitlab:index/getProjectProtectedBranchesProtectedBranchMergeAccessLevel:getProjectProtectedBranchesProtectedBranchMergeAccessLevel": {
             "properties": {
                 "accessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Readable description of access level.\n"
                 },
                 "groupId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.\n"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.\n"
                 }
             },
             "type": "object",
             "required": [
                 "accessLevel",
-                "accessLevelDescription",
-                "groupId",
-                "userId"
+                "accessLevelDescription"
             ],
             "language": {
                 "nodejs": {
@@ -2071,24 +2081,26 @@
         "gitlab:index/getProjectProtectedBranchesProtectedBranchPushAccessLevel:getProjectProtectedBranchesProtectedBranchPushAccessLevel": {
             "properties": {
                 "accessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Readable description of access level.\n"
                 },
                 "groupId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.\n"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.\n"
                 }
             },
             "type": "object",
             "required": [
                 "accessLevel",
-                "accessLevelDescription",
-                "groupId",
-                "userId"
+                "accessLevelDescription"
             ],
             "language": {
                 "nodejs": {
@@ -2512,6 +2524,9 @@
                 "forksCount": {
                     "type": "integer"
                 },
+                "groupRunnersEnabled": {
+                    "type": "boolean"
+                },
                 "httpUrlToRepo": {
                     "type": "string"
                 },
@@ -2756,6 +2771,7 @@
                 "forkedFromProjects",
                 "forkingAccessLevel",
                 "forksCount",
+                "groupRunnersEnabled",
                 "httpUrlToRepo",
                 "id",
                 "importError",
@@ -6908,21 +6924,21 @@
                     "items": {
                         "$ref": "#/types/gitlab:index/BranchProtectionAllowedToMerge:BranchProtectionAllowedToMerge"
                     },
-                    "description": "Defines permissions for action.\n"
+                    "description": "Array of access levels and user(s)/group(s) allowed to merge to protected branch.\n"
                 },
                 "allowedToPushes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/BranchProtectionAllowedToPush:BranchProtectionAllowedToPush"
                     },
-                    "description": "Defines permissions for action.\n"
+                    "description": "Array of access levels and user(s)/group(s) allowed to push to protected branch.\n"
                 },
                 "allowedToUnprotects": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/BranchProtectionAllowedToUnprotect:BranchProtectionAllowedToUnprotect"
                     },
-                    "description": "Defines permissions for action.\n"
+                    "description": "Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.\n"
                 },
                 "branch": {
                     "type": "string",
@@ -6934,7 +6950,7 @@
                 },
                 "codeOwnerApprovalRequired": {
                     "type": "boolean",
-                    "description": "Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.\n"
+                    "description": "Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.\n"
                 },
                 "mergeAccessLevel": {
                     "type": "string",
@@ -6954,68 +6970,64 @@
                 }
             },
             "required": [
+                "allowForcePush",
                 "branch",
                 "branchProtectionId",
-                "project"
+                "codeOwnerApprovalRequired",
+                "mergeAccessLevel",
+                "project",
+                "pushAccessLevel",
+                "unprotectAccessLevel"
             ],
             "inputProperties": {
                 "allowForcePush": {
                     "type": "boolean",
-                    "description": "Can be set to true to allow users with push access to force push.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Can be set to true to allow users with push access to force push.\n"
                 },
                 "allowedToMerges": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/BranchProtectionAllowedToMerge:BranchProtectionAllowedToMerge"
                     },
-                    "description": "Defines permissions for action.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Array of access levels and user(s)/group(s) allowed to merge to protected branch.\n"
                 },
                 "allowedToPushes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/BranchProtectionAllowedToPush:BranchProtectionAllowedToPush"
                     },
-                    "description": "Defines permissions for action.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Array of access levels and user(s)/group(s) allowed to push to protected branch.\n"
                 },
                 "allowedToUnprotects": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/BranchProtectionAllowedToUnprotect:BranchProtectionAllowedToUnprotect"
                     },
-                    "description": "Defines permissions for action.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.\n"
                 },
                 "branch": {
                     "type": "string",
-                    "description": "Name of the branch.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Name of the branch.\n"
                 },
                 "codeOwnerApprovalRequired": {
                     "type": "boolean",
-                    "description": "Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.\n"
+                    "description": "Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.\n"
                 },
                 "mergeAccessLevel": {
                     "type": "string",
-                    "description": "Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The id of the project.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The id of the project.\n"
                 },
                 "pushAccessLevel": {
                     "type": "string",
-                    "description": "Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "unprotectAccessLevel": {
                     "type": "string",
-                    "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.\n"
                 }
             },
             "requiredInputs": [
@@ -7027,37 +7039,32 @@
                 "properties": {
                     "allowForcePush": {
                         "type": "boolean",
-                        "description": "Can be set to true to allow users with push access to force push.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Can be set to true to allow users with push access to force push.\n"
                     },
                     "allowedToMerges": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/gitlab:index/BranchProtectionAllowedToMerge:BranchProtectionAllowedToMerge"
                         },
-                        "description": "Defines permissions for action.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Array of access levels and user(s)/group(s) allowed to merge to protected branch.\n"
                     },
                     "allowedToPushes": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/gitlab:index/BranchProtectionAllowedToPush:BranchProtectionAllowedToPush"
                         },
-                        "description": "Defines permissions for action.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Array of access levels and user(s)/group(s) allowed to push to protected branch.\n"
                     },
                     "allowedToUnprotects": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/gitlab:index/BranchProtectionAllowedToUnprotect:BranchProtectionAllowedToUnprotect"
                         },
-                        "description": "Defines permissions for action.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.\n"
                     },
                     "branch": {
                         "type": "string",
-                        "description": "Name of the branch.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Name of the branch.\n"
                     },
                     "branchProtectionId": {
                         "type": "integer",
@@ -7065,27 +7072,23 @@
                     },
                     "codeOwnerApprovalRequired": {
                         "type": "boolean",
-                        "description": "Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.\n"
+                        "description": "Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.\n"
                     },
                     "mergeAccessLevel": {
                         "type": "string",
-                        "description": "Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The id of the project.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The id of the project.\n"
                     },
                     "pushAccessLevel": {
                         "type": "string",
-                        "description": "Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.\n"
                     },
                     "unprotectAccessLevel": {
                         "type": "string",
-                        "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.\n"
                     }
                 },
                 "type": "object"
@@ -8955,6 +8958,13 @@
                     "type": "string",
                     "description": "The ID or URL-encoded path of the group owned by the authenticated user.\n"
                 },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of label names which the board should be scoped to.\n"
+                },
                 "lists": {
                     "type": "array",
                     "items": {
@@ -8979,6 +8989,13 @@
                 "group": {
                     "type": "string",
                     "description": "The ID or URL-encoded path of the group owned by the authenticated user.\n"
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of label names which the board should be scoped to.\n"
                 },
                 "lists": {
                     "type": "array",
@@ -9005,6 +9022,13 @@
                     "group": {
                         "type": "string",
                         "description": "The ID or URL-encoded path of the group owned by the authenticated user.\n"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of label names which the board should be scoped to.\n"
                     },
                     "lists": {
                         "type": "array",
@@ -12419,6 +12443,10 @@
                     "type": "string",
                     "description": "Set the forking access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
+                "groupRunnersEnabled": {
+                    "type": "boolean",
+                    "description": "Enable group runners for this project.\n"
+                },
                 "groupWithProjectTemplatesId": {
                     "type": "integer",
                     "description": "For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).\n"
@@ -12714,6 +12742,7 @@
                 "environmentsAccessLevel",
                 "featureFlagsAccessLevel",
                 "forkingAccessLevel",
+                "groupRunnersEnabled",
                 "httpUrlToRepo",
                 "infrastructureAccessLevel",
                 "issuesAccessLevel",
@@ -12883,6 +12912,10 @@
                 "forkingAccessLevel": {
                     "type": "string",
                     "description": "Set the forking access level. Valid values are `disabled`, `private`, `enabled`.\n"
+                },
+                "groupRunnersEnabled": {
+                    "type": "boolean",
+                    "description": "Enable group runners for this project.\n"
                 },
                 "groupWithProjectTemplatesId": {
                     "type": "integer",
@@ -13269,6 +13302,10 @@
                         "type": "string",
                         "description": "Set the forking access level. Valid values are `disabled`, `private`, `enabled`.\n"
                     },
+                    "groupRunnersEnabled": {
+                        "type": "boolean",
+                        "description": "Enable group runners for this project.\n"
+                    },
                     "groupWithProjectTemplatesId": {
                         "type": "integer",
                         "description": "For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).\n"
@@ -13546,7 +13583,7 @@
             }
         },
         "gitlab:index/projectAccessToken:ProjectAccessToken": {
-            "description": "The `gitlab.ProjectAccessToken` resource allows to manage the lifecycle of a project access token.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst exampleProjectAccessToken = new gitlab.ProjectAccessToken(\"exampleProjectAccessToken\", {\n    project: \"25\",\n    expiresAt: \"2020-03-14\",\n    accessLevel: \"reporter\",\n    scopes: [\"api\"],\n});\nconst exampleProjectVariable = new gitlab.ProjectVariable(\"exampleProjectVariable\", {\n    project: gitlab_project.example.id,\n    key: \"pat\",\n    value: exampleProjectAccessToken.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_project_access_token = gitlab.ProjectAccessToken(\"exampleProjectAccessToken\",\n    project=\"25\",\n    expires_at=\"2020-03-14\",\n    access_level=\"reporter\",\n    scopes=[\"api\"])\nexample_project_variable = gitlab.ProjectVariable(\"exampleProjectVariable\",\n    project=gitlab_project[\"example\"][\"id\"],\n    key=\"pat\",\n    value=example_project_access_token.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleProjectAccessToken = new GitLab.ProjectAccessToken(\"exampleProjectAccessToken\", new()\n    {\n        Project = \"25\",\n        ExpiresAt = \"2020-03-14\",\n        AccessLevel = \"reporter\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleProjectVariable = new GitLab.ProjectVariable(\"exampleProjectVariable\", new()\n    {\n        Project = gitlab_project.Example.Id,\n        Key = \"pat\",\n        Value = exampleProjectAccessToken.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleProjectAccessToken, err := gitlab.NewProjectAccessToken(ctx, \"exampleProjectAccessToken\", \u0026gitlab.ProjectAccessTokenArgs{\n\t\t\tProject:     pulumi.String(\"25\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-03-14\"),\n\t\t\tAccessLevel: pulumi.String(\"reporter\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectVariable(ctx, \"exampleProjectVariable\", \u0026gitlab.ProjectVariableArgs{\n\t\t\tProject: pulumi.Any(gitlab_project.Example.Id),\n\t\t\tKey:     pulumi.String(\"pat\"),\n\t\t\tValue:   exampleProjectAccessToken.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectAccessToken;\nimport com.pulumi.gitlab.ProjectAccessTokenArgs;\nimport com.pulumi.gitlab.ProjectVariable;\nimport com.pulumi.gitlab.ProjectVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleProjectAccessToken = new ProjectAccessToken(\"exampleProjectAccessToken\", ProjectAccessTokenArgs.builder()        \n            .project(\"25\")\n            .expiresAt(\"2020-03-14\")\n            .accessLevel(\"reporter\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleProjectVariable = new ProjectVariable(\"exampleProjectVariable\", ProjectVariableArgs.builder()        \n            .project(gitlab_project.example().id())\n            .key(\"pat\")\n            .value(exampleProjectAccessToken.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleProjectAccessToken:\n    type: gitlab:ProjectAccessToken\n    properties:\n      project: '25'\n      expiresAt: 2020-03-14\n      accessLevel: reporter\n      scopes:\n        - api\n  exampleProjectVariable:\n    type: gitlab:ProjectVariable\n    properties:\n      project: ${gitlab_project.example.id}\n      key: pat\n      value: ${exampleProjectAccessToken.token}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA GitLab Project Access Token can be imported using a key composed of `\u003cproject-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example \"12345:1\"\n```\n\n NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API. ",
+            "description": "The `gitlab.ProjectAccessToken` resource allows to manage the lifecycle of a project access token.\n\n\u003e  Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst exampleProjectAccessToken = new gitlab.ProjectAccessToken(\"exampleProjectAccessToken\", {\n    project: \"25\",\n    expiresAt: \"2020-03-14\",\n    accessLevel: \"reporter\",\n    scopes: [\"api\"],\n});\nconst exampleProjectVariable = new gitlab.ProjectVariable(\"exampleProjectVariable\", {\n    project: gitlab_project.example.id,\n    key: \"pat\",\n    value: exampleProjectAccessToken.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_project_access_token = gitlab.ProjectAccessToken(\"exampleProjectAccessToken\",\n    project=\"25\",\n    expires_at=\"2020-03-14\",\n    access_level=\"reporter\",\n    scopes=[\"api\"])\nexample_project_variable = gitlab.ProjectVariable(\"exampleProjectVariable\",\n    project=gitlab_project[\"example\"][\"id\"],\n    key=\"pat\",\n    value=example_project_access_token.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleProjectAccessToken = new GitLab.ProjectAccessToken(\"exampleProjectAccessToken\", new()\n    {\n        Project = \"25\",\n        ExpiresAt = \"2020-03-14\",\n        AccessLevel = \"reporter\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleProjectVariable = new GitLab.ProjectVariable(\"exampleProjectVariable\", new()\n    {\n        Project = gitlab_project.Example.Id,\n        Key = \"pat\",\n        Value = exampleProjectAccessToken.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleProjectAccessToken, err := gitlab.NewProjectAccessToken(ctx, \"exampleProjectAccessToken\", \u0026gitlab.ProjectAccessTokenArgs{\n\t\t\tProject:     pulumi.String(\"25\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-03-14\"),\n\t\t\tAccessLevel: pulumi.String(\"reporter\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectVariable(ctx, \"exampleProjectVariable\", \u0026gitlab.ProjectVariableArgs{\n\t\t\tProject: pulumi.Any(gitlab_project.Example.Id),\n\t\t\tKey:     pulumi.String(\"pat\"),\n\t\t\tValue:   exampleProjectAccessToken.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectAccessToken;\nimport com.pulumi.gitlab.ProjectAccessTokenArgs;\nimport com.pulumi.gitlab.ProjectVariable;\nimport com.pulumi.gitlab.ProjectVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleProjectAccessToken = new ProjectAccessToken(\"exampleProjectAccessToken\", ProjectAccessTokenArgs.builder()        \n            .project(\"25\")\n            .expiresAt(\"2020-03-14\")\n            .accessLevel(\"reporter\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleProjectVariable = new ProjectVariable(\"exampleProjectVariable\", ProjectVariableArgs.builder()        \n            .project(gitlab_project.example().id())\n            .key(\"pat\")\n            .value(exampleProjectAccessToken.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleProjectAccessToken:\n    type: gitlab:ProjectAccessToken\n    properties:\n      project: '25'\n      expiresAt: 2020-03-14\n      accessLevel: reporter\n      scopes:\n        - api\n  exampleProjectVariable:\n    type: gitlab:ProjectVariable\n    properties:\n      project: ${gitlab_project.example.id}\n      key: pat\n      value: ${exampleProjectAccessToken.token}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA GitLab Project Access Token can be imported using a key composed of `\u003cproject-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example \"12345:1\"\n```\n\n NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API. ",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -21842,10 +21879,17 @@
             }
         },
         "gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch": {
-            "description": "The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getProjectProtectedBranch({\n    name: \"main\",\n    projectId: \"foo/bar/baz\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_project_protected_branch(name=\"main\",\n    project_id=\"foo/bar/baz\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetProjectProtectedBranch.Invoke(new()\n    {\n        Name = \"main\",\n        ProjectId = \"foo/bar/baz\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetProjectProtectedBranch(ctx, \u0026gitlab.GetProjectProtectedBranchArgs{\n\t\t\tName:      \"main\",\n\t\t\tProjectId: \"foo/bar/baz\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetProjectProtectedBranchArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getProjectProtectedBranch(GetProjectProtectedBranchArgs.builder()\n            .name(\"main\")\n            .projectId(\"foo/bar/baz\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getProjectProtectedBranch\n      Arguments:\n        name: main\n        projectId: foo/bar/baz\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getProjectProtectedBranch({\n    name: \"main\",\n    projectId: \"foo/bar/baz\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_project_protected_branch(name=\"main\",\n    project_id=\"foo/bar/baz\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetProjectProtectedBranch.Invoke(new()\n    {\n        Name = \"main\",\n        ProjectId = \"foo/bar/baz\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetProjectProtectedBranch(ctx, \u0026gitlab.GetProjectProtectedBranchArgs{\n\t\t\tName:      \"main\",\n\t\t\tProjectId: \"foo/bar/baz\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetProjectProtectedBranchArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getProjectProtectedBranch(GetProjectProtectedBranchArgs.builder()\n            .name(\"main\")\n            .projectId(\"foo/bar/baz\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getProjectProtectedBranch\n      Arguments:\n        name: main\n        projectId: foo/bar/baz\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getProjectProtectedBranch.\n",
                 "properties": {
+                    "mergeAccessLevels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getProjectProtectedBranchMergeAccessLevel:getProjectProtectedBranchMergeAccessLevel"
+                        },
+                        "description": "Array of access levels and user(s)/group(s) allowed to merge to protected branch.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the protected branch.\n"
@@ -21853,6 +21897,13 @@
                     "projectId": {
                         "type": "string",
                         "description": "The integer or path with namespace that uniquely identifies the project.\n"
+                    },
+                    "pushAccessLevels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getProjectProtectedBranchPushAccessLevel:getProjectProtectedBranchPushAccessLevel"
+                        },
+                        "description": "Array of access levels and user(s)/group(s) allowed to push to protected branch.\n"
                     }
                 },
                 "type": "object",
@@ -21881,7 +21932,7 @@
                         "items": {
                             "$ref": "#/types/gitlab:index/getProjectProtectedBranchMergeAccessLevel:getProjectProtectedBranchMergeAccessLevel"
                         },
-                        "description": "Describes which access levels, users, or groups are allowed to perform the action.\n"
+                        "description": "Array of access levels and user(s)/group(s) allowed to merge to protected branch.\n"
                     },
                     "name": {
                         "type": "string",
@@ -21896,7 +21947,7 @@
                         "items": {
                             "$ref": "#/types/gitlab:index/getProjectProtectedBranchPushAccessLevel:getProjectProtectedBranchPushAccessLevel"
                         },
-                        "description": "Describes which access levels, users, or groups are allowed to perform the action.\n"
+                        "description": "Array of access levels and user(s)/group(s) allowed to push to protected branch.\n"
                     }
                 },
                 "type": "object",
@@ -21904,10 +21955,8 @@
                     "allowForcePush",
                     "codeOwnerApprovalRequired",
                     "id",
-                    "mergeAccessLevels",
                     "name",
-                    "projectId",
-                    "pushAccessLevels"
+                    "projectId"
                 ]
             }
         },
@@ -21919,6 +21968,13 @@
                     "projectId": {
                         "type": "string",
                         "description": "The integer or path with namespace that uniquely identifies the project.\n"
+                    },
+                    "protectedBranches": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getProjectProtectedBranchesProtectedBranch:getProjectProtectedBranchesProtectedBranch"
+                        },
+                        "description": "A list of protected branches, as defined below.\n"
                     }
                 },
                 "type": "object",
@@ -21930,8 +21986,8 @@
                 "description": "A collection of values returned by getProjectProtectedBranches.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "integer",
+                        "description": "The ID of this resource.\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -21947,9 +22003,8 @@
                 },
                 "type": "object",
                 "required": [
-                    "projectId",
-                    "protectedBranches",
-                    "id"
+                    "id",
+                    "projectId"
                 ]
             }
         },

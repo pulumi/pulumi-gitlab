@@ -319,6 +319,12 @@ namespace Pulumi.GitLab
         public Output<string> ForkingAccessLevel { get; private set; } = null!;
 
         /// <summary>
+        /// Enable group runners for this project.
+        /// </summary>
+        [Output("groupRunnersEnabled")]
+        public Output<bool> GroupRunnersEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         /// </summary>
         [Output("groupWithProjectTemplatesId")]
@@ -955,6 +961,12 @@ namespace Pulumi.GitLab
         public Input<string>? ForkingAccessLevel { get; set; }
 
         /// <summary>
+        /// Enable group runners for this project.
+        /// </summary>
+        [Input("groupRunnersEnabled")]
+        public Input<bool>? GroupRunnersEnabled { get; set; }
+
+        /// <summary>
         /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         /// </summary>
         [Input("groupWithProjectTemplatesId")]
@@ -1550,6 +1562,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("forkingAccessLevel")]
         public Input<string>? ForkingAccessLevel { get; set; }
+
+        /// <summary>
+        /// Enable group runners for this project.
+        /// </summary>
+        [Input("groupRunnersEnabled")]
+        public Input<bool>? GroupRunnersEnabled { get; set; }
 
         /// <summary>
         /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).

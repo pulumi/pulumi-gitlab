@@ -34,6 +34,21 @@ public final class GroupIssueBoardState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The list of label names which the board should be scoped to.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<List<String>> labels;
+
+    /**
+     * @return The list of label names which the board should be scoped to.
+     * 
+     */
+    public Optional<Output<List<String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * The list of issue board lists.
      * 
      */
@@ -82,6 +97,7 @@ public final class GroupIssueBoardState extends com.pulumi.resources.ResourceArg
 
     private GroupIssueBoardState(GroupIssueBoardState $) {
         this.group = $.group;
+        this.labels = $.labels;
         this.lists = $.lists;
         this.milestoneId = $.milestoneId;
         this.name = $.name;
@@ -124,6 +140,37 @@ public final class GroupIssueBoardState extends com.pulumi.resources.ResourceArg
          */
         public Builder group(String group) {
             return group(Output.of(group));
+        }
+
+        /**
+         * @param labels The list of label names which the board should be scoped to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<List<String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels The list of label names which the board should be scoped to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(List<String> labels) {
+            return labels(Output.of(labels));
+        }
+
+        /**
+         * @param labels The list of label names which the board should be scoped to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(String... labels) {
+            return labels(List.of(labels));
         }
 
         /**

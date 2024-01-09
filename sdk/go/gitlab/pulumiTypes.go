@@ -168,9 +168,9 @@ func (o BranchCommitArrayOutput) Index(i pulumi.IntInput) BranchCommitOutput {
 }
 
 type BranchProtectionAllowedToMerge struct {
-	// Level of access.
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	// Readable description of access level.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
 	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
 	GroupId *int `pulumi:"groupId"`
@@ -190,9 +190,9 @@ type BranchProtectionAllowedToMergeInput interface {
 }
 
 type BranchProtectionAllowedToMergeArgs struct {
-	// Level of access.
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	// Readable description of access level.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
 	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
@@ -251,12 +251,12 @@ func (o BranchProtectionAllowedToMergeOutput) ToBranchProtectionAllowedToMergeOu
 	return o
 }
 
-// Level of access.
+// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 func (o BranchProtectionAllowedToMergeOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// Readable description of level of access.
+// Readable description of access level.
 func (o BranchProtectionAllowedToMergeOutput) AccessLevelDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
@@ -292,9 +292,9 @@ func (o BranchProtectionAllowedToMergeArrayOutput) Index(i pulumi.IntInput) Bran
 }
 
 type BranchProtectionAllowedToPush struct {
-	// Level of access.
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	// Readable description of access level.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
 	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
 	GroupId *int `pulumi:"groupId"`
@@ -314,9 +314,9 @@ type BranchProtectionAllowedToPushInput interface {
 }
 
 type BranchProtectionAllowedToPushArgs struct {
-	// Level of access.
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	// Readable description of access level.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
 	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
@@ -375,12 +375,12 @@ func (o BranchProtectionAllowedToPushOutput) ToBranchProtectionAllowedToPushOutp
 	return o
 }
 
-// Level of access.
+// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 func (o BranchProtectionAllowedToPushOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToPush) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// Readable description of level of access.
+// Readable description of access level.
 func (o BranchProtectionAllowedToPushOutput) AccessLevelDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToPush) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
@@ -416,9 +416,9 @@ func (o BranchProtectionAllowedToPushArrayOutput) Index(i pulumi.IntInput) Branc
 }
 
 type BranchProtectionAllowedToUnprotect struct {
-	// Level of access.
+	// Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	// Readable description of access level.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
 	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
 	GroupId *int `pulumi:"groupId"`
@@ -438,9 +438,9 @@ type BranchProtectionAllowedToUnprotectInput interface {
 }
 
 type BranchProtectionAllowedToUnprotectArgs struct {
-	// Level of access.
+	// Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	// Readable description of access level.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
 	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
@@ -499,12 +499,12 @@ func (o BranchProtectionAllowedToUnprotectOutput) ToBranchProtectionAllowedToUnp
 	return o
 }
 
-// Level of access.
+// Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
 func (o BranchProtectionAllowedToUnprotectOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToUnprotect) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// Readable description of level of access.
+// Readable description of access level.
 func (o BranchProtectionAllowedToUnprotectOutput) AccessLevelDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToUnprotect) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
@@ -659,7 +659,7 @@ type GroupIssueBoardList struct {
 	Id *int `pulumi:"id"`
 	// The ID of the label the list should be scoped to.
 	LabelId *int `pulumi:"labelId"`
-	// The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+	// The explicit position of the list within the board, zero based.
 	Position *int `pulumi:"position"`
 }
 
@@ -679,7 +679,7 @@ type GroupIssueBoardListArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The ID of the label the list should be scoped to.
 	LabelId pulumi.IntPtrInput `pulumi:"labelId"`
-	// The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+	// The explicit position of the list within the board, zero based.
 	Position pulumi.IntPtrInput `pulumi:"position"`
 }
 
@@ -744,7 +744,7 @@ func (o GroupIssueBoardListOutput) LabelId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GroupIssueBoardList) *int { return v.LabelId }).(pulumi.IntPtrOutput)
 }
 
-// The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+// The explicit position of the list within the board, zero based.
 func (o GroupIssueBoardListOutput) Position() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GroupIssueBoardList) *int { return v.Position }).(pulumi.IntPtrOutput)
 }
@@ -5971,10 +5971,14 @@ func (o GetProjectMilestonesMilestoneArrayOutput) Index(i pulumi.IntInput) GetPr
 }
 
 type GetProjectProtectedBranchMergeAccessLevel struct {
-	AccessLevel            string `pulumi:"accessLevel"`
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	AccessLevel string `pulumi:"accessLevel"`
+	// Readable description of access level.
 	AccessLevelDescription string `pulumi:"accessLevelDescription"`
-	GroupId                int    `pulumi:"groupId"`
-	UserId                 int    `pulumi:"userId"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId *int `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId *int `pulumi:"userId"`
 }
 
 // GetProjectProtectedBranchMergeAccessLevelInput is an input type that accepts GetProjectProtectedBranchMergeAccessLevelArgs and GetProjectProtectedBranchMergeAccessLevelOutput values.
@@ -5989,10 +5993,14 @@ type GetProjectProtectedBranchMergeAccessLevelInput interface {
 }
 
 type GetProjectProtectedBranchMergeAccessLevelArgs struct {
-	AccessLevel            pulumi.StringInput `pulumi:"accessLevel"`
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// Readable description of access level.
 	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
-	GroupId                pulumi.IntInput    `pulumi:"groupId"`
-	UserId                 pulumi.IntInput    `pulumi:"userId"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
 
 func (GetProjectProtectedBranchMergeAccessLevelArgs) ElementType() reflect.Type {
@@ -6046,20 +6054,24 @@ func (o GetProjectProtectedBranchMergeAccessLevelOutput) ToGetProjectProtectedBr
 	return o
 }
 
+// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 func (o GetProjectProtectedBranchMergeAccessLevelOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchMergeAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
+// Readable description of access level.
 func (o GetProjectProtectedBranchMergeAccessLevelOutput) AccessLevelDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchMergeAccessLevel) string { return v.AccessLevelDescription }).(pulumi.StringOutput)
 }
 
-func (o GetProjectProtectedBranchMergeAccessLevelOutput) GroupId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProjectProtectedBranchMergeAccessLevel) int { return v.GroupId }).(pulumi.IntOutput)
+// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+func (o GetProjectProtectedBranchMergeAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedBranchMergeAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
-func (o GetProjectProtectedBranchMergeAccessLevelOutput) UserId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProjectProtectedBranchMergeAccessLevel) int { return v.UserId }).(pulumi.IntOutput)
+// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+func (o GetProjectProtectedBranchMergeAccessLevelOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedBranchMergeAccessLevel) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
 
 type GetProjectProtectedBranchMergeAccessLevelArrayOutput struct{ *pulumi.OutputState }
@@ -6083,10 +6095,14 @@ func (o GetProjectProtectedBranchMergeAccessLevelArrayOutput) Index(i pulumi.Int
 }
 
 type GetProjectProtectedBranchPushAccessLevel struct {
-	AccessLevel            string `pulumi:"accessLevel"`
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	AccessLevel string `pulumi:"accessLevel"`
+	// Readable description of access level.
 	AccessLevelDescription string `pulumi:"accessLevelDescription"`
-	GroupId                int    `pulumi:"groupId"`
-	UserId                 int    `pulumi:"userId"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId *int `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId *int `pulumi:"userId"`
 }
 
 // GetProjectProtectedBranchPushAccessLevelInput is an input type that accepts GetProjectProtectedBranchPushAccessLevelArgs and GetProjectProtectedBranchPushAccessLevelOutput values.
@@ -6101,10 +6117,14 @@ type GetProjectProtectedBranchPushAccessLevelInput interface {
 }
 
 type GetProjectProtectedBranchPushAccessLevelArgs struct {
-	AccessLevel            pulumi.StringInput `pulumi:"accessLevel"`
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// Readable description of access level.
 	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
-	GroupId                pulumi.IntInput    `pulumi:"groupId"`
-	UserId                 pulumi.IntInput    `pulumi:"userId"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
 
 func (GetProjectProtectedBranchPushAccessLevelArgs) ElementType() reflect.Type {
@@ -6158,20 +6178,24 @@ func (o GetProjectProtectedBranchPushAccessLevelOutput) ToGetProjectProtectedBra
 	return o
 }
 
+// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 func (o GetProjectProtectedBranchPushAccessLevelOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchPushAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
+// Readable description of access level.
 func (o GetProjectProtectedBranchPushAccessLevelOutput) AccessLevelDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchPushAccessLevel) string { return v.AccessLevelDescription }).(pulumi.StringOutput)
 }
 
-func (o GetProjectProtectedBranchPushAccessLevelOutput) GroupId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProjectProtectedBranchPushAccessLevel) int { return v.GroupId }).(pulumi.IntOutput)
+// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+func (o GetProjectProtectedBranchPushAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedBranchPushAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
-func (o GetProjectProtectedBranchPushAccessLevelOutput) UserId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProjectProtectedBranchPushAccessLevel) int { return v.UserId }).(pulumi.IntOutput)
+// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+func (o GetProjectProtectedBranchPushAccessLevelOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedBranchPushAccessLevel) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
 
 type GetProjectProtectedBranchPushAccessLevelArrayOutput struct{ *pulumi.OutputState }
@@ -6195,12 +6219,18 @@ func (o GetProjectProtectedBranchPushAccessLevelArrayOutput) Index(i pulumi.IntI
 }
 
 type GetProjectProtectedBranchesProtectedBranch struct {
-	AllowForcePush            bool                                                         `pulumi:"allowForcePush"`
-	CodeOwnerApprovalRequired bool                                                         `pulumi:"codeOwnerApprovalRequired"`
-	Id                        int                                                          `pulumi:"id"`
-	MergeAccessLevels         []GetProjectProtectedBranchesProtectedBranchMergeAccessLevel `pulumi:"mergeAccessLevels"`
-	Name                      string                                                       `pulumi:"name"`
-	PushAccessLevels          []GetProjectProtectedBranchesProtectedBranchPushAccessLevel  `pulumi:"pushAccessLevels"`
+	// Whether force push is allowed.
+	AllowForcePush bool `pulumi:"allowForcePush"`
+	// Reject code pushes that change files listed in the CODEOWNERS file.
+	CodeOwnerApprovalRequired bool `pulumi:"codeOwnerApprovalRequired"`
+	// The ID of this resource.
+	Id int `pulumi:"id"`
+	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+	MergeAccessLevels []GetProjectProtectedBranchesProtectedBranchMergeAccessLevel `pulumi:"mergeAccessLevels"`
+	// The name of the protected branch.
+	Name string `pulumi:"name"`
+	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+	PushAccessLevels []GetProjectProtectedBranchesProtectedBranchPushAccessLevel `pulumi:"pushAccessLevels"`
 }
 
 // GetProjectProtectedBranchesProtectedBranchInput is an input type that accepts GetProjectProtectedBranchesProtectedBranchArgs and GetProjectProtectedBranchesProtectedBranchOutput values.
@@ -6215,12 +6245,18 @@ type GetProjectProtectedBranchesProtectedBranchInput interface {
 }
 
 type GetProjectProtectedBranchesProtectedBranchArgs struct {
-	AllowForcePush            pulumi.BoolInput                                                     `pulumi:"allowForcePush"`
-	CodeOwnerApprovalRequired pulumi.BoolInput                                                     `pulumi:"codeOwnerApprovalRequired"`
-	Id                        pulumi.IntInput                                                      `pulumi:"id"`
-	MergeAccessLevels         GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayInput `pulumi:"mergeAccessLevels"`
-	Name                      pulumi.StringInput                                                   `pulumi:"name"`
-	PushAccessLevels          GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayInput  `pulumi:"pushAccessLevels"`
+	// Whether force push is allowed.
+	AllowForcePush pulumi.BoolInput `pulumi:"allowForcePush"`
+	// Reject code pushes that change files listed in the CODEOWNERS file.
+	CodeOwnerApprovalRequired pulumi.BoolInput `pulumi:"codeOwnerApprovalRequired"`
+	// The ID of this resource.
+	Id pulumi.IntInput `pulumi:"id"`
+	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+	MergeAccessLevels GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayInput `pulumi:"mergeAccessLevels"`
+	// The name of the protected branch.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+	PushAccessLevels GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayInput `pulumi:"pushAccessLevels"`
 }
 
 func (GetProjectProtectedBranchesProtectedBranchArgs) ElementType() reflect.Type {
@@ -6274,28 +6310,34 @@ func (o GetProjectProtectedBranchesProtectedBranchOutput) ToGetProjectProtectedB
 	return o
 }
 
+// Whether force push is allowed.
 func (o GetProjectProtectedBranchesProtectedBranchOutput) AllowForcePush() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranch) bool { return v.AllowForcePush }).(pulumi.BoolOutput)
 }
 
+// Reject code pushes that change files listed in the CODEOWNERS file.
 func (o GetProjectProtectedBranchesProtectedBranchOutput) CodeOwnerApprovalRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranch) bool { return v.CodeOwnerApprovalRequired }).(pulumi.BoolOutput)
 }
 
+// The ID of this resource.
 func (o GetProjectProtectedBranchesProtectedBranchOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranch) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
 func (o GetProjectProtectedBranchesProtectedBranchOutput) MergeAccessLevels() GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranch) []GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
 		return v.MergeAccessLevels
 	}).(GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayOutput)
 }
 
+// The name of the protected branch.
 func (o GetProjectProtectedBranchesProtectedBranchOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranch) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Array of access levels and user(s)/group(s) allowed to push to protected branch.
 func (o GetProjectProtectedBranchesProtectedBranchOutput) PushAccessLevels() GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranch) []GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
 		return v.PushAccessLevels
@@ -6323,10 +6365,14 @@ func (o GetProjectProtectedBranchesProtectedBranchArrayOutput) Index(i pulumi.In
 }
 
 type GetProjectProtectedBranchesProtectedBranchMergeAccessLevel struct {
-	AccessLevel            string `pulumi:"accessLevel"`
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	AccessLevel string `pulumi:"accessLevel"`
+	// Readable description of access level.
 	AccessLevelDescription string `pulumi:"accessLevelDescription"`
-	GroupId                int    `pulumi:"groupId"`
-	UserId                 int    `pulumi:"userId"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId *int `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId *int `pulumi:"userId"`
 }
 
 // GetProjectProtectedBranchesProtectedBranchMergeAccessLevelInput is an input type that accepts GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs and GetProjectProtectedBranchesProtectedBranchMergeAccessLevelOutput values.
@@ -6341,10 +6387,14 @@ type GetProjectProtectedBranchesProtectedBranchMergeAccessLevelInput interface {
 }
 
 type GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs struct {
-	AccessLevel            pulumi.StringInput `pulumi:"accessLevel"`
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// Readable description of access level.
 	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
-	GroupId                pulumi.IntInput    `pulumi:"groupId"`
-	UserId                 pulumi.IntInput    `pulumi:"userId"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
 
 func (GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs) ElementType() reflect.Type {
@@ -6398,22 +6448,26 @@ func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelOutput) ToGetP
 	return o
 }
 
+// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchMergeAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
+// Readable description of access level.
 func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelOutput) AccessLevelDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchMergeAccessLevel) string {
 		return v.AccessLevelDescription
 	}).(pulumi.StringOutput)
 }
 
-func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelOutput) GroupId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchMergeAccessLevel) int { return v.GroupId }).(pulumi.IntOutput)
+// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchMergeAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
-func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelOutput) UserId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchMergeAccessLevel) int { return v.UserId }).(pulumi.IntOutput)
+// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchMergeAccessLevel) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
 
 type GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayOutput struct{ *pulumi.OutputState }
@@ -6437,10 +6491,14 @@ func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayOutput) I
 }
 
 type GetProjectProtectedBranchesProtectedBranchPushAccessLevel struct {
-	AccessLevel            string `pulumi:"accessLevel"`
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	AccessLevel string `pulumi:"accessLevel"`
+	// Readable description of access level.
 	AccessLevelDescription string `pulumi:"accessLevelDescription"`
-	GroupId                int    `pulumi:"groupId"`
-	UserId                 int    `pulumi:"userId"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId *int `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId *int `pulumi:"userId"`
 }
 
 // GetProjectProtectedBranchesProtectedBranchPushAccessLevelInput is an input type that accepts GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs and GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput values.
@@ -6455,10 +6513,14 @@ type GetProjectProtectedBranchesProtectedBranchPushAccessLevelInput interface {
 }
 
 type GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs struct {
-	AccessLevel            pulumi.StringInput `pulumi:"accessLevel"`
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// Readable description of access level.
 	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
-	GroupId                pulumi.IntInput    `pulumi:"groupId"`
-	UserId                 pulumi.IntInput    `pulumi:"userId"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
 
 func (GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs) ElementType() reflect.Type {
@@ -6512,22 +6574,26 @@ func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) ToGetPr
 	return o
 }
 
+// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchPushAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
+// Readable description of access level.
 func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) AccessLevelDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchPushAccessLevel) string {
 		return v.AccessLevelDescription
 	}).(pulumi.StringOutput)
 }
 
-func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) GroupId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchPushAccessLevel) int { return v.GroupId }).(pulumi.IntOutput)
+// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchPushAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
-func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) UserId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchPushAccessLevel) int { return v.UserId }).(pulumi.IntOutput)
+// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchPushAccessLevel) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
 
 type GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayOutput struct{ *pulumi.OutputState }
@@ -7506,6 +7572,7 @@ type GetProjectsProject struct {
 	ForkedFromProjects                        []GetProjectsProjectForkedFromProject         `pulumi:"forkedFromProjects"`
 	ForkingAccessLevel                        string                                        `pulumi:"forkingAccessLevel"`
 	ForksCount                                int                                           `pulumi:"forksCount"`
+	GroupRunnersEnabled                       bool                                          `pulumi:"groupRunnersEnabled"`
 	HttpUrlToRepo                             string                                        `pulumi:"httpUrlToRepo"`
 	Id                                        int                                           `pulumi:"id"`
 	ImportError                               string                                        `pulumi:"importError"`
@@ -7615,6 +7682,7 @@ type GetProjectsProjectArgs struct {
 	ForkedFromProjects                        GetProjectsProjectForkedFromProjectArrayInput         `pulumi:"forkedFromProjects"`
 	ForkingAccessLevel                        pulumi.StringInput                                    `pulumi:"forkingAccessLevel"`
 	ForksCount                                pulumi.IntInput                                       `pulumi:"forksCount"`
+	GroupRunnersEnabled                       pulumi.BoolInput                                      `pulumi:"groupRunnersEnabled"`
 	HttpUrlToRepo                             pulumi.StringInput                                    `pulumi:"httpUrlToRepo"`
 	Id                                        pulumi.IntInput                                       `pulumi:"id"`
 	ImportError                               pulumi.StringInput                                    `pulumi:"importError"`
@@ -7862,6 +7930,10 @@ func (o GetProjectsProjectOutput) ForkingAccessLevel() pulumi.StringOutput {
 
 func (o GetProjectsProjectOutput) ForksCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProject) int { return v.ForksCount }).(pulumi.IntOutput)
+}
+
+func (o GetProjectsProjectOutput) GroupRunnersEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.GroupRunnersEnabled }).(pulumi.BoolOutput)
 }
 
 func (o GetProjectsProjectOutput) HttpUrlToRepo() pulumi.StringOutput {
