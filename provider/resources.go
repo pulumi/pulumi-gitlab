@@ -23,13 +23,15 @@ import (
 	// The linter requires unnamed imports to have a doc comment
 	_ "embed"
 
-	"github.com/pulumi/pulumi-gitlab/provider/v6/pkg/version"
+	gitlabShim "gitlab.com/gitlab-org/terraform-provider-gitlab/shim"
+
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	gitlabShim "gitlab.com/gitlab-org/terraform-provider-gitlab/shim"
+
+	"github.com/pulumi/pulumi-gitlab/provider/v6/pkg/version"
 )
 
 // all of the GitLab token components used below.

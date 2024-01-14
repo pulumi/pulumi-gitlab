@@ -18,10 +18,12 @@ package main
 
 import (
 	"context"
+
 	_ "embed"
 
-	gitlab "github.com/pulumi/pulumi-gitlab/provider/v6"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+
+	gitlab "github.com/pulumi/pulumi-gitlab/provider/v6"
 )
 
 //go:embed schema-embed.json
