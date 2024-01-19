@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeployKeyEnable{}
 	case "gitlab:index/deployToken:DeployToken":
 		r = &DeployToken{}
+	case "gitlab:index/globalLevelNotifications:GlobalLevelNotifications":
+		r = &GlobalLevelNotifications{}
 	case "gitlab:index/group:Group":
 		r = &Group{}
 	case "gitlab:index/groupAccessToken:GroupAccessToken":
@@ -272,6 +274,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/deployToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/globalLevelNotifications",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

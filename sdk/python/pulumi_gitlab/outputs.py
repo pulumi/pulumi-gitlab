@@ -33,6 +33,7 @@ __all__ = [
     'GetClusterAgentsClusterAgentResult',
     'GetGroupHooksHookResult',
     'GetGroupMembershipMemberResult',
+    'GetGroupSharedWithGroupResult',
     'GetGroupSubgroupsSubgroupResult',
     'GetGroupVariablesVariableResult',
     'GetGroupsGroupResult',
@@ -55,6 +56,7 @@ __all__ = [
     'GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult',
     'GetProjectPushRuleResult',
+    'GetProjectSharedWithGroupResult',
     'GetProjectTagCommitResult',
     'GetProjectTagReleaseResult',
     'GetProjectTagsTagResult',
@@ -2134,6 +2136,46 @@ class GetGroupMembershipMemberResult(dict):
 
 
 @pulumi.output_type
+class GetGroupSharedWithGroupResult(dict):
+    def __init__(__self__, *,
+                 expires_at: str,
+                 group_access_level: int,
+                 group_full_path: str,
+                 group_id: int,
+                 group_name: str):
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "group_access_level", group_access_level)
+        pulumi.set(__self__, "group_full_path", group_full_path)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "group_name", group_name)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> str:
+        return pulumi.get(self, "expires_at")
+
+    @property
+    @pulumi.getter(name="groupAccessLevel")
+    def group_access_level(self) -> int:
+        return pulumi.get(self, "group_access_level")
+
+    @property
+    @pulumi.getter(name="groupFullPath")
+    def group_full_path(self) -> str:
+        return pulumi.get(self, "group_full_path")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> int:
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        return pulumi.get(self, "group_name")
+
+
+@pulumi.output_type
 class GetGroupSubgroupsSubgroupResult(dict):
     def __init__(__self__, *,
                  auto_devops_enabled: bool,
@@ -3888,6 +3930,39 @@ class GetProjectPushRuleResult(dict):
 
 
 @pulumi.output_type
+class GetProjectSharedWithGroupResult(dict):
+    def __init__(__self__, *,
+                 group_access_level: int,
+                 group_full_path: str,
+                 group_id: int,
+                 group_name: str):
+        pulumi.set(__self__, "group_access_level", group_access_level)
+        pulumi.set(__self__, "group_full_path", group_full_path)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "group_name", group_name)
+
+    @property
+    @pulumi.getter(name="groupAccessLevel")
+    def group_access_level(self) -> int:
+        return pulumi.get(self, "group_access_level")
+
+    @property
+    @pulumi.getter(name="groupFullPath")
+    def group_full_path(self) -> str:
+        return pulumi.get(self, "group_full_path")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> int:
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        return pulumi.get(self, "group_name")
+
+
+@pulumi.output_type
 class GetProjectTagCommitResult(dict):
     def __init__(__self__, *,
                  author_email: str,
@@ -5294,6 +5369,7 @@ class GetUsersUserResult(dict):
                  external: bool,
                  id: int,
                  is_admin: bool,
+                 is_bot: bool,
                  last_sign_in_at: str,
                  linkedin: str,
                  location: str,
@@ -5321,6 +5397,7 @@ class GetUsersUserResult(dict):
         pulumi.set(__self__, "external", external)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_admin", is_admin)
+        pulumi.set(__self__, "is_bot", is_bot)
         pulumi.set(__self__, "last_sign_in_at", last_sign_in_at)
         pulumi.set(__self__, "linkedin", linkedin)
         pulumi.set(__self__, "location", location)
@@ -5396,6 +5473,11 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="isAdmin")
     def is_admin(self) -> bool:
         return pulumi.get(self, "is_admin")
+
+    @property
+    @pulumi.getter(name="isBot")
+    def is_bot(self) -> bool:
+        return pulumi.get(self, "is_bot")
 
     @property
     @pulumi.getter(name="lastSignInAt")

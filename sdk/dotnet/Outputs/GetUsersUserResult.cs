@@ -25,6 +25,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool External;
         public readonly int Id;
         public readonly bool IsAdmin;
+        public readonly bool IsBot;
         public readonly string LastSignInAt;
         public readonly string Linkedin;
         public readonly string Location;
@@ -66,6 +67,8 @@ namespace Pulumi.GitLab.Outputs
             int id,
 
             bool isAdmin,
+
+            bool isBot,
 
             string lastSignInAt,
 
@@ -109,6 +112,7 @@ namespace Pulumi.GitLab.Outputs
             External = external;
             Id = id;
             IsAdmin = isAdmin;
+            IsBot = isBot;
             LastSignInAt = lastSignInAt;
             Linkedin = linkedin;
             Location = location;

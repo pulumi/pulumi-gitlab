@@ -129,7 +129,7 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     public readonly token!: pulumi.Output<string | undefined>;
     /**
-     * The url of the hook to invoke.
+     * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -277,7 +277,7 @@ export interface ProjectHookState {
      */
     token?: pulumi.Input<string>;
     /**
-     * The url of the hook to invoke.
+     * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     url?: pulumi.Input<string>;
     /**
@@ -351,7 +351,7 @@ export interface ProjectHookArgs {
      */
     token?: pulumi.Input<string>;
     /**
-     * The url of the hook to invoke.
+     * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     url: pulumi.Input<string>;
     /**

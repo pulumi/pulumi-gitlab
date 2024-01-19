@@ -92,7 +92,7 @@ type ProjectHook struct {
 	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
-	// The url of the hook to invoke.
+	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Invoke the hook for wiki page events.
 	WikiPageEvents pulumi.BoolPtrOutput `pulumi:"wikiPageEvents"`
@@ -175,7 +175,7 @@ type projectHookState struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token *string `pulumi:"token"`
-	// The url of the hook to invoke.
+	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url *string `pulumi:"url"`
 	// Invoke the hook for wiki page events.
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
@@ -216,7 +216,7 @@ type ProjectHookState struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringPtrInput
-	// The url of the hook to invoke.
+	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringPtrInput
 	// Invoke the hook for wiki page events.
 	WikiPageEvents pulumi.BoolPtrInput
@@ -257,7 +257,7 @@ type projectHookArgs struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token *string `pulumi:"token"`
-	// The url of the hook to invoke.
+	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url string `pulumi:"url"`
 	// Invoke the hook for wiki page events.
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
@@ -295,7 +295,7 @@ type ProjectHookArgs struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringPtrInput
-	// The url of the hook to invoke.
+	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringInput
 	// Invoke the hook for wiki page events.
 	WikiPageEvents pulumi.BoolPtrInput
@@ -473,7 +473,7 @@ func (o ProjectHookOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-// The url of the hook to invoke.
+// The url of the hook to invoke. Forces re-creation to preserve `token`.
 func (o ProjectHookOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

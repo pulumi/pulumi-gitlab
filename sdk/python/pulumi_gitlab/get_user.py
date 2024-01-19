@@ -21,7 +21,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, extern_uid=None, external=None, id=None, is_admin=None, last_sign_in_at=None, linkedin=None, location=None, name=None, namespace_id=None, note=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
+    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, extern_uid=None, external=None, id=None, is_admin=None, is_bot=None, last_sign_in_at=None, linkedin=None, location=None, name=None, namespace_id=None, note=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
         if avatar_url and not isinstance(avatar_url, str):
             raise TypeError("Expected argument 'avatar_url' to be a str")
         pulumi.set(__self__, "avatar_url", avatar_url)
@@ -58,6 +58,9 @@ class GetUserResult:
         if is_admin and not isinstance(is_admin, bool):
             raise TypeError("Expected argument 'is_admin' to be a bool")
         pulumi.set(__self__, "is_admin", is_admin)
+        if is_bot and not isinstance(is_bot, bool):
+            raise TypeError("Expected argument 'is_bot' to be a bool")
+        pulumi.set(__self__, "is_bot", is_bot)
         if last_sign_in_at and not isinstance(last_sign_in_at, str):
             raise TypeError("Expected argument 'last_sign_in_at' to be a str")
         pulumi.set(__self__, "last_sign_in_at", last_sign_in_at)
@@ -205,6 +208,14 @@ class GetUserResult:
         Whether the user is an admin.
         """
         return pulumi.get(self, "is_admin")
+
+    @property
+    @pulumi.getter(name="isBot")
+    def is_bot(self) -> bool:
+        """
+        Whether the user is a bot.
+        """
+        return pulumi.get(self, "is_bot")
 
     @property
     @pulumi.getter(name="lastSignInAt")
@@ -361,6 +372,7 @@ class AwaitableGetUserResult(GetUserResult):
             external=self.external,
             id=self.id,
             is_admin=self.is_admin,
+            is_bot=self.is_bot,
             last_sign_in_at=self.last_sign_in_at,
             linkedin=self.linkedin,
             location=self.location,
@@ -422,6 +434,7 @@ def get_user(email: Optional[str] = None,
         external=pulumi.get(__ret__, 'external'),
         id=pulumi.get(__ret__, 'id'),
         is_admin=pulumi.get(__ret__, 'is_admin'),
+        is_bot=pulumi.get(__ret__, 'is_bot'),
         last_sign_in_at=pulumi.get(__ret__, 'last_sign_in_at'),
         linkedin=pulumi.get(__ret__, 'linkedin'),
         location=pulumi.get(__ret__, 'location'),

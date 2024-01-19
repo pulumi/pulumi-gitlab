@@ -982,6 +982,38 @@
                 }
             }
         },
+        "gitlab:index/getGroupSharedWithGroup:getGroupSharedWithGroup": {
+            "properties": {
+                "expiresAt": {
+                    "type": "string"
+                },
+                "groupAccessLevel": {
+                    "type": "integer"
+                },
+                "groupFullPath": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "type": "integer"
+                },
+                "groupName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expiresAt",
+                "groupAccessLevel",
+                "groupFullPath",
+                "groupId",
+                "groupName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "gitlab:index/getGroupSubgroupsSubgroup:getGroupSubgroupsSubgroup": {
             "properties": {
                 "autoDevopsEnabled": {
@@ -2164,6 +2196,34 @@
                 }
             }
         },
+        "gitlab:index/getProjectSharedWithGroup:getProjectSharedWithGroup": {
+            "properties": {
+                "groupAccessLevel": {
+                    "type": "integer"
+                },
+                "groupFullPath": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "type": "integer"
+                },
+                "groupName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "groupAccessLevel",
+                "groupFullPath",
+                "groupId",
+                "groupName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "gitlab:index/getProjectTagCommit:getProjectTagCommit": {
             "properties": {
                 "authorEmail": {
@@ -3198,6 +3258,9 @@
                 "isAdmin": {
                     "type": "boolean"
                 },
+                "isBot": {
+                    "type": "boolean"
+                },
                 "lastSignInAt": {
                     "type": "string"
                 },
@@ -3258,6 +3321,7 @@
                 "external",
                 "id",
                 "isAdmin",
+                "isBot",
                 "lastSignInAt",
                 "linkedin",
                 "location",
@@ -3603,21 +3667,13 @@
                     "type": "string",
                     "description": "What visibility level new snippets receive. Can take private, internal and public as a parameter.\n"
                 },
-                "delayedGroupDeletion": {
-                    "type": "boolean",
-                    "description": "Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.\n"
-                },
-                "delayedProjectDeletion": {
-                    "type": "boolean",
-                    "description": "Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.\n"
-                },
                 "deleteInactiveProjects": {
                     "type": "boolean",
                     "description": "Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).\n"
                 },
                 "deletionAdjournedPeriod": {
                     "type": "integer",
-                    "description": "The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.\n"
+                    "description": "The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.\n"
                 },
                 "diffMaxFiles": {
                     "type": "integer",
@@ -3925,17 +3981,24 @@
                 },
                 "housekeepingEnabled": {
                     "type": "boolean",
-                    "description": "(If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.\n"
+                    "description": "Enable or disable Git housekeeping.\n\t\t\tIf enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.\n\t\t\tOptions housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.\n"
                 },
                 "housekeepingFullRepackPeriod": {
                     "type": "integer",
-                    "description": "Number of Git pushes after which an incremental git repack is run.\n"
+                    "description": "Number of Git pushes after which an incremental git repack is run.\n",
+                    "deprecationMessage": "housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead."
                 },
                 "housekeepingGcPeriod": {
                     "type": "integer",
-                    "description": "Number of Git pushes after which git gc is run.\n"
+                    "description": "Number of Git pushes after which git gc is run.\n",
+                    "deprecationMessage": "housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead."
                 },
                 "housekeepingIncrementalRepackPeriod": {
+                    "type": "integer",
+                    "description": "Number of Git pushes after which an incremental git repack is run.\n",
+                    "deprecationMessage": "housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead."
+                },
+                "housekeepingOptimizeRepositoryPeriod": {
                     "type": "integer",
                     "description": "Number of Git pushes after which an incremental git repack is run.\n"
                 },
@@ -4511,8 +4574,6 @@
                 "defaultProjectVisibility",
                 "defaultProjectsLimit",
                 "defaultSnippetVisibility",
-                "delayedGroupDeletion",
-                "delayedProjectDeletion",
                 "deleteInactiveProjects",
                 "deletionAdjournedPeriod",
                 "diffMaxFiles",
@@ -4588,6 +4649,7 @@
                 "housekeepingFullRepackPeriod",
                 "housekeepingGcPeriod",
                 "housekeepingIncrementalRepackPeriod",
+                "housekeepingOptimizeRepositoryPeriod",
                 "htmlEmailsEnabled",
                 "importSources",
                 "inProductMarketingEmailsEnabled",
@@ -4871,21 +4933,13 @@
                     "type": "string",
                     "description": "What visibility level new snippets receive. Can take private, internal and public as a parameter.\n"
                 },
-                "delayedGroupDeletion": {
-                    "type": "boolean",
-                    "description": "Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.\n"
-                },
-                "delayedProjectDeletion": {
-                    "type": "boolean",
-                    "description": "Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.\n"
-                },
                 "deleteInactiveProjects": {
                     "type": "boolean",
                     "description": "Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).\n"
                 },
                 "deletionAdjournedPeriod": {
                     "type": "integer",
-                    "description": "The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.\n"
+                    "description": "The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.\n"
                 },
                 "diffMaxFiles": {
                     "type": "integer",
@@ -5193,17 +5247,24 @@
                 },
                 "housekeepingEnabled": {
                     "type": "boolean",
-                    "description": "(If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.\n"
+                    "description": "Enable or disable Git housekeeping.\n\t\t\tIf enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.\n\t\t\tOptions housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.\n"
                 },
                 "housekeepingFullRepackPeriod": {
                     "type": "integer",
-                    "description": "Number of Git pushes after which an incremental git repack is run.\n"
+                    "description": "Number of Git pushes after which an incremental git repack is run.\n",
+                    "deprecationMessage": "housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead."
                 },
                 "housekeepingGcPeriod": {
                     "type": "integer",
-                    "description": "Number of Git pushes after which git gc is run.\n"
+                    "description": "Number of Git pushes after which git gc is run.\n",
+                    "deprecationMessage": "housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead."
                 },
                 "housekeepingIncrementalRepackPeriod": {
+                    "type": "integer",
+                    "description": "Number of Git pushes after which an incremental git repack is run.\n",
+                    "deprecationMessage": "housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead."
+                },
+                "housekeepingOptimizeRepositoryPeriod": {
                     "type": "integer",
                     "description": "Number of Git pushes after which an incremental git repack is run.\n"
                 },
@@ -5897,21 +5958,13 @@
                         "type": "string",
                         "description": "What visibility level new snippets receive. Can take private, internal and public as a parameter.\n"
                     },
-                    "delayedGroupDeletion": {
-                        "type": "boolean",
-                        "description": "Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.\n"
-                    },
-                    "delayedProjectDeletion": {
-                        "type": "boolean",
-                        "description": "Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.\n"
-                    },
                     "deleteInactiveProjects": {
                         "type": "boolean",
                         "description": "Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).\n"
                     },
                     "deletionAdjournedPeriod": {
                         "type": "integer",
-                        "description": "The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.\n"
+                        "description": "The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.\n"
                     },
                     "diffMaxFiles": {
                         "type": "integer",
@@ -6219,17 +6272,24 @@
                     },
                     "housekeepingEnabled": {
                         "type": "boolean",
-                        "description": "(If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.\n"
+                        "description": "Enable or disable Git housekeeping.\n\t\t\tIf enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.\n\t\t\tOptions housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.\n"
                     },
                     "housekeepingFullRepackPeriod": {
                         "type": "integer",
-                        "description": "Number of Git pushes after which an incremental git repack is run.\n"
+                        "description": "Number of Git pushes after which an incremental git repack is run.\n",
+                        "deprecationMessage": "housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead."
                     },
                     "housekeepingGcPeriod": {
                         "type": "integer",
-                        "description": "Number of Git pushes after which git gc is run.\n"
+                        "description": "Number of Git pushes after which git gc is run.\n",
+                        "deprecationMessage": "housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead."
                     },
                     "housekeepingIncrementalRepackPeriod": {
+                        "type": "integer",
+                        "description": "Number of Git pushes after which an incremental git repack is run.\n",
+                        "deprecationMessage": "housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead."
+                    },
+                    "housekeepingOptimizeRepositoryPeriod": {
                         "type": "integer",
                         "description": "Number of Git pushes after which an incremental git repack is run.\n"
                     },
@@ -7713,6 +7773,255 @@
                         "type": "string",
                         "description": "A username for the deploy token. Default is `gitlab+deploy-token-{n}`.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/globalLevelNotifications:GlobalLevelNotifications": {
+            "description": "The `gitlab.GlobalLevelNotifications` resource allows to manage global notifications.\n\t\t\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// Create Custom global level notification\nconst foo = new gitlab.GlobalLevelNotifications(\"foo\", {\n    level: \"custom\",\n    newMergeRequest: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# Create Custom global level notification\nfoo = gitlab.GlobalLevelNotifications(\"foo\",\n    level=\"custom\",\n    new_merge_request=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create Custom global level notification\n    var foo = new GitLab.GlobalLevelNotifications(\"foo\", new()\n    {\n        Level = \"custom\",\n        NewMergeRequest = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGlobalLevelNotifications(ctx, \"foo\", \u0026gitlab.GlobalLevelNotificationsArgs{\n\t\t\tLevel:           pulumi.String(\"custom\"),\n\t\t\tNewMergeRequest: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GlobalLevelNotifications;\nimport com.pulumi.gitlab.GlobalLevelNotificationsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new GlobalLevelNotifications(\"foo\", GlobalLevelNotificationsArgs.builder()        \n            .level(\"custom\")\n            .newMergeRequest(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create Custom global level notification\n  foo:\n    type: gitlab:GlobalLevelNotifications\n    properties:\n      level: custom\n      newMergeRequest: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nNoteYou can import a global notification state using \"gitlab\" as the ID. The ID will always be gitlab, because the global notificatio only exists once per user\n\n```sh\n $ pulumi import gitlab:index/globalLevelNotifications:GlobalLevelNotifications example gitlab\n```\n\n ",
+            "properties": {
+                "closeIssue": {
+                    "type": "boolean",
+                    "description": "Enable notifications for closed issues. Can only be used when `level` is `custom`.\n"
+                },
+                "closeMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for closed merge requests. Can only be used when `level` is `custom`.\n"
+                },
+                "failedPipeline": {
+                    "type": "boolean",
+                    "description": "Enable notifications for failed pipelines. Can only be used when `level` is `custom`.\n"
+                },
+                "fixedPipeline": {
+                    "type": "boolean",
+                    "description": "Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.\n"
+                },
+                "issueDue": {
+                    "type": "boolean",
+                    "description": "Enable notifications for due issues. Can only be used when `level` is `custom`.\n"
+                },
+                "level": {
+                    "type": "string",
+                    "description": "The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.\n"
+                },
+                "mergeMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merged merge requests. Can only be used when `level` is `custom`.\n"
+                },
+                "mergeWhenPipelineSucceeds": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.\n"
+                },
+                "movedProject": {
+                    "type": "boolean",
+                    "description": "Enable notifications for moved projects. Can only be used when `level` is `custom`.\n"
+                },
+                "newIssue": {
+                    "type": "boolean",
+                    "description": "Enable notifications for new issues. Can only be used when `level` is `custom`.\n"
+                },
+                "newMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for new merge requests. Can only be used when `level` is `custom`.\n"
+                },
+                "newNote": {
+                    "type": "boolean",
+                    "description": "Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.\n"
+                },
+                "pushToMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.\n"
+                },
+                "reassignIssue": {
+                    "type": "boolean",
+                    "description": "Enable notifications for issue reassignments. Can only be used when `level` is `custom`.\n"
+                },
+                "reassignMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.\n"
+                },
+                "reopenIssue": {
+                    "type": "boolean",
+                    "description": "Enable notifications for reopened issues. Can only be used when `level` is `custom`.\n"
+                },
+                "reopenMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.\n"
+                },
+                "successPipeline": {
+                    "type": "boolean",
+                    "description": "Enable notifications for successful pipelines. Can only be used when `level` is `custom`.\n"
+                }
+            },
+            "required": [
+                "closeIssue",
+                "closeMergeRequest",
+                "failedPipeline",
+                "fixedPipeline",
+                "issueDue",
+                "level",
+                "mergeMergeRequest",
+                "mergeWhenPipelineSucceeds",
+                "movedProject",
+                "newIssue",
+                "newMergeRequest",
+                "newNote",
+                "pushToMergeRequest",
+                "reassignIssue",
+                "reassignMergeRequest",
+                "reopenIssue",
+                "reopenMergeRequest",
+                "successPipeline"
+            ],
+            "inputProperties": {
+                "closeIssue": {
+                    "type": "boolean",
+                    "description": "Enable notifications for closed issues. Can only be used when `level` is `custom`.\n"
+                },
+                "closeMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for closed merge requests. Can only be used when `level` is `custom`.\n"
+                },
+                "failedPipeline": {
+                    "type": "boolean",
+                    "description": "Enable notifications for failed pipelines. Can only be used when `level` is `custom`.\n"
+                },
+                "fixedPipeline": {
+                    "type": "boolean",
+                    "description": "Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.\n"
+                },
+                "issueDue": {
+                    "type": "boolean",
+                    "description": "Enable notifications for due issues. Can only be used when `level` is `custom`.\n"
+                },
+                "level": {
+                    "type": "string",
+                    "description": "The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.\n"
+                },
+                "mergeMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merged merge requests. Can only be used when `level` is `custom`.\n"
+                },
+                "mergeWhenPipelineSucceeds": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.\n"
+                },
+                "movedProject": {
+                    "type": "boolean",
+                    "description": "Enable notifications for moved projects. Can only be used when `level` is `custom`.\n"
+                },
+                "newIssue": {
+                    "type": "boolean",
+                    "description": "Enable notifications for new issues. Can only be used when `level` is `custom`.\n"
+                },
+                "newMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for new merge requests. Can only be used when `level` is `custom`.\n"
+                },
+                "newNote": {
+                    "type": "boolean",
+                    "description": "Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.\n"
+                },
+                "pushToMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.\n"
+                },
+                "reassignIssue": {
+                    "type": "boolean",
+                    "description": "Enable notifications for issue reassignments. Can only be used when `level` is `custom`.\n"
+                },
+                "reassignMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.\n"
+                },
+                "reopenIssue": {
+                    "type": "boolean",
+                    "description": "Enable notifications for reopened issues. Can only be used when `level` is `custom`.\n"
+                },
+                "reopenMergeRequest": {
+                    "type": "boolean",
+                    "description": "Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.\n"
+                },
+                "successPipeline": {
+                    "type": "boolean",
+                    "description": "Enable notifications for successful pipelines. Can only be used when `level` is `custom`.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GlobalLevelNotifications resources.\n",
+                "properties": {
+                    "closeIssue": {
+                        "type": "boolean",
+                        "description": "Enable notifications for closed issues. Can only be used when `level` is `custom`.\n"
+                    },
+                    "closeMergeRequest": {
+                        "type": "boolean",
+                        "description": "Enable notifications for closed merge requests. Can only be used when `level` is `custom`.\n"
+                    },
+                    "failedPipeline": {
+                        "type": "boolean",
+                        "description": "Enable notifications for failed pipelines. Can only be used when `level` is `custom`.\n"
+                    },
+                    "fixedPipeline": {
+                        "type": "boolean",
+                        "description": "Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.\n"
+                    },
+                    "issueDue": {
+                        "type": "boolean",
+                        "description": "Enable notifications for due issues. Can only be used when `level` is `custom`.\n"
+                    },
+                    "level": {
+                        "type": "string",
+                        "description": "The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.\n"
+                    },
+                    "mergeMergeRequest": {
+                        "type": "boolean",
+                        "description": "Enable notifications for merged merge requests. Can only be used when `level` is `custom`.\n"
+                    },
+                    "mergeWhenPipelineSucceeds": {
+                        "type": "boolean",
+                        "description": "Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.\n"
+                    },
+                    "movedProject": {
+                        "type": "boolean",
+                        "description": "Enable notifications for moved projects. Can only be used when `level` is `custom`.\n"
+                    },
+                    "newIssue": {
+                        "type": "boolean",
+                        "description": "Enable notifications for new issues. Can only be used when `level` is `custom`.\n"
+                    },
+                    "newMergeRequest": {
+                        "type": "boolean",
+                        "description": "Enable notifications for new merge requests. Can only be used when `level` is `custom`.\n"
+                    },
+                    "newNote": {
+                        "type": "boolean",
+                        "description": "Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.\n"
+                    },
+                    "pushToMergeRequest": {
+                        "type": "boolean",
+                        "description": "Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.\n"
+                    },
+                    "reassignIssue": {
+                        "type": "boolean",
+                        "description": "Enable notifications for issue reassignments. Can only be used when `level` is `custom`.\n"
+                    },
+                    "reassignMergeRequest": {
+                        "type": "boolean",
+                        "description": "Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.\n"
+                    },
+                    "reopenIssue": {
+                        "type": "boolean",
+                        "description": "Enable notifications for reopened issues. Can only be used when `level` is `custom`.\n"
+                    },
+                    "reopenMergeRequest": {
+                        "type": "boolean",
+                        "description": "Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.\n"
+                    },
+                    "successPipeline": {
+                        "type": "boolean",
+                        "description": "Enable notifications for successful pipelines. Can only be used when `level` is `custom`.\n"
                     }
                 },
                 "type": "object"
@@ -14558,7 +14867,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The url of the hook to invoke.\n"
+                    "description": "The url of the hook to invoke. Forces re-creation to preserve `token`.\n"
                 },
                 "wikiPageEvents": {
                     "type": "boolean",
@@ -14635,7 +14944,8 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The url of the hook to invoke.\n"
+                    "description": "The url of the hook to invoke. Forces re-creation to preserve `token`.\n",
+                    "willReplaceOnChanges": true
                 },
                 "wikiPageEvents": {
                     "type": "boolean",
@@ -14720,7 +15030,8 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "The url of the hook to invoke.\n"
+                        "description": "The url of the hook to invoke. Forces re-creation to preserve `token`.\n",
+                        "willReplaceOnChanges": true
                     },
                     "wikiPageEvents": {
                         "type": "boolean",
@@ -19712,8 +20023,7 @@
                         "description": "The full path of the group.\n"
                     },
                     "groupId": {
-                        "type": "integer",
-                        "description": "The ID of the group.\n"
+                        "type": "integer"
                     }
                 },
                 "type": "object"
@@ -19790,6 +20100,13 @@
                         "type": "string",
                         "description": "Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.\n"
                     },
+                    "sharedWithGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getGroupSharedWithGroup:getGroupSharedWithGroup"
+                        },
+                        "description": "Describes groups which have access shared to this group.\n"
+                    },
                     "visibilityLevel": {
                         "type": "string",
                         "description": "Visibility level of the group. Possible values are `private`, `internal`, `public`.\n"
@@ -19821,6 +20138,7 @@
                     "runnersToken",
                     "sharedRunnersMinutesLimit",
                     "sharedRunnersSetting",
+                    "sharedWithGroups",
                     "visibilityLevel",
                     "webUrl",
                     "wikiAccessLevel",
@@ -20790,6 +21108,13 @@
                         "type": "string",
                         "description": "Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.\n"
                     },
+                    "sharedWithGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getProjectSharedWithGroup:getProjectSharedWithGroup"
+                        },
+                        "description": "Describes groups which have access shared to this project.\n"
+                    },
                     "snippetsAccessLevel": {
                         "type": "string",
                         "description": "Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.\n"
@@ -20889,6 +21214,7 @@
                     "restrictUserDefinedVariables",
                     "runnersToken",
                     "securityAndComplianceAccessLevel",
+                    "sharedWithGroups",
                     "snippetsAccessLevel",
                     "snippetsEnabled",
                     "squashCommitTemplate",
@@ -22861,6 +23187,10 @@
                         "type": "boolean",
                         "description": "Whether the user is an admin.\n"
                     },
+                    "isBot": {
+                        "type": "boolean",
+                        "description": "Whether the user is a bot.\n"
+                    },
                     "lastSignInAt": {
                         "type": "string",
                         "description": "Last user's sign-in date.\n"
@@ -22943,6 +23273,7 @@
                     "externUid",
                     "external",
                     "isAdmin",
+                    "isBot",
                     "lastSignInAt",
                     "linkedin",
                     "location",

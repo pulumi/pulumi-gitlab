@@ -277,6 +277,10 @@ export interface GetProjectResult {
      */
     readonly securityAndComplianceAccessLevel: string;
     /**
+     * Describes groups which have access shared to this project.
+     */
+    readonly sharedWithGroups: outputs.GetProjectSharedWithGroup[];
+    /**
      * Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
      */
     readonly snippetsAccessLevel: string;

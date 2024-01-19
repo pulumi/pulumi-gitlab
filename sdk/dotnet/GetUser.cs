@@ -156,6 +156,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool IsAdmin;
         /// <summary>
+        /// Whether the user is a bot.
+        /// </summary>
+        public readonly bool IsBot;
+        /// <summary>
         /// Last user's sign-in date.
         /// </summary>
         public readonly string LastSignInAt;
@@ -250,6 +254,8 @@ namespace Pulumi.GitLab
 
             bool isAdmin,
 
+            bool isBot,
+
             string lastSignInAt,
 
             string linkedin,
@@ -296,6 +302,7 @@ namespace Pulumi.GitLab
             External = external;
             Id = id;
             IsAdmin = isAdmin;
+            IsBot = isBot;
             LastSignInAt = lastSignInAt;
             Linkedin = linkedin;
             Location = location;

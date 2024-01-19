@@ -34,7 +34,7 @@ class ProjectHookArgs:
         """
         The set of arguments for constructing a ProjectHook resource.
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
-        :param pulumi.Input[str] url: The url of the hook to invoke.
+        :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential notes events.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
@@ -100,7 +100,7 @@ class ProjectHookArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        The url of the hook to invoke.
+        The url of the hook to invoke. Forces re-creation to preserve `token`.
         """
         return pulumi.get(self, "url")
 
@@ -330,7 +330,7 @@ class _ProjectHookState:
         :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
-        :param pulumi.Input[str] url: The url of the hook to invoke.
+        :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
         if confidential_issues_events is not None:
@@ -580,7 +580,7 @@ class _ProjectHookState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The url of the hook to invoke.
+        The url of the hook to invoke. Forces re-creation to preserve `token`.
         """
         return pulumi.get(self, "url")
 
@@ -668,7 +668,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
-        :param pulumi.Input[str] url: The url of the hook to invoke.
+        :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
         ...
@@ -823,7 +823,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
-        :param pulumi.Input[str] url: The url of the hook to invoke.
+        :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -991,7 +991,7 @@ class ProjectHook(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The url of the hook to invoke.
+        The url of the hook to invoke. Forces re-creation to preserve `token`.
         """
         return pulumi.get(self, "url")
 

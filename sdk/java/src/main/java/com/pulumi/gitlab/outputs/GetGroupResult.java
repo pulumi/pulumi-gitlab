@@ -5,9 +5,11 @@ package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gitlab.outputs.GetGroupSharedWithGroup;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -97,6 +99,11 @@ public final class GetGroupResult {
      * 
      */
     private String sharedRunnersSetting;
+    /**
+     * @return Describes groups which have access shared to this group.
+     * 
+     */
+    private List<GetGroupSharedWithGroup> sharedWithGroups;
     /**
      * @return Visibility level of the group. Possible values are `private`, `internal`, `public`.
      * 
@@ -234,6 +241,13 @@ public final class GetGroupResult {
         return this.sharedRunnersSetting;
     }
     /**
+     * @return Describes groups which have access shared to this group.
+     * 
+     */
+    public List<GetGroupSharedWithGroup> sharedWithGroups() {
+        return this.sharedWithGroups;
+    }
+    /**
      * @return Visibility level of the group. Possible values are `private`, `internal`, `public`.
      * 
      */
@@ -281,6 +295,7 @@ public final class GetGroupResult {
         private String runnersToken;
         private Integer sharedRunnersMinutesLimit;
         private String sharedRunnersSetting;
+        private List<GetGroupSharedWithGroup> sharedWithGroups;
         private String visibilityLevel;
         private String webUrl;
         private String wikiAccessLevel;
@@ -304,6 +319,7 @@ public final class GetGroupResult {
     	      this.runnersToken = defaults.runnersToken;
     	      this.sharedRunnersMinutesLimit = defaults.sharedRunnersMinutesLimit;
     	      this.sharedRunnersSetting = defaults.sharedRunnersSetting;
+    	      this.sharedWithGroups = defaults.sharedWithGroups;
     	      this.visibilityLevel = defaults.visibilityLevel;
     	      this.webUrl = defaults.webUrl;
     	      this.wikiAccessLevel = defaults.wikiAccessLevel;
@@ -446,6 +462,17 @@ public final class GetGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sharedWithGroups(List<GetGroupSharedWithGroup> sharedWithGroups) {
+            if (sharedWithGroups == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "sharedWithGroups");
+            }
+            this.sharedWithGroups = sharedWithGroups;
+            return this;
+        }
+        public Builder sharedWithGroups(GetGroupSharedWithGroup... sharedWithGroups) {
+            return sharedWithGroups(List.of(sharedWithGroups));
+        }
+        @CustomType.Setter
         public Builder visibilityLevel(String visibilityLevel) {
             if (visibilityLevel == null) {
               throw new MissingRequiredPropertyException("GetGroupResult", "visibilityLevel");
@@ -488,6 +515,7 @@ public final class GetGroupResult {
             _resultValue.runnersToken = runnersToken;
             _resultValue.sharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
             _resultValue.sharedRunnersSetting = sharedRunnersSetting;
+            _resultValue.sharedWithGroups = sharedWithGroups;
             _resultValue.visibilityLevel = visibilityLevel;
             _resultValue.webUrl = webUrl;
             _resultValue.wikiAccessLevel = wikiAccessLevel;

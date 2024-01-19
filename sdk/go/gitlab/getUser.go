@@ -67,6 +67,8 @@ type LookupUserResult struct {
 	Id string `pulumi:"id"`
 	// Whether the user is an admin.
 	IsAdmin bool `pulumi:"isAdmin"`
+	// Whether the user is a bot.
+	IsBot bool `pulumi:"isBot"`
 	// Last user's sign-in date.
 	LastSignInAt string `pulumi:"lastSignInAt"`
 	// LinkedIn profile of the user.
@@ -205,6 +207,11 @@ func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 // Whether the user is an admin.
 func (o LookupUserResultOutput) IsAdmin() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.IsAdmin }).(pulumi.BoolOutput)
+}
+
+// Whether the user is a bot.
+func (o LookupUserResultOutput) IsBot() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.IsBot }).(pulumi.BoolOutput)
 }
 
 // Last user's sign-in date.

@@ -358,6 +358,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string SecurityAndComplianceAccessLevel;
         /// <summary>
+        /// Describes groups which have access shared to this project.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetProjectSharedWithGroupResult> SharedWithGroups;
+        /// <summary>
         /// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         public readonly string SnippetsAccessLevel;
@@ -508,6 +512,8 @@ namespace Pulumi.GitLab
 
             string securityAndComplianceAccessLevel,
 
+            ImmutableArray<Outputs.GetProjectSharedWithGroupResult> sharedWithGroups,
+
             string snippetsAccessLevel,
 
             bool snippetsEnabled,
@@ -582,6 +588,7 @@ namespace Pulumi.GitLab
             RestrictUserDefinedVariables = restrictUserDefinedVariables;
             RunnersToken = runnersToken;
             SecurityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
+            SharedWithGroups = sharedWithGroups;
             SnippetsAccessLevel = snippetsAccessLevel;
             SnippetsEnabled = snippetsEnabled;
             SquashCommitTemplate = squashCommitTemplate;
