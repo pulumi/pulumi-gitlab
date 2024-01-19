@@ -3487,6 +3487,124 @@ func (o GetGroupMembershipMemberArrayOutput) Index(i pulumi.IntInput) GetGroupMe
 	}).(GetGroupMembershipMemberOutput)
 }
 
+type GetGroupSharedWithGroup struct {
+	ExpiresAt        string `pulumi:"expiresAt"`
+	GroupAccessLevel int    `pulumi:"groupAccessLevel"`
+	GroupFullPath    string `pulumi:"groupFullPath"`
+	GroupId          int    `pulumi:"groupId"`
+	GroupName        string `pulumi:"groupName"`
+}
+
+// GetGroupSharedWithGroupInput is an input type that accepts GetGroupSharedWithGroupArgs and GetGroupSharedWithGroupOutput values.
+// You can construct a concrete instance of `GetGroupSharedWithGroupInput` via:
+//
+//	GetGroupSharedWithGroupArgs{...}
+type GetGroupSharedWithGroupInput interface {
+	pulumi.Input
+
+	ToGetGroupSharedWithGroupOutput() GetGroupSharedWithGroupOutput
+	ToGetGroupSharedWithGroupOutputWithContext(context.Context) GetGroupSharedWithGroupOutput
+}
+
+type GetGroupSharedWithGroupArgs struct {
+	ExpiresAt        pulumi.StringInput `pulumi:"expiresAt"`
+	GroupAccessLevel pulumi.IntInput    `pulumi:"groupAccessLevel"`
+	GroupFullPath    pulumi.StringInput `pulumi:"groupFullPath"`
+	GroupId          pulumi.IntInput    `pulumi:"groupId"`
+	GroupName        pulumi.StringInput `pulumi:"groupName"`
+}
+
+func (GetGroupSharedWithGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupSharedWithGroup)(nil)).Elem()
+}
+
+func (i GetGroupSharedWithGroupArgs) ToGetGroupSharedWithGroupOutput() GetGroupSharedWithGroupOutput {
+	return i.ToGetGroupSharedWithGroupOutputWithContext(context.Background())
+}
+
+func (i GetGroupSharedWithGroupArgs) ToGetGroupSharedWithGroupOutputWithContext(ctx context.Context) GetGroupSharedWithGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupSharedWithGroupOutput)
+}
+
+// GetGroupSharedWithGroupArrayInput is an input type that accepts GetGroupSharedWithGroupArray and GetGroupSharedWithGroupArrayOutput values.
+// You can construct a concrete instance of `GetGroupSharedWithGroupArrayInput` via:
+//
+//	GetGroupSharedWithGroupArray{ GetGroupSharedWithGroupArgs{...} }
+type GetGroupSharedWithGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupSharedWithGroupArrayOutput() GetGroupSharedWithGroupArrayOutput
+	ToGetGroupSharedWithGroupArrayOutputWithContext(context.Context) GetGroupSharedWithGroupArrayOutput
+}
+
+type GetGroupSharedWithGroupArray []GetGroupSharedWithGroupInput
+
+func (GetGroupSharedWithGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupSharedWithGroup)(nil)).Elem()
+}
+
+func (i GetGroupSharedWithGroupArray) ToGetGroupSharedWithGroupArrayOutput() GetGroupSharedWithGroupArrayOutput {
+	return i.ToGetGroupSharedWithGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupSharedWithGroupArray) ToGetGroupSharedWithGroupArrayOutputWithContext(ctx context.Context) GetGroupSharedWithGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupSharedWithGroupArrayOutput)
+}
+
+type GetGroupSharedWithGroupOutput struct{ *pulumi.OutputState }
+
+func (GetGroupSharedWithGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupSharedWithGroup)(nil)).Elem()
+}
+
+func (o GetGroupSharedWithGroupOutput) ToGetGroupSharedWithGroupOutput() GetGroupSharedWithGroupOutput {
+	return o
+}
+
+func (o GetGroupSharedWithGroupOutput) ToGetGroupSharedWithGroupOutputWithContext(ctx context.Context) GetGroupSharedWithGroupOutput {
+	return o
+}
+
+func (o GetGroupSharedWithGroupOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSharedWithGroup) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSharedWithGroupOutput) GroupAccessLevel() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupSharedWithGroup) int { return v.GroupAccessLevel }).(pulumi.IntOutput)
+}
+
+func (o GetGroupSharedWithGroupOutput) GroupFullPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSharedWithGroup) string { return v.GroupFullPath }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSharedWithGroupOutput) GroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupSharedWithGroup) int { return v.GroupId }).(pulumi.IntOutput)
+}
+
+func (o GetGroupSharedWithGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSharedWithGroup) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+type GetGroupSharedWithGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupSharedWithGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupSharedWithGroup)(nil)).Elem()
+}
+
+func (o GetGroupSharedWithGroupArrayOutput) ToGetGroupSharedWithGroupArrayOutput() GetGroupSharedWithGroupArrayOutput {
+	return o
+}
+
+func (o GetGroupSharedWithGroupArrayOutput) ToGetGroupSharedWithGroupArrayOutputWithContext(ctx context.Context) GetGroupSharedWithGroupArrayOutput {
+	return o
+}
+
+func (o GetGroupSharedWithGroupArrayOutput) Index(i pulumi.IntInput) GetGroupSharedWithGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupSharedWithGroup {
+		return vs[0].([]GetGroupSharedWithGroup)[vs[1].(int)]
+	}).(GetGroupSharedWithGroupOutput)
+}
+
 type GetGroupSubgroupsSubgroup struct {
 	AutoDevopsEnabled              bool              `pulumi:"autoDevopsEnabled"`
 	AvatarUrl                      string            `pulumi:"avatarUrl"`
@@ -6770,6 +6888,118 @@ func (o GetProjectPushRuleArrayOutput) Index(i pulumi.IntInput) GetProjectPushRu
 	}).(GetProjectPushRuleOutput)
 }
 
+type GetProjectSharedWithGroup struct {
+	GroupAccessLevel int    `pulumi:"groupAccessLevel"`
+	GroupFullPath    string `pulumi:"groupFullPath"`
+	GroupId          int    `pulumi:"groupId"`
+	GroupName        string `pulumi:"groupName"`
+}
+
+// GetProjectSharedWithGroupInput is an input type that accepts GetProjectSharedWithGroupArgs and GetProjectSharedWithGroupOutput values.
+// You can construct a concrete instance of `GetProjectSharedWithGroupInput` via:
+//
+//	GetProjectSharedWithGroupArgs{...}
+type GetProjectSharedWithGroupInput interface {
+	pulumi.Input
+
+	ToGetProjectSharedWithGroupOutput() GetProjectSharedWithGroupOutput
+	ToGetProjectSharedWithGroupOutputWithContext(context.Context) GetProjectSharedWithGroupOutput
+}
+
+type GetProjectSharedWithGroupArgs struct {
+	GroupAccessLevel pulumi.IntInput    `pulumi:"groupAccessLevel"`
+	GroupFullPath    pulumi.StringInput `pulumi:"groupFullPath"`
+	GroupId          pulumi.IntInput    `pulumi:"groupId"`
+	GroupName        pulumi.StringInput `pulumi:"groupName"`
+}
+
+func (GetProjectSharedWithGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectSharedWithGroup)(nil)).Elem()
+}
+
+func (i GetProjectSharedWithGroupArgs) ToGetProjectSharedWithGroupOutput() GetProjectSharedWithGroupOutput {
+	return i.ToGetProjectSharedWithGroupOutputWithContext(context.Background())
+}
+
+func (i GetProjectSharedWithGroupArgs) ToGetProjectSharedWithGroupOutputWithContext(ctx context.Context) GetProjectSharedWithGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectSharedWithGroupOutput)
+}
+
+// GetProjectSharedWithGroupArrayInput is an input type that accepts GetProjectSharedWithGroupArray and GetProjectSharedWithGroupArrayOutput values.
+// You can construct a concrete instance of `GetProjectSharedWithGroupArrayInput` via:
+//
+//	GetProjectSharedWithGroupArray{ GetProjectSharedWithGroupArgs{...} }
+type GetProjectSharedWithGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectSharedWithGroupArrayOutput() GetProjectSharedWithGroupArrayOutput
+	ToGetProjectSharedWithGroupArrayOutputWithContext(context.Context) GetProjectSharedWithGroupArrayOutput
+}
+
+type GetProjectSharedWithGroupArray []GetProjectSharedWithGroupInput
+
+func (GetProjectSharedWithGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectSharedWithGroup)(nil)).Elem()
+}
+
+func (i GetProjectSharedWithGroupArray) ToGetProjectSharedWithGroupArrayOutput() GetProjectSharedWithGroupArrayOutput {
+	return i.ToGetProjectSharedWithGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectSharedWithGroupArray) ToGetProjectSharedWithGroupArrayOutputWithContext(ctx context.Context) GetProjectSharedWithGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectSharedWithGroupArrayOutput)
+}
+
+type GetProjectSharedWithGroupOutput struct{ *pulumi.OutputState }
+
+func (GetProjectSharedWithGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectSharedWithGroup)(nil)).Elem()
+}
+
+func (o GetProjectSharedWithGroupOutput) ToGetProjectSharedWithGroupOutput() GetProjectSharedWithGroupOutput {
+	return o
+}
+
+func (o GetProjectSharedWithGroupOutput) ToGetProjectSharedWithGroupOutputWithContext(ctx context.Context) GetProjectSharedWithGroupOutput {
+	return o
+}
+
+func (o GetProjectSharedWithGroupOutput) GroupAccessLevel() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectSharedWithGroup) int { return v.GroupAccessLevel }).(pulumi.IntOutput)
+}
+
+func (o GetProjectSharedWithGroupOutput) GroupFullPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSharedWithGroup) string { return v.GroupFullPath }).(pulumi.StringOutput)
+}
+
+func (o GetProjectSharedWithGroupOutput) GroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectSharedWithGroup) int { return v.GroupId }).(pulumi.IntOutput)
+}
+
+func (o GetProjectSharedWithGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSharedWithGroup) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+type GetProjectSharedWithGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectSharedWithGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectSharedWithGroup)(nil)).Elem()
+}
+
+func (o GetProjectSharedWithGroupArrayOutput) ToGetProjectSharedWithGroupArrayOutput() GetProjectSharedWithGroupArrayOutput {
+	return o
+}
+
+func (o GetProjectSharedWithGroupArrayOutput) ToGetProjectSharedWithGroupArrayOutputWithContext(ctx context.Context) GetProjectSharedWithGroupArrayOutput {
+	return o
+}
+
+func (o GetProjectSharedWithGroupArrayOutput) Index(i pulumi.IntInput) GetProjectSharedWithGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectSharedWithGroup {
+		return vs[0].([]GetProjectSharedWithGroup)[vs[1].(int)]
+	}).(GetProjectSharedWithGroupOutput)
+}
+
 type GetProjectTagCommit struct {
 	AuthorEmail    string   `pulumi:"authorEmail"`
 	AuthorName     string   `pulumi:"authorName"`
@@ -9318,6 +9548,7 @@ type GetUsersUser struct {
 	External         bool   `pulumi:"external"`
 	Id               int    `pulumi:"id"`
 	IsAdmin          bool   `pulumi:"isAdmin"`
+	IsBot            bool   `pulumi:"isBot"`
 	LastSignInAt     string `pulumi:"lastSignInAt"`
 	Linkedin         string `pulumi:"linkedin"`
 	Location         string `pulumi:"location"`
@@ -9359,6 +9590,7 @@ type GetUsersUserArgs struct {
 	External         pulumi.BoolInput   `pulumi:"external"`
 	Id               pulumi.IntInput    `pulumi:"id"`
 	IsAdmin          pulumi.BoolInput   `pulumi:"isAdmin"`
+	IsBot            pulumi.BoolInput   `pulumi:"isBot"`
 	LastSignInAt     pulumi.StringInput `pulumi:"lastSignInAt"`
 	Linkedin         pulumi.StringInput `pulumi:"linkedin"`
 	Location         pulumi.StringInput `pulumi:"location"`
@@ -9473,6 +9705,10 @@ func (o GetUsersUserOutput) Id() pulumi.IntOutput {
 
 func (o GetUsersUserOutput) IsAdmin() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.IsAdmin }).(pulumi.BoolOutput)
+}
+
+func (o GetUsersUserOutput) IsBot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUsersUser) bool { return v.IsBot }).(pulumi.BoolOutput)
 }
 
 func (o GetUsersUserOutput) LastSignInAt() pulumi.StringOutput {
@@ -9600,6 +9836,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupHooksHookArrayInput)(nil)).Elem(), GetGroupHooksHookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberInput)(nil)).Elem(), GetGroupMembershipMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberArrayInput)(nil)).Elem(), GetGroupMembershipMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSharedWithGroupInput)(nil)).Elem(), GetGroupSharedWithGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSharedWithGroupArrayInput)(nil)).Elem(), GetGroupSharedWithGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSubgroupsSubgroupInput)(nil)).Elem(), GetGroupSubgroupsSubgroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSubgroupsSubgroupArrayInput)(nil)).Elem(), GetGroupSubgroupsSubgroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupVariablesVariableInput)(nil)).Elem(), GetGroupVariablesVariableArgs{})
@@ -9643,6 +9881,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayInput)(nil)).Elem(), GetProjectProtectedBranchesProtectedBranchPushAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectPushRuleInput)(nil)).Elem(), GetProjectPushRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectPushRuleArrayInput)(nil)).Elem(), GetProjectPushRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectSharedWithGroupInput)(nil)).Elem(), GetProjectSharedWithGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectSharedWithGroupArrayInput)(nil)).Elem(), GetProjectSharedWithGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagCommitInput)(nil)).Elem(), GetProjectTagCommitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagCommitArrayInput)(nil)).Elem(), GetProjectTagCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagReleaseInput)(nil)).Elem(), GetProjectTagReleaseArgs{})
@@ -9721,6 +9961,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupHooksHookArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupSharedWithGroupOutput{})
+	pulumi.RegisterOutputType(GetGroupSharedWithGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSubgroupsSubgroupOutput{})
 	pulumi.RegisterOutputType(GetGroupSubgroupsSubgroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupVariablesVariableOutput{})
@@ -9764,6 +10006,8 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectPushRuleOutput{})
 	pulumi.RegisterOutputType(GetProjectPushRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectSharedWithGroupOutput{})
+	pulumi.RegisterOutputType(GetProjectSharedWithGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectTagCommitOutput{})
 	pulumi.RegisterOutputType(GetProjectTagCommitArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectTagReleaseOutput{})

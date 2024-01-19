@@ -54,8 +54,7 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 type LookupGroupArgs struct {
 	// The full path of the group.
 	FullPath *string `pulumi:"fullPath"`
-	// The ID of the group.
-	GroupId *int `pulumi:"groupId"`
+	GroupId  *int    `pulumi:"groupId"`
 }
 
 // A collection of values returned by getGroup.
@@ -94,6 +93,8 @@ type LookupGroupResult struct {
 	SharedRunnersMinutesLimit int `pulumi:"sharedRunnersMinutesLimit"`
 	// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting string `pulumi:"sharedRunnersSetting"`
+	// Describes groups which have access shared to this group.
+	SharedWithGroups []GetGroupSharedWithGroup `pulumi:"sharedWithGroups"`
 	// Visibility level of the group. Possible values are `private`, `internal`, `public`.
 	VisibilityLevel string `pulumi:"visibilityLevel"`
 	// Web URL of the group.
@@ -119,8 +120,7 @@ func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...
 type LookupGroupOutputArgs struct {
 	// The full path of the group.
 	FullPath pulumi.StringPtrInput `pulumi:"fullPath"`
-	// The ID of the group.
-	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	GroupId  pulumi.IntPtrInput    `pulumi:"groupId"`
 }
 
 func (LookupGroupOutputArgs) ElementType() reflect.Type {
@@ -225,6 +225,11 @@ func (o LookupGroupResultOutput) SharedRunnersMinutesLimit() pulumi.IntOutput {
 // Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 func (o LookupGroupResultOutput) SharedRunnersSetting() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.SharedRunnersSetting }).(pulumi.StringOutput)
+}
+
+// Describes groups which have access shared to this group.
+func (o LookupGroupResultOutput) SharedWithGroups() GetGroupSharedWithGroupArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []GetGroupSharedWithGroup { return v.SharedWithGroups }).(GetGroupSharedWithGroupArrayOutput)
 }
 
 // Visibility level of the group. Possible values are `private`, `internal`, `public`.

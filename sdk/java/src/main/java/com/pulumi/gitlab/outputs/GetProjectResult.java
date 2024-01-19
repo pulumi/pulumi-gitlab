@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectContainerExpirationPolicy;
 import com.pulumi.gitlab.outputs.GetProjectPushRule;
+import com.pulumi.gitlab.outputs.GetProjectSharedWithGroup;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -287,6 +288,11 @@ public final class GetProjectResult {
      * 
      */
     private String securityAndComplianceAccessLevel;
+    /**
+     * @return Describes groups which have access shared to this project.
+     * 
+     */
+    private List<GetProjectSharedWithGroup> sharedWithGroups;
     /**
      * @return Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
      * 
@@ -718,6 +724,13 @@ public final class GetProjectResult {
         return this.securityAndComplianceAccessLevel;
     }
     /**
+     * @return Describes groups which have access shared to this project.
+     * 
+     */
+    public List<GetProjectSharedWithGroup> sharedWithGroups() {
+        return this.sharedWithGroups;
+    }
+    /**
      * @return Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -851,6 +864,7 @@ public final class GetProjectResult {
         private Boolean restrictUserDefinedVariables;
         private String runnersToken;
         private String securityAndComplianceAccessLevel;
+        private List<GetProjectSharedWithGroup> sharedWithGroups;
         private String snippetsAccessLevel;
         private Boolean snippetsEnabled;
         private String squashCommitTemplate;
@@ -918,6 +932,7 @@ public final class GetProjectResult {
     	      this.restrictUserDefinedVariables = defaults.restrictUserDefinedVariables;
     	      this.runnersToken = defaults.runnersToken;
     	      this.securityAndComplianceAccessLevel = defaults.securityAndComplianceAccessLevel;
+    	      this.sharedWithGroups = defaults.sharedWithGroups;
     	      this.snippetsAccessLevel = defaults.snippetsAccessLevel;
     	      this.snippetsEnabled = defaults.snippetsEnabled;
     	      this.squashCommitTemplate = defaults.squashCommitTemplate;
@@ -1367,6 +1382,17 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sharedWithGroups(List<GetProjectSharedWithGroup> sharedWithGroups) {
+            if (sharedWithGroups == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "sharedWithGroups");
+            }
+            this.sharedWithGroups = sharedWithGroups;
+            return this;
+        }
+        public Builder sharedWithGroups(GetProjectSharedWithGroup... sharedWithGroups) {
+            return sharedWithGroups(List.of(sharedWithGroups));
+        }
+        @CustomType.Setter
         public Builder snippetsAccessLevel(String snippetsAccessLevel) {
             if (snippetsAccessLevel == null) {
               throw new MissingRequiredPropertyException("GetProjectResult", "snippetsAccessLevel");
@@ -1505,6 +1531,7 @@ public final class GetProjectResult {
             _resultValue.restrictUserDefinedVariables = restrictUserDefinedVariables;
             _resultValue.runnersToken = runnersToken;
             _resultValue.securityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
+            _resultValue.sharedWithGroups = sharedWithGroups;
             _resultValue.snippetsAccessLevel = snippetsAccessLevel;
             _resultValue.snippetsEnabled = snippetsEnabled;
             _resultValue.squashCommitTemplate = squashCommitTemplate;

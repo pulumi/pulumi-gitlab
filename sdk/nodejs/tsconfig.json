@@ -65,6 +65,7 @@
         "getUser.ts",
         "getUserSshkeys.ts",
         "getUsers.ts",
+        "globalLevelNotifications.ts",
         "group.ts",
         "groupAccessToken.ts",
         "groupBadge.ts",

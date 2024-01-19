@@ -73,6 +73,11 @@ public final class GetUserResult {
      */
     private Boolean isAdmin;
     /**
+     * @return Whether the user is a bot.
+     * 
+     */
+    private Boolean isBot;
+    /**
      * @return Last user&#39;s sign-in date.
      * 
      */
@@ -244,6 +249,13 @@ public final class GetUserResult {
         return this.isAdmin;
     }
     /**
+     * @return Whether the user is a bot.
+     * 
+     */
+    public Boolean isBot() {
+        return this.isBot;
+    }
+    /**
      * @return Last user&#39;s sign-in date.
      * 
      */
@@ -384,6 +396,7 @@ public final class GetUserResult {
         private Boolean external;
         private String id;
         private Boolean isAdmin;
+        private Boolean isBot;
         private String lastSignInAt;
         private String linkedin;
         private String location;
@@ -416,6 +429,7 @@ public final class GetUserResult {
     	      this.external = defaults.external;
     	      this.id = defaults.id;
     	      this.isAdmin = defaults.isAdmin;
+    	      this.isBot = defaults.isBot;
     	      this.lastSignInAt = defaults.lastSignInAt;
     	      this.linkedin = defaults.linkedin;
     	      this.location = defaults.location;
@@ -529,6 +543,14 @@ public final class GetUserResult {
               throw new MissingRequiredPropertyException("GetUserResult", "isAdmin");
             }
             this.isAdmin = isAdmin;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isBot(Boolean isBot) {
+            if (isBot == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "isBot");
+            }
+            this.isBot = isBot;
             return this;
         }
         @CustomType.Setter
@@ -681,6 +703,7 @@ public final class GetUserResult {
             _resultValue.external = external;
             _resultValue.id = id;
             _resultValue.isAdmin = isAdmin;
+            _resultValue.isBot = isBot;
             _resultValue.lastSignInAt = lastSignInAt;
             _resultValue.linkedin = linkedin;
             _resultValue.location = location;

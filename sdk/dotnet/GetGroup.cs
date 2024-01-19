@@ -81,9 +81,6 @@ namespace Pulumi.GitLab
         [Input("fullPath")]
         public string? FullPath { get; set; }
 
-        /// <summary>
-        /// The ID of the group.
-        /// </summary>
         [Input("groupId")]
         public int? GroupId { get; set; }
 
@@ -101,9 +98,6 @@ namespace Pulumi.GitLab
         [Input("fullPath")]
         public Input<string>? FullPath { get; set; }
 
-        /// <summary>
-        /// The ID of the group.
-        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
@@ -186,6 +180,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string SharedRunnersSetting;
         /// <summary>
+        /// Describes groups which have access shared to this group.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGroupSharedWithGroupResult> SharedWithGroups;
+        /// <summary>
         /// Visibility level of the group. Possible values are `private`, `internal`, `public`.
         /// </summary>
         public readonly string VisibilityLevel;
@@ -234,6 +232,8 @@ namespace Pulumi.GitLab
 
             string sharedRunnersSetting,
 
+            ImmutableArray<Outputs.GetGroupSharedWithGroupResult> sharedWithGroups,
+
             string visibilityLevel,
 
             string webUrl,
@@ -257,6 +257,7 @@ namespace Pulumi.GitLab
             RunnersToken = runnersToken;
             SharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
             SharedRunnersSetting = sharedRunnersSetting;
+            SharedWithGroups = sharedWithGroups;
             VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
             WikiAccessLevel = wikiAccessLevel;

@@ -172,6 +172,8 @@ type LookupProjectResult struct {
 	RunnersToken string `pulumi:"runnersToken"`
 	// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
 	SecurityAndComplianceAccessLevel string `pulumi:"securityAndComplianceAccessLevel"`
+	// Describes groups which have access shared to this project.
+	SharedWithGroups []GetProjectSharedWithGroup `pulumi:"sharedWithGroups"`
 	// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
 	SnippetsAccessLevel string `pulumi:"snippetsAccessLevel"`
 	// Enable snippets for the project.
@@ -508,6 +510,11 @@ func (o LookupProjectResultOutput) RunnersToken() pulumi.StringOutput {
 // Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
 func (o LookupProjectResultOutput) SecurityAndComplianceAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.SecurityAndComplianceAccessLevel }).(pulumi.StringOutput)
+}
+
+// Describes groups which have access shared to this project.
+func (o LookupProjectResultOutput) SharedWithGroups() GetProjectSharedWithGroupArrayOutput {
+	return o.ApplyT(func(v LookupProjectResult) []GetProjectSharedWithGroup { return v.SharedWithGroups }).(GetProjectSharedWithGroupArrayOutput)
 }
 
 // Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.

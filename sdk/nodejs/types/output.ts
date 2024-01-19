@@ -132,6 +132,14 @@ export interface GetGroupMembershipMember {
     webUrl: string;
 }
 
+export interface GetGroupSharedWithGroup {
+    expiresAt: string;
+    groupAccessLevel: number;
+    groupFullPath: string;
+    groupId: number;
+    groupName: string;
+}
+
 export interface GetGroupSubgroupsSubgroup {
     autoDevopsEnabled: boolean;
     avatarUrl: string;
@@ -493,6 +501,13 @@ export interface GetProjectPushRule {
     rejectUnsignedCommits: boolean;
 }
 
+export interface GetProjectSharedWithGroup {
+    groupAccessLevel: number;
+    groupFullPath: string;
+    groupId: number;
+    groupName: string;
+}
+
 export interface GetProjectTagCommit {
     authorEmail: string;
     authorName: string;
@@ -744,6 +759,7 @@ export interface GetUsersUser {
     external: boolean;
     id: number;
     isAdmin: boolean;
+    isBot: boolean;
     lastSignInAt: string;
     linkedin: string;
     location: string;

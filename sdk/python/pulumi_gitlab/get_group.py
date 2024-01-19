@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetGroupResult',
@@ -21,7 +22,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, default_branch_protection=None, description=None, extra_shared_runners_minutes_limit=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, membership_lock=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, request_access_enabled=None, runners_token=None, shared_runners_minutes_limit=None, shared_runners_setting=None, visibility_level=None, web_url=None, wiki_access_level=None):
+    def __init__(__self__, default_branch_protection=None, description=None, extra_shared_runners_minutes_limit=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, membership_lock=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, request_access_enabled=None, runners_token=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, visibility_level=None, web_url=None, wiki_access_level=None):
         if default_branch_protection and not isinstance(default_branch_protection, int):
             raise TypeError("Expected argument 'default_branch_protection' to be a int")
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
@@ -73,6 +74,9 @@ class GetGroupResult:
         if shared_runners_setting and not isinstance(shared_runners_setting, str):
             raise TypeError("Expected argument 'shared_runners_setting' to be a str")
         pulumi.set(__self__, "shared_runners_setting", shared_runners_setting)
+        if shared_with_groups and not isinstance(shared_with_groups, list):
+            raise TypeError("Expected argument 'shared_with_groups' to be a list")
+        pulumi.set(__self__, "shared_with_groups", shared_with_groups)
         if visibility_level and not isinstance(visibility_level, str):
             raise TypeError("Expected argument 'visibility_level' to be a str")
         pulumi.set(__self__, "visibility_level", visibility_level)
@@ -220,6 +224,14 @@ class GetGroupResult:
         return pulumi.get(self, "shared_runners_setting")
 
     @property
+    @pulumi.getter(name="sharedWithGroups")
+    def shared_with_groups(self) -> Sequence['outputs.GetGroupSharedWithGroupResult']:
+        """
+        Describes groups which have access shared to this group.
+        """
+        return pulumi.get(self, "shared_with_groups")
+
+    @property
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> str:
         """
@@ -267,6 +279,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             runners_token=self.runners_token,
             shared_runners_minutes_limit=self.shared_runners_minutes_limit,
             shared_runners_setting=self.shared_runners_setting,
+            shared_with_groups=self.shared_with_groups,
             visibility_level=self.visibility_level,
             web_url=self.web_url,
             wiki_access_level=self.wiki_access_level)
@@ -291,7 +304,6 @@ def get_group(full_path: Optional[str] = None,
 
 
     :param str full_path: The full path of the group.
-    :param int group_id: The ID of the group.
     """
     __args__ = dict()
     __args__['fullPath'] = full_path
@@ -317,6 +329,7 @@ def get_group(full_path: Optional[str] = None,
         runners_token=pulumi.get(__ret__, 'runners_token'),
         shared_runners_minutes_limit=pulumi.get(__ret__, 'shared_runners_minutes_limit'),
         shared_runners_setting=pulumi.get(__ret__, 'shared_runners_setting'),
+        shared_with_groups=pulumi.get(__ret__, 'shared_with_groups'),
         visibility_level=pulumi.get(__ret__, 'visibility_level'),
         web_url=pulumi.get(__ret__, 'web_url'),
         wiki_access_level=pulumi.get(__ret__, 'wiki_access_level'))
@@ -342,6 +355,5 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str full_path: The full path of the group.
-    :param int group_id: The ID of the group.
     """
     ...

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -38,9 +40,6 @@ export interface GetGroupArgs {
      * The full path of the group.
      */
     fullPath?: string;
-    /**
-     * The ID of the group.
-     */
     groupId?: number;
 }
 
@@ -117,6 +116,10 @@ export interface GetGroupResult {
      */
     readonly sharedRunnersSetting: string;
     /**
+     * Describes groups which have access shared to this group.
+     */
+    readonly sharedWithGroups: outputs.GetGroupSharedWithGroup[];
+    /**
      * Visibility level of the group. Possible values are `private`, `internal`, `public`.
      */
     readonly visibilityLevel: string;
@@ -157,8 +160,5 @@ export interface GetGroupOutputArgs {
      * The full path of the group.
      */
     fullPath?: pulumi.Input<string>;
-    /**
-     * The ID of the group.
-     */
     groupId?: pulumi.Input<number>;
 }

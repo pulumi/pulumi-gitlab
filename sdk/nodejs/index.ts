@@ -255,6 +255,11 @@ export const getUsers: typeof import("./getUsers").getUsers = null as any;
 export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
 utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
 
+export { GlobalLevelNotificationsArgs, GlobalLevelNotificationsState } from "./globalLevelNotifications";
+export type GlobalLevelNotifications = import("./globalLevelNotifications").GlobalLevelNotifications;
+export const GlobalLevelNotifications: typeof import("./globalLevelNotifications").GlobalLevelNotifications = null as any;
+utilities.lazyLoad(exports, ["GlobalLevelNotifications"], () => require("./globalLevelNotifications"));
+
 export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
@@ -674,6 +679,8 @@ const _module = {
                 return new DeployKeyEnable(name, <any>undefined, { urn })
             case "gitlab:index/deployToken:DeployToken":
                 return new DeployToken(name, <any>undefined, { urn })
+            case "gitlab:index/globalLevelNotifications:GlobalLevelNotifications":
+                return new GlobalLevelNotifications(name, <any>undefined, { urn })
             case "gitlab:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "gitlab:index/groupAccessToken:GroupAccessToken":
@@ -841,6 +848,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/complianceFramework", _mo
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKeyEnable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployToken", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/globalLevelNotifications", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/group", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupBadge", _module)

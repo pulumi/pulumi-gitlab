@@ -256,25 +256,13 @@ namespace Pulumi.GitLab
         public Output<string> DefaultSnippetVisibility { get; private set; } = null!;
 
         /// <summary>
-        /// Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        /// </summary>
-        [Output("delayedGroupDeletion")]
-        public Output<bool> DelayedGroupDeletion { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-        /// </summary>
-        [Output("delayedProjectDeletion")]
-        public Output<bool> DelayedProjectDeletion { get; private set; } = null!;
-
-        /// <summary>
         /// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
         /// </summary>
         [Output("deleteInactiveProjects")]
         public Output<bool> DeleteInactiveProjects { get; private set; } = null!;
 
         /// <summary>
-        /// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        /// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         /// </summary>
         [Output("deletionAdjournedPeriod")]
         public Output<int> DeletionAdjournedPeriod { get; private set; } = null!;
@@ -694,7 +682,9 @@ namespace Pulumi.GitLab
         public Output<string> HomePageUrl { get; private set; } = null!;
 
         /// <summary>
-        /// (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+        /// Enable or disable Git housekeeping.
+        /// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+        /// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         /// </summary>
         [Output("housekeepingEnabled")]
         public Output<bool> HousekeepingEnabled { get; private set; } = null!;
@@ -716,6 +706,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("housekeepingIncrementalRepackPeriod")]
         public Output<int> HousekeepingIncrementalRepackPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of Git pushes after which an incremental git repack is run.
+        /// </summary>
+        [Output("housekeepingOptimizeRepositoryPeriod")]
+        public Output<int> HousekeepingOptimizeRepositoryPeriod { get; private set; } = null!;
 
         /// <summary>
         /// Enable HTML emails.
@@ -1798,25 +1794,13 @@ namespace Pulumi.GitLab
         public Input<string>? DefaultSnippetVisibility { get; set; }
 
         /// <summary>
-        /// Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        /// </summary>
-        [Input("delayedGroupDeletion")]
-        public Input<bool>? DelayedGroupDeletion { get; set; }
-
-        /// <summary>
-        /// Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-        /// </summary>
-        [Input("delayedProjectDeletion")]
-        public Input<bool>? DelayedProjectDeletion { get; set; }
-
-        /// <summary>
         /// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
         /// </summary>
         [Input("deleteInactiveProjects")]
         public Input<bool>? DeleteInactiveProjects { get; set; }
 
         /// <summary>
-        /// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        /// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         /// </summary>
         [Input("deletionAdjournedPeriod")]
         public Input<int>? DeletionAdjournedPeriod { get; set; }
@@ -2348,7 +2332,9 @@ namespace Pulumi.GitLab
         public Input<string>? HomePageUrl { get; set; }
 
         /// <summary>
-        /// (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+        /// Enable or disable Git housekeeping.
+        /// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+        /// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         /// </summary>
         [Input("housekeepingEnabled")]
         public Input<bool>? HousekeepingEnabled { get; set; }
@@ -2370,6 +2356,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("housekeepingIncrementalRepackPeriod")]
         public Input<int>? HousekeepingIncrementalRepackPeriod { get; set; }
+
+        /// <summary>
+        /// Number of Git pushes after which an incremental git repack is run.
+        /// </summary>
+        [Input("housekeepingOptimizeRepositoryPeriod")]
+        public Input<int>? HousekeepingOptimizeRepositoryPeriod { get; set; }
 
         /// <summary>
         /// Enable HTML emails.
@@ -3486,25 +3478,13 @@ namespace Pulumi.GitLab
         public Input<string>? DefaultSnippetVisibility { get; set; }
 
         /// <summary>
-        /// Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        /// </summary>
-        [Input("delayedGroupDeletion")]
-        public Input<bool>? DelayedGroupDeletion { get; set; }
-
-        /// <summary>
-        /// Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-        /// </summary>
-        [Input("delayedProjectDeletion")]
-        public Input<bool>? DelayedProjectDeletion { get; set; }
-
-        /// <summary>
         /// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
         /// </summary>
         [Input("deleteInactiveProjects")]
         public Input<bool>? DeleteInactiveProjects { get; set; }
 
         /// <summary>
-        /// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        /// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         /// </summary>
         [Input("deletionAdjournedPeriod")]
         public Input<int>? DeletionAdjournedPeriod { get; set; }
@@ -4036,7 +4016,9 @@ namespace Pulumi.GitLab
         public Input<string>? HomePageUrl { get; set; }
 
         /// <summary>
-        /// (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+        /// Enable or disable Git housekeeping.
+        /// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+        /// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         /// </summary>
         [Input("housekeepingEnabled")]
         public Input<bool>? HousekeepingEnabled { get; set; }
@@ -4058,6 +4040,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("housekeepingIncrementalRepackPeriod")]
         public Input<int>? HousekeepingIncrementalRepackPeriod { get; set; }
+
+        /// <summary>
+        /// Number of Git pushes after which an incremental git repack is run.
+        /// </summary>
+        [Input("housekeepingOptimizeRepositoryPeriod")]
+        public Input<int>? HousekeepingOptimizeRepositoryPeriod { get; set; }
 
         /// <summary>
         /// Enable HTML emails.

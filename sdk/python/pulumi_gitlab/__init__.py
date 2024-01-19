@@ -55,6 +55,7 @@ from .get_repository_tree import *
 from .get_user import *
 from .get_user_sshkeys import *
 from .get_users import *
+from .global_level_notifications import *
 from .group import *
 from .group_access_token import *
 from .group_badge import *
@@ -223,6 +224,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/deployToken:DeployToken": "DeployToken"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/globalLevelNotifications",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/globalLevelNotifications:GlobalLevelNotifications": "GlobalLevelNotifications"
   }
  },
  {

@@ -273,14 +273,14 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The url of the hook to invoke.
+     * The url of the hook to invoke. Forces re-creation to preserve `token`.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The url of the hook to invoke.
+     * @return The url of the hook to invoke. Forces re-creation to preserve `token`.
      * 
      */
     public Optional<Output<String>> url() {
@@ -702,7 +702,7 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The url of the hook to invoke.
+         * @param url The url of the hook to invoke. Forces re-creation to preserve `token`.
          * 
          * @return builder
          * 
@@ -713,7 +713,7 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The url of the hook to invoke.
+         * @param url The url of the hook to invoke. Forces re-creation to preserve `token`.
          * 
          * @return builder
          * 

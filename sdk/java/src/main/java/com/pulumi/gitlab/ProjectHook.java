@@ -306,14 +306,14 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.token);
     }
     /**
-     * The url of the hook to invoke.
+     * The url of the hook to invoke. Forces re-creation to preserve `token`.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The url of the hook to invoke.
+     * @return The url of the hook to invoke. Forces re-creation to preserve `token`.
      * 
      */
     public Output<String> url() {

@@ -195,19 +195,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly defaultSnippetVisibility!: pulumi.Output<string>;
     /**
-     * Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-     */
-    public readonly delayedGroupDeletion!: pulumi.Output<boolean>;
-    /**
-     * Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-     */
-    public readonly delayedProjectDeletion!: pulumi.Output<boolean>;
-    /**
      * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      */
     public readonly deleteInactiveProjects!: pulumi.Output<boolean>;
     /**
-     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
      */
     public readonly deletionAdjournedPeriod!: pulumi.Output<number>;
     /**
@@ -487,21 +479,33 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly homePageUrl!: pulumi.Output<string>;
     /**
-     * (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+     * Enable or disable Git housekeeping.
+     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
      */
     public readonly housekeepingEnabled!: pulumi.Output<boolean>;
     /**
      * Number of Git pushes after which an incremental git repack is run.
+     *
+     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
      */
     public readonly housekeepingFullRepackPeriod!: pulumi.Output<number>;
     /**
      * Number of Git pushes after which git gc is run.
+     *
+     * @deprecated housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
      */
     public readonly housekeepingGcPeriod!: pulumi.Output<number>;
     /**
      * Number of Git pushes after which an incremental git repack is run.
+     *
+     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
      */
     public readonly housekeepingIncrementalRepackPeriod!: pulumi.Output<number>;
+    /**
+     * Number of Git pushes after which an incremental git repack is run.
+     */
+    public readonly housekeepingOptimizeRepositoryPeriod!: pulumi.Output<number>;
     /**
      * Enable HTML emails.
      */
@@ -1065,8 +1069,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["defaultProjectVisibility"] = state ? state.defaultProjectVisibility : undefined;
             resourceInputs["defaultProjectsLimit"] = state ? state.defaultProjectsLimit : undefined;
             resourceInputs["defaultSnippetVisibility"] = state ? state.defaultSnippetVisibility : undefined;
-            resourceInputs["delayedGroupDeletion"] = state ? state.delayedGroupDeletion : undefined;
-            resourceInputs["delayedProjectDeletion"] = state ? state.delayedProjectDeletion : undefined;
             resourceInputs["deleteInactiveProjects"] = state ? state.deleteInactiveProjects : undefined;
             resourceInputs["deletionAdjournedPeriod"] = state ? state.deletionAdjournedPeriod : undefined;
             resourceInputs["diffMaxFiles"] = state ? state.diffMaxFiles : undefined;
@@ -1142,6 +1144,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["housekeepingFullRepackPeriod"] = state ? state.housekeepingFullRepackPeriod : undefined;
             resourceInputs["housekeepingGcPeriod"] = state ? state.housekeepingGcPeriod : undefined;
             resourceInputs["housekeepingIncrementalRepackPeriod"] = state ? state.housekeepingIncrementalRepackPeriod : undefined;
+            resourceInputs["housekeepingOptimizeRepositoryPeriod"] = state ? state.housekeepingOptimizeRepositoryPeriod : undefined;
             resourceInputs["htmlEmailsEnabled"] = state ? state.htmlEmailsEnabled : undefined;
             resourceInputs["importSources"] = state ? state.importSources : undefined;
             resourceInputs["inProductMarketingEmailsEnabled"] = state ? state.inProductMarketingEmailsEnabled : undefined;
@@ -1309,8 +1312,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["defaultProjectVisibility"] = args ? args.defaultProjectVisibility : undefined;
             resourceInputs["defaultProjectsLimit"] = args ? args.defaultProjectsLimit : undefined;
             resourceInputs["defaultSnippetVisibility"] = args ? args.defaultSnippetVisibility : undefined;
-            resourceInputs["delayedGroupDeletion"] = args ? args.delayedGroupDeletion : undefined;
-            resourceInputs["delayedProjectDeletion"] = args ? args.delayedProjectDeletion : undefined;
             resourceInputs["deleteInactiveProjects"] = args ? args.deleteInactiveProjects : undefined;
             resourceInputs["deletionAdjournedPeriod"] = args ? args.deletionAdjournedPeriod : undefined;
             resourceInputs["diffMaxFiles"] = args ? args.diffMaxFiles : undefined;
@@ -1386,6 +1387,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["housekeepingFullRepackPeriod"] = args ? args.housekeepingFullRepackPeriod : undefined;
             resourceInputs["housekeepingGcPeriod"] = args ? args.housekeepingGcPeriod : undefined;
             resourceInputs["housekeepingIncrementalRepackPeriod"] = args ? args.housekeepingIncrementalRepackPeriod : undefined;
+            resourceInputs["housekeepingOptimizeRepositoryPeriod"] = args ? args.housekeepingOptimizeRepositoryPeriod : undefined;
             resourceInputs["htmlEmailsEnabled"] = args ? args.htmlEmailsEnabled : undefined;
             resourceInputs["importSources"] = args ? args.importSources : undefined;
             resourceInputs["inProductMarketingEmailsEnabled"] = args ? args.inProductMarketingEmailsEnabled : undefined;
@@ -1675,19 +1677,11 @@ export interface ApplicationSettingsState {
      */
     defaultSnippetVisibility?: pulumi.Input<string>;
     /**
-     * Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-     */
-    delayedGroupDeletion?: pulumi.Input<boolean>;
-    /**
-     * Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-     */
-    delayedProjectDeletion?: pulumi.Input<boolean>;
-    /**
      * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      */
     deleteInactiveProjects?: pulumi.Input<boolean>;
     /**
-     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
      */
     deletionAdjournedPeriod?: pulumi.Input<number>;
     /**
@@ -1967,21 +1961,33 @@ export interface ApplicationSettingsState {
      */
     homePageUrl?: pulumi.Input<string>;
     /**
-     * (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+     * Enable or disable Git housekeeping.
+     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
      */
     housekeepingEnabled?: pulumi.Input<boolean>;
     /**
      * Number of Git pushes after which an incremental git repack is run.
+     *
+     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
      */
     housekeepingFullRepackPeriod?: pulumi.Input<number>;
     /**
      * Number of Git pushes after which git gc is run.
+     *
+     * @deprecated housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
      */
     housekeepingGcPeriod?: pulumi.Input<number>;
     /**
      * Number of Git pushes after which an incremental git repack is run.
+     *
+     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
      */
     housekeepingIncrementalRepackPeriod?: pulumi.Input<number>;
+    /**
+     * Number of Git pushes after which an incremental git repack is run.
+     */
+    housekeepingOptimizeRepositoryPeriod?: pulumi.Input<number>;
     /**
      * Enable HTML emails.
      */
@@ -2649,19 +2655,11 @@ export interface ApplicationSettingsArgs {
      */
     defaultSnippetVisibility?: pulumi.Input<string>;
     /**
-     * Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-     */
-    delayedGroupDeletion?: pulumi.Input<boolean>;
-    /**
-     * Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-     */
-    delayedProjectDeletion?: pulumi.Input<boolean>;
-    /**
      * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      */
     deleteInactiveProjects?: pulumi.Input<boolean>;
     /**
-     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
      */
     deletionAdjournedPeriod?: pulumi.Input<number>;
     /**
@@ -2941,21 +2939,33 @@ export interface ApplicationSettingsArgs {
      */
     homePageUrl?: pulumi.Input<string>;
     /**
-     * (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+     * Enable or disable Git housekeeping.
+     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
      */
     housekeepingEnabled?: pulumi.Input<boolean>;
     /**
      * Number of Git pushes after which an incremental git repack is run.
+     *
+     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
      */
     housekeepingFullRepackPeriod?: pulumi.Input<number>;
     /**
      * Number of Git pushes after which git gc is run.
+     *
+     * @deprecated housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
      */
     housekeepingGcPeriod?: pulumi.Input<number>;
     /**
      * Number of Git pushes after which an incremental git repack is run.
+     *
+     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
      */
     housekeepingIncrementalRepackPeriod?: pulumi.Input<number>;
+    /**
+     * Number of Git pushes after which an incremental git repack is run.
+     */
+    housekeepingOptimizeRepositoryPeriod?: pulumi.Input<number>;
     /**
      * Enable HTML emails.
      */

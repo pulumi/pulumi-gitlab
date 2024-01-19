@@ -572,34 +572,6 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.defaultSnippetVisibility;
     }
     /**
-     * Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-     * 
-     */
-    @Export(name="delayedGroupDeletion", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> delayedGroupDeletion;
-
-    /**
-     * @return Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-     * 
-     */
-    public Output<Boolean> delayedGroupDeletion() {
-        return this.delayedGroupDeletion;
-    }
-    /**
-     * Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-     * 
-     */
-    @Export(name="delayedProjectDeletion", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> delayedProjectDeletion;
-
-    /**
-     * @return Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-     * 
-     */
-    public Output<Boolean> delayedProjectDeletion() {
-        return this.delayedProjectDeletion;
-    }
-    /**
      * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      * 
      */
@@ -614,14 +586,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.deleteInactiveProjects;
     }
     /**
-     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
      * 
      */
     @Export(name="deletionAdjournedPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> deletionAdjournedPeriod;
 
     /**
-     * @return The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * @return The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
      * 
      */
     public Output<Integer> deletionAdjournedPeriod() {
@@ -1594,14 +1566,18 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.homePageUrl;
     }
     /**
-     * (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+     * Enable or disable Git housekeeping.
+     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
      * 
      */
     @Export(name="housekeepingEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> housekeepingEnabled;
 
     /**
-     * @return (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+     * @return Enable or disable Git housekeeping.
+     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
      * 
      */
     public Output<Boolean> housekeepingEnabled() {
@@ -1610,7 +1586,11 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
     /**
      * Number of Git pushes after which an incremental git repack is run.
      * 
+     * @deprecated
+     * housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * 
      */
+    @Deprecated /* housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
     @Export(name="housekeepingFullRepackPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> housekeepingFullRepackPeriod;
 
@@ -1624,7 +1604,11 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
     /**
      * Number of Git pushes after which git gc is run.
      * 
+     * @deprecated
+     * housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * 
      */
+    @Deprecated /* housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead. */
     @Export(name="housekeepingGcPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> housekeepingGcPeriod;
 
@@ -1638,7 +1622,11 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
     /**
      * Number of Git pushes after which an incremental git repack is run.
      * 
+     * @deprecated
+     * housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * 
      */
+    @Deprecated /* housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
     @Export(name="housekeepingIncrementalRepackPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> housekeepingIncrementalRepackPeriod;
 
@@ -1648,6 +1636,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> housekeepingIncrementalRepackPeriod() {
         return this.housekeepingIncrementalRepackPeriod;
+    }
+    /**
+     * Number of Git pushes after which an incremental git repack is run.
+     * 
+     */
+    @Export(name="housekeepingOptimizeRepositoryPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> housekeepingOptimizeRepositoryPeriod;
+
+    /**
+     * @return Number of Git pushes after which an incremental git repack is run.
+     * 
+     */
+    public Output<Integer> housekeepingOptimizeRepositoryPeriod() {
+        return this.housekeepingOptimizeRepositoryPeriod;
     }
     /**
      * Enable HTML emails.

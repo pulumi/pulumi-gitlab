@@ -51,8 +51,6 @@ class ApplicationSettingsArgs:
                  default_project_visibility: Optional[pulumi.Input[str]] = None,
                  default_projects_limit: Optional[pulumi.Input[int]] = None,
                  default_snippet_visibility: Optional[pulumi.Input[str]] = None,
-                 delayed_group_deletion: Optional[pulumi.Input[bool]] = None,
-                 delayed_project_deletion: Optional[pulumi.Input[bool]] = None,
                  delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
                  deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
                  diff_max_files: Optional[pulumi.Input[int]] = None,
@@ -128,6 +126,7 @@ class ApplicationSettingsArgs:
                  housekeeping_full_repack_period: Optional[pulumi.Input[int]] = None,
                  housekeeping_gc_period: Optional[pulumi.Input[int]] = None,
                  housekeeping_incremental_repack_period: Optional[pulumi.Input[int]] = None,
+                 housekeeping_optimize_repository_period: Optional[pulumi.Input[int]] = None,
                  html_emails_enabled: Optional[pulumi.Input[bool]] = None,
                  import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  in_product_marketing_emails_enabled: Optional[pulumi.Input[bool]] = None,
@@ -295,10 +294,8 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_projects_limit: Project limit per user.
         :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
-        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
         :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
-        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
@@ -368,10 +365,13 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] help_text: GitLab server administrator information.
         :param pulumi.Input[bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[str] home_page_url: Redirect to this URL when not logged in.
-        :param pulumi.Input[bool] housekeeping_enabled: (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+        :param pulumi.Input[bool] housekeeping_enabled: Enable or disable Git housekeeping.
+               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         :param pulumi.Input[int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
+        :param pulumi.Input[int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
@@ -575,10 +575,6 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "default_projects_limit", default_projects_limit)
         if default_snippet_visibility is not None:
             pulumi.set(__self__, "default_snippet_visibility", default_snippet_visibility)
-        if delayed_group_deletion is not None:
-            pulumi.set(__self__, "delayed_group_deletion", delayed_group_deletion)
-        if delayed_project_deletion is not None:
-            pulumi.set(__self__, "delayed_project_deletion", delayed_project_deletion)
         if delete_inactive_projects is not None:
             pulumi.set(__self__, "delete_inactive_projects", delete_inactive_projects)
         if deletion_adjourned_period is not None:
@@ -724,11 +720,22 @@ class ApplicationSettingsArgs:
         if housekeeping_enabled is not None:
             pulumi.set(__self__, "housekeeping_enabled", housekeeping_enabled)
         if housekeeping_full_repack_period is not None:
+            warnings.warn("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+            pulumi.log.warn("""housekeeping_full_repack_period is deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+        if housekeeping_full_repack_period is not None:
             pulumi.set(__self__, "housekeeping_full_repack_period", housekeeping_full_repack_period)
+        if housekeeping_gc_period is not None:
+            warnings.warn("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+            pulumi.log.warn("""housekeeping_gc_period is deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
         if housekeeping_gc_period is not None:
             pulumi.set(__self__, "housekeeping_gc_period", housekeeping_gc_period)
         if housekeeping_incremental_repack_period is not None:
+            warnings.warn("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+            pulumi.log.warn("""housekeeping_incremental_repack_period is deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+        if housekeeping_incremental_repack_period is not None:
             pulumi.set(__self__, "housekeeping_incremental_repack_period", housekeeping_incremental_repack_period)
+        if housekeeping_optimize_repository_period is not None:
+            pulumi.set(__self__, "housekeeping_optimize_repository_period", housekeeping_optimize_repository_period)
         if html_emails_enabled is not None:
             pulumi.set(__self__, "html_emails_enabled", html_emails_enabled)
         if import_sources is not None:
@@ -1431,30 +1438,6 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "default_snippet_visibility", value)
 
     @property
-    @pulumi.getter(name="delayedGroupDeletion")
-    def delayed_group_deletion(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        """
-        return pulumi.get(self, "delayed_group_deletion")
-
-    @delayed_group_deletion.setter
-    def delayed_group_deletion(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "delayed_group_deletion", value)
-
-    @property
-    @pulumi.getter(name="delayedProjectDeletion")
-    def delayed_project_deletion(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-        """
-        return pulumi.get(self, "delayed_project_deletion")
-
-    @delayed_project_deletion.setter
-    def delayed_project_deletion(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "delayed_project_deletion", value)
-
-    @property
     @pulumi.getter(name="deleteInactiveProjects")
     def delete_inactive_projects(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1470,7 +1453,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="deletionAdjournedPeriod")
     def deletion_adjourned_period(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         """
         return pulumi.get(self, "deletion_adjourned_period")
 
@@ -2310,7 +2293,9 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="housekeepingEnabled")
     def housekeeping_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+        Enable or disable Git housekeeping.
+        			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+        			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         """
         return pulumi.get(self, "housekeeping_enabled")
 
@@ -2324,6 +2309,9 @@ class ApplicationSettingsArgs:
         """
         Number of Git pushes after which an incremental git repack is run.
         """
+        warnings.warn("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+        pulumi.log.warn("""housekeeping_full_repack_period is deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+
         return pulumi.get(self, "housekeeping_full_repack_period")
 
     @housekeeping_full_repack_period.setter
@@ -2336,6 +2324,9 @@ class ApplicationSettingsArgs:
         """
         Number of Git pushes after which git gc is run.
         """
+        warnings.warn("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+        pulumi.log.warn("""housekeeping_gc_period is deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+
         return pulumi.get(self, "housekeeping_gc_period")
 
     @housekeeping_gc_period.setter
@@ -2348,11 +2339,26 @@ class ApplicationSettingsArgs:
         """
         Number of Git pushes after which an incremental git repack is run.
         """
+        warnings.warn("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+        pulumi.log.warn("""housekeeping_incremental_repack_period is deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+
         return pulumi.get(self, "housekeeping_incremental_repack_period")
 
     @housekeeping_incremental_repack_period.setter
     def housekeeping_incremental_repack_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "housekeeping_incremental_repack_period", value)
+
+    @property
+    @pulumi.getter(name="housekeepingOptimizeRepositoryPeriod")
+    def housekeeping_optimize_repository_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of Git pushes after which an incremental git repack is run.
+        """
+        return pulumi.get(self, "housekeeping_optimize_repository_period")
+
+    @housekeeping_optimize_repository_period.setter
+    def housekeeping_optimize_repository_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "housekeeping_optimize_repository_period", value)
 
     @property
     @pulumi.getter(name="htmlEmailsEnabled")
@@ -3931,8 +3937,6 @@ class _ApplicationSettingsState:
                  default_project_visibility: Optional[pulumi.Input[str]] = None,
                  default_projects_limit: Optional[pulumi.Input[int]] = None,
                  default_snippet_visibility: Optional[pulumi.Input[str]] = None,
-                 delayed_group_deletion: Optional[pulumi.Input[bool]] = None,
-                 delayed_project_deletion: Optional[pulumi.Input[bool]] = None,
                  delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
                  deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
                  diff_max_files: Optional[pulumi.Input[int]] = None,
@@ -4008,6 +4012,7 @@ class _ApplicationSettingsState:
                  housekeeping_full_repack_period: Optional[pulumi.Input[int]] = None,
                  housekeeping_gc_period: Optional[pulumi.Input[int]] = None,
                  housekeeping_incremental_repack_period: Optional[pulumi.Input[int]] = None,
+                 housekeeping_optimize_repository_period: Optional[pulumi.Input[int]] = None,
                  html_emails_enabled: Optional[pulumi.Input[bool]] = None,
                  import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  in_product_marketing_emails_enabled: Optional[pulumi.Input[bool]] = None,
@@ -4175,10 +4180,8 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_projects_limit: Project limit per user.
         :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
-        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
         :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
-        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
@@ -4248,10 +4251,13 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] help_text: GitLab server administrator information.
         :param pulumi.Input[bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[str] home_page_url: Redirect to this URL when not logged in.
-        :param pulumi.Input[bool] housekeeping_enabled: (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+        :param pulumi.Input[bool] housekeeping_enabled: Enable or disable Git housekeeping.
+               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         :param pulumi.Input[int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
+        :param pulumi.Input[int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
@@ -4455,10 +4461,6 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "default_projects_limit", default_projects_limit)
         if default_snippet_visibility is not None:
             pulumi.set(__self__, "default_snippet_visibility", default_snippet_visibility)
-        if delayed_group_deletion is not None:
-            pulumi.set(__self__, "delayed_group_deletion", delayed_group_deletion)
-        if delayed_project_deletion is not None:
-            pulumi.set(__self__, "delayed_project_deletion", delayed_project_deletion)
         if delete_inactive_projects is not None:
             pulumi.set(__self__, "delete_inactive_projects", delete_inactive_projects)
         if deletion_adjourned_period is not None:
@@ -4604,11 +4606,22 @@ class _ApplicationSettingsState:
         if housekeeping_enabled is not None:
             pulumi.set(__self__, "housekeeping_enabled", housekeeping_enabled)
         if housekeeping_full_repack_period is not None:
+            warnings.warn("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+            pulumi.log.warn("""housekeeping_full_repack_period is deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+        if housekeeping_full_repack_period is not None:
             pulumi.set(__self__, "housekeeping_full_repack_period", housekeeping_full_repack_period)
+        if housekeeping_gc_period is not None:
+            warnings.warn("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+            pulumi.log.warn("""housekeeping_gc_period is deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
         if housekeeping_gc_period is not None:
             pulumi.set(__self__, "housekeeping_gc_period", housekeeping_gc_period)
         if housekeeping_incremental_repack_period is not None:
+            warnings.warn("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+            pulumi.log.warn("""housekeeping_incremental_repack_period is deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+        if housekeeping_incremental_repack_period is not None:
             pulumi.set(__self__, "housekeeping_incremental_repack_period", housekeeping_incremental_repack_period)
+        if housekeeping_optimize_repository_period is not None:
+            pulumi.set(__self__, "housekeeping_optimize_repository_period", housekeeping_optimize_repository_period)
         if html_emails_enabled is not None:
             pulumi.set(__self__, "html_emails_enabled", html_emails_enabled)
         if import_sources is not None:
@@ -5311,30 +5324,6 @@ class _ApplicationSettingsState:
         pulumi.set(self, "default_snippet_visibility", value)
 
     @property
-    @pulumi.getter(name="delayedGroupDeletion")
-    def delayed_group_deletion(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        """
-        return pulumi.get(self, "delayed_group_deletion")
-
-    @delayed_group_deletion.setter
-    def delayed_group_deletion(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "delayed_group_deletion", value)
-
-    @property
-    @pulumi.getter(name="delayedProjectDeletion")
-    def delayed_project_deletion(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-        """
-        return pulumi.get(self, "delayed_project_deletion")
-
-    @delayed_project_deletion.setter
-    def delayed_project_deletion(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "delayed_project_deletion", value)
-
-    @property
     @pulumi.getter(name="deleteInactiveProjects")
     def delete_inactive_projects(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -5350,7 +5339,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="deletionAdjournedPeriod")
     def deletion_adjourned_period(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         """
         return pulumi.get(self, "deletion_adjourned_period")
 
@@ -6190,7 +6179,9 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="housekeepingEnabled")
     def housekeeping_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+        Enable or disable Git housekeeping.
+        			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+        			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         """
         return pulumi.get(self, "housekeeping_enabled")
 
@@ -6204,6 +6195,9 @@ class _ApplicationSettingsState:
         """
         Number of Git pushes after which an incremental git repack is run.
         """
+        warnings.warn("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+        pulumi.log.warn("""housekeeping_full_repack_period is deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+
         return pulumi.get(self, "housekeeping_full_repack_period")
 
     @housekeeping_full_repack_period.setter
@@ -6216,6 +6210,9 @@ class _ApplicationSettingsState:
         """
         Number of Git pushes after which git gc is run.
         """
+        warnings.warn("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+        pulumi.log.warn("""housekeeping_gc_period is deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+
         return pulumi.get(self, "housekeeping_gc_period")
 
     @housekeeping_gc_period.setter
@@ -6228,11 +6225,26 @@ class _ApplicationSettingsState:
         """
         Number of Git pushes after which an incremental git repack is run.
         """
+        warnings.warn("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+        pulumi.log.warn("""housekeeping_incremental_repack_period is deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+
         return pulumi.get(self, "housekeeping_incremental_repack_period")
 
     @housekeeping_incremental_repack_period.setter
     def housekeeping_incremental_repack_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "housekeeping_incremental_repack_period", value)
+
+    @property
+    @pulumi.getter(name="housekeepingOptimizeRepositoryPeriod")
+    def housekeeping_optimize_repository_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of Git pushes after which an incremental git repack is run.
+        """
+        return pulumi.get(self, "housekeeping_optimize_repository_period")
+
+    @housekeeping_optimize_repository_period.setter
+    def housekeeping_optimize_repository_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "housekeeping_optimize_repository_period", value)
 
     @property
     @pulumi.getter(name="htmlEmailsEnabled")
@@ -7813,8 +7825,6 @@ class ApplicationSettings(pulumi.CustomResource):
                  default_project_visibility: Optional[pulumi.Input[str]] = None,
                  default_projects_limit: Optional[pulumi.Input[int]] = None,
                  default_snippet_visibility: Optional[pulumi.Input[str]] = None,
-                 delayed_group_deletion: Optional[pulumi.Input[bool]] = None,
-                 delayed_project_deletion: Optional[pulumi.Input[bool]] = None,
                  delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
                  deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
                  diff_max_files: Optional[pulumi.Input[int]] = None,
@@ -7890,6 +7900,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  housekeeping_full_repack_period: Optional[pulumi.Input[int]] = None,
                  housekeeping_gc_period: Optional[pulumi.Input[int]] = None,
                  housekeeping_incremental_repack_period: Optional[pulumi.Input[int]] = None,
+                 housekeeping_optimize_repository_period: Optional[pulumi.Input[int]] = None,
                  html_emails_enabled: Optional[pulumi.Input[bool]] = None,
                  import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  in_product_marketing_emails_enabled: Optional[pulumi.Input[bool]] = None,
@@ -8071,10 +8082,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_projects_limit: Project limit per user.
         :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
-        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
         :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
-        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
@@ -8144,10 +8153,13 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] help_text: GitLab server administrator information.
         :param pulumi.Input[bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[str] home_page_url: Redirect to this URL when not logged in.
-        :param pulumi.Input[bool] housekeeping_enabled: (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+        :param pulumi.Input[bool] housekeeping_enabled: Enable or disable Git housekeeping.
+               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         :param pulumi.Input[int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
+        :param pulumi.Input[int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
@@ -8348,8 +8360,6 @@ class ApplicationSettings(pulumi.CustomResource):
                  default_project_visibility: Optional[pulumi.Input[str]] = None,
                  default_projects_limit: Optional[pulumi.Input[int]] = None,
                  default_snippet_visibility: Optional[pulumi.Input[str]] = None,
-                 delayed_group_deletion: Optional[pulumi.Input[bool]] = None,
-                 delayed_project_deletion: Optional[pulumi.Input[bool]] = None,
                  delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
                  deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
                  diff_max_files: Optional[pulumi.Input[int]] = None,
@@ -8425,6 +8435,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  housekeeping_full_repack_period: Optional[pulumi.Input[int]] = None,
                  housekeeping_gc_period: Optional[pulumi.Input[int]] = None,
                  housekeeping_incremental_repack_period: Optional[pulumi.Input[int]] = None,
+                 housekeeping_optimize_repository_period: Optional[pulumi.Input[int]] = None,
                  html_emails_enabled: Optional[pulumi.Input[bool]] = None,
                  import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  in_product_marketing_emails_enabled: Optional[pulumi.Input[bool]] = None,
@@ -8599,8 +8610,6 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["default_project_visibility"] = default_project_visibility
             __props__.__dict__["default_projects_limit"] = default_projects_limit
             __props__.__dict__["default_snippet_visibility"] = default_snippet_visibility
-            __props__.__dict__["delayed_group_deletion"] = delayed_group_deletion
-            __props__.__dict__["delayed_project_deletion"] = delayed_project_deletion
             __props__.__dict__["delete_inactive_projects"] = delete_inactive_projects
             __props__.__dict__["deletion_adjourned_period"] = deletion_adjourned_period
             __props__.__dict__["diff_max_files"] = diff_max_files
@@ -8676,6 +8685,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["housekeeping_full_repack_period"] = housekeeping_full_repack_period
             __props__.__dict__["housekeeping_gc_period"] = housekeeping_gc_period
             __props__.__dict__["housekeeping_incremental_repack_period"] = housekeeping_incremental_repack_period
+            __props__.__dict__["housekeeping_optimize_repository_period"] = housekeeping_optimize_repository_period
             __props__.__dict__["html_emails_enabled"] = html_emails_enabled
             __props__.__dict__["import_sources"] = import_sources
             __props__.__dict__["in_product_marketing_emails_enabled"] = in_product_marketing_emails_enabled
@@ -8853,8 +8863,6 @@ class ApplicationSettings(pulumi.CustomResource):
             default_project_visibility: Optional[pulumi.Input[str]] = None,
             default_projects_limit: Optional[pulumi.Input[int]] = None,
             default_snippet_visibility: Optional[pulumi.Input[str]] = None,
-            delayed_group_deletion: Optional[pulumi.Input[bool]] = None,
-            delayed_project_deletion: Optional[pulumi.Input[bool]] = None,
             delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
             deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
             diff_max_files: Optional[pulumi.Input[int]] = None,
@@ -8930,6 +8938,7 @@ class ApplicationSettings(pulumi.CustomResource):
             housekeeping_full_repack_period: Optional[pulumi.Input[int]] = None,
             housekeeping_gc_period: Optional[pulumi.Input[int]] = None,
             housekeeping_incremental_repack_period: Optional[pulumi.Input[int]] = None,
+            housekeeping_optimize_repository_period: Optional[pulumi.Input[int]] = None,
             html_emails_enabled: Optional[pulumi.Input[bool]] = None,
             import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             in_product_marketing_emails_enabled: Optional[pulumi.Input[bool]] = None,
@@ -9102,10 +9111,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_projects_limit: Project limit per user.
         :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
-        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
         :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
-        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
@@ -9175,10 +9182,13 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] help_text: GitLab server administrator information.
         :param pulumi.Input[bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[str] home_page_url: Redirect to this URL when not logged in.
-        :param pulumi.Input[bool] housekeeping_enabled: (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+        :param pulumi.Input[bool] housekeeping_enabled: Enable or disable Git housekeeping.
+               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         :param pulumi.Input[int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
+        :param pulumi.Input[int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
@@ -9349,8 +9359,6 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["default_project_visibility"] = default_project_visibility
         __props__.__dict__["default_projects_limit"] = default_projects_limit
         __props__.__dict__["default_snippet_visibility"] = default_snippet_visibility
-        __props__.__dict__["delayed_group_deletion"] = delayed_group_deletion
-        __props__.__dict__["delayed_project_deletion"] = delayed_project_deletion
         __props__.__dict__["delete_inactive_projects"] = delete_inactive_projects
         __props__.__dict__["deletion_adjourned_period"] = deletion_adjourned_period
         __props__.__dict__["diff_max_files"] = diff_max_files
@@ -9426,6 +9434,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["housekeeping_full_repack_period"] = housekeeping_full_repack_period
         __props__.__dict__["housekeeping_gc_period"] = housekeeping_gc_period
         __props__.__dict__["housekeeping_incremental_repack_period"] = housekeeping_incremental_repack_period
+        __props__.__dict__["housekeeping_optimize_repository_period"] = housekeeping_optimize_repository_period
         __props__.__dict__["html_emails_enabled"] = html_emails_enabled
         __props__.__dict__["import_sources"] = import_sources
         __props__.__dict__["in_product_marketing_emails_enabled"] = in_product_marketing_emails_enabled
@@ -9853,22 +9862,6 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "default_snippet_visibility")
 
     @property
-    @pulumi.getter(name="delayedGroupDeletion")
-    def delayed_group_deletion(self) -> pulumi.Output[bool]:
-        """
-        Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        """
-        return pulumi.get(self, "delayed_group_deletion")
-
-    @property
-    @pulumi.getter(name="delayedProjectDeletion")
-    def delayed_project_deletion(self) -> pulumi.Output[bool]:
-        """
-        Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-        """
-        return pulumi.get(self, "delayed_project_deletion")
-
-    @property
     @pulumi.getter(name="deleteInactiveProjects")
     def delete_inactive_projects(self) -> pulumi.Output[bool]:
         """
@@ -9880,7 +9873,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="deletionAdjournedPeriod")
     def deletion_adjourned_period(self) -> pulumi.Output[int]:
         """
-        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         """
         return pulumi.get(self, "deletion_adjourned_period")
 
@@ -10440,7 +10433,9 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="housekeepingEnabled")
     def housekeeping_enabled(self) -> pulumi.Output[bool]:
         """
-        (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
+        Enable or disable Git housekeeping.
+        			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+        			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         """
         return pulumi.get(self, "housekeeping_enabled")
 
@@ -10450,6 +10445,9 @@ class ApplicationSettings(pulumi.CustomResource):
         """
         Number of Git pushes after which an incremental git repack is run.
         """
+        warnings.warn("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+        pulumi.log.warn("""housekeeping_full_repack_period is deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+
         return pulumi.get(self, "housekeeping_full_repack_period")
 
     @property
@@ -10458,6 +10456,9 @@ class ApplicationSettings(pulumi.CustomResource):
         """
         Number of Git pushes after which git gc is run.
         """
+        warnings.warn("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+        pulumi.log.warn("""housekeeping_gc_period is deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+
         return pulumi.get(self, "housekeeping_gc_period")
 
     @property
@@ -10466,7 +10467,18 @@ class ApplicationSettings(pulumi.CustomResource):
         """
         Number of Git pushes after which an incremental git repack is run.
         """
+        warnings.warn("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
+        pulumi.log.warn("""housekeeping_incremental_repack_period is deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
+
         return pulumi.get(self, "housekeeping_incremental_repack_period")
+
+    @property
+    @pulumi.getter(name="housekeepingOptimizeRepositoryPeriod")
+    def housekeeping_optimize_repository_period(self) -> pulumi.Output[int]:
+        """
+        Number of Git pushes after which an incremental git repack is run.
+        """
+        return pulumi.get(self, "housekeeping_optimize_repository_period")
 
     @property
     @pulumi.getter(name="htmlEmailsEnabled")

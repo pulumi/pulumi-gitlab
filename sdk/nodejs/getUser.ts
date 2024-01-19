@@ -101,6 +101,10 @@ export interface GetUserResult {
      */
     readonly isAdmin: boolean;
     /**
+     * Whether the user is a bot.
+     */
+    readonly isBot: boolean;
+    /**
      * Last user's sign-in date.
      */
     readonly lastSignInAt: string;
