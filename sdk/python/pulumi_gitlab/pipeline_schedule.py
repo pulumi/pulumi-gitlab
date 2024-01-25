@@ -473,7 +473,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def active(self) -> pulumi.Output[Optional[bool]]:
+    def active(self) -> pulumi.Output[bool]:
         """
         The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         """
@@ -489,7 +489,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cronTimezone")
-    def cron_timezone(self) -> pulumi.Output[Optional[str]]:
+    def cron_timezone(self) -> pulumi.Output[str]:
         """
         The timezone.
         """
@@ -537,7 +537,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="takeOwnership")
-    def take_ownership(self) -> pulumi.Output[Optional[bool]]:
+    def take_ownership(self) -> pulumi.Output[bool]:
         """
         When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
         prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside

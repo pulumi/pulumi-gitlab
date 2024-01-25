@@ -12387,12 +12387,15 @@
                 }
             },
             "required": [
+                "active",
                 "cron",
+                "cronTimezone",
                 "description",
                 "owner",
                 "pipelineScheduleId",
                 "project",
-                "ref"
+                "ref",
+                "takeOwnership"
             ],
             "inputProperties": {
                 "active": {
@@ -12413,8 +12416,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name or id of the project to add the schedule to.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name or id of the project to add the schedule to.\n"
                 },
                 "ref": {
                     "type": "string",
@@ -12460,8 +12462,7 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name or id of the project to add the schedule to.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name or id of the project to add the schedule to.\n"
                     },
                     "ref": {
                         "type": "string",

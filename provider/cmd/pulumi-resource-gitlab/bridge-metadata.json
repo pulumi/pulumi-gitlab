@@ -1053,7 +1053,7 @@
             "gitlab:index/label:Label": 0,
             "gitlab:index/pagesDomain:PagesDomain": 1,
             "gitlab:index/personalAccessToken:PersonalAccessToken": 0,
-            "gitlab:index/pipelineSchedule:PipelineSchedule": 0,
+            "gitlab:index/pipelineSchedule:PipelineSchedule": 1,
             "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable": 0,
             "gitlab:index/pipelineTrigger:PipelineTrigger": 0,
             "gitlab:index/project:Project": 0,

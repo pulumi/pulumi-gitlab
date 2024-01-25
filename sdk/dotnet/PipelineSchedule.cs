@@ -50,7 +50,7 @@ namespace Pulumi.GitLab
         /// The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         /// </summary>
         [Output("active")]
-        public Output<bool?> Active { get; private set; } = null!;
+        public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
         /// The cron (e.g. `0 1 * * *`).
@@ -62,7 +62,7 @@ namespace Pulumi.GitLab
         /// The timezone.
         /// </summary>
         [Output("cronTimezone")]
-        public Output<string?> CronTimezone { get; private set; } = null!;
+        public Output<string> CronTimezone { get; private set; } = null!;
 
         /// <summary>
         /// The description of the pipeline schedule.
@@ -100,7 +100,7 @@ namespace Pulumi.GitLab
         /// Terraform.
         /// </summary>
         [Output("takeOwnership")]
-        public Output<bool?> TakeOwnership { get; private set; } = null!;
+        public Output<bool> TakeOwnership { get; private set; } = null!;
 
 
         /// <summary>

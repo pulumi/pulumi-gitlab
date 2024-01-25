@@ -58,11 +58,11 @@ type PipelineSchedule struct {
 	pulumi.CustomResourceState
 
 	// The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
-	Active pulumi.BoolPtrOutput `pulumi:"active"`
+	Active pulumi.BoolOutput `pulumi:"active"`
 	// The cron (e.g. `0 1 * * *`).
 	Cron pulumi.StringOutput `pulumi:"cron"`
 	// The timezone.
-	CronTimezone pulumi.StringPtrOutput `pulumi:"cronTimezone"`
+	CronTimezone pulumi.StringOutput `pulumi:"cronTimezone"`
 	// The description of the pipeline schedule.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The ID of the user that owns the pipeline schedule.
@@ -76,7 +76,7 @@ type PipelineSchedule struct {
 	// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
 	// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
 	// Terraform.
-	TakeOwnership pulumi.BoolPtrOutput `pulumi:"takeOwnership"`
+	TakeOwnership pulumi.BoolOutput `pulumi:"takeOwnership"`
 }
 
 // NewPipelineSchedule registers a new resource with the given unique name, arguments, and options.
@@ -297,8 +297,8 @@ func (o PipelineScheduleOutput) ToPipelineScheduleOutputWithContext(ctx context.
 }
 
 // The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
-func (o PipelineScheduleOutput) Active() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PipelineSchedule) pulumi.BoolPtrOutput { return v.Active }).(pulumi.BoolPtrOutput)
+func (o PipelineScheduleOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
 }
 
 // The cron (e.g. `0 1 * * *`).
@@ -307,8 +307,8 @@ func (o PipelineScheduleOutput) Cron() pulumi.StringOutput {
 }
 
 // The timezone.
-func (o PipelineScheduleOutput) CronTimezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringPtrOutput { return v.CronTimezone }).(pulumi.StringPtrOutput)
+func (o PipelineScheduleOutput) CronTimezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.CronTimezone }).(pulumi.StringOutput)
 }
 
 // The description of the pipeline schedule.
@@ -339,8 +339,8 @@ func (o PipelineScheduleOutput) Ref() pulumi.StringOutput {
 // When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
 // prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
 // Terraform.
-func (o PipelineScheduleOutput) TakeOwnership() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PipelineSchedule) pulumi.BoolPtrOutput { return v.TakeOwnership }).(pulumi.BoolPtrOutput)
+func (o PipelineScheduleOutput) TakeOwnership() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.BoolOutput { return v.TakeOwnership }).(pulumi.BoolOutput)
 }
 
 type PipelineScheduleArrayOutput struct{ *pulumi.OutputState }

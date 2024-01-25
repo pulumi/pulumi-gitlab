@@ -62,7 +62,7 @@ export class PipelineSchedule extends pulumi.CustomResource {
     /**
      * The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
      */
-    public readonly active!: pulumi.Output<boolean | undefined>;
+    public readonly active!: pulumi.Output<boolean>;
     /**
      * The cron (e.g. `0 1 * * *`).
      */
@@ -70,7 +70,7 @@ export class PipelineSchedule extends pulumi.CustomResource {
     /**
      * The timezone.
      */
-    public readonly cronTimezone!: pulumi.Output<string | undefined>;
+    public readonly cronTimezone!: pulumi.Output<string>;
     /**
      * The description of the pipeline schedule.
      */
@@ -96,7 +96,7 @@ export class PipelineSchedule extends pulumi.CustomResource {
      * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
      * Terraform.
      */
-    public readonly takeOwnership!: pulumi.Output<boolean | undefined>;
+    public readonly takeOwnership!: pulumi.Output<boolean>;
 
     /**
      * Create a PipelineSchedule resource with the given unique name, arguments, and options.
