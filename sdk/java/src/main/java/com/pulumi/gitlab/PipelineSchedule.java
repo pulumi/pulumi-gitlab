@@ -13,7 +13,6 @@ import com.pulumi.gitlab.inputs.PipelineScheduleState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -70,14 +69,14 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="active", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> active;
+    private Output<Boolean> active;
 
     /**
      * @return The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
      * 
      */
-    public Output<Optional<Boolean>> active() {
-        return Codegen.optional(this.active);
+    public Output<Boolean> active() {
+        return this.active;
     }
     /**
      * The cron (e.g. `0 1 * * *`).
@@ -98,14 +97,14 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="cronTimezone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> cronTimezone;
+    private Output<String> cronTimezone;
 
     /**
      * @return The timezone.
      * 
      */
-    public Output<Optional<String>> cronTimezone() {
-        return Codegen.optional(this.cronTimezone);
+    public Output<String> cronTimezone() {
+        return this.cronTimezone;
     }
     /**
      * The description of the pipeline schedule.
@@ -184,7 +183,7 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="takeOwnership", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> takeOwnership;
+    private Output<Boolean> takeOwnership;
 
     /**
      * @return When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
@@ -192,8 +191,8 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * Terraform.
      * 
      */
-    public Output<Optional<Boolean>> takeOwnership() {
-        return Codegen.optional(this.takeOwnership);
+    public Output<Boolean> takeOwnership() {
+        return this.takeOwnership;
     }
 
     /**
