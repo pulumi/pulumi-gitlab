@@ -12767,16 +12767,16 @@
                 },
                 "importUrl": {
                     "type": "string",
-                    "description": "Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used\ntogether with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.\nMake sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the\ncredentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using\n`terraform import`. See the examples section for how to properly use it.\n"
+                    "description": "Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.\n"
                 },
                 "importUrlPassword": {
                     "type": "string",
-                    "description": "The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related\nto the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly\nuse it.\n",
+                    "description": "The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.\n",
                     "secret": true
                 },
                 "importUrlUsername": {
                     "type": "string",
-                    "description": "The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related\nto the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly\nuse it.\n"
+                    "description": "The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.\n"
                 },
                 "infrastructureAccessLevel": {
                     "type": "string",
@@ -13233,16 +13233,16 @@
                 },
                 "importUrl": {
                     "type": "string",
-                    "description": "Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used\ntogether with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.\nMake sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the\ncredentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using\n`terraform import`. See the examples section for how to properly use it.\n"
+                    "description": "Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.\n"
                 },
                 "importUrlPassword": {
                     "type": "string",
-                    "description": "The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related\nto the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly\nuse it.\n",
+                    "description": "The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.\n",
                     "secret": true
                 },
                 "importUrlUsername": {
                     "type": "string",
-                    "description": "The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related\nto the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly\nuse it.\n"
+                    "description": "The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.\n"
                 },
                 "infrastructureAccessLevel": {
                     "type": "string",
@@ -13626,16 +13626,16 @@
                     },
                     "importUrl": {
                         "type": "string",
-                        "description": "Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used\ntogether with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.\nMake sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the\ncredentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using\n`terraform import`. See the examples section for how to properly use it.\n"
+                        "description": "Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.\n"
                     },
                     "importUrlPassword": {
                         "type": "string",
-                        "description": "The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related\nto the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly\nuse it.\n",
+                        "description": "The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.\n",
                         "secret": true
                     },
                     "importUrlUsername": {
                         "type": "string",
-                        "description": "The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related\nto the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly\nuse it.\n"
+                        "description": "The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.\n"
                     },
                     "infrastructureAccessLevel": {
                         "type": "string",

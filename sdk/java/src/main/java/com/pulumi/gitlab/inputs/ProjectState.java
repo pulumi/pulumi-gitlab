@@ -568,22 +568,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-     * `terraform import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     @Import(name="importUrl")
     private @Nullable Output<String> importUrl;
 
     /**
-     * @return Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-     * `terraform import`. See the examples section for how to properly use it.
+     * @return Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     public Optional<Output<String>> importUrl() {
@@ -591,18 +583,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     @Import(name="importUrlPassword")
     private @Nullable Output<String> importUrlPassword;
 
     /**
-     * @return The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * @return The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     public Optional<Output<String>> importUrlPassword() {
@@ -610,18 +598,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      * 
      */
     @Import(name="importUrlUsername")
     private @Nullable Output<String> importUrlUsername;
 
     /**
-     * @return The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * @return The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      * 
      */
     public Optional<Output<String>> importUrlUsername() {
@@ -2431,11 +2415,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrl Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-         * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-         * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-         * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-         * `terraform import`. See the examples section for how to properly use it.
+         * @param importUrl Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
          * 
          * @return builder
          * 
@@ -2446,11 +2426,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrl Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-         * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-         * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-         * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-         * `terraform import`. See the examples section for how to properly use it.
+         * @param importUrl Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
          * 
          * @return builder
          * 
@@ -2460,9 +2436,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrlPassword The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-         * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-         * use it.
+         * @param importUrlPassword The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
          * 
          * @return builder
          * 
@@ -2473,9 +2447,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrlPassword The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-         * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-         * use it.
+         * @param importUrlPassword The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
          * 
          * @return builder
          * 
@@ -2485,9 +2457,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrlUsername The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-         * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-         * use it.
+         * @param importUrlUsername The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
          * 
          * @return builder
          * 
@@ -2498,9 +2468,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrlUsername The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-         * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-         * use it.
+         * @param importUrlUsername The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
          * 
          * @return builder
          * 

@@ -632,58 +632,42 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.httpUrlToRepo;
     }
     /**
-     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-     * `terraform import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     @Export(name="importUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> importUrl;
 
     /**
-     * @return Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-     * `terraform import`. See the examples section for how to properly use it.
+     * @return Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     public Output<Optional<String>> importUrl() {
         return Codegen.optional(this.importUrl);
     }
     /**
-     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     @Export(name="importUrlPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> importUrlPassword;
 
     /**
-     * @return The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * @return The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     public Output<Optional<String>> importUrlPassword() {
         return Codegen.optional(this.importUrlPassword);
     }
     /**
-     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      * 
      */
     @Export(name="importUrlUsername", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> importUrlUsername;
 
     /**
-     * @return The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * @return The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      * 
      */
     public Output<Optional<String>> importUrlUsername() {

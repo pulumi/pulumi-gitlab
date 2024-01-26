@@ -259,23 +259,15 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly httpUrlToRepo!: pulumi.Output<string>;
     /**
-     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-     * `terraform import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     public readonly importUrl!: pulumi.Output<string | undefined>;
     /**
-     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * The password for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     public readonly importUrlPassword!: pulumi.Output<string | undefined>;
     /**
-     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * The username for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      */
     public readonly importUrlUsername!: pulumi.Output<string | undefined>;
     /**
@@ -898,23 +890,15 @@ export interface ProjectState {
      */
     httpUrlToRepo?: pulumi.Input<string>;
     /**
-     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-     * `terraform import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     importUrl?: pulumi.Input<string>;
     /**
-     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * The password for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     importUrlPassword?: pulumi.Input<string>;
     /**
-     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * The username for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      */
     importUrlUsername?: pulumi.Input<string>;
     /**
@@ -1307,23 +1291,15 @@ export interface ProjectArgs {
      */
     groupWithProjectTemplatesId?: pulumi.Input<number>;
     /**
-     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-     * `terraform import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     importUrl?: pulumi.Input<string>;
     /**
-     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * The password for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     importUrlPassword?: pulumi.Input<string>;
     /**
-     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-     * use it.
+     * The username for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      */
     importUrlUsername?: pulumi.Input<string>;
     /**
