@@ -144,17 +144,9 @@ class ProjectArgs:
         :param pulumi.Input[str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
-        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-               together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-               Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-               credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-               `terraform import`. See the examples section for how to properly use it.
-        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-               use it.
-        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-               use it.
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
@@ -808,11 +800,7 @@ class ProjectArgs:
     @pulumi.getter(name="importUrl")
     def import_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-        together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-        Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-        credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-        `terraform import`. See the examples section for how to properly use it.
+        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
 
@@ -824,9 +812,7 @@ class ProjectArgs:
     @pulumi.getter(name="importUrlPassword")
     def import_url_password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-        use it.
+        The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url_password")
 
@@ -838,9 +824,7 @@ class ProjectArgs:
     @pulumi.getter(name="importUrlUsername")
     def import_url_username(self) -> Optional[pulumi.Input[str]]:
         """
-        The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-        use it.
+        The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url_username")
 
@@ -1672,17 +1656,9 @@ class _ProjectState:
         :param pulumi.Input[bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
-        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-               together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-               Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-               credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-               `terraform import`. See the examples section for how to properly use it.
-        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-               use it.
-        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-               use it.
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
@@ -2390,11 +2366,7 @@ class _ProjectState:
     @pulumi.getter(name="importUrl")
     def import_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-        together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-        Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-        credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-        `terraform import`. See the examples section for how to properly use it.
+        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
 
@@ -2406,9 +2378,7 @@ class _ProjectState:
     @pulumi.getter(name="importUrlPassword")
     def import_url_password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-        use it.
+        The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url_password")
 
@@ -2420,9 +2390,7 @@ class _ProjectState:
     @pulumi.getter(name="importUrlUsername")
     def import_url_username(self) -> Optional[pulumi.Input[str]]:
         """
-        The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-        use it.
+        The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url_username")
 
@@ -3363,17 +3331,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
-        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-               together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-               Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-               credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-               `terraform import`. See the examples section for how to properly use it.
-        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-               use it.
-        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-               use it.
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3877,17 +3837,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
-        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-               together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-               Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-               credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-               `terraform import`. See the examples section for how to properly use it.
-        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-               use it.
-        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-               use it.
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4350,11 +4302,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="importUrl")
     def import_url(self) -> pulumi.Output[Optional[str]]:
         """
-        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
-        together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
-        Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
-        credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
-        `terraform import`. See the examples section for how to properly use it.
+        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
 
@@ -4362,9 +4310,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="importUrlPassword")
     def import_url_password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-        use it.
+        The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url_password")
 
@@ -4372,9 +4318,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="importUrlUsername")
     def import_url_username(self) -> pulumi.Output[Optional[str]]:
         """
-        The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
-        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
-        use it.
+        The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url_username")
 
