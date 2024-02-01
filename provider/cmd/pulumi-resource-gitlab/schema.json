@@ -72,8 +72,7 @@
                 "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when\n`client_cert` is set.\n"
             },
             "earlyAuthCheck": {
-                "type": "boolean",
-                "description": "(Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider\nconfiguration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if\nthe GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the\n`GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep\nbackups of your state.\n"
+                "type": "boolean"
             },
             "insecure": {
                 "type": "boolean",
@@ -90,40 +89,51 @@
         "gitlab:index/BranchCommit:BranchCommit": {
             "properties": {
                 "authorEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the author.\n"
                 },
                 "authorName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the author.\n"
                 },
                 "authoredDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committedDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committerEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the user that committed.\n"
                 },
                 "committerName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the user that committed.\n"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique id assigned to the commit by Gitlab.\n"
                 },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The commit message\n"
                 },
                 "parentIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The id of the parents of the commit\n"
                 },
                 "shortId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The short id assigned to the commit by Gitlab.\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the commit\n"
                 }
             },
             "type": "object",
@@ -511,10 +521,12 @@
         "gitlab:index/ProjectIssueTaskCompletionStatus:ProjectIssueTaskCompletionStatus": {
             "properties": {
                 "completedCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of tasks that are completed.\n"
                 },
                 "count": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of tasks.\n"
                 }
             },
             "type": "object",
@@ -650,40 +662,51 @@
         "gitlab:index/ProjectTagCommit:ProjectTagCommit": {
             "properties": {
                 "authorEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the author.\n"
                 },
                 "authorName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the author.\n"
                 },
                 "authoredDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committedDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committerEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the user that committed.\n"
                 },
                 "committerName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the user that committed.\n"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique id assigned to the commit by Gitlab.\n"
                 },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The commit message\n"
                 },
                 "parentIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The id of the parents of the commit\n"
                 },
                 "shortId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The short id assigned to the commit by Gitlab.\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the commit\n"
                 }
             },
             "type": "object",
@@ -708,10 +731,12 @@
         "gitlab:index/ProjectTagRelease:ProjectTagRelease": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of release.\n"
                 },
                 "tagName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the tag.\n"
                 }
             },
             "type": "object",
@@ -758,40 +783,51 @@
         "gitlab:index/getBranchCommit:getBranchCommit": {
             "properties": {
                 "authorEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the author.\n"
                 },
                 "authorName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the author.\n"
                 },
                 "authoredDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committedDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committerEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the user that committed.\n"
                 },
                 "committerName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the user that committed.\n"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique id assigned to the commit by Gitlab.\n"
                 },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The commit message\n"
                 },
                 "parentIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The id of the parents of the commit\n"
                 },
                 "shortId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The short id assigned to the commit by Gitlab.\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the commit\n"
                 }
             },
             "type": "object",
@@ -817,19 +853,24 @@
         "gitlab:index/getClusterAgentsClusterAgent:getClusterAgentsClusterAgent": {
             "properties": {
                 "agentId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the agent.\n"
                 },
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ISO8601 datetime when the agent was created.\n"
                 },
                 "createdByUserId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the user who created the agent.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Name of the agent.\n"
                 },
                 "project": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "ID or full path of the project maintained by the authenticated user.\n"
                 }
             },
             "type": "object",
@@ -849,64 +890,84 @@
         "gitlab:index/getGroupHooksHook:getGroupHooksHook": {
             "properties": {
                 "confidentialIssuesEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for confidential issues events.\n"
                 },
                 "confidentialNoteEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for confidential notes events.\n"
                 },
                 "deploymentEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for deployment events.\n"
                 },
                 "enableSslVerification": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable ssl verification when invoking the hook.\n"
                 },
                 "group": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID or full path of the group.\n"
                 },
                 "groupId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The id of the group for the hook.\n"
                 },
                 "hookId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The id of the group hook.\n"
                 },
                 "issuesEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for issues events.\n"
                 },
                 "jobEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for job events.\n"
                 },
                 "mergeRequestsEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for merge requests.\n"
                 },
                 "noteEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for notes events.\n"
                 },
                 "pipelineEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for pipeline events.\n"
                 },
                 "pushEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for push events.\n"
                 },
                 "pushEventsBranchFilter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Invoke the hook for push events on matching branches only.\n"
                 },
                 "releasesEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for releases events.\n"
                 },
                 "subgroupEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for subgroup events.\n"
                 },
                 "tagPushEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for tag push events.\n"
                 },
                 "token": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A token to present when invoking the hook. The token is not available for imported resources.\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The url of the hook to invoke.\n"
                 },
                 "wikiPageEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for wiki page events.\n"
                 }
             },
             "type": "object",
@@ -941,28 +1002,36 @@
         "gitlab:index/getGroupMembershipMember:getGroupMembershipMember": {
             "properties": {
                 "accessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access to the group.\n"
                 },
                 "avatarUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The avatar URL of the user.\n"
                 },
                 "expiresAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Expiration date for the group membership.\n"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique id assigned to the user by the gitlab server.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the user.\n"
                 },
                 "state": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Whether the user is active or blocked.\n"
                 },
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The username of the user.\n"
                 },
                 "webUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User's website URL.\n"
                 }
             },
             "type": "object",
@@ -985,19 +1054,24 @@
         "gitlab:index/getGroupSharedWithGroup:getGroupSharedWithGroup": {
             "properties": {
                 "expiresAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Share with group expiration date.\n"
                 },
                 "groupAccessLevel": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The access_level permission level of the shared group.\n"
                 },
                 "groupFullPath": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The full path of the group shared with.\n"
                 },
                 "groupId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the group shared with.\n"
                 },
                 "groupName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the group shared with.\n"
                 }
             },
             "type": "object",
@@ -1140,28 +1214,36 @@
         "gitlab:index/getGroupVariablesVariable:getGroupVariablesVariable": {
             "properties": {
                 "environmentScope": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.\n"
                 },
                 "group": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name or id of the group.\n"
                 },
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the variable.\n"
                 },
                 "masked": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.\n"
                 },
                 "protected": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
                 },
                 "raw": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.\n"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The value of the variable.\n"
                 },
                 "variableType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.\n"
                 }
             },
             "type": "object",
@@ -1184,53 +1266,69 @@
         "gitlab:index/getGroupsGroup:getGroupsGroup": {
             "properties": {
                 "defaultBranchProtection": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Whether developers and maintainers can push to the applicable default branch.\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the group.\n"
                 },
                 "fullName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The full name of the group.\n"
                 },
                 "fullPath": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The full path of the group.\n"
                 },
                 "groupId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the group.\n"
                 },
                 "lfsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Boolean, is LFS enabled for projects in this group.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of this group.\n"
                 },
                 "parentId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Integer, ID of the parent group.\n"
                 },
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path of the group.\n"
                 },
                 "preventForkingOutsideGroup": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "When enabled, users can not fork projects from this group to external namespaces.\n"
                 },
                 "requestAccessEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Boolean, is request for access enabled to the group.\n"
                 },
                 "runnersToken": {
                     "type": "string",
+                    "description": "The group level registration token to use during runner setup.\n",
                     "secret": true
                 },
                 "sharedRunnersSetting": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.\n"
                 },
                 "visibilityLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Visibility level of the group. Possible values are `private`, `internal`, `public`.\n"
                 },
                 "webUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Web URL of the group.\n"
                 },
                 "wikiAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.\n"
                 }
             },
             "type": "object",
@@ -1261,25 +1359,31 @@
         "gitlab:index/getInstanceDeployKeysDeployKey:getInstanceDeployKeysDeployKey": {
             "properties": {
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The creation date of the deploy key. In RFC3339 format.\n"
                 },
                 "fingerprint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The fingerprint of the deploy key.\n"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the deploy key.\n"
                 },
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The deploy key.\n"
                 },
                 "projectsWithWriteAccesses": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getInstanceDeployKeysDeployKeyProjectsWithWriteAccess:getInstanceDeployKeysDeployKeyProjectsWithWriteAccess"
-                    }
+                    },
+                    "description": "The list of projects that the deploy key has write access to.\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the deploy key.\n"
                 }
             },
             "type": "object",
@@ -1300,25 +1404,32 @@
         "gitlab:index/getInstanceDeployKeysDeployKeyProjectsWithWriteAccess:getInstanceDeployKeysDeployKeyProjectsWithWriteAccess": {
             "properties": {
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The creation date of the project. In RFC3339 format.\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the project.\n"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the project.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the project.\n"
                 },
                 "nameWithNamespace": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the project with namespace.\n"
                 },
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path of the project.\n"
                 },
                 "pathWithNamespace": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path of the project with namespace.\n"
                 }
             },
             "type": "object",
@@ -1340,22 +1451,28 @@
         "gitlab:index/getInstanceVariablesVariable:getInstanceVariablesVariable": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the variable.\n"
                 },
                 "masked": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.\n"
                 },
                 "protected": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
                 },
                 "raw": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.\n"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The value of the variable.\n"
                 },
                 "variableType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.\n"
                 }
             },
             "type": "object",
@@ -1403,34 +1520,43 @@
         "gitlab:index/getProjectBranchesBranch:getProjectBranchesBranch": {
             "properties": {
                 "canPush": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Bool, true if you can push to the branch.\n"
                 },
                 "commits": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectBranchesBranchCommit:getProjectBranchesBranchCommit"
-                    }
+                    },
+                    "description": "The commit associated with this branch.\n"
                 },
                 "default": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Bool, true if branch is the default branch for the project.\n"
                 },
                 "developersCanMerge": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Bool, true if developer level access allows to merge branch.\n"
                 },
                 "developersCanPush": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Bool, true if developer level access allows git push.\n"
                 },
                 "merged": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Bool, true if the branch has been merged into it's parent.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the branch.\n"
                 },
                 "protected": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Bool, true if branch has branch protection.\n"
                 },
                 "webUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "URL that can be used to find the branch in a browser.\n"
                 }
             },
             "type": "object",
@@ -1454,40 +1580,51 @@
         "gitlab:index/getProjectBranchesBranchCommit:getProjectBranchesBranchCommit": {
             "properties": {
                 "authorEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the author.\n"
                 },
                 "authorName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the author.\n"
                 },
                 "authoredDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committedDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committerEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the user that committed.\n"
                 },
                 "committerName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the user that committed.\n"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique id assigned to the commit by Gitlab.\n"
                 },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The commit message\n"
                 },
                 "parentIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The id of the parents of the commit\n"
                 },
                 "shortId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The short id assigned to the commit by Gitlab.\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the commit\n"
                 }
             },
             "type": "object",
@@ -1513,29 +1650,37 @@
         "gitlab:index/getProjectContainerExpirationPolicy:getProjectContainerExpirationPolicy": {
             "properties": {
                 "cadence": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, the policy is enabled.\n"
                 },
                 "keepN": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of images to keep.\n"
                 },
                 "nameRegex": {
                     "type": "string",
+                    "description": "The regular expression to match image names to delete.\n",
                     "deprecationMessage": "`name_regex` has been deprecated. Use `name_regex_delete` instead."
                 },
                 "nameRegexDelete": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The regular expression to match image names to delete.\n"
                 },
                 "nameRegexKeep": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The regular expression to match image names to keep.\n"
                 },
                 "nextRunAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The next time the policy will run.\n"
                 },
                 "olderThan": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of days to keep images.\n"
                 }
             },
             "type": "object",
@@ -1558,61 +1703,80 @@
         "gitlab:index/getProjectHooksHook:getProjectHooksHook": {
             "properties": {
                 "confidentialIssuesEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for confidential issues events.\n"
                 },
                 "confidentialNoteEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for confidential notes events.\n"
                 },
                 "deploymentEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for deployment events.\n"
                 },
                 "enableSslVerification": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable ssl verification when invoking the hook.\n"
                 },
                 "hookId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The id of the project hook.\n"
                 },
                 "issuesEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for issues events.\n"
                 },
                 "jobEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for job events.\n"
                 },
                 "mergeRequestsEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for merge requests.\n"
                 },
                 "noteEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for notes events.\n"
                 },
                 "pipelineEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for pipeline events.\n"
                 },
                 "project": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name or id of the project to add the hook to.\n"
                 },
                 "projectId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The id of the project for the hook.\n"
                 },
                 "pushEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for push events.\n"
                 },
                 "pushEventsBranchFilter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Invoke the hook for push events on matching branches only.\n"
                 },
                 "releasesEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for releases events.\n"
                 },
                 "tagPushEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for tag push events.\n"
                 },
                 "token": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A token to present when invoking the hook. The token is not available for imported resources.\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The url of the hook to invoke.\n"
                 },
                 "wikiPageEvents": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Invoke the hook for wiki page events.\n"
                 }
             },
             "type": "object",
@@ -1646,10 +1810,12 @@
         "gitlab:index/getProjectIssueTaskCompletionStatus:getProjectIssueTaskCompletionStatus": {
             "properties": {
                 "completedCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of tasks that are completed.\n"
                 },
                 "count": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of tasks.\n"
                 }
             },
             "type": "object",
@@ -1669,133 +1835,172 @@
                     "type": "array",
                     "items": {
                         "type": "integer"
-                    }
+                    },
+                    "description": "The IDs of the users to assign the issue to.\n"
                 },
                 "authorId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the author of the issue. Use `gitlab.User` data source to get more information about the user.\n"
                 },
                 "closedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.\n"
                 },
                 "closedByUserId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the user that closed the issue. Use `gitlab.User` data source to get more information about the user.\n"
                 },
                 "confidential": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Set an issue to be confidential.\n"
                 },
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of an issue. Limited to 1,048,576 characters.\n"
                 },
                 "discussionLocked": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the issue is locked for discussions or not.\n"
                 },
                 "discussionToResolve": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge_request_to_resolve_discussions_of.\n"
                 },
                 "downvotes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of downvotes the issue has received.\n"
                 },
                 "dueDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.\n"
                 },
                 "epicId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "ID of the epic to add the issue to. Valid values are greater than or equal to 0.\n"
                 },
                 "epicIssueId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the epic issue.\n"
                 },
                 "externalId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The external ID of the issue.\n"
                 },
                 "humanTimeEstimate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The human-readable time estimate of the issue.\n"
                 },
                 "humanTotalTimeSpent": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The human-readable total time spent of the issue.\n"
                 },
                 "iid": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The internal ID of the project's issue.\n"
                 },
                 "issueId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The instance-wide ID of the issue.\n"
                 },
                 "issueLinkId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the issue link.\n"
                 },
                 "issueType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of issue. Valid values are: `issue`, `incident`, `test_case`.\n"
                 },
                 "labels": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The labels of an issue.\n"
                 },
                 "links": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The links of the issue.\n"
                 },
                 "mergeRequestToResolveDiscussionsOf": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.\n"
                 },
                 "mergeRequestsCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of merge requests associated with the issue.\n"
                 },
                 "milestoneId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.\n"
                 },
                 "movedToId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the issue that was moved to.\n"
                 },
                 "project": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name or ID of the project.\n"
                 },
                 "references": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The references of the issue.\n"
                 },
                 "state": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The state of the issue. Valid values are: `opened`, `closed`.\n"
                 },
                 "subscribed": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the authenticated user is subscribed to the issue or not.\n"
                 },
                 "taskCompletionStatuses": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectIssuesIssueTaskCompletionStatus:getProjectIssuesIssueTaskCompletionStatus"
-                    }
+                    },
+                    "description": "The task completion status. It's always a one element list.\n"
                 },
                 "timeEstimate": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The time estimate of the issue.\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the issue.\n"
                 },
                 "totalTimeSpent": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The total time spent of the issue.\n"
                 },
                 "updatedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.\n"
                 },
                 "upvotes": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of upvotes the issue has received.\n"
                 },
                 "userNotesCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of user notes on the issue.\n"
                 },
                 "webUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The web URL of the issue.\n"
                 },
                 "weight": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The weight of the issue. Valid values are greater than or equal to 0.\n"
                 }
             },
             "type": "object",
@@ -1849,10 +2054,12 @@
         "gitlab:index/getProjectIssuesIssueTaskCompletionStatus:getProjectIssuesIssueTaskCompletionStatus": {
             "properties": {
                 "completedCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of tasks that are completed.\n"
                 },
                 "count": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of tasks.\n"
                 }
             },
             "type": "object",
@@ -1869,28 +2076,36 @@
         "gitlab:index/getProjectMembershipMember:getProjectMembershipMember": {
             "properties": {
                 "accessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access to the group.\n"
                 },
                 "avatarUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The avatar URL of the user.\n"
                 },
                 "expiresAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Expiration date for the group membership.\n"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique id assigned to the user by the gitlab server.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the user.\n"
                 },
                 "state": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Whether the user is active or blocked.\n"
                 },
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The username of the user.\n"
                 },
                 "webUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User's website URL.\n"
                 }
             },
             "type": "object",
@@ -1913,43 +2128,56 @@
         "gitlab:index/getProjectMilestonesMilestone:getProjectMilestonesMilestone": {
             "properties": {
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the milestone.\n"
                 },
                 "dueDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.\n"
                 },
                 "expired": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Bool, true if milestone expired.\n"
                 },
                 "iid": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the project's milestone.\n"
                 },
                 "milestoneId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The instance-wide ID of the project’s milestone.\n"
                 },
                 "project": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the project owned by the authenticated user.\n"
                 },
                 "projectId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The project ID of milestone.\n"
                 },
                 "startDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.\n"
                 },
                 "state": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The state of the milestone. Valid values are: `active`, `closed`.\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of a milestone.\n"
                 },
                 "updatedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.\n"
                 },
                 "webUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The web URL of the milestone.\n"
                 }
             },
             "type": "object",
@@ -2143,37 +2371,48 @@
         "gitlab:index/getProjectPushRule:getProjectPushRule": {
             "properties": {
                 "authorEmailRegex": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "All commit author emails must match this regex, e.g. `@my-company.com$`.\n"
                 },
                 "branchNameRegex": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.\n"
                 },
                 "commitCommitterCheck": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Users can only push commits to this repository that were committed with one of their own verified emails.\n"
                 },
                 "commitMessageNegativeRegex": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.\n"
                 },
                 "commitMessageRegex": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.\n"
                 },
                 "denyDeleteTag": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Deny deleting a tag.\n"
                 },
                 "fileNameRegex": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "All committed filenames must not match this regex, e.g. `(jar|exe)$`.\n"
                 },
                 "maxFileSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum file size (MB).\n"
                 },
                 "memberCheck": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Restrict commits by author (email) to existing GitLab users.\n"
                 },
                 "preventSecrets": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "GitLab will reject any files that are likely to contain secrets.\n"
                 },
                 "rejectUnsignedCommits": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Reject commit when it’s not signed through GPG.\n"
                 }
             },
             "type": "object",
@@ -2199,16 +2438,20 @@
         "gitlab:index/getProjectSharedWithGroup:getProjectSharedWithGroup": {
             "properties": {
                 "groupAccessLevel": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The access_level permission level of the shared group.\n"
                 },
                 "groupFullPath": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The full path of the group shared with.\n"
                 },
                 "groupId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the group shared with.\n"
                 },
                 "groupName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the group shared with.\n"
                 }
             },
             "type": "object",
@@ -2227,40 +2470,51 @@
         "gitlab:index/getProjectTagCommit:getProjectTagCommit": {
             "properties": {
                 "authorEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the author.\n"
                 },
                 "authorName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the author.\n"
                 },
                 "authoredDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committedDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committerEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the user that committed.\n"
                 },
                 "committerName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the user that committed.\n"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique id assigned to the commit by Gitlab.\n"
                 },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The commit message\n"
                 },
                 "parentIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The id of the parents of the commit\n"
                 },
                 "shortId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The short id assigned to the commit by Gitlab.\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the commit\n"
                 }
             },
             "type": "object",
@@ -2286,10 +2540,12 @@
         "gitlab:index/getProjectTagRelease:getProjectTagRelease": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of release.\n"
                 },
                 "tagName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the tag.\n"
                 }
             },
             "type": "object",
@@ -2309,25 +2565,31 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectTagsTagCommit:getProjectTagsTagCommit"
-                    }
+                    },
+                    "description": "The commit associated with the tag.\n"
                 },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The message of the annotated tag.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of a tag.\n"
                 },
                 "protected": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Bool, true if tag has tag protection.\n"
                 },
                 "releases": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectTagsTagRelease:getProjectTagsTagRelease"
-                    }
+                    },
+                    "description": "The release associated with the tag.\n"
                 },
                 "target": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique id assigned to the commit by Gitlab.\n"
                 }
             },
             "type": "object",
@@ -2348,40 +2610,51 @@
         "gitlab:index/getProjectTagsTagCommit:getProjectTagsTagCommit": {
             "properties": {
                 "authorEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the author.\n"
                 },
                 "authorName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the author.\n"
                 },
                 "authoredDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committedDate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).\n"
                 },
                 "committerEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The email of the user that committed.\n"
                 },
                 "committerName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the user that committed.\n"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique id assigned to the commit by Gitlab.\n"
                 },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The commit message\n"
                 },
                 "parentIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The id of the parents of the commit\n"
                 },
                 "shortId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The short id assigned to the commit by Gitlab.\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the commit\n"
                 }
             },
             "type": "object",
@@ -2407,10 +2680,12 @@
         "gitlab:index/getProjectTagsTagRelease:getProjectTagsTagRelease": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of release.\n"
                 },
                 "tagName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the tag.\n"
                 }
             },
             "type": "object",
@@ -2427,28 +2702,36 @@
         "gitlab:index/getProjectVariablesVariable:getProjectVariablesVariable": {
             "properties": {
                 "environmentScope": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.\n"
                 },
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the variable.\n"
                 },
                 "masked": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.\n"
                 },
                 "project": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name or id of the project.\n"
                 },
                 "protected": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
                 },
                 "raw": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.\n"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The value of the variable.\n"
                 },
                 "variableType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.\n"
                 }
             },
             "type": "object",
@@ -2474,73 +2757,95 @@
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Links for the project.\n"
                 },
                 "allowMergeOnSkippedPipeline": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether allow_merge_on_skipped_pipeline is enabled for the project.\n"
                 },
                 "analyticsAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "approvalsBeforeMerge": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The numbers of approvals needed in a merge requests.\n"
                 },
                 "archived": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the project is archived.\n"
                 },
                 "autoCancelPendingPipelines": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.\n"
                 },
                 "autoDevopsDeployStrategy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.\n"
                 },
                 "autoDevopsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Auto DevOps for this project.\n"
                 },
                 "autocloseReferencedIssues": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Set whether auto-closing referenced issues on default branch.\n"
                 },
                 "avatarUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The avatar url of the project.\n"
                 },
                 "buildCoverageRegex": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Build coverage regex for the project.\n"
                 },
                 "buildGitStrategy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Git strategy. Defaults to fetch.\n"
                 },
                 "buildTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum amount of time, in seconds, that a job can run.\n"
                 },
                 "buildsAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the builds access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "ciConfigPath": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "CI config file path for the project.\n"
                 },
                 "ciDefaultGitDepth": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Default number of revisions for shallow cloning.\n"
                 },
                 "ciForwardDeploymentEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "When a new deployment job starts, skip older deployment jobs that are still pending.\n"
                 },
                 "containerExpirationPolicies": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectsProjectContainerExpirationPolicy:getProjectsProjectContainerExpirationPolicy"
-                    }
+                    },
+                    "description": "Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.\n"
                 },
                 "containerRegistryAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "containerRegistryEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the container registry is enabled for the project.\n"
                 },
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Creation time for the project.\n"
                 },
                 "creatorId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Creator ID for the project.\n"
                 },
                 "customAttributes": {
                     "type": "array",
@@ -2549,136 +2854,178 @@
                         "additionalProperties": {
                             "type": "string"
                         }
-                    }
+                    },
+                    "description": "Custom attributes for the project.\n"
                 },
                 "defaultBranch": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default branch name of the project.\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the project.\n"
                 },
                 "emailsDisabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Disable email notifications.\n"
                 },
                 "emptyRepo": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the project is empty.\n"
                 },
                 "environmentsAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the environments access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "externalAuthorizationClassificationLabel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The classification label for the project.\n"
                 },
                 "featureFlagsAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "forkedFromProjects": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectsProjectForkedFromProject:getProjectsProjectForkedFromProject"
-                    }
+                    },
+                    "description": "Present if the project is a fork. Contains information about the upstream project.\n"
                 },
                 "forkingAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the forking access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "forksCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of forks of the project.\n"
                 },
                 "groupRunnersEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether group runners are enabled for the project.\n"
                 },
                 "httpUrlToRepo": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The HTTP clone URL of the project.\n"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the project.\n"
                 },
                 "importError": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The import error, if it exists, for the project.\n"
                 },
                 "importStatus": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The import status of the project.\n"
                 },
                 "importUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "URL the project was imported from.\n"
                 },
                 "infrastructureAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "issuesAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the issues access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "issuesEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether issues are enabled for the project.\n"
                 },
                 "jobsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether pipelines are enabled for the project.\n"
                 },
                 "keepLatestArtifact": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Disable or enable the ability to keep the latest artifact for this project.\n"
                 },
                 "lastActivityAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Last activirty time for the project.\n"
                 },
                 "lfsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether LFS (large file storage) is enabled for the project.\n"
                 },
                 "mergeCommitTemplate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)\n"
                 },
                 "mergeMethod": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Merge method for the project.\n"
                 },
                 "mergePipelinesEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable or disable merge pipelines.\n"
                 },
                 "mergeRequestsAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "mergeRequestsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether merge requests are enabled for the project.\n"
                 },
                 "mergeTrainsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable or disable merge trains.\n"
                 },
                 "mirror": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the pull mirroring is enabled for the project.\n"
                 },
                 "mirrorOverwritesDivergedBranches": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether mirror_overwrites_diverged_branches is enabled for the project.\n"
                 },
                 "mirrorTriggerBuilds": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether pull mirroring triggers builds for the project.\n"
                 },
                 "mirrorUserId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The mirror user ID for the project.\n"
                 },
                 "monitorAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the project.\n"
                 },
                 "nameWithNamespace": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "In `group / subgroup / project` or `user / project` format.\n"
                 },
                 "namespaces": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectsProjectNamespace:getProjectsProjectNamespace"
-                    }
+                    },
+                    "description": "Namespace of the project (parent group/s).\n"
                 },
                 "onlyAllowMergeIfAllDiscussionsAreResolved": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.\n"
                 },
                 "onlyAllowMergeIfPipelineSucceeds": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.\n"
                 },
                 "onlyMirrorProtectedBranches": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether only_mirror_protected_branches is enabled for the project.\n"
                 },
                 "openIssuesCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of open issies for the project.\n"
                 },
                 "owners": {
                     "type": "array",
@@ -2687,113 +3034,144 @@
                     }
                 },
                 "packagesEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether packages are enabled for the project.\n"
                 },
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path of the project.\n"
                 },
                 "pathWithNamespace": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "In `group/subgroup/project` or `user/project` format.\n"
                 },
                 "permissions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectsProjectPermission:getProjectsProjectPermission"
-                    }
+                    },
+                    "description": "Permissions for the project.\n"
                 },
                 "public": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the project is public.\n"
                 },
                 "publicBuilds": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether public builds are enabled for the project.\n"
                 },
                 "readmeUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The remote url of the project.\n"
                 },
                 "releasesAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the releases access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "repositoryAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the repository access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "repositoryStorage": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Which storage shard the repository is on. (administrator only)\n"
                 },
                 "requestAccessEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether requesting access is enabled for the project.\n"
                 },
                 "requirementsAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "resolveOutdatedDiffDiscussions": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether resolve_outdated_diff_discussions is enabled for the project\n"
                 },
                 "restrictUserDefinedVariables": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.\n"
                 },
                 "runnersToken": {
                     "type": "string",
+                    "description": "The runners token for the project.\n",
                     "secret": true
                 },
                 "securityAndComplianceAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "sharedRunnersEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether shared runners are enabled for the project.\n"
                 },
                 "sharedWithGroups": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectsProjectSharedWithGroup:getProjectsProjectSharedWithGroup"
-                    }
+                    },
+                    "description": "Groups the the project is shared with.\n"
                 },
                 "snippetsAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "snippetsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether snippets are enabled for the project.\n"
                 },
                 "squashCommitTemplate": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)\n"
                 },
                 "sshUrlToRepo": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The SSH clone URL of the project.\n"
                 },
                 "starCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of stars on the project.\n"
                 },
                 "statistics": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "integer"
-                    }
+                    },
+                    "description": "Statistics for the project.\n"
                 },
                 "suggestionCommitMessage": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The commit message used to apply merge request suggestions.\n"
                 },
                 "tagLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A set of the project topics (formerly called \"project tags\").\n"
                 },
                 "topics": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The list of topics for the project.\n"
                 },
                 "visibility": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The visibility of the project.\n"
                 },
                 "webUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The web url of the project.\n"
                 },
                 "wikiAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.\n"
                 },
                 "wikiEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether wiki is enabled for the project.\n"
                 }
             },
             "type": "object",
@@ -2904,29 +3282,37 @@
         "gitlab:index/getProjectsProjectContainerExpirationPolicy:getProjectsProjectContainerExpirationPolicy": {
             "properties": {
                 "cadence": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, the policy is enabled.\n"
                 },
                 "keepN": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of images to keep.\n"
                 },
                 "nameRegex": {
                     "type": "string",
+                    "description": "The regular expression to match image names to delete.\n",
                     "deprecationMessage": "`name_regex` has been deprecated. Use `name_regex_delete` instead."
                 },
                 "nameRegexDelete": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The regular expression to match image names to delete.\n"
                 },
                 "nameRegexKeep": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The regular expression to match image names to keep.\n"
                 },
                 "nextRunAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The next time the policy will run.\n"
                 },
                 "olderThan": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of days to keep images.\n"
                 }
             },
             "type": "object",
@@ -2949,25 +3335,32 @@
         "gitlab:index/getProjectsProjectForkedFromProject:getProjectsProjectForkedFromProject": {
             "properties": {
                 "httpUrlToRepo": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The HTTP clone URL of the upstream project.\n"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the upstream project.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the upstream project.\n"
                 },
                 "nameWithNamespace": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "In `group / subgroup / project` or `user / project` format.\n"
                 },
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path of the upstream project.\n"
                 },
                 "pathWithNamespace": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "In `group/subgroup/project` or `user/project` format.\n"
                 },
                 "webUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The web url of the upstream project.\n"
                 }
             },
             "type": "object",
@@ -2989,19 +3382,24 @@
         "gitlab:index/getProjectsProjectNamespace:getProjectsProjectNamespace": {
             "properties": {
                 "fullPath": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The full path of the namespace.\n"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the namespace.\n"
                 },
                 "kind": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The kind of the namespace.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the namespace.\n"
                 },
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path of the namespace.\n"
                 }
             },
             "type": "object",
@@ -3021,22 +3419,28 @@
         "gitlab:index/getProjectsProjectOwner:getProjectsProjectOwner": {
             "properties": {
                 "avatarUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The avatar url of the owner.\n"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the owner.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the owner.\n"
                 },
                 "state": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The state of the owner.\n"
                 },
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The username of the owner.\n"
                 },
                 "websiteUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The website url of the owner.\n"
                 }
             },
             "type": "object",
@@ -3060,13 +3464,15 @@
                     "type": "object",
                     "additionalProperties": {
                         "type": "integer"
-                    }
+                    },
+                    "description": "Group access level.\n"
                 },
                 "projectAccess": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "integer"
-                    }
+                    },
+                    "description": "Project access level.\n"
                 }
             },
             "type": "object",
@@ -3083,13 +3489,16 @@
         "gitlab:index/getProjectsProjectSharedWithGroup:getProjectsProjectSharedWithGroup": {
             "properties": {
                 "groupAccessLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The group access level.\n"
                 },
                 "groupId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The group ID.\n"
                 },
                 "groupName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The group name.\n"
                 }
             },
             "type": "object",
@@ -3107,31 +3516,40 @@
         "gitlab:index/getReleaseLinksReleaseLink:getReleaseLinksReleaseLink": {
             "properties": {
                 "directAssetUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).\n"
                 },
                 "external": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "External or internal link.\n"
                 },
                 "filepath": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).\n"
                 },
                 "linkId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the link.\n"
                 },
                 "linkType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the link. Link names must be unique within the release.\n"
                 },
                 "project": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).\n"
                 },
                 "tagName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The tag associated with the Release.\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The URL of the link. Link URLs must be unique within the release.\n"
                 }
             },
             "type": "object",
@@ -3155,19 +3573,24 @@
         "gitlab:index/getRepositoryTreeTree:getRepositoryTreeTree": {
             "properties": {
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The SHA-1 hash of the tree or blob in the repository.\n"
                 },
                 "mode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Unix access mode of the file in the repository.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the blob or tree in the repository\n"
                 },
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Path of the object inside of the repository.\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Type of object in the repository. Can be either type tree or of type blob\n"
                 }
             },
             "type": "object",
@@ -3187,22 +3610,28 @@
         "gitlab:index/getUserSshkeysKey:getUserSshkeysKey": {
             "properties": {
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The time when this key was created in GitLab.\n"
                 },
                 "expiresAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)\n"
                 },
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.\n"
                 },
                 "keyId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the ssh key.\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the ssh key.\n"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.\n"
                 }
             },
             "type": "object",
@@ -3223,88 +3652,116 @@
         "gitlab:index/getUsersUser:getUsersUser": {
             "properties": {
                 "avatarUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The avatar URL of the user.\n"
                 },
                 "bio": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The bio of the user.\n"
                 },
                 "canCreateGroup": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the user can create groups.\n"
                 },
                 "canCreateProject": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the user can create projects.\n"
                 },
                 "colorSchemeId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "User's color scheme ID.\n"
                 },
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Date the user was created at.\n"
                 },
                 "currentSignInAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Current user's sign-in date.\n"
                 },
                 "email": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.\n"
                 },
                 "externUid": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The external UID of the user.\n"
                 },
                 "external": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the user is external.\n"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique id assigned to the user by the gitlab server.\n"
                 },
                 "isAdmin": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the user is an admin.\n"
                 },
                 "isBot": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the user is a bot.\n"
                 },
                 "lastSignInAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Last user's sign-in date.\n"
                 },
                 "linkedin": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "LinkedIn profile of the user.\n"
                 },
                 "location": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The location of the user.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the user.\n"
                 },
                 "namespaceId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.\n"
                 },
                 "organization": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The organization of the user.\n"
                 },
                 "projectsLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of projects the user can create.\n"
                 },
                 "provider": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The UID provider of the user.\n"
                 },
                 "skype": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Skype username of the user.\n"
                 },
                 "state": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Whether the user is active or blocked.\n"
                 },
                 "themeId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "User's theme ID.\n"
                 },
                 "twitter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Twitter username of the user.\n"
                 },
                 "twoFactorEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether user's two-factor auth is enabled.\n"
                 },
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The username of the user.\n"
                 },
                 "websiteUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User's website URL.\n"
                 }
             },
             "type": "object",
