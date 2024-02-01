@@ -11,49 +11,137 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectBranchesBranchCommit {
+    /**
+     * @return The email of the author.
+     * 
+     */
     private String authorEmail;
+    /**
+     * @return The name of the author.
+     * 
+     */
     private String authorName;
+    /**
+     * @return The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+     * 
+     */
     private String authoredDate;
+    /**
+     * @return The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+     * 
+     */
     private String committedDate;
+    /**
+     * @return The email of the user that committed.
+     * 
+     */
     private String committerEmail;
+    /**
+     * @return The name of the user that committed.
+     * 
+     */
     private String committerName;
+    /**
+     * @return The unique id assigned to the commit by Gitlab.
+     * 
+     */
     private String id;
+    /**
+     * @return The commit message
+     * 
+     */
     private String message;
+    /**
+     * @return The id of the parents of the commit
+     * 
+     */
     private List<String> parentIds;
+    /**
+     * @return The short id assigned to the commit by Gitlab.
+     * 
+     */
     private String shortId;
+    /**
+     * @return The title of the commit
+     * 
+     */
     private String title;
 
     private GetProjectBranchesBranchCommit() {}
+    /**
+     * @return The email of the author.
+     * 
+     */
     public String authorEmail() {
         return this.authorEmail;
     }
+    /**
+     * @return The name of the author.
+     * 
+     */
     public String authorName() {
         return this.authorName;
     }
+    /**
+     * @return The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+     * 
+     */
     public String authoredDate() {
         return this.authoredDate;
     }
+    /**
+     * @return The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+     * 
+     */
     public String committedDate() {
         return this.committedDate;
     }
+    /**
+     * @return The email of the user that committed.
+     * 
+     */
     public String committerEmail() {
         return this.committerEmail;
     }
+    /**
+     * @return The name of the user that committed.
+     * 
+     */
     public String committerName() {
         return this.committerName;
     }
+    /**
+     * @return The unique id assigned to the commit by Gitlab.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The commit message
+     * 
+     */
     public String message() {
         return this.message;
     }
+    /**
+     * @return The id of the parents of the commit
+     * 
+     */
     public List<String> parentIds() {
         return this.parentIds;
     }
+    /**
+     * @return The short id assigned to the commit by Gitlab.
+     * 
+     */
     public String shortId() {
         return this.shortId;
     }
+    /**
+     * @return The title of the commit
+     * 
+     */
     public String title() {
         return this.title;
     }

@@ -13,7 +13,13 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class ProjectIssueTaskCompletionStatus
     {
+        /// <summary>
+        /// The number of tasks that are completed.
+        /// </summary>
         public readonly int? CompletedCount;
+        /// <summary>
+        /// The number of tasks.
+        /// </summary>
         public readonly int? Count;
 
         [OutputConstructor]

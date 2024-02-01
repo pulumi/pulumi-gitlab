@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectsProjectNamespace {
+    /**
+     * @return The full path of the namespace.
+     * 
+     */
     private String fullPath;
+    /**
+     * @return The ID of the namespace.
+     * 
+     */
     private Integer id;
+    /**
+     * @return The kind of the namespace.
+     * 
+     */
     private String kind;
+    /**
+     * @return The name of the namespace.
+     * 
+     */
     private String name;
+    /**
+     * @return The path of the namespace.
+     * 
+     */
     private String path;
 
     private GetProjectsProjectNamespace() {}
+    /**
+     * @return The full path of the namespace.
+     * 
+     */
     public String fullPath() {
         return this.fullPath;
     }
+    /**
+     * @return The ID of the namespace.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The kind of the namespace.
+     * 
+     */
     public String kind() {
         return this.kind;
     }
+    /**
+     * @return The name of the namespace.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The path of the namespace.
+     * 
+     */
     public String path() {
         return this.path;
     }

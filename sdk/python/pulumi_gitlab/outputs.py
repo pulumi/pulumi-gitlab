@@ -121,6 +121,19 @@ class BranchCommit(dict):
                  parent_ids: Optional[Sequence[str]] = None,
                  short_id: Optional[str] = None,
                  title: Optional[str] = None):
+        """
+        :param str author_email: The email of the author.
+        :param str author_name: The name of the author.
+        :param str authored_date: The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committed_date: The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committer_email: The email of the user that committed.
+        :param str committer_name: The name of the user that committed.
+        :param str id: The unique id assigned to the commit by Gitlab.
+        :param str message: The commit message
+        :param Sequence[str] parent_ids: The id of the parents of the commit
+        :param str short_id: The short id assigned to the commit by Gitlab.
+        :param str title: The title of the commit
+        """
         if author_email is not None:
             pulumi.set(__self__, "author_email", author_email)
         if author_name is not None:
@@ -147,56 +160,89 @@ class BranchCommit(dict):
     @property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> Optional[str]:
+        """
+        The email of the author.
+        """
         return pulumi.get(self, "author_email")
 
     @property
     @pulumi.getter(name="authorName")
     def author_name(self) -> Optional[str]:
+        """
+        The name of the author.
+        """
         return pulumi.get(self, "author_name")
 
     @property
     @pulumi.getter(name="authoredDate")
     def authored_date(self) -> Optional[str]:
+        """
+        The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "authored_date")
 
     @property
     @pulumi.getter(name="committedDate")
     def committed_date(self) -> Optional[str]:
+        """
+        The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "committed_date")
 
     @property
     @pulumi.getter(name="committerEmail")
     def committer_email(self) -> Optional[str]:
+        """
+        The email of the user that committed.
+        """
         return pulumi.get(self, "committer_email")
 
     @property
     @pulumi.getter(name="committerName")
     def committer_name(self) -> Optional[str]:
+        """
+        The name of the user that committed.
+        """
         return pulumi.get(self, "committer_name")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        The commit message
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter(name="parentIds")
     def parent_ids(self) -> Optional[Sequence[str]]:
+        """
+        The id of the parents of the commit
+        """
         return pulumi.get(self, "parent_ids")
 
     @property
     @pulumi.getter(name="shortId")
     def short_id(self) -> Optional[str]:
+        """
+        The short id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "short_id")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the commit
+        """
         return pulumi.get(self, "title")
 
 
@@ -1181,6 +1227,10 @@ class ProjectIssueTaskCompletionStatus(dict):
     def __init__(__self__, *,
                  completed_count: Optional[int] = None,
                  count: Optional[int] = None):
+        """
+        :param int completed_count: The number of tasks that are completed.
+        :param int count: The number of tasks.
+        """
         if completed_count is not None:
             pulumi.set(__self__, "completed_count", completed_count)
         if count is not None:
@@ -1189,11 +1239,17 @@ class ProjectIssueTaskCompletionStatus(dict):
     @property
     @pulumi.getter(name="completedCount")
     def completed_count(self) -> Optional[int]:
+        """
+        The number of tasks that are completed.
+        """
         return pulumi.get(self, "completed_count")
 
     @property
     @pulumi.getter
     def count(self) -> Optional[int]:
+        """
+        The number of tasks.
+        """
         return pulumi.get(self, "count")
 
 
@@ -1612,6 +1668,19 @@ class ProjectTagCommit(dict):
                  parent_ids: Optional[Sequence[str]] = None,
                  short_id: Optional[str] = None,
                  title: Optional[str] = None):
+        """
+        :param str author_email: The email of the author.
+        :param str author_name: The name of the author.
+        :param str authored_date: The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committed_date: The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committer_email: The email of the user that committed.
+        :param str committer_name: The name of the user that committed.
+        :param str id: The unique id assigned to the commit by Gitlab.
+        :param str message: The commit message
+        :param Sequence[str] parent_ids: The id of the parents of the commit
+        :param str short_id: The short id assigned to the commit by Gitlab.
+        :param str title: The title of the commit
+        """
         if author_email is not None:
             pulumi.set(__self__, "author_email", author_email)
         if author_name is not None:
@@ -1638,56 +1707,89 @@ class ProjectTagCommit(dict):
     @property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> Optional[str]:
+        """
+        The email of the author.
+        """
         return pulumi.get(self, "author_email")
 
     @property
     @pulumi.getter(name="authorName")
     def author_name(self) -> Optional[str]:
+        """
+        The name of the author.
+        """
         return pulumi.get(self, "author_name")
 
     @property
     @pulumi.getter(name="authoredDate")
     def authored_date(self) -> Optional[str]:
+        """
+        The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "authored_date")
 
     @property
     @pulumi.getter(name="committedDate")
     def committed_date(self) -> Optional[str]:
+        """
+        The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "committed_date")
 
     @property
     @pulumi.getter(name="committerEmail")
     def committer_email(self) -> Optional[str]:
+        """
+        The email of the user that committed.
+        """
         return pulumi.get(self, "committer_email")
 
     @property
     @pulumi.getter(name="committerName")
     def committer_name(self) -> Optional[str]:
+        """
+        The name of the user that committed.
+        """
         return pulumi.get(self, "committer_name")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        The commit message
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter(name="parentIds")
     def parent_ids(self) -> Optional[Sequence[str]]:
+        """
+        The id of the parents of the commit
+        """
         return pulumi.get(self, "parent_ids")
 
     @property
     @pulumi.getter(name="shortId")
     def short_id(self) -> Optional[str]:
+        """
+        The short id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "short_id")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the commit
+        """
         return pulumi.get(self, "title")
 
 
@@ -1713,6 +1815,10 @@ class ProjectTagRelease(dict):
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  tag_name: Optional[str] = None):
+        """
+        :param str description: The description of release.
+        :param str tag_name: The name of the tag.
+        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if tag_name is not None:
@@ -1721,11 +1827,17 @@ class ProjectTagRelease(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of release.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="tagName")
     def tag_name(self) -> Optional[str]:
+        """
+        The name of the tag.
+        """
         return pulumi.get(self, "tag_name")
 
 
@@ -1821,6 +1933,19 @@ class GetBranchCommitResult(dict):
                  parent_ids: Sequence[str],
                  short_id: str,
                  title: str):
+        """
+        :param str author_email: The email of the author.
+        :param str author_name: The name of the author.
+        :param str authored_date: The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committed_date: The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committer_email: The email of the user that committed.
+        :param str committer_name: The name of the user that committed.
+        :param str id: The unique id assigned to the commit by Gitlab.
+        :param str message: The commit message
+        :param Sequence[str] parent_ids: The id of the parents of the commit
+        :param str short_id: The short id assigned to the commit by Gitlab.
+        :param str title: The title of the commit
+        """
         pulumi.set(__self__, "author_email", author_email)
         pulumi.set(__self__, "author_name", author_name)
         pulumi.set(__self__, "authored_date", authored_date)
@@ -1836,56 +1961,89 @@ class GetBranchCommitResult(dict):
     @property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> str:
+        """
+        The email of the author.
+        """
         return pulumi.get(self, "author_email")
 
     @property
     @pulumi.getter(name="authorName")
     def author_name(self) -> str:
+        """
+        The name of the author.
+        """
         return pulumi.get(self, "author_name")
 
     @property
     @pulumi.getter(name="authoredDate")
     def authored_date(self) -> str:
+        """
+        The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "authored_date")
 
     @property
     @pulumi.getter(name="committedDate")
     def committed_date(self) -> str:
+        """
+        The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "committed_date")
 
     @property
     @pulumi.getter(name="committerEmail")
     def committer_email(self) -> str:
+        """
+        The email of the user that committed.
+        """
         return pulumi.get(self, "committer_email")
 
     @property
     @pulumi.getter(name="committerName")
     def committer_name(self) -> str:
+        """
+        The name of the user that committed.
+        """
         return pulumi.get(self, "committer_name")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        The commit message
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter(name="parentIds")
     def parent_ids(self) -> Sequence[str]:
+        """
+        The id of the parents of the commit
+        """
         return pulumi.get(self, "parent_ids")
 
     @property
     @pulumi.getter(name="shortId")
     def short_id(self) -> str:
+        """
+        The short id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "short_id")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The title of the commit
+        """
         return pulumi.get(self, "title")
 
 
@@ -1897,6 +2055,13 @@ class GetClusterAgentsClusterAgentResult(dict):
                  created_by_user_id: int,
                  name: str,
                  project: str):
+        """
+        :param int agent_id: The ID of the agent.
+        :param str created_at: The ISO8601 datetime when the agent was created.
+        :param int created_by_user_id: The ID of the user who created the agent.
+        :param str name: The Name of the agent.
+        :param str project: ID or full path of the project maintained by the authenticated user.
+        """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "created_by_user_id", created_by_user_id)
@@ -1906,26 +2071,41 @@ class GetClusterAgentsClusterAgentResult(dict):
     @property
     @pulumi.getter(name="agentId")
     def agent_id(self) -> int:
+        """
+        The ID of the agent.
+        """
         return pulumi.get(self, "agent_id")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The ISO8601 datetime when the agent was created.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="createdByUserId")
     def created_by_user_id(self) -> int:
+        """
+        The ID of the user who created the agent.
+        """
         return pulumi.get(self, "created_by_user_id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The Name of the agent.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        ID or full path of the project maintained by the authenticated user.
+        """
         return pulumi.get(self, "project")
 
 
@@ -1952,6 +2132,28 @@ class GetGroupHooksHookResult(dict):
                  token: str,
                  url: str,
                  wiki_page_events: bool):
+        """
+        :param bool confidential_issues_events: Invoke the hook for confidential issues events.
+        :param bool confidential_note_events: Invoke the hook for confidential notes events.
+        :param bool deployment_events: Invoke the hook for deployment events.
+        :param bool enable_ssl_verification: Enable ssl verification when invoking the hook.
+        :param str group: The ID or full path of the group.
+        :param int group_id: The id of the group for the hook.
+        :param int hook_id: The id of the group hook.
+        :param bool issues_events: Invoke the hook for issues events.
+        :param bool job_events: Invoke the hook for job events.
+        :param bool merge_requests_events: Invoke the hook for merge requests.
+        :param bool note_events: Invoke the hook for notes events.
+        :param bool pipeline_events: Invoke the hook for pipeline events.
+        :param bool push_events: Invoke the hook for push events.
+        :param str push_events_branch_filter: Invoke the hook for push events on matching branches only.
+        :param bool releases_events: Invoke the hook for releases events.
+        :param bool subgroup_events: Invoke the hook for subgroup events.
+        :param bool tag_push_events: Invoke the hook for tag push events.
+        :param str token: A token to present when invoking the hook. The token is not available for imported resources.
+        :param str url: The url of the hook to invoke.
+        :param bool wiki_page_events: Invoke the hook for wiki page events.
+        """
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         pulumi.set(__self__, "confidential_note_events", confidential_note_events)
         pulumi.set(__self__, "deployment_events", deployment_events)
@@ -1976,101 +2178,161 @@ class GetGroupHooksHookResult(dict):
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
     def confidential_issues_events(self) -> bool:
+        """
+        Invoke the hook for confidential issues events.
+        """
         return pulumi.get(self, "confidential_issues_events")
 
     @property
     @pulumi.getter(name="confidentialNoteEvents")
     def confidential_note_events(self) -> bool:
+        """
+        Invoke the hook for confidential notes events.
+        """
         return pulumi.get(self, "confidential_note_events")
 
     @property
     @pulumi.getter(name="deploymentEvents")
     def deployment_events(self) -> bool:
+        """
+        Invoke the hook for deployment events.
+        """
         return pulumi.get(self, "deployment_events")
 
     @property
     @pulumi.getter(name="enableSslVerification")
     def enable_ssl_verification(self) -> bool:
+        """
+        Enable ssl verification when invoking the hook.
+        """
         return pulumi.get(self, "enable_ssl_verification")
 
     @property
     @pulumi.getter
     def group(self) -> str:
+        """
+        The ID or full path of the group.
+        """
         return pulumi.get(self, "group")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
+        """
+        The id of the group for the hook.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="hookId")
     def hook_id(self) -> int:
+        """
+        The id of the group hook.
+        """
         return pulumi.get(self, "hook_id")
 
     @property
     @pulumi.getter(name="issuesEvents")
     def issues_events(self) -> bool:
+        """
+        Invoke the hook for issues events.
+        """
         return pulumi.get(self, "issues_events")
 
     @property
     @pulumi.getter(name="jobEvents")
     def job_events(self) -> bool:
+        """
+        Invoke the hook for job events.
+        """
         return pulumi.get(self, "job_events")
 
     @property
     @pulumi.getter(name="mergeRequestsEvents")
     def merge_requests_events(self) -> bool:
+        """
+        Invoke the hook for merge requests.
+        """
         return pulumi.get(self, "merge_requests_events")
 
     @property
     @pulumi.getter(name="noteEvents")
     def note_events(self) -> bool:
+        """
+        Invoke the hook for notes events.
+        """
         return pulumi.get(self, "note_events")
 
     @property
     @pulumi.getter(name="pipelineEvents")
     def pipeline_events(self) -> bool:
+        """
+        Invoke the hook for pipeline events.
+        """
         return pulumi.get(self, "pipeline_events")
 
     @property
     @pulumi.getter(name="pushEvents")
     def push_events(self) -> bool:
+        """
+        Invoke the hook for push events.
+        """
         return pulumi.get(self, "push_events")
 
     @property
     @pulumi.getter(name="pushEventsBranchFilter")
     def push_events_branch_filter(self) -> str:
+        """
+        Invoke the hook for push events on matching branches only.
+        """
         return pulumi.get(self, "push_events_branch_filter")
 
     @property
     @pulumi.getter(name="releasesEvents")
     def releases_events(self) -> bool:
+        """
+        Invoke the hook for releases events.
+        """
         return pulumi.get(self, "releases_events")
 
     @property
     @pulumi.getter(name="subgroupEvents")
     def subgroup_events(self) -> bool:
+        """
+        Invoke the hook for subgroup events.
+        """
         return pulumi.get(self, "subgroup_events")
 
     @property
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> bool:
+        """
+        Invoke the hook for tag push events.
+        """
         return pulumi.get(self, "tag_push_events")
 
     @property
     @pulumi.getter
     def token(self) -> str:
+        """
+        A token to present when invoking the hook. The token is not available for imported resources.
+        """
         return pulumi.get(self, "token")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The url of the hook to invoke.
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="wikiPageEvents")
     def wiki_page_events(self) -> bool:
+        """
+        Invoke the hook for wiki page events.
+        """
         return pulumi.get(self, "wiki_page_events")
 
 
@@ -2085,6 +2347,16 @@ class GetGroupMembershipMemberResult(dict):
                  state: str,
                  username: str,
                  web_url: str):
+        """
+        :param str access_level: The level of access to the group.
+        :param str avatar_url: The avatar URL of the user.
+        :param str expires_at: Expiration date for the group membership.
+        :param int id: The unique id assigned to the user by the gitlab server.
+        :param str name: The name of the user.
+        :param str state: Whether the user is active or blocked.
+        :param str username: The username of the user.
+        :param str web_url: User's website URL.
+        """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "avatar_url", avatar_url)
         pulumi.set(__self__, "expires_at", expires_at)
@@ -2097,41 +2369,65 @@ class GetGroupMembershipMemberResult(dict):
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
+        """
+        The level of access to the group.
+        """
         return pulumi.get(self, "access_level")
 
     @property
     @pulumi.getter(name="avatarUrl")
     def avatar_url(self) -> str:
+        """
+        The avatar URL of the user.
+        """
         return pulumi.get(self, "avatar_url")
 
     @property
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> str:
+        """
+        Expiration date for the group membership.
+        """
         return pulumi.get(self, "expires_at")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The unique id assigned to the user by the gitlab server.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the user.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Whether the user is active or blocked.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        The username of the user.
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
+        """
+        User's website URL.
+        """
         return pulumi.get(self, "web_url")
 
 
@@ -2143,6 +2439,13 @@ class GetGroupSharedWithGroupResult(dict):
                  group_full_path: str,
                  group_id: int,
                  group_name: str):
+        """
+        :param str expires_at: Share with group expiration date.
+        :param int group_access_level: The access_level permission level of the shared group.
+        :param str group_full_path: The full path of the group shared with.
+        :param int group_id: The ID of the group shared with.
+        :param str group_name: The name of the group shared with.
+        """
         pulumi.set(__self__, "expires_at", expires_at)
         pulumi.set(__self__, "group_access_level", group_access_level)
         pulumi.set(__self__, "group_full_path", group_full_path)
@@ -2152,26 +2455,41 @@ class GetGroupSharedWithGroupResult(dict):
     @property
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> str:
+        """
+        Share with group expiration date.
+        """
         return pulumi.get(self, "expires_at")
 
     @property
     @pulumi.getter(name="groupAccessLevel")
     def group_access_level(self) -> int:
+        """
+        The access_level permission level of the shared group.
+        """
         return pulumi.get(self, "group_access_level")
 
     @property
     @pulumi.getter(name="groupFullPath")
     def group_full_path(self) -> str:
+        """
+        The full path of the group shared with.
+        """
         return pulumi.get(self, "group_full_path")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
+        """
+        The ID of the group shared with.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> str:
+        """
+        The name of the group shared with.
+        """
         return pulumi.get(self, "group_name")
 
 
@@ -2380,6 +2698,16 @@ class GetGroupVariablesVariableResult(dict):
                  raw: bool,
                  value: str,
                  variable_type: str):
+        """
+        :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        :param str group: The name or id of the group.
+        :param str key: The name of the variable.
+        :param bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        :param bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param bool raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param str value: The value of the variable.
+        :param str variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        """
         pulumi.set(__self__, "environment_scope", environment_scope)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "key", key)
@@ -2392,41 +2720,65 @@ class GetGroupVariablesVariableResult(dict):
     @property
     @pulumi.getter(name="environmentScope")
     def environment_scope(self) -> str:
+        """
+        The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        """
         return pulumi.get(self, "environment_scope")
 
     @property
     @pulumi.getter
     def group(self) -> str:
+        """
+        The name or id of the group.
+        """
         return pulumi.get(self, "group")
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The name of the variable.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def masked(self) -> bool:
+        """
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        """
         return pulumi.get(self, "masked")
 
     @property
     @pulumi.getter
     def protected(self) -> bool:
+        """
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter
     def raw(self) -> bool:
+        """
+        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        """
         return pulumi.get(self, "raw")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The value of the variable.
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="variableType")
     def variable_type(self) -> str:
+        """
+        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        """
         return pulumi.get(self, "variable_type")
 
 
@@ -2449,6 +2801,24 @@ class GetGroupsGroupResult(dict):
                  visibility_level: str,
                  web_url: str,
                  wiki_access_level: str):
+        """
+        :param int default_branch_protection: Whether developers and maintainers can push to the applicable default branch.
+        :param str description: The description of the group.
+        :param str full_name: The full name of the group.
+        :param str full_path: The full path of the group.
+        :param int group_id: The ID of the group.
+        :param bool lfs_enabled: Boolean, is LFS enabled for projects in this group.
+        :param str name: The name of this group.
+        :param int parent_id: Integer, ID of the parent group.
+        :param str path: The path of the group.
+        :param bool prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
+        :param bool request_access_enabled: Boolean, is request for access enabled to the group.
+        :param str runners_token: The group level registration token to use during runner setup.
+        :param str shared_runners_setting: Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        :param str visibility_level: Visibility level of the group. Possible values are `private`, `internal`, `public`.
+        :param str web_url: Web URL of the group.
+        :param str wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        """
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "full_name", full_name)
@@ -2469,81 +2839,129 @@ class GetGroupsGroupResult(dict):
     @property
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> int:
+        """
+        Whether developers and maintainers can push to the applicable default branch.
+        """
         return pulumi.get(self, "default_branch_protection")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the group.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> str:
+        """
+        The full name of the group.
+        """
         return pulumi.get(self, "full_name")
 
     @property
     @pulumi.getter(name="fullPath")
     def full_path(self) -> str:
+        """
+        The full path of the group.
+        """
         return pulumi.get(self, "full_path")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
+        """
+        The ID of the group.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> bool:
+        """
+        Boolean, is LFS enabled for projects in this group.
+        """
         return pulumi.get(self, "lfs_enabled")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of this group.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> int:
+        """
+        Integer, ID of the parent group.
+        """
         return pulumi.get(self, "parent_id")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path of the group.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="preventForkingOutsideGroup")
     def prevent_forking_outside_group(self) -> bool:
+        """
+        When enabled, users can not fork projects from this group to external namespaces.
+        """
         return pulumi.get(self, "prevent_forking_outside_group")
 
     @property
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> bool:
+        """
+        Boolean, is request for access enabled to the group.
+        """
         return pulumi.get(self, "request_access_enabled")
 
     @property
     @pulumi.getter(name="runnersToken")
     def runners_token(self) -> str:
+        """
+        The group level registration token to use during runner setup.
+        """
         return pulumi.get(self, "runners_token")
 
     @property
     @pulumi.getter(name="sharedRunnersSetting")
     def shared_runners_setting(self) -> str:
+        """
+        Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        """
         return pulumi.get(self, "shared_runners_setting")
 
     @property
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> str:
+        """
+        Visibility level of the group. Possible values are `private`, `internal`, `public`.
+        """
         return pulumi.get(self, "visibility_level")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
+        """
+        Web URL of the group.
+        """
         return pulumi.get(self, "web_url")
 
     @property
     @pulumi.getter(name="wikiAccessLevel")
     def wiki_access_level(self) -> str:
+        """
+        The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "wiki_access_level")
 
 
@@ -2556,6 +2974,14 @@ class GetInstanceDeployKeysDeployKeyResult(dict):
                  key: str,
                  projects_with_write_accesses: Sequence['outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult'],
                  title: str):
+        """
+        :param str created_at: The creation date of the deploy key. In RFC3339 format.
+        :param str fingerprint: The fingerprint of the deploy key.
+        :param int id: The ID of the deploy key.
+        :param str key: The deploy key.
+        :param Sequence['GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArgs'] projects_with_write_accesses: The list of projects that the deploy key has write access to.
+        :param str title: The title of the deploy key.
+        """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "fingerprint", fingerprint)
         pulumi.set(__self__, "id", id)
@@ -2566,31 +2992,49 @@ class GetInstanceDeployKeysDeployKeyResult(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The creation date of the deploy key. In RFC3339 format.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def fingerprint(self) -> str:
+        """
+        The fingerprint of the deploy key.
+        """
         return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the deploy key.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The deploy key.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter(name="projectsWithWriteAccesses")
     def projects_with_write_accesses(self) -> Sequence['outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult']:
+        """
+        The list of projects that the deploy key has write access to.
+        """
         return pulumi.get(self, "projects_with_write_accesses")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The title of the deploy key.
+        """
         return pulumi.get(self, "title")
 
 
@@ -2604,6 +3048,15 @@ class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult(dict):
                  name_with_namespace: str,
                  path: str,
                  path_with_namespace: str):
+        """
+        :param str created_at: The creation date of the project. In RFC3339 format.
+        :param str description: The description of the project.
+        :param int id: The ID of the project.
+        :param str name: The name of the project.
+        :param str name_with_namespace: The name of the project with namespace.
+        :param str path: The path of the project.
+        :param str path_with_namespace: The path of the project with namespace.
+        """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -2615,36 +3068,57 @@ class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The creation date of the project. In RFC3339 format.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the project.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the project.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the project.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nameWithNamespace")
     def name_with_namespace(self) -> str:
+        """
+        The name of the project with namespace.
+        """
         return pulumi.get(self, "name_with_namespace")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path of the project.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="pathWithNamespace")
     def path_with_namespace(self) -> str:
+        """
+        The path of the project with namespace.
+        """
         return pulumi.get(self, "path_with_namespace")
 
 
@@ -2657,6 +3131,14 @@ class GetInstanceVariablesVariableResult(dict):
                  raw: bool,
                  value: str,
                  variable_type: str):
+        """
+        :param str key: The name of the variable.
+        :param bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        :param bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param bool raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param str value: The value of the variable.
+        :param str variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "masked", masked)
         pulumi.set(__self__, "protected", protected)
@@ -2667,31 +3149,49 @@ class GetInstanceVariablesVariableResult(dict):
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The name of the variable.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def masked(self) -> bool:
+        """
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        """
         return pulumi.get(self, "masked")
 
     @property
     @pulumi.getter
     def protected(self) -> bool:
+        """
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter
     def raw(self) -> bool:
+        """
+        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        """
         return pulumi.get(self, "raw")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The value of the variable.
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="variableType")
     def variable_type(self) -> str:
+        """
+        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        """
         return pulumi.get(self, "variable_type")
 
 
@@ -2747,6 +3247,17 @@ class GetProjectBranchesBranchResult(dict):
                  name: str,
                  protected: bool,
                  web_url: str):
+        """
+        :param bool can_push: Bool, true if you can push to the branch.
+        :param Sequence['GetProjectBranchesBranchCommitArgs'] commits: The commit associated with this branch.
+        :param bool default: Bool, true if branch is the default branch for the project.
+        :param bool developers_can_merge: Bool, true if developer level access allows to merge branch.
+        :param bool developers_can_push: Bool, true if developer level access allows git push.
+        :param bool merged: Bool, true if the branch has been merged into it's parent.
+        :param str name: The name of the branch.
+        :param bool protected: Bool, true if branch has branch protection.
+        :param str web_url: URL that can be used to find the branch in a browser.
+        """
         pulumi.set(__self__, "can_push", can_push)
         pulumi.set(__self__, "commits", commits)
         pulumi.set(__self__, "default", default)
@@ -2760,46 +3271,73 @@ class GetProjectBranchesBranchResult(dict):
     @property
     @pulumi.getter(name="canPush")
     def can_push(self) -> bool:
+        """
+        Bool, true if you can push to the branch.
+        """
         return pulumi.get(self, "can_push")
 
     @property
     @pulumi.getter
     def commits(self) -> Sequence['outputs.GetProjectBranchesBranchCommitResult']:
+        """
+        The commit associated with this branch.
+        """
         return pulumi.get(self, "commits")
 
     @property
     @pulumi.getter
     def default(self) -> bool:
+        """
+        Bool, true if branch is the default branch for the project.
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="developersCanMerge")
     def developers_can_merge(self) -> bool:
+        """
+        Bool, true if developer level access allows to merge branch.
+        """
         return pulumi.get(self, "developers_can_merge")
 
     @property
     @pulumi.getter(name="developersCanPush")
     def developers_can_push(self) -> bool:
+        """
+        Bool, true if developer level access allows git push.
+        """
         return pulumi.get(self, "developers_can_push")
 
     @property
     @pulumi.getter
     def merged(self) -> bool:
+        """
+        Bool, true if the branch has been merged into it's parent.
+        """
         return pulumi.get(self, "merged")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the branch.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def protected(self) -> bool:
+        """
+        Bool, true if branch has branch protection.
+        """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
+        """
+        URL that can be used to find the branch in a browser.
+        """
         return pulumi.get(self, "web_url")
 
 
@@ -2817,6 +3355,19 @@ class GetProjectBranchesBranchCommitResult(dict):
                  parent_ids: Sequence[str],
                  short_id: str,
                  title: str):
+        """
+        :param str author_email: The email of the author.
+        :param str author_name: The name of the author.
+        :param str authored_date: The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committed_date: The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committer_email: The email of the user that committed.
+        :param str committer_name: The name of the user that committed.
+        :param str id: The unique id assigned to the commit by Gitlab.
+        :param str message: The commit message
+        :param Sequence[str] parent_ids: The id of the parents of the commit
+        :param str short_id: The short id assigned to the commit by Gitlab.
+        :param str title: The title of the commit
+        """
         pulumi.set(__self__, "author_email", author_email)
         pulumi.set(__self__, "author_name", author_name)
         pulumi.set(__self__, "authored_date", authored_date)
@@ -2832,56 +3383,89 @@ class GetProjectBranchesBranchCommitResult(dict):
     @property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> str:
+        """
+        The email of the author.
+        """
         return pulumi.get(self, "author_email")
 
     @property
     @pulumi.getter(name="authorName")
     def author_name(self) -> str:
+        """
+        The name of the author.
+        """
         return pulumi.get(self, "author_name")
 
     @property
     @pulumi.getter(name="authoredDate")
     def authored_date(self) -> str:
+        """
+        The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "authored_date")
 
     @property
     @pulumi.getter(name="committedDate")
     def committed_date(self) -> str:
+        """
+        The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "committed_date")
 
     @property
     @pulumi.getter(name="committerEmail")
     def committer_email(self) -> str:
+        """
+        The email of the user that committed.
+        """
         return pulumi.get(self, "committer_email")
 
     @property
     @pulumi.getter(name="committerName")
     def committer_name(self) -> str:
+        """
+        The name of the user that committed.
+        """
         return pulumi.get(self, "committer_name")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        The commit message
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter(name="parentIds")
     def parent_ids(self) -> Sequence[str]:
+        """
+        The id of the parents of the commit
+        """
         return pulumi.get(self, "parent_ids")
 
     @property
     @pulumi.getter(name="shortId")
     def short_id(self) -> str:
+        """
+        The short id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "short_id")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The title of the commit
+        """
         return pulumi.get(self, "title")
 
 
@@ -2896,6 +3480,16 @@ class GetProjectContainerExpirationPolicyResult(dict):
                  name_regex_keep: str,
                  next_run_at: str,
                  older_than: str):
+        """
+        :param str cadence: The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
+        :param bool enabled: If true, the policy is enabled.
+        :param int keep_n: The number of images to keep.
+        :param str name_regex: The regular expression to match image names to delete.
+        :param str name_regex_delete: The regular expression to match image names to delete.
+        :param str name_regex_keep: The regular expression to match image names to keep.
+        :param str next_run_at: The next time the policy will run.
+        :param str older_than: The number of days to keep images.
+        """
         pulumi.set(__self__, "cadence", cadence)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "keep_n", keep_n)
@@ -2908,21 +3502,33 @@ class GetProjectContainerExpirationPolicyResult(dict):
     @property
     @pulumi.getter
     def cadence(self) -> str:
+        """
+        The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
+        """
         return pulumi.get(self, "cadence")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        If true, the policy is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="keepN")
     def keep_n(self) -> int:
+        """
+        The number of images to keep.
+        """
         return pulumi.get(self, "keep_n")
 
     @property
     @pulumi.getter(name="nameRegex")
     def name_regex(self) -> str:
+        """
+        The regular expression to match image names to delete.
+        """
         warnings.warn("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""", DeprecationWarning)
         pulumi.log.warn("""name_regex is deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.""")
 
@@ -2931,21 +3537,33 @@ class GetProjectContainerExpirationPolicyResult(dict):
     @property
     @pulumi.getter(name="nameRegexDelete")
     def name_regex_delete(self) -> str:
+        """
+        The regular expression to match image names to delete.
+        """
         return pulumi.get(self, "name_regex_delete")
 
     @property
     @pulumi.getter(name="nameRegexKeep")
     def name_regex_keep(self) -> str:
+        """
+        The regular expression to match image names to keep.
+        """
         return pulumi.get(self, "name_regex_keep")
 
     @property
     @pulumi.getter(name="nextRunAt")
     def next_run_at(self) -> str:
+        """
+        The next time the policy will run.
+        """
         return pulumi.get(self, "next_run_at")
 
     @property
     @pulumi.getter(name="olderThan")
     def older_than(self) -> str:
+        """
+        The number of days to keep images.
+        """
         return pulumi.get(self, "older_than")
 
 
@@ -2971,6 +3589,27 @@ class GetProjectHooksHookResult(dict):
                  token: str,
                  url: str,
                  wiki_page_events: bool):
+        """
+        :param bool confidential_issues_events: Invoke the hook for confidential issues events.
+        :param bool confidential_note_events: Invoke the hook for confidential notes events.
+        :param bool deployment_events: Invoke the hook for deployment events.
+        :param bool enable_ssl_verification: Enable ssl verification when invoking the hook.
+        :param int hook_id: The id of the project hook.
+        :param bool issues_events: Invoke the hook for issues events.
+        :param bool job_events: Invoke the hook for job events.
+        :param bool merge_requests_events: Invoke the hook for merge requests.
+        :param bool note_events: Invoke the hook for notes events.
+        :param bool pipeline_events: Invoke the hook for pipeline events.
+        :param str project: The name or id of the project to add the hook to.
+        :param int project_id: The id of the project for the hook.
+        :param bool push_events: Invoke the hook for push events.
+        :param str push_events_branch_filter: Invoke the hook for push events on matching branches only.
+        :param bool releases_events: Invoke the hook for releases events.
+        :param bool tag_push_events: Invoke the hook for tag push events.
+        :param str token: A token to present when invoking the hook. The token is not available for imported resources.
+        :param str url: The url of the hook to invoke.
+        :param bool wiki_page_events: Invoke the hook for wiki page events.
+        """
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         pulumi.set(__self__, "confidential_note_events", confidential_note_events)
         pulumi.set(__self__, "deployment_events", deployment_events)
@@ -2994,96 +3633,153 @@ class GetProjectHooksHookResult(dict):
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
     def confidential_issues_events(self) -> bool:
+        """
+        Invoke the hook for confidential issues events.
+        """
         return pulumi.get(self, "confidential_issues_events")
 
     @property
     @pulumi.getter(name="confidentialNoteEvents")
     def confidential_note_events(self) -> bool:
+        """
+        Invoke the hook for confidential notes events.
+        """
         return pulumi.get(self, "confidential_note_events")
 
     @property
     @pulumi.getter(name="deploymentEvents")
     def deployment_events(self) -> bool:
+        """
+        Invoke the hook for deployment events.
+        """
         return pulumi.get(self, "deployment_events")
 
     @property
     @pulumi.getter(name="enableSslVerification")
     def enable_ssl_verification(self) -> bool:
+        """
+        Enable ssl verification when invoking the hook.
+        """
         return pulumi.get(self, "enable_ssl_verification")
 
     @property
     @pulumi.getter(name="hookId")
     def hook_id(self) -> int:
+        """
+        The id of the project hook.
+        """
         return pulumi.get(self, "hook_id")
 
     @property
     @pulumi.getter(name="issuesEvents")
     def issues_events(self) -> bool:
+        """
+        Invoke the hook for issues events.
+        """
         return pulumi.get(self, "issues_events")
 
     @property
     @pulumi.getter(name="jobEvents")
     def job_events(self) -> bool:
+        """
+        Invoke the hook for job events.
+        """
         return pulumi.get(self, "job_events")
 
     @property
     @pulumi.getter(name="mergeRequestsEvents")
     def merge_requests_events(self) -> bool:
+        """
+        Invoke the hook for merge requests.
+        """
         return pulumi.get(self, "merge_requests_events")
 
     @property
     @pulumi.getter(name="noteEvents")
     def note_events(self) -> bool:
+        """
+        Invoke the hook for notes events.
+        """
         return pulumi.get(self, "note_events")
 
     @property
     @pulumi.getter(name="pipelineEvents")
     def pipeline_events(self) -> bool:
+        """
+        Invoke the hook for pipeline events.
+        """
         return pulumi.get(self, "pipeline_events")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        The name or id of the project to add the hook to.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> int:
+        """
+        The id of the project for the hook.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="pushEvents")
     def push_events(self) -> bool:
+        """
+        Invoke the hook for push events.
+        """
         return pulumi.get(self, "push_events")
 
     @property
     @pulumi.getter(name="pushEventsBranchFilter")
     def push_events_branch_filter(self) -> str:
+        """
+        Invoke the hook for push events on matching branches only.
+        """
         return pulumi.get(self, "push_events_branch_filter")
 
     @property
     @pulumi.getter(name="releasesEvents")
     def releases_events(self) -> bool:
+        """
+        Invoke the hook for releases events.
+        """
         return pulumi.get(self, "releases_events")
 
     @property
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> bool:
+        """
+        Invoke the hook for tag push events.
+        """
         return pulumi.get(self, "tag_push_events")
 
     @property
     @pulumi.getter
     def token(self) -> str:
+        """
+        A token to present when invoking the hook. The token is not available for imported resources.
+        """
         return pulumi.get(self, "token")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The url of the hook to invoke.
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="wikiPageEvents")
     def wiki_page_events(self) -> bool:
+        """
+        Invoke the hook for wiki page events.
+        """
         return pulumi.get(self, "wiki_page_events")
 
 
@@ -3092,17 +3788,27 @@ class GetProjectIssueTaskCompletionStatusResult(dict):
     def __init__(__self__, *,
                  completed_count: int,
                  count: int):
+        """
+        :param int completed_count: The number of tasks that are completed.
+        :param int count: The number of tasks.
+        """
         pulumi.set(__self__, "completed_count", completed_count)
         pulumi.set(__self__, "count", count)
 
     @property
     @pulumi.getter(name="completedCount")
     def completed_count(self) -> int:
+        """
+        The number of tasks that are completed.
+        """
         return pulumi.get(self, "completed_count")
 
     @property
     @pulumi.getter
     def count(self) -> int:
+        """
+        The number of tasks.
+        """
         return pulumi.get(self, "count")
 
 
@@ -3148,6 +3854,47 @@ class GetProjectIssuesIssueResult(dict):
                  user_notes_count: int,
                  web_url: str,
                  weight: int):
+        """
+        :param Sequence[int] assignee_ids: The IDs of the users to assign the issue to.
+        :param int author_id: The ID of the author of the issue. Use `User` data source to get more information about the user.
+        :param str closed_at: When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+        :param int closed_by_user_id: The ID of the user that closed the issue. Use `User` data source to get more information about the user.
+        :param bool confidential: Set an issue to be confidential.
+        :param str created_at: When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
+        :param str description: The description of an issue. Limited to 1,048,576 characters.
+        :param bool discussion_locked: Whether the issue is locked for discussions or not.
+        :param str discussion_to_resolve: The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge_request_to_resolve_discussions_of.
+        :param int downvotes: The number of downvotes the issue has received.
+        :param str due_date: The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param int epic_id: ID of the epic to add the issue to. Valid values are greater than or equal to 0.
+        :param int epic_issue_id: The ID of the epic issue.
+        :param str external_id: The external ID of the issue.
+        :param str human_time_estimate: The human-readable time estimate of the issue.
+        :param str human_total_time_spent: The human-readable total time spent of the issue.
+        :param int iid: The internal ID of the project's issue.
+        :param int issue_id: The instance-wide ID of the issue.
+        :param int issue_link_id: The ID of the issue link.
+        :param str issue_type: The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+        :param Sequence[str] labels: The labels of an issue.
+        :param Mapping[str, str] links: The links of the issue.
+        :param int merge_request_to_resolve_discussions_of: The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+        :param int merge_requests_count: The number of merge requests associated with the issue.
+        :param int milestone_id: The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
+        :param int moved_to_id: The ID of the issue that was moved to.
+        :param str project: The name or ID of the project.
+        :param Mapping[str, str] references: The references of the issue.
+        :param str state: The state of the issue. Valid values are: `opened`, `closed`.
+        :param bool subscribed: Whether the authenticated user is subscribed to the issue or not.
+        :param Sequence['GetProjectIssuesIssueTaskCompletionStatusArgs'] task_completion_statuses: The task completion status. It's always a one element list.
+        :param int time_estimate: The time estimate of the issue.
+        :param str title: The title of the issue.
+        :param int total_time_spent: The total time spent of the issue.
+        :param str updated_at: When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+        :param int upvotes: The number of upvotes the issue has received.
+        :param int user_notes_count: The number of user notes on the issue.
+        :param str web_url: The web URL of the issue.
+        :param int weight: The weight of the issue. Valid values are greater than or equal to 0.
+        """
         pulumi.set(__self__, "assignee_ids", assignee_ids)
         pulumi.set(__self__, "author_id", author_id)
         pulumi.set(__self__, "closed_at", closed_at)
@@ -3191,196 +3938,313 @@ class GetProjectIssuesIssueResult(dict):
     @property
     @pulumi.getter(name="assigneeIds")
     def assignee_ids(self) -> Sequence[int]:
+        """
+        The IDs of the users to assign the issue to.
+        """
         return pulumi.get(self, "assignee_ids")
 
     @property
     @pulumi.getter(name="authorId")
     def author_id(self) -> int:
+        """
+        The ID of the author of the issue. Use `User` data source to get more information about the user.
+        """
         return pulumi.get(self, "author_id")
 
     @property
     @pulumi.getter(name="closedAt")
     def closed_at(self) -> str:
+        """
+        When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+        """
         return pulumi.get(self, "closed_at")
 
     @property
     @pulumi.getter(name="closedByUserId")
     def closed_by_user_id(self) -> int:
+        """
+        The ID of the user that closed the issue. Use `User` data source to get more information about the user.
+        """
         return pulumi.get(self, "closed_by_user_id")
 
     @property
     @pulumi.getter
     def confidential(self) -> bool:
+        """
+        Set an issue to be confidential.
+        """
         return pulumi.get(self, "confidential")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of an issue. Limited to 1,048,576 characters.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="discussionLocked")
     def discussion_locked(self) -> bool:
+        """
+        Whether the issue is locked for discussions or not.
+        """
         return pulumi.get(self, "discussion_locked")
 
     @property
     @pulumi.getter(name="discussionToResolve")
     def discussion_to_resolve(self) -> str:
+        """
+        The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge_request_to_resolve_discussions_of.
+        """
         return pulumi.get(self, "discussion_to_resolve")
 
     @property
     @pulumi.getter
     def downvotes(self) -> int:
+        """
+        The number of downvotes the issue has received.
+        """
         return pulumi.get(self, "downvotes")
 
     @property
     @pulumi.getter(name="dueDate")
     def due_date(self) -> str:
+        """
+        The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        """
         return pulumi.get(self, "due_date")
 
     @property
     @pulumi.getter(name="epicId")
     def epic_id(self) -> int:
+        """
+        ID of the epic to add the issue to. Valid values are greater than or equal to 0.
+        """
         return pulumi.get(self, "epic_id")
 
     @property
     @pulumi.getter(name="epicIssueId")
     def epic_issue_id(self) -> int:
+        """
+        The ID of the epic issue.
+        """
         return pulumi.get(self, "epic_issue_id")
 
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> str:
+        """
+        The external ID of the issue.
+        """
         return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter(name="humanTimeEstimate")
     def human_time_estimate(self) -> str:
+        """
+        The human-readable time estimate of the issue.
+        """
         return pulumi.get(self, "human_time_estimate")
 
     @property
     @pulumi.getter(name="humanTotalTimeSpent")
     def human_total_time_spent(self) -> str:
+        """
+        The human-readable total time spent of the issue.
+        """
         return pulumi.get(self, "human_total_time_spent")
 
     @property
     @pulumi.getter
     def iid(self) -> int:
+        """
+        The internal ID of the project's issue.
+        """
         return pulumi.get(self, "iid")
 
     @property
     @pulumi.getter(name="issueId")
     def issue_id(self) -> int:
+        """
+        The instance-wide ID of the issue.
+        """
         return pulumi.get(self, "issue_id")
 
     @property
     @pulumi.getter(name="issueLinkId")
     def issue_link_id(self) -> int:
+        """
+        The ID of the issue link.
+        """
         return pulumi.get(self, "issue_link_id")
 
     @property
     @pulumi.getter(name="issueType")
     def issue_type(self) -> str:
+        """
+        The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+        """
         return pulumi.get(self, "issue_type")
 
     @property
     @pulumi.getter
     def labels(self) -> Sequence[str]:
+        """
+        The labels of an issue.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def links(self) -> Mapping[str, str]:
+        """
+        The links of the issue.
+        """
         return pulumi.get(self, "links")
 
     @property
     @pulumi.getter(name="mergeRequestToResolveDiscussionsOf")
     def merge_request_to_resolve_discussions_of(self) -> int:
+        """
+        The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+        """
         return pulumi.get(self, "merge_request_to_resolve_discussions_of")
 
     @property
     @pulumi.getter(name="mergeRequestsCount")
     def merge_requests_count(self) -> int:
+        """
+        The number of merge requests associated with the issue.
+        """
         return pulumi.get(self, "merge_requests_count")
 
     @property
     @pulumi.getter(name="milestoneId")
     def milestone_id(self) -> int:
+        """
+        The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
+        """
         return pulumi.get(self, "milestone_id")
 
     @property
     @pulumi.getter(name="movedToId")
     def moved_to_id(self) -> int:
+        """
+        The ID of the issue that was moved to.
+        """
         return pulumi.get(self, "moved_to_id")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        The name or ID of the project.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def references(self) -> Mapping[str, str]:
+        """
+        The references of the issue.
+        """
         return pulumi.get(self, "references")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the issue. Valid values are: `opened`, `closed`.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def subscribed(self) -> bool:
+        """
+        Whether the authenticated user is subscribed to the issue or not.
+        """
         return pulumi.get(self, "subscribed")
 
     @property
     @pulumi.getter(name="taskCompletionStatuses")
     def task_completion_statuses(self) -> Sequence['outputs.GetProjectIssuesIssueTaskCompletionStatusResult']:
+        """
+        The task completion status. It's always a one element list.
+        """
         return pulumi.get(self, "task_completion_statuses")
 
     @property
     @pulumi.getter(name="timeEstimate")
     def time_estimate(self) -> int:
+        """
+        The time estimate of the issue.
+        """
         return pulumi.get(self, "time_estimate")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The title of the issue.
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter(name="totalTimeSpent")
     def total_time_spent(self) -> int:
+        """
+        The total time spent of the issue.
+        """
         return pulumi.get(self, "total_time_spent")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter
     def upvotes(self) -> int:
+        """
+        The number of upvotes the issue has received.
+        """
         return pulumi.get(self, "upvotes")
 
     @property
     @pulumi.getter(name="userNotesCount")
     def user_notes_count(self) -> int:
+        """
+        The number of user notes on the issue.
+        """
         return pulumi.get(self, "user_notes_count")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
+        """
+        The web URL of the issue.
+        """
         return pulumi.get(self, "web_url")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
+        """
+        The weight of the issue. Valid values are greater than or equal to 0.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -3389,17 +4253,27 @@ class GetProjectIssuesIssueTaskCompletionStatusResult(dict):
     def __init__(__self__, *,
                  completed_count: int,
                  count: int):
+        """
+        :param int completed_count: The number of tasks that are completed.
+        :param int count: The number of tasks.
+        """
         pulumi.set(__self__, "completed_count", completed_count)
         pulumi.set(__self__, "count", count)
 
     @property
     @pulumi.getter(name="completedCount")
     def completed_count(self) -> int:
+        """
+        The number of tasks that are completed.
+        """
         return pulumi.get(self, "completed_count")
 
     @property
     @pulumi.getter
     def count(self) -> int:
+        """
+        The number of tasks.
+        """
         return pulumi.get(self, "count")
 
 
@@ -3414,6 +4288,16 @@ class GetProjectMembershipMemberResult(dict):
                  state: str,
                  username: str,
                  web_url: str):
+        """
+        :param str access_level: The level of access to the group.
+        :param str avatar_url: The avatar URL of the user.
+        :param str expires_at: Expiration date for the group membership.
+        :param int id: The unique id assigned to the user by the gitlab server.
+        :param str name: The name of the user.
+        :param str state: Whether the user is active or blocked.
+        :param str username: The username of the user.
+        :param str web_url: User's website URL.
+        """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "avatar_url", avatar_url)
         pulumi.set(__self__, "expires_at", expires_at)
@@ -3426,41 +4310,65 @@ class GetProjectMembershipMemberResult(dict):
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
+        """
+        The level of access to the group.
+        """
         return pulumi.get(self, "access_level")
 
     @property
     @pulumi.getter(name="avatarUrl")
     def avatar_url(self) -> str:
+        """
+        The avatar URL of the user.
+        """
         return pulumi.get(self, "avatar_url")
 
     @property
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> str:
+        """
+        Expiration date for the group membership.
+        """
         return pulumi.get(self, "expires_at")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The unique id assigned to the user by the gitlab server.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the user.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Whether the user is active or blocked.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        The username of the user.
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
+        """
+        User's website URL.
+        """
         return pulumi.get(self, "web_url")
 
 
@@ -3480,6 +4388,21 @@ class GetProjectMilestonesMilestoneResult(dict):
                  title: str,
                  updated_at: str,
                  web_url: str):
+        """
+        :param str created_at: The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+        :param str description: The description of the milestone.
+        :param str due_date: The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param bool expired: Bool, true if milestone expired.
+        :param int iid: The ID of the project's milestone.
+        :param int milestone_id: The instance-wide ID of the project’s milestone.
+        :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
+        :param int project_id: The project ID of milestone.
+        :param str start_date: The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param str state: The state of the milestone. Valid values are: `active`, `closed`.
+        :param str title: The title of a milestone.
+        :param str updated_at: The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+        :param str web_url: The web URL of the milestone.
+        """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "due_date", due_date)
@@ -3497,66 +4420,105 @@ class GetProjectMilestonesMilestoneResult(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the milestone.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dueDate")
     def due_date(self) -> str:
+        """
+        The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        """
         return pulumi.get(self, "due_date")
 
     @property
     @pulumi.getter
     def expired(self) -> bool:
+        """
+        Bool, true if milestone expired.
+        """
         return pulumi.get(self, "expired")
 
     @property
     @pulumi.getter
     def iid(self) -> int:
+        """
+        The ID of the project's milestone.
+        """
         return pulumi.get(self, "iid")
 
     @property
     @pulumi.getter(name="milestoneId")
     def milestone_id(self) -> int:
+        """
+        The instance-wide ID of the project’s milestone.
+        """
         return pulumi.get(self, "milestone_id")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        The ID or URL-encoded path of the project owned by the authenticated user.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> int:
+        """
+        The project ID of milestone.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="startDate")
     def start_date(self) -> str:
+        """
+        The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        """
         return pulumi.get(self, "start_date")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the milestone. Valid values are: `active`, `closed`.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The title of a milestone.
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
+        """
+        The web URL of the milestone.
+        """
         return pulumi.get(self, "web_url")
 
 
@@ -3861,6 +4823,19 @@ class GetProjectPushRuleResult(dict):
                  member_check: bool,
                  prevent_secrets: bool,
                  reject_unsigned_commits: bool):
+        """
+        :param str author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
+        :param str branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
+        :param bool commit_committer_check: Users can only push commits to this repository that were committed with one of their own verified emails.
+        :param str commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        :param str commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
+        :param bool deny_delete_tag: Deny deleting a tag.
+        :param str file_name_regex: All committed filenames must not match this regex, e.g. `(jar|exe)$`.
+        :param int max_file_size: Maximum file size (MB).
+        :param bool member_check: Restrict commits by author (email) to existing GitLab users.
+        :param bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
+        :param bool reject_unsigned_commits: Reject commit when it’s not signed through GPG.
+        """
         pulumi.set(__self__, "author_email_regex", author_email_regex)
         pulumi.set(__self__, "branch_name_regex", branch_name_regex)
         pulumi.set(__self__, "commit_committer_check", commit_committer_check)
@@ -3876,56 +4851,89 @@ class GetProjectPushRuleResult(dict):
     @property
     @pulumi.getter(name="authorEmailRegex")
     def author_email_regex(self) -> str:
+        """
+        All commit author emails must match this regex, e.g. `@my-company.com$`.
+        """
         return pulumi.get(self, "author_email_regex")
 
     @property
     @pulumi.getter(name="branchNameRegex")
     def branch_name_regex(self) -> str:
+        """
+        All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
+        """
         return pulumi.get(self, "branch_name_regex")
 
     @property
     @pulumi.getter(name="commitCommitterCheck")
     def commit_committer_check(self) -> bool:
+        """
+        Users can only push commits to this repository that were committed with one of their own verified emails.
+        """
         return pulumi.get(self, "commit_committer_check")
 
     @property
     @pulumi.getter(name="commitMessageNegativeRegex")
     def commit_message_negative_regex(self) -> str:
+        """
+        No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        """
         return pulumi.get(self, "commit_message_negative_regex")
 
     @property
     @pulumi.getter(name="commitMessageRegex")
     def commit_message_regex(self) -> str:
+        """
+        All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
+        """
         return pulumi.get(self, "commit_message_regex")
 
     @property
     @pulumi.getter(name="denyDeleteTag")
     def deny_delete_tag(self) -> bool:
+        """
+        Deny deleting a tag.
+        """
         return pulumi.get(self, "deny_delete_tag")
 
     @property
     @pulumi.getter(name="fileNameRegex")
     def file_name_regex(self) -> str:
+        """
+        All committed filenames must not match this regex, e.g. `(jar|exe)$`.
+        """
         return pulumi.get(self, "file_name_regex")
 
     @property
     @pulumi.getter(name="maxFileSize")
     def max_file_size(self) -> int:
+        """
+        Maximum file size (MB).
+        """
         return pulumi.get(self, "max_file_size")
 
     @property
     @pulumi.getter(name="memberCheck")
     def member_check(self) -> bool:
+        """
+        Restrict commits by author (email) to existing GitLab users.
+        """
         return pulumi.get(self, "member_check")
 
     @property
     @pulumi.getter(name="preventSecrets")
     def prevent_secrets(self) -> bool:
+        """
+        GitLab will reject any files that are likely to contain secrets.
+        """
         return pulumi.get(self, "prevent_secrets")
 
     @property
     @pulumi.getter(name="rejectUnsignedCommits")
     def reject_unsigned_commits(self) -> bool:
+        """
+        Reject commit when it’s not signed through GPG.
+        """
         return pulumi.get(self, "reject_unsigned_commits")
 
 
@@ -3936,6 +4944,12 @@ class GetProjectSharedWithGroupResult(dict):
                  group_full_path: str,
                  group_id: int,
                  group_name: str):
+        """
+        :param int group_access_level: The access_level permission level of the shared group.
+        :param str group_full_path: The full path of the group shared with.
+        :param int group_id: The ID of the group shared with.
+        :param str group_name: The name of the group shared with.
+        """
         pulumi.set(__self__, "group_access_level", group_access_level)
         pulumi.set(__self__, "group_full_path", group_full_path)
         pulumi.set(__self__, "group_id", group_id)
@@ -3944,21 +4958,33 @@ class GetProjectSharedWithGroupResult(dict):
     @property
     @pulumi.getter(name="groupAccessLevel")
     def group_access_level(self) -> int:
+        """
+        The access_level permission level of the shared group.
+        """
         return pulumi.get(self, "group_access_level")
 
     @property
     @pulumi.getter(name="groupFullPath")
     def group_full_path(self) -> str:
+        """
+        The full path of the group shared with.
+        """
         return pulumi.get(self, "group_full_path")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
+        """
+        The ID of the group shared with.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> str:
+        """
+        The name of the group shared with.
+        """
         return pulumi.get(self, "group_name")
 
 
@@ -3976,6 +5002,19 @@ class GetProjectTagCommitResult(dict):
                  parent_ids: Sequence[str],
                  short_id: str,
                  title: str):
+        """
+        :param str author_email: The email of the author.
+        :param str author_name: The name of the author.
+        :param str authored_date: The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committed_date: The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committer_email: The email of the user that committed.
+        :param str committer_name: The name of the user that committed.
+        :param str id: The unique id assigned to the commit by Gitlab.
+        :param str message: The commit message
+        :param Sequence[str] parent_ids: The id of the parents of the commit
+        :param str short_id: The short id assigned to the commit by Gitlab.
+        :param str title: The title of the commit
+        """
         pulumi.set(__self__, "author_email", author_email)
         pulumi.set(__self__, "author_name", author_name)
         pulumi.set(__self__, "authored_date", authored_date)
@@ -3991,56 +5030,89 @@ class GetProjectTagCommitResult(dict):
     @property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> str:
+        """
+        The email of the author.
+        """
         return pulumi.get(self, "author_email")
 
     @property
     @pulumi.getter(name="authorName")
     def author_name(self) -> str:
+        """
+        The name of the author.
+        """
         return pulumi.get(self, "author_name")
 
     @property
     @pulumi.getter(name="authoredDate")
     def authored_date(self) -> str:
+        """
+        The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "authored_date")
 
     @property
     @pulumi.getter(name="committedDate")
     def committed_date(self) -> str:
+        """
+        The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "committed_date")
 
     @property
     @pulumi.getter(name="committerEmail")
     def committer_email(self) -> str:
+        """
+        The email of the user that committed.
+        """
         return pulumi.get(self, "committer_email")
 
     @property
     @pulumi.getter(name="committerName")
     def committer_name(self) -> str:
+        """
+        The name of the user that committed.
+        """
         return pulumi.get(self, "committer_name")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        The commit message
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter(name="parentIds")
     def parent_ids(self) -> Sequence[str]:
+        """
+        The id of the parents of the commit
+        """
         return pulumi.get(self, "parent_ids")
 
     @property
     @pulumi.getter(name="shortId")
     def short_id(self) -> str:
+        """
+        The short id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "short_id")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The title of the commit
+        """
         return pulumi.get(self, "title")
 
 
@@ -4049,17 +5121,27 @@ class GetProjectTagReleaseResult(dict):
     def __init__(__self__, *,
                  description: str,
                  tag_name: str):
+        """
+        :param str description: The description of release.
+        :param str tag_name: The name of the tag.
+        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "tag_name", tag_name)
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of release.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="tagName")
     def tag_name(self) -> str:
+        """
+        The name of the tag.
+        """
         return pulumi.get(self, "tag_name")
 
 
@@ -4072,6 +5154,14 @@ class GetProjectTagsTagResult(dict):
                  protected: bool,
                  releases: Sequence['outputs.GetProjectTagsTagReleaseResult'],
                  target: str):
+        """
+        :param Sequence['GetProjectTagsTagCommitArgs'] commits: The commit associated with the tag.
+        :param str message: The message of the annotated tag.
+        :param str name: The name of a tag.
+        :param bool protected: Bool, true if tag has tag protection.
+        :param Sequence['GetProjectTagsTagReleaseArgs'] releases: The release associated with the tag.
+        :param str target: The unique id assigned to the commit by Gitlab.
+        """
         pulumi.set(__self__, "commits", commits)
         pulumi.set(__self__, "message", message)
         pulumi.set(__self__, "name", name)
@@ -4082,31 +5172,49 @@ class GetProjectTagsTagResult(dict):
     @property
     @pulumi.getter
     def commits(self) -> Sequence['outputs.GetProjectTagsTagCommitResult']:
+        """
+        The commit associated with the tag.
+        """
         return pulumi.get(self, "commits")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        The message of the annotated tag.
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of a tag.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def protected(self) -> bool:
+        """
+        Bool, true if tag has tag protection.
+        """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter
     def releases(self) -> Sequence['outputs.GetProjectTagsTagReleaseResult']:
+        """
+        The release associated with the tag.
+        """
         return pulumi.get(self, "releases")
 
     @property
     @pulumi.getter
     def target(self) -> str:
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "target")
 
 
@@ -4124,6 +5232,19 @@ class GetProjectTagsTagCommitResult(dict):
                  parent_ids: Sequence[str],
                  short_id: str,
                  title: str):
+        """
+        :param str author_email: The email of the author.
+        :param str author_name: The name of the author.
+        :param str authored_date: The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committed_date: The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param str committer_email: The email of the user that committed.
+        :param str committer_name: The name of the user that committed.
+        :param str id: The unique id assigned to the commit by Gitlab.
+        :param str message: The commit message
+        :param Sequence[str] parent_ids: The id of the parents of the commit
+        :param str short_id: The short id assigned to the commit by Gitlab.
+        :param str title: The title of the commit
+        """
         pulumi.set(__self__, "author_email", author_email)
         pulumi.set(__self__, "author_name", author_name)
         pulumi.set(__self__, "authored_date", authored_date)
@@ -4139,56 +5260,89 @@ class GetProjectTagsTagCommitResult(dict):
     @property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> str:
+        """
+        The email of the author.
+        """
         return pulumi.get(self, "author_email")
 
     @property
     @pulumi.getter(name="authorName")
     def author_name(self) -> str:
+        """
+        The name of the author.
+        """
         return pulumi.get(self, "author_name")
 
     @property
     @pulumi.getter(name="authoredDate")
     def authored_date(self) -> str:
+        """
+        The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "authored_date")
 
     @property
     @pulumi.getter(name="committedDate")
     def committed_date(self) -> str:
+        """
+        The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "committed_date")
 
     @property
     @pulumi.getter(name="committerEmail")
     def committer_email(self) -> str:
+        """
+        The email of the user that committed.
+        """
         return pulumi.get(self, "committer_email")
 
     @property
     @pulumi.getter(name="committerName")
     def committer_name(self) -> str:
+        """
+        The name of the user that committed.
+        """
         return pulumi.get(self, "committer_name")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        The commit message
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter(name="parentIds")
     def parent_ids(self) -> Sequence[str]:
+        """
+        The id of the parents of the commit
+        """
         return pulumi.get(self, "parent_ids")
 
     @property
     @pulumi.getter(name="shortId")
     def short_id(self) -> str:
+        """
+        The short id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "short_id")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The title of the commit
+        """
         return pulumi.get(self, "title")
 
 
@@ -4197,17 +5351,27 @@ class GetProjectTagsTagReleaseResult(dict):
     def __init__(__self__, *,
                  description: str,
                  tag_name: str):
+        """
+        :param str description: The description of release.
+        :param str tag_name: The name of the tag.
+        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "tag_name", tag_name)
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of release.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="tagName")
     def tag_name(self) -> str:
+        """
+        The name of the tag.
+        """
         return pulumi.get(self, "tag_name")
 
 
@@ -4222,6 +5386,16 @@ class GetProjectVariablesVariableResult(dict):
                  raw: bool,
                  value: str,
                  variable_type: str):
+        """
+        :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        :param str key: The name of the variable.
+        :param bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        :param str project: The name or id of the project.
+        :param bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param bool raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param str value: The value of the variable.
+        :param str variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        """
         pulumi.set(__self__, "environment_scope", environment_scope)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "masked", masked)
@@ -4234,41 +5408,65 @@ class GetProjectVariablesVariableResult(dict):
     @property
     @pulumi.getter(name="environmentScope")
     def environment_scope(self) -> str:
+        """
+        The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        """
         return pulumi.get(self, "environment_scope")
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The name of the variable.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def masked(self) -> bool:
+        """
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        """
         return pulumi.get(self, "masked")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        The name or id of the project.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def protected(self) -> bool:
+        """
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter
     def raw(self) -> bool:
+        """
+        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        """
         return pulumi.get(self, "raw")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The value of the variable.
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="variableType")
     def variable_type(self) -> str:
+        """
+        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        """
         return pulumi.get(self, "variable_type")
 
 
@@ -4371,6 +5569,103 @@ class GetProjectsProjectResult(dict):
                  web_url: str,
                  wiki_access_level: str,
                  wiki_enabled: bool):
+        """
+        :param Mapping[str, str] _links: Links for the project.
+        :param bool allow_merge_on_skipped_pipeline: Whether allow_merge_on_skipped_pipeline is enabled for the project.
+        :param str analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
+        :param int approvals_before_merge: The numbers of approvals needed in a merge requests.
+        :param bool archived: Whether the project is archived.
+        :param str auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        :param str auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+        :param bool auto_devops_enabled: Enable Auto DevOps for this project.
+        :param bool autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
+        :param str avatar_url: The avatar url of the project.
+        :param str build_coverage_regex: Build coverage regex for the project.
+        :param str build_git_strategy: The Git strategy. Defaults to fetch.
+        :param int build_timeout: The maximum amount of time, in seconds, that a job can run.
+        :param str builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+        :param str ci_config_path: CI config file path for the project.
+        :param int ci_default_git_depth: Default number of revisions for shallow cloning.
+        :param bool ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param Sequence['GetProjectsProjectContainerExpirationPolicyArgs'] container_expiration_policies: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+        :param str container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+        :param bool container_registry_enabled: Whether the container registry is enabled for the project.
+        :param str created_at: Creation time for the project.
+        :param int creator_id: Creator ID for the project.
+        :param Sequence[Mapping[str, str]] custom_attributes: Custom attributes for the project.
+        :param str default_branch: The default branch name of the project.
+        :param str description: The description of the project.
+        :param bool emails_disabled: Disable email notifications.
+        :param bool empty_repo: Whether the project is empty.
+        :param str environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        :param str external_authorization_classification_label: The classification label for the project.
+        :param str feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        :param Sequence['GetProjectsProjectForkedFromProjectArgs'] forked_from_projects: Present if the project is a fork. Contains information about the upstream project.
+        :param str forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        :param int forks_count: The number of forks of the project.
+        :param bool group_runners_enabled: Whether group runners are enabled for the project.
+        :param str http_url_to_repo: The HTTP clone URL of the project.
+        :param int id: The ID of the project.
+        :param str import_error: The import error, if it exists, for the project.
+        :param str import_status: The import status of the project.
+        :param str import_url: URL the project was imported from.
+        :param str infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        :param str issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
+        :param bool issues_enabled: Whether issues are enabled for the project.
+        :param bool jobs_enabled: Whether pipelines are enabled for the project.
+        :param bool keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
+        :param str last_activity_at: Last activirty time for the project.
+        :param bool lfs_enabled: Whether LFS (large file storage) is enabled for the project.
+        :param str merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        :param str merge_method: Merge method for the project.
+        :param bool merge_pipelines_enabled: Enable or disable merge pipelines.
+        :param str merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
+        :param bool merge_requests_enabled: Whether merge requests are enabled for the project.
+        :param bool merge_trains_enabled: Enable or disable merge trains.
+        :param bool mirror: Whether the pull mirroring is enabled for the project.
+        :param bool mirror_overwrites_diverged_branches: Whether mirror_overwrites_diverged_branches is enabled for the project.
+        :param bool mirror_trigger_builds: Whether pull mirroring triggers builds for the project.
+        :param int mirror_user_id: The mirror user ID for the project.
+        :param str monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        :param str name: The name of the project.
+        :param str name_with_namespace: In `group / subgroup / project` or `user / project` format.
+        :param Sequence['GetProjectsProjectNamespaceArgs'] namespaces: Namespace of the project (parent group/s).
+        :param bool only_allow_merge_if_all_discussions_are_resolved: Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.
+        :param bool only_allow_merge_if_pipeline_succeeds: Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
+        :param bool only_mirror_protected_branches: Whether only_mirror_protected_branches is enabled for the project.
+        :param int open_issues_count: The number of open issies for the project.
+        :param bool packages_enabled: Whether packages are enabled for the project.
+        :param str path: The path of the project.
+        :param str path_with_namespace: In `group/subgroup/project` or `user/project` format.
+        :param Sequence['GetProjectsProjectPermissionArgs'] permissions: Permissions for the project.
+        :param bool public: Whether the project is public.
+        :param bool public_builds: Whether public builds are enabled for the project.
+        :param str readme_url: The remote url of the project.
+        :param str releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        :param str repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
+        :param str repository_storage: Which storage shard the repository is on. (administrator only)
+        :param bool request_access_enabled: Whether requesting access is enabled for the project.
+        :param str requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
+        :param bool resolve_outdated_diff_discussions: Whether resolve_outdated_diff_discussions is enabled for the project
+        :param bool restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        :param str runners_token: The runners token for the project.
+        :param str security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        :param bool shared_runners_enabled: Whether shared runners are enabled for the project.
+        :param Sequence['GetProjectsProjectSharedWithGroupArgs'] shared_with_groups: Groups the the project is shared with.
+        :param str snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
+        :param bool snippets_enabled: Whether snippets are enabled for the project.
+        :param str squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        :param str ssh_url_to_repo: The SSH clone URL of the project.
+        :param int star_count: The number of stars on the project.
+        :param Mapping[str, int] statistics: Statistics for the project.
+        :param str suggestion_commit_message: The commit message used to apply merge request suggestions.
+        :param Sequence[str] tag_lists: A set of the project topics (formerly called "project tags").
+        :param Sequence[str] topics: The list of topics for the project.
+        :param str visibility: The visibility of the project.
+        :param str web_url: The web url of the project.
+        :param str wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
+        :param bool wiki_enabled: Whether wiki is enabled for the project.
+        """
         pulumi.set(__self__, "_links", _links)
         pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         pulumi.set(__self__, "analytics_access_level", analytics_access_level)
@@ -4471,321 +5766,513 @@ class GetProjectsProjectResult(dict):
     @property
     @pulumi.getter
     def _links(self) -> Mapping[str, str]:
+        """
+        Links for the project.
+        """
         return pulumi.get(self, "_links")
 
     @property
     @pulumi.getter(name="allowMergeOnSkippedPipeline")
     def allow_merge_on_skipped_pipeline(self) -> bool:
+        """
+        Whether allow_merge_on_skipped_pipeline is enabled for the project.
+        """
         return pulumi.get(self, "allow_merge_on_skipped_pipeline")
 
     @property
     @pulumi.getter(name="analyticsAccessLevel")
     def analytics_access_level(self) -> str:
+        """
+        Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "analytics_access_level")
 
     @property
     @pulumi.getter(name="approvalsBeforeMerge")
     def approvals_before_merge(self) -> int:
+        """
+        The numbers of approvals needed in a merge requests.
+        """
         return pulumi.get(self, "approvals_before_merge")
 
     @property
     @pulumi.getter
     def archived(self) -> bool:
+        """
+        Whether the project is archived.
+        """
         return pulumi.get(self, "archived")
 
     @property
     @pulumi.getter(name="autoCancelPendingPipelines")
     def auto_cancel_pending_pipelines(self) -> str:
+        """
+        Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        """
         return pulumi.get(self, "auto_cancel_pending_pipelines")
 
     @property
     @pulumi.getter(name="autoDevopsDeployStrategy")
     def auto_devops_deploy_strategy(self) -> str:
+        """
+        Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+        """
         return pulumi.get(self, "auto_devops_deploy_strategy")
 
     @property
     @pulumi.getter(name="autoDevopsEnabled")
     def auto_devops_enabled(self) -> bool:
+        """
+        Enable Auto DevOps for this project.
+        """
         return pulumi.get(self, "auto_devops_enabled")
 
     @property
     @pulumi.getter(name="autocloseReferencedIssues")
     def autoclose_referenced_issues(self) -> bool:
+        """
+        Set whether auto-closing referenced issues on default branch.
+        """
         return pulumi.get(self, "autoclose_referenced_issues")
 
     @property
     @pulumi.getter(name="avatarUrl")
     def avatar_url(self) -> str:
+        """
+        The avatar url of the project.
+        """
         return pulumi.get(self, "avatar_url")
 
     @property
     @pulumi.getter(name="buildCoverageRegex")
     def build_coverage_regex(self) -> str:
+        """
+        Build coverage regex for the project.
+        """
         return pulumi.get(self, "build_coverage_regex")
 
     @property
     @pulumi.getter(name="buildGitStrategy")
     def build_git_strategy(self) -> str:
+        """
+        The Git strategy. Defaults to fetch.
+        """
         return pulumi.get(self, "build_git_strategy")
 
     @property
     @pulumi.getter(name="buildTimeout")
     def build_timeout(self) -> int:
+        """
+        The maximum amount of time, in seconds, that a job can run.
+        """
         return pulumi.get(self, "build_timeout")
 
     @property
     @pulumi.getter(name="buildsAccessLevel")
     def builds_access_level(self) -> str:
+        """
+        Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "builds_access_level")
 
     @property
     @pulumi.getter(name="ciConfigPath")
     def ci_config_path(self) -> str:
+        """
+        CI config file path for the project.
+        """
         return pulumi.get(self, "ci_config_path")
 
     @property
     @pulumi.getter(name="ciDefaultGitDepth")
     def ci_default_git_depth(self) -> int:
+        """
+        Default number of revisions for shallow cloning.
+        """
         return pulumi.get(self, "ci_default_git_depth")
 
     @property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
     def ci_forward_deployment_enabled(self) -> bool:
+        """
+        When a new deployment job starts, skip older deployment jobs that are still pending.
+        """
         return pulumi.get(self, "ci_forward_deployment_enabled")
 
     @property
     @pulumi.getter(name="containerExpirationPolicies")
     def container_expiration_policies(self) -> Sequence['outputs.GetProjectsProjectContainerExpirationPolicyResult']:
+        """
+        Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+        """
         return pulumi.get(self, "container_expiration_policies")
 
     @property
     @pulumi.getter(name="containerRegistryAccessLevel")
     def container_registry_access_level(self) -> str:
+        """
+        Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "container_registry_access_level")
 
     @property
     @pulumi.getter(name="containerRegistryEnabled")
     def container_registry_enabled(self) -> bool:
+        """
+        Whether the container registry is enabled for the project.
+        """
         return pulumi.get(self, "container_registry_enabled")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Creation time for the project.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="creatorId")
     def creator_id(self) -> int:
+        """
+        Creator ID for the project.
+        """
         return pulumi.get(self, "creator_id")
 
     @property
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Sequence[Mapping[str, str]]:
+        """
+        Custom attributes for the project.
+        """
         return pulumi.get(self, "custom_attributes")
 
     @property
     @pulumi.getter(name="defaultBranch")
     def default_branch(self) -> str:
+        """
+        The default branch name of the project.
+        """
         return pulumi.get(self, "default_branch")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the project.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="emailsDisabled")
     def emails_disabled(self) -> bool:
+        """
+        Disable email notifications.
+        """
         return pulumi.get(self, "emails_disabled")
 
     @property
     @pulumi.getter(name="emptyRepo")
     def empty_repo(self) -> bool:
+        """
+        Whether the project is empty.
+        """
         return pulumi.get(self, "empty_repo")
 
     @property
     @pulumi.getter(name="environmentsAccessLevel")
     def environments_access_level(self) -> str:
+        """
+        Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "environments_access_level")
 
     @property
     @pulumi.getter(name="externalAuthorizationClassificationLabel")
     def external_authorization_classification_label(self) -> str:
+        """
+        The classification label for the project.
+        """
         return pulumi.get(self, "external_authorization_classification_label")
 
     @property
     @pulumi.getter(name="featureFlagsAccessLevel")
     def feature_flags_access_level(self) -> str:
+        """
+        Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "feature_flags_access_level")
 
     @property
     @pulumi.getter(name="forkedFromProjects")
     def forked_from_projects(self) -> Sequence['outputs.GetProjectsProjectForkedFromProjectResult']:
+        """
+        Present if the project is a fork. Contains information about the upstream project.
+        """
         return pulumi.get(self, "forked_from_projects")
 
     @property
     @pulumi.getter(name="forkingAccessLevel")
     def forking_access_level(self) -> str:
+        """
+        Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "forking_access_level")
 
     @property
     @pulumi.getter(name="forksCount")
     def forks_count(self) -> int:
+        """
+        The number of forks of the project.
+        """
         return pulumi.get(self, "forks_count")
 
     @property
     @pulumi.getter(name="groupRunnersEnabled")
     def group_runners_enabled(self) -> bool:
+        """
+        Whether group runners are enabled for the project.
+        """
         return pulumi.get(self, "group_runners_enabled")
 
     @property
     @pulumi.getter(name="httpUrlToRepo")
     def http_url_to_repo(self) -> str:
+        """
+        The HTTP clone URL of the project.
+        """
         return pulumi.get(self, "http_url_to_repo")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the project.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="importError")
     def import_error(self) -> str:
+        """
+        The import error, if it exists, for the project.
+        """
         return pulumi.get(self, "import_error")
 
     @property
     @pulumi.getter(name="importStatus")
     def import_status(self) -> str:
+        """
+        The import status of the project.
+        """
         return pulumi.get(self, "import_status")
 
     @property
     @pulumi.getter(name="importUrl")
     def import_url(self) -> str:
+        """
+        URL the project was imported from.
+        """
         return pulumi.get(self, "import_url")
 
     @property
     @pulumi.getter(name="infrastructureAccessLevel")
     def infrastructure_access_level(self) -> str:
+        """
+        Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "infrastructure_access_level")
 
     @property
     @pulumi.getter(name="issuesAccessLevel")
     def issues_access_level(self) -> str:
+        """
+        Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "issues_access_level")
 
     @property
     @pulumi.getter(name="issuesEnabled")
     def issues_enabled(self) -> bool:
+        """
+        Whether issues are enabled for the project.
+        """
         return pulumi.get(self, "issues_enabled")
 
     @property
     @pulumi.getter(name="jobsEnabled")
     def jobs_enabled(self) -> bool:
+        """
+        Whether pipelines are enabled for the project.
+        """
         return pulumi.get(self, "jobs_enabled")
 
     @property
     @pulumi.getter(name="keepLatestArtifact")
     def keep_latest_artifact(self) -> bool:
+        """
+        Disable or enable the ability to keep the latest artifact for this project.
+        """
         return pulumi.get(self, "keep_latest_artifact")
 
     @property
     @pulumi.getter(name="lastActivityAt")
     def last_activity_at(self) -> str:
+        """
+        Last activirty time for the project.
+        """
         return pulumi.get(self, "last_activity_at")
 
     @property
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> bool:
+        """
+        Whether LFS (large file storage) is enabled for the project.
+        """
         return pulumi.get(self, "lfs_enabled")
 
     @property
     @pulumi.getter(name="mergeCommitTemplate")
     def merge_commit_template(self) -> str:
+        """
+        Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        """
         return pulumi.get(self, "merge_commit_template")
 
     @property
     @pulumi.getter(name="mergeMethod")
     def merge_method(self) -> str:
+        """
+        Merge method for the project.
+        """
         return pulumi.get(self, "merge_method")
 
     @property
     @pulumi.getter(name="mergePipelinesEnabled")
     def merge_pipelines_enabled(self) -> bool:
+        """
+        Enable or disable merge pipelines.
+        """
         return pulumi.get(self, "merge_pipelines_enabled")
 
     @property
     @pulumi.getter(name="mergeRequestsAccessLevel")
     def merge_requests_access_level(self) -> str:
+        """
+        Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "merge_requests_access_level")
 
     @property
     @pulumi.getter(name="mergeRequestsEnabled")
     def merge_requests_enabled(self) -> bool:
+        """
+        Whether merge requests are enabled for the project.
+        """
         return pulumi.get(self, "merge_requests_enabled")
 
     @property
     @pulumi.getter(name="mergeTrainsEnabled")
     def merge_trains_enabled(self) -> bool:
+        """
+        Enable or disable merge trains.
+        """
         return pulumi.get(self, "merge_trains_enabled")
 
     @property
     @pulumi.getter
     def mirror(self) -> bool:
+        """
+        Whether the pull mirroring is enabled for the project.
+        """
         return pulumi.get(self, "mirror")
 
     @property
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
     def mirror_overwrites_diverged_branches(self) -> bool:
+        """
+        Whether mirror_overwrites_diverged_branches is enabled for the project.
+        """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
     @property
     @pulumi.getter(name="mirrorTriggerBuilds")
     def mirror_trigger_builds(self) -> bool:
+        """
+        Whether pull mirroring triggers builds for the project.
+        """
         return pulumi.get(self, "mirror_trigger_builds")
 
     @property
     @pulumi.getter(name="mirrorUserId")
     def mirror_user_id(self) -> int:
+        """
+        The mirror user ID for the project.
+        """
         return pulumi.get(self, "mirror_user_id")
 
     @property
     @pulumi.getter(name="monitorAccessLevel")
     def monitor_access_level(self) -> str:
+        """
+        Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "monitor_access_level")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the project.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nameWithNamespace")
     def name_with_namespace(self) -> str:
+        """
+        In `group / subgroup / project` or `user / project` format.
+        """
         return pulumi.get(self, "name_with_namespace")
 
     @property
     @pulumi.getter
     def namespaces(self) -> Sequence['outputs.GetProjectsProjectNamespaceResult']:
+        """
+        Namespace of the project (parent group/s).
+        """
         return pulumi.get(self, "namespaces")
 
     @property
     @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
     def only_allow_merge_if_all_discussions_are_resolved(self) -> bool:
+        """
+        Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.
+        """
         return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
 
     @property
     @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
     def only_allow_merge_if_pipeline_succeeds(self) -> bool:
+        """
+        Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
+        """
         return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
 
     @property
     @pulumi.getter(name="onlyMirrorProtectedBranches")
     def only_mirror_protected_branches(self) -> bool:
+        """
+        Whether only_mirror_protected_branches is enabled for the project.
+        """
         return pulumi.get(self, "only_mirror_protected_branches")
 
     @property
     @pulumi.getter(name="openIssuesCount")
     def open_issues_count(self) -> int:
+        """
+        The number of open issies for the project.
+        """
         return pulumi.get(self, "open_issues_count")
 
     @property
@@ -4796,156 +6283,249 @@ class GetProjectsProjectResult(dict):
     @property
     @pulumi.getter(name="packagesEnabled")
     def packages_enabled(self) -> bool:
+        """
+        Whether packages are enabled for the project.
+        """
         return pulumi.get(self, "packages_enabled")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path of the project.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="pathWithNamespace")
     def path_with_namespace(self) -> str:
+        """
+        In `group/subgroup/project` or `user/project` format.
+        """
         return pulumi.get(self, "path_with_namespace")
 
     @property
     @pulumi.getter
     def permissions(self) -> Sequence['outputs.GetProjectsProjectPermissionResult']:
+        """
+        Permissions for the project.
+        """
         return pulumi.get(self, "permissions")
 
     @property
     @pulumi.getter
     def public(self) -> bool:
+        """
+        Whether the project is public.
+        """
         return pulumi.get(self, "public")
 
     @property
     @pulumi.getter(name="publicBuilds")
     def public_builds(self) -> bool:
+        """
+        Whether public builds are enabled for the project.
+        """
         return pulumi.get(self, "public_builds")
 
     @property
     @pulumi.getter(name="readmeUrl")
     def readme_url(self) -> str:
+        """
+        The remote url of the project.
+        """
         return pulumi.get(self, "readme_url")
 
     @property
     @pulumi.getter(name="releasesAccessLevel")
     def releases_access_level(self) -> str:
+        """
+        Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "releases_access_level")
 
     @property
     @pulumi.getter(name="repositoryAccessLevel")
     def repository_access_level(self) -> str:
+        """
+        Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "repository_access_level")
 
     @property
     @pulumi.getter(name="repositoryStorage")
     def repository_storage(self) -> str:
+        """
+        Which storage shard the repository is on. (administrator only)
+        """
         return pulumi.get(self, "repository_storage")
 
     @property
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> bool:
+        """
+        Whether requesting access is enabled for the project.
+        """
         return pulumi.get(self, "request_access_enabled")
 
     @property
     @pulumi.getter(name="requirementsAccessLevel")
     def requirements_access_level(self) -> str:
+        """
+        Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "requirements_access_level")
 
     @property
     @pulumi.getter(name="resolveOutdatedDiffDiscussions")
     def resolve_outdated_diff_discussions(self) -> bool:
+        """
+        Whether resolve_outdated_diff_discussions is enabled for the project
+        """
         return pulumi.get(self, "resolve_outdated_diff_discussions")
 
     @property
     @pulumi.getter(name="restrictUserDefinedVariables")
     def restrict_user_defined_variables(self) -> bool:
+        """
+        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        """
         return pulumi.get(self, "restrict_user_defined_variables")
 
     @property
     @pulumi.getter(name="runnersToken")
     def runners_token(self) -> str:
+        """
+        The runners token for the project.
+        """
         return pulumi.get(self, "runners_token")
 
     @property
     @pulumi.getter(name="securityAndComplianceAccessLevel")
     def security_and_compliance_access_level(self) -> str:
+        """
+        Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "security_and_compliance_access_level")
 
     @property
     @pulumi.getter(name="sharedRunnersEnabled")
     def shared_runners_enabled(self) -> bool:
+        """
+        Whether shared runners are enabled for the project.
+        """
         return pulumi.get(self, "shared_runners_enabled")
 
     @property
     @pulumi.getter(name="sharedWithGroups")
     def shared_with_groups(self) -> Sequence['outputs.GetProjectsProjectSharedWithGroupResult']:
+        """
+        Groups the the project is shared with.
+        """
         return pulumi.get(self, "shared_with_groups")
 
     @property
     @pulumi.getter(name="snippetsAccessLevel")
     def snippets_access_level(self) -> str:
+        """
+        Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "snippets_access_level")
 
     @property
     @pulumi.getter(name="snippetsEnabled")
     def snippets_enabled(self) -> bool:
+        """
+        Whether snippets are enabled for the project.
+        """
         return pulumi.get(self, "snippets_enabled")
 
     @property
     @pulumi.getter(name="squashCommitTemplate")
     def squash_commit_template(self) -> str:
+        """
+        Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        """
         return pulumi.get(self, "squash_commit_template")
 
     @property
     @pulumi.getter(name="sshUrlToRepo")
     def ssh_url_to_repo(self) -> str:
+        """
+        The SSH clone URL of the project.
+        """
         return pulumi.get(self, "ssh_url_to_repo")
 
     @property
     @pulumi.getter(name="starCount")
     def star_count(self) -> int:
+        """
+        The number of stars on the project.
+        """
         return pulumi.get(self, "star_count")
 
     @property
     @pulumi.getter
     def statistics(self) -> Mapping[str, int]:
+        """
+        Statistics for the project.
+        """
         return pulumi.get(self, "statistics")
 
     @property
     @pulumi.getter(name="suggestionCommitMessage")
     def suggestion_commit_message(self) -> str:
+        """
+        The commit message used to apply merge request suggestions.
+        """
         return pulumi.get(self, "suggestion_commit_message")
 
     @property
     @pulumi.getter(name="tagLists")
     def tag_lists(self) -> Sequence[str]:
+        """
+        A set of the project topics (formerly called "project tags").
+        """
         return pulumi.get(self, "tag_lists")
 
     @property
     @pulumi.getter
     def topics(self) -> Sequence[str]:
+        """
+        The list of topics for the project.
+        """
         return pulumi.get(self, "topics")
 
     @property
     @pulumi.getter
     def visibility(self) -> str:
+        """
+        The visibility of the project.
+        """
         return pulumi.get(self, "visibility")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
+        """
+        The web url of the project.
+        """
         return pulumi.get(self, "web_url")
 
     @property
     @pulumi.getter(name="wikiAccessLevel")
     def wiki_access_level(self) -> str:
+        """
+        Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
+        """
         return pulumi.get(self, "wiki_access_level")
 
     @property
     @pulumi.getter(name="wikiEnabled")
     def wiki_enabled(self) -> bool:
+        """
+        Whether wiki is enabled for the project.
+        """
         return pulumi.get(self, "wiki_enabled")
 
 
@@ -4960,6 +6540,16 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
                  name_regex_keep: str,
                  next_run_at: str,
                  older_than: str):
+        """
+        :param str cadence: The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
+        :param bool enabled: If true, the policy is enabled.
+        :param int keep_n: The number of images to keep.
+        :param str name_regex: The regular expression to match image names to delete.
+        :param str name_regex_delete: The regular expression to match image names to delete.
+        :param str name_regex_keep: The regular expression to match image names to keep.
+        :param str next_run_at: The next time the policy will run.
+        :param str older_than: The number of days to keep images.
+        """
         pulumi.set(__self__, "cadence", cadence)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "keep_n", keep_n)
@@ -4972,21 +6562,33 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
     @property
     @pulumi.getter
     def cadence(self) -> str:
+        """
+        The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
+        """
         return pulumi.get(self, "cadence")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        If true, the policy is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="keepN")
     def keep_n(self) -> int:
+        """
+        The number of images to keep.
+        """
         return pulumi.get(self, "keep_n")
 
     @property
     @pulumi.getter(name="nameRegex")
     def name_regex(self) -> str:
+        """
+        The regular expression to match image names to delete.
+        """
         warnings.warn("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""", DeprecationWarning)
         pulumi.log.warn("""name_regex is deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.""")
 
@@ -4995,21 +6597,33 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
     @property
     @pulumi.getter(name="nameRegexDelete")
     def name_regex_delete(self) -> str:
+        """
+        The regular expression to match image names to delete.
+        """
         return pulumi.get(self, "name_regex_delete")
 
     @property
     @pulumi.getter(name="nameRegexKeep")
     def name_regex_keep(self) -> str:
+        """
+        The regular expression to match image names to keep.
+        """
         return pulumi.get(self, "name_regex_keep")
 
     @property
     @pulumi.getter(name="nextRunAt")
     def next_run_at(self) -> str:
+        """
+        The next time the policy will run.
+        """
         return pulumi.get(self, "next_run_at")
 
     @property
     @pulumi.getter(name="olderThan")
     def older_than(self) -> str:
+        """
+        The number of days to keep images.
+        """
         return pulumi.get(self, "older_than")
 
 
@@ -5023,6 +6637,15 @@ class GetProjectsProjectForkedFromProjectResult(dict):
                  path: str,
                  path_with_namespace: str,
                  web_url: str):
+        """
+        :param str http_url_to_repo: The HTTP clone URL of the upstream project.
+        :param int id: The ID of the upstream project.
+        :param str name: The name of the upstream project.
+        :param str name_with_namespace: In `group / subgroup / project` or `user / project` format.
+        :param str path: The path of the upstream project.
+        :param str path_with_namespace: In `group/subgroup/project` or `user/project` format.
+        :param str web_url: The web url of the upstream project.
+        """
         pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -5034,36 +6657,57 @@ class GetProjectsProjectForkedFromProjectResult(dict):
     @property
     @pulumi.getter(name="httpUrlToRepo")
     def http_url_to_repo(self) -> str:
+        """
+        The HTTP clone URL of the upstream project.
+        """
         return pulumi.get(self, "http_url_to_repo")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the upstream project.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the upstream project.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nameWithNamespace")
     def name_with_namespace(self) -> str:
+        """
+        In `group / subgroup / project` or `user / project` format.
+        """
         return pulumi.get(self, "name_with_namespace")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path of the upstream project.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="pathWithNamespace")
     def path_with_namespace(self) -> str:
+        """
+        In `group/subgroup/project` or `user/project` format.
+        """
         return pulumi.get(self, "path_with_namespace")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
+        """
+        The web url of the upstream project.
+        """
         return pulumi.get(self, "web_url")
 
 
@@ -5075,6 +6719,13 @@ class GetProjectsProjectNamespaceResult(dict):
                  kind: str,
                  name: str,
                  path: str):
+        """
+        :param str full_path: The full path of the namespace.
+        :param int id: The ID of the namespace.
+        :param str kind: The kind of the namespace.
+        :param str name: The name of the namespace.
+        :param str path: The path of the namespace.
+        """
         pulumi.set(__self__, "full_path", full_path)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "kind", kind)
@@ -5084,26 +6735,41 @@ class GetProjectsProjectNamespaceResult(dict):
     @property
     @pulumi.getter(name="fullPath")
     def full_path(self) -> str:
+        """
+        The full path of the namespace.
+        """
         return pulumi.get(self, "full_path")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the namespace.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def kind(self) -> str:
+        """
+        The kind of the namespace.
+        """
         return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the namespace.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path of the namespace.
+        """
         return pulumi.get(self, "path")
 
 
@@ -5116,6 +6782,14 @@ class GetProjectsProjectOwnerResult(dict):
                  state: str,
                  username: str,
                  website_url: str):
+        """
+        :param str avatar_url: The avatar url of the owner.
+        :param int id: The ID of the owner.
+        :param str name: The name of the owner.
+        :param str state: The state of the owner.
+        :param str username: The username of the owner.
+        :param str website_url: The website url of the owner.
+        """
         pulumi.set(__self__, "avatar_url", avatar_url)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -5126,31 +6800,49 @@ class GetProjectsProjectOwnerResult(dict):
     @property
     @pulumi.getter(name="avatarUrl")
     def avatar_url(self) -> str:
+        """
+        The avatar url of the owner.
+        """
         return pulumi.get(self, "avatar_url")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the owner.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the owner.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the owner.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        The username of the owner.
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="websiteUrl")
     def website_url(self) -> str:
+        """
+        The website url of the owner.
+        """
         return pulumi.get(self, "website_url")
 
 
@@ -5159,17 +6851,27 @@ class GetProjectsProjectPermissionResult(dict):
     def __init__(__self__, *,
                  group_access: Mapping[str, int],
                  project_access: Mapping[str, int]):
+        """
+        :param Mapping[str, int] group_access: Group access level.
+        :param Mapping[str, int] project_access: Project access level.
+        """
         pulumi.set(__self__, "group_access", group_access)
         pulumi.set(__self__, "project_access", project_access)
 
     @property
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> Mapping[str, int]:
+        """
+        Group access level.
+        """
         return pulumi.get(self, "group_access")
 
     @property
     @pulumi.getter(name="projectAccess")
     def project_access(self) -> Mapping[str, int]:
+        """
+        Project access level.
+        """
         return pulumi.get(self, "project_access")
 
 
@@ -5179,6 +6881,11 @@ class GetProjectsProjectSharedWithGroupResult(dict):
                  group_access_level: str,
                  group_id: int,
                  group_name: str):
+        """
+        :param str group_access_level: The group access level.
+        :param int group_id: The group ID.
+        :param str group_name: The group name.
+        """
         pulumi.set(__self__, "group_access_level", group_access_level)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "group_name", group_name)
@@ -5186,16 +6893,25 @@ class GetProjectsProjectSharedWithGroupResult(dict):
     @property
     @pulumi.getter(name="groupAccessLevel")
     def group_access_level(self) -> str:
+        """
+        The group access level.
+        """
         return pulumi.get(self, "group_access_level")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
+        """
+        The group ID.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> str:
+        """
+        The group name.
+        """
         return pulumi.get(self, "group_name")
 
 
@@ -5211,6 +6927,17 @@ class GetReleaseLinksReleaseLinkResult(dict):
                  project: str,
                  tag_name: str,
                  url: str):
+        """
+        :param str direct_asset_url: Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        :param bool external: External or internal link.
+        :param str filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        :param int link_id: The ID of the link.
+        :param str link_type: The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        :param str name: The name of the link. Link names must be unique within the release.
+        :param str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        :param str tag_name: The tag associated with the Release.
+        :param str url: The URL of the link. Link URLs must be unique within the release.
+        """
         pulumi.set(__self__, "direct_asset_url", direct_asset_url)
         pulumi.set(__self__, "external", external)
         pulumi.set(__self__, "filepath", filepath)
@@ -5224,46 +6951,73 @@ class GetReleaseLinksReleaseLinkResult(dict):
     @property
     @pulumi.getter(name="directAssetUrl")
     def direct_asset_url(self) -> str:
+        """
+        Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        """
         return pulumi.get(self, "direct_asset_url")
 
     @property
     @pulumi.getter
     def external(self) -> bool:
+        """
+        External or internal link.
+        """
         return pulumi.get(self, "external")
 
     @property
     @pulumi.getter
     def filepath(self) -> str:
+        """
+        Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        """
         return pulumi.get(self, "filepath")
 
     @property
     @pulumi.getter(name="linkId")
     def link_id(self) -> int:
+        """
+        The ID of the link.
+        """
         return pulumi.get(self, "link_id")
 
     @property
     @pulumi.getter(name="linkType")
     def link_type(self) -> str:
+        """
+        The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        """
         return pulumi.get(self, "link_type")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the link. Link names must be unique within the release.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="tagName")
     def tag_name(self) -> str:
+        """
+        The tag associated with the Release.
+        """
         return pulumi.get(self, "tag_name")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The URL of the link. Link URLs must be unique within the release.
+        """
         return pulumi.get(self, "url")
 
 
@@ -5275,6 +7029,13 @@ class GetRepositoryTreeTreeResult(dict):
                  name: str,
                  path: str,
                  type: str):
+        """
+        :param str id: The SHA-1 hash of the tree or blob in the repository.
+        :param str mode: Unix access mode of the file in the repository.
+        :param str name: Name of the blob or tree in the repository
+        :param str path: Path of the object inside of the repository.
+        :param str type: Type of object in the repository. Can be either type tree or of type blob
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "name", name)
@@ -5284,26 +7045,41 @@ class GetRepositoryTreeTreeResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The SHA-1 hash of the tree or blob in the repository.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def mode(self) -> str:
+        """
+        Unix access mode of the file in the repository.
+        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the blob or tree in the repository
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        Path of the object inside of the repository.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of object in the repository. Can be either type tree or of type blob
+        """
         return pulumi.get(self, "type")
 
 
@@ -5316,6 +7092,14 @@ class GetUserSshkeysKeyResult(dict):
                  key_id: int,
                  title: str,
                  user_id: int):
+        """
+        :param str created_at: The time when this key was created in GitLab.
+        :param str expires_at: The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
+        :param str key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+        :param int key_id: The ID of the ssh key.
+        :param str title: The title of the ssh key.
+        :param int user_id: The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
+        """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "expires_at", expires_at)
         pulumi.set(__self__, "key", key)
@@ -5326,31 +7110,49 @@ class GetUserSshkeysKeyResult(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The time when this key was created in GitLab.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> str:
+        """
+        The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
+        """
         return pulumi.get(self, "expires_at")
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter(name="keyId")
     def key_id(self) -> int:
+        """
+        The ID of the ssh key.
+        """
         return pulumi.get(self, "key_id")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The title of the ssh key.
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> int:
+        """
+        The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
+        """
         return pulumi.get(self, "user_id")
 
 
@@ -5385,6 +7187,36 @@ class GetUsersUserResult(dict):
                  two_factor_enabled: bool,
                  username: str,
                  website_url: str):
+        """
+        :param str avatar_url: The avatar URL of the user.
+        :param str bio: The bio of the user.
+        :param bool can_create_group: Whether the user can create groups.
+        :param bool can_create_project: Whether the user can create projects.
+        :param int color_scheme_id: User's color scheme ID.
+        :param str created_at: Date the user was created at.
+        :param str current_sign_in_at: Current user's sign-in date.
+        :param str email: The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+        :param str extern_uid: The external UID of the user.
+        :param bool external: Whether the user is external.
+        :param int id: The unique id assigned to the user by the gitlab server.
+        :param bool is_admin: Whether the user is an admin.
+        :param bool is_bot: Whether the user is a bot.
+        :param str last_sign_in_at: Last user's sign-in date.
+        :param str linkedin: LinkedIn profile of the user.
+        :param str location: The location of the user.
+        :param str name: The name of the user.
+        :param int namespace_id: The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+        :param str organization: The organization of the user.
+        :param int projects_limit: Number of projects the user can create.
+        :param str provider: The UID provider of the user.
+        :param str skype: Skype username of the user.
+        :param str state: Whether the user is active or blocked.
+        :param int theme_id: User's theme ID.
+        :param str twitter: Twitter username of the user.
+        :param bool two_factor_enabled: Whether user's two-factor auth is enabled.
+        :param str username: The username of the user.
+        :param str website_url: User's website URL.
+        """
         pulumi.set(__self__, "avatar_url", avatar_url)
         pulumi.set(__self__, "bio", bio)
         pulumi.set(__self__, "can_create_group", can_create_group)
@@ -5417,141 +7249,225 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter(name="avatarUrl")
     def avatar_url(self) -> str:
+        """
+        The avatar URL of the user.
+        """
         return pulumi.get(self, "avatar_url")
 
     @property
     @pulumi.getter
     def bio(self) -> str:
+        """
+        The bio of the user.
+        """
         return pulumi.get(self, "bio")
 
     @property
     @pulumi.getter(name="canCreateGroup")
     def can_create_group(self) -> bool:
+        """
+        Whether the user can create groups.
+        """
         return pulumi.get(self, "can_create_group")
 
     @property
     @pulumi.getter(name="canCreateProject")
     def can_create_project(self) -> bool:
+        """
+        Whether the user can create projects.
+        """
         return pulumi.get(self, "can_create_project")
 
     @property
     @pulumi.getter(name="colorSchemeId")
     def color_scheme_id(self) -> int:
+        """
+        User's color scheme ID.
+        """
         return pulumi.get(self, "color_scheme_id")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Date the user was created at.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="currentSignInAt")
     def current_sign_in_at(self) -> str:
+        """
+        Current user's sign-in date.
+        """
         return pulumi.get(self, "current_sign_in_at")
 
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="externUid")
     def extern_uid(self) -> str:
+        """
+        The external UID of the user.
+        """
         return pulumi.get(self, "extern_uid")
 
     @property
     @pulumi.getter
     def external(self) -> bool:
+        """
+        Whether the user is external.
+        """
         return pulumi.get(self, "external")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The unique id assigned to the user by the gitlab server.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="isAdmin")
     def is_admin(self) -> bool:
+        """
+        Whether the user is an admin.
+        """
         return pulumi.get(self, "is_admin")
 
     @property
     @pulumi.getter(name="isBot")
     def is_bot(self) -> bool:
+        """
+        Whether the user is a bot.
+        """
         return pulumi.get(self, "is_bot")
 
     @property
     @pulumi.getter(name="lastSignInAt")
     def last_sign_in_at(self) -> str:
+        """
+        Last user's sign-in date.
+        """
         return pulumi.get(self, "last_sign_in_at")
 
     @property
     @pulumi.getter
     def linkedin(self) -> str:
+        """
+        LinkedIn profile of the user.
+        """
         return pulumi.get(self, "linkedin")
 
     @property
     @pulumi.getter
     def location(self) -> str:
+        """
+        The location of the user.
+        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the user.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> int:
+        """
+        The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+        """
         return pulumi.get(self, "namespace_id")
 
     @property
     @pulumi.getter
     def organization(self) -> str:
+        """
+        The organization of the user.
+        """
         return pulumi.get(self, "organization")
 
     @property
     @pulumi.getter(name="projectsLimit")
     def projects_limit(self) -> int:
+        """
+        Number of projects the user can create.
+        """
         return pulumi.get(self, "projects_limit")
 
     @property
     @pulumi.getter
     def provider(self) -> str:
+        """
+        The UID provider of the user.
+        """
         return pulumi.get(self, "provider")
 
     @property
     @pulumi.getter
     def skype(self) -> str:
+        """
+        Skype username of the user.
+        """
         return pulumi.get(self, "skype")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Whether the user is active or blocked.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="themeId")
     def theme_id(self) -> int:
+        """
+        User's theme ID.
+        """
         return pulumi.get(self, "theme_id")
 
     @property
     @pulumi.getter
     def twitter(self) -> str:
+        """
+        Twitter username of the user.
+        """
         return pulumi.get(self, "twitter")
 
     @property
     @pulumi.getter(name="twoFactorEnabled")
     def two_factor_enabled(self) -> bool:
+        """
+        Whether user's two-factor auth is enabled.
+        """
         return pulumi.get(self, "two_factor_enabled")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        The username of the user.
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="websiteUrl")
     def website_url(self) -> str:
+        """
+        User's website URL.
+        """
         return pulumi.get(self, "website_url")
 
 

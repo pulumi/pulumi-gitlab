@@ -15,16 +15,32 @@ public final class ProjectIssueTaskCompletionStatusArgs extends com.pulumi.resou
 
     public static final ProjectIssueTaskCompletionStatusArgs Empty = new ProjectIssueTaskCompletionStatusArgs();
 
+    /**
+     * The number of tasks that are completed.
+     * 
+     */
     @Import(name="completedCount")
     private @Nullable Output<Integer> completedCount;
 
+    /**
+     * @return The number of tasks that are completed.
+     * 
+     */
     public Optional<Output<Integer>> completedCount() {
         return Optional.ofNullable(this.completedCount);
     }
 
+    /**
+     * The number of tasks.
+     * 
+     */
     @Import(name="count")
     private @Nullable Output<Integer> count;
 
+    /**
+     * @return The number of tasks.
+     * 
+     */
     public Optional<Output<Integer>> count() {
         return Optional.ofNullable(this.count);
     }
@@ -54,20 +70,44 @@ public final class ProjectIssueTaskCompletionStatusArgs extends com.pulumi.resou
             $ = new ProjectIssueTaskCompletionStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param completedCount The number of tasks that are completed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder completedCount(@Nullable Output<Integer> completedCount) {
             $.completedCount = completedCount;
             return this;
         }
 
+        /**
+         * @param completedCount The number of tasks that are completed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder completedCount(Integer completedCount) {
             return completedCount(Output.of(completedCount));
         }
 
+        /**
+         * @param count The number of tasks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(@Nullable Output<Integer> count) {
             $.count = count;
             return this;
         }
 
+        /**
+         * @param count The number of tasks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Integer count) {
             return count(Output.of(count));
         }

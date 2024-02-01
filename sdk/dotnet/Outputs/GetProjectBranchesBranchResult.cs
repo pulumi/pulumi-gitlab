@@ -13,14 +13,41 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectBranchesBranchResult
     {
+        /// <summary>
+        /// Bool, true if you can push to the branch.
+        /// </summary>
         public readonly bool CanPush;
+        /// <summary>
+        /// The commit associated with this branch.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectBranchesBranchCommitResult> Commits;
+        /// <summary>
+        /// Bool, true if branch is the default branch for the project.
+        /// </summary>
         public readonly bool Default;
+        /// <summary>
+        /// Bool, true if developer level access allows to merge branch.
+        /// </summary>
         public readonly bool DevelopersCanMerge;
+        /// <summary>
+        /// Bool, true if developer level access allows git push.
+        /// </summary>
         public readonly bool DevelopersCanPush;
+        /// <summary>
+        /// Bool, true if the branch has been merged into it's parent.
+        /// </summary>
         public readonly bool Merged;
+        /// <summary>
+        /// The name of the branch.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Bool, true if branch has branch protection.
+        /// </summary>
         public readonly bool Protected;
+        /// <summary>
+        /// URL that can be used to find the branch in a browser.
+        /// </summary>
         public readonly string WebUrl;
 
         [OutputConstructor]

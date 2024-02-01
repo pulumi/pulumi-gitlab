@@ -12,81 +12,233 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectHooksHook {
+    /**
+     * @return Invoke the hook for confidential issues events.
+     * 
+     */
     private Boolean confidentialIssuesEvents;
+    /**
+     * @return Invoke the hook for confidential notes events.
+     * 
+     */
     private Boolean confidentialNoteEvents;
+    /**
+     * @return Invoke the hook for deployment events.
+     * 
+     */
     private Boolean deploymentEvents;
+    /**
+     * @return Enable ssl verification when invoking the hook.
+     * 
+     */
     private Boolean enableSslVerification;
+    /**
+     * @return The id of the project hook.
+     * 
+     */
     private Integer hookId;
+    /**
+     * @return Invoke the hook for issues events.
+     * 
+     */
     private Boolean issuesEvents;
+    /**
+     * @return Invoke the hook for job events.
+     * 
+     */
     private Boolean jobEvents;
+    /**
+     * @return Invoke the hook for merge requests.
+     * 
+     */
     private Boolean mergeRequestsEvents;
+    /**
+     * @return Invoke the hook for notes events.
+     * 
+     */
     private Boolean noteEvents;
+    /**
+     * @return Invoke the hook for pipeline events.
+     * 
+     */
     private Boolean pipelineEvents;
+    /**
+     * @return The name or id of the project to add the hook to.
+     * 
+     */
     private String project;
+    /**
+     * @return The id of the project for the hook.
+     * 
+     */
     private Integer projectId;
+    /**
+     * @return Invoke the hook for push events.
+     * 
+     */
     private Boolean pushEvents;
+    /**
+     * @return Invoke the hook for push events on matching branches only.
+     * 
+     */
     private String pushEventsBranchFilter;
+    /**
+     * @return Invoke the hook for releases events.
+     * 
+     */
     private Boolean releasesEvents;
+    /**
+     * @return Invoke the hook for tag push events.
+     * 
+     */
     private Boolean tagPushEvents;
+    /**
+     * @return A token to present when invoking the hook. The token is not available for imported resources.
+     * 
+     */
     private String token;
+    /**
+     * @return The url of the hook to invoke.
+     * 
+     */
     private String url;
+    /**
+     * @return Invoke the hook for wiki page events.
+     * 
+     */
     private Boolean wikiPageEvents;
 
     private GetProjectHooksHook() {}
+    /**
+     * @return Invoke the hook for confidential issues events.
+     * 
+     */
     public Boolean confidentialIssuesEvents() {
         return this.confidentialIssuesEvents;
     }
+    /**
+     * @return Invoke the hook for confidential notes events.
+     * 
+     */
     public Boolean confidentialNoteEvents() {
         return this.confidentialNoteEvents;
     }
+    /**
+     * @return Invoke the hook for deployment events.
+     * 
+     */
     public Boolean deploymentEvents() {
         return this.deploymentEvents;
     }
+    /**
+     * @return Enable ssl verification when invoking the hook.
+     * 
+     */
     public Boolean enableSslVerification() {
         return this.enableSslVerification;
     }
+    /**
+     * @return The id of the project hook.
+     * 
+     */
     public Integer hookId() {
         return this.hookId;
     }
+    /**
+     * @return Invoke the hook for issues events.
+     * 
+     */
     public Boolean issuesEvents() {
         return this.issuesEvents;
     }
+    /**
+     * @return Invoke the hook for job events.
+     * 
+     */
     public Boolean jobEvents() {
         return this.jobEvents;
     }
+    /**
+     * @return Invoke the hook for merge requests.
+     * 
+     */
     public Boolean mergeRequestsEvents() {
         return this.mergeRequestsEvents;
     }
+    /**
+     * @return Invoke the hook for notes events.
+     * 
+     */
     public Boolean noteEvents() {
         return this.noteEvents;
     }
+    /**
+     * @return Invoke the hook for pipeline events.
+     * 
+     */
     public Boolean pipelineEvents() {
         return this.pipelineEvents;
     }
+    /**
+     * @return The name or id of the project to add the hook to.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return The id of the project for the hook.
+     * 
+     */
     public Integer projectId() {
         return this.projectId;
     }
+    /**
+     * @return Invoke the hook for push events.
+     * 
+     */
     public Boolean pushEvents() {
         return this.pushEvents;
     }
+    /**
+     * @return Invoke the hook for push events on matching branches only.
+     * 
+     */
     public String pushEventsBranchFilter() {
         return this.pushEventsBranchFilter;
     }
+    /**
+     * @return Invoke the hook for releases events.
+     * 
+     */
     public Boolean releasesEvents() {
         return this.releasesEvents;
     }
+    /**
+     * @return Invoke the hook for tag push events.
+     * 
+     */
     public Boolean tagPushEvents() {
         return this.tagPushEvents;
     }
+    /**
+     * @return A token to present when invoking the hook. The token is not available for imported resources.
+     * 
+     */
     public String token() {
         return this.token;
     }
+    /**
+     * @return The url of the hook to invoke.
+     * 
+     */
     public String url() {
         return this.url;
     }
+    /**
+     * @return Invoke the hook for wiki page events.
+     * 
+     */
     public Boolean wikiPageEvents() {
         return this.wikiPageEvents;
     }

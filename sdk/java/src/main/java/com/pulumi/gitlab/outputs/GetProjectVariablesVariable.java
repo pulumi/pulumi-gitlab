@@ -11,37 +11,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectVariablesVariable {
+    /**
+     * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * 
+     */
     private String environmentScope;
+    /**
+     * @return The name of the variable.
+     * 
+     */
     private String key;
+    /**
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * 
+     */
     private Boolean masked;
+    /**
+     * @return The name or id of the project.
+     * 
+     */
     private String project;
+    /**
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * 
+     */
     private Boolean protected_;
+    /**
+     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * 
+     */
     private Boolean raw;
+    /**
+     * @return The value of the variable.
+     * 
+     */
     private String value;
+    /**
+     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * 
+     */
     private String variableType;
 
     private GetProjectVariablesVariable() {}
+    /**
+     * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * 
+     */
     public String environmentScope() {
         return this.environmentScope;
     }
+    /**
+     * @return The name of the variable.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * 
+     */
     public Boolean masked() {
         return this.masked;
     }
+    /**
+     * @return The name or id of the project.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * 
+     */
     public Boolean protected_() {
         return this.protected_;
     }
+    /**
+     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * 
+     */
     public Boolean raw() {
         return this.raw;
     }
+    /**
+     * @return The value of the variable.
+     * 
+     */
     public String value() {
         return this.value;
     }
+    /**
+     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * 
+     */
     public String variableType() {
         return this.variableType;
     }

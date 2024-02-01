@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ProjectTagRelease {
+    /**
+     * @return The description of release.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return The name of the tag.
+     * 
+     */
     private @Nullable String tagName;
 
     private ProjectTagRelease() {}
+    /**
+     * @return The description of release.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return The name of the tag.
+     * 
+     */
     public Optional<String> tagName() {
         return Optional.ofNullable(this.tagName);
     }

@@ -12,69 +12,197 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupsGroup {
+    /**
+     * @return Whether developers and maintainers can push to the applicable default branch.
+     * 
+     */
     private Integer defaultBranchProtection;
+    /**
+     * @return The description of the group.
+     * 
+     */
     private String description;
+    /**
+     * @return The full name of the group.
+     * 
+     */
     private String fullName;
+    /**
+     * @return The full path of the group.
+     * 
+     */
     private String fullPath;
+    /**
+     * @return The ID of the group.
+     * 
+     */
     private Integer groupId;
+    /**
+     * @return Boolean, is LFS enabled for projects in this group.
+     * 
+     */
     private Boolean lfsEnabled;
+    /**
+     * @return The name of this group.
+     * 
+     */
     private String name;
+    /**
+     * @return Integer, ID of the parent group.
+     * 
+     */
     private Integer parentId;
+    /**
+     * @return The path of the group.
+     * 
+     */
     private String path;
+    /**
+     * @return When enabled, users can not fork projects from this group to external namespaces.
+     * 
+     */
     private Boolean preventForkingOutsideGroup;
+    /**
+     * @return Boolean, is request for access enabled to the group.
+     * 
+     */
     private Boolean requestAccessEnabled;
+    /**
+     * @return The group level registration token to use during runner setup.
+     * 
+     */
     private String runnersToken;
+    /**
+     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * 
+     */
     private String sharedRunnersSetting;
+    /**
+     * @return Visibility level of the group. Possible values are `private`, `internal`, `public`.
+     * 
+     */
     private String visibilityLevel;
+    /**
+     * @return Web URL of the group.
+     * 
+     */
     private String webUrl;
+    /**
+     * @return The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String wikiAccessLevel;
 
     private GetGroupsGroup() {}
+    /**
+     * @return Whether developers and maintainers can push to the applicable default branch.
+     * 
+     */
     public Integer defaultBranchProtection() {
         return this.defaultBranchProtection;
     }
+    /**
+     * @return The description of the group.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The full name of the group.
+     * 
+     */
     public String fullName() {
         return this.fullName;
     }
+    /**
+     * @return The full path of the group.
+     * 
+     */
     public String fullPath() {
         return this.fullPath;
     }
+    /**
+     * @return The ID of the group.
+     * 
+     */
     public Integer groupId() {
         return this.groupId;
     }
+    /**
+     * @return Boolean, is LFS enabled for projects in this group.
+     * 
+     */
     public Boolean lfsEnabled() {
         return this.lfsEnabled;
     }
+    /**
+     * @return The name of this group.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Integer, ID of the parent group.
+     * 
+     */
     public Integer parentId() {
         return this.parentId;
     }
+    /**
+     * @return The path of the group.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return When enabled, users can not fork projects from this group to external namespaces.
+     * 
+     */
     public Boolean preventForkingOutsideGroup() {
         return this.preventForkingOutsideGroup;
     }
+    /**
+     * @return Boolean, is request for access enabled to the group.
+     * 
+     */
     public Boolean requestAccessEnabled() {
         return this.requestAccessEnabled;
     }
+    /**
+     * @return The group level registration token to use during runner setup.
+     * 
+     */
     public String runnersToken() {
         return this.runnersToken;
     }
+    /**
+     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * 
+     */
     public String sharedRunnersSetting() {
         return this.sharedRunnersSetting;
     }
+    /**
+     * @return Visibility level of the group. Possible values are `private`, `internal`, `public`.
+     * 
+     */
     public String visibilityLevel() {
         return this.visibilityLevel;
     }
+    /**
+     * @return Web URL of the group.
+     * 
+     */
     public String webUrl() {
         return this.webUrl;
     }
+    /**
+     * @return The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String wikiAccessLevel() {
         return this.wikiAccessLevel;
     }

@@ -11,33 +11,89 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
+    /**
+     * @return The creation date of the project. In RFC3339 format.
+     * 
+     */
     private String createdAt;
+    /**
+     * @return The description of the project.
+     * 
+     */
     private String description;
+    /**
+     * @return The ID of the project.
+     * 
+     */
     private Integer id;
+    /**
+     * @return The name of the project.
+     * 
+     */
     private String name;
+    /**
+     * @return The name of the project with namespace.
+     * 
+     */
     private String nameWithNamespace;
+    /**
+     * @return The path of the project.
+     * 
+     */
     private String path;
+    /**
+     * @return The path of the project with namespace.
+     * 
+     */
     private String pathWithNamespace;
 
     private GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess() {}
+    /**
+     * @return The creation date of the project. In RFC3339 format.
+     * 
+     */
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return The description of the project.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The ID of the project.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The name of the project.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The name of the project with namespace.
+     * 
+     */
     public String nameWithNamespace() {
         return this.nameWithNamespace;
     }
+    /**
+     * @return The path of the project.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return The path of the project with namespace.
+     * 
+     */
     public String pathWithNamespace() {
         return this.pathWithNamespace;
     }

@@ -13,11 +13,29 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectsProjectOwnerResult
     {
+        /// <summary>
+        /// The avatar url of the owner.
+        /// </summary>
         public readonly string AvatarUrl;
+        /// <summary>
+        /// The ID of the owner.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The name of the owner.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The state of the owner.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The username of the owner.
+        /// </summary>
         public readonly string Username;
+        /// <summary>
+        /// The website url of the owner.
+        /// </summary>
         public readonly string WebsiteUrl;
 
         [OutputConstructor]

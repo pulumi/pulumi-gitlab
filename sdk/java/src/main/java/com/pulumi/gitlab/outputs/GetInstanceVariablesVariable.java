@@ -11,29 +11,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceVariablesVariable {
+    /**
+     * @return The name of the variable.
+     * 
+     */
     private String key;
+    /**
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * 
+     */
     private Boolean masked;
+    /**
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * 
+     */
     private Boolean protected_;
+    /**
+     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * 
+     */
     private Boolean raw;
+    /**
+     * @return The value of the variable.
+     * 
+     */
     private String value;
+    /**
+     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * 
+     */
     private String variableType;
 
     private GetInstanceVariablesVariable() {}
+    /**
+     * @return The name of the variable.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * 
+     */
     public Boolean masked() {
         return this.masked;
     }
+    /**
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * 
+     */
     public Boolean protected_() {
         return this.protected_;
     }
+    /**
+     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * 
+     */
     public Boolean raw() {
         return this.raw;
     }
+    /**
+     * @return The value of the variable.
+     * 
+     */
     public String value() {
         return this.value;
     }
+    /**
+     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * 
+     */
     public String variableType() {
         return this.variableType;
     }

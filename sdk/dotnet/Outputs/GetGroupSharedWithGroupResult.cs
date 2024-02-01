@@ -13,10 +13,25 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetGroupSharedWithGroupResult
     {
+        /// <summary>
+        /// Share with group expiration date.
+        /// </summary>
         public readonly string ExpiresAt;
+        /// <summary>
+        /// The access_level permission level of the shared group.
+        /// </summary>
         public readonly int GroupAccessLevel;
+        /// <summary>
+        /// The full path of the group shared with.
+        /// </summary>
         public readonly string GroupFullPath;
+        /// <summary>
+        /// The ID of the group shared with.
+        /// </summary>
         public readonly int GroupId;
+        /// <summary>
+        /// The name of the group shared with.
+        /// </summary>
         public readonly string GroupName;
 
         [OutputConstructor]
