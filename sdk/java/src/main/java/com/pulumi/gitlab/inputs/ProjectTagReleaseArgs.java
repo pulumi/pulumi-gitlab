@@ -15,16 +15,32 @@ public final class ProjectTagReleaseArgs extends com.pulumi.resources.ResourceAr
 
     public static final ProjectTagReleaseArgs Empty = new ProjectTagReleaseArgs();
 
+    /**
+     * The description of release.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The description of release.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The name of the tag.
+     * 
+     */
     @Import(name="tagName")
     private @Nullable Output<String> tagName;
 
+    /**
+     * @return The name of the tag.
+     * 
+     */
     public Optional<Output<String>> tagName() {
         return Optional.ofNullable(this.tagName);
     }
@@ -54,20 +70,44 @@ public final class ProjectTagReleaseArgs extends com.pulumi.resources.ResourceAr
             $ = new ProjectTagReleaseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description The description of release.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The description of release.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param tagName The name of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagName(@Nullable Output<String> tagName) {
             $.tagName = tagName;
             return this;
         }
 
+        /**
+         * @param tagName The name of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagName(String tagName) {
             return tagName(Output.of(tagName));
         }

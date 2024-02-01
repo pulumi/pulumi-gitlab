@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectsProjectPermission {
+    /**
+     * @return Group access level.
+     * 
+     */
     private Map<String,Integer> groupAccess;
+    /**
+     * @return Project access level.
+     * 
+     */
     private Map<String,Integer> projectAccess;
 
     private GetProjectsProjectPermission() {}
+    /**
+     * @return Group access level.
+     * 
+     */
     public Map<String,Integer> groupAccess() {
         return this.groupAccess;
     }
+    /**
+     * @return Project access level.
+     * 
+     */
     public Map<String,Integer> projectAccess() {
         return this.projectAccess;
     }

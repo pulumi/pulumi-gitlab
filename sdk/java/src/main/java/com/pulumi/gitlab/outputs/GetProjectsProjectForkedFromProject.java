@@ -11,33 +11,89 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectsProjectForkedFromProject {
+    /**
+     * @return The HTTP clone URL of the upstream project.
+     * 
+     */
     private String httpUrlToRepo;
+    /**
+     * @return The ID of the upstream project.
+     * 
+     */
     private Integer id;
+    /**
+     * @return The name of the upstream project.
+     * 
+     */
     private String name;
+    /**
+     * @return In `group / subgroup / project` or `user / project` format.
+     * 
+     */
     private String nameWithNamespace;
+    /**
+     * @return The path of the upstream project.
+     * 
+     */
     private String path;
+    /**
+     * @return In `group/subgroup/project` or `user/project` format.
+     * 
+     */
     private String pathWithNamespace;
+    /**
+     * @return The web url of the upstream project.
+     * 
+     */
     private String webUrl;
 
     private GetProjectsProjectForkedFromProject() {}
+    /**
+     * @return The HTTP clone URL of the upstream project.
+     * 
+     */
     public String httpUrlToRepo() {
         return this.httpUrlToRepo;
     }
+    /**
+     * @return The ID of the upstream project.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The name of the upstream project.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return In `group / subgroup / project` or `user / project` format.
+     * 
+     */
     public String nameWithNamespace() {
         return this.nameWithNamespace;
     }
+    /**
+     * @return The path of the upstream project.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return In `group/subgroup/project` or `user/project` format.
+     * 
+     */
     public String pathWithNamespace() {
         return this.pathWithNamespace;
     }
+    /**
+     * @return The web url of the upstream project.
+     * 
+     */
     public String webUrl() {
         return this.webUrl;
     }

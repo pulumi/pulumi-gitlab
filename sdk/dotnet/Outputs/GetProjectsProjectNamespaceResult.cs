@@ -13,10 +13,25 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectsProjectNamespaceResult
     {
+        /// <summary>
+        /// The full path of the namespace.
+        /// </summary>
         public readonly string FullPath;
+        /// <summary>
+        /// The ID of the namespace.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The kind of the namespace.
+        /// </summary>
         public readonly string Kind;
+        /// <summary>
+        /// The name of the namespace.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The path of the namespace.
+        /// </summary>
         public readonly string Path;
 
         [OutputConstructor]

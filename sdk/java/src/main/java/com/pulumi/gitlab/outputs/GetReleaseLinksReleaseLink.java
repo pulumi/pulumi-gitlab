@@ -12,41 +12,113 @@ import java.util.Objects;
 
 @CustomType
 public final class GetReleaseLinksReleaseLink {
+    /**
+     * @return Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * 
+     */
     private String directAssetUrl;
+    /**
+     * @return External or internal link.
+     * 
+     */
     private Boolean external;
+    /**
+     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * 
+     */
     private String filepath;
+    /**
+     * @return The ID of the link.
+     * 
+     */
     private Integer linkId;
+    /**
+     * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+     * 
+     */
     private String linkType;
+    /**
+     * @return The name of the link. Link names must be unique within the release.
+     * 
+     */
     private String name;
+    /**
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * 
+     */
     private String project;
+    /**
+     * @return The tag associated with the Release.
+     * 
+     */
     private String tagName;
+    /**
+     * @return The URL of the link. Link URLs must be unique within the release.
+     * 
+     */
     private String url;
 
     private GetReleaseLinksReleaseLink() {}
+    /**
+     * @return Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * 
+     */
     public String directAssetUrl() {
         return this.directAssetUrl;
     }
+    /**
+     * @return External or internal link.
+     * 
+     */
     public Boolean external() {
         return this.external;
     }
+    /**
+     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * 
+     */
     public String filepath() {
         return this.filepath;
     }
+    /**
+     * @return The ID of the link.
+     * 
+     */
     public Integer linkId() {
         return this.linkId;
     }
+    /**
+     * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+     * 
+     */
     public String linkType() {
         return this.linkType;
     }
+    /**
+     * @return The name of the link. Link names must be unique within the release.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return The tag associated with the Release.
+     * 
+     */
     public String tagName() {
         return this.tagName;
     }
+    /**
+     * @return The URL of the link. Link URLs must be unique within the release.
+     * 
+     */
     public String url() {
         return this.url;
     }

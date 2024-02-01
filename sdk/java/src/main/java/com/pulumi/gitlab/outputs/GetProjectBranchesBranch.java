@@ -13,41 +13,113 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectBranchesBranch {
+    /**
+     * @return Bool, true if you can push to the branch.
+     * 
+     */
     private Boolean canPush;
+    /**
+     * @return The commit associated with this branch.
+     * 
+     */
     private List<GetProjectBranchesBranchCommit> commits;
+    /**
+     * @return Bool, true if branch is the default branch for the project.
+     * 
+     */
     private Boolean default_;
+    /**
+     * @return Bool, true if developer level access allows to merge branch.
+     * 
+     */
     private Boolean developersCanMerge;
+    /**
+     * @return Bool, true if developer level access allows git push.
+     * 
+     */
     private Boolean developersCanPush;
+    /**
+     * @return Bool, true if the branch has been merged into it&#39;s parent.
+     * 
+     */
     private Boolean merged;
+    /**
+     * @return The name of the branch.
+     * 
+     */
     private String name;
+    /**
+     * @return Bool, true if branch has branch protection.
+     * 
+     */
     private Boolean protected_;
+    /**
+     * @return URL that can be used to find the branch in a browser.
+     * 
+     */
     private String webUrl;
 
     private GetProjectBranchesBranch() {}
+    /**
+     * @return Bool, true if you can push to the branch.
+     * 
+     */
     public Boolean canPush() {
         return this.canPush;
     }
+    /**
+     * @return The commit associated with this branch.
+     * 
+     */
     public List<GetProjectBranchesBranchCommit> commits() {
         return this.commits;
     }
+    /**
+     * @return Bool, true if branch is the default branch for the project.
+     * 
+     */
     public Boolean default_() {
         return this.default_;
     }
+    /**
+     * @return Bool, true if developer level access allows to merge branch.
+     * 
+     */
     public Boolean developersCanMerge() {
         return this.developersCanMerge;
     }
+    /**
+     * @return Bool, true if developer level access allows git push.
+     * 
+     */
     public Boolean developersCanPush() {
         return this.developersCanPush;
     }
+    /**
+     * @return Bool, true if the branch has been merged into it&#39;s parent.
+     * 
+     */
     public Boolean merged() {
         return this.merged;
     }
+    /**
+     * @return The name of the branch.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Bool, true if branch has branch protection.
+     * 
+     */
     public Boolean protected_() {
         return this.protected_;
     }
+    /**
+     * @return URL that can be used to find the branch in a browser.
+     * 
+     */
     public String webUrl() {
         return this.webUrl;
     }

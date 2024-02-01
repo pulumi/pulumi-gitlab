@@ -10,25 +10,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryTreeTree {
+    /**
+     * @return The SHA-1 hash of the tree or blob in the repository.
+     * 
+     */
     private String id;
+    /**
+     * @return Unix access mode of the file in the repository.
+     * 
+     */
     private String mode;
+    /**
+     * @return Name of the blob or tree in the repository
+     * 
+     */
     private String name;
+    /**
+     * @return Path of the object inside of the repository.
+     * 
+     */
     private String path;
+    /**
+     * @return Type of object in the repository. Can be either type tree or of type blob
+     * 
+     */
     private String type;
 
     private GetRepositoryTreeTree() {}
+    /**
+     * @return The SHA-1 hash of the tree or blob in the repository.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unix access mode of the file in the repository.
+     * 
+     */
     public String mode() {
         return this.mode;
     }
+    /**
+     * @return Name of the blob or tree in the repository
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Path of the object inside of the repository.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return Type of object in the repository. Can be either type tree or of type blob
+     * 
+     */
     public String type() {
         return this.type;
     }

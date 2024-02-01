@@ -13,7 +13,13 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectsProjectPermissionResult
     {
+        /// <summary>
+        /// Group access level.
+        /// </summary>
         public readonly ImmutableDictionary<string, int> GroupAccess;
+        /// <summary>
+        /// Project access level.
+        /// </summary>
         public readonly ImmutableDictionary<string, int> ProjectAccess;
 
         [OutputConstructor]

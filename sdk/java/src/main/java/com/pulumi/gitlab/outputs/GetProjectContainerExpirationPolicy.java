@@ -12,32 +12,76 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectContainerExpirationPolicy {
+    /**
+     * @return The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
+     * 
+     */
     private String cadence;
+    /**
+     * @return If true, the policy is enabled.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return The number of images to keep.
+     * 
+     */
     private Integer keepN;
     /**
+     * @return The regular expression to match image names to delete.
+     * 
      * @deprecated
      * `name_regex` has been deprecated. Use `name_regex_delete` instead.
      * 
      */
     @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
     private String nameRegex;
+    /**
+     * @return The regular expression to match image names to delete.
+     * 
+     */
     private String nameRegexDelete;
+    /**
+     * @return The regular expression to match image names to keep.
+     * 
+     */
     private String nameRegexKeep;
+    /**
+     * @return The next time the policy will run.
+     * 
+     */
     private String nextRunAt;
+    /**
+     * @return The number of days to keep images.
+     * 
+     */
     private String olderThan;
 
     private GetProjectContainerExpirationPolicy() {}
+    /**
+     * @return The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
+     * 
+     */
     public String cadence() {
         return this.cadence;
     }
+    /**
+     * @return If true, the policy is enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The number of images to keep.
+     * 
+     */
     public Integer keepN() {
         return this.keepN;
     }
     /**
+     * @return The regular expression to match image names to delete.
+     * 
      * @deprecated
      * `name_regex` has been deprecated. Use `name_regex_delete` instead.
      * 
@@ -46,15 +90,31 @@ public final class GetProjectContainerExpirationPolicy {
     public String nameRegex() {
         return this.nameRegex;
     }
+    /**
+     * @return The regular expression to match image names to delete.
+     * 
+     */
     public String nameRegexDelete() {
         return this.nameRegexDelete;
     }
+    /**
+     * @return The regular expression to match image names to keep.
+     * 
+     */
     public String nameRegexKeep() {
         return this.nameRegexKeep;
     }
+    /**
+     * @return The next time the policy will run.
+     * 
+     */
     public String nextRunAt() {
         return this.nextRunAt;
     }
+    /**
+     * @return The number of days to keep images.
+     * 
+     */
     public String olderThan() {
         return this.olderThan;
     }

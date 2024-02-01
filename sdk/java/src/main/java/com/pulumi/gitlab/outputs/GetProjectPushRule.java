@@ -12,49 +12,137 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectPushRule {
+    /**
+     * @return All commit author emails must match this regex, e.g. `@my-company.com$`.
+     * 
+     */
     private String authorEmailRegex;
+    /**
+     * @return All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     * 
+     */
     private String branchNameRegex;
+    /**
+     * @return Users can only push commits to this repository that were committed with one of their own verified emails.
+     * 
+     */
     private Boolean commitCommitterCheck;
+    /**
+     * @return No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     * 
+     */
     private String commitMessageNegativeRegex;
+    /**
+     * @return All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     * 
+     */
     private String commitMessageRegex;
+    /**
+     * @return Deny deleting a tag.
+     * 
+     */
     private Boolean denyDeleteTag;
+    /**
+     * @return All committed filenames must not match this regex, e.g. `(jar|exe)$`.
+     * 
+     */
     private String fileNameRegex;
+    /**
+     * @return Maximum file size (MB).
+     * 
+     */
     private Integer maxFileSize;
+    /**
+     * @return Restrict commits by author (email) to existing GitLab users.
+     * 
+     */
     private Boolean memberCheck;
+    /**
+     * @return GitLab will reject any files that are likely to contain secrets.
+     * 
+     */
     private Boolean preventSecrets;
+    /**
+     * @return Reject commit when it’s not signed through GPG.
+     * 
+     */
     private Boolean rejectUnsignedCommits;
 
     private GetProjectPushRule() {}
+    /**
+     * @return All commit author emails must match this regex, e.g. `@my-company.com$`.
+     * 
+     */
     public String authorEmailRegex() {
         return this.authorEmailRegex;
     }
+    /**
+     * @return All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     * 
+     */
     public String branchNameRegex() {
         return this.branchNameRegex;
     }
+    /**
+     * @return Users can only push commits to this repository that were committed with one of their own verified emails.
+     * 
+     */
     public Boolean commitCommitterCheck() {
         return this.commitCommitterCheck;
     }
+    /**
+     * @return No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     * 
+     */
     public String commitMessageNegativeRegex() {
         return this.commitMessageNegativeRegex;
     }
+    /**
+     * @return All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     * 
+     */
     public String commitMessageRegex() {
         return this.commitMessageRegex;
     }
+    /**
+     * @return Deny deleting a tag.
+     * 
+     */
     public Boolean denyDeleteTag() {
         return this.denyDeleteTag;
     }
+    /**
+     * @return All committed filenames must not match this regex, e.g. `(jar|exe)$`.
+     * 
+     */
     public String fileNameRegex() {
         return this.fileNameRegex;
     }
+    /**
+     * @return Maximum file size (MB).
+     * 
+     */
     public Integer maxFileSize() {
         return this.maxFileSize;
     }
+    /**
+     * @return Restrict commits by author (email) to existing GitLab users.
+     * 
+     */
     public Boolean memberCheck() {
         return this.memberCheck;
     }
+    /**
+     * @return GitLab will reject any files that are likely to contain secrets.
+     * 
+     */
     public Boolean preventSecrets() {
         return this.preventSecrets;
     }
+    /**
+     * @return Reject commit when it’s not signed through GPG.
+     * 
+     */
     public Boolean rejectUnsignedCommits() {
         return this.rejectUnsignedCommits;
     }

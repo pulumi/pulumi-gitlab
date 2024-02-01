@@ -13,21 +13,69 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetGroupsGroupResult
     {
+        /// <summary>
+        /// Whether developers and maintainers can push to the applicable default branch.
+        /// </summary>
         public readonly int DefaultBranchProtection;
+        /// <summary>
+        /// The description of the group.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The full name of the group.
+        /// </summary>
         public readonly string FullName;
+        /// <summary>
+        /// The full path of the group.
+        /// </summary>
         public readonly string FullPath;
+        /// <summary>
+        /// The ID of the group.
+        /// </summary>
         public readonly int GroupId;
+        /// <summary>
+        /// Boolean, is LFS enabled for projects in this group.
+        /// </summary>
         public readonly bool LfsEnabled;
+        /// <summary>
+        /// The name of this group.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Integer, ID of the parent group.
+        /// </summary>
         public readonly int ParentId;
+        /// <summary>
+        /// The path of the group.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// When enabled, users can not fork projects from this group to external namespaces.
+        /// </summary>
         public readonly bool PreventForkingOutsideGroup;
+        /// <summary>
+        /// Boolean, is request for access enabled to the group.
+        /// </summary>
         public readonly bool RequestAccessEnabled;
+        /// <summary>
+        /// The group level registration token to use during runner setup.
+        /// </summary>
         public readonly string RunnersToken;
+        /// <summary>
+        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        /// </summary>
         public readonly string SharedRunnersSetting;
+        /// <summary>
+        /// Visibility level of the group. Possible values are `private`, `internal`, `public`.
+        /// </summary>
         public readonly string VisibilityLevel;
+        /// <summary>
+        /// Web URL of the group.
+        /// </summary>
         public readonly string WebUrl;
+        /// <summary>
+        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string WikiAccessLevel;
 
         [OutputConstructor]

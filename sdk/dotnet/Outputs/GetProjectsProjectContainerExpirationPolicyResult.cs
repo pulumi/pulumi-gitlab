@@ -13,13 +13,37 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectsProjectContainerExpirationPolicyResult
     {
+        /// <summary>
+        /// The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
+        /// </summary>
         public readonly string Cadence;
+        /// <summary>
+        /// If true, the policy is enabled.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// The number of images to keep.
+        /// </summary>
         public readonly int KeepN;
+        /// <summary>
+        /// The regular expression to match image names to delete.
+        /// </summary>
         public readonly string NameRegex;
+        /// <summary>
+        /// The regular expression to match image names to delete.
+        /// </summary>
         public readonly string NameRegexDelete;
+        /// <summary>
+        /// The regular expression to match image names to keep.
+        /// </summary>
         public readonly string NameRegexKeep;
+        /// <summary>
+        /// The next time the policy will run.
+        /// </summary>
         public readonly string NextRunAt;
+        /// <summary>
+        /// The number of days to keep images.
+        /// </summary>
         public readonly string OlderThan;
 
         [OutputConstructor]
