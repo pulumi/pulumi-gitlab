@@ -13,8 +13,17 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectsProjectSharedWithGroupResult
     {
+        /// <summary>
+        /// The group access level.
+        /// </summary>
         public readonly string GroupAccessLevel;
+        /// <summary>
+        /// The group ID.
+        /// </summary>
         public readonly int GroupId;
+        /// <summary>
+        /// The group name.
+        /// </summary>
         public readonly string GroupName;
 
         [OutputConstructor]

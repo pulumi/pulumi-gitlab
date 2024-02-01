@@ -13,14 +13,41 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetReleaseLinksReleaseLinkResult
     {
+        /// <summary>
+        /// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// </summary>
         public readonly string DirectAssetUrl;
+        /// <summary>
+        /// External or internal link.
+        /// </summary>
         public readonly bool External;
+        /// <summary>
+        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// </summary>
         public readonly string Filepath;
+        /// <summary>
+        /// The ID of the link.
+        /// </summary>
         public readonly int LinkId;
+        /// <summary>
+        /// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        /// </summary>
         public readonly string LinkType;
+        /// <summary>
+        /// The name of the link. Link names must be unique within the release.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The tag associated with the Release.
+        /// </summary>
         public readonly string TagName;
+        /// <summary>
+        /// The URL of the link. Link URLs must be unique within the release.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

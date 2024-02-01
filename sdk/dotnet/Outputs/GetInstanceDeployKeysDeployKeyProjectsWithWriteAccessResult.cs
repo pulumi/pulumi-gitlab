@@ -13,12 +13,33 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult
     {
+        /// <summary>
+        /// The creation date of the project. In RFC3339 format.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// The description of the project.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The ID of the project.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The name of the project.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The name of the project with namespace.
+        /// </summary>
         public readonly string NameWithNamespace;
+        /// <summary>
+        /// The path of the project.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// The path of the project with namespace.
+        /// </summary>
         public readonly string PathWithNamespace;
 
         [OutputConstructor]

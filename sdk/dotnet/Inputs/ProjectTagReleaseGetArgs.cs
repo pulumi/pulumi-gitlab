@@ -12,9 +12,15 @@ namespace Pulumi.GitLab.Inputs
 
     public sealed class ProjectTagReleaseGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of release.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of the tag.
+        /// </summary>
         [Input("tagName")]
         public Input<string>? TagName { get; set; }
 

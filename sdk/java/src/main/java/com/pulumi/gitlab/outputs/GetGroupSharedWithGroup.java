@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupSharedWithGroup {
+    /**
+     * @return Share with group expiration date.
+     * 
+     */
     private String expiresAt;
+    /**
+     * @return The access_level permission level of the shared group.
+     * 
+     */
     private Integer groupAccessLevel;
+    /**
+     * @return The full path of the group shared with.
+     * 
+     */
     private String groupFullPath;
+    /**
+     * @return The ID of the group shared with.
+     * 
+     */
     private Integer groupId;
+    /**
+     * @return The name of the group shared with.
+     * 
+     */
     private String groupName;
 
     private GetGroupSharedWithGroup() {}
+    /**
+     * @return Share with group expiration date.
+     * 
+     */
     public String expiresAt() {
         return this.expiresAt;
     }
+    /**
+     * @return The access_level permission level of the shared group.
+     * 
+     */
     public Integer groupAccessLevel() {
         return this.groupAccessLevel;
     }
+    /**
+     * @return The full path of the group shared with.
+     * 
+     */
     public String groupFullPath() {
         return this.groupFullPath;
     }
+    /**
+     * @return The ID of the group shared with.
+     * 
+     */
     public Integer groupId() {
         return this.groupId;
     }
+    /**
+     * @return The name of the group shared with.
+     * 
+     */
     public String groupName() {
         return this.groupName;
     }

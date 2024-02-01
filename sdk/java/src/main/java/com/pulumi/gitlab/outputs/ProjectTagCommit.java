@@ -12,49 +12,137 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ProjectTagCommit {
+    /**
+     * @return The email of the author.
+     * 
+     */
     private @Nullable String authorEmail;
+    /**
+     * @return The name of the author.
+     * 
+     */
     private @Nullable String authorName;
+    /**
+     * @return The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+     * 
+     */
     private @Nullable String authoredDate;
+    /**
+     * @return The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+     * 
+     */
     private @Nullable String committedDate;
+    /**
+     * @return The email of the user that committed.
+     * 
+     */
     private @Nullable String committerEmail;
+    /**
+     * @return The name of the user that committed.
+     * 
+     */
     private @Nullable String committerName;
+    /**
+     * @return The unique id assigned to the commit by Gitlab.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return The commit message
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return The id of the parents of the commit
+     * 
+     */
     private @Nullable List<String> parentIds;
+    /**
+     * @return The short id assigned to the commit by Gitlab.
+     * 
+     */
     private @Nullable String shortId;
+    /**
+     * @return The title of the commit
+     * 
+     */
     private @Nullable String title;
 
     private ProjectTagCommit() {}
+    /**
+     * @return The email of the author.
+     * 
+     */
     public Optional<String> authorEmail() {
         return Optional.ofNullable(this.authorEmail);
     }
+    /**
+     * @return The name of the author.
+     * 
+     */
     public Optional<String> authorName() {
         return Optional.ofNullable(this.authorName);
     }
+    /**
+     * @return The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+     * 
+     */
     public Optional<String> authoredDate() {
         return Optional.ofNullable(this.authoredDate);
     }
+    /**
+     * @return The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+     * 
+     */
     public Optional<String> committedDate() {
         return Optional.ofNullable(this.committedDate);
     }
+    /**
+     * @return The email of the user that committed.
+     * 
+     */
     public Optional<String> committerEmail() {
         return Optional.ofNullable(this.committerEmail);
     }
+    /**
+     * @return The name of the user that committed.
+     * 
+     */
     public Optional<String> committerName() {
         return Optional.ofNullable(this.committerName);
     }
+    /**
+     * @return The unique id assigned to the commit by Gitlab.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The commit message
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return The id of the parents of the commit
+     * 
+     */
     public List<String> parentIds() {
         return this.parentIds == null ? List.of() : this.parentIds;
     }
+    /**
+     * @return The short id assigned to the commit by Gitlab.
+     * 
+     */
     public Optional<String> shortId() {
         return Optional.ofNullable(this.shortId);
     }
+    /**
+     * @return The title of the commit
+     * 
+     */
     public Optional<String> title() {
         return Optional.ofNullable(this.title);
     }

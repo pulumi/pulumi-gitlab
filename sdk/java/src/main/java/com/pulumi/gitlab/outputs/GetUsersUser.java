@@ -12,117 +12,341 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUsersUser {
+    /**
+     * @return The avatar URL of the user.
+     * 
+     */
     private String avatarUrl;
+    /**
+     * @return The bio of the user.
+     * 
+     */
     private String bio;
+    /**
+     * @return Whether the user can create groups.
+     * 
+     */
     private Boolean canCreateGroup;
+    /**
+     * @return Whether the user can create projects.
+     * 
+     */
     private Boolean canCreateProject;
+    /**
+     * @return User&#39;s color scheme ID.
+     * 
+     */
     private Integer colorSchemeId;
+    /**
+     * @return Date the user was created at.
+     * 
+     */
     private String createdAt;
+    /**
+     * @return Current user&#39;s sign-in date.
+     * 
+     */
     private String currentSignInAt;
+    /**
+     * @return The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+     * 
+     */
     private String email;
+    /**
+     * @return The external UID of the user.
+     * 
+     */
     private String externUid;
+    /**
+     * @return Whether the user is external.
+     * 
+     */
     private Boolean external;
+    /**
+     * @return The unique id assigned to the user by the gitlab server.
+     * 
+     */
     private Integer id;
+    /**
+     * @return Whether the user is an admin.
+     * 
+     */
     private Boolean isAdmin;
+    /**
+     * @return Whether the user is a bot.
+     * 
+     */
     private Boolean isBot;
+    /**
+     * @return Last user&#39;s sign-in date.
+     * 
+     */
     private String lastSignInAt;
+    /**
+     * @return LinkedIn profile of the user.
+     * 
+     */
     private String linkedin;
+    /**
+     * @return The location of the user.
+     * 
+     */
     private String location;
+    /**
+     * @return The name of the user.
+     * 
+     */
     private String name;
+    /**
+     * @return The ID of the user&#39;s namespace. Requires admin token to access this field. Available since GitLab 14.10.
+     * 
+     */
     private Integer namespaceId;
+    /**
+     * @return The organization of the user.
+     * 
+     */
     private String organization;
+    /**
+     * @return Number of projects the user can create.
+     * 
+     */
     private Integer projectsLimit;
+    /**
+     * @return The UID provider of the user.
+     * 
+     */
     private String provider;
+    /**
+     * @return Skype username of the user.
+     * 
+     */
     private String skype;
+    /**
+     * @return Whether the user is active or blocked.
+     * 
+     */
     private String state;
+    /**
+     * @return User&#39;s theme ID.
+     * 
+     */
     private Integer themeId;
+    /**
+     * @return Twitter username of the user.
+     * 
+     */
     private String twitter;
+    /**
+     * @return Whether user&#39;s two-factor auth is enabled.
+     * 
+     */
     private Boolean twoFactorEnabled;
+    /**
+     * @return The username of the user.
+     * 
+     */
     private String username;
+    /**
+     * @return User&#39;s website URL.
+     * 
+     */
     private String websiteUrl;
 
     private GetUsersUser() {}
+    /**
+     * @return The avatar URL of the user.
+     * 
+     */
     public String avatarUrl() {
         return this.avatarUrl;
     }
+    /**
+     * @return The bio of the user.
+     * 
+     */
     public String bio() {
         return this.bio;
     }
+    /**
+     * @return Whether the user can create groups.
+     * 
+     */
     public Boolean canCreateGroup() {
         return this.canCreateGroup;
     }
+    /**
+     * @return Whether the user can create projects.
+     * 
+     */
     public Boolean canCreateProject() {
         return this.canCreateProject;
     }
+    /**
+     * @return User&#39;s color scheme ID.
+     * 
+     */
     public Integer colorSchemeId() {
         return this.colorSchemeId;
     }
+    /**
+     * @return Date the user was created at.
+     * 
+     */
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return Current user&#39;s sign-in date.
+     * 
+     */
     public String currentSignInAt() {
         return this.currentSignInAt;
     }
+    /**
+     * @return The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+     * 
+     */
     public String email() {
         return this.email;
     }
+    /**
+     * @return The external UID of the user.
+     * 
+     */
     public String externUid() {
         return this.externUid;
     }
+    /**
+     * @return Whether the user is external.
+     * 
+     */
     public Boolean external() {
         return this.external;
     }
+    /**
+     * @return The unique id assigned to the user by the gitlab server.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return Whether the user is an admin.
+     * 
+     */
     public Boolean isAdmin() {
         return this.isAdmin;
     }
+    /**
+     * @return Whether the user is a bot.
+     * 
+     */
     public Boolean isBot() {
         return this.isBot;
     }
+    /**
+     * @return Last user&#39;s sign-in date.
+     * 
+     */
     public String lastSignInAt() {
         return this.lastSignInAt;
     }
+    /**
+     * @return LinkedIn profile of the user.
+     * 
+     */
     public String linkedin() {
         return this.linkedin;
     }
+    /**
+     * @return The location of the user.
+     * 
+     */
     public String location() {
         return this.location;
     }
+    /**
+     * @return The name of the user.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The ID of the user&#39;s namespace. Requires admin token to access this field. Available since GitLab 14.10.
+     * 
+     */
     public Integer namespaceId() {
         return this.namespaceId;
     }
+    /**
+     * @return The organization of the user.
+     * 
+     */
     public String organization() {
         return this.organization;
     }
+    /**
+     * @return Number of projects the user can create.
+     * 
+     */
     public Integer projectsLimit() {
         return this.projectsLimit;
     }
+    /**
+     * @return The UID provider of the user.
+     * 
+     */
     public String provider() {
         return this.provider;
     }
+    /**
+     * @return Skype username of the user.
+     * 
+     */
     public String skype() {
         return this.skype;
     }
+    /**
+     * @return Whether the user is active or blocked.
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return User&#39;s theme ID.
+     * 
+     */
     public Integer themeId() {
         return this.themeId;
     }
+    /**
+     * @return Twitter username of the user.
+     * 
+     */
     public String twitter() {
         return this.twitter;
     }
+    /**
+     * @return Whether user&#39;s two-factor auth is enabled.
+     * 
+     */
     public Boolean twoFactorEnabled() {
         return this.twoFactorEnabled;
     }
+    /**
+     * @return The username of the user.
+     * 
+     */
     public String username() {
         return this.username;
     }
+    /**
+     * @return User&#39;s website URL.
+     * 
+     */
     public String websiteUrl() {
         return this.websiteUrl;
     }

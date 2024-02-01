@@ -11,29 +11,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectsProjectOwner {
+    /**
+     * @return The avatar url of the owner.
+     * 
+     */
     private String avatarUrl;
+    /**
+     * @return The ID of the owner.
+     * 
+     */
     private Integer id;
+    /**
+     * @return The name of the owner.
+     * 
+     */
     private String name;
+    /**
+     * @return The state of the owner.
+     * 
+     */
     private String state;
+    /**
+     * @return The username of the owner.
+     * 
+     */
     private String username;
+    /**
+     * @return The website url of the owner.
+     * 
+     */
     private String websiteUrl;
 
     private GetProjectsProjectOwner() {}
+    /**
+     * @return The avatar url of the owner.
+     * 
+     */
     public String avatarUrl() {
         return this.avatarUrl;
     }
+    /**
+     * @return The ID of the owner.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The name of the owner.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The state of the owner.
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return The username of the owner.
+     * 
+     */
     public String username() {
         return this.username;
     }
+    /**
+     * @return The website url of the owner.
+     * 
+     */
     public String websiteUrl() {
         return this.websiteUrl;
     }

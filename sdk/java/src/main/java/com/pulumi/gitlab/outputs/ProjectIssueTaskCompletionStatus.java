@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ProjectIssueTaskCompletionStatus {
+    /**
+     * @return The number of tasks that are completed.
+     * 
+     */
     private @Nullable Integer completedCount;
+    /**
+     * @return The number of tasks.
+     * 
+     */
     private @Nullable Integer count;
 
     private ProjectIssueTaskCompletionStatus() {}
+    /**
+     * @return The number of tasks that are completed.
+     * 
+     */
     public Optional<Integer> completedCount() {
         return Optional.ofNullable(this.completedCount);
     }
+    /**
+     * @return The number of tasks.
+     * 
+     */
     public Optional<Integer> count() {
         return Optional.ofNullable(this.count);
     }

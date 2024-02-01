@@ -12,9 +12,15 @@ namespace Pulumi.GitLab.Inputs
 
     public sealed class ProjectIssueTaskCompletionStatusArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of tasks that are completed.
+        /// </summary>
         [Input("completedCount")]
         public Input<int>? CompletedCount { get; set; }
 
+        /// <summary>
+        /// The number of tasks.
+        /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
 

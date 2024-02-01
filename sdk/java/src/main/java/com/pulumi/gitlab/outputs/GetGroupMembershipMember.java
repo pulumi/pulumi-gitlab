@@ -11,37 +11,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupMembershipMember {
+    /**
+     * @return The level of access to the group.
+     * 
+     */
     private String accessLevel;
+    /**
+     * @return The avatar URL of the user.
+     * 
+     */
     private String avatarUrl;
+    /**
+     * @return Expiration date for the group membership.
+     * 
+     */
     private String expiresAt;
+    /**
+     * @return The unique id assigned to the user by the gitlab server.
+     * 
+     */
     private Integer id;
+    /**
+     * @return The name of the user.
+     * 
+     */
     private String name;
+    /**
+     * @return Whether the user is active or blocked.
+     * 
+     */
     private String state;
+    /**
+     * @return The username of the user.
+     * 
+     */
     private String username;
+    /**
+     * @return User&#39;s website URL.
+     * 
+     */
     private String webUrl;
 
     private GetGroupMembershipMember() {}
+    /**
+     * @return The level of access to the group.
+     * 
+     */
     public String accessLevel() {
         return this.accessLevel;
     }
+    /**
+     * @return The avatar URL of the user.
+     * 
+     */
     public String avatarUrl() {
         return this.avatarUrl;
     }
+    /**
+     * @return Expiration date for the group membership.
+     * 
+     */
     public String expiresAt() {
         return this.expiresAt;
     }
+    /**
+     * @return The unique id assigned to the user by the gitlab server.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The name of the user.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Whether the user is active or blocked.
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return The username of the user.
+     * 
+     */
     public String username() {
         return this.username;
     }
+    /**
+     * @return User&#39;s website URL.
+     * 
+     */
     public String webUrl() {
         return this.webUrl;
     }

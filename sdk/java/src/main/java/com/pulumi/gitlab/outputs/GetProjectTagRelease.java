@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectTagRelease {
+    /**
+     * @return The description of release.
+     * 
+     */
     private String description;
+    /**
+     * @return The name of the tag.
+     * 
+     */
     private String tagName;
 
     private GetProjectTagRelease() {}
+    /**
+     * @return The description of release.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The name of the tag.
+     * 
+     */
     public String tagName() {
         return this.tagName;
     }

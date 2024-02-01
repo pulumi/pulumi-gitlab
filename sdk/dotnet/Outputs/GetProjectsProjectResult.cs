@@ -13,101 +13,386 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectsProjectResult
     {
+        /// <summary>
+        /// Links for the project.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> _links;
+        /// <summary>
+        /// Whether allow_merge_on_skipped_pipeline is enabled for the project.
+        /// </summary>
         public readonly bool AllowMergeOnSkippedPipeline;
+        /// <summary>
+        /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string AnalyticsAccessLevel;
+        /// <summary>
+        /// The numbers of approvals needed in a merge requests.
+        /// </summary>
         public readonly int ApprovalsBeforeMerge;
+        /// <summary>
+        /// Whether the project is archived.
+        /// </summary>
         public readonly bool Archived;
+        /// <summary>
+        /// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        /// </summary>
         public readonly string AutoCancelPendingPipelines;
+        /// <summary>
+        /// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+        /// </summary>
         public readonly string AutoDevopsDeployStrategy;
+        /// <summary>
+        /// Enable Auto DevOps for this project.
+        /// </summary>
         public readonly bool AutoDevopsEnabled;
+        /// <summary>
+        /// Set whether auto-closing referenced issues on default branch.
+        /// </summary>
         public readonly bool AutocloseReferencedIssues;
+        /// <summary>
+        /// The avatar url of the project.
+        /// </summary>
         public readonly string AvatarUrl;
+        /// <summary>
+        /// Build coverage regex for the project.
+        /// </summary>
         public readonly string BuildCoverageRegex;
+        /// <summary>
+        /// The Git strategy. Defaults to fetch.
+        /// </summary>
         public readonly string BuildGitStrategy;
+        /// <summary>
+        /// The maximum amount of time, in seconds, that a job can run.
+        /// </summary>
         public readonly int BuildTimeout;
+        /// <summary>
+        /// Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string BuildsAccessLevel;
+        /// <summary>
+        /// CI config file path for the project.
+        /// </summary>
         public readonly string CiConfigPath;
+        /// <summary>
+        /// Default number of revisions for shallow cloning.
+        /// </summary>
         public readonly int CiDefaultGitDepth;
+        /// <summary>
+        /// When a new deployment job starts, skip older deployment jobs that are still pending.
+        /// </summary>
         public readonly bool CiForwardDeploymentEnabled;
+        /// <summary>
+        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectContainerExpirationPolicyResult> ContainerExpirationPolicies;
+        /// <summary>
+        /// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string ContainerRegistryAccessLevel;
+        /// <summary>
+        /// Whether the container registry is enabled for the project.
+        /// </summary>
         public readonly bool ContainerRegistryEnabled;
+        /// <summary>
+        /// Creation time for the project.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Creator ID for the project.
+        /// </summary>
         public readonly int CreatorId;
+        /// <summary>
+        /// Custom attributes for the project.
+        /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, string>> CustomAttributes;
+        /// <summary>
+        /// The default branch name of the project.
+        /// </summary>
         public readonly string DefaultBranch;
+        /// <summary>
+        /// The description of the project.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Disable email notifications.
+        /// </summary>
         public readonly bool EmailsDisabled;
+        /// <summary>
+        /// Whether the project is empty.
+        /// </summary>
         public readonly bool EmptyRepo;
+        /// <summary>
+        /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string EnvironmentsAccessLevel;
+        /// <summary>
+        /// The classification label for the project.
+        /// </summary>
         public readonly string ExternalAuthorizationClassificationLabel;
+        /// <summary>
+        /// Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string FeatureFlagsAccessLevel;
+        /// <summary>
+        /// Present if the project is a fork. Contains information about the upstream project.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectForkedFromProjectResult> ForkedFromProjects;
+        /// <summary>
+        /// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string ForkingAccessLevel;
+        /// <summary>
+        /// The number of forks of the project.
+        /// </summary>
         public readonly int ForksCount;
+        /// <summary>
+        /// Whether group runners are enabled for the project.
+        /// </summary>
         public readonly bool GroupRunnersEnabled;
+        /// <summary>
+        /// The HTTP clone URL of the project.
+        /// </summary>
         public readonly string HttpUrlToRepo;
+        /// <summary>
+        /// The ID of the project.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The import error, if it exists, for the project.
+        /// </summary>
         public readonly string ImportError;
+        /// <summary>
+        /// The import status of the project.
+        /// </summary>
         public readonly string ImportStatus;
+        /// <summary>
+        /// URL the project was imported from.
+        /// </summary>
         public readonly string ImportUrl;
+        /// <summary>
+        /// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string InfrastructureAccessLevel;
+        /// <summary>
+        /// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string IssuesAccessLevel;
+        /// <summary>
+        /// Whether issues are enabled for the project.
+        /// </summary>
         public readonly bool IssuesEnabled;
+        /// <summary>
+        /// Whether pipelines are enabled for the project.
+        /// </summary>
         public readonly bool JobsEnabled;
+        /// <summary>
+        /// Disable or enable the ability to keep the latest artifact for this project.
+        /// </summary>
         public readonly bool KeepLatestArtifact;
+        /// <summary>
+        /// Last activirty time for the project.
+        /// </summary>
         public readonly string LastActivityAt;
+        /// <summary>
+        /// Whether LFS (large file storage) is enabled for the project.
+        /// </summary>
         public readonly bool LfsEnabled;
+        /// <summary>
+        /// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        /// </summary>
         public readonly string MergeCommitTemplate;
+        /// <summary>
+        /// Merge method for the project.
+        /// </summary>
         public readonly string MergeMethod;
+        /// <summary>
+        /// Enable or disable merge pipelines.
+        /// </summary>
         public readonly bool MergePipelinesEnabled;
+        /// <summary>
+        /// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string MergeRequestsAccessLevel;
+        /// <summary>
+        /// Whether merge requests are enabled for the project.
+        /// </summary>
         public readonly bool MergeRequestsEnabled;
+        /// <summary>
+        /// Enable or disable merge trains.
+        /// </summary>
         public readonly bool MergeTrainsEnabled;
+        /// <summary>
+        /// Whether the pull mirroring is enabled for the project.
+        /// </summary>
         public readonly bool Mirror;
+        /// <summary>
+        /// Whether mirror_overwrites_diverged_branches is enabled for the project.
+        /// </summary>
         public readonly bool MirrorOverwritesDivergedBranches;
+        /// <summary>
+        /// Whether pull mirroring triggers builds for the project.
+        /// </summary>
         public readonly bool MirrorTriggerBuilds;
+        /// <summary>
+        /// The mirror user ID for the project.
+        /// </summary>
         public readonly int MirrorUserId;
+        /// <summary>
+        /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string MonitorAccessLevel;
+        /// <summary>
+        /// The name of the project.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// In `group / subgroup / project` or `user / project` format.
+        /// </summary>
         public readonly string NameWithNamespace;
+        /// <summary>
+        /// Namespace of the project (parent group/s).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectNamespaceResult> Namespaces;
+        /// <summary>
+        /// Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.
+        /// </summary>
         public readonly bool OnlyAllowMergeIfAllDiscussionsAreResolved;
+        /// <summary>
+        /// Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
+        /// </summary>
         public readonly bool OnlyAllowMergeIfPipelineSucceeds;
+        /// <summary>
+        /// Whether only_mirror_protected_branches is enabled for the project.
+        /// </summary>
         public readonly bool OnlyMirrorProtectedBranches;
+        /// <summary>
+        /// The number of open issies for the project.
+        /// </summary>
         public readonly int OpenIssuesCount;
         public readonly ImmutableArray<Outputs.GetProjectsProjectOwnerResult> Owners;
+        /// <summary>
+        /// Whether packages are enabled for the project.
+        /// </summary>
         public readonly bool PackagesEnabled;
+        /// <summary>
+        /// The path of the project.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// In `group/subgroup/project` or `user/project` format.
+        /// </summary>
         public readonly string PathWithNamespace;
+        /// <summary>
+        /// Permissions for the project.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectPermissionResult> Permissions;
+        /// <summary>
+        /// Whether the project is public.
+        /// </summary>
         public readonly bool Public;
+        /// <summary>
+        /// Whether public builds are enabled for the project.
+        /// </summary>
         public readonly bool PublicBuilds;
+        /// <summary>
+        /// The remote url of the project.
+        /// </summary>
         public readonly string ReadmeUrl;
+        /// <summary>
+        /// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string ReleasesAccessLevel;
+        /// <summary>
+        /// Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string RepositoryAccessLevel;
+        /// <summary>
+        /// Which storage shard the repository is on. (administrator only)
+        /// </summary>
         public readonly string RepositoryStorage;
+        /// <summary>
+        /// Whether requesting access is enabled for the project.
+        /// </summary>
         public readonly bool RequestAccessEnabled;
+        /// <summary>
+        /// Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string RequirementsAccessLevel;
+        /// <summary>
+        /// Whether resolve_outdated_diff_discussions is enabled for the project
+        /// </summary>
         public readonly bool ResolveOutdatedDiffDiscussions;
+        /// <summary>
+        /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        /// </summary>
         public readonly bool RestrictUserDefinedVariables;
+        /// <summary>
+        /// The runners token for the project.
+        /// </summary>
         public readonly string RunnersToken;
+        /// <summary>
+        /// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string SecurityAndComplianceAccessLevel;
+        /// <summary>
+        /// Whether shared runners are enabled for the project.
+        /// </summary>
         public readonly bool SharedRunnersEnabled;
+        /// <summary>
+        /// Groups the the project is shared with.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectSharedWithGroupResult> SharedWithGroups;
+        /// <summary>
+        /// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string SnippetsAccessLevel;
+        /// <summary>
+        /// Whether snippets are enabled for the project.
+        /// </summary>
         public readonly bool SnippetsEnabled;
+        /// <summary>
+        /// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        /// </summary>
         public readonly string SquashCommitTemplate;
+        /// <summary>
+        /// The SSH clone URL of the project.
+        /// </summary>
         public readonly string SshUrlToRepo;
+        /// <summary>
+        /// The number of stars on the project.
+        /// </summary>
         public readonly int StarCount;
+        /// <summary>
+        /// Statistics for the project.
+        /// </summary>
         public readonly ImmutableDictionary<string, int> Statistics;
+        /// <summary>
+        /// The commit message used to apply merge request suggestions.
+        /// </summary>
         public readonly string SuggestionCommitMessage;
+        /// <summary>
+        /// A set of the project topics (formerly called "project tags").
+        /// </summary>
         public readonly ImmutableArray<string> TagLists;
+        /// <summary>
+        /// The list of topics for the project.
+        /// </summary>
         public readonly ImmutableArray<string> Topics;
+        /// <summary>
+        /// The visibility of the project.
+        /// </summary>
         public readonly string Visibility;
+        /// <summary>
+        /// The web url of the project.
+        /// </summary>
         public readonly string WebUrl;
+        /// <summary>
+        /// Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
         public readonly string WikiAccessLevel;
+        /// <summary>
+        /// Whether wiki is enabled for the project.
+        /// </summary>
         public readonly bool WikiEnabled;
 
         [OutputConstructor]

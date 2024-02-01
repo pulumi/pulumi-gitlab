@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectIssuesIssueTaskCompletionStatus {
+    /**
+     * @return The number of tasks that are completed.
+     * 
+     */
     private Integer completedCount;
+    /**
+     * @return The number of tasks.
+     * 
+     */
     private Integer count;
 
     private GetProjectIssuesIssueTaskCompletionStatus() {}
+    /**
+     * @return The number of tasks that are completed.
+     * 
+     */
     public Integer completedCount() {
         return this.completedCount;
     }
+    /**
+     * @return The number of tasks.
+     * 
+     */
     public Integer count() {
         return this.count;
     }
