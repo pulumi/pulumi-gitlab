@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterAgentsClusterAgent {
+    /**
+     * @return The ID of the agent.
+     * 
+     */
     private Integer agentId;
+    /**
+     * @return The ISO8601 datetime when the agent was created.
+     * 
+     */
     private String createdAt;
+    /**
+     * @return The ID of the user who created the agent.
+     * 
+     */
     private Integer createdByUserId;
+    /**
+     * @return The Name of the agent.
+     * 
+     */
     private String name;
+    /**
+     * @return ID or full path of the project maintained by the authenticated user.
+     * 
+     */
     private String project;
 
     private GetClusterAgentsClusterAgent() {}
+    /**
+     * @return The ID of the agent.
+     * 
+     */
     public Integer agentId() {
         return this.agentId;
     }
+    /**
+     * @return The ISO8601 datetime when the agent was created.
+     * 
+     */
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return The ID of the user who created the agent.
+     * 
+     */
     public Integer createdByUserId() {
         return this.createdByUserId;
     }
+    /**
+     * @return The Name of the agent.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return ID or full path of the project maintained by the authenticated user.
+     * 
+     */
     public String project() {
         return this.project;
     }

@@ -13,7 +13,13 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectTagReleaseResult
     {
+        /// <summary>
+        /// The description of release.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The name of the tag.
+        /// </summary>
         public readonly string TagName;
 
         [OutputConstructor]

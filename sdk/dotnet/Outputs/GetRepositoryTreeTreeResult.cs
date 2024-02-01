@@ -13,10 +13,25 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetRepositoryTreeTreeResult
     {
+        /// <summary>
+        /// The SHA-1 hash of the tree or blob in the repository.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Unix access mode of the file in the repository.
+        /// </summary>
         public readonly string Mode;
+        /// <summary>
+        /// Name of the blob or tree in the repository
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Path of the object inside of the repository.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// Type of object in the repository. Can be either type tree or of type blob
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

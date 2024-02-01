@@ -13,16 +13,49 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectPushRuleResult
     {
+        /// <summary>
+        /// All commit author emails must match this regex, e.g. `@my-company.com$`.
+        /// </summary>
         public readonly string AuthorEmailRegex;
+        /// <summary>
+        /// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+        /// </summary>
         public readonly string BranchNameRegex;
+        /// <summary>
+        /// Users can only push commits to this repository that were committed with one of their own verified emails.
+        /// </summary>
         public readonly bool CommitCommitterCheck;
+        /// <summary>
+        /// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+        /// </summary>
         public readonly string CommitMessageNegativeRegex;
+        /// <summary>
+        /// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+        /// </summary>
         public readonly string CommitMessageRegex;
+        /// <summary>
+        /// Deny deleting a tag.
+        /// </summary>
         public readonly bool DenyDeleteTag;
+        /// <summary>
+        /// All committed filenames must not match this regex, e.g. `(jar|exe)$`.
+        /// </summary>
         public readonly string FileNameRegex;
+        /// <summary>
+        /// Maximum file size (MB).
+        /// </summary>
         public readonly int MaxFileSize;
+        /// <summary>
+        /// Restrict commits by author (email) to existing GitLab users.
+        /// </summary>
         public readonly bool MemberCheck;
+        /// <summary>
+        /// GitLab will reject any files that are likely to contain secrets.
+        /// </summary>
         public readonly bool PreventSecrets;
+        /// <summary>
+        /// Reject commit when it’s not signed through GPG.
+        /// </summary>
         public readonly bool RejectUnsignedCommits;
 
         [OutputConstructor]

@@ -13,10 +13,25 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetClusterAgentsClusterAgentResult
     {
+        /// <summary>
+        /// The ID of the agent.
+        /// </summary>
         public readonly int AgentId;
+        /// <summary>
+        /// The ISO8601 datetime when the agent was created.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// The ID of the user who created the agent.
+        /// </summary>
         public readonly int CreatedByUserId;
+        /// <summary>
+        /// The Name of the agent.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// ID or full path of the project maintained by the authenticated user.
+        /// </summary>
         public readonly string Project;
 
         [OutputConstructor]

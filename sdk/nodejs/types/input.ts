@@ -6,16 +6,49 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface BranchCommit {
+    /**
+     * The email of the author.
+     */
     authorEmail?: pulumi.Input<string>;
+    /**
+     * The name of the author.
+     */
     authorName?: pulumi.Input<string>;
+    /**
+     * The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+     */
     authoredDate?: pulumi.Input<string>;
+    /**
+     * The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+     */
     committedDate?: pulumi.Input<string>;
+    /**
+     * The email of the user that committed.
+     */
     committerEmail?: pulumi.Input<string>;
+    /**
+     * The name of the user that committed.
+     */
     committerName?: pulumi.Input<string>;
+    /**
+     * The unique id assigned to the commit by Gitlab.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * The commit message
+     */
     message?: pulumi.Input<string>;
+    /**
+     * The id of the parents of the commit
+     */
     parentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The short id assigned to the commit by Gitlab.
+     */
     shortId?: pulumi.Input<string>;
+    /**
+     * The title of the commit
+     */
     title?: pulumi.Input<string>;
 }
 
@@ -474,7 +507,13 @@ export interface ProjectIssueBoardList {
 }
 
 export interface ProjectIssueTaskCompletionStatus {
+    /**
+     * The number of tasks that are completed.
+     */
     completedCount?: pulumi.Input<number>;
+    /**
+     * The number of tasks.
+     */
     count?: pulumi.Input<number>;
 }
 
@@ -576,21 +615,60 @@ export interface ProjectPushRules {
 }
 
 export interface ProjectTagCommit {
+    /**
+     * The email of the author.
+     */
     authorEmail?: pulumi.Input<string>;
+    /**
+     * The name of the author.
+     */
     authorName?: pulumi.Input<string>;
+    /**
+     * The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+     */
     authoredDate?: pulumi.Input<string>;
+    /**
+     * The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+     */
     committedDate?: pulumi.Input<string>;
+    /**
+     * The email of the user that committed.
+     */
     committerEmail?: pulumi.Input<string>;
+    /**
+     * The name of the user that committed.
+     */
     committerName?: pulumi.Input<string>;
+    /**
+     * The unique id assigned to the commit by Gitlab.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * The commit message
+     */
     message?: pulumi.Input<string>;
+    /**
+     * The id of the parents of the commit
+     */
     parentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The short id assigned to the commit by Gitlab.
+     */
     shortId?: pulumi.Input<string>;
+    /**
+     * The title of the commit
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface ProjectTagRelease {
+    /**
+     * The description of release.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the tag.
+     */
     tagName?: pulumi.Input<string>;
 }
 

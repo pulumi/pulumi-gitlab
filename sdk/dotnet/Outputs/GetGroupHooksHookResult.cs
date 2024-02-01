@@ -13,25 +13,85 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetGroupHooksHookResult
     {
+        /// <summary>
+        /// Invoke the hook for confidential issues events.
+        /// </summary>
         public readonly bool ConfidentialIssuesEvents;
+        /// <summary>
+        /// Invoke the hook for confidential notes events.
+        /// </summary>
         public readonly bool ConfidentialNoteEvents;
+        /// <summary>
+        /// Invoke the hook for deployment events.
+        /// </summary>
         public readonly bool DeploymentEvents;
+        /// <summary>
+        /// Enable ssl verification when invoking the hook.
+        /// </summary>
         public readonly bool EnableSslVerification;
+        /// <summary>
+        /// The ID or full path of the group.
+        /// </summary>
         public readonly string Group;
+        /// <summary>
+        /// The id of the group for the hook.
+        /// </summary>
         public readonly int GroupId;
+        /// <summary>
+        /// The id of the group hook.
+        /// </summary>
         public readonly int HookId;
+        /// <summary>
+        /// Invoke the hook for issues events.
+        /// </summary>
         public readonly bool IssuesEvents;
+        /// <summary>
+        /// Invoke the hook for job events.
+        /// </summary>
         public readonly bool JobEvents;
+        /// <summary>
+        /// Invoke the hook for merge requests.
+        /// </summary>
         public readonly bool MergeRequestsEvents;
+        /// <summary>
+        /// Invoke the hook for notes events.
+        /// </summary>
         public readonly bool NoteEvents;
+        /// <summary>
+        /// Invoke the hook for pipeline events.
+        /// </summary>
         public readonly bool PipelineEvents;
+        /// <summary>
+        /// Invoke the hook for push events.
+        /// </summary>
         public readonly bool PushEvents;
+        /// <summary>
+        /// Invoke the hook for push events on matching branches only.
+        /// </summary>
         public readonly string PushEventsBranchFilter;
+        /// <summary>
+        /// Invoke the hook for releases events.
+        /// </summary>
         public readonly bool ReleasesEvents;
+        /// <summary>
+        /// Invoke the hook for subgroup events.
+        /// </summary>
         public readonly bool SubgroupEvents;
+        /// <summary>
+        /// Invoke the hook for tag push events.
+        /// </summary>
         public readonly bool TagPushEvents;
+        /// <summary>
+        /// A token to present when invoking the hook. The token is not available for imported resources.
+        /// </summary>
         public readonly string Token;
+        /// <summary>
+        /// The url of the hook to invoke.
+        /// </summary>
         public readonly string Url;
+        /// <summary>
+        /// Invoke the hook for wiki page events.
+        /// </summary>
         public readonly bool WikiPageEvents;
 
         [OutputConstructor]

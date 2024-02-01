@@ -13,11 +13,29 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectTagsTagResult
     {
+        /// <summary>
+        /// The commit associated with the tag.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectTagsTagCommitResult> Commits;
+        /// <summary>
+        /// The message of the annotated tag.
+        /// </summary>
         public readonly string Message;
+        /// <summary>
+        /// The name of a tag.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Bool, true if tag has tag protection.
+        /// </summary>
         public readonly bool Protected;
+        /// <summary>
+        /// The release associated with the tag.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectTagsTagReleaseResult> Releases;
+        /// <summary>
+        /// The unique id assigned to the commit by Gitlab.
+        /// </summary>
         public readonly string Target;
 
         [OutputConstructor]

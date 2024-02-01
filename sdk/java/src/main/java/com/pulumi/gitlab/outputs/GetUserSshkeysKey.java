@@ -11,29 +11,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUserSshkeysKey {
+    /**
+     * @return The time when this key was created in GitLab.
+     * 
+     */
     private String createdAt;
+    /**
+     * @return The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
+     * 
+     */
     private String expiresAt;
+    /**
+     * @return The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+     * 
+     */
     private String key;
+    /**
+     * @return The ID of the ssh key.
+     * 
+     */
     private Integer keyId;
+    /**
+     * @return The title of the ssh key.
+     * 
+     */
     private String title;
+    /**
+     * @return The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
+     * 
+     */
     private Integer userId;
 
     private GetUserSshkeysKey() {}
+    /**
+     * @return The time when this key was created in GitLab.
+     * 
+     */
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
+     * 
+     */
     public String expiresAt() {
         return this.expiresAt;
     }
+    /**
+     * @return The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return The ID of the ssh key.
+     * 
+     */
     public Integer keyId() {
         return this.keyId;
     }
+    /**
+     * @return The title of the ssh key.
+     * 
+     */
     public String title() {
         return this.title;
     }
+    /**
+     * @return The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
+     * 
+     */
     public Integer userId() {
         return this.userId;
     }

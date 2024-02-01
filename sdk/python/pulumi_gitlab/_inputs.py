@@ -49,6 +49,19 @@ class BranchCommitArgs:
                  parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  short_id: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] author_email: The email of the author.
+        :param pulumi.Input[str] author_name: The name of the author.
+        :param pulumi.Input[str] authored_date: The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param pulumi.Input[str] committed_date: The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param pulumi.Input[str] committer_email: The email of the user that committed.
+        :param pulumi.Input[str] committer_name: The name of the user that committed.
+        :param pulumi.Input[str] id: The unique id assigned to the commit by Gitlab.
+        :param pulumi.Input[str] message: The commit message
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] parent_ids: The id of the parents of the commit
+        :param pulumi.Input[str] short_id: The short id assigned to the commit by Gitlab.
+        :param pulumi.Input[str] title: The title of the commit
+        """
         if author_email is not None:
             pulumi.set(__self__, "author_email", author_email)
         if author_name is not None:
@@ -75,6 +88,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email of the author.
+        """
         return pulumi.get(self, "author_email")
 
     @author_email.setter
@@ -84,6 +100,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter(name="authorName")
     def author_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the author.
+        """
         return pulumi.get(self, "author_name")
 
     @author_name.setter
@@ -93,6 +112,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter(name="authoredDate")
     def authored_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "authored_date")
 
     @authored_date.setter
@@ -102,6 +124,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter(name="committedDate")
     def committed_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "committed_date")
 
     @committed_date.setter
@@ -111,6 +136,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter(name="committerEmail")
     def committer_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email of the user that committed.
+        """
         return pulumi.get(self, "committer_email")
 
     @committer_email.setter
@@ -120,6 +148,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter(name="committerName")
     def committer_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the user that committed.
+        """
         return pulumi.get(self, "committer_name")
 
     @committer_name.setter
@@ -129,6 +160,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -138,6 +172,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The commit message
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -147,6 +184,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter(name="parentIds")
     def parent_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The id of the parents of the commit
+        """
         return pulumi.get(self, "parent_ids")
 
     @parent_ids.setter
@@ -156,6 +196,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter(name="shortId")
     def short_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The short id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "short_id")
 
     @short_id.setter
@@ -165,6 +208,9 @@ class BranchCommitArgs:
     @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the commit
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -1117,6 +1163,10 @@ class ProjectIssueTaskCompletionStatusArgs:
     def __init__(__self__, *,
                  completed_count: Optional[pulumi.Input[int]] = None,
                  count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] completed_count: The number of tasks that are completed.
+        :param pulumi.Input[int] count: The number of tasks.
+        """
         if completed_count is not None:
             pulumi.set(__self__, "completed_count", completed_count)
         if count is not None:
@@ -1125,6 +1175,9 @@ class ProjectIssueTaskCompletionStatusArgs:
     @property
     @pulumi.getter(name="completedCount")
     def completed_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of tasks that are completed.
+        """
         return pulumi.get(self, "completed_count")
 
     @completed_count.setter
@@ -1134,6 +1187,9 @@ class ProjectIssueTaskCompletionStatusArgs:
     @property
     @pulumi.getter
     def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of tasks.
+        """
         return pulumi.get(self, "count")
 
     @count.setter
@@ -1528,6 +1584,19 @@ class ProjectTagCommitArgs:
                  parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  short_id: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] author_email: The email of the author.
+        :param pulumi.Input[str] author_name: The name of the author.
+        :param pulumi.Input[str] authored_date: The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param pulumi.Input[str] committed_date: The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        :param pulumi.Input[str] committer_email: The email of the user that committed.
+        :param pulumi.Input[str] committer_name: The name of the user that committed.
+        :param pulumi.Input[str] id: The unique id assigned to the commit by Gitlab.
+        :param pulumi.Input[str] message: The commit message
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] parent_ids: The id of the parents of the commit
+        :param pulumi.Input[str] short_id: The short id assigned to the commit by Gitlab.
+        :param pulumi.Input[str] title: The title of the commit
+        """
         if author_email is not None:
             pulumi.set(__self__, "author_email", author_email)
         if author_name is not None:
@@ -1554,6 +1623,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email of the author.
+        """
         return pulumi.get(self, "author_email")
 
     @author_email.setter
@@ -1563,6 +1635,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter(name="authorName")
     def author_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the author.
+        """
         return pulumi.get(self, "author_name")
 
     @author_name.setter
@@ -1572,6 +1647,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter(name="authoredDate")
     def authored_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "authored_date")
 
     @authored_date.setter
@@ -1581,6 +1659,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter(name="committedDate")
     def committed_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
         return pulumi.get(self, "committed_date")
 
     @committed_date.setter
@@ -1590,6 +1671,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter(name="committerEmail")
     def committer_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email of the user that committed.
+        """
         return pulumi.get(self, "committer_email")
 
     @committer_email.setter
@@ -1599,6 +1683,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter(name="committerName")
     def committer_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the user that committed.
+        """
         return pulumi.get(self, "committer_name")
 
     @committer_name.setter
@@ -1608,6 +1695,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -1617,6 +1707,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The commit message
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -1626,6 +1719,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter(name="parentIds")
     def parent_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The id of the parents of the commit
+        """
         return pulumi.get(self, "parent_ids")
 
     @parent_ids.setter
@@ -1635,6 +1731,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter(name="shortId")
     def short_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The short id assigned to the commit by Gitlab.
+        """
         return pulumi.get(self, "short_id")
 
     @short_id.setter
@@ -1644,6 +1743,9 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the commit
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -1656,6 +1758,10 @@ class ProjectTagReleaseArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  tag_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: The description of release.
+        :param pulumi.Input[str] tag_name: The name of the tag.
+        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if tag_name is not None:
@@ -1664,6 +1770,9 @@ class ProjectTagReleaseArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of release.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1673,6 +1782,9 @@ class ProjectTagReleaseArgs:
     @property
     @pulumi.getter(name="tagName")
     def tag_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the tag.
+        """
         return pulumi.get(self, "tag_name")
 
     @tag_name.setter

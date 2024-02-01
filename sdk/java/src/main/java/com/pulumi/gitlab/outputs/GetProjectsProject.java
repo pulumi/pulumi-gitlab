@@ -20,389 +20,1149 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectsProject {
+    /**
+     * @return Links for the project.
+     * 
+     */
     private Map<String,String> _links;
+    /**
+     * @return Whether allow_merge_on_skipped_pipeline is enabled for the project.
+     * 
+     */
     private Boolean allowMergeOnSkippedPipeline;
+    /**
+     * @return Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String analyticsAccessLevel;
+    /**
+     * @return The numbers of approvals needed in a merge requests.
+     * 
+     */
     private Integer approvalsBeforeMerge;
+    /**
+     * @return Whether the project is archived.
+     * 
+     */
     private Boolean archived;
+    /**
+     * @return Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * 
+     */
     private String autoCancelPendingPipelines;
+    /**
+     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+     * 
+     */
     private String autoDevopsDeployStrategy;
+    /**
+     * @return Enable Auto DevOps for this project.
+     * 
+     */
     private Boolean autoDevopsEnabled;
+    /**
+     * @return Set whether auto-closing referenced issues on default branch.
+     * 
+     */
     private Boolean autocloseReferencedIssues;
+    /**
+     * @return The avatar url of the project.
+     * 
+     */
     private String avatarUrl;
+    /**
+     * @return Build coverage regex for the project.
+     * 
+     */
     private String buildCoverageRegex;
+    /**
+     * @return The Git strategy. Defaults to fetch.
+     * 
+     */
     private String buildGitStrategy;
+    /**
+     * @return The maximum amount of time, in seconds, that a job can run.
+     * 
+     */
     private Integer buildTimeout;
+    /**
+     * @return Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String buildsAccessLevel;
+    /**
+     * @return CI config file path for the project.
+     * 
+     */
     private String ciConfigPath;
+    /**
+     * @return Default number of revisions for shallow cloning.
+     * 
+     */
     private Integer ciDefaultGitDepth;
+    /**
+     * @return When a new deployment job starts, skip older deployment jobs that are still pending.
+     * 
+     */
     private Boolean ciForwardDeploymentEnabled;
+    /**
+     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+     * 
+     */
     private List<GetProjectsProjectContainerExpirationPolicy> containerExpirationPolicies;
+    /**
+     * @return Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String containerRegistryAccessLevel;
+    /**
+     * @return Whether the container registry is enabled for the project.
+     * 
+     */
     private Boolean containerRegistryEnabled;
+    /**
+     * @return Creation time for the project.
+     * 
+     */
     private String createdAt;
+    /**
+     * @return Creator ID for the project.
+     * 
+     */
     private Integer creatorId;
+    /**
+     * @return Custom attributes for the project.
+     * 
+     */
     private List<Map<String,String>> customAttributes;
+    /**
+     * @return The default branch name of the project.
+     * 
+     */
     private String defaultBranch;
+    /**
+     * @return The description of the project.
+     * 
+     */
     private String description;
+    /**
+     * @return Disable email notifications.
+     * 
+     */
     private Boolean emailsDisabled;
+    /**
+     * @return Whether the project is empty.
+     * 
+     */
     private Boolean emptyRepo;
+    /**
+     * @return Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String environmentsAccessLevel;
+    /**
+     * @return The classification label for the project.
+     * 
+     */
     private String externalAuthorizationClassificationLabel;
+    /**
+     * @return Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String featureFlagsAccessLevel;
+    /**
+     * @return Present if the project is a fork. Contains information about the upstream project.
+     * 
+     */
     private List<GetProjectsProjectForkedFromProject> forkedFromProjects;
+    /**
+     * @return Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String forkingAccessLevel;
+    /**
+     * @return The number of forks of the project.
+     * 
+     */
     private Integer forksCount;
+    /**
+     * @return Whether group runners are enabled for the project.
+     * 
+     */
     private Boolean groupRunnersEnabled;
+    /**
+     * @return The HTTP clone URL of the project.
+     * 
+     */
     private String httpUrlToRepo;
+    /**
+     * @return The ID of the project.
+     * 
+     */
     private Integer id;
+    /**
+     * @return The import error, if it exists, for the project.
+     * 
+     */
     private String importError;
+    /**
+     * @return The import status of the project.
+     * 
+     */
     private String importStatus;
+    /**
+     * @return URL the project was imported from.
+     * 
+     */
     private String importUrl;
+    /**
+     * @return Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String infrastructureAccessLevel;
+    /**
+     * @return Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String issuesAccessLevel;
+    /**
+     * @return Whether issues are enabled for the project.
+     * 
+     */
     private Boolean issuesEnabled;
+    /**
+     * @return Whether pipelines are enabled for the project.
+     * 
+     */
     private Boolean jobsEnabled;
+    /**
+     * @return Disable or enable the ability to keep the latest artifact for this project.
+     * 
+     */
     private Boolean keepLatestArtifact;
+    /**
+     * @return Last activirty time for the project.
+     * 
+     */
     private String lastActivityAt;
+    /**
+     * @return Whether LFS (large file storage) is enabled for the project.
+     * 
+     */
     private Boolean lfsEnabled;
+    /**
+     * @return Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * 
+     */
     private String mergeCommitTemplate;
+    /**
+     * @return Merge method for the project.
+     * 
+     */
     private String mergeMethod;
+    /**
+     * @return Enable or disable merge pipelines.
+     * 
+     */
     private Boolean mergePipelinesEnabled;
+    /**
+     * @return Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String mergeRequestsAccessLevel;
+    /**
+     * @return Whether merge requests are enabled for the project.
+     * 
+     */
     private Boolean mergeRequestsEnabled;
+    /**
+     * @return Enable or disable merge trains.
+     * 
+     */
     private Boolean mergeTrainsEnabled;
+    /**
+     * @return Whether the pull mirroring is enabled for the project.
+     * 
+     */
     private Boolean mirror;
+    /**
+     * @return Whether mirror_overwrites_diverged_branches is enabled for the project.
+     * 
+     */
     private Boolean mirrorOverwritesDivergedBranches;
+    /**
+     * @return Whether pull mirroring triggers builds for the project.
+     * 
+     */
     private Boolean mirrorTriggerBuilds;
+    /**
+     * @return The mirror user ID for the project.
+     * 
+     */
     private Integer mirrorUserId;
+    /**
+     * @return Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String monitorAccessLevel;
+    /**
+     * @return The name of the project.
+     * 
+     */
     private String name;
+    /**
+     * @return In `group / subgroup / project` or `user / project` format.
+     * 
+     */
     private String nameWithNamespace;
+    /**
+     * @return Namespace of the project (parent group/s).
+     * 
+     */
     private List<GetProjectsProjectNamespace> namespaces;
+    /**
+     * @return Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.
+     * 
+     */
     private Boolean onlyAllowMergeIfAllDiscussionsAreResolved;
+    /**
+     * @return Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
+     * 
+     */
     private Boolean onlyAllowMergeIfPipelineSucceeds;
+    /**
+     * @return Whether only_mirror_protected_branches is enabled for the project.
+     * 
+     */
     private Boolean onlyMirrorProtectedBranches;
+    /**
+     * @return The number of open issies for the project.
+     * 
+     */
     private Integer openIssuesCount;
     private List<GetProjectsProjectOwner> owners;
+    /**
+     * @return Whether packages are enabled for the project.
+     * 
+     */
     private Boolean packagesEnabled;
+    /**
+     * @return The path of the project.
+     * 
+     */
     private String path;
+    /**
+     * @return In `group/subgroup/project` or `user/project` format.
+     * 
+     */
     private String pathWithNamespace;
+    /**
+     * @return Permissions for the project.
+     * 
+     */
     private List<GetProjectsProjectPermission> permissions;
+    /**
+     * @return Whether the project is public.
+     * 
+     */
     private Boolean public_;
+    /**
+     * @return Whether public builds are enabled for the project.
+     * 
+     */
     private Boolean publicBuilds;
+    /**
+     * @return The remote url of the project.
+     * 
+     */
     private String readmeUrl;
+    /**
+     * @return Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String releasesAccessLevel;
+    /**
+     * @return Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String repositoryAccessLevel;
+    /**
+     * @return Which storage shard the repository is on. (administrator only)
+     * 
+     */
     private String repositoryStorage;
+    /**
+     * @return Whether requesting access is enabled for the project.
+     * 
+     */
     private Boolean requestAccessEnabled;
+    /**
+     * @return Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String requirementsAccessLevel;
+    /**
+     * @return Whether resolve_outdated_diff_discussions is enabled for the project
+     * 
+     */
     private Boolean resolveOutdatedDiffDiscussions;
+    /**
+     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * 
+     */
     private Boolean restrictUserDefinedVariables;
+    /**
+     * @return The runners token for the project.
+     * 
+     */
     private String runnersToken;
+    /**
+     * @return Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String securityAndComplianceAccessLevel;
+    /**
+     * @return Whether shared runners are enabled for the project.
+     * 
+     */
     private Boolean sharedRunnersEnabled;
+    /**
+     * @return Groups the the project is shared with.
+     * 
+     */
     private List<GetProjectsProjectSharedWithGroup> sharedWithGroups;
+    /**
+     * @return Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String snippetsAccessLevel;
+    /**
+     * @return Whether snippets are enabled for the project.
+     * 
+     */
     private Boolean snippetsEnabled;
+    /**
+     * @return Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * 
+     */
     private String squashCommitTemplate;
+    /**
+     * @return The SSH clone URL of the project.
+     * 
+     */
     private String sshUrlToRepo;
+    /**
+     * @return The number of stars on the project.
+     * 
+     */
     private Integer starCount;
+    /**
+     * @return Statistics for the project.
+     * 
+     */
     private Map<String,Integer> statistics;
+    /**
+     * @return The commit message used to apply merge request suggestions.
+     * 
+     */
     private String suggestionCommitMessage;
+    /**
+     * @return A set of the project topics (formerly called &#34;project tags&#34;).
+     * 
+     */
     private List<String> tagLists;
+    /**
+     * @return The list of topics for the project.
+     * 
+     */
     private List<String> topics;
+    /**
+     * @return The visibility of the project.
+     * 
+     */
     private String visibility;
+    /**
+     * @return The web url of the project.
+     * 
+     */
     private String webUrl;
+    /**
+     * @return Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String wikiAccessLevel;
+    /**
+     * @return Whether wiki is enabled for the project.
+     * 
+     */
     private Boolean wikiEnabled;
 
     private GetProjectsProject() {}
+    /**
+     * @return Links for the project.
+     * 
+     */
     public Map<String,String> _links() {
         return this._links;
     }
+    /**
+     * @return Whether allow_merge_on_skipped_pipeline is enabled for the project.
+     * 
+     */
     public Boolean allowMergeOnSkippedPipeline() {
         return this.allowMergeOnSkippedPipeline;
     }
+    /**
+     * @return Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String analyticsAccessLevel() {
         return this.analyticsAccessLevel;
     }
+    /**
+     * @return The numbers of approvals needed in a merge requests.
+     * 
+     */
     public Integer approvalsBeforeMerge() {
         return this.approvalsBeforeMerge;
     }
+    /**
+     * @return Whether the project is archived.
+     * 
+     */
     public Boolean archived() {
         return this.archived;
     }
+    /**
+     * @return Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * 
+     */
     public String autoCancelPendingPipelines() {
         return this.autoCancelPendingPipelines;
     }
+    /**
+     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+     * 
+     */
     public String autoDevopsDeployStrategy() {
         return this.autoDevopsDeployStrategy;
     }
+    /**
+     * @return Enable Auto DevOps for this project.
+     * 
+     */
     public Boolean autoDevopsEnabled() {
         return this.autoDevopsEnabled;
     }
+    /**
+     * @return Set whether auto-closing referenced issues on default branch.
+     * 
+     */
     public Boolean autocloseReferencedIssues() {
         return this.autocloseReferencedIssues;
     }
+    /**
+     * @return The avatar url of the project.
+     * 
+     */
     public String avatarUrl() {
         return this.avatarUrl;
     }
+    /**
+     * @return Build coverage regex for the project.
+     * 
+     */
     public String buildCoverageRegex() {
         return this.buildCoverageRegex;
     }
+    /**
+     * @return The Git strategy. Defaults to fetch.
+     * 
+     */
     public String buildGitStrategy() {
         return this.buildGitStrategy;
     }
+    /**
+     * @return The maximum amount of time, in seconds, that a job can run.
+     * 
+     */
     public Integer buildTimeout() {
         return this.buildTimeout;
     }
+    /**
+     * @return Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String buildsAccessLevel() {
         return this.buildsAccessLevel;
     }
+    /**
+     * @return CI config file path for the project.
+     * 
+     */
     public String ciConfigPath() {
         return this.ciConfigPath;
     }
+    /**
+     * @return Default number of revisions for shallow cloning.
+     * 
+     */
     public Integer ciDefaultGitDepth() {
         return this.ciDefaultGitDepth;
     }
+    /**
+     * @return When a new deployment job starts, skip older deployment jobs that are still pending.
+     * 
+     */
     public Boolean ciForwardDeploymentEnabled() {
         return this.ciForwardDeploymentEnabled;
     }
+    /**
+     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+     * 
+     */
     public List<GetProjectsProjectContainerExpirationPolicy> containerExpirationPolicies() {
         return this.containerExpirationPolicies;
     }
+    /**
+     * @return Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String containerRegistryAccessLevel() {
         return this.containerRegistryAccessLevel;
     }
+    /**
+     * @return Whether the container registry is enabled for the project.
+     * 
+     */
     public Boolean containerRegistryEnabled() {
         return this.containerRegistryEnabled;
     }
+    /**
+     * @return Creation time for the project.
+     * 
+     */
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return Creator ID for the project.
+     * 
+     */
     public Integer creatorId() {
         return this.creatorId;
     }
+    /**
+     * @return Custom attributes for the project.
+     * 
+     */
     public List<Map<String,String>> customAttributes() {
         return this.customAttributes;
     }
+    /**
+     * @return The default branch name of the project.
+     * 
+     */
     public String defaultBranch() {
         return this.defaultBranch;
     }
+    /**
+     * @return The description of the project.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Disable email notifications.
+     * 
+     */
     public Boolean emailsDisabled() {
         return this.emailsDisabled;
     }
+    /**
+     * @return Whether the project is empty.
+     * 
+     */
     public Boolean emptyRepo() {
         return this.emptyRepo;
     }
+    /**
+     * @return Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String environmentsAccessLevel() {
         return this.environmentsAccessLevel;
     }
+    /**
+     * @return The classification label for the project.
+     * 
+     */
     public String externalAuthorizationClassificationLabel() {
         return this.externalAuthorizationClassificationLabel;
     }
+    /**
+     * @return Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String featureFlagsAccessLevel() {
         return this.featureFlagsAccessLevel;
     }
+    /**
+     * @return Present if the project is a fork. Contains information about the upstream project.
+     * 
+     */
     public List<GetProjectsProjectForkedFromProject> forkedFromProjects() {
         return this.forkedFromProjects;
     }
+    /**
+     * @return Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String forkingAccessLevel() {
         return this.forkingAccessLevel;
     }
+    /**
+     * @return The number of forks of the project.
+     * 
+     */
     public Integer forksCount() {
         return this.forksCount;
     }
+    /**
+     * @return Whether group runners are enabled for the project.
+     * 
+     */
     public Boolean groupRunnersEnabled() {
         return this.groupRunnersEnabled;
     }
+    /**
+     * @return The HTTP clone URL of the project.
+     * 
+     */
     public String httpUrlToRepo() {
         return this.httpUrlToRepo;
     }
+    /**
+     * @return The ID of the project.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The import error, if it exists, for the project.
+     * 
+     */
     public String importError() {
         return this.importError;
     }
+    /**
+     * @return The import status of the project.
+     * 
+     */
     public String importStatus() {
         return this.importStatus;
     }
+    /**
+     * @return URL the project was imported from.
+     * 
+     */
     public String importUrl() {
         return this.importUrl;
     }
+    /**
+     * @return Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String infrastructureAccessLevel() {
         return this.infrastructureAccessLevel;
     }
+    /**
+     * @return Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String issuesAccessLevel() {
         return this.issuesAccessLevel;
     }
+    /**
+     * @return Whether issues are enabled for the project.
+     * 
+     */
     public Boolean issuesEnabled() {
         return this.issuesEnabled;
     }
+    /**
+     * @return Whether pipelines are enabled for the project.
+     * 
+     */
     public Boolean jobsEnabled() {
         return this.jobsEnabled;
     }
+    /**
+     * @return Disable or enable the ability to keep the latest artifact for this project.
+     * 
+     */
     public Boolean keepLatestArtifact() {
         return this.keepLatestArtifact;
     }
+    /**
+     * @return Last activirty time for the project.
+     * 
+     */
     public String lastActivityAt() {
         return this.lastActivityAt;
     }
+    /**
+     * @return Whether LFS (large file storage) is enabled for the project.
+     * 
+     */
     public Boolean lfsEnabled() {
         return this.lfsEnabled;
     }
+    /**
+     * @return Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * 
+     */
     public String mergeCommitTemplate() {
         return this.mergeCommitTemplate;
     }
+    /**
+     * @return Merge method for the project.
+     * 
+     */
     public String mergeMethod() {
         return this.mergeMethod;
     }
+    /**
+     * @return Enable or disable merge pipelines.
+     * 
+     */
     public Boolean mergePipelinesEnabled() {
         return this.mergePipelinesEnabled;
     }
+    /**
+     * @return Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String mergeRequestsAccessLevel() {
         return this.mergeRequestsAccessLevel;
     }
+    /**
+     * @return Whether merge requests are enabled for the project.
+     * 
+     */
     public Boolean mergeRequestsEnabled() {
         return this.mergeRequestsEnabled;
     }
+    /**
+     * @return Enable or disable merge trains.
+     * 
+     */
     public Boolean mergeTrainsEnabled() {
         return this.mergeTrainsEnabled;
     }
+    /**
+     * @return Whether the pull mirroring is enabled for the project.
+     * 
+     */
     public Boolean mirror() {
         return this.mirror;
     }
+    /**
+     * @return Whether mirror_overwrites_diverged_branches is enabled for the project.
+     * 
+     */
     public Boolean mirrorOverwritesDivergedBranches() {
         return this.mirrorOverwritesDivergedBranches;
     }
+    /**
+     * @return Whether pull mirroring triggers builds for the project.
+     * 
+     */
     public Boolean mirrorTriggerBuilds() {
         return this.mirrorTriggerBuilds;
     }
+    /**
+     * @return The mirror user ID for the project.
+     * 
+     */
     public Integer mirrorUserId() {
         return this.mirrorUserId;
     }
+    /**
+     * @return Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String monitorAccessLevel() {
         return this.monitorAccessLevel;
     }
+    /**
+     * @return The name of the project.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return In `group / subgroup / project` or `user / project` format.
+     * 
+     */
     public String nameWithNamespace() {
         return this.nameWithNamespace;
     }
+    /**
+     * @return Namespace of the project (parent group/s).
+     * 
+     */
     public List<GetProjectsProjectNamespace> namespaces() {
         return this.namespaces;
     }
+    /**
+     * @return Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.
+     * 
+     */
     public Boolean onlyAllowMergeIfAllDiscussionsAreResolved() {
         return this.onlyAllowMergeIfAllDiscussionsAreResolved;
     }
+    /**
+     * @return Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
+     * 
+     */
     public Boolean onlyAllowMergeIfPipelineSucceeds() {
         return this.onlyAllowMergeIfPipelineSucceeds;
     }
+    /**
+     * @return Whether only_mirror_protected_branches is enabled for the project.
+     * 
+     */
     public Boolean onlyMirrorProtectedBranches() {
         return this.onlyMirrorProtectedBranches;
     }
+    /**
+     * @return The number of open issies for the project.
+     * 
+     */
     public Integer openIssuesCount() {
         return this.openIssuesCount;
     }
     public List<GetProjectsProjectOwner> owners() {
         return this.owners;
     }
+    /**
+     * @return Whether packages are enabled for the project.
+     * 
+     */
     public Boolean packagesEnabled() {
         return this.packagesEnabled;
     }
+    /**
+     * @return The path of the project.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return In `group/subgroup/project` or `user/project` format.
+     * 
+     */
     public String pathWithNamespace() {
         return this.pathWithNamespace;
     }
+    /**
+     * @return Permissions for the project.
+     * 
+     */
     public List<GetProjectsProjectPermission> permissions() {
         return this.permissions;
     }
+    /**
+     * @return Whether the project is public.
+     * 
+     */
     public Boolean public_() {
         return this.public_;
     }
+    /**
+     * @return Whether public builds are enabled for the project.
+     * 
+     */
     public Boolean publicBuilds() {
         return this.publicBuilds;
     }
+    /**
+     * @return The remote url of the project.
+     * 
+     */
     public String readmeUrl() {
         return this.readmeUrl;
     }
+    /**
+     * @return Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String releasesAccessLevel() {
         return this.releasesAccessLevel;
     }
+    /**
+     * @return Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String repositoryAccessLevel() {
         return this.repositoryAccessLevel;
     }
+    /**
+     * @return Which storage shard the repository is on. (administrator only)
+     * 
+     */
     public String repositoryStorage() {
         return this.repositoryStorage;
     }
+    /**
+     * @return Whether requesting access is enabled for the project.
+     * 
+     */
     public Boolean requestAccessEnabled() {
         return this.requestAccessEnabled;
     }
+    /**
+     * @return Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String requirementsAccessLevel() {
         return this.requirementsAccessLevel;
     }
+    /**
+     * @return Whether resolve_outdated_diff_discussions is enabled for the project
+     * 
+     */
     public Boolean resolveOutdatedDiffDiscussions() {
         return this.resolveOutdatedDiffDiscussions;
     }
+    /**
+     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * 
+     */
     public Boolean restrictUserDefinedVariables() {
         return this.restrictUserDefinedVariables;
     }
+    /**
+     * @return The runners token for the project.
+     * 
+     */
     public String runnersToken() {
         return this.runnersToken;
     }
+    /**
+     * @return Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String securityAndComplianceAccessLevel() {
         return this.securityAndComplianceAccessLevel;
     }
+    /**
+     * @return Whether shared runners are enabled for the project.
+     * 
+     */
     public Boolean sharedRunnersEnabled() {
         return this.sharedRunnersEnabled;
     }
+    /**
+     * @return Groups the the project is shared with.
+     * 
+     */
     public List<GetProjectsProjectSharedWithGroup> sharedWithGroups() {
         return this.sharedWithGroups;
     }
+    /**
+     * @return Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String snippetsAccessLevel() {
         return this.snippetsAccessLevel;
     }
+    /**
+     * @return Whether snippets are enabled for the project.
+     * 
+     */
     public Boolean snippetsEnabled() {
         return this.snippetsEnabled;
     }
+    /**
+     * @return Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * 
+     */
     public String squashCommitTemplate() {
         return this.squashCommitTemplate;
     }
+    /**
+     * @return The SSH clone URL of the project.
+     * 
+     */
     public String sshUrlToRepo() {
         return this.sshUrlToRepo;
     }
+    /**
+     * @return The number of stars on the project.
+     * 
+     */
     public Integer starCount() {
         return this.starCount;
     }
+    /**
+     * @return Statistics for the project.
+     * 
+     */
     public Map<String,Integer> statistics() {
         return this.statistics;
     }
+    /**
+     * @return The commit message used to apply merge request suggestions.
+     * 
+     */
     public String suggestionCommitMessage() {
         return this.suggestionCommitMessage;
     }
+    /**
+     * @return A set of the project topics (formerly called &#34;project tags&#34;).
+     * 
+     */
     public List<String> tagLists() {
         return this.tagLists;
     }
+    /**
+     * @return The list of topics for the project.
+     * 
+     */
     public List<String> topics() {
         return this.topics;
     }
+    /**
+     * @return The visibility of the project.
+     * 
+     */
     public String visibility() {
         return this.visibility;
     }
+    /**
+     * @return The web url of the project.
+     * 
+     */
     public String webUrl() {
         return this.webUrl;
     }
+    /**
+     * @return Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String wikiAccessLevel() {
         return this.wikiAccessLevel;
     }
+    /**
+     * @return Whether wiki is enabled for the project.
+     * 
+     */
     public Boolean wikiEnabled() {
         return this.wikiEnabled;
     }

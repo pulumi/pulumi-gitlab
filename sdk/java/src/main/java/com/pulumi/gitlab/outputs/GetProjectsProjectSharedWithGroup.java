@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectsProjectSharedWithGroup {
+    /**
+     * @return The group access level.
+     * 
+     */
     private String groupAccessLevel;
+    /**
+     * @return The group ID.
+     * 
+     */
     private Integer groupId;
+    /**
+     * @return The group name.
+     * 
+     */
     private String groupName;
 
     private GetProjectsProjectSharedWithGroup() {}
+    /**
+     * @return The group access level.
+     * 
+     */
     public String groupAccessLevel() {
         return this.groupAccessLevel;
     }
+    /**
+     * @return The group ID.
+     * 
+     */
     public Integer groupId() {
         return this.groupId;
     }
+    /**
+     * @return The group name.
+     * 
+     */
     public String groupName() {
         return this.groupName;
     }

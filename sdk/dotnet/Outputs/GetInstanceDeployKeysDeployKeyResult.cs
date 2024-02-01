@@ -13,11 +13,29 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetInstanceDeployKeysDeployKeyResult
     {
+        /// <summary>
+        /// The creation date of the deploy key. In RFC3339 format.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// The fingerprint of the deploy key.
+        /// </summary>
         public readonly string Fingerprint;
+        /// <summary>
+        /// The ID of the deploy key.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The deploy key.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The list of projects that the deploy key has write access to.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult> ProjectsWithWriteAccesses;
+        /// <summary>
+        /// The title of the deploy key.
+        /// </summary>
         public readonly string Title;
 
         [OutputConstructor]

@@ -14,29 +14,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectTagsTag {
+    /**
+     * @return The commit associated with the tag.
+     * 
+     */
     private List<GetProjectTagsTagCommit> commits;
+    /**
+     * @return The message of the annotated tag.
+     * 
+     */
     private String message;
+    /**
+     * @return The name of a tag.
+     * 
+     */
     private String name;
+    /**
+     * @return Bool, true if tag has tag protection.
+     * 
+     */
     private Boolean protected_;
+    /**
+     * @return The release associated with the tag.
+     * 
+     */
     private List<GetProjectTagsTagRelease> releases;
+    /**
+     * @return The unique id assigned to the commit by Gitlab.
+     * 
+     */
     private String target;
 
     private GetProjectTagsTag() {}
+    /**
+     * @return The commit associated with the tag.
+     * 
+     */
     public List<GetProjectTagsTagCommit> commits() {
         return this.commits;
     }
+    /**
+     * @return The message of the annotated tag.
+     * 
+     */
     public String message() {
         return this.message;
     }
+    /**
+     * @return The name of a tag.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Bool, true if tag has tag protection.
+     * 
+     */
     public Boolean protected_() {
         return this.protected_;
     }
+    /**
+     * @return The release associated with the tag.
+     * 
+     */
     public List<GetProjectTagsTagRelease> releases() {
         return this.releases;
     }
+    /**
+     * @return The unique id assigned to the commit by Gitlab.
+     * 
+     */
     public String target() {
         return this.target;
     }

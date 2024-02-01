@@ -13,29 +13,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceDeployKeysDeployKey {
+    /**
+     * @return The creation date of the deploy key. In RFC3339 format.
+     * 
+     */
     private String createdAt;
+    /**
+     * @return The fingerprint of the deploy key.
+     * 
+     */
     private String fingerprint;
+    /**
+     * @return The ID of the deploy key.
+     * 
+     */
     private Integer id;
+    /**
+     * @return The deploy key.
+     * 
+     */
     private String key;
+    /**
+     * @return The list of projects that the deploy key has write access to.
+     * 
+     */
     private List<GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess> projectsWithWriteAccesses;
+    /**
+     * @return The title of the deploy key.
+     * 
+     */
     private String title;
 
     private GetInstanceDeployKeysDeployKey() {}
+    /**
+     * @return The creation date of the deploy key. In RFC3339 format.
+     * 
+     */
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return The fingerprint of the deploy key.
+     * 
+     */
     public String fingerprint() {
         return this.fingerprint;
     }
+    /**
+     * @return The ID of the deploy key.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The deploy key.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return The list of projects that the deploy key has write access to.
+     * 
+     */
     public List<GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess> projectsWithWriteAccesses() {
         return this.projectsWithWriteAccesses;
     }
+    /**
+     * @return The title of the deploy key.
+     * 
+     */
     public String title() {
         return this.title;
     }
