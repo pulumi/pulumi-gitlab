@@ -52,10 +52,10 @@ namespace Pulumi.GitLab
     /// A GitLab Group Access Token can be imported using a key composed of `&lt;group-id&gt;:&lt;token-id&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
+    /// $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
     /// ```
     /// 
-    ///  ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    ///  ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/groupAccessToken:GroupAccessToken")]
     public partial class GroupAccessToken : global::Pulumi.CustomResource

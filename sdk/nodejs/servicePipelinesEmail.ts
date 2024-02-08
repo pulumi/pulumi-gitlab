@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * You can import a gitlab_service_pipelines_email state using the project ID, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
+ * $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
  * ```
  */
 export class ServicePipelinesEmail extends pulumi.CustomResource {

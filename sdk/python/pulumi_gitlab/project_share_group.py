@@ -197,7 +197,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
+        $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
         ```
 
         :param str resource_name: The name of the resource.
@@ -235,7 +235,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
+        $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
         ```
 
         :param str resource_name: The name of the resource.

@@ -66,10 +66,10 @@ import javax.annotation.Nullable;
  * Gitlab project tags can be imported with a key composed of `&lt;project_id&gt;:&lt;tag_name&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/projectTag:ProjectTag example &#34;12345:develop&#34;
+ * $ pulumi import gitlab:index/projectTag:ProjectTag example &#34;12345:develop&#34;
  * ```
  * 
- *  NOTEthe `ref` attribute won&#39;t be available for imported `gitlab_project_tag` resources.
+ *  NOTE: the `ref` attribute won&#39;t be available for imported `gitlab_project_tag` resources.
  * 
  */
 @ResourceType(type="gitlab:index/projectTag:ProjectTag")

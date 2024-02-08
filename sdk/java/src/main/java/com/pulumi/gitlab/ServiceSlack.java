@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * You can import a gitlab_service_slack.slack state using the project ID, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/serviceSlack:ServiceSlack email 1
+ * $ pulumi import gitlab:index/serviceSlack:ServiceSlack email 1
  * ```
  * 
  */

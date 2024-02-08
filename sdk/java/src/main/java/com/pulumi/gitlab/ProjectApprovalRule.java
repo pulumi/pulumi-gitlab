@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * GitLab project approval rules can be imported using a key composed of `&lt;project-id&gt;:&lt;rule-id&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example &#34;12345:6&#34;
+ * $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example &#34;12345:6&#34;
  * ```
  * 
  */

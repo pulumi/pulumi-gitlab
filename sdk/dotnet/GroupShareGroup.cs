@@ -40,7 +40,7 @@ namespace Pulumi.GitLab
     /// GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
+    /// $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupShareGroup:GroupShareGroup")]

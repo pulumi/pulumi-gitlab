@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/projectEnvironment:ProjectEnvironment bar 123:321
+ * $ pulumi import gitlab:index/projectEnvironment:ProjectEnvironment bar 123:321
  * ```
  */
 export class ProjectEnvironment extends pulumi.CustomResource {

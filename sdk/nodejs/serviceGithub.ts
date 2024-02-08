@@ -33,11 +33,11 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`
+ *  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`:
  * ```
  *
  * ```sh
- *  $ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
+ * $ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
  * ```
  */
 export class ServiceGithub extends pulumi.CustomResource {

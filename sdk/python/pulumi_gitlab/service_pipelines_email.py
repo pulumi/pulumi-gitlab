@@ -191,7 +191,7 @@ class ServicePipelinesEmail(pulumi.CustomResource):
         You can import a gitlab_service_pipelines_email state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
+        $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
         ```
 
         :param str resource_name: The name of the resource.
@@ -235,7 +235,7 @@ class ServicePipelinesEmail(pulumi.CustomResource):
         You can import a gitlab_service_pipelines_email state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
+        $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
         ```
 
         :param str resource_name: The name of the resource.

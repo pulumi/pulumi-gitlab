@@ -47,7 +47,7 @@ namespace Pulumi.GitLab
     /// Gitlab compliance frameworks can be imported with a key composed of `&lt;namespace_path&gt;:&lt;framework_id&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/complianceFramework:ComplianceFramework sample "top-level-group:gid://gitlab/ComplianceManagement::Framework/12345"
+    /// $ pulumi import gitlab:index/complianceFramework:ComplianceFramework sample "top-level-group:gid://gitlab/ComplianceManagement::Framework/12345"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/complianceFramework:ComplianceFramework")]

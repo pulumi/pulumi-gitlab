@@ -189,7 +189,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
+        $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
         ```
 
         :param str resource_name: The name of the resource.
@@ -233,7 +233,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
+        $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
         ```
 
         :param str resource_name: The name of the resource.

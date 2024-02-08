@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * You can import a gitlab_service_jira state using the project ID, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
+ * $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
  * ```
  */
 export class ServiceJira extends pulumi.CustomResource {

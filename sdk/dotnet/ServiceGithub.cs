@@ -47,11 +47,11 @@ namespace Pulumi.GitLab
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `&lt;resource&gt; &lt;project_id&gt;`
+    ///  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `&lt;resource&gt; &lt;project_id&gt;`:
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
+    /// $ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/serviceGithub:ServiceGithub")]

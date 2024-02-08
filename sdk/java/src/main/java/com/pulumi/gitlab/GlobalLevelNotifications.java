@@ -52,10 +52,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NoteYou can import a global notification state using &#34;gitlab&#34; as the ID. The ID will always be gitlab, because the global notificatio only exists once per user
+ * Note: You can import a global notification state using &#34;gitlab&#34; as the ID.
+ * 
+ *  The ID will always be gitlab, because the global notificatio only exists
+ * 
+ *  once per user
  * 
  * ```sh
- *  $ pulumi import gitlab:index/globalLevelNotifications:GlobalLevelNotifications example gitlab
+ * $ pulumi import gitlab:index/globalLevelNotifications:GlobalLevelNotifications example gitlab
  * ```
  * 
  */

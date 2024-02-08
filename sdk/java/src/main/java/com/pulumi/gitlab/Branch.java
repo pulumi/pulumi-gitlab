@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * Gitlab branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch_name&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/branch:Branch example &#34;12345:develop&#34;
+ * $ pulumi import gitlab:index/branch:Branch example &#34;12345:develop&#34;
  * ```
  * 
  */

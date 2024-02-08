@@ -56,16 +56,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GitLab group ldap links can be imported using an id made up of `group_id:ldap_provider:cn:filter`. CN and Filter are mutually exclusive, so one will be missing. If using the CN for the group link, the ID will end with a blank filter (&#34;:&#34;). e.g.,
+ * GitLab group ldap links can be imported using an id made up of `group_id:ldap_provider:cn:filter`. CN and Filter are mutually exclusive, so one will be missing.
+ * 
+ *  If using the CN for the group link, the ID will end with a blank filter (&#34;:&#34;). e.g.,
  * 
  * ```sh
- *  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test &#34;12345:ldapmain:testcn:&#34;
+ * $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test &#34;12345:ldapmain:testcn:&#34;
  * ```
  * 
  *  If using the Filter for the group link, the ID will have two &#34;::&#34; in the middle due to having a blank CN. e.g.,
  * 
  * ```sh
- *  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test &#34;12345:ldapmain::testfilter&#34;
+ * $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test &#34;12345:ldapmain::testfilter&#34;
  * ```
  * 
  */

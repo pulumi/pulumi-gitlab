@@ -1021,7 +1021,7 @@ class ProjectIssue(pulumi.CustomResource):
         You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
+        $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
         ```
 
         :param str resource_name: The name of the resource.
@@ -1077,7 +1077,7 @@ class ProjectIssue(pulumi.CustomResource):
         You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
+        $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
         ```
 
         :param str resource_name: The name of the resource.

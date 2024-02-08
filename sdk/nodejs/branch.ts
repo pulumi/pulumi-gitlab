@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/branch:Branch example "12345:develop"
+ * $ pulumi import gitlab:index/branch:Branch example "12345:develop"
  * ```
  */
 export class Branch extends pulumi.CustomResource {

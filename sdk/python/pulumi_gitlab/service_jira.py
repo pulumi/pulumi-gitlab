@@ -649,7 +649,7 @@ class ServiceJira(pulumi.CustomResource):
         You can import a gitlab_service_jira state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
+        $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
         ```
 
         :param str resource_name: The name of the resource.
@@ -705,7 +705,7 @@ class ServiceJira(pulumi.CustomResource):
         You can import a gitlab_service_jira state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
+        $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
         ```
 
         :param str resource_name: The name of the resource.

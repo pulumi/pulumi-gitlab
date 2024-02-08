@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * You can import a gitlab_integration_slack.slack state using the project ID, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1
+ * $ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1
  * ```
  */
 export class IntegrationSlack extends pulumi.CustomResource {

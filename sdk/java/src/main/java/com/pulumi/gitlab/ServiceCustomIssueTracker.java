@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * You can import a gitlab_service_custom_issue_tracker state using the project ID, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker tracker 1
+ * $ pulumi import gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker tracker 1
  * ```
  * 
  */

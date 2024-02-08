@@ -61,12 +61,10 @@ import (
 // A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"
-//
+// $ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"
 // ```
 //
-//	NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+//	NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type PersonalAccessToken struct {
 	pulumi.CustomResourceState
 

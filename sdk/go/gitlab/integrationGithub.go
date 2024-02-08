@@ -57,14 +57,12 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `<resource> <project_id>`
+//	$ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `<resource> <project_id>`:
 //
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/integrationGithub:IntegrationGithub github 1
-//
+// $ pulumi import gitlab:index/integrationGithub:IntegrationGithub github 1
 // ```
 type IntegrationGithub struct {
 	pulumi.CustomResourceState

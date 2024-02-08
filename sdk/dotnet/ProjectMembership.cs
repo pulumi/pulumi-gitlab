@@ -49,7 +49,7 @@ namespace Pulumi.GitLab
     /// GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
+    /// $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectMembership:ProjectMembership")]

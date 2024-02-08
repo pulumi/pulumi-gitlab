@@ -817,7 +817,7 @@ class IntegrationMattermost(pulumi.CustomResource):
         You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
+        $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
         ```
 
         :param str resource_name: The name of the resource.
@@ -879,7 +879,7 @@ class IntegrationMattermost(pulumi.CustomResource):
         You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
+        $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
         ```
 
         :param str resource_name: The name of the resource.

@@ -167,7 +167,7 @@ class GroupEpicBoard(pulumi.CustomResource):
         You can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156
+        $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156
         ```
 
         :param str resource_name: The name of the resource.
@@ -216,7 +216,7 @@ class GroupEpicBoard(pulumi.CustomResource):
         You can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156
+        $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156
         ```
 
         :param str resource_name: The name of the resource.

@@ -107,7 +107,7 @@ class ProjectJobTokenScope(pulumi.CustomResource):
         GitLab project environments can be imported using an id made up of `projectId:targetProjectId`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:321
+        $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:321
         ```
 
         :param str resource_name: The name of the resource.
@@ -131,7 +131,7 @@ class ProjectJobTokenScope(pulumi.CustomResource):
         GitLab project environments can be imported using an id made up of `projectId:targetProjectId`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:321
+        $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:321
         ```
 
         :param str resource_name: The name of the resource.

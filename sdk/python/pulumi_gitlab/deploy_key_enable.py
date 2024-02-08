@@ -224,14 +224,18 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         ## Import
 
-        GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+        GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+
+         `project_id` can be whatever the [get single project api][get_single_project] takes for
+
+         its `:id` value, so for example:
 
         ```sh
-         $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
+        $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
         ```
 
         ```sh
-         $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
+        $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,14 +280,18 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         ## Import
 
-        GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+        GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+
+         `project_id` can be whatever the [get single project api][get_single_project] takes for
+
+         its `:id` value, so for example:
 
         ```sh
-         $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
+        $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
         ```
 
         ```sh
-         $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
+        $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
         ```
 
         :param str resource_name: The name of the resource.
