@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  * Gitlab project compliance frameworks can be imported with a key composed of `<project_id>`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample "42"
+ * $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample "42"
  * ```
  */
 export class ProjectComplianceFramework extends pulumi.CustomResource {

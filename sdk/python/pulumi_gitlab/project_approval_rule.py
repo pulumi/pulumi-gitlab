@@ -334,7 +334,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
+        $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
         ```
 
         :param str resource_name: The name of the resource.
@@ -361,7 +361,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
+        $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
         ```
 
         :param str resource_name: The name of the resource.

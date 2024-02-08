@@ -285,7 +285,7 @@ class Branch(pulumi.CustomResource):
         Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/branch:Branch example "12345:develop"
+        $ pulumi import gitlab:index/branch:Branch example "12345:develop"
         ```
 
         :param str resource_name: The name of the resource.
@@ -325,7 +325,7 @@ class Branch(pulumi.CustomResource):
         Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/branch:Branch example "12345:develop"
+        $ pulumi import gitlab:index/branch:Branch example "12345:develop"
         ```
 
         :param str resource_name: The name of the resource.

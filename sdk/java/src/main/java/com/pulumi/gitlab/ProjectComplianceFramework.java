@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * Gitlab project compliance frameworks can be imported with a key composed of `&lt;project_id&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample &#34;42&#34;
+ * $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample &#34;42&#34;
  * ```
  * 
  */

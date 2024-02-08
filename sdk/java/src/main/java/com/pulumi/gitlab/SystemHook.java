@@ -64,10 +64,10 @@ import javax.annotation.Nullable;
  * You can import a system hook using the hook id `{hook-id}`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/systemHook:SystemHook example 42
+ * $ pulumi import gitlab:index/systemHook:SystemHook example 42
  * ```
  * 
- *  NOTEthe `token` attribute won&#39;t be available for imported resources.
+ *  NOTE: the `token` attribute won&#39;t be available for imported resources.
  * 
  */
 @ResourceType(type="gitlab:index/systemHook:SystemHook")

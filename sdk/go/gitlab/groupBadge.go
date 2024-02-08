@@ -77,9 +77,7 @@ import (
 // GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
-//
+// $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
 // ```
 type GroupBadge struct {
 	pulumi.CustomResourceState

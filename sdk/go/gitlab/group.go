@@ -73,12 +73,12 @@ import (
 //
 // ```
 //
-//	`id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
+//	`id` can be whatever the [details of a group][details_of_a_group] api takes for
+//
+//	its `:id` value, so for example:
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/group:Group example example
-//
+// $ pulumi import gitlab:index/group:Group example example
 // ```
 type Group struct {
 	pulumi.CustomResourceState

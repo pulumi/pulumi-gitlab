@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/projectMirror:ProjectMirror foo &#34;12345:1337&#34;
+ * $ pulumi import gitlab:index/projectMirror:ProjectMirror foo &#34;12345:1337&#34;
  * ```
  * 
  */

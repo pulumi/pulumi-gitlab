@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
+ * $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
  * ```
  */
 export class BranchProtection extends pulumi.CustomResource {

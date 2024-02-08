@@ -46,7 +46,7 @@ namespace Pulumi.GitLab
     /// Gitlab release link can be imported with a key composed of `&lt;project&gt;:&lt;tag_name&gt;:&lt;link_id&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"
+    /// $ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/releaseLink:ReleaseLink")]

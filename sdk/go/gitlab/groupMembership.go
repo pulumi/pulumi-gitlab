@@ -52,9 +52,7 @@ import (
 // GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
-//
+// $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
 // ```
 type GroupMembership struct {
 	pulumi.CustomResourceState

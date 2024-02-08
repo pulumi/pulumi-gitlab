@@ -33,10 +33,10 @@ import * as utilities from "./utilities";
  * Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
+ * $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
  * ```
  *
- *  NOTEthe `ref` attribute won't be available for imported `gitlab_project_tag` resources.
+ *  NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
  */
 export class ProjectTag extends pulumi.CustomResource {
     /**

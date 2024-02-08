@@ -218,7 +218,7 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
         You can import a gitlab_integration_custom_issue_tracker state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker tracker 1
+        $ pulumi import gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker tracker 1
         ```
 
         :param str resource_name: The name of the resource.
@@ -258,7 +258,7 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
         You can import a gitlab_integration_custom_issue_tracker state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker tracker 1
+        $ pulumi import gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker tracker 1
         ```
 
         :param str resource_name: The name of the resource.

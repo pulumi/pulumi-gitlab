@@ -69,10 +69,12 @@ import javax.annotation.Nullable;
  *  $ pulumi import gitlab:index/user:User You can import a user to terraform state using `&lt;resource&gt; &lt;id&gt;`.
  * ```
  * 
- *  The `id` must be an integer for the id of the user you want to import, for example
+ *  The `id` must be an integer for the id of the user you want to import,
+ * 
+ *  for example:
  * 
  * ```sh
- *  $ pulumi import gitlab:index/user:User example 42
+ * $ pulumi import gitlab:index/user:User example 42
  * ```
  * 
  */

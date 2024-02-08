@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * GitLab instance variables can be imported using an id made up of `variablename`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
+ * $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
  * ```
  */
 export class InstanceVariable extends pulumi.CustomResource {

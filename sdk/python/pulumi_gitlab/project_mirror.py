@@ -244,7 +244,7 @@ class ProjectMirror(pulumi.CustomResource):
         GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
+        $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,7 +293,7 @@ class ProjectMirror(pulumi.CustomResource):
         GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
+        $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
         ```
 
         :param str resource_name: The name of the resource.

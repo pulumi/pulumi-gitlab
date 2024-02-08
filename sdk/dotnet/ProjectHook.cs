@@ -39,10 +39,10 @@ namespace Pulumi.GitLab
     /// A GitLab Project Hook can be imported using a key composed of `&lt;project-id&gt;:&lt;hook-id&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
+    /// $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
     /// ```
     /// 
-    ///  NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    ///  NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectHook:ProjectHook")]
     public partial class ProjectHook : global::Pulumi.CustomResource

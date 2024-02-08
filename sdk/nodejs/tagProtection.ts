@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
+ * $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
  * ```
  */
 export class TagProtection extends pulumi.CustomResource {

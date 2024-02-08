@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
+ * $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
  * ```
  */
 export class ProjectIssue extends pulumi.CustomResource {

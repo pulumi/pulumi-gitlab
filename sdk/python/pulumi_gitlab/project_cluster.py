@@ -522,7 +522,7 @@ class ProjectCluster(pulumi.CustomResource):
         GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
+        $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
         ```
 
         :param str resource_name: The name of the resource.
@@ -578,7 +578,7 @@ class ProjectCluster(pulumi.CustomResource):
         GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
+        $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
         ```
 
         :param str resource_name: The name of the resource.

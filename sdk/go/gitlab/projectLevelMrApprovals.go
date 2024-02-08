@@ -62,12 +62,12 @@ import (
 //
 // ```
 //
-// # For example
+// #
+//
+//	For example:
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
-//
+// $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
 // ```
 type ProjectLevelMrApprovals struct {
 	pulumi.CustomResourceState

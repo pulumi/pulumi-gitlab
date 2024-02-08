@@ -62,12 +62,10 @@ import (
 // A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
-//
+// $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
 // ```
 //
-//	NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+//	NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type ProjectAccessToken struct {
 	pulumi.CustomResourceState
 

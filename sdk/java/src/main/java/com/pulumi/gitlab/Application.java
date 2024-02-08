@@ -60,10 +60,10 @@ import javax.annotation.Nullable;
  * Gitlab applications can be imported with their id, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/application:Application example &#34;1&#34;
+ * $ pulumi import gitlab:index/application:Application example &#34;1&#34;
  * ```
  * 
- *  NOTEthe secret and scopes cannot be imported
+ *  NOTE: the secret and scopes cannot be imported
  * 
  */
 @ResourceType(type="gitlab:index/application:Application")

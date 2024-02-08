@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
+ * $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
  * ```
  * 
  */

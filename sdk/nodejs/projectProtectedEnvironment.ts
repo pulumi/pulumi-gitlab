@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
+ * $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
  * ```
  */
 export class ProjectProtectedEnvironment extends pulumi.CustomResource {

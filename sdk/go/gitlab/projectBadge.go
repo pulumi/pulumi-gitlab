@@ -77,9 +77,7 @@ import (
 // GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3
-//
+// $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3
 // ```
 type ProjectBadge struct {
 	pulumi.CustomResourceState

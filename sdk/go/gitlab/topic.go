@@ -27,12 +27,12 @@ import (
 //
 // ```
 //
-//	The `id` must be an integer for the id of the topic you want to import, for example
+//	The `id` must be an integer for the id of the topic you want to import,
+//
+//	for example:
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/topic:Topic functional_programming 1
-//
+// $ pulumi import gitlab:index/topic:Topic functional_programming 1
 // ```
 type Topic struct {
 	pulumi.CustomResourceState

@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/groupCustomAttribute:GroupCustomAttribute attr 42:location
+ * $ pulumi import gitlab:index/groupCustomAttribute:GroupCustomAttribute attr 42:location
  * ```
  * 
  */

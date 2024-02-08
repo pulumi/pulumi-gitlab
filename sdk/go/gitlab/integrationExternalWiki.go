@@ -55,9 +55,7 @@ import (
 // You can import a gitlab_integration_external_wiki state using the project ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/integrationExternalWiki:IntegrationExternalWiki wiki 1
-//
+// $ pulumi import gitlab:index/integrationExternalWiki:IntegrationExternalWiki wiki 1
 // ```
 type IntegrationExternalWiki struct {
 	pulumi.CustomResourceState

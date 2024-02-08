@@ -16,17 +16,17 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
+    /// GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one of: project, group.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
+    /// $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
+    /// $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
     /// ```
     /// 
-    ///  Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    ///  Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/deployToken:DeployToken")]
     public partial class DeployToken : global::Pulumi.CustomResource

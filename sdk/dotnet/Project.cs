@@ -112,13 +112,15 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
     /// ```
     /// 
-    ///  `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+    ///  `id` can be whatever the [get single project api][get_single_project] takes for
+    /// 
+    ///  its `:id` value, so for example:
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/project:Project example richardc/example
+    /// $ pulumi import gitlab:index/project:Project example richardc/example
     /// ```
     /// 
-    ///  NOTEthe `import_url_username` and `import_url_password` cannot be imported.
+    ///  NOTE: the `import_url_username` and `import_url_password` cannot be imported.
     /// </summary>
     [GitLabResourceType("gitlab:index/project:Project")]
     public partial class Project : global::Pulumi.CustomResource

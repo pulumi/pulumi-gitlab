@@ -391,7 +391,7 @@ class Runner(pulumi.CustomResource):
         A GitLab Runner can be imported using the runner's ID, eg
 
         ```sh
-         $ pulumi import gitlab:index/runner:Runner this 1
+        $ pulumi import gitlab:index/runner:Runner this 1
         ```
 
         :param str resource_name: The name of the resource.
@@ -472,7 +472,7 @@ class Runner(pulumi.CustomResource):
         A GitLab Runner can be imported using the runner's ID, eg
 
         ```sh
-         $ pulumi import gitlab:index/runner:Runner this 1
+        $ pulumi import gitlab:index/runner:Runner this 1
         ```
 
         :param str resource_name: The name of the resource.

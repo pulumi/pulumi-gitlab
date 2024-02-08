@@ -252,7 +252,7 @@ class InstanceVariable(pulumi.CustomResource):
         GitLab instance variables can be imported using an id made up of `variablename`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
+        $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,7 +293,7 @@ class InstanceVariable(pulumi.CustomResource):
         GitLab instance variables can be imported using an id made up of `variablename`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
+        $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
         ```
 
         :param str resource_name: The name of the resource.

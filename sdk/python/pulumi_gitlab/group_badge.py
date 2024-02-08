@@ -232,7 +232,7 @@ class GroupBadge(pulumi.CustomResource):
         GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
+        $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
         ```
 
         :param str resource_name: The name of the resource.
@@ -286,7 +286,7 @@ class GroupBadge(pulumi.CustomResource):
         GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
+        $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
         ```
 
         :param str resource_name: The name of the resource.

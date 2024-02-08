@@ -368,7 +368,7 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
         You can import a gitlab_service_emails_on_push state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush emails 1
+        $ pulumi import gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush emails 1
         ```
 
         :param str resource_name: The name of the resource.
@@ -413,7 +413,7 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
         You can import a gitlab_service_emails_on_push state using the project ID, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush emails 1
+        $ pulumi import gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush emails 1
         ```
 
         :param str resource_name: The name of the resource.
