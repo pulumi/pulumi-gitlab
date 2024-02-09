@@ -64,7 +64,7 @@ namespace Pulumi.GitLab
     /// You can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156
+    /// $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupEpicBoard:GroupEpicBoard")]

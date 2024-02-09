@@ -70,10 +70,10 @@ import javax.annotation.Nullable;
  * A GitLab Group Access Token can be imported using a key composed of `&lt;group-id&gt;:&lt;token-id&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example &#34;12345:1&#34;
+ * $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example &#34;12345:1&#34;
  * ```
  * 
- *  ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ *  ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  * 
  */
 @ResourceType(type="gitlab:index/groupAccessToken:GroupAccessToken")

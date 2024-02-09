@@ -126,7 +126,7 @@ class ProjectComplianceFramework(pulumi.CustomResource):
         Gitlab project compliance frameworks can be imported with a key composed of `<project_id>`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample "42"
+        $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample "42"
         ```
 
         :param str resource_name: The name of the resource.
@@ -169,7 +169,7 @@ class ProjectComplianceFramework(pulumi.CustomResource):
         Gitlab project compliance frameworks can be imported with a key composed of `<project_id>`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample "42"
+        $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample "42"
         ```
 
         :param str resource_name: The name of the resource.

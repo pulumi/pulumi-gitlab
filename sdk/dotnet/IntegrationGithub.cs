@@ -45,11 +45,11 @@ namespace Pulumi.GitLab
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `&lt;resource&gt; &lt;project_id&gt;`
+    ///  $ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `&lt;resource&gt; &lt;project_id&gt;`:
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/integrationGithub:IntegrationGithub github 1
+    /// $ pulumi import gitlab:index/integrationGithub:IntegrationGithub github 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/integrationGithub:IntegrationGithub")]

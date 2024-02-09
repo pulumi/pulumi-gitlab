@@ -59,14 +59,12 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`
+//	$ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`:
 //
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
-//
+// $ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
 // ```
 type ServiceGithub struct {
 	pulumi.CustomResourceState

@@ -609,7 +609,7 @@ class RepositoryFile(pulumi.CustomResource):
         A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
+        $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
         ```
 
         :param str resource_name: The name of the resource.
@@ -641,7 +641,7 @@ class RepositoryFile(pulumi.CustomResource):
         A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
+        $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
         ```
 
         :param str resource_name: The name of the resource.

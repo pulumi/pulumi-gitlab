@@ -17,9 +17,7 @@ import (
 // GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
-//
+// $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
 // ```
 type ProjectApprovalRule struct {
 	pulumi.CustomResourceState

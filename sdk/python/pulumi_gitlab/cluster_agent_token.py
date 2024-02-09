@@ -301,13 +301,13 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         ## Import
 
-        A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>:<token-id>`
+        A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>:<token-id>`:
 
         ```sh
-         $ pulumi import gitlab:index/clusterAgentToken:ClusterAgentToken example '12345:42:1'
+        $ pulumi import gitlab:index/clusterAgentToken:ClusterAgentToken example '12345:42:1'
         ```
 
-         ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+         ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -364,13 +364,13 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         ## Import
 
-        A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>:<token-id>`
+        A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>:<token-id>`:
 
         ```sh
-         $ pulumi import gitlab:index/clusterAgentToken:ClusterAgentToken example '12345:42:1'
+        $ pulumi import gitlab:index/clusterAgentToken:ClusterAgentToken example '12345:42:1'
         ```
 
-         ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+         ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param ClusterAgentTokenArgs args: The arguments to use to populate this resource's properties.

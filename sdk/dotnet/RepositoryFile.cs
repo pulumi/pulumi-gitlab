@@ -15,7 +15,7 @@ namespace Pulumi.GitLab
     /// A Repository File can be imported using an id made up of `&lt;project-id&gt;:&lt;branch-name&gt;:&lt;file-path&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
+    /// $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/repositoryFile:RepositoryFile")]

@@ -45,10 +45,10 @@ namespace Pulumi.GitLab
     /// You can import a system hook using the hook id `{hook-id}`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/systemHook:SystemHook example 42
+    /// $ pulumi import gitlab:index/systemHook:SystemHook example 42
     /// ```
     /// 
-    ///  NOTEthe `token` attribute won't be available for imported resources.
+    ///  NOTE: the `token` attribute won't be available for imported resources.
     /// </summary>
     [GitLabResourceType("gitlab:index/systemHook:SystemHook")]
     public partial class SystemHook : global::Pulumi.CustomResource

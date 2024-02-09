@@ -80,10 +80,10 @@ import javax.annotation.Nullable;
  * A GitLab Group Hook can be imported using a key composed of `&lt;group-id&gt;:&lt;hook-id&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/groupHook:GroupHook example &#34;12345:1&#34;
+ * $ pulumi import gitlab:index/groupHook:GroupHook example &#34;12345:1&#34;
  * ```
  * 
- *  NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ *  NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  * 
  */
 @ResourceType(type="gitlab:index/groupHook:GroupHook")

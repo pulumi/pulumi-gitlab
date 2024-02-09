@@ -1010,10 +1010,12 @@ class Group(pulumi.CustomResource):
          $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
         ```
 
-         `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
+         `id` can be whatever the [details of a group][details_of_a_group] api takes for
+
+         its `:id` value, so for example:
 
         ```sh
-         $ pulumi import gitlab:index/group:Group example example
+        $ pulumi import gitlab:index/group:Group example example
         ```
 
         :param str resource_name: The name of the resource.
@@ -1089,10 +1091,12 @@ class Group(pulumi.CustomResource):
          $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
         ```
 
-         `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
+         `id` can be whatever the [details of a group][details_of_a_group] api takes for
+
+         its `:id` value, so for example:
 
         ```sh
-         $ pulumi import gitlab:index/group:Group example example
+        $ pulumi import gitlab:index/group:Group example example
         ```
 
         :param str resource_name: The name of the resource.

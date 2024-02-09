@@ -45,10 +45,10 @@ namespace Pulumi.GitLab
     /// Gitlab applications can be imported with their id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/application:Application example "1"
+    /// $ pulumi import gitlab:index/application:Application example "1"
     /// ```
     /// 
-    ///  NOTEthe secret and scopes cannot be imported
+    ///  NOTE: the secret and scopes cannot be imported
     /// </summary>
     [GitLabResourceType("gitlab:index/application:Application")]
     public partial class Application : global::Pulumi.CustomResource

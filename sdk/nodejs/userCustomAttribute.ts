@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * You can import a user custom attribute using an id made up of `{user-id}:{key}`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/userCustomAttribute:UserCustomAttribute attr 42:location
+ * $ pulumi import gitlab:index/userCustomAttribute:UserCustomAttribute attr 42:location
  * ```
  */
 export class UserCustomAttribute extends pulumi.CustomResource {

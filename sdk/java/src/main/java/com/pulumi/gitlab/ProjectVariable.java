@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/projectVariable:ProjectVariable example &#39;12345:project_variable_key:*&#39;
+ * $ pulumi import gitlab:index/projectVariable:ProjectVariable example &#39;12345:project_variable_key:*&#39;
  * ```
  * 
  */

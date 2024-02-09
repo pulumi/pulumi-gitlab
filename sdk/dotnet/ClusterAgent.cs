@@ -61,7 +61,7 @@ namespace Pulumi.GitLab
     /// GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;`
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
+    /// $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/clusterAgent:ClusterAgent")]

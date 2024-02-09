@@ -277,7 +277,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
         You can import this resource with an id made up of `{project-id}:{issue-board-id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
+        $ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
         ```
 
         :param str resource_name: The name of the resource.
@@ -308,7 +308,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
         You can import this resource with an id made up of `{project-id}:{issue-board-id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
+        $ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
         ```
 
         :param str resource_name: The name of the resource.

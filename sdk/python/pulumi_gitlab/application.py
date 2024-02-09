@@ -224,10 +224,10 @@ class Application(pulumi.CustomResource):
         Gitlab applications can be imported with their id, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/application:Application example "1"
+        $ pulumi import gitlab:index/application:Application example "1"
         ```
 
-         NOTEthe secret and scopes cannot be imported
+         NOTE: the secret and scopes cannot be imported
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -268,10 +268,10 @@ class Application(pulumi.CustomResource):
         Gitlab applications can be imported with their id, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/application:Application example "1"
+        $ pulumi import gitlab:index/application:Application example "1"
         ```
 
-         NOTEthe secret and scopes cannot be imported
+         NOTE: the secret and scopes cannot be imported
 
         :param str resource_name: The name of the resource.
         :param ApplicationArgs args: The arguments to use to populate this resource's properties.

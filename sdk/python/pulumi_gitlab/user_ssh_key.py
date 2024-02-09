@@ -219,7 +219,7 @@ class UserSshKey(pulumi.CustomResource):
         You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1
+        $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1
         ```
 
         :param str resource_name: The name of the resource.
@@ -259,7 +259,7 @@ class UserSshKey(pulumi.CustomResource):
         You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1
+        $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1
         ```
 
         :param str resource_name: The name of the resource.

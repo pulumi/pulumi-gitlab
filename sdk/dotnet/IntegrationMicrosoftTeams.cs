@@ -45,7 +45,7 @@ namespace Pulumi.GitLab
     /// You can import a gitlab_integration_microsoft_teams state using the project ID, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams teams 1
+    /// $ pulumi import gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams teams 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams")]

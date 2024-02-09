@@ -488,7 +488,7 @@ class GroupCluster(pulumi.CustomResource):
         GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
+        $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
         ```
 
         :param str resource_name: The name of the resource.
@@ -542,7 +542,7 @@ class GroupCluster(pulumi.CustomResource):
         GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
+        $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
         ```
 
         :param str resource_name: The name of the resource.

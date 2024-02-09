@@ -21,9 +21,7 @@ import (
 // GitLab project environments can be imported using an id made up of `projectId:targetProjectId`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:321
-//
+// $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:321
 // ```
 type ProjectJobTokenScope struct {
 	pulumi.CustomResourceState

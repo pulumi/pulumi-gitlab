@@ -45,7 +45,7 @@ namespace Pulumi.GitLab
     /// Gitlab project milestone can be imported with a key composed of `&lt;project&gt;:&lt;milestone_id&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"
+    /// $ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectMilestone:ProjectMilestone")]

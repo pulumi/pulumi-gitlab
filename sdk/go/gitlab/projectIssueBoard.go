@@ -23,9 +23,7 @@ import (
 // You can import this resource with an id made up of `{project-id}:{issue-board-id}`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
-//
+// $ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
 // ```
 type ProjectIssueBoard struct {
 	pulumi.CustomResourceState
