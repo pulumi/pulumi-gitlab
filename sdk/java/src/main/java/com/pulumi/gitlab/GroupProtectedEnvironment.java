@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * GitLab group protected environments can be imported using an id made up of `groupId:environmentName`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment bar 123:production
+ * $ pulumi import gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment bar 123:production
  * ```
  * 
  */

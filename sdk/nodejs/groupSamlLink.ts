@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * GitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test "12345:samlgroupname1"
+ * $ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test "12345:samlgroupname1"
  * ```
  */
 export class GroupSamlLink extends pulumi.CustomResource {

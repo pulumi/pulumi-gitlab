@@ -118,7 +118,7 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
         GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7
+        $ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7
         ```
 
         :param str resource_name: The name of the resource.
@@ -153,7 +153,7 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
         GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7
+        $ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7
         ```
 
         :param str resource_name: The name of the resource.

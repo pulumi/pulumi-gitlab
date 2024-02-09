@@ -101,7 +101,7 @@ namespace Pulumi.GitLab
     /// A GitLab Runner can be imported using the runner's ID, eg
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/runner:Runner this 1
+    /// $ pulumi import gitlab:index/runner:Runner this 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/runner:Runner")]

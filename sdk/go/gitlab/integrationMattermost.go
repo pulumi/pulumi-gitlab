@@ -58,9 +58,7 @@ import (
 // You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
-//
+// $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1
 // ```
 type IntegrationMattermost struct {
 	pulumi.CustomResourceState

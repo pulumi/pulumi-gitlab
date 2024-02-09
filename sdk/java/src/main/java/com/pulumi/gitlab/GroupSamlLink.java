@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * GitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test &#34;12345:samlgroupname1&#34;
+ * $ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test &#34;12345:samlgroupname1&#34;
  * ```
  * 
  */

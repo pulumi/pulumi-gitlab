@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
+ * $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
  * ```
  * 
  */

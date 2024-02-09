@@ -323,7 +323,7 @@ class PipelineSchedule(pulumi.CustomResource):
         GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
+        $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
         ```
 
         :param str resource_name: The name of the resource.
@@ -367,7 +367,7 @@ class PipelineSchedule(pulumi.CustomResource):
         GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
+        $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
         ```
 
         :param str resource_name: The name of the resource.

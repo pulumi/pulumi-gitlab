@@ -30,10 +30,10 @@ import * as utilities from "./utilities";
  * Gitlab applications can be imported with their id, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/application:Application example "1"
+ * $ pulumi import gitlab:index/application:Application example "1"
  * ```
  *
- *  NOTEthe secret and scopes cannot be imported
+ *  NOTE: the secret and scopes cannot be imported
  */
 export class Application extends pulumi.CustomResource {
     /**

@@ -68,7 +68,7 @@ import * as utilities from "./utilities";
  * A GitLab Runner can be imported using the runner's ID, eg
  *
  * ```sh
- *  $ pulumi import gitlab:index/runner:Runner this 1
+ * $ pulumi import gitlab:index/runner:Runner this 1
  * ```
  */
 export class Runner extends pulumi.CustomResource {

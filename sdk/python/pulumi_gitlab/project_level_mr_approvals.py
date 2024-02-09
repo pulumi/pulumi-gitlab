@@ -291,10 +291,12 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
          $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
         ```
 
-        # For example
+        # 
+
+         For example:
 
         ```sh
-         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
+        $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
         ```
 
         :param str resource_name: The name of the resource.
@@ -341,10 +343,12 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
          $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
         ```
 
-        # For example
+        # 
+
+         For example:
 
         ```sh
-         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
+        $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
         ```
 
         :param str resource_name: The name of the resource.

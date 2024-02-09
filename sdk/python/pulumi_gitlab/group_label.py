@@ -201,7 +201,7 @@ class GroupLabel(pulumi.CustomResource):
         Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
+        $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
         ```
 
         :param str resource_name: The name of the resource.
@@ -239,7 +239,7 @@ class GroupLabel(pulumi.CustomResource):
         Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
+        $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
         ```
 
         :param str resource_name: The name of the resource.

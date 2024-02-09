@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
     /// You can import a gitlab_integration_emails_on_push state using the project ID, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush emails 1
+    /// $ pulumi import gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush emails 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush")]

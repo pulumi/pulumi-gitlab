@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect &#34;12345:main&#34;
+ * $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect &#34;12345:main&#34;
  * ```
  * 
  */

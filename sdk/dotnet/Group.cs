@@ -62,10 +62,12 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
     /// ```
     /// 
-    ///  `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
+    ///  `id` can be whatever the [details of a group][details_of_a_group] api takes for
+    /// 
+    ///  its `:id` value, so for example:
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/group:Group example example
+    /// $ pulumi import gitlab:index/group:Group example example
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/group:Group")]

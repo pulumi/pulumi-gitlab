@@ -49,7 +49,7 @@ namespace Pulumi.GitLab
     /// Gitlab project compliance frameworks can be imported with a key composed of `&lt;project_id&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample "42"
+    /// $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample "42"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectComplianceFramework:ProjectComplianceFramework")]

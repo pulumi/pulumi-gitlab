@@ -214,7 +214,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
+        $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
         ```
 
         :param str resource_name: The name of the resource.
@@ -247,7 +247,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
+        $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
         ```
 
         :param str resource_name: The name of the resource.

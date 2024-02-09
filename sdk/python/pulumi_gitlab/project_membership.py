@@ -191,7 +191,7 @@ class ProjectMembership(pulumi.CustomResource):
         GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
+        $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
         ```
 
         :param str resource_name: The name of the resource.
@@ -236,7 +236,7 @@ class ProjectMembership(pulumi.CustomResource):
         GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
+        $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
         ```
 
         :param str resource_name: The name of the resource.

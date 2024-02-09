@@ -488,7 +488,7 @@ class InstanceCluster(pulumi.CustomResource):
         GitLab instance clusters can be imported using a `clusterid`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/instanceCluster:InstanceCluster bar 123
+        $ pulumi import gitlab:index/instanceCluster:InstanceCluster bar 123
         ```
 
         :param str resource_name: The name of the resource.
@@ -541,7 +541,7 @@ class InstanceCluster(pulumi.CustomResource):
         GitLab instance clusters can be imported using a `clusterid`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/instanceCluster:InstanceCluster bar 123
+        $ pulumi import gitlab:index/instanceCluster:InstanceCluster bar 123
         ```
 
         :param str resource_name: The name of the resource.

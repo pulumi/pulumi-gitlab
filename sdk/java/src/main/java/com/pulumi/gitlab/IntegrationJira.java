@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * You can import a gitlab_integration_jira state using the project ID, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/integrationJira:IntegrationJira jira 1
+ * $ pulumi import gitlab:index/integrationJira:IntegrationJira jira 1
  * ```
  * 
  */

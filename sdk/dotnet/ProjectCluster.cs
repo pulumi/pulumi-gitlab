@@ -50,7 +50,7 @@ namespace Pulumi.GitLab
     /// GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
+    /// $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectCluster:ProjectCluster")]

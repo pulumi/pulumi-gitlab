@@ -67,10 +67,12 @@ import javax.annotation.Nullable;
  *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `&lt;resource&gt; &lt;project_id&gt;`.
  * ```
  * 
- * # For example
+ * # 
+ * 
+ *  For example:
  * 
  * ```sh
- *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
+ * $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
  * ```
  * 
  */

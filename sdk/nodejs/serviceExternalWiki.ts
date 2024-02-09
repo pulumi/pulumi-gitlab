@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * You can import a gitlab_service_external_wiki state using the project ID, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/serviceExternalWiki:ServiceExternalWiki wiki 1
+ * $ pulumi import gitlab:index/serviceExternalWiki:ServiceExternalWiki wiki 1
  * ```
  */
 export class ServiceExternalWiki extends pulumi.CustomResource {

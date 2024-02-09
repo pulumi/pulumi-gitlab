@@ -48,9 +48,7 @@ import (
 // GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7
-//
+// $ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7
 // ```
 type ProjectRunnerEnablement struct {
 	pulumi.CustomResourceState

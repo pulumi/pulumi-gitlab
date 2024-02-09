@@ -48,18 +48,18 @@ import (
 //
 // ## Import
 //
-// GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+// GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+//
+//	`project_id` can be whatever the [get single project api][get_single_project] takes for
+//
+//	its `:id` value, so for example:
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/deployKey:DeployKey test 1:3
-//
+// $ pulumi import gitlab:index/deployKey:DeployKey test 1:3
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/deployKey:DeployKey test richardc/example:3
-//
+// $ pulumi import gitlab:index/deployKey:DeployKey test richardc/example:3
 // ```
 type DeployKey struct {
 	pulumi.CustomResourceState

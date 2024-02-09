@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule &#34;12345:1337&#34;
+ * $ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule &#34;12345:1337&#34;
  * ```
  * 
  */

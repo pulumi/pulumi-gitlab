@@ -212,7 +212,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         GitLab group protected environments can be imported using an id made up of `groupId:environmentName`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment bar 123:production
+        $ pulumi import gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment bar 123:production
         ```
 
         :param str resource_name: The name of the resource.
@@ -244,7 +244,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         GitLab group protected environments can be imported using an id made up of `groupId:environmentName`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment bar 123:production
+        $ pulumi import gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment bar 123:production
         ```
 
         :param str resource_name: The name of the resource.

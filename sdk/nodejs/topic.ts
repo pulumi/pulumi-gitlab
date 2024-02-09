@@ -19,10 +19,12 @@ import * as utilities from "./utilities";
  *  $ pulumi import gitlab:index/topic:Topic You can import a topic to terraform state using `<resource> <id>`.
  * ```
  *
- *  The `id` must be an integer for the id of the topic you want to import, for example
+ *  The `id` must be an integer for the id of the topic you want to import,
+ *
+ *  for example:
  *
  * ```sh
- *  $ pulumi import gitlab:index/topic:Topic functional_programming 1
+ * $ pulumi import gitlab:index/topic:Topic functional_programming 1
  * ```
  */
 export class Topic extends pulumi.CustomResource {

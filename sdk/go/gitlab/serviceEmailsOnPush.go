@@ -57,9 +57,7 @@ import (
 // You can import a gitlab_service_emails_on_push state using the project ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush emails 1
-//
+// $ pulumi import gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush emails 1
 // ```
 type ServiceEmailsOnPush struct {
 	pulumi.CustomResourceState

@@ -15,7 +15,7 @@ namespace Pulumi.GitLab
     /// Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
+    /// $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/branchProtection:BranchProtection")]

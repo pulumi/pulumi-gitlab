@@ -253,7 +253,7 @@ class GroupMembership(pulumi.CustomResource):
         GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
+        $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
         ```
 
         :param str resource_name: The name of the resource.
@@ -296,7 +296,7 @@ class GroupMembership(pulumi.CustomResource):
         GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
+        $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
         ```
 
         :param str resource_name: The name of the resource.

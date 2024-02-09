@@ -186,7 +186,7 @@ class ClusterAgent(pulumi.CustomResource):
         GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>`
 
         ```sh
-         $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
+        $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
         ```
 
         :param str resource_name: The name of the resource.
@@ -240,7 +240,7 @@ class ClusterAgent(pulumi.CustomResource):
         GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>`
 
         ```sh
-         $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
+        $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
         ```
 
         :param str resource_name: The name of the resource.
