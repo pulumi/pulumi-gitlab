@@ -82,6 +82,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool CiForwardDeploymentEnabled;
         /// <summary>
+        /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// </summary>
+        public readonly string CiRestrictPipelineCancellationRole;
+        /// <summary>
         /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectContainerExpirationPolicyResult> ContainerExpirationPolicies;
@@ -431,6 +435,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool ciForwardDeploymentEnabled,
 
+            string ciRestrictPipelineCancellationRole,
+
             ImmutableArray<Outputs.GetProjectsProjectContainerExpirationPolicyResult> containerExpirationPolicies,
 
             string containerRegistryAccessLevel,
@@ -606,6 +612,7 @@ namespace Pulumi.GitLab.Outputs
             CiConfigPath = ciConfigPath;
             CiDefaultGitDepth = ciDefaultGitDepth;
             CiForwardDeploymentEnabled = ciForwardDeploymentEnabled;
+            CiRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             ContainerExpirationPolicies = containerExpirationPolicies;
             ContainerRegistryAccessLevel = containerRegistryAccessLevel;
             ContainerRegistryEnabled = containerRegistryEnabled;

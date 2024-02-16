@@ -57,6 +57,8 @@ import (
 type ProjectVariable struct {
 	pulumi.CustomResourceState
 
+	// The description of the variable.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrOutput `pulumi:"environmentScope"`
 	// The name of the variable.
@@ -114,6 +116,8 @@ func GetProjectVariable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectVariable resources.
 type projectVariableState struct {
+	// The description of the variable.
+	Description *string `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
@@ -133,6 +137,8 @@ type projectVariableState struct {
 }
 
 type ProjectVariableState struct {
+	// The description of the variable.
+	Description pulumi.StringPtrInput
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrInput
 	// The name of the variable.
@@ -156,6 +162,8 @@ func (ProjectVariableState) ElementType() reflect.Type {
 }
 
 type projectVariableArgs struct {
+	// The description of the variable.
+	Description *string `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
@@ -176,6 +184,8 @@ type projectVariableArgs struct {
 
 // The set of arguments for constructing a ProjectVariable resource.
 type ProjectVariableArgs struct {
+	// The description of the variable.
+	Description pulumi.StringPtrInput
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrInput
 	// The name of the variable.
@@ -279,6 +289,11 @@ func (o ProjectVariableOutput) ToProjectVariableOutput() ProjectVariableOutput {
 
 func (o ProjectVariableOutput) ToProjectVariableOutputWithContext(ctx context.Context) ProjectVariableOutput {
 	return o
+}
+
+// The description of the variable.
+func (o ProjectVariableOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.

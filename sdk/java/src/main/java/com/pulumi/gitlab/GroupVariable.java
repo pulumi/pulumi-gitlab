@@ -67,6 +67,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupVariable:GroupVariable")
 public class GroupVariable extends com.pulumi.resources.CustomResource {
     /**
+     * The description of the variable.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The description of the variable.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      * 
      */

@@ -352,6 +352,10 @@ export interface GetGroupSubgroupsSubgroup {
 
 export interface GetGroupVariablesVariable {
     /**
+     * The description of the variable.
+     */
+    description: string;
+    /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
     environmentScope: string;
@@ -1339,6 +1343,10 @@ export interface GetProjectTagsTagRelease {
 
 export interface GetProjectVariablesVariable {
     /**
+     * The description of the variable.
+     */
+    description: string;
+    /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
     environmentScope: string;
@@ -1441,6 +1449,10 @@ export interface GetProjectsProject {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled: boolean;
+    /**
+     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     */
+    ciRestrictPipelineCancellationRole: string;
     /**
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      */

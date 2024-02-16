@@ -317,7 +317,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
     /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    public readonly elasticsearchNamespaceIds!: pulumi.Output<string[]>;
+    public readonly elasticsearchNamespaceIds!: pulumi.Output<number[]>;
     /**
      * The password of your Elasticsearch instance.
      */
@@ -325,7 +325,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
     /**
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    public readonly elasticsearchProjectIds!: pulumi.Output<string[]>;
+    public readonly elasticsearchProjectIds!: pulumi.Output<number[]>;
     /**
      * Enable Elasticsearch search.
      */
@@ -1799,7 +1799,7 @@ export interface ApplicationSettingsState {
     /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    elasticsearchNamespaceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticsearchNamespaceIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The password of your Elasticsearch instance.
      */
@@ -1807,7 +1807,7 @@ export interface ApplicationSettingsState {
     /**
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    elasticsearchProjectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticsearchProjectIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * Enable Elasticsearch search.
      */
@@ -2777,7 +2777,7 @@ export interface ApplicationSettingsArgs {
     /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    elasticsearchNamespaceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticsearchNamespaceIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The password of your Elasticsearch instance.
      */
@@ -2785,7 +2785,7 @@ export interface ApplicationSettingsArgs {
     /**
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    elasticsearchProjectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticsearchProjectIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * Enable Elasticsearch search.
      */

@@ -71,6 +71,8 @@ type LookupProjectVariableArgs struct {
 
 // A collection of values returned by getProjectVariable.
 type LookupProjectVariableResult struct {
+	// The description of the variable.
+	Description string `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope string `pulumi:"environmentScope"`
 	// The provider-assigned unique ID for this managed resource.
@@ -131,6 +133,11 @@ func (o LookupProjectVariableResultOutput) ToLookupProjectVariableResultOutput()
 
 func (o LookupProjectVariableResultOutput) ToLookupProjectVariableResultOutputWithContext(ctx context.Context) LookupProjectVariableResultOutput {
 	return o
+}
+
+// The description of the variable.
+func (o LookupProjectVariableResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectVariableResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.

@@ -175,11 +175,11 @@ type ApplicationSettings struct {
 	// Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
 	ElasticsearchMaxBulkSizeMb pulumi.IntOutput `pulumi:"elasticsearchMaxBulkSizeMb"`
 	// The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-	ElasticsearchNamespaceIds pulumi.StringArrayOutput `pulumi:"elasticsearchNamespaceIds"`
+	ElasticsearchNamespaceIds pulumi.IntArrayOutput `pulumi:"elasticsearchNamespaceIds"`
 	// The password of your Elasticsearch instance.
 	ElasticsearchPassword pulumi.StringOutput `pulumi:"elasticsearchPassword"`
 	// The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-	ElasticsearchProjectIds pulumi.StringArrayOutput `pulumi:"elasticsearchProjectIds"`
+	ElasticsearchProjectIds pulumi.IntArrayOutput `pulumi:"elasticsearchProjectIds"`
 	// Enable Elasticsearch search.
 	ElasticsearchSearch pulumi.BoolOutput `pulumi:"elasticsearchSearch"`
 	// The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
@@ -760,11 +760,11 @@ type applicationSettingsState struct {
 	// Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
 	ElasticsearchMaxBulkSizeMb *int `pulumi:"elasticsearchMaxBulkSizeMb"`
 	// The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-	ElasticsearchNamespaceIds []string `pulumi:"elasticsearchNamespaceIds"`
+	ElasticsearchNamespaceIds []int `pulumi:"elasticsearchNamespaceIds"`
 	// The password of your Elasticsearch instance.
 	ElasticsearchPassword *string `pulumi:"elasticsearchPassword"`
 	// The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-	ElasticsearchProjectIds []string `pulumi:"elasticsearchProjectIds"`
+	ElasticsearchProjectIds []int `pulumi:"elasticsearchProjectIds"`
 	// Enable Elasticsearch search.
 	ElasticsearchSearch *bool `pulumi:"elasticsearchSearch"`
 	// The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
@@ -1253,11 +1253,11 @@ type ApplicationSettingsState struct {
 	// Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
 	ElasticsearchMaxBulkSizeMb pulumi.IntPtrInput
 	// The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-	ElasticsearchNamespaceIds pulumi.StringArrayInput
+	ElasticsearchNamespaceIds pulumi.IntArrayInput
 	// The password of your Elasticsearch instance.
 	ElasticsearchPassword pulumi.StringPtrInput
 	// The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-	ElasticsearchProjectIds pulumi.StringArrayInput
+	ElasticsearchProjectIds pulumi.IntArrayInput
 	// Enable Elasticsearch search.
 	ElasticsearchSearch pulumi.BoolPtrInput
 	// The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
@@ -1750,11 +1750,11 @@ type applicationSettingsArgs struct {
 	// Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
 	ElasticsearchMaxBulkSizeMb *int `pulumi:"elasticsearchMaxBulkSizeMb"`
 	// The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-	ElasticsearchNamespaceIds []string `pulumi:"elasticsearchNamespaceIds"`
+	ElasticsearchNamespaceIds []int `pulumi:"elasticsearchNamespaceIds"`
 	// The password of your Elasticsearch instance.
 	ElasticsearchPassword *string `pulumi:"elasticsearchPassword"`
 	// The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-	ElasticsearchProjectIds []string `pulumi:"elasticsearchProjectIds"`
+	ElasticsearchProjectIds []int `pulumi:"elasticsearchProjectIds"`
 	// Enable Elasticsearch search.
 	ElasticsearchSearch *bool `pulumi:"elasticsearchSearch"`
 	// The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
@@ -2244,11 +2244,11 @@ type ApplicationSettingsArgs struct {
 	// Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
 	ElasticsearchMaxBulkSizeMb pulumi.IntPtrInput
 	// The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-	ElasticsearchNamespaceIds pulumi.StringArrayInput
+	ElasticsearchNamespaceIds pulumi.IntArrayInput
 	// The password of your Elasticsearch instance.
 	ElasticsearchPassword pulumi.StringPtrInput
 	// The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-	ElasticsearchProjectIds pulumi.StringArrayInput
+	ElasticsearchProjectIds pulumi.IntArrayInput
 	// Enable Elasticsearch search.
 	ElasticsearchSearch pulumi.BoolPtrInput
 	// The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
@@ -3028,8 +3028,8 @@ func (o ApplicationSettingsOutput) ElasticsearchMaxBulkSizeMb() pulumi.IntOutput
 }
 
 // The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-func (o ApplicationSettingsOutput) ElasticsearchNamespaceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringArrayOutput { return v.ElasticsearchNamespaceIds }).(pulumi.StringArrayOutput)
+func (o ApplicationSettingsOutput) ElasticsearchNamespaceIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntArrayOutput { return v.ElasticsearchNamespaceIds }).(pulumi.IntArrayOutput)
 }
 
 // The password of your Elasticsearch instance.
@@ -3038,8 +3038,8 @@ func (o ApplicationSettingsOutput) ElasticsearchPassword() pulumi.StringOutput {
 }
 
 // The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
-func (o ApplicationSettingsOutput) ElasticsearchProjectIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringArrayOutput { return v.ElasticsearchProjectIds }).(pulumi.StringArrayOutput)
+func (o ApplicationSettingsOutput) ElasticsearchProjectIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntArrayOutput { return v.ElasticsearchProjectIds }).(pulumi.IntArrayOutput)
 }
 
 // Enable Elasticsearch search.

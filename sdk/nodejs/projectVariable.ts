@@ -62,6 +62,10 @@ export class ProjectVariable extends pulumi.CustomResource {
     }
 
     /**
+     * The description of the variable.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
     public readonly environmentScope!: pulumi.Output<string | undefined>;
@@ -107,6 +111,7 @@ export class ProjectVariable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectVariableState | undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["environmentScope"] = state ? state.environmentScope : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["masked"] = state ? state.masked : undefined;
@@ -126,6 +131,7 @@ export class ProjectVariable extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["environmentScope"] = args ? args.environmentScope : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["masked"] = args ? args.masked : undefined;
@@ -144,6 +150,10 @@ export class ProjectVariable extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectVariable resources.
  */
 export interface ProjectVariableState {
+    /**
+     * The description of the variable.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
@@ -182,6 +192,10 @@ export interface ProjectVariableState {
  * The set of arguments for constructing a ProjectVariable resource.
  */
 export interface ProjectVariableArgs {
+    /**
+     * The description of the variable.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */

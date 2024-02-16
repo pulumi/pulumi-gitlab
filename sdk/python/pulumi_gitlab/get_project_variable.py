@@ -21,7 +21,10 @@ class GetProjectVariableResult:
     """
     A collection of values returned by getProjectVariable.
     """
-    def __init__(__self__, environment_scope=None, id=None, key=None, masked=None, project=None, protected=None, raw=None, value=None, variable_type=None):
+    def __init__(__self__, description=None, environment_scope=None, id=None, key=None, masked=None, project=None, protected=None, raw=None, value=None, variable_type=None):
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if environment_scope and not isinstance(environment_scope, str):
             raise TypeError("Expected argument 'environment_scope' to be a str")
         pulumi.set(__self__, "environment_scope", environment_scope)
@@ -49,6 +52,14 @@ class GetProjectVariableResult:
         if variable_type and not isinstance(variable_type, str):
             raise TypeError("Expected argument 'variable_type' to be a str")
         pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the variable.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="environmentScope")
@@ -129,6 +140,7 @@ class AwaitableGetProjectVariableResult(GetProjectVariableResult):
         if False:
             yield self
         return GetProjectVariableResult(
+            description=self.description,
             environment_scope=self.environment_scope,
             id=self.id,
             key=self.key,
@@ -175,6 +187,7 @@ def get_project_variable(environment_scope: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectVariable:getProjectVariable', __args__, opts=opts, typ=GetProjectVariableResult).value
 
     return AwaitableGetProjectVariableResult(
+        description=pulumi.get(__ret__, 'description'),
         environment_scope=pulumi.get(__ret__, 'environment_scope'),
         id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),

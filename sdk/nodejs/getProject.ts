@@ -105,6 +105,10 @@ export interface GetProjectResult {
      */
     readonly ciDefaultGitDepth: number;
     /**
+     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     */
+    readonly ciRestrictPipelineCancellationRole: string;
+    /**
      * Use separate caches for protected branches.
      */
     readonly ciSeparatedCaches: boolean;

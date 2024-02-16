@@ -243,6 +243,12 @@ namespace Pulumi.GitLab
         public Output<bool> CiForwardDeploymentEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// </summary>
+        [Output("ciRestrictPipelineCancellationRole")]
+        public Output<string> CiRestrictPipelineCancellationRole { get; private set; } = null!;
+
+        /// <summary>
         /// Use separate caches for protected branches.
         /// </summary>
         [Output("ciSeparatedCaches")]
@@ -883,6 +889,12 @@ namespace Pulumi.GitLab
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
 
         /// <summary>
+        /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// </summary>
+        [Input("ciRestrictPipelineCancellationRole")]
+        public Input<string>? CiRestrictPipelineCancellationRole { get; set; }
+
+        /// <summary>
         /// Use separate caches for protected branches.
         /// </summary>
         [Input("ciSeparatedCaches")]
@@ -1470,6 +1482,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciForwardDeploymentEnabled")]
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
+
+        /// <summary>
+        /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// </summary>
+        [Input("ciRestrictPipelineCancellationRole")]
+        public Input<string>? CiRestrictPipelineCancellationRole { get; set; }
 
         /// <summary>
         /// Use separate caches for protected branches.

@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectVariableResult {
     /**
+     * @return The description of the variable.
+     * 
+     */
+    private String description;
+    /**
      * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      * 
      */
@@ -58,6 +63,13 @@ public final class GetProjectVariableResult {
     private String variableType;
 
     private GetProjectVariableResult() {}
+    /**
+     * @return The description of the variable.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
     /**
      * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      * 
@@ -131,6 +143,7 @@ public final class GetProjectVariableResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String description;
         private String environmentScope;
         private String id;
         private String key;
@@ -143,6 +156,7 @@ public final class GetProjectVariableResult {
         public Builder() {}
         public Builder(GetProjectVariableResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.environmentScope = defaults.environmentScope;
     	      this.id = defaults.id;
     	      this.key = defaults.key;
@@ -154,6 +168,14 @@ public final class GetProjectVariableResult {
     	      this.variableType = defaults.variableType;
         }
 
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProjectVariableResult", "description");
+            }
+            this.description = description;
+            return this;
+        }
         @CustomType.Setter
         public Builder environmentScope(String environmentScope) {
             if (environmentScope == null) {
@@ -228,6 +250,7 @@ public final class GetProjectVariableResult {
         }
         public GetProjectVariableResult build() {
             final var _resultValue = new GetProjectVariableResult();
+            _resultValue.description = description;
             _resultValue.environmentScope = environmentScope;
             _resultValue.id = id;
             _resultValue.key = key;

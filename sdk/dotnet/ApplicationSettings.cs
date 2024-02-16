@@ -439,7 +439,7 @@ namespace Pulumi.GitLab
         /// The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         /// </summary>
         [Output("elasticsearchNamespaceIds")]
-        public Output<ImmutableArray<string>> ElasticsearchNamespaceIds { get; private set; } = null!;
+        public Output<ImmutableArray<int>> ElasticsearchNamespaceIds { get; private set; } = null!;
 
         /// <summary>
         /// The password of your Elasticsearch instance.
@@ -451,7 +451,7 @@ namespace Pulumi.GitLab
         /// The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         /// </summary>
         [Output("elasticsearchProjectIds")]
-        public Output<ImmutableArray<string>> ElasticsearchProjectIds { get; private set; } = null!;
+        public Output<ImmutableArray<int>> ElasticsearchProjectIds { get; private set; } = null!;
 
         /// <summary>
         /// Enable Elasticsearch search.
@@ -2032,14 +2032,14 @@ namespace Pulumi.GitLab
         public Input<int>? ElasticsearchMaxBulkSizeMb { get; set; }
 
         [Input("elasticsearchNamespaceIds")]
-        private InputList<string>? _elasticsearchNamespaceIds;
+        private InputList<int>? _elasticsearchNamespaceIds;
 
         /// <summary>
         /// The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         /// </summary>
-        public InputList<string> ElasticsearchNamespaceIds
+        public InputList<int> ElasticsearchNamespaceIds
         {
-            get => _elasticsearchNamespaceIds ?? (_elasticsearchNamespaceIds = new InputList<string>());
+            get => _elasticsearchNamespaceIds ?? (_elasticsearchNamespaceIds = new InputList<int>());
             set => _elasticsearchNamespaceIds = value;
         }
 
@@ -2060,14 +2060,14 @@ namespace Pulumi.GitLab
         }
 
         [Input("elasticsearchProjectIds")]
-        private InputList<string>? _elasticsearchProjectIds;
+        private InputList<int>? _elasticsearchProjectIds;
 
         /// <summary>
         /// The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         /// </summary>
-        public InputList<string> ElasticsearchProjectIds
+        public InputList<int> ElasticsearchProjectIds
         {
-            get => _elasticsearchProjectIds ?? (_elasticsearchProjectIds = new InputList<string>());
+            get => _elasticsearchProjectIds ?? (_elasticsearchProjectIds = new InputList<int>());
             set => _elasticsearchProjectIds = value;
         }
 
@@ -3716,14 +3716,14 @@ namespace Pulumi.GitLab
         public Input<int>? ElasticsearchMaxBulkSizeMb { get; set; }
 
         [Input("elasticsearchNamespaceIds")]
-        private InputList<string>? _elasticsearchNamespaceIds;
+        private InputList<int>? _elasticsearchNamespaceIds;
 
         /// <summary>
         /// The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         /// </summary>
-        public InputList<string> ElasticsearchNamespaceIds
+        public InputList<int> ElasticsearchNamespaceIds
         {
-            get => _elasticsearchNamespaceIds ?? (_elasticsearchNamespaceIds = new InputList<string>());
+            get => _elasticsearchNamespaceIds ?? (_elasticsearchNamespaceIds = new InputList<int>());
             set => _elasticsearchNamespaceIds = value;
         }
 
@@ -3744,14 +3744,14 @@ namespace Pulumi.GitLab
         }
 
         [Input("elasticsearchProjectIds")]
-        private InputList<string>? _elasticsearchProjectIds;
+        private InputList<int>? _elasticsearchProjectIds;
 
         /// <summary>
         /// The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         /// </summary>
-        public InputList<string> ElasticsearchProjectIds
+        public InputList<int> ElasticsearchProjectIds
         {
-            get => _elasticsearchProjectIds ?? (_elasticsearchProjectIds = new InputList<string>());
+            get => _elasticsearchProjectIds ?? (_elasticsearchProjectIds = new InputList<int>());
             set => _elasticsearchProjectIds = value;
         }
 

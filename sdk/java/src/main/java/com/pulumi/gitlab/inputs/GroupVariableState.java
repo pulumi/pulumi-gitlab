@@ -17,6 +17,21 @@ public final class GroupVariableState extends com.pulumi.resources.ResourceArgs 
     public static final GroupVariableState Empty = new GroupVariableState();
 
     /**
+     * The description of the variable.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the variable.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      * 
      */
@@ -139,6 +154,7 @@ public final class GroupVariableState extends com.pulumi.resources.ResourceArgs 
     private GroupVariableState() {}
 
     private GroupVariableState(GroupVariableState $) {
+        this.description = $.description;
         this.environmentScope = $.environmentScope;
         this.group = $.group;
         this.key = $.key;
@@ -165,6 +181,27 @@ public final class GroupVariableState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(GroupVariableState defaults) {
             $ = new GroupVariableState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description The description of the variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

@@ -74,6 +74,11 @@ public final class GetProjectResult {
      */
     private Integer ciDefaultGitDepth;
     /**
+     * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * 
+     */
+    private String ciRestrictPipelineCancellationRole;
+    /**
      * @return Use separate caches for protected branches.
      * 
      */
@@ -421,6 +426,13 @@ public final class GetProjectResult {
      */
     public Integer ciDefaultGitDepth() {
         return this.ciDefaultGitDepth;
+    }
+    /**
+     * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * 
+     */
+    public String ciRestrictPipelineCancellationRole() {
+        return this.ciRestrictPipelineCancellationRole;
     }
     /**
      * @return Use separate caches for protected branches.
@@ -821,6 +833,7 @@ public final class GetProjectResult {
         private String buildsAccessLevel;
         private String ciConfigPath;
         private Integer ciDefaultGitDepth;
+        private String ciRestrictPipelineCancellationRole;
         private Boolean ciSeparatedCaches;
         private List<GetProjectContainerExpirationPolicy> containerExpirationPolicies;
         private String containerRegistryAccessLevel;
@@ -889,6 +902,7 @@ public final class GetProjectResult {
     	      this.buildsAccessLevel = defaults.buildsAccessLevel;
     	      this.ciConfigPath = defaults.ciConfigPath;
     	      this.ciDefaultGitDepth = defaults.ciDefaultGitDepth;
+    	      this.ciRestrictPipelineCancellationRole = defaults.ciRestrictPipelineCancellationRole;
     	      this.ciSeparatedCaches = defaults.ciSeparatedCaches;
     	      this.containerExpirationPolicies = defaults.containerExpirationPolicies;
     	      this.containerRegistryAccessLevel = defaults.containerRegistryAccessLevel;
@@ -1031,6 +1045,14 @@ public final class GetProjectResult {
               throw new MissingRequiredPropertyException("GetProjectResult", "ciDefaultGitDepth");
             }
             this.ciDefaultGitDepth = ciDefaultGitDepth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ciRestrictPipelineCancellationRole(String ciRestrictPipelineCancellationRole) {
+            if (ciRestrictPipelineCancellationRole == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "ciRestrictPipelineCancellationRole");
+            }
+            this.ciRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             return this;
         }
         @CustomType.Setter
@@ -1488,6 +1510,7 @@ public final class GetProjectResult {
             _resultValue.buildsAccessLevel = buildsAccessLevel;
             _resultValue.ciConfigPath = ciConfigPath;
             _resultValue.ciDefaultGitDepth = ciDefaultGitDepth;
+            _resultValue.ciRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             _resultValue.ciSeparatedCaches = ciSeparatedCaches;
             _resultValue.containerExpirationPolicies = containerExpirationPolicies;
             _resultValue.containerRegistryAccessLevel = containerRegistryAccessLevel;

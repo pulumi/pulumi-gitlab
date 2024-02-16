@@ -86,6 +86,8 @@ type LookupProjectResult struct {
 	CiConfigPath string `pulumi:"ciConfigPath"`
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth int `pulumi:"ciDefaultGitDepth"`
+	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	CiRestrictPipelineCancellationRole string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
 	CiSeparatedCaches bool `pulumi:"ciSeparatedCaches"`
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
@@ -293,6 +295,11 @@ func (o LookupProjectResultOutput) CiConfigPath() pulumi.StringOutput {
 // Default number of revisions for shallow cloning.
 func (o LookupProjectResultOutput) CiDefaultGitDepth() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.CiDefaultGitDepth }).(pulumi.IntOutput)
+}
+
+// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+func (o LookupProjectResultOutput) CiRestrictPipelineCancellationRole() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.CiRestrictPipelineCancellationRole }).(pulumi.StringOutput)
 }
 
 // Use separate caches for protected branches.

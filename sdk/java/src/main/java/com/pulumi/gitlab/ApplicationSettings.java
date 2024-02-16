@@ -995,14 +995,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      * 
      */
-    @Export(name="elasticsearchNamespaceIds", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> elasticsearchNamespaceIds;
+    @Export(name="elasticsearchNamespaceIds", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output<List<Integer>> elasticsearchNamespaceIds;
 
     /**
      * @return The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      * 
      */
-    public Output<List<String>> elasticsearchNamespaceIds() {
+    public Output<List<Integer>> elasticsearchNamespaceIds() {
         return this.elasticsearchNamespaceIds;
     }
     /**
@@ -1023,14 +1023,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      * 
      */
-    @Export(name="elasticsearchProjectIds", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> elasticsearchProjectIds;
+    @Export(name="elasticsearchProjectIds", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output<List<Integer>> elasticsearchProjectIds;
 
     /**
      * @return The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      * 
      */
-    public Output<List<String>> elasticsearchProjectIds() {
+    public Output<List<Integer>> elasticsearchProjectIds() {
         return this.elasticsearchProjectIds;
     }
     /**

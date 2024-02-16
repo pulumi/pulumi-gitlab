@@ -71,6 +71,8 @@ type LookupGroupVariableArgs struct {
 
 // A collection of values returned by getGroupVariable.
 type LookupGroupVariableResult struct {
+	// The description of the variable.
+	Description string `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope string `pulumi:"environmentScope"`
 	// The name or id of the group.
@@ -131,6 +133,11 @@ func (o LookupGroupVariableResultOutput) ToLookupGroupVariableResultOutput() Loo
 
 func (o LookupGroupVariableResultOutput) ToLookupGroupVariableResultOutputWithContext(ctx context.Context) LookupGroupVariableResultOutput {
 	return o
+}
+
+// The description of the variable.
+func (o LookupGroupVariableResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.

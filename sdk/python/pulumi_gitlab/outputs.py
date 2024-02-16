@@ -2690,6 +2690,7 @@ class GetGroupSubgroupsSubgroupResult(dict):
 @pulumi.output_type
 class GetGroupVariablesVariableResult(dict):
     def __init__(__self__, *,
+                 description: str,
                  environment_scope: str,
                  group: str,
                  key: str,
@@ -2699,6 +2700,7 @@ class GetGroupVariablesVariableResult(dict):
                  value: str,
                  variable_type: str):
         """
+        :param str description: The description of the variable.
         :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param str group: The name or id of the group.
         :param str key: The name of the variable.
@@ -2708,6 +2710,7 @@ class GetGroupVariablesVariableResult(dict):
         :param str value: The value of the variable.
         :param str variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "environment_scope", environment_scope)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "key", key)
@@ -2716,6 +2719,14 @@ class GetGroupVariablesVariableResult(dict):
         pulumi.set(__self__, "raw", raw)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the variable.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="environmentScope")
@@ -5378,6 +5389,7 @@ class GetProjectTagsTagReleaseResult(dict):
 @pulumi.output_type
 class GetProjectVariablesVariableResult(dict):
     def __init__(__self__, *,
+                 description: str,
                  environment_scope: str,
                  key: str,
                  masked: bool,
@@ -5387,6 +5399,7 @@ class GetProjectVariablesVariableResult(dict):
                  value: str,
                  variable_type: str):
         """
+        :param str description: The description of the variable.
         :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param str key: The name of the variable.
         :param bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
@@ -5396,6 +5409,7 @@ class GetProjectVariablesVariableResult(dict):
         :param str value: The value of the variable.
         :param str variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "environment_scope", environment_scope)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "masked", masked)
@@ -5404,6 +5418,14 @@ class GetProjectVariablesVariableResult(dict):
         pulumi.set(__self__, "raw", raw)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the variable.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="environmentScope")
@@ -5490,6 +5512,7 @@ class GetProjectsProjectResult(dict):
                  ci_config_path: str,
                  ci_default_git_depth: int,
                  ci_forward_deployment_enabled: bool,
+                 ci_restrict_pipeline_cancellation_role: str,
                  container_expiration_policies: Sequence['outputs.GetProjectsProjectContainerExpirationPolicyResult'],
                  container_registry_access_level: str,
                  container_registry_enabled: bool,
@@ -5587,6 +5610,7 @@ class GetProjectsProjectResult(dict):
         :param str ci_config_path: CI config file path for the project.
         :param int ci_default_git_depth: Default number of revisions for shallow cloning.
         :param bool ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param str ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param Sequence['GetProjectsProjectContainerExpirationPolicyArgs'] container_expiration_policies: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param str container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param bool container_registry_enabled: Whether the container registry is enabled for the project.
@@ -5683,6 +5707,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "ci_config_path", ci_config_path)
         pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
         pulumi.set(__self__, "container_expiration_policies", container_expiration_policies)
         pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
         pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
@@ -5898,6 +5923,14 @@ class GetProjectsProjectResult(dict):
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @property
+    @pulumi.getter(name="ciRestrictPipelineCancellationRole")
+    def ci_restrict_pipeline_cancellation_role(self) -> str:
+        """
+        The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        """
+        return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
 
     @property
     @pulumi.getter(name="containerExpirationPolicies")

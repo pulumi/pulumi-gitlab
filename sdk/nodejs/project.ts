@@ -195,6 +195,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly ciForwardDeploymentEnabled!: pulumi.Output<boolean>;
     /**
+     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     */
+    public readonly ciRestrictPipelineCancellationRole!: pulumi.Output<string>;
+    /**
      * Use separate caches for protected branches.
      */
     public readonly ciSeparatedCaches!: pulumi.Output<boolean>;
@@ -553,6 +557,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciConfigPath"] = state ? state.ciConfigPath : undefined;
             resourceInputs["ciDefaultGitDepth"] = state ? state.ciDefaultGitDepth : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = state ? state.ciForwardDeploymentEnabled : undefined;
+            resourceInputs["ciRestrictPipelineCancellationRole"] = state ? state.ciRestrictPipelineCancellationRole : undefined;
             resourceInputs["ciSeparatedCaches"] = state ? state.ciSeparatedCaches : undefined;
             resourceInputs["containerExpirationPolicy"] = state ? state.containerExpirationPolicy : undefined;
             resourceInputs["containerRegistryAccessLevel"] = state ? state.containerRegistryAccessLevel : undefined;
@@ -652,6 +657,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciConfigPath"] = args ? args.ciConfigPath : undefined;
             resourceInputs["ciDefaultGitDepth"] = args ? args.ciDefaultGitDepth : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = args ? args.ciForwardDeploymentEnabled : undefined;
+            resourceInputs["ciRestrictPipelineCancellationRole"] = args ? args.ciRestrictPipelineCancellationRole : undefined;
             resourceInputs["ciSeparatedCaches"] = args ? args.ciSeparatedCaches : undefined;
             resourceInputs["containerExpirationPolicy"] = args ? args.containerExpirationPolicy : undefined;
             resourceInputs["containerRegistryAccessLevel"] = args ? args.containerRegistryAccessLevel : undefined;
@@ -825,6 +831,10 @@ export interface ProjectState {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    /**
+     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     */
+    ciRestrictPipelineCancellationRole?: pulumi.Input<string>;
     /**
      * Use separate caches for protected branches.
      */
@@ -1234,6 +1244,10 @@ export interface ProjectArgs {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    /**
+     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     */
+    ciRestrictPipelineCancellationRole?: pulumi.Input<string>;
     /**
      * Use separate caches for protected branches.
      */

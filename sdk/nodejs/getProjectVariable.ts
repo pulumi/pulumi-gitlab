@@ -59,6 +59,10 @@ export interface GetProjectVariableArgs {
  */
 export interface GetProjectVariableResult {
     /**
+     * The description of the variable.
+     */
+    readonly description: string;
+    /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
     readonly environmentScope: string;
