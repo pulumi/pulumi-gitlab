@@ -320,6 +320,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * 
+     */
+    @Import(name="ciRestrictPipelineCancellationRole")
+    private @Nullable Output<String> ciRestrictPipelineCancellationRole;
+
+    /**
+     * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * 
+     */
+    public Optional<Output<String>> ciRestrictPipelineCancellationRole() {
+        return Optional.ofNullable(this.ciRestrictPipelineCancellationRole);
+    }
+
+    /**
      * Use separate caches for protected branches.
      * 
      */
@@ -1558,6 +1573,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.ciConfigPath = $.ciConfigPath;
         this.ciDefaultGitDepth = $.ciDefaultGitDepth;
         this.ciForwardDeploymentEnabled = $.ciForwardDeploymentEnabled;
+        this.ciRestrictPipelineCancellationRole = $.ciRestrictPipelineCancellationRole;
         this.ciSeparatedCaches = $.ciSeparatedCaches;
         this.containerExpirationPolicy = $.containerExpirationPolicy;
         this.containerRegistryAccessLevel = $.containerRegistryAccessLevel;
@@ -2068,6 +2084,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ciForwardDeploymentEnabled(Boolean ciForwardDeploymentEnabled) {
             return ciForwardDeploymentEnabled(Output.of(ciForwardDeploymentEnabled));
+        }
+
+        /**
+         * @param ciRestrictPipelineCancellationRole The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciRestrictPipelineCancellationRole(@Nullable Output<String> ciRestrictPipelineCancellationRole) {
+            $.ciRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
+            return this;
+        }
+
+        /**
+         * @param ciRestrictPipelineCancellationRole The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciRestrictPipelineCancellationRole(String ciRestrictPipelineCancellationRole) {
+            return ciRestrictPipelineCancellationRole(Output.of(ciRestrictPipelineCancellationRole));
         }
 
         /**

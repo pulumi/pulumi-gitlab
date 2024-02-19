@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetGroupVariablesVariable {
     /**
+     * @return The description of the variable.
+     * 
+     */
+    private String description;
+    /**
      * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      * 
      */
@@ -53,6 +58,13 @@ public final class GetGroupVariablesVariable {
     private String variableType;
 
     private GetGroupVariablesVariable() {}
+    /**
+     * @return The description of the variable.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
     /**
      * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      * 
@@ -119,6 +131,7 @@ public final class GetGroupVariablesVariable {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String description;
         private String environmentScope;
         private String group;
         private String key;
@@ -130,6 +143,7 @@ public final class GetGroupVariablesVariable {
         public Builder() {}
         public Builder(GetGroupVariablesVariable defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.environmentScope = defaults.environmentScope;
     	      this.group = defaults.group;
     	      this.key = defaults.key;
@@ -140,6 +154,14 @@ public final class GetGroupVariablesVariable {
     	      this.variableType = defaults.variableType;
         }
 
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGroupVariablesVariable", "description");
+            }
+            this.description = description;
+            return this;
+        }
         @CustomType.Setter
         public Builder environmentScope(String environmentScope) {
             if (environmentScope == null) {
@@ -206,6 +228,7 @@ public final class GetGroupVariablesVariable {
         }
         public GetGroupVariablesVariable build() {
             final var _resultValue = new GetGroupVariablesVariable();
+            _resultValue.description = description;
             _resultValue.environmentScope = environmentScope;
             _resultValue.group = group;
             _resultValue.key = key;

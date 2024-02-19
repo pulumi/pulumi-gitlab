@@ -177,6 +177,8 @@ type Project struct {
 	CiDefaultGitDepth pulumi.IntOutput `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolOutput `pulumi:"ciForwardDeploymentEnabled"`
+	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	CiRestrictPipelineCancellationRole pulumi.StringOutput `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
 	CiSeparatedCaches pulumi.BoolOutput `pulumi:"ciSeparatedCaches"`
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
@@ -428,6 +430,8 @@ type projectState struct {
 	CiDefaultGitDepth *int `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
+	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	CiRestrictPipelineCancellationRole *string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
 	CiSeparatedCaches *bool `pulumi:"ciSeparatedCaches"`
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
@@ -642,6 +646,8 @@ type ProjectState struct {
 	CiDefaultGitDepth pulumi.IntPtrInput
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
+	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	CiRestrictPipelineCancellationRole pulumi.StringPtrInput
 	// Use separate caches for protected branches.
 	CiSeparatedCaches pulumi.BoolPtrInput
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
@@ -858,6 +864,8 @@ type projectArgs struct {
 	CiDefaultGitDepth *int `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
+	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	CiRestrictPipelineCancellationRole *string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
 	CiSeparatedCaches *bool `pulumi:"ciSeparatedCaches"`
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
@@ -1059,6 +1067,8 @@ type ProjectArgs struct {
 	CiDefaultGitDepth pulumi.IntPtrInput
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
+	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	CiRestrictPipelineCancellationRole pulumi.StringPtrInput
 	// Use separate caches for protected branches.
 	CiSeparatedCaches pulumi.BoolPtrInput
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
@@ -1402,6 +1412,11 @@ func (o ProjectOutput) CiDefaultGitDepth() pulumi.IntOutput {
 // When a new deployment job starts, skip older deployment jobs that are still pending.
 func (o ProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.CiForwardDeploymentEnabled }).(pulumi.BoolOutput)
+}
+
+// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+func (o ProjectOutput) CiRestrictPipelineCancellationRole() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CiRestrictPipelineCancellationRole }).(pulumi.StringOutput)
 }
 
 // Use separate caches for protected branches.

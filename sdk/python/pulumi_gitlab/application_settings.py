@@ -81,9 +81,9 @@ class ApplicationSettingsArgs:
                  elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
-                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_password: Optional[pulumi.Input[str]] = None,
-                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_search: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elasticsearch_username: Optional[pulumi.Input[str]] = None,
@@ -324,9 +324,9 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[bool] elasticsearch_limit_indexing: Limit Elasticsearch to index certain namespaces and projects.
         :param pulumi.Input[int] elasticsearch_max_bulk_concurrency: Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
         :param pulumi.Input[int] elasticsearch_max_bulk_size_mb: Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[str] elasticsearch_password: The password of your Elasticsearch instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[bool] elasticsearch_search: Enable Elasticsearch search.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_urls: The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
         :param pulumi.Input[str] elasticsearch_username: The username of your Elasticsearch instance.
@@ -1799,14 +1799,14 @@ class ApplicationSettingsArgs:
 
     @property
     @pulumi.getter(name="elasticsearchNamespaceIds")
-    def elasticsearch_namespace_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def elasticsearch_namespace_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """
         return pulumi.get(self, "elasticsearch_namespace_ids")
 
     @elasticsearch_namespace_ids.setter
-    def elasticsearch_namespace_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def elasticsearch_namespace_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "elasticsearch_namespace_ids", value)
 
     @property
@@ -1823,14 +1823,14 @@ class ApplicationSettingsArgs:
 
     @property
     @pulumi.getter(name="elasticsearchProjectIds")
-    def elasticsearch_project_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def elasticsearch_project_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """
         return pulumi.get(self, "elasticsearch_project_ids")
 
     @elasticsearch_project_ids.setter
-    def elasticsearch_project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def elasticsearch_project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "elasticsearch_project_ids", value)
 
     @property
@@ -3967,9 +3967,9 @@ class _ApplicationSettingsState:
                  elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
-                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_password: Optional[pulumi.Input[str]] = None,
-                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_search: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elasticsearch_username: Optional[pulumi.Input[str]] = None,
@@ -4210,9 +4210,9 @@ class _ApplicationSettingsState:
         :param pulumi.Input[bool] elasticsearch_limit_indexing: Limit Elasticsearch to index certain namespaces and projects.
         :param pulumi.Input[int] elasticsearch_max_bulk_concurrency: Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
         :param pulumi.Input[int] elasticsearch_max_bulk_size_mb: Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[str] elasticsearch_password: The password of your Elasticsearch instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[bool] elasticsearch_search: Enable Elasticsearch search.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_urls: The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
         :param pulumi.Input[str] elasticsearch_username: The username of your Elasticsearch instance.
@@ -5685,14 +5685,14 @@ class _ApplicationSettingsState:
 
     @property
     @pulumi.getter(name="elasticsearchNamespaceIds")
-    def elasticsearch_namespace_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def elasticsearch_namespace_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """
         return pulumi.get(self, "elasticsearch_namespace_ids")
 
     @elasticsearch_namespace_ids.setter
-    def elasticsearch_namespace_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def elasticsearch_namespace_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "elasticsearch_namespace_ids", value)
 
     @property
@@ -5709,14 +5709,14 @@ class _ApplicationSettingsState:
 
     @property
     @pulumi.getter(name="elasticsearchProjectIds")
-    def elasticsearch_project_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def elasticsearch_project_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """
         return pulumi.get(self, "elasticsearch_project_ids")
 
     @elasticsearch_project_ids.setter
-    def elasticsearch_project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def elasticsearch_project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "elasticsearch_project_ids", value)
 
     @property
@@ -7855,9 +7855,9 @@ class ApplicationSettings(pulumi.CustomResource):
                  elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
-                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_password: Optional[pulumi.Input[str]] = None,
-                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_search: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elasticsearch_username: Optional[pulumi.Input[str]] = None,
@@ -8112,9 +8112,9 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] elasticsearch_limit_indexing: Limit Elasticsearch to index certain namespaces and projects.
         :param pulumi.Input[int] elasticsearch_max_bulk_concurrency: Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
         :param pulumi.Input[int] elasticsearch_max_bulk_size_mb: Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[str] elasticsearch_password: The password of your Elasticsearch instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[bool] elasticsearch_search: Enable Elasticsearch search.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_urls: The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
         :param pulumi.Input[str] elasticsearch_username: The username of your Elasticsearch instance.
@@ -8390,9 +8390,9 @@ class ApplicationSettings(pulumi.CustomResource):
                  elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
-                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_password: Optional[pulumi.Input[str]] = None,
-                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_search: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elasticsearch_username: Optional[pulumi.Input[str]] = None,
@@ -8893,9 +8893,9 @@ class ApplicationSettings(pulumi.CustomResource):
             elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
             elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
             elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
-            elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             elasticsearch_password: Optional[pulumi.Input[str]] = None,
-            elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             elasticsearch_search: Optional[pulumi.Input[bool]] = None,
             elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             elasticsearch_username: Optional[pulumi.Input[str]] = None,
@@ -9141,9 +9141,9 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] elasticsearch_limit_indexing: Limit Elasticsearch to index certain namespaces and projects.
         :param pulumi.Input[int] elasticsearch_max_bulk_concurrency: Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
         :param pulumi.Input[int] elasticsearch_max_bulk_size_mb: Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[str] elasticsearch_password: The password of your Elasticsearch instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[bool] elasticsearch_search: Enable Elasticsearch search.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_urls: The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
         :param pulumi.Input[str] elasticsearch_username: The username of your Elasticsearch instance.
@@ -10103,7 +10103,7 @@ class ApplicationSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="elasticsearchNamespaceIds")
-    def elasticsearch_namespace_ids(self) -> pulumi.Output[Sequence[str]]:
+    def elasticsearch_namespace_ids(self) -> pulumi.Output[Sequence[int]]:
         """
         The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """
@@ -10119,7 +10119,7 @@ class ApplicationSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="elasticsearchProjectIds")
-    def elasticsearch_project_ids(self) -> pulumi.Output[Sequence[str]]:
+    def elasticsearch_project_ids(self) -> pulumi.Output[Sequence[int]]:
         """
         The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """

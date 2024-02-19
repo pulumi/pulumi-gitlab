@@ -146,6 +146,10 @@ namespace Pulumi.GitLab
     public sealed class GetGroupVariableResult
     {
         /// <summary>
+        /// The description of the variable.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         /// </summary>
         public readonly string EnvironmentScope;
@@ -184,6 +188,8 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetGroupVariableResult(
+            string description,
+
             string environmentScope,
 
             string group,
@@ -202,6 +208,7 @@ namespace Pulumi.GitLab
 
             string variableType)
         {
+            Description = description;
             EnvironmentScope = environmentScope;
             Group = group;
             Id = id;

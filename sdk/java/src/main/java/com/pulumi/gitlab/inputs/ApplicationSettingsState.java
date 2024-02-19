@@ -1030,13 +1030,13 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="elasticsearchNamespaceIds")
-    private @Nullable Output<List<String>> elasticsearchNamespaceIds;
+    private @Nullable Output<List<Integer>> elasticsearchNamespaceIds;
 
     /**
      * @return The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      * 
      */
-    public Optional<Output<List<String>>> elasticsearchNamespaceIds() {
+    public Optional<Output<List<Integer>>> elasticsearchNamespaceIds() {
         return Optional.ofNullable(this.elasticsearchNamespaceIds);
     }
 
@@ -1060,13 +1060,13 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="elasticsearchProjectIds")
-    private @Nullable Output<List<String>> elasticsearchProjectIds;
+    private @Nullable Output<List<Integer>> elasticsearchProjectIds;
 
     /**
      * @return The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      * 
      */
-    public Optional<Output<List<String>>> elasticsearchProjectIds() {
+    public Optional<Output<List<Integer>>> elasticsearchProjectIds() {
         return Optional.ofNullable(this.elasticsearchProjectIds);
     }
 
@@ -5380,7 +5380,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder elasticsearchNamespaceIds(@Nullable Output<List<String>> elasticsearchNamespaceIds) {
+        public Builder elasticsearchNamespaceIds(@Nullable Output<List<Integer>> elasticsearchNamespaceIds) {
             $.elasticsearchNamespaceIds = elasticsearchNamespaceIds;
             return this;
         }
@@ -5391,7 +5391,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder elasticsearchNamespaceIds(List<String> elasticsearchNamespaceIds) {
+        public Builder elasticsearchNamespaceIds(List<Integer> elasticsearchNamespaceIds) {
             return elasticsearchNamespaceIds(Output.of(elasticsearchNamespaceIds));
         }
 
@@ -5401,7 +5401,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder elasticsearchNamespaceIds(String... elasticsearchNamespaceIds) {
+        public Builder elasticsearchNamespaceIds(Integer... elasticsearchNamespaceIds) {
             return elasticsearchNamespaceIds(List.of(elasticsearchNamespaceIds));
         }
 
@@ -5432,7 +5432,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder elasticsearchProjectIds(@Nullable Output<List<String>> elasticsearchProjectIds) {
+        public Builder elasticsearchProjectIds(@Nullable Output<List<Integer>> elasticsearchProjectIds) {
             $.elasticsearchProjectIds = elasticsearchProjectIds;
             return this;
         }
@@ -5443,7 +5443,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder elasticsearchProjectIds(List<String> elasticsearchProjectIds) {
+        public Builder elasticsearchProjectIds(List<Integer> elasticsearchProjectIds) {
             return elasticsearchProjectIds(Output.of(elasticsearchProjectIds));
         }
 
@@ -5453,7 +5453,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder elasticsearchProjectIds(String... elasticsearchProjectIds) {
+        public Builder elasticsearchProjectIds(Integer... elasticsearchProjectIds) {
             return elasticsearchProjectIds(List.of(elasticsearchProjectIds));
         }
 

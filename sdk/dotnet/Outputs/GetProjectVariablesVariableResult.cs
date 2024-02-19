@@ -14,6 +14,10 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectVariablesVariableResult
     {
         /// <summary>
+        /// The description of the variable.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         /// </summary>
         public readonly string EnvironmentScope;
@@ -48,6 +52,8 @@ namespace Pulumi.GitLab.Outputs
 
         [OutputConstructor]
         private GetProjectVariablesVariableResult(
+            string description,
+
             string environmentScope,
 
             string key,
@@ -64,6 +70,7 @@ namespace Pulumi.GitLab.Outputs
 
             string variableType)
         {
+            Description = description;
             EnvironmentScope = environmentScope;
             Key = key;
             Masked = masked;

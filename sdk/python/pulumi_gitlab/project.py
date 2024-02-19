@@ -34,6 +34,7 @@ class ProjectArgs:
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
@@ -130,6 +131,7 @@ class ProjectArgs:
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -247,6 +249,8 @@ class ProjectArgs:
             pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        if ci_restrict_pipeline_cancellation_role is not None:
+            pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
         if ci_separated_caches is not None:
             pulumi.set(__self__, "ci_separated_caches", ci_separated_caches)
         if container_expiration_policy is not None:
@@ -624,6 +628,18 @@ class ProjectArgs:
     @ci_forward_deployment_enabled.setter
     def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ci_forward_deployment_enabled", value)
+
+    @property
+    @pulumi.getter(name="ciRestrictPipelineCancellationRole")
+    def ci_restrict_pipeline_cancellation_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        """
+        return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
+
+    @ci_restrict_pipeline_cancellation_role.setter
+    def ci_restrict_pipeline_cancellation_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ci_restrict_pipeline_cancellation_role", value)
 
     @property
     @pulumi.getter(name="ciSeparatedCaches")
@@ -1537,6 +1553,7 @@ class _ProjectState:
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
@@ -1640,6 +1657,7 @@ class _ProjectState:
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -1765,6 +1783,8 @@ class _ProjectState:
             pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        if ci_restrict_pipeline_cancellation_role is not None:
+            pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
         if ci_separated_caches is not None:
             pulumi.set(__self__, "ci_separated_caches", ci_separated_caches)
         if container_expiration_policy is not None:
@@ -2166,6 +2186,18 @@ class _ProjectState:
     @ci_forward_deployment_enabled.setter
     def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ci_forward_deployment_enabled", value)
+
+    @property
+    @pulumi.getter(name="ciRestrictPipelineCancellationRole")
+    def ci_restrict_pipeline_cancellation_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        """
+        return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
+
+    @ci_restrict_pipeline_cancellation_role.setter
+    def ci_restrict_pipeline_cancellation_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ci_restrict_pipeline_cancellation_role", value)
 
     @property
     @pulumi.getter(name="ciSeparatedCaches")
@@ -3152,6 +3184,7 @@ class Project(pulumi.CustomResource):
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
@@ -3319,6 +3352,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -3506,6 +3540,7 @@ class Project(pulumi.CustomResource):
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
@@ -3606,6 +3641,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["ci_config_path"] = ci_config_path
             __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
             __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
+            __props__.__dict__["ci_restrict_pipeline_cancellation_role"] = ci_restrict_pipeline_cancellation_role
             __props__.__dict__["ci_separated_caches"] = ci_separated_caches
             __props__.__dict__["container_expiration_policy"] = container_expiration_policy
             __props__.__dict__["container_registry_access_level"] = container_registry_access_level
@@ -3717,6 +3753,7 @@ class Project(pulumi.CustomResource):
             ci_config_path: Optional[pulumi.Input[str]] = None,
             ci_default_git_depth: Optional[pulumi.Input[int]] = None,
             ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+            ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
             ci_separated_caches: Optional[pulumi.Input[bool]] = None,
             container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
             container_registry_access_level: Optional[pulumi.Input[str]] = None,
@@ -3825,6 +3862,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -3932,6 +3970,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["ci_config_path"] = ci_config_path
         __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
         __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
+        __props__.__dict__["ci_restrict_pipeline_cancellation_role"] = ci_restrict_pipeline_cancellation_role
         __props__.__dict__["ci_separated_caches"] = ci_separated_caches
         __props__.__dict__["container_expiration_policy"] = container_expiration_policy
         __props__.__dict__["container_registry_access_level"] = container_registry_access_level
@@ -4170,6 +4209,14 @@ class Project(pulumi.CustomResource):
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @property
+    @pulumi.getter(name="ciRestrictPipelineCancellationRole")
+    def ci_restrict_pipeline_cancellation_role(self) -> pulumi.Output[str]:
+        """
+        The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        """
+        return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
 
     @property
     @pulumi.getter(name="ciSeparatedCaches")

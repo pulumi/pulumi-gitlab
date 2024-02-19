@@ -406,6 +406,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.ciForwardDeploymentEnabled;
     }
     /**
+     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * 
+     */
+    @Export(name="ciRestrictPipelineCancellationRole", refs={String.class}, tree="[0]")
+    private Output<String> ciRestrictPipelineCancellationRole;
+
+    /**
+     * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * 
+     */
+    public Output<String> ciRestrictPipelineCancellationRole() {
+        return this.ciRestrictPipelineCancellationRole;
+    }
+    /**
      * Use separate caches for protected branches.
      * 
      */

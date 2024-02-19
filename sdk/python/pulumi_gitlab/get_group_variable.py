@@ -21,7 +21,10 @@ class GetGroupVariableResult:
     """
     A collection of values returned by getGroupVariable.
     """
-    def __init__(__self__, environment_scope=None, group=None, id=None, key=None, masked=None, protected=None, raw=None, value=None, variable_type=None):
+    def __init__(__self__, description=None, environment_scope=None, group=None, id=None, key=None, masked=None, protected=None, raw=None, value=None, variable_type=None):
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if environment_scope and not isinstance(environment_scope, str):
             raise TypeError("Expected argument 'environment_scope' to be a str")
         pulumi.set(__self__, "environment_scope", environment_scope)
@@ -49,6 +52,14 @@ class GetGroupVariableResult:
         if variable_type and not isinstance(variable_type, str):
             raise TypeError("Expected argument 'variable_type' to be a str")
         pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the variable.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="environmentScope")
@@ -129,6 +140,7 @@ class AwaitableGetGroupVariableResult(GetGroupVariableResult):
         if False:
             yield self
         return GetGroupVariableResult(
+            description=self.description,
             environment_scope=self.environment_scope,
             group=self.group,
             id=self.id,
@@ -175,6 +187,7 @@ def get_group_variable(environment_scope: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroupVariable:getGroupVariable', __args__, opts=opts, typ=GetGroupVariableResult).value
 
     return AwaitableGetGroupVariableResult(
+        description=pulumi.get(__ret__, 'description'),
         environment_scope=pulumi.get(__ret__, 'environment_scope'),
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),

@@ -186,6 +186,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int CiDefaultGitDepth;
         /// <summary>
+        /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// </summary>
+        public readonly string CiRestrictPipelineCancellationRole;
+        /// <summary>
         /// Use separate caches for protected branches.
         /// </summary>
         public readonly bool CiSeparatedCaches;
@@ -426,6 +430,8 @@ namespace Pulumi.GitLab
 
             int ciDefaultGitDepth,
 
+            string ciRestrictPipelineCancellationRole,
+
             bool ciSeparatedCaches,
 
             ImmutableArray<Outputs.GetProjectContainerExpirationPolicyResult> containerExpirationPolicies,
@@ -545,6 +551,7 @@ namespace Pulumi.GitLab
             BuildsAccessLevel = buildsAccessLevel;
             CiConfigPath = ciConfigPath;
             CiDefaultGitDepth = ciDefaultGitDepth;
+            CiRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             CiSeparatedCaches = ciSeparatedCaches;
             ContainerExpirationPolicies = containerExpirationPolicies;
             ContainerRegistryAccessLevel = containerRegistryAccessLevel;

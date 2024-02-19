@@ -4081,6 +4081,8 @@ func (o GetGroupSubgroupsSubgroupArrayOutput) Index(i pulumi.IntInput) GetGroupS
 }
 
 type GetGroupVariablesVariable struct {
+	// The description of the variable.
+	Description string `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope string `pulumi:"environmentScope"`
 	// The name or id of the group.
@@ -4111,6 +4113,8 @@ type GetGroupVariablesVariableInput interface {
 }
 
 type GetGroupVariablesVariableArgs struct {
+	// The description of the variable.
+	Description pulumi.StringInput `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringInput `pulumi:"environmentScope"`
 	// The name or id of the group.
@@ -4178,6 +4182,11 @@ func (o GetGroupVariablesVariableOutput) ToGetGroupVariablesVariableOutput() Get
 
 func (o GetGroupVariablesVariableOutput) ToGetGroupVariablesVariableOutputWithContext(ctx context.Context) GetGroupVariablesVariableOutput {
 	return o
+}
+
+// The description of the variable.
+func (o GetGroupVariablesVariableOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupVariablesVariable) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
@@ -8464,6 +8473,8 @@ func (o GetProjectTagsTagReleaseArrayOutput) Index(i pulumi.IntInput) GetProject
 }
 
 type GetProjectVariablesVariable struct {
+	// The description of the variable.
+	Description string `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope string `pulumi:"environmentScope"`
 	// The name of the variable.
@@ -8494,6 +8505,8 @@ type GetProjectVariablesVariableInput interface {
 }
 
 type GetProjectVariablesVariableArgs struct {
+	// The description of the variable.
+	Description pulumi.StringInput `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringInput `pulumi:"environmentScope"`
 	// The name of the variable.
@@ -8561,6 +8574,11 @@ func (o GetProjectVariablesVariableOutput) ToGetProjectVariablesVariableOutput()
 
 func (o GetProjectVariablesVariableOutput) ToGetProjectVariablesVariableOutputWithContext(ctx context.Context) GetProjectVariablesVariableOutput {
 	return o
+}
+
+// The description of the variable.
+func (o GetProjectVariablesVariableOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectVariablesVariable) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
@@ -8658,6 +8676,8 @@ type GetProjectsProject struct {
 	CiDefaultGitDepth int `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled bool `pulumi:"ciForwardDeploymentEnabled"`
+	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	CiRestrictPipelineCancellationRole string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 	ContainerExpirationPolicies []GetProjectsProjectContainerExpirationPolicy `pulumi:"containerExpirationPolicies"`
 	// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -8863,6 +8883,8 @@ type GetProjectsProjectArgs struct {
 	CiDefaultGitDepth pulumi.IntInput `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolInput `pulumi:"ciForwardDeploymentEnabled"`
+	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	CiRestrictPipelineCancellationRole pulumi.StringInput `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 	ContainerExpirationPolicies GetProjectsProjectContainerExpirationPolicyArrayInput `pulumi:"containerExpirationPolicies"`
 	// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -9156,6 +9178,11 @@ func (o GetProjectsProjectOutput) CiDefaultGitDepth() pulumi.IntOutput {
 // When a new deployment job starts, skip older deployment jobs that are still pending.
 func (o GetProjectsProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.CiForwardDeploymentEnabled }).(pulumi.BoolOutput)
+}
+
+// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+func (o GetProjectsProjectOutput) CiRestrictPipelineCancellationRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.CiRestrictPipelineCancellationRole }).(pulumi.StringOutput)
 }
 
 // Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.

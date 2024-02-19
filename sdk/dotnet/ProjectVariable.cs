@@ -49,6 +49,12 @@ namespace Pulumi.GitLab
     public partial class ProjectVariable : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The description of the variable.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         /// </summary>
         [Output("environmentScope")]
@@ -143,6 +149,12 @@ namespace Pulumi.GitLab
     public sealed class ProjectVariableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The description of the variable.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         /// </summary>
         [Input("environmentScope")]
@@ -198,6 +210,12 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectVariableState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the variable.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         /// <summary>
         /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         /// </summary>
