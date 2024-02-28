@@ -39,6 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Basic GitLab Group Runner
 //			myGroup, err := gitlab.NewGroup(ctx, "myGroup", &gitlab.GroupArgs{
 //				Description: pulumi.String("group that holds the runners"),
 //			})
@@ -51,6 +52,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// GitLab Runner that runs only tagged jobs
 //			_, err = gitlab.NewRunner(ctx, "taggedOnly", &gitlab.RunnerArgs{
 //				RegistrationToken: myGroup.RunnersToken,
 //				Description:       pulumi.String("I only run tagged jobs"),
@@ -63,6 +65,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// GitLab Runner that only runs on protected branches
 //			_, err = gitlab.NewRunner(ctx, "protected", &gitlab.RunnerArgs{
 //				RegistrationToken: myGroup.RunnersToken,
 //				Description:       pulumi.String("I only run protected jobs"),
@@ -83,6 +86,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// This creates a configuration for a local "shell" runner, but can be changed to generate whatever is needed.
+//			// Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.
+//			// See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.
 //			_, err = local.NewFile(ctx, "config", &local.FileArgs{
 //				Filename: pulumi.String(fmt.Sprintf("%v/config.toml", path.Module)),
 //				Content: myRunner.AuthenticationToken.ApplyT(func(authenticationToken string) (string, error) {

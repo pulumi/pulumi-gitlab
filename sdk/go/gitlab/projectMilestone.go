@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a project for the milestone to use
 //			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
 //				Description: pulumi.String("An example project"),
 //				NamespaceId: pulumi.Any(gitlab_group.Example.Id),

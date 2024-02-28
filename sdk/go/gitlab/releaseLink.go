@@ -30,12 +30,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a project
 //			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
 //				Description: pulumi.String("An example project"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// Can create release link only to a tag associated with a release
 //			_, err = gitlab.NewReleaseLink(ctx, "exampleReleaseLink", &gitlab.ReleaseLinkArgs{
 //				Project: exampleProject.ID(),
 //				TagName: pulumi.String("tag_name_associated_with_release"),

@@ -38,6 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
 //			_, err = gitlab.NewUserGpgKey(ctx, "exampleUserGpgKey", &gitlab.UserGpgKeyArgs{
 //				UserId: *pulumi.String(exampleUser.Id),
 //				Key:    pulumi.String("-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----"),
@@ -45,6 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Manages a GPG key for the current user
 //			_, err = gitlab.NewUserGpgKey(ctx, "exampleUserUserGpgKey", &gitlab.UserGpgKeyArgs{
 //				Key: pulumi.String("-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----"),
 //			})

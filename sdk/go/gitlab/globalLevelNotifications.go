@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create Custom global level notification
 //			_, err := gitlab.NewGlobalLevelNotifications(ctx, "foo", &gitlab.GlobalLevelNotificationsArgs{
 //				Level:           pulumi.String("custom"),
 //				NewMergeRequest: pulumi.Bool(true),

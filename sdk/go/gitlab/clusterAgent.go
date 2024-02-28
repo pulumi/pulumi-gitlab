@@ -48,6 +48,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Optionally, configure the agent as described in
+//			// https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
 //			_, err = gitlab.NewRepositoryFile(ctx, "exampleAgentConfig", &gitlab.RepositoryFileArgs{
 //				Project: example.Project,
 //				Branch:  pulumi.String("main"),

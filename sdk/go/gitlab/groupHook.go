@@ -38,6 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Setting all attributes
 //			_, err = gitlab.NewGroupHook(ctx, "allAttributes", &gitlab.GroupHookArgs{
 //				ConfidentialIssuesEvents: pulumi.Bool(false),
 //				ConfidentialNoteEvents:   pulumi.Bool(true),
