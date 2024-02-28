@@ -38,6 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Scoped label
 //			_, err = gitlab.NewProjectLabel(ctx, "devopsCreate", &gitlab.ProjectLabelArgs{
 //				Project:     pulumi.Any(gitlab_project.Example.Id),
 //				Description: pulumi.String("issue for creating infrastructure resources"),

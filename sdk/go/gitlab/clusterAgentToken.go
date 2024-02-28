@@ -35,6 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create token for an agent
 //			_, err := gitlab.NewClusterAgentToken(ctx, "example", &gitlab.ClusterAgentTokenArgs{
 //				Project:     pulumi.String("12345"),
 //				AgentId:     pulumi.Int(42),

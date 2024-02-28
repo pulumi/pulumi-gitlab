@@ -39,6 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a project in the example group
 //			_, err = gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
 //				Description: pulumi.String("An example project"),
 //				NamespaceId: exampleGroup.ID(),
@@ -46,6 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Group with custom push rules
 //			_, err = gitlab.NewGroup(ctx, "example-two", &gitlab.GroupArgs{
 //				Path:        pulumi.String("example-two"),
 //				Description: pulumi.String("An example group with push rules"),

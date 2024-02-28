@@ -32,6 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Project with custom push rules
 //			_, err = gitlab.NewProject(ctx, "example-two", &gitlab.ProjectArgs{
 //				PushRules: &gitlab.ProjectPushRulesArgs{
 //					AuthorEmailRegex:     pulumi.String("@example\\.com$"),
@@ -56,6 +57,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Fork a project
 //			_, err = gitlab.NewProject(ctx, "forkProject", &gitlab.ProjectArgs{
 //				Description:         pulumi.String("This is a fork"),
 //				ForkedFromProjectId: example.ID(),
@@ -63,6 +65,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Fork a project and setup a pull mirror
 //			_, err = gitlab.NewProject(ctx, "forkIndex/projectProject", &gitlab.ProjectArgs{
 //				Description:         pulumi.String("This is a fork"),
 //				ForkedFromProjectId: example.ID(),
@@ -72,12 +75,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a project by importing it from a public project
 //			_, err = gitlab.NewProject(ctx, "importPublic", &gitlab.ProjectArgs{
 //				ImportUrl: pulumi.String("https://gitlab.example.com/repo.git"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// Create a project by importing it from a public project and setup the pull mirror
 //			_, err = gitlab.NewProject(ctx, "importPublicWithMirror", &gitlab.ProjectArgs{
 //				ImportUrl: pulumi.String("https://gitlab.example.com/repo.git"),
 //				Mirror:    pulumi.Bool(true),
@@ -85,6 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a project by importing it from a private project
 //			_, err = gitlab.NewProject(ctx, "importPrivateProject", &gitlab.ProjectArgs{
 //				ImportUrl:         pulumi.String("https://gitlab.example.com/repo.git"),
 //				ImportUrlUsername: pulumi.String("user"),
@@ -93,6 +99,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a project by importing it from a private project and setup the pull mirror
 //			_, err = gitlab.NewProject(ctx, "importPrivateWithMirror", &gitlab.ProjectArgs{
 //				ImportUrl:         pulumi.String("https://gitlab.example.com/repo.git"),
 //				ImportUrlUsername: pulumi.String("user"),
@@ -102,6 +109,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a project by importing it from a private project and provide credentials in `import_url`
+//			// NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+//			//
+//			//	GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
 //			_, err = gitlab.NewProject(ctx, "importPrivateIndex/projectProject", &gitlab.ProjectArgs{
 //				ImportUrl: pulumi.String("https://user:pass@gitlab.example.com/repo.git"),
 //			})

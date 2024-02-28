@@ -25,6 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Set the 2FA settings
 //			_, err := gitlab.NewApplicationSettings(ctx, "this", &gitlab.ApplicationSettingsArgs{
 //				RequireTwoFactorAuthentication: pulumi.Bool(true),
 //				TwoFactorGracePeriod:           pulumi.Int(24),

@@ -41,6 +41,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Example using auto_ssl_enabled, which uses lets encrypt to generate a certificate
 //			_, err := gitlab.NewPagesDomain(ctx, "thisPagesDomain", &gitlab.PagesDomainArgs{
 //				Project:        pulumi.String("123"),
 //				Domain:         pulumi.String("example.com"),
@@ -49,6 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Example using a manually generated certificate and key
 //			_, err = gitlab.NewPagesDomain(ctx, "thisIndex/pagesDomainPagesDomain", &gitlab.PagesDomainArgs{
 //				Project:     pulumi.String("123"),
 //				Domain:      pulumi.String("example.com"),

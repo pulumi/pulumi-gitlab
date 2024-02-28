@@ -30,14 +30,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// A repo to host the deployment key
 //			parentProject, err := gitlab.NewProject(ctx, "parentProject", nil)
 //			if err != nil {
 //				return err
 //			}
+//			// A second repo to use the deployment key from the parent project
 //			fooProject, err := gitlab.NewProject(ctx, "fooProject", nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Upload a deployment key for the parent repo
 //			parentDeployKey, err := gitlab.NewDeployKey(ctx, "parentDeployKey", &gitlab.DeployKeyArgs{
 //				Project: parentProject.ID(),
 //				Title:   pulumi.String("Example deploy key"),
@@ -46,6 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Enable the deployment key on the second repo
 //			_, err = gitlab.NewDeployKeyEnable(ctx, "fooDeployKeyEnable", &gitlab.DeployKeyEnableArgs{
 //				Project: fooProject.ID(),
 //				KeyId:   parentDeployKey.DeployKeyId,

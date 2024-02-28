@@ -42,6 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Pipeline status badges with placeholders will be enabled
 //			_, err = gitlab.NewProjectBadge(ctx, "gitlabPipeline", &gitlab.ProjectBadgeArgs{
 //				Project:  foo.ID(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}"),
@@ -50,6 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Test coverage report badges with placeholders will be enabled
 //			_, err = gitlab.NewProjectBadge(ctx, "gitlabCoverage", &gitlab.ProjectBadgeArgs{
 //				Project:  foo.ID(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/jobs"),
@@ -58,6 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Latest release badges with placeholders will be enabled
 //			_, err = gitlab.NewProjectBadge(ctx, "gitlabRelease", &gitlab.ProjectBadgeArgs{
 //				Project:  foo.ID(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/releases"),
