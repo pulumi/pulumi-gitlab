@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -27,6 +28,7 @@ import * as utilities from "./utilities";
  *     project: exampleProject.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -36,7 +38,7 @@ import * as utilities from "./utilities";
  * $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
  * ```
  *
- *  NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
+ * NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
  */
 export class ProjectTag extends pulumi.CustomResource {
     /**

@@ -343,6 +343,7 @@ class Runner(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -385,6 +386,7 @@ class Runner(pulumi.CustomResource):
             
         \"\"\"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -424,6 +426,7 @@ class Runner(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -466,6 +469,7 @@ class Runner(pulumi.CustomResource):
             
         \"\"\"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -30,16 +31,17 @@ import * as utilities from "./utilities";
  *     username: "example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
+ * $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
  * ```
  *
- *  The `id` must be an integer for the id of the user you want to import,
+ * The `id` must be an integer for the id of the user you want to import,
  *
- *  for example:
+ * for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/user:User example 42

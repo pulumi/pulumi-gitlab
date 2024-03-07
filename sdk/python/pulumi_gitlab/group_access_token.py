@@ -284,6 +284,7 @@ class GroupAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -298,6 +299,7 @@ class GroupAccessToken(pulumi.CustomResource):
             key="gat",
             value=example_group_access_token.token)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -307,7 +309,7 @@ class GroupAccessToken(pulumi.CustomResource):
         $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
         ```
 
-         ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+        ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -332,6 +334,7 @@ class GroupAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -346,6 +349,7 @@ class GroupAccessToken(pulumi.CustomResource):
             key="gat",
             value=example_group_access_token.token)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -355,7 +359,7 @@ class GroupAccessToken(pulumi.CustomResource):
         $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
         ```
 
-         ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+        ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param GroupAccessTokenArgs args: The arguments to use to populate this resource's properties.

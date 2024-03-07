@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetClusterAgents(ctx *pulumi.Context, args *GetClusterAgentsArgs, opts ...pulumi.InvokeOption) (*GetClusterAgentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterAgentsResult

@@ -18,6 +18,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,16 +56,17 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
+    /// $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
     /// ```
     /// 
-    ///  `id` can be whatever the [details of a group][details_of_a_group] api takes for
+    /// `id` can be whatever the [details of a group][details_of_a_group] api takes for
     /// 
-    ///  its `:id` value, so for example:
+    /// its `:id` value, so for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/group:Group example example

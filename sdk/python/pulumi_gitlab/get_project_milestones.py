@@ -143,12 +143,14 @@ def get_project_milestones(iids: Optional[Sequence[int]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_project_milestones(project="foo/bar")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[int] iids: Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
@@ -191,12 +193,14 @@ def get_project_milestones_output(iids: Optional[pulumi.Input[Optional[Sequence[
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_project_milestones(project="foo/bar")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[int] iids: Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).

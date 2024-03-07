@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     url: "https://example.com/hook/example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -30,7 +32,7 @@ import * as utilities from "./utilities";
  * $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
  * ```
  *
- *  NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ * NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class ProjectHook extends pulumi.CustomResource {
     /**

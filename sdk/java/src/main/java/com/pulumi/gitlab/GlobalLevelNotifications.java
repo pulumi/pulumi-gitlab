@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,14 +51,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Note: You can import a global notification state using &#34;gitlab&#34; as the ID.
  * 
- *  The ID will always be gitlab, because the global notificatio only exists
+ * The ID will always be gitlab, because the global notificatio only exists
  * 
- *  once per user
+ * once per user
  * 
  * ```sh
  * $ pulumi import gitlab:index/globalLevelNotifications:GlobalLevelNotifications example gitlab

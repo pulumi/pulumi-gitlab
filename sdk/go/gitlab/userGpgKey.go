@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,6 +59,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -67,7 +69,7 @@ import (
 // $ pulumi import gitlab:index/userGpgKey:UserGpgKey example 42:1
 // ```
 //
-//	Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
+// Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
 //
 // ```sh
 // $ pulumi import gitlab:index/userGpgKey:UserGpgKey example_user 1

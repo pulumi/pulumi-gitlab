@@ -334,6 +334,7 @@ class GroupVariable(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -346,6 +347,7 @@ class GroupVariable(pulumi.CustomResource):
             protected=False,
             value="group_variable_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -380,6 +382,7 @@ class GroupVariable(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -392,6 +395,7 @@ class GroupVariable(pulumi.CustomResource):
             protected=False,
             value="group_variable_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

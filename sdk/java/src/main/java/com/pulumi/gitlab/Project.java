@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -109,22 +111,23 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
+ * $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
  * ```
  * 
- *  `id` can be whatever the [get single project api][get_single_project] takes for
+ * `id` can be whatever the [get single project api][get_single_project] takes for
  * 
- *  its `:id` value, so for example:
+ * its `:id` value, so for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/project:Project example richardc/example
  * ```
  * 
- *  NOTE: the `import_url_username` and `import_url_password` cannot be imported.
+ * NOTE: the `import_url_username` and `import_url_password` cannot be imported.
  * 
  */
 @ResourceType(type="gitlab:index/project:Project")

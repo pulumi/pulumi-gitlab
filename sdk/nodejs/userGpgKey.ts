@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -32,6 +33,7 @@ import * as utilities from "./utilities";
  * ...
  * -----END PGP PUBLIC KEY BLOCK-----`});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -41,7 +43,7 @@ import * as utilities from "./utilities";
  * $ pulumi import gitlab:index/userGpgKey:UserGpgKey example 42:1
  * ```
  *
- *  Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
+ * Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
  *
  * ```sh
  * $ pulumi import gitlab:index/userGpgKey:UserGpgKey example_user 1

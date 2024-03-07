@@ -210,6 +210,7 @@ def get_project_milestone(milestone_id: Optional[int] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -217,6 +218,7 @@ def get_project_milestone(milestone_id: Optional[int] = None,
     example = gitlab.get_project_milestone(milestone_id=10,
         project="foo/bar")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int milestone_id: The instance-wide ID of the project’s milestone.
@@ -256,6 +258,7 @@ def get_project_milestone_output(milestone_id: Optional[pulumi.Input[int]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -263,6 +266,7 @@ def get_project_milestone_output(milestone_id: Optional[pulumi.Input[int]] = Non
     example = gitlab.get_project_milestone(milestone_id=10,
         project="foo/bar")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int milestone_id: The instance-wide ID of the project’s milestone.

@@ -133,6 +133,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -161,6 +162,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationResult> getApplication(GetApplicationArgs args) {
@@ -173,6 +175,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -201,6 +204,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args) {
@@ -213,6 +217,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -241,6 +246,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationResult> getApplication(GetApplicationArgs args, InvokeOptions options) {
@@ -253,6 +259,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -281,6 +288,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args, InvokeOptions options) {
@@ -292,6 +300,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -321,6 +331,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBranchResult> getBranch(GetBranchArgs args) {
@@ -332,6 +343,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -361,6 +374,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBranchResult> getBranchPlain(GetBranchPlainArgs args) {
@@ -372,6 +386,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -401,6 +417,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBranchResult> getBranch(GetBranchArgs args, InvokeOptions options) {
@@ -412,6 +429,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -441,6 +460,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBranchResult> getBranchPlain(GetBranchPlainArgs args, InvokeOptions options) {
@@ -454,6 +474,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -483,6 +505,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterAgentResult> getClusterAgent(GetClusterAgentArgs args) {
@@ -496,6 +519,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -525,6 +550,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterAgentResult> getClusterAgentPlain(GetClusterAgentPlainArgs args) {
@@ -538,6 +564,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -567,6 +595,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterAgentResult> getClusterAgent(GetClusterAgentArgs args, InvokeOptions options) {
@@ -580,6 +609,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -609,6 +640,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterAgentResult> getClusterAgentPlain(GetClusterAgentPlainArgs args, InvokeOptions options) {
@@ -622,6 +654,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -650,6 +684,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterAgentsResult> getClusterAgents(GetClusterAgentsArgs args) {
@@ -663,6 +698,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -691,6 +728,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterAgentsResult> getClusterAgentsPlain(GetClusterAgentsPlainArgs args) {
@@ -704,6 +742,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -732,6 +772,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterAgentsResult> getClusterAgents(GetClusterAgentsArgs args, InvokeOptions options) {
@@ -745,6 +786,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -773,6 +816,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterAgentsResult> getClusterAgentsPlain(GetClusterAgentsPlainArgs args, InvokeOptions options) {
@@ -784,6 +828,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -809,6 +855,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCurrentUserResult> getCurrentUser() {
@@ -820,6 +867,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -845,6 +894,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain() {
@@ -856,6 +906,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -881,6 +933,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCurrentUserResult> getCurrentUser(InvokeArgs args) {
@@ -892,6 +945,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -917,6 +972,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(InvokeArgs args) {
@@ -928,6 +984,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -953,6 +1011,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCurrentUserResult> getCurrentUser(InvokeArgs args, InvokeOptions options) {
@@ -964,6 +1023,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -989,6 +1050,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(InvokeArgs args, InvokeOptions options) {
@@ -1000,6 +1062,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1028,6 +1092,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupResult> getGroup() {
@@ -1039,6 +1104,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1067,6 +1134,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain() {
@@ -1078,6 +1146,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1106,6 +1176,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args) {
@@ -1117,6 +1188,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1145,6 +1218,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args) {
@@ -1156,6 +1230,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1184,6 +1260,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args, InvokeOptions options) {
@@ -1195,6 +1272,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1223,6 +1302,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args, InvokeOptions options) {
@@ -1235,6 +1315,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1269,6 +1350,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupHookResult> getGroupHook(GetGroupHookArgs args) {
@@ -1281,6 +1363,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1315,6 +1398,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupHookResult> getGroupHookPlain(GetGroupHookPlainArgs args) {
@@ -1327,6 +1411,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1361,6 +1446,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupHookResult> getGroupHook(GetGroupHookArgs args, InvokeOptions options) {
@@ -1373,6 +1459,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1407,6 +1494,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupHookResult> getGroupHookPlain(GetGroupHookPlainArgs args, InvokeOptions options) {
@@ -1419,6 +1507,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1452,6 +1541,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupHooksResult> getGroupHooks(GetGroupHooksArgs args) {
@@ -1464,6 +1554,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1497,6 +1588,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupHooksResult> getGroupHooksPlain(GetGroupHooksPlainArgs args) {
@@ -1509,6 +1601,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1542,6 +1635,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupHooksResult> getGroupHooks(GetGroupHooksArgs args, InvokeOptions options) {
@@ -1554,6 +1648,7 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1587,6 +1682,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupHooksResult> getGroupHooksPlain(GetGroupHooksPlainArgs args, InvokeOptions options) {
@@ -1598,6 +1694,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1626,6 +1724,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupMembershipResult> getGroupMembership() {
@@ -1637,6 +1736,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1665,6 +1766,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain() {
@@ -1676,6 +1778,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1704,6 +1808,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupMembershipResult> getGroupMembership(GetGroupMembershipArgs args) {
@@ -1715,6 +1820,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1743,6 +1850,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain(GetGroupMembershipPlainArgs args) {
@@ -1754,6 +1862,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1782,6 +1892,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupMembershipResult> getGroupMembership(GetGroupMembershipArgs args, InvokeOptions options) {
@@ -1793,6 +1904,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1821,6 +1934,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain(GetGroupMembershipPlainArgs args, InvokeOptions options) {
@@ -1832,6 +1946,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1861,6 +1977,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupSubgroupsResult> getGroupSubgroups(GetGroupSubgroupsArgs args) {
@@ -1872,6 +1989,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1901,6 +2020,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupSubgroupsResult> getGroupSubgroupsPlain(GetGroupSubgroupsPlainArgs args) {
@@ -1912,6 +2032,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1941,6 +2063,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupSubgroupsResult> getGroupSubgroups(GetGroupSubgroupsArgs args, InvokeOptions options) {
@@ -1952,6 +2075,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1981,6 +2106,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupSubgroupsResult> getGroupSubgroupsPlain(GetGroupSubgroupsPlainArgs args, InvokeOptions options) {
@@ -1992,6 +2118,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2027,6 +2155,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupVariableResult> getGroupVariable(GetGroupVariableArgs args) {
@@ -2038,6 +2167,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2073,6 +2204,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupVariableResult> getGroupVariablePlain(GetGroupVariablePlainArgs args) {
@@ -2084,6 +2216,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2119,6 +2253,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupVariableResult> getGroupVariable(GetGroupVariableArgs args, InvokeOptions options) {
@@ -2130,6 +2265,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2165,6 +2302,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupVariableResult> getGroupVariablePlain(GetGroupVariablePlainArgs args, InvokeOptions options) {
@@ -2176,6 +2314,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2209,6 +2349,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupVariablesResult> getGroupVariables(GetGroupVariablesArgs args) {
@@ -2220,6 +2361,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2253,6 +2396,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupVariablesResult> getGroupVariablesPlain(GetGroupVariablesPlainArgs args) {
@@ -2264,6 +2408,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2297,6 +2443,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupVariablesResult> getGroupVariables(GetGroupVariablesArgs args, InvokeOptions options) {
@@ -2308,6 +2455,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2341,6 +2490,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupVariablesResult> getGroupVariablesPlain(GetGroupVariablesPlainArgs args, InvokeOptions options) {
@@ -2356,6 +2506,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2389,6 +2541,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups() {
@@ -2404,6 +2557,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2437,6 +2592,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
@@ -2452,6 +2608,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2485,6 +2643,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
@@ -2500,6 +2659,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2533,6 +2694,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -2548,6 +2710,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2581,6 +2745,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
@@ -2596,6 +2761,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2629,6 +2796,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
@@ -2642,6 +2810,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2670,6 +2840,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceDeployKeysResult> getInstanceDeployKeys() {
@@ -2683,6 +2854,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2711,6 +2884,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceDeployKeysResult> getInstanceDeployKeysPlain() {
@@ -2724,6 +2898,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2752,6 +2928,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceDeployKeysResult> getInstanceDeployKeys(GetInstanceDeployKeysArgs args) {
@@ -2765,6 +2942,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2793,6 +2972,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceDeployKeysResult> getInstanceDeployKeysPlain(GetInstanceDeployKeysPlainArgs args) {
@@ -2806,6 +2986,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2834,6 +3016,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceDeployKeysResult> getInstanceDeployKeys(GetInstanceDeployKeysArgs args, InvokeOptions options) {
@@ -2847,6 +3030,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2875,6 +3060,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceDeployKeysResult> getInstanceDeployKeysPlain(GetInstanceDeployKeysPlainArgs args, InvokeOptions options) {
@@ -2886,6 +3072,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2914,6 +3102,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceVariableResult> getInstanceVariable(GetInstanceVariableArgs args) {
@@ -2925,6 +3114,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2953,6 +3144,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceVariableResult> getInstanceVariablePlain(GetInstanceVariablePlainArgs args) {
@@ -2964,6 +3156,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2992,6 +3186,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceVariableResult> getInstanceVariable(GetInstanceVariableArgs args, InvokeOptions options) {
@@ -3003,6 +3198,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3031,6 +3228,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceVariableResult> getInstanceVariablePlain(GetInstanceVariablePlainArgs args, InvokeOptions options) {
@@ -3042,6 +3240,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3067,6 +3267,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceVariablesResult> getInstanceVariables() {
@@ -3078,6 +3279,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3103,6 +3306,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceVariablesResult> getInstanceVariablesPlain() {
@@ -3114,6 +3318,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3139,6 +3345,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceVariablesResult> getInstanceVariables(InvokeArgs args) {
@@ -3150,6 +3357,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3175,6 +3384,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceVariablesResult> getInstanceVariablesPlain(InvokeArgs args) {
@@ -3186,6 +3396,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3211,6 +3423,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceVariablesResult> getInstanceVariables(InvokeArgs args, InvokeOptions options) {
@@ -3222,6 +3435,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3247,6 +3462,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceVariablesResult> getInstanceVariablesPlain(InvokeArgs args, InvokeOptions options) {
@@ -3258,6 +3474,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3283,6 +3501,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetadataResult> getMetadata() {
@@ -3294,6 +3513,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3319,6 +3540,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetadataResult> getMetadataPlain() {
@@ -3330,6 +3552,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3355,6 +3579,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetadataResult> getMetadata(InvokeArgs args) {
@@ -3366,6 +3591,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3391,6 +3618,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetadataResult> getMetadataPlain(InvokeArgs args) {
@@ -3402,6 +3630,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3427,6 +3657,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetadataResult> getMetadata(InvokeArgs args, InvokeOptions options) {
@@ -3438,6 +3669,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3463,6 +3696,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetadataResult> getMetadataPlain(InvokeArgs args, InvokeOptions options) {
@@ -3474,6 +3708,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3502,6 +3738,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject() {
@@ -3513,6 +3750,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3541,6 +3780,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain() {
@@ -3552,6 +3792,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3580,6 +3822,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
@@ -3591,6 +3834,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3619,6 +3864,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
@@ -3630,6 +3876,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3658,6 +3906,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
@@ -3669,6 +3918,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3697,6 +3948,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
@@ -3708,6 +3960,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3736,6 +3990,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectBranchesResult> getProjectBranches(GetProjectBranchesArgs args) {
@@ -3747,6 +4002,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3775,6 +4032,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectBranchesResult> getProjectBranchesPlain(GetProjectBranchesPlainArgs args) {
@@ -3786,6 +4044,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3814,6 +4074,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectBranchesResult> getProjectBranches(GetProjectBranchesArgs args, InvokeOptions options) {
@@ -3825,6 +4086,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3853,6 +4116,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectBranchesResult> getProjectBranchesPlain(GetProjectBranchesPlainArgs args, InvokeOptions options) {
@@ -3864,6 +4128,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-project-hook)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3898,6 +4164,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectHookResult> getProjectHook(GetProjectHookArgs args) {
@@ -3909,6 +4176,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-project-hook)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3943,6 +4212,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectHookResult> getProjectHookPlain(GetProjectHookPlainArgs args) {
@@ -3954,6 +4224,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-project-hook)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3988,6 +4260,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectHookResult> getProjectHook(GetProjectHookArgs args, InvokeOptions options) {
@@ -3999,6 +4272,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-project-hook)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4033,6 +4308,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectHookResult> getProjectHookPlain(GetProjectHookPlainArgs args, InvokeOptions options) {
@@ -4044,6 +4320,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-project-hooks)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4077,6 +4355,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectHooksResult> getProjectHooks(GetProjectHooksArgs args) {
@@ -4088,6 +4367,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-project-hooks)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4121,6 +4402,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectHooksResult> getProjectHooksPlain(GetProjectHooksPlainArgs args) {
@@ -4132,6 +4414,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-project-hooks)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4165,6 +4449,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectHooksResult> getProjectHooks(GetProjectHooksArgs args, InvokeOptions options) {
@@ -4176,6 +4461,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-project-hooks)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4209,6 +4496,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectHooksResult> getProjectHooksPlain(GetProjectHooksPlainArgs args, InvokeOptions options) {
@@ -4220,6 +4508,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4255,6 +4545,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectIssueResult> getProjectIssue(GetProjectIssueArgs args) {
@@ -4266,6 +4557,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4301,6 +4594,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectIssueResult> getProjectIssuePlain(GetProjectIssuePlainArgs args) {
@@ -4312,6 +4606,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4347,6 +4643,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectIssueResult> getProjectIssue(GetProjectIssueArgs args, InvokeOptions options) {
@@ -4358,6 +4655,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4393,6 +4692,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectIssueResult> getProjectIssuePlain(GetProjectIssuePlainArgs args, InvokeOptions options) {
@@ -4404,6 +4704,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4438,6 +4740,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectIssuesResult> getProjectIssues(GetProjectIssuesArgs args) {
@@ -4449,6 +4752,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4483,6 +4788,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectIssuesResult> getProjectIssuesPlain(GetProjectIssuesPlainArgs args) {
@@ -4494,6 +4800,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4528,6 +4836,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectIssuesResult> getProjectIssues(GetProjectIssuesArgs args, InvokeOptions options) {
@@ -4539,6 +4848,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4573,6 +4884,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectIssuesResult> getProjectIssuesPlain(GetProjectIssuesPlainArgs args, InvokeOptions options) {
@@ -4586,6 +4898,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4615,6 +4929,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMembershipResult> getProjectMembership() {
@@ -4628,6 +4943,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4657,6 +4974,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain() {
@@ -4670,6 +4988,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4699,6 +5019,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMembershipResult> getProjectMembership(GetProjectMembershipArgs args) {
@@ -4712,6 +5033,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4741,6 +5064,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain(GetProjectMembershipPlainArgs args) {
@@ -4754,6 +5078,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4783,6 +5109,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMembershipResult> getProjectMembership(GetProjectMembershipArgs args, InvokeOptions options) {
@@ -4796,6 +5123,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4825,6 +5154,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain(GetProjectMembershipPlainArgs args, InvokeOptions options) {
@@ -4836,6 +5166,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4865,6 +5197,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMilestoneResult> getProjectMilestone(GetProjectMilestoneArgs args) {
@@ -4876,6 +5209,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4905,6 +5240,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectMilestoneResult> getProjectMilestonePlain(GetProjectMilestonePlainArgs args) {
@@ -4916,6 +5252,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4945,6 +5283,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMilestoneResult> getProjectMilestone(GetProjectMilestoneArgs args, InvokeOptions options) {
@@ -4956,6 +5295,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4985,6 +5326,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectMilestoneResult> getProjectMilestonePlain(GetProjectMilestonePlainArgs args, InvokeOptions options) {
@@ -4996,6 +5338,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5024,6 +5368,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMilestonesResult> getProjectMilestones(GetProjectMilestonesArgs args) {
@@ -5035,6 +5380,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5063,6 +5410,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectMilestonesResult> getProjectMilestonesPlain(GetProjectMilestonesPlainArgs args) {
@@ -5074,6 +5422,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5102,6 +5452,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMilestonesResult> getProjectMilestones(GetProjectMilestonesArgs args, InvokeOptions options) {
@@ -5113,6 +5464,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5141,6 +5494,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectMilestonesResult> getProjectMilestonesPlain(GetProjectMilestonesPlainArgs args, InvokeOptions options) {
@@ -5152,6 +5506,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5181,6 +5537,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectProtectedBranchResult> getProjectProtectedBranch(GetProjectProtectedBranchArgs args) {
@@ -5192,6 +5549,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5221,6 +5580,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectProtectedBranchResult> getProjectProtectedBranchPlain(GetProjectProtectedBranchPlainArgs args) {
@@ -5232,6 +5592,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5261,6 +5623,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectProtectedBranchResult> getProjectProtectedBranch(GetProjectProtectedBranchArgs args, InvokeOptions options) {
@@ -5272,6 +5635,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5301,6 +5666,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectProtectedBranchResult> getProjectProtectedBranchPlain(GetProjectProtectedBranchPlainArgs args, InvokeOptions options) {
@@ -5312,6 +5678,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5340,6 +5708,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectProtectedBranchesResult> getProjectProtectedBranches(GetProjectProtectedBranchesArgs args) {
@@ -5351,6 +5720,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5379,6 +5750,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectProtectedBranchesResult> getProjectProtectedBranchesPlain(GetProjectProtectedBranchesPlainArgs args) {
@@ -5390,6 +5762,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5418,6 +5792,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectProtectedBranchesResult> getProjectProtectedBranches(GetProjectProtectedBranchesArgs args, InvokeOptions options) {
@@ -5429,6 +5804,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5457,6 +5834,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectProtectedBranchesResult> getProjectProtectedBranchesPlain(GetProjectProtectedBranchesPlainArgs args, InvokeOptions options) {
@@ -5468,6 +5846,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5497,6 +5877,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectTagResult> getProjectTag(GetProjectTagArgs args) {
@@ -5508,6 +5889,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5537,6 +5920,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectTagResult> getProjectTagPlain(GetProjectTagPlainArgs args) {
@@ -5548,6 +5932,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5577,6 +5963,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectTagResult> getProjectTag(GetProjectTagArgs args, InvokeOptions options) {
@@ -5588,6 +5975,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5617,6 +6006,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectTagResult> getProjectTagPlain(GetProjectTagPlainArgs args, InvokeOptions options) {
@@ -5628,6 +6018,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5656,6 +6048,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectTagsResult> getProjectTags(GetProjectTagsArgs args) {
@@ -5667,6 +6060,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5695,6 +6090,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectTagsResult> getProjectTagsPlain(GetProjectTagsPlainArgs args) {
@@ -5706,6 +6102,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5734,6 +6132,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectTagsResult> getProjectTags(GetProjectTagsArgs args, InvokeOptions options) {
@@ -5745,6 +6144,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5773,6 +6174,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectTagsResult> getProjectTagsPlain(GetProjectTagsPlainArgs args, InvokeOptions options) {
@@ -5784,6 +6186,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5819,6 +6223,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectVariableResult> getProjectVariable(GetProjectVariableArgs args) {
@@ -5830,6 +6235,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5865,6 +6272,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectVariableResult> getProjectVariablePlain(GetProjectVariablePlainArgs args) {
@@ -5876,6 +6284,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5911,6 +6321,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectVariableResult> getProjectVariable(GetProjectVariableArgs args, InvokeOptions options) {
@@ -5922,6 +6333,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5957,6 +6370,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectVariableResult> getProjectVariablePlain(GetProjectVariablePlainArgs args, InvokeOptions options) {
@@ -5968,6 +6382,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6001,6 +6417,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectVariablesResult> getProjectVariables(GetProjectVariablesArgs args) {
@@ -6012,6 +6429,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6045,6 +6464,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectVariablesResult> getProjectVariablesPlain(GetProjectVariablesPlainArgs args) {
@@ -6056,6 +6476,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6089,6 +6511,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectVariablesResult> getProjectVariables(GetProjectVariablesArgs args, InvokeOptions options) {
@@ -6100,6 +6523,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6133,6 +6558,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectVariablesResult> getProjectVariablesPlain(GetProjectVariablesPlainArgs args, InvokeOptions options) {
@@ -6148,6 +6574,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6189,6 +6617,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectsResult> getProjects() {
@@ -6204,6 +6633,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6245,6 +6676,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain() {
@@ -6260,6 +6692,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6301,6 +6735,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectsResult> getProjects(GetProjectsArgs args) {
@@ -6316,6 +6751,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6357,6 +6794,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args) {
@@ -6372,6 +6810,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6413,6 +6853,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectsResult> getProjects(GetProjectsArgs args, InvokeOptions options) {
@@ -6428,6 +6869,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6469,6 +6912,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args, InvokeOptions options) {
@@ -6480,6 +6924,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6510,6 +6956,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReleaseLinkResult> getReleaseLink(GetReleaseLinkArgs args) {
@@ -6521,6 +6968,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6551,6 +7000,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReleaseLinkResult> getReleaseLinkPlain(GetReleaseLinkPlainArgs args) {
@@ -6562,6 +7012,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6592,6 +7044,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReleaseLinkResult> getReleaseLink(GetReleaseLinkArgs args, InvokeOptions options) {
@@ -6603,6 +7056,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6633,6 +7088,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReleaseLinkResult> getReleaseLinkPlain(GetReleaseLinkPlainArgs args, InvokeOptions options) {
@@ -6644,6 +7100,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6673,6 +7131,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReleaseLinksResult> getReleaseLinks(GetReleaseLinksArgs args) {
@@ -6684,6 +7143,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6713,6 +7174,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReleaseLinksResult> getReleaseLinksPlain(GetReleaseLinksPlainArgs args) {
@@ -6724,6 +7186,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6753,6 +7217,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReleaseLinksResult> getReleaseLinks(GetReleaseLinksArgs args, InvokeOptions options) {
@@ -6764,6 +7229,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6793,6 +7260,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReleaseLinksResult> getReleaseLinksPlain(GetReleaseLinksPlainArgs args, InvokeOptions options) {
@@ -6804,6 +7272,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6834,6 +7304,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRepositoryFileResult> getRepositoryFile(GetRepositoryFileArgs args) {
@@ -6845,6 +7316,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6875,6 +7348,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRepositoryFileResult> getRepositoryFilePlain(GetRepositoryFilePlainArgs args) {
@@ -6886,6 +7360,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6916,6 +7392,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRepositoryFileResult> getRepositoryFile(GetRepositoryFileArgs args, InvokeOptions options) {
@@ -6927,6 +7404,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6957,6 +7436,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRepositoryFileResult> getRepositoryFilePlain(GetRepositoryFilePlainArgs args, InvokeOptions options) {
@@ -6968,6 +7448,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6999,6 +7481,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRepositoryTreeResult> getRepositoryTree(GetRepositoryTreeArgs args) {
@@ -7010,6 +7493,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7041,6 +7526,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRepositoryTreeResult> getRepositoryTreePlain(GetRepositoryTreePlainArgs args) {
@@ -7052,6 +7538,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7083,6 +7571,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRepositoryTreeResult> getRepositoryTree(GetRepositoryTreeArgs args, InvokeOptions options) {
@@ -7094,6 +7583,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7125,6 +7616,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRepositoryTreeResult> getRepositoryTreePlain(GetRepositoryTreePlainArgs args, InvokeOptions options) {
@@ -7278,6 +7770,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7312,6 +7806,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers() {
@@ -7327,6 +7822,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7361,6 +7858,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain() {
@@ -7376,6 +7874,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7410,6 +7910,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
@@ -7425,6 +7926,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7459,6 +7962,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
@@ -7474,6 +7978,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7508,6 +8014,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
@@ -7523,6 +8030,8 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7557,6 +8066,7 @@ public final class GitlabFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

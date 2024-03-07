@@ -18,6 +18,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,6 +47,7 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -55,7 +57,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
     /// ```
     /// 
-    ///  ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/groupAccessToken:GroupAccessToken")]
     public partial class GroupAccessToken : global::Pulumi.CustomResource

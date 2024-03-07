@@ -231,6 +231,7 @@ class ProjectEnvironment(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -245,6 +246,7 @@ class ProjectEnvironment(pulumi.CustomResource):
             project=this_project.id,
             external_url="www.example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -270,6 +272,7 @@ class ProjectEnvironment(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -284,6 +287,7 @@ class ProjectEnvironment(pulumi.CustomResource):
             project=this_project.id,
             external_url="www.example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

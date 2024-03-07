@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -25,6 +26,7 @@ import * as utilities from "./utilities";
  *     search: "foo",
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectIssues(args: GetProjectIssuesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIssuesResult> {
 
@@ -272,6 +274,7 @@ export interface GetProjectIssuesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -284,6 +287,7 @@ export interface GetProjectIssuesResult {
  *     search: "foo",
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectIssuesOutput(args: GetProjectIssuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIssuesResult> {
     return pulumi.output(args).apply((a: any) => getProjectIssues(a, opts))

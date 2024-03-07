@@ -162,6 +162,7 @@ class ClusterAgent(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -180,6 +181,7 @@ class ClusterAgent(pulumi.CustomResource):
             author_name="Terraform",
             commit_message=example.name.apply(lambda name: f"feature: add agent config for {name}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -216,6 +218,7 @@ class ClusterAgent(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -234,6 +237,7 @@ class ClusterAgent(pulumi.CustomResource):
             author_name="Terraform",
             commit_message=example.name.apply(lambda name: f"feature: add agent config for {name}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

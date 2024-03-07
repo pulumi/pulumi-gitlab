@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -23,6 +24,7 @@ import * as utilities from "./utilities";
  *     hookId: 1,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectHook(args: GetProjectHookArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectHookResult> {
 
@@ -139,6 +141,7 @@ export interface GetProjectHookResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -151,6 +154,7 @@ export interface GetProjectHookResult {
  *     hookId: 1,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectHookOutput(args: GetProjectHookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectHookResult> {
     return pulumi.output(args).apply((a: any) => getProjectHook(a, opts))

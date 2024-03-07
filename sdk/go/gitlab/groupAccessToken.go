@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,6 +57,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -65,7 +67,7 @@ import (
 // $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
 // ```
 //
-//	ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+// ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type GroupAccessToken struct {
 	pulumi.CustomResourceState
 

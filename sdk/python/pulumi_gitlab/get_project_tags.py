@@ -117,12 +117,14 @@ def get_project_tags(order_by: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_project_tags(project="foo/bar")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str order_by: Return tags ordered by `name` or `updated` fields. Default is `updated`.
@@ -160,12 +162,14 @@ def get_project_tags_output(order_by: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_project_tags(project="foo/bar")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str order_by: Return tags ordered by `name` or `updated` fields. Default is `updated`.

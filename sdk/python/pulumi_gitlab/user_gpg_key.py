@@ -139,6 +139,7 @@ class UserGpgKey(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -155,6 +156,7 @@ class UserGpgKey(pulumi.CustomResource):
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -164,7 +166,7 @@ class UserGpgKey(pulumi.CustomResource):
         $ pulumi import gitlab:index/userGpgKey:UserGpgKey example 42:1
         ```
 
-         Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
+        Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
 
         ```sh
         $ pulumi import gitlab:index/userGpgKey:UserGpgKey example_user 1
@@ -190,6 +192,7 @@ class UserGpgKey(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -206,6 +209,7 @@ class UserGpgKey(pulumi.CustomResource):
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -215,7 +219,7 @@ class UserGpgKey(pulumi.CustomResource):
         $ pulumi import gitlab:index/userGpgKey:UserGpgKey example 42:1
         ```
 
-         Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
+        Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
 
         ```sh
         $ pulumi import gitlab:index/userGpgKey:UserGpgKey example_user 1

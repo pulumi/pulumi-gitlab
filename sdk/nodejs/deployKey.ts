@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -23,14 +24,15 @@ import * as utilities from "./utilities";
  *     title: "Example deploy key",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
  *
- *  `project_id` can be whatever the [get single project api][get_single_project] takes for
+ * `project_id` can be whatever the [get single project api][get_single_project] takes for
  *
- *  its `:id` value, so for example:
+ * its `:id` value, so for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/deployKey:DeployKey test 1:3

@@ -329,6 +329,8 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
         ## Import
 
         GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
@@ -356,6 +358,8 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  args: ProjectApprovalRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
         ## Import
 
         GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
