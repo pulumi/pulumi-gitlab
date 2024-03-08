@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -42,6 +43,7 @@ import * as utilities from "./utilities";
  *     wikiPageEvents: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -51,7 +53,7 @@ import * as utilities from "./utilities";
  * $ pulumi import gitlab:index/groupHook:GroupHook example "12345:1"
  * ```
  *
- *  NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ * NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class GroupHook extends pulumi.CustomResource {
     /**

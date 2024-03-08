@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     project: "foo/bar",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectTags(args: GetProjectTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectTagsResult> {
 
@@ -91,6 +93,7 @@ export interface GetProjectTagsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -99,6 +102,7 @@ export interface GetProjectTagsResult {
  *     project: "foo/bar",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectTagsOutput(args: GetProjectTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectTagsResult> {
     return pulumi.output(args).apply((a: any) => getProjectTags(a, opts))

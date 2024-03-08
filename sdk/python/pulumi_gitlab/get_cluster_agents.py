@@ -80,12 +80,14 @@ def get_cluster_agents(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     agents = gitlab.get_cluster_agents(project="12345")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['project'] = project
@@ -110,11 +112,13 @@ def get_cluster_agents_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     agents = gitlab.get_cluster_agents(project="12345")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

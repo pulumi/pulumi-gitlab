@@ -121,6 +121,7 @@ def get_groups(order_by: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -129,6 +130,7 @@ def get_groups(order_by: Optional[str] = None,
         sort="desc")
     example_two = gitlab.get_groups(search="GitLab")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str order_by: Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)
@@ -170,6 +172,7 @@ def get_groups_output(order_by: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -178,6 +181,7 @@ def get_groups_output(order_by: Optional[pulumi.Input[Optional[str]]] = None,
         sort="desc")
     example_two = gitlab.get_groups(search="GitLab")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str order_by: Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)

@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -74,16 +76,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
+ * $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
  * ```
  * 
- *  `id` can be whatever the [details of a group][details_of_a_group] api takes for
+ * `id` can be whatever the [details of a group][details_of_a_group] api takes for
  * 
- *  its `:id` value, so for example:
+ * its `:id` value, so for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/group:Group example example

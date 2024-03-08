@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
  * ## Import
  *
  * GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.

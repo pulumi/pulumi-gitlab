@@ -78,12 +78,14 @@ def get_project_branches(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_project_branches(project="foo/bar/baz")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: ID or URL-encoded path of the project owned by the authenticated user.
@@ -109,12 +111,14 @@ def get_project_branches_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_project_branches(project="foo/bar/baz")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: ID or URL-encoded path of the project owned by the authenticated user.

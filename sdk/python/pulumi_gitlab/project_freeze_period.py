@@ -169,6 +169,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -179,6 +180,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
             freeze_end="0 7 * * 1",
             cron_timezone="UTC")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -208,6 +210,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -218,6 +221,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
             freeze_end="0 7 * * 1",
             cron_timezone="UTC")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

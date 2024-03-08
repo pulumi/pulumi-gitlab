@@ -13,6 +13,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,24 +125,23 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
-//
+// $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
 // ```
 //
-//	`id` can be whatever the [get single project api][get_single_project] takes for
+// `id` can be whatever the [get single project api][get_single_project] takes for
 //
-//	its `:id` value, so for example:
+// its `:id` value, so for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/project:Project example richardc/example
 // ```
 //
-//	NOTE: the `import_url_username` and `import_url_password` cannot be imported.
+// NOTE: the `import_url_username` and `import_url_password` cannot be imported.
 type Project struct {
 	pulumi.CustomResourceState
 

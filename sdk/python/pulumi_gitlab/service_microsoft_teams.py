@@ -517,6 +517,7 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -529,6 +530,7 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
             webhook="https://testurl.com/?token=XYZ",
             push_events=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -569,6 +571,7 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -581,6 +584,7 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
             webhook="https://testurl.com/?token=XYZ",
             push_events=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

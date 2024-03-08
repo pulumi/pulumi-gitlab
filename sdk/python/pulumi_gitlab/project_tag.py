@@ -236,6 +236,7 @@ class ProjectTag(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -248,6 +249,7 @@ class ProjectTag(pulumi.CustomResource):
             ref="main",
             project=example_project.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -257,7 +259,7 @@ class ProjectTag(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
         ```
 
-         NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
+        NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -279,6 +281,7 @@ class ProjectTag(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -291,6 +294,7 @@ class ProjectTag(pulumi.CustomResource):
             ref="main",
             project=example_project.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -300,7 +304,7 @@ class ProjectTag(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
         ```
 
-         NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
+        NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
 
         :param str resource_name: The name of the resource.
         :param ProjectTagArgs args: The arguments to use to populate this resource's properties.

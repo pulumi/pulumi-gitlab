@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html#create-an-agent-token)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -85,6 +87,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -94,7 +97,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gitlab:index/clusterAgentToken:ClusterAgentToken example &#39;12345:42:1&#39;
  * ```
  * 
- *  ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ * ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  * 
  */
 @ResourceType(type="gitlab:index/clusterAgentToken:ClusterAgentToken")

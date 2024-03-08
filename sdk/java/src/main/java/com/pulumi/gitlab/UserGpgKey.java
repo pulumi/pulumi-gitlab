@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#get-a-specific-gpg-key)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,6 +70,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -77,7 +80,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gitlab:index/userGpgKey:UserGpgKey example 42:1
  * ```
  * 
- *  Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
+ * Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
  * 
  * ```sh
  * $ pulumi import gitlab:index/userGpgKey:UserGpgKey example_user 1

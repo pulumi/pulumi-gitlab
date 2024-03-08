@@ -403,6 +403,7 @@ def get_project_issues(assignee_id: Optional[int] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -411,6 +412,7 @@ def get_project_issues(assignee_id: Optional[int] = None,
     all_with_foo = gitlab.get_project_issues(project=foo.id,
         search="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int assignee_id: Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.
@@ -529,6 +531,7 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -537,6 +540,7 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
     all_with_foo = gitlab.get_project_issues(project=foo.id,
         search="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int assignee_id: Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.

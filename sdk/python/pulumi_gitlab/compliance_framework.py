@@ -257,6 +257,7 @@ class ComplianceFramework(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -268,6 +269,7 @@ class ComplianceFramework(pulumi.CustomResource):
             namespace_path="top-level-group",
             pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -305,6 +307,7 @@ class ComplianceFramework(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -316,6 +319,7 @@ class ComplianceFramework(pulumi.CustomResource):
             namespace_path="top-level-group",
             pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

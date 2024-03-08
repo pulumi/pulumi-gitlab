@@ -230,6 +230,7 @@ class ProjectMirror(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -238,6 +239,7 @@ class ProjectMirror(pulumi.CustomResource):
             project="1",
             url="https://username:password@github.com/org/repository.git")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -279,6 +281,7 @@ class ProjectMirror(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -287,6 +290,7 @@ class ProjectMirror(pulumi.CustomResource):
             project="1",
             url="https://username:password@github.com/org/repository.git")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

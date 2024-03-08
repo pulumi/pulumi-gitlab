@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
  * ## Import
  *
  * Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.

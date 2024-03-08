@@ -104,6 +104,7 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -112,6 +113,7 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
             project="5",
             runner_id=7)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -139,6 +141,7 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -147,6 +150,7 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
             project="5",
             runner_id=7)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

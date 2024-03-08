@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -24,6 +25,7 @@ import * as utilities from "./utilities";
  *     projectId: 123,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMembershipResult> {
     args = args || {};
@@ -97,6 +99,7 @@ export interface GetProjectMembershipResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -106,6 +109,7 @@ export interface GetProjectMembershipResult {
  *     projectId: 123,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMembershipResult> {
     return pulumi.output(args).apply((a: any) => getProjectMembership(a, opts))

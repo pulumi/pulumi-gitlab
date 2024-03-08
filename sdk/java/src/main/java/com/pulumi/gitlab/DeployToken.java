@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
  * ```
  * 
- *  Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ * Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  * 
  */
 @ResourceType(type="gitlab:index/deployToken:DeployToken")

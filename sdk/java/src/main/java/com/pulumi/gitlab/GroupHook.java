@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -74,6 +76,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -83,7 +86,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gitlab:index/groupHook:GroupHook example &#34;12345:1&#34;
  * ```
  * 
- *  NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ * NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  * 
  */
 @ResourceType(type="gitlab:index/groupHook:GroupHook")

@@ -28,7 +28,7 @@ import (
 // $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
 // ```
 //
-//	Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+// Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type DeployToken struct {
 	pulumi.CustomResourceState
 

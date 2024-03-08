@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const vars = gitlab.getInstanceVariables({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceVariables(opts?: pulumi.InvokeOptions): Promise<GetInstanceVariablesResult> {
 
@@ -47,12 +49,14 @@ export interface GetInstanceVariablesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const vars = gitlab.getInstanceVariables({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceVariablesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceVariablesResult> {
     return pulumi.output(getInstanceVariables(opts))

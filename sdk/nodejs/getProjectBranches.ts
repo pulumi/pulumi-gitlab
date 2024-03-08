@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     project: "foo/bar/baz",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectBranches(args: GetProjectBranchesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectBranchesResult> {
 
@@ -64,6 +66,7 @@ export interface GetProjectBranchesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -72,6 +75,7 @@ export interface GetProjectBranchesResult {
  *     project: "foo/bar/baz",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectBranchesOutput(args: GetProjectBranchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectBranchesResult> {
     return pulumi.output(args).apply((a: any) => getProjectBranches(a, opts))

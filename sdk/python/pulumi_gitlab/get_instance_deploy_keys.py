@@ -80,12 +80,14 @@ def get_instance_deploy_keys(public: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_instance_deploy_keys(public=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool public: Only return deploy keys that are public.
@@ -113,12 +115,14 @@ def get_instance_deploy_keys_output(public: Optional[pulumi.Input[Optional[bool]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_instance_deploy_keys(public=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool public: Only return deploy keys that are public.

@@ -21,12 +21,12 @@ namespace Pulumi.GitLab
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/topic:Topic You can import a topic to terraform state using `&lt;resource&gt; &lt;id&gt;`.
+    /// $ pulumi import gitlab:index/topic:Topic You can import a topic to terraform state using `&lt;resource&gt; &lt;id&gt;`.
     /// ```
     /// 
-    ///  The `id` must be an integer for the id of the topic you want to import,
+    /// The `id` must be an integer for the id of the topic you want to import,
     /// 
-    ///  for example:
+    /// for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/topic:Topic functional_programming 1
