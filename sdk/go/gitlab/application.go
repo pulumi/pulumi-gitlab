@@ -21,6 +21,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -57,7 +59,7 @@ import (
 // $ pulumi import gitlab:index/application:Application example "1"
 // ```
 //
-//	NOTE: the secret and scopes cannot be imported
+// NOTE: the secret and scopes cannot be imported
 type Application struct {
 	pulumi.CustomResourceState
 

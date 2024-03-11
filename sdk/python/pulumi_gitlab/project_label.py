@@ -186,6 +186,7 @@ class ProjectLabel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -200,6 +201,7 @@ class ProjectLabel(pulumi.CustomResource):
             description="issue for creating infrastructure resources",
             color="#ffa500")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -229,6 +231,7 @@ class ProjectLabel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -243,6 +246,7 @@ class ProjectLabel(pulumi.CustomResource):
             description="issue for creating infrastructure resources",
             color="#ffa500")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

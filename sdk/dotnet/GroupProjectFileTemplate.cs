@@ -22,6 +22,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,6 +52,7 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [GitLabResourceType("gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate")]
     public partial class GroupProjectFileTemplate : global::Pulumi.CustomResource

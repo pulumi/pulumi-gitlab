@@ -20,6 +20,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,6 +75,7 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -83,7 +85,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/clusterAgentToken:ClusterAgentToken example '12345:42:1'
     /// ```
     /// 
-    ///  ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/clusterAgentToken:ClusterAgentToken")]
     public partial class ClusterAgentToken : global::Pulumi.CustomResource

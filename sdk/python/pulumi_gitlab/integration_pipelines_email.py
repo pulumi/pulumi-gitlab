@@ -170,6 +170,7 @@ class IntegrationPipelinesEmail(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -183,6 +184,7 @@ class IntegrationPipelinesEmail(pulumi.CustomResource):
             notify_only_broken_pipelines=True,
             branches_to_be_notified="all")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -212,6 +214,7 @@ class IntegrationPipelinesEmail(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -225,6 +228,7 @@ class IntegrationPipelinesEmail(pulumi.CustomResource):
             notify_only_broken_pipelines=True,
             branches_to_be_notified="all")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

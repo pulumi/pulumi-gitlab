@@ -139,6 +139,7 @@ def get_project_tag(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -146,6 +147,7 @@ def get_project_tag(name: Optional[str] = None,
     foo = gitlab.get_project_tag(name="example",
         project="foo/bar")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of a tag.
@@ -179,6 +181,7 @@ def get_project_tag_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -186,6 +189,7 @@ def get_project_tag_output(name: Optional[pulumi.Input[str]] = None,
     foo = gitlab.get_project_tag(name="example",
         project="foo/bar")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of a tag.

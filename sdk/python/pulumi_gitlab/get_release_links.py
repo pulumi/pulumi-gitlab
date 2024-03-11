@@ -91,6 +91,7 @@ def get_release_links(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -98,6 +99,7 @@ def get_release_links(project: Optional[str] = None,
     example = gitlab.get_release_links(project="foo/bar",
         tag_name="v1.0.1")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['project'] = project
@@ -123,6 +125,7 @@ def get_release_links_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -130,5 +133,6 @@ def get_release_links_output(project: Optional[pulumi.Input[str]] = None,
     example = gitlab.get_release_links(project="foo/bar",
         tag_name="v1.0.1")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

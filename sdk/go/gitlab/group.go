@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,18 +67,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
-//
+// $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
 // ```
 //
-//	`id` can be whatever the [details of a group][details_of_a_group] api takes for
+// `id` can be whatever the [details of a group][details_of_a_group] api takes for
 //
-//	its `:id` value, so for example:
+// its `:id` value, so for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/group:Group example example

@@ -16,6 +16,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,14 +34,15 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Note: You can import a global notification state using "gitlab" as the ID.
     /// 
-    ///  The ID will always be gitlab, because the global notificatio only exists
+    /// The ID will always be gitlab, because the global notificatio only exists
     /// 
-    ///  once per user
+    /// once per user
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/globalLevelNotifications:GlobalLevelNotifications example gitlab

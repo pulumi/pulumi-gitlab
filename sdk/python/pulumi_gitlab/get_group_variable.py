@@ -163,6 +163,7 @@ def get_group_variable(environment_scope: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -173,6 +174,7 @@ def get_group_variable(environment_scope: Optional[str] = None,
         group="my/example/group",
         key="bar")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
@@ -211,6 +213,7 @@ def get_group_variable_output(environment_scope: Optional[pulumi.Input[Optional[
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -221,6 +224,7 @@ def get_group_variable_output(environment_scope: Optional[pulumi.Input[Optional[
         group="my/example/group",
         key="bar")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.

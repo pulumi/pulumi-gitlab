@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,11 +65,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `&lt;resource&gt; &lt;project_id&gt;`:
+ * $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `&lt;resource&gt; &lt;project_id&gt;`:
  * ```
  * 
  * ```sh

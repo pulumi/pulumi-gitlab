@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     project: "foo/bar",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectMilestones(args: GetProjectMilestonesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMilestonesResult> {
 
@@ -100,6 +102,7 @@ export interface GetProjectMilestonesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -108,6 +111,7 @@ export interface GetProjectMilestonesResult {
  *     project: "foo/bar",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectMilestonesOutput(args: GetProjectMilestonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMilestonesResult> {
     return pulumi.output(args).apply((a: any) => getProjectMilestones(a, opts))

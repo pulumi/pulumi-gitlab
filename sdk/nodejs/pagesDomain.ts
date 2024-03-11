@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -30,6 +31,7 @@ import * as utilities from "./utilities";
  *     certificate: fs.readFileSync(`${path.module}/cert.pem`, "utf8"),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

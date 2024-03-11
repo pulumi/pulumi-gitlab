@@ -148,12 +148,14 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_current_user()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -180,11 +182,13 @@ def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_current_user()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -27,6 +28,7 @@ import * as utilities from "./utilities";
  *     url: "https://example.com/hook-%d",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -36,7 +38,7 @@ import * as utilities from "./utilities";
  * $ pulumi import gitlab:index/systemHook:SystemHook example 42
  * ```
  *
- *  NOTE: the `token` attribute won't be available for imported resources.
+ * NOTE: the `token` attribute won't be available for imported resources.
  */
 export class SystemHook extends pulumi.CustomResource {
     /**

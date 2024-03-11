@@ -101,12 +101,14 @@ def get_metadata(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMet
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     this = gitlab.get_metadata()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -129,11 +131,13 @@ def get_metadata_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     this = gitlab.get_metadata()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

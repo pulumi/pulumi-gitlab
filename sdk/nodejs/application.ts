@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -24,6 +25,7 @@ import * as utilities from "./utilities";
  *     scopes: ["openid"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -33,7 +35,7 @@ import * as utilities from "./utilities";
  * $ pulumi import gitlab:index/application:Application example "1"
  * ```
  *
- *  NOTE: the secret and scopes cannot be imported
+ * NOTE: the secret and scopes cannot be imported
  */
 export class Application extends pulumi.CustomResource {
     /**

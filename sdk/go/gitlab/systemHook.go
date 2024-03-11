@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,6 +50,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -58,7 +60,7 @@ import (
 // $ pulumi import gitlab:index/systemHook:SystemHook example 42
 // ```
 //
-//	NOTE: the `token` attribute won't be available for imported resources.
+// NOTE: the `token` attribute won't be available for imported resources.
 type SystemHook struct {
 	pulumi.CustomResourceState
 

@@ -168,6 +168,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -183,6 +184,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
             key="EXAMPLE_KEY",
             value="example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -212,6 +214,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -227,6 +230,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
             key="EXAMPLE_KEY",
             value="example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

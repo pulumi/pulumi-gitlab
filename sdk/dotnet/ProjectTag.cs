@@ -16,6 +16,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,6 +40,7 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -48,7 +50,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
     /// ```
     /// 
-    ///  NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
+    /// NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectTag:ProjectTag")]
     public partial class ProjectTag : global::Pulumi.CustomResource

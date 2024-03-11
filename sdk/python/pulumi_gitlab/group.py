@@ -981,6 +981,7 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -1003,16 +1004,17 @@ class Group(pulumi.CustomResource):
                 prevent_secrets=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
+        $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
         ```
 
-         `id` can be whatever the [details of a group][details_of_a_group] api takes for
+        `id` can be whatever the [details of a group][details_of_a_group] api takes for
 
-         its `:id` value, so for example:
+        its `:id` value, so for example:
 
         ```sh
         $ pulumi import gitlab:index/group:Group example example
@@ -1062,6 +1064,7 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -1084,16 +1087,17 @@ class Group(pulumi.CustomResource):
                 prevent_secrets=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
+        $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
         ```
 
-         `id` can be whatever the [details of a group][details_of_a_group] api takes for
+        `id` can be whatever the [details of a group][details_of_a_group] api takes for
 
-         its `:id` value, so for example:
+        its `:id` value, so for example:
 
         ```sh
         $ pulumi import gitlab:index/group:Group example example

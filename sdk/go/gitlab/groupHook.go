@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,6 +68,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -76,7 +78,7 @@ import (
 // $ pulumi import gitlab:index/groupHook:GroupHook example "12345:1"
 // ```
 //
-//	NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+// NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type GroupHook struct {
 	pulumi.CustomResourceState
 

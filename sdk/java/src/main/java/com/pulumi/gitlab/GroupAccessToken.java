@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -64,6 +66,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -73,7 +76,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example &#34;12345:1&#34;
  * ```
  * 
- *  ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ * ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  * 
  */
 @ResourceType(type="gitlab:index/groupAccessToken:GroupAccessToken")

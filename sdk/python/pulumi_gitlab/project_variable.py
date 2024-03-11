@@ -336,6 +336,7 @@ class ProjectVariable(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -346,6 +347,7 @@ class ProjectVariable(pulumi.CustomResource):
             protected=False,
             value="project_variable_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -382,6 +384,7 @@ class ProjectVariable(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -392,6 +395,7 @@ class ProjectVariable(pulumi.CustomResource):
             protected=False,
             value="project_variable_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

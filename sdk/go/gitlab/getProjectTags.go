@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetProjectTags(ctx *pulumi.Context, args *GetProjectTagsArgs, opts ...pulumi.InvokeOption) (*GetProjectTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectTagsResult

@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetProjectProtectedBranch(ctx *pulumi.Context, args *GetProjectProtectedBranchArgs, opts ...pulumi.InvokeOption) (*GetProjectProtectedBranchResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectProtectedBranchResult

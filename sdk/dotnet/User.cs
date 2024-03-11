@@ -20,6 +20,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -42,16 +43,17 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/user:User You can import a user to terraform state using `&lt;resource&gt; &lt;id&gt;`.
+    /// $ pulumi import gitlab:index/user:User You can import a user to terraform state using `&lt;resource&gt; &lt;id&gt;`.
     /// ```
     /// 
-    ///  The `id` must be an integer for the id of the user you want to import,
+    /// The `id` must be an integer for the id of the user you want to import,
     /// 
-    ///  for example:
+    /// for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/user:User example 42

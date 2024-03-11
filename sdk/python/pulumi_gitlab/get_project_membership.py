@@ -119,6 +119,7 @@ def get_project_membership(full_path: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -126,6 +127,7 @@ def get_project_membership(full_path: Optional[str] = None,
     example = gitlab.get_project_membership(inherited=True,
         project_id=123)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str full_path: The full path of the project.
@@ -165,6 +167,7 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -172,6 +175,7 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]
     example = gitlab.get_project_membership(inherited=True,
         project_id=123)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str full_path: The full path of the project.

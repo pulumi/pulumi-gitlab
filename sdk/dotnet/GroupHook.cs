@@ -16,6 +16,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,6 +57,7 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -65,7 +67,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/groupHook:GroupHook example "12345:1"
     /// ```
     /// 
-    ///  NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/groupHook:GroupHook")]
     public partial class GroupHook : global::Pulumi.CustomResource

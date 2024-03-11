@@ -22,6 +22,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,13 +55,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`:
-//
+// $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`:
 // ```
 //
 // ```sh

@@ -235,6 +235,7 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -248,6 +249,7 @@ class PersonalAccessToken(pulumi.CustomResource):
             key="pat",
             value=example_personal_access_token.token)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -257,7 +259,7 @@ class PersonalAccessToken(pulumi.CustomResource):
         $ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"
         ```
 
-         NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+        NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -281,6 +283,7 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -294,6 +297,7 @@ class PersonalAccessToken(pulumi.CustomResource):
             key="pat",
             value=example_personal_access_token.token)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -303,7 +307,7 @@ class PersonalAccessToken(pulumi.CustomResource):
         $ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"
         ```
 
-         NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+        NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param PersonalAccessTokenArgs args: The arguments to use to populate this resource's properties.

@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupBranch(ctx *pulumi.Context, args *LookupBranchArgs, opts ...pulumi.InvokeOption) (*LookupBranchResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBranchResult

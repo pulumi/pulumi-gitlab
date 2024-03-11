@@ -171,6 +171,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -185,6 +186,7 @@ class ProjectMembership(pulumi.CustomResource):
             project="67890",
             user_id=1234)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -216,6 +218,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -230,6 +233,7 @@ class ProjectMembership(pulumi.CustomResource):
             project="67890",
             user_id=1234)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
