@@ -182,6 +182,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -191,6 +192,7 @@ class ProjectShareGroup(pulumi.CustomResource):
             group_id=1337,
             project="12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -220,6 +222,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -229,6 +232,7 @@ class ProjectShareGroup(pulumi.CustomResource):
             group_id=1337,
             project="12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

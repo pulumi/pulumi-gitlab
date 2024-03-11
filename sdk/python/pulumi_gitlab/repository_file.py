@@ -604,6 +604,8 @@ class RepositoryFile(pulumi.CustomResource):
                  update_commit_message: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
         ## Import
 
         A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.
@@ -636,6 +638,8 @@ class RepositoryFile(pulumi.CustomResource):
                  args: RepositoryFileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
         ## Import
 
         A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.

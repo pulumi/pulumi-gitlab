@@ -136,6 +136,7 @@ class PipelineTrigger(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -144,6 +145,7 @@ class PipelineTrigger(pulumi.CustomResource):
             description="Used to trigger builds",
             project="12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -171,6 +173,7 @@ class PipelineTrigger(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -179,6 +182,7 @@ class PipelineTrigger(pulumi.CustomResource):
             description="Used to trigger builds",
             project="12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

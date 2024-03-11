@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,6 +51,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -59,7 +61,7 @@ import (
 // $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
 // ```
 //
-//	NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
+// NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
 type ProjectTag struct {
 	pulumi.CustomResourceState
 

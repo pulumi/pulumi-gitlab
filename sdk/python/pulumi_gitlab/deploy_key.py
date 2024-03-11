@@ -187,6 +187,7 @@ class DeployKey(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -196,14 +197,15 @@ class DeployKey(pulumi.CustomResource):
             project="example/deploying",
             title="Example deploy key")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
 
-         `project_id` can be whatever the [get single project api][get_single_project] takes for
+        `project_id` can be whatever the [get single project api][get_single_project] takes for
 
-         its `:id` value, so for example:
+        its `:id` value, so for example:
 
         ```sh
         $ pulumi import gitlab:index/deployKey:DeployKey test 1:3
@@ -235,6 +237,7 @@ class DeployKey(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -244,14 +247,15 @@ class DeployKey(pulumi.CustomResource):
             project="example/deploying",
             title="Example deploy key")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
 
-         `project_id` can be whatever the [get single project api][get_single_project] takes for
+        `project_id` can be whatever the [get single project api][get_single_project] takes for
 
-         its `:id` value, so for example:
+        its `:id` value, so for example:
 
         ```sh
         $ pulumi import gitlab:index/deployKey:DeployKey test 1:3

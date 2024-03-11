@@ -3262,6 +3262,7 @@ class Project(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -3312,22 +3313,23 @@ class Project(pulumi.CustomResource):
         #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
         import_private_index_project_project = gitlab.Project("importPrivateIndex/projectProject", import_url="https://user:pass@gitlab.example.com/repo.git")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
+        $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
         ```
 
-         `id` can be whatever the [get single project api][get_single_project] takes for
+        `id` can be whatever the [get single project api][get_single_project] takes for
 
-         its `:id` value, so for example:
+        its `:id` value, so for example:
 
         ```sh
         $ pulumi import gitlab:index/project:Project example richardc/example
         ```
 
-         NOTE: the `import_url_username` and `import_url_password` cannot be imported.
+        NOTE: the `import_url_username` and `import_url_password` cannot be imported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -3440,6 +3442,7 @@ class Project(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -3490,22 +3493,23 @@ class Project(pulumi.CustomResource):
         #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
         import_private_index_project_project = gitlab.Project("importPrivateIndex/projectProject", import_url="https://user:pass@gitlab.example.com/repo.git")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
+        $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
         ```
 
-         `id` can be whatever the [get single project api][get_single_project] takes for
+        `id` can be whatever the [get single project api][get_single_project] takes for
 
-         its `:id` value, so for example:
+        its `:id` value, so for example:
 
         ```sh
         $ pulumi import gitlab:index/project:Project example richardc/example
         ```
 
-         NOTE: the `import_url_username` and `import_url_password` cannot be imported.
+        NOTE: the `import_url_username` and `import_url_password` cannot be imported.
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

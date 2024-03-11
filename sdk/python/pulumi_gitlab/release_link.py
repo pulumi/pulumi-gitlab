@@ -283,6 +283,7 @@ class ReleaseLink(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -295,6 +296,7 @@ class ReleaseLink(pulumi.CustomResource):
             tag_name="tag_name_associated_with_release",
             url="https://test/")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -326,6 +328,7 @@ class ReleaseLink(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -338,6 +341,7 @@ class ReleaseLink(pulumi.CustomResource):
             tag_name="tag_name_associated_with_release",
             url="https://test/")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -279,7 +279,7 @@ class DeployToken(pulumi.CustomResource):
         $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
         ```
 
-         Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+        Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -313,7 +313,7 @@ class DeployToken(pulumi.CustomResource):
         $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
         ```
 
-         Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+        Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param DeployTokenArgs args: The arguments to use to populate this resource's properties.

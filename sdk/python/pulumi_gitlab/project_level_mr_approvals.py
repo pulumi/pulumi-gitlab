@@ -272,6 +272,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -284,16 +285,17 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
             merge_requests_author_approval=False,
             merge_requests_disable_committers_approval=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
+        $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
         ```
 
         # 
 
-         For example:
+        For example:
 
         ```sh
         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
@@ -324,6 +326,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -336,16 +339,17 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
             merge_requests_author_approval=False,
             merge_requests_disable_committers_approval=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
+        $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
         ```
 
         # 
 
-         For example:
+        For example:
 
         ```sh
         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234

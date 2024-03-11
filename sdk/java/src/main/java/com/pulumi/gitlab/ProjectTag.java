@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,6 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -69,7 +72,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gitlab:index/projectTag:ProjectTag example &#34;12345:develop&#34;
  * ```
  * 
- *  NOTE: the `ref` attribute won&#39;t be available for imported `gitlab_project_tag` resources.
+ * NOTE: the `ref` attribute won&#39;t be available for imported `gitlab_project_tag` resources.
  * 
  */
 @ResourceType(type="gitlab:index/projectTag:ProjectTag")

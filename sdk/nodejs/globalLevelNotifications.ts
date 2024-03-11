@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -21,14 +22,15 @@ import * as utilities from "./utilities";
  *     newMergeRequest: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Note: You can import a global notification state using "gitlab" as the ID.
  *
- *  The ID will always be gitlab, because the global notificatio only exists
+ * The ID will always be gitlab, because the global notificatio only exists
  *
- *  once per user
+ * once per user
  *
  * ```sh
  * $ pulumi import gitlab:index/globalLevelNotifications:GlobalLevelNotifications example gitlab

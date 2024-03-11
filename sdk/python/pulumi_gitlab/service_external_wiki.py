@@ -186,6 +186,7 @@ class ServiceExternalWiki(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -197,6 +198,7 @@ class ServiceExternalWiki(pulumi.CustomResource):
             project=awesome_project.id,
             external_wiki_url="https://MyAwesomeExternalWikiURL.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -226,6 +228,7 @@ class ServiceExternalWiki(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -237,6 +240,7 @@ class ServiceExternalWiki(pulumi.CustomResource):
             project=awesome_project.id,
             external_wiki_url="https://MyAwesomeExternalWikiURL.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -136,6 +136,7 @@ class UserCustomAttribute(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -145,6 +146,7 @@ class UserCustomAttribute(pulumi.CustomResource):
             user=42,
             value="Greenland")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -173,6 +175,7 @@ class UserCustomAttribute(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -182,6 +185,7 @@ class UserCustomAttribute(pulumi.CustomResource):
             user=42,
             value="Greenland")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

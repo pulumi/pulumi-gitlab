@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -23,6 +24,7 @@ import * as utilities from "./utilities";
  *     "public": true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceDeployKeys(args?: GetInstanceDeployKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceDeployKeysResult> {
     args = args || {};
@@ -69,6 +71,7 @@ export interface GetInstanceDeployKeysResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -77,6 +80,7 @@ export interface GetInstanceDeployKeysResult {
  *     "public": true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceDeployKeysOutput(args?: GetInstanceDeployKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceDeployKeysResult> {
     return pulumi.output(args).apply((a: any) => getInstanceDeployKeys(a, opts))

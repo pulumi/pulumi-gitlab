@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,6 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -63,7 +66,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gitlab:index/application:Application example &#34;1&#34;
  * ```
  * 
- *  NOTE: the secret and scopes cannot be imported
+ * NOTE: the secret and scopes cannot be imported
  * 
  */
 @ResourceType(type="gitlab:index/application:Application")

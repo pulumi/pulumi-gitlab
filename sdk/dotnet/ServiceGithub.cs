@@ -20,6 +20,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,11 +44,12 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `&lt;resource&gt; &lt;project_id&gt;`:
+    /// $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `&lt;resource&gt; &lt;project_id&gt;`:
     /// ```
     /// 
     /// ```sh

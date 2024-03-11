@@ -288,6 +288,7 @@ class SystemHook(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -301,6 +302,7 @@ class SystemHook(pulumi.CustomResource):
             token="secret-token",
             url="https://example.com/hook-%d")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -310,7 +312,7 @@ class SystemHook(pulumi.CustomResource):
         $ pulumi import gitlab:index/systemHook:SystemHook example 42
         ```
 
-         NOTE: the `token` attribute won't be available for imported resources.
+        NOTE: the `token` attribute won't be available for imported resources.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -337,6 +339,7 @@ class SystemHook(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -350,6 +353,7 @@ class SystemHook(pulumi.CustomResource):
             token="secret-token",
             url="https://example.com/hook-%d")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -359,7 +363,7 @@ class SystemHook(pulumi.CustomResource):
         $ pulumi import gitlab:index/systemHook:SystemHook example 42
         ```
 
-         NOTE: the `token` attribute won't be available for imported resources.
+        NOTE: the `token` attribute won't be available for imported resources.
 
         :param str resource_name: The name of the resource.
         :param SystemHookArgs args: The arguments to use to populate this resource's properties.

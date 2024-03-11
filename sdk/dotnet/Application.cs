@@ -19,6 +19,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,6 +40,7 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -48,7 +50,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/application:Application example "1"
     /// ```
     /// 
-    ///  NOTE: the secret and scopes cannot be imported
+    /// NOTE: the secret and scopes cannot be imported
     /// </summary>
     [GitLabResourceType("gitlab:index/application:Application")]
     public partial class Application : global::Pulumi.CustomResource

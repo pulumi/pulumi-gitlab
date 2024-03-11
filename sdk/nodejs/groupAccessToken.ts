@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -29,6 +30,7 @@ import * as utilities from "./utilities";
  *     value: exampleGroupAccessToken.token,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -38,7 +40,7 @@ import * as utilities from "./utilities";
  * $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
  * ```
  *
- *  ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ * ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class GroupAccessToken extends pulumi.CustomResource {
     /**

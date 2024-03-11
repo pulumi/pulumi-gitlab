@@ -167,6 +167,7 @@ class TagProtection(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -184,6 +185,7 @@ class TagProtection(pulumi.CustomResource):
             project="12345",
             tag="TagProtected")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -209,6 +211,7 @@ class TagProtection(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -226,6 +229,7 @@ class TagProtection(pulumi.CustomResource):
             project="12345",
             tag="TagProtected")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

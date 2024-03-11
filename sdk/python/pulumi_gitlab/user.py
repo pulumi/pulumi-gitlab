@@ -471,6 +471,7 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -485,16 +486,17 @@ class User(pulumi.CustomResource):
             reset_password=False,
             username="example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
+        $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
         ```
 
-         The `id` must be an integer for the id of the user you want to import,
+        The `id` must be an integer for the id of the user you want to import,
 
-         for example:
+        for example:
 
         ```sh
         $ pulumi import gitlab:index/user:User example 42
@@ -533,6 +535,7 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -547,16 +550,17 @@ class User(pulumi.CustomResource):
             reset_password=False,
             username="example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
+        $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
         ```
 
-         The `id` must be an integer for the id of the user you want to import,
+        The `id` must be an integer for the id of the user you want to import,
 
-         for example:
+        for example:
 
         ```sh
         $ pulumi import gitlab:index/user:User example 42

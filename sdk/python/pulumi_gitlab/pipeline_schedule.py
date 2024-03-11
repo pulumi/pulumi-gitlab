@@ -307,6 +307,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -317,6 +318,7 @@ class PipelineSchedule(pulumi.CustomResource):
             project="12345",
             ref="master")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -351,6 +353,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -361,6 +364,7 @@ class PipelineSchedule(pulumi.CustomResource):
             project="12345",
             ref="master")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

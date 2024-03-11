@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -40,16 +41,17 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
+ * $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
  * ```
  *
- *  `id` can be whatever the [details of a group][details_of_a_group] api takes for
+ * `id` can be whatever the [details of a group][details_of_a_group] api takes for
  *
- *  its `:id` value, so for example:
+ * its `:id` value, so for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/group:Group example example

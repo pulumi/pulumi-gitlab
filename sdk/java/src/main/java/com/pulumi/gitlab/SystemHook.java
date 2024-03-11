@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,6 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -67,7 +70,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gitlab:index/systemHook:SystemHook example 42
  * ```
  * 
- *  NOTE: the `token` attribute won&#39;t be available for imported resources.
+ * NOTE: the `token` attribute won&#39;t be available for imported resources.
  * 
  */
 @ResourceType(type="gitlab:index/systemHook:SystemHook")

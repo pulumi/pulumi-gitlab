@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
 // ## Import
 //
 // A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.

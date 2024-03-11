@@ -237,6 +237,7 @@ class ServiceGithub(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -249,11 +250,12 @@ class ServiceGithub(pulumi.CustomResource):
             token="REDACTED",
             repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`:
+        $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`:
         ```
 
         ```sh
@@ -284,6 +286,7 @@ class ServiceGithub(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -296,11 +299,12 @@ class ServiceGithub(pulumi.CustomResource):
             token="REDACTED",
             repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`:
+        $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`:
         ```
 
         ```sh

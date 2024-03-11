@@ -380,6 +380,8 @@ class BranchProtection(pulumi.CustomResource):
                  unprotect_access_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
         ## Import
 
         Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
@@ -408,6 +410,8 @@ class BranchProtection(pulumi.CustomResource):
                  args: BranchProtectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
         ## Import
 
         Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.

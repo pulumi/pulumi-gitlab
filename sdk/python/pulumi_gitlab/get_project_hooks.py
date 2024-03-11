@@ -78,6 +78,7 @@ def get_project_hooks(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -85,6 +86,7 @@ def get_project_hooks(project: Optional[str] = None,
     example = gitlab.get_project(id="foo/bar/baz")
     examples = gitlab.get_project_hooks(project=example.id)
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['project'] = project
@@ -107,6 +109,7 @@ def get_project_hooks_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -114,5 +117,6 @@ def get_project_hooks_output(project: Optional[pulumi.Input[str]] = None,
     example = gitlab.get_project(id="foo/bar/baz")
     examples = gitlab.get_project_hooks(project=example.id)
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

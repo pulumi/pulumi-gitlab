@@ -237,6 +237,7 @@ class GroupMembership(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -247,6 +248,7 @@ class GroupMembership(pulumi.CustomResource):
             group_id="12345",
             user_id=1337)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,6 +282,7 @@ class GroupMembership(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -290,6 +293,7 @@ class GroupMembership(pulumi.CustomResource):
             group_id="12345",
             user_id=1337)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

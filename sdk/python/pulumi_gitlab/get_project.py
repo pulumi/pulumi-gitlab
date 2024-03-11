@@ -837,12 +837,14 @@ def get_project(ci_default_git_depth: Optional[int] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_project(path_with_namespace="foo/bar/baz")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int ci_default_git_depth: Default number of revisions for shallow cloning.
@@ -940,12 +942,14 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_project(path_with_namespace="foo/bar/baz")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int ci_default_git_depth: Default number of revisions for shallow cloning.

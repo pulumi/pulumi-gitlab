@@ -209,6 +209,7 @@ class Application(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -218,6 +219,7 @@ class Application(pulumi.CustomResource):
             redirect_url="https://mycompany.com",
             scopes=["openid"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -227,7 +229,7 @@ class Application(pulumi.CustomResource):
         $ pulumi import gitlab:index/application:Application example "1"
         ```
 
-         NOTE: the secret and scopes cannot be imported
+        NOTE: the secret and scopes cannot be imported
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -253,6 +255,7 @@ class Application(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -262,6 +265,7 @@ class Application(pulumi.CustomResource):
             redirect_url="https://mycompany.com",
             scopes=["openid"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -271,7 +275,7 @@ class Application(pulumi.CustomResource):
         $ pulumi import gitlab:index/application:Application example "1"
         ```
 
-         NOTE: the secret and scopes cannot be imported
+        NOTE: the secret and scopes cannot be imported
 
         :param str resource_name: The name of the resource.
         :param ApplicationArgs args: The arguments to use to populate this resource's properties.

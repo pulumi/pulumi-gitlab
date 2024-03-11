@@ -200,6 +200,7 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -212,6 +213,7 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
             project_url="https://customtracker.com/issues",
             issues_url="https://customtracker.com/TEST-:id")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -240,6 +242,7 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -252,6 +255,7 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
             project_url="https://customtracker.com/issues",
             issues_url="https://customtracker.com/TEST-:id")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

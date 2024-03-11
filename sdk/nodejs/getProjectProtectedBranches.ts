@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     projectId: "foo/bar/baz",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectProtectedBranches(args: GetProjectProtectedBranchesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectProtectedBranchesResult> {
 
@@ -69,6 +71,7 @@ export interface GetProjectProtectedBranchesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -77,6 +80,7 @@ export interface GetProjectProtectedBranchesResult {
  *     projectId: "foo/bar/baz",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectProtectedBranchesOutput(args: GetProjectProtectedBranchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectProtectedBranchesResult> {
     return pulumi.output(args).apply((a: any) => getProjectProtectedBranches(a, opts))

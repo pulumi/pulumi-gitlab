@@ -18,6 +18,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,6 +40,7 @@ namespace Pulumi.GitLab
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -48,7 +50,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/systemHook:SystemHook example 42
     /// ```
     /// 
-    ///  NOTE: the `token` attribute won't be available for imported resources.
+    /// NOTE: the `token` attribute won't be available for imported resources.
     /// </summary>
     [GitLabResourceType("gitlab:index/systemHook:SystemHook")]
     public partial class SystemHook : global::Pulumi.CustomResource
