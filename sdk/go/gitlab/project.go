@@ -53,7 +53,7 @@ import (
 //			}
 //			_, err = gitlab.NewProject(ctx, "petersRepo", &gitlab.ProjectArgs{
 //				Description: pulumi.String("This is a description"),
-//				NamespaceId: *pulumi.Int(peterParker.NamespaceId),
+//				NamespaceId: pulumi.Int(peterParker.NamespaceId),
 //			})
 //			if err != nil {
 //				return err
@@ -198,7 +198,7 @@ type Project struct {
 	ContainerRegistryAccessLevel pulumi.StringOutput `pulumi:"containerRegistryAccessLevel"`
 	// Enable container registry for the project.
 	//
-	// Deprecated: Use `container_registry_access_level` instead.
+	// Deprecated: Use `containerRegistryAccessLevel` instead.
 	ContainerRegistryEnabled pulumi.BoolOutput `pulumi:"containerRegistryEnabled"`
 	// The default branch for the project.
 	DefaultBranch pulumi.StringOutput `pulumi:"defaultBranch"`
@@ -288,13 +288,13 @@ type Project struct {
 	PathWithNamespace pulumi.StringOutput `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 	//
-	// Deprecated: Deprecated in favor of `builds_access_level`
+	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled pulumi.BoolOutput `pulumi:"pipelinesEnabled"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolOutput `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
 	//
-	// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+	// Deprecated: The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
 	PublicBuilds pulumi.BoolOutput `pulumi:"publicBuilds"`
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs pulumi.BoolOutput `pulumi:"publicJobs"`
@@ -451,7 +451,7 @@ type projectState struct {
 	ContainerRegistryAccessLevel *string `pulumi:"containerRegistryAccessLevel"`
 	// Enable container registry for the project.
 	//
-	// Deprecated: Use `container_registry_access_level` instead.
+	// Deprecated: Use `containerRegistryAccessLevel` instead.
 	ContainerRegistryEnabled *bool `pulumi:"containerRegistryEnabled"`
 	// The default branch for the project.
 	DefaultBranch *string `pulumi:"defaultBranch"`
@@ -541,13 +541,13 @@ type projectState struct {
 	PathWithNamespace *string `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 	//
-	// Deprecated: Deprecated in favor of `builds_access_level`
+	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
 	//
-	// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+	// Deprecated: The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
 	PublicBuilds *bool `pulumi:"publicBuilds"`
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs *bool `pulumi:"publicJobs"`
@@ -667,7 +667,7 @@ type ProjectState struct {
 	ContainerRegistryAccessLevel pulumi.StringPtrInput
 	// Enable container registry for the project.
 	//
-	// Deprecated: Use `container_registry_access_level` instead.
+	// Deprecated: Use `containerRegistryAccessLevel` instead.
 	ContainerRegistryEnabled pulumi.BoolPtrInput
 	// The default branch for the project.
 	DefaultBranch pulumi.StringPtrInput
@@ -757,13 +757,13 @@ type ProjectState struct {
 	PathWithNamespace pulumi.StringPtrInput
 	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 	//
-	// Deprecated: Deprecated in favor of `builds_access_level`
+	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled pulumi.BoolPtrInput
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
 	//
-	// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+	// Deprecated: The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
 	PublicBuilds pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs pulumi.BoolPtrInput
@@ -885,7 +885,7 @@ type projectArgs struct {
 	ContainerRegistryAccessLevel *string `pulumi:"containerRegistryAccessLevel"`
 	// Enable container registry for the project.
 	//
-	// Deprecated: Use `container_registry_access_level` instead.
+	// Deprecated: Use `containerRegistryAccessLevel` instead.
 	ContainerRegistryEnabled *bool `pulumi:"containerRegistryEnabled"`
 	// The default branch for the project.
 	DefaultBranch *string `pulumi:"defaultBranch"`
@@ -969,13 +969,13 @@ type projectArgs struct {
 	Path *string `pulumi:"path"`
 	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 	//
-	// Deprecated: Deprecated in favor of `builds_access_level`
+	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
 	//
-	// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+	// Deprecated: The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
 	PublicBuilds *bool `pulumi:"publicBuilds"`
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs *bool `pulumi:"publicJobs"`
@@ -1088,7 +1088,7 @@ type ProjectArgs struct {
 	ContainerRegistryAccessLevel pulumi.StringPtrInput
 	// Enable container registry for the project.
 	//
-	// Deprecated: Use `container_registry_access_level` instead.
+	// Deprecated: Use `containerRegistryAccessLevel` instead.
 	ContainerRegistryEnabled pulumi.BoolPtrInput
 	// The default branch for the project.
 	DefaultBranch pulumi.StringPtrInput
@@ -1172,13 +1172,13 @@ type ProjectArgs struct {
 	Path pulumi.StringPtrInput
 	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 	//
-	// Deprecated: Deprecated in favor of `builds_access_level`
+	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled pulumi.BoolPtrInput
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
 	//
-	// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+	// Deprecated: The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
 	PublicBuilds pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs pulumi.BoolPtrInput
@@ -1447,7 +1447,7 @@ func (o ProjectOutput) ContainerRegistryAccessLevel() pulumi.StringOutput {
 
 // Enable container registry for the project.
 //
-// Deprecated: Use `container_registry_access_level` instead.
+// Deprecated: Use `containerRegistryAccessLevel` instead.
 func (o ProjectOutput) ContainerRegistryEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.ContainerRegistryEnabled }).(pulumi.BoolOutput)
 }
@@ -1669,7 +1669,7 @@ func (o ProjectOutput) PathWithNamespace() pulumi.StringOutput {
 
 // Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 //
-// Deprecated: Deprecated in favor of `builds_access_level`
+// Deprecated: Deprecated in favor of `buildsAccessLevel`
 func (o ProjectOutput) PipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PipelinesEnabled }).(pulumi.BoolOutput)
 }
@@ -1681,7 +1681,7 @@ func (o ProjectOutput) PrintingMergeRequestLinkEnabled() pulumi.BoolOutput {
 
 // If true, jobs can be viewed by non-project members.
 //
-// Deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+// Deprecated: The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
 func (o ProjectOutput) PublicBuilds() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PublicBuilds }).(pulumi.BoolOutput)
 }
