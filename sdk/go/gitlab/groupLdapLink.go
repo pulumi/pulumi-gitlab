@@ -36,7 +36,7 @@ type GroupLdapLink struct {
 
 	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	//
-	// Deprecated: Use `group_access` instead of the `access_level` attribute.
+	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
 	// The CN of the LDAP group to link with. Required if `filter` is not provided.
 	Cn pulumi.StringOutput `pulumi:"cn"`
@@ -90,7 +90,7 @@ func GetGroupLdapLink(ctx *pulumi.Context,
 type groupLdapLinkState struct {
 	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	//
-	// Deprecated: Use `group_access` instead of the `access_level` attribute.
+	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The CN of the LDAP group to link with. Required if `filter` is not provided.
 	Cn *string `pulumi:"cn"`
@@ -109,7 +109,7 @@ type groupLdapLinkState struct {
 type GroupLdapLinkState struct {
 	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	//
-	// Deprecated: Use `group_access` instead of the `access_level` attribute.
+	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel pulumi.StringPtrInput
 	// The CN of the LDAP group to link with. Required if `filter` is not provided.
 	Cn pulumi.StringPtrInput
@@ -132,7 +132,7 @@ func (GroupLdapLinkState) ElementType() reflect.Type {
 type groupLdapLinkArgs struct {
 	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	//
-	// Deprecated: Use `group_access` instead of the `access_level` attribute.
+	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The CN of the LDAP group to link with. Required if `filter` is not provided.
 	Cn *string `pulumi:"cn"`
@@ -152,7 +152,7 @@ type groupLdapLinkArgs struct {
 type GroupLdapLinkArgs struct {
 	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	//
-	// Deprecated: Use `group_access` instead of the `access_level` attribute.
+	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel pulumi.StringPtrInput
 	// The CN of the LDAP group to link with. Required if `filter` is not provided.
 	Cn pulumi.StringPtrInput
@@ -257,7 +257,7 @@ func (o GroupLdapLinkOutput) ToGroupLdapLinkOutputWithContext(ctx context.Contex
 
 // Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 //
-// Deprecated: Use `group_access` instead of the `access_level` attribute.
+// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 func (o GroupLdapLinkOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupLdapLink) pulumi.StringPtrOutput { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }

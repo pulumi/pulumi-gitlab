@@ -489,19 +489,19 @@ export class ApplicationSettings extends pulumi.CustomResource {
     /**
      * Number of Git pushes after which an incremental git repack is run.
      *
-     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
      */
     public readonly housekeepingFullRepackPeriod!: pulumi.Output<number>;
     /**
      * Number of Git pushes after which git gc is run.
      *
-     * @deprecated housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * @deprecated housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
      */
     public readonly housekeepingGcPeriod!: pulumi.Output<number>;
     /**
      * Number of Git pushes after which an incremental git repack is run.
      *
-     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
      */
     public readonly housekeepingIncrementalRepackPeriod!: pulumi.Output<number>;
     /**
@@ -1971,19 +1971,19 @@ export interface ApplicationSettingsState {
     /**
      * Number of Git pushes after which an incremental git repack is run.
      *
-     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
      */
     housekeepingFullRepackPeriod?: pulumi.Input<number>;
     /**
      * Number of Git pushes after which git gc is run.
      *
-     * @deprecated housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * @deprecated housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
      */
     housekeepingGcPeriod?: pulumi.Input<number>;
     /**
      * Number of Git pushes after which an incremental git repack is run.
      *
-     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
      */
     housekeepingIncrementalRepackPeriod?: pulumi.Input<number>;
     /**
@@ -2949,19 +2949,19 @@ export interface ApplicationSettingsArgs {
     /**
      * Number of Git pushes after which an incremental git repack is run.
      *
-     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
      */
     housekeepingFullRepackPeriod?: pulumi.Input<number>;
     /**
      * Number of Git pushes after which git gc is run.
      *
-     * @deprecated housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * @deprecated housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
      */
     housekeepingGcPeriod?: pulumi.Input<number>;
     /**
      * Number of Git pushes after which an incremental git repack is run.
      *
-     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
+     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
      */
     housekeepingIncrementalRepackPeriod?: pulumi.Input<number>;
     /**
