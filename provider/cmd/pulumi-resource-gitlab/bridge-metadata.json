@@ -959,6 +959,22 @@
                     }
                 }
             },
+            "gitlab_release": {
+                "current": "gitlab:index/getRelease:getRelease",
+                "majorVersion": 6,
+                "fields": {
+                    "assets": {
+                        "fields": {
+                            "links": {
+                                "maxItemsOne": false
+                            },
+                            "sources": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "gitlab_release_link": {
                 "current": "gitlab:index/getReleaseLink:getReleaseLink",
                 "majorVersion": 6
@@ -1134,6 +1150,7 @@
             "gitlab:index/getProjectVariable:getProjectVariable": 0,
             "gitlab:index/getProjectVariables:getProjectVariables": 0,
             "gitlab:index/getProjects:getProjects": 0,
+            "gitlab:index/getRelease:getRelease": 1,
             "gitlab:index/getReleaseLink:getReleaseLink": 0,
             "gitlab:index/getReleaseLinks:getReleaseLinks": 0,
             "gitlab:index/getRepositoryFile:getRepositoryFile": 0,
