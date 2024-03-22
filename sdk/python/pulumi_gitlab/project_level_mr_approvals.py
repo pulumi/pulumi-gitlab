@@ -26,7 +26,7 @@ class ProjectLevelMrApprovalsArgs:
         :param pulumi.Input[str] project: The ID or URL-encoded path of a project to change MR approval configuration.
         :param pulumi.Input[bool] disable_overriding_approvers_per_merge_request: Set to `true` to disable overriding approvers per merge request.
         :param pulumi.Input[bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
-        :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` to allow merge requests committers to approve their own merge requests.
+        :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` to disable merge request committers from approving their own merge requests.
         :param pulumi.Input[bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests.
         :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         :param pulumi.Input[bool] selective_code_owner_removals: Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
@@ -85,7 +85,7 @@ class ProjectLevelMrApprovalsArgs:
     @pulumi.getter(name="mergeRequestsDisableCommittersApproval")
     def merge_requests_disable_committers_approval(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to `true` to allow merge requests committers to approve their own merge requests.
+        Set to `true` to disable merge request committers from approving their own merge requests.
         """
         return pulumi.get(self, "merge_requests_disable_committers_approval")
 
@@ -144,7 +144,7 @@ class _ProjectLevelMrApprovalsState:
         Input properties used for looking up and filtering ProjectLevelMrApprovals resources.
         :param pulumi.Input[bool] disable_overriding_approvers_per_merge_request: Set to `true` to disable overriding approvers per merge request.
         :param pulumi.Input[bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
-        :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` to allow merge requests committers to approve their own merge requests.
+        :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` to disable merge request committers from approving their own merge requests.
         :param pulumi.Input[str] project: The ID or URL-encoded path of a project to change MR approval configuration.
         :param pulumi.Input[bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests.
         :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
@@ -193,7 +193,7 @@ class _ProjectLevelMrApprovalsState:
     @pulumi.getter(name="mergeRequestsDisableCommittersApproval")
     def merge_requests_disable_committers_approval(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to `true` to allow merge requests committers to approve their own merge requests.
+        Set to `true` to disable merge request committers from approving their own merge requests.
         """
         return pulumi.get(self, "merge_requests_disable_committers_approval")
 
@@ -305,7 +305,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_overriding_approvers_per_merge_request: Set to `true` to disable overriding approvers per merge request.
         :param pulumi.Input[bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
-        :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` to allow merge requests committers to approve their own merge requests.
+        :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` to disable merge request committers from approving their own merge requests.
         :param pulumi.Input[str] project: The ID or URL-encoded path of a project to change MR approval configuration.
         :param pulumi.Input[bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests.
         :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
@@ -421,7 +421,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_overriding_approvers_per_merge_request: Set to `true` to disable overriding approvers per merge request.
         :param pulumi.Input[bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
-        :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` to allow merge requests committers to approve their own merge requests.
+        :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` to disable merge request committers from approving their own merge requests.
         :param pulumi.Input[str] project: The ID or URL-encoded path of a project to change MR approval configuration.
         :param pulumi.Input[bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests.
         :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
@@ -460,7 +460,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
     @pulumi.getter(name="mergeRequestsDisableCommittersApproval")
     def merge_requests_disable_committers_approval(self) -> pulumi.Output[bool]:
         """
-        Set to `true` to allow merge requests committers to approve their own merge requests.
+        Set to `true` to disable merge request committers from approving their own merge requests.
         """
         return pulumi.get(self, "merge_requests_disable_committers_approval")
 

@@ -10414,6 +10414,411 @@ func (o GetProjectsProjectSharedWithGroupArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetProjectsProjectSharedWithGroupOutput)
 }
 
+type GetReleaseAssets struct {
+	// The number of assets for a release
+	Count int `pulumi:"count"`
+	// The links for a release
+	Links []GetReleaseAssetsLink `pulumi:"links"`
+	// The sources for a release
+	Sources []GetReleaseAssetsSource `pulumi:"sources"`
+}
+
+// GetReleaseAssetsInput is an input type that accepts GetReleaseAssetsArgs and GetReleaseAssetsOutput values.
+// You can construct a concrete instance of `GetReleaseAssetsInput` via:
+//
+//	GetReleaseAssetsArgs{...}
+type GetReleaseAssetsInput interface {
+	pulumi.Input
+
+	ToGetReleaseAssetsOutput() GetReleaseAssetsOutput
+	ToGetReleaseAssetsOutputWithContext(context.Context) GetReleaseAssetsOutput
+}
+
+type GetReleaseAssetsArgs struct {
+	// The number of assets for a release
+	Count pulumi.IntInput `pulumi:"count"`
+	// The links for a release
+	Links GetReleaseAssetsLinkArrayInput `pulumi:"links"`
+	// The sources for a release
+	Sources GetReleaseAssetsSourceArrayInput `pulumi:"sources"`
+}
+
+func (GetReleaseAssetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseAssets)(nil)).Elem()
+}
+
+func (i GetReleaseAssetsArgs) ToGetReleaseAssetsOutput() GetReleaseAssetsOutput {
+	return i.ToGetReleaseAssetsOutputWithContext(context.Background())
+}
+
+func (i GetReleaseAssetsArgs) ToGetReleaseAssetsOutputWithContext(ctx context.Context) GetReleaseAssetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseAssetsOutput)
+}
+
+func (i GetReleaseAssetsArgs) ToGetReleaseAssetsPtrOutput() GetReleaseAssetsPtrOutput {
+	return i.ToGetReleaseAssetsPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseAssetsArgs) ToGetReleaseAssetsPtrOutputWithContext(ctx context.Context) GetReleaseAssetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseAssetsOutput).ToGetReleaseAssetsPtrOutputWithContext(ctx)
+}
+
+// GetReleaseAssetsPtrInput is an input type that accepts GetReleaseAssetsArgs, GetReleaseAssetsPtr and GetReleaseAssetsPtrOutput values.
+// You can construct a concrete instance of `GetReleaseAssetsPtrInput` via:
+//
+//	        GetReleaseAssetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseAssetsPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseAssetsPtrOutput() GetReleaseAssetsPtrOutput
+	ToGetReleaseAssetsPtrOutputWithContext(context.Context) GetReleaseAssetsPtrOutput
+}
+
+type getReleaseAssetsPtrType GetReleaseAssetsArgs
+
+func GetReleaseAssetsPtr(v *GetReleaseAssetsArgs) GetReleaseAssetsPtrInput {
+	return (*getReleaseAssetsPtrType)(v)
+}
+
+func (*getReleaseAssetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseAssets)(nil)).Elem()
+}
+
+func (i *getReleaseAssetsPtrType) ToGetReleaseAssetsPtrOutput() GetReleaseAssetsPtrOutput {
+	return i.ToGetReleaseAssetsPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseAssetsPtrType) ToGetReleaseAssetsPtrOutputWithContext(ctx context.Context) GetReleaseAssetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseAssetsPtrOutput)
+}
+
+type GetReleaseAssetsOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseAssetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseAssets)(nil)).Elem()
+}
+
+func (o GetReleaseAssetsOutput) ToGetReleaseAssetsOutput() GetReleaseAssetsOutput {
+	return o
+}
+
+func (o GetReleaseAssetsOutput) ToGetReleaseAssetsOutputWithContext(ctx context.Context) GetReleaseAssetsOutput {
+	return o
+}
+
+func (o GetReleaseAssetsOutput) ToGetReleaseAssetsPtrOutput() GetReleaseAssetsPtrOutput {
+	return o.ToGetReleaseAssetsPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseAssetsOutput) ToGetReleaseAssetsPtrOutputWithContext(ctx context.Context) GetReleaseAssetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseAssets) *GetReleaseAssets {
+		return &v
+	}).(GetReleaseAssetsPtrOutput)
+}
+
+// The number of assets for a release
+func (o GetReleaseAssetsOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReleaseAssets) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The links for a release
+func (o GetReleaseAssetsOutput) Links() GetReleaseAssetsLinkArrayOutput {
+	return o.ApplyT(func(v GetReleaseAssets) []GetReleaseAssetsLink { return v.Links }).(GetReleaseAssetsLinkArrayOutput)
+}
+
+// The sources for a release
+func (o GetReleaseAssetsOutput) Sources() GetReleaseAssetsSourceArrayOutput {
+	return o.ApplyT(func(v GetReleaseAssets) []GetReleaseAssetsSource { return v.Sources }).(GetReleaseAssetsSourceArrayOutput)
+}
+
+type GetReleaseAssetsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseAssetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseAssets)(nil)).Elem()
+}
+
+func (o GetReleaseAssetsPtrOutput) ToGetReleaseAssetsPtrOutput() GetReleaseAssetsPtrOutput {
+	return o
+}
+
+func (o GetReleaseAssetsPtrOutput) ToGetReleaseAssetsPtrOutputWithContext(ctx context.Context) GetReleaseAssetsPtrOutput {
+	return o
+}
+
+func (o GetReleaseAssetsPtrOutput) Elem() GetReleaseAssetsOutput {
+	return o.ApplyT(func(v *GetReleaseAssets) GetReleaseAssets {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseAssets
+		return ret
+	}).(GetReleaseAssetsOutput)
+}
+
+// The number of assets for a release
+func (o GetReleaseAssetsPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetReleaseAssets) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// The links for a release
+func (o GetReleaseAssetsPtrOutput) Links() GetReleaseAssetsLinkArrayOutput {
+	return o.ApplyT(func(v *GetReleaseAssets) []GetReleaseAssetsLink {
+		if v == nil {
+			return nil
+		}
+		return v.Links
+	}).(GetReleaseAssetsLinkArrayOutput)
+}
+
+// The sources for a release
+func (o GetReleaseAssetsPtrOutput) Sources() GetReleaseAssetsSourceArrayOutput {
+	return o.ApplyT(func(v *GetReleaseAssets) []GetReleaseAssetsSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(GetReleaseAssetsSourceArrayOutput)
+}
+
+type GetReleaseAssetsLink struct {
+	// The ID of the link
+	Id int `pulumi:"id"`
+	// The type of the link
+	LinkType string `pulumi:"linkType"`
+	// The name of the link
+	Name string `pulumi:"name"`
+	// The URL of the link
+	Url string `pulumi:"url"`
+}
+
+// GetReleaseAssetsLinkInput is an input type that accepts GetReleaseAssetsLinkArgs and GetReleaseAssetsLinkOutput values.
+// You can construct a concrete instance of `GetReleaseAssetsLinkInput` via:
+//
+//	GetReleaseAssetsLinkArgs{...}
+type GetReleaseAssetsLinkInput interface {
+	pulumi.Input
+
+	ToGetReleaseAssetsLinkOutput() GetReleaseAssetsLinkOutput
+	ToGetReleaseAssetsLinkOutputWithContext(context.Context) GetReleaseAssetsLinkOutput
+}
+
+type GetReleaseAssetsLinkArgs struct {
+	// The ID of the link
+	Id pulumi.IntInput `pulumi:"id"`
+	// The type of the link
+	LinkType pulumi.StringInput `pulumi:"linkType"`
+	// The name of the link
+	Name pulumi.StringInput `pulumi:"name"`
+	// The URL of the link
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetReleaseAssetsLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseAssetsLink)(nil)).Elem()
+}
+
+func (i GetReleaseAssetsLinkArgs) ToGetReleaseAssetsLinkOutput() GetReleaseAssetsLinkOutput {
+	return i.ToGetReleaseAssetsLinkOutputWithContext(context.Background())
+}
+
+func (i GetReleaseAssetsLinkArgs) ToGetReleaseAssetsLinkOutputWithContext(ctx context.Context) GetReleaseAssetsLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseAssetsLinkOutput)
+}
+
+// GetReleaseAssetsLinkArrayInput is an input type that accepts GetReleaseAssetsLinkArray and GetReleaseAssetsLinkArrayOutput values.
+// You can construct a concrete instance of `GetReleaseAssetsLinkArrayInput` via:
+//
+//	GetReleaseAssetsLinkArray{ GetReleaseAssetsLinkArgs{...} }
+type GetReleaseAssetsLinkArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseAssetsLinkArrayOutput() GetReleaseAssetsLinkArrayOutput
+	ToGetReleaseAssetsLinkArrayOutputWithContext(context.Context) GetReleaseAssetsLinkArrayOutput
+}
+
+type GetReleaseAssetsLinkArray []GetReleaseAssetsLinkInput
+
+func (GetReleaseAssetsLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseAssetsLink)(nil)).Elem()
+}
+
+func (i GetReleaseAssetsLinkArray) ToGetReleaseAssetsLinkArrayOutput() GetReleaseAssetsLinkArrayOutput {
+	return i.ToGetReleaseAssetsLinkArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseAssetsLinkArray) ToGetReleaseAssetsLinkArrayOutputWithContext(ctx context.Context) GetReleaseAssetsLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseAssetsLinkArrayOutput)
+}
+
+type GetReleaseAssetsLinkOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseAssetsLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseAssetsLink)(nil)).Elem()
+}
+
+func (o GetReleaseAssetsLinkOutput) ToGetReleaseAssetsLinkOutput() GetReleaseAssetsLinkOutput {
+	return o
+}
+
+func (o GetReleaseAssetsLinkOutput) ToGetReleaseAssetsLinkOutputWithContext(ctx context.Context) GetReleaseAssetsLinkOutput {
+	return o
+}
+
+// The ID of the link
+func (o GetReleaseAssetsLinkOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReleaseAssetsLink) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The type of the link
+func (o GetReleaseAssetsLinkOutput) LinkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseAssetsLink) string { return v.LinkType }).(pulumi.StringOutput)
+}
+
+// The name of the link
+func (o GetReleaseAssetsLinkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseAssetsLink) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URL of the link
+func (o GetReleaseAssetsLinkOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseAssetsLink) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetReleaseAssetsLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseAssetsLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseAssetsLink)(nil)).Elem()
+}
+
+func (o GetReleaseAssetsLinkArrayOutput) ToGetReleaseAssetsLinkArrayOutput() GetReleaseAssetsLinkArrayOutput {
+	return o
+}
+
+func (o GetReleaseAssetsLinkArrayOutput) ToGetReleaseAssetsLinkArrayOutputWithContext(ctx context.Context) GetReleaseAssetsLinkArrayOutput {
+	return o
+}
+
+func (o GetReleaseAssetsLinkArrayOutput) Index(i pulumi.IntInput) GetReleaseAssetsLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseAssetsLink {
+		return vs[0].([]GetReleaseAssetsLink)[vs[1].(int)]
+	}).(GetReleaseAssetsLinkOutput)
+}
+
+type GetReleaseAssetsSource struct {
+	// The format of the source
+	Format string `pulumi:"format"`
+	// The URL of the link
+	Url string `pulumi:"url"`
+}
+
+// GetReleaseAssetsSourceInput is an input type that accepts GetReleaseAssetsSourceArgs and GetReleaseAssetsSourceOutput values.
+// You can construct a concrete instance of `GetReleaseAssetsSourceInput` via:
+//
+//	GetReleaseAssetsSourceArgs{...}
+type GetReleaseAssetsSourceInput interface {
+	pulumi.Input
+
+	ToGetReleaseAssetsSourceOutput() GetReleaseAssetsSourceOutput
+	ToGetReleaseAssetsSourceOutputWithContext(context.Context) GetReleaseAssetsSourceOutput
+}
+
+type GetReleaseAssetsSourceArgs struct {
+	// The format of the source
+	Format pulumi.StringInput `pulumi:"format"`
+	// The URL of the link
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetReleaseAssetsSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseAssetsSource)(nil)).Elem()
+}
+
+func (i GetReleaseAssetsSourceArgs) ToGetReleaseAssetsSourceOutput() GetReleaseAssetsSourceOutput {
+	return i.ToGetReleaseAssetsSourceOutputWithContext(context.Background())
+}
+
+func (i GetReleaseAssetsSourceArgs) ToGetReleaseAssetsSourceOutputWithContext(ctx context.Context) GetReleaseAssetsSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseAssetsSourceOutput)
+}
+
+// GetReleaseAssetsSourceArrayInput is an input type that accepts GetReleaseAssetsSourceArray and GetReleaseAssetsSourceArrayOutput values.
+// You can construct a concrete instance of `GetReleaseAssetsSourceArrayInput` via:
+//
+//	GetReleaseAssetsSourceArray{ GetReleaseAssetsSourceArgs{...} }
+type GetReleaseAssetsSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseAssetsSourceArrayOutput() GetReleaseAssetsSourceArrayOutput
+	ToGetReleaseAssetsSourceArrayOutputWithContext(context.Context) GetReleaseAssetsSourceArrayOutput
+}
+
+type GetReleaseAssetsSourceArray []GetReleaseAssetsSourceInput
+
+func (GetReleaseAssetsSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseAssetsSource)(nil)).Elem()
+}
+
+func (i GetReleaseAssetsSourceArray) ToGetReleaseAssetsSourceArrayOutput() GetReleaseAssetsSourceArrayOutput {
+	return i.ToGetReleaseAssetsSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseAssetsSourceArray) ToGetReleaseAssetsSourceArrayOutputWithContext(ctx context.Context) GetReleaseAssetsSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseAssetsSourceArrayOutput)
+}
+
+type GetReleaseAssetsSourceOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseAssetsSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseAssetsSource)(nil)).Elem()
+}
+
+func (o GetReleaseAssetsSourceOutput) ToGetReleaseAssetsSourceOutput() GetReleaseAssetsSourceOutput {
+	return o
+}
+
+func (o GetReleaseAssetsSourceOutput) ToGetReleaseAssetsSourceOutputWithContext(ctx context.Context) GetReleaseAssetsSourceOutput {
+	return o
+}
+
+// The format of the source
+func (o GetReleaseAssetsSourceOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseAssetsSource) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// The URL of the link
+func (o GetReleaseAssetsSourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseAssetsSource) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetReleaseAssetsSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseAssetsSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseAssetsSource)(nil)).Elem()
+}
+
+func (o GetReleaseAssetsSourceArrayOutput) ToGetReleaseAssetsSourceArrayOutput() GetReleaseAssetsSourceArrayOutput {
+	return o
+}
+
+func (o GetReleaseAssetsSourceArrayOutput) ToGetReleaseAssetsSourceArrayOutputWithContext(ctx context.Context) GetReleaseAssetsSourceArrayOutput {
+	return o
+}
+
+func (o GetReleaseAssetsSourceArrayOutput) Index(i pulumi.IntInput) GetReleaseAssetsSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseAssetsSource {
+		return vs[0].([]GetReleaseAssetsSource)[vs[1].(int)]
+	}).(GetReleaseAssetsSourceOutput)
+}
+
 type GetReleaseLinksReleaseLink struct {
 	// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 	DirectAssetUrl string `pulumi:"directAssetUrl"`
@@ -11316,6 +11721,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectPermissionArrayInput)(nil)).Elem(), GetProjectsProjectPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectSharedWithGroupInput)(nil)).Elem(), GetProjectsProjectSharedWithGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectSharedWithGroupArrayInput)(nil)).Elem(), GetProjectsProjectSharedWithGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseAssetsInput)(nil)).Elem(), GetReleaseAssetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseAssetsPtrInput)(nil)).Elem(), GetReleaseAssetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseAssetsLinkInput)(nil)).Elem(), GetReleaseAssetsLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseAssetsLinkArrayInput)(nil)).Elem(), GetReleaseAssetsLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseAssetsSourceInput)(nil)).Elem(), GetReleaseAssetsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseAssetsSourceArrayInput)(nil)).Elem(), GetReleaseAssetsSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseLinksReleaseLinkInput)(nil)).Elem(), GetReleaseLinksReleaseLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseLinksReleaseLinkArrayInput)(nil)).Elem(), GetReleaseLinksReleaseLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryTreeTreeInput)(nil)).Elem(), GetRepositoryTreeTreeArgs{})
@@ -11441,6 +11852,12 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectsProjectPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectSharedWithGroupOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectSharedWithGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetReleaseAssetsOutput{})
+	pulumi.RegisterOutputType(GetReleaseAssetsPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseAssetsLinkOutput{})
+	pulumi.RegisterOutputType(GetReleaseAssetsLinkArrayOutput{})
+	pulumi.RegisterOutputType(GetReleaseAssetsSourceOutput{})
+	pulumi.RegisterOutputType(GetReleaseAssetsSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetReleaseLinksReleaseLinkOutput{})
 	pulumi.RegisterOutputType(GetReleaseLinksReleaseLinkArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryTreeTreeOutput{})

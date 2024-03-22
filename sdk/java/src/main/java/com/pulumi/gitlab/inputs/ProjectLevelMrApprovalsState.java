@@ -47,14 +47,14 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
     }
 
     /**
-     * Set to `true` to allow merge requests committers to approve their own merge requests.
+     * Set to `true` to disable merge request committers from approving their own merge requests.
      * 
      */
     @Import(name="mergeRequestsDisableCommittersApproval")
     private @Nullable Output<Boolean> mergeRequestsDisableCommittersApproval;
 
     /**
-     * @return Set to `true` to allow merge requests committers to approve their own merge requests.
+     * @return Set to `true` to disable merge request committers from approving their own merge requests.
      * 
      */
     public Optional<Output<Boolean>> mergeRequestsDisableCommittersApproval() {
@@ -194,7 +194,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mergeRequestsDisableCommittersApproval Set to `true` to allow merge requests committers to approve their own merge requests.
+         * @param mergeRequestsDisableCommittersApproval Set to `true` to disable merge request committers from approving their own merge requests.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mergeRequestsDisableCommittersApproval Set to `true` to allow merge requests committers to approve their own merge requests.
+         * @param mergeRequestsDisableCommittersApproval Set to `true` to disable merge request committers from approving their own merge requests.
          * 
          * @return builder
          * 

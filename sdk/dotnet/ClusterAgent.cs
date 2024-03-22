@@ -23,41 +23,6 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
     /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new GitLab.ClusterAgent("example", new()
-    ///     {
-    ///         Project = "12345",
-    ///     });
-    /// 
-    ///     // Optionally, configure the agent as described in
-    ///     // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
-    ///     var exampleAgentConfig = new GitLab.RepositoryFile("exampleAgentConfig", new()
-    ///     {
-    ///         Project = example.Project,
-    ///         Branch = "main",
-    ///         FilePath = example.Name.Apply(name =&gt; $".gitlab/agents/{name}"),
-    ///         Content = @"  gitops:
-    ///     ...
-    /// ",
-    ///         AuthorEmail = "terraform@example.com",
-    ///         AuthorName = "Terraform",
-    ///         CommitMessage = example.Name.Apply(name =&gt; $"feature: add agent config for {name}"),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;`

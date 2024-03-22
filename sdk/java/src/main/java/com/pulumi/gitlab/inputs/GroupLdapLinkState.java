@@ -70,14 +70,14 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * If true, then delete and replace an existing LDAP link if one exists.
+     * If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return If true, then delete and replace an existing LDAP link if one exists.
+     * @return If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -231,7 +231,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param force If true, then delete and replace an existing LDAP link if one exists.
+         * @param force If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param force If true, then delete and replace an existing LDAP link if one exists.
+         * @param force If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
          * 
          * @return builder
          * 

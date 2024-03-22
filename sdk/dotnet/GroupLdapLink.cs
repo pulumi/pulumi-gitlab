@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         public Output<string> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// If true, then delete and replace an existing LDAP link if one exists.
+        /// If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.GitLab
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// If true, then delete and replace an existing LDAP link if one exists.
+        /// If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -190,7 +190,7 @@ namespace Pulumi.GitLab
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// If true, then delete and replace an existing LDAP link if one exists.
+        /// If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }

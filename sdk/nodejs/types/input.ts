@@ -315,6 +315,96 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs {
     userId?: pulumi.Input<number>;
 }
 
+export interface GetReleaseAssets {
+    /**
+     * The number of assets for a release
+     */
+    count?: number;
+    /**
+     * The links for a release
+     */
+    links?: inputs.GetReleaseAssetsLink[];
+    /**
+     * The sources for a release
+     */
+    sources?: inputs.GetReleaseAssetsSource[];
+}
+
+export interface GetReleaseAssetsArgs {
+    /**
+     * The number of assets for a release
+     */
+    count?: pulumi.Input<number>;
+    /**
+     * The links for a release
+     */
+    links?: pulumi.Input<pulumi.Input<inputs.GetReleaseAssetsLinkArgs>[]>;
+    /**
+     * The sources for a release
+     */
+    sources?: pulumi.Input<pulumi.Input<inputs.GetReleaseAssetsSourceArgs>[]>;
+}
+
+export interface GetReleaseAssetsLink {
+    /**
+     * The ID of the link
+     */
+    id?: number;
+    /**
+     * The type of the link
+     */
+    linkType?: string;
+    /**
+     * The name of the link
+     */
+    name?: string;
+    /**
+     * The URL of the link
+     */
+    url?: string;
+}
+
+export interface GetReleaseAssetsLinkArgs {
+    /**
+     * The ID of the link
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The type of the link
+     */
+    linkType?: pulumi.Input<string>;
+    /**
+     * The name of the link
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The URL of the link
+     */
+    url?: pulumi.Input<string>;
+}
+
+export interface GetReleaseAssetsSource {
+    /**
+     * The format of the source
+     */
+    format?: string;
+    /**
+     * The URL of the link
+     */
+    url?: string;
+}
+
+export interface GetReleaseAssetsSourceArgs {
+    /**
+     * The format of the source
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The URL of the link
+     */
+    url?: pulumi.Input<string>;
+}
+
 export interface GroupEpicBoardList {
     /**
      * The ID of the list.

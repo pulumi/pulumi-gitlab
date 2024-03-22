@@ -80,7 +80,7 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
      */
     public readonly mergeRequestsAuthorApproval!: pulumi.Output<boolean>;
     /**
-     * Set to `true` to allow merge requests committers to approve their own merge requests.
+     * Set to `true` to disable merge request committers from approving their own merge requests.
      */
     public readonly mergeRequestsDisableCommittersApproval!: pulumi.Output<boolean>;
     /**
@@ -151,7 +151,7 @@ export interface ProjectLevelMrApprovalsState {
      */
     mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
     /**
-     * Set to `true` to allow merge requests committers to approve their own merge requests.
+     * Set to `true` to disable merge request committers from approving their own merge requests.
      */
     mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
     /**
@@ -185,7 +185,7 @@ export interface ProjectLevelMrApprovalsArgs {
      */
     mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
     /**
-     * Set to `true` to allow merge requests committers to approve their own merge requests.
+     * Set to `true` to disable merge request committers from approving their own merge requests.
      */
     mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
     /**

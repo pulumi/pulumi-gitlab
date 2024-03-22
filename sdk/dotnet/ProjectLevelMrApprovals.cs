@@ -75,7 +75,7 @@ namespace Pulumi.GitLab
         public Output<bool> MergeRequestsAuthorApproval { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to allow merge requests committers to approve their own merge requests.
+        /// Set to `true` to disable merge request committers from approving their own merge requests.
         /// </summary>
         [Output("mergeRequestsDisableCommittersApproval")]
         public Output<bool> MergeRequestsDisableCommittersApproval { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsAuthorApproval { get; set; }
 
         /// <summary>
-        /// Set to `true` to allow merge requests committers to approve their own merge requests.
+        /// Set to `true` to disable merge request committers from approving their own merge requests.
         /// </summary>
         [Input("mergeRequestsDisableCommittersApproval")]
         public Input<bool>? MergeRequestsDisableCommittersApproval { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsAuthorApproval { get; set; }
 
         /// <summary>
-        /// Set to `true` to allow merge requests committers to approve their own merge requests.
+        /// Set to `true` to disable merge request committers from approving their own merge requests.
         /// </summary>
         [Input("mergeRequestsDisableCommittersApproval")]
         public Input<bool>? MergeRequestsDisableCommittersApproval { get; set; }

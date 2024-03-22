@@ -28,7 +28,7 @@ class GroupLdapLinkArgs:
         :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] cn: The CN of the LDAP group to link with. Required if `filter` is not provided.
         :param pulumi.Input[str] filter: The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
-        :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists.
+        :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
         pulumi.set(__self__, "group", group)
@@ -114,7 +114,7 @@ class GroupLdapLinkArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, then delete and replace an existing LDAP link if one exists.
+        If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         """
         return pulumi.get(self, "force")
 
@@ -150,7 +150,7 @@ class _GroupLdapLinkState:
         :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] cn: The CN of the LDAP group to link with. Required if `filter` is not provided.
         :param pulumi.Input[str] filter: The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
-        :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists.
+        :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group
         :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
@@ -216,7 +216,7 @@ class _GroupLdapLinkState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, then delete and replace an existing LDAP link if one exists.
+        If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         """
         return pulumi.get(self, "force")
 
@@ -300,7 +300,7 @@ class GroupLdapLink(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] cn: The CN of the LDAP group to link with. Required if `filter` is not provided.
         :param pulumi.Input[str] filter: The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
-        :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists.
+        :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group
         :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
@@ -401,7 +401,7 @@ class GroupLdapLink(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] cn: The CN of the LDAP group to link with. Required if `filter` is not provided.
         :param pulumi.Input[str] filter: The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
-        :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists.
+        :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group
         :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
@@ -450,7 +450,7 @@ class GroupLdapLink(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        If true, then delete and replace an existing LDAP link if one exists.
+        If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         """
         return pulumi.get(self, "force")
 

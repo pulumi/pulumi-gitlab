@@ -58,6 +58,7 @@
         "getProjectVariable.ts",
         "getProjectVariables.ts",
         "getProjects.ts",
+        "getRelease.ts",
         "getReleaseLink.ts",
         "getReleaseLinks.ts",
         "getRepositoryFile.ts",

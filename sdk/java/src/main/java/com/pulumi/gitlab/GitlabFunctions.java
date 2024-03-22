@@ -68,10 +68,12 @@ import com.pulumi.gitlab.inputs.GetProjectVariablesArgs;
 import com.pulumi.gitlab.inputs.GetProjectVariablesPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectsArgs;
 import com.pulumi.gitlab.inputs.GetProjectsPlainArgs;
+import com.pulumi.gitlab.inputs.GetReleaseArgs;
 import com.pulumi.gitlab.inputs.GetReleaseLinkArgs;
 import com.pulumi.gitlab.inputs.GetReleaseLinkPlainArgs;
 import com.pulumi.gitlab.inputs.GetReleaseLinksArgs;
 import com.pulumi.gitlab.inputs.GetReleaseLinksPlainArgs;
+import com.pulumi.gitlab.inputs.GetReleasePlainArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryFileArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryFilePlainArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryTreeArgs;
@@ -117,6 +119,7 @@ import com.pulumi.gitlab.outputs.GetProjectVariablesResult;
 import com.pulumi.gitlab.outputs.GetProjectsResult;
 import com.pulumi.gitlab.outputs.GetReleaseLinkResult;
 import com.pulumi.gitlab.outputs.GetReleaseLinksResult;
+import com.pulumi.gitlab.outputs.GetReleaseResult;
 import com.pulumi.gitlab.outputs.GetRepositoryFileResult;
 import com.pulumi.gitlab.outputs.GetRepositoryTreeResult;
 import com.pulumi.gitlab.outputs.GetUserResult;
@@ -6917,6 +6920,178 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetReleaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
+     *             .projectId(1234)
+     *             .tagName(&#34;v1.0&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetReleaseResult> getRelease(GetReleaseArgs args) {
+        return getRelease(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetReleaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
+     *             .projectId(1234)
+     *             .tagName(&#34;v1.0&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetReleaseResult> getReleasePlain(GetReleasePlainArgs args) {
+        return getReleasePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetReleaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
+     *             .projectId(1234)
+     *             .tagName(&#34;v1.0&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetReleaseResult> getRelease(GetReleaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getRelease:getRelease", TypeShape.of(GetReleaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetReleaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
+     *             .projectId(1234)
+     *             .tagName(&#34;v1.0&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetReleaseResult> getReleasePlain(GetReleasePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getRelease:getRelease", TypeShape.of(GetReleaseResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.ReleaseLink` data source allows get details of a release link.

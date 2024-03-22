@@ -68,7 +68,7 @@ export class GroupLdapLink extends pulumi.CustomResource {
      */
     public readonly filter!: pulumi.Output<string>;
     /**
-     * If true, then delete and replace an existing LDAP link if one exists.
+     * If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
@@ -144,7 +144,7 @@ export interface GroupLdapLinkState {
      */
     filter?: pulumi.Input<string>;
     /**
-     * If true, then delete and replace an existing LDAP link if one exists.
+     * If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -180,7 +180,7 @@ export interface GroupLdapLinkArgs {
      */
     filter?: pulumi.Input<string>;
     /**
-     * If true, then delete and replace an existing LDAP link if one exists.
+     * If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
      */
     force?: pulumi.Input<boolean>;
     /**
