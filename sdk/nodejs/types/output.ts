@@ -1912,6 +1912,51 @@ export interface GetProjectsProjectSharedWithGroup {
     groupName: string;
 }
 
+export interface GetReleaseAssets {
+    /**
+     * The number of assets for a release
+     */
+    count: number;
+    /**
+     * The links for a release
+     */
+    links?: outputs.GetReleaseAssetsLink[];
+    /**
+     * The sources for a release
+     */
+    sources?: outputs.GetReleaseAssetsSource[];
+}
+
+export interface GetReleaseAssetsLink {
+    /**
+     * The ID of the link
+     */
+    id: number;
+    /**
+     * The type of the link
+     */
+    linkType: string;
+    /**
+     * The name of the link
+     */
+    name: string;
+    /**
+     * The URL of the link
+     */
+    url: string;
+}
+
+export interface GetReleaseAssetsSource {
+    /**
+     * The format of the source
+     */
+    format: string;
+    /**
+     * The URL of the link
+     */
+    url: string;
+}
+
 export interface GetReleaseLinksReleaseLink {
     /**
      * Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).

@@ -33,6 +33,9 @@ __all__ = [
     'GetProjectProtectedBranchesProtectedBranchArgs',
     'GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs',
     'GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs',
+    'GetReleaseAssetsArgs',
+    'GetReleaseAssetsLinkArgs',
+    'GetReleaseAssetsSourceArgs',
 ]
 
 @pulumi.input_type
@@ -2236,5 +2239,163 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs:
     @user_id.setter
     def user_id(self, value: Optional[int]):
         pulumi.set(self, "user_id", value)
+
+
+@pulumi.input_type
+class GetReleaseAssetsArgs:
+    def __init__(__self__, *,
+                 count: int,
+                 links: Optional[Sequence['GetReleaseAssetsLinkArgs']] = None,
+                 sources: Optional[Sequence['GetReleaseAssetsSourceArgs']] = None):
+        """
+        :param int count: The number of assets for a release
+        :param Sequence['GetReleaseAssetsLinkArgs'] links: The links for a release
+        :param Sequence['GetReleaseAssetsSourceArgs'] sources: The sources for a release
+        """
+        pulumi.set(__self__, "count", count)
+        if links is not None:
+            pulumi.set(__self__, "links", links)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The number of assets for a release
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: int):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def links(self) -> Optional[Sequence['GetReleaseAssetsLinkArgs']]:
+        """
+        The links for a release
+        """
+        return pulumi.get(self, "links")
+
+    @links.setter
+    def links(self, value: Optional[Sequence['GetReleaseAssetsLinkArgs']]):
+        pulumi.set(self, "links", value)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence['GetReleaseAssetsSourceArgs']]:
+        """
+        The sources for a release
+        """
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: Optional[Sequence['GetReleaseAssetsSourceArgs']]):
+        pulumi.set(self, "sources", value)
+
+
+@pulumi.input_type
+class GetReleaseAssetsLinkArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 link_type: str,
+                 name: str,
+                 url: str):
+        """
+        :param int id: The ID of the link
+        :param str link_type: The type of the link
+        :param str name: The name of the link
+        :param str url: The URL of the link
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link_type", link_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the link
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="linkType")
+    def link_type(self) -> str:
+        """
+        The type of the link
+        """
+        return pulumi.get(self, "link_type")
+
+    @link_type.setter
+    def link_type(self, value: str):
+        pulumi.set(self, "link_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the link
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL of the link
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: str):
+        pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class GetReleaseAssetsSourceArgs:
+    def __init__(__self__, *,
+                 format: str,
+                 url: str):
+        """
+        :param str format: The format of the source
+        :param str url: The URL of the link
+        """
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        """
+        The format of the source
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: str):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL of the link
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: str):
+        pulumi.set(self, "url", value)
 
 

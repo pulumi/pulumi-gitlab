@@ -48,6 +48,7 @@ from .get_project_tags import *
 from .get_project_variable import *
 from .get_project_variables import *
 from .get_projects import *
+from .get_release import *
 from .get_release_link import *
 from .get_release_links import *
 from .get_repository_file import *

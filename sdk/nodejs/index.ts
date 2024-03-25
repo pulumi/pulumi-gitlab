@@ -220,6 +220,11 @@ export const getProjects: typeof import("./getProjects").getProjects = null as a
 export const getProjectsOutput: typeof import("./getProjects").getProjectsOutput = null as any;
 utilities.lazyLoad(exports, ["getProjects","getProjectsOutput"], () => require("./getProjects"));
 
+export { GetReleaseArgs, GetReleaseResult, GetReleaseOutputArgs } from "./getRelease";
+export const getRelease: typeof import("./getRelease").getRelease = null as any;
+export const getReleaseOutput: typeof import("./getRelease").getReleaseOutput = null as any;
+utilities.lazyLoad(exports, ["getRelease","getReleaseOutput"], () => require("./getRelease"));
+
 export { GetReleaseLinkArgs, GetReleaseLinkResult, GetReleaseLinkOutputArgs } from "./getReleaseLink";
 export const getReleaseLink: typeof import("./getReleaseLink").getReleaseLink = null as any;
 export const getReleaseLinkOutput: typeof import("./getReleaseLink").getReleaseLinkOutput = null as any;

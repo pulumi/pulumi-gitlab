@@ -122,14 +122,14 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
         return this.filter;
     }
     /**
-     * If true, then delete and replace an existing LDAP link if one exists.
+     * If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return If true, then delete and replace an existing LDAP link if one exists.
+     * @return If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
      * 
      */
     public Output<Optional<Boolean>> force() {

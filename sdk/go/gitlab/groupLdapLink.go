@@ -42,7 +42,7 @@ type GroupLdapLink struct {
 	Cn pulumi.StringOutput `pulumi:"cn"`
 	// The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
 	Filter pulumi.StringOutput `pulumi:"filter"`
-	// If true, then delete and replace an existing LDAP link if one exists.
+	// If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The ID or URL-encoded path of the group
 	Group pulumi.StringOutput `pulumi:"group"`
@@ -96,7 +96,7 @@ type groupLdapLinkState struct {
 	Cn *string `pulumi:"cn"`
 	// The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
 	Filter *string `pulumi:"filter"`
-	// If true, then delete and replace an existing LDAP link if one exists.
+	// If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
 	Force *bool `pulumi:"force"`
 	// The ID or URL-encoded path of the group
 	Group *string `pulumi:"group"`
@@ -115,7 +115,7 @@ type GroupLdapLinkState struct {
 	Cn pulumi.StringPtrInput
 	// The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
 	Filter pulumi.StringPtrInput
-	// If true, then delete and replace an existing LDAP link if one exists.
+	// If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
 	Force pulumi.BoolPtrInput
 	// The ID or URL-encoded path of the group
 	Group pulumi.StringPtrInput
@@ -138,7 +138,7 @@ type groupLdapLinkArgs struct {
 	Cn *string `pulumi:"cn"`
 	// The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
 	Filter *string `pulumi:"filter"`
-	// If true, then delete and replace an existing LDAP link if one exists.
+	// If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
 	Force *bool `pulumi:"force"`
 	// The ID or URL-encoded path of the group
 	Group string `pulumi:"group"`
@@ -158,7 +158,7 @@ type GroupLdapLinkArgs struct {
 	Cn pulumi.StringPtrInput
 	// The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
 	Filter pulumi.StringPtrInput
-	// If true, then delete and replace an existing LDAP link if one exists.
+	// If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
 	Force pulumi.BoolPtrInput
 	// The ID or URL-encoded path of the group
 	Group pulumi.StringInput
@@ -272,7 +272,7 @@ func (o GroupLdapLinkOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupLdapLink) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
 }
 
-// If true, then delete and replace an existing LDAP link if one exists.
+// If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
 func (o GroupLdapLinkOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GroupLdapLink) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }

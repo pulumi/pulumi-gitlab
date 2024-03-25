@@ -70,6 +70,9 @@ __all__ = [
     'GetProjectsProjectOwnerResult',
     'GetProjectsProjectPermissionResult',
     'GetProjectsProjectSharedWithGroupResult',
+    'GetReleaseAssetsResult',
+    'GetReleaseAssetsLinkResult',
+    'GetReleaseAssetsSourceResult',
     'GetReleaseLinksReleaseLinkResult',
     'GetRepositoryTreeTreeResult',
     'GetUserSshkeysKeyResult',
@@ -6946,6 +6949,128 @@ class GetProjectsProjectSharedWithGroupResult(dict):
         The group name.
         """
         return pulumi.get(self, "group_name")
+
+
+@pulumi.output_type
+class GetReleaseAssetsResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 links: Optional[Sequence['outputs.GetReleaseAssetsLinkResult']] = None,
+                 sources: Optional[Sequence['outputs.GetReleaseAssetsSourceResult']] = None):
+        """
+        :param int count: The number of assets for a release
+        :param Sequence['GetReleaseAssetsLinkArgs'] links: The links for a release
+        :param Sequence['GetReleaseAssetsSourceArgs'] sources: The sources for a release
+        """
+        pulumi.set(__self__, "count", count)
+        if links is not None:
+            pulumi.set(__self__, "links", links)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The number of assets for a release
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def links(self) -> Optional[Sequence['outputs.GetReleaseAssetsLinkResult']]:
+        """
+        The links for a release
+        """
+        return pulumi.get(self, "links")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence['outputs.GetReleaseAssetsSourceResult']]:
+        """
+        The sources for a release
+        """
+        return pulumi.get(self, "sources")
+
+
+@pulumi.output_type
+class GetReleaseAssetsLinkResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 link_type: str,
+                 name: str,
+                 url: str):
+        """
+        :param int id: The ID of the link
+        :param str link_type: The type of the link
+        :param str name: The name of the link
+        :param str url: The URL of the link
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link_type", link_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the link
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="linkType")
+    def link_type(self) -> str:
+        """
+        The type of the link
+        """
+        return pulumi.get(self, "link_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the link
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL of the link
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetReleaseAssetsSourceResult(dict):
+    def __init__(__self__, *,
+                 format: str,
+                 url: str):
+        """
+        :param str format: The format of the source
+        :param str url: The URL of the link
+        """
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        """
+        The format of the source
+        """
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL of the link
+        """
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type

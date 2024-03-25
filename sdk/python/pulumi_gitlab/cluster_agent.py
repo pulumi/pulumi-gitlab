@@ -160,29 +160,6 @@ class ClusterAgent(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.ClusterAgent("example", project="12345")
-        # Optionally, configure the agent as described in
-        # https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
-        example_agent_config = gitlab.RepositoryFile("exampleAgentConfig",
-            project=example.project,
-            branch="main",
-            file_path=example.name.apply(lambda name: f".gitlab/agents/{name}"),
-            content=\"\"\"  gitops:
-            ...
-        \"\"\",
-            author_email="terraform@example.com",
-            author_name="Terraform",
-            commit_message=example.name.apply(lambda name: f"feature: add agent config for {name}"))
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>`
@@ -215,29 +192,6 @@ class ClusterAgent(pulumi.CustomResource):
         > Requires at least GitLab 14.10
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.ClusterAgent("example", project="12345")
-        # Optionally, configure the agent as described in
-        # https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
-        example_agent_config = gitlab.RepositoryFile("exampleAgentConfig",
-            project=example.project,
-            branch="main",
-            file_path=example.name.apply(lambda name: f".gitlab/agents/{name}"),
-            content=\"\"\"  gitops:
-            ...
-        \"\"\",
-            author_email="terraform@example.com",
-            author_name="Terraform",
-            commit_message=example.name.apply(lambda name: f"feature: add agent config for {name}"))
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

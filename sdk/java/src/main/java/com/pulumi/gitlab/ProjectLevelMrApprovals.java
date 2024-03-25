@@ -110,14 +110,14 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
         return this.mergeRequestsAuthorApproval;
     }
     /**
-     * Set to `true` to allow merge requests committers to approve their own merge requests.
+     * Set to `true` to disable merge request committers from approving their own merge requests.
      * 
      */
     @Export(name="mergeRequestsDisableCommittersApproval", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mergeRequestsDisableCommittersApproval;
 
     /**
-     * @return Set to `true` to allow merge requests committers to approve their own merge requests.
+     * @return Set to `true` to disable merge request committers from approving their own merge requests.
      * 
      */
     public Output<Boolean> mergeRequestsDisableCommittersApproval() {

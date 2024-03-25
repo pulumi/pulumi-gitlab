@@ -76,7 +76,7 @@ type ProjectLevelMrApprovals struct {
 	DisableOverridingApproversPerMergeRequest pulumi.BoolOutput `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Set to `true` to allow merge requests authors to approve their own merge requests.
 	MergeRequestsAuthorApproval pulumi.BoolOutput `pulumi:"mergeRequestsAuthorApproval"`
-	// Set to `true` to allow merge requests committers to approve their own merge requests.
+	// Set to `true` to disable merge request committers from approving their own merge requests.
 	MergeRequestsDisableCommittersApproval pulumi.BoolOutput `pulumi:"mergeRequestsDisableCommittersApproval"`
 	// The ID or URL-encoded path of a project to change MR approval configuration.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -125,7 +125,7 @@ type projectLevelMrApprovalsState struct {
 	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Set to `true` to allow merge requests authors to approve their own merge requests.
 	MergeRequestsAuthorApproval *bool `pulumi:"mergeRequestsAuthorApproval"`
-	// Set to `true` to allow merge requests committers to approve their own merge requests.
+	// Set to `true` to disable merge request committers from approving their own merge requests.
 	MergeRequestsDisableCommittersApproval *bool `pulumi:"mergeRequestsDisableCommittersApproval"`
 	// The ID or URL-encoded path of a project to change MR approval configuration.
 	Project *string `pulumi:"project"`
@@ -142,7 +142,7 @@ type ProjectLevelMrApprovalsState struct {
 	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrInput
 	// Set to `true` to allow merge requests authors to approve their own merge requests.
 	MergeRequestsAuthorApproval pulumi.BoolPtrInput
-	// Set to `true` to allow merge requests committers to approve their own merge requests.
+	// Set to `true` to disable merge request committers from approving their own merge requests.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrInput
 	// The ID or URL-encoded path of a project to change MR approval configuration.
 	Project pulumi.StringPtrInput
@@ -163,7 +163,7 @@ type projectLevelMrApprovalsArgs struct {
 	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Set to `true` to allow merge requests authors to approve their own merge requests.
 	MergeRequestsAuthorApproval *bool `pulumi:"mergeRequestsAuthorApproval"`
-	// Set to `true` to allow merge requests committers to approve their own merge requests.
+	// Set to `true` to disable merge request committers from approving their own merge requests.
 	MergeRequestsDisableCommittersApproval *bool `pulumi:"mergeRequestsDisableCommittersApproval"`
 	// The ID or URL-encoded path of a project to change MR approval configuration.
 	Project string `pulumi:"project"`
@@ -181,7 +181,7 @@ type ProjectLevelMrApprovalsArgs struct {
 	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrInput
 	// Set to `true` to allow merge requests authors to approve their own merge requests.
 	MergeRequestsAuthorApproval pulumi.BoolPtrInput
-	// Set to `true` to allow merge requests committers to approve their own merge requests.
+	// Set to `true` to disable merge request committers from approving their own merge requests.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrInput
 	// The ID or URL-encoded path of a project to change MR approval configuration.
 	Project pulumi.StringInput
@@ -290,7 +290,7 @@ func (o ProjectLevelMrApprovalsOutput) MergeRequestsAuthorApproval() pulumi.Bool
 	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolOutput { return v.MergeRequestsAuthorApproval }).(pulumi.BoolOutput)
 }
 
-// Set to `true` to allow merge requests committers to approve their own merge requests.
+// Set to `true` to disable merge request committers from approving their own merge requests.
 func (o ProjectLevelMrApprovalsOutput) MergeRequestsDisableCommittersApproval() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolOutput { return v.MergeRequestsDisableCommittersApproval }).(pulumi.BoolOutput)
 }

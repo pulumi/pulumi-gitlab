@@ -3528,6 +3528,91 @@
                 }
             }
         },
+        "gitlab:index/getReleaseAssets:getReleaseAssets": {
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "description": "The number of assets for a release\n"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/getReleaseAssetsLink:getReleaseAssetsLink"
+                    },
+                    "description": "The links for a release\n"
+                },
+                "sources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/getReleaseAssetsSource:getReleaseAssetsSource"
+                    },
+                    "description": "The sources for a release\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "count"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getReleaseAssetsLink:getReleaseAssetsLink": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the link\n"
+                },
+                "linkType": {
+                    "type": "string",
+                    "description": "The type of the link\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the link\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the link\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "linkType",
+                "name",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getReleaseAssetsSource:getReleaseAssetsSource": {
+            "properties": {
+                "format": {
+                    "type": "string",
+                    "description": "The format of the source\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the link\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "format",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "gitlab:index/getReleaseLinksReleaseLink:getReleaseLinksReleaseLink": {
             "properties": {
                 "directAssetUrl": {
@@ -7627,7 +7712,7 @@
             }
         },
         "gitlab:index/clusterAgent:ClusterAgent": {
-            "description": "The `gitlab.ClusterAgent` resource allows to manage the lifecycle of a GitLab Agent for Kubernetes.\n\n\u003e Note that this resource only registers the agent, but doesn't configure it.\n   The configuration needs to be manually added as described in\n   [the docs](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file).\n   However, a `gitlab.RepositoryFile` resource may be used to achieve that.\n\n\u003e Requires at least maintainer permissions on the project.\n\n\u003e Requires at least GitLab 14.10\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.ClusterAgent(\"example\", {project: \"12345\"});\n// Optionally, configure the agent as described in\n// https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file\nconst exampleAgentConfig = new gitlab.RepositoryFile(\"exampleAgentConfig\", {\n    project: example.project,\n    branch: \"main\",\n    filePath: pulumi.interpolate`.gitlab/agents/${example.name}`,\n    content: `  gitops:\n    ...\n`,\n    authorEmail: \"terraform@example.com\",\n    authorName: \"Terraform\",\n    commitMessage: pulumi.interpolate`feature: add agent config for ${example.name}`,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.ClusterAgent(\"example\", project=\"12345\")\n# Optionally, configure the agent as described in\n# https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file\nexample_agent_config = gitlab.RepositoryFile(\"exampleAgentConfig\",\n    project=example.project,\n    branch=\"main\",\n    file_path=example.name.apply(lambda name: f\".gitlab/agents/{name}\"),\n    content=\"\"\"  gitops:\n    ...\n\"\"\",\n    author_email=\"terraform@example.com\",\n    author_name=\"Terraform\",\n    commit_message=example.name.apply(lambda name: f\"feature: add agent config for {name}\"))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.ClusterAgent(\"example\", new()\n    {\n        Project = \"12345\",\n    });\n\n    // Optionally, configure the agent as described in\n    // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file\n    var exampleAgentConfig = new GitLab.RepositoryFile(\"exampleAgentConfig\", new()\n    {\n        Project = example.Project,\n        Branch = \"main\",\n        FilePath = example.Name.Apply(name =\u003e $\".gitlab/agents/{name}\"),\n        Content = @\"  gitops:\n    ...\n\",\n        AuthorEmail = \"terraform@example.com\",\n        AuthorName = \"Terraform\",\n        CommitMessage = example.Name.Apply(name =\u003e $\"feature: add agent config for {name}\"),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewClusterAgent(ctx, \"example\", \u0026gitlab.ClusterAgentArgs{\n\t\t\tProject: pulumi.String(\"12345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Optionally, configure the agent as described in\n\t\t// https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file\n\t\t_, err = gitlab.NewRepositoryFile(ctx, \"exampleAgentConfig\", \u0026gitlab.RepositoryFileArgs{\n\t\t\tProject: example.Project,\n\t\t\tBranch:  pulumi.String(\"main\"),\n\t\t\tFilePath: example.Name.ApplyT(func(name string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\".gitlab/agents/%v\", name), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tContent:     pulumi.String(\"  gitops:\\n    ...\\n\"),\n\t\t\tAuthorEmail: pulumi.String(\"terraform@example.com\"),\n\t\t\tAuthorName:  pulumi.String(\"Terraform\"),\n\t\t\tCommitMessage: example.Name.ApplyT(func(name string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"feature: add agent config for %v\", name), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ClusterAgent;\nimport com.pulumi.gitlab.ClusterAgentArgs;\nimport com.pulumi.gitlab.RepositoryFile;\nimport com.pulumi.gitlab.RepositoryFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ClusterAgent(\"example\", ClusterAgentArgs.builder()        \n            .project(\"12345\")\n            .build());\n\n        var exampleAgentConfig = new RepositoryFile(\"exampleAgentConfig\", RepositoryFileArgs.builder()        \n            .project(example.project())\n            .branch(\"main\")\n            .filePath(example.name().applyValue(name -\u003e String.format(\".gitlab/agents/%s\", name)))\n            .content(\"\"\"\n  gitops:\n    ...\n            \"\"\")\n            .authorEmail(\"terraform@example.com\")\n            .authorName(\"Terraform\")\n            .commitMessage(example.name().applyValue(name -\u003e String.format(\"feature: add agent config for %s\", name)))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:ClusterAgent\n    properties:\n      project: '12345'\n  # Optionally, configure the agent as described in\n  # // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file\n  exampleAgentConfig:\n    type: gitlab:RepositoryFile\n    properties:\n      project: ${example.project}\n      branch: main\n      # or use the `default_branch` attribute from a project data source / resource\n      filePath: .gitlab/agents/${example.name}\n      content: |2\n          gitops:\n            ...\n      authorEmail: terraform@example.com\n      authorName: Terraform\n      commitMessage: 'feature: add agent config for ${example.name}'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGitLab Agent for Kubernetes can be imported with the following command and the id pattern `\u003cproject\u003e:\u003cagent-id\u003e`\n\n```sh\n$ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'\n```\n\n",
+            "description": "The `gitlab.ClusterAgent` resource allows to manage the lifecycle of a GitLab Agent for Kubernetes.\n\n\u003e Note that this resource only registers the agent, but doesn't configure it.\n   The configuration needs to be manually added as described in\n   [the docs](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file).\n   However, a `gitlab.RepositoryFile` resource may be used to achieve that.\n\n\u003e Requires at least maintainer permissions on the project.\n\n\u003e Requires at least GitLab 14.10\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)\n\n## Import\n\nGitLab Agent for Kubernetes can be imported with the following command and the id pattern `\u003cproject\u003e:\u003cagent-id\u003e`\n\n```sh\n$ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'\n```\n\n",
             "properties": {
                 "agentId": {
                     "type": "integer",
@@ -9929,7 +10014,7 @@
                 },
                 "force": {
                     "type": "boolean",
-                    "description": "If true, then delete and replace an existing LDAP link if one exists.\n"
+                    "description": "If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.\n"
                 },
                 "group": {
                     "type": "string",
@@ -9969,7 +10054,7 @@
                 },
                 "force": {
                     "type": "boolean",
-                    "description": "If true, then delete and replace an existing LDAP link if one exists.\n",
+                    "description": "If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.\n",
                     "willReplaceOnChanges": true
                 },
                 "group": {
@@ -10013,7 +10098,7 @@
                     },
                     "force": {
                         "type": "boolean",
-                        "description": "If true, then delete and replace an existing LDAP link if one exists.\n",
+                        "description": "If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.\n",
                         "willReplaceOnChanges": true
                     },
                     "group": {
@@ -16287,7 +16372,7 @@
                 },
                 "mergeRequestsDisableCommittersApproval": {
                     "type": "boolean",
-                    "description": "Set to `true` to allow merge requests committers to approve their own merge requests.\n"
+                    "description": "Set to `true` to disable merge request committers from approving their own merge requests.\n"
                 },
                 "project": {
                     "type": "string",
@@ -16326,7 +16411,7 @@
                 },
                 "mergeRequestsDisableCommittersApproval": {
                     "type": "boolean",
-                    "description": "Set to `true` to allow merge requests committers to approve their own merge requests.\n"
+                    "description": "Set to `true` to disable merge request committers from approving their own merge requests.\n"
                 },
                 "project": {
                     "type": "string",
@@ -16361,7 +16446,7 @@
                     },
                     "mergeRequestsDisableCommittersApproval": {
                         "type": "boolean",
-                        "description": "Set to `true` to allow merge requests committers to approve their own merge requests.\n"
+                        "description": "Set to `true` to disable merge request committers from approving their own merge requests.\n"
                     },
                     "project": {
                         "type": "string",
@@ -23332,6 +23417,77 @@
                 "required": [
                     "projects",
                     "id"
+                ]
+            }
+        },
+        "gitlab:index/getRelease:getRelease": {
+            "description": "The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getRelease({\n    projectId: \"1234\",\n    tagName: \"v1.0\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_release(project_id=\"1234\",\n    tag_name=\"v1.0\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetRelease.Invoke(new()\n    {\n        ProjectId = \"1234\",\n        TagName = \"v1.0\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetRelease(ctx, \u0026gitlab.GetReleaseArgs{\n\t\t\tProjectId: \"1234\",\n\t\t\tTagName:   \"v1.0\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetReleaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()\n            .projectId(1234)\n            .tagName(\"v1.0\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getRelease\n      Arguments:\n        projectId: 1234\n        tagName: v1.0\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRelease.\n",
+                "properties": {
+                    "assets": {
+                        "$ref": "#/types/gitlab:index/getReleaseAssets:getReleaseAssets",
+                        "description": "The assets for a release\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The ID or URL-encoded path of the project.\n"
+                    },
+                    "tagName": {
+                        "type": "string",
+                        "description": "The Git tag the release is associated with.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId",
+                    "tagName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRelease.\n",
+                "properties": {
+                    "assets": {
+                        "$ref": "#/types/gitlab:index/getReleaseAssets:getReleaseAssets",
+                        "description": "The assets for a release\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date the release was created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "An HTML rendered description of the release.\n"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the release.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The ID or URL-encoded path of the project.\n"
+                    },
+                    "releasedAt": {
+                        "type": "string",
+                        "description": "The date the release was created.\n"
+                    },
+                    "tagName": {
+                        "type": "string",
+                        "description": "The Git tag the release is associated with.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createdAt",
+                    "description",
+                    "id",
+                    "name",
+                    "projectId",
+                    "releasedAt",
+                    "tagName"
                 ]
             }
         },
