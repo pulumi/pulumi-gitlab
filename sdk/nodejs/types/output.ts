@@ -658,7 +658,7 @@ export interface GetProjectContainerExpirationPolicy {
     /**
      * The regular expression to match image names to delete.
      *
-     * @deprecated `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
+     * @deprecated `name_regex` has been deprecated. Use `name_regex_delete` instead.
      */
     nameRegex: string;
     /**
@@ -1784,7 +1784,7 @@ export interface GetProjectsProjectContainerExpirationPolicy {
     /**
      * The regular expression to match image names to delete.
      *
-     * @deprecated `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
+     * @deprecated `name_regex` has been deprecated. Use `name_regex_delete` instead.
      */
     nameRegex: string;
     /**
@@ -2304,7 +2304,7 @@ export interface ProjectContainerExpirationPolicy {
     /**
      * The regular expression to match image names to delete.
      *
-     * @deprecated `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
+     * @deprecated `name_regex` has been deprecated. Use `name_regex_delete` instead.
      */
     nameRegex: string;
     /**
