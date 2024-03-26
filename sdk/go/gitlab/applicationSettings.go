@@ -265,15 +265,15 @@ type ApplicationSettings struct {
 	HousekeepingEnabled pulumi.BoolOutput `pulumi:"housekeepingEnabled"`
 	// Number of Git pushes after which an incremental git repack is run.
 	//
-	// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingFullRepackPeriod pulumi.IntOutput `pulumi:"housekeepingFullRepackPeriod"`
 	// Number of Git pushes after which git gc is run.
 	//
-	// Deprecated: housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingGcPeriod pulumi.IntOutput `pulumi:"housekeepingGcPeriod"`
 	// Number of Git pushes after which an incremental git repack is run.
 	//
-	// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingIncrementalRepackPeriod pulumi.IntOutput `pulumi:"housekeepingIncrementalRepackPeriod"`
 	// Number of Git pushes after which an incremental git repack is run.
 	HousekeepingOptimizeRepositoryPeriod pulumi.IntOutput `pulumi:"housekeepingOptimizeRepositoryPeriod"`
@@ -850,15 +850,15 @@ type applicationSettingsState struct {
 	HousekeepingEnabled *bool `pulumi:"housekeepingEnabled"`
 	// Number of Git pushes after which an incremental git repack is run.
 	//
-	// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingFullRepackPeriod *int `pulumi:"housekeepingFullRepackPeriod"`
 	// Number of Git pushes after which git gc is run.
 	//
-	// Deprecated: housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingGcPeriod *int `pulumi:"housekeepingGcPeriod"`
 	// Number of Git pushes after which an incremental git repack is run.
 	//
-	// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingIncrementalRepackPeriod *int `pulumi:"housekeepingIncrementalRepackPeriod"`
 	// Number of Git pushes after which an incremental git repack is run.
 	HousekeepingOptimizeRepositoryPeriod *int `pulumi:"housekeepingOptimizeRepositoryPeriod"`
@@ -1343,15 +1343,15 @@ type ApplicationSettingsState struct {
 	HousekeepingEnabled pulumi.BoolPtrInput
 	// Number of Git pushes after which an incremental git repack is run.
 	//
-	// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingFullRepackPeriod pulumi.IntPtrInput
 	// Number of Git pushes after which git gc is run.
 	//
-	// Deprecated: housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingGcPeriod pulumi.IntPtrInput
 	// Number of Git pushes after which an incremental git repack is run.
 	//
-	// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingIncrementalRepackPeriod pulumi.IntPtrInput
 	// Number of Git pushes after which an incremental git repack is run.
 	HousekeepingOptimizeRepositoryPeriod pulumi.IntPtrInput
@@ -1840,15 +1840,15 @@ type applicationSettingsArgs struct {
 	HousekeepingEnabled *bool `pulumi:"housekeepingEnabled"`
 	// Number of Git pushes after which an incremental git repack is run.
 	//
-	// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingFullRepackPeriod *int `pulumi:"housekeepingFullRepackPeriod"`
 	// Number of Git pushes after which git gc is run.
 	//
-	// Deprecated: housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingGcPeriod *int `pulumi:"housekeepingGcPeriod"`
 	// Number of Git pushes after which an incremental git repack is run.
 	//
-	// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingIncrementalRepackPeriod *int `pulumi:"housekeepingIncrementalRepackPeriod"`
 	// Number of Git pushes after which an incremental git repack is run.
 	HousekeepingOptimizeRepositoryPeriod *int `pulumi:"housekeepingOptimizeRepositoryPeriod"`
@@ -2334,15 +2334,15 @@ type ApplicationSettingsArgs struct {
 	HousekeepingEnabled pulumi.BoolPtrInput
 	// Number of Git pushes after which an incremental git repack is run.
 	//
-	// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingFullRepackPeriod pulumi.IntPtrInput
 	// Number of Git pushes after which git gc is run.
 	//
-	// Deprecated: housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingGcPeriod pulumi.IntPtrInput
 	// Number of Git pushes after which an incremental git repack is run.
 	//
-	// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+	// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 	HousekeepingIncrementalRepackPeriod pulumi.IntPtrInput
 	// Number of Git pushes after which an incremental git repack is run.
 	HousekeepingOptimizeRepositoryPeriod pulumi.IntPtrInput
@@ -3245,21 +3245,21 @@ func (o ApplicationSettingsOutput) HousekeepingEnabled() pulumi.BoolOutput {
 
 // Number of Git pushes after which an incremental git repack is run.
 //
-// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+// Deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 func (o ApplicationSettingsOutput) HousekeepingFullRepackPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.HousekeepingFullRepackPeriod }).(pulumi.IntOutput)
 }
 
 // Number of Git pushes after which git gc is run.
 //
-// Deprecated: housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+// Deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
 func (o ApplicationSettingsOutput) HousekeepingGcPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.HousekeepingGcPeriod }).(pulumi.IntOutput)
 }
 
 // Number of Git pushes after which an incremental git repack is run.
 //
-// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
+// Deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
 func (o ApplicationSettingsOutput) HousekeepingIncrementalRepackPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.HousekeepingIncrementalRepackPeriod }).(pulumi.IntOutput)
 }

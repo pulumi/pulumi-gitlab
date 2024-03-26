@@ -63,7 +63,7 @@ export class ProjectShareGroup extends pulumi.CustomResource {
     /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      *
-     * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
+     * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
     public readonly accessLevel!: pulumi.Output<string | undefined>;
     /**
@@ -121,7 +121,7 @@ export interface ProjectShareGroupState {
     /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      *
-     * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
+     * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -145,7 +145,7 @@ export interface ProjectShareGroupArgs {
     /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      *
-     * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
+     * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
     accessLevel?: pulumi.Input<string>;
     /**

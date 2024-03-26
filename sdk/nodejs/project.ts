@@ -215,7 +215,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable container registry for the project.
      *
-     * @deprecated Use `containerRegistryAccessLevel` instead.
+     * @deprecated Use `container_registry_access_level` instead.
      */
     public readonly containerRegistryEnabled!: pulumi.Output<boolean>;
     /**
@@ -393,7 +393,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
      *
-     * @deprecated Deprecated in favor of `buildsAccessLevel`
+     * @deprecated Deprecated in favor of `builds_access_level`
      */
     public readonly pipelinesEnabled!: pulumi.Output<boolean>;
     /**
@@ -403,7 +403,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * If true, jobs can be viewed by non-project members.
      *
-     * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
+     * @deprecated The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
      */
     public readonly publicBuilds!: pulumi.Output<boolean>;
     /**
@@ -852,7 +852,7 @@ export interface ProjectState {
     /**
      * Enable container registry for the project.
      *
-     * @deprecated Use `containerRegistryAccessLevel` instead.
+     * @deprecated Use `container_registry_access_level` instead.
      */
     containerRegistryEnabled?: pulumi.Input<boolean>;
     /**
@@ -1030,7 +1030,7 @@ export interface ProjectState {
     /**
      * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
      *
-     * @deprecated Deprecated in favor of `buildsAccessLevel`
+     * @deprecated Deprecated in favor of `builds_access_level`
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
     /**
@@ -1040,7 +1040,7 @@ export interface ProjectState {
     /**
      * If true, jobs can be viewed by non-project members.
      *
-     * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
+     * @deprecated The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
      */
     publicBuilds?: pulumi.Input<boolean>;
     /**
@@ -1265,7 +1265,7 @@ export interface ProjectArgs {
     /**
      * Enable container registry for the project.
      *
-     * @deprecated Use `containerRegistryAccessLevel` instead.
+     * @deprecated Use `container_registry_access_level` instead.
      */
     containerRegistryEnabled?: pulumi.Input<boolean>;
     /**
@@ -1431,7 +1431,7 @@ export interface ProjectArgs {
     /**
      * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
      *
-     * @deprecated Deprecated in favor of `buildsAccessLevel`
+     * @deprecated Deprecated in favor of `builds_access_level`
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
     /**
@@ -1441,7 +1441,7 @@ export interface ProjectArgs {
     /**
      * If true, jobs can be viewed by non-project members.
      *
-     * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
+     * @deprecated The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
      */
     publicBuilds?: pulumi.Input<boolean>;
     /**
