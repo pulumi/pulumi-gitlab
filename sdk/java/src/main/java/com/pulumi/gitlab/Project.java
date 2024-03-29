@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *             .visibilityLevel(&#34;public&#34;)
  *             .build());
  * 
+ *         // Project with custom push rules
  *         var example_two = new Project(&#34;example-two&#34;, ProjectArgs.builder()        
  *             .pushRules(ProjectPushRulesArgs.builder()
  *                 .authorEmailRegex(&#34;@example\\.com$&#34;)
@@ -70,11 +71,13 @@ import javax.annotation.Nullable;
  *             .namespaceId(peterParker.applyValue(getUserResult -&gt; getUserResult.namespaceId()))
  *             .build());
  * 
+ *         // Fork a project
  *         var forkProject = new Project(&#34;forkProject&#34;, ProjectArgs.builder()        
  *             .description(&#34;This is a fork&#34;)
  *             .forkedFromProjectId(example.id())
  *             .build());
  * 
+ *         // Fork a project and setup a pull mirror
  *         var forkIndex_projectProject = new Project(&#34;forkIndex/projectProject&#34;, ProjectArgs.builder()        
  *             .description(&#34;This is a fork&#34;)
  *             .forkedFromProjectId(example.id())
@@ -82,21 +85,25 @@ import javax.annotation.Nullable;
  *             .mirror(true)
  *             .build());
  * 
+ *         // Create a project by importing it from a public project
  *         var importPublic = new Project(&#34;importPublic&#34;, ProjectArgs.builder()        
  *             .importUrl(&#34;https://gitlab.example.com/repo.git&#34;)
  *             .build());
  * 
+ *         // Create a project by importing it from a public project and setup the pull mirror
  *         var importPublicWithMirror = new Project(&#34;importPublicWithMirror&#34;, ProjectArgs.builder()        
  *             .importUrl(&#34;https://gitlab.example.com/repo.git&#34;)
  *             .mirror(true)
  *             .build());
  * 
+ *         // Create a project by importing it from a private project
  *         var importPrivateProject = new Project(&#34;importPrivateProject&#34;, ProjectArgs.builder()        
  *             .importUrl(&#34;https://gitlab.example.com/repo.git&#34;)
  *             .importUrlUsername(&#34;user&#34;)
  *             .importUrlPassword(&#34;pass&#34;)
  *             .build());
  * 
+ *         // Create a project by importing it from a private project and setup the pull mirror
  *         var importPrivateWithMirror = new Project(&#34;importPrivateWithMirror&#34;, ProjectArgs.builder()        
  *             .importUrl(&#34;https://gitlab.example.com/repo.git&#34;)
  *             .importUrlUsername(&#34;user&#34;)
@@ -104,6 +111,9 @@ import javax.annotation.Nullable;
  *             .mirror(true)
  *             .build());
  * 
+ *         // Create a project by importing it from a private project and provide credentials in `import_url`
+ *         // NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+ *         //       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
  *         var importPrivateIndex_projectProject = new Project(&#34;importPrivateIndex/projectProject&#34;, ProjectArgs.builder()        
  *             .importUrl(&#34;https://user:pass@gitlab.example.com/repo.git&#34;)
  *             .build());

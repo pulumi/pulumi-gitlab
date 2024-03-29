@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create token for an agent
  *         var example = new ClusterAgentToken(&#34;example&#34;, ClusterAgentTokenArgs.builder()        
  *             .project(&#34;12345&#34;)
  *             .agentId(42)

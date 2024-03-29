@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Set the 2FA settings
  *         var this_ = new ApplicationSettings(&#34;this&#34;, ApplicationSettingsArgs.builder()        
  *             .requireTwoFactorAuthentication(true)
  *             .twoFactorGracePeriod(24)

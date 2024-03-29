@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *             .username(&#34;example-user&#34;)
  *             .build());
  * 
+ *         // Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
  *         var exampleUserGpgKey = new UserGpgKey(&#34;exampleUserGpgKey&#34;, UserGpgKeyArgs.builder()        
  *             .userId(exampleUser.applyValue(getUserResult -&gt; getUserResult.id()))
  *             .key(&#34;&#34;&#34;
@@ -60,6 +61,7 @@ import javax.annotation.Nullable;
  * -----END PGP PUBLIC KEY BLOCK-----            &#34;&#34;&#34;)
  *             .build());
  * 
+ *         // Manages a GPG key for the current user
  *         var exampleUserUserGpgKey = new UserGpgKey(&#34;exampleUserUserGpgKey&#34;, UserGpgKeyArgs.builder()        
  *             .key(&#34;&#34;&#34;
  * -----BEGIN PGP PUBLIC KEY BLOCK-----

@@ -45,12 +45,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Example using auto_ssl_enabled, which uses lets encrypt to generate a certificate
  *         var thisPagesDomain = new PagesDomain(&#34;thisPagesDomain&#34;, PagesDomainArgs.builder()        
  *             .project(123)
  *             .domain(&#34;example.com&#34;)
  *             .autoSslEnabled(true)
  *             .build());
  * 
+ *         // Example using a manually generated certificate and key
  *         var thisIndex_pagesDomainPagesDomain = new PagesDomain(&#34;thisIndex/pagesDomainPagesDomain&#34;, PagesDomainArgs.builder()        
  *             .project(123)
  *             .domain(&#34;example.com&#34;)

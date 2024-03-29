@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
+ *         // Example using dynamic block
  *         var main = new BranchProtection(&#34;main&#34;, BranchProtectionArgs.builder()        
  *             .project(&#34;12345&#34;)
  *             .branch(&#34;main&#34;)

@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a project for the milestone to use
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
  *             .description(&#34;An example project&#34;)
  *             .namespaceId(gitlab_group.example().id())
