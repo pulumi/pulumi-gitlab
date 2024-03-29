@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create Custom global level notification
  *         var foo = new GlobalLevelNotifications(&#34;foo&#34;, GlobalLevelNotificationsArgs.builder()        
  *             .level(&#34;custom&#34;)
  *             .newMergeRequest(true)

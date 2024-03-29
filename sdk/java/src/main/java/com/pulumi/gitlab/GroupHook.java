@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *             .url(&#34;https://example.com/hook/example&#34;)
  *             .build());
  * 
+ *         // Setting all attributes
  *         var allAttributes = new GroupHook(&#34;allAttributes&#34;, GroupHookArgs.builder()        
  *             .confidentialIssuesEvents(false)
  *             .confidentialNoteEvents(true)

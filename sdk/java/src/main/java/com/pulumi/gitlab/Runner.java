@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Basic GitLab Group Runner
  *         var myGroup = new Group(&#34;myGroup&#34;, GroupArgs.builder()        
  *             .description(&#34;group that holds the runners&#34;)
  *             .build());
@@ -64,6 +65,7 @@ import javax.annotation.Nullable;
  *             .registrationToken(myGroup.runnersToken())
  *             .build());
  * 
+ *         // GitLab Runner that runs only tagged jobs
  *         var taggedOnly = new Runner(&#34;taggedOnly&#34;, RunnerArgs.builder()        
  *             .registrationToken(myGroup.runnersToken())
  *             .description(&#34;I only run tagged jobs&#34;)
@@ -73,12 +75,16 @@ import javax.annotation.Nullable;
  *                 &#34;tag_two&#34;)
  *             .build());
  * 
+ *         // GitLab Runner that only runs on protected branches
  *         var protected_ = new Runner(&#34;protected&#34;, RunnerArgs.builder()        
  *             .registrationToken(myGroup.runnersToken())
  *             .description(&#34;I only run protected jobs&#34;)
  *             .accessLevel(&#34;ref_protected&#34;)
  *             .build());
  * 
+ *         // Generate a `config.toml` file that you can use to create a runner
+ *         // This is the typical workflow for this resource, using it to create an authentication_token which can then be used
+ *         // to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.
  *         var myCustomGroup = new Group(&#34;myCustomGroup&#34;, GroupArgs.builder()        
  *             .description(&#34;group that holds the custom runners&#34;)
  *             .build());
@@ -87,6 +93,9 @@ import javax.annotation.Nullable;
  *             .registrationToken(myCustomGroup.runnersToken())
  *             .build());
  * 
+ *         // This creates a configuration for a local &#34;shell&#34; runner, but can be changed to generate whatever is needed.
+ *         // Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.
+ *         // See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.
  *         var config = new File(&#34;config&#34;, FileArgs.builder()        
  *             .filename(String.format(&#34;%s/config.toml&#34;, path.module()))
  *             .content(myRunner.authenticationToken().applyValue(authenticationToken -&gt; &#34;&#34;&#34;

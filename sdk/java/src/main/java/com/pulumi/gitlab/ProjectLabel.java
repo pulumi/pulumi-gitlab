@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  *             .color(&#34;#ffcc00&#34;)
  *             .build());
  * 
+ *         // Scoped label
  *         var devopsCreate = new ProjectLabel(&#34;devopsCreate&#34;, ProjectLabelArgs.builder()        
  *             .project(gitlab_project.example().id())
  *             .description(&#34;issue for creating infrastructure resources&#34;)

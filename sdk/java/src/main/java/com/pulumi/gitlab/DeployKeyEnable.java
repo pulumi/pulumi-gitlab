@@ -47,16 +47,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // A repo to host the deployment key
  *         var parentProject = new Project(&#34;parentProject&#34;);
  * 
+ *         // A second repo to use the deployment key from the parent project
  *         var fooProject = new Project(&#34;fooProject&#34;);
  * 
+ *         // Upload a deployment key for the parent repo
  *         var parentDeployKey = new DeployKey(&#34;parentDeployKey&#34;, DeployKeyArgs.builder()        
  *             .project(parentProject.id())
  *             .title(&#34;Example deploy key&#34;)
  *             .key(&#34;ssh-ed25519 AAAA...&#34;)
  *             .build());
  * 
+ *         // Enable the deployment key on the second repo
  *         var fooDeployKeyEnable = new DeployKeyEnable(&#34;fooDeployKeyEnable&#34;, DeployKeyEnableArgs.builder()        
  *             .project(fooProject.id())
  *             .keyId(parentDeployKey.deployKeyId())
