@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  *             .externalUrl(&#34;www.example.com&#34;)
  *             .build());
  * 
+ *         // Example with deployment access level
  *         var exampleWithAccessLevel = new ProjectProtectedEnvironment(&#34;exampleWithAccessLevel&#34;, ProjectProtectedEnvironmentArgs.builder()        
  *             .project(this_.project())
  *             .requiredApprovalCount(1)
@@ -71,6 +72,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Example with group-based deployment level
  *         var exampleWithGroup = new ProjectProtectedEnvironment(&#34;exampleWithGroup&#34;, ProjectProtectedEnvironmentArgs.builder()        
  *             .project(this_.project())
  *             .environment(this_.name())
@@ -79,6 +81,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Example with user-based deployment level
  *         var exampleWithUser = new ProjectProtectedEnvironment(&#34;exampleWithUser&#34;, ProjectProtectedEnvironmentArgs.builder()        
  *             .project(this_.project())
  *             .environment(this_.name())
@@ -87,6 +90,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Example with multiple deployment access levels
  *         var exampleWithMultipleProjectProtectedEnvironment = new ProjectProtectedEnvironment(&#34;exampleWithMultipleProjectProtectedEnvironment&#34;, ProjectProtectedEnvironmentArgs.builder()        
  *             .project(this_.project())
  *             .requiredApprovalCount(2)
@@ -103,6 +107,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
+ *         // Example with access-level based approval rules
  *         var exampleWithMultipleIndex_projectProtectedEnvironmentProjectProtectedEnvironment = new ProjectProtectedEnvironment(&#34;exampleWithMultipleIndex/projectProtectedEnvironmentProjectProtectedEnvironment&#34;, ProjectProtectedEnvironmentArgs.builder()        
  *             .project(this_.project())
  *             .requiredApprovalCount(2)
@@ -115,6 +120,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Example with multiple approval rules, using access level, user, and group
  *         var exampleWithMultipleGitlabIndex_projectProtectedEnvironmentProjectProtectedEnvironment = new ProjectProtectedEnvironment(&#34;exampleWithMultipleGitlabIndex/projectProtectedEnvironmentProjectProtectedEnvironment&#34;, ProjectProtectedEnvironmentArgs.builder()        
  *             .project(this_.project())
  *             .requiredApprovalCount(2)

@@ -57,11 +57,13 @@ import javax.annotation.Nullable;
  *             .description(&#34;An example group&#34;)
  *             .build());
  * 
+ *         // Create a project in the example group
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
  *             .description(&#34;An example project&#34;)
  *             .namespaceId(exampleGroup.id())
  *             .build());
  * 
+ *         // Group with custom push rules
  *         var example_two = new Group(&#34;example-two&#34;, GroupArgs.builder()        
  *             .path(&#34;example-two&#34;)
  *             .description(&#34;An example group with push rules&#34;)

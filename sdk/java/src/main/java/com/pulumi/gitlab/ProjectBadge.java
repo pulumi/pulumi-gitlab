@@ -51,18 +51,21 @@ import javax.annotation.Nullable;
  *             .imageUrl(&#34;https://example.com/badge-123.svg&#34;)
  *             .build());
  * 
+ *         // Pipeline status badges with placeholders will be enabled
  *         var gitlabPipeline = new ProjectBadge(&#34;gitlabPipeline&#34;, ProjectBadgeArgs.builder()        
  *             .project(foo.id())
  *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}&#34;)
  *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg&#34;)
  *             .build());
  * 
+ *         // Test coverage report badges with placeholders will be enabled
  *         var gitlabCoverage = new ProjectBadge(&#34;gitlabCoverage&#34;, ProjectBadgeArgs.builder()        
  *             .project(foo.id())
  *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/jobs&#34;)
  *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg&#34;)
  *             .build());
  * 
+ *         // Latest release badges with placeholders will be enabled
  *         var gitlabRelease = new ProjectBadge(&#34;gitlabRelease&#34;, ProjectBadgeArgs.builder()        
  *             .project(foo.id())
  *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/releases&#34;)
