@@ -1,0 +1,25 @@
+name: index_projectvariableLz6DQpBxFEv3
+runtime: yaml
+description: A minimal Pulumi YAML program that creates a GitLab project and a project variable.
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/115d3310-aa18-4d5c-9ad3-cbb7fdbbb367.zip
+outputs:
+  project_id: ${my_project.id}
+  project_variable_key: ${my_project_variable.key}
+resources:
+  my_project:
+    properties:
+      description: A new GitLab project created with Pulumi
+
+      visibilityLevel: private
+    type: gitlab:Project
+  my_project_variable:
+    properties:
+      key: MY_VARIABLE
+      masked: false
+      project: ${my_project.id}
+      protected: false
+      value: my-value
+    type: gitlab:ProjectVariable
