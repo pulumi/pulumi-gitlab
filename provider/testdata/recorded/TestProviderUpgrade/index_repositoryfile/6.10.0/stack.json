@@ -1,0 +1,211 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-04-08T18:38:19.363635+01:00",
+      "magic": "0e109972342b6ebd571fa6d2cffefcb95394f9c4f7bdd855463082d16126072c",
+      "version": "v3.111.1"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:i/xqioXS2KE=:v1:LIdOG1u4wAQQJxid:R9o7mqj/ykYaq23Z37yBdW1E5hMTDA=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::index_repositoryfileKbdKjjwqulD0::pulumi:pulumi:Stack::index_repositoryfileKbdKjjwqulD0-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "created": "2024-04-08T17:38:15.056696Z",
+        "modified": "2024-04-08T17:38:15.056696Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_repositoryfileKbdKjjwqulD0::pulumi:providers:gitlab::default",
+        "custom": true,
+        "id": "86cfc3b8-9eb3-46e9-9446-11d993d32538",
+        "type": "pulumi:providers:gitlab",
+        "created": "2024-04-08T17:38:15.126016Z",
+        "modified": "2024-04-08T17:38:15.126016Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_repositoryfileKbdKjjwqulD0::gitlab:index/project:Project::my-gitlab-project",
+        "custom": true,
+        "id": "56632401",
+        "type": "gitlab:index/project:Project",
+        "inputs": {
+          "__defaults": [
+            "name"
+          ],
+          "name": "my-gitlab-project-702e918",
+          "visibilityLevel": "public"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":600000000000,\"delete\":600000000000}}",
+          "allowMergeOnSkippedPipeline": false,
+          "analyticsAccessLevel": "enabled",
+          "approvalsBeforeMerge": 0,
+          "archived": false,
+          "autoCancelPendingPipelines": "enabled",
+          "autoDevopsDeployStrategy": "continuous",
+          "autoDevopsEnabled": false,
+          "autocloseReferencedIssues": true,
+          "avatarUrl": "",
+          "buildCoverageRegex": "",
+          "buildGitStrategy": "fetch",
+          "buildTimeout": 3600,
+          "buildsAccessLevel": "enabled",
+          "ciConfigPath": "",
+          "ciDefaultGitDepth": 20,
+          "ciForwardDeploymentEnabled": true,
+          "ciRestrictPipelineCancellationRole": "",
+          "ciSeparatedCaches": true,
+          "containerExpirationPolicy": {
+            "cadence": "1d",
+            "enabled": false,
+            "keepN": 10,
+            "nameRegex": ".*",
+            "nameRegexDelete": ".*",
+            "nameRegexKeep": "",
+            "nextRunAt": "2024-04-09T17:38:16Z",
+            "olderThan": "90d"
+          },
+          "containerRegistryAccessLevel": "enabled",
+          "containerRegistryEnabled": true,
+          "defaultBranch": "main",
+          "description": "",
+          "emailsDisabled": false,
+          "emptyRepo": true,
+          "environmentsAccessLevel": "enabled",
+          "externalAuthorizationClassificationLabel": "",
+          "featureFlagsAccessLevel": "enabled",
+          "forkedFromProjectId": 0,
+          "forkingAccessLevel": "enabled",
+          "groupRunnersEnabled": true,
+          "httpUrlToRepo": "https://gitlab.com/stack72-pulumi/my-gitlab-project-702e918.git",
+          "id": "56632401",
+          "importUrl": "",
+          "infrastructureAccessLevel": "enabled",
+          "issuesAccessLevel": "enabled",
+          "issuesEnabled": true,
+          "issuesTemplate": "",
+          "keepLatestArtifact": true,
+          "lfsEnabled": true,
+          "mergeCommitTemplate": "",
+          "mergeMethod": "merge",
+          "mergePipelinesEnabled": false,
+          "mergeRequestsAccessLevel": "enabled",
+          "mergeRequestsEnabled": true,
+          "mergeRequestsTemplate": "",
+          "mergeTrainsEnabled": false,
+          "mirror": false,
+          "mirrorOverwritesDivergedBranches": false,
+          "mirrorTriggerBuilds": false,
+          "monitorAccessLevel": "enabled",
+          "mrDefaultTargetSelf": false,
+          "name": "my-gitlab-project-702e918",
+          "namespaceId": 5422649,
+          "onlyAllowMergeIfAllDiscussionsAreResolved": false,
+          "onlyAllowMergeIfPipelineSucceeds": false,
+          "onlyMirrorProtectedBranches": false,
+          "packagesEnabled": true,
+          "pagesAccessLevel": "enabled",
+          "path": "my-gitlab-project-702e918",
+          "pathWithNamespace": "stack72-pulumi/my-gitlab-project-702e918",
+          "pipelinesEnabled": true,
+          "printingMergeRequestLinkEnabled": true,
+          "publicJobs": true,
+          "pushRules": null,
+          "releasesAccessLevel": "enabled",
+          "removeSourceBranchAfterMerge": true,
+          "repositoryAccessLevel": "enabled",
+          "repositoryStorage": "",
+          "requestAccessEnabled": true,
+          "requirementsAccessLevel": "enabled",
+          "resolveOutdatedDiffDiscussions": false,
+          "restrictUserDefinedVariables": false,
+          "runnersToken": {
+            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+            "plaintext": "\"GR1348941MnasAUHv_JsTyuQ8DuBx\""
+          },
+          "securityAndComplianceAccessLevel": "private",
+          "sharedRunnersEnabled": true,
+          "snippetsAccessLevel": "enabled",
+          "snippetsEnabled": true,
+          "squashCommitTemplate": "",
+          "squashOption": "default_off",
+          "sshUrlToRepo": "git@gitlab.com:stack72-pulumi/my-gitlab-project-702e918.git",
+          "suggestionCommitMessage": "",
+          "tags": [],
+          "topics": [],
+          "visibilityLevel": "public",
+          "webUrl": "https://gitlab.com/stack72-pulumi/my-gitlab-project-702e918",
+          "wikiAccessLevel": "enabled",
+          "wikiEnabled": true
+        },
+        "parent": "urn:pulumi:test::index_repositoryfileKbdKjjwqulD0::pulumi:pulumi:Stack::index_repositoryfileKbdKjjwqulD0-test",
+        "provider": "urn:pulumi:test::index_repositoryfileKbdKjjwqulD0::pulumi:providers:gitlab::default::86cfc3b8-9eb3-46e9-9446-11d993d32538",
+        "propertyDependencies": {
+          "visibilityLevel": []
+        },
+        "additionalSecretOutputs": [
+          "importUrlPassword",
+          "runnersToken"
+        ],
+        "created": "2024-04-08T17:38:17.887729Z",
+        "modified": "2024-04-08T17:38:17.887729Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_repositoryfileKbdKjjwqulD0::gitlab:index/repositoryFile:RepositoryFile::my-gitlab-repo-file",
+        "custom": true,
+        "id": "56632401:main:README.md",
+        "type": "gitlab:index/repositoryFile:RepositoryFile",
+        "inputs": {
+          "__defaults": [
+            "encoding"
+          ],
+          "branch": "main",
+          "commitMessage": "Add README",
+          "content": "Hello, world!",
+          "encoding": "base64",
+          "filePath": "README.md",
+          "project": "56632401"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":60000000000,\"delete\":60000000000,\"update\":60000000000}}",
+          "blobId": "dc2945c23661e534316b32bb2e54e029253e7424",
+          "branch": "main",
+          "commitId": "1dedfcff2fa310cac58f75e54bfc4c9465e3758c",
+          "commitMessage": "Add README",
+          "content": "HWUKKw==",
+          "contentSha256": "f1f19964b7e9a8578a7d261689eb57da1c29115cb0d7933096ba7088dd3bda78",
+          "encoding": "base64",
+          "executeFilemode": false,
+          "fileName": "README.md",
+          "filePath": "README.md",
+          "id": "56632401:main:README.md",
+          "lastCommitId": "1dedfcff2fa310cac58f75e54bfc4c9465e3758c",
+          "project": "56632401",
+          "ref": "main",
+          "size": 7
+        },
+        "parent": "urn:pulumi:test::index_repositoryfileKbdKjjwqulD0::pulumi:pulumi:Stack::index_repositoryfileKbdKjjwqulD0-test",
+        "dependencies": [
+          "urn:pulumi:test::index_repositoryfileKbdKjjwqulD0::gitlab:index/project:Project::my-gitlab-project"
+        ],
+        "provider": "urn:pulumi:test::index_repositoryfileKbdKjjwqulD0::pulumi:providers:gitlab::default::86cfc3b8-9eb3-46e9-9446-11d993d32538",
+        "propertyDependencies": {
+          "branch": [],
+          "commitMessage": [],
+          "content": [],
+          "filePath": [],
+          "project": [
+            "urn:pulumi:test::index_repositoryfileKbdKjjwqulD0::gitlab:index/project:Project::my-gitlab-project"
+          ]
+        },
+        "created": "2024-04-08T17:38:19.363359Z",
+        "modified": "2024-04-08T17:38:19.363359Z"
+      }
+    ]
+  }
+}

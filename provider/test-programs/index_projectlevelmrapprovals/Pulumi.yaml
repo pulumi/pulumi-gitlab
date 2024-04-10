@@ -1,0 +1,23 @@
+name: index_projectlevelmrapprovalsa22aC7TN0jbd
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/f54aaf07-f0b1-489b-8cca-cbd004ac3b5f.zip
+resources:
+  mygitlab_project:
+    properties:
+
+      visibilityLevel: private
+    type: gitlab:Project
+  mygitlab_project_level_mr_approvals:
+    properties:
+      disableOverridingApproversPerMergeRequest: true
+      mergeRequestsAuthorApproval: false
+      mergeRequestsDisableCommittersApproval: true
+      project: ${mygitlab_project.id}
+      requirePasswordToApprove: true
+      resetApprovalsOnPush: true
+      selectiveCodeOwnerRemovals: false
+    type: gitlab:ProjectLevelMrApprovals

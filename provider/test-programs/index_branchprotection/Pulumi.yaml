@@ -1,0 +1,21 @@
+name: index_branchprotectionKjOgSLtuZLqr
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/69c81d5a-7c25-4213-b657-6cd4eb028c7d.zip
+resources:
+  gitlab_branch_protection:
+    properties:
+      branch: main
+      mergeAccessLevel: maintainer
+      project: ${gitlab_project.id}
+      pushAccessLevel: maintainer
+      unprotectAccessLevel: maintainer
+    type: gitlab:BranchProtection
+  gitlab_project:
+    properties:
+
+      visibilityLevel: public
+    type: gitlab:Project

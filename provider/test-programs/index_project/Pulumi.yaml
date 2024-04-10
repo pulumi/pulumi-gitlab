@@ -1,0 +1,19 @@
+name: index_projectpADAhwf4sgsF
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/2b7ce7ef-08af-41a6-867a-964f278109d4.zip
+resources:
+  my_gitlab_project:
+    properties:
+      description: A minimal GitLab project for Pulumi
+      initializeWithReadme: true
+      issuesEnabled: true
+      mergeRequestsEnabled: true
+
+      snippetsEnabled: true
+      visibilityLevel: public
+      wikiEnabled: true
+    type: gitlab:Project

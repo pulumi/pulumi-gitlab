@@ -8,6 +8,7 @@ env:
       6.0.x
       3.1.301
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
   GOVERSION: 1.21.x
   GRADLEVERSION: "7.6"
   JAVAVERSION: "11"
