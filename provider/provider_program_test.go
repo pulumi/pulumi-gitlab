@@ -119,9 +119,7 @@ func TestPrograms(t *testing.T) {
 func TestProgramsUpgrade(t *testing.T) {
 	for _, p := range programs {
 		t.Run(p, func(t *testing.T) {
-			testProviderUpgrade(t, p, WithConfig(map[string]string{
-				"gitlab:token": os.Getenv("PULUMI_GITLAB_TOKEN"),
-			}))
+			testProviderUpgrade(t, p)
 		})
 	}
 }
