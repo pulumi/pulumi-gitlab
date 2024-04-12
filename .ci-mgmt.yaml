@@ -2,8 +2,7 @@ provider: gitlab
 major-version: 6
 upstreamProviderOrg: gitlabhq
 env:
-  PULUMI_GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
-  GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+  PULUMI_GITLAB_TOKEN: ${{ secrets.PULUMI_GITLAB_TOKEN }}
 makeTemplate: bridged
 team: ecosystem
 plugins:

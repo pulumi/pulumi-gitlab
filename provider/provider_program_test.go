@@ -81,6 +81,7 @@ func testProviderUpgradeWithOpts(
 	test := pulumitest.NewPulumiTest(t, dir,
 		opttest.DownloadProviderVersion(providerName, baselineVersion),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.Env("GITLAB_TOKEN", os.Getenv("PULUMI_GITLAB_TOKEN")),
 	)
 	for k, v := range config {
 		test.SetConfig(k, v)
@@ -102,6 +103,7 @@ func testProgram(t *testing.T, dir string) {
 	test := pulumitest.NewPulumiTest(t, dir,
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 		opttest.SkipInstall(),
+		opttest.Env("GITLAB_TOKEN", os.Getenv("PULUMI_GITLAB_TOKEN")),
 	)
 	test.Up()
 }
