@@ -23,15 +23,17 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const foo = new gitlab.Group("foo", {
+ *     name: "group",
  *     path: "group",
  *     description: "An example group",
  * });
  * const bar = new gitlab.Project("bar", {
+ *     name: "template project",
  *     description: "contains file templates",
  *     visibilityLevel: "public",
  *     namespaceId: foo.id,
  * });
- * const templateLink = new gitlab.GroupProjectFileTemplate("templateLink", {
+ * const templateLink = new gitlab.GroupProjectFileTemplate("template_link", {
  *     groupId: foo.id,
  *     fileTemplateProjectId: bar.id,
  * });

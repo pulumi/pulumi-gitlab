@@ -128,18 +128,6 @@ def get_project_protected_branch(merge_access_levels: Optional[Sequence[pulumi.I
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
 
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project_protected_branch(name="main",
-        project_id="foo/bar/baz")
-    ```
-    <!--End PulumiCodeChooser -->
-
 
     :param Sequence[pulumi.InputType['GetProjectProtectedBranchMergeAccessLevelArgs']] merge_access_levels: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
     :param str name: The name of the protected branch.
@@ -174,18 +162,6 @@ def get_project_protected_branch_output(merge_access_levels: Optional[pulumi.Inp
     The `get_project_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
-
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project_protected_branch(name="main",
-        project_id="foo/bar/baz")
-    ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetProjectProtectedBranchMergeAccessLevelArgs']] merge_access_levels: Array of access levels and user(s)/group(s) allowed to merge to protected branch.

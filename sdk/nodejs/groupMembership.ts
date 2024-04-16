@@ -19,10 +19,10 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const test = new gitlab.GroupMembership("test", {
- *     accessLevel: "guest",
- *     expiresAt: "2020-12-31",
  *     groupId: "12345",
  *     userId: 1337,
+ *     accessLevel: "guest",
+ *     expiresAt: "2020-12-31",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

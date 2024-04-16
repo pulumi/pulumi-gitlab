@@ -14,36 +14,6 @@ import (
 // The `ReleaseLink` data source allows get details of a release link.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
-//
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupReleaseLink(ctx, &gitlab.LookupReleaseLinkArgs{
-//				LinkId:  11,
-//				Project: "foo/bar",
-//				TagName: "v1.0.1",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func LookupReleaseLink(ctx *pulumi.Context, args *LookupReleaseLinkArgs, opts ...pulumi.InvokeOption) (*LookupReleaseLinkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReleaseLinkResult

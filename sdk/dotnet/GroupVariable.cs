@@ -27,12 +27,12 @@ namespace Pulumi.GitLab
     /// {
     ///     var example = new GitLab.GroupVariable("example", new()
     ///     {
-    ///         EnvironmentScope = "*",
     ///         Group = "12345",
     ///         Key = "group_variable_key",
-    ///         Masked = false,
-    ///         Protected = false,
     ///         Value = "group_variable_value",
+    ///         Protected = false,
+    ///         Masked = false,
+    ///         EnvironmentScope = "*",
     ///     });
     /// 
     /// });

@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("welcomeIssueWebUrl", data.Gitlab_project_issue.Web_url)
+//			ctx.Export("welcomeIssueWebUrl", webUrl)
 //			return nil
 //		})
 //	}

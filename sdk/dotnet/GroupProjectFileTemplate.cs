@@ -33,18 +33,20 @@ namespace Pulumi.GitLab
     /// {
     ///     var foo = new GitLab.Group("foo", new()
     ///     {
+    ///         Name = "group",
     ///         Path = "group",
     ///         Description = "An example group",
     ///     });
     /// 
     ///     var bar = new GitLab.Project("bar", new()
     ///     {
+    ///         Name = "template project",
     ///         Description = "contains file templates",
     ///         VisibilityLevel = "public",
     ///         NamespaceId = foo.Id,
     ///     });
     /// 
-    ///     var templateLink = new GitLab.GroupProjectFileTemplate("templateLink", new()
+    ///     var templateLink = new GitLab.GroupProjectFileTemplate("template_link", new()
     ///     {
     ///         GroupId = foo.Id,
     ///         FileTemplateProjectId = bar.Id,

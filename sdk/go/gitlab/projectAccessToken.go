@@ -37,8 +37,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleProjectAccessToken, err := gitlab.NewProjectAccessToken(ctx, "exampleProjectAccessToken", &gitlab.ProjectAccessTokenArgs{
+//			example, err := gitlab.NewProjectAccessToken(ctx, "example", &gitlab.ProjectAccessTokenArgs{
 //				Project:     pulumi.String("25"),
+//				Name:        pulumi.String("Example project access token"),
 //				ExpiresAt:   pulumi.String("2020-03-14"),
 //				AccessLevel: pulumi.String("reporter"),
 //				Scopes: pulumi.StringArray{
@@ -48,10 +49,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewProjectVariable(ctx, "exampleProjectVariable", &gitlab.ProjectVariableArgs{
-//				Project: pulumi.Any(gitlab_project.Example.Id),
+//			_, err = gitlab.NewProjectVariable(ctx, "example", &gitlab.ProjectVariableArgs{
+//				Project: pulumi.Any(exampleGitlabProject.Id),
 //				Key:     pulumi.String("pat"),
-//				Value:   exampleProjectAccessToken.Token,
+//				Value:   example.Token,
 //			})
 //			if err != nil {
 //				return err

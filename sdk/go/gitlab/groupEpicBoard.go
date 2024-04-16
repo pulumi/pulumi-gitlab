@@ -34,27 +34,31 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := gitlab.NewGroup(ctx, "example", &gitlab.GroupArgs{
+//				Name:        pulumi.String("test_group"),
 //				Path:        pulumi.String("test_group"),
 //				Description: pulumi.String("An example group"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			label1, err := gitlab.NewGroupLabel(ctx, "label1", &gitlab.GroupLabelArgs{
+//			label1, err := gitlab.NewGroupLabel(ctx, "label_1", &gitlab.GroupLabelArgs{
 //				Group: example.ID(),
 //				Color: pulumi.String("#FF0000"),
+//				Name:  pulumi.String("red-label"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewGroupLabel(ctx, "label3", &gitlab.GroupLabelArgs{
+//			_, err = gitlab.NewGroupLabel(ctx, "label_3", &gitlab.GroupLabelArgs{
 //				Group: example.ID(),
+//				Name:  pulumi.String("label-3"),
 //				Color: pulumi.String("#003000"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewGroupEpicBoard(ctx, "epicBoard", &gitlab.GroupEpicBoardArgs{
+//			_, err = gitlab.NewGroupEpicBoard(ctx, "epic_board", &gitlab.GroupEpicBoardArgs{
+//				Name:  pulumi.String("epic board 6"),
 //				Group: example.Path,
 //				Lists: gitlab.GroupEpicBoardListArray{
 //					&gitlab.GroupEpicBoardListArgs{

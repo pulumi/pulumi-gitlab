@@ -8,21 +8,6 @@ import * as utilities from "./utilities";
  * The `gitlab.ReleaseLink` data source allows get details of a release link.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getReleaseLink({
- *     linkId: 11,
- *     project: "foo/bar",
- *     tagName: "v1.0.1",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getReleaseLink(args: GetReleaseLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseLinkResult> {
 
@@ -101,21 +86,6 @@ export interface GetReleaseLinkResult {
  * The `gitlab.ReleaseLink` data source allows get details of a release link.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getReleaseLink({
- *     linkId: 11,
- *     project: "foo/bar",
- *     tagName: "v1.0.1",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getReleaseLinkOutput(args: GetReleaseLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseLinkResult> {
     return pulumi.output(args).apply((a: any) => getReleaseLink(a, opts))

@@ -16,26 +16,26 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const foo = new gitlab.Group("foo", {});
+ * const foo = new gitlab.Group("foo", {name: "foo-group"});
  * const example = new gitlab.GroupBadge("example", {
  *     group: foo.id,
  *     linkUrl: "https://example.com/badge-123",
  *     imageUrl: "https://example.com/badge-123.svg",
  * });
  * // Pipeline status badges with placeholders will be enabled for each project
- * const gitlabPipeline = new gitlab.GroupBadge("gitlabPipeline", {
+ * const gitlabPipeline = new gitlab.GroupBadge("gitlab_pipeline", {
  *     group: foo.id,
  *     linkUrl: "https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
  *     imageUrl: "https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg",
  * });
  * // Test coverage report badges with placeholders will be enabled for each project
- * const gitlabCoverage = new gitlab.GroupBadge("gitlabCoverage", {
+ * const gitlabCoverage = new gitlab.GroupBadge("gitlab_coverage", {
  *     group: foo.id,
  *     linkUrl: "https://gitlab.example.com/%{project_path}/-/jobs",
  *     imageUrl: "https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg",
  * });
  * // Latest release badges with placeholders will be enabled for each project
- * const gitlabRelease = new gitlab.GroupBadge("gitlabRelease", {
+ * const gitlabRelease = new gitlab.GroupBadge("gitlab_release", {
  *     group: foo.id,
  *     linkUrl: "https://gitlab.example.com/%{project_path}/-/releases",
  *     imageUrl: "https://gitlab.example.com/%{project_path}/-/badges/release.svg",

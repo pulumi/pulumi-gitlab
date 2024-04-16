@@ -10,19 +10,6 @@ import * as utilities from "./utilities";
  * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getProject({
- *     pathWithNamespace: "foo/bar/baz",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
@@ -337,19 +324,6 @@ export interface GetProjectResult {
  * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getProject({
- *     pathWithNamespace: "foo/bar/baz",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
     return pulumi.output(args).apply((a: any) => getProject(a, opts))

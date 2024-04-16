@@ -17,18 +17,18 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * // A repo to host the deployment key
- * const parentProject = new gitlab.Project("parentProject", {});
+ * const parent = new gitlab.Project("parent", {name: "parent_project"});
  * // A second repo to use the deployment key from the parent project
- * const fooProject = new gitlab.Project("fooProject", {});
+ * const foo = new gitlab.Project("foo", {name: "foo_project"});
  * // Upload a deployment key for the parent repo
- * const parentDeployKey = new gitlab.DeployKey("parentDeployKey", {
- *     project: parentProject.id,
+ * const parentDeployKey = new gitlab.DeployKey("parent", {
+ *     project: parent.id,
  *     title: "Example deploy key",
  *     key: "ssh-ed25519 AAAA...",
  * });
  * // Enable the deployment key on the second repo
- * const fooDeployKeyEnable = new gitlab.DeployKeyEnable("fooDeployKeyEnable", {
- *     project: fooProject.id,
+ * const fooDeployKeyEnable = new gitlab.DeployKeyEnable("foo", {
+ *     project: foo.id,
  *     keyId: parentDeployKey.deployKeyId,
  * });
  * ```

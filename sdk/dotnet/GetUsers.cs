@@ -33,9 +33,9 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetUsers.Invoke(new()
         ///     {
-        ///         CreatedBefore = "2019-01-01",
-        ///         OrderBy = "name",
         ///         Sort = "desc",
+        ///         OrderBy = "name",
+        ///         CreatedBefore = "2019-01-01",
         ///     });
         /// 
         ///     var example_two = GitLab.GetUsers.Invoke(new()
@@ -72,9 +72,9 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetUsers.Invoke(new()
         ///     {
-        ///         CreatedBefore = "2019-01-01",
-        ///         OrderBy = "name",
         ///         Sort = "desc",
+        ///         OrderBy = "name",
+        ///         CreatedBefore = "2019-01-01",
         ///     });
         /// 
         ///     var example_two = GitLab.GetUsers.Invoke(new()

@@ -17,9 +17,10 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const fixme = new gitlab.GroupLabel("fixme", {
- *     color: "#ffcc00",
- *     description: "issue with failing tests",
  *     group: "example",
+ *     name: "fixme",
+ *     description: "issue with failing tests",
+ *     color: "#ffcc00",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

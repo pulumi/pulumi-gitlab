@@ -10,19 +10,6 @@ import * as utilities from "./utilities";
  * The `gitlab.getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getProjectTags({
- *     project: "foo/bar",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectTags(args: GetProjectTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectTagsResult> {
 
@@ -90,19 +77,6 @@ export interface GetProjectTagsResult {
  * The `gitlab.getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getProjectTags({
- *     project: "foo/bar",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectTagsOutput(args: GetProjectTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectTagsResult> {
     return pulumi.output(args).apply((a: any) => getProjectTags(a, opts))

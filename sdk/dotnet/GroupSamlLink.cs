@@ -27,8 +27,8 @@ namespace Pulumi.GitLab
     /// {
     ///     var test = new GitLab.GroupSamlLink("test", new()
     ///     {
-    ///         AccessLevel = "developer",
     ///         Group = "12345",
+    ///         AccessLevel = "developer",
     ///         SamlGroupName = "samlgroupname1",
     ///     });
     /// 

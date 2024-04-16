@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var schedule = new ProjectFreezePeriod(&#34;schedule&#34;, ProjectFreezePeriodArgs.builder()        
- *             .project(gitlab_project.foo().id())
+ *             .project(foo.id())
  *             .freezeStart(&#34;0 23 * * 5&#34;)
  *             .freezeEnd(&#34;0 7 * * 1&#34;)
  *             .cronTimezone(&#34;UTC&#34;)

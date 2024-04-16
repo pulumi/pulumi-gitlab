@@ -33,9 +33,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewInstanceVariable(ctx, "example", &gitlab.InstanceVariableArgs{
 //				Key:       pulumi.String("instance_variable_key"),
-//				Masked:    pulumi.Bool(false),
-//				Protected: pulumi.Bool(false),
 //				Value:     pulumi.String("instance_variable_value"),
+//				Protected: pulumi.Bool(false),
+//				Masked:    pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

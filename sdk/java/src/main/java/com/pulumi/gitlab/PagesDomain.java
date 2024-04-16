@@ -21,50 +21,6 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gitlab.PagesDomain;
- * import com.pulumi.gitlab.PagesDomainArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Example using auto_ssl_enabled, which uses lets encrypt to generate a certificate
- *         var thisPagesDomain = new PagesDomain(&#34;thisPagesDomain&#34;, PagesDomainArgs.builder()        
- *             .project(123)
- *             .domain(&#34;example.com&#34;)
- *             .autoSslEnabled(true)
- *             .build());
- * 
- *         // Example using a manually generated certificate and key
- *         var thisIndex_pagesDomainPagesDomain = new PagesDomain(&#34;thisIndex/pagesDomainPagesDomain&#34;, PagesDomainArgs.builder()        
- *             .project(123)
- *             .domain(&#34;example.com&#34;)
- *             .key(Files.readString(Paths.get(String.format(&#34;%s/key.pem&#34;, path.module()))))
- *             .certificate(Files.readString(Paths.get(String.format(&#34;%s/cert.pem&#34;, path.module()))))
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * GitLab pages domain can be imported using an id made up of `projectId:domain` _without_ the http protocol, e.g.

@@ -38,10 +38,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewComplianceFramework(ctx, "sample", &gitlab.ComplianceFrameworkArgs{
+//				NamespacePath:                 pulumi.String("top-level-group"),
+//				Name:                          pulumi.String("HIPAA"),
+//				Description:                   pulumi.String("A HIPAA Compliance Framework"),
 //				Color:                         pulumi.String("#87BEEF"),
 //				Default:                       pulumi.Bool(false),
-//				Description:                   pulumi.String("A HIPAA Compliance Framework"),
-//				NamespacePath:                 pulumi.String("top-level-group"),
 //				PipelineConfigurationFullPath: pulumi.String(".hipaa.yml@top-level-group/compliance-frameworks"),
 //			})
 //			if err != nil {

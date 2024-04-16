@@ -18,29 +18,29 @@ import * as utilities from "./utilities";
  *
  * const example = new gitlab.GroupHook("example", {
  *     group: "example/hooked",
- *     mergeRequestsEvents: true,
  *     url: "https://example.com/hook/example",
+ *     mergeRequestsEvents: true,
  * });
  * // Setting all attributes
- * const allAttributes = new gitlab.GroupHook("allAttributes", {
- *     confidentialIssuesEvents: false,
- *     confidentialNoteEvents: true,
- *     deploymentEvents: true,
- *     enableSslVerification: false,
+ * const allAttributes = new gitlab.GroupHook("all_attributes", {
  *     group: "1",
- *     issuesEvents: false,
- *     jobEvents: true,
- *     mergeRequestsEvents: true,
- *     noteEvents: true,
- *     pipelineEvents: true,
+ *     url: "http://example.com",
+ *     token: "supersecret",
+ *     enableSslVerification: false,
  *     pushEvents: true,
  *     pushEventsBranchFilter: "devel",
+ *     issuesEvents: false,
+ *     confidentialIssuesEvents: false,
+ *     mergeRequestsEvents: true,
+ *     tagPushEvents: true,
+ *     noteEvents: true,
+ *     confidentialNoteEvents: true,
+ *     jobEvents: true,
+ *     pipelineEvents: true,
+ *     wikiPageEvents: true,
+ *     deploymentEvents: true,
  *     releasesEvents: true,
  *     subgroupEvents: true,
- *     tagPushEvents: true,
- *     token: "supersecret",
- *     url: "http://example.com",
- *     wikiPageEvents: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

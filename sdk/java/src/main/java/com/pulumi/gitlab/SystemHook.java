@@ -48,13 +48,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new SystemHook(&#34;example&#34;, SystemHookArgs.builder()        
- *             .enableSslVerification(true)
- *             .mergeRequestsEvents(true)
- *             .pushEvents(true)
- *             .repositoryUpdateEvents(true)
- *             .tagPushEvents(true)
- *             .token(&#34;secret-token&#34;)
  *             .url(&#34;https://example.com/hook-%d&#34;)
+ *             .token(&#34;secret-token&#34;)
+ *             .pushEvents(true)
+ *             .tagPushEvents(true)
+ *             .mergeRequestsEvents(true)
+ *             .repositoryUpdateEvents(true)
+ *             .enableSslVerification(true)
  *             .build());
  * 
  *     }

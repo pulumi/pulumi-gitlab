@@ -37,10 +37,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Using an environment scope
 //			_, err = gitlab.LookupGroupVariable(ctx, &gitlab.LookupGroupVariableArgs{
-//				EnvironmentScope: pulumi.StringRef("staging/*"),
 //				Group:            "my/example/group",
 //				Key:              "bar",
+//				EnvironmentScope: pulumi.StringRef("staging/*"),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -142,8 +142,8 @@ class GroupSamlLink(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.GroupSamlLink("test",
-            access_level="developer",
             group="12345",
+            access_level="developer",
             saml_group_name="samlgroupname1")
         ```
         <!--End PulumiCodeChooser -->
@@ -181,8 +181,8 @@ class GroupSamlLink(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.GroupSamlLink("test",
-            access_level="developer",
             group="12345",
+            access_level="developer",
             saml_group_name="samlgroupname1")
         ```
         <!--End PulumiCodeChooser -->

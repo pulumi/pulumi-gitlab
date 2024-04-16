@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
+ * // List projects within a group tree
  * const mygroup = gitlab.getGroup({
  *     fullPath: "mygroup",
  * });
@@ -31,6 +32,7 @@ import * as utilities from "./utilities";
  *     includeSubgroups: true,
  *     withShared: false,
  * }));
+ * // List projects using the search syntax
  * const projects = gitlab.getProjects({
  *     search: "postgresql",
  *     visibility: "private",
@@ -267,6 +269,7 @@ export interface GetProjectsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
+ * // List projects within a group tree
  * const mygroup = gitlab.getGroup({
  *     fullPath: "mygroup",
  * });
@@ -276,6 +279,7 @@ export interface GetProjectsResult {
  *     includeSubgroups: true,
  *     withShared: false,
  * }));
+ * // List projects using the search syntax
  * const projects = gitlab.getProjects({
  *     search: "postgresql",
  *     visibility: "private",

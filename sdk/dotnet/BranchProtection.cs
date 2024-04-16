@@ -12,6 +12,85 @@ namespace Pulumi.GitLab
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var branchProtect = new GitLab.BranchProtection("BranchProtect", new()
+    ///     {
+    ///         Project = "12345",
+    ///         Branch = "BranchProtected",
+    ///         PushAccessLevel = "developer",
+    ///         MergeAccessLevel = "developer",
+    ///         UnprotectAccessLevel = "developer",
+    ///         AllowForcePush = true,
+    ///         CodeOwnerApprovalRequired = true,
+    ///         AllowedToPushes = new[]
+    ///         {
+    ///             new GitLab.Inputs.BranchProtectionAllowedToPushArgs
+    ///             {
+    ///                 UserId = 5,
+    ///             },
+    ///             new GitLab.Inputs.BranchProtectionAllowedToPushArgs
+    ///             {
+    ///                 UserId = 521,
+    ///             },
+    ///         },
+    ///         AllowedToMerges = new[]
+    ///         {
+    ///             new GitLab.Inputs.BranchProtectionAllowedToMergeArgs
+    ///             {
+    ///                 UserId = 15,
+    ///             },
+    ///             new GitLab.Inputs.BranchProtectionAllowedToMergeArgs
+    ///             {
+    ///                 UserId = 37,
+    ///             },
+    ///         },
+    ///         AllowedToUnprotects = new[]
+    ///         {
+    ///             new GitLab.Inputs.BranchProtectionAllowedToUnprotectArgs
+    ///             {
+    ///                 UserId = 15,
+    ///             },
+    ///             new GitLab.Inputs.BranchProtectionAllowedToUnprotectArgs
+    ///             {
+    ///                 GroupId = 42,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Example using dynamic block
+    ///     var main = new GitLab.BranchProtection("main", new()
+    ///     {
+    ///         AllowedToPushes = new[]
+    ///         {
+    ///             50,
+    ///             55,
+    ///             60,
+    ///         }.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry =&gt; 
+    ///         {
+    ///             return new GitLab.Inputs.BranchProtectionAllowedToPushArgs
+    ///             {
+    ///                 UserId = entry.Value,
+    ///             };
+    ///         }).ToList(),
+    ///         Project = "12345",
+    ///         Branch = "main",
+    ///         PushAccessLevel = "maintainer",
+    ///         MergeAccessLevel = "maintainer",
+    ///         UnprotectAccessLevel = "maintainer",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch&gt;`, e.g.

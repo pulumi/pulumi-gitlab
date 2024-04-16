@@ -16,11 +16,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const exampleUser = gitlab.getUser({
+ * const example = gitlab.getUser({
  *     username: "example-user",
  * });
- * const exampleUserSshKey = new gitlab.UserSshKey("exampleUserSshKey", {
- *     userId: exampleUser.then(exampleUser => exampleUser.id),
+ * const exampleUserSshKey = new gitlab.UserSshKey("example", {
+ *     userId: example.then(example => example.id),
  *     title: "example-key",
  *     key: "ssh-ed25519 AAAA...",
  *     expiresAt: "2016-01-21T00:00:00.000Z",

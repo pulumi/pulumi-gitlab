@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getClusterAgent({
- *     agentId: 1,
  *     project: "12345",
+ *     agentId: 1,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -92,8 +92,8 @@ export interface GetClusterAgentResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getClusterAgent({
- *     agentId: 1,
  *     project: "12345",
+ *     agentId: 1,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

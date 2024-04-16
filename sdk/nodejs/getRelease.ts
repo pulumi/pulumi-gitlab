@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
+ * // By project ID and tag_name
  * const example = gitlab.getRelease({
  *     projectId: "1234",
  *     tagName: "v1.0",
@@ -99,6 +100,7 @@ export interface GetReleaseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
+ * // By project ID and tag_name
  * const example = gitlab.getRelease({
  *     projectId: "1234",
  *     tagName: "v1.0",

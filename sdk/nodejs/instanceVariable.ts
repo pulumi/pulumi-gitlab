@@ -18,9 +18,9 @@ import * as utilities from "./utilities";
  *
  * const example = new gitlab.InstanceVariable("example", {
  *     key: "instance_variable_key",
- *     masked: false,
- *     "protected": false,
  *     value: "instance_variable_value",
+ *     "protected": false,
+ *     masked: false,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

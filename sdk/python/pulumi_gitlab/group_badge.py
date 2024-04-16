@@ -206,23 +206,23 @@ class GroupBadge(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        foo = gitlab.Group("foo")
+        foo = gitlab.Group("foo", name="foo-group")
         example = gitlab.GroupBadge("example",
             group=foo.id,
             link_url="https://example.com/badge-123",
             image_url="https://example.com/badge-123.svg")
         # Pipeline status badges with placeholders will be enabled for each project
-        gitlab_pipeline = gitlab.GroupBadge("gitlabPipeline",
+        gitlab_pipeline = gitlab.GroupBadge("gitlab_pipeline",
             group=foo.id,
             link_url="https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
             image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
         # Test coverage report badges with placeholders will be enabled for each project
-        gitlab_coverage = gitlab.GroupBadge("gitlabCoverage",
+        gitlab_coverage = gitlab.GroupBadge("gitlab_coverage",
             group=foo.id,
             link_url="https://gitlab.example.com/%{project_path}/-/jobs",
             image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
         # Latest release badges with placeholders will be enabled for each project
-        gitlab_release = gitlab.GroupBadge("gitlabRelease",
+        gitlab_release = gitlab.GroupBadge("gitlab_release",
             group=foo.id,
             link_url="https://gitlab.example.com/%{project_path}/-/releases",
             image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
@@ -262,23 +262,23 @@ class GroupBadge(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        foo = gitlab.Group("foo")
+        foo = gitlab.Group("foo", name="foo-group")
         example = gitlab.GroupBadge("example",
             group=foo.id,
             link_url="https://example.com/badge-123",
             image_url="https://example.com/badge-123.svg")
         # Pipeline status badges with placeholders will be enabled for each project
-        gitlab_pipeline = gitlab.GroupBadge("gitlabPipeline",
+        gitlab_pipeline = gitlab.GroupBadge("gitlab_pipeline",
             group=foo.id,
             link_url="https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
             image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
         # Test coverage report badges with placeholders will be enabled for each project
-        gitlab_coverage = gitlab.GroupBadge("gitlabCoverage",
+        gitlab_coverage = gitlab.GroupBadge("gitlab_coverage",
             group=foo.id,
             link_url="https://gitlab.example.com/%{project_path}/-/jobs",
             image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
         # Latest release badges with placeholders will be enabled for each project
-        gitlab_release = gitlab.GroupBadge("gitlabRelease",
+        gitlab_release = gitlab.GroupBadge("gitlab_release",
             group=foo.id,
             link_url="https://gitlab.example.com/%{project_path}/-/releases",
             image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")

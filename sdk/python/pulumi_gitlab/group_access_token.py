@@ -329,15 +329,16 @@ class GroupAccessToken(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example_group_access_token = gitlab.GroupAccessToken("exampleGroupAccessToken",
+        example = gitlab.GroupAccessToken("example",
             group="25",
+            name="Example project access token",
             expires_at="2020-03-14",
             access_level="developer",
             scopes=["api"])
-        example_group_variable = gitlab.GroupVariable("exampleGroupVariable",
+        example_group_variable = gitlab.GroupVariable("example",
             group="25",
             key="gat",
-            value=example_group_access_token.token)
+            value=example.token)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -384,15 +385,16 @@ class GroupAccessToken(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example_group_access_token = gitlab.GroupAccessToken("exampleGroupAccessToken",
+        example = gitlab.GroupAccessToken("example",
             group="25",
+            name="Example project access token",
             expires_at="2020-03-14",
             access_level="developer",
             scopes=["api"])
-        example_group_variable = gitlab.GroupVariable("exampleGroupVariable",
+        example_group_variable = gitlab.GroupVariable("example",
             group="25",
             key="gat",
-            value=example_group_access_token.token)
+            value=example.token)
         ```
         <!--End PulumiCodeChooser -->
 

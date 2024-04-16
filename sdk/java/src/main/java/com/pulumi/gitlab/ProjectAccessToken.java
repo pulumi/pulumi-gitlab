@@ -55,17 +55,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleProjectAccessToken = new ProjectAccessToken(&#34;exampleProjectAccessToken&#34;, ProjectAccessTokenArgs.builder()        
+ *         var example = new ProjectAccessToken(&#34;example&#34;, ProjectAccessTokenArgs.builder()        
  *             .project(&#34;25&#34;)
+ *             .name(&#34;Example project access token&#34;)
  *             .expiresAt(&#34;2020-03-14&#34;)
  *             .accessLevel(&#34;reporter&#34;)
  *             .scopes(&#34;api&#34;)
  *             .build());
  * 
  *         var exampleProjectVariable = new ProjectVariable(&#34;exampleProjectVariable&#34;, ProjectVariableArgs.builder()        
- *             .project(gitlab_project.example().id())
+ *             .project(exampleGitlabProject.id())
  *             .key(&#34;pat&#34;)
- *             .value(exampleProjectAccessToken.token())
+ *             .value(example.token())
  *             .build());
  * 
  *     }

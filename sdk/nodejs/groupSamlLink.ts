@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const test = new gitlab.GroupSamlLink("test", {
- *     accessLevel: "developer",
  *     group: "12345",
+ *     accessLevel: "developer",
  *     samlGroupName: "samlgroupname1",
  * });
  * ```

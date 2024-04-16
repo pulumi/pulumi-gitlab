@@ -168,11 +168,12 @@ def get_project_variable(environment_scope: Optional[str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    foo = gitlab.get_project_variable(key="foo",
-        project="my/example/project")
-    bar = gitlab.get_project_variable(environment_scope="staging/*",
+    foo = gitlab.get_project_variable(project="my/example/project",
+        key="foo")
+    # Using an environment scope
+    bar = gitlab.get_project_variable(project="my/example/project",
         key="bar",
-        project="my/example/project")
+        environment_scope="staging/*")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -218,11 +219,12 @@ def get_project_variable_output(environment_scope: Optional[pulumi.Input[Optiona
     import pulumi
     import pulumi_gitlab as gitlab
 
-    foo = gitlab.get_project_variable(key="foo",
-        project="my/example/project")
-    bar = gitlab.get_project_variable(environment_scope="staging/*",
+    foo = gitlab.get_project_variable(project="my/example/project",
+        key="foo")
+    # Using an environment scope
+    bar = gitlab.get_project_variable(project="my/example/project",
         key="bar",
-        project="my/example/project")
+        environment_scope="staging/*")
     ```
     <!--End PulumiCodeChooser -->
 

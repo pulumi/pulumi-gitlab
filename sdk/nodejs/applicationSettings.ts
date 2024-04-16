@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * // Set the 2FA settings
- * const _this = new gitlab.ApplicationSettings("this", {
- *     requireTwoFactorAuthentication: true,
- *     twoFactorGracePeriod: 24,
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export class ApplicationSettings extends pulumi.CustomResource {
     /**

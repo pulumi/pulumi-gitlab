@@ -21,8 +21,11 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tagProtect = new GitLab.TagProtection("tagProtect", new()
+    ///     var tagProtect = new GitLab.TagProtection("TagProtect", new()
     ///     {
+    ///         Project = "12345",
+    ///         Tag = "TagProtected",
+    ///         CreateAccessLevel = "developer",
     ///         AllowedToCreates = new[]
     ///         {
     ///             new GitLab.Inputs.TagProtectionAllowedToCreateArgs
@@ -34,9 +37,6 @@ namespace Pulumi.GitLab
     ///                 GroupId = 43,
     ///             },
     ///         },
-    ///         CreateAccessLevel = "developer",
-    ///         Project = "12345",
-    ///         Tag = "TagProtected",
     ///     });
     /// 
     /// });

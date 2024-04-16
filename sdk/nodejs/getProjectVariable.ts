@@ -17,13 +17,14 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const foo = gitlab.getProjectVariable({
+ *     project: "my/example/project",
  *     key: "foo",
- *     project: "my/example/project",
  * });
+ * // Using an environment scope
  * const bar = gitlab.getProjectVariable({
- *     environmentScope: "staging/*",
- *     key: "bar",
  *     project: "my/example/project",
+ *     key: "bar",
+ *     environmentScope: "staging/*",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -114,13 +115,14 @@ export interface GetProjectVariableResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const foo = gitlab.getProjectVariable({
+ *     project: "my/example/project",
  *     key: "foo",
- *     project: "my/example/project",
  * });
+ * // Using an environment scope
  * const bar = gitlab.getProjectVariable({
- *     environmentScope: "staging/*",
- *     key: "bar",
  *     project: "my/example/project",
+ *     key: "bar",
+ *     environmentScope: "staging/*",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getRepositoryFile({
- *     filePath: "README.md",
  *     project: "example",
  *     ref: "main",
+ *     filePath: "README.md",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -122,9 +122,9 @@ export interface GetRepositoryFileResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getRepositoryFile({
- *     filePath: "README.md",
  *     project: "example",
  *     ref: "main",
+ *     filePath: "README.md",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

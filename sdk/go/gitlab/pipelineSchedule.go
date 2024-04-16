@@ -32,10 +32,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewPipelineSchedule(ctx, "example", &gitlab.PipelineScheduleArgs{
-//				Cron:        pulumi.String("0 1 * * *"),
-//				Description: pulumi.String("Used to schedule builds"),
 //				Project:     pulumi.String("12345"),
+//				Description: pulumi.String("Used to schedule builds"),
 //				Ref:         pulumi.String("master"),
+//				Cron:        pulumi.String("0 1 * * *"),
 //			})
 //			if err != nil {
 //				return err

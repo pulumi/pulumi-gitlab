@@ -50,11 +50,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new Group(&#34;foo&#34;, GroupArgs.builder()        
+ *             .name(&#34;foo-group&#34;)
  *             .path(&#34;foo-path&#34;)
  *             .build());
  * 
  *         var bar = new GroupCluster(&#34;bar&#34;, GroupClusterArgs.builder()        
  *             .group(foo.id())
+ *             .name(&#34;bar-cluster&#34;)
  *             .domain(&#34;example.com&#34;)
  *             .enabled(true)
  *             .kubernetesApiUrl(&#34;https://124.124.124&#34;)

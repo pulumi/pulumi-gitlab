@@ -17,12 +17,13 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * // Create a project for the milestone to use
- * const exampleProject = new gitlab.Project("exampleProject", {
+ * const example = new gitlab.Project("example", {
+ *     name: "example",
  *     description: "An example project",
- *     namespaceId: gitlab_group.example.id,
+ *     namespaceId: exampleGitlabGroup.id,
  * });
- * const exampleProjectMilestone = new gitlab.ProjectMilestone("exampleProjectMilestone", {
- *     project: exampleProject.id,
+ * const exampleProjectMilestone = new gitlab.ProjectMilestone("example", {
+ *     project: example.id,
  *     title: "example",
  * });
  * ```

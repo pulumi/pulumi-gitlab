@@ -31,7 +31,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := gitlab.NewProject(ctx, "foo", nil)
+//			foo, err := gitlab.NewProject(ctx, "foo", &gitlab.ProjectArgs{
+//				Name: pulumi.String("foo-project"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -39,33 +41,37 @@ import (
 //				Project:  foo.ID(),
 //				LinkUrl:  pulumi.String("https://example.com/badge-123"),
 //				ImageUrl: pulumi.String("https://example.com/badge-123.svg"),
+//				Name:     pulumi.String("badge-123"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Pipeline status badges with placeholders will be enabled
-//			_, err = gitlab.NewProjectBadge(ctx, "gitlabPipeline", &gitlab.ProjectBadgeArgs{
+//			_, err = gitlab.NewProjectBadge(ctx, "gitlab_pipeline", &gitlab.ProjectBadgeArgs{
 //				Project:  foo.ID(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg"),
+//				Name:     pulumi.String("badge-pipeline"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Test coverage report badges with placeholders will be enabled
-//			_, err = gitlab.NewProjectBadge(ctx, "gitlabCoverage", &gitlab.ProjectBadgeArgs{
+//			_, err = gitlab.NewProjectBadge(ctx, "gitlab_coverage", &gitlab.ProjectBadgeArgs{
 //				Project:  foo.ID(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/jobs"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg"),
+//				Name:     pulumi.String("badge-coverage"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Latest release badges with placeholders will be enabled
-//			_, err = gitlab.NewProjectBadge(ctx, "gitlabRelease", &gitlab.ProjectBadgeArgs{
+//			_, err = gitlab.NewProjectBadge(ctx, "gitlab_release", &gitlab.ProjectBadgeArgs{
 //				Project:  foo.ID(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/releases"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/-/badges/release.svg"),
+//				Name:     pulumi.String("badge-release"),
 //			})
 //			if err != nil {
 //				return err

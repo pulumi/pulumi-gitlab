@@ -25,37 +25,44 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Project("foo");
+    ///     var foo = new GitLab.Project("foo", new()
+    ///     {
+    ///         Name = "foo-project",
+    ///     });
     /// 
     ///     var example = new GitLab.ProjectBadge("example", new()
     ///     {
     ///         Project = foo.Id,
     ///         LinkUrl = "https://example.com/badge-123",
     ///         ImageUrl = "https://example.com/badge-123.svg",
+    ///         Name = "badge-123",
     ///     });
     /// 
     ///     // Pipeline status badges with placeholders will be enabled
-    ///     var gitlabPipeline = new GitLab.ProjectBadge("gitlabPipeline", new()
+    ///     var gitlabPipeline = new GitLab.ProjectBadge("gitlab_pipeline", new()
     ///     {
     ///         Project = foo.Id,
     ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
     ///         ImageUrl = "https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg",
+    ///         Name = "badge-pipeline",
     ///     });
     /// 
     ///     // Test coverage report badges with placeholders will be enabled
-    ///     var gitlabCoverage = new GitLab.ProjectBadge("gitlabCoverage", new()
+    ///     var gitlabCoverage = new GitLab.ProjectBadge("gitlab_coverage", new()
     ///     {
     ///         Project = foo.Id,
     ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/jobs",
     ///         ImageUrl = "https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg",
+    ///         Name = "badge-coverage",
     ///     });
     /// 
     ///     // Latest release badges with placeholders will be enabled
-    ///     var gitlabRelease = new GitLab.ProjectBadge("gitlabRelease", new()
+    ///     var gitlabRelease = new GitLab.ProjectBadge("gitlab_release", new()
     ///     {
     ///         Project = foo.Id,
     ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/releases",
     ///         ImageUrl = "https://gitlab.example.com/%{project_path}/-/badges/release.svg",
+    ///         Name = "badge-release",
     ///     });
     /// 
     /// });

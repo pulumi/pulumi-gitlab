@@ -18,9 +18,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const fooProject = new gitlab.Project("fooProject", {description: "My example project"});
- * const fooProjectLevelMrApprovals = new gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals", {
- *     project: fooProject.id,
+ * const foo = new gitlab.Project("foo", {
+ *     name: "Example",
+ *     description: "My example project",
+ * });
+ * const fooProjectLevelMrApprovals = new gitlab.ProjectLevelMrApprovals("foo", {
+ *     project: foo.id,
  *     resetApprovalsOnPush: true,
  *     disableOverridingApproversPerMergeRequest: false,
  *     mergeRequestsAuthorApproval: false,

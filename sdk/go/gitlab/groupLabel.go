@@ -32,9 +32,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewGroupLabel(ctx, "fixme", &gitlab.GroupLabelArgs{
-//				Color:       pulumi.String("#ffcc00"),
-//				Description: pulumi.String("issue with failing tests"),
 //				Group:       pulumi.String("example"),
+//				Name:        pulumi.String("fixme"),
+//				Description: pulumi.String("issue with failing tests"),
+//				Color:       pulumi.String("#ffcc00"),
 //			})
 //			if err != nil {
 //				return err

@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     project: foo.id,
  *     iid: 1,
  * }));
- * export const welcomeIssueWebUrl = data.gitlab_project_issue.web_url;
+ * export const welcomeIssueWebUrl = webUrl;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -236,7 +236,7 @@ export interface GetProjectIssueResult {
  *     project: foo.id,
  *     iid: 1,
  * }));
- * export const welcomeIssueWebUrl = data.gitlab_project_issue.web_url;
+ * export const welcomeIssueWebUrl = webUrl;
  * ```
  * <!--End PulumiCodeChooser -->
  */

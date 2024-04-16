@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// By project ID and tag_name
 //			_, err := gitlab.GetRelease(ctx, &gitlab.GetReleaseArgs{
 //				ProjectId: "1234",
 //				TagName:   "v1.0",

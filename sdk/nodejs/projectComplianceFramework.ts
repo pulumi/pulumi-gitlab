@@ -18,15 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const sampleComplianceFramework = new gitlab.ComplianceFramework("sampleComplianceFramework", {
+ * const sample = new gitlab.ComplianceFramework("sample", {
  *     namespacePath: "top-level-group",
+ *     name: "HIPAA",
  *     description: "A HIPAA Compliance Framework",
  *     color: "#87BEEF",
  *     "default": false,
  *     pipelineConfigurationFullPath: ".hipaa.yml@top-level-group/compliance-frameworks",
  * });
- * const sampleProjectComplianceFramework = new gitlab.ProjectComplianceFramework("sampleProjectComplianceFramework", {
- *     complianceFrameworkId: sampleComplianceFramework.frameworkId,
+ * const sampleProjectComplianceFramework = new gitlab.ProjectComplianceFramework("sample", {
+ *     complianceFrameworkId: sample.frameworkId,
  *     project: "12345678",
  * });
  * ```

@@ -16,11 +16,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const exampleProject = gitlab.getProject({
+ * const example = gitlab.getProject({
  *     id: "foo/bar/baz",
  * });
- * const exampleProjectHook = exampleProject.then(exampleProject => gitlab.getProjectHook({
- *     project: exampleProject.id,
+ * const exampleGetProjectHook = example.then(example => gitlab.getProjectHook({
+ *     project: example.id,
  *     hookId: 1,
  * }));
  * ```
@@ -150,11 +150,11 @@ export interface GetProjectHookResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const exampleProject = gitlab.getProject({
+ * const example = gitlab.getProject({
  *     id: "foo/bar/baz",
  * });
- * const exampleProjectHook = exampleProject.then(exampleProject => gitlab.getProjectHook({
- *     project: exampleProject.id,
+ * const exampleGetProjectHook = example.then(example => gitlab.getProjectHook({
+ *     project: example.id,
  *     hookId: 1,
  * }));
  * ```

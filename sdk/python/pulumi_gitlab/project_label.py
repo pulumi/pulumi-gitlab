@@ -193,11 +193,13 @@ class ProjectLabel(pulumi.CustomResource):
 
         fixme = gitlab.ProjectLabel("fixme",
             project="example",
+            name="fixme",
             description="issue with failing tests",
             color="#ffcc00")
         # Scoped label
-        devops_create = gitlab.ProjectLabel("devopsCreate",
-            project=gitlab_project["example"]["id"],
+        devops_create = gitlab.ProjectLabel("devops_create",
+            project=example["id"],
+            name="devops::create",
             description="issue for creating infrastructure resources",
             color="#ffa500")
         ```
@@ -238,11 +240,13 @@ class ProjectLabel(pulumi.CustomResource):
 
         fixme = gitlab.ProjectLabel("fixme",
             project="example",
+            name="fixme",
             description="issue with failing tests",
             color="#ffcc00")
         # Scoped label
-        devops_create = gitlab.ProjectLabel("devopsCreate",
-            project=gitlab_project["example"]["id"],
+        devops_create = gitlab.ProjectLabel("devops_create",
+            project=example["id"],
+            name="devops::create",
             description="issue for creating infrastructure resources",
             color="#ffa500")
         ```

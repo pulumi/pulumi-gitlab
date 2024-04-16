@@ -31,9 +31,10 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleProjectAccessToken = new GitLab.ProjectAccessToken("exampleProjectAccessToken", new()
+    ///     var example = new GitLab.ProjectAccessToken("example", new()
     ///     {
     ///         Project = "25",
+    ///         Name = "Example project access token",
     ///         ExpiresAt = "2020-03-14",
     ///         AccessLevel = "reporter",
     ///         Scopes = new[]
@@ -42,11 +43,11 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var exampleProjectVariable = new GitLab.ProjectVariable("exampleProjectVariable", new()
+    ///     var exampleProjectVariable = new GitLab.ProjectVariable("example", new()
     ///     {
-    ///         Project = gitlab_project.Example.Id,
+    ///         Project = exampleGitlabProject.Id,
     ///         Key = "pat",
-    ///         Value = exampleProjectAccessToken.Token,
+    ///         Value = example.Token,
     ///     });
     /// 
     /// });

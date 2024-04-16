@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewGroupShareGroup(ctx, "test", &gitlab.GroupShareGroupArgs{
-//				GroupId:      pulumi.Any(gitlab_group.Foo.Id),
-//				ShareGroupId: pulumi.Any(gitlab_group.Bar.Id),
+//				GroupId:      pulumi.Any(foo.Id),
+//				ShareGroupId: pulumi.Any(bar.Id),
 //				GroupAccess:  pulumi.String("guest"),
 //				ExpiresAt:    pulumi.String("2099-01-01"),
 //			})

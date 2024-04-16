@@ -175,7 +175,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         schedule = gitlab.ProjectFreezePeriod("schedule",
-            project=gitlab_project["foo"]["id"],
+            project=foo["id"],
             freeze_start="0 23 * * 5",
             freeze_end="0 7 * * 1",
             cron_timezone="UTC")
@@ -216,7 +216,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         schedule = gitlab.ProjectFreezePeriod("schedule",
-            project=gitlab_project["foo"]["id"],
+            project=foo["id"],
             freeze_start="0 23 * * 5",
             freeze_end="0 7 * * 1",
             cron_timezone="UTC")

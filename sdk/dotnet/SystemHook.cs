@@ -29,13 +29,13 @@ namespace Pulumi.GitLab
     /// {
     ///     var example = new GitLab.SystemHook("example", new()
     ///     {
-    ///         EnableSslVerification = true,
-    ///         MergeRequestsEvents = true,
-    ///         PushEvents = true,
-    ///         RepositoryUpdateEvents = true,
-    ///         TagPushEvents = true,
-    ///         Token = "secret-token",
     ///         Url = "https://example.com/hook-%d",
+    ///         Token = "secret-token",
+    ///         PushEvents = true,
+    ///         TagPushEvents = true,
+    ///         MergeRequestsEvents = true,
+    ///         RepositoryUpdateEvents = true,
+    ///         EnableSslVerification = true,
     ///     });
     /// 
     /// });

@@ -122,10 +122,10 @@ def get_repository_tree(path: Optional[str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    this = gitlab.get_repository_tree(path="ExampleSubFolder",
-        project="example",
-        recursive=True,
-        ref="main")
+    this = gitlab.get_repository_tree(project="example",
+        ref="main",
+        path="ExampleSubFolder",
+        recursive=True)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -169,10 +169,10 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
     import pulumi
     import pulumi_gitlab as gitlab
 
-    this = gitlab.get_repository_tree(path="ExampleSubFolder",
-        project="example",
-        recursive=True,
-        ref="main")
+    this = gitlab.get_repository_tree(project="example",
+        ref="main",
+        path="ExampleSubFolder",
+        recursive=True)
     ```
     <!--End PulumiCodeChooser -->
 

@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewGroupSamlLink(ctx, "test", &gitlab.GroupSamlLinkArgs{
-//				AccessLevel:   pulumi.String("developer"),
 //				Group:         pulumi.String("12345"),
+//				AccessLevel:   pulumi.String("developer"),
 //				SamlGroupName: pulumi.String("samlgroupname1"),
 //			})
 //			if err != nil {

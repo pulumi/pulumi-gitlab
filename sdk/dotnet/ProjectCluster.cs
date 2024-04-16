@@ -27,11 +27,15 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Project("foo");
+    ///     var foo = new GitLab.Project("foo", new()
+    ///     {
+    ///         Name = "foo-project",
+    ///     });
     /// 
     ///     var bar = new GitLab.ProjectCluster("bar", new()
     ///     {
     ///         Project = foo.Id,
+    ///         Name = "bar-cluster",
     ///         Domain = "example.com",
     ///         Enabled = true,
     ///         KubernetesApiUrl = "https://124.124.124",

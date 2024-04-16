@@ -12,16 +12,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const thisGroup = new gitlab.Group("thisGroup", {
+ * const _this = new gitlab.Group("this", {
+ *     name: "example",
  *     path: "example",
  *     description: "An example group",
  * });
- * const thisProject = new gitlab.Project("thisProject", {
- *     namespaceId: thisGroup.id,
+ * const thisProject = new gitlab.Project("this", {
+ *     name: "example",
+ *     namespaceId: _this.id,
  *     initializeWithReadme: true,
  * });
- * const thisProjectEnvironment = new gitlab.ProjectEnvironment("thisProjectEnvironment", {
+ * const thisProjectEnvironment = new gitlab.ProjectEnvironment("this", {
  *     project: thisProject.id,
+ *     name: "example",
  *     externalUrl: "www.example.com",
  * });
  * ```

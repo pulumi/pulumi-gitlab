@@ -18,9 +18,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const foo = new gitlab.Group("foo", {path: "foo-path"});
+ * const foo = new gitlab.Group("foo", {
+ *     name: "foo-group",
+ *     path: "foo-path",
+ * });
  * const bar = new gitlab.GroupCluster("bar", {
  *     group: foo.id,
+ *     name: "bar-cluster",
  *     domain: "example.com",
  *     enabled: true,
  *     kubernetesApiUrl: "https://124.124.124",

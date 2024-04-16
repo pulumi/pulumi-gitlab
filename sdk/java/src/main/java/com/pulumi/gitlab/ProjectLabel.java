@@ -46,13 +46,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var fixme = new ProjectLabel(&#34;fixme&#34;, ProjectLabelArgs.builder()        
  *             .project(&#34;example&#34;)
+ *             .name(&#34;fixme&#34;)
  *             .description(&#34;issue with failing tests&#34;)
  *             .color(&#34;#ffcc00&#34;)
  *             .build());
  * 
  *         // Scoped label
  *         var devopsCreate = new ProjectLabel(&#34;devopsCreate&#34;, ProjectLabelArgs.builder()        
- *             .project(gitlab_project.example().id())
+ *             .project(example.id())
+ *             .name(&#34;devops::create&#34;)
  *             .description(&#34;issue for creating infrastructure resources&#34;)
  *             .color(&#34;#ffa500&#34;)
  *             .build());

@@ -34,14 +34,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewInstanceCluster(ctx, "bar", &gitlab.InstanceClusterArgs{
+//				Name:                        pulumi.String("bar-cluster"),
 //				Domain:                      pulumi.String("example.com"),
 //				Enabled:                     pulumi.Bool(true),
-//				EnvironmentScope:            pulumi.String("*"),
 //				KubernetesApiUrl:            pulumi.String("https://124.124.124"),
-//				KubernetesAuthorizationType: pulumi.String("rbac"),
+//				KubernetesToken:             pulumi.String("some-token"),
 //				KubernetesCaCert:            pulumi.String("some-cert"),
 //				KubernetesNamespace:         pulumi.String("namespace"),
-//				KubernetesToken:             pulumi.String("some-token"),
+//				KubernetesAuthorizationType: pulumi.String("rbac"),
+//				EnvironmentScope:            pulumi.String("*"),
 //				ManagementProjectId:         pulumi.String("123456"),
 //			})
 //			if err != nil {

@@ -27,14 +27,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var subgroupsGroupSubgroups = GitLab.GetGroupSubgroups.Invoke(new()
+        ///     var subgroups = GitLab.GetGroupSubgroups.Invoke(new()
         ///     {
         ///         GroupId = 123456,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["subgroups"] = subgroupsGroupSubgroups,
+        ///         ["subgroups"] = subgroups,
         ///     };
         /// });
         /// ```
@@ -59,14 +59,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var subgroupsGroupSubgroups = GitLab.GetGroupSubgroups.Invoke(new()
+        ///     var subgroups = GitLab.GetGroupSubgroups.Invoke(new()
         ///     {
         ///         GroupId = 123456,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["subgroups"] = subgroupsGroupSubgroups,
+        ///         ["subgroups"] = subgroups,
         ///     };
         /// });
         /// ```

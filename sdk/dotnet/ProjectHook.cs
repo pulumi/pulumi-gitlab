@@ -27,9 +27,9 @@ namespace Pulumi.GitLab
     /// {
     ///     var example = new GitLab.ProjectHook("example", new()
     ///     {
-    ///         MergeRequestsEvents = true,
     ///         Project = "example/hooked",
     ///         Url = "https://example.com/hook/example",
+    ///         MergeRequestsEvents = true,
     ///     });
     /// 
     /// });

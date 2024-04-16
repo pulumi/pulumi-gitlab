@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewProjectCustomAttribute(ctx, "attr", &gitlab.ProjectCustomAttributeArgs{
-//				Key:     pulumi.String("location"),
 //				Project: pulumi.Int(42),
+//				Key:     pulumi.String("location"),
 //				Value:   pulumi.String("Greenland"),
 //			})
 //			if err != nil {

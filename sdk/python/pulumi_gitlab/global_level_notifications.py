@@ -632,20 +632,6 @@ class GlobalLevelNotifications(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Create Custom global level notification
-        foo = gitlab.GlobalLevelNotifications("foo",
-            level="custom",
-            new_merge_request=True)
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         Note: You can import a global notification state using "gitlab" as the ID.
@@ -689,20 +675,6 @@ class GlobalLevelNotifications(pulumi.CustomResource):
         The `GlobalLevelNotifications` resource allows to manage global notifications.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Create Custom global level notification
-        foo = gitlab.GlobalLevelNotifications("foo",
-            level="custom",
-            new_merge_request=True)
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

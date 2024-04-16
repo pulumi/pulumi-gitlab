@@ -33,10 +33,11 @@ namespace Pulumi.GitLab
     /// {
     ///     var sample = new GitLab.ComplianceFramework("sample", new()
     ///     {
+    ///         NamespacePath = "top-level-group",
+    ///         Name = "HIPAA",
+    ///         Description = "A HIPAA Compliance Framework",
     ///         Color = "#87BEEF",
     ///         Default = false,
-    ///         Description = "A HIPAA Compliance Framework",
-    ///         NamespacePath = "top-level-group",
     ///         PipelineConfigurationFullPath = ".hipaa.yml@top-level-group/compliance-frameworks",
     ///     });
     /// 

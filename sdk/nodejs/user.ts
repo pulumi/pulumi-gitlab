@@ -21,14 +21,15 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.User("example", {
- *     canCreateGroup: false,
+ *     name: "Example Foo",
+ *     username: "example",
+ *     password: "superPassword",
  *     email: "gitlab@user.create",
  *     isAdmin: true,
- *     isExternal: true,
- *     password: "superPassword",
  *     projectsLimit: 4,
+ *     canCreateGroup: false,
+ *     isExternal: true,
  *     resetPassword: false,
- *     username: "example",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -25,7 +25,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePipelineSchedule = new GitLab.PipelineSchedule("examplePipelineSchedule", new()
+    ///     var example = new GitLab.PipelineSchedule("example", new()
     ///     {
     ///         Project = "12345",
     ///         Description = "Used to schedule builds",
@@ -33,10 +33,10 @@ namespace Pulumi.GitLab
     ///         Cron = "0 1 * * *",
     ///     });
     /// 
-    ///     var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable("examplePipelineScheduleVariable", new()
+    ///     var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable("example", new()
     ///     {
-    ///         Project = examplePipelineSchedule.Project,
-    ///         PipelineScheduleId = examplePipelineSchedule.PipelineScheduleId,
+    ///         Project = example.Project,
+    ///         PipelineScheduleId = example.PipelineScheduleId,
     ///         Key = "EXAMPLE_KEY",
     ///         Value = "example",
     ///     });

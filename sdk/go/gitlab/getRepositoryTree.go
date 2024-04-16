@@ -31,10 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.GetRepositoryTree(ctx, &gitlab.GetRepositoryTreeArgs{
-//				Path:      pulumi.StringRef("ExampleSubFolder"),
 //				Project:   "example",
-//				Recursive: pulumi.BoolRef(true),
 //				Ref:       "main",
+//				Path:      pulumi.StringRef("ExampleSubFolder"),
+//				Recursive: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err

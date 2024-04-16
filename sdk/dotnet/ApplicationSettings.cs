@@ -11,26 +11,6 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Set the 2FA settings
-    ///     var @this = new GitLab.ApplicationSettings("this", new()
-    ///     {
-    ///         RequireTwoFactorAuthentication = true,
-    ///         TwoFactorGracePeriod = 24,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [GitLabResourceType("gitlab:index/applicationSettings:ApplicationSettings")]
     public partial class ApplicationSettings : global::Pulumi.CustomResource

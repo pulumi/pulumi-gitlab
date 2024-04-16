@@ -504,9 +504,10 @@ class ProjectCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        foo = gitlab.Project("foo")
+        foo = gitlab.Project("foo", name="foo-project")
         bar = gitlab.ProjectCluster("bar",
             project=foo.id,
+            name="bar-cluster",
             domain="example.com",
             enabled=True,
             kubernetes_api_url="https://124.124.124",
@@ -562,9 +563,10 @@ class ProjectCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        foo = gitlab.Project("foo")
+        foo = gitlab.Project("foo", name="foo-project")
         bar = gitlab.ProjectCluster("bar",
             project=foo.id,
+            name="bar-cluster",
             domain="example.com",
             enabled=True,
             kubernetes_api_url="https://124.124.124",

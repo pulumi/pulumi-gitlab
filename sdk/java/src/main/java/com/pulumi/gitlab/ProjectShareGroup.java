@@ -45,9 +45,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new ProjectShareGroup(&#34;test&#34;, ProjectShareGroupArgs.builder()        
- *             .groupAccess(&#34;guest&#34;)
- *             .groupId(1337)
  *             .project(&#34;12345&#34;)
+ *             .groupId(1337)
+ *             .groupAccess(&#34;guest&#34;)
  *             .build());
  * 
  *     }

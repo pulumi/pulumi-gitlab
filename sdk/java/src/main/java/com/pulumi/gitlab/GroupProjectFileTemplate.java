@@ -53,11 +53,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new Group(&#34;foo&#34;, GroupArgs.builder()        
+ *             .name(&#34;group&#34;)
  *             .path(&#34;group&#34;)
  *             .description(&#34;An example group&#34;)
  *             .build());
  * 
  *         var bar = new Project(&#34;bar&#34;, ProjectArgs.builder()        
+ *             .name(&#34;template project&#34;)
  *             .description(&#34;contains file templates&#34;)
  *             .visibilityLevel(&#34;public&#34;)
  *             .namespaceId(foo.id())

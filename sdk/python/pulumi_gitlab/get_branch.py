@@ -173,18 +173,6 @@ def get_branch(name: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
 
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    foo = gitlab.get_branch(name="example",
-        project="foo/bar")
-    ```
-    <!--End PulumiCodeChooser -->
-
 
     :param str name: The name of the branch.
     :param str project: The full path or id of the project.
@@ -217,18 +205,6 @@ def get_branch_output(name: Optional[pulumi.Input[str]] = None,
     The `Branch` data source allows details of a repository branch to be retrieved by its name and project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
-
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    foo = gitlab.get_branch(name="example",
-        project="foo/bar")
-    ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the branch.

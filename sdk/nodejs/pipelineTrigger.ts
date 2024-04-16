@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.PipelineTrigger("example", {
- *     description: "Used to trigger builds",
  *     project: "12345",
+ *     description: "Used to trigger builds",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

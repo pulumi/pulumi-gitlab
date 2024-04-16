@@ -19,15 +19,15 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const test = new gitlab.ProjectMembership("test", {
- *     accessLevel: "guest",
  *     project: "12345",
  *     userId: 1337,
+ *     accessLevel: "guest",
  * });
  * const example = new gitlab.ProjectMembership("example", {
- *     accessLevel: "guest",
- *     expiresAt: "2022-12-31",
  *     project: "67890",
  *     userId: 1234,
+ *     accessLevel: "guest",
+ *     expiresAt: "2022-12-31",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

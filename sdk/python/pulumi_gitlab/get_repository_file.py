@@ -204,9 +204,9 @@ def get_repository_file(file_path: Optional[str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_repository_file(file_path="README.md",
-        project="example",
-        ref="main")
+    example = gitlab.get_repository_file(project="example",
+        ref="main",
+        file_path="README.md")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -255,9 +255,9 @@ def get_repository_file_output(file_path: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_repository_file(file_path="README.md",
-        project="example",
-        ref="main")
+    example = gitlab.get_repository_file(project="example",
+        ref="main",
+        file_path="README.md")
     ```
     <!--End PulumiCodeChooser -->
 

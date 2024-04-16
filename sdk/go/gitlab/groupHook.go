@@ -33,32 +33,32 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewGroupHook(ctx, "example", &gitlab.GroupHookArgs{
 //				Group:               pulumi.String("example/hooked"),
-//				MergeRequestsEvents: pulumi.Bool(true),
 //				Url:                 pulumi.String("https://example.com/hook/example"),
+//				MergeRequestsEvents: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Setting all attributes
-//			_, err = gitlab.NewGroupHook(ctx, "allAttributes", &gitlab.GroupHookArgs{
-//				ConfidentialIssuesEvents: pulumi.Bool(false),
-//				ConfidentialNoteEvents:   pulumi.Bool(true),
-//				DeploymentEvents:         pulumi.Bool(true),
-//				EnableSslVerification:    pulumi.Bool(false),
+//			_, err = gitlab.NewGroupHook(ctx, "all_attributes", &gitlab.GroupHookArgs{
 //				Group:                    pulumi.String("1"),
-//				IssuesEvents:             pulumi.Bool(false),
-//				JobEvents:                pulumi.Bool(true),
-//				MergeRequestsEvents:      pulumi.Bool(true),
-//				NoteEvents:               pulumi.Bool(true),
-//				PipelineEvents:           pulumi.Bool(true),
+//				Url:                      pulumi.String("http://example.com"),
+//				Token:                    pulumi.String("supersecret"),
+//				EnableSslVerification:    pulumi.Bool(false),
 //				PushEvents:               pulumi.Bool(true),
 //				PushEventsBranchFilter:   pulumi.String("devel"),
+//				IssuesEvents:             pulumi.Bool(false),
+//				ConfidentialIssuesEvents: pulumi.Bool(false),
+//				MergeRequestsEvents:      pulumi.Bool(true),
+//				TagPushEvents:            pulumi.Bool(true),
+//				NoteEvents:               pulumi.Bool(true),
+//				ConfidentialNoteEvents:   pulumi.Bool(true),
+//				JobEvents:                pulumi.Bool(true),
+//				PipelineEvents:           pulumi.Bool(true),
+//				WikiPageEvents:           pulumi.Bool(true),
+//				DeploymentEvents:         pulumi.Bool(true),
 //				ReleasesEvents:           pulumi.Bool(true),
 //				SubgroupEvents:           pulumi.Bool(true),
-//				TagPushEvents:            pulumi.Bool(true),
-//				Token:                    pulumi.String("supersecret"),
-//				Url:                      pulumi.String("http://example.com"),
-//				WikiPageEvents:           pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

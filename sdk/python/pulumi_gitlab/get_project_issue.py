@@ -531,7 +531,7 @@ def get_project_issue(iid: Optional[int] = None,
     foo = gitlab.get_project(path_with_namespace="foo/bar/baz")
     welcome_issue = gitlab.get_project_issue(project=foo.id,
         iid=1)
-    pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
+    pulumi.export("welcomeIssueWebUrl", web_url)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -607,7 +607,7 @@ def get_project_issue_output(iid: Optional[pulumi.Input[int]] = None,
     foo = gitlab.get_project(path_with_namespace="foo/bar/baz")
     welcome_issue = gitlab.get_project_issue(project=foo.id,
         iid=1)
-    pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
+    pulumi.export("welcomeIssueWebUrl", web_url)
     ```
     <!--End PulumiCodeChooser -->
 

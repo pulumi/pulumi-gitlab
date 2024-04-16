@@ -14,35 +14,6 @@ import (
 // The `ProjectTag` data source allows details of a project tag to be retrieved by its name.
 //
 // **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
-//
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupProjectTag(ctx, &gitlab.LookupProjectTagArgs{
-//				Name:    "example",
-//				Project: "foo/bar",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func LookupProjectTag(ctx *pulumi.Context, args *LookupProjectTagArgs, opts ...pulumi.InvokeOption) (*LookupProjectTagResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectTagResult

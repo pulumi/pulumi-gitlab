@@ -354,11 +354,12 @@ class ProjectMilestone(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         # Create a project for the milestone to use
-        example_project = gitlab.Project("exampleProject",
+        example = gitlab.Project("example",
+            name="example",
             description="An example project",
-            namespace_id=gitlab_group["example"]["id"])
-        example_project_milestone = gitlab.ProjectMilestone("exampleProjectMilestone",
-            project=example_project.id,
+            namespace_id=example_gitlab_group["id"])
+        example_project_milestone = gitlab.ProjectMilestone("example",
+            project=example.id,
             title="example")
         ```
         <!--End PulumiCodeChooser -->
@@ -399,11 +400,12 @@ class ProjectMilestone(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         # Create a project for the milestone to use
-        example_project = gitlab.Project("exampleProject",
+        example = gitlab.Project("example",
+            name="example",
             description="An example project",
-            namespace_id=gitlab_group["example"]["id"])
-        example_project_milestone = gitlab.ProjectMilestone("exampleProjectMilestone",
-            project=example_project.id,
+            namespace_id=example_gitlab_group["id"])
+        example_project_milestone = gitlab.ProjectMilestone("example",
+            project=example.id,
             title="example")
         ```
         <!--End PulumiCodeChooser -->

@@ -148,15 +148,19 @@ class GroupEpicBoard(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.Group("example",
+            name="test_group",
             path="test_group",
             description="An example group")
-        label1 = gitlab.GroupLabel("label1",
+        label1 = gitlab.GroupLabel("label_1",
             group=example.id,
-            color="#FF0000")
-        label3 = gitlab.GroupLabel("label3",
+            color="#FF0000",
+            name="red-label")
+        label3 = gitlab.GroupLabel("label_3",
             group=example.id,
+            name="label-3",
             color="#003000")
-        epic_board = gitlab.GroupEpicBoard("epicBoard",
+        epic_board = gitlab.GroupEpicBoard("epic_board",
+            name="epic board 6",
             group=example.path,
             lists=[gitlab.GroupEpicBoardListArgs(
                 label_id=label1.label_id,
@@ -199,15 +203,19 @@ class GroupEpicBoard(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.Group("example",
+            name="test_group",
             path="test_group",
             description="An example group")
-        label1 = gitlab.GroupLabel("label1",
+        label1 = gitlab.GroupLabel("label_1",
             group=example.id,
-            color="#FF0000")
-        label3 = gitlab.GroupLabel("label3",
+            color="#FF0000",
+            name="red-label")
+        label3 = gitlab.GroupLabel("label_3",
             group=example.id,
+            name="label-3",
             color="#003000")
-        epic_board = gitlab.GroupEpicBoard("epicBoard",
+        epic_board = gitlab.GroupEpicBoard("epic_board",
+            name="epic board 6",
             group=example.path,
             lists=[gitlab.GroupEpicBoardListArgs(
                 label_id=label1.label_id,

@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new GroupVariable(&#34;example&#34;, GroupVariableArgs.builder()        
- *             .environmentScope(&#34;*&#34;)
  *             .group(&#34;12345&#34;)
  *             .key(&#34;group_variable_key&#34;)
- *             .masked(false)
- *             .protected_(false)
  *             .value(&#34;group_variable_value&#34;)
+ *             .protected_(false)
+ *             .masked(false)
+ *             .environmentScope(&#34;*&#34;)
  *             .build());
  * 
  *     }

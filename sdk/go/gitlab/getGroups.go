@@ -35,8 +35,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.GetGroups(ctx, &gitlab.GetGroupsArgs{
-//				OrderBy: pulumi.StringRef("name"),
 //				Sort:    pulumi.StringRef("desc"),
+//				OrderBy: pulumi.StringRef("name"),
 //			}, nil)
 //			if err != nil {
 //				return err

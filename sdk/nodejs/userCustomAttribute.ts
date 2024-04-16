@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const attr = new gitlab.UserCustomAttribute("attr", {
- *     key: "location",
  *     user: 42,
+ *     key: "location",
  *     value: "Greenland",
  * });
  * ```

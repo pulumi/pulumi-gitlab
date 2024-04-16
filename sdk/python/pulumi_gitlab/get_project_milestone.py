@@ -208,18 +208,6 @@ def get_project_milestone(milestone_id: Optional[int] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
 
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project_milestone(milestone_id=10,
-        project="foo/bar")
-    ```
-    <!--End PulumiCodeChooser -->
-
 
     :param int milestone_id: The instance-wide ID of the project’s milestone.
     :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
@@ -255,18 +243,6 @@ def get_project_milestone_output(milestone_id: Optional[pulumi.Input[int]] = Non
     The `ProjectMilestone` data source allows get details of a project milestone.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
-
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project_milestone(milestone_id=10,
-        project="foo/bar")
-    ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int milestone_id: The instance-wide ID of the project’s milestone.

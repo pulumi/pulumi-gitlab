@@ -177,14 +177,14 @@ class ProjectMembership(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.ProjectMembership("test",
-            access_level="guest",
             project="12345",
-            user_id=1337)
+            user_id=1337,
+            access_level="guest")
         example = gitlab.ProjectMembership("example",
-            access_level="guest",
-            expires_at="2022-12-31",
             project="67890",
-            user_id=1234)
+            user_id=1234,
+            access_level="guest",
+            expires_at="2022-12-31")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -224,14 +224,14 @@ class ProjectMembership(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.ProjectMembership("test",
-            access_level="guest",
             project="12345",
-            user_id=1337)
+            user_id=1337,
+            access_level="guest")
         example = gitlab.ProjectMembership("example",
-            access_level="guest",
-            expires_at="2022-12-31",
             project="67890",
-            user_id=1234)
+            user_id=1234,
+            access_level="guest",
+            expires_at="2022-12-31")
         ```
         <!--End PulumiCodeChooser -->
 

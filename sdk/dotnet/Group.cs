@@ -27,22 +27,25 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleGroup = new GitLab.Group("exampleGroup", new()
+    ///     var example = new GitLab.Group("example", new()
     ///     {
+    ///         Name = "example",
     ///         Path = "example",
     ///         Description = "An example group",
     ///     });
     /// 
     ///     // Create a project in the example group
-    ///     var exampleProject = new GitLab.Project("exampleProject", new()
+    ///     var exampleProject = new GitLab.Project("example", new()
     ///     {
+    ///         Name = "example",
     ///         Description = "An example project",
-    ///         NamespaceId = exampleGroup.Id,
+    ///         NamespaceId = example.Id,
     ///     });
     /// 
     ///     // Group with custom push rules
     ///     var example_two = new GitLab.Group("example-two", new()
     ///     {
+    ///         Name = "example-two",
     ///         Path = "example-two",
     ///         Description = "An example group with push rules",
     ///         PushRules = new GitLab.Inputs.GroupPushRulesArgs

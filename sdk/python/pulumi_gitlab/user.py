@@ -477,14 +477,15 @@ class User(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.User("example",
-            can_create_group=False,
+            name="Example Foo",
+            username="example",
+            password="superPassword",
             email="gitlab@user.create",
             is_admin=True,
-            is_external=True,
-            password="superPassword",
             projects_limit=4,
-            reset_password=False,
-            username="example")
+            can_create_group=False,
+            is_external=True,
+            reset_password=False)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -541,14 +542,15 @@ class User(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.User("example",
-            can_create_group=False,
+            name="Example Foo",
+            username="example",
+            password="superPassword",
             email="gitlab@user.create",
             is_admin=True,
-            is_external=True,
-            password="superPassword",
             projects_limit=4,
-            reset_password=False,
-            username="example")
+            can_create_group=False,
+            is_external=True,
+            reset_password=False)
         ```
         <!--End PulumiCodeChooser -->
 

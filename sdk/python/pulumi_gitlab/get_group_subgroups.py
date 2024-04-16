@@ -200,8 +200,8 @@ def get_group_subgroups(all_available: Optional[bool] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    subgroups_group_subgroups = gitlab.get_group_subgroups(group_id=123456)
-    pulumi.export("subgroups", subgroups_group_subgroups)
+    subgroups = gitlab.get_group_subgroups(group_id=123456)
+    pulumi.export("subgroups", subgroups)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -268,8 +268,8 @@ def get_group_subgroups_output(all_available: Optional[pulumi.Input[Optional[boo
     import pulumi
     import pulumi_gitlab as gitlab
 
-    subgroups_group_subgroups = gitlab.get_group_subgroups(group_id=123456)
-    pulumi.export("subgroups", subgroups_group_subgroups)
+    subgroups = gitlab.get_group_subgroups(group_id=123456)
+    pulumi.export("subgroups", subgroups)
     ```
     <!--End PulumiCodeChooser -->
 

@@ -37,8 +37,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleGroupAccessToken, err := gitlab.NewGroupAccessToken(ctx, "exampleGroupAccessToken", &gitlab.GroupAccessTokenArgs{
+//			example, err := gitlab.NewGroupAccessToken(ctx, "example", &gitlab.GroupAccessTokenArgs{
 //				Group:       pulumi.String("25"),
+//				Name:        pulumi.String("Example project access token"),
 //				ExpiresAt:   pulumi.String("2020-03-14"),
 //				AccessLevel: pulumi.String("developer"),
 //				Scopes: pulumi.StringArray{
@@ -48,10 +49,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewGroupVariable(ctx, "exampleGroupVariable", &gitlab.GroupVariableArgs{
+//			_, err = gitlab.NewGroupVariable(ctx, "example", &gitlab.GroupVariableArgs{
 //				Group: pulumi.String("25"),
 //				Key:   pulumi.String("gat"),
-//				Value: exampleGroupAccessToken.Token,
+//				Value: example.Token,
 //			})
 //			if err != nil {
 //				return err

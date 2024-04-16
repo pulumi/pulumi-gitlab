@@ -280,14 +280,21 @@ class ClusterAgentToken(pulumi.CustomResource):
         example = gitlab.ClusterAgentToken("example",
             project="12345",
             agent_id=42,
+            name="some-token",
             description="some token")
-        this_project = gitlab.get_project(path_with_namespace="my-org/example")
-        this_cluster_agent = gitlab.ClusterAgent("thisClusterAgent", project=this_project.id)
-        this_cluster_agent_token = gitlab.ClusterAgentToken("thisClusterAgentToken",
-            project=this_project.id,
+        # The following example creates a GitLab Agent for Kubernetes in a given project,
+        # creates a token and install the `gitlab-agent` Helm Chart.
+        # (see https://gitlab.com/gitlab-org/charts/gitlab-agent)
+        this = gitlab.get_project(path_with_namespace="my-org/example")
+        this_cluster_agent = gitlab.ClusterAgent("this",
+            project=this.id,
+            name="my-agent")
+        this_cluster_agent_token = gitlab.ClusterAgentToken("this",
+            project=this.id,
             agent_id=this_cluster_agent.agent_id,
+            name="my-agent-token",
             description="Token for the my-agent used with `gitlab-agent` Helm Chart")
-        gitlab_agent = helm.index.Helm_release("gitlabAgent",
+        gitlab_agent = helm.index.Release("gitlab_agent",
             name=gitlab-agent,
             namespace=gitlab-agent,
             create_namespace=True,
@@ -345,14 +352,21 @@ class ClusterAgentToken(pulumi.CustomResource):
         example = gitlab.ClusterAgentToken("example",
             project="12345",
             agent_id=42,
+            name="some-token",
             description="some token")
-        this_project = gitlab.get_project(path_with_namespace="my-org/example")
-        this_cluster_agent = gitlab.ClusterAgent("thisClusterAgent", project=this_project.id)
-        this_cluster_agent_token = gitlab.ClusterAgentToken("thisClusterAgentToken",
-            project=this_project.id,
+        # The following example creates a GitLab Agent for Kubernetes in a given project,
+        # creates a token and install the `gitlab-agent` Helm Chart.
+        # (see https://gitlab.com/gitlab-org/charts/gitlab-agent)
+        this = gitlab.get_project(path_with_namespace="my-org/example")
+        this_cluster_agent = gitlab.ClusterAgent("this",
+            project=this.id,
+            name="my-agent")
+        this_cluster_agent_token = gitlab.ClusterAgentToken("this",
+            project=this.id,
             agent_id=this_cluster_agent.agent_id,
+            name="my-agent-token",
             description="Token for the my-agent used with `gitlab-agent` Helm Chart")
-        gitlab_agent = helm.index.Helm_release("gitlabAgent",
+        gitlab_agent = helm.index.Release("gitlab_agent",
             name=gitlab-agent,
             namespace=gitlab-agent,
             create_namespace=True,

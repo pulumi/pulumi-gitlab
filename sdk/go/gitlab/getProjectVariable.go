@@ -31,16 +31,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.LookupProjectVariable(ctx, &gitlab.LookupProjectVariableArgs{
-//				Key:     "foo",
 //				Project: "my/example/project",
+//				Key:     "foo",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Using an environment scope
 //			_, err = gitlab.LookupProjectVariable(ctx, &gitlab.LookupProjectVariableArgs{
-//				EnvironmentScope: pulumi.StringRef("staging/*"),
-//				Key:              "bar",
 //				Project:          "my/example/project",
+//				Key:              "bar",
+//				EnvironmentScope: pulumi.StringRef("staging/*"),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -313,10 +313,10 @@ class PipelineSchedule(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.PipelineSchedule("example",
-            cron="0 1 * * *",
-            description="Used to schedule builds",
             project="12345",
-            ref="master")
+            description="Used to schedule builds",
+            ref="master",
+            cron="0 1 * * *")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -359,10 +359,10 @@ class PipelineSchedule(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.PipelineSchedule("example",
-            cron="0 1 * * *",
-            description="Used to schedule builds",
             project="12345",
-            ref="master")
+            description="Used to schedule builds",
+            ref="master",
+            cron="0 1 * * *")
         ```
         <!--End PulumiCodeChooser -->
 

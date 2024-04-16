@@ -26,16 +26,18 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a project for the tag to use
-    ///     var exampleProject = new GitLab.Project("exampleProject", new()
+    ///     var example = new GitLab.Project("example", new()
     ///     {
+    ///         Name = "example",
     ///         Description = "An example project",
-    ///         NamespaceId = gitlab_group.Example.Id,
+    ///         NamespaceId = exampleGitlabGroup.Id,
     ///     });
     /// 
-    ///     var exampleProjectTag = new GitLab.ProjectTag("exampleProjectTag", new()
+    ///     var exampleProjectTag = new GitLab.ProjectTag("example", new()
     ///     {
+    ///         Name = "example",
     ///         Ref = "main",
-    ///         Project = exampleProject.Id,
+    ///         Project = example.Id,
     ///     });
     /// 
     /// });

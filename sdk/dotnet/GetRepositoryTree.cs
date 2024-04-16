@@ -29,10 +29,10 @@ namespace Pulumi.GitLab
         /// {
         ///     var @this = GitLab.GetRepositoryTree.Invoke(new()
         ///     {
-        ///         Path = "ExampleSubFolder",
         ///         Project = "example",
-        ///         Recursive = true,
         ///         Ref = "main",
+        ///         Path = "ExampleSubFolder",
+        ///         Recursive = true,
         ///     });
         /// 
         /// });
@@ -60,10 +60,10 @@ namespace Pulumi.GitLab
         /// {
         ///     var @this = GitLab.GetRepositoryTree.Invoke(new()
         ///     {
-        ///         Path = "ExampleSubFolder",
         ///         Project = "example",
-        ///         Recursive = true,
         ///         Ref = "main",
+        ///         Path = "ExampleSubFolder",
+        ///         Recursive = true,
         ///     });
         /// 
         /// });

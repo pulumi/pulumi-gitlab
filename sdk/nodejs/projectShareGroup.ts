@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const test = new gitlab.ProjectShareGroup("test", {
- *     groupAccess: "guest",
- *     groupId: 1337,
  *     project: "12345",
+ *     groupId: 1337,
+ *     groupAccess: "guest",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

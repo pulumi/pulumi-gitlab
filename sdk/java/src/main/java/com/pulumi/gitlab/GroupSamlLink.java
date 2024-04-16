@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new GroupSamlLink(&#34;test&#34;, GroupSamlLinkArgs.builder()        
- *             .accessLevel(&#34;developer&#34;)
  *             .group(&#34;12345&#34;)
+ *             .accessLevel(&#34;developer&#34;)
  *             .samlGroupName(&#34;samlgroupname1&#34;)
  *             .build());
  * 

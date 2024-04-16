@@ -34,10 +34,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewProjectVariable(ctx, "example", &gitlab.ProjectVariableArgs{
-//				Key:       pulumi.String("project_variable_key"),
 //				Project:   pulumi.String("12345"),
-//				Protected: pulumi.Bool(false),
+//				Key:       pulumi.String("project_variable_key"),
 //				Value:     pulumi.String("project_variable_value"),
+//				Protected: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

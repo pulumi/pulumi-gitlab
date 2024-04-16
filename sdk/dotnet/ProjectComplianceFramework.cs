@@ -27,18 +27,19 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sampleComplianceFramework = new GitLab.ComplianceFramework("sampleComplianceFramework", new()
+    ///     var sample = new GitLab.ComplianceFramework("sample", new()
     ///     {
     ///         NamespacePath = "top-level-group",
+    ///         Name = "HIPAA",
     ///         Description = "A HIPAA Compliance Framework",
     ///         Color = "#87BEEF",
     ///         Default = false,
     ///         PipelineConfigurationFullPath = ".hipaa.yml@top-level-group/compliance-frameworks",
     ///     });
     /// 
-    ///     var sampleProjectComplianceFramework = new GitLab.ProjectComplianceFramework("sampleProjectComplianceFramework", new()
+    ///     var sampleProjectComplianceFramework = new GitLab.ProjectComplianceFramework("sample", new()
     ///     {
-    ///         ComplianceFrameworkId = sampleComplianceFramework.FrameworkId,
+    ///         ComplianceFrameworkId = sample.FrameworkId,
     ///         Project = "12345678",
     ///     });
     /// 

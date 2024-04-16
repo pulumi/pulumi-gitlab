@@ -33,7 +33,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleGroup, err := gitlab.NewGroup(ctx, "exampleGroup", &gitlab.GroupArgs{
+//			example, err := gitlab.NewGroup(ctx, "example", &gitlab.GroupArgs{
+//				Name:        pulumi.String("example"),
 //				Path:        pulumi.String("example"),
 //				Description: pulumi.String("An example group"),
 //			})
@@ -41,15 +42,17 @@ import (
 //				return err
 //			}
 //			// Create a project in the example group
-//			_, err = gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//			_, err = gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name:        pulumi.String("example"),
 //				Description: pulumi.String("An example project"),
-//				NamespaceId: exampleGroup.ID(),
+//				NamespaceId: example.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Group with custom push rules
 //			_, err = gitlab.NewGroup(ctx, "example-two", &gitlab.GroupArgs{
+//				Name:        pulumi.String("example-two"),
 //				Path:        pulumi.String("example-two"),
 //				Description: pulumi.String("An example group with push rules"),
 //				PushRules: &gitlab.GroupPushRulesArgs{

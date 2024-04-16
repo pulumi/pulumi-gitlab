@@ -18,18 +18,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const exampleUser = gitlab.getUser({
+ * const example = gitlab.getUser({
  *     username: "example-user",
  * });
  * // Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
- * const exampleUserGpgKey = new gitlab.UserGpgKey("exampleUserGpgKey", {
- *     userId: exampleUser.then(exampleUser => exampleUser.id),
+ * const exampleUserGpgKey = new gitlab.UserGpgKey("example", {
+ *     userId: example.then(example => example.id),
  *     key: `-----BEGIN PGP PUBLIC KEY BLOCK-----
  * ...
  * -----END PGP PUBLIC KEY BLOCK-----`,
  * });
  * // Manages a GPG key for the current user
- * const exampleUserUserGpgKey = new gitlab.UserGpgKey("exampleUserUserGpgKey", {key: `-----BEGIN PGP PUBLIC KEY BLOCK-----
+ * const exampleUser = new gitlab.UserGpgKey("example_user", {key: `-----BEGIN PGP PUBLIC KEY BLOCK-----
  * ...
  * -----END PGP PUBLIC KEY BLOCK-----`});
  * ```

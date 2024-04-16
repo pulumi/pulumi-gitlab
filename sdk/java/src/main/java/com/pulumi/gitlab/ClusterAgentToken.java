@@ -39,8 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gitlab.inputs.GetProjectArgs;
  * import com.pulumi.gitlab.ClusterAgent;
  * import com.pulumi.gitlab.ClusterAgentArgs;
- * import com.pulumi.helm.helm_release;
- * import com.pulumi.helm.Helm_releaseArgs;
+ * import com.pulumi.helm.release;
+ * import com.pulumi.helm.ReleaseArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,24 +58,30 @@ import javax.annotation.Nullable;
  *         var example = new ClusterAgentToken(&#34;example&#34;, ClusterAgentTokenArgs.builder()        
  *             .project(&#34;12345&#34;)
  *             .agentId(42)
+ *             .name(&#34;some-token&#34;)
  *             .description(&#34;some token&#34;)
  *             .build());
  * 
- *         final var thisProject = GitlabFunctions.getProject(GetProjectArgs.builder()
+ *         // The following example creates a GitLab Agent for Kubernetes in a given project,
+ *         // creates a token and install the `gitlab-agent` Helm Chart.
+ *         // (see https://gitlab.com/gitlab-org/charts/gitlab-agent)
+ *         final var this = GitlabFunctions.getProject(GetProjectArgs.builder()
  *             .pathWithNamespace(&#34;my-org/example&#34;)
  *             .build());
  * 
  *         var thisClusterAgent = new ClusterAgent(&#34;thisClusterAgent&#34;, ClusterAgentArgs.builder()        
- *             .project(thisProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
+ *             .project(this_.id())
+ *             .name(&#34;my-agent&#34;)
  *             .build());
  * 
  *         var thisClusterAgentToken = new ClusterAgentToken(&#34;thisClusterAgentToken&#34;, ClusterAgentTokenArgs.builder()        
- *             .project(thisProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
+ *             .project(this_.id())
  *             .agentId(thisClusterAgent.agentId())
+ *             .name(&#34;my-agent-token&#34;)
  *             .description(&#34;Token for the my-agent used with `gitlab-agent` Helm Chart&#34;)
  *             .build());
  * 
- *         var gitlabAgent = new Helm_release(&#34;gitlabAgent&#34;, Helm_releaseArgs.builder()        
+ *         var gitlabAgent = new Release(&#34;gitlabAgent&#34;, ReleaseArgs.builder()        
  *             .name(&#34;gitlab-agent&#34;)
  *             .namespace(&#34;gitlab-agent&#34;)
  *             .createNamespace(true)

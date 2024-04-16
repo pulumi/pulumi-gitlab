@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const schedule = new gitlab.ProjectFreezePeriod("schedule", {
- *     project: gitlab_project.foo.id,
+ *     project: foo.id,
  *     freezeStart: "0 23 * * 5",
  *     freezeEnd: "0 7 * * 1",
  *     cronTimezone: "UTC",

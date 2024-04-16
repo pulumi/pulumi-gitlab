@@ -15,27 +15,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
         /// 
         /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
-        /// 
-        /// ## Example Usage
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = GitLab.GetProjectTag.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///         Project = "foo/bar",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectTagResult> InvokeAsync(GetProjectTagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagArgs(), options.WithDefaults());
@@ -44,27 +23,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
         /// 
         /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
-        /// 
-        /// ## Example Usage
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = GitLab.GetProjectTag.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///         Project = "foo/bar",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectTagResult> Invoke(GetProjectTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagInvokeArgs(), options.WithDefaults());

@@ -49,8 +49,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var oidc = new Application(&#34;oidc&#34;, ApplicationArgs.builder()        
  *             .confidential(true)
- *             .redirectUrl(&#34;https://mycompany.com&#34;)
  *             .scopes(&#34;openid&#34;)
+ *             .name(&#34;company_oidc&#34;)
+ *             .redirectUrl(&#34;https://mycompany.com&#34;)
  *             .build());
  * 
  *     }

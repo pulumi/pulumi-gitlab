@@ -17,11 +17,15 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * // Create a project
- * const exampleProject = new gitlab.Project("exampleProject", {description: "An example project"});
+ * const example = new gitlab.Project("example", {
+ *     name: "example",
+ *     description: "An example project",
+ * });
  * // Can create release link only to a tag associated with a release
- * const exampleReleaseLink = new gitlab.ReleaseLink("exampleReleaseLink", {
- *     project: exampleProject.id,
+ * const exampleReleaseLink = new gitlab.ReleaseLink("example", {
+ *     project: example.id,
  *     tagName: "tag_name_associated_with_release",
+ *     name: "test",
  *     url: "https://test/",
  * });
  * ```

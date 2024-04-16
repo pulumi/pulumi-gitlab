@@ -29,10 +29,10 @@ namespace Pulumi.GitLab
     /// {
     ///     var example = new GitLab.ProjectVariable("example", new()
     ///     {
-    ///         Key = "project_variable_key",
     ///         Project = "12345",
-    ///         Protected = false,
+    ///         Key = "project_variable_key",
     ///         Value = "project_variable_value",
+    ///         Protected = false,
     ///     });
     /// 
     /// });

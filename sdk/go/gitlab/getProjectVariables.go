@@ -36,9 +36,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Using an environment scope
 //			_, err = gitlab.GetProjectVariables(ctx, &gitlab.GetProjectVariablesArgs{
-//				EnvironmentScope: pulumi.StringRef("staging/*"),
 //				Project:          "my/example/project",
+//				EnvironmentScope: pulumi.StringRef("staging/*"),
 //			}, nil)
 //			if err != nil {
 //				return err

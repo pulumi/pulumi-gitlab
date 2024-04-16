@@ -30,6 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gitlab.Project;
+ * import com.pulumi.gitlab.ProjectArgs;
  * import com.pulumi.gitlab.DeployKey;
  * import com.pulumi.gitlab.DeployKeyArgs;
  * import com.pulumi.gitlab.DeployKeyEnable;
@@ -48,21 +49,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // A repo to host the deployment key
- *         var parentProject = new Project(&#34;parentProject&#34;);
+ *         var parent = new Project(&#34;parent&#34;, ProjectArgs.builder()        
+ *             .name(&#34;parent_project&#34;)
+ *             .build());
  * 
  *         // A second repo to use the deployment key from the parent project
- *         var fooProject = new Project(&#34;fooProject&#34;);
+ *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
+ *             .name(&#34;foo_project&#34;)
+ *             .build());
  * 
  *         // Upload a deployment key for the parent repo
  *         var parentDeployKey = new DeployKey(&#34;parentDeployKey&#34;, DeployKeyArgs.builder()        
- *             .project(parentProject.id())
+ *             .project(parent.id())
  *             .title(&#34;Example deploy key&#34;)
  *             .key(&#34;ssh-ed25519 AAAA...&#34;)
  *             .build());
  * 
  *         // Enable the deployment key on the second repo
  *         var fooDeployKeyEnable = new DeployKeyEnable(&#34;fooDeployKeyEnable&#34;, DeployKeyEnableArgs.builder()        
- *             .project(fooProject.id())
+ *             .project(foo.id())
  *             .keyId(parentDeployKey.deployKeyId())
  *             .build());
  * 

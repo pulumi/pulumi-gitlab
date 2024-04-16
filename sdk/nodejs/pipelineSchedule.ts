@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.PipelineSchedule("example", {
- *     cron: "0 1 * * *",
- *     description: "Used to schedule builds",
  *     project: "12345",
+ *     description: "Used to schedule builds",
  *     ref: "master",
+ *     cron: "0 1 * * *",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

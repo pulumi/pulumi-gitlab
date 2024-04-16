@@ -51,14 +51,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new User(&#34;example&#34;, UserArgs.builder()        
- *             .canCreateGroup(false)
+ *             .name(&#34;Example Foo&#34;)
+ *             .username(&#34;example&#34;)
+ *             .password(&#34;superPassword&#34;)
  *             .email(&#34;gitlab@user.create&#34;)
  *             .isAdmin(true)
- *             .isExternal(true)
- *             .password(&#34;superPassword&#34;)
  *             .projectsLimit(4)
+ *             .canCreateGroup(false)
+ *             .isExternal(true)
  *             .resetPassword(false)
- *             .username(&#34;example&#34;)
  *             .build());
  * 
  *     }

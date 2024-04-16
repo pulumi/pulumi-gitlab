@@ -34,13 +34,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewSystemHook(ctx, "example", &gitlab.SystemHookArgs{
-//				EnableSslVerification:  pulumi.Bool(true),
-//				MergeRequestsEvents:    pulumi.Bool(true),
-//				PushEvents:             pulumi.Bool(true),
-//				RepositoryUpdateEvents: pulumi.Bool(true),
-//				TagPushEvents:          pulumi.Bool(true),
-//				Token:                  pulumi.String("secret-token"),
 //				Url:                    pulumi.String("https://example.com/hook-%d"),
+//				Token:                  pulumi.String("secret-token"),
+//				PushEvents:             pulumi.Bool(true),
+//				TagPushEvents:          pulumi.Bool(true),
+//				MergeRequestsEvents:    pulumi.Bool(true),
+//				RepositoryUpdateEvents: pulumi.Bool(true),
+//				EnableSslVerification:  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

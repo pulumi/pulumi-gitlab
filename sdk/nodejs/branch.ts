@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * // Create a project for the branch to use
- * const exampleProject = new gitlab.Project("exampleProject", {
+ * const example = new gitlab.Project("example", {
+ *     name: "example",
  *     description: "An example project",
- *     namespaceId: gitlab_group.example.id,
+ *     namespaceId: exampleGitlabGroup.id,
  * });
- * const exampleBranch = new gitlab.Branch("exampleBranch", {
+ * const exampleBranch = new gitlab.Branch("example", {
+ *     name: "example",
  *     ref: "main",
- *     project: exampleProject.id,
+ *     project: example.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

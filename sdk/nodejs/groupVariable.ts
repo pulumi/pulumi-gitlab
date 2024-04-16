@@ -17,12 +17,12 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.GroupVariable("example", {
- *     environmentScope: "*",
  *     group: "12345",
  *     key: "group_variable_key",
- *     masked: false,
- *     "protected": false,
  *     value: "group_variable_value",
+ *     "protected": false,
+ *     masked: false,
+ *     environmentScope: "*",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

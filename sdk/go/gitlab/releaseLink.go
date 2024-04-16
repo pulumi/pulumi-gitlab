@@ -32,16 +32,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a project
-//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//			example, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name:        pulumi.String("example"),
 //				Description: pulumi.String("An example project"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Can create release link only to a tag associated with a release
-//			_, err = gitlab.NewReleaseLink(ctx, "exampleReleaseLink", &gitlab.ReleaseLinkArgs{
-//				Project: exampleProject.ID(),
+//			_, err = gitlab.NewReleaseLink(ctx, "example", &gitlab.ReleaseLinkArgs{
+//				Project: example.ID(),
 //				TagName: pulumi.String("tag_name_associated_with_release"),
+//				Name:    pulumi.String("test"),
 //				Url:     pulumi.String("https://test/"),
 //			})
 //			if err != nil {

@@ -191,9 +191,9 @@ def get_users(active: Optional[bool] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_users(created_before="2019-01-01",
+    example = gitlab.get_users(sort="desc",
         order_by="name",
-        sort="desc")
+        created_before="2019-01-01")
     example_two = gitlab.get_users(search="username")
     ```
     <!--End PulumiCodeChooser -->
@@ -262,9 +262,9 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_users(created_before="2019-01-01",
+    example = gitlab.get_users(sort="desc",
         order_by="name",
-        sort="desc")
+        created_before="2019-01-01")
     example_two = gitlab.get_users(search="username")
     ```
     <!--End PulumiCodeChooser -->

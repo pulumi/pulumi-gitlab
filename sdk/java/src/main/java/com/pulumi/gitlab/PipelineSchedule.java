@@ -45,10 +45,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new PipelineSchedule(&#34;example&#34;, PipelineScheduleArgs.builder()        
- *             .cron(&#34;0 1 * * *&#34;)
- *             .description(&#34;Used to schedule builds&#34;)
  *             .project(&#34;12345&#34;)
+ *             .description(&#34;Used to schedule builds&#34;)
  *             .ref(&#34;master&#34;)
+ *             .cron(&#34;0 1 * * *&#34;)
  *             .build());
  * 
  *     }

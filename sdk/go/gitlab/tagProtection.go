@@ -27,7 +27,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewTagProtection(ctx, "tagProtect", &gitlab.TagProtectionArgs{
+//			_, err := gitlab.NewTagProtection(ctx, "TagProtect", &gitlab.TagProtectionArgs{
+//				Project:           pulumi.String("12345"),
+//				Tag:               pulumi.String("TagProtected"),
+//				CreateAccessLevel: pulumi.String("developer"),
 //				AllowedToCreates: gitlab.TagProtectionAllowedToCreateArray{
 //					&gitlab.TagProtectionAllowedToCreateArgs{
 //						UserId: pulumi.Int(42),
@@ -36,9 +39,6 @@ import (
 //						GroupId: pulumi.Int(43),
 //					},
 //				},
-//				CreateAccessLevel: pulumi.String("developer"),
-//				Project:           pulumi.String("12345"),
-//				Tag:               pulumi.String("TagProtected"),
 //			})
 //			if err != nil {
 //				return err

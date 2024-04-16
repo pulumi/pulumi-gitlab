@@ -240,14 +240,15 @@ class PersonalAccessToken(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example_personal_access_token = gitlab.PersonalAccessToken("examplePersonalAccessToken",
+        example = gitlab.PersonalAccessToken("example",
             user_id=25,
+            name="Example personal access token",
             expires_at="2020-03-14",
             scopes=["api"])
-        example_project_variable = gitlab.ProjectVariable("exampleProjectVariable",
-            project=gitlab_project["example"]["id"],
+        example_project_variable = gitlab.ProjectVariable("example",
+            project=example_gitlab_project["id"],
             key="pat",
-            value=example_personal_access_token.token)
+            value=example.token)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -288,14 +289,15 @@ class PersonalAccessToken(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example_personal_access_token = gitlab.PersonalAccessToken("examplePersonalAccessToken",
+        example = gitlab.PersonalAccessToken("example",
             user_id=25,
+            name="Example personal access token",
             expires_at="2020-03-14",
             scopes=["api"])
-        example_project_variable = gitlab.ProjectVariable("exampleProjectVariable",
-            project=gitlab_project["example"]["id"],
+        example_project_variable = gitlab.ProjectVariable("example",
+            project=example_gitlab_project["id"],
             key="pat",
-            value=example_personal_access_token.token)
+            value=example.token)
         ```
         <!--End PulumiCodeChooser -->
 

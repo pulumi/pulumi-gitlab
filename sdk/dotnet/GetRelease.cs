@@ -27,6 +27,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // By project ID and tag_name
         ///     var example = GitLab.GetRelease.Invoke(new()
         ///     {
         ///         ProjectId = "1234",
@@ -56,6 +57,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // By project ID and tag_name
         ///     var example = GitLab.GetRelease.Invoke(new()
         ///     {
         ///         ProjectId = "1234",

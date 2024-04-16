@@ -143,6 +143,7 @@ def get_release(assets: Optional[pulumi.InputType['GetReleaseAssetsArgs']] = Non
     import pulumi
     import pulumi_gitlab as gitlab
 
+    # By project ID and tag_name
     example = gitlab.get_release(project_id="1234",
         tag_name="v1.0")
     ```
@@ -188,6 +189,7 @@ def get_release_output(assets: Optional[pulumi.Input[Optional[pulumi.InputType['
     import pulumi
     import pulumi_gitlab as gitlab
 
+    # By project ID and tag_name
     example = gitlab.get_release(project_id="1234",
         tag_name="v1.0")
     ```

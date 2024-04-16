@@ -29,14 +29,15 @@ namespace Pulumi.GitLab
     /// {
     ///     var bar = new GitLab.InstanceCluster("bar", new()
     ///     {
+    ///         Name = "bar-cluster",
     ///         Domain = "example.com",
     ///         Enabled = true,
-    ///         EnvironmentScope = "*",
     ///         KubernetesApiUrl = "https://124.124.124",
-    ///         KubernetesAuthorizationType = "rbac",
+    ///         KubernetesToken = "some-token",
     ///         KubernetesCaCert = "some-cert",
     ///         KubernetesNamespace = "namespace",
-    ///         KubernetesToken = "some-token",
+    ///         KubernetesAuthorizationType = "rbac",
+    ///         EnvironmentScope = "*",
     ///         ManagementProjectId = "123456",
     ///     });
     /// 

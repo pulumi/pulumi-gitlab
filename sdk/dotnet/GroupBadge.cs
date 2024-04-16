@@ -25,7 +25,10 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Group("foo");
+    ///     var foo = new GitLab.Group("foo", new()
+    ///     {
+    ///         Name = "foo-group",
+    ///     });
     /// 
     ///     var example = new GitLab.GroupBadge("example", new()
     ///     {
@@ -35,7 +38,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Pipeline status badges with placeholders will be enabled for each project
-    ///     var gitlabPipeline = new GitLab.GroupBadge("gitlabPipeline", new()
+    ///     var gitlabPipeline = new GitLab.GroupBadge("gitlab_pipeline", new()
     ///     {
     ///         Group = foo.Id,
     ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
@@ -43,7 +46,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Test coverage report badges with placeholders will be enabled for each project
-    ///     var gitlabCoverage = new GitLab.GroupBadge("gitlabCoverage", new()
+    ///     var gitlabCoverage = new GitLab.GroupBadge("gitlab_coverage", new()
     ///     {
     ///         Group = foo.Id,
     ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/jobs",
@@ -51,7 +54,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Latest release badges with placeholders will be enabled for each project
-    ///     var gitlabRelease = new GitLab.GroupBadge("gitlabRelease", new()
+    ///     var gitlabRelease = new GitLab.GroupBadge("gitlab_release", new()
     ///     {
     ///         Group = foo.Id,
     ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/releases",

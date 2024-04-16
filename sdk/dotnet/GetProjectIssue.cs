@@ -40,7 +40,7 @@ namespace Pulumi.GitLab
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["welcomeIssueWebUrl"] = data.Gitlab_project_issue.Web_url,
+        ///         ["welcomeIssueWebUrl"] = webUrl,
         ///     };
         /// });
         /// ```
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["welcomeIssueWebUrl"] = data.Gitlab_project_issue.Web_url,
+        ///         ["welcomeIssueWebUrl"] = webUrl,
         ///     };
         /// });
         /// ```
