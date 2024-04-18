@@ -19,6 +19,82 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.Group;
+ * import com.pulumi.gitlab.GroupArgs;
+ * import com.pulumi.gitlab.Project;
+ * import com.pulumi.gitlab.ProjectArgs;
+ * import com.pulumi.gitlab.RepositoryFile;
+ * import com.pulumi.gitlab.RepositoryFileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
+ *             .name(&#34;example&#34;)
+ *             .path(&#34;example&#34;)
+ *             .description(&#34;An example group&#34;)
+ *             .build());
+ * 
+ *         var thisProject = new Project(&#34;thisProject&#34;, ProjectArgs.builder()        
+ *             .name(&#34;example&#34;)
+ *             .namespaceId(this_.id())
+ *             .initializeWithReadme(true)
+ *             .build());
+ * 
+ *         var thisRepositoryFile = new RepositoryFile(&#34;thisRepositoryFile&#34;, RepositoryFileArgs.builder()        
+ *             .project(thisProject.id())
+ *             .filePath(&#34;meow.txt&#34;)
+ *             .branch(&#34;main&#34;)
+ *             .content(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                 .input(&#34;Meow goes the cat&#34;)
+ *                 .build()).result())
+ *             .authorEmail(&#34;terraform@example.com&#34;)
+ *             .authorName(&#34;Terraform&#34;)
+ *             .commitMessage(&#34;feature: add meow file&#34;)
+ *             .build());
+ * 
+ *         var readme = new RepositoryFile(&#34;readme&#34;, RepositoryFileArgs.builder()        
+ *             .project(thisProject.id())
+ *             .filePath(&#34;readme.txt&#34;)
+ *             .branch(&#34;main&#34;)
+ *             .content(&#34;Meow goes the cat&#34;)
+ *             .authorEmail(&#34;terraform@example.com&#34;)
+ *             .authorName(&#34;Terraform&#34;)
+ *             .commitMessage(&#34;feature: add readme file&#34;)
+ *             .build());
+ * 
+ *         var readmeForDogs = new RepositoryFile(&#34;readmeForDogs&#34;, RepositoryFileArgs.builder()        
+ *             .project(thisProject.id())
+ *             .filePath(&#34;readme.txt&#34;)
+ *             .branch(&#34;main&#34;)
+ *             .content(&#34;Bark goes the dog&#34;)
+ *             .authorEmail(&#34;terraform@example.com&#34;)
+ *             .authorName(&#34;Terraform&#34;)
+ *             .commitMessage(&#34;feature: update readme file&#34;)
+ *             .overwriteOnCreate(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * A Repository File can be imported using an id made up of `&lt;project-id&gt;:&lt;branch-name&gt;:&lt;file-path&gt;`, e.g.

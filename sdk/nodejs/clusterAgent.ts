@@ -18,6 +18,34 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = new gitlab.ClusterAgent("example", {
+ *     project: "12345",
+ *     name: "agent-1",
+ * });
+ * // Optionally, configure the agent as described in
+ * // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
+ * const exampleAgentConfig = new gitlab.RepositoryFile("example_agent_config", {
+ *     project: example.project,
+ *     branch: "main",
+ *     filePath: pulumi.interpolate`.gitlab/agents/${example.name}/config.yaml`,
+ *     content: std.base64encode({
+ *         input: "# the GitLab Agent for Kubernetes configuration goes here ...\n",
+ *     }).then(invoke => invoke.result),
+ *     authorEmail: "terraform@example.com",
+ *     authorName: "Terraform",
+ *     commitMessage: pulumi.interpolate`feature: add agent config for ${example.name} [skip ci]`,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>`

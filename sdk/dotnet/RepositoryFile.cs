@@ -12,6 +12,71 @@ namespace Pulumi.GitLab
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new GitLab.Group("this", new()
+    ///     {
+    ///         Name = "example",
+    ///         Path = "example",
+    ///         Description = "An example group",
+    ///     });
+    /// 
+    ///     var thisProject = new GitLab.Project("this", new()
+    ///     {
+    ///         Name = "example",
+    ///         NamespaceId = @this.Id,
+    ///         InitializeWithReadme = true,
+    ///     });
+    /// 
+    ///     var thisRepositoryFile = new GitLab.RepositoryFile("this", new()
+    ///     {
+    ///         Project = thisProject.Id,
+    ///         FilePath = "meow.txt",
+    ///         Branch = "main",
+    ///         Content = Std.Base64encode.Invoke(new()
+    ///         {
+    ///             Input = "Meow goes the cat",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         AuthorEmail = "terraform@example.com",
+    ///         AuthorName = "Terraform",
+    ///         CommitMessage = "feature: add meow file",
+    ///     });
+    /// 
+    ///     var readme = new GitLab.RepositoryFile("readme", new()
+    ///     {
+    ///         Project = thisProject.Id,
+    ///         FilePath = "readme.txt",
+    ///         Branch = "main",
+    ///         Content = "Meow goes the cat",
+    ///         AuthorEmail = "terraform@example.com",
+    ///         AuthorName = "Terraform",
+    ///         CommitMessage = "feature: add readme file",
+    ///     });
+    /// 
+    ///     var readmeForDogs = new GitLab.RepositoryFile("readme_for_dogs", new()
+    ///     {
+    ///         Project = thisProject.Id,
+    ///         FilePath = "readme.txt",
+    ///         Branch = "main",
+    ///         Content = "Bark goes the dog",
+    ///         AuthorEmail = "terraform@example.com",
+    ///         AuthorName = "Terraform",
+    ///         CommitMessage = "feature: update readme file",
+    ///         OverwriteOnCreate = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// A Repository File can be imported using an id made up of `&lt;project-id&gt;:&lt;branch-name&gt;:&lt;file-path&gt;`, e.g.

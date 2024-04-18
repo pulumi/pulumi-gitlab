@@ -606,6 +606,48 @@ class RepositoryFile(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+        import pulumi_std as std
+
+        this = gitlab.Group("this",
+            name="example",
+            path="example",
+            description="An example group")
+        this_project = gitlab.Project("this",
+            name="example",
+            namespace_id=this.id,
+            initialize_with_readme=True)
+        this_repository_file = gitlab.RepositoryFile("this",
+            project=this_project.id,
+            file_path="meow.txt",
+            branch="main",
+            content=std.base64encode(input="Meow goes the cat").result,
+            author_email="terraform@example.com",
+            author_name="Terraform",
+            commit_message="feature: add meow file")
+        readme = gitlab.RepositoryFile("readme",
+            project=this_project.id,
+            file_path="readme.txt",
+            branch="main",
+            content="Meow goes the cat",
+            author_email="terraform@example.com",
+            author_name="Terraform",
+            commit_message="feature: add readme file")
+        readme_for_dogs = gitlab.RepositoryFile("readme_for_dogs",
+            project=this_project.id,
+            file_path="readme.txt",
+            branch="main",
+            content="Bark goes the dog",
+            author_email="terraform@example.com",
+            author_name="Terraform",
+            commit_message="feature: update readme file",
+            overwrite_on_create=True)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.
@@ -639,6 +681,48 @@ class RepositoryFile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+        import pulumi_std as std
+
+        this = gitlab.Group("this",
+            name="example",
+            path="example",
+            description="An example group")
+        this_project = gitlab.Project("this",
+            name="example",
+            namespace_id=this.id,
+            initialize_with_readme=True)
+        this_repository_file = gitlab.RepositoryFile("this",
+            project=this_project.id,
+            file_path="meow.txt",
+            branch="main",
+            content=std.base64encode(input="Meow goes the cat").result,
+            author_email="terraform@example.com",
+            author_name="Terraform",
+            commit_message="feature: add meow file")
+        readme = gitlab.RepositoryFile("readme",
+            project=this_project.id,
+            file_path="readme.txt",
+            branch="main",
+            content="Meow goes the cat",
+            author_email="terraform@example.com",
+            author_name="Terraform",
+            commit_message="feature: add readme file")
+        readme_for_dogs = gitlab.RepositoryFile("readme_for_dogs",
+            project=this_project.id,
+            file_path="readme.txt",
+            branch="main",
+            content="Bark goes the dog",
+            author_email="terraform@example.com",
+            author_name="Terraform",
+            commit_message="feature: update readme file",
+            overwrite_on_create=True)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
