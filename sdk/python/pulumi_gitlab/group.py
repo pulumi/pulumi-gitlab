@@ -1026,7 +1026,6 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -1049,7 +1048,6 @@ class Group(pulumi.CustomResource):
                 prevent_secrets=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1110,7 +1108,6 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -1133,7 +1130,6 @@ class Group(pulumi.CustomResource):
                 prevent_secrets=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

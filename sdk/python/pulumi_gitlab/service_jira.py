@@ -630,7 +630,6 @@ class ServiceJira(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -644,7 +643,6 @@ class ServiceJira(pulumi.CustomResource):
             username="user",
             password="mypass")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -688,7 +686,6 @@ class ServiceJira(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -702,7 +699,6 @@ class ServiceJira(pulumi.CustomResource):
             username="user",
             password="mypass")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

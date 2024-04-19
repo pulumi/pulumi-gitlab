@@ -355,7 +355,6 @@ def get_projects(archived: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -368,7 +367,6 @@ def get_projects(archived: Optional[bool] = None,
     projects = gitlab.get_projects(search="postgresql",
         visibility="private")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
@@ -478,7 +476,6 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -491,7 +488,6 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     projects = gitlab.get_projects(search="postgresql",
         visibility="private")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.

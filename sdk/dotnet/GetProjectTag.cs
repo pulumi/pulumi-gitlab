@@ -18,7 +18,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectTagResult> InvokeAsync(GetProjectTagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectTagResult> Invoke(GetProjectTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagInvokeArgs(), options.WithDefaults());

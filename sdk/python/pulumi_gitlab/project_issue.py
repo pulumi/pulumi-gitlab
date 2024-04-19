@@ -999,7 +999,6 @@ class ProjectIssue(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -1016,7 +1015,6 @@ class ProjectIssue(pulumi.CustomResource):
             discussion_locked=True)
         pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1057,7 +1055,6 @@ class ProjectIssue(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -1074,7 +1071,6 @@ class ProjectIssue(pulumi.CustomResource):
             discussion_locked=True)
         pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

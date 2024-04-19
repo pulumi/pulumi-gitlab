@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -69,7 +68,6 @@ import * as utilities from "./utilities";
  * //       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
  * const importPrivateIndex_projectProject = new gitlab.Project("importPrivateIndex/projectProject", {importUrl: "https://user:pass@gitlab.example.com/repo.git"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

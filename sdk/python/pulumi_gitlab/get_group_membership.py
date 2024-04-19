@@ -117,14 +117,12 @@ def get_group_membership(access_level: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_group_membership(full_path="foo/bar")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str full_path: The full path of the group.
@@ -161,14 +159,12 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_group_membership(full_path="foo/bar")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str full_path: The full path of the group.

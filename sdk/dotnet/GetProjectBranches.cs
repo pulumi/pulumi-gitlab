@@ -18,7 +18,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectBranchesResult> InvokeAsync(GetProjectBranchesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectBranchesResult>("gitlab:index/getProjectBranches:getProjectBranches", args ?? new GetProjectBranchesArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectBranchesResult> Invoke(GetProjectBranchesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectBranchesResult>("gitlab:index/getProjectBranches:getProjectBranches", args ?? new GetProjectBranchesInvokeArgs(), options.WithDefaults());

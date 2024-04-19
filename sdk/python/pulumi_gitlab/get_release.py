@@ -138,7 +138,6 @@ def get_release(assets: Optional[pulumi.InputType['GetReleaseAssetsArgs']] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -146,7 +145,6 @@ def get_release(assets: Optional[pulumi.InputType['GetReleaseAssetsArgs']] = Non
     example = gitlab.get_release(project_id="1234",
         tag_name="v1.0")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetReleaseAssetsArgs'] assets: The assets for a release
@@ -183,7 +181,6 @@ def get_release_output(assets: Optional[pulumi.Input[Optional[pulumi.InputType['
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -191,7 +188,6 @@ def get_release_output(assets: Optional[pulumi.Input[Optional[pulumi.InputType['
     example = gitlab.get_release(project_id="1234",
         tag_name="v1.0")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetReleaseAssetsArgs'] assets: The assets for a release

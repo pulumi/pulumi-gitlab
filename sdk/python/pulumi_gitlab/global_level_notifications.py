@@ -634,7 +634,6 @@ class GlobalLevelNotifications(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -644,7 +643,6 @@ class GlobalLevelNotifications(pulumi.CustomResource):
             level="custom",
             new_merge_request=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -692,7 +690,6 @@ class GlobalLevelNotifications(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -702,7 +699,6 @@ class GlobalLevelNotifications(pulumi.CustomResource):
             level="custom",
             new_merge_request=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -203,7 +203,6 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -222,7 +221,6 @@ class DeployKeyEnable(pulumi.CustomResource):
             project=foo_project.id,
             key_id=parent_deploy_key.deploy_key_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -261,7 +259,6 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -280,7 +277,6 @@ class DeployKeyEnable(pulumi.CustomResource):
             project=foo_project.id,
             key_id=parent_deploy_key.deploy_key_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

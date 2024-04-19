@@ -295,14 +295,12 @@ def get_group(full_path: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     foo = gitlab.get_group(full_path="foo/bar")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str full_path: The full path of the group.
@@ -348,14 +346,12 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     foo = gitlab.get_group(full_path="foo/bar")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str full_path: The full path of the group.

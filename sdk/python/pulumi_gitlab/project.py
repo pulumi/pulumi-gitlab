@@ -3307,7 +3307,6 @@ class Project(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -3358,7 +3357,6 @@ class Project(pulumi.CustomResource):
         #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
         import_private_index_project_project = gitlab.Project("importPrivateIndex/projectProject", import_url="https://user:pass@gitlab.example.com/repo.git")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -3488,7 +3486,6 @@ class Project(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -3539,7 +3536,6 @@ class Project(pulumi.CustomResource):
         #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
         import_private_index_project_project = gitlab.Project("importPrivateIndex/projectProject", import_url="https://user:pass@gitlab.example.com/repo.git")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

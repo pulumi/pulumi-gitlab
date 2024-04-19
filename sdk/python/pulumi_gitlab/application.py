@@ -209,7 +209,6 @@ class Application(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -219,7 +218,6 @@ class Application(pulumi.CustomResource):
             redirect_url="https://mycompany.com",
             scopes=["openid"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -255,7 +253,6 @@ class Application(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -265,7 +262,6 @@ class Application(pulumi.CustomResource):
             redirect_url="https://mycompany.com",
             scopes=["openid"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

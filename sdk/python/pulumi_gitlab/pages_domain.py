@@ -284,7 +284,6 @@ class PagesDomain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -301,7 +300,6 @@ class PagesDomain(pulumi.CustomResource):
             key=(lambda path: open(path).read())(f"{path['module']}/key.pem"),
             certificate=(lambda path: open(path).read())(f"{path['module']}/cert.pem"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -333,7 +331,6 @@ class PagesDomain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -350,7 +347,6 @@ class PagesDomain(pulumi.CustomResource):
             key=(lambda path: open(path).read())(f"{path['module']}/key.pem"),
             certificate=(lambda path: open(path).read())(f"{path['module']}/cert.pem"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -471,7 +471,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -486,7 +485,6 @@ class User(pulumi.CustomResource):
             reset_password=False,
             username="example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -535,7 +533,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -550,7 +547,6 @@ class User(pulumi.CustomResource):
             reset_password=False,
             username="example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

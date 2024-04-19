@@ -199,7 +199,6 @@ def get_repository_file(file_path: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -208,7 +207,6 @@ def get_repository_file(file_path: Optional[str] = None,
         project="example",
         ref="main")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
@@ -250,7 +248,6 @@ def get_repository_file_output(file_path: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -259,7 +256,6 @@ def get_repository_file_output(file_path: Optional[pulumi.Input[str]] = None,
         project="example",
         ref="main")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.

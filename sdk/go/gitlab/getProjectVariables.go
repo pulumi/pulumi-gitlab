@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetProjectVariables(ctx *pulumi.Context, args *GetProjectVariablesArgs, opts ...pulumi.InvokeOption) (*GetProjectVariablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectVariablesResult

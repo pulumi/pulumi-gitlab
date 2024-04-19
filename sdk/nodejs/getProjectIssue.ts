@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -27,7 +26,6 @@ import * as utilities from "./utilities";
  * }));
  * export const welcomeIssueWebUrl = data.gitlab_project_issue.web_url;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectIssue(args: GetProjectIssueArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIssueResult> {
 
@@ -224,7 +222,6 @@ export interface GetProjectIssueResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -238,7 +235,6 @@ export interface GetProjectIssueResult {
  * }));
  * export const welcomeIssueWebUrl = data.gitlab_project_issue.web_url;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectIssueOutput(args: GetProjectIssueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIssueResult> {
     return pulumi.output(args).apply((a: any) => getProjectIssue(a, opts))

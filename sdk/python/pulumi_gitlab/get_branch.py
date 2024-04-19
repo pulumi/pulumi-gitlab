@@ -175,7 +175,6 @@ def get_branch(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -183,7 +182,6 @@ def get_branch(name: Optional[str] = None,
     foo = gitlab.get_branch(name="example",
         project="foo/bar")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the branch.
@@ -220,7 +218,6 @@ def get_branch_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -228,7 +225,6 @@ def get_branch_output(name: Optional[pulumi.Input[str]] = None,
     foo = gitlab.get_branch(name="example",
         project="foo/bar")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the branch.

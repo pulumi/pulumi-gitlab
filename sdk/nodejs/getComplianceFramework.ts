@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     namespacePath: "top-level-group",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getComplianceFramework(args: GetComplianceFrameworkArgs, opts?: pulumi.InvokeOptions): Promise<GetComplianceFrameworkResult> {
 
@@ -87,7 +85,6 @@ export interface GetComplianceFrameworkResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -97,7 +94,6 @@ export interface GetComplianceFrameworkResult {
  *     namespacePath: "top-level-group",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getComplianceFrameworkOutput(args: GetComplianceFrameworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComplianceFrameworkResult> {
     return pulumi.output(args).apply((a: any) => getComplianceFramework(a, opts))

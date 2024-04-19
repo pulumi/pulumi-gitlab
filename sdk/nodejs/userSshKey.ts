@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  *     expiresAt: "2016-01-21T00:00:00.000Z",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

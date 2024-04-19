@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  *     project: "12345",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterAgents(args: GetClusterAgentsArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAgentsResult> {
 
@@ -67,7 +65,6 @@ export interface GetClusterAgentsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -76,7 +73,6 @@ export interface GetClusterAgentsResult {
  *     project: "12345",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterAgentsOutput(args: GetClusterAgentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAgentsResult> {
     return pulumi.output(args).apply((a: any) => getClusterAgents(a, opts))

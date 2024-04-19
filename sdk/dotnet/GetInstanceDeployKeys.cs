@@ -20,7 +20,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceDeployKeysResult> InvokeAsync(GetInstanceDeployKeysArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceDeployKeysResult> Invoke(GetInstanceDeployKeysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysInvokeArgs(), options.WithDefaults());

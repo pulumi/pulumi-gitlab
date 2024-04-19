@@ -117,7 +117,6 @@ def get_repository_tree(path: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -127,7 +126,6 @@ def get_repository_tree(path: Optional[str] = None,
         recursive=True,
         ref="main")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID or full path of the project owned by the authenticated user.
@@ -164,7 +162,6 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -174,7 +171,6 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
         recursive=True,
         ref="main")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID or full path of the project owned by the authenticated user.

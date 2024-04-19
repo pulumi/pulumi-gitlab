@@ -288,7 +288,6 @@ class SystemHook(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -302,7 +301,6 @@ class SystemHook(pulumi.CustomResource):
             token="secret-token",
             url="https://example.com/hook-%d")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -339,7 +337,6 @@ class SystemHook(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -353,7 +350,6 @@ class SystemHook(pulumi.CustomResource):
             token="secret-token",
             url="https://example.com/hook-%d")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

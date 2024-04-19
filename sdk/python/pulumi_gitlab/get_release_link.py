@@ -163,7 +163,6 @@ def get_release_link(link_id: Optional[int] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -172,7 +171,6 @@ def get_release_link(link_id: Optional[int] = None,
         project="foo/bar",
         tag_name="v1.0.1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int link_id: The ID of the link.
@@ -211,7 +209,6 @@ def get_release_link_output(link_id: Optional[pulumi.Input[int]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -220,7 +217,6 @@ def get_release_link_output(link_id: Optional[pulumi.Input[int]] = None,
         project="foo/bar",
         tag_name="v1.0.1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int link_id: The ID of the link.

@@ -142,7 +142,6 @@ class GroupEpicBoard(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -162,7 +161,6 @@ class GroupEpicBoard(pulumi.CustomResource):
                 label_id=label1.label_id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -193,7 +191,6 @@ class GroupEpicBoard(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -213,7 +210,6 @@ class GroupEpicBoard(pulumi.CustomResource):
                 label_id=label1.label_id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

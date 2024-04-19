@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     fullPath: "foo/bar",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupMembership(args?: GetGroupMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMembershipResult> {
     args = args || {};
@@ -91,7 +89,6 @@ export interface GetGroupMembershipResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -100,7 +97,6 @@ export interface GetGroupMembershipResult {
  *     fullPath: "foo/bar",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupMembershipOutput(args?: GetGroupMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMembershipResult> {
     return pulumi.output(args).apply((a: any) => getGroupMembership(a, opts))

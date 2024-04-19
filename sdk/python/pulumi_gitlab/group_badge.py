@@ -201,7 +201,6 @@ class GroupBadge(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -227,7 +226,6 @@ class GroupBadge(pulumi.CustomResource):
             link_url="https://gitlab.example.com/%{project_path}/-/releases",
             image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -257,7 +255,6 @@ class GroupBadge(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -283,7 +280,6 @@ class GroupBadge(pulumi.CustomResource):
             link_url="https://gitlab.example.com/%{project_path}/-/releases",
             image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

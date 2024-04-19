@@ -80,14 +80,12 @@ def get_project_protected_branches(project_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_project_protected_branches(project_id="foo/bar/baz")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
@@ -116,14 +114,12 @@ def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
 
     example = gitlab.get_project_protected_branches(project_id="foo/bar/baz")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project_id: The integer or path with namespace that uniquely identifies the project.

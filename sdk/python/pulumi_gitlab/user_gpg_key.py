@@ -139,7 +139,6 @@ class UserGpgKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -156,7 +155,6 @@ class UserGpgKey(pulumi.CustomResource):
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -192,7 +190,6 @@ class UserGpgKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -209,7 +206,6 @@ class UserGpgKey(pulumi.CustomResource):
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

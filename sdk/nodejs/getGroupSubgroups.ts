@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  * });
  * export const subgroups = subgroupsGroupSubgroups;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupSubgroups(args: GetGroupSubgroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupSubgroupsResult> {
 
@@ -142,7 +140,6 @@ export interface GetGroupSubgroupsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -152,7 +149,6 @@ export interface GetGroupSubgroupsResult {
  * });
  * export const subgroups = subgroupsGroupSubgroups;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupSubgroupsOutput(args: GetGroupSubgroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupSubgroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroupSubgroups(a, opts))

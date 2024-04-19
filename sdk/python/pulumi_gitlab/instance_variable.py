@@ -236,7 +236,6 @@ class InstanceVariable(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -247,7 +246,6 @@ class InstanceVariable(pulumi.CustomResource):
             protected=False,
             value="instance_variable_value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -279,7 +277,6 @@ class InstanceVariable(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -290,7 +287,6 @@ class InstanceVariable(pulumi.CustomResource):
             protected=False,
             value="instance_variable_value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

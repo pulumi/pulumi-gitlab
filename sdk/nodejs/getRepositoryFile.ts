@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     ref: "main",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRepositoryFile(args: GetRepositoryFileArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryFileResult> {
 
@@ -116,7 +114,6 @@ export interface GetRepositoryFileResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -127,7 +124,6 @@ export interface GetRepositoryFileResult {
  *     ref: "main",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRepositoryFileOutput(args: GetRepositoryFileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryFileResult> {
     return pulumi.output(args).apply((a: any) => getRepositoryFile(a, opts))

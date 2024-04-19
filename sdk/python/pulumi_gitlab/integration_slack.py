@@ -825,7 +825,6 @@ class IntegrationSlack(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -840,7 +839,6 @@ class IntegrationSlack(pulumi.CustomResource):
             push_events=True,
             push_channel="push_chan")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -889,7 +887,6 @@ class IntegrationSlack(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -904,7 +901,6 @@ class IntegrationSlack(pulumi.CustomResource):
             push_events=True,
             push_channel="push_chan")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

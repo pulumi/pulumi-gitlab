@@ -664,7 +664,6 @@ class ProjectHook(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -674,7 +673,6 @@ class ProjectHook(pulumi.CustomResource):
             project="example/hooked",
             url="https://example.com/hook/example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -720,7 +718,6 @@ class ProjectHook(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -730,7 +727,6 @@ class ProjectHook(pulumi.CustomResource):
             project="example/hooked",
             url="https://example.com/hook/example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     ref: "main",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRepositoryTree(args: GetRepositoryTreeArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryTreeResult> {
 
@@ -93,7 +91,6 @@ export interface GetRepositoryTreeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -105,7 +102,6 @@ export interface GetRepositoryTreeResult {
  *     ref: "main",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRepositoryTreeOutput(args: GetRepositoryTreeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryTreeResult> {
     return pulumi.output(args).apply((a: any) => getRepositoryTree(a, opts))

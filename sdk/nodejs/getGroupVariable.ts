@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  *     key: "bar",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupVariable(args: GetGroupVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupVariableResult> {
 
@@ -108,7 +106,6 @@ export interface GetGroupVariableResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -123,7 +120,6 @@ export interface GetGroupVariableResult {
  *     key: "bar",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupVariableOutput(args: GetGroupVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupVariableResult> {
     return pulumi.output(args).apply((a: any) => getGroupVariable(a, opts))
