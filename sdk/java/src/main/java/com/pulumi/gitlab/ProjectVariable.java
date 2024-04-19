@@ -47,10 +47,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ProjectVariable(&#34;example&#34;, ProjectVariableArgs.builder()        
- *             .key(&#34;project_variable_key&#34;)
  *             .project(&#34;12345&#34;)
- *             .protected_(false)
+ *             .key(&#34;project_variable_key&#34;)
  *             .value(&#34;project_variable_value&#34;)
+ *             .protected_(false)
  *             .build());
  * 
  *     }

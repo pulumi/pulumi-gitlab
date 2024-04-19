@@ -31,9 +31,10 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleGroupAccessToken = new GitLab.GroupAccessToken("exampleGroupAccessToken", new()
+    ///     var example = new GitLab.GroupAccessToken("example", new()
     ///     {
     ///         Group = "25",
+    ///         Name = "Example project access token",
     ///         ExpiresAt = "2020-03-14",
     ///         AccessLevel = "developer",
     ///         Scopes = new[]
@@ -42,11 +43,11 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var exampleGroupVariable = new GitLab.GroupVariable("exampleGroupVariable", new()
+    ///     var exampleGroupVariable = new GitLab.GroupVariable("example", new()
     ///     {
     ///         Group = "25",
     ///         Key = "gat",
-    ///         Value = exampleGroupAccessToken.Token,
+    ///         Value = example.Token,
     ///     });
     /// 
     /// });

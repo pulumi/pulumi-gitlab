@@ -33,22 +33,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
+//			example, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
 //				Username: pulumi.StringRef("example-user"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
-//			_, err = gitlab.NewUserGpgKey(ctx, "exampleUserGpgKey", &gitlab.UserGpgKeyArgs{
-//				UserId: pulumi.String(exampleUser.Id),
+//			_, err = gitlab.NewUserGpgKey(ctx, "example", &gitlab.UserGpgKeyArgs{
+//				UserId: pulumi.String(example.Id),
 //				Key:    pulumi.String("-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Manages a GPG key for the current user
-//			_, err = gitlab.NewUserGpgKey(ctx, "exampleUserUserGpgKey", &gitlab.UserGpgKeyArgs{
+//			_, err = gitlab.NewUserGpgKey(ctx, "example_user", &gitlab.UserGpgKeyArgs{
 //				Key: pulumi.String("-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----"),
 //			})
 //			if err != nil {

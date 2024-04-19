@@ -29,10 +29,10 @@ namespace Pulumi.GitLab
     /// {
     ///     var test = new GitLab.GroupMembership("test", new()
     ///     {
-    ///         AccessLevel = "guest",
-    ///         ExpiresAt = "2020-12-31",
     ///         GroupId = "12345",
     ///         UserId = 1337,
+    ///         AccessLevel = "guest",
+    ///         ExpiresAt = "2020-12-31",
     ///     });
     /// 
     /// });

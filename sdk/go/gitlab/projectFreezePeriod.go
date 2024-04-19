@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewProjectFreezePeriod(ctx, "schedule", &gitlab.ProjectFreezePeriodArgs{
-//				Project:      pulumi.Any(gitlab_project.Foo.Id),
+//				Project:      pulumi.Any(foo.Id),
 //				FreezeStart:  pulumi.String("0 23 * * 5"),
 //				FreezeEnd:    pulumi.String("0 7 * * 1"),
 //				CronTimezone: pulumi.String("UTC"),

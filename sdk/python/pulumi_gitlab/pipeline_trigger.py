@@ -142,8 +142,8 @@ class PipelineTrigger(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.PipelineTrigger("example",
-            description="Used to trigger builds",
-            project="12345")
+            project="12345",
+            description="Used to trigger builds")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -179,8 +179,8 @@ class PipelineTrigger(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.PipelineTrigger("example",
-            description="Used to trigger builds",
-            project="12345")
+            project="12345",
+            description="Used to trigger builds")
         ```
         <!--End PulumiCodeChooser -->
 

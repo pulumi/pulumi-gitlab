@@ -263,10 +263,11 @@ class ComplianceFramework(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         sample = gitlab.ComplianceFramework("sample",
+            namespace_path="top-level-group",
+            name="HIPAA",
+            description="A HIPAA Compliance Framework",
             color="#87BEEF",
             default=False,
-            description="A HIPAA Compliance Framework",
-            namespace_path="top-level-group",
             pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
         ```
         <!--End PulumiCodeChooser -->
@@ -313,10 +314,11 @@ class ComplianceFramework(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         sample = gitlab.ComplianceFramework("sample",
+            namespace_path="top-level-group",
+            name="HIPAA",
+            description="A HIPAA Compliance Framework",
             color="#87BEEF",
             default=False,
-            description="A HIPAA Compliance Framework",
-            namespace_path="top-level-group",
             pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
         ```
         <!--End PulumiCodeChooser -->

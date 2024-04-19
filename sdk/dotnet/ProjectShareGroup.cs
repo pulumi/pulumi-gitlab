@@ -27,9 +27,9 @@ namespace Pulumi.GitLab
     /// {
     ///     var test = new GitLab.ProjectShareGroup("test", new()
     ///     {
-    ///         GroupAccess = "guest",
-    ///         GroupId = 1337,
     ///         Project = "12345",
+    ///         GroupId = 1337,
+    ///         GroupAccess = "guest",
     ///     });
     /// 
     /// });

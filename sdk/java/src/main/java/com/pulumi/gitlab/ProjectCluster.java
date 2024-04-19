@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gitlab.Project;
+ * import com.pulumi.gitlab.ProjectArgs;
  * import com.pulumi.gitlab.ProjectCluster;
  * import com.pulumi.gitlab.ProjectClusterArgs;
  * import java.util.List;
@@ -48,10 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Project(&#34;foo&#34;);
+ *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
+ *             .name(&#34;foo-project&#34;)
+ *             .build());
  * 
  *         var bar = new ProjectCluster(&#34;bar&#34;, ProjectClusterArgs.builder()        
  *             .project(foo.id())
+ *             .name(&#34;bar-cluster&#34;)
  *             .domain(&#34;example.com&#34;)
  *             .enabled(true)
  *             .kubernetesApiUrl(&#34;https://124.124.124&#34;)

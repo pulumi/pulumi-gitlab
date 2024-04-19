@@ -294,13 +294,13 @@ class SystemHook(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.SystemHook("example",
-            enable_ssl_verification=True,
-            merge_requests_events=True,
-            push_events=True,
-            repository_update_events=True,
-            tag_push_events=True,
+            url="https://example.com/hook-%d",
             token="secret-token",
-            url="https://example.com/hook-%d")
+            push_events=True,
+            tag_push_events=True,
+            merge_requests_events=True,
+            repository_update_events=True,
+            enable_ssl_verification=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -345,13 +345,13 @@ class SystemHook(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.SystemHook("example",
-            enable_ssl_verification=True,
-            merge_requests_events=True,
-            push_events=True,
-            repository_update_events=True,
-            tag_push_events=True,
+            url="https://example.com/hook-%d",
             token="secret-token",
-            url="https://example.com/hook-%d")
+            push_events=True,
+            tag_push_events=True,
+            merge_requests_events=True,
+            repository_update_events=True,
+            enable_ssl_verification=True)
         ```
         <!--End PulumiCodeChooser -->
 

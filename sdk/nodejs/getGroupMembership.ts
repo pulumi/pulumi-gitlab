@@ -10,19 +10,6 @@ import * as utilities from "./utilities";
  * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getGroupMembership({
- *     fullPath: "foo/bar",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupMembership(args?: GetGroupMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMembershipResult> {
     args = args || {};
@@ -88,19 +75,6 @@ export interface GetGroupMembershipResult {
  * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = gitlab.getGroupMembership({
- *     fullPath: "foo/bar",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupMembershipOutput(args?: GetGroupMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMembershipResult> {
     return pulumi.output(args).apply((a: any) => getGroupMembership(a, opts))

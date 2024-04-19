@@ -18,10 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const subgroupsGroupSubgroups = gitlab.getGroupSubgroups({
- *     groupId: 123456,
- * });
- * export const subgroups = subgroupsGroupSubgroups;
+ * export = async () => {
+ *     const subgroups = await gitlab.getGroupSubgroups({
+ *         groupId: 123456,
+ *     });
+ *     return {
+ *         subgroups: subgroups,
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -147,10 +151,14 @@ export interface GetGroupSubgroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const subgroupsGroupSubgroups = gitlab.getGroupSubgroups({
- *     groupId: 123456,
- * });
- * export const subgroups = subgroupsGroupSubgroups;
+ * export = async () => {
+ *     const subgroups = await gitlab.getGroupSubgroups({
+ *         groupId: 123456,
+ *     });
+ *     return {
+ *         subgroups: subgroups,
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */

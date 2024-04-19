@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.LookupComplianceFramework(ctx, &gitlab.LookupComplianceFrameworkArgs{
-//				Name:          "HIPAA",
 //				NamespacePath: "top-level-group",
+//				Name:          "HIPAA",
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -27,8 +27,8 @@ namespace Pulumi.GitLab
     /// {
     ///     var example = new GitLab.PipelineTrigger("example", new()
     ///     {
-    ///         Description = "Used to trigger builds",
     ///         Project = "12345",
+    ///         Description = "Used to trigger builds",
     ///     });
     /// 
     /// });

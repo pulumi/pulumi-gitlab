@@ -360,11 +360,13 @@ def get_projects(archived: Optional[bool] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
+    # List projects within a group tree
     mygroup = gitlab.get_group(full_path="mygroup")
     group_projects = gitlab.get_projects(group_id=mygroup.id,
         order_by="name",
         include_subgroups=True,
         with_shared=False)
+    # List projects using the search syntax
     projects = gitlab.get_projects(search="postgresql",
         visibility="private")
     ```
@@ -483,11 +485,13 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
+    # List projects within a group tree
     mygroup = gitlab.get_group(full_path="mygroup")
     group_projects = gitlab.get_projects(group_id=mygroup.id,
         order_by="name",
         include_subgroups=True,
         with_shared=False)
+    # List projects using the search syntax
     projects = gitlab.get_projects(search="postgresql",
         visibility="private")
     ```

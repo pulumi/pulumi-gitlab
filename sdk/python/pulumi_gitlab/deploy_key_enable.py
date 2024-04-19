@@ -209,17 +209,17 @@ class DeployKeyEnable(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         # A repo to host the deployment key
-        parent_project = gitlab.Project("parentProject")
+        parent = gitlab.Project("parent", name="parent_project")
         # A second repo to use the deployment key from the parent project
-        foo_project = gitlab.Project("fooProject")
+        foo = gitlab.Project("foo", name="foo_project")
         # Upload a deployment key for the parent repo
-        parent_deploy_key = gitlab.DeployKey("parentDeployKey",
-            project=parent_project.id,
+        parent_deploy_key = gitlab.DeployKey("parent",
+            project=parent.id,
             title="Example deploy key",
             key="ssh-ed25519 AAAA...")
         # Enable the deployment key on the second repo
-        foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
-            project=foo_project.id,
+        foo_deploy_key_enable = gitlab.DeployKeyEnable("foo",
+            project=foo.id,
             key_id=parent_deploy_key.deploy_key_id)
         ```
         <!--End PulumiCodeChooser -->
@@ -267,17 +267,17 @@ class DeployKeyEnable(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         # A repo to host the deployment key
-        parent_project = gitlab.Project("parentProject")
+        parent = gitlab.Project("parent", name="parent_project")
         # A second repo to use the deployment key from the parent project
-        foo_project = gitlab.Project("fooProject")
+        foo = gitlab.Project("foo", name="foo_project")
         # Upload a deployment key for the parent repo
-        parent_deploy_key = gitlab.DeployKey("parentDeployKey",
-            project=parent_project.id,
+        parent_deploy_key = gitlab.DeployKey("parent",
+            project=parent.id,
             title="Example deploy key",
             key="ssh-ed25519 AAAA...")
         # Enable the deployment key on the second repo
-        foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
-            project=foo_project.id,
+        foo_deploy_key_enable = gitlab.DeployKeyEnable("foo",
+            project=foo.id,
             key_id=parent_deploy_key.deploy_key_id)
         ```
         <!--End PulumiCodeChooser -->

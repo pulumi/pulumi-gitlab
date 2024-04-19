@@ -43,6 +43,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tagProtect = new TagProtection(&#34;tagProtect&#34;, TagProtectionArgs.builder()        
+ *             .project(&#34;12345&#34;)
+ *             .tag(&#34;TagProtected&#34;)
+ *             .createAccessLevel(&#34;developer&#34;)
  *             .allowedToCreates(            
  *                 TagProtectionAllowedToCreateArgs.builder()
  *                     .userId(42)
@@ -50,9 +53,6 @@ import javax.annotation.Nullable;
  *                 TagProtectionAllowedToCreateArgs.builder()
  *                     .groupId(43)
  *                     .build())
- *             .createAccessLevel(&#34;developer&#34;)
- *             .project(&#34;12345&#34;)
- *             .tag(&#34;TagProtected&#34;)
  *             .build());
  * 
  *     }

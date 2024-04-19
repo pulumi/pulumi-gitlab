@@ -14,34 +14,6 @@ import (
 // The `getProjectBranches` data source allows details of the branches of a given project to be retrieved.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
-//
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.GetProjectBranches(ctx, &gitlab.GetProjectBranchesArgs{
-//				Project: "foo/bar/baz",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func GetProjectBranches(ctx *pulumi.Context, args *GetProjectBranchesArgs, opts ...pulumi.InvokeOption) (*GetProjectBranchesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectBranchesResult

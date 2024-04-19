@@ -97,8 +97,9 @@ def get_group_variables(environment_scope: Optional[str] = None,
     import pulumi_gitlab as gitlab
 
     vars = gitlab.get_group_variables(group="my/example/group")
-    staging_vars = gitlab.get_group_variables(environment_scope="staging/*",
-        group="my/example/group")
+    # Using an environment scope
+    staging_vars = gitlab.get_group_variables(group="my/example/group",
+        environment_scope="staging/*")
     ```
     <!--End PulumiCodeChooser -->
     """
@@ -132,8 +133,9 @@ def get_group_variables_output(environment_scope: Optional[pulumi.Input[Optional
     import pulumi_gitlab as gitlab
 
     vars = gitlab.get_group_variables(group="my/example/group")
-    staging_vars = gitlab.get_group_variables(environment_scope="staging/*",
-        group="my/example/group")
+    # Using an environment scope
+    staging_vars = gitlab.get_group_variables(group="my/example/group",
+        environment_scope="staging/*")
     ```
     <!--End PulumiCodeChooser -->
     """

@@ -33,14 +33,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooProject, err := gitlab.NewProject(ctx, "fooProject", &gitlab.ProjectArgs{
+//			foo, err := gitlab.NewProject(ctx, "foo", &gitlab.ProjectArgs{
+//				Name:        pulumi.String("Example"),
 //				Description: pulumi.String("My example project"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewProjectLevelMrApprovals(ctx, "fooProjectLevelMrApprovals", &gitlab.ProjectLevelMrApprovalsArgs{
-//				Project:              fooProject.ID(),
+//			_, err = gitlab.NewProjectLevelMrApprovals(ctx, "foo", &gitlab.ProjectLevelMrApprovalsArgs{
+//				Project:              foo.ID(),
 //				ResetApprovalsOnPush: pulumi.Bool(true),
 //				DisableOverridingApproversPerMergeRequest: pulumi.Bool(false),
 //				MergeRequestsAuthorApproval:               pulumi.Bool(false),

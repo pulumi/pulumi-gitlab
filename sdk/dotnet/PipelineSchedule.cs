@@ -27,10 +27,10 @@ namespace Pulumi.GitLab
     /// {
     ///     var example = new GitLab.PipelineSchedule("example", new()
     ///     {
-    ///         Cron = "0 1 * * *",
-    ///         Description = "Used to schedule builds",
     ///         Project = "12345",
+    ///         Description = "Used to schedule builds",
     ///         Ref = "master",
+    ///         Cron = "0 1 * * *",
     ///     });
     /// 
     /// });

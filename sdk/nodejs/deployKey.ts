@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.DeployKey("example", {
- *     key: "ssh-ed25519 AAAA...",
  *     project: "example/deploying",
  *     title: "Example deploy key",
+ *     key: "ssh-ed25519 AAAA...",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

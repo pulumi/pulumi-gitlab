@@ -189,7 +189,8 @@ class IntegrationExternalWiki(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        awesome_project = gitlab.Project("awesomeProject",
+        awesome_project = gitlab.Project("awesome_project",
+            name="awesome_project",
             description="My awesome project.",
             visibility_level="public")
         wiki = gitlab.IntegrationExternalWiki("wiki",
@@ -229,7 +230,8 @@ class IntegrationExternalWiki(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        awesome_project = gitlab.Project("awesomeProject",
+        awesome_project = gitlab.Project("awesome_project",
+            name="awesome_project",
             description="My awesome project.",
             visibility_level="public")
         wiki = gitlab.IntegrationExternalWiki("wiki",

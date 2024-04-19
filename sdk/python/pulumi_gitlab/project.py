@@ -3307,59 +3307,6 @@ class Project(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.Project("example",
-            description="My awesome codebase",
-            visibility_level="public")
-        # Project with custom push rules
-        example_two = gitlab.Project("example-two", push_rules=gitlab.ProjectPushRulesArgs(
-            author_email_regex="@example\\\\.com$",
-            commit_committer_check=True,
-            member_check=True,
-            prevent_secrets=True,
-        ))
-        peter_parker = gitlab.get_user(username="peter_parker")
-        peters_repo = gitlab.Project("petersRepo",
-            description="This is a description",
-            namespace_id=peter_parker.namespace_id)
-        # Fork a project
-        fork_project = gitlab.Project("forkProject",
-            description="This is a fork",
-            forked_from_project_id=example.id)
-        # Fork a project and setup a pull mirror
-        fork_index_project_project = gitlab.Project("forkIndex/projectProject",
-            description="This is a fork",
-            forked_from_project_id=example.id,
-            import_url=example.http_url_to_repo,
-            mirror=True)
-        # Create a project by importing it from a public project
-        import_public = gitlab.Project("importPublic", import_url="https://gitlab.example.com/repo.git")
-        # Create a project by importing it from a public project and setup the pull mirror
-        import_public_with_mirror = gitlab.Project("importPublicWithMirror",
-            import_url="https://gitlab.example.com/repo.git",
-            mirror=True)
-        # Create a project by importing it from a private project
-        import_private_project = gitlab.Project("importPrivateProject",
-            import_url="https://gitlab.example.com/repo.git",
-            import_url_username="user",
-            import_url_password="pass")
-        # Create a project by importing it from a private project and setup the pull mirror
-        import_private_with_mirror = gitlab.Project("importPrivateWithMirror",
-            import_url="https://gitlab.example.com/repo.git",
-            import_url_username="user",
-            import_url_password="pass",
-            mirror=True)
-        # Create a project by importing it from a private project and provide credentials in `import_url`
-        # NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
-        #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
-        import_private_index_project_project = gitlab.Project("importPrivateIndex/projectProject", import_url="https://user:pass@gitlab.example.com/repo.git")
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         ```sh
@@ -3487,59 +3434,6 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.Project("example",
-            description="My awesome codebase",
-            visibility_level="public")
-        # Project with custom push rules
-        example_two = gitlab.Project("example-two", push_rules=gitlab.ProjectPushRulesArgs(
-            author_email_regex="@example\\\\.com$",
-            commit_committer_check=True,
-            member_check=True,
-            prevent_secrets=True,
-        ))
-        peter_parker = gitlab.get_user(username="peter_parker")
-        peters_repo = gitlab.Project("petersRepo",
-            description="This is a description",
-            namespace_id=peter_parker.namespace_id)
-        # Fork a project
-        fork_project = gitlab.Project("forkProject",
-            description="This is a fork",
-            forked_from_project_id=example.id)
-        # Fork a project and setup a pull mirror
-        fork_index_project_project = gitlab.Project("forkIndex/projectProject",
-            description="This is a fork",
-            forked_from_project_id=example.id,
-            import_url=example.http_url_to_repo,
-            mirror=True)
-        # Create a project by importing it from a public project
-        import_public = gitlab.Project("importPublic", import_url="https://gitlab.example.com/repo.git")
-        # Create a project by importing it from a public project and setup the pull mirror
-        import_public_with_mirror = gitlab.Project("importPublicWithMirror",
-            import_url="https://gitlab.example.com/repo.git",
-            mirror=True)
-        # Create a project by importing it from a private project
-        import_private_project = gitlab.Project("importPrivateProject",
-            import_url="https://gitlab.example.com/repo.git",
-            import_url_username="user",
-            import_url_password="pass")
-        # Create a project by importing it from a private project and setup the pull mirror
-        import_private_with_mirror = gitlab.Project("importPrivateWithMirror",
-            import_url="https://gitlab.example.com/repo.git",
-            import_url_username="user",
-            import_url_password="pass",
-            mirror=True)
-        # Create a project by importing it from a private project and provide credentials in `import_url`
-        # NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
-        #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
-        import_private_index_project_project = gitlab.Project("importPrivateIndex/projectProject", import_url="https://user:pass@gitlab.example.com/repo.git")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

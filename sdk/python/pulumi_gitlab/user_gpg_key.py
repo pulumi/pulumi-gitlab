@@ -144,15 +144,15 @@ class UserGpgKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example_user = gitlab.get_user(username="example-user")
+        example = gitlab.get_user(username="example-user")
         # Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
-        example_user_gpg_key = gitlab.UserGpgKey("exampleUserGpgKey",
-            user_id=example_user.id,
+        example_user_gpg_key = gitlab.UserGpgKey("example",
+            user_id=example.id,
             key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
         # Manages a GPG key for the current user
-        example_user_user_gpg_key = gitlab.UserGpgKey("exampleUserUserGpgKey", key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
+        example_user = gitlab.UserGpgKey("example_user", key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
         ```
@@ -197,15 +197,15 @@ class UserGpgKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example_user = gitlab.get_user(username="example-user")
+        example = gitlab.get_user(username="example-user")
         # Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
-        example_user_gpg_key = gitlab.UserGpgKey("exampleUserGpgKey",
-            user_id=example_user.id,
+        example_user_gpg_key = gitlab.UserGpgKey("example",
+            user_id=example.id,
             key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
         # Manages a GPG key for the current user
-        example_user_user_gpg_key = gitlab.UserGpgKey("exampleUserUserGpgKey", key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
+        example_user = gitlab.UserGpgKey("example_user", key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
         ```

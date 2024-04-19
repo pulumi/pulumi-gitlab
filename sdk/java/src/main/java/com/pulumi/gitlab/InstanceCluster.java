@@ -48,14 +48,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bar = new InstanceCluster(&#34;bar&#34;, InstanceClusterArgs.builder()        
+ *             .name(&#34;bar-cluster&#34;)
  *             .domain(&#34;example.com&#34;)
  *             .enabled(true)
- *             .environmentScope(&#34;*&#34;)
  *             .kubernetesApiUrl(&#34;https://124.124.124&#34;)
- *             .kubernetesAuthorizationType(&#34;rbac&#34;)
+ *             .kubernetesToken(&#34;some-token&#34;)
  *             .kubernetesCaCert(&#34;some-cert&#34;)
  *             .kubernetesNamespace(&#34;namespace&#34;)
- *             .kubernetesToken(&#34;some-token&#34;)
+ *             .kubernetesAuthorizationType(&#34;rbac&#34;)
+ *             .environmentScope(&#34;*&#34;)
  *             .managementProjectId(&#34;123456&#34;)
  *             .build());
  * 

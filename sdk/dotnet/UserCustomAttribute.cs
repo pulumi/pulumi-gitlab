@@ -27,8 +27,8 @@ namespace Pulumi.GitLab
     /// {
     ///     var attr = new GitLab.UserCustomAttribute("attr", new()
     ///     {
-    ///         Key = "location",
     ///         User = 42,
+    ///         Key = "location",
     ///         Value = "Greenland",
     ///     });
     /// 

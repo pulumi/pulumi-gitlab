@@ -30,13 +30,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := gitlab.NewProject(ctx, "foo", &gitlab.ProjectArgs{
+//				Name:            pulumi.String("example project"),
 //				Description:     pulumi.String("Lorem Ipsum"),
 //				VisibilityLevel: pulumi.String("public"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewProjectIssue(ctx, "welcomeIssue", &gitlab.ProjectIssueArgs{
+//			_, err = gitlab.NewProjectIssue(ctx, "welcome_issue", &gitlab.ProjectIssueArgs{
 //				Project: foo.ID(),
 //				Title:   pulumi.String("Welcome!"),
 //				Description: foo.Name.ApplyT(func(name string) (string, error) {
@@ -47,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("welcomeIssueWebUrl", data.Gitlab_project_issue.Web_url)
+//			ctx.Export("welcomeIssueWebUrl", webUrl)
 //			return nil
 //		})
 //	}

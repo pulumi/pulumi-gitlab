@@ -31,7 +31,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := gitlab.NewGroup(ctx, "foo", nil)
+//			foo, err := gitlab.NewGroup(ctx, "foo", &gitlab.GroupArgs{
+//				Name: pulumi.String("foo-group"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -44,7 +46,7 @@ import (
 //				return err
 //			}
 //			// Pipeline status badges with placeholders will be enabled for each project
-//			_, err = gitlab.NewGroupBadge(ctx, "gitlabPipeline", &gitlab.GroupBadgeArgs{
+//			_, err = gitlab.NewGroupBadge(ctx, "gitlab_pipeline", &gitlab.GroupBadgeArgs{
 //				Group:    foo.ID(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg"),
@@ -53,7 +55,7 @@ import (
 //				return err
 //			}
 //			// Test coverage report badges with placeholders will be enabled for each project
-//			_, err = gitlab.NewGroupBadge(ctx, "gitlabCoverage", &gitlab.GroupBadgeArgs{
+//			_, err = gitlab.NewGroupBadge(ctx, "gitlab_coverage", &gitlab.GroupBadgeArgs{
 //				Group:    foo.ID(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/jobs"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg"),
@@ -62,7 +64,7 @@ import (
 //				return err
 //			}
 //			// Latest release badges with placeholders will be enabled for each project
-//			_, err = gitlab.NewGroupBadge(ctx, "gitlabRelease", &gitlab.GroupBadgeArgs{
+//			_, err = gitlab.NewGroupBadge(ctx, "gitlab_release", &gitlab.GroupBadgeArgs{
 //				Group:    foo.ID(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/releases"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/-/badges/release.svg"),

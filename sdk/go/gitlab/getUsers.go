@@ -35,9 +35,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.GetUsers(ctx, &gitlab.GetUsersArgs{
-//				CreatedBefore: pulumi.StringRef("2019-01-01"),
-//				OrderBy:       pulumi.StringRef("name"),
 //				Sort:          pulumi.StringRef("desc"),
+//				OrderBy:       pulumi.StringRef("name"),
+//				CreatedBefore: pulumi.StringRef("2019-01-01"),
 //			}, nil)
 //			if err != nil {
 //				return err

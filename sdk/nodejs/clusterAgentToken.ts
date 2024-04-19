@@ -25,18 +25,26 @@ import * as utilities from "./utilities";
  * const example = new gitlab.ClusterAgentToken("example", {
  *     project: "12345",
  *     agentId: 42,
+ *     name: "some-token",
  *     description: "some token",
  * });
- * const thisProject = gitlab.getProject({
+ * // The following example creates a GitLab Agent for Kubernetes in a given project,
+ * // creates a token and install the `gitlab-agent` Helm Chart.
+ * // (see https://gitlab.com/gitlab-org/charts/gitlab-agent)
+ * const this = gitlab.getProject({
  *     pathWithNamespace: "my-org/example",
  * });
- * const thisClusterAgent = new gitlab.ClusterAgent("thisClusterAgent", {project: thisProject.then(thisProject => thisProject.id)});
- * const thisClusterAgentToken = new gitlab.ClusterAgentToken("thisClusterAgentToken", {
- *     project: thisProject.then(thisProject => thisProject.id),
+ * const thisClusterAgent = new gitlab.ClusterAgent("this", {
+ *     project: _this.then(_this => _this.id),
+ *     name: "my-agent",
+ * });
+ * const thisClusterAgentToken = new gitlab.ClusterAgentToken("this", {
+ *     project: _this.then(_this => _this.id),
  *     agentId: thisClusterAgent.agentId,
+ *     name: "my-agent-token",
  *     description: "Token for the my-agent used with `gitlab-agent` Helm Chart",
  * });
- * const gitlabAgent = new helm.index.Helm_release("gitlabAgent", {
+ * const gitlabAgent = new helm.index.Release("gitlab_agent", {
  *     name: "gitlab-agent",
  *     namespace: "gitlab-agent",
  *     createNamespace: true,

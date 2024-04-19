@@ -14,7 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const tagProtect = new gitlab.TagProtection("tagProtect", {
+ * const tagProtect = new gitlab.TagProtection("TagProtect", {
+ *     project: "12345",
+ *     tag: "TagProtected",
+ *     createAccessLevel: "developer",
  *     allowedToCreates: [
  *         {
  *             userId: 42,
@@ -23,9 +26,6 @@ import * as utilities from "./utilities";
  *             groupId: 43,
  *         },
  *     ],
- *     createAccessLevel: "developer",
- *     project: "12345",
- *     tag: "TagProtected",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

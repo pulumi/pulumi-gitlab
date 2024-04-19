@@ -44,18 +44,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var thisGroup = new Group(&#34;thisGroup&#34;, GroupArgs.builder()        
+ *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
+ *             .name(&#34;example&#34;)
  *             .path(&#34;example&#34;)
  *             .description(&#34;An example group&#34;)
  *             .build());
  * 
  *         var thisProject = new Project(&#34;thisProject&#34;, ProjectArgs.builder()        
- *             .namespaceId(thisGroup.id())
+ *             .name(&#34;example&#34;)
+ *             .namespaceId(this_.id())
  *             .initializeWithReadme(true)
  *             .build());
  * 
  *         var thisProjectEnvironment = new ProjectEnvironment(&#34;thisProjectEnvironment&#34;, ProjectEnvironmentArgs.builder()        
  *             .project(thisProject.id())
+ *             .name(&#34;example&#34;)
  *             .externalUrl(&#34;www.example.com&#34;)
  *             .build());
  * 

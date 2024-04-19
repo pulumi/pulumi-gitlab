@@ -33,8 +33,8 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetGroups.Invoke(new()
         ///     {
-        ///         OrderBy = "name",
         ///         Sort = "desc",
+        ///         OrderBy = "name",
         ///     });
         /// 
         ///     var example_two = GitLab.GetGroups.Invoke(new()
@@ -71,8 +71,8 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetGroups.Invoke(new()
         ///     {
-        ///         OrderBy = "name",
         ///         Sort = "desc",
+        ///         OrderBy = "name",
         ///     });
         /// 
         ///     var example_two = GitLab.GetGroups.Invoke(new()

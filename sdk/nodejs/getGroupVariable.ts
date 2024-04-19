@@ -20,10 +20,11 @@ import * as utilities from "./utilities";
  *     group: "my/example/group",
  *     key: "foo",
  * });
+ * // Using an environment scope
  * const bar = gitlab.getGroupVariable({
- *     environmentScope: "staging/*",
  *     group: "my/example/group",
  *     key: "bar",
+ *     environmentScope: "staging/*",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -117,10 +118,11 @@ export interface GetGroupVariableResult {
  *     group: "my/example/group",
  *     key: "foo",
  * });
+ * // Using an environment scope
  * const bar = gitlab.getGroupVariable({
- *     environmentScope: "staging/*",
  *     group: "my/example/group",
  *     key: "bar",
+ *     environmentScope: "staging/*",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

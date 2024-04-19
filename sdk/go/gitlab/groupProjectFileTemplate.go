@@ -38,6 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := gitlab.NewGroup(ctx, "foo", &gitlab.GroupArgs{
+//				Name:        pulumi.String("group"),
 //				Path:        pulumi.String("group"),
 //				Description: pulumi.String("An example group"),
 //			})
@@ -45,6 +46,7 @@ import (
 //				return err
 //			}
 //			bar, err := gitlab.NewProject(ctx, "bar", &gitlab.ProjectArgs{
+//				Name:            pulumi.String("template project"),
 //				Description:     pulumi.String("contains file templates"),
 //				VisibilityLevel: pulumi.String("public"),
 //				NamespaceId:     foo.ID(),
@@ -52,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewGroupProjectFileTemplate(ctx, "templateLink", &gitlab.GroupProjectFileTemplateArgs{
+//			_, err = gitlab.NewGroupProjectFileTemplate(ctx, "template_link", &gitlab.GroupProjectFileTemplateArgs{
 //				GroupId:               foo.ID(),
 //				FileTemplateProjectId: bar.ID(),
 //			})

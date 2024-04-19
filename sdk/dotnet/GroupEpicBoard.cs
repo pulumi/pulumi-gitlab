@@ -29,24 +29,28 @@ namespace Pulumi.GitLab
     /// {
     ///     var example = new GitLab.Group("example", new()
     ///     {
+    ///         Name = "test_group",
     ///         Path = "test_group",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var label1 = new GitLab.GroupLabel("label1", new()
+    ///     var label1 = new GitLab.GroupLabel("label_1", new()
     ///     {
     ///         Group = example.Id,
     ///         Color = "#FF0000",
+    ///         Name = "red-label",
     ///     });
     /// 
-    ///     var label3 = new GitLab.GroupLabel("label3", new()
+    ///     var label3 = new GitLab.GroupLabel("label_3", new()
     ///     {
     ///         Group = example.Id,
+    ///         Name = "label-3",
     ///         Color = "#003000",
     ///     });
     /// 
-    ///     var epicBoard = new GitLab.GroupEpicBoard("epicBoard", new()
+    ///     var epicBoard = new GitLab.GroupEpicBoard("epic_board", new()
     ///     {
+    ///         Name = "epic board 6",
     ///         Group = example.Path,
     ///         Lists = new[]
     ///         {

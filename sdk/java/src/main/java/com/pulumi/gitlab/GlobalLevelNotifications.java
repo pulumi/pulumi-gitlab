@@ -19,41 +19,6 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gitlab.GlobalLevelNotifications;
- * import com.pulumi.gitlab.GlobalLevelNotificationsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Create Custom global level notification
- *         var foo = new GlobalLevelNotifications(&#34;foo&#34;, GlobalLevelNotificationsArgs.builder()        
- *             .level(&#34;custom&#34;)
- *             .newMergeRequest(true)
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Note: You can import a global notification state using &#34;gitlab&#34; as the ID.

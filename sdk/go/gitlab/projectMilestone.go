@@ -32,15 +32,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a project for the milestone to use
-//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//			example, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name:        pulumi.String("example"),
 //				Description: pulumi.String("An example project"),
-//				NamespaceId: pulumi.Any(gitlab_group.Example.Id),
+//				NamespaceId: pulumi.Any(exampleGitlabGroup.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewProjectMilestone(ctx, "exampleProjectMilestone", &gitlab.ProjectMilestoneArgs{
-//				Project: exampleProject.ID(),
+//			_, err = gitlab.NewProjectMilestone(ctx, "example", &gitlab.ProjectMilestoneArgs{
+//				Project: example.ID(),
 //				Title:   pulumi.String("example"),
 //			})
 //			if err != nil {

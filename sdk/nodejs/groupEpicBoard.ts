@@ -21,18 +21,22 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.Group("example", {
+ *     name: "test_group",
  *     path: "test_group",
  *     description: "An example group",
  * });
- * const label1 = new gitlab.GroupLabel("label1", {
+ * const label1 = new gitlab.GroupLabel("label_1", {
  *     group: example.id,
  *     color: "#FF0000",
+ *     name: "red-label",
  * });
- * const label3 = new gitlab.GroupLabel("label3", {
+ * const label3 = new gitlab.GroupLabel("label_3", {
  *     group: example.id,
+ *     name: "label-3",
  *     color: "#003000",
  * });
- * const epicBoard = new gitlab.GroupEpicBoard("epicBoard", {
+ * const epicBoard = new gitlab.GroupEpicBoard("epic_board", {
+ *     name: "epic board 6",
  *     group: example.path,
  *     lists: [{
  *         labelId: label1.labelId,

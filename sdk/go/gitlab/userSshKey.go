@@ -31,14 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
+//			example, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
 //				Username: pulumi.StringRef("example-user"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewUserSshKey(ctx, "exampleUserSshKey", &gitlab.UserSshKeyArgs{
-//				UserId:    pulumi.String(exampleUser.Id),
+//			_, err = gitlab.NewUserSshKey(ctx, "example", &gitlab.UserSshKeyArgs{
+//				UserId:    pulumi.String(example.Id),
 //				Title:     pulumi.String("example-key"),
 //				Key:       pulumi.String("ssh-ed25519 AAAA..."),
 //				ExpiresAt: pulumi.String("2016-01-21T00:00:00.000Z"),

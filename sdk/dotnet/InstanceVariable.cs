@@ -28,9 +28,9 @@ namespace Pulumi.GitLab
     ///     var example = new GitLab.InstanceVariable("example", new()
     ///     {
     ///         Key = "instance_variable_key",
-    ///         Masked = false,
-    ///         Protected = false,
     ///         Value = "instance_variable_value",
+    ///         Protected = false,
+    ///         Masked = false,
     ///     });
     /// 
     /// });

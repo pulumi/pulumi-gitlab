@@ -34,6 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// List projects within a group tree
 //			mygroup, err := gitlab.LookupGroup(ctx, &gitlab.LookupGroupArgs{
 //				FullPath: pulumi.StringRef("mygroup"),
 //			}, nil)
@@ -49,6 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// List projects using the search syntax
 //			_, err = gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
 //				Search:     pulumi.StringRef("postgresql"),
 //				Visibility: pulumi.StringRef("private"),

@@ -23,8 +23,8 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getGroups({
- *     orderBy: "name",
  *     sort: "desc",
+ *     orderBy: "name",
  * });
  * const example-two = gitlab.getGroups({
  *     search: "GitLab",
@@ -112,8 +112,8 @@ export interface GetGroupsResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getGroups({
- *     orderBy: "name",
  *     sort: "desc",
+ *     orderBy: "name",
  * });
  * const example-two = gitlab.getGroups({
  *     search: "GitLab",

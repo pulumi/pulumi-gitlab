@@ -32,10 +32,11 @@ namespace Pulumi.GitLab
         ///         Group = "my/example/group",
         ///     });
         /// 
+        ///     // Using an environment scope
         ///     var stagingVars = GitLab.GetGroupVariables.Invoke(new()
         ///     {
-        ///         EnvironmentScope = "staging/*",
         ///         Group = "my/example/group",
+        ///         EnvironmentScope = "staging/*",
         ///     });
         /// 
         /// });
@@ -66,10 +67,11 @@ namespace Pulumi.GitLab
         ///         Group = "my/example/group",
         ///     });
         /// 
+        ///     // Using an environment scope
         ///     var stagingVars = GitLab.GetGroupVariables.Invoke(new()
         ///     {
-        ///         EnvironmentScope = "staging/*",
         ///         Group = "my/example/group",
+        ///         EnvironmentScope = "staging/*",
         ///     });
         /// 
         /// });

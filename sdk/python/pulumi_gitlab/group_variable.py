@@ -340,12 +340,12 @@ class GroupVariable(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.GroupVariable("example",
-            environment_scope="*",
             group="12345",
             key="group_variable_key",
-            masked=False,
+            value="group_variable_value",
             protected=False,
-            value="group_variable_value")
+            masked=False,
+            environment_scope="*")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -388,12 +388,12 @@ class GroupVariable(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.GroupVariable("example",
-            environment_scope="*",
             group="12345",
             key="group_variable_key",
-            masked=False,
+            value="group_variable_value",
             protected=False,
-            value="group_variable_value")
+            masked=False,
+            environment_scope="*")
         ```
         <!--End PulumiCodeChooser -->
 

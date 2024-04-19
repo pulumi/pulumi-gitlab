@@ -36,9 +36,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Using an environment scope
 //			_, err = gitlab.GetGroupVariables(ctx, &gitlab.GetGroupVariablesArgs{
-//				EnvironmentScope: pulumi.StringRef("staging/*"),
 //				Group:            "my/example/group",
+//				EnvironmentScope: pulumi.StringRef("staging/*"),
 //			}, nil)
 //			if err != nil {
 //				return err

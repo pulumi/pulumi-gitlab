@@ -27,9 +27,10 @@ namespace Pulumi.GitLab
     /// {
     ///     var fixme = new GitLab.GroupLabel("fixme", new()
     ///     {
-    ///         Color = "#ffcc00",
-    ///         Description = "issue with failing tests",
     ///         Group = "example",
+    ///         Name = "fixme",
+    ///         Description = "issue with failing tests",
+    ///         Color = "#ffcc00",
     ///     });
     /// 
     /// });

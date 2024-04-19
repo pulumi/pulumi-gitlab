@@ -31,11 +31,12 @@ namespace Pulumi.GitLab
     ///     var oidc = new GitLab.Application("oidc", new()
     ///     {
     ///         Confidential = true,
-    ///         RedirectUrl = "https://mycompany.com",
     ///         Scopes = new[]
     ///         {
     ///             "openid",
     ///         },
+    ///         Name = "company_oidc",
+    ///         RedirectUrl = "https://mycompany.com",
     ///     });
     /// 
     /// });

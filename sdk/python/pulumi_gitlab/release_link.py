@@ -289,11 +289,14 @@ class ReleaseLink(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         # Create a project
-        example_project = gitlab.Project("exampleProject", description="An example project")
+        example = gitlab.Project("example",
+            name="example",
+            description="An example project")
         # Can create release link only to a tag associated with a release
-        example_release_link = gitlab.ReleaseLink("exampleReleaseLink",
-            project=example_project.id,
+        example_release_link = gitlab.ReleaseLink("example",
+            project=example.id,
             tag_name="tag_name_associated_with_release",
+            name="test",
             url="https://test/")
         ```
         <!--End PulumiCodeChooser -->
@@ -334,11 +337,14 @@ class ReleaseLink(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         # Create a project
-        example_project = gitlab.Project("exampleProject", description="An example project")
+        example = gitlab.Project("example",
+            name="example",
+            description="An example project")
         # Can create release link only to a tag associated with a release
-        example_release_link = gitlab.ReleaseLink("exampleReleaseLink",
-            project=example_project.id,
+        example_release_link = gitlab.ReleaseLink("example",
+            project=example.id,
             tag_name="tag_name_associated_with_release",
+            name="test",
             url="https://test/")
         ```
         <!--End PulumiCodeChooser -->

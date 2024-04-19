@@ -15,56 +15,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#register-a-new-runner)
  *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- * import * as local from "@pulumi/local";
- *
- * // Basic GitLab Group Runner
- * const myGroup = new gitlab.Group("myGroup", {description: "group that holds the runners"});
- * const basicRunner = new gitlab.Runner("basicRunner", {registrationToken: myGroup.runnersToken});
- * // GitLab Runner that runs only tagged jobs
- * const taggedOnly = new gitlab.Runner("taggedOnly", {
- *     registrationToken: myGroup.runnersToken,
- *     description: "I only run tagged jobs",
- *     runUntagged: false,
- *     tagLists: [
- *         "tag_one",
- *         "tag_two",
- *     ],
- * });
- * // GitLab Runner that only runs on protected branches
- * const _protected = new gitlab.Runner("protected", {
- *     registrationToken: myGroup.runnersToken,
- *     description: "I only run protected jobs",
- *     accessLevel: "ref_protected",
- * });
- * // Generate a `config.toml` file that you can use to create a runner
- * // This is the typical workflow for this resource, using it to create an authentication_token which can then be used
- * // to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.
- * const myCustomGroup = new gitlab.Group("myCustomGroup", {description: "group that holds the custom runners"});
- * const myRunner = new gitlab.Runner("myRunner", {registrationToken: myCustomGroup.runnersToken});
- * // This creates a configuration for a local "shell" runner, but can be changed to generate whatever is needed.
- * // Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.
- * // See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.
- * const config = new local.File("config", {
- *     filename: `${path.module}/config.toml`,
- *     content: pulumi.interpolate`  concurrent = 1
- *
- *   [[runners]]
- *     name = "Hello Terraform"
- *     url = "https://example.gitlab.com/"
- *     token = "${myRunner.authenticationToken}"
- *     executor = "shell"
- *     
- * `,
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * A GitLab Runner can be imported using the runner's ID, eg

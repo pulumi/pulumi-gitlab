@@ -142,8 +142,8 @@ class UserCustomAttribute(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         attr = gitlab.UserCustomAttribute("attr",
-            key="location",
             user=42,
+            key="location",
             value="Greenland")
         ```
         <!--End PulumiCodeChooser -->
@@ -181,8 +181,8 @@ class UserCustomAttribute(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         attr = gitlab.UserCustomAttribute("attr",
-            key="location",
             user=42,
+            key="location",
             value="Greenland")
         ```
         <!--End PulumiCodeChooser -->

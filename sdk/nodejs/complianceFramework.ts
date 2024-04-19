@@ -23,10 +23,11 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const sample = new gitlab.ComplianceFramework("sample", {
+ *     namespacePath: "top-level-group",
+ *     name: "HIPAA",
+ *     description: "A HIPAA Compliance Framework",
  *     color: "#87BEEF",
  *     "default": false,
- *     description: "A HIPAA Compliance Framework",
- *     namespacePath: "top-level-group",
  *     pipelineConfigurationFullPath: ".hipaa.yml@top-level-group/compliance-frameworks",
  * });
  * ```

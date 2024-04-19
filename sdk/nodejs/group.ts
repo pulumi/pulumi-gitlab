@@ -20,17 +20,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const exampleGroup = new gitlab.Group("exampleGroup", {
+ * const example = new gitlab.Group("example", {
+ *     name: "example",
  *     path: "example",
  *     description: "An example group",
  * });
  * // Create a project in the example group
- * const exampleProject = new gitlab.Project("exampleProject", {
+ * const exampleProject = new gitlab.Project("example", {
+ *     name: "example",
  *     description: "An example project",
- *     namespaceId: exampleGroup.id,
+ *     namespaceId: example.id,
  * });
  * // Group with custom push rules
  * const example_two = new gitlab.Group("example-two", {
+ *     name: "example-two",
  *     path: "example-two",
  *     description: "An example group with push rules",
  *     pushRules: {

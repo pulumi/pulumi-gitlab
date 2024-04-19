@@ -23,11 +23,12 @@ namespace Pulumi.GitLab
     /// {
     ///     var foo = new GitLab.Project("foo", new()
     ///     {
+    ///         Name = "example project",
     ///         Description = "Lorem Ipsum",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var welcomeIssue = new GitLab.ProjectIssue("welcomeIssue", new()
+    ///     var welcomeIssue = new GitLab.ProjectIssue("welcome_issue", new()
     ///     {
     ///         Project = foo.Id,
     ///         Title = "Welcome!",
@@ -39,7 +40,7 @@ namespace Pulumi.GitLab
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["welcomeIssueWebUrl"] = data.Gitlab_project_issue.Web_url,
+    ///         ["welcomeIssueWebUrl"] = webUrl,
     ///     };
     /// });
     /// ```

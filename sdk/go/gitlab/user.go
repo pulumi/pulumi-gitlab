@@ -36,14 +36,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewUser(ctx, "example", &gitlab.UserArgs{
-//				CanCreateGroup: pulumi.Bool(false),
+//				Name:           pulumi.String("Example Foo"),
+//				Username:       pulumi.String("example"),
+//				Password:       pulumi.String("superPassword"),
 //				Email:          pulumi.String("gitlab@user.create"),
 //				IsAdmin:        pulumi.Bool(true),
-//				IsExternal:     pulumi.Bool(true),
-//				Password:       pulumi.String("superPassword"),
 //				ProjectsLimit:  pulumi.Int(4),
+//				CanCreateGroup: pulumi.Bool(false),
+//				IsExternal:     pulumi.Bool(true),
 //				ResetPassword:  pulumi.Bool(false),
-//				Username:       pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err

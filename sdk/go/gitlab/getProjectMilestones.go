@@ -14,34 +14,6 @@ import (
 // The `getProjectMilestones` data source allows get details of a project milestones.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
-//
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.GetProjectMilestones(ctx, &gitlab.GetProjectMilestonesArgs{
-//				Project: "foo/bar",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func GetProjectMilestones(ctx *pulumi.Context, args *GetProjectMilestonesArgs, opts ...pulumi.InvokeOption) (*GetProjectMilestonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectMilestonesResult

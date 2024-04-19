@@ -7,6 +7,55 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ * import * as std from "@pulumi/std";
+ *
+ * const _this = new gitlab.Group("this", {
+ *     name: "example",
+ *     path: "example",
+ *     description: "An example group",
+ * });
+ * const thisProject = new gitlab.Project("this", {
+ *     name: "example",
+ *     namespaceId: _this.id,
+ *     initializeWithReadme: true,
+ * });
+ * const thisRepositoryFile = new gitlab.RepositoryFile("this", {
+ *     project: thisProject.id,
+ *     filePath: "meow.txt",
+ *     branch: "main",
+ *     content: std.base64encode({
+ *         input: "Meow goes the cat",
+ *     }).then(invoke => invoke.result),
+ *     authorEmail: "terraform@example.com",
+ *     authorName: "Terraform",
+ *     commitMessage: "feature: add meow file",
+ * });
+ * const readme = new gitlab.RepositoryFile("readme", {
+ *     project: thisProject.id,
+ *     filePath: "readme.txt",
+ *     branch: "main",
+ *     content: "Meow goes the cat",
+ *     authorEmail: "terraform@example.com",
+ *     authorName: "Terraform",
+ *     commitMessage: "feature: add readme file",
+ * });
+ * const readmeForDogs = new gitlab.RepositoryFile("readme_for_dogs", {
+ *     project: thisProject.id,
+ *     filePath: "readme.txt",
+ *     branch: "main",
+ *     content: "Bark goes the dog",
+ *     authorEmail: "terraform@example.com",
+ *     authorName: "Terraform",
+ *     commitMessage: "feature: update readme file",
+ *     overwriteOnCreate: true,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.

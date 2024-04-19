@@ -16,58 +16,6 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
 //
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//	"os"
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Example using auto_ssl_enabled, which uses lets encrypt to generate a certificate
-//			_, err := gitlab.NewPagesDomain(ctx, "thisPagesDomain", &gitlab.PagesDomainArgs{
-//				Project:        pulumi.String("123"),
-//				Domain:         pulumi.String("example.com"),
-//				AutoSslEnabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Example using a manually generated certificate and key
-//			_, err = gitlab.NewPagesDomain(ctx, "thisIndex/pagesDomainPagesDomain", &gitlab.PagesDomainArgs{
-//				Project:     pulumi.String("123"),
-//				Domain:      pulumi.String("example.com"),
-//				Key:         readFileOrPanic(fmt.Sprintf("%v/key.pem", path.Module)),
-//				Certificate: readFileOrPanic(fmt.Sprintf("%v/cert.pem", path.Module)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Import
 //
 // GitLab pages domain can be imported using an id made up of `projectId:domain` _without_ the http protocol, e.g.

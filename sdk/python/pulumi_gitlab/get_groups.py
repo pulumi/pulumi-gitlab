@@ -126,8 +126,8 @@ def get_groups(order_by: Optional[str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_groups(order_by="name",
-        sort="desc")
+    example = gitlab.get_groups(sort="desc",
+        order_by="name")
     example_two = gitlab.get_groups(search="GitLab")
     ```
     <!--End PulumiCodeChooser -->
@@ -177,8 +177,8 @@ def get_groups_output(order_by: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_groups(order_by="name",
-        sort="desc")
+    example = gitlab.get_groups(sort="desc",
+        order_by="name")
     example_two = gitlab.get_groups(search="GitLab")
     ```
     <!--End PulumiCodeChooser -->

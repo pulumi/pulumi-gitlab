@@ -242,12 +242,14 @@ class ProjectTag(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         # Create a project for the tag to use
-        example_project = gitlab.Project("exampleProject",
+        example = gitlab.Project("example",
+            name="example",
             description="An example project",
-            namespace_id=gitlab_group["example"]["id"])
-        example_project_tag = gitlab.ProjectTag("exampleProjectTag",
+            namespace_id=example_gitlab_group["id"])
+        example_project_tag = gitlab.ProjectTag("example",
+            name="example",
             ref="main",
-            project=example_project.id)
+            project=example.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -287,12 +289,14 @@ class ProjectTag(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         # Create a project for the tag to use
-        example_project = gitlab.Project("exampleProject",
+        example = gitlab.Project("example",
+            name="example",
             description="An example project",
-            namespace_id=gitlab_group["example"]["id"])
-        example_project_tag = gitlab.ProjectTag("exampleProjectTag",
+            namespace_id=example_gitlab_group["id"])
+        example_project_tag = gitlab.ProjectTag("example",
+            name="example",
             ref="main",
-            project=example_project.id)
+            project=example.id)
         ```
         <!--End PulumiCodeChooser -->
 

@@ -670,9 +670,9 @@ class ProjectHook(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.ProjectHook("example",
-            merge_requests_events=True,
             project="example/hooked",
-            url="https://example.com/hook/example")
+            url="https://example.com/hook/example",
+            merge_requests_events=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -726,9 +726,9 @@ class ProjectHook(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.ProjectHook("example",
-            merge_requests_events=True,
             project="example/hooked",
-            url="https://example.com/hook/example")
+            url="https://example.com/hook/example",
+            merge_requests_events=True)
         ```
         <!--End PulumiCodeChooser -->
 

@@ -32,18 +32,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// A repo to host the deployment key
-//			parentProject, err := gitlab.NewProject(ctx, "parentProject", nil)
+//			parent, err := gitlab.NewProject(ctx, "parent", &gitlab.ProjectArgs{
+//				Name: pulumi.String("parent_project"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			// A second repo to use the deployment key from the parent project
-//			fooProject, err := gitlab.NewProject(ctx, "fooProject", nil)
+//			foo, err := gitlab.NewProject(ctx, "foo", &gitlab.ProjectArgs{
+//				Name: pulumi.String("foo_project"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			// Upload a deployment key for the parent repo
-//			parentDeployKey, err := gitlab.NewDeployKey(ctx, "parentDeployKey", &gitlab.DeployKeyArgs{
-//				Project: parentProject.ID(),
+//			parentDeployKey, err := gitlab.NewDeployKey(ctx, "parent", &gitlab.DeployKeyArgs{
+//				Project: parent.ID(),
 //				Title:   pulumi.String("Example deploy key"),
 //				Key:     pulumi.String("ssh-ed25519 AAAA..."),
 //			})
@@ -51,8 +55,8 @@ import (
 //				return err
 //			}
 //			// Enable the deployment key on the second repo
-//			_, err = gitlab.NewDeployKeyEnable(ctx, "fooDeployKeyEnable", &gitlab.DeployKeyEnableArgs{
-//				Project: fooProject.ID(),
+//			_, err = gitlab.NewDeployKeyEnable(ctx, "foo", &gitlab.DeployKeyEnableArgs{
+//				Project: foo.ID(),
 //				KeyId:   parentDeployKey.DeployKeyId,
 //			})
 //			if err != nil {

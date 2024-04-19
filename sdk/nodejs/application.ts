@@ -21,8 +21,9 @@ import * as utilities from "./utilities";
  *
  * const oidc = new gitlab.Application("oidc", {
  *     confidential: true,
- *     redirectUrl: "https://mycompany.com",
  *     scopes: ["openid"],
+ *     name: "company_oidc",
+ *     redirectUrl: "https://mycompany.com",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

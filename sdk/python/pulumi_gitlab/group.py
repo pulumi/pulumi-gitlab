@@ -1031,15 +1031,18 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example_group = gitlab.Group("exampleGroup",
+        example = gitlab.Group("example",
+            name="example",
             path="example",
             description="An example group")
         # Create a project in the example group
-        example_project = gitlab.Project("exampleProject",
+        example_project = gitlab.Project("example",
+            name="example",
             description="An example project",
-            namespace_id=example_group.id)
+            namespace_id=example.id)
         # Group with custom push rules
         example_two = gitlab.Group("example-two",
+            name="example-two",
             path="example-two",
             description="An example group with push rules",
             push_rules=gitlab.GroupPushRulesArgs(
@@ -1115,15 +1118,18 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example_group = gitlab.Group("exampleGroup",
+        example = gitlab.Group("example",
+            name="example",
             path="example",
             description="An example group")
         # Create a project in the example group
-        example_project = gitlab.Project("exampleProject",
+        example_project = gitlab.Project("example",
+            name="example",
             description="An example project",
-            namespace_id=example_group.id)
+            namespace_id=example.id)
         # Group with custom push rules
         example_two = gitlab.Group("example-two",
+            name="example-two",
             path="example-two",
             description="An example group with push rules",
             push_rules=gitlab.GroupPushRulesArgs(

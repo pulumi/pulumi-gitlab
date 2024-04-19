@@ -704,28 +704,28 @@ class GroupHook(pulumi.CustomResource):
 
         example = gitlab.GroupHook("example",
             group="example/hooked",
-            merge_requests_events=True,
-            url="https://example.com/hook/example")
+            url="https://example.com/hook/example",
+            merge_requests_events=True)
         # Setting all attributes
-        all_attributes = gitlab.GroupHook("allAttributes",
-            confidential_issues_events=False,
-            confidential_note_events=True,
-            deployment_events=True,
-            enable_ssl_verification=False,
+        all_attributes = gitlab.GroupHook("all_attributes",
             group="1",
-            issues_events=False,
-            job_events=True,
-            merge_requests_events=True,
-            note_events=True,
-            pipeline_events=True,
+            url="http://example.com",
+            token="supersecret",
+            enable_ssl_verification=False,
             push_events=True,
             push_events_branch_filter="devel",
-            releases_events=True,
-            subgroup_events=True,
+            issues_events=False,
+            confidential_issues_events=False,
+            merge_requests_events=True,
             tag_push_events=True,
-            token="supersecret",
-            url="http://example.com",
-            wiki_page_events=True)
+            note_events=True,
+            confidential_note_events=True,
+            job_events=True,
+            pipeline_events=True,
+            wiki_page_events=True,
+            deployment_events=True,
+            releases_events=True,
+            subgroup_events=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -781,28 +781,28 @@ class GroupHook(pulumi.CustomResource):
 
         example = gitlab.GroupHook("example",
             group="example/hooked",
-            merge_requests_events=True,
-            url="https://example.com/hook/example")
+            url="https://example.com/hook/example",
+            merge_requests_events=True)
         # Setting all attributes
-        all_attributes = gitlab.GroupHook("allAttributes",
-            confidential_issues_events=False,
-            confidential_note_events=True,
-            deployment_events=True,
-            enable_ssl_verification=False,
+        all_attributes = gitlab.GroupHook("all_attributes",
             group="1",
-            issues_events=False,
-            job_events=True,
-            merge_requests_events=True,
-            note_events=True,
-            pipeline_events=True,
+            url="http://example.com",
+            token="supersecret",
+            enable_ssl_verification=False,
             push_events=True,
             push_events_branch_filter="devel",
-            releases_events=True,
-            subgroup_events=True,
+            issues_events=False,
+            confidential_issues_events=False,
+            merge_requests_events=True,
             tag_push_events=True,
-            token="supersecret",
-            url="http://example.com",
-            wiki_page_events=True)
+            note_events=True,
+            confidential_note_events=True,
+            job_events=True,
+            pipeline_events=True,
+            wiki_page_events=True,
+            deployment_events=True,
+            releases_events=True,
+            subgroup_events=True)
         ```
         <!--End PulumiCodeChooser -->
 

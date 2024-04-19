@@ -27,7 +27,7 @@ namespace Pulumi.GitLab
     /// {
     ///     var schedule = new GitLab.ProjectFreezePeriod("schedule", new()
     ///     {
-    ///         Project = gitlab_project.Foo.Id,
+    ///         Project = foo.Id,
     ///         FreezeStart = "0 23 * * 5",
     ///         FreezeEnd = "0 7 * * 1",
     ///         CronTimezone = "UTC",

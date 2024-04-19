@@ -16,15 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const examplePipelineSchedule = new gitlab.PipelineSchedule("examplePipelineSchedule", {
+ * const example = new gitlab.PipelineSchedule("example", {
  *     project: "12345",
  *     description: "Used to schedule builds",
  *     ref: "master",
  *     cron: "0 1 * * *",
  * });
- * const examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable("examplePipelineScheduleVariable", {
- *     project: examplePipelineSchedule.project,
- *     pipelineScheduleId: examplePipelineSchedule.pipelineScheduleId,
+ * const examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable("example", {
+ *     project: example.project,
+ *     pipelineScheduleId: example.pipelineScheduleId,
  *     key: "EXAMPLE_KEY",
  *     value: "example",
  * });

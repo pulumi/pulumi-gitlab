@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  *
  * const fixme = new gitlab.ProjectLabel("fixme", {
  *     project: "example",
+ *     name: "fixme",
  *     description: "issue with failing tests",
  *     color: "#ffcc00",
  * });
  * // Scoped label
- * const devopsCreate = new gitlab.ProjectLabel("devopsCreate", {
- *     project: gitlab_project.example.id,
+ * const devopsCreate = new gitlab.ProjectLabel("devops_create", {
+ *     project: example.id,
+ *     name: "devops::create",
  *     description: "issue for creating infrastructure resources",
  *     color: "#ffa500",
  * });

@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
+//			awesomeProject, err := gitlab.NewProject(ctx, "awesome_project", &gitlab.ProjectArgs{
+//				Name:            pulumi.String("awesome_project"),
 //				Description:     pulumi.String("My awesome project."),
 //				VisibilityLevel: pulumi.String("public"),
 //			})

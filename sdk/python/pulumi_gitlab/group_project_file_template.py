@@ -124,13 +124,15 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         foo = gitlab.Group("foo",
+            name="group",
             path="group",
             description="An example group")
         bar = gitlab.Project("bar",
+            name="template project",
             description="contains file templates",
             visibility_level="public",
             namespace_id=foo.id)
-        template_link = gitlab.GroupProjectFileTemplate("templateLink",
+        template_link = gitlab.GroupProjectFileTemplate("template_link",
             group_id=foo.id,
             file_template_project_id=bar.id)
         ```
@@ -168,13 +170,15 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         foo = gitlab.Group("foo",
+            name="group",
             path="group",
             description="An example group")
         bar = gitlab.Project("bar",
+            name="template project",
             description="contains file templates",
             visibility_level="public",
             namespace_id=foo.id)
-        template_link = gitlab.GroupProjectFileTemplate("templateLink",
+        template_link = gitlab.GroupProjectFileTemplate("template_link",
             group_id=foo.id,
             file_template_project_id=bar.id)
         ```

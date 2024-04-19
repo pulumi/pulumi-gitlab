@@ -473,14 +473,15 @@ class InstanceCluster(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         bar = gitlab.InstanceCluster("bar",
+            name="bar-cluster",
             domain="example.com",
             enabled=True,
-            environment_scope="*",
             kubernetes_api_url="https://124.124.124",
-            kubernetes_authorization_type="rbac",
+            kubernetes_token="some-token",
             kubernetes_ca_cert="some-cert",
             kubernetes_namespace="namespace",
-            kubernetes_token="some-token",
+            kubernetes_authorization_type="rbac",
+            environment_scope="*",
             management_project_id="123456")
         ```
         <!--End PulumiCodeChooser -->
@@ -528,14 +529,15 @@ class InstanceCluster(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         bar = gitlab.InstanceCluster("bar",
+            name="bar-cluster",
             domain="example.com",
             enabled=True,
-            environment_scope="*",
             kubernetes_api_url="https://124.124.124",
-            kubernetes_authorization_type="rbac",
+            kubernetes_token="some-token",
             kubernetes_ca_cert="some-cert",
             kubernetes_namespace="namespace",
-            kubernetes_token="some-token",
+            kubernetes_authorization_type="rbac",
+            environment_scope="*",
             management_project_id="123456")
         ```
         <!--End PulumiCodeChooser -->

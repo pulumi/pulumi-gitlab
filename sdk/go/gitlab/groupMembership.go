@@ -34,10 +34,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewGroupMembership(ctx, "test", &gitlab.GroupMembershipArgs{
-//				AccessLevel: pulumi.String("guest"),
-//				ExpiresAt:   pulumi.String("2020-12-31"),
 //				GroupId:     pulumi.String("12345"),
 //				UserId:      pulumi.Int(1337),
+//				AccessLevel: pulumi.String("guest"),
+//				ExpiresAt:   pulumi.String("2020-12-31"),
 //			})
 //			if err != nil {
 //				return err

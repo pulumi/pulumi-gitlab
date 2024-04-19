@@ -29,12 +29,14 @@ namespace Pulumi.GitLab
     /// {
     ///     var foo = new GitLab.Group("foo", new()
     ///     {
+    ///         Name = "foo-group",
     ///         Path = "foo-path",
     ///     });
     /// 
     ///     var bar = new GitLab.GroupCluster("bar", new()
     ///     {
     ///         Group = foo.Id,
+    ///         Name = "bar-cluster",
     ///         Domain = "example.com",
     ///         Enabled = true,
     ///         KubernetesApiUrl = "https://124.124.124",

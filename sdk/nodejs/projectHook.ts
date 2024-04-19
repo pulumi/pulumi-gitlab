@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.ProjectHook("example", {
- *     mergeRequestsEvents: true,
  *     project: "example/hooked",
  *     url: "https://example.com/hook/example",
+ *     mergeRequestsEvents: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

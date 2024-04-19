@@ -111,14 +111,15 @@ class ProjectComplianceFramework(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        sample_compliance_framework = gitlab.ComplianceFramework("sampleComplianceFramework",
+        sample = gitlab.ComplianceFramework("sample",
             namespace_path="top-level-group",
+            name="HIPAA",
             description="A HIPAA Compliance Framework",
             color="#87BEEF",
             default=False,
             pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
-        sample_project_compliance_framework = gitlab.ProjectComplianceFramework("sampleProjectComplianceFramework",
-            compliance_framework_id=sample_compliance_framework.framework_id,
+        sample_project_compliance_framework = gitlab.ProjectComplianceFramework("sample",
+            compliance_framework_id=sample.framework_id,
             project="12345678")
         ```
         <!--End PulumiCodeChooser -->
@@ -156,14 +157,15 @@ class ProjectComplianceFramework(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        sample_compliance_framework = gitlab.ComplianceFramework("sampleComplianceFramework",
+        sample = gitlab.ComplianceFramework("sample",
             namespace_path="top-level-group",
+            name="HIPAA",
             description="A HIPAA Compliance Framework",
             color="#87BEEF",
             default=False,
             pipeline_configuration_full_path=".hipaa.yml@top-level-group/compliance-frameworks")
-        sample_project_compliance_framework = gitlab.ProjectComplianceFramework("sampleProjectComplianceFramework",
-            compliance_framework_id=sample_compliance_framework.framework_id,
+        sample_project_compliance_framework = gitlab.ProjectComplianceFramework("sample",
+            compliance_framework_id=sample.framework_id,
             project="12345678")
         ```
         <!--End PulumiCodeChooser -->

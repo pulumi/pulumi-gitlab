@@ -192,9 +192,10 @@ class GroupLabel(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         fixme = gitlab.GroupLabel("fixme",
-            color="#ffcc00",
+            group="example",
+            name="fixme",
             description="issue with failing tests",
-            group="example")
+            color="#ffcc00")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -232,9 +233,10 @@ class GroupLabel(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         fixme = gitlab.GroupLabel("fixme",
-            color="#ffcc00",
+            group="example",
+            name="fixme",
             description="issue with failing tests",
-            group="example")
+            color="#ffcc00")
         ```
         <!--End PulumiCodeChooser -->
 

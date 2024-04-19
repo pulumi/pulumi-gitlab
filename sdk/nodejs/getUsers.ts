@@ -23,9 +23,9 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getUsers({
- *     createdBefore: "2019-01-01",
- *     orderBy: "name",
  *     sort: "desc",
+ *     orderBy: "name",
+ *     createdBefore: "2019-01-01",
  * });
  * const example-two = gitlab.getUsers({
  *     search: "username",
@@ -155,9 +155,9 @@ export interface GetUsersResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getUsers({
- *     createdBefore: "2019-01-01",
- *     orderBy: "name",
  *     sort: "desc",
+ *     orderBy: "name",
+ *     createdBefore: "2019-01-01",
  * });
  * const example-two = gitlab.getUsers({
  *     search: "username",

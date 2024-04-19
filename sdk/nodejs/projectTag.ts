@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * // Create a project for the tag to use
- * const exampleProject = new gitlab.Project("exampleProject", {
+ * const example = new gitlab.Project("example", {
+ *     name: "example",
  *     description: "An example project",
- *     namespaceId: gitlab_group.example.id,
+ *     namespaceId: exampleGitlabGroup.id,
  * });
- * const exampleProjectTag = new gitlab.ProjectTag("exampleProjectTag", {
+ * const exampleProjectTag = new gitlab.ProjectTag("example", {
+ *     name: "example",
  *     ref: "main",
- *     project: exampleProject.id,
+ *     project: example.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

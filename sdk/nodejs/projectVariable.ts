@@ -19,10 +19,10 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.ProjectVariable("example", {
- *     key: "project_variable_key",
  *     project: "12345",
- *     "protected": false,
+ *     key: "project_variable_key",
  *     value: "project_variable_value",
+ *     "protected": false,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

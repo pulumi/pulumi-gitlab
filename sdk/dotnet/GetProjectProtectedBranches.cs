@@ -15,26 +15,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
-        /// 
-        /// ## Example Usage
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = GitLab.GetProjectProtectedBranches.Invoke(new()
-        ///     {
-        ///         ProjectId = "foo/bar/baz",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectProtectedBranchesResult> InvokeAsync(GetProjectProtectedBranchesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectProtectedBranchesResult>("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args ?? new GetProjectProtectedBranchesArgs(), options.WithDefaults());
@@ -43,26 +23,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
-        /// 
-        /// ## Example Usage
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = GitLab.GetProjectProtectedBranches.Invoke(new()
-        ///     {
-        ///         ProjectId = "foo/bar/baz",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectProtectedBranchesResult> Invoke(GetProjectProtectedBranchesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectProtectedBranchesResult>("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args ?? new GetProjectProtectedBranchesInvokeArgs(), options.WithDefaults());

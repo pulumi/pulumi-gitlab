@@ -26,15 +26,16 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a project for the milestone to use
-    ///     var exampleProject = new GitLab.Project("exampleProject", new()
+    ///     var example = new GitLab.Project("example", new()
     ///     {
+    ///         Name = "example",
     ///         Description = "An example project",
-    ///         NamespaceId = gitlab_group.Example.Id,
+    ///         NamespaceId = exampleGitlabGroup.Id,
     ///     });
     /// 
-    ///     var exampleProjectMilestone = new GitLab.ProjectMilestone("exampleProjectMilestone", new()
+    ///     var exampleProjectMilestone = new GitLab.ProjectMilestone("example", new()
     ///     {
-    ///         Project = exampleProject.Id,
+    ///         Project = example.Id,
     ///         Title = "example",
     ///     });
     /// 

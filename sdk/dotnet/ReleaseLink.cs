@@ -26,16 +26,18 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a project
-    ///     var exampleProject = new GitLab.Project("exampleProject", new()
+    ///     var example = new GitLab.Project("example", new()
     ///     {
+    ///         Name = "example",
     ///         Description = "An example project",
     ///     });
     /// 
     ///     // Can create release link only to a tag associated with a release
-    ///     var exampleReleaseLink = new GitLab.ReleaseLink("exampleReleaseLink", new()
+    ///     var exampleReleaseLink = new GitLab.ReleaseLink("example", new()
     ///     {
-    ///         Project = exampleProject.Id,
+    ///         Project = example.Id,
     ///         TagName = "tag_name_associated_with_release",
+    ///         Name = "test",
     ///         Url = "https://test/",
     ///     });
     /// 

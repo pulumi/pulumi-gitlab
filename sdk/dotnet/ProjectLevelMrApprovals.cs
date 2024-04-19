@@ -27,14 +27,15 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooProject = new GitLab.Project("fooProject", new()
+    ///     var foo = new GitLab.Project("foo", new()
     ///     {
+    ///         Name = "Example",
     ///         Description = "My example project",
     ///     });
     /// 
-    ///     var fooProjectLevelMrApprovals = new GitLab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals", new()
+    ///     var fooProjectLevelMrApprovals = new GitLab.ProjectLevelMrApprovals("foo", new()
     ///     {
-    ///         Project = fooProject.Id,
+    ///         Project = foo.Id,
     ///         ResetApprovalsOnPush = true,
     ///         DisableOverridingApproversPerMergeRequest = false,
     ///         MergeRequestsAuthorApproval = false,

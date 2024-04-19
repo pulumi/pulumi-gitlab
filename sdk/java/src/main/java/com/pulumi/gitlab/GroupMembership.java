@@ -48,10 +48,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new GroupMembership(&#34;test&#34;, GroupMembershipArgs.builder()        
- *             .accessLevel(&#34;guest&#34;)
- *             .expiresAt(&#34;2020-12-31&#34;)
  *             .groupId(&#34;12345&#34;)
  *             .userId(1337)
+ *             .accessLevel(&#34;guest&#34;)
+ *             .expiresAt(&#34;2020-12-31&#34;)
  *             .build());
  * 
  *     }

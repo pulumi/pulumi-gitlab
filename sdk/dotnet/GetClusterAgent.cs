@@ -31,8 +31,8 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetClusterAgent.Invoke(new()
         ///     {
-        ///         AgentId = 1,
         ///         Project = "12345",
+        ///         AgentId = 1,
         ///     });
         /// 
         /// });
@@ -62,8 +62,8 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetClusterAgent.Invoke(new()
         ///     {
-        ///         AgentId = 1,
         ///         Project = "12345",
+        ///         AgentId = 1,
         ///     });
         /// 
         /// });

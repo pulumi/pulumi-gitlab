@@ -29,17 +29,17 @@ namespace Pulumi.GitLab
     /// {
     ///     var test = new GitLab.ProjectMembership("test", new()
     ///     {
-    ///         AccessLevel = "guest",
     ///         Project = "12345",
     ///         UserId = 1337,
+    ///         AccessLevel = "guest",
     ///     });
     /// 
     ///     var example = new GitLab.ProjectMembership("example", new()
     ///     {
-    ///         AccessLevel = "guest",
-    ///         ExpiresAt = "2022-12-31",
     ///         Project = "67890",
     ///         UserId = 1234,
+    ///         AccessLevel = "guest",
+    ///         ExpiresAt = "2022-12-31",
     ///     });
     /// 
     /// });

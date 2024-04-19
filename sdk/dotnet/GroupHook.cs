@@ -28,31 +28,31 @@ namespace Pulumi.GitLab
     ///     var example = new GitLab.GroupHook("example", new()
     ///     {
     ///         Group = "example/hooked",
-    ///         MergeRequestsEvents = true,
     ///         Url = "https://example.com/hook/example",
+    ///         MergeRequestsEvents = true,
     ///     });
     /// 
     ///     // Setting all attributes
-    ///     var allAttributes = new GitLab.GroupHook("allAttributes", new()
+    ///     var allAttributes = new GitLab.GroupHook("all_attributes", new()
     ///     {
-    ///         ConfidentialIssuesEvents = false,
-    ///         ConfidentialNoteEvents = true,
-    ///         DeploymentEvents = true,
-    ///         EnableSslVerification = false,
     ///         Group = "1",
-    ///         IssuesEvents = false,
-    ///         JobEvents = true,
-    ///         MergeRequestsEvents = true,
-    ///         NoteEvents = true,
-    ///         PipelineEvents = true,
+    ///         Url = "http://example.com",
+    ///         Token = "supersecret",
+    ///         EnableSslVerification = false,
     ///         PushEvents = true,
     ///         PushEventsBranchFilter = "devel",
+    ///         IssuesEvents = false,
+    ///         ConfidentialIssuesEvents = false,
+    ///         MergeRequestsEvents = true,
+    ///         TagPushEvents = true,
+    ///         NoteEvents = true,
+    ///         ConfidentialNoteEvents = true,
+    ///         JobEvents = true,
+    ///         PipelineEvents = true,
+    ///         WikiPageEvents = true,
+    ///         DeploymentEvents = true,
     ///         ReleasesEvents = true,
     ///         SubgroupEvents = true,
-    ///         TagPushEvents = true,
-    ///         Token = "supersecret",
-    ///         Url = "http://example.com",
-    ///         WikiPageEvents = true,
     ///     });
     /// 
     /// });

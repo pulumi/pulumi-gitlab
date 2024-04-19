@@ -188,9 +188,9 @@ class ProjectShareGroup(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.ProjectShareGroup("test",
-            group_access="guest",
+            project="12345",
             group_id=1337,
-            project="12345")
+            group_access="guest")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -228,9 +228,9 @@ class ProjectShareGroup(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.ProjectShareGroup("test",
-            group_access="guest",
+            project="12345",
             group_id=1337,
-            project="12345")
+            group_access="guest")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -46,8 +46,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sampleComplianceFramework = new ComplianceFramework(&#34;sampleComplianceFramework&#34;, ComplianceFrameworkArgs.builder()        
+ *         var sample = new ComplianceFramework(&#34;sample&#34;, ComplianceFrameworkArgs.builder()        
  *             .namespacePath(&#34;top-level-group&#34;)
+ *             .name(&#34;HIPAA&#34;)
  *             .description(&#34;A HIPAA Compliance Framework&#34;)
  *             .color(&#34;#87BEEF&#34;)
  *             .default_(false)
@@ -55,7 +56,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sampleProjectComplianceFramework = new ProjectComplianceFramework(&#34;sampleProjectComplianceFramework&#34;, ProjectComplianceFrameworkArgs.builder()        
- *             .complianceFrameworkId(sampleComplianceFramework.frameworkId())
+ *             .complianceFrameworkId(sample.frameworkId())
  *             .project(&#34;12345678&#34;)
  *             .build());
  * 

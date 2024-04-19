@@ -24,16 +24,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const exampleProjectAccessToken = new gitlab.ProjectAccessToken("exampleProjectAccessToken", {
+ * const example = new gitlab.ProjectAccessToken("example", {
  *     project: "25",
+ *     name: "Example project access token",
  *     expiresAt: "2020-03-14",
  *     accessLevel: "reporter",
  *     scopes: ["api"],
  * });
- * const exampleProjectVariable = new gitlab.ProjectVariable("exampleProjectVariable", {
- *     project: gitlab_project.example.id,
+ * const exampleProjectVariable = new gitlab.ProjectVariable("example", {
+ *     project: exampleGitlabProject.id,
  *     key: "pat",
- *     value: exampleProjectAccessToken.token,
+ *     value: example.token,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

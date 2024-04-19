@@ -236,14 +236,17 @@ class ProjectEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        this_group = gitlab.Group("thisGroup",
+        this = gitlab.Group("this",
+            name="example",
             path="example",
             description="An example group")
-        this_project = gitlab.Project("thisProject",
-            namespace_id=this_group.id,
+        this_project = gitlab.Project("this",
+            name="example",
+            namespace_id=this.id,
             initialize_with_readme=True)
-        this_project_environment = gitlab.ProjectEnvironment("thisProjectEnvironment",
+        this_project_environment = gitlab.ProjectEnvironment("this",
             project=this_project.id,
+            name="example",
             external_url="www.example.com")
         ```
         <!--End PulumiCodeChooser -->
@@ -277,14 +280,17 @@ class ProjectEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        this_group = gitlab.Group("thisGroup",
+        this = gitlab.Group("this",
+            name="example",
             path="example",
             description="An example group")
-        this_project = gitlab.Project("thisProject",
-            namespace_id=this_group.id,
+        this_project = gitlab.Project("this",
+            name="example",
+            namespace_id=this.id,
             initialize_with_readme=True)
-        this_project_environment = gitlab.ProjectEnvironment("thisProjectEnvironment",
+        this_project_environment = gitlab.ProjectEnvironment("this",
             project=this_project.id,
+            name="example",
             external_url="www.example.com")
         ```
         <!--End PulumiCodeChooser -->

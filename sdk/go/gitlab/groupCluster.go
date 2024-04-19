@@ -34,6 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := gitlab.NewGroup(ctx, "foo", &gitlab.GroupArgs{
+//				Name: pulumi.String("foo-group"),
 //				Path: pulumi.String("foo-path"),
 //			})
 //			if err != nil {
@@ -41,6 +42,7 @@ import (
 //			}
 //			_, err = gitlab.NewGroupCluster(ctx, "bar", &gitlab.GroupClusterArgs{
 //				Group:                       foo.ID(),
+//				Name:                        pulumi.String("bar-cluster"),
 //				Domain:                      pulumi.String("example.com"),
 //				Enabled:                     pulumi.Bool(true),
 //				KubernetesApiUrl:            pulumi.String("https://124.124.124"),

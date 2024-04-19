@@ -382,6 +382,60 @@ class BranchProtection(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        branch_protect = gitlab.BranchProtection("BranchProtect",
+            project="12345",
+            branch="BranchProtected",
+            push_access_level="developer",
+            merge_access_level="developer",
+            unprotect_access_level="developer",
+            allow_force_push=True,
+            code_owner_approval_required=True,
+            allowed_to_pushes=[
+                gitlab.BranchProtectionAllowedToPushArgs(
+                    user_id=5,
+                ),
+                gitlab.BranchProtectionAllowedToPushArgs(
+                    user_id=521,
+                ),
+            ],
+            allowed_to_merges=[
+                gitlab.BranchProtectionAllowedToMergeArgs(
+                    user_id=15,
+                ),
+                gitlab.BranchProtectionAllowedToMergeArgs(
+                    user_id=37,
+                ),
+            ],
+            allowed_to_unprotects=[
+                gitlab.BranchProtectionAllowedToUnprotectArgs(
+                    user_id=15,
+                ),
+                gitlab.BranchProtectionAllowedToUnprotectArgs(
+                    group_id=42,
+                ),
+            ])
+        # Example using dynamic block
+        main = gitlab.BranchProtection("main",
+            allowed_to_pushes=[gitlab.BranchProtectionAllowedToPushArgs(
+                user_id=entry["value"],
+            ) for entry in [{"key": k, "value": v} for k, v in [
+                50,
+                55,
+                60,
+            ]]],
+            project="12345",
+            branch="main",
+            push_access_level="maintainer",
+            merge_access_level="maintainer",
+            unprotect_access_level="maintainer")
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
@@ -411,6 +465,60 @@ class BranchProtection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        branch_protect = gitlab.BranchProtection("BranchProtect",
+            project="12345",
+            branch="BranchProtected",
+            push_access_level="developer",
+            merge_access_level="developer",
+            unprotect_access_level="developer",
+            allow_force_push=True,
+            code_owner_approval_required=True,
+            allowed_to_pushes=[
+                gitlab.BranchProtectionAllowedToPushArgs(
+                    user_id=5,
+                ),
+                gitlab.BranchProtectionAllowedToPushArgs(
+                    user_id=521,
+                ),
+            ],
+            allowed_to_merges=[
+                gitlab.BranchProtectionAllowedToMergeArgs(
+                    user_id=15,
+                ),
+                gitlab.BranchProtectionAllowedToMergeArgs(
+                    user_id=37,
+                ),
+            ],
+            allowed_to_unprotects=[
+                gitlab.BranchProtectionAllowedToUnprotectArgs(
+                    user_id=15,
+                ),
+                gitlab.BranchProtectionAllowedToUnprotectArgs(
+                    group_id=42,
+                ),
+            ])
+        # Example using dynamic block
+        main = gitlab.BranchProtection("main",
+            allowed_to_pushes=[gitlab.BranchProtectionAllowedToPushArgs(
+                user_id=entry["value"],
+            ) for entry in [{"key": k, "value": v} for k, v in [
+                50,
+                55,
+                60,
+            ]]],
+            project="12345",
+            branch="main",
+            push_access_level="maintainer",
+            merge_access_level="maintainer",
+            unprotect_access_level="maintainer")
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

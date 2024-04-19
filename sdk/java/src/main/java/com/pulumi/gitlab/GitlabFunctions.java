@@ -305,40 +305,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetBranchArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getBranch(GetBranchArgs.builder()
-     *             .name(&#34;example&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetBranchResult> getBranch(GetBranchArgs args) {
         return getBranch(args, InvokeOptions.Empty);
@@ -347,40 +313,6 @@ public final class GitlabFunctions {
      * The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetBranchArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getBranch(GetBranchArgs.builder()
-     *             .name(&#34;example&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBranchResult> getBranchPlain(GetBranchPlainArgs args) {
@@ -391,40 +323,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetBranchArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getBranch(GetBranchArgs.builder()
-     *             .name(&#34;example&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetBranchResult> getBranch(GetBranchArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getBranch:getBranch", TypeShape.of(GetBranchResult.class), args, Utilities.withVersion(options));
@@ -433,40 +331,6 @@ public final class GitlabFunctions {
      * The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetBranchArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getBranch(GetBranchArgs.builder()
-     *             .name(&#34;example&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBranchResult> getBranchPlain(GetBranchPlainArgs args, InvokeOptions options) {
@@ -504,8 +368,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getClusterAgent(GetClusterAgentArgs.builder()
-     *             .agentId(1)
      *             .project(&#34;12345&#34;)
+     *             .agentId(1)
      *             .build());
      * 
      *     }
@@ -549,8 +413,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getClusterAgent(GetClusterAgentArgs.builder()
-     *             .agentId(1)
      *             .project(&#34;12345&#34;)
+     *             .agentId(1)
      *             .build());
      * 
      *     }
@@ -594,8 +458,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getClusterAgent(GetClusterAgentArgs.builder()
-     *             .agentId(1)
      *             .project(&#34;12345&#34;)
+     *             .agentId(1)
      *             .build());
      * 
      *     }
@@ -639,8 +503,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getClusterAgent(GetClusterAgentArgs.builder()
-     *             .agentId(1)
      *             .project(&#34;12345&#34;)
+     *             .agentId(1)
      *             .build());
      * 
      *     }
@@ -858,8 +722,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .name(&#34;HIPAA&#34;)
      *             .namespacePath(&#34;top-level-group&#34;)
+     *             .name(&#34;HIPAA&#34;)
      *             .build());
      * 
      *     }
@@ -901,8 +765,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .name(&#34;HIPAA&#34;)
      *             .namespacePath(&#34;top-level-group&#34;)
+     *             .name(&#34;HIPAA&#34;)
      *             .build());
      * 
      *     }
@@ -944,8 +808,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .name(&#34;HIPAA&#34;)
      *             .namespacePath(&#34;top-level-group&#34;)
+     *             .name(&#34;HIPAA&#34;)
      *             .build());
      * 
      *     }
@@ -987,8 +851,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .name(&#34;HIPAA&#34;)
      *             .namespacePath(&#34;top-level-group&#34;)
+     *             .name(&#34;HIPAA&#34;)
      *             .build());
      * 
      *     }
@@ -1239,39 +1103,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetGroupResult> getGroup() {
         return getGroup(GetGroupArgs.Empty, InvokeOptions.Empty);
@@ -1280,39 +1111,6 @@ public final class GitlabFunctions {
      * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain() {
@@ -1323,39 +1121,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args) {
         return getGroup(args, InvokeOptions.Empty);
@@ -1364,39 +1129,6 @@ public final class GitlabFunctions {
      * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args) {
@@ -1407,39 +1139,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
@@ -1448,39 +1147,6 @@ public final class GitlabFunctions {
      * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args, InvokeOptions options) {
@@ -1516,12 +1182,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleGroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
      *             .id(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
-     *         final var exampleGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(exampleGroup.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
+     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
      *             .hookId(1)
      *             .build());
      * 
@@ -1564,12 +1230,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleGroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
      *             .id(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
-     *         final var exampleGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(exampleGroup.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
+     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
      *             .hookId(1)
      *             .build());
      * 
@@ -1612,12 +1278,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleGroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
      *             .id(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
-     *         final var exampleGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(exampleGroup.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
+     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
      *             .hookId(1)
      *             .build());
      * 
@@ -1660,12 +1326,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleGroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
      *             .id(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
-     *         final var exampleGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(exampleGroup.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
+     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
      *             .hookId(1)
      *             .build());
      * 
@@ -1871,39 +1537,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroupMembership(GetGroupMembershipArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetGroupMembershipResult> getGroupMembership() {
         return getGroupMembership(GetGroupMembershipArgs.Empty, InvokeOptions.Empty);
@@ -1912,39 +1545,6 @@ public final class GitlabFunctions {
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroupMembership(GetGroupMembershipArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain() {
@@ -1955,39 +1555,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroupMembership(GetGroupMembershipArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetGroupMembershipResult> getGroupMembership(GetGroupMembershipArgs args) {
         return getGroupMembership(args, InvokeOptions.Empty);
@@ -1996,39 +1563,6 @@ public final class GitlabFunctions {
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroupMembership(GetGroupMembershipArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain(GetGroupMembershipPlainArgs args) {
@@ -2039,39 +1573,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroupMembership(GetGroupMembershipArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetGroupMembershipResult> getGroupMembership(GetGroupMembershipArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupMembership:getGroupMembership", TypeShape.of(GetGroupMembershipResult.class), args, Utilities.withVersion(options));
@@ -2080,39 +1581,6 @@ public final class GitlabFunctions {
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroupMembership(GetGroupMembershipArgs.builder()
-     *             .fullPath(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain(GetGroupMembershipPlainArgs args, InvokeOptions options) {
@@ -2147,11 +1615,11 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var subgroupsGroupSubgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
+     *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
      *             .groupId(&#34;123456&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;subgroups&#34;, subgroupsGroupSubgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *         ctx.export(&#34;subgroups&#34;, subgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
      *     }
      * }
      * ```
@@ -2190,11 +1658,11 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var subgroupsGroupSubgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
+     *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
      *             .groupId(&#34;123456&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;subgroups&#34;, subgroupsGroupSubgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *         ctx.export(&#34;subgroups&#34;, subgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
      *     }
      * }
      * ```
@@ -2233,11 +1701,11 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var subgroupsGroupSubgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
+     *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
      *             .groupId(&#34;123456&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;subgroups&#34;, subgroupsGroupSubgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *         ctx.export(&#34;subgroups&#34;, subgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
      *     }
      * }
      * ```
@@ -2276,11 +1744,11 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var subgroupsGroupSubgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
+     *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
      *             .groupId(&#34;123456&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;subgroups&#34;, subgroupsGroupSubgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *         ctx.export(&#34;subgroups&#34;, subgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
      *     }
      * }
      * ```
@@ -2324,10 +1792,11 @@ public final class GitlabFunctions {
      *             .key(&#34;foo&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var bar = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .group(&#34;my/example/group&#34;)
      *             .key(&#34;bar&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -2373,10 +1842,11 @@ public final class GitlabFunctions {
      *             .key(&#34;foo&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var bar = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .group(&#34;my/example/group&#34;)
      *             .key(&#34;bar&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -2422,10 +1892,11 @@ public final class GitlabFunctions {
      *             .key(&#34;foo&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var bar = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .group(&#34;my/example/group&#34;)
      *             .key(&#34;bar&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -2471,10 +1942,11 @@ public final class GitlabFunctions {
      *             .key(&#34;foo&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var bar = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .group(&#34;my/example/group&#34;)
      *             .key(&#34;bar&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -2519,9 +1991,10 @@ public final class GitlabFunctions {
      *             .group(&#34;my/example/group&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .group(&#34;my/example/group&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -2566,9 +2039,10 @@ public final class GitlabFunctions {
      *             .group(&#34;my/example/group&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .group(&#34;my/example/group&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -2613,9 +2087,10 @@ public final class GitlabFunctions {
      *             .group(&#34;my/example/group&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .group(&#34;my/example/group&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -2660,9 +2135,10 @@ public final class GitlabFunctions {
      *             .group(&#34;my/example/group&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .group(&#34;my/example/group&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -2708,8 +2184,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
@@ -2759,8 +2235,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
@@ -2810,8 +2286,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
@@ -2861,8 +2337,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
@@ -2912,8 +2388,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
@@ -2963,8 +2439,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
@@ -2987,39 +2463,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetInstanceDeployKeysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getInstanceDeployKeys(GetInstanceDeployKeysArgs.builder()
-     *             .public_(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetInstanceDeployKeysResult> getInstanceDeployKeys() {
         return getInstanceDeployKeys(GetInstanceDeployKeysArgs.Empty, InvokeOptions.Empty);
@@ -3030,39 +2473,6 @@ public final class GitlabFunctions {
      * &gt; This data source requires administration privileges.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetInstanceDeployKeysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getInstanceDeployKeys(GetInstanceDeployKeysArgs.builder()
-     *             .public_(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceDeployKeysResult> getInstanceDeployKeysPlain() {
@@ -3075,39 +2485,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetInstanceDeployKeysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getInstanceDeployKeys(GetInstanceDeployKeysArgs.builder()
-     *             .public_(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetInstanceDeployKeysResult> getInstanceDeployKeys(GetInstanceDeployKeysArgs args) {
         return getInstanceDeployKeys(args, InvokeOptions.Empty);
@@ -3118,39 +2495,6 @@ public final class GitlabFunctions {
      * &gt; This data source requires administration privileges.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetInstanceDeployKeysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getInstanceDeployKeys(GetInstanceDeployKeysArgs.builder()
-     *             .public_(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceDeployKeysResult> getInstanceDeployKeysPlain(GetInstanceDeployKeysPlainArgs args) {
@@ -3163,39 +2507,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetInstanceDeployKeysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getInstanceDeployKeys(GetInstanceDeployKeysArgs.builder()
-     *             .public_(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetInstanceDeployKeysResult> getInstanceDeployKeys(GetInstanceDeployKeysArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", TypeShape.of(GetInstanceDeployKeysResult.class), args, Utilities.withVersion(options));
@@ -3206,39 +2517,6 @@ public final class GitlabFunctions {
      * &gt; This data source requires administration privileges.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetInstanceDeployKeysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getInstanceDeployKeys(GetInstanceDeployKeysArgs.builder()
-     *             .public_(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceDeployKeysResult> getInstanceDeployKeysPlain(GetInstanceDeployKeysPlainArgs args, InvokeOptions options) {
@@ -3885,39 +3163,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetProjectResult> getProject() {
         return getProject(GetProjectArgs.Empty, InvokeOptions.Empty);
@@ -3926,39 +3171,6 @@ public final class GitlabFunctions {
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain() {
@@ -3969,39 +3181,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
         return getProject(args, InvokeOptions.Empty);
@@ -4010,39 +3189,6 @@ public final class GitlabFunctions {
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
@@ -4053,39 +3199,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
@@ -4094,39 +3207,6 @@ public final class GitlabFunctions {
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
@@ -4137,39 +3217,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectBranches(GetProjectBranchesArgs.builder()
-     *             .project(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetProjectBranchesResult> getProjectBranches(GetProjectBranchesArgs args) {
         return getProjectBranches(args, InvokeOptions.Empty);
@@ -4178,39 +3225,6 @@ public final class GitlabFunctions {
      * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectBranches(GetProjectBranchesArgs.builder()
-     *             .project(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectBranchesResult> getProjectBranchesPlain(GetProjectBranchesPlainArgs args) {
@@ -4221,39 +3235,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectBranches(GetProjectBranchesArgs.builder()
-     *             .project(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetProjectBranchesResult> getProjectBranches(GetProjectBranchesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getProjectBranches:getProjectBranches", TypeShape.of(GetProjectBranchesResult.class), args, Utilities.withVersion(options));
@@ -4262,39 +3243,6 @@ public final class GitlabFunctions {
      * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectBranches(GetProjectBranchesArgs.builder()
-     *             .project(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectBranchesResult> getProjectBranchesPlain(GetProjectBranchesPlainArgs args, InvokeOptions options) {
@@ -4330,12 +3278,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleProject = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
      *             .id(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
-     *         final var exampleProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(exampleProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
+     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
      *             .hookId(1)
      *             .build());
      * 
@@ -4378,12 +3326,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleProject = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
      *             .id(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
-     *         final var exampleProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(exampleProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
+     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
      *             .hookId(1)
      *             .build());
      * 
@@ -4426,12 +3374,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleProject = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
      *             .id(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
-     *         final var exampleProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(exampleProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
+     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
      *             .hookId(1)
      *             .build());
      * 
@@ -4474,12 +3422,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleProject = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
      *             .id(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
-     *         final var exampleProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(exampleProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
+     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
      *             .hookId(1)
      *             .build());
      * 
@@ -4719,7 +3667,7 @@ public final class GitlabFunctions {
      *             .iid(1)
      *             .build());
      * 
-     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, data.gitlab_project_issue().web_url());
+     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, webUrl);
      *     }
      * }
      * ```
@@ -4768,7 +3716,7 @@ public final class GitlabFunctions {
      *             .iid(1)
      *             .build());
      * 
-     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, data.gitlab_project_issue().web_url());
+     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, webUrl);
      *     }
      * }
      * ```
@@ -4817,7 +3765,7 @@ public final class GitlabFunctions {
      *             .iid(1)
      *             .build());
      * 
-     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, data.gitlab_project_issue().web_url());
+     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, webUrl);
      *     }
      * }
      * ```
@@ -4866,7 +3814,7 @@ public final class GitlabFunctions {
      *             .iid(1)
      *             .build());
      * 
-     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, data.gitlab_project_issue().web_url());
+     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, webUrl);
      *     }
      * }
      * ```
@@ -5075,40 +4023,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMembership(GetProjectMembershipArgs.builder()
-     *             .inherited(true)
-     *             .projectId(123)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetProjectMembershipResult> getProjectMembership() {
         return getProjectMembership(GetProjectMembershipArgs.Empty, InvokeOptions.Empty);
@@ -5119,40 +4033,6 @@ public final class GitlabFunctions {
      * &gt; **Note** exactly one of project_id or full_path must be provided.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMembership(GetProjectMembershipArgs.builder()
-     *             .inherited(true)
-     *             .projectId(123)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain() {
@@ -5165,40 +4045,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMembership(GetProjectMembershipArgs.builder()
-     *             .inherited(true)
-     *             .projectId(123)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetProjectMembershipResult> getProjectMembership(GetProjectMembershipArgs args) {
         return getProjectMembership(args, InvokeOptions.Empty);
@@ -5209,40 +4055,6 @@ public final class GitlabFunctions {
      * &gt; **Note** exactly one of project_id or full_path must be provided.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMembership(GetProjectMembershipArgs.builder()
-     *             .inherited(true)
-     *             .projectId(123)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain(GetProjectMembershipPlainArgs args) {
@@ -5255,40 +4067,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMembership(GetProjectMembershipArgs.builder()
-     *             .inherited(true)
-     *             .projectId(123)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetProjectMembershipResult> getProjectMembership(GetProjectMembershipArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getProjectMembership:getProjectMembership", TypeShape.of(GetProjectMembershipResult.class), args, Utilities.withVersion(options));
@@ -5300,40 +4078,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMembershipArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMembership(GetProjectMembershipArgs.builder()
-     *             .inherited(true)
-     *             .projectId(123)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain(GetProjectMembershipPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectMembership:getProjectMembership", TypeShape.of(GetProjectMembershipResult.class), args, Utilities.withVersion(options));
@@ -5342,40 +4086,6 @@ public final class GitlabFunctions {
      * The `gitlab.ProjectMilestone` data source allows get details of a project milestone.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMilestoneArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMilestone(GetProjectMilestoneArgs.builder()
-     *             .milestoneId(10)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMilestoneResult> getProjectMilestone(GetProjectMilestoneArgs args) {
@@ -5386,40 +4096,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMilestoneArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMilestone(GetProjectMilestoneArgs.builder()
-     *             .milestoneId(10)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectMilestoneResult> getProjectMilestonePlain(GetProjectMilestonePlainArgs args) {
         return getProjectMilestonePlain(args, InvokeOptions.Empty);
@@ -5428,40 +4104,6 @@ public final class GitlabFunctions {
      * The `gitlab.ProjectMilestone` data source allows get details of a project milestone.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMilestoneArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMilestone(GetProjectMilestoneArgs.builder()
-     *             .milestoneId(10)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMilestoneResult> getProjectMilestone(GetProjectMilestoneArgs args, InvokeOptions options) {
@@ -5472,40 +4114,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMilestoneArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMilestone(GetProjectMilestoneArgs.builder()
-     *             .milestoneId(10)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectMilestoneResult> getProjectMilestonePlain(GetProjectMilestonePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectMilestone:getProjectMilestone", TypeShape.of(GetProjectMilestoneResult.class), args, Utilities.withVersion(options));
@@ -5514,39 +4122,6 @@ public final class GitlabFunctions {
      * The `gitlab.getProjectMilestones` data source allows get details of a project milestones.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMilestonesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMilestones(GetProjectMilestonesArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMilestonesResult> getProjectMilestones(GetProjectMilestonesArgs args) {
@@ -5557,39 +4132,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMilestonesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMilestones(GetProjectMilestonesArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectMilestonesResult> getProjectMilestonesPlain(GetProjectMilestonesPlainArgs args) {
         return getProjectMilestonesPlain(args, InvokeOptions.Empty);
@@ -5598,39 +4140,6 @@ public final class GitlabFunctions {
      * The `gitlab.getProjectMilestones` data source allows get details of a project milestones.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMilestonesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMilestones(GetProjectMilestonesArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectMilestonesResult> getProjectMilestones(GetProjectMilestonesArgs args, InvokeOptions options) {
@@ -5641,39 +4150,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectMilestonesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectMilestones(GetProjectMilestonesArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectMilestonesResult> getProjectMilestonesPlain(GetProjectMilestonesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectMilestones:getProjectMilestones", TypeShape.of(GetProjectMilestonesResult.class), args, Utilities.withVersion(options));
@@ -5682,40 +4158,6 @@ public final class GitlabFunctions {
      * The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectProtectedBranchArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectProtectedBranch(GetProjectProtectedBranchArgs.builder()
-     *             .name(&#34;main&#34;)
-     *             .projectId(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectProtectedBranchResult> getProjectProtectedBranch(GetProjectProtectedBranchArgs args) {
@@ -5726,40 +4168,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectProtectedBranchArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectProtectedBranch(GetProjectProtectedBranchArgs.builder()
-     *             .name(&#34;main&#34;)
-     *             .projectId(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectProtectedBranchResult> getProjectProtectedBranchPlain(GetProjectProtectedBranchPlainArgs args) {
         return getProjectProtectedBranchPlain(args, InvokeOptions.Empty);
@@ -5768,40 +4176,6 @@ public final class GitlabFunctions {
      * The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectProtectedBranchArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectProtectedBranch(GetProjectProtectedBranchArgs.builder()
-     *             .name(&#34;main&#34;)
-     *             .projectId(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectProtectedBranchResult> getProjectProtectedBranch(GetProjectProtectedBranchArgs args, InvokeOptions options) {
@@ -5812,40 +4186,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectProtectedBranchArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectProtectedBranch(GetProjectProtectedBranchArgs.builder()
-     *             .name(&#34;main&#34;)
-     *             .projectId(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectProtectedBranchResult> getProjectProtectedBranchPlain(GetProjectProtectedBranchPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", TypeShape.of(GetProjectProtectedBranchResult.class), args, Utilities.withVersion(options));
@@ -5854,39 +4194,6 @@ public final class GitlabFunctions {
      * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectProtectedBranchesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectProtectedBranches(GetProjectProtectedBranchesArgs.builder()
-     *             .projectId(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectProtectedBranchesResult> getProjectProtectedBranches(GetProjectProtectedBranchesArgs args) {
@@ -5897,39 +4204,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectProtectedBranchesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectProtectedBranches(GetProjectProtectedBranchesArgs.builder()
-     *             .projectId(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectProtectedBranchesResult> getProjectProtectedBranchesPlain(GetProjectProtectedBranchesPlainArgs args) {
         return getProjectProtectedBranchesPlain(args, InvokeOptions.Empty);
@@ -5938,39 +4212,6 @@ public final class GitlabFunctions {
      * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectProtectedBranchesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectProtectedBranches(GetProjectProtectedBranchesArgs.builder()
-     *             .projectId(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectProtectedBranchesResult> getProjectProtectedBranches(GetProjectProtectedBranchesArgs args, InvokeOptions options) {
@@ -5981,39 +4222,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectProtectedBranchesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectProtectedBranches(GetProjectProtectedBranchesArgs.builder()
-     *             .projectId(&#34;foo/bar/baz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectProtectedBranchesResult> getProjectProtectedBranchesPlain(GetProjectProtectedBranchesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", TypeShape.of(GetProjectProtectedBranchesResult.class), args, Utilities.withVersion(options));
@@ -6022,40 +4230,6 @@ public final class GitlabFunctions {
      * The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
      * 
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectTagArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getProjectTag(GetProjectTagArgs.builder()
-     *             .name(&#34;example&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectTagResult> getProjectTag(GetProjectTagArgs args) {
@@ -6066,40 +4240,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectTagArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getProjectTag(GetProjectTagArgs.builder()
-     *             .name(&#34;example&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectTagResult> getProjectTagPlain(GetProjectTagPlainArgs args) {
         return getProjectTagPlain(args, InvokeOptions.Empty);
@@ -6108,40 +4248,6 @@ public final class GitlabFunctions {
      * The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
      * 
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectTagArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getProjectTag(GetProjectTagArgs.builder()
-     *             .name(&#34;example&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectTagResult> getProjectTag(GetProjectTagArgs args, InvokeOptions options) {
@@ -6152,40 +4258,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectTagArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getProjectTag(GetProjectTagArgs.builder()
-     *             .name(&#34;example&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectTagResult> getProjectTagPlain(GetProjectTagPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectTag:getProjectTag", TypeShape.of(GetProjectTagResult.class), args, Utilities.withVersion(options));
@@ -6194,39 +4266,6 @@ public final class GitlabFunctions {
      * The `gitlab.getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectTagsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectTags(GetProjectTagsArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectTagsResult> getProjectTags(GetProjectTagsArgs args) {
@@ -6237,39 +4276,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectTagsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectTags(GetProjectTagsArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetProjectTagsResult> getProjectTagsPlain(GetProjectTagsPlainArgs args) {
         return getProjectTagsPlain(args, InvokeOptions.Empty);
@@ -6279,39 +4285,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectTagsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectTags(GetProjectTagsArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetProjectTagsResult> getProjectTags(GetProjectTagsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getProjectTags:getProjectTags", TypeShape.of(GetProjectTagsResult.class), args, Utilities.withVersion(options));
@@ -6320,39 +4293,6 @@ public final class GitlabFunctions {
      * The `gitlab.getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetProjectTagsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getProjectTags(GetProjectTagsArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectTagsResult> getProjectTagsPlain(GetProjectTagsPlainArgs args, InvokeOptions options) {
@@ -6388,14 +4328,15 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .key(&#34;foo&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .key(&#34;foo&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var bar = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
-     *             .key(&#34;bar&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .key(&#34;bar&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -6437,14 +4378,15 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .key(&#34;foo&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .key(&#34;foo&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var bar = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
-     *             .key(&#34;bar&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .key(&#34;bar&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -6486,14 +4428,15 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .key(&#34;foo&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .key(&#34;foo&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var bar = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
-     *             .key(&#34;bar&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .key(&#34;bar&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -6535,14 +4478,15 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .key(&#34;foo&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .key(&#34;foo&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var bar = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
-     *             .key(&#34;bar&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .key(&#34;bar&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -6587,9 +4531,10 @@ public final class GitlabFunctions {
      *             .project(&#34;my/example/project&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -6634,9 +4579,10 @@ public final class GitlabFunctions {
      *             .project(&#34;my/example/project&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -6681,9 +4627,10 @@ public final class GitlabFunctions {
      *             .project(&#34;my/example/project&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -6728,9 +4675,10 @@ public final class GitlabFunctions {
      *             .project(&#34;my/example/project&#34;)
      *             .build());
      * 
+     *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .environmentScope(&#34;staging/*&#34;)
      *             .project(&#34;my/example/project&#34;)
+     *             .environmentScope(&#34;staging/*&#34;)
      *             .build());
      * 
      *     }
@@ -6776,6 +4724,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
      *             .fullPath(&#34;mygroup&#34;)
      *             .build());
@@ -6787,6 +4736,7 @@ public final class GitlabFunctions {
      *             .withShared(false)
      *             .build());
      * 
+     *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
      *             .search(&#34;postgresql&#34;)
      *             .visibility(&#34;private&#34;)
@@ -6835,6 +4785,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
      *             .fullPath(&#34;mygroup&#34;)
      *             .build());
@@ -6846,6 +4797,7 @@ public final class GitlabFunctions {
      *             .withShared(false)
      *             .build());
      * 
+     *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
      *             .search(&#34;postgresql&#34;)
      *             .visibility(&#34;private&#34;)
@@ -6894,6 +4846,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
      *             .fullPath(&#34;mygroup&#34;)
      *             .build());
@@ -6905,6 +4858,7 @@ public final class GitlabFunctions {
      *             .withShared(false)
      *             .build());
      * 
+     *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
      *             .search(&#34;postgresql&#34;)
      *             .visibility(&#34;private&#34;)
@@ -6953,6 +4907,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
      *             .fullPath(&#34;mygroup&#34;)
      *             .build());
@@ -6964,6 +4919,7 @@ public final class GitlabFunctions {
      *             .withShared(false)
      *             .build());
      * 
+     *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
      *             .search(&#34;postgresql&#34;)
      *             .visibility(&#34;private&#34;)
@@ -7012,6 +4968,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
      *             .fullPath(&#34;mygroup&#34;)
      *             .build());
@@ -7023,6 +4980,7 @@ public final class GitlabFunctions {
      *             .withShared(false)
      *             .build());
      * 
+     *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
      *             .search(&#34;postgresql&#34;)
      *             .visibility(&#34;private&#34;)
@@ -7071,6 +5029,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
      *             .fullPath(&#34;mygroup&#34;)
      *             .build());
@@ -7082,6 +5041,7 @@ public final class GitlabFunctions {
      *             .withShared(false)
      *             .build());
      * 
+     *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
      *             .search(&#34;postgresql&#34;)
      *             .visibility(&#34;private&#34;)
@@ -7125,6 +5085,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
      *             .projectId(1234)
      *             .tagName(&#34;v1.0&#34;)
@@ -7168,6 +5129,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
      *             .projectId(1234)
      *             .tagName(&#34;v1.0&#34;)
@@ -7211,6 +5173,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
      *             .projectId(1234)
      *             .tagName(&#34;v1.0&#34;)
@@ -7254,6 +5217,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
      *             .projectId(1234)
      *             .tagName(&#34;v1.0&#34;)
@@ -7273,41 +5237,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetReleaseLinkArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getReleaseLink(GetReleaseLinkArgs.builder()
-     *             .linkId(&#34;11&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .tagName(&#34;v1.0.1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetReleaseLinkResult> getReleaseLink(GetReleaseLinkArgs args) {
         return getReleaseLink(args, InvokeOptions.Empty);
@@ -7316,41 +5245,6 @@ public final class GitlabFunctions {
      * The `gitlab.ReleaseLink` data source allows get details of a release link.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetReleaseLinkArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getReleaseLink(GetReleaseLinkArgs.builder()
-     *             .linkId(&#34;11&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .tagName(&#34;v1.0.1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReleaseLinkResult> getReleaseLinkPlain(GetReleaseLinkPlainArgs args) {
@@ -7361,41 +5255,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetReleaseLinkArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getReleaseLink(GetReleaseLinkArgs.builder()
-     *             .linkId(&#34;11&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .tagName(&#34;v1.0.1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetReleaseLinkResult> getReleaseLink(GetReleaseLinkArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getReleaseLink:getReleaseLink", TypeShape.of(GetReleaseLinkResult.class), args, Utilities.withVersion(options));
@@ -7404,41 +5263,6 @@ public final class GitlabFunctions {
      * The `gitlab.ReleaseLink` data source allows get details of a release link.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetReleaseLinkArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getReleaseLink(GetReleaseLinkArgs.builder()
-     *             .linkId(&#34;11&#34;)
-     *             .project(&#34;foo/bar&#34;)
-     *             .tagName(&#34;v1.0.1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReleaseLinkResult> getReleaseLinkPlain(GetReleaseLinkPlainArgs args, InvokeOptions options) {
@@ -7449,40 +5273,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetReleaseLinksArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getReleaseLinks(GetReleaseLinksArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .tagName(&#34;v1.0.1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetReleaseLinksResult> getReleaseLinks(GetReleaseLinksArgs args) {
         return getReleaseLinks(args, InvokeOptions.Empty);
@@ -7491,40 +5281,6 @@ public final class GitlabFunctions {
      * The `gitlab.getReleaseLinks` data source allows get details of release links.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetReleaseLinksArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getReleaseLinks(GetReleaseLinksArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .tagName(&#34;v1.0.1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReleaseLinksResult> getReleaseLinksPlain(GetReleaseLinksPlainArgs args) {
@@ -7535,40 +5291,6 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetReleaseLinksArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getReleaseLinks(GetReleaseLinksArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .tagName(&#34;v1.0.1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetReleaseLinksResult> getReleaseLinks(GetReleaseLinksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getReleaseLinks:getReleaseLinks", TypeShape.of(GetReleaseLinksResult.class), args, Utilities.withVersion(options));
@@ -7577,40 +5299,6 @@ public final class GitlabFunctions {
      * The `gitlab.getReleaseLinks` data source allows get details of release links.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetReleaseLinksArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getReleaseLinks(GetReleaseLinksArgs.builder()
-     *             .project(&#34;foo/bar&#34;)
-     *             .tagName(&#34;v1.0.1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReleaseLinksResult> getReleaseLinksPlain(GetReleaseLinksPlainArgs args, InvokeOptions options) {
@@ -7646,9 +5334,9 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getRepositoryFile(GetRepositoryFileArgs.builder()
-     *             .filePath(&#34;README.md&#34;)
      *             .project(&#34;example&#34;)
      *             .ref(&#34;main&#34;)
+     *             .filePath(&#34;README.md&#34;)
      *             .build());
      * 
      *     }
@@ -7690,9 +5378,9 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getRepositoryFile(GetRepositoryFileArgs.builder()
-     *             .filePath(&#34;README.md&#34;)
      *             .project(&#34;example&#34;)
      *             .ref(&#34;main&#34;)
+     *             .filePath(&#34;README.md&#34;)
      *             .build());
      * 
      *     }
@@ -7734,9 +5422,9 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getRepositoryFile(GetRepositoryFileArgs.builder()
-     *             .filePath(&#34;README.md&#34;)
      *             .project(&#34;example&#34;)
      *             .ref(&#34;main&#34;)
+     *             .filePath(&#34;README.md&#34;)
      *             .build());
      * 
      *     }
@@ -7778,9 +5466,9 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getRepositoryFile(GetRepositoryFileArgs.builder()
-     *             .filePath(&#34;README.md&#34;)
      *             .project(&#34;example&#34;)
      *             .ref(&#34;main&#34;)
+     *             .filePath(&#34;README.md&#34;)
      *             .build());
      * 
      *     }
@@ -7822,10 +5510,10 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = GitlabFunctions.getRepositoryTree(GetRepositoryTreeArgs.builder()
-     *             .path(&#34;ExampleSubFolder&#34;)
      *             .project(&#34;example&#34;)
-     *             .recursive(true)
      *             .ref(&#34;main&#34;)
+     *             .path(&#34;ExampleSubFolder&#34;)
+     *             .recursive(true)
      *             .build());
      * 
      *     }
@@ -7867,10 +5555,10 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = GitlabFunctions.getRepositoryTree(GetRepositoryTreeArgs.builder()
-     *             .path(&#34;ExampleSubFolder&#34;)
      *             .project(&#34;example&#34;)
-     *             .recursive(true)
      *             .ref(&#34;main&#34;)
+     *             .path(&#34;ExampleSubFolder&#34;)
+     *             .recursive(true)
      *             .build());
      * 
      *     }
@@ -7912,10 +5600,10 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = GitlabFunctions.getRepositoryTree(GetRepositoryTreeArgs.builder()
-     *             .path(&#34;ExampleSubFolder&#34;)
      *             .project(&#34;example&#34;)
-     *             .recursive(true)
      *             .ref(&#34;main&#34;)
+     *             .path(&#34;ExampleSubFolder&#34;)
+     *             .recursive(true)
      *             .build());
      * 
      *     }
@@ -7957,10 +5645,10 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = GitlabFunctions.getRepositoryTree(GetRepositoryTreeArgs.builder()
-     *             .path(&#34;ExampleSubFolder&#34;)
      *             .project(&#34;example&#34;)
-     *             .recursive(true)
      *             .ref(&#34;main&#34;)
+     *             .path(&#34;ExampleSubFolder&#34;)
+     *             .recursive(true)
      *             .build());
      * 
      *     }
@@ -8144,9 +5832,9 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .createdBefore(&#34;2019-01-01&#34;)
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
+     *             .createdBefore(&#34;2019-01-01&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
@@ -8196,9 +5884,9 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .createdBefore(&#34;2019-01-01&#34;)
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
+     *             .createdBefore(&#34;2019-01-01&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
@@ -8248,9 +5936,9 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .createdBefore(&#34;2019-01-01&#34;)
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
+     *             .createdBefore(&#34;2019-01-01&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
@@ -8300,9 +5988,9 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .createdBefore(&#34;2019-01-01&#34;)
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
+     *             .createdBefore(&#34;2019-01-01&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
@@ -8352,9 +6040,9 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .createdBefore(&#34;2019-01-01&#34;)
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
+     *             .createdBefore(&#34;2019-01-01&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
@@ -8404,9 +6092,9 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .createdBefore(&#34;2019-01-01&#34;)
-     *             .orderBy(&#34;name&#34;)
      *             .sort(&#34;desc&#34;)
+     *             .orderBy(&#34;name&#34;)
+     *             .createdBefore(&#34;2019-01-01&#34;)
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()

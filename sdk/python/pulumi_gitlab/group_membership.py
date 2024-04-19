@@ -276,10 +276,10 @@ class GroupMembership(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.GroupMembership("test",
-            access_level="guest",
-            expires_at="2020-12-31",
             group_id="12345",
-            user_id=1337)
+            user_id=1337,
+            access_level="guest",
+            expires_at="2020-12-31")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -322,10 +322,10 @@ class GroupMembership(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.GroupMembership("test",
-            access_level="guest",
-            expires_at="2020-12-31",
             group_id="12345",
-            user_id=1337)
+            user_id=1337,
+            access_level="guest",
+            expires_at="2020-12-31")
         ```
         <!--End PulumiCodeChooser -->
 

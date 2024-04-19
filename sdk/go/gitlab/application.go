@@ -36,10 +36,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewApplication(ctx, "oidc", &gitlab.ApplicationArgs{
 //				Confidential: pulumi.Bool(true),
-//				RedirectUrl:  pulumi.String("https://mycompany.com"),
 //				Scopes: pulumi.StringArray{
 //					pulumi.String("openid"),
 //				},
+//				Name:        pulumi.String("company_oidc"),
+//				RedirectUrl: pulumi.String("https://mycompany.com"),
 //			})
 //			if err != nil {
 //				return err

@@ -24,16 +24,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const exampleGroupAccessToken = new gitlab.GroupAccessToken("exampleGroupAccessToken", {
+ * const example = new gitlab.GroupAccessToken("example", {
  *     group: "25",
+ *     name: "Example project access token",
  *     expiresAt: "2020-03-14",
  *     accessLevel: "developer",
  *     scopes: ["api"],
  * });
- * const exampleGroupVariable = new gitlab.GroupVariable("exampleGroupVariable", {
+ * const exampleGroupVariable = new gitlab.GroupVariable("example", {
  *     group: "25",
  *     key: "gat",
- *     value: exampleGroupAccessToken.token,
+ *     value: example.token,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

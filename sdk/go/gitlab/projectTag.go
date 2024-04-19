@@ -32,16 +32,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a project for the tag to use
-//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//			example, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name:        pulumi.String("example"),
 //				Description: pulumi.String("An example project"),
-//				NamespaceId: pulumi.Any(gitlab_group.Example.Id),
+//				NamespaceId: pulumi.Any(exampleGitlabGroup.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewProjectTag(ctx, "exampleProjectTag", &gitlab.ProjectTagArgs{
+//			_, err = gitlab.NewProjectTag(ctx, "example", &gitlab.ProjectTagArgs{
+//				Name:    pulumi.String("example"),
 //				Ref:     pulumi.String("main"),
-//				Project: exampleProject.ID(),
+//				Project: example.ID(),
 //			})
 //			if err != nil {
 //				return err

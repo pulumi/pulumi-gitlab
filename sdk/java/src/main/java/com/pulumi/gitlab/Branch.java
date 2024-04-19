@@ -48,14 +48,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a project for the branch to use
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .name(&#34;example&#34;)
  *             .description(&#34;An example project&#34;)
- *             .namespaceId(gitlab_group.example().id())
+ *             .namespaceId(exampleGitlabGroup.id())
  *             .build());
  * 
  *         var exampleBranch = new Branch(&#34;exampleBranch&#34;, BranchArgs.builder()        
+ *             .name(&#34;example&#34;)
  *             .ref(&#34;main&#34;)
- *             .project(exampleProject.id())
+ *             .project(example.id())
  *             .build());
  * 
  *     }

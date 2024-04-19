@@ -170,9 +170,10 @@ def get_group_variable(environment_scope: Optional[str] = None,
 
     foo = gitlab.get_group_variable(group="my/example/group",
         key="foo")
-    bar = gitlab.get_group_variable(environment_scope="staging/*",
-        group="my/example/group",
-        key="bar")
+    # Using an environment scope
+    bar = gitlab.get_group_variable(group="my/example/group",
+        key="bar",
+        environment_scope="staging/*")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -220,9 +221,10 @@ def get_group_variable_output(environment_scope: Optional[pulumi.Input[Optional[
 
     foo = gitlab.get_group_variable(group="my/example/group",
         key="foo")
-    bar = gitlab.get_group_variable(environment_scope="staging/*",
-        group="my/example/group",
-        key="bar")
+    # Using an environment scope
+    bar = gitlab.get_group_variable(group="my/example/group",
+        key="bar",
+        environment_scope="staging/*")
     ```
     <!--End PulumiCodeChooser -->
 

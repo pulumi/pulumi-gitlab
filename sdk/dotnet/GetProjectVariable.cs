@@ -29,15 +29,16 @@ namespace Pulumi.GitLab
         /// {
         ///     var foo = GitLab.GetProjectVariable.Invoke(new()
         ///     {
-        ///         Key = "foo",
         ///         Project = "my/example/project",
+        ///         Key = "foo",
         ///     });
         /// 
+        ///     // Using an environment scope
         ///     var bar = GitLab.GetProjectVariable.Invoke(new()
         ///     {
-        ///         EnvironmentScope = "staging/*",
-        ///         Key = "bar",
         ///         Project = "my/example/project",
+        ///         Key = "bar",
+        ///         EnvironmentScope = "staging/*",
         ///     });
         /// 
         /// });
@@ -65,15 +66,16 @@ namespace Pulumi.GitLab
         /// {
         ///     var foo = GitLab.GetProjectVariable.Invoke(new()
         ///     {
-        ///         Key = "foo",
         ///         Project = "my/example/project",
+        ///         Key = "foo",
         ///     });
         /// 
+        ///     // Using an environment scope
         ///     var bar = GitLab.GetProjectVariable.Invoke(new()
         ///     {
-        ///         EnvironmentScope = "staging/*",
-        ///         Key = "bar",
         ///         Project = "my/example/project",
+        ///         Key = "bar",
+        ///         EnvironmentScope = "staging/*",
         ///     });
         /// 
         /// });

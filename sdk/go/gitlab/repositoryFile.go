@@ -14,6 +14,86 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := gitlab.NewGroup(ctx, "this", &gitlab.GroupArgs{
+//				Name:        pulumi.String("example"),
+//				Path:        pulumi.String("example"),
+//				Description: pulumi.String("An example group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisProject, err := gitlab.NewProject(ctx, "this", &gitlab.ProjectArgs{
+//				Name:                 pulumi.String("example"),
+//				NamespaceId:          this.ID(),
+//				InitializeWithReadme: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "Meow goes the cat",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewRepositoryFile(ctx, "this", &gitlab.RepositoryFileArgs{
+//				Project:       thisProject.ID(),
+//				FilePath:      pulumi.String("meow.txt"),
+//				Branch:        pulumi.String("main"),
+//				Content:       invokeBase64encode.Result,
+//				AuthorEmail:   pulumi.String("terraform@example.com"),
+//				AuthorName:    pulumi.String("Terraform"),
+//				CommitMessage: pulumi.String("feature: add meow file"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewRepositoryFile(ctx, "readme", &gitlab.RepositoryFileArgs{
+//				Project:       thisProject.ID(),
+//				FilePath:      pulumi.String("readme.txt"),
+//				Branch:        pulumi.String("main"),
+//				Content:       pulumi.String("Meow goes the cat"),
+//				AuthorEmail:   pulumi.String("terraform@example.com"),
+//				AuthorName:    pulumi.String("Terraform"),
+//				CommitMessage: pulumi.String("feature: add readme file"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewRepositoryFile(ctx, "readme_for_dogs", &gitlab.RepositoryFileArgs{
+//				Project:           thisProject.ID(),
+//				FilePath:          pulumi.String("readme.txt"),
+//				Branch:            pulumi.String("main"),
+//				Content:           pulumi.String("Bark goes the dog"),
+//				AuthorEmail:       pulumi.String("terraform@example.com"),
+//				AuthorName:        pulumi.String("Terraform"),
+//				CommitMessage:     pulumi.String("feature: update readme file"),
+//				OverwriteOnCreate: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.

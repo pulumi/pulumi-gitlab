@@ -117,18 +117,6 @@ def get_project_membership(full_path: Optional[str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
 
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project_membership(inherited=True,
-        project_id=123)
-    ```
-    <!--End PulumiCodeChooser -->
-
 
     :param str full_path: The full path of the project.
     :param bool inherited: Return all project members including members through ancestor groups
@@ -164,18 +152,6 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]
     > **Note** exactly one of project_id or full_path must be provided.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
-
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project_membership(inherited=True,
-        project_id=123)
-    ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str full_path: The full path of the project.

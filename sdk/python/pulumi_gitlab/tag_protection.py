@@ -172,7 +172,10 @@ class TagProtection(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        tag_protect = gitlab.TagProtection("tagProtect",
+        tag_protect = gitlab.TagProtection("TagProtect",
+            project="12345",
+            tag="TagProtected",
+            create_access_level="developer",
             allowed_to_creates=[
                 gitlab.TagProtectionAllowedToCreateArgs(
                     user_id=42,
@@ -180,10 +183,7 @@ class TagProtection(pulumi.CustomResource):
                 gitlab.TagProtectionAllowedToCreateArgs(
                     group_id=43,
                 ),
-            ],
-            create_access_level="developer",
-            project="12345",
-            tag="TagProtected")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -216,7 +216,10 @@ class TagProtection(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        tag_protect = gitlab.TagProtection("tagProtect",
+        tag_protect = gitlab.TagProtection("TagProtect",
+            project="12345",
+            tag="TagProtected",
+            create_access_level="developer",
             allowed_to_creates=[
                 gitlab.TagProtectionAllowedToCreateArgs(
                     user_id=42,
@@ -224,10 +227,7 @@ class TagProtection(pulumi.CustomResource):
                 gitlab.TagProtectionAllowedToCreateArgs(
                     group_id=43,
                 ),
-            ],
-            create_access_level="developer",
-            project="12345",
-            tag="TagProtected")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

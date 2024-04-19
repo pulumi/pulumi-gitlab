@@ -47,12 +47,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooProject = new Project(&#34;fooProject&#34;, ProjectArgs.builder()        
+ *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
+ *             .name(&#34;Example&#34;)
  *             .description(&#34;My example project&#34;)
  *             .build());
  * 
  *         var fooProjectLevelMrApprovals = new ProjectLevelMrApprovals(&#34;fooProjectLevelMrApprovals&#34;, ProjectLevelMrApprovalsArgs.builder()        
- *             .project(fooProject.id())
+ *             .project(foo.id())
  *             .resetApprovalsOnPush(true)
  *             .disableOverridingApproversPerMergeRequest(false)
  *             .mergeRequestsAuthorApproval(false)

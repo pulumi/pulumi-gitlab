@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleUser = GitlabFunctions.getUser(GetUserArgs.builder()
+ *         final var example = GitlabFunctions.getUser(GetUserArgs.builder()
  *             .username(&#34;example-user&#34;)
  *             .build());
  * 
  *         var exampleUserSshKey = new UserSshKey(&#34;exampleUserSshKey&#34;, UserSshKeyArgs.builder()        
- *             .userId(exampleUser.applyValue(getUserResult -&gt; getUserResult.id()))
+ *             .userId(example.applyValue(getUserResult -&gt; getUserResult.id()))
  *             .title(&#34;example-key&#34;)
  *             .key(&#34;ssh-ed25519 AAAA...&#34;)
  *             .expiresAt(&#34;2016-01-21T00:00:00.000Z&#34;)

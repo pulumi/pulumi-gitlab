@@ -27,22 +27,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisGroup, err := gitlab.NewGroup(ctx, "thisGroup", &gitlab.GroupArgs{
+//			this, err := gitlab.NewGroup(ctx, "this", &gitlab.GroupArgs{
+//				Name:        pulumi.String("example"),
 //				Path:        pulumi.String("example"),
 //				Description: pulumi.String("An example group"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			thisProject, err := gitlab.NewProject(ctx, "thisProject", &gitlab.ProjectArgs{
-//				NamespaceId:          thisGroup.ID(),
+//			thisProject, err := gitlab.NewProject(ctx, "this", &gitlab.ProjectArgs{
+//				Name:                 pulumi.String("example"),
+//				NamespaceId:          this.ID(),
 //				InitializeWithReadme: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewProjectEnvironment(ctx, "thisProjectEnvironment", &gitlab.ProjectEnvironmentArgs{
+//			_, err = gitlab.NewProjectEnvironment(ctx, "this", &gitlab.ProjectEnvironmentArgs{
 //				Project:     thisProject.ID(),
+//				Name:        pulumi.String("example"),
 //				ExternalUrl: pulumi.String("www.example.com"),
 //			})
 //			if err != nil {

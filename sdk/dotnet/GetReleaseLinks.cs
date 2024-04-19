@@ -15,27 +15,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.getReleaseLinks` data source allows get details of release links.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
-        /// 
-        /// ## Example Usage
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = GitLab.GetReleaseLinks.Invoke(new()
-        ///     {
-        ///         Project = "foo/bar",
-        ///         TagName = "v1.0.1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetReleaseLinksResult> InvokeAsync(GetReleaseLinksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReleaseLinksResult>("gitlab:index/getReleaseLinks:getReleaseLinks", args ?? new GetReleaseLinksArgs(), options.WithDefaults());
@@ -44,27 +23,6 @@ namespace Pulumi.GitLab
         /// The `gitlab.getReleaseLinks` data source allows get details of release links.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
-        /// 
-        /// ## Example Usage
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = GitLab.GetReleaseLinks.Invoke(new()
-        ///     {
-        ///         Project = "foo/bar",
-        ///         TagName = "v1.0.1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetReleaseLinksResult> Invoke(GetReleaseLinksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReleaseLinksResult>("gitlab:index/getReleaseLinks:getReleaseLinks", args ?? new GetReleaseLinksInvokeArgs(), options.WithDefaults());

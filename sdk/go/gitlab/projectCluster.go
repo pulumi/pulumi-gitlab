@@ -33,12 +33,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := gitlab.NewProject(ctx, "foo", nil)
+//			foo, err := gitlab.NewProject(ctx, "foo", &gitlab.ProjectArgs{
+//				Name: pulumi.String("foo-project"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.NewProjectCluster(ctx, "bar", &gitlab.ProjectClusterArgs{
 //				Project:                     foo.ID(),
+//				Name:                        pulumi.String("bar-cluster"),
 //				Domain:                      pulumi.String("example.com"),
 //				Enabled:                     pulumi.Bool(true),
 //				KubernetesApiUrl:            pulumi.String("https://124.124.124"),

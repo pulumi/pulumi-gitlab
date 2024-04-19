@@ -471,9 +471,12 @@ class GroupCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        foo = gitlab.Group("foo", path="foo-path")
+        foo = gitlab.Group("foo",
+            name="foo-group",
+            path="foo-path")
         bar = gitlab.GroupCluster("bar",
             group=foo.id,
+            name="bar-cluster",
             domain="example.com",
             enabled=True,
             kubernetes_api_url="https://124.124.124",
@@ -527,9 +530,12 @@ class GroupCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        foo = gitlab.Group("foo", path="foo-path")
+        foo = gitlab.Group("foo",
+            name="foo-group",
+            path="foo-path")
         bar = gitlab.GroupCluster("bar",
             group=foo.id,
+            name="bar-cluster",
             domain="example.com",
             enabled=True,
             kubernetes_api_url="https://124.124.124",

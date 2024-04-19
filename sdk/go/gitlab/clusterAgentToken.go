@@ -40,32 +40,38 @@ import (
 //			_, err := gitlab.NewClusterAgentToken(ctx, "example", &gitlab.ClusterAgentTokenArgs{
 //				Project:     pulumi.String("12345"),
 //				AgentId:     pulumi.Int(42),
+//				Name:        pulumi.String("some-token"),
 //				Description: pulumi.String("some token"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			thisProject, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
+//			// The following example creates a GitLab Agent for Kubernetes in a given project,
+//			// creates a token and install the `gitlab-agent` Helm Chart.
+//			// (see https://gitlab.com/gitlab-org/charts/gitlab-agent)
+//			this, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
 //				PathWithNamespace: pulumi.StringRef("my-org/example"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			thisClusterAgent, err := gitlab.NewClusterAgent(ctx, "thisClusterAgent", &gitlab.ClusterAgentArgs{
-//				Project: pulumi.String(thisProject.Id),
+//			thisClusterAgent, err := gitlab.NewClusterAgent(ctx, "this", &gitlab.ClusterAgentArgs{
+//				Project: pulumi.String(this.Id),
+//				Name:    pulumi.String("my-agent"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			thisClusterAgentToken, err := gitlab.NewClusterAgentToken(ctx, "thisClusterAgentToken", &gitlab.ClusterAgentTokenArgs{
-//				Project:     pulumi.String(thisProject.Id),
+//			thisClusterAgentToken, err := gitlab.NewClusterAgentToken(ctx, "this", &gitlab.ClusterAgentTokenArgs{
+//				Project:     pulumi.String(this.Id),
 //				AgentId:     thisClusterAgent.AgentId,
+//				Name:        pulumi.String("my-agent-token"),
 //				Description: pulumi.String("Token for the my-agent used with `gitlab-agent` Helm Chart"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = index.NewHelm_release(ctx, "gitlabAgent", &index.Helm_releaseArgs{
+//			_, err = index.NewRelease(ctx, "gitlab_agent", &index.ReleaseArgs{
 //				Name:            "gitlab-agent",
 //				Namespace:       "gitlab-agent",
 //				CreateNamespace: true,

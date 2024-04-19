@@ -28,6 +28,58 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.ClusterAgent;
+ * import com.pulumi.gitlab.ClusterAgentArgs;
+ * import com.pulumi.gitlab.RepositoryFile;
+ * import com.pulumi.gitlab.RepositoryFileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ClusterAgent(&#34;example&#34;, ClusterAgentArgs.builder()        
+ *             .project(&#34;12345&#34;)
+ *             .name(&#34;agent-1&#34;)
+ *             .build());
+ * 
+ *         // Optionally, configure the agent as described in
+ *         // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
+ *         var exampleAgentConfig = new RepositoryFile(&#34;exampleAgentConfig&#34;, RepositoryFileArgs.builder()        
+ *             .project(example.project())
+ *             .branch(&#34;main&#34;)
+ *             .filePath(example.name().applyValue(name -&gt; String.format(&#34;.gitlab/agents/%s/config.yaml&#34;, name)))
+ *             .content(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                 .input(&#34;&#34;&#34;
+ * # the GitLab Agent for Kubernetes configuration goes here ...
+ *                 &#34;&#34;&#34;)
+ *                 .build()).result())
+ *             .authorEmail(&#34;terraform@example.com&#34;)
+ *             .authorName(&#34;Terraform&#34;)
+ *             .commitMessage(example.name().applyValue(name -&gt; String.format(&#34;feature: add agent config for %s [skip ci]&#34;, name)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;`

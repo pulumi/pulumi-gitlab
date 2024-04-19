@@ -21,9 +21,10 @@ import * as utilities from "./utilities";
  * const vars = gitlab.getProjectVariables({
  *     project: "my/example/project",
  * });
+ * // Using an environment scope
  * const stagingVars = gitlab.getProjectVariables({
- *     environmentScope: "staging/*",
  *     project: "my/example/project",
+ *     environmentScope: "staging/*",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -81,9 +82,10 @@ export interface GetProjectVariablesResult {
  * const vars = gitlab.getProjectVariables({
  *     project: "my/example/project",
  * });
+ * // Using an environment scope
  * const stagingVars = gitlab.getProjectVariables({
- *     environmentScope: "staging/*",
  *     project: "my/example/project",
+ *     environmentScope: "staging/*",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

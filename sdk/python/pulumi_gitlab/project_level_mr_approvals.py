@@ -277,9 +277,11 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        foo_project = gitlab.Project("fooProject", description="My example project")
-        foo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals",
-            project=foo_project.id,
+        foo = gitlab.Project("foo",
+            name="Example",
+            description="My example project")
+        foo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals("foo",
+            project=foo.id,
             reset_approvals_on_push=True,
             disable_overriding_approvers_per_merge_request=False,
             merge_requests_author_approval=False,
@@ -331,9 +333,11 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        foo_project = gitlab.Project("fooProject", description="My example project")
-        foo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals",
-            project=foo_project.id,
+        foo = gitlab.Project("foo",
+            name="Example",
+            description="My example project")
+        foo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals("foo",
+            project=foo.id,
             reset_approvals_on_push=True,
             disable_overriding_approvers_per_merge_request=False,
             merge_requests_author_approval=False,

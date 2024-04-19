@@ -32,12 +32,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewGroupVariable(ctx, "example", &gitlab.GroupVariableArgs{
-//				EnvironmentScope: pulumi.String("*"),
 //				Group:            pulumi.String("12345"),
 //				Key:              pulumi.String("group_variable_key"),
-//				Masked:           pulumi.Bool(false),
-//				Protected:        pulumi.Bool(false),
 //				Value:            pulumi.String("group_variable_value"),
+//				Protected:        pulumi.Bool(false),
+//				Masked:           pulumi.Bool(false),
+//				EnvironmentScope: pulumi.String("*"),
 //			})
 //			if err != nil {
 //				return err

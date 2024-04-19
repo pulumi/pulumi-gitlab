@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
+ *             .name(&#34;test_group&#34;)
  *             .path(&#34;test_group&#34;)
  *             .description(&#34;An example group&#34;)
  *             .build());
@@ -60,14 +61,17 @@ import javax.annotation.Nullable;
  *         var label1 = new GroupLabel(&#34;label1&#34;, GroupLabelArgs.builder()        
  *             .group(example.id())
  *             .color(&#34;#FF0000&#34;)
+ *             .name(&#34;red-label&#34;)
  *             .build());
  * 
  *         var label3 = new GroupLabel(&#34;label3&#34;, GroupLabelArgs.builder()        
  *             .group(example.id())
+ *             .name(&#34;label-3&#34;)
  *             .color(&#34;#003000&#34;)
  *             .build());
  * 
  *         var epicBoard = new GroupEpicBoard(&#34;epicBoard&#34;, GroupEpicBoardArgs.builder()        
+ *             .name(&#34;epic board 6&#34;)
  *             .group(example.path())
  *             .lists(GroupEpicBoardListArgs.builder()
  *                 .labelId(label1.labelId())

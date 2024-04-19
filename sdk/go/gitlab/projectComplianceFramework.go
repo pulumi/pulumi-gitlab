@@ -33,8 +33,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sampleComplianceFramework, err := gitlab.NewComplianceFramework(ctx, "sampleComplianceFramework", &gitlab.ComplianceFrameworkArgs{
+//			sample, err := gitlab.NewComplianceFramework(ctx, "sample", &gitlab.ComplianceFrameworkArgs{
 //				NamespacePath:                 pulumi.String("top-level-group"),
+//				Name:                          pulumi.String("HIPAA"),
 //				Description:                   pulumi.String("A HIPAA Compliance Framework"),
 //				Color:                         pulumi.String("#87BEEF"),
 //				Default:                       pulumi.Bool(false),
@@ -43,8 +44,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewProjectComplianceFramework(ctx, "sampleProjectComplianceFramework", &gitlab.ProjectComplianceFrameworkArgs{
-//				ComplianceFrameworkId: sampleComplianceFramework.FrameworkId,
+//			_, err = gitlab.NewProjectComplianceFramework(ctx, "sample", &gitlab.ProjectComplianceFrameworkArgs{
+//				ComplianceFrameworkId: sample.FrameworkId,
 //				Project:               pulumi.String("12345678"),
 //			})
 //			if err != nil {

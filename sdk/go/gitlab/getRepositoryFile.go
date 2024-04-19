@@ -31,9 +31,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.LookupRepositoryFile(ctx, &gitlab.LookupRepositoryFileArgs{
-//				FilePath: "README.md",
 //				Project:  "example",
 //				Ref:      "main",
+//				FilePath: "README.md",
 //			}, nil)
 //			if err != nil {
 //				return err

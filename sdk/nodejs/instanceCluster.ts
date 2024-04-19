@@ -19,14 +19,15 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const bar = new gitlab.InstanceCluster("bar", {
+ *     name: "bar-cluster",
  *     domain: "example.com",
  *     enabled: true,
- *     environmentScope: "*",
  *     kubernetesApiUrl: "https://124.124.124",
- *     kubernetesAuthorizationType: "rbac",
+ *     kubernetesToken: "some-token",
  *     kubernetesCaCert: "some-cert",
  *     kubernetesNamespace: "namespace",
- *     kubernetesToken: "some-token",
+ *     kubernetesAuthorizationType: "rbac",
+ *     environmentScope: "*",
  *     managementProjectId: "123456",
  * });
  * ```

@@ -15,10 +15,11 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const foo = new gitlab.Project("foo", {
+ *     name: "example project",
  *     description: "Lorem Ipsum",
  *     visibilityLevel: "public",
  * });
- * const welcomeIssue = new gitlab.ProjectIssue("welcomeIssue", {
+ * const welcomeIssue = new gitlab.ProjectIssue("welcome_issue", {
  *     project: foo.id,
  *     title: "Welcome!",
  *     description: pulumi.interpolate`  Welcome to the ${foo.name} project!
@@ -26,7 +27,7 @@ import * as utilities from "./utilities";
  * `,
  *     discussionLocked: true,
  * });
- * export const welcomeIssueWebUrl = data.gitlab_project_issue.web_url;
+ * export const welcomeIssueWebUrl = webUrl;
  * ```
  * <!--End PulumiCodeChooser -->
  *

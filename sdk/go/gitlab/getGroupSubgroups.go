@@ -30,13 +30,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			subgroupsGroupSubgroups, err := gitlab.GetGroupSubgroups(ctx, &gitlab.GetGroupSubgroupsArgs{
+//			subgroups, err := gitlab.GetGroupSubgroups(ctx, &gitlab.GetGroupSubgroupsArgs{
 //				GroupId: 123456,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("subgroups", subgroupsGroupSubgroups)
+//			ctx.Export("subgroups", subgroups)
 //			return nil
 //		})
 //	}

@@ -121,8 +121,8 @@ def get_cluster_agent(agent_id: Optional[int] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_cluster_agent(agent_id=1,
-        project="12345")
+    example = gitlab.get_cluster_agent(project="12345",
+        agent_id=1)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -163,8 +163,8 @@ def get_cluster_agent_output(agent_id: Optional[pulumi.Input[int]] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_cluster_agent(agent_id=1,
-        project="12345")
+    example = gitlab.get_cluster_agent(project="12345",
+        agent_id=1)
     ```
     <!--End PulumiCodeChooser -->
 

@@ -216,8 +216,9 @@ class Application(pulumi.CustomResource):
 
         oidc = gitlab.Application("oidc",
             confidential=True,
-            redirect_url="https://mycompany.com",
-            scopes=["openid"])
+            scopes=["openid"],
+            name="company_oidc",
+            redirect_url="https://mycompany.com")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -262,8 +263,9 @@ class Application(pulumi.CustomResource):
 
         oidc = gitlab.Application("oidc",
             confidential=True,
-            redirect_url="https://mycompany.com",
-            scopes=["openid"])
+            scopes=["openid"],
+            name="company_oidc",
+            redirect_url="https://mycompany.com")
         ```
         <!--End PulumiCodeChooser -->
 

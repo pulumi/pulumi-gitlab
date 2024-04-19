@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePipelineSchedule = new PipelineSchedule(&#34;examplePipelineSchedule&#34;, PipelineScheduleArgs.builder()        
+ *         var example = new PipelineSchedule(&#34;example&#34;, PipelineScheduleArgs.builder()        
  *             .project(&#34;12345&#34;)
  *             .description(&#34;Used to schedule builds&#34;)
  *             .ref(&#34;master&#34;)
@@ -53,8 +53,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var examplePipelineScheduleVariable = new PipelineScheduleVariable(&#34;examplePipelineScheduleVariable&#34;, PipelineScheduleVariableArgs.builder()        
- *             .project(examplePipelineSchedule.project())
- *             .pipelineScheduleId(examplePipelineSchedule.pipelineScheduleId())
+ *             .project(example.project())
+ *             .pipelineScheduleId(example.pipelineScheduleId())
  *             .key(&#34;EXAMPLE_KEY&#34;)
  *             .value(&#34;example&#34;)
  *             .build());

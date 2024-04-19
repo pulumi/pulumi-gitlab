@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gitlab.Group;
+ * import com.pulumi.gitlab.GroupArgs;
  * import com.pulumi.gitlab.GroupBadge;
  * import com.pulumi.gitlab.GroupBadgeArgs;
  * import java.util.List;
@@ -43,7 +44,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Group(&#34;foo&#34;);
+ *         var foo = new Group(&#34;foo&#34;, GroupArgs.builder()        
+ *             .name(&#34;foo-group&#34;)
+ *             .build());
  * 
  *         var example = new GroupBadge(&#34;example&#34;, GroupBadgeArgs.builder()        
  *             .group(foo.id())

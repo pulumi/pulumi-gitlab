@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var attr = new ProjectCustomAttribute(&#34;attr&#34;, ProjectCustomAttributeArgs.builder()        
- *             .key(&#34;location&#34;)
  *             .project(&#34;42&#34;)
+ *             .key(&#34;location&#34;)
  *             .value(&#34;Greenland&#34;)
  *             .build());
  * 

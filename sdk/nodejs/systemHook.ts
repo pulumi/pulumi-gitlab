@@ -19,13 +19,13 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.SystemHook("example", {
- *     enableSslVerification: true,
- *     mergeRequestsEvents: true,
- *     pushEvents: true,
- *     repositoryUpdateEvents: true,
- *     tagPushEvents: true,
- *     token: "secret-token",
  *     url: "https://example.com/hook-%d",
+ *     token: "secret-token",
+ *     pushEvents: true,
+ *     tagPushEvents: true,
+ *     mergeRequestsEvents: true,
+ *     repositoryUpdateEvents: true,
+ *     enableSslVerification: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -25,14 +25,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = GitLab.GetUser.Invoke(new()
+    ///     var example = GitLab.GetUser.Invoke(new()
     ///     {
     ///         Username = "example-user",
     ///     });
     /// 
-    ///     var exampleUserSshKey = new GitLab.UserSshKey("exampleUserSshKey", new()
+    ///     var exampleUserSshKey = new GitLab.UserSshKey("example", new()
     ///     {
-    ///         UserId = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
+    ///         UserId = example.Apply(getUserResult =&gt; getUserResult.Id),
     ///         Title = "example-key",
     ///         Key = "ssh-ed25519 AAAA...",
     ///         ExpiresAt = "2016-01-21T00:00:00.000Z",

@@ -31,6 +31,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // List projects within a group tree
         ///     var mygroup = GitLab.GetGroup.Invoke(new()
         ///     {
         ///         FullPath = "mygroup",
@@ -44,6 +45,7 @@ namespace Pulumi.GitLab
         ///         WithShared = false,
         ///     });
         /// 
+        ///     // List projects using the search syntax
         ///     var projects = GitLab.GetProjects.Invoke(new()
         ///     {
         ///         Search = "postgresql",
@@ -77,6 +79,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // List projects within a group tree
         ///     var mygroup = GitLab.GetGroup.Invoke(new()
         ///     {
         ///         FullPath = "mygroup",
@@ -90,6 +93,7 @@ namespace Pulumi.GitLab
         ///         WithShared = false,
         ///     });
         /// 
+        ///     // List projects using the search syntax
         ///     var projects = GitLab.GetProjects.Invoke(new()
         ///     {
         ///         Search = "postgresql",

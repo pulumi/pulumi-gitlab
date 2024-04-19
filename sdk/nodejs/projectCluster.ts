@@ -18,9 +18,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const foo = new gitlab.Project("foo", {});
+ * const foo = new gitlab.Project("foo", {name: "foo-project"});
  * const bar = new gitlab.ProjectCluster("bar", {
  *     project: foo.id,
+ *     name: "bar-cluster",
  *     domain: "example.com",
  *     enabled: true,
  *     kubernetesApiUrl: "https://124.124.124",

@@ -32,9 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewProjectShareGroup(ctx, "test", &gitlab.ProjectShareGroupArgs{
-//				GroupAccess: pulumi.String("guest"),
-//				GroupId:     pulumi.Int(1337),
 //				Project:     pulumi.String("12345"),
+//				GroupId:     pulumi.Int(1337),
+//				GroupAccess: pulumi.String("guest"),
 //			})
 //			if err != nil {
 //				return err

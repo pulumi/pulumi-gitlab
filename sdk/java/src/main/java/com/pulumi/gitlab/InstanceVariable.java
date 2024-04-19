@@ -46,9 +46,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new InstanceVariable(&#34;example&#34;, InstanceVariableArgs.builder()        
  *             .key(&#34;instance_variable_key&#34;)
- *             .masked(false)
- *             .protected_(false)
  *             .value(&#34;instance_variable_value&#34;)
+ *             .protected_(false)
+ *             .masked(false)
  *             .build());
  * 
  *     }

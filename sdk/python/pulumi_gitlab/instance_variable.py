@@ -243,9 +243,9 @@ class InstanceVariable(pulumi.CustomResource):
 
         example = gitlab.InstanceVariable("example",
             key="instance_variable_key",
-            masked=False,
+            value="instance_variable_value",
             protected=False,
-            value="instance_variable_value")
+            masked=False)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -286,9 +286,9 @@ class InstanceVariable(pulumi.CustomResource):
 
         example = gitlab.InstanceVariable("example",
             key="instance_variable_key",
-            masked=False,
+            value="instance_variable_value",
             protected=False,
-            value="instance_variable_value")
+            masked=False)
         ```
         <!--End PulumiCodeChooser -->
 

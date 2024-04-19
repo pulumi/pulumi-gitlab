@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewPipelineTrigger(ctx, "example", &gitlab.PipelineTriggerArgs{
-//				Description: pulumi.String("Used to trigger builds"),
 //				Project:     pulumi.String("12345"),
+//				Description: pulumi.String("Used to trigger builds"),
 //			})
 //			if err != nil {
 //				return err

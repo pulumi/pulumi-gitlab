@@ -21,21 +21,24 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisGroup = new GitLab.Group("thisGroup", new()
+    ///     var @this = new GitLab.Group("this", new()
     ///     {
+    ///         Name = "example",
     ///         Path = "example",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var thisProject = new GitLab.Project("thisProject", new()
+    ///     var thisProject = new GitLab.Project("this", new()
     ///     {
-    ///         NamespaceId = thisGroup.Id,
+    ///         Name = "example",
+    ///         NamespaceId = @this.Id,
     ///         InitializeWithReadme = true,
     ///     });
     /// 
-    ///     var thisProjectEnvironment = new GitLab.ProjectEnvironment("thisProjectEnvironment", new()
+    ///     var thisProjectEnvironment = new GitLab.ProjectEnvironment("this", new()
     ///     {
     ///         Project = thisProject.Id,
+    ///         Name = "example",
     ///         ExternalUrl = "www.example.com",
     ///     });
     /// 

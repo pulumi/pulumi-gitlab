@@ -1005,16 +1005,17 @@ class ProjectIssue(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         foo = gitlab.Project("foo",
+            name="example project",
             description="Lorem Ipsum",
             visibility_level="public")
-        welcome_issue = gitlab.ProjectIssue("welcomeIssue",
+        welcome_issue = gitlab.ProjectIssue("welcome_issue",
             project=foo.id,
             title="Welcome!",
             description=foo.name.apply(lambda name: f\"\"\"  Welcome to the {name} project!
 
         \"\"\"),
             discussion_locked=True)
-        pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
+        pulumi.export("welcomeIssueWebUrl", web_url)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1063,16 +1064,17 @@ class ProjectIssue(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         foo = gitlab.Project("foo",
+            name="example project",
             description="Lorem Ipsum",
             visibility_level="public")
-        welcome_issue = gitlab.ProjectIssue("welcomeIssue",
+        welcome_issue = gitlab.ProjectIssue("welcome_issue",
             project=foo.id,
             title="Welcome!",
             description=foo.name.apply(lambda name: f\"\"\"  Welcome to the {name} project!
 
         \"\"\"),
             discussion_locked=True)
-        pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
+        pulumi.export("welcomeIssueWebUrl", web_url)
         ```
         <!--End PulumiCodeChooser -->
 

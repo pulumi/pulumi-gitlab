@@ -9,6 +9,62 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const branchProtect = new gitlab.BranchProtection("BranchProtect", {
+ *     project: "12345",
+ *     branch: "BranchProtected",
+ *     pushAccessLevel: "developer",
+ *     mergeAccessLevel: "developer",
+ *     unprotectAccessLevel: "developer",
+ *     allowForcePush: true,
+ *     codeOwnerApprovalRequired: true,
+ *     allowedToPushes: [
+ *         {
+ *             userId: 5,
+ *         },
+ *         {
+ *             userId: 521,
+ *         },
+ *     ],
+ *     allowedToMerges: [
+ *         {
+ *             userId: 15,
+ *         },
+ *         {
+ *             userId: 37,
+ *         },
+ *     ],
+ *     allowedToUnprotects: [
+ *         {
+ *             userId: 15,
+ *         },
+ *         {
+ *             groupId: 42,
+ *         },
+ *     ],
+ * });
+ * // Example using dynamic block
+ * const main = new gitlab.BranchProtection("main", {
+ *     allowedToPushes: [
+ *         50,
+ *         55,
+ *         60,
+ *     ].map((v, k) => ({key: k, value: v})).map(entry => ({
+ *         userId: entry.value,
+ *     })),
+ *     project: "12345",
+ *     branch: "main",
+ *     pushAccessLevel: "maintainer",
+ *     mergeAccessLevel: "maintainer",
+ *     unprotectAccessLevel: "maintainer",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.

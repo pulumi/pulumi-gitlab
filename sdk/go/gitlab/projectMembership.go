@@ -34,18 +34,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewProjectMembership(ctx, "test", &gitlab.ProjectMembershipArgs{
-//				AccessLevel: pulumi.String("guest"),
 //				Project:     pulumi.String("12345"),
 //				UserId:      pulumi.Int(1337),
+//				AccessLevel: pulumi.String("guest"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.NewProjectMembership(ctx, "example", &gitlab.ProjectMembershipArgs{
-//				AccessLevel: pulumi.String("guest"),
-//				ExpiresAt:   pulumi.String("2022-12-31"),
 //				Project:     pulumi.String("67890"),
 //				UserId:      pulumi.Int(1234),
+//				AccessLevel: pulumi.String("guest"),
+//				ExpiresAt:   pulumi.String("2022-12-31"),
 //			})
 //			if err != nil {
 //				return err

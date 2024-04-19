@@ -342,10 +342,10 @@ class ProjectVariable(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.ProjectVariable("example",
-            key="project_variable_key",
             project="12345",
-            protected=False,
-            value="project_variable_value")
+            key="project_variable_key",
+            value="project_variable_value",
+            protected=False)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -390,10 +390,10 @@ class ProjectVariable(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.ProjectVariable("example",
-            key="project_variable_key",
             project="12345",
-            protected=False,
-            value="project_variable_value")
+            key="project_variable_key",
+            value="project_variable_value",
+            protected=False)
         ```
         <!--End PulumiCodeChooser -->
 

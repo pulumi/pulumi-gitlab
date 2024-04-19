@@ -31,14 +31,15 @@ namespace Pulumi.GitLab
     /// {
     ///     var example = new GitLab.User("example", new()
     ///     {
-    ///         CanCreateGroup = false,
+    ///         Name = "Example Foo",
+    ///         Username = "example",
+    ///         Password = "superPassword",
     ///         Email = "gitlab@user.create",
     ///         IsAdmin = true,
-    ///         IsExternal = true,
-    ///         Password = "superPassword",
     ///         ProjectsLimit = 4,
+    ///         CanCreateGroup = false,
+    ///         IsExternal = true,
     ///         ResetPassword = false,
-    ///         Username = "example",
     ///     });
     /// 
     /// });

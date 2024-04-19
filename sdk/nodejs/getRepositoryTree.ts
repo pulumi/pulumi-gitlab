@@ -19,10 +19,10 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const this = gitlab.getRepositoryTree({
- *     path: "ExampleSubFolder",
  *     project: "example",
- *     recursive: true,
  *     ref: "main",
+ *     path: "ExampleSubFolder",
+ *     recursive: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -99,10 +99,10 @@ export interface GetRepositoryTreeResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const this = gitlab.getRepositoryTree({
- *     path: "ExampleSubFolder",
  *     project: "example",
- *     recursive: true,
  *     ref: "main",
+ *     path: "ExampleSubFolder",
+ *     recursive: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

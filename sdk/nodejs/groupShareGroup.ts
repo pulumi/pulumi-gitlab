@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const test = new gitlab.GroupShareGroup("test", {
- *     groupId: gitlab_group.foo.id,
- *     shareGroupId: gitlab_group.bar.id,
+ *     groupId: foo.id,
+ *     shareGroupId: bar.id,
  *     groupAccess: "guest",
  *     expiresAt: "2099-01-01",
  * });

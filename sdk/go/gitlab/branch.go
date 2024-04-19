@@ -32,16 +32,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a project for the branch to use
-//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//			example, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name:        pulumi.String("example"),
 //				Description: pulumi.String("An example project"),
-//				NamespaceId: pulumi.Any(gitlab_group.Example.Id),
+//				NamespaceId: pulumi.Any(exampleGitlabGroup.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewBranch(ctx, "exampleBranch", &gitlab.BranchArgs{
+//			_, err = gitlab.NewBranch(ctx, "example", &gitlab.BranchArgs{
+//				Name:    pulumi.String("example"),
 //				Ref:     pulumi.String("main"),
-//				Project: exampleProject.ID(),
+//				Project: example.ID(),
 //			})
 //			if err != nil {
 //				return err

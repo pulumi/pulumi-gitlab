@@ -16,29 +16,33 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const foo = new gitlab.Project("foo", {});
+ * const foo = new gitlab.Project("foo", {name: "foo-project"});
  * const example = new gitlab.ProjectBadge("example", {
  *     project: foo.id,
  *     linkUrl: "https://example.com/badge-123",
  *     imageUrl: "https://example.com/badge-123.svg",
+ *     name: "badge-123",
  * });
  * // Pipeline status badges with placeholders will be enabled
- * const gitlabPipeline = new gitlab.ProjectBadge("gitlabPipeline", {
+ * const gitlabPipeline = new gitlab.ProjectBadge("gitlab_pipeline", {
  *     project: foo.id,
  *     linkUrl: "https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
  *     imageUrl: "https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg",
+ *     name: "badge-pipeline",
  * });
  * // Test coverage report badges with placeholders will be enabled
- * const gitlabCoverage = new gitlab.ProjectBadge("gitlabCoverage", {
+ * const gitlabCoverage = new gitlab.ProjectBadge("gitlab_coverage", {
  *     project: foo.id,
  *     linkUrl: "https://gitlab.example.com/%{project_path}/-/jobs",
  *     imageUrl: "https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg",
+ *     name: "badge-coverage",
  * });
  * // Latest release badges with placeholders will be enabled
- * const gitlabRelease = new gitlab.ProjectBadge("gitlabRelease", {
+ * const gitlabRelease = new gitlab.ProjectBadge("gitlab_release", {
  *     project: foo.id,
  *     linkUrl: "https://gitlab.example.com/%{project_path}/-/releases",
  *     imageUrl: "https://gitlab.example.com/%{project_path}/-/badges/release.svg",
+ *     name: "badge-release",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

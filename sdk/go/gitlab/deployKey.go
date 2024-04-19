@@ -34,9 +34,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewDeployKey(ctx, "example", &gitlab.DeployKeyArgs{
-//				Key:     pulumi.String("ssh-ed25519 AAAA..."),
 //				Project: pulumi.String("example/deploying"),
 //				Title:   pulumi.String("Example deploy key"),
+//				Key:     pulumi.String("ssh-ed25519 AAAA..."),
 //			})
 //			if err != nil {
 //				return err

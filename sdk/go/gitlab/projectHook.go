@@ -32,9 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewProjectHook(ctx, "example", &gitlab.ProjectHookArgs{
-//				MergeRequestsEvents: pulumi.Bool(true),
 //				Project:             pulumi.String("example/hooked"),
 //				Url:                 pulumi.String("https://example.com/hook/example"),
+//				MergeRequestsEvents: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

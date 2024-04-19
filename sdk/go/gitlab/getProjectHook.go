@@ -30,14 +30,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleProject, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
+//			example, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
 //				Id: pulumi.StringRef("foo/bar/baz"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.LookupProjectHook(ctx, &gitlab.LookupProjectHookArgs{
-//				Project: exampleProject.Id,
+//				Project: example.Id,
 //				HookId:  1,
 //			}, nil)
 //			if err != nil {

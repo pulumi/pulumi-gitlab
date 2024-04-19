@@ -49,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePersonalAccessToken = new PersonalAccessToken(&#34;examplePersonalAccessToken&#34;, PersonalAccessTokenArgs.builder()        
+ *         var example = new PersonalAccessToken(&#34;example&#34;, PersonalAccessTokenArgs.builder()        
  *             .userId(&#34;25&#34;)
+ *             .name(&#34;Example personal access token&#34;)
  *             .expiresAt(&#34;2020-03-14&#34;)
  *             .scopes(&#34;api&#34;)
  *             .build());
  * 
  *         var exampleProjectVariable = new ProjectVariable(&#34;exampleProjectVariable&#34;, ProjectVariableArgs.builder()        
- *             .project(gitlab_project.example().id())
+ *             .project(exampleGitlabProject.id())
  *             .key(&#34;pat&#34;)
- *             .value(examplePersonalAccessToken.token())
+ *             .value(example.token())
  *             .build());
  * 
  *     }

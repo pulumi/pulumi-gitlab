@@ -29,9 +29,9 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetRepositoryFile.Invoke(new()
         ///     {
-        ///         FilePath = "README.md",
         ///         Project = "example",
         ///         Ref = "main",
+        ///         FilePath = "README.md",
         ///     });
         /// 
         /// });
@@ -59,9 +59,9 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetRepositoryFile.Invoke(new()
         ///     {
-        ///         FilePath = "README.md",
         ///         Project = "example",
         ///         Ref = "main",
+        ///         FilePath = "README.md",
         ///     });
         /// 
         /// });

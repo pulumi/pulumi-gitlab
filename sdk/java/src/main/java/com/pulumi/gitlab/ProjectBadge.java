@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gitlab.Project;
+ * import com.pulumi.gitlab.ProjectArgs;
  * import com.pulumi.gitlab.ProjectBadge;
  * import com.pulumi.gitlab.ProjectBadgeArgs;
  * import java.util.List;
@@ -43,12 +44,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Project(&#34;foo&#34;);
+ *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
+ *             .name(&#34;foo-project&#34;)
+ *             .build());
  * 
  *         var example = new ProjectBadge(&#34;example&#34;, ProjectBadgeArgs.builder()        
  *             .project(foo.id())
  *             .linkUrl(&#34;https://example.com/badge-123&#34;)
  *             .imageUrl(&#34;https://example.com/badge-123.svg&#34;)
+ *             .name(&#34;badge-123&#34;)
  *             .build());
  * 
  *         // Pipeline status badges with placeholders will be enabled
@@ -56,6 +60,7 @@ import javax.annotation.Nullable;
  *             .project(foo.id())
  *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}&#34;)
  *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg&#34;)
+ *             .name(&#34;badge-pipeline&#34;)
  *             .build());
  * 
  *         // Test coverage report badges with placeholders will be enabled
@@ -63,6 +68,7 @@ import javax.annotation.Nullable;
  *             .project(foo.id())
  *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/jobs&#34;)
  *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg&#34;)
+ *             .name(&#34;badge-coverage&#34;)
  *             .build());
  * 
  *         // Latest release badges with placeholders will be enabled
@@ -70,6 +76,7 @@ import javax.annotation.Nullable;
  *             .project(foo.id())
  *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/releases&#34;)
  *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/-/badges/release.svg&#34;)
+ *             .name(&#34;badge-release&#34;)
  *             .build());
  * 
  *     }
