@@ -98,7 +98,11 @@ type Group struct {
 	// The group's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disable email notifications.
+	//
+	// Deprecated: use `emailsEnabled` instead
 	EmailsDisabled pulumi.BoolOutput `pulumi:"emailsDisabled"`
+	// Enable email notifications.
+	EmailsEnabled pulumi.BoolOutput `pulumi:"emailsEnabled"`
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntOutput `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
@@ -199,7 +203,11 @@ type groupState struct {
 	// The group's description.
 	Description *string `pulumi:"description"`
 	// Disable email notifications.
+	//
+	// Deprecated: use `emailsEnabled` instead
 	EmailsDisabled *bool `pulumi:"emailsDisabled"`
+	// Enable email notifications.
+	EmailsEnabled *bool `pulumi:"emailsEnabled"`
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit *int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
@@ -264,7 +272,11 @@ type GroupState struct {
 	// The group's description.
 	Description pulumi.StringPtrInput
 	// Disable email notifications.
+	//
+	// Deprecated: use `emailsEnabled` instead
 	EmailsDisabled pulumi.BoolPtrInput
+	// Enable email notifications.
+	EmailsEnabled pulumi.BoolPtrInput
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntPtrInput
 	// The full name of the group.
@@ -331,7 +343,11 @@ type groupArgs struct {
 	// The group's description.
 	Description *string `pulumi:"description"`
 	// Disable email notifications.
+	//
+	// Deprecated: use `emailsEnabled` instead
 	EmailsDisabled *bool `pulumi:"emailsDisabled"`
+	// Enable email notifications.
+	EmailsEnabled *bool `pulumi:"emailsEnabled"`
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit *int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
@@ -387,7 +403,11 @@ type GroupArgs struct {
 	// The group's description.
 	Description pulumi.StringPtrInput
 	// Disable email notifications.
+	//
+	// Deprecated: use `emailsEnabled` instead
 	EmailsDisabled pulumi.BoolPtrInput
+	// Enable email notifications.
+	EmailsEnabled pulumi.BoolPtrInput
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntPtrInput
 	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
@@ -548,8 +568,15 @@ func (o GroupOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Disable email notifications.
+//
+// Deprecated: use `emailsEnabled` instead
 func (o GroupOutput) EmailsDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.EmailsDisabled }).(pulumi.BoolOutput)
+}
+
+// Enable email notifications.
+func (o GroupOutput) EmailsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.EmailsEnabled }).(pulumi.BoolOutput)
 }
 
 // Can be set by administrators only. Additional CI/CD minutes for this group.

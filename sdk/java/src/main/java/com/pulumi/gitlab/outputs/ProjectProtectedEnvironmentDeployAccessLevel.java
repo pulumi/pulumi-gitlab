@@ -28,6 +28,11 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
      */
     private @Nullable Integer groupId;
     /**
+     * @return Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` =&gt; Direct group membership only, `1` =&gt; All inherited groups. Default: `0`
+     * 
+     */
+    private @Nullable Integer groupInheritanceType;
+    /**
      * @return The unique ID of the Deploy Access Level object.
      * 
      */
@@ -61,6 +66,13 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
         return Optional.ofNullable(this.groupId);
     }
     /**
+     * @return Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` =&gt; Direct group membership only, `1` =&gt; All inherited groups. Default: `0`
+     * 
+     */
+    public Optional<Integer> groupInheritanceType() {
+        return Optional.ofNullable(this.groupInheritanceType);
+    }
+    /**
      * @return The unique ID of the Deploy Access Level object.
      * 
      */
@@ -87,6 +99,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
         private @Nullable String accessLevel;
         private @Nullable String accessLevelDescription;
         private @Nullable Integer groupId;
+        private @Nullable Integer groupInheritanceType;
         private @Nullable Integer id;
         private @Nullable Integer userId;
         public Builder() {}
@@ -95,6 +108,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
     	      this.accessLevel = defaults.accessLevel;
     	      this.accessLevelDescription = defaults.accessLevelDescription;
     	      this.groupId = defaults.groupId;
+    	      this.groupInheritanceType = defaults.groupInheritanceType;
     	      this.id = defaults.id;
     	      this.userId = defaults.userId;
         }
@@ -118,6 +132,12 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
             return this;
         }
         @CustomType.Setter
+        public Builder groupInheritanceType(@Nullable Integer groupInheritanceType) {
+
+            this.groupInheritanceType = groupInheritanceType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(@Nullable Integer id) {
 
             this.id = id;
@@ -134,6 +154,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevel {
             _resultValue.accessLevel = accessLevel;
             _resultValue.accessLevelDescription = accessLevelDescription;
             _resultValue.groupId = groupId;
+            _resultValue.groupInheritanceType = groupInheritanceType;
             _resultValue.id = id;
             _resultValue.userId = userId;
             return _resultValue;

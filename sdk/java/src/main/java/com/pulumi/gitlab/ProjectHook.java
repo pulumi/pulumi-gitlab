@@ -99,6 +99,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.confidentialNoteEvents);
     }
     /**
+     * Set a custom webhook template.
+     * 
+     */
+    @Export(name="customWebhookTemplate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customWebhookTemplate;
+
+    /**
+     * @return Set a custom webhook template.
+     * 
+     */
+    public Output<Optional<String>> customWebhookTemplate() {
+        return Codegen.optional(this.customWebhookTemplate);
+    }
+    /**
      * Invoke the hook for deployment events.
      * 
      */

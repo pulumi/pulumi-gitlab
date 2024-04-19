@@ -572,6 +572,162 @@ func (o BranchProtectionAllowedToUnprotectArrayOutput) Index(i pulumi.IntInput) 
 	}).(BranchProtectionAllowedToUnprotectOutput)
 }
 
+type GroupAccessTokenRotationConfiguration struct {
+	// The duration (in days) the new token should be valid for.
+	ExpirationDays int `pulumi:"expirationDays"`
+	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+	RotateBeforeDays int `pulumi:"rotateBeforeDays"`
+}
+
+// GroupAccessTokenRotationConfigurationInput is an input type that accepts GroupAccessTokenRotationConfigurationArgs and GroupAccessTokenRotationConfigurationOutput values.
+// You can construct a concrete instance of `GroupAccessTokenRotationConfigurationInput` via:
+//
+//	GroupAccessTokenRotationConfigurationArgs{...}
+type GroupAccessTokenRotationConfigurationInput interface {
+	pulumi.Input
+
+	ToGroupAccessTokenRotationConfigurationOutput() GroupAccessTokenRotationConfigurationOutput
+	ToGroupAccessTokenRotationConfigurationOutputWithContext(context.Context) GroupAccessTokenRotationConfigurationOutput
+}
+
+type GroupAccessTokenRotationConfigurationArgs struct {
+	// The duration (in days) the new token should be valid for.
+	ExpirationDays pulumi.IntInput `pulumi:"expirationDays"`
+	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+	RotateBeforeDays pulumi.IntInput `pulumi:"rotateBeforeDays"`
+}
+
+func (GroupAccessTokenRotationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (i GroupAccessTokenRotationConfigurationArgs) ToGroupAccessTokenRotationConfigurationOutput() GroupAccessTokenRotationConfigurationOutput {
+	return i.ToGroupAccessTokenRotationConfigurationOutputWithContext(context.Background())
+}
+
+func (i GroupAccessTokenRotationConfigurationArgs) ToGroupAccessTokenRotationConfigurationOutputWithContext(ctx context.Context) GroupAccessTokenRotationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupAccessTokenRotationConfigurationOutput)
+}
+
+func (i GroupAccessTokenRotationConfigurationArgs) ToGroupAccessTokenRotationConfigurationPtrOutput() GroupAccessTokenRotationConfigurationPtrOutput {
+	return i.ToGroupAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GroupAccessTokenRotationConfigurationArgs) ToGroupAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) GroupAccessTokenRotationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupAccessTokenRotationConfigurationOutput).ToGroupAccessTokenRotationConfigurationPtrOutputWithContext(ctx)
+}
+
+// GroupAccessTokenRotationConfigurationPtrInput is an input type that accepts GroupAccessTokenRotationConfigurationArgs, GroupAccessTokenRotationConfigurationPtr and GroupAccessTokenRotationConfigurationPtrOutput values.
+// You can construct a concrete instance of `GroupAccessTokenRotationConfigurationPtrInput` via:
+//
+//	        GroupAccessTokenRotationConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupAccessTokenRotationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGroupAccessTokenRotationConfigurationPtrOutput() GroupAccessTokenRotationConfigurationPtrOutput
+	ToGroupAccessTokenRotationConfigurationPtrOutputWithContext(context.Context) GroupAccessTokenRotationConfigurationPtrOutput
+}
+
+type groupAccessTokenRotationConfigurationPtrType GroupAccessTokenRotationConfigurationArgs
+
+func GroupAccessTokenRotationConfigurationPtr(v *GroupAccessTokenRotationConfigurationArgs) GroupAccessTokenRotationConfigurationPtrInput {
+	return (*groupAccessTokenRotationConfigurationPtrType)(v)
+}
+
+func (*groupAccessTokenRotationConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (i *groupAccessTokenRotationConfigurationPtrType) ToGroupAccessTokenRotationConfigurationPtrOutput() GroupAccessTokenRotationConfigurationPtrOutput {
+	return i.ToGroupAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *groupAccessTokenRotationConfigurationPtrType) ToGroupAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) GroupAccessTokenRotationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupAccessTokenRotationConfigurationPtrOutput)
+}
+
+type GroupAccessTokenRotationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GroupAccessTokenRotationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (o GroupAccessTokenRotationConfigurationOutput) ToGroupAccessTokenRotationConfigurationOutput() GroupAccessTokenRotationConfigurationOutput {
+	return o
+}
+
+func (o GroupAccessTokenRotationConfigurationOutput) ToGroupAccessTokenRotationConfigurationOutputWithContext(ctx context.Context) GroupAccessTokenRotationConfigurationOutput {
+	return o
+}
+
+func (o GroupAccessTokenRotationConfigurationOutput) ToGroupAccessTokenRotationConfigurationPtrOutput() GroupAccessTokenRotationConfigurationPtrOutput {
+	return o.ToGroupAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GroupAccessTokenRotationConfigurationOutput) ToGroupAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) GroupAccessTokenRotationConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupAccessTokenRotationConfiguration) *GroupAccessTokenRotationConfiguration {
+		return &v
+	}).(GroupAccessTokenRotationConfigurationPtrOutput)
+}
+
+// The duration (in days) the new token should be valid for.
+func (o GroupAccessTokenRotationConfigurationOutput) ExpirationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GroupAccessTokenRotationConfiguration) int { return v.ExpirationDays }).(pulumi.IntOutput)
+}
+
+// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+func (o GroupAccessTokenRotationConfigurationOutput) RotateBeforeDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GroupAccessTokenRotationConfiguration) int { return v.RotateBeforeDays }).(pulumi.IntOutput)
+}
+
+type GroupAccessTokenRotationConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupAccessTokenRotationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (o GroupAccessTokenRotationConfigurationPtrOutput) ToGroupAccessTokenRotationConfigurationPtrOutput() GroupAccessTokenRotationConfigurationPtrOutput {
+	return o
+}
+
+func (o GroupAccessTokenRotationConfigurationPtrOutput) ToGroupAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) GroupAccessTokenRotationConfigurationPtrOutput {
+	return o
+}
+
+func (o GroupAccessTokenRotationConfigurationPtrOutput) Elem() GroupAccessTokenRotationConfigurationOutput {
+	return o.ApplyT(func(v *GroupAccessTokenRotationConfiguration) GroupAccessTokenRotationConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GroupAccessTokenRotationConfiguration
+		return ret
+	}).(GroupAccessTokenRotationConfigurationOutput)
+}
+
+// The duration (in days) the new token should be valid for.
+func (o GroupAccessTokenRotationConfigurationPtrOutput) ExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupAccessTokenRotationConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpirationDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+func (o GroupAccessTokenRotationConfigurationPtrOutput) RotateBeforeDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupAccessTokenRotationConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RotateBeforeDays
+	}).(pulumi.IntPtrOutput)
+}
+
 type GroupEpicBoardList struct {
 	// The ID of the list.
 	Id *int `pulumi:"id"`
@@ -809,6 +965,8 @@ type GroupProtectedEnvironmentApprovalRule struct {
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
 	// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
 	GroupId *int `pulumi:"groupId"`
+	// Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+	GroupInheritanceType *int `pulumi:"groupInheritanceType"`
 	// The unique ID of the Approval Rules object.
 	Id *int `pulumi:"id"`
 	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
@@ -835,6 +993,8 @@ type GroupProtectedEnvironmentApprovalRuleArgs struct {
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
 	// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+	GroupInheritanceType pulumi.IntPtrInput `pulumi:"groupInheritanceType"`
 	// The unique ID of the Approval Rules object.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
@@ -909,6 +1069,11 @@ func (o GroupProtectedEnvironmentApprovalRuleOutput) GroupId() pulumi.IntPtrOutp
 	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
+// Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+func (o GroupProtectedEnvironmentApprovalRuleOutput) GroupInheritanceType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *int { return v.GroupInheritanceType }).(pulumi.IntPtrOutput)
+}
+
 // The unique ID of the Approval Rules object.
 func (o GroupProtectedEnvironmentApprovalRuleOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *int { return v.Id }).(pulumi.IntPtrOutput)
@@ -951,6 +1116,8 @@ type GroupProtectedEnvironmentDeployAccessLevel struct {
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
 	// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
 	GroupId *int `pulumi:"groupId"`
+	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+	GroupInheritanceType *int `pulumi:"groupInheritanceType"`
 	// The unique ID of the Deploy Access Level object.
 	Id *int `pulumi:"id"`
 	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
@@ -975,6 +1142,8 @@ type GroupProtectedEnvironmentDeployAccessLevelArgs struct {
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
 	// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+	GroupInheritanceType pulumi.IntPtrInput `pulumi:"groupInheritanceType"`
 	// The unique ID of the Deploy Access Level object.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
@@ -1045,6 +1214,11 @@ func (o GroupProtectedEnvironmentDeployAccessLevelOutput) AccessLevelDescription
 // The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
 func (o GroupProtectedEnvironmentDeployAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+func (o GroupProtectedEnvironmentDeployAccessLevelOutput) GroupInheritanceType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *int { return v.GroupInheritanceType }).(pulumi.IntPtrOutput)
 }
 
 // The unique ID of the Deploy Access Level object.
@@ -1402,6 +1576,162 @@ func (o GroupPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 		}
 		return v.RejectUnsignedCommits
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ProjectAccessTokenRotationConfiguration struct {
+	// The duration (in days) the new token should be valid for.
+	ExpirationDays int `pulumi:"expirationDays"`
+	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+	RotateBeforeDays int `pulumi:"rotateBeforeDays"`
+}
+
+// ProjectAccessTokenRotationConfigurationInput is an input type that accepts ProjectAccessTokenRotationConfigurationArgs and ProjectAccessTokenRotationConfigurationOutput values.
+// You can construct a concrete instance of `ProjectAccessTokenRotationConfigurationInput` via:
+//
+//	ProjectAccessTokenRotationConfigurationArgs{...}
+type ProjectAccessTokenRotationConfigurationInput interface {
+	pulumi.Input
+
+	ToProjectAccessTokenRotationConfigurationOutput() ProjectAccessTokenRotationConfigurationOutput
+	ToProjectAccessTokenRotationConfigurationOutputWithContext(context.Context) ProjectAccessTokenRotationConfigurationOutput
+}
+
+type ProjectAccessTokenRotationConfigurationArgs struct {
+	// The duration (in days) the new token should be valid for.
+	ExpirationDays pulumi.IntInput `pulumi:"expirationDays"`
+	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+	RotateBeforeDays pulumi.IntInput `pulumi:"rotateBeforeDays"`
+}
+
+func (ProjectAccessTokenRotationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (i ProjectAccessTokenRotationConfigurationArgs) ToProjectAccessTokenRotationConfigurationOutput() ProjectAccessTokenRotationConfigurationOutput {
+	return i.ToProjectAccessTokenRotationConfigurationOutputWithContext(context.Background())
+}
+
+func (i ProjectAccessTokenRotationConfigurationArgs) ToProjectAccessTokenRotationConfigurationOutputWithContext(ctx context.Context) ProjectAccessTokenRotationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessTokenRotationConfigurationOutput)
+}
+
+func (i ProjectAccessTokenRotationConfigurationArgs) ToProjectAccessTokenRotationConfigurationPtrOutput() ProjectAccessTokenRotationConfigurationPtrOutput {
+	return i.ToProjectAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectAccessTokenRotationConfigurationArgs) ToProjectAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) ProjectAccessTokenRotationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessTokenRotationConfigurationOutput).ToProjectAccessTokenRotationConfigurationPtrOutputWithContext(ctx)
+}
+
+// ProjectAccessTokenRotationConfigurationPtrInput is an input type that accepts ProjectAccessTokenRotationConfigurationArgs, ProjectAccessTokenRotationConfigurationPtr and ProjectAccessTokenRotationConfigurationPtrOutput values.
+// You can construct a concrete instance of `ProjectAccessTokenRotationConfigurationPtrInput` via:
+//
+//	        ProjectAccessTokenRotationConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectAccessTokenRotationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToProjectAccessTokenRotationConfigurationPtrOutput() ProjectAccessTokenRotationConfigurationPtrOutput
+	ToProjectAccessTokenRotationConfigurationPtrOutputWithContext(context.Context) ProjectAccessTokenRotationConfigurationPtrOutput
+}
+
+type projectAccessTokenRotationConfigurationPtrType ProjectAccessTokenRotationConfigurationArgs
+
+func ProjectAccessTokenRotationConfigurationPtr(v *ProjectAccessTokenRotationConfigurationArgs) ProjectAccessTokenRotationConfigurationPtrInput {
+	return (*projectAccessTokenRotationConfigurationPtrType)(v)
+}
+
+func (*projectAccessTokenRotationConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (i *projectAccessTokenRotationConfigurationPtrType) ToProjectAccessTokenRotationConfigurationPtrOutput() ProjectAccessTokenRotationConfigurationPtrOutput {
+	return i.ToProjectAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *projectAccessTokenRotationConfigurationPtrType) ToProjectAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) ProjectAccessTokenRotationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessTokenRotationConfigurationPtrOutput)
+}
+
+type ProjectAccessTokenRotationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ProjectAccessTokenRotationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (o ProjectAccessTokenRotationConfigurationOutput) ToProjectAccessTokenRotationConfigurationOutput() ProjectAccessTokenRotationConfigurationOutput {
+	return o
+}
+
+func (o ProjectAccessTokenRotationConfigurationOutput) ToProjectAccessTokenRotationConfigurationOutputWithContext(ctx context.Context) ProjectAccessTokenRotationConfigurationOutput {
+	return o
+}
+
+func (o ProjectAccessTokenRotationConfigurationOutput) ToProjectAccessTokenRotationConfigurationPtrOutput() ProjectAccessTokenRotationConfigurationPtrOutput {
+	return o.ToProjectAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectAccessTokenRotationConfigurationOutput) ToProjectAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) ProjectAccessTokenRotationConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectAccessTokenRotationConfiguration) *ProjectAccessTokenRotationConfiguration {
+		return &v
+	}).(ProjectAccessTokenRotationConfigurationPtrOutput)
+}
+
+// The duration (in days) the new token should be valid for.
+func (o ProjectAccessTokenRotationConfigurationOutput) ExpirationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v ProjectAccessTokenRotationConfiguration) int { return v.ExpirationDays }).(pulumi.IntOutput)
+}
+
+// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+func (o ProjectAccessTokenRotationConfigurationOutput) RotateBeforeDays() pulumi.IntOutput {
+	return o.ApplyT(func(v ProjectAccessTokenRotationConfiguration) int { return v.RotateBeforeDays }).(pulumi.IntOutput)
+}
+
+type ProjectAccessTokenRotationConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectAccessTokenRotationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (o ProjectAccessTokenRotationConfigurationPtrOutput) ToProjectAccessTokenRotationConfigurationPtrOutput() ProjectAccessTokenRotationConfigurationPtrOutput {
+	return o
+}
+
+func (o ProjectAccessTokenRotationConfigurationPtrOutput) ToProjectAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) ProjectAccessTokenRotationConfigurationPtrOutput {
+	return o
+}
+
+func (o ProjectAccessTokenRotationConfigurationPtrOutput) Elem() ProjectAccessTokenRotationConfigurationOutput {
+	return o.ApplyT(func(v *ProjectAccessTokenRotationConfiguration) ProjectAccessTokenRotationConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectAccessTokenRotationConfiguration
+		return ret
+	}).(ProjectAccessTokenRotationConfigurationOutput)
+}
+
+// The duration (in days) the new token should be valid for.
+func (o ProjectAccessTokenRotationConfigurationPtrOutput) ExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectAccessTokenRotationConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpirationDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+func (o ProjectAccessTokenRotationConfigurationPtrOutput) RotateBeforeDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectAccessTokenRotationConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RotateBeforeDays
+	}).(pulumi.IntPtrOutput)
 }
 
 type ProjectContainerExpirationPolicy struct {
@@ -1937,6 +2267,8 @@ type ProjectProtectedEnvironmentApprovalRule struct {
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
 	// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
 	GroupId *int `pulumi:"groupId"`
+	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+	GroupInheritanceType *int `pulumi:"groupInheritanceType"`
 	// The unique ID of the Approval Rules object.
 	Id *int `pulumi:"id"`
 	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
@@ -1963,6 +2295,8 @@ type ProjectProtectedEnvironmentApprovalRuleArgs struct {
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
 	// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+	GroupInheritanceType pulumi.IntPtrInput `pulumi:"groupInheritanceType"`
 	// The unique ID of the Approval Rules object.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
@@ -2037,6 +2371,11 @@ func (o ProjectProtectedEnvironmentApprovalRuleOutput) GroupId() pulumi.IntPtrOu
 	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
+// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+func (o ProjectProtectedEnvironmentApprovalRuleOutput) GroupInheritanceType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *int { return v.GroupInheritanceType }).(pulumi.IntPtrOutput)
+}
+
 // The unique ID of the Approval Rules object.
 func (o ProjectProtectedEnvironmentApprovalRuleOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *int { return v.Id }).(pulumi.IntPtrOutput)
@@ -2079,6 +2418,8 @@ type ProjectProtectedEnvironmentDeployAccessLevel struct {
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
 	// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
 	GroupId *int `pulumi:"groupId"`
+	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+	GroupInheritanceType *int `pulumi:"groupInheritanceType"`
 	// The unique ID of the Deploy Access Level object.
 	Id *int `pulumi:"id"`
 	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
@@ -2103,6 +2444,8 @@ type ProjectProtectedEnvironmentDeployAccessLevelArgs struct {
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
 	// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+	GroupInheritanceType pulumi.IntPtrInput `pulumi:"groupInheritanceType"`
 	// The unique ID of the Deploy Access Level object.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
@@ -2173,6 +2516,11 @@ func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) AccessLevelDescripti
 // The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
 func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) GroupInheritanceType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevel) *int { return v.GroupInheritanceType }).(pulumi.IntPtrOutput)
 }
 
 // The unique ID of the Deploy Access Level object.
@@ -3274,6 +3622,8 @@ type GetGroupHooksHook struct {
 	ConfidentialIssuesEvents bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents bool `pulumi:"confidentialNoteEvents"`
+	// Set a custom webhook template.
+	CustomWebhookTemplate string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents bool `pulumi:"deploymentEvents"`
 	// Enable ssl verification when invoking the hook.
@@ -3328,6 +3678,8 @@ type GetGroupHooksHookArgs struct {
 	ConfidentialIssuesEvents pulumi.BoolInput `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents pulumi.BoolInput `pulumi:"confidentialNoteEvents"`
+	// Set a custom webhook template.
+	CustomWebhookTemplate pulumi.StringInput `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolInput `pulumi:"deploymentEvents"`
 	// Enable ssl verification when invoking the hook.
@@ -3425,6 +3777,11 @@ func (o GetGroupHooksHookOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
 // Invoke the hook for confidential notes events.
 func (o GetGroupHooksHookOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupHooksHook) bool { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
+}
+
+// Set a custom webhook template.
+func (o GetGroupHooksHookOutput) CustomWebhookTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupHooksHook) string { return v.CustomWebhookTemplate }).(pulumi.StringOutput)
 }
 
 // Invoke the hook for deployment events.
@@ -3837,6 +4194,7 @@ type GetGroupSubgroupsSubgroup struct {
 	DefaultBranchProtection        int               `pulumi:"defaultBranchProtection"`
 	Description                    string            `pulumi:"description"`
 	EmailsDisabled                 bool              `pulumi:"emailsDisabled"`
+	EmailsEnabled                  bool              `pulumi:"emailsEnabled"`
 	FileTemplateProjectId          int               `pulumi:"fileTemplateProjectId"`
 	FullName                       string            `pulumi:"fullName"`
 	FullPath                       string            `pulumi:"fullPath"`
@@ -3878,6 +4236,7 @@ type GetGroupSubgroupsSubgroupArgs struct {
 	DefaultBranchProtection        pulumi.IntInput       `pulumi:"defaultBranchProtection"`
 	Description                    pulumi.StringInput    `pulumi:"description"`
 	EmailsDisabled                 pulumi.BoolInput      `pulumi:"emailsDisabled"`
+	EmailsEnabled                  pulumi.BoolInput      `pulumi:"emailsEnabled"`
 	FileTemplateProjectId          pulumi.IntInput       `pulumi:"fileTemplateProjectId"`
 	FullName                       pulumi.StringInput    `pulumi:"fullName"`
 	FullPath                       pulumi.StringInput    `pulumi:"fullPath"`
@@ -3974,6 +4333,10 @@ func (o GetGroupSubgroupsSubgroupOutput) Description() pulumi.StringOutput {
 
 func (o GetGroupSubgroupsSubgroupOutput) EmailsDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) EmailsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.EmailsEnabled }).(pulumi.BoolOutput)
 }
 
 func (o GetGroupSubgroupsSubgroupOutput) FileTemplateProjectId() pulumi.IntOutput {
@@ -5515,6 +5878,8 @@ type GetProjectHooksHook struct {
 	ConfidentialIssuesEvents bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents bool `pulumi:"confidentialNoteEvents"`
+	// Set a custom webhook template.
+	CustomWebhookTemplate string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents bool `pulumi:"deploymentEvents"`
 	// Enable ssl verification when invoking the hook.
@@ -5567,6 +5932,8 @@ type GetProjectHooksHookArgs struct {
 	ConfidentialIssuesEvents pulumi.BoolInput `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents pulumi.BoolInput `pulumi:"confidentialNoteEvents"`
+	// Set a custom webhook template.
+	CustomWebhookTemplate pulumi.StringInput `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolInput `pulumi:"deploymentEvents"`
 	// Enable ssl verification when invoking the hook.
@@ -5662,6 +6029,11 @@ func (o GetProjectHooksHookOutput) ConfidentialIssuesEvents() pulumi.BoolOutput 
 // Invoke the hook for confidential notes events.
 func (o GetProjectHooksHookOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectHooksHook) bool { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
+}
+
+// Set a custom webhook template.
+func (o GetProjectHooksHookOutput) CustomWebhookTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectHooksHook) string { return v.CustomWebhookTemplate }).(pulumi.StringOutput)
 }
 
 // Invoke the hook for deployment events.
@@ -8695,7 +9067,11 @@ type GetProjectsProject struct {
 	// The description of the project.
 	Description string `pulumi:"description"`
 	// Disable email notifications.
+	//
+	// Deprecated: Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
 	EmailsDisabled bool `pulumi:"emailsDisabled"`
+	// Enable email notifications.
+	EmailsEnabled bool `pulumi:"emailsEnabled"`
 	// Whether the project is empty.
 	EmptyRepo bool `pulumi:"emptyRepo"`
 	// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -8902,7 +9278,11 @@ type GetProjectsProjectArgs struct {
 	// The description of the project.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Disable email notifications.
+	//
+	// Deprecated: Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
 	EmailsDisabled pulumi.BoolInput `pulumi:"emailsDisabled"`
+	// Enable email notifications.
+	EmailsEnabled pulumi.BoolInput `pulumi:"emailsEnabled"`
 	// Whether the project is empty.
 	EmptyRepo pulumi.BoolInput `pulumi:"emptyRepo"`
 	// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -9228,8 +9608,15 @@ func (o GetProjectsProjectOutput) Description() pulumi.StringOutput {
 }
 
 // Disable email notifications.
+//
+// Deprecated: Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
 func (o GetProjectsProjectOutput) EmailsDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
+}
+
+// Enable email notifications.
+func (o GetProjectsProjectOutput) EmailsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.EmailsEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether the project is empty.
@@ -11612,6 +11999,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushArrayInput)(nil)).Elem(), BranchProtectionAllowedToPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToUnprotectInput)(nil)).Elem(), BranchProtectionAllowedToUnprotectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToUnprotectArrayInput)(nil)).Elem(), BranchProtectionAllowedToUnprotectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupAccessTokenRotationConfigurationInput)(nil)).Elem(), GroupAccessTokenRotationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), GroupAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupEpicBoardListInput)(nil)).Elem(), GroupEpicBoardListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupEpicBoardListArrayInput)(nil)).Elem(), GroupEpicBoardListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupIssueBoardListInput)(nil)).Elem(), GroupIssueBoardListArgs{})
@@ -11622,6 +12011,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentDeployAccessLevelArrayInput)(nil)).Elem(), GroupProtectedEnvironmentDeployAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesInput)(nil)).Elem(), GroupPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesPtrInput)(nil)).Elem(), GroupPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessTokenRotationConfigurationInput)(nil)).Elem(), ProjectAccessTokenRotationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), ProjectAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyPtrInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueBoardListInput)(nil)).Elem(), ProjectIssueBoardListArgs{})
@@ -11743,6 +12134,8 @@ func init() {
 	pulumi.RegisterOutputType(BranchProtectionAllowedToPushArrayOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToUnprotectOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToUnprotectArrayOutput{})
+	pulumi.RegisterOutputType(GroupAccessTokenRotationConfigurationOutput{})
+	pulumi.RegisterOutputType(GroupAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GroupEpicBoardListOutput{})
 	pulumi.RegisterOutputType(GroupEpicBoardListArrayOutput{})
 	pulumi.RegisterOutputType(GroupIssueBoardListOutput{})
@@ -11753,6 +12146,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupProtectedEnvironmentDeployAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(GroupPushRulesOutput{})
 	pulumi.RegisterOutputType(GroupPushRulesPtrOutput{})
+	pulumi.RegisterOutputType(ProjectAccessTokenRotationConfigurationOutput{})
+	pulumi.RegisterOutputType(ProjectAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ProjectIssueBoardListOutput{})

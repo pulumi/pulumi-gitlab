@@ -63,6 +63,21 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    @Import(name="memberRoleId")
+    private @Nullable Output<Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    public Optional<Output<Integer>> memberRoleId() {
+        return Optional.ofNullable(this.memberRoleId);
+    }
+
+    /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      * 
      */
@@ -113,6 +128,7 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
         this.accessLevel = $.accessLevel;
         this.expiresAt = $.expiresAt;
         this.groupId = $.groupId;
+        this.memberRoleId = $.memberRoleId;
         this.skipSubresourcesOnDestroy = $.skipSubresourcesOnDestroy;
         this.unassignIssuablesOnDestroy = $.unassignIssuablesOnDestroy;
         this.userId = $.userId;
@@ -197,6 +213,27 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
          */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(@Nullable Output<Integer> memberRoleId) {
+            $.memberRoleId = memberRoleId;
+            return this;
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(Integer memberRoleId) {
+            return memberRoleId(Output.of(memberRoleId));
         }
 
         /**

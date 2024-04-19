@@ -405,6 +405,17 @@ export interface GetReleaseAssetsSourceArgs {
     url?: pulumi.Input<string>;
 }
 
+export interface GroupAccessTokenRotationConfiguration {
+    /**
+     * The duration (in days) the new token should be valid for.
+     */
+    expirationDays: pulumi.Input<number>;
+    /**
+     * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+     */
+    rotateBeforeDays: pulumi.Input<number>;
+}
+
 export interface GroupEpicBoardList {
     /**
      * The ID of the list.
@@ -449,6 +460,10 @@ export interface GroupProtectedEnvironmentApprovalRule {
      */
     groupId?: pulumi.Input<number>;
     /**
+     * Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+     */
+    groupInheritanceType?: pulumi.Input<number>;
+    /**
      * The unique ID of the Approval Rules object.
      */
     id?: pulumi.Input<number>;
@@ -475,6 +490,10 @@ export interface GroupProtectedEnvironmentDeployAccessLevel {
      * The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
      */
     groupId?: pulumi.Input<number>;
+    /**
+     * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+     */
+    groupInheritanceType?: pulumi.Input<number>;
     /**
      * The unique ID of the Deploy Access Level object.
      */
@@ -530,6 +549,17 @@ export interface GroupPushRules {
      * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
      */
     rejectUnsignedCommits?: pulumi.Input<boolean>;
+}
+
+export interface ProjectAccessTokenRotationConfiguration {
+    /**
+     * The duration (in days) the new token should be valid for.
+     */
+    expirationDays: pulumi.Input<number>;
+    /**
+     * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+     */
+    rotateBeforeDays: pulumi.Input<number>;
 }
 
 export interface ProjectContainerExpirationPolicy {
@@ -621,6 +651,10 @@ export interface ProjectProtectedEnvironmentApprovalRule {
      */
     groupId?: pulumi.Input<number>;
     /**
+     * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+     */
+    groupInheritanceType?: pulumi.Input<number>;
+    /**
      * The unique ID of the Approval Rules object.
      */
     id?: pulumi.Input<number>;
@@ -647,6 +681,10 @@ export interface ProjectProtectedEnvironmentDeployAccessLevel {
      * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
      */
     groupId?: pulumi.Input<number>;
+    /**
+     * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+     */
+    groupInheritanceType?: pulumi.Input<number>;
     /**
      * The unique ID of the Deploy Access Level object.
      */

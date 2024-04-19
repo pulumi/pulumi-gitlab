@@ -6,6 +6,7 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gitlab.inputs.ProjectAccessTokenRotationConfigurationArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,29 +34,29 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Time the token will expire it, YYYY-MM-DD format.
+     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
-    @Import(name="expiresAt", required=true)
-    private Output<String> expiresAt;
+    @Import(name="expiresAt")
+    private @Nullable Output<String> expiresAt;
 
     /**
-     * @return Time the token will expire it, YYYY-MM-DD format.
+     * @return When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
-    public Output<String> expiresAt() {
-        return this.expiresAt;
+    public Optional<Output<String>> expiresAt() {
+        return Optional.ofNullable(this.expiresAt);
     }
 
     /**
-     * A name to describe the project access token.
+     * The name of the project access token.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A name to describe the project access token.
+     * @return The name of the project access token.
      * 
      */
     public Optional<Output<String>> name() {
@@ -63,14 +64,14 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The id of the project to add the project access token to.
+     * The ID or full path of the project.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The id of the project to add the project access token to.
+     * @return The ID or full path of the project.
      * 
      */
     public Output<String> project() {
@@ -78,14 +79,29 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    @Import(name="rotationConfiguration")
+    private @Nullable Output<ProjectAccessTokenRotationConfigurationArgs> rotationConfiguration;
+
+    /**
+     * @return The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    public Optional<Output<ProjectAccessTokenRotationConfigurationArgs>> rotationConfiguration() {
+        return Optional.ofNullable(this.rotationConfiguration);
+    }
+
+    /**
+     * The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
      * 
      */
     @Import(name="scopes", required=true)
     private Output<List<String>> scopes;
 
     /**
-     * @return The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+     * @return The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
      * 
      */
     public Output<List<String>> scopes() {
@@ -99,6 +115,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         this.expiresAt = $.expiresAt;
         this.name = $.name;
         this.project = $.project;
+        this.rotationConfiguration = $.rotationConfiguration;
         this.scopes = $.scopes;
     }
 
@@ -142,18 +159,18 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param expiresAt Time the token will expire it, YYYY-MM-DD format.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
          * 
          * @return builder
          * 
          */
-        public Builder expiresAt(Output<String> expiresAt) {
+        public Builder expiresAt(@Nullable Output<String> expiresAt) {
             $.expiresAt = expiresAt;
             return this;
         }
 
         /**
-         * @param expiresAt Time the token will expire it, YYYY-MM-DD format.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
          * 
          * @return builder
          * 
@@ -163,7 +180,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name A name to describe the project access token.
+         * @param name The name of the project access token.
          * 
          * @return builder
          * 
@@ -174,7 +191,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name A name to describe the project access token.
+         * @param name The name of the project access token.
          * 
          * @return builder
          * 
@@ -184,7 +201,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project The id of the project to add the project access token to.
+         * @param project The ID or full path of the project.
          * 
          * @return builder
          * 
@@ -195,7 +212,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project The id of the project to add the project access token to.
+         * @param project The ID or full path of the project.
          * 
          * @return builder
          * 
@@ -205,7 +222,28 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(@Nullable Output<ProjectAccessTokenRotationConfigurationArgs> rotationConfiguration) {
+            $.rotationConfiguration = rotationConfiguration;
+            return this;
+        }
+
+        /**
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(ProjectAccessTokenRotationConfigurationArgs rotationConfiguration) {
+            return rotationConfiguration(Output.of(rotationConfiguration));
+        }
+
+        /**
+         * @param scopes The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
          * 
          * @return builder
          * 
@@ -216,7 +254,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+         * @param scopes The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
          * 
          * @return builder
          * 
@@ -226,7 +264,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+         * @param scopes The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
          * 
          * @return builder
          * 
@@ -236,9 +274,6 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         public ProjectAccessTokenArgs build() {
-            if ($.expiresAt == null) {
-                throw new MissingRequiredPropertyException("ProjectAccessTokenArgs", "expiresAt");
-            }
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("ProjectAccessTokenArgs", "project");
             }

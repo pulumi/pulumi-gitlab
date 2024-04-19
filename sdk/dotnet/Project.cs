@@ -293,6 +293,12 @@ namespace Pulumi.GitLab
         public Output<bool> EmailsDisabled { get; private set; } = null!;
 
         /// <summary>
+        /// Enable email notifications.
+        /// </summary>
+        [Output("emailsEnabled")]
+        public Output<bool> EmailsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the project is empty.
         /// </summary>
         [Output("emptyRepo")]
@@ -939,6 +945,12 @@ namespace Pulumi.GitLab
         public Input<bool>? EmailsDisabled { get; set; }
 
         /// <summary>
+        /// Enable email notifications.
+        /// </summary>
+        [Input("emailsEnabled")]
+        public Input<bool>? EmailsEnabled { get; set; }
+
+        /// <summary>
         /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         [Input("environmentsAccessLevel")]
@@ -1532,6 +1544,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("emailsDisabled")]
         public Input<bool>? EmailsDisabled { get; set; }
+
+        /// <summary>
+        /// Enable email notifications.
+        /// </summary>
+        [Input("emailsEnabled")]
+        public Input<bool>? EmailsEnabled { get; set; }
 
         /// <summary>
         /// Whether the project is empty.

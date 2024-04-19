@@ -189,6 +189,10 @@ export interface GetGroupHooksHook {
      */
     confidentialNoteEvents: boolean;
     /**
+     * Set a custom webhook template.
+     */
+    customWebhookTemplate: string;
+    /**
      * Invoke the hook for deployment events.
      */
     deploymentEvents: boolean;
@@ -327,6 +331,7 @@ export interface GetGroupSubgroupsSubgroup {
     defaultBranchProtection: number;
     description: string;
     emailsDisabled: boolean;
+    emailsEnabled: boolean;
     fileTemplateProjectId: number;
     fullName: string;
     fullPath: string;
@@ -688,6 +693,10 @@ export interface GetProjectHooksHook {
      * Invoke the hook for confidential notes events.
      */
     confidentialNoteEvents: boolean;
+    /**
+     * Set a custom webhook template.
+     */
+    customWebhookTemplate: string;
     /**
      * Invoke the hook for deployment events.
      */
@@ -1487,8 +1496,14 @@ export interface GetProjectsProject {
     description: string;
     /**
      * Disable email notifications.
+     *
+     * @deprecated Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
      */
     emailsDisabled: boolean;
+    /**
+     * Enable email notifications.
+     */
+    emailsEnabled: boolean;
     /**
      * Whether the project is empty.
      */
@@ -2161,6 +2176,17 @@ export interface GetUsersUser {
     websiteUrl: string;
 }
 
+export interface GroupAccessTokenRotationConfiguration {
+    /**
+     * The duration (in days) the new token should be valid for.
+     */
+    expirationDays: number;
+    /**
+     * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+     */
+    rotateBeforeDays: number;
+}
+
 export interface GroupEpicBoardList {
     /**
      * The ID of the list.
@@ -2205,6 +2231,10 @@ export interface GroupProtectedEnvironmentApprovalRule {
      */
     groupId?: number;
     /**
+     * Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+     */
+    groupInheritanceType: number;
+    /**
      * The unique ID of the Approval Rules object.
      */
     id: number;
@@ -2231,6 +2261,10 @@ export interface GroupProtectedEnvironmentDeployAccessLevel {
      * The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
      */
     groupId?: number;
+    /**
+     * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+     */
+    groupInheritanceType: number;
     /**
      * The unique ID of the Deploy Access Level object.
      */
@@ -2286,6 +2320,17 @@ export interface GroupPushRules {
      * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
      */
     rejectUnsignedCommits: boolean;
+}
+
+export interface ProjectAccessTokenRotationConfiguration {
+    /**
+     * The duration (in days) the new token should be valid for.
+     */
+    expirationDays: number;
+    /**
+     * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+     */
+    rotateBeforeDays: number;
 }
 
 export interface ProjectContainerExpirationPolicy {
@@ -2377,6 +2422,10 @@ export interface ProjectProtectedEnvironmentApprovalRule {
      */
     groupId?: number;
     /**
+     * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+     */
+    groupInheritanceType: number;
+    /**
      * The unique ID of the Approval Rules object.
      */
     id: number;
@@ -2403,6 +2452,10 @@ export interface ProjectProtectedEnvironmentDeployAccessLevel {
      * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
      */
     groupId?: number;
+    /**
+     * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+     */
+    groupInheritanceType: number;
     /**
      * The unique ID of the Deploy Access Level object.
      */

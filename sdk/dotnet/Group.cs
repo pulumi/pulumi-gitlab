@@ -118,6 +118,12 @@ namespace Pulumi.GitLab
         public Output<bool> EmailsDisabled { get; private set; } = null!;
 
         /// <summary>
+        /// Enable email notifications.
+        /// </summary>
+        [Output("emailsEnabled")]
+        public Output<bool> EmailsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Can be set by administrators only. Additional CI/CD minutes for this group.
         /// </summary>
         [Output("extraSharedRunnersMinutesLimit")]
@@ -348,6 +354,12 @@ namespace Pulumi.GitLab
         public Input<bool>? EmailsDisabled { get; set; }
 
         /// <summary>
+        /// Enable email notifications.
+        /// </summary>
+        [Input("emailsEnabled")]
+        public Input<bool>? EmailsEnabled { get; set; }
+
+        /// <summary>
         /// Can be set by administrators only. Additional CI/CD minutes for this group.
         /// </summary>
         [Input("extraSharedRunnersMinutesLimit")]
@@ -522,6 +534,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("emailsDisabled")]
         public Input<bool>? EmailsDisabled { get; set; }
+
+        /// <summary>
+        /// Enable email notifications.
+        /// </summary>
+        [Input("emailsEnabled")]
+        public Input<bool>? EmailsEnabled { get; set; }
 
         /// <summary>
         /// Can be set by administrators only. Additional CI/CD minutes for this group.

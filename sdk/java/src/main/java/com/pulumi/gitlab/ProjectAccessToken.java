@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.ProjectAccessTokenArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectAccessTokenState;
+import com.pulumi.gitlab.outputs.ProjectAccessTokenRotationConfiguration;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -20,7 +21,11 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
  * 
- * &gt;  Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it&#39;s recommended to use `plantimestamp()` or a static value instead.
+ * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+ * 
+ * &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+ * 
+ * &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/project_access_tokens.html#automatic-reuse-detection) it&#39;s possible that a new Project Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
  * 
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
  * 
@@ -86,14 +91,14 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accessLevel;
+    private Output<String> accessLevel;
 
     /**
      * @return The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
      * 
      */
-    public Output<Optional<String>> accessLevel() {
-        return Codegen.optional(this.accessLevel);
+    public Output<String> accessLevel() {
+        return this.accessLevel;
     }
     /**
      * True if the token is active.
@@ -124,42 +129,42 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Time the token will expire it, YYYY-MM-DD format.
+     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output<String> expiresAt;
 
     /**
-     * @return Time the token will expire it, YYYY-MM-DD format.
+     * @return When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
     public Output<String> expiresAt() {
         return this.expiresAt;
     }
     /**
-     * A name to describe the project access token.
+     * The name of the project access token.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A name to describe the project access token.
+     * @return The name of the project access token.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The id of the project to add the project access token to.
+     * The ID or full path of the project.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The id of the project to add the project access token to.
+     * @return The ID or full path of the project.
      * 
      */
     public Output<String> project() {
@@ -180,28 +185,42 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
         return this.revoked;
     }
     /**
-     * The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    @Export(name="rotationConfiguration", refs={ProjectAccessTokenRotationConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ ProjectAccessTokenRotationConfiguration> rotationConfiguration;
+
+    /**
+     * @return The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    public Output<Optional<ProjectAccessTokenRotationConfiguration>> rotationConfiguration() {
+        return Codegen.optional(this.rotationConfiguration);
+    }
+    /**
+     * The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
-     * @return The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+     * @return The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
      * 
      */
     public Output<List<String>> scopes() {
         return this.scopes;
     }
     /**
-     * The secret token. **Note**: the token is not available for imported resources.
+     * The token of the project access token. **Note**: the token is not available for imported resources.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
-     * @return The secret token. **Note**: the token is not available for imported resources.
+     * @return The token of the project access token. **Note**: the token is not available for imported resources.
      * 
      */
     public Output<String> token() {

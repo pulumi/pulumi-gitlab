@@ -22,6 +22,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool ConfidentialNoteEvents;
         /// <summary>
+        /// Set a custom webhook template.
+        /// </summary>
+        public readonly string CustomWebhookTemplate;
+        /// <summary>
         /// Invoke the hook for deployment events.
         /// </summary>
         public readonly bool DeploymentEvents;
@@ -96,6 +100,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool confidentialNoteEvents,
 
+            string customWebhookTemplate,
+
             bool deploymentEvents,
 
             bool enableSslVerification,
@@ -132,6 +138,7 @@ namespace Pulumi.GitLab.Outputs
         {
             ConfidentialIssuesEvents = confidentialIssuesEvents;
             ConfidentialNoteEvents = confidentialNoteEvents;
+            CustomWebhookTemplate = customWebhookTemplate;
             DeploymentEvents = deploymentEvents;
             EnableSslVerification = enableSslVerification;
             HookId = hookId;

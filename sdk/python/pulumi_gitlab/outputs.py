@@ -15,11 +15,13 @@ __all__ = [
     'BranchProtectionAllowedToMerge',
     'BranchProtectionAllowedToPush',
     'BranchProtectionAllowedToUnprotect',
+    'GroupAccessTokenRotationConfiguration',
     'GroupEpicBoardList',
     'GroupIssueBoardList',
     'GroupProtectedEnvironmentApprovalRule',
     'GroupProtectedEnvironmentDeployAccessLevel',
     'GroupPushRules',
+    'ProjectAccessTokenRotationConfiguration',
     'ProjectContainerExpirationPolicy',
     'ProjectIssueBoardList',
     'ProjectIssueTaskCompletionStatus',
@@ -484,6 +486,54 @@ class BranchProtectionAllowedToUnprotect(dict):
 
 
 @pulumi.output_type
+class GroupAccessTokenRotationConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationDays":
+            suggest = "expiration_days"
+        elif key == "rotateBeforeDays":
+            suggest = "rotate_before_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupAccessTokenRotationConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupAccessTokenRotationConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupAccessTokenRotationConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expiration_days: int,
+                 rotate_before_days: int):
+        """
+        :param int expiration_days: The duration (in days) the new token should be valid for.
+        :param int rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        pulumi.set(__self__, "expiration_days", expiration_days)
+        pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> int:
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @property
+    @pulumi.getter(name="rotateBeforeDays")
+    def rotate_before_days(self) -> int:
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        return pulumi.get(self, "rotate_before_days")
+
+
+@pulumi.output_type
 class GroupEpicBoardList(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -614,6 +664,8 @@ class GroupProtectedEnvironmentApprovalRule(dict):
             suggest = "access_level_description"
         elif key == "groupId":
             suggest = "group_id"
+        elif key == "groupInheritanceType":
+            suggest = "group_inheritance_type"
         elif key == "requiredApprovals":
             suggest = "required_approvals"
         elif key == "userId":
@@ -634,6 +686,7 @@ class GroupProtectedEnvironmentApprovalRule(dict):
                  access_level: Optional[str] = None,
                  access_level_description: Optional[str] = None,
                  group_id: Optional[int] = None,
+                 group_inheritance_type: Optional[int] = None,
                  id: Optional[int] = None,
                  required_approvals: Optional[int] = None,
                  user_id: Optional[int] = None):
@@ -641,6 +694,7 @@ class GroupProtectedEnvironmentApprovalRule(dict):
         :param str access_level: Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
         :param str access_level_description: Readable description of level of access.
         :param int group_id: The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+        :param int group_inheritance_type: Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param int id: The unique ID of the Approval Rules object.
         :param int required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
         :param int user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
@@ -651,6 +705,8 @@ class GroupProtectedEnvironmentApprovalRule(dict):
             pulumi.set(__self__, "access_level_description", access_level_description)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if group_inheritance_type is not None:
+            pulumi.set(__self__, "group_inheritance_type", group_inheritance_type)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if required_approvals is not None:
@@ -681,6 +737,14 @@ class GroupProtectedEnvironmentApprovalRule(dict):
         The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
         """
         return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="groupInheritanceType")
+    def group_inheritance_type(self) -> Optional[int]:
+        """
+        Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        return pulumi.get(self, "group_inheritance_type")
 
     @property
     @pulumi.getter
@@ -718,6 +782,8 @@ class GroupProtectedEnvironmentDeployAccessLevel(dict):
             suggest = "access_level_description"
         elif key == "groupId":
             suggest = "group_id"
+        elif key == "groupInheritanceType":
+            suggest = "group_inheritance_type"
         elif key == "userId":
             suggest = "user_id"
 
@@ -736,12 +802,14 @@ class GroupProtectedEnvironmentDeployAccessLevel(dict):
                  access_level: Optional[str] = None,
                  access_level_description: Optional[str] = None,
                  group_id: Optional[int] = None,
+                 group_inheritance_type: Optional[int] = None,
                  id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
         :param str access_level: Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
         :param str access_level_description: Readable description of level of access.
         :param int group_id: The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+        :param int group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param int id: The unique ID of the Deploy Access Level object.
         :param int user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
         """
@@ -751,6 +819,8 @@ class GroupProtectedEnvironmentDeployAccessLevel(dict):
             pulumi.set(__self__, "access_level_description", access_level_description)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if group_inheritance_type is not None:
+            pulumi.set(__self__, "group_inheritance_type", group_inheritance_type)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if user_id is not None:
@@ -779,6 +849,14 @@ class GroupProtectedEnvironmentDeployAccessLevel(dict):
         The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
         """
         return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="groupInheritanceType")
+    def group_inheritance_type(self) -> Optional[int]:
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        return pulumi.get(self, "group_inheritance_type")
 
     @property
     @pulumi.getter
@@ -971,6 +1049,54 @@ class GroupPushRules(dict):
         Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
         """
         return pulumi.get(self, "reject_unsigned_commits")
+
+
+@pulumi.output_type
+class ProjectAccessTokenRotationConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationDays":
+            suggest = "expiration_days"
+        elif key == "rotateBeforeDays":
+            suggest = "rotate_before_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectAccessTokenRotationConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectAccessTokenRotationConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectAccessTokenRotationConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expiration_days: int,
+                 rotate_before_days: int):
+        """
+        :param int expiration_days: The duration (in days) the new token should be valid for.
+        :param int rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        pulumi.set(__self__, "expiration_days", expiration_days)
+        pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> int:
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @property
+    @pulumi.getter(name="rotateBeforeDays")
+    def rotate_before_days(self) -> int:
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        return pulumi.get(self, "rotate_before_days")
 
 
 @pulumi.output_type
@@ -1267,6 +1393,8 @@ class ProjectProtectedEnvironmentApprovalRule(dict):
             suggest = "access_level_description"
         elif key == "groupId":
             suggest = "group_id"
+        elif key == "groupInheritanceType":
+            suggest = "group_inheritance_type"
         elif key == "requiredApprovals":
             suggest = "required_approvals"
         elif key == "userId":
@@ -1287,6 +1415,7 @@ class ProjectProtectedEnvironmentApprovalRule(dict):
                  access_level: Optional[str] = None,
                  access_level_description: Optional[str] = None,
                  group_id: Optional[int] = None,
+                 group_inheritance_type: Optional[int] = None,
                  id: Optional[int] = None,
                  required_approvals: Optional[int] = None,
                  user_id: Optional[int] = None):
@@ -1294,6 +1423,7 @@ class ProjectProtectedEnvironmentApprovalRule(dict):
         :param str access_level: Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
         :param str access_level_description: Readable description of level of access.
         :param int group_id: The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+        :param int group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param int id: The unique ID of the Approval Rules object.
         :param int required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
         :param int user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
@@ -1304,6 +1434,8 @@ class ProjectProtectedEnvironmentApprovalRule(dict):
             pulumi.set(__self__, "access_level_description", access_level_description)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if group_inheritance_type is not None:
+            pulumi.set(__self__, "group_inheritance_type", group_inheritance_type)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if required_approvals is not None:
@@ -1334,6 +1466,14 @@ class ProjectProtectedEnvironmentApprovalRule(dict):
         The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
         """
         return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="groupInheritanceType")
+    def group_inheritance_type(self) -> Optional[int]:
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        return pulumi.get(self, "group_inheritance_type")
 
     @property
     @pulumi.getter
@@ -1371,6 +1511,8 @@ class ProjectProtectedEnvironmentDeployAccessLevel(dict):
             suggest = "access_level_description"
         elif key == "groupId":
             suggest = "group_id"
+        elif key == "groupInheritanceType":
+            suggest = "group_inheritance_type"
         elif key == "userId":
             suggest = "user_id"
 
@@ -1389,12 +1531,14 @@ class ProjectProtectedEnvironmentDeployAccessLevel(dict):
                  access_level: Optional[str] = None,
                  access_level_description: Optional[str] = None,
                  group_id: Optional[int] = None,
+                 group_inheritance_type: Optional[int] = None,
                  id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
         :param str access_level: Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
         :param str access_level_description: Readable description of level of access.
         :param int group_id: The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+        :param int group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param int id: The unique ID of the Deploy Access Level object.
         :param int user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
         """
@@ -1404,6 +1548,8 @@ class ProjectProtectedEnvironmentDeployAccessLevel(dict):
             pulumi.set(__self__, "access_level_description", access_level_description)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if group_inheritance_type is not None:
+            pulumi.set(__self__, "group_inheritance_type", group_inheritance_type)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if user_id is not None:
@@ -1432,6 +1578,14 @@ class ProjectProtectedEnvironmentDeployAccessLevel(dict):
         The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
         """
         return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="groupInheritanceType")
+    def group_inheritance_type(self) -> Optional[int]:
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        return pulumi.get(self, "group_inheritance_type")
 
     @property
     @pulumi.getter
@@ -2117,6 +2271,7 @@ class GetGroupHooksHookResult(dict):
     def __init__(__self__, *,
                  confidential_issues_events: bool,
                  confidential_note_events: bool,
+                 custom_webhook_template: str,
                  deployment_events: bool,
                  enable_ssl_verification: bool,
                  group: str,
@@ -2138,6 +2293,7 @@ class GetGroupHooksHookResult(dict):
         """
         :param bool confidential_issues_events: Invoke the hook for confidential issues events.
         :param bool confidential_note_events: Invoke the hook for confidential notes events.
+        :param str custom_webhook_template: Set a custom webhook template.
         :param bool deployment_events: Invoke the hook for deployment events.
         :param bool enable_ssl_verification: Enable ssl verification when invoking the hook.
         :param str group: The ID or full path of the group.
@@ -2159,6 +2315,7 @@ class GetGroupHooksHookResult(dict):
         """
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         pulumi.set(__self__, "deployment_events", deployment_events)
         pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         pulumi.set(__self__, "group", group)
@@ -2193,6 +2350,14 @@ class GetGroupHooksHookResult(dict):
         Invoke the hook for confidential notes events.
         """
         return pulumi.get(self, "confidential_note_events")
+
+    @property
+    @pulumi.getter(name="customWebhookTemplate")
+    def custom_webhook_template(self) -> str:
+        """
+        Set a custom webhook template.
+        """
+        return pulumi.get(self, "custom_webhook_template")
 
     @property
     @pulumi.getter(name="deploymentEvents")
@@ -2505,6 +2670,7 @@ class GetGroupSubgroupsSubgroupResult(dict):
                  default_branch_protection: int,
                  description: str,
                  emails_disabled: bool,
+                 emails_enabled: bool,
                  file_template_project_id: int,
                  full_name: str,
                  full_path: str,
@@ -2532,6 +2698,7 @@ class GetGroupSubgroupsSubgroupResult(dict):
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "emails_disabled", emails_disabled)
+        pulumi.set(__self__, "emails_enabled", emails_enabled)
         pulumi.set(__self__, "file_template_project_id", file_template_project_id)
         pulumi.set(__self__, "full_name", full_name)
         pulumi.set(__self__, "full_path", full_path)
@@ -2583,6 +2750,11 @@ class GetGroupSubgroupsSubgroupResult(dict):
     @pulumi.getter(name="emailsDisabled")
     def emails_disabled(self) -> bool:
         return pulumi.get(self, "emails_disabled")
+
+    @property
+    @pulumi.getter(name="emailsEnabled")
+    def emails_enabled(self) -> bool:
+        return pulumi.get(self, "emails_enabled")
 
     @property
     @pulumi.getter(name="fileTemplateProjectId")
@@ -3586,6 +3758,7 @@ class GetProjectHooksHookResult(dict):
     def __init__(__self__, *,
                  confidential_issues_events: bool,
                  confidential_note_events: bool,
+                 custom_webhook_template: str,
                  deployment_events: bool,
                  enable_ssl_verification: bool,
                  hook_id: int,
@@ -3606,6 +3779,7 @@ class GetProjectHooksHookResult(dict):
         """
         :param bool confidential_issues_events: Invoke the hook for confidential issues events.
         :param bool confidential_note_events: Invoke the hook for confidential notes events.
+        :param str custom_webhook_template: Set a custom webhook template.
         :param bool deployment_events: Invoke the hook for deployment events.
         :param bool enable_ssl_verification: Enable ssl verification when invoking the hook.
         :param int hook_id: The id of the project hook.
@@ -3626,6 +3800,7 @@ class GetProjectHooksHookResult(dict):
         """
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         pulumi.set(__self__, "deployment_events", deployment_events)
         pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         pulumi.set(__self__, "hook_id", hook_id)
@@ -3659,6 +3834,14 @@ class GetProjectHooksHookResult(dict):
         Invoke the hook for confidential notes events.
         """
         return pulumi.get(self, "confidential_note_events")
+
+    @property
+    @pulumi.getter(name="customWebhookTemplate")
+    def custom_webhook_template(self) -> str:
+        """
+        Set a custom webhook template.
+        """
+        return pulumi.get(self, "custom_webhook_template")
 
     @property
     @pulumi.getter(name="deploymentEvents")
@@ -5525,6 +5708,7 @@ class GetProjectsProjectResult(dict):
                  default_branch: str,
                  description: str,
                  emails_disabled: bool,
+                 emails_enabled: bool,
                  empty_repo: bool,
                  environments_access_level: str,
                  external_authorization_classification_label: str,
@@ -5623,6 +5807,7 @@ class GetProjectsProjectResult(dict):
         :param str default_branch: The default branch name of the project.
         :param str description: The description of the project.
         :param bool emails_disabled: Disable email notifications.
+        :param bool emails_enabled: Enable email notifications.
         :param bool empty_repo: Whether the project is empty.
         :param str environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param str external_authorization_classification_label: The classification label for the project.
@@ -5720,6 +5905,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "emails_disabled", emails_disabled)
+        pulumi.set(__self__, "emails_enabled", emails_enabled)
         pulumi.set(__self__, "empty_repo", empty_repo)
         pulumi.set(__self__, "environments_access_level", environments_access_level)
         pulumi.set(__self__, "external_authorization_classification_label", external_authorization_classification_label)
@@ -6005,7 +6191,18 @@ class GetProjectsProjectResult(dict):
         """
         Disable email notifications.
         """
+        warnings.warn("""Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.""", DeprecationWarning)
+        pulumi.log.warn("""emails_disabled is deprecated: Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.""")
+
         return pulumi.get(self, "emails_disabled")
+
+    @property
+    @pulumi.getter(name="emailsEnabled")
+    def emails_enabled(self) -> bool:
+        """
+        Enable email notifications.
+        """
+        return pulumi.get(self, "emails_enabled")
 
     @property
     @pulumi.getter(name="emptyRepo")

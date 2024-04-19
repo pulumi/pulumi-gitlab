@@ -48,6 +48,21 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set a custom webhook template.
+     * 
+     */
+    @Import(name="customWebhookTemplate")
+    private @Nullable Output<String> customWebhookTemplate;
+
+    /**
+     * @return Set a custom webhook template.
+     * 
+     */
+    public Optional<Output<String>> customWebhookTemplate() {
+        return Optional.ofNullable(this.customWebhookTemplate);
+    }
+
+    /**
      * Invoke the hook for deployment events.
      * 
      */
@@ -292,6 +307,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     private GroupHookArgs(GroupHookArgs $) {
         this.confidentialIssuesEvents = $.confidentialIssuesEvents;
         this.confidentialNoteEvents = $.confidentialNoteEvents;
+        this.customWebhookTemplate = $.customWebhookTemplate;
         this.deploymentEvents = $.deploymentEvents;
         this.enableSslVerification = $.enableSslVerification;
         this.group = $.group;
@@ -368,6 +384,27 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder confidentialNoteEvents(Boolean confidentialNoteEvents) {
             return confidentialNoteEvents(Output.of(confidentialNoteEvents));
+        }
+
+        /**
+         * @param customWebhookTemplate Set a custom webhook template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customWebhookTemplate(@Nullable Output<String> customWebhookTemplate) {
+            $.customWebhookTemplate = customWebhookTemplate;
+            return this;
+        }
+
+        /**
+         * @param customWebhookTemplate Set a custom webhook template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customWebhookTemplate(String customWebhookTemplate) {
+            return customWebhookTemplate(Output.of(customWebhookTemplate));
         }
 
         /**

@@ -19,6 +19,7 @@ public final class GetGroupSubgroupsSubgroup {
     private Integer defaultBranchProtection;
     private String description;
     private Boolean emailsDisabled;
+    private Boolean emailsEnabled;
     private Integer fileTemplateProjectId;
     private String fullName;
     private String fullPath;
@@ -59,6 +60,9 @@ public final class GetGroupSubgroupsSubgroup {
     }
     public Boolean emailsDisabled() {
         return this.emailsDisabled;
+    }
+    public Boolean emailsEnabled() {
+        return this.emailsEnabled;
     }
     public Integer fileTemplateProjectId() {
         return this.fileTemplateProjectId;
@@ -139,6 +143,7 @@ public final class GetGroupSubgroupsSubgroup {
         private Integer defaultBranchProtection;
         private String description;
         private Boolean emailsDisabled;
+        private Boolean emailsEnabled;
         private Integer fileTemplateProjectId;
         private String fullName;
         private String fullPath;
@@ -169,6 +174,7 @@ public final class GetGroupSubgroupsSubgroup {
     	      this.defaultBranchProtection = defaults.defaultBranchProtection;
     	      this.description = defaults.description;
     	      this.emailsDisabled = defaults.emailsDisabled;
+    	      this.emailsEnabled = defaults.emailsEnabled;
     	      this.fileTemplateProjectId = defaults.fileTemplateProjectId;
     	      this.fullName = defaults.fullName;
     	      this.fullPath = defaults.fullPath;
@@ -238,6 +244,14 @@ public final class GetGroupSubgroupsSubgroup {
               throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "emailsDisabled");
             }
             this.emailsDisabled = emailsDisabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emailsEnabled(Boolean emailsEnabled) {
+            if (emailsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "emailsEnabled");
+            }
+            this.emailsEnabled = emailsEnabled;
             return this;
         }
         @CustomType.Setter
@@ -416,6 +430,7 @@ public final class GetGroupSubgroupsSubgroup {
             _resultValue.defaultBranchProtection = defaultBranchProtection;
             _resultValue.description = description;
             _resultValue.emailsDisabled = emailsDisabled;
+            _resultValue.emailsEnabled = emailsEnabled;
             _resultValue.fileTemplateProjectId = fileTemplateProjectId;
             _resultValue.fullName = fullName;
             _resultValue.fullPath = fullPath;

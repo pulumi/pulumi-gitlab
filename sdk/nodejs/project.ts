@@ -228,8 +228,14 @@ export class Project extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Disable email notifications.
+     *
+     * @deprecated use `emailsEnabled` instead.
      */
     public readonly emailsDisabled!: pulumi.Output<boolean>;
+    /**
+     * Enable email notifications.
+     */
+    public readonly emailsEnabled!: pulumi.Output<boolean>;
     /**
      * Whether the project is empty.
      */
@@ -567,6 +573,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["defaultBranch"] = state ? state.defaultBranch : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["emailsDisabled"] = state ? state.emailsDisabled : undefined;
+            resourceInputs["emailsEnabled"] = state ? state.emailsEnabled : undefined;
             resourceInputs["emptyRepo"] = state ? state.emptyRepo : undefined;
             resourceInputs["environmentsAccessLevel"] = state ? state.environmentsAccessLevel : undefined;
             resourceInputs["externalAuthorizationClassificationLabel"] = state ? state.externalAuthorizationClassificationLabel : undefined;
@@ -667,6 +674,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["defaultBranch"] = args ? args.defaultBranch : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["emailsDisabled"] = args ? args.emailsDisabled : undefined;
+            resourceInputs["emailsEnabled"] = args ? args.emailsEnabled : undefined;
             resourceInputs["environmentsAccessLevel"] = args ? args.environmentsAccessLevel : undefined;
             resourceInputs["externalAuthorizationClassificationLabel"] = args ? args.externalAuthorizationClassificationLabel : undefined;
             resourceInputs["featureFlagsAccessLevel"] = args ? args.featureFlagsAccessLevel : undefined;
@@ -865,8 +873,14 @@ export interface ProjectState {
     description?: pulumi.Input<string>;
     /**
      * Disable email notifications.
+     *
+     * @deprecated use `emailsEnabled` instead.
      */
     emailsDisabled?: pulumi.Input<boolean>;
+    /**
+     * Enable email notifications.
+     */
+    emailsEnabled?: pulumi.Input<boolean>;
     /**
      * Whether the project is empty.
      */
@@ -1278,8 +1292,14 @@ export interface ProjectArgs {
     description?: pulumi.Input<string>;
     /**
      * Disable email notifications.
+     *
+     * @deprecated use `emailsEnabled` instead.
      */
     emailsDisabled?: pulumi.Input<boolean>;
+    /**
+     * Enable email notifications.
+     */
+    emailsEnabled?: pulumi.Input<boolean>;
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      */

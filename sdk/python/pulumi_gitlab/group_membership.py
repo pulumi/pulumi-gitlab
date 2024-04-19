@@ -18,6 +18,7 @@ class GroupMembershipArgs:
                  group_id: pulumi.Input[str],
                  user_id: pulumi.Input[int],
                  expires_at: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None,
                  skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
                  unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None):
         """
@@ -26,6 +27,7 @@ class GroupMembershipArgs:
         :param pulumi.Input[str] group_id: The id of the group.
         :param pulumi.Input[int] user_id: The id of the user.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         """
@@ -34,6 +36,8 @@ class GroupMembershipArgs:
         pulumi.set(__self__, "user_id", user_id)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
+        if member_role_id is not None:
+            pulumi.set(__self__, "member_role_id", member_role_id)
         if skip_subresources_on_destroy is not None:
             pulumi.set(__self__, "skip_subresources_on_destroy", skip_subresources_on_destroy)
         if unassign_issuables_on_destroy is not None:
@@ -88,6 +92,18 @@ class GroupMembershipArgs:
         pulumi.set(self, "expires_at", value)
 
     @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances.
+        """
+        return pulumi.get(self, "member_role_id")
+
+    @member_role_id.setter
+    def member_role_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "member_role_id", value)
+
+    @property
     @pulumi.getter(name="skipSubresourcesOnDestroy")
     def skip_subresources_on_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -118,6 +134,7 @@ class _GroupMembershipState:
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None,
                  skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
                  unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
@@ -126,6 +143,7 @@ class _GroupMembershipState:
         :param pulumi.Input[str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] group_id: The id of the group.
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         :param pulumi.Input[int] user_id: The id of the user.
@@ -136,6 +154,8 @@ class _GroupMembershipState:
             pulumi.set(__self__, "expires_at", expires_at)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if member_role_id is not None:
+            pulumi.set(__self__, "member_role_id", member_role_id)
         if skip_subresources_on_destroy is not None:
             pulumi.set(__self__, "skip_subresources_on_destroy", skip_subresources_on_destroy)
         if unassign_issuables_on_destroy is not None:
@@ -178,6 +198,18 @@ class _GroupMembershipState:
     @group_id.setter
     def group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances.
+        """
+        return pulumi.get(self, "member_role_id")
+
+    @member_role_id.setter
+    def member_role_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "member_role_id", value)
 
     @property
     @pulumi.getter(name="skipSubresourcesOnDestroy")
@@ -224,6 +256,7 @@ class GroupMembership(pulumi.CustomResource):
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None,
                  skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
                  unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
                  user_id: Optional[pulumi.Input[int]] = None,
@@ -263,6 +296,7 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] group_id: The id of the group.
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         :param pulumi.Input[int] user_id: The id of the user.
@@ -321,6 +355,7 @@ class GroupMembership(pulumi.CustomResource):
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None,
                  skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
                  unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
                  user_id: Optional[pulumi.Input[int]] = None,
@@ -340,6 +375,7 @@ class GroupMembership(pulumi.CustomResource):
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
+            __props__.__dict__["member_role_id"] = member_role_id
             __props__.__dict__["skip_subresources_on_destroy"] = skip_subresources_on_destroy
             __props__.__dict__["unassign_issuables_on_destroy"] = unassign_issuables_on_destroy
             if user_id is None and not opts.urn:
@@ -358,6 +394,7 @@ class GroupMembership(pulumi.CustomResource):
             access_level: Optional[pulumi.Input[str]] = None,
             expires_at: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
+            member_role_id: Optional[pulumi.Input[int]] = None,
             skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
             unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
             user_id: Optional[pulumi.Input[int]] = None) -> 'GroupMembership':
@@ -371,6 +408,7 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] group_id: The id of the group.
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         :param pulumi.Input[int] user_id: The id of the user.
@@ -382,6 +420,7 @@ class GroupMembership(pulumi.CustomResource):
         __props__.__dict__["access_level"] = access_level
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["member_role_id"] = member_role_id
         __props__.__dict__["skip_subresources_on_destroy"] = skip_subresources_on_destroy
         __props__.__dict__["unassign_issuables_on_destroy"] = unassign_issuables_on_destroy
         __props__.__dict__["user_id"] = user_id
@@ -410,6 +449,14 @@ class GroupMembership(pulumi.CustomResource):
         The id of the group.
         """
         return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances.
+        """
+        return pulumi.get(self, "member_role_id")
 
     @property
     @pulumi.getter(name="skipSubresourcesOnDestroy")

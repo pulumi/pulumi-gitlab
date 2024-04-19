@@ -62,6 +62,12 @@ namespace Pulumi.GitLab
         public Output<bool?> ConfidentialNoteEvents { get; private set; } = null!;
 
         /// <summary>
+        /// Set a custom webhook template.
+        /// </summary>
+        [Output("customWebhookTemplate")]
+        public Output<string?> CustomWebhookTemplate { get; private set; } = null!;
+
+        /// <summary>
         /// Invoke the hook for deployment events.
         /// </summary>
         [Output("deploymentEvents")]
@@ -226,6 +232,12 @@ namespace Pulumi.GitLab
         public Input<bool>? ConfidentialNoteEvents { get; set; }
 
         /// <summary>
+        /// Set a custom webhook template.
+        /// </summary>
+        [Input("customWebhookTemplate")]
+        public Input<string>? CustomWebhookTemplate { get; set; }
+
+        /// <summary>
         /// Invoke the hook for deployment events.
         /// </summary>
         [Input("deploymentEvents")]
@@ -344,6 +356,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("confidentialNoteEvents")]
         public Input<bool>? ConfidentialNoteEvents { get; set; }
+
+        /// <summary>
+        /// Set a custom webhook template.
+        /// </summary>
+        [Input("customWebhookTemplate")]
+        public Input<string>? CustomWebhookTemplate { get; set; }
 
         /// <summary>
         /// Invoke the hook for deployment events.

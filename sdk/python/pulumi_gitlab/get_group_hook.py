@@ -21,13 +21,16 @@ class GetGroupHookResult:
     """
     A collection of values returned by getGroupHook.
     """
-    def __init__(__self__, confidential_issues_events=None, confidential_note_events=None, deployment_events=None, enable_ssl_verification=None, group=None, group_id=None, hook_id=None, id=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, push_events=None, push_events_branch_filter=None, releases_events=None, subgroup_events=None, tag_push_events=None, token=None, url=None, wiki_page_events=None):
+    def __init__(__self__, confidential_issues_events=None, confidential_note_events=None, custom_webhook_template=None, deployment_events=None, enable_ssl_verification=None, group=None, group_id=None, hook_id=None, id=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, push_events=None, push_events_branch_filter=None, releases_events=None, subgroup_events=None, tag_push_events=None, token=None, url=None, wiki_page_events=None):
         if confidential_issues_events and not isinstance(confidential_issues_events, bool):
             raise TypeError("Expected argument 'confidential_issues_events' to be a bool")
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events and not isinstance(confidential_note_events, bool):
             raise TypeError("Expected argument 'confidential_note_events' to be a bool")
         pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        if custom_webhook_template and not isinstance(custom_webhook_template, str):
+            raise TypeError("Expected argument 'custom_webhook_template' to be a str")
+        pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         if deployment_events and not isinstance(deployment_events, bool):
             raise TypeError("Expected argument 'deployment_events' to be a bool")
         pulumi.set(__self__, "deployment_events", deployment_events)
@@ -101,6 +104,14 @@ class GetGroupHookResult:
         Invoke the hook for confidential notes events.
         """
         return pulumi.get(self, "confidential_note_events")
+
+    @property
+    @pulumi.getter(name="customWebhookTemplate")
+    def custom_webhook_template(self) -> str:
+        """
+        Set a custom webhook template.
+        """
+        return pulumi.get(self, "custom_webhook_template")
 
     @property
     @pulumi.getter(name="deploymentEvents")
@@ -263,6 +274,7 @@ class AwaitableGetGroupHookResult(GetGroupHookResult):
         return GetGroupHookResult(
             confidential_issues_events=self.confidential_issues_events,
             confidential_note_events=self.confidential_note_events,
+            custom_webhook_template=self.custom_webhook_template,
             deployment_events=self.deployment_events,
             enable_ssl_verification=self.enable_ssl_verification,
             group=self.group,
@@ -305,6 +317,7 @@ def get_group_hook(group: Optional[str] = None,
     return AwaitableGetGroupHookResult(
         confidential_issues_events=pulumi.get(__ret__, 'confidential_issues_events'),
         confidential_note_events=pulumi.get(__ret__, 'confidential_note_events'),
+        custom_webhook_template=pulumi.get(__ret__, 'custom_webhook_template'),
         deployment_events=pulumi.get(__ret__, 'deployment_events'),
         enable_ssl_verification=pulumi.get(__ret__, 'enable_ssl_verification'),
         group=pulumi.get(__ret__, 'group'),

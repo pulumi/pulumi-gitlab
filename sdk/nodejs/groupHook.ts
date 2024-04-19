@@ -92,6 +92,10 @@ export class GroupHook extends pulumi.CustomResource {
      */
     public readonly confidentialNoteEvents!: pulumi.Output<boolean | undefined>;
     /**
+     * Set a custom webhook template.
+     */
+    public readonly customWebhookTemplate!: pulumi.Output<string | undefined>;
+    /**
      * Invoke the hook for deployment events.
      */
     public readonly deploymentEvents!: pulumi.Output<boolean | undefined>;
@@ -179,6 +183,7 @@ export class GroupHook extends pulumi.CustomResource {
             const state = argsOrState as GroupHookState | undefined;
             resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
             resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
+            resourceInputs["customWebhookTemplate"] = state ? state.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
             resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
@@ -207,6 +212,7 @@ export class GroupHook extends pulumi.CustomResource {
             }
             resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
             resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
+            resourceInputs["customWebhookTemplate"] = args ? args.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = args ? args.deploymentEvents : undefined;
             resourceInputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
@@ -245,6 +251,10 @@ export interface GroupHookState {
      * Invoke the hook for confidential notes events.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
+    /**
+     * Set a custom webhook template.
+     */
+    customWebhookTemplate?: pulumi.Input<string>;
     /**
      * Invoke the hook for deployment events.
      */
@@ -331,6 +341,10 @@ export interface GroupHookArgs {
      * Invoke the hook for confidential notes events.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
+    /**
+     * Set a custom webhook template.
+     */
+    customWebhookTemplate?: pulumi.Input<string>;
     /**
      * Invoke the hook for deployment events.
      */

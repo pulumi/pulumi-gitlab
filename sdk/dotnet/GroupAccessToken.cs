@@ -10,9 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab_group_access`token resource allows to manage the lifecycle of a group access token.
+    /// The `gitlab.GroupAccessToken`resource allows to manage the lifecycle of a group access token.
     /// 
-    /// &gt; Group Access Token were introduced in GitLab 14.7
+    /// &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+    /// 
+    /// &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+    /// 
+    /// &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/group_access_tokens.html#automatic-reuse-detection) it's possible that a new Group Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
     /// 
     /// **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
     /// 
@@ -63,10 +67,10 @@ namespace Pulumi.GitLab
     public partial class GroupAccessToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         /// </summary>
         [Output("accessLevel")]
-        public Output<string?> AccessLevel { get; private set; } = null!;
+        public Output<string> AccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// True if the token is active.
@@ -81,13 +85,13 @@ namespace Pulumi.GitLab
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        /// When the token will expire, YYYY-MM-DD format.
         /// </summary>
         [Output("expiresAt")]
         public Output<string> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// The ID or path of the group to add the group access token to.
+        /// The ID or full path of the group.
         /// </summary>
         [Output("group")]
         public Output<string> Group { get; private set; } = null!;
@@ -105,19 +109,25 @@ namespace Pulumi.GitLab
         public Output<bool> Revoked { get; private set; } = null!;
 
         /// <summary>
-        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+        /// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        /// </summary>
+        [Output("rotationConfiguration")]
+        public Output<Outputs.GroupAccessTokenRotationConfiguration?> RotationConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+        /// The token of the group access token. **Note**: the token is not available for imported resources.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
 
         /// <summary>
-        /// The user id associated to the token.
+        /// The user_id associated to the token.
         /// </summary>
         [Output("userId")]
         public Output<int> UserId { get; private set; } = null!;
@@ -173,19 +183,19 @@ namespace Pulumi.GitLab
     public sealed class GroupAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
-        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        /// When the token will expire, YYYY-MM-DD format.
         /// </summary>
-        [Input("expiresAt", required: true)]
-        public Input<string> ExpiresAt { get; set; } = null!;
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The ID or path of the group to add the group access token to.
+        /// The ID or full path of the group.
         /// </summary>
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
@@ -196,11 +206,17 @@ namespace Pulumi.GitLab
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        /// </summary>
+        [Input("rotationConfiguration")]
+        public Input<Inputs.GroupAccessTokenRotationConfigurationArgs>? RotationConfiguration { get; set; }
+
         [Input("scopes", required: true)]
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+        /// The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         /// </summary>
         public InputList<string> Scopes
         {
@@ -217,7 +233,7 @@ namespace Pulumi.GitLab
     public sealed class GroupAccessTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -235,13 +251,13 @@ namespace Pulumi.GitLab
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        /// When the token will expire, YYYY-MM-DD format.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The ID or path of the group to add the group access token to.
+        /// The ID or full path of the group.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -258,11 +274,17 @@ namespace Pulumi.GitLab
         [Input("revoked")]
         public Input<bool>? Revoked { get; set; }
 
+        /// <summary>
+        /// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        /// </summary>
+        [Input("rotationConfiguration")]
+        public Input<Inputs.GroupAccessTokenRotationConfigurationGetArgs>? RotationConfiguration { get; set; }
+
         [Input("scopes")]
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+        /// The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         /// </summary>
         public InputList<string> Scopes
         {
@@ -274,7 +296,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+        /// The token of the group access token. **Note**: the token is not available for imported resources.
         /// </summary>
         public Input<string>? Token
         {
@@ -287,7 +309,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The user id associated to the token.
+        /// The user_id associated to the token.
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }

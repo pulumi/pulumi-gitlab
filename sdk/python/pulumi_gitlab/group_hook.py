@@ -18,6 +18,7 @@ class GroupHookArgs:
                  url: pulumi.Input[str],
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -38,6 +39,7 @@ class GroupHookArgs:
         :param pulumi.Input[str] url: The url of the hook to invoke.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential notes events.
+        :param pulumi.Input[str] custom_webhook_template: Set a custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking the hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
@@ -59,6 +61,8 @@ class GroupHookArgs:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
             pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        if custom_webhook_template is not None:
+            pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         if deployment_events is not None:
             pulumi.set(__self__, "deployment_events", deployment_events)
         if enable_ssl_verification is not None:
@@ -135,6 +139,18 @@ class GroupHookArgs:
     @confidential_note_events.setter
     def confidential_note_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "confidential_note_events", value)
+
+    @property
+    @pulumi.getter(name="customWebhookTemplate")
+    def custom_webhook_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set a custom webhook template.
+        """
+        return pulumi.get(self, "custom_webhook_template")
+
+    @custom_webhook_template.setter
+    def custom_webhook_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_webhook_template", value)
 
     @property
     @pulumi.getter(name="deploymentEvents")
@@ -310,6 +326,7 @@ class _GroupHookState:
     def __init__(__self__, *,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -332,6 +349,7 @@ class _GroupHookState:
         Input properties used for looking up and filtering GroupHook resources.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential notes events.
+        :param pulumi.Input[str] custom_webhook_template: Set a custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking the hook.
         :param pulumi.Input[str] group: The ID or full path of the group.
@@ -355,6 +373,8 @@ class _GroupHookState:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
             pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        if custom_webhook_template is not None:
+            pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         if deployment_events is not None:
             pulumi.set(__self__, "deployment_events", deployment_events)
         if enable_ssl_verification is not None:
@@ -415,6 +435,18 @@ class _GroupHookState:
     @confidential_note_events.setter
     def confidential_note_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "confidential_note_events", value)
+
+    @property
+    @pulumi.getter(name="customWebhookTemplate")
+    def custom_webhook_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set a custom webhook template.
+        """
+        return pulumi.get(self, "custom_webhook_template")
+
+    @custom_webhook_template.setter
+    def custom_webhook_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_webhook_template", value)
 
     @property
     @pulumi.getter(name="deploymentEvents")
@@ -640,6 +672,7 @@ class GroupHook(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -710,6 +743,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential notes events.
+        :param pulumi.Input[str] custom_webhook_template: Set a custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking the hook.
         :param pulumi.Input[str] group: The ID or full path of the group.
@@ -799,6 +833,7 @@ class GroupHook(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -826,6 +861,7 @@ class GroupHook(pulumi.CustomResource):
 
             __props__.__dict__["confidential_issues_events"] = confidential_issues_events
             __props__.__dict__["confidential_note_events"] = confidential_note_events
+            __props__.__dict__["custom_webhook_template"] = custom_webhook_template
             __props__.__dict__["deployment_events"] = deployment_events
             __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
             if group is None and not opts.urn:
@@ -862,6 +898,7 @@ class GroupHook(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
             confidential_note_events: Optional[pulumi.Input[bool]] = None,
+            custom_webhook_template: Optional[pulumi.Input[str]] = None,
             deployment_events: Optional[pulumi.Input[bool]] = None,
             enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
             group: Optional[pulumi.Input[str]] = None,
@@ -889,6 +926,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential notes events.
+        :param pulumi.Input[str] custom_webhook_template: Set a custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking the hook.
         :param pulumi.Input[str] group: The ID or full path of the group.
@@ -914,6 +952,7 @@ class GroupHook(pulumi.CustomResource):
 
         __props__.__dict__["confidential_issues_events"] = confidential_issues_events
         __props__.__dict__["confidential_note_events"] = confidential_note_events
+        __props__.__dict__["custom_webhook_template"] = custom_webhook_template
         __props__.__dict__["deployment_events"] = deployment_events
         __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
         __props__.__dict__["group"] = group
@@ -949,6 +988,14 @@ class GroupHook(pulumi.CustomResource):
         Invoke the hook for confidential notes events.
         """
         return pulumi.get(self, "confidential_note_events")
+
+    @property
+    @pulumi.getter(name="customWebhookTemplate")
+    def custom_webhook_template(self) -> pulumi.Output[Optional[str]]:
+        """
+        Set a custom webhook template.
+        """
+        return pulumi.get(self, "custom_webhook_template")
 
     @property
     @pulumi.getter(name="deploymentEvents")

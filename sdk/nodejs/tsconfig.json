@@ -29,6 +29,7 @@
         "getBranch.ts",
         "getClusterAgent.ts",
         "getClusterAgents.ts",
+        "getComplianceFramework.ts",
         "getCurrentUser.ts",
         "getGroup.ts",
         "getGroupHook.ts",

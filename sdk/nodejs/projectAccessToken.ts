@@ -2,12 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * The `gitlab.ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
  *
- * >  Use of the `timestamp()` function with expiresAt will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
+ * > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+ *
+ * > Use `rotationConfiguration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+ *
+ * > Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/project_access_tokens.html#automatic-reuse-detection) it's possible that a new Project Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
  *
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
  *
@@ -73,7 +79,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
     /**
      * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
      */
-    public readonly accessLevel!: pulumi.Output<string | undefined>;
+    public readonly accessLevel!: pulumi.Output<string>;
     /**
      * True if the token is active.
      */
@@ -83,15 +89,15 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Time the token will expire it, YYYY-MM-DD format.
+     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
     public readonly expiresAt!: pulumi.Output<string>;
     /**
-     * A name to describe the project access token.
+     * The name of the project access token.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The id of the project to add the project access token to.
+     * The ID or full path of the project.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -99,11 +105,15 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     */
+    public readonly rotationConfiguration!: pulumi.Output<outputs.ProjectAccessTokenRotationConfiguration | undefined>;
+    /**
+     * The scopes of the project access token. valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
-     * The secret token. **Note**: the token is not available for imported resources.
+     * The token of the project access token. **Note**: the token is not available for imported resources.
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
@@ -131,14 +141,12 @@ export class ProjectAccessToken extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["revoked"] = state ? state.revoked : undefined;
+            resourceInputs["rotationConfiguration"] = state ? state.rotationConfiguration : undefined;
             resourceInputs["scopes"] = state ? state.scopes : undefined;
             resourceInputs["token"] = state ? state.token : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as ProjectAccessTokenArgs | undefined;
-            if ((!args || args.expiresAt === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'expiresAt'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -149,6 +157,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rotationConfiguration"] = args ? args.rotationConfiguration : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -180,15 +189,15 @@ export interface ProjectAccessTokenState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Time the token will expire it, YYYY-MM-DD format.
+     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * A name to describe the project access token.
+     * The name of the project access token.
      */
     name?: pulumi.Input<string>;
     /**
-     * The id of the project to add the project access token to.
+     * The ID or full path of the project.
      */
     project?: pulumi.Input<string>;
     /**
@@ -196,11 +205,15 @@ export interface ProjectAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     */
+    rotationConfiguration?: pulumi.Input<inputs.ProjectAccessTokenRotationConfiguration>;
+    /**
+     * The scopes of the project access token. valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The secret token. **Note**: the token is not available for imported resources.
+     * The token of the project access token. **Note**: the token is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**
@@ -218,19 +231,23 @@ export interface ProjectAccessTokenArgs {
      */
     accessLevel?: pulumi.Input<string>;
     /**
-     * Time the token will expire it, YYYY-MM-DD format.
+     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
-    expiresAt: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string>;
     /**
-     * A name to describe the project access token.
+     * The name of the project access token.
      */
     name?: pulumi.Input<string>;
     /**
-     * The id of the project to add the project access token to.
+     * The ID or full path of the project.
      */
     project: pulumi.Input<string>;
     /**
-     * The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     */
+    rotationConfiguration?: pulumi.Input<inputs.ProjectAccessTokenRotationConfiguration>;
+    /**
+     * The scopes of the project access token. valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

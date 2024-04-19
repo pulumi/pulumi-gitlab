@@ -23,6 +23,11 @@ public final class GetGroupHookResult {
      */
     private Boolean confidentialNoteEvents;
     /**
+     * @return Set a custom webhook template.
+     * 
+     */
+    private String customWebhookTemplate;
+    /**
      * @return Invoke the hook for deployment events.
      * 
      */
@@ -132,6 +137,13 @@ public final class GetGroupHookResult {
      */
     public Boolean confidentialNoteEvents() {
         return this.confidentialNoteEvents;
+    }
+    /**
+     * @return Set a custom webhook template.
+     * 
+     */
+    public String customWebhookTemplate() {
+        return this.customWebhookTemplate;
     }
     /**
      * @return Invoke the hook for deployment events.
@@ -278,6 +290,7 @@ public final class GetGroupHookResult {
     public static final class Builder {
         private Boolean confidentialIssuesEvents;
         private Boolean confidentialNoteEvents;
+        private String customWebhookTemplate;
         private Boolean deploymentEvents;
         private Boolean enableSslVerification;
         private String group;
@@ -302,6 +315,7 @@ public final class GetGroupHookResult {
     	      Objects.requireNonNull(defaults);
     	      this.confidentialIssuesEvents = defaults.confidentialIssuesEvents;
     	      this.confidentialNoteEvents = defaults.confidentialNoteEvents;
+    	      this.customWebhookTemplate = defaults.customWebhookTemplate;
     	      this.deploymentEvents = defaults.deploymentEvents;
     	      this.enableSslVerification = defaults.enableSslVerification;
     	      this.group = defaults.group;
@@ -337,6 +351,14 @@ public final class GetGroupHookResult {
               throw new MissingRequiredPropertyException("GetGroupHookResult", "confidentialNoteEvents");
             }
             this.confidentialNoteEvents = confidentialNoteEvents;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customWebhookTemplate(String customWebhookTemplate) {
+            if (customWebhookTemplate == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "customWebhookTemplate");
+            }
+            this.customWebhookTemplate = customWebhookTemplate;
             return this;
         }
         @CustomType.Setter
@@ -495,6 +517,7 @@ public final class GetGroupHookResult {
             final var _resultValue = new GetGroupHookResult();
             _resultValue.confidentialIssuesEvents = confidentialIssuesEvents;
             _resultValue.confidentialNoteEvents = confidentialNoteEvents;
+            _resultValue.customWebhookTemplate = customWebhookTemplate;
             _resultValue.deploymentEvents = deploymentEvents;
             _resultValue.enableSslVerification = enableSslVerification;
             _resultValue.group = group;
