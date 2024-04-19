@@ -29,8 +29,8 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetComplianceFramework.Invoke(new()
         ///     {
-        ///         Name = "HIPAA",
         ///         NamespacePath = "top-level-group",
+        ///         Name = "HIPAA",
         ///     });
         /// 
         /// });
@@ -58,8 +58,8 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetComplianceFramework.Invoke(new()
         ///     {
-        ///         Name = "HIPAA",
         ///         NamespacePath = "top-level-group",
+        ///         Name = "HIPAA",
         ///     });
         /// 
         /// });

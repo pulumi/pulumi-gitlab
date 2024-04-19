@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getComplianceFramework({
- *     name: "HIPAA",
  *     namespacePath: "top-level-group",
+ *     name: "HIPAA",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -93,8 +93,8 @@ export interface GetComplianceFrameworkResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getComplianceFramework({
- *     name: "HIPAA",
  *     namespacePath: "top-level-group",
+ *     name: "HIPAA",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -140,8 +140,8 @@ def get_compliance_framework(name: Optional[str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_compliance_framework(name="HIPAA",
-        namespace_path="top-level-group")
+    example = gitlab.get_compliance_framework(namespace_path="top-level-group",
+        name="HIPAA")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -182,8 +182,8 @@ def get_compliance_framework_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_compliance_framework(name="HIPAA",
-        namespace_path="top-level-group")
+    example = gitlab.get_compliance_framework(namespace_path="top-level-group",
+        name="HIPAA")
     ```
     <!--End PulumiCodeChooser -->
 

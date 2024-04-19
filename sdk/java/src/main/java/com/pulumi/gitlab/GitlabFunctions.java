@@ -722,8 +722,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .name(&#34;HIPAA&#34;)
      *             .namespacePath(&#34;top-level-group&#34;)
+     *             .name(&#34;HIPAA&#34;)
      *             .build());
      * 
      *     }
@@ -765,8 +765,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .name(&#34;HIPAA&#34;)
      *             .namespacePath(&#34;top-level-group&#34;)
+     *             .name(&#34;HIPAA&#34;)
      *             .build());
      * 
      *     }
@@ -808,8 +808,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .name(&#34;HIPAA&#34;)
      *             .namespacePath(&#34;top-level-group&#34;)
+     *             .name(&#34;HIPAA&#34;)
      *             .build());
      * 
      *     }
@@ -851,8 +851,8 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .name(&#34;HIPAA&#34;)
      *             .namespacePath(&#34;top-level-group&#34;)
+     *             .name(&#34;HIPAA&#34;)
      *             .build());
      * 
      *     }
