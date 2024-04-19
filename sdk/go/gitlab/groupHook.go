@@ -86,6 +86,8 @@ type GroupHook struct {
 	ConfidentialIssuesEvents pulumi.BoolPtrOutput `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents pulumi.BoolPtrOutput `pulumi:"confidentialNoteEvents"`
+	// Set a custom webhook template.
+	CustomWebhookTemplate pulumi.StringPtrOutput `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolPtrOutput `pulumi:"deploymentEvents"`
 	// Enable ssl verification when invoking the hook.
@@ -171,6 +173,8 @@ type groupHookState struct {
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
+	// Set a custom webhook template.
+	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
 	// Enable ssl verification when invoking the hook.
@@ -214,6 +218,8 @@ type GroupHookState struct {
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
+	// Set a custom webhook template.
+	CustomWebhookTemplate pulumi.StringPtrInput
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolPtrInput
 	// Enable ssl verification when invoking the hook.
@@ -261,6 +267,8 @@ type groupHookArgs struct {
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
+	// Set a custom webhook template.
+	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
 	// Enable ssl verification when invoking the hook.
@@ -301,6 +309,8 @@ type GroupHookArgs struct {
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
+	// Set a custom webhook template.
+	CustomWebhookTemplate pulumi.StringPtrInput
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolPtrInput
 	// Enable ssl verification when invoking the hook.
@@ -430,6 +440,11 @@ func (o GroupHookOutput) ConfidentialIssuesEvents() pulumi.BoolPtrOutput {
 // Invoke the hook for confidential notes events.
 func (o GroupHookOutput) ConfidentialNoteEvents() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Set a custom webhook template.
+func (o GroupHookOutput) CustomWebhookTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.StringPtrOutput { return v.CustomWebhookTemplate }).(pulumi.StringPtrOutput)
 }
 
 // Invoke the hook for deployment events.

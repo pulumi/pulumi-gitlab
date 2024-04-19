@@ -242,6 +242,23 @@
                 }
             }
         },
+        "gitlab:index/GroupAccessTokenRotationConfiguration:GroupAccessTokenRotationConfiguration": {
+            "properties": {
+                "expirationDays": {
+                    "type": "integer",
+                    "description": "The duration (in days) the new token should be valid for.\n"
+                },
+                "rotateBeforeDays": {
+                    "type": "integer",
+                    "description": "The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expirationDays",
+                "rotateBeforeDays"
+            ]
+        },
         "gitlab:index/GroupEpicBoardList:GroupEpicBoardList": {
             "properties": {
                 "id": {
@@ -306,6 +323,10 @@
                     "type": "integer",
                     "description": "The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.\n"
                 },
+                "groupInheritanceType": {
+                    "type": "integer",
+                    "description": "Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` =\u003e Direct group membership only, `1` =\u003e All inherited groups. Default: `0`\n"
+                },
                 "id": {
                     "type": "integer",
                     "description": "The unique ID of the Approval Rules object.\n"
@@ -324,6 +345,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "accessLevelDescription",
+                        "groupInheritanceType",
                         "id",
                         "requiredApprovals"
                     ]
@@ -344,6 +366,10 @@
                     "type": "integer",
                     "description": "The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.\n"
                 },
+                "groupInheritanceType": {
+                    "type": "integer",
+                    "description": "Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` =\u003e Direct group membership only, `1` =\u003e All inherited groups. Default: `0`\n"
+                },
                 "id": {
                     "type": "integer",
                     "description": "The unique ID of the Deploy Access Level object.\n"
@@ -358,6 +384,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "accessLevelDescription",
+                        "groupInheritanceType",
                         "id"
                     ]
                 }
@@ -428,6 +455,23 @@
                     ]
                 }
             }
+        },
+        "gitlab:index/ProjectAccessTokenRotationConfiguration:ProjectAccessTokenRotationConfiguration": {
+            "properties": {
+                "expirationDays": {
+                    "type": "integer",
+                    "description": "The duration (in days) the new token should be valid for.\n"
+                },
+                "rotateBeforeDays": {
+                    "type": "integer",
+                    "description": "The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expirationDays",
+                "rotateBeforeDays"
+            ]
         },
         "gitlab:index/ProjectContainerExpirationPolicy:ProjectContainerExpirationPolicy": {
             "properties": {
@@ -553,6 +597,10 @@
                     "type": "integer",
                     "description": "The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.\n"
                 },
+                "groupInheritanceType": {
+                    "type": "integer",
+                    "description": "Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` =\u003e Direct group membership only, `1` =\u003e All inherited groups. Default: `0`\n"
+                },
                 "id": {
                     "type": "integer",
                     "description": "The unique ID of the Approval Rules object.\n"
@@ -571,6 +619,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "accessLevelDescription",
+                        "groupInheritanceType",
                         "id",
                         "requiredApprovals"
                     ]
@@ -591,6 +640,10 @@
                     "type": "integer",
                     "description": "The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.\n"
                 },
+                "groupInheritanceType": {
+                    "type": "integer",
+                    "description": "Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` =\u003e Direct group membership only, `1` =\u003e All inherited groups. Default: `0`\n"
+                },
                 "id": {
                     "type": "integer",
                     "description": "The unique ID of the Deploy Access Level object.\n"
@@ -605,6 +658,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "accessLevelDescription",
+                        "groupInheritanceType",
                         "id"
                     ]
                 }
@@ -897,6 +951,10 @@
                     "type": "boolean",
                     "description": "Invoke the hook for confidential notes events.\n"
                 },
+                "customWebhookTemplate": {
+                    "type": "string",
+                    "description": "Set a custom webhook template.\n"
+                },
                 "deploymentEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for deployment events.\n"
@@ -974,6 +1032,7 @@
             "required": [
                 "confidentialIssuesEvents",
                 "confidentialNoteEvents",
+                "customWebhookTemplate",
                 "deploymentEvents",
                 "enableSslVerification",
                 "group",
@@ -1108,6 +1167,9 @@
                 "emailsDisabled": {
                     "type": "boolean"
                 },
+                "emailsEnabled": {
+                    "type": "boolean"
+                },
                 "fileTemplateProjectId": {
                     "type": "integer"
                 },
@@ -1183,6 +1245,7 @@
                 "defaultBranchProtection",
                 "description",
                 "emailsDisabled",
+                "emailsEnabled",
                 "fileTemplateProjectId",
                 "fullName",
                 "fullPath",
@@ -1715,6 +1778,10 @@
                     "type": "boolean",
                     "description": "Invoke the hook for confidential notes events.\n"
                 },
+                "customWebhookTemplate": {
+                    "type": "string",
+                    "description": "Set a custom webhook template.\n"
+                },
                 "deploymentEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for deployment events.\n"
@@ -1788,6 +1855,7 @@
             "required": [
                 "confidentialIssuesEvents",
                 "confidentialNoteEvents",
+                "customWebhookTemplate",
                 "deploymentEvents",
                 "enableSslVerification",
                 "hookId",
@@ -2881,7 +2949,12 @@
                 },
                 "emailsDisabled": {
                     "type": "boolean",
-                    "description": "Disable email notifications.\n"
+                    "description": "Disable email notifications.\n",
+                    "deprecationMessage": "Use of `emails_disabled` is deprecated. Use `emails_enabled` instead."
+                },
+                "emailsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable email notifications.\n"
                 },
                 "emptyRepo": {
                     "type": "boolean",
@@ -3217,6 +3290,7 @@
                 "defaultBranch",
                 "description",
                 "emailsDisabled",
+                "emailsEnabled",
                 "emptyRepo",
                 "environmentsAccessLevel",
                 "externalAuthorizationClassificationLabel",
@@ -8613,7 +8687,12 @@
                 },
                 "emailsDisabled": {
                     "type": "boolean",
-                    "description": "Disable email notifications.\n"
+                    "description": "Disable email notifications.\n",
+                    "deprecationMessage": "use `emails_enabled` instead"
+                },
+                "emailsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable email notifications.\n"
                 },
                 "extraSharedRunnersMinutesLimit": {
                     "type": "integer",
@@ -8722,6 +8801,7 @@
                 "avatarUrl",
                 "defaultBranchProtection",
                 "emailsDisabled",
+                "emailsEnabled",
                 "extraSharedRunnersMinutesLimit",
                 "fullName",
                 "fullPath",
@@ -8768,7 +8848,12 @@
                 },
                 "emailsDisabled": {
                     "type": "boolean",
-                    "description": "Disable email notifications.\n"
+                    "description": "Disable email notifications.\n",
+                    "deprecationMessage": "use `emails_enabled` instead"
+                },
+                "emailsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable email notifications.\n"
                 },
                 "extraSharedRunnersMinutesLimit": {
                     "type": "integer",
@@ -8886,7 +8971,12 @@
                     },
                     "emailsDisabled": {
                         "type": "boolean",
-                        "description": "Disable email notifications.\n"
+                        "description": "Disable email notifications.\n",
+                        "deprecationMessage": "use `emails_enabled` instead"
+                    },
+                    "emailsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable email notifications.\n"
                     },
                     "extraSharedRunnersMinutesLimit": {
                         "type": "integer",
@@ -8993,11 +9083,11 @@
             }
         },
         "gitlab:index/groupAccessToken:GroupAccessToken": {
-            "description": "The `gitlab_group_access`token resource allows to manage the lifecycle of a group access token.\n\n\u003e Group Access Token were introduced in GitLab 14.7\n\n**Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst exampleGroupAccessToken = new gitlab.GroupAccessToken(\"exampleGroupAccessToken\", {\n    group: \"25\",\n    expiresAt: \"2020-03-14\",\n    accessLevel: \"developer\",\n    scopes: [\"api\"],\n});\nconst exampleGroupVariable = new gitlab.GroupVariable(\"exampleGroupVariable\", {\n    group: \"25\",\n    key: \"gat\",\n    value: exampleGroupAccessToken.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_group_access_token = gitlab.GroupAccessToken(\"exampleGroupAccessToken\",\n    group=\"25\",\n    expires_at=\"2020-03-14\",\n    access_level=\"developer\",\n    scopes=[\"api\"])\nexample_group_variable = gitlab.GroupVariable(\"exampleGroupVariable\",\n    group=\"25\",\n    key=\"gat\",\n    value=example_group_access_token.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleGroupAccessToken = new GitLab.GroupAccessToken(\"exampleGroupAccessToken\", new()\n    {\n        Group = \"25\",\n        ExpiresAt = \"2020-03-14\",\n        AccessLevel = \"developer\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleGroupVariable = new GitLab.GroupVariable(\"exampleGroupVariable\", new()\n    {\n        Group = \"25\",\n        Key = \"gat\",\n        Value = exampleGroupAccessToken.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleGroupAccessToken, err := gitlab.NewGroupAccessToken(ctx, \"exampleGroupAccessToken\", \u0026gitlab.GroupAccessTokenArgs{\n\t\t\tGroup:       pulumi.String(\"25\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-03-14\"),\n\t\t\tAccessLevel: pulumi.String(\"developer\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupVariable(ctx, \"exampleGroupVariable\", \u0026gitlab.GroupVariableArgs{\n\t\t\tGroup: pulumi.String(\"25\"),\n\t\t\tKey:   pulumi.String(\"gat\"),\n\t\t\tValue: exampleGroupAccessToken.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupAccessToken;\nimport com.pulumi.gitlab.GroupAccessTokenArgs;\nimport com.pulumi.gitlab.GroupVariable;\nimport com.pulumi.gitlab.GroupVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleGroupAccessToken = new GroupAccessToken(\"exampleGroupAccessToken\", GroupAccessTokenArgs.builder()        \n            .group(\"25\")\n            .expiresAt(\"2020-03-14\")\n            .accessLevel(\"developer\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleGroupVariable = new GroupVariable(\"exampleGroupVariable\", GroupVariableArgs.builder()        \n            .group(\"25\")\n            .key(\"gat\")\n            .value(exampleGroupAccessToken.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleGroupAccessToken:\n    type: gitlab:GroupAccessToken\n    properties:\n      group: '25'\n      expiresAt: 2020-03-14\n      accessLevel: developer\n      scopes:\n        - api\n  exampleGroupVariable:\n    type: gitlab:GroupVariable\n    properties:\n      group: '25'\n      key: gat\n      value: ${exampleGroupAccessToken.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab Group Access Token can be imported using a key composed of `\u003cgroup-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example \"12345:1\"\n```\n\nATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
+            "description": "The `gitlab.GroupAccessToken`resource allows to manage the lifecycle of a group access token.\n\n\u003e Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)\n\n\u003e Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.\n\n\u003e Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/group_access_tokens.html#automatic-reuse-detection) it's possible that a new Group Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.\n\n**Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst exampleGroupAccessToken = new gitlab.GroupAccessToken(\"exampleGroupAccessToken\", {\n    group: \"25\",\n    expiresAt: \"2020-03-14\",\n    accessLevel: \"developer\",\n    scopes: [\"api\"],\n});\nconst exampleGroupVariable = new gitlab.GroupVariable(\"exampleGroupVariable\", {\n    group: \"25\",\n    key: \"gat\",\n    value: exampleGroupAccessToken.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_group_access_token = gitlab.GroupAccessToken(\"exampleGroupAccessToken\",\n    group=\"25\",\n    expires_at=\"2020-03-14\",\n    access_level=\"developer\",\n    scopes=[\"api\"])\nexample_group_variable = gitlab.GroupVariable(\"exampleGroupVariable\",\n    group=\"25\",\n    key=\"gat\",\n    value=example_group_access_token.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleGroupAccessToken = new GitLab.GroupAccessToken(\"exampleGroupAccessToken\", new()\n    {\n        Group = \"25\",\n        ExpiresAt = \"2020-03-14\",\n        AccessLevel = \"developer\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleGroupVariable = new GitLab.GroupVariable(\"exampleGroupVariable\", new()\n    {\n        Group = \"25\",\n        Key = \"gat\",\n        Value = exampleGroupAccessToken.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleGroupAccessToken, err := gitlab.NewGroupAccessToken(ctx, \"exampleGroupAccessToken\", \u0026gitlab.GroupAccessTokenArgs{\n\t\t\tGroup:       pulumi.String(\"25\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-03-14\"),\n\t\t\tAccessLevel: pulumi.String(\"developer\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupVariable(ctx, \"exampleGroupVariable\", \u0026gitlab.GroupVariableArgs{\n\t\t\tGroup: pulumi.String(\"25\"),\n\t\t\tKey:   pulumi.String(\"gat\"),\n\t\t\tValue: exampleGroupAccessToken.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupAccessToken;\nimport com.pulumi.gitlab.GroupAccessTokenArgs;\nimport com.pulumi.gitlab.GroupVariable;\nimport com.pulumi.gitlab.GroupVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleGroupAccessToken = new GroupAccessToken(\"exampleGroupAccessToken\", GroupAccessTokenArgs.builder()        \n            .group(\"25\")\n            .expiresAt(\"2020-03-14\")\n            .accessLevel(\"developer\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleGroupVariable = new GroupVariable(\"exampleGroupVariable\", GroupVariableArgs.builder()        \n            .group(\"25\")\n            .key(\"gat\")\n            .value(exampleGroupAccessToken.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleGroupAccessToken:\n    type: gitlab:GroupAccessToken\n    properties:\n      group: '25'\n      expiresAt: 2020-03-14\n      accessLevel: developer\n      scopes:\n        - api\n  exampleGroupVariable:\n    type: gitlab:GroupVariable\n    properties:\n      group: '25'\n      key: gat\n      value: ${exampleGroupAccessToken.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab Group Access Token can be imported using a key composed of `\u003cgroup-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example \"12345:1\"\n```\n\nATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.\n"
+                    "description": "The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.\n"
                 },
                 "active": {
                     "type": "boolean",
@@ -9009,11 +9099,11 @@
                 },
                 "expiresAt": {
                     "type": "string",
-                    "description": "The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.\n"
+                    "description": "When the token will expire, YYYY-MM-DD format.\n"
                 },
                 "group": {
                     "type": "string",
-                    "description": "The ID or path of the group to add the group access token to.\n"
+                    "description": "The ID or full path of the group.\n"
                 },
                 "name": {
                     "type": "string",
@@ -9023,24 +9113,29 @@
                     "type": "boolean",
                     "description": "True if the token is revoked.\n"
                 },
+                "rotationConfiguration": {
+                    "$ref": "#/types/gitlab:index/GroupAccessTokenRotationConfiguration:GroupAccessTokenRotationConfiguration",
+                    "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
+                },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n"
+                    "description": "The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                 },
                 "token": {
                     "type": "string",
-                    "description": "The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.\n",
+                    "description": "The token of the group access token. **Note**: the token is not available for imported resources.\n",
                     "secret": true
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The user id associated to the token.\n"
+                    "description": "The user_id associated to the token.\n"
                 }
             },
             "required": [
+                "accessLevel",
                 "active",
                 "createdAt",
                 "expiresAt",
@@ -9054,35 +9149,33 @@
             "inputProperties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.\n"
                 },
                 "expiresAt": {
                     "type": "string",
-                    "description": "The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.\n",
-                    "willReplaceOnChanges": true
+                    "description": "When the token will expire, YYYY-MM-DD format.\n"
                 },
                 "group": {
                     "type": "string",
-                    "description": "The ID or path of the group to add the group access token to.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID or full path of the group.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the group access token.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the group access token.\n"
+                },
+                "rotationConfiguration": {
+                    "$ref": "#/types/gitlab:index/GroupAccessTokenRotationConfiguration:GroupAccessTokenRotationConfiguration",
+                    "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                 },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                 }
             },
             "requiredInputs": [
-                "expiresAt",
                 "group",
                 "scopes"
             ],
@@ -9091,8 +9184,7 @@
                 "properties": {
                     "accessLevel": {
                         "type": "string",
-                        "description": "The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.\n"
                     },
                     "active": {
                         "type": "boolean",
@@ -9104,39 +9196,39 @@
                     },
                     "expiresAt": {
                         "type": "string",
-                        "description": "The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.\n",
-                        "willReplaceOnChanges": true
+                        "description": "When the token will expire, YYYY-MM-DD format.\n"
                     },
                     "group": {
                         "type": "string",
-                        "description": "The ID or path of the group to add the group access token to.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID or full path of the group.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the group access token.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the group access token.\n"
                     },
                     "revoked": {
                         "type": "boolean",
                         "description": "True if the token is revoked.\n"
+                    },
+                    "rotationConfiguration": {
+                        "$ref": "#/types/gitlab:index/GroupAccessTokenRotationConfiguration:GroupAccessTokenRotationConfiguration",
+                        "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                     },
                     "scopes": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                     },
                     "token": {
                         "type": "string",
-                        "description": "The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.\n",
+                        "description": "The token of the group access token. **Note**: the token is not available for imported resources.\n",
                         "secret": true
                     },
                     "userId": {
                         "type": "integer",
-                        "description": "The user id associated to the token.\n"
+                        "description": "The user_id associated to the token.\n"
                     }
                 },
                 "type": "object"
@@ -9570,6 +9662,10 @@
                     "type": "boolean",
                     "description": "Invoke the hook for confidential notes events.\n"
                 },
+                "customWebhookTemplate": {
+                    "type": "string",
+                    "description": "Set a custom webhook template.\n"
+                },
                 "deploymentEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for deployment events.\n"
@@ -9659,6 +9755,10 @@
                     "type": "boolean",
                     "description": "Invoke the hook for confidential notes events.\n"
                 },
+                "customWebhookTemplate": {
+                    "type": "string",
+                    "description": "Set a custom webhook template.\n"
+                },
                 "deploymentEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for deployment events.\n"
@@ -9739,6 +9839,10 @@
                     "confidentialNoteEvents": {
                         "type": "boolean",
                         "description": "Invoke the hook for confidential notes events.\n"
+                    },
+                    "customWebhookTemplate": {
+                        "type": "string",
+                        "description": "Set a custom webhook template.\n"
                     },
                     "deploymentEvents": {
                         "type": "boolean",
@@ -10135,6 +10239,10 @@
                     "type": "string",
                     "description": "The id of the group.\n"
                 },
+                "memberRoleId": {
+                    "type": "integer",
+                    "description": "The ID of a custom member role. Only available for Ultimate instances.\n"
+                },
                 "skipSubresourcesOnDestroy": {
                     "type": "boolean",
                     "description": "Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.\n"
@@ -10166,6 +10274,10 @@
                     "type": "string",
                     "description": "The id of the group.\n",
                     "willReplaceOnChanges": true
+                },
+                "memberRoleId": {
+                    "type": "integer",
+                    "description": "The ID of a custom member role. Only available for Ultimate instances.\n"
                 },
                 "skipSubresourcesOnDestroy": {
                     "type": "boolean",
@@ -10201,6 +10313,10 @@
                         "type": "string",
                         "description": "The id of the group.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "memberRoleId": {
+                        "type": "integer",
+                        "description": "The ID of a custom member role. Only available for Ultimate instances.\n"
                     },
                     "skipSubresourcesOnDestroy": {
                         "type": "boolean",
@@ -13300,7 +13416,12 @@
                 },
                 "emailsDisabled": {
                     "type": "boolean",
-                    "description": "Disable email notifications.\n"
+                    "description": "Disable email notifications.\n",
+                    "deprecationMessage": "use `emails_enabled` instead."
+                },
+                "emailsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable email notifications.\n"
                 },
                 "emptyRepo": {
                     "type": "boolean",
@@ -13622,6 +13743,7 @@
                 "containerRegistryEnabled",
                 "defaultBranch",
                 "emailsDisabled",
+                "emailsEnabled",
                 "emptyRepo",
                 "environmentsAccessLevel",
                 "featureFlagsAccessLevel",
@@ -13779,7 +13901,12 @@
                 },
                 "emailsDisabled": {
                     "type": "boolean",
-                    "description": "Disable email notifications.\n"
+                    "description": "Disable email notifications.\n",
+                    "deprecationMessage": "use `emails_enabled` instead."
+                },
+                "emailsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable email notifications.\n"
                 },
                 "environmentsAccessLevel": {
                     "type": "string",
@@ -14168,7 +14295,12 @@
                     },
                     "emailsDisabled": {
                         "type": "boolean",
-                        "description": "Disable email notifications.\n"
+                        "description": "Disable email notifications.\n",
+                        "deprecationMessage": "use `emails_enabled` instead."
+                    },
+                    "emailsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable email notifications.\n"
                     },
                     "emptyRepo": {
                         "type": "boolean",
@@ -14475,7 +14607,7 @@
             }
         },
         "gitlab:index/projectAccessToken:ProjectAccessToken": {
-            "description": "The `gitlab.ProjectAccessToken` resource allows to manage the lifecycle of a project access token.\n\n\u003e  Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst exampleProjectAccessToken = new gitlab.ProjectAccessToken(\"exampleProjectAccessToken\", {\n    project: \"25\",\n    expiresAt: \"2020-03-14\",\n    accessLevel: \"reporter\",\n    scopes: [\"api\"],\n});\nconst exampleProjectVariable = new gitlab.ProjectVariable(\"exampleProjectVariable\", {\n    project: gitlab_project.example.id,\n    key: \"pat\",\n    value: exampleProjectAccessToken.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_project_access_token = gitlab.ProjectAccessToken(\"exampleProjectAccessToken\",\n    project=\"25\",\n    expires_at=\"2020-03-14\",\n    access_level=\"reporter\",\n    scopes=[\"api\"])\nexample_project_variable = gitlab.ProjectVariable(\"exampleProjectVariable\",\n    project=gitlab_project[\"example\"][\"id\"],\n    key=\"pat\",\n    value=example_project_access_token.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleProjectAccessToken = new GitLab.ProjectAccessToken(\"exampleProjectAccessToken\", new()\n    {\n        Project = \"25\",\n        ExpiresAt = \"2020-03-14\",\n        AccessLevel = \"reporter\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleProjectVariable = new GitLab.ProjectVariable(\"exampleProjectVariable\", new()\n    {\n        Project = gitlab_project.Example.Id,\n        Key = \"pat\",\n        Value = exampleProjectAccessToken.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleProjectAccessToken, err := gitlab.NewProjectAccessToken(ctx, \"exampleProjectAccessToken\", \u0026gitlab.ProjectAccessTokenArgs{\n\t\t\tProject:     pulumi.String(\"25\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-03-14\"),\n\t\t\tAccessLevel: pulumi.String(\"reporter\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectVariable(ctx, \"exampleProjectVariable\", \u0026gitlab.ProjectVariableArgs{\n\t\t\tProject: pulumi.Any(gitlab_project.Example.Id),\n\t\t\tKey:     pulumi.String(\"pat\"),\n\t\t\tValue:   exampleProjectAccessToken.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectAccessToken;\nimport com.pulumi.gitlab.ProjectAccessTokenArgs;\nimport com.pulumi.gitlab.ProjectVariable;\nimport com.pulumi.gitlab.ProjectVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleProjectAccessToken = new ProjectAccessToken(\"exampleProjectAccessToken\", ProjectAccessTokenArgs.builder()        \n            .project(\"25\")\n            .expiresAt(\"2020-03-14\")\n            .accessLevel(\"reporter\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleProjectVariable = new ProjectVariable(\"exampleProjectVariable\", ProjectVariableArgs.builder()        \n            .project(gitlab_project.example().id())\n            .key(\"pat\")\n            .value(exampleProjectAccessToken.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleProjectAccessToken:\n    type: gitlab:ProjectAccessToken\n    properties:\n      project: '25'\n      expiresAt: 2020-03-14\n      accessLevel: reporter\n      scopes:\n        - api\n  exampleProjectVariable:\n    type: gitlab:ProjectVariable\n    properties:\n      project: ${gitlab_project.example.id}\n      key: pat\n      value: ${exampleProjectAccessToken.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab Project Access Token can be imported using a key composed of `\u003cproject-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example \"12345:1\"\n```\n\nNOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
+            "description": "The `gitlab.ProjectAccessToken` resource allows to manage the lifecycle of a project access token.\n\n\u003e Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)\n\n\u003e Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.\n\n\u003e Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/project_access_tokens.html#automatic-reuse-detection) it's possible that a new Project Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst exampleProjectAccessToken = new gitlab.ProjectAccessToken(\"exampleProjectAccessToken\", {\n    project: \"25\",\n    expiresAt: \"2020-03-14\",\n    accessLevel: \"reporter\",\n    scopes: [\"api\"],\n});\nconst exampleProjectVariable = new gitlab.ProjectVariable(\"exampleProjectVariable\", {\n    project: gitlab_project.example.id,\n    key: \"pat\",\n    value: exampleProjectAccessToken.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_project_access_token = gitlab.ProjectAccessToken(\"exampleProjectAccessToken\",\n    project=\"25\",\n    expires_at=\"2020-03-14\",\n    access_level=\"reporter\",\n    scopes=[\"api\"])\nexample_project_variable = gitlab.ProjectVariable(\"exampleProjectVariable\",\n    project=gitlab_project[\"example\"][\"id\"],\n    key=\"pat\",\n    value=example_project_access_token.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleProjectAccessToken = new GitLab.ProjectAccessToken(\"exampleProjectAccessToken\", new()\n    {\n        Project = \"25\",\n        ExpiresAt = \"2020-03-14\",\n        AccessLevel = \"reporter\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleProjectVariable = new GitLab.ProjectVariable(\"exampleProjectVariable\", new()\n    {\n        Project = gitlab_project.Example.Id,\n        Key = \"pat\",\n        Value = exampleProjectAccessToken.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleProjectAccessToken, err := gitlab.NewProjectAccessToken(ctx, \"exampleProjectAccessToken\", \u0026gitlab.ProjectAccessTokenArgs{\n\t\t\tProject:     pulumi.String(\"25\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-03-14\"),\n\t\t\tAccessLevel: pulumi.String(\"reporter\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectVariable(ctx, \"exampleProjectVariable\", \u0026gitlab.ProjectVariableArgs{\n\t\t\tProject: pulumi.Any(gitlab_project.Example.Id),\n\t\t\tKey:     pulumi.String(\"pat\"),\n\t\t\tValue:   exampleProjectAccessToken.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectAccessToken;\nimport com.pulumi.gitlab.ProjectAccessTokenArgs;\nimport com.pulumi.gitlab.ProjectVariable;\nimport com.pulumi.gitlab.ProjectVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleProjectAccessToken = new ProjectAccessToken(\"exampleProjectAccessToken\", ProjectAccessTokenArgs.builder()        \n            .project(\"25\")\n            .expiresAt(\"2020-03-14\")\n            .accessLevel(\"reporter\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleProjectVariable = new ProjectVariable(\"exampleProjectVariable\", ProjectVariableArgs.builder()        \n            .project(gitlab_project.example().id())\n            .key(\"pat\")\n            .value(exampleProjectAccessToken.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleProjectAccessToken:\n    type: gitlab:ProjectAccessToken\n    properties:\n      project: '25'\n      expiresAt: 2020-03-14\n      accessLevel: reporter\n      scopes:\n        - api\n  exampleProjectVariable:\n    type: gitlab:ProjectVariable\n    properties:\n      project: ${gitlab_project.example.id}\n      key: pat\n      value: ${exampleProjectAccessToken.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab Project Access Token can be imported using a key composed of `\u003cproject-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example \"12345:1\"\n```\n\nNOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -14491,30 +14623,34 @@
                 },
                 "expiresAt": {
                     "type": "string",
-                    "description": "Time the token will expire it, YYYY-MM-DD format.\n"
+                    "description": "When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "A name to describe the project access token.\n"
+                    "description": "The name of the project access token.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The id of the project to add the project access token to.\n"
+                    "description": "The ID or full path of the project.\n"
                 },
                 "revoked": {
                     "type": "boolean",
                     "description": "True if the token is revoked.\n"
+                },
+                "rotationConfiguration": {
+                    "$ref": "#/types/gitlab:index/ProjectAccessTokenRotationConfiguration:ProjectAccessTokenRotationConfiguration",
+                    "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                 },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n"
+                    "description": "The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                 },
                 "token": {
                     "type": "string",
-                    "description": "The secret token. **Note**: the token is not available for imported resources.\n",
+                    "description": "The token of the project access token. **Note**: the token is not available for imported resources.\n",
                     "secret": true
                 },
                 "userId": {
@@ -14523,6 +14659,7 @@
                 }
             },
             "required": [
+                "accessLevel",
                 "active",
                 "createdAt",
                 "expiresAt",
@@ -14536,35 +14673,33 @@
             "inputProperties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.\n"
                 },
                 "expiresAt": {
                     "type": "string",
-                    "description": "Time the token will expire it, YYYY-MM-DD format.\n",
-                    "willReplaceOnChanges": true
+                    "description": "When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "A name to describe the project access token.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the project access token.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The id of the project to add the project access token to.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID or full path of the project.\n"
+                },
+                "rotationConfiguration": {
+                    "$ref": "#/types/gitlab:index/ProjectAccessTokenRotationConfiguration:ProjectAccessTokenRotationConfiguration",
+                    "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                 },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                 }
             },
             "requiredInputs": [
-                "expiresAt",
                 "project",
                 "scopes"
             ],
@@ -14573,8 +14708,7 @@
                 "properties": {
                     "accessLevel": {
                         "type": "string",
-                        "description": "The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.\n"
                     },
                     "active": {
                         "type": "boolean",
@@ -14586,34 +14720,34 @@
                     },
                     "expiresAt": {
                         "type": "string",
-                        "description": "Time the token will expire it, YYYY-MM-DD format.\n",
-                        "willReplaceOnChanges": true
+                        "description": "When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "A name to describe the project access token.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the project access token.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The id of the project to add the project access token to.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID or full path of the project.\n"
                     },
                     "revoked": {
                         "type": "boolean",
                         "description": "True if the token is revoked.\n"
+                    },
+                    "rotationConfiguration": {
+                        "$ref": "#/types/gitlab:index/ProjectAccessTokenRotationConfiguration:ProjectAccessTokenRotationConfiguration",
+                        "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                     },
                     "scopes": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                     },
                     "token": {
                         "type": "string",
-                        "description": "The secret token. **Note**: the token is not available for imported resources.\n",
+                        "description": "The token of the project access token. **Note**: the token is not available for imported resources.\n",
                         "secret": true
                     },
                     "userId": {
@@ -15387,6 +15521,10 @@
                     "type": "boolean",
                     "description": "Invoke the hook for confidential notes events.\n"
                 },
+                "customWebhookTemplate": {
+                    "type": "string",
+                    "description": "Set a custom webhook template.\n"
+                },
                 "deploymentEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for deployment events.\n"
@@ -15472,6 +15610,10 @@
                     "type": "boolean",
                     "description": "Invoke the hook for confidential notes events.\n"
                 },
+                "customWebhookTemplate": {
+                    "type": "string",
+                    "description": "Set a custom webhook template.\n"
+                },
                 "deploymentEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for deployment events.\n"
@@ -15502,7 +15644,8 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name or id of the project to add the hook to.\n"
+                    "description": "The name or id of the project to add the hook to.\n",
+                    "willReplaceOnChanges": true
                 },
                 "pushEvents": {
                     "type": "boolean",
@@ -15550,6 +15693,10 @@
                         "type": "boolean",
                         "description": "Invoke the hook for confidential notes events.\n"
                     },
+                    "customWebhookTemplate": {
+                        "type": "string",
+                        "description": "Set a custom webhook template.\n"
+                    },
                     "deploymentEvents": {
                         "type": "boolean",
                         "description": "Invoke the hook for deployment events.\n"
@@ -15584,7 +15731,8 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name or id of the project to add the hook to.\n"
+                        "description": "The name or id of the project to add the hook to.\n",
+                        "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "integer",
@@ -20552,6 +20700,74 @@
                 ]
             }
         },
+        "gitlab:index/getComplianceFramework:getComplianceFramework": {
+            "description": "The `gitlab.ComplianceFramework` data source allows details of a compliance framework to be retrieved by its name and the namespace it belongs to.\n\n**Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querynamespace)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getComplianceFramework({\n    name: \"HIPAA\",\n    namespacePath: \"top-level-group\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_compliance_framework(name=\"HIPAA\",\n    namespace_path=\"top-level-group\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetComplianceFramework.Invoke(new()\n    {\n        Name = \"HIPAA\",\n        NamespacePath = \"top-level-group\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupComplianceFramework(ctx, \u0026gitlab.LookupComplianceFrameworkArgs{\n\t\t\tName:          \"HIPAA\",\n\t\t\tNamespacePath: \"top-level-group\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()\n            .name(\"HIPAA\")\n            .namespacePath(\"top-level-group\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getComplianceFramework\n      Arguments:\n        name: HIPAA\n        namespacePath: top-level-group\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getComplianceFramework.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name for the compliance framework.\n"
+                    },
+                    "namespacePath": {
+                        "type": "string",
+                        "description": "Full path of the namespace to where the compliance framework is.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "namespacePath"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getComplianceFramework.\n",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "Color representation of the compliance framework in hex format. e.g. #FCA121.\n"
+                    },
+                    "default": {
+                        "type": "boolean",
+                        "description": "Is the compliance framework the default framework for the group.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description for the compliance framework.\n"
+                    },
+                    "frameworkId": {
+                        "type": "string",
+                        "description": "Globally unique ID of the compliance framework.\n"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name for the compliance framework.\n"
+                    },
+                    "namespacePath": {
+                        "type": "string",
+                        "description": "Full path of the namespace to where the compliance framework is.\n"
+                    },
+                    "pipelineConfigurationFullPath": {
+                        "type": "string",
+                        "description": "Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "color",
+                    "default",
+                    "description",
+                    "frameworkId",
+                    "id",
+                    "name",
+                    "namespacePath",
+                    "pipelineConfigurationFullPath"
+                ]
+            }
+        },
         "gitlab:index/getCurrentUser:getCurrentUser": {
             "description": "The `gitlab.getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.\n\n**Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getCurrentUser({});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_current_user()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetCurrentUser.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetCurrentUser(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getCurrentUser();\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getCurrentUser\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
@@ -20772,6 +20988,10 @@
                         "type": "boolean",
                         "description": "Invoke the hook for confidential notes events.\n"
                     },
+                    "customWebhookTemplate": {
+                        "type": "string",
+                        "description": "Set a custom webhook template.\n"
+                    },
                     "deploymentEvents": {
                         "type": "boolean",
                         "description": "Invoke the hook for deployment events.\n"
@@ -20853,6 +21073,7 @@
                 "required": [
                     "confidentialIssuesEvents",
                     "confidentialNoteEvents",
+                    "customWebhookTemplate",
                     "deploymentEvents",
                     "enableSslVerification",
                     "group",
@@ -21558,7 +21779,12 @@
                     },
                     "emailsDisabled": {
                         "type": "boolean",
-                        "description": "Disable email notifications.\n"
+                        "description": "Disable email notifications.\n",
+                        "deprecationMessage": "Use of `emails_disabled` is deprecated. Use `emails_enabled` instead."
+                    },
+                    "emailsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable email notifications.\n"
                     },
                     "emptyRepo": {
                         "type": "boolean",
@@ -21783,6 +22009,7 @@
                     "defaultBranch",
                     "description",
                     "emailsDisabled",
+                    "emailsEnabled",
                     "emptyRepo",
                     "environmentsAccessLevel",
                     "externalAuthorizationClassificationLabel",
@@ -21906,6 +22133,10 @@
                         "type": "boolean",
                         "description": "Invoke the hook for confidential notes events.\n"
                     },
+                    "customWebhookTemplate": {
+                        "type": "string",
+                        "description": "Set a custom webhook template.\n"
+                    },
                     "deploymentEvents": {
                         "type": "boolean",
                         "description": "Invoke the hook for deployment events.\n"
@@ -21983,6 +22214,7 @@
                 "required": [
                     "confidentialIssuesEvents",
                     "confidentialNoteEvents",
+                    "customWebhookTemplate",
                     "deploymentEvents",
                     "enableSslVerification",
                     "hookId",

@@ -184,7 +184,11 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * Disable email notifications.
      * 
+     * @deprecated
+     * use `emails_enabled` instead
+     * 
      */
+    @Deprecated /* use `emails_enabled` instead */
     @Export(name="emailsDisabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> emailsDisabled;
 
@@ -194,6 +198,20 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> emailsDisabled() {
         return this.emailsDisabled;
+    }
+    /**
+     * Enable email notifications.
+     * 
+     */
+    @Export(name="emailsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> emailsEnabled;
+
+    /**
+     * @return Enable email notifications.
+     * 
+     */
+    public Output<Boolean> emailsEnabled() {
+        return this.emailsEnabled;
     }
     /**
      * Can be set by administrators only. Additional CI/CD minutes for this group.

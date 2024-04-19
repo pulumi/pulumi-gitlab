@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.GroupAccessTokenArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupAccessTokenState;
+import com.pulumi.gitlab.outputs.GroupAccessTokenRotationConfiguration;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,9 +19,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab_group_access`token resource allows to manage the lifecycle of a group access token.
+ * The `gitlab.GroupAccessToken`resource allows to manage the lifecycle of a group access token.
  * 
- * &gt; Group Access Token were introduced in GitLab 14.7
+ * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+ * 
+ * &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+ * 
+ * &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/group_access_tokens.html#automatic-reuse-detection) it&#39;s possible that a new Group Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
  * 
  * **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
  * 
@@ -82,18 +87,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupAccessToken:GroupAccessToken")
 public class GroupAccessToken extends com.pulumi.resources.CustomResource {
     /**
-     * The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
      * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accessLevel;
+    private Output<String> accessLevel;
 
     /**
-     * @return The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * @return The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
      * 
      */
-    public Output<Optional<String>> accessLevel() {
-        return Codegen.optional(this.accessLevel);
+    public Output<String> accessLevel() {
+        return this.accessLevel;
     }
     /**
      * True if the token is active.
@@ -124,28 +129,28 @@ public class GroupAccessToken extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * When the token will expire, YYYY-MM-DD format.
      * 
      */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output<String> expiresAt;
 
     /**
-     * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * @return When the token will expire, YYYY-MM-DD format.
      * 
      */
     public Output<String> expiresAt() {
         return this.expiresAt;
     }
     /**
-     * The ID or path of the group to add the group access token to.
+     * The ID or full path of the group.
      * 
      */
     @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
-     * @return The ID or path of the group to add the group access token to.
+     * @return The ID or full path of the group.
      * 
      */
     public Output<String> group() {
@@ -180,42 +185,56 @@ public class GroupAccessToken extends com.pulumi.resources.CustomResource {
         return this.revoked;
     }
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    @Export(name="rotationConfiguration", refs={GroupAccessTokenRotationConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ GroupAccessTokenRotationConfiguration> rotationConfiguration;
+
+    /**
+     * @return The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    public Output<Optional<GroupAccessTokenRotationConfiguration>> rotationConfiguration() {
+        return Codegen.optional(this.rotationConfiguration);
+    }
+    /**
+     * The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
-     * @return The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+     * @return The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
      * 
      */
     public Output<List<String>> scopes() {
         return this.scopes;
     }
     /**
-     * The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+     * The token of the group access token. **Note**: the token is not available for imported resources.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
-     * @return The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+     * @return The token of the group access token. **Note**: the token is not available for imported resources.
      * 
      */
     public Output<String> token() {
         return this.token;
     }
     /**
-     * The user id associated to the token.
+     * The user_id associated to the token.
      * 
      */
     @Export(name="userId", refs={Integer.class}, tree="[0]")
     private Output<Integer> userId;
 
     /**
-     * @return The user id associated to the token.
+     * @return The user_id associated to the token.
      * 
      */
     public Output<Integer> userId() {

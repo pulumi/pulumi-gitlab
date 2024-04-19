@@ -12,9 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `gitlabGroupAccess`token resource allows to manage the lifecycle of a group access token.
+// The `GroupAccessToken`resource allows to manage the lifecycle of a group access token.
 //
-// > Group Access Token were introduced in GitLab 14.7
+// > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+//
+// > Use `rotationConfiguration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+//
+// > Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/group_access_tokens.html#automatic-reuse-detection) it's possible that a new Group Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
 //
 // **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
 //
@@ -71,25 +75,27 @@ import (
 type GroupAccessToken struct {
 	pulumi.CustomResourceState
 
-	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
+	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+	// When the token will expire, YYYY-MM-DD format.
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
-	// The ID or path of the group to add the group access token to.
+	// The ID or full path of the group.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The name of the group access token.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
+	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+	RotationConfiguration GroupAccessTokenRotationConfigurationPtrOutput `pulumi:"rotationConfiguration"`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
-	// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+	// The token of the group access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
-	// The user id associated to the token.
+	// The userId associated to the token.
 	UserId pulumi.IntOutput `pulumi:"userId"`
 }
 
@@ -100,9 +106,6 @@ func NewGroupAccessToken(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ExpiresAt == nil {
-		return nil, errors.New("invalid value for required argument 'ExpiresAt'")
-	}
 	if args.Group == nil {
 		return nil, errors.New("invalid value for required argument 'Group'")
 	}
@@ -136,48 +139,52 @@ func GetGroupAccessToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupAccessToken resources.
 type groupAccessTokenState struct {
-	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active *bool `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+	// When the token will expire, YYYY-MM-DD format.
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The ID or path of the group to add the group access token to.
+	// The ID or full path of the group.
 	Group *string `pulumi:"group"`
 	// The name of the group access token.
 	Name *string `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked *bool `pulumi:"revoked"`
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
+	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+	RotationConfiguration *GroupAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 	Scopes []string `pulumi:"scopes"`
-	// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+	// The token of the group access token. **Note**: the token is not available for imported resources.
 	Token *string `pulumi:"token"`
-	// The user id associated to the token.
+	// The userId associated to the token.
 	UserId *int `pulumi:"userId"`
 }
 
 type GroupAccessTokenState struct {
-	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
 	// True if the token is active.
 	Active pulumi.BoolPtrInput
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringPtrInput
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+	// When the token will expire, YYYY-MM-DD format.
 	ExpiresAt pulumi.StringPtrInput
-	// The ID or path of the group to add the group access token to.
+	// The ID or full path of the group.
 	Group pulumi.StringPtrInput
 	// The name of the group access token.
 	Name pulumi.StringPtrInput
 	// True if the token is revoked.
 	Revoked pulumi.BoolPtrInput
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
+	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+	RotationConfiguration GroupAccessTokenRotationConfigurationPtrInput
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 	Scopes pulumi.StringArrayInput
-	// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+	// The token of the group access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringPtrInput
-	// The user id associated to the token.
+	// The userId associated to the token.
 	UserId pulumi.IntPtrInput
 }
 
@@ -186,29 +193,33 @@ func (GroupAccessTokenState) ElementType() reflect.Type {
 }
 
 type groupAccessTokenArgs struct {
-	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
-	ExpiresAt string `pulumi:"expiresAt"`
-	// The ID or path of the group to add the group access token to.
+	// When the token will expire, YYYY-MM-DD format.
+	ExpiresAt *string `pulumi:"expiresAt"`
+	// The ID or full path of the group.
 	Group string `pulumi:"group"`
 	// The name of the group access token.
 	Name *string `pulumi:"name"`
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
+	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+	RotationConfiguration *GroupAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 	Scopes []string `pulumi:"scopes"`
 }
 
 // The set of arguments for constructing a GroupAccessToken resource.
 type GroupAccessTokenArgs struct {
-	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
-	ExpiresAt pulumi.StringInput
-	// The ID or path of the group to add the group access token to.
+	// When the token will expire, YYYY-MM-DD format.
+	ExpiresAt pulumi.StringPtrInput
+	// The ID or full path of the group.
 	Group pulumi.StringInput
 	// The name of the group access token.
 	Name pulumi.StringPtrInput
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
+	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+	RotationConfiguration GroupAccessTokenRotationConfigurationPtrInput
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 	Scopes pulumi.StringArrayInput
 }
 
@@ -299,9 +310,9 @@ func (o GroupAccessTokenOutput) ToGroupAccessTokenOutputWithContext(ctx context.
 	return o
 }
 
-// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-func (o GroupAccessTokenOutput) AccessLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringPtrOutput { return v.AccessLevel }).(pulumi.StringPtrOutput)
+// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
+func (o GroupAccessTokenOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
 // True if the token is active.
@@ -314,12 +325,12 @@ func (o GroupAccessTokenOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+// When the token will expire, YYYY-MM-DD format.
 func (o GroupAccessTokenOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
-// The ID or path of the group to add the group access token to.
+// The ID or full path of the group.
 func (o GroupAccessTokenOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }
@@ -334,17 +345,24 @@ func (o GroupAccessTokenOutput) Revoked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.BoolOutput { return v.Revoked }).(pulumi.BoolOutput)
 }
 
-// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`.
+// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+func (o GroupAccessTokenOutput) RotationConfiguration() GroupAccessTokenRotationConfigurationPtrOutput {
+	return o.ApplyT(func(v *GroupAccessToken) GroupAccessTokenRotationConfigurationPtrOutput {
+		return v.RotationConfiguration
+	}).(GroupAccessTokenRotationConfigurationPtrOutput)
+}
+
+// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 func (o GroupAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+// The token of the group access token. **Note**: the token is not available for imported resources.
 func (o GroupAccessTokenOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }
 
-// The user id associated to the token.
+// The userId associated to the token.
 func (o GroupAccessTokenOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
 }

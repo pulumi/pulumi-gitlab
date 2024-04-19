@@ -26,6 +26,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int? GroupId;
         /// <summary>
+        /// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` =&gt; Direct group membership only, `1` =&gt; All inherited groups. Default: `0`
+        /// </summary>
+        public readonly int? GroupInheritanceType;
+        /// <summary>
         /// The unique ID of the Deploy Access Level object.
         /// </summary>
         public readonly int? Id;
@@ -42,6 +46,8 @@ namespace Pulumi.GitLab.Outputs
 
             int? groupId,
 
+            int? groupInheritanceType,
+
             int? id,
 
             int? userId)
@@ -49,6 +55,7 @@ namespace Pulumi.GitLab.Outputs
             AccessLevel = accessLevel;
             AccessLevelDescription = accessLevelDescription;
             GroupId = groupId;
+            GroupInheritanceType = groupInheritanceType;
             Id = id;
             UserId = userId;
         }

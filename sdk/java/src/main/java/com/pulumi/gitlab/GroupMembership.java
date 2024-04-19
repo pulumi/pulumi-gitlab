@@ -113,6 +113,20 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    public Output<Optional<Integer>> memberRoleId() {
+        return Codegen.optional(this.memberRoleId);
+    }
+    /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      * 
      */

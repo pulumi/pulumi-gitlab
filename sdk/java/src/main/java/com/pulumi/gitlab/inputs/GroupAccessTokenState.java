@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.GroupAccessTokenRotationConfigurationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -19,14 +20,14 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
     public static final GroupAccessTokenState Empty = new GroupAccessTokenState();
 
     /**
-     * The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * @return The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -64,14 +65,14 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * When the token will expire, YYYY-MM-DD format.
      * 
      */
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * @return When the token will expire, YYYY-MM-DD format.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -79,14 +80,14 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID or path of the group to add the group access token to.
+     * The ID or full path of the group.
      * 
      */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
-     * @return The ID or path of the group to add the group access token to.
+     * @return The ID or full path of the group.
      * 
      */
     public Optional<Output<String>> group() {
@@ -124,14 +125,29 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    @Import(name="rotationConfiguration")
+    private @Nullable Output<GroupAccessTokenRotationConfigurationArgs> rotationConfiguration;
+
+    /**
+     * @return The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    public Optional<Output<GroupAccessTokenRotationConfigurationArgs>> rotationConfiguration() {
+        return Optional.ofNullable(this.rotationConfiguration);
+    }
+
+    /**
+     * The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+     * @return The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -139,14 +155,14 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+     * The token of the group access token. **Note**: the token is not available for imported resources.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+     * @return The token of the group access token. **Note**: the token is not available for imported resources.
      * 
      */
     public Optional<Output<String>> token() {
@@ -154,14 +170,14 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The user id associated to the token.
+     * The user_id associated to the token.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The user id associated to the token.
+     * @return The user_id associated to the token.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -178,6 +194,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         this.group = $.group;
         this.name = $.name;
         this.revoked = $.revoked;
+        this.rotationConfiguration = $.rotationConfiguration;
         this.scopes = $.scopes;
         this.token = $.token;
         this.userId = $.userId;
@@ -202,7 +219,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accessLevel The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+         * @param accessLevel The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
          * 
          * @return builder
          * 
@@ -213,7 +230,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accessLevel The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+         * @param accessLevel The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
          * 
          * @return builder
          * 
@@ -265,7 +282,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expiresAt The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format.
          * 
          * @return builder
          * 
@@ -276,7 +293,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expiresAt The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format.
          * 
          * @return builder
          * 
@@ -286,7 +303,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param group The ID or path of the group to add the group access token to.
+         * @param group The ID or full path of the group.
          * 
          * @return builder
          * 
@@ -297,7 +314,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param group The ID or path of the group to add the group access token to.
+         * @param group The ID or full path of the group.
          * 
          * @return builder
          * 
@@ -349,7 +366,28 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(@Nullable Output<GroupAccessTokenRotationConfigurationArgs> rotationConfiguration) {
+            $.rotationConfiguration = rotationConfiguration;
+            return this;
+        }
+
+        /**
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(GroupAccessTokenRotationConfigurationArgs rotationConfiguration) {
+            return rotationConfiguration(Output.of(rotationConfiguration));
+        }
+
+        /**
+         * @param scopes The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
          * 
          * @return builder
          * 
@@ -360,7 +398,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+         * @param scopes The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
          * 
          * @return builder
          * 
@@ -370,7 +408,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+         * @param scopes The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
          * 
          * @return builder
          * 
@@ -380,7 +418,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param token The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+         * @param token The token of the group access token. **Note**: the token is not available for imported resources.
          * 
          * @return builder
          * 
@@ -391,7 +429,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param token The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+         * @param token The token of the group access token. **Note**: the token is not available for imported resources.
          * 
          * @return builder
          * 
@@ -401,7 +439,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userId The user id associated to the token.
+         * @param userId The user_id associated to the token.
          * 
          * @return builder
          * 
@@ -412,7 +450,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userId The user id associated to the token.
+         * @param userId The user_id associated to the token.
          * 
          * @return builder
          * 

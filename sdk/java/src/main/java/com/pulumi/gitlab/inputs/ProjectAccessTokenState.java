@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.ProjectAccessTokenRotationConfigurationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -64,14 +65,14 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Time the token will expire it, YYYY-MM-DD format.
+     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return Time the token will expire it, YYYY-MM-DD format.
+     * @return When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -79,14 +80,14 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * A name to describe the project access token.
+     * The name of the project access token.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A name to describe the project access token.
+     * @return The name of the project access token.
      * 
      */
     public Optional<Output<String>> name() {
@@ -94,14 +95,14 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The id of the project to add the project access token to.
+     * The ID or full path of the project.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The id of the project to add the project access token to.
+     * @return The ID or full path of the project.
      * 
      */
     public Optional<Output<String>> project() {
@@ -124,14 +125,29 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    @Import(name="rotationConfiguration")
+    private @Nullable Output<ProjectAccessTokenRotationConfigurationArgs> rotationConfiguration;
+
+    /**
+     * @return The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    public Optional<Output<ProjectAccessTokenRotationConfigurationArgs>> rotationConfiguration() {
+        return Optional.ofNullable(this.rotationConfiguration);
+    }
+
+    /**
+     * The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+     * @return The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -139,14 +155,14 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The secret token. **Note**: the token is not available for imported resources.
+     * The token of the project access token. **Note**: the token is not available for imported resources.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return The secret token. **Note**: the token is not available for imported resources.
+     * @return The token of the project access token. **Note**: the token is not available for imported resources.
      * 
      */
     public Optional<Output<String>> token() {
@@ -178,6 +194,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         this.name = $.name;
         this.project = $.project;
         this.revoked = $.revoked;
+        this.rotationConfiguration = $.rotationConfiguration;
         this.scopes = $.scopes;
         this.token = $.token;
         this.userId = $.userId;
@@ -265,7 +282,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expiresAt Time the token will expire it, YYYY-MM-DD format.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
          * 
          * @return builder
          * 
@@ -276,7 +293,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expiresAt Time the token will expire it, YYYY-MM-DD format.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
          * 
          * @return builder
          * 
@@ -286,7 +303,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name A name to describe the project access token.
+         * @param name The name of the project access token.
          * 
          * @return builder
          * 
@@ -297,7 +314,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name A name to describe the project access token.
+         * @param name The name of the project access token.
          * 
          * @return builder
          * 
@@ -307,7 +324,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param project The id of the project to add the project access token to.
+         * @param project The ID or full path of the project.
          * 
          * @return builder
          * 
@@ -318,7 +335,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param project The id of the project to add the project access token to.
+         * @param project The ID or full path of the project.
          * 
          * @return builder
          * 
@@ -349,7 +366,28 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(@Nullable Output<ProjectAccessTokenRotationConfigurationArgs> rotationConfiguration) {
+            $.rotationConfiguration = rotationConfiguration;
+            return this;
+        }
+
+        /**
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(ProjectAccessTokenRotationConfigurationArgs rotationConfiguration) {
+            return rotationConfiguration(Output.of(rotationConfiguration));
+        }
+
+        /**
+         * @param scopes The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
          * 
          * @return builder
          * 
@@ -360,7 +398,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+         * @param scopes The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
          * 
          * @return builder
          * 
@@ -370,7 +408,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+         * @param scopes The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
          * 
          * @return builder
          * 
@@ -380,7 +418,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param token The secret token. **Note**: the token is not available for imported resources.
+         * @param token The token of the project access token. **Note**: the token is not available for imported resources.
          * 
          * @return builder
          * 
@@ -391,7 +429,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param token The secret token. **Note**: the token is not available for imported resources.
+         * @param token The token of the project access token. **Note**: the token is not available for imported resources.
          * 
          * @return builder
          * 

@@ -31,6 +31,12 @@ namespace Pulumi.GitLab.Inputs
         public Input<int>? GroupId { get; set; }
 
         /// <summary>
+        /// Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` =&gt; Direct group membership only, `1` =&gt; All inherited groups. Default: `0`
+        /// </summary>
+        [Input("groupInheritanceType")]
+        public Input<int>? GroupInheritanceType { get; set; }
+
+        /// <summary>
         /// The unique ID of the Approval Rules object.
         /// </summary>
         [Input("id")]

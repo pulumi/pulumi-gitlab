@@ -23,6 +23,11 @@ public final class GetProjectHookResult {
      */
     private Boolean confidentialNoteEvents;
     /**
+     * @return Set a custom webhook template.
+     * 
+     */
+    private String customWebhookTemplate;
+    /**
      * @return Invoke the hook for deployment events.
      * 
      */
@@ -127,6 +132,13 @@ public final class GetProjectHookResult {
      */
     public Boolean confidentialNoteEvents() {
         return this.confidentialNoteEvents;
+    }
+    /**
+     * @return Set a custom webhook template.
+     * 
+     */
+    public String customWebhookTemplate() {
+        return this.customWebhookTemplate;
     }
     /**
      * @return Invoke the hook for deployment events.
@@ -266,6 +278,7 @@ public final class GetProjectHookResult {
     public static final class Builder {
         private Boolean confidentialIssuesEvents;
         private Boolean confidentialNoteEvents;
+        private String customWebhookTemplate;
         private Boolean deploymentEvents;
         private Boolean enableSslVerification;
         private Integer hookId;
@@ -289,6 +302,7 @@ public final class GetProjectHookResult {
     	      Objects.requireNonNull(defaults);
     	      this.confidentialIssuesEvents = defaults.confidentialIssuesEvents;
     	      this.confidentialNoteEvents = defaults.confidentialNoteEvents;
+    	      this.customWebhookTemplate = defaults.customWebhookTemplate;
     	      this.deploymentEvents = defaults.deploymentEvents;
     	      this.enableSslVerification = defaults.enableSslVerification;
     	      this.hookId = defaults.hookId;
@@ -323,6 +337,14 @@ public final class GetProjectHookResult {
               throw new MissingRequiredPropertyException("GetProjectHookResult", "confidentialNoteEvents");
             }
             this.confidentialNoteEvents = confidentialNoteEvents;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customWebhookTemplate(String customWebhookTemplate) {
+            if (customWebhookTemplate == null) {
+              throw new MissingRequiredPropertyException("GetProjectHookResult", "customWebhookTemplate");
+            }
+            this.customWebhookTemplate = customWebhookTemplate;
             return this;
         }
         @CustomType.Setter
@@ -473,6 +495,7 @@ public final class GetProjectHookResult {
             final var _resultValue = new GetProjectHookResult();
             _resultValue.confidentialIssuesEvents = confidentialIssuesEvents;
             _resultValue.confidentialNoteEvents = confidentialNoteEvents;
+            _resultValue.customWebhookTemplate = customWebhookTemplate;
             _resultValue.deploymentEvents = deploymentEvents;
             _resultValue.enableSslVerification = enableSslVerification;
             _resultValue.hookId = hookId;

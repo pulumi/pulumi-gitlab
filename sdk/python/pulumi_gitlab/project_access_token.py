@@ -8,50 +8,45 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ProjectAccessTokenArgs', 'ProjectAccessToken']
 
 @pulumi.input_type
 class ProjectAccessTokenArgs:
     def __init__(__self__, *,
-                 expires_at: pulumi.Input[str],
                  project: pulumi.Input[str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  access_level: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 rotation_configuration: Optional[pulumi.Input['ProjectAccessTokenRotationConfigurationArgs']] = None):
         """
         The set of arguments for constructing a ProjectAccessToken resource.
-        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format.
-        :param pulumi.Input[str] project: The id of the project to add the project access token to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+        :param pulumi.Input[str] project: The ID or full path of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         :param pulumi.Input[str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
-        :param pulumi.Input[str] name: A name to describe the project access token.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+        :param pulumi.Input[str] name: The name of the project access token.
+        :param pulumi.Input['ProjectAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         """
-        pulumi.set(__self__, "expires_at", expires_at)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "scopes", scopes)
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> pulumi.Input[str]:
-        """
-        Time the token will expire it, YYYY-MM-DD format.
-        """
-        return pulumi.get(self, "expires_at")
-
-    @expires_at.setter
-    def expires_at(self, value: pulumi.Input[str]):
-        pulumi.set(self, "expires_at", value)
+        if rotation_configuration is not None:
+            pulumi.set(__self__, "rotation_configuration", rotation_configuration)
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        The id of the project to add the project access token to.
+        The ID or full path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -63,7 +58,7 @@ class ProjectAccessTokenArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+        The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         """
         return pulumi.get(self, "scopes")
 
@@ -84,16 +79,40 @@ class ProjectAccessTokenArgs:
         pulumi.set(self, "access_level", value)
 
     @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A name to describe the project access token.
+        The name of the project access token.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="rotationConfiguration")
+    def rotation_configuration(self) -> Optional[pulumi.Input['ProjectAccessTokenRotationConfigurationArgs']]:
+        """
+        The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        """
+        return pulumi.get(self, "rotation_configuration")
+
+    @rotation_configuration.setter
+    def rotation_configuration(self, value: Optional[pulumi.Input['ProjectAccessTokenRotationConfigurationArgs']]):
+        pulumi.set(self, "rotation_configuration", value)
 
 
 @pulumi.input_type
@@ -106,6 +125,7 @@ class _ProjectAccessTokenState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  revoked: Optional[pulumi.Input[bool]] = None,
+                 rotation_configuration: Optional[pulumi.Input['ProjectAccessTokenRotationConfigurationArgs']] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
@@ -114,12 +134,13 @@ class _ProjectAccessTokenState:
         :param pulumi.Input[str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format.
-        :param pulumi.Input[str] name: A name to describe the project access token.
-        :param pulumi.Input[str] project: The id of the project to add the project access token to.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+        :param pulumi.Input[str] name: The name of the project access token.
+        :param pulumi.Input[str] project: The ID or full path of the project.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
-        :param pulumi.Input[str] token: The secret token. **Note**: the token is not available for imported resources.
+        :param pulumi.Input['ProjectAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        :param pulumi.Input[str] token: The token of the project access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The user_id associated to the token.
         """
         if access_level is not None:
@@ -136,6 +157,8 @@ class _ProjectAccessTokenState:
             pulumi.set(__self__, "project", project)
         if revoked is not None:
             pulumi.set(__self__, "revoked", revoked)
+        if rotation_configuration is not None:
+            pulumi.set(__self__, "rotation_configuration", rotation_configuration)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if token is not None:
@@ -183,7 +206,7 @@ class _ProjectAccessTokenState:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the token will expire it, YYYY-MM-DD format.
+        When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         """
         return pulumi.get(self, "expires_at")
 
@@ -195,7 +218,7 @@ class _ProjectAccessTokenState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A name to describe the project access token.
+        The name of the project access token.
         """
         return pulumi.get(self, "name")
 
@@ -207,7 +230,7 @@ class _ProjectAccessTokenState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the project to add the project access token to.
+        The ID or full path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -228,10 +251,22 @@ class _ProjectAccessTokenState:
         pulumi.set(self, "revoked", value)
 
     @property
+    @pulumi.getter(name="rotationConfiguration")
+    def rotation_configuration(self) -> Optional[pulumi.Input['ProjectAccessTokenRotationConfigurationArgs']]:
+        """
+        The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        """
+        return pulumi.get(self, "rotation_configuration")
+
+    @rotation_configuration.setter
+    def rotation_configuration(self, value: Optional[pulumi.Input['ProjectAccessTokenRotationConfigurationArgs']]):
+        pulumi.set(self, "rotation_configuration", value)
+
+    @property
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+        The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         """
         return pulumi.get(self, "scopes")
 
@@ -243,7 +278,7 @@ class _ProjectAccessTokenState:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        The secret token. **Note**: the token is not available for imported resources.
+        The token of the project access token. **Note**: the token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
@@ -273,12 +308,17 @@ class ProjectAccessToken(pulumi.CustomResource):
                  expires_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 rotation_configuration: Optional[pulumi.Input[pulumi.InputType['ProjectAccessTokenRotationConfigurationArgs']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         The `ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
 
-        >  Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
+        > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+
+        > Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+
+        > Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/project_access_tokens.html#automatic-reuse-detection) it's possible that a new Project Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
 
@@ -314,10 +354,11 @@ class ProjectAccessToken(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
-        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format.
-        :param pulumi.Input[str] name: A name to describe the project access token.
-        :param pulumi.Input[str] project: The id of the project to add the project access token to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+        :param pulumi.Input[str] name: The name of the project access token.
+        :param pulumi.Input[str] project: The ID or full path of the project.
+        :param pulumi.Input[pulumi.InputType['ProjectAccessTokenRotationConfigurationArgs']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         """
         ...
     @overload
@@ -328,7 +369,11 @@ class ProjectAccessToken(pulumi.CustomResource):
         """
         The `ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
 
-        >  Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
+        > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+
+        > Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+
+        > Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/project_access_tokens.html#automatic-reuse-detection) it's possible that a new Project Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
 
@@ -380,6 +425,7 @@ class ProjectAccessToken(pulumi.CustomResource):
                  expires_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 rotation_configuration: Optional[pulumi.Input[pulumi.InputType['ProjectAccessTokenRotationConfigurationArgs']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -391,13 +437,12 @@ class ProjectAccessToken(pulumi.CustomResource):
             __props__ = ProjectAccessTokenArgs.__new__(ProjectAccessTokenArgs)
 
             __props__.__dict__["access_level"] = access_level
-            if expires_at is None and not opts.urn:
-                raise TypeError("Missing required property 'expires_at'")
             __props__.__dict__["expires_at"] = expires_at
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["rotation_configuration"] = rotation_configuration
             if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
             __props__.__dict__["scopes"] = scopes
@@ -425,6 +470,7 @@ class ProjectAccessToken(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             revoked: Optional[pulumi.Input[bool]] = None,
+            rotation_configuration: Optional[pulumi.Input[pulumi.InputType['ProjectAccessTokenRotationConfigurationArgs']]] = None,
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             token: Optional[pulumi.Input[str]] = None,
             user_id: Optional[pulumi.Input[int]] = None) -> 'ProjectAccessToken':
@@ -438,12 +484,13 @@ class ProjectAccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format.
-        :param pulumi.Input[str] name: A name to describe the project access token.
-        :param pulumi.Input[str] project: The id of the project to add the project access token to.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+        :param pulumi.Input[str] name: The name of the project access token.
+        :param pulumi.Input[str] project: The ID or full path of the project.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
-        :param pulumi.Input[str] token: The secret token. **Note**: the token is not available for imported resources.
+        :param pulumi.Input[pulumi.InputType['ProjectAccessTokenRotationConfigurationArgs']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        :param pulumi.Input[str] token: The token of the project access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The user_id associated to the token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -457,6 +504,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["revoked"] = revoked
+        __props__.__dict__["rotation_configuration"] = rotation_configuration
         __props__.__dict__["scopes"] = scopes
         __props__.__dict__["token"] = token
         __props__.__dict__["user_id"] = user_id
@@ -464,7 +512,7 @@ class ProjectAccessToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> pulumi.Output[Optional[str]]:
+    def access_level(self) -> pulumi.Output[str]:
         """
         The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         """
@@ -490,7 +538,7 @@ class ProjectAccessToken(pulumi.CustomResource):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[str]:
         """
-        Time the token will expire it, YYYY-MM-DD format.
+        When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         """
         return pulumi.get(self, "expires_at")
 
@@ -498,7 +546,7 @@ class ProjectAccessToken(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A name to describe the project access token.
+        The name of the project access token.
         """
         return pulumi.get(self, "name")
 
@@ -506,7 +554,7 @@ class ProjectAccessToken(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The id of the project to add the project access token to.
+        The ID or full path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -519,10 +567,18 @@ class ProjectAccessToken(pulumi.CustomResource):
         return pulumi.get(self, "revoked")
 
     @property
+    @pulumi.getter(name="rotationConfiguration")
+    def rotation_configuration(self) -> pulumi.Output[Optional['outputs.ProjectAccessTokenRotationConfiguration']]:
+        """
+        The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        """
+        return pulumi.get(self, "rotation_configuration")
+
+    @property
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Sequence[str]]:
         """
-        The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.
+        The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         """
         return pulumi.get(self, "scopes")
 
@@ -530,7 +586,7 @@ class ProjectAccessToken(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[str]:
         """
-        The secret token. **Note**: the token is not available for imported resources.
+        The token of the project access token. **Note**: the token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 

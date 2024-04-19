@@ -591,6 +591,10 @@
                     }
                 }
             },
+            "gitlab_compliance_framework": {
+                "current": "gitlab:index/getComplianceFramework:getComplianceFramework",
+                "majorVersion": 6
+            },
             "gitlab_current_user": {
                 "current": "gitlab:index/getCurrentUser:getCurrentUser",
                 "majorVersion": 6
@@ -1040,7 +1044,7 @@
             "gitlab:index/deployToken:DeployToken": 0,
             "gitlab:index/globalLevelNotifications:GlobalLevelNotifications": 1,
             "gitlab:index/group:Group": 0,
-            "gitlab:index/groupAccessToken:GroupAccessToken": 0,
+            "gitlab:index/groupAccessToken:GroupAccessToken": 1,
             "gitlab:index/groupBadge:GroupBadge": 0,
             "gitlab:index/groupCluster:GroupCluster": 0,
             "gitlab:index/groupCustomAttribute:GroupCustomAttribute": 0,
@@ -1073,7 +1077,7 @@
             "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable": 0,
             "gitlab:index/pipelineTrigger:PipelineTrigger": 0,
             "gitlab:index/project:Project": 0,
-            "gitlab:index/projectAccessToken:ProjectAccessToken": 0,
+            "gitlab:index/projectAccessToken:ProjectAccessToken": 1,
             "gitlab:index/projectApprovalRule:ProjectApprovalRule": 0,
             "gitlab:index/projectBadge:ProjectBadge": 0,
             "gitlab:index/projectCluster:ProjectCluster": 0,
@@ -1121,6 +1125,7 @@
             "gitlab:index/getBranch:getBranch": 0,
             "gitlab:index/getClusterAgent:getClusterAgent": 0,
             "gitlab:index/getClusterAgents:getClusterAgents": 0,
+            "gitlab:index/getComplianceFramework:getComplianceFramework": 1,
             "gitlab:index/getCurrentUser:getCurrentUser": 0,
             "gitlab:index/getGroup:getGroup": 0,
             "gitlab:index/getGroupHook:getGroupHook": 0,

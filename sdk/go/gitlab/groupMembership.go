@@ -65,6 +65,8 @@ type GroupMembership struct {
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// The id of the group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
+	// The ID of a custom member role. Only available for Ultimate instances.
+	MemberRoleId pulumi.IntPtrOutput `pulumi:"memberRoleId"`
 	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
 	SkipSubresourcesOnDestroy pulumi.BoolPtrOutput `pulumi:"skipSubresourcesOnDestroy"`
 	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
@@ -118,6 +120,8 @@ type groupMembershipState struct {
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The id of the group.
 	GroupId *string `pulumi:"groupId"`
+	// The ID of a custom member role. Only available for Ultimate instances.
+	MemberRoleId *int `pulumi:"memberRoleId"`
 	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
 	SkipSubresourcesOnDestroy *bool `pulumi:"skipSubresourcesOnDestroy"`
 	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
@@ -133,6 +137,8 @@ type GroupMembershipState struct {
 	ExpiresAt pulumi.StringPtrInput
 	// The id of the group.
 	GroupId pulumi.StringPtrInput
+	// The ID of a custom member role. Only available for Ultimate instances.
+	MemberRoleId pulumi.IntPtrInput
 	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
 	SkipSubresourcesOnDestroy pulumi.BoolPtrInput
 	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
@@ -152,6 +158,8 @@ type groupMembershipArgs struct {
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The id of the group.
 	GroupId string `pulumi:"groupId"`
+	// The ID of a custom member role. Only available for Ultimate instances.
+	MemberRoleId *int `pulumi:"memberRoleId"`
 	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
 	SkipSubresourcesOnDestroy *bool `pulumi:"skipSubresourcesOnDestroy"`
 	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
@@ -168,6 +176,8 @@ type GroupMembershipArgs struct {
 	ExpiresAt pulumi.StringPtrInput
 	// The id of the group.
 	GroupId pulumi.StringInput
+	// The ID of a custom member role. Only available for Ultimate instances.
+	MemberRoleId pulumi.IntPtrInput
 	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
 	SkipSubresourcesOnDestroy pulumi.BoolPtrInput
 	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
@@ -276,6 +286,11 @@ func (o GroupMembershipOutput) ExpiresAt() pulumi.StringPtrOutput {
 // The id of the group.
 func (o GroupMembershipOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The ID of a custom member role. Only available for Ultimate instances.
+func (o GroupMembershipOutput) MemberRoleId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.IntPtrOutput { return v.MemberRoleId }).(pulumi.IntPtrOutput)
 }
 
 // Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.

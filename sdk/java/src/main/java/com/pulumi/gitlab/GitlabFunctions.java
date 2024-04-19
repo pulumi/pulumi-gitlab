@@ -16,6 +16,8 @@ import com.pulumi.gitlab.inputs.GetClusterAgentArgs;
 import com.pulumi.gitlab.inputs.GetClusterAgentPlainArgs;
 import com.pulumi.gitlab.inputs.GetClusterAgentsArgs;
 import com.pulumi.gitlab.inputs.GetClusterAgentsPlainArgs;
+import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
+import com.pulumi.gitlab.inputs.GetComplianceFrameworkPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupArgs;
 import com.pulumi.gitlab.inputs.GetGroupHookArgs;
 import com.pulumi.gitlab.inputs.GetGroupHookPlainArgs;
@@ -88,6 +90,7 @@ import com.pulumi.gitlab.outputs.GetApplicationResult;
 import com.pulumi.gitlab.outputs.GetBranchResult;
 import com.pulumi.gitlab.outputs.GetClusterAgentResult;
 import com.pulumi.gitlab.outputs.GetClusterAgentsResult;
+import com.pulumi.gitlab.outputs.GetComplianceFrameworkResult;
 import com.pulumi.gitlab.outputs.GetCurrentUserResult;
 import com.pulumi.gitlab.outputs.GetGroupHookResult;
 import com.pulumi.gitlab.outputs.GetGroupHooksResult;
@@ -824,6 +827,178 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetClusterAgentsResult> getClusterAgentsPlain(GetClusterAgentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getClusterAgents:getClusterAgents", TypeShape.of(GetClusterAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ComplianceFramework` data source allows details of a compliance framework to be retrieved by its name and the namespace it belongs to.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querynamespace)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
+     *             .name(&#34;HIPAA&#34;)
+     *             .namespacePath(&#34;top-level-group&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetComplianceFrameworkResult> getComplianceFramework(GetComplianceFrameworkArgs args) {
+        return getComplianceFramework(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.ComplianceFramework` data source allows details of a compliance framework to be retrieved by its name and the namespace it belongs to.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querynamespace)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
+     *             .name(&#34;HIPAA&#34;)
+     *             .namespacePath(&#34;top-level-group&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetComplianceFrameworkResult> getComplianceFrameworkPlain(GetComplianceFrameworkPlainArgs args) {
+        return getComplianceFrameworkPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.ComplianceFramework` data source allows details of a compliance framework to be retrieved by its name and the namespace it belongs to.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querynamespace)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
+     *             .name(&#34;HIPAA&#34;)
+     *             .namespacePath(&#34;top-level-group&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetComplianceFrameworkResult> getComplianceFramework(GetComplianceFrameworkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getComplianceFramework:getComplianceFramework", TypeShape.of(GetComplianceFrameworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ComplianceFramework` data source allows details of a compliance framework to be retrieved by its name and the namespace it belongs to.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querynamespace)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
+     *             .name(&#34;HIPAA&#34;)
+     *             .namespacePath(&#34;top-level-group&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetComplianceFrameworkResult> getComplianceFrameworkPlain(GetComplianceFrameworkPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getComplianceFramework:getComplianceFramework", TypeShape.of(GetComplianceFrameworkResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.

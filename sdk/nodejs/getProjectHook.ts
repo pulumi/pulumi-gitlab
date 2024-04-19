@@ -62,6 +62,10 @@ export interface GetProjectHookResult {
      */
     readonly confidentialNoteEvents: boolean;
     /**
+     * Set a custom webhook template.
+     */
+    readonly customWebhookTemplate: string;
+    /**
      * Invoke the hook for deployment events.
      */
     readonly deploymentEvents: boolean;

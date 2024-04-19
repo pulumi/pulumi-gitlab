@@ -106,8 +106,17 @@ public final class GetProjectResult {
     /**
      * @return Disable email notifications.
      * 
+     * @deprecated
+     * Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.
+     * 
      */
+    @Deprecated /* Use of `emails_disabled` is deprecated. Use `emails_enabled` instead. */
     private Boolean emailsDisabled;
+    /**
+     * @return Enable email notifications.
+     * 
+     */
+    private Boolean emailsEnabled;
     /**
      * @return Whether the project is empty.
      * 
@@ -472,9 +481,20 @@ public final class GetProjectResult {
     /**
      * @return Disable email notifications.
      * 
+     * @deprecated
+     * Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.
+     * 
      */
+    @Deprecated /* Use of `emails_disabled` is deprecated. Use `emails_enabled` instead. */
     public Boolean emailsDisabled() {
         return this.emailsDisabled;
+    }
+    /**
+     * @return Enable email notifications.
+     * 
+     */
+    public Boolean emailsEnabled() {
+        return this.emailsEnabled;
     }
     /**
      * @return Whether the project is empty.
@@ -840,6 +860,7 @@ public final class GetProjectResult {
         private String defaultBranch;
         private String description;
         private Boolean emailsDisabled;
+        private Boolean emailsEnabled;
         private Boolean emptyRepo;
         private String environmentsAccessLevel;
         private String externalAuthorizationClassificationLabel;
@@ -909,6 +930,7 @@ public final class GetProjectResult {
     	      this.defaultBranch = defaults.defaultBranch;
     	      this.description = defaults.description;
     	      this.emailsDisabled = defaults.emailsDisabled;
+    	      this.emailsEnabled = defaults.emailsEnabled;
     	      this.emptyRepo = defaults.emptyRepo;
     	      this.environmentsAccessLevel = defaults.environmentsAccessLevel;
     	      this.externalAuthorizationClassificationLabel = defaults.externalAuthorizationClassificationLabel;
@@ -1104,6 +1126,14 @@ public final class GetProjectResult {
               throw new MissingRequiredPropertyException("GetProjectResult", "emailsDisabled");
             }
             this.emailsDisabled = emailsDisabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emailsEnabled(Boolean emailsEnabled) {
+            if (emailsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "emailsEnabled");
+            }
+            this.emailsEnabled = emailsEnabled;
             return this;
         }
         @CustomType.Setter
@@ -1517,6 +1547,7 @@ public final class GetProjectResult {
             _resultValue.defaultBranch = defaultBranch;
             _resultValue.description = description;
             _resultValue.emailsDisabled = emailsDisabled;
+            _resultValue.emailsEnabled = emailsEnabled;
             _resultValue.emptyRepo = emptyRepo;
             _resultValue.environmentsAccessLevel = environmentsAccessLevel;
             _resultValue.externalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;

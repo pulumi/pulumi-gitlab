@@ -38,6 +38,8 @@ type LookupGroupHookResult struct {
 	ConfidentialIssuesEvents bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents bool `pulumi:"confidentialNoteEvents"`
+	// Set a custom webhook template.
+	CustomWebhookTemplate string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents bool `pulumi:"deploymentEvents"`
 	// Enable ssl verification when invoking the hook.
@@ -126,6 +128,11 @@ func (o LookupGroupHookResultOutput) ConfidentialIssuesEvents() pulumi.BoolOutpu
 // Invoke the hook for confidential notes events.
 func (o LookupGroupHookResultOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
+}
+
+// Set a custom webhook template.
+func (o LookupGroupHookResultOutput) CustomWebhookTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) string { return v.CustomWebhookTemplate }).(pulumi.StringOutput)
 }
 
 // Invoke the hook for deployment events.

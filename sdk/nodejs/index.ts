@@ -75,6 +75,11 @@ export const getClusterAgents: typeof import("./getClusterAgents").getClusterAge
 export const getClusterAgentsOutput: typeof import("./getClusterAgents").getClusterAgentsOutput = null as any;
 utilities.lazyLoad(exports, ["getClusterAgents","getClusterAgentsOutput"], () => require("./getClusterAgents"));
 
+export { GetComplianceFrameworkArgs, GetComplianceFrameworkResult, GetComplianceFrameworkOutputArgs } from "./getComplianceFramework";
+export const getComplianceFramework: typeof import("./getComplianceFramework").getComplianceFramework = null as any;
+export const getComplianceFrameworkOutput: typeof import("./getComplianceFramework").getComplianceFrameworkOutput = null as any;
+utilities.lazyLoad(exports, ["getComplianceFramework","getComplianceFrameworkOutput"], () => require("./getComplianceFramework"));
+
 export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
 export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;

@@ -132,8 +132,14 @@ export interface GetProjectResult {
     readonly description: string;
     /**
      * Disable email notifications.
+     *
+     * @deprecated Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
      */
     readonly emailsDisabled: boolean;
+    /**
+     * Enable email notifications.
+     */
+    readonly emailsEnabled: boolean;
     /**
      * Whether the project is empty.
      */

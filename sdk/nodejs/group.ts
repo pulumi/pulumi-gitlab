@@ -111,8 +111,14 @@ export class Group extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Disable email notifications.
+     *
+     * @deprecated use `emailsEnabled` instead
      */
     public readonly emailsDisabled!: pulumi.Output<boolean>;
+    /**
+     * Enable email notifications.
+     */
+    public readonly emailsEnabled!: pulumi.Output<boolean>;
     /**
      * Can be set by administrators only. Additional CI/CD minutes for this group.
      */
@@ -230,6 +236,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["defaultBranchProtection"] = state ? state.defaultBranchProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["emailsDisabled"] = state ? state.emailsDisabled : undefined;
+            resourceInputs["emailsEnabled"] = state ? state.emailsEnabled : undefined;
             resourceInputs["extraSharedRunnersMinutesLimit"] = state ? state.extraSharedRunnersMinutesLimit : undefined;
             resourceInputs["fullName"] = state ? state.fullName : undefined;
             resourceInputs["fullPath"] = state ? state.fullPath : undefined;
@@ -265,6 +272,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["defaultBranchProtection"] = args ? args.defaultBranchProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["emailsDisabled"] = args ? args.emailsDisabled : undefined;
+            resourceInputs["emailsEnabled"] = args ? args.emailsEnabled : undefined;
             resourceInputs["extraSharedRunnersMinutesLimit"] = args ? args.extraSharedRunnersMinutesLimit : undefined;
             resourceInputs["ipRestrictionRanges"] = args ? args.ipRestrictionRanges : undefined;
             resourceInputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
@@ -328,8 +336,14 @@ export interface GroupState {
     description?: pulumi.Input<string>;
     /**
      * Disable email notifications.
+     *
+     * @deprecated use `emailsEnabled` instead
      */
     emailsDisabled?: pulumi.Input<boolean>;
+    /**
+     * Enable email notifications.
+     */
+    emailsEnabled?: pulumi.Input<boolean>;
     /**
      * Can be set by administrators only. Additional CI/CD minutes for this group.
      */
@@ -454,8 +468,14 @@ export interface GroupArgs {
     description?: pulumi.Input<string>;
     /**
      * Disable email notifications.
+     *
+     * @deprecated use `emailsEnabled` instead
      */
     emailsDisabled?: pulumi.Input<boolean>;
+    /**
+     * Enable email notifications.
+     */
+    emailsEnabled?: pulumi.Input<boolean>;
     /**
      * Can be set by administrators only. Additional CI/CD minutes for this group.
      */

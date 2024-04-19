@@ -76,6 +76,10 @@ export class GroupMembership extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    public readonly memberRoleId!: pulumi.Output<number | undefined>;
+    /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      */
     public readonly skipSubresourcesOnDestroy!: pulumi.Output<boolean | undefined>;
@@ -104,6 +108,7 @@ export class GroupMembership extends pulumi.CustomResource {
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["memberRoleId"] = state ? state.memberRoleId : undefined;
             resourceInputs["skipSubresourcesOnDestroy"] = state ? state.skipSubresourcesOnDestroy : undefined;
             resourceInputs["unassignIssuablesOnDestroy"] = state ? state.unassignIssuablesOnDestroy : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
@@ -121,6 +126,7 @@ export class GroupMembership extends pulumi.CustomResource {
             resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["memberRoleId"] = args ? args.memberRoleId : undefined;
             resourceInputs["skipSubresourcesOnDestroy"] = args ? args.skipSubresourcesOnDestroy : undefined;
             resourceInputs["unassignIssuablesOnDestroy"] = args ? args.unassignIssuablesOnDestroy : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
@@ -146,6 +152,10 @@ export interface GroupMembershipState {
      * The id of the group.
      */
     groupId?: pulumi.Input<string>;
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    memberRoleId?: pulumi.Input<number>;
     /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      */
@@ -176,6 +186,10 @@ export interface GroupMembershipArgs {
      * The id of the group.
      */
     groupId: pulumi.Input<string>;
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    memberRoleId?: pulumi.Input<number>;
     /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      */

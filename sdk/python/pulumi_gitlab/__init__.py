@@ -19,6 +19,7 @@ from .get_application import *
 from .get_branch import *
 from .get_cluster_agent import *
 from .get_cluster_agents import *
+from .get_compliance_framework import *
 from .get_current_user import *
 from .get_group import *
 from .get_group_hook import *

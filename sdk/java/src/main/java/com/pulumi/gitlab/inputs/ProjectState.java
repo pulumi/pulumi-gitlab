@@ -435,16 +435,39 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * Disable email notifications.
      * 
+     * @deprecated
+     * use `emails_enabled` instead.
+     * 
      */
+    @Deprecated /* use `emails_enabled` instead. */
     @Import(name="emailsDisabled")
     private @Nullable Output<Boolean> emailsDisabled;
 
     /**
      * @return Disable email notifications.
      * 
+     * @deprecated
+     * use `emails_enabled` instead.
+     * 
      */
+    @Deprecated /* use `emails_enabled` instead. */
     public Optional<Output<Boolean>> emailsDisabled() {
         return Optional.ofNullable(this.emailsDisabled);
+    }
+
+    /**
+     * Enable email notifications.
+     * 
+     */
+    @Import(name="emailsEnabled")
+    private @Nullable Output<Boolean> emailsEnabled;
+
+    /**
+     * @return Enable email notifications.
+     * 
+     */
+    public Optional<Output<Boolean>> emailsEnabled() {
+        return Optional.ofNullable(this.emailsEnabled);
     }
 
     /**
@@ -1581,6 +1604,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.defaultBranch = $.defaultBranch;
         this.description = $.description;
         this.emailsDisabled = $.emailsDisabled;
+        this.emailsEnabled = $.emailsEnabled;
         this.emptyRepo = $.emptyRepo;
         this.environmentsAccessLevel = $.environmentsAccessLevel;
         this.externalAuthorizationClassificationLabel = $.externalAuthorizationClassificationLabel;
@@ -2246,7 +2270,11 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * use `emails_enabled` instead.
+         * 
          */
+        @Deprecated /* use `emails_enabled` instead. */
         public Builder emailsDisabled(@Nullable Output<Boolean> emailsDisabled) {
             $.emailsDisabled = emailsDisabled;
             return this;
@@ -2257,9 +2285,34 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * use `emails_enabled` instead.
+         * 
          */
+        @Deprecated /* use `emails_enabled` instead. */
         public Builder emailsDisabled(Boolean emailsDisabled) {
             return emailsDisabled(Output.of(emailsDisabled));
+        }
+
+        /**
+         * @param emailsEnabled Enable email notifications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailsEnabled(@Nullable Output<Boolean> emailsEnabled) {
+            $.emailsEnabled = emailsEnabled;
+            return this;
+        }
+
+        /**
+         * @param emailsEnabled Enable email notifications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailsEnabled(Boolean emailsEnabled) {
+            return emailsEnabled(Output.of(emailsEnabled));
         }
 
         /**

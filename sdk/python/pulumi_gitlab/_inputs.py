@@ -14,11 +14,13 @@ __all__ = [
     'BranchProtectionAllowedToMergeArgs',
     'BranchProtectionAllowedToPushArgs',
     'BranchProtectionAllowedToUnprotectArgs',
+    'GroupAccessTokenRotationConfigurationArgs',
     'GroupEpicBoardListArgs',
     'GroupIssueBoardListArgs',
     'GroupProtectedEnvironmentApprovalRuleArgs',
     'GroupProtectedEnvironmentDeployAccessLevelArgs',
     'GroupPushRulesArgs',
+    'ProjectAccessTokenRotationConfigurationArgs',
     'ProjectContainerExpirationPolicyArgs',
     'ProjectIssueBoardListArgs',
     'ProjectIssueTaskCompletionStatusArgs',
@@ -435,6 +437,43 @@ class BranchProtectionAllowedToUnprotectArgs:
 
 
 @pulumi.input_type
+class GroupAccessTokenRotationConfigurationArgs:
+    def __init__(__self__, *,
+                 expiration_days: pulumi.Input[int],
+                 rotate_before_days: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] expiration_days: The duration (in days) the new token should be valid for.
+        :param pulumi.Input[int] rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        pulumi.set(__self__, "expiration_days", expiration_days)
+        pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> pulumi.Input[int]:
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @expiration_days.setter
+    def expiration_days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "expiration_days", value)
+
+    @property
+    @pulumi.getter(name="rotateBeforeDays")
+    def rotate_before_days(self) -> pulumi.Input[int]:
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        return pulumi.get(self, "rotate_before_days")
+
+    @rotate_before_days.setter
+    def rotate_before_days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "rotate_before_days", value)
+
+
+@pulumi.input_type
 class GroupEpicBoardListArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[int]] = None,
@@ -550,6 +589,7 @@ class GroupProtectedEnvironmentApprovalRuleArgs:
                  access_level: Optional[pulumi.Input[str]] = None,
                  access_level_description: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
+                 group_inheritance_type: Optional[pulumi.Input[int]] = None,
                  id: Optional[pulumi.Input[int]] = None,
                  required_approvals: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
@@ -557,6 +597,7 @@ class GroupProtectedEnvironmentApprovalRuleArgs:
         :param pulumi.Input[str] access_level: Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[str] access_level_description: Readable description of level of access.
         :param pulumi.Input[int] group_id: The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+        :param pulumi.Input[int] group_inheritance_type: Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param pulumi.Input[int] id: The unique ID of the Approval Rules object.
         :param pulumi.Input[int] required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
         :param pulumi.Input[int] user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
@@ -567,6 +608,8 @@ class GroupProtectedEnvironmentApprovalRuleArgs:
             pulumi.set(__self__, "access_level_description", access_level_description)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if group_inheritance_type is not None:
+            pulumi.set(__self__, "group_inheritance_type", group_inheritance_type)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if required_approvals is not None:
@@ -611,6 +654,18 @@ class GroupProtectedEnvironmentApprovalRuleArgs:
         pulumi.set(self, "group_id", value)
 
     @property
+    @pulumi.getter(name="groupInheritanceType")
+    def group_inheritance_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        return pulumi.get(self, "group_inheritance_type")
+
+    @group_inheritance_type.setter
+    def group_inheritance_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_inheritance_type", value)
+
+    @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[int]]:
         """
@@ -653,12 +708,14 @@ class GroupProtectedEnvironmentDeployAccessLevelArgs:
                  access_level: Optional[pulumi.Input[str]] = None,
                  access_level_description: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
+                 group_inheritance_type: Optional[pulumi.Input[int]] = None,
                  id: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] access_level: Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[str] access_level_description: Readable description of level of access.
         :param pulumi.Input[int] group_id: The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+        :param pulumi.Input[int] group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param pulumi.Input[int] id: The unique ID of the Deploy Access Level object.
         :param pulumi.Input[int] user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
         """
@@ -668,6 +725,8 @@ class GroupProtectedEnvironmentDeployAccessLevelArgs:
             pulumi.set(__self__, "access_level_description", access_level_description)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if group_inheritance_type is not None:
+            pulumi.set(__self__, "group_inheritance_type", group_inheritance_type)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if user_id is not None:
@@ -708,6 +767,18 @@ class GroupProtectedEnvironmentDeployAccessLevelArgs:
     @group_id.setter
     def group_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="groupInheritanceType")
+    def group_inheritance_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        return pulumi.get(self, "group_inheritance_type")
+
+    @group_inheritance_type.setter
+    def group_inheritance_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_inheritance_type", value)
 
     @property
     @pulumi.getter
@@ -915,6 +986,43 @@ class GroupPushRulesArgs:
     @reject_unsigned_commits.setter
     def reject_unsigned_commits(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reject_unsigned_commits", value)
+
+
+@pulumi.input_type
+class ProjectAccessTokenRotationConfigurationArgs:
+    def __init__(__self__, *,
+                 expiration_days: pulumi.Input[int],
+                 rotate_before_days: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] expiration_days: The duration (in days) the new token should be valid for.
+        :param pulumi.Input[int] rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        pulumi.set(__self__, "expiration_days", expiration_days)
+        pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> pulumi.Input[int]:
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @expiration_days.setter
+    def expiration_days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "expiration_days", value)
+
+    @property
+    @pulumi.getter(name="rotateBeforeDays")
+    def rotate_before_days(self) -> pulumi.Input[int]:
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        return pulumi.get(self, "rotate_before_days")
+
+    @rotate_before_days.setter
+    def rotate_before_days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "rotate_before_days", value)
 
 
 @pulumi.input_type
@@ -1206,6 +1314,7 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
                  access_level: Optional[pulumi.Input[str]] = None,
                  access_level_description: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
+                 group_inheritance_type: Optional[pulumi.Input[int]] = None,
                  id: Optional[pulumi.Input[int]] = None,
                  required_approvals: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
@@ -1213,6 +1322,7 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
         :param pulumi.Input[str] access_level: Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[str] access_level_description: Readable description of level of access.
         :param pulumi.Input[int] group_id: The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+        :param pulumi.Input[int] group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param pulumi.Input[int] id: The unique ID of the Approval Rules object.
         :param pulumi.Input[int] required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
         :param pulumi.Input[int] user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
@@ -1223,6 +1333,8 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
             pulumi.set(__self__, "access_level_description", access_level_description)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if group_inheritance_type is not None:
+            pulumi.set(__self__, "group_inheritance_type", group_inheritance_type)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if required_approvals is not None:
@@ -1267,6 +1379,18 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
         pulumi.set(self, "group_id", value)
 
     @property
+    @pulumi.getter(name="groupInheritanceType")
+    def group_inheritance_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        return pulumi.get(self, "group_inheritance_type")
+
+    @group_inheritance_type.setter
+    def group_inheritance_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_inheritance_type", value)
+
+    @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1309,12 +1433,14 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
                  access_level: Optional[pulumi.Input[str]] = None,
                  access_level_description: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
+                 group_inheritance_type: Optional[pulumi.Input[int]] = None,
                  id: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] access_level: Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[str] access_level_description: Readable description of level of access.
         :param pulumi.Input[int] group_id: The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+        :param pulumi.Input[int] group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param pulumi.Input[int] id: The unique ID of the Deploy Access Level object.
         :param pulumi.Input[int] user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
         """
@@ -1324,6 +1450,8 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
             pulumi.set(__self__, "access_level_description", access_level_description)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if group_inheritance_type is not None:
+            pulumi.set(__self__, "group_inheritance_type", group_inheritance_type)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if user_id is not None:
@@ -1364,6 +1492,18 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
     @group_id.setter
     def group_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="groupInheritanceType")
+    def group_inheritance_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        return pulumi.get(self, "group_inheritance_type")
+
+    @group_inheritance_type.setter
+    def group_inheritance_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_inheritance_type", value)
 
     @property
     @pulumi.getter

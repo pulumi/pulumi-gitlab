@@ -62,6 +62,21 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
     }
 
     /**
+     * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` =&gt; Direct group membership only, `1` =&gt; All inherited groups. Default: `0`
+     * 
+     */
+    @Import(name="groupInheritanceType")
+    private @Nullable Output<Integer> groupInheritanceType;
+
+    /**
+     * @return Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` =&gt; Direct group membership only, `1` =&gt; All inherited groups. Default: `0`
+     * 
+     */
+    public Optional<Output<Integer>> groupInheritanceType() {
+        return Optional.ofNullable(this.groupInheritanceType);
+    }
+
+    /**
      * The unique ID of the Approval Rules object.
      * 
      */
@@ -112,6 +127,7 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
         this.accessLevel = $.accessLevel;
         this.accessLevelDescription = $.accessLevelDescription;
         this.groupId = $.groupId;
+        this.groupInheritanceType = $.groupInheritanceType;
         this.id = $.id;
         this.requiredApprovals = $.requiredApprovals;
         this.userId = $.userId;
@@ -196,6 +212,27 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
          */
         public Builder groupId(Integer groupId) {
             return groupId(Output.of(groupId));
+        }
+
+        /**
+         * @param groupInheritanceType Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` =&gt; Direct group membership only, `1` =&gt; All inherited groups. Default: `0`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupInheritanceType(@Nullable Output<Integer> groupInheritanceType) {
+            $.groupInheritanceType = groupInheritanceType;
+            return this;
+        }
+
+        /**
+         * @param groupInheritanceType Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` =&gt; Direct group membership only, `1` =&gt; All inherited groups. Default: `0`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupInheritanceType(Integer groupInheritanceType) {
+            return groupInheritanceType(Output.of(groupInheritanceType));
         }
 
         /**
