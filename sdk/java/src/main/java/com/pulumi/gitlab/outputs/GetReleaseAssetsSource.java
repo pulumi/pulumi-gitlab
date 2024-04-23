@@ -16,7 +16,7 @@ public final class GetReleaseAssetsSource {
      */
     private String format;
     /**
-     * @return The URL of the link
+     * @return The URL of the source
      * 
      */
     private String url;
@@ -30,7 +30,7 @@ public final class GetReleaseAssetsSource {
         return this.format;
     }
     /**
-     * @return The URL of the link
+     * @return The URL of the source
      * 
      */
     public String url() {

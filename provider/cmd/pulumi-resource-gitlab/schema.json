@@ -2415,7 +2415,7 @@
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.\n"
+                    "description": "Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
                     "type": "string",
@@ -3673,7 +3673,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The URL of the link\n"
+                    "description": "The URL of the source\n"
                 }
             },
             "type": "object",
@@ -16262,7 +16262,7 @@
             "properties": {
                 "assigneeId": {
                     "type": "integer",
-                    "description": "The ID of the assignee the list should be scoped to. Requires a GitLab EE license.\n"
+                    "description": "The assignee the board should be scoped to. Requires a GitLab EE license.\n"
                 },
                 "labels": {
                     "type": "array",
@@ -16280,7 +16280,7 @@
                 },
                 "milestoneId": {
                     "type": "integer",
-                    "description": "The ID of the milestone the list should be scoped to. Requires a GitLab EE license.\n"
+                    "description": "The milestone the board should be scoped to. Requires a GitLab EE license.\n"
                 },
                 "name": {
                     "type": "string",
@@ -16302,7 +16302,7 @@
             "inputProperties": {
                 "assigneeId": {
                     "type": "integer",
-                    "description": "The ID of the assignee the list should be scoped to. Requires a GitLab EE license.\n"
+                    "description": "The assignee the board should be scoped to. Requires a GitLab EE license.\n"
                 },
                 "labels": {
                     "type": "array",
@@ -16320,7 +16320,7 @@
                 },
                 "milestoneId": {
                     "type": "integer",
-                    "description": "The ID of the milestone the list should be scoped to. Requires a GitLab EE license.\n"
+                    "description": "The milestone the board should be scoped to. Requires a GitLab EE license.\n"
                 },
                 "name": {
                     "type": "string",
@@ -16344,7 +16344,7 @@
                 "properties": {
                     "assigneeId": {
                         "type": "integer",
-                        "description": "The ID of the assignee the list should be scoped to. Requires a GitLab EE license.\n"
+                        "description": "The assignee the board should be scoped to. Requires a GitLab EE license.\n"
                     },
                     "labels": {
                         "type": "array",
@@ -16362,7 +16362,7 @@
                     },
                     "milestoneId": {
                         "type": "integer",
-                        "description": "The ID of the milestone the list should be scoped to. Requires a GitLab EE license.\n"
+                        "description": "The milestone the board should be scoped to. Requires a GitLab EE license.\n"
                     },
                     "name": {
                         "type": "string",
@@ -20665,7 +20665,8 @@
                 "description": "A collection of arguments for invoking getClusterAgents.\n",
                 "properties": {
                     "project": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The ID or full path of the project owned by the authenticated user.\n"
                     }
                 },
                 "type": "object",
@@ -20834,7 +20835,8 @@
                         "description": "The full path of the group.\n"
                     },
                     "groupId": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The ID of the group.\n"
                     }
                 },
                 "type": "object"
@@ -21102,7 +21104,8 @@
                 "description": "A collection of arguments for invoking getGroupHooks.\n",
                 "properties": {
                     "group": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The ID or full path of the group.\n"
                     }
                 },
                 "type": "object",
@@ -21143,7 +21146,8 @@
                 "description": "A collection of arguments for invoking getGroupMembership.\n",
                 "properties": {
                     "accessLevel": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.\n"
                     },
                     "fullPath": {
                         "type": "string",
@@ -21211,7 +21215,8 @@
                         "description": "Show all the groups you have access to.\n"
                     },
                     "groupId": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The ID of the group.\n"
                     },
                     "minAccessLevel": {
                         "type": "string",
@@ -21241,7 +21246,8 @@
                         "description": "Order groups in asc or desc order.\n"
                     },
                     "statistics": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Include group statistics (administrators only).\n"
                     },
                     "withCustomAttributes": {
                         "type": "boolean",
@@ -21417,10 +21423,12 @@
                 "description": "A collection of arguments for invoking getGroupVariables.\n",
                 "properties": {
                     "environmentScope": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The environment scope of the variable. Defaults to all environment (`*`).\n"
                     },
                     "group": {
                         "type": "string",
+                        "description": "The name or id of the group.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -22242,7 +22250,8 @@
                 "description": "A collection of arguments for invoking getProjectHooks.\n",
                 "properties": {
                     "project": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name or id of the project.\n"
                     }
                 },
                 "type": "object",
@@ -22535,10 +22544,12 @@
                         "description": "Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.\n"
                     },
                     "authorId": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.\n"
                     },
                     "confidential": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Filter confidential or public issues.\n"
                     },
                     "createdAfter": {
                         "type": "string",
@@ -22549,7 +22560,8 @@
                         "description": "Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)\n"
                     },
                     "dueDate": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.\n"
                     },
                     "iids": {
                         "type": "array",
@@ -22559,13 +22571,15 @@
                         "description": "Return only the issues having the given iid\n"
                     },
                     "issueType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)\n"
                     },
                     "labels": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.\n"
                     },
                     "milestone": {
                         "type": "string",
@@ -22612,7 +22626,8 @@
                         "description": "Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at\n"
                     },
                     "project": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name or id of the project.\n"
                     },
                     "scope": {
                         "type": "string",
@@ -22635,7 +22650,8 @@
                         "description": "Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)\n"
                     },
                     "weight": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.\n"
                     },
                     "withLabelsDetails": {
                         "type": "boolean",
@@ -22973,6 +22989,7 @@
                     },
                     "project": {
                         "type": "string",
+                        "description": "The ID or URL-encoded path of the project owned by the authenticated user.\n",
                         "willReplaceOnChanges": true
                     },
                     "search": {
@@ -22980,10 +22997,12 @@
                         "description": "Return only milestones with a title or description matching the provided string.\n"
                     },
                     "state": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Return only `active` or `closed` milestones.\n"
                     },
                     "title": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Return only the milestones having the given `title`.\n"
                     }
                 },
                 "type": "object",
@@ -23401,10 +23420,12 @@
                 "description": "A collection of arguments for invoking getProjectVariables.\n",
                 "properties": {
                     "environmentScope": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The environment scope of the variable. Defaults to all environment (`*`).\n"
                     },
                     "project": {
                         "type": "string",
+                        "description": "The name or id of the project.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -23450,10 +23471,12 @@
                 "description": "A collection of arguments for invoking getProjects.\n",
                 "properties": {
                     "archived": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Limit by archived status.\n"
                     },
                     "groupId": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.\n"
                     },
                     "includeSubgroups": {
                         "type": "boolean",
@@ -23504,7 +23527,8 @@
                         "description": "Limit by projects starred by the current user.\n"
                     },
                     "statistics": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Include project statistics. Cannot be used with `group_id`.\n"
                     },
                     "topics": {
                         "type": "array",
@@ -23514,7 +23538,8 @@
                         "description": "Limit by projects that have all of the given topics.\n"
                     },
                     "visibility": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Limit by visibility `public`, `internal`, or `private`.\n"
                     },
                     "withCustomAttributes": {
                         "type": "boolean",
@@ -23814,10 +23839,12 @@
                 "properties": {
                     "project": {
                         "type": "string",
+                        "description": "The ID or full path to the project.\n",
                         "willReplaceOnChanges": true
                     },
                     "tagName": {
                         "type": "string",
+                        "description": "The tag associated with the Release.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -23964,7 +23991,8 @@
                 "description": "A collection of arguments for invoking getRepositoryTree.\n",
                 "properties": {
                     "path": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The path inside repository. Used to get content of subdirectories.\n"
                     },
                     "project": {
                         "type": "string",
@@ -24214,7 +24242,8 @@
                 "description": "A collection of arguments for invoking getUserSshkeys.\n",
                 "properties": {
                     "userId": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "ID of the user to get the SSH keys for.\n"
                     },
                     "username": {
                         "type": "string",
@@ -24281,7 +24310,8 @@
                         "description": "Lookup users by external provider. (Requires administrator privileges)\n"
                     },
                     "externUid": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Lookup users by external UID. (Requires administrator privileges)\n"
                     },
                     "orderBy": {
                         "type": "string",

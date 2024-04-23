@@ -26,6 +26,7 @@ func GetGroupHooks(ctx *pulumi.Context, args *GetGroupHooksArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getGroupHooks.
 type GetGroupHooksArgs struct {
+	// The ID or full path of the group.
 	Group string `pulumi:"group"`
 }
 
@@ -54,6 +55,7 @@ func GetGroupHooksOutput(ctx *pulumi.Context, args GetGroupHooksOutputArgs, opts
 
 // A collection of arguments for invoking getGroupHooks.
 type GetGroupHooksOutputArgs struct {
+	// The ID or full path of the group.
 	Group pulumi.StringInput `pulumi:"group"`
 }
 

@@ -202,7 +202,6 @@ class UserSshKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -214,7 +213,6 @@ class UserSshKey(pulumi.CustomResource):
             key="ssh-ed25519 AAAA...",
             expires_at="2016-01-21T00:00:00.000Z")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -244,7 +242,6 @@ class UserSshKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -256,7 +253,6 @@ class UserSshKey(pulumi.CustomResource):
             key="ssh-ed25519 AAAA...",
             expires_at="2016-01-21T00:00:00.000Z")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

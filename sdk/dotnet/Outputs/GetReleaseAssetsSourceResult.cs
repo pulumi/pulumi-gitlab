@@ -18,7 +18,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Format;
         /// <summary>
-        /// The URL of the link
+        /// The URL of the source
         /// </summary>
         public readonly string Url;
 

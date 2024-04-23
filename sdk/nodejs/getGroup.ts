@@ -29,6 +29,9 @@ export interface GetGroupArgs {
      * The full path of the group.
      */
     fullPath?: string;
+    /**
+     * The ID of the group.
+     */
     groupId?: number;
 }
 
@@ -138,5 +141,8 @@ export interface GetGroupOutputArgs {
      * The full path of the group.
      */
     fullPath?: pulumi.Input<string>;
+    /**
+     * The ID of the group.
+     */
     groupId?: pulumi.Input<number>;
 }

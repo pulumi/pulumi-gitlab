@@ -31,9 +31,17 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.fullPath);
     }
 
+    /**
+     * The ID of the group.
+     * 
+     */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
+    /**
+     * @return The ID of the group.
+     * 
+     */
     public Optional<Output<Integer>> groupId() {
         return Optional.ofNullable(this.groupId);
     }
@@ -84,11 +92,23 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
             return fullPath(Output.of(fullPath));
         }
 
+        /**
+         * @param groupId The ID of the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(@Nullable Output<Integer> groupId) {
             $.groupId = groupId;
             return this;
         }
 
+        /**
+         * @param groupId The ID of the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(Integer groupId) {
             return groupId(Output.of(groupId));
         }

@@ -36,12 +36,21 @@ export interface GetProjectMilestonesArgs {
      * Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
      */
     includeParentMilestones?: boolean;
+    /**
+     * The ID or URL-encoded path of the project owned by the authenticated user.
+     */
     project: string;
     /**
      * Return only milestones with a title or description matching the provided string.
      */
     search?: string;
+    /**
+     * Return only `active` or `closed` milestones.
+     */
     state?: string;
+    /**
+     * Return only the milestones having the given `title`.
+     */
     title?: string;
 }
 
@@ -103,11 +112,20 @@ export interface GetProjectMilestonesOutputArgs {
      * Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
      */
     includeParentMilestones?: pulumi.Input<boolean>;
+    /**
+     * The ID or URL-encoded path of the project owned by the authenticated user.
+     */
     project: pulumi.Input<string>;
     /**
      * Return only milestones with a title or description matching the provided string.
      */
     search?: pulumi.Input<string>;
+    /**
+     * Return only `active` or `closed` milestones.
+     */
     state?: pulumi.Input<string>;
+    /**
+     * Return only the milestones having the given `title`.
+     */
     title?: pulumi.Input<string>;
 }

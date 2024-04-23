@@ -28,13 +28,13 @@ import (
 type ProjectIssueBoard struct {
 	pulumi.CustomResourceState
 
-	// The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+	// The assignee the board should be scoped to. Requires a GitLab EE license.
 	AssigneeId pulumi.IntPtrOutput `pulumi:"assigneeId"`
 	// The list of label names which the board should be scoped to. Requires a GitLab EE license.
 	Labels pulumi.StringArrayOutput `pulumi:"labels"`
 	// The list of issue board lists
 	Lists ProjectIssueBoardListArrayOutput `pulumi:"lists"`
-	// The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+	// The milestone the board should be scoped to. Requires a GitLab EE license.
 	MilestoneId pulumi.IntPtrOutput `pulumi:"milestoneId"`
 	// The name of the board.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -77,13 +77,13 @@ func GetProjectIssueBoard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectIssueBoard resources.
 type projectIssueBoardState struct {
-	// The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+	// The assignee the board should be scoped to. Requires a GitLab EE license.
 	AssigneeId *int `pulumi:"assigneeId"`
 	// The list of label names which the board should be scoped to. Requires a GitLab EE license.
 	Labels []string `pulumi:"labels"`
 	// The list of issue board lists
 	Lists []ProjectIssueBoardList `pulumi:"lists"`
-	// The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+	// The milestone the board should be scoped to. Requires a GitLab EE license.
 	MilestoneId *int `pulumi:"milestoneId"`
 	// The name of the board.
 	Name *string `pulumi:"name"`
@@ -94,13 +94,13 @@ type projectIssueBoardState struct {
 }
 
 type ProjectIssueBoardState struct {
-	// The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+	// The assignee the board should be scoped to. Requires a GitLab EE license.
 	AssigneeId pulumi.IntPtrInput
 	// The list of label names which the board should be scoped to. Requires a GitLab EE license.
 	Labels pulumi.StringArrayInput
 	// The list of issue board lists
 	Lists ProjectIssueBoardListArrayInput
-	// The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+	// The milestone the board should be scoped to. Requires a GitLab EE license.
 	MilestoneId pulumi.IntPtrInput
 	// The name of the board.
 	Name pulumi.StringPtrInput
@@ -115,13 +115,13 @@ func (ProjectIssueBoardState) ElementType() reflect.Type {
 }
 
 type projectIssueBoardArgs struct {
-	// The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+	// The assignee the board should be scoped to. Requires a GitLab EE license.
 	AssigneeId *int `pulumi:"assigneeId"`
 	// The list of label names which the board should be scoped to. Requires a GitLab EE license.
 	Labels []string `pulumi:"labels"`
 	// The list of issue board lists
 	Lists []ProjectIssueBoardList `pulumi:"lists"`
-	// The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+	// The milestone the board should be scoped to. Requires a GitLab EE license.
 	MilestoneId *int `pulumi:"milestoneId"`
 	// The name of the board.
 	Name *string `pulumi:"name"`
@@ -133,13 +133,13 @@ type projectIssueBoardArgs struct {
 
 // The set of arguments for constructing a ProjectIssueBoard resource.
 type ProjectIssueBoardArgs struct {
-	// The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+	// The assignee the board should be scoped to. Requires a GitLab EE license.
 	AssigneeId pulumi.IntPtrInput
 	// The list of label names which the board should be scoped to. Requires a GitLab EE license.
 	Labels pulumi.StringArrayInput
 	// The list of issue board lists
 	Lists ProjectIssueBoardListArrayInput
-	// The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+	// The milestone the board should be scoped to. Requires a GitLab EE license.
 	MilestoneId pulumi.IntPtrInput
 	// The name of the board.
 	Name pulumi.StringPtrInput
@@ -236,7 +236,7 @@ func (o ProjectIssueBoardOutput) ToProjectIssueBoardOutputWithContext(ctx contex
 	return o
 }
 
-// The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+// The assignee the board should be scoped to. Requires a GitLab EE license.
 func (o ProjectIssueBoardOutput) AssigneeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectIssueBoard) pulumi.IntPtrOutput { return v.AssigneeId }).(pulumi.IntPtrOutput)
 }
@@ -251,7 +251,7 @@ func (o ProjectIssueBoardOutput) Lists() ProjectIssueBoardListArrayOutput {
 	return o.ApplyT(func(v *ProjectIssueBoard) ProjectIssueBoardListArrayOutput { return v.Lists }).(ProjectIssueBoardListArrayOutput)
 }
 
-// The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+// The milestone the board should be scoped to. Requires a GitLab EE license.
 func (o ProjectIssueBoardOutput) MilestoneId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectIssueBoard) pulumi.IntPtrOutput { return v.MilestoneId }).(pulumi.IntPtrOutput)
 }

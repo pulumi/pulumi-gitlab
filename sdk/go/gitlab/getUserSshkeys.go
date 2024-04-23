@@ -26,6 +26,7 @@ func GetUserSshkeys(ctx *pulumi.Context, args *GetUserSshkeysArgs, opts ...pulum
 
 // A collection of arguments for invoking getUserSshkeys.
 type GetUserSshkeysArgs struct {
+	// ID of the user to get the SSH keys for.
 	UserId *int `pulumi:"userId"`
 	// Username of the user to get the SSH keys for.
 	Username *string `pulumi:"username"`
@@ -58,6 +59,7 @@ func GetUserSshkeysOutput(ctx *pulumi.Context, args GetUserSshkeysOutputArgs, op
 
 // A collection of arguments for invoking getUserSshkeys.
 type GetUserSshkeysOutputArgs struct {
+	// ID of the user to get the SSH keys for.
 	UserId pulumi.IntPtrInput `pulumi:"userId"`
 	// Username of the user to get the SSH keys for.
 	Username pulumi.StringPtrInput `pulumi:"username"`

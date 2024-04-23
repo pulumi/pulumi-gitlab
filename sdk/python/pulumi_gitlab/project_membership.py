@@ -171,7 +171,6 @@ class ProjectMembership(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -186,7 +185,6 @@ class ProjectMembership(pulumi.CustomResource):
             access_level="guest",
             expires_at="2022-12-31")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -218,7 +216,6 @@ class ProjectMembership(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -233,7 +230,6 @@ class ProjectMembership(pulumi.CustomResource):
             access_level="guest",
             expires_at="2022-12-31")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

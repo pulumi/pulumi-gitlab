@@ -106,7 +106,6 @@ class ProjectComplianceFramework(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -122,7 +121,6 @@ class ProjectComplianceFramework(pulumi.CustomResource):
             compliance_framework_id=sample.framework_id,
             project="12345678")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -152,7 +150,6 @@ class ProjectComplianceFramework(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -168,7 +165,6 @@ class ProjectComplianceFramework(pulumi.CustomResource):
             compliance_framework_id=sample.framework_id,
             project="12345678")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

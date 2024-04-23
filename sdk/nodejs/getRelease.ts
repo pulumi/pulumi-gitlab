@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  *     tagName: "v1.0",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRelease(args: GetReleaseArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseResult> {
 
@@ -95,7 +93,6 @@ export interface GetReleaseResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -106,7 +103,6 @@ export interface GetReleaseResult {
  *     tagName: "v1.0",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getReleaseOutput(args: GetReleaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseResult> {
     return pulumi.output(args).apply((a: any) => getRelease(a, opts))

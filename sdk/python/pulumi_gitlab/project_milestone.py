@@ -348,7 +348,6 @@ class ProjectMilestone(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -362,7 +361,6 @@ class ProjectMilestone(pulumi.CustomResource):
             project=example.id,
             title="example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -394,7 +392,6 @@ class ProjectMilestone(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -408,7 +405,6 @@ class ProjectMilestone(pulumi.CustomResource):
             project=example.id,
             title="example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

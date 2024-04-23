@@ -17,14 +17,14 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevel ext
     public static final GetProjectProtectedBranchesProtectedBranchPushAccessLevel Empty = new GetProjectProtectedBranchesProtectedBranchPushAccessLevel();
 
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
     @Import(name="accessLevel", required=true)
     private String accessLevel;
 
     /**
-     * @return Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
     public String accessLevel() {
@@ -104,7 +104,7 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevel ext
         }
 
         /**
-         * @param accessLevel Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param accessLevel Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
          * 
          * @return builder
          * 

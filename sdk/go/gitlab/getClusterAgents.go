@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetClusterAgents(ctx *pulumi.Context, args *GetClusterAgentsArgs, opts ...pulumi.InvokeOption) (*GetClusterAgentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterAgentsResult
@@ -56,6 +54,7 @@ func GetClusterAgents(ctx *pulumi.Context, args *GetClusterAgentsArgs, opts ...p
 
 // A collection of arguments for invoking getClusterAgents.
 type GetClusterAgentsArgs struct {
+	// The ID or full path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
 }
 
@@ -84,6 +83,7 @@ func GetClusterAgentsOutput(ctx *pulumi.Context, args GetClusterAgentsOutputArgs
 
 // A collection of arguments for invoking getClusterAgents.
 type GetClusterAgentsOutputArgs struct {
+	// The ID or full path of the project owned by the authenticated user.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 

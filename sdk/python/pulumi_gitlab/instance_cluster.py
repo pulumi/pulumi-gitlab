@@ -467,7 +467,6 @@ class InstanceCluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -484,7 +483,6 @@ class InstanceCluster(pulumi.CustomResource):
             environment_scope="*",
             management_project_id="123456")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -523,7 +521,6 @@ class InstanceCluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -540,7 +537,6 @@ class InstanceCluster(pulumi.CustomResource):
             environment_scope="*",
             management_project_id="123456")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

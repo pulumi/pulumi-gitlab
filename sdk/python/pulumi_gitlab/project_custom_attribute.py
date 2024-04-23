@@ -136,7 +136,6 @@ class ProjectCustomAttribute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -146,7 +145,6 @@ class ProjectCustomAttribute(pulumi.CustomResource):
             key="location",
             value="Greenland")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -175,7 +173,6 @@ class ProjectCustomAttribute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -185,7 +182,6 @@ class ProjectCustomAttribute(pulumi.CustomResource):
             key="location",
             value="Greenland")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

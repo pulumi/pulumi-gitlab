@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -38,7 +37,6 @@ import * as utilities from "./utilities";
  *     visibility: "private",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
@@ -74,7 +72,13 @@ export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getProjects.
  */
 export interface GetProjectsArgs {
+    /**
+     * Limit by archived status.
+     */
     archived?: boolean;
+    /**
+     * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
+     */
     groupId?: number;
     /**
      * Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
@@ -124,11 +128,17 @@ export interface GetProjectsArgs {
      * Limit by projects starred by the current user.
      */
     starred?: boolean;
+    /**
+     * Include project statistics. Cannot be used with `groupId`.
+     */
     statistics?: boolean;
     /**
      * Limit by projects that have all of the given topics.
      */
     topics?: string[];
+    /**
+     * Limit by visibility `public`, `internal`, or `private`.
+     */
     visibility?: string;
     /**
      * Include custom attributes in response *(admins only)*.
@@ -264,7 +274,6 @@ export interface GetProjectsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -285,7 +294,6 @@ export interface GetProjectsResult {
  *     visibility: "private",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
     return pulumi.output(args).apply((a: any) => getProjects(a, opts))
@@ -295,7 +303,13 @@ export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getProjects.
  */
 export interface GetProjectsOutputArgs {
+    /**
+     * Limit by archived status.
+     */
     archived?: pulumi.Input<boolean>;
+    /**
+     * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
+     */
     groupId?: pulumi.Input<number>;
     /**
      * Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
@@ -345,11 +359,17 @@ export interface GetProjectsOutputArgs {
      * Limit by projects starred by the current user.
      */
     starred?: pulumi.Input<boolean>;
+    /**
+     * Include project statistics. Cannot be used with `groupId`.
+     */
     statistics?: pulumi.Input<boolean>;
     /**
      * Limit by projects that have all of the given topics.
      */
     topics?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Limit by visibility `public`, `internal`, or `private`.
+     */
     visibility?: pulumi.Input<string>;
     /**
      * Include custom attributes in response *(admins only)*.

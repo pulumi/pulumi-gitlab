@@ -186,7 +186,6 @@ def get_users(active: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -196,7 +195,6 @@ def get_users(active: Optional[bool] = None,
         created_before="2019-01-01")
     example_two = gitlab.get_users(search="username")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool active: Filter users that are active.
@@ -204,6 +202,7 @@ def get_users(active: Optional[bool] = None,
     :param str created_after: Search for users created after a specific date. (Requires administrator privileges)
     :param str created_before: Search for users created before a specific date. (Requires administrator privileges)
     :param str extern_provider: Lookup users by external provider. (Requires administrator privileges)
+    :param str extern_uid: Lookup users by external UID. (Requires administrator privileges)
     :param str order_by: Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
     :param str search: Search users by username, name or email.
     :param str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
@@ -257,7 +256,6 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -267,7 +265,6 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
         created_before="2019-01-01")
     example_two = gitlab.get_users(search="username")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool active: Filter users that are active.
@@ -275,6 +272,7 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
     :param str created_after: Search for users created after a specific date. (Requires administrator privileges)
     :param str created_before: Search for users created before a specific date. (Requires administrator privileges)
     :param str extern_provider: Lookup users by external provider. (Requires administrator privileges)
+    :param str extern_uid: Lookup users by external UID. (Requires administrator privileges)
     :param str order_by: Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
     :param str search: Search users by username, name or email.
     :param str sort: Sort users' list in asc or desc order. (Requires administrator privileges)

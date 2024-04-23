@@ -324,7 +324,6 @@ class GroupAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -340,7 +339,6 @@ class GroupAccessToken(pulumi.CustomResource):
             key="gat",
             value=example.token)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -380,7 +378,6 @@ class GroupAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -396,7 +393,6 @@ class GroupAccessToken(pulumi.CustomResource):
             key="gat",
             value=example.token)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  *     cron: "0 1 * * *",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

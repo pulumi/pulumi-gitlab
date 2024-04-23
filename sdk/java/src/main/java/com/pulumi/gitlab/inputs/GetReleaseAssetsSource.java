@@ -29,14 +29,14 @@ public final class GetReleaseAssetsSource extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The URL of the link
+     * The URL of the source
      * 
      */
     @Import(name="url", required=true)
     private String url;
 
     /**
-     * @return The URL of the link
+     * @return The URL of the source
      * 
      */
     public String url() {
@@ -80,7 +80,7 @@ public final class GetReleaseAssetsSource extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param url The URL of the link
+         * @param url The URL of the source
          * 
          * @return builder
          * 

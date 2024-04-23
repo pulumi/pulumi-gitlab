@@ -37,6 +37,9 @@ namespace Pulumi.GitLab
         [Input("fullPath")]
         public string? FullPath { get; set; }
 
+        /// <summary>
+        /// The ID of the group.
+        /// </summary>
         [Input("groupId")]
         public int? GroupId { get; set; }
 
@@ -54,6 +57,9 @@ namespace Pulumi.GitLab
         [Input("fullPath")]
         public Input<string>? FullPath { get; set; }
 
+        /// <summary>
+        /// The ID of the group.
+        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 

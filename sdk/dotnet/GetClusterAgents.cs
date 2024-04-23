@@ -20,7 +20,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetClusterAgentsResult> InvokeAsync(GetClusterAgentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterAgentsResult>("gitlab:index/getClusterAgents:getClusterAgents", args ?? new GetClusterAgentsArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetClusterAgentsResult> Invoke(GetClusterAgentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterAgentsResult>("gitlab:index/getClusterAgents:getClusterAgents", args ?? new GetClusterAgentsInvokeArgs(), options.WithDefaults());
@@ -75,6 +71,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetClusterAgentsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID or full path of the project owned by the authenticated user.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -86,6 +85,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetClusterAgentsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID or full path of the project owned by the authenticated user.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

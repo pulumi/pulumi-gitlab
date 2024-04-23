@@ -270,7 +270,6 @@ class GroupMembership(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -281,7 +280,6 @@ class GroupMembership(pulumi.CustomResource):
             access_level="guest",
             expires_at="2020-12-31")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -316,7 +314,6 @@ class GroupMembership(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -327,7 +324,6 @@ class GroupMembership(pulumi.CustomResource):
             access_level="guest",
             expires_at="2020-12-31")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

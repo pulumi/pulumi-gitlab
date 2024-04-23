@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupComplianceFramework(ctx *pulumi.Context, args *LookupComplianceFrameworkArgs, opts ...pulumi.InvokeOption) (*LookupComplianceFrameworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupComplianceFrameworkResult

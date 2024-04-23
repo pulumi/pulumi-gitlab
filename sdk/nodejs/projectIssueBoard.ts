@@ -50,7 +50,7 @@ export class ProjectIssueBoard extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+     * The assignee the board should be scoped to. Requires a GitLab EE license.
      */
     public readonly assigneeId!: pulumi.Output<number | undefined>;
     /**
@@ -62,7 +62,7 @@ export class ProjectIssueBoard extends pulumi.CustomResource {
      */
     public readonly lists!: pulumi.Output<outputs.ProjectIssueBoardList[] | undefined>;
     /**
-     * The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+     * The milestone the board should be scoped to. Requires a GitLab EE license.
      */
     public readonly milestoneId!: pulumi.Output<number | undefined>;
     /**
@@ -121,7 +121,7 @@ export class ProjectIssueBoard extends pulumi.CustomResource {
  */
 export interface ProjectIssueBoardState {
     /**
-     * The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+     * The assignee the board should be scoped to. Requires a GitLab EE license.
      */
     assigneeId?: pulumi.Input<number>;
     /**
@@ -133,7 +133,7 @@ export interface ProjectIssueBoardState {
      */
     lists?: pulumi.Input<pulumi.Input<inputs.ProjectIssueBoardList>[]>;
     /**
-     * The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+     * The milestone the board should be scoped to. Requires a GitLab EE license.
      */
     milestoneId?: pulumi.Input<number>;
     /**
@@ -155,7 +155,7 @@ export interface ProjectIssueBoardState {
  */
 export interface ProjectIssueBoardArgs {
     /**
-     * The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+     * The assignee the board should be scoped to. Requires a GitLab EE license.
      */
     assigneeId?: pulumi.Input<number>;
     /**
@@ -167,7 +167,7 @@ export interface ProjectIssueBoardArgs {
      */
     lists?: pulumi.Input<pulumi.Input<inputs.ProjectIssueBoardList>[]>;
     /**
-     * The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+     * The milestone the board should be scoped to. Requires a GitLab EE license.
      */
     milestoneId?: pulumi.Input<number>;
     /**

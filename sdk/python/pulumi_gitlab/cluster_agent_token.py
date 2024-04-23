@@ -270,7 +270,6 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -306,7 +305,6 @@ class ClusterAgentToken(pulumi.CustomResource):
                 value: this_cluster_agent_token.token,
             }])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -342,7 +340,6 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -378,7 +375,6 @@ class ClusterAgentToken(pulumi.CustomResource):
                 value: this_cluster_agent_token.token,
             }])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -279,7 +279,7 @@ export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs 
 
 export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      */
     accessLevel?: string;
     /**
@@ -298,7 +298,7 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
 
 export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -389,7 +389,7 @@ export interface GetReleaseAssetsSource {
      */
     format?: string;
     /**
-     * The URL of the link
+     * The URL of the source
      */
     url?: string;
 }
@@ -400,7 +400,7 @@ export interface GetReleaseAssetsSourceArgs {
      */
     format?: pulumi.Input<string>;
     /**
-     * The URL of the link
+     * The URL of the source
      */
     url?: pulumi.Input<string>;
 }
