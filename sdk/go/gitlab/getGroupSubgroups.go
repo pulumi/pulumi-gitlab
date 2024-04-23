@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetGroupSubgroups(ctx *pulumi.Context, args *GetGroupSubgroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupSubgroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupSubgroupsResult
@@ -57,7 +55,8 @@ func GetGroupSubgroups(ctx *pulumi.Context, args *GetGroupSubgroupsArgs, opts ..
 type GetGroupSubgroupsArgs struct {
 	// Show all the groups you have access to.
 	AllAvailable *bool `pulumi:"allAvailable"`
-	GroupId      int   `pulumi:"groupId"`
+	// The ID of the group.
+	GroupId int `pulumi:"groupId"`
 	// Limit to groups where current user has at least this access level.
 	MinAccessLevel *string `pulumi:"minAccessLevel"`
 	// Order groups by name, path or id.
@@ -69,8 +68,9 @@ type GetGroupSubgroupsArgs struct {
 	// Skip the group IDs passed.
 	SkipGroups []int `pulumi:"skipGroups"`
 	// Order groups in asc or desc order.
-	Sort       *string `pulumi:"sort"`
-	Statistics *bool   `pulumi:"statistics"`
+	Sort *string `pulumi:"sort"`
+	// Include group statistics (administrators only).
+	Statistics *bool `pulumi:"statistics"`
 	// Include custom attributes in response (administrators only).
 	WithCustomAttributes *bool `pulumi:"withCustomAttributes"`
 }
@@ -120,7 +120,8 @@ func GetGroupSubgroupsOutput(ctx *pulumi.Context, args GetGroupSubgroupsOutputAr
 type GetGroupSubgroupsOutputArgs struct {
 	// Show all the groups you have access to.
 	AllAvailable pulumi.BoolPtrInput `pulumi:"allAvailable"`
-	GroupId      pulumi.IntInput     `pulumi:"groupId"`
+	// The ID of the group.
+	GroupId pulumi.IntInput `pulumi:"groupId"`
 	// Limit to groups where current user has at least this access level.
 	MinAccessLevel pulumi.StringPtrInput `pulumi:"minAccessLevel"`
 	// Order groups by name, path or id.
@@ -132,8 +133,9 @@ type GetGroupSubgroupsOutputArgs struct {
 	// Skip the group IDs passed.
 	SkipGroups pulumi.IntArrayInput `pulumi:"skipGroups"`
 	// Order groups in asc or desc order.
-	Sort       pulumi.StringPtrInput `pulumi:"sort"`
-	Statistics pulumi.BoolPtrInput   `pulumi:"statistics"`
+	Sort pulumi.StringPtrInput `pulumi:"sort"`
+	// Include group statistics (administrators only).
+	Statistics pulumi.BoolPtrInput `pulumi:"statistics"`
 	// Include custom attributes in response (administrators only).
 	WithCustomAttributes pulumi.BoolPtrInput `pulumi:"withCustomAttributes"`
 }

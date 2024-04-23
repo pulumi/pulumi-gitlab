@@ -2320,7 +2320,7 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs:
                  group_id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
-        :param str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         :param str access_level_description: Readable description of access level.
         :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
@@ -2336,7 +2336,7 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
         """
-        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -2509,7 +2509,7 @@ class GetReleaseAssetsSourceArgs:
                  url: str):
         """
         :param str format: The format of the source
-        :param str url: The URL of the link
+        :param str url: The URL of the source
         """
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "url", url)
@@ -2530,7 +2530,7 @@ class GetReleaseAssetsSourceArgs:
     @pulumi.getter
     def url(self) -> str:
         """
-        The URL of the link
+        The URL of the source
         """
         return pulumi.get(self, "url")
 

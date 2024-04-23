@@ -26,10 +26,10 @@ class ProjectIssueBoardArgs:
         """
         The set of arguments for constructing a ProjectIssueBoard resource.
         :param pulumi.Input[str] project: The ID or full path of the project maintained by the authenticated user.
-        :param pulumi.Input[int] assignee_id: The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+        :param pulumi.Input[int] assignee_id: The assignee the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: The list of label names which the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]] lists: The list of issue board lists
-        :param pulumi.Input[int] milestone_id: The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+        :param pulumi.Input[int] milestone_id: The milestone the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[str] name: The name of the board.
         :param pulumi.Input[int] weight: The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
         """
@@ -63,7 +63,7 @@ class ProjectIssueBoardArgs:
     @pulumi.getter(name="assigneeId")
     def assignee_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+        The assignee the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "assignee_id")
 
@@ -99,7 +99,7 @@ class ProjectIssueBoardArgs:
     @pulumi.getter(name="milestoneId")
     def milestone_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+        The milestone the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "milestone_id")
 
@@ -144,10 +144,10 @@ class _ProjectIssueBoardState:
                  weight: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ProjectIssueBoard resources.
-        :param pulumi.Input[int] assignee_id: The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+        :param pulumi.Input[int] assignee_id: The assignee the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: The list of label names which the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]] lists: The list of issue board lists
-        :param pulumi.Input[int] milestone_id: The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+        :param pulumi.Input[int] milestone_id: The milestone the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[str] name: The name of the board.
         :param pulumi.Input[str] project: The ID or full path of the project maintained by the authenticated user.
         :param pulumi.Input[int] weight: The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
@@ -171,7 +171,7 @@ class _ProjectIssueBoardState:
     @pulumi.getter(name="assigneeId")
     def assignee_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+        The assignee the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "assignee_id")
 
@@ -207,7 +207,7 @@ class _ProjectIssueBoardState:
     @pulumi.getter(name="milestoneId")
     def milestone_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+        The milestone the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "milestone_id")
 
@@ -282,10 +282,10 @@ class ProjectIssueBoard(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] assignee_id: The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+        :param pulumi.Input[int] assignee_id: The assignee the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: The list of label names which the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueBoardListArgs']]]] lists: The list of issue board lists
-        :param pulumi.Input[int] milestone_id: The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+        :param pulumi.Input[int] milestone_id: The milestone the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[str] name: The name of the board.
         :param pulumi.Input[str] project: The ID or full path of the project maintained by the authenticated user.
         :param pulumi.Input[int] weight: The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
@@ -375,10 +375,10 @@ class ProjectIssueBoard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] assignee_id: The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+        :param pulumi.Input[int] assignee_id: The assignee the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: The list of label names which the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueBoardListArgs']]]] lists: The list of issue board lists
-        :param pulumi.Input[int] milestone_id: The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+        :param pulumi.Input[int] milestone_id: The milestone the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[str] name: The name of the board.
         :param pulumi.Input[str] project: The ID or full path of the project maintained by the authenticated user.
         :param pulumi.Input[int] weight: The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
@@ -400,7 +400,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
     @pulumi.getter(name="assigneeId")
     def assignee_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+        The assignee the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "assignee_id")
 
@@ -424,7 +424,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
     @pulumi.getter(name="milestoneId")
     def milestone_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+        The milestone the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "milestone_id")
 

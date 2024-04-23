@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -27,7 +26,6 @@ import * as utilities from "./utilities";
  *     environmentScope: "staging/*",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectVariables(args: GetProjectVariablesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVariablesResult> {
 
@@ -42,7 +40,13 @@ export function getProjectVariables(args: GetProjectVariablesArgs, opts?: pulumi
  * A collection of arguments for invoking getProjectVariables.
  */
 export interface GetProjectVariablesArgs {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`).
+     */
     environmentScope?: string;
+    /**
+     * The name or id of the project.
+     */
     project: string;
 }
 
@@ -74,7 +78,6 @@ export interface GetProjectVariablesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -88,7 +91,6 @@ export interface GetProjectVariablesResult {
  *     environmentScope: "staging/*",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectVariablesOutput(args: GetProjectVariablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectVariablesResult> {
     return pulumi.output(args).apply((a: any) => getProjectVariables(a, opts))
@@ -98,6 +100,12 @@ export function getProjectVariablesOutput(args: GetProjectVariablesOutputArgs, o
  * A collection of arguments for invoking getProjectVariables.
  */
 export interface GetProjectVariablesOutputArgs {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`).
+     */
     environmentScope?: pulumi.Input<string>;
+    /**
+     * The name or id of the project.
+     */
     project: pulumi.Input<string>;
 }

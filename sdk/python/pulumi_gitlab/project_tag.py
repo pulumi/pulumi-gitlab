@@ -236,7 +236,6 @@ class ProjectTag(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -251,7 +250,6 @@ class ProjectTag(pulumi.CustomResource):
             ref="main",
             project=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -283,7 +281,6 @@ class ProjectTag(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -298,7 +295,6 @@ class ProjectTag(pulumi.CustomResource):
             ref="main",
             project=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

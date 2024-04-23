@@ -15,9 +15,17 @@ public final class GetUserSshkeysPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetUserSshkeysPlainArgs Empty = new GetUserSshkeysPlainArgs();
 
+    /**
+     * ID of the user to get the SSH keys for.
+     * 
+     */
     @Import(name="userId")
     private @Nullable Integer userId;
 
+    /**
+     * @return ID of the user to get the SSH keys for.
+     * 
+     */
     public Optional<Integer> userId() {
         return Optional.ofNullable(this.userId);
     }
@@ -62,6 +70,12 @@ public final class GetUserSshkeysPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetUserSshkeysPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param userId ID of the user to get the SSH keys for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(@Nullable Integer userId) {
             $.userId = userId;
             return this;

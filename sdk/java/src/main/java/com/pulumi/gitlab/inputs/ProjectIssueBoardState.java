@@ -19,14 +19,14 @@ public final class ProjectIssueBoardState extends com.pulumi.resources.ResourceA
     public static final ProjectIssueBoardState Empty = new ProjectIssueBoardState();
 
     /**
-     * The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+     * The assignee the board should be scoped to. Requires a GitLab EE license.
      * 
      */
     @Import(name="assigneeId")
     private @Nullable Output<Integer> assigneeId;
 
     /**
-     * @return The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+     * @return The assignee the board should be scoped to. Requires a GitLab EE license.
      * 
      */
     public Optional<Output<Integer>> assigneeId() {
@@ -64,14 +64,14 @@ public final class ProjectIssueBoardState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+     * The milestone the board should be scoped to. Requires a GitLab EE license.
      * 
      */
     @Import(name="milestoneId")
     private @Nullable Output<Integer> milestoneId;
 
     /**
-     * @return The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+     * @return The milestone the board should be scoped to. Requires a GitLab EE license.
      * 
      */
     public Optional<Output<Integer>> milestoneId() {
@@ -154,7 +154,7 @@ public final class ProjectIssueBoardState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param assigneeId The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+         * @param assigneeId The assignee the board should be scoped to. Requires a GitLab EE license.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class ProjectIssueBoardState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param assigneeId The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+         * @param assigneeId The assignee the board should be scoped to. Requires a GitLab EE license.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ProjectIssueBoardState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param milestoneId The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+         * @param milestoneId The milestone the board should be scoped to. Requires a GitLab EE license.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class ProjectIssueBoardState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param milestoneId The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+         * @param milestoneId The milestone the board should be scoped to. Requires a GitLab EE license.
          * 
          * @return builder
          * 

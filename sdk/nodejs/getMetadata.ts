@@ -13,14 +13,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const this = gitlab.getMetadata({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMetadata(opts?: pulumi.InvokeOptions): Promise<GetMetadataResult> {
 
@@ -61,14 +59,12 @@ export interface GetMetadataResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const this = gitlab.getMetadata({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMetadataOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetMetadataResult> {
     return pulumi.output(getMetadata(opts))

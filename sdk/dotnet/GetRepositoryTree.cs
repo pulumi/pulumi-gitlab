@@ -18,7 +18,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRepositoryTreeResult> InvokeAsync(GetRepositoryTreeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryTreeResult>("gitlab:index/getRepositoryTree:getRepositoryTree", args ?? new GetRepositoryTreeArgs(), options.WithDefaults());
@@ -49,7 +47,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRepositoryTreeResult> Invoke(GetRepositoryTreeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryTreeResult>("gitlab:index/getRepositoryTree:getRepositoryTree", args ?? new GetRepositoryTreeInvokeArgs(), options.WithDefaults());
@@ -77,6 +73,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetRepositoryTreeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The path inside repository. Used to get content of subdirectories.
+        /// </summary>
         [Input("path")]
         public string? Path { get; set; }
 
@@ -106,6 +105,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetRepositoryTreeInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The path inside repository. Used to get content of subdirectories.
+        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 

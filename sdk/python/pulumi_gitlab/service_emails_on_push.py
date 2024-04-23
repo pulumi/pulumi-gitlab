@@ -351,7 +351,6 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -364,7 +363,6 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
             project=awesome_project.id,
             recipients="myrecipient@example.com myotherrecipient@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -399,7 +397,6 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -412,7 +409,6 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
             project=awesome_project.id,
             recipients="myrecipient@example.com myotherrecipient@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

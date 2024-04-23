@@ -91,7 +91,6 @@ def get_group_variables(environment_scope: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -101,7 +100,10 @@ def get_group_variables(environment_scope: Optional[str] = None,
     staging_vars = gitlab.get_group_variables(group="my/example/group",
         environment_scope="staging/*")
     ```
-    <!--End PulumiCodeChooser -->
+
+
+    :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
+    :param str group: The name or id of the group.
     """
     __args__ = dict()
     __args__['environmentScope'] = environment_scope
@@ -127,7 +129,6 @@ def get_group_variables_output(environment_scope: Optional[pulumi.Input[Optional
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -137,6 +138,9 @@ def get_group_variables_output(environment_scope: Optional[pulumi.Input[Optional
     staging_vars = gitlab.get_group_variables(group="my/example/group",
         environment_scope="staging/*")
     ```
-    <!--End PulumiCodeChooser -->
+
+
+    :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
+    :param str group: The name or id of the group.
     """
     ...

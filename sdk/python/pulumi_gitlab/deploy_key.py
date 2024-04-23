@@ -187,7 +187,6 @@ class DeployKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -197,7 +196,6 @@ class DeployKey(pulumi.CustomResource):
             title="Example deploy key",
             key="ssh-ed25519 AAAA...")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -237,7 +235,6 @@ class DeployKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -247,7 +244,6 @@ class DeployKey(pulumi.CustomResource):
             title="Example deploy key",
             key="ssh-ed25519 AAAA...")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

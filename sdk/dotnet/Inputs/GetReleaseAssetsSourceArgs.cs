@@ -19,7 +19,7 @@ namespace Pulumi.GitLab.Inputs
         public Input<string> Format { get; set; } = null!;
 
         /// <summary>
-        /// The URL of the link
+        /// The URL of the source
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

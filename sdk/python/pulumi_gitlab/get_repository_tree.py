@@ -117,7 +117,6 @@ def get_repository_tree(path: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -127,9 +126,9 @@ def get_repository_tree(path: Optional[str] = None,
         path="ExampleSubFolder",
         recursive=True)
     ```
-    <!--End PulumiCodeChooser -->
 
 
+    :param str path: The path inside repository. Used to get content of subdirectories.
     :param str project: The ID or full path of the project owned by the authenticated user.
     :param bool recursive: Boolean value used to get a recursive tree (false by default).
     :param str ref: The name of a repository branch or tag.
@@ -164,7 +163,6 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -174,9 +172,9 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
         path="ExampleSubFolder",
         recursive=True)
     ```
-    <!--End PulumiCodeChooser -->
 
 
+    :param str path: The path inside repository. Used to get content of subdirectories.
     :param str project: The ID or full path of the project owned by the authenticated user.
     :param bool recursive: Boolean value used to get a recursive tree (false by default).
     :param str ref: The name of a repository branch or tag.

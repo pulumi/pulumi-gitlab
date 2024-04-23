@@ -523,7 +523,6 @@ def get_project_issue(iid: Optional[int] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -533,7 +532,6 @@ def get_project_issue(iid: Optional[int] = None,
         iid=1)
     pulumi.export("welcomeIssueWebUrl", web_url)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int iid: The internal ID of the project's issue.
@@ -599,7 +597,6 @@ def get_project_issue_output(iid: Optional[pulumi.Input[int]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -609,7 +606,6 @@ def get_project_issue_output(iid: Optional[pulumi.Input[int]] = None,
         iid=1)
     pulumi.export("welcomeIssueWebUrl", web_url)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int iid: The internal ID of the project's issue.

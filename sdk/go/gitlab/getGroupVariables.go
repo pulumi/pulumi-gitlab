@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetGroupVariables(ctx *pulumi.Context, args *GetGroupVariablesArgs, opts ...pulumi.InvokeOption) (*GetGroupVariablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupVariablesResult
@@ -62,8 +60,10 @@ func GetGroupVariables(ctx *pulumi.Context, args *GetGroupVariablesArgs, opts ..
 
 // A collection of arguments for invoking getGroupVariables.
 type GetGroupVariablesArgs struct {
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope *string `pulumi:"environmentScope"`
-	Group            string  `pulumi:"group"`
+	// The name or id of the group.
+	Group string `pulumi:"group"`
 }
 
 // A collection of values returned by getGroupVariables.
@@ -93,8 +93,10 @@ func GetGroupVariablesOutput(ctx *pulumi.Context, args GetGroupVariablesOutputAr
 
 // A collection of arguments for invoking getGroupVariables.
 type GetGroupVariablesOutputArgs struct {
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope pulumi.StringPtrInput `pulumi:"environmentScope"`
-	Group            pulumi.StringInput    `pulumi:"group"`
+	// The name or id of the group.
+	Group pulumi.StringInput `pulumi:"group"`
 }
 
 func (GetGroupVariablesOutputArgs) ElementType() reflect.Type {

@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     key: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceVariable(args: GetInstanceVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceVariableResult> {
 
@@ -80,7 +78,6 @@ export interface GetInstanceVariableResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -89,7 +86,6 @@ export interface GetInstanceVariableResult {
  *     key: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceVariableOutput(args: GetInstanceVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceVariableResult> {
     return pulumi.output(args).apply((a: any) => getInstanceVariable(a, opts))

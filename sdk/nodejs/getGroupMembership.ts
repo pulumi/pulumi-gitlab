@@ -27,6 +27,9 @@ export function getGroupMembership(args?: GetGroupMembershipArgs, opts?: pulumi.
  * A collection of arguments for invoking getGroupMembership.
  */
 export interface GetGroupMembershipArgs {
+    /**
+     * Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     */
     accessLevel?: string;
     /**
      * The full path of the group.
@@ -84,6 +87,9 @@ export function getGroupMembershipOutput(args?: GetGroupMembershipOutputArgs, op
  * A collection of arguments for invoking getGroupMembership.
  */
 export interface GetGroupMembershipOutputArgs {
+    /**
+     * Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     */
     accessLevel?: pulumi.Input<string>;
     /**
      * The full path of the group.

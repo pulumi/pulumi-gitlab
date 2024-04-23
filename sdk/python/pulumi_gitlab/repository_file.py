@@ -606,7 +606,6 @@ class RepositoryFile(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -646,7 +645,6 @@ class RepositoryFile(pulumi.CustomResource):
             commit_message="feature: update readme file",
             overwrite_on_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -682,7 +680,6 @@ class RepositoryFile(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -722,7 +719,6 @@ class RepositoryFile(pulumi.CustomResource):
             commit_message="feature: update readme file",
             overwrite_on_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

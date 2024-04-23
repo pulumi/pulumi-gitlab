@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetProjectVariables(ctx *pulumi.Context, args *GetProjectVariablesArgs, opts ...pulumi.InvokeOption) (*GetProjectVariablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectVariablesResult
@@ -62,8 +60,10 @@ func GetProjectVariables(ctx *pulumi.Context, args *GetProjectVariablesArgs, opt
 
 // A collection of arguments for invoking getProjectVariables.
 type GetProjectVariablesArgs struct {
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope *string `pulumi:"environmentScope"`
-	Project          string  `pulumi:"project"`
+	// The name or id of the project.
+	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getProjectVariables.
@@ -93,8 +93,10 @@ func GetProjectVariablesOutput(ctx *pulumi.Context, args GetProjectVariablesOutp
 
 // A collection of arguments for invoking getProjectVariables.
 type GetProjectVariablesOutputArgs struct {
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope pulumi.StringPtrInput `pulumi:"environmentScope"`
-	Project          pulumi.StringInput    `pulumi:"project"`
+	// The name or id of the project.
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (GetProjectVariablesOutputArgs) ElementType() reflect.Type {

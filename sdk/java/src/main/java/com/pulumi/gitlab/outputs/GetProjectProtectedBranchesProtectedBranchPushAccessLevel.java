@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
     /**
-     * @return Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
     private String accessLevel;
@@ -36,7 +36,7 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
 
     private GetProjectProtectedBranchesProtectedBranchPushAccessLevel() {}
     /**
-     * @return Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
     public String accessLevel() {

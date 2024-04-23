@@ -49,6 +49,9 @@ namespace Pulumi.GitLab
         [Input("includeParentMilestones")]
         public bool? IncludeParentMilestones { get; set; }
 
+        /// <summary>
+        /// The ID or URL-encoded path of the project owned by the authenticated user.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -58,9 +61,15 @@ namespace Pulumi.GitLab
         [Input("search")]
         public string? Search { get; set; }
 
+        /// <summary>
+        /// Return only `active` or `closed` milestones.
+        /// </summary>
         [Input("state")]
         public string? State { get; set; }
 
+        /// <summary>
+        /// Return only the milestones having the given `title`.
+        /// </summary>
         [Input("title")]
         public string? Title { get; set; }
 
@@ -90,6 +99,9 @@ namespace Pulumi.GitLab
         [Input("includeParentMilestones")]
         public Input<bool>? IncludeParentMilestones { get; set; }
 
+        /// <summary>
+        /// The ID or URL-encoded path of the project owned by the authenticated user.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -99,9 +111,15 @@ namespace Pulumi.GitLab
         [Input("search")]
         public Input<string>? Search { get; set; }
 
+        /// <summary>
+        /// Return only `active` or `closed` milestones.
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// Return only the milestones having the given `title`.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 

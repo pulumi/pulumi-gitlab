@@ -31,6 +31,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetGroupHooksArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID or full path of the group.
+        /// </summary>
         [Input("group", required: true)]
         public string Group { get; set; } = null!;
 
@@ -42,6 +45,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetGroupHooksInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID or full path of the group.
+        /// </summary>
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
 

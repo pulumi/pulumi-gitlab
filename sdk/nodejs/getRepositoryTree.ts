@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     recursive: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRepositoryTree(args: GetRepositoryTreeArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryTreeResult> {
 
@@ -42,6 +40,9 @@ export function getRepositoryTree(args: GetRepositoryTreeArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getRepositoryTree.
  */
 export interface GetRepositoryTreeArgs {
+    /**
+     * The path inside repository. Used to get content of subdirectories.
+     */
     path?: string;
     /**
      * The ID or full path of the project owned by the authenticated user.
@@ -93,7 +94,6 @@ export interface GetRepositoryTreeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -105,7 +105,6 @@ export interface GetRepositoryTreeResult {
  *     recursive: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRepositoryTreeOutput(args: GetRepositoryTreeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryTreeResult> {
     return pulumi.output(args).apply((a: any) => getRepositoryTree(a, opts))
@@ -115,6 +114,9 @@ export function getRepositoryTreeOutput(args: GetRepositoryTreeOutputArgs, opts?
  * A collection of arguments for invoking getRepositoryTree.
  */
 export interface GetRepositoryTreeOutputArgs {
+    /**
+     * The path inside repository. Used to get content of subdirectories.
+     */
     path?: pulumi.Input<string>;
     /**
      * The ID or full path of the project owned by the authenticated user.

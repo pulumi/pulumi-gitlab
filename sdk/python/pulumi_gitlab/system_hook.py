@@ -288,7 +288,6 @@ class SystemHook(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -302,7 +301,6 @@ class SystemHook(pulumi.CustomResource):
             repository_update_events=True,
             enable_ssl_verification=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -339,7 +337,6 @@ class SystemHook(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -353,7 +350,6 @@ class SystemHook(pulumi.CustomResource):
             repository_update_events=True,
             enable_ssl_verification=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

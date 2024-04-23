@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  *     search: "foo",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectIssues(args: GetProjectIssuesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIssuesResult> {
 
@@ -73,7 +71,13 @@ export interface GetProjectIssuesArgs {
      * Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
      */
     assigneeUsername?: string;
+    /**
+     * Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
+     */
     authorId?: number;
+    /**
+     * Filter confidential or public issues.
+     */
     confidential?: boolean;
     /**
      * Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
@@ -83,12 +87,21 @@ export interface GetProjectIssuesArgs {
      * Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
      */
     createdBefore?: string;
+    /**
+     * Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
+     */
     dueDate?: string;
     /**
      * Return only the issues having the given iid
      */
     iids?: number[];
+    /**
+     * Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+     */
     issueType?: string;
+    /**
+     * Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
+     */
     labels?: string[];
     /**
      * The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
@@ -122,6 +135,9 @@ export interface GetProjectIssuesArgs {
      * Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
      */
     orderBy?: string;
+    /**
+     * The name or id of the project.
+     */
     project: string;
     /**
      * Return issues for the given scope. Valid values are `createdByMe`, `assignedToMe`, `all`. Defaults to all.
@@ -143,6 +159,9 @@ export interface GetProjectIssuesArgs {
      * Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
      */
     updatedBefore?: string;
+    /**
+     * Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
+     */
     weight?: number;
     /**
      * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7
@@ -274,7 +293,6 @@ export interface GetProjectIssuesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -287,7 +305,6 @@ export interface GetProjectIssuesResult {
  *     search: "foo",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectIssuesOutput(args: GetProjectIssuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIssuesResult> {
     return pulumi.output(args).apply((a: any) => getProjectIssues(a, opts))
@@ -305,7 +322,13 @@ export interface GetProjectIssuesOutputArgs {
      * Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
      */
     assigneeUsername?: pulumi.Input<string>;
+    /**
+     * Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
+     */
     authorId?: pulumi.Input<number>;
+    /**
+     * Filter confidential or public issues.
+     */
     confidential?: pulumi.Input<boolean>;
     /**
      * Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
@@ -315,12 +338,21 @@ export interface GetProjectIssuesOutputArgs {
      * Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
      */
     createdBefore?: pulumi.Input<string>;
+    /**
+     * Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
+     */
     dueDate?: pulumi.Input<string>;
     /**
      * Return only the issues having the given iid
      */
     iids?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+     */
     issueType?: pulumi.Input<string>;
+    /**
+     * Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
+     */
     labels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
@@ -354,6 +386,9 @@ export interface GetProjectIssuesOutputArgs {
      * Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
      */
     orderBy?: pulumi.Input<string>;
+    /**
+     * The name or id of the project.
+     */
     project: pulumi.Input<string>;
     /**
      * Return issues for the given scope. Valid values are `createdByMe`, `assignedToMe`, `all`. Defaults to all.
@@ -375,6 +410,9 @@ export interface GetProjectIssuesOutputArgs {
      * Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
      */
     updatedBefore?: pulumi.Input<string>;
+    /**
+     * Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
+     */
     weight?: pulumi.Input<number>;
     /**
      * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7

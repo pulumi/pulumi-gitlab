@@ -90,9 +90,17 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.externProvider);
     }
 
+    /**
+     * Lookup users by external UID. (Requires administrator privileges)
+     * 
+     */
     @Import(name="externUid")
     private @Nullable String externUid;
 
+    /**
+     * @return Lookup users by external UID. (Requires administrator privileges)
+     * 
+     */
     public Optional<String> externUid() {
         return Optional.ofNullable(this.externUid);
     }
@@ -229,6 +237,12 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param externUid Lookup users by external UID. (Requires administrator privileges)
+         * 
+         * @return builder
+         * 
+         */
         public Builder externUid(@Nullable String externUid) {
             $.externUid = externUid;
             return this;

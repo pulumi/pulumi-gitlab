@@ -22,7 +22,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,7 +53,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("gitlab:index/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithDefaults());
@@ -70,7 +68,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -102,7 +99,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("gitlab:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
@@ -111,9 +107,15 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Limit by archived status.
+        /// </summary>
         [Input("archived")]
         public bool? Archived { get; set; }
 
+        /// <summary>
+        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+        /// </summary>
         [Input("groupId")]
         public int? GroupId { get; set; }
 
@@ -189,6 +191,9 @@ namespace Pulumi.GitLab
         [Input("starred")]
         public bool? Starred { get; set; }
 
+        /// <summary>
+        /// Include project statistics. Cannot be used with `group_id`.
+        /// </summary>
         [Input("statistics")]
         public bool? Statistics { get; set; }
 
@@ -204,6 +209,9 @@ namespace Pulumi.GitLab
             set => _topics = value;
         }
 
+        /// <summary>
+        /// Limit by visibility `public`, `internal`, or `private`.
+        /// </summary>
         [Input("visibility")]
         public string? Visibility { get; set; }
 
@@ -245,9 +253,15 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Limit by archived status.
+        /// </summary>
         [Input("archived")]
         public Input<bool>? Archived { get; set; }
 
+        /// <summary>
+        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
@@ -323,6 +337,9 @@ namespace Pulumi.GitLab
         [Input("starred")]
         public Input<bool>? Starred { get; set; }
 
+        /// <summary>
+        /// Include project statistics. Cannot be used with `group_id`.
+        /// </summary>
         [Input("statistics")]
         public Input<bool>? Statistics { get; set; }
 
@@ -338,6 +355,9 @@ namespace Pulumi.GitLab
             set => _topics = value;
         }
 
+        /// <summary>
+        /// Limit by visibility `public`, `internal`, or `private`.
+        /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
 

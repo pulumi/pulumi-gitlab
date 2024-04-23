@@ -30,14 +30,14 @@ public final class GetReleaseAssetsSourceArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The URL of the link
+     * The URL of the source
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return The URL of the link
+     * @return The URL of the source
      * 
      */
     public Output<String> url() {
@@ -91,7 +91,7 @@ public final class GetReleaseAssetsSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url The URL of the link
+         * @param url The URL of the source
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetReleaseAssetsSourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url The URL of the link
+         * @param url The URL of the source
          * 
          * @return builder
          * 

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     project: example.id,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectHooks(args: GetProjectHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectHooksResult> {
 
@@ -39,6 +37,9 @@ export function getProjectHooks(args: GetProjectHooksArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getProjectHooks.
  */
 export interface GetProjectHooksArgs {
+    /**
+     * The name or id of the project.
+     */
     project: string;
 }
 
@@ -66,7 +67,6 @@ export interface GetProjectHooksResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -78,7 +78,6 @@ export interface GetProjectHooksResult {
  *     project: example.id,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectHooksOutput(args: GetProjectHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectHooksResult> {
     return pulumi.output(args).apply((a: any) => getProjectHooks(a, opts))
@@ -88,5 +87,8 @@ export function getProjectHooksOutput(args: GetProjectHooksOutputArgs, opts?: pu
  * A collection of arguments for invoking getProjectHooks.
  */
 export interface GetProjectHooksOutputArgs {
+    /**
+     * The name or id of the project.
+     */
     project: pulumi.Input<string>;
 }

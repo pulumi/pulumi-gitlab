@@ -235,7 +235,6 @@ class IntegrationGithub(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -249,7 +248,6 @@ class IntegrationGithub(pulumi.CustomResource):
             token="REDACTED",
             repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -283,7 +281,6 @@ class IntegrationGithub(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -297,7 +294,6 @@ class IntegrationGithub(pulumi.CustomResource):
             token="REDACTED",
             repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
