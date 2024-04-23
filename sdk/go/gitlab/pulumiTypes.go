@@ -7680,7 +7680,7 @@ func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayOutput) I
 }
 
 type GetProjectProtectedBranchesProtectedBranchPushAccessLevel struct {
-	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 	AccessLevel string `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription string `pulumi:"accessLevelDescription"`
@@ -7702,7 +7702,7 @@ type GetProjectProtectedBranchesProtectedBranchPushAccessLevelInput interface {
 }
 
 type GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs struct {
-	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
@@ -7763,7 +7763,7 @@ func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) ToGetPr
 	return o
 }
 
-// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
 func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchPushAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -11103,7 +11103,7 @@ func (o GetReleaseAssetsLinkArrayOutput) Index(i pulumi.IntInput) GetReleaseAsse
 type GetReleaseAssetsSource struct {
 	// The format of the source
 	Format string `pulumi:"format"`
-	// The URL of the link
+	// The URL of the source
 	Url string `pulumi:"url"`
 }
 
@@ -11121,7 +11121,7 @@ type GetReleaseAssetsSourceInput interface {
 type GetReleaseAssetsSourceArgs struct {
 	// The format of the source
 	Format pulumi.StringInput `pulumi:"format"`
-	// The URL of the link
+	// The URL of the source
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -11181,7 +11181,7 @@ func (o GetReleaseAssetsSourceOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseAssetsSource) string { return v.Format }).(pulumi.StringOutput)
 }
 
-// The URL of the link
+// The URL of the source
 func (o GetReleaseAssetsSourceOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseAssetsSource) string { return v.Url }).(pulumi.StringOutput)
 }

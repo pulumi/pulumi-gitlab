@@ -235,7 +235,6 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -250,7 +249,6 @@ class PersonalAccessToken(pulumi.CustomResource):
             key="pat",
             value=example.token)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -284,7 +282,6 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -299,7 +296,6 @@ class PersonalAccessToken(pulumi.CustomResource):
             key="pat",
             value=example.token)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

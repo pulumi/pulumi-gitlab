@@ -295,6 +295,7 @@ def get_group(full_path: Optional[str] = None,
 
 
     :param str full_path: The full path of the group.
+    :param int group_id: The ID of the group.
     """
     __args__ = dict()
     __args__['fullPath'] = full_path
@@ -337,5 +338,6 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str full_path: The full path of the group.
+    :param int group_id: The ID of the group.
     """
     ...

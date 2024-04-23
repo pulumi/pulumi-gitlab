@@ -195,7 +195,6 @@ def get_group_subgroups(all_available: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -203,16 +202,17 @@ def get_group_subgroups(all_available: Optional[bool] = None,
     subgroups = gitlab.get_group_subgroups(group_id=123456)
     pulumi.export("subgroups", subgroups)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool all_available: Show all the groups you have access to.
+    :param int group_id: The ID of the group.
     :param str min_access_level: Limit to groups where current user has at least this access level.
     :param str order_by: Order groups by name, path or id.
     :param bool owned: Limit to groups explicitly owned by the current user.
     :param str search: Return the list of authorized groups matching the search criteria.
     :param Sequence[int] skip_groups: Skip the group IDs passed.
     :param str sort: Order groups in asc or desc order.
+    :param bool statistics: Include group statistics (administrators only).
     :param bool with_custom_attributes: Include custom attributes in response (administrators only).
     """
     __args__ = dict()
@@ -263,7 +263,6 @@ def get_group_subgroups_output(all_available: Optional[pulumi.Input[Optional[boo
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gitlab as gitlab
@@ -271,16 +270,17 @@ def get_group_subgroups_output(all_available: Optional[pulumi.Input[Optional[boo
     subgroups = gitlab.get_group_subgroups(group_id=123456)
     pulumi.export("subgroups", subgroups)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool all_available: Show all the groups you have access to.
+    :param int group_id: The ID of the group.
     :param str min_access_level: Limit to groups where current user has at least this access level.
     :param str order_by: Order groups by name, path or id.
     :param bool owned: Limit to groups explicitly owned by the current user.
     :param str search: Return the list of authorized groups matching the search criteria.
     :param Sequence[int] skip_groups: Skip the group IDs passed.
     :param str sort: Order groups in asc or desc order.
+    :param bool statistics: Include group statistics (administrators only).
     :param bool with_custom_attributes: Include custom attributes in response (administrators only).
     """
     ...

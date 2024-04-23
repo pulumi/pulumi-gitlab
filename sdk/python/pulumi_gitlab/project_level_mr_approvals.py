@@ -272,7 +272,6 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -287,7 +286,6 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
             merge_requests_author_approval=False,
             merge_requests_disable_committers_approval=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -328,7 +326,6 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -343,7 +340,6 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
             merge_requests_author_approval=False,
             merge_requests_disable_committers_approval=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

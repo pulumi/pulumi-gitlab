@@ -18,7 +18,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectVariablesResult> InvokeAsync(GetProjectVariablesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectVariablesResult>("gitlab:index/getProjectVariables:getProjectVariables", args ?? new GetProjectVariablesArgs(), options.WithDefaults());
@@ -53,7 +51,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectVariablesResult> Invoke(GetProjectVariablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectVariablesResult>("gitlab:index/getProjectVariables:getProjectVariables", args ?? new GetProjectVariablesInvokeArgs(), options.WithDefaults());
@@ -85,9 +81,15 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectVariablesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         [Input("environmentScope")]
         public string? EnvironmentScope { get; set; }
 
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -99,9 +101,15 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectVariablesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
 
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

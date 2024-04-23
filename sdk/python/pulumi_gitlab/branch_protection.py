@@ -382,7 +382,6 @@ class BranchProtection(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -434,7 +433,6 @@ class BranchProtection(pulumi.CustomResource):
             merge_access_level="maintainer",
             unprotect_access_level="maintainer")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -466,7 +464,6 @@ class BranchProtection(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gitlab as gitlab
@@ -518,7 +515,6 @@ class BranchProtection(pulumi.CustomResource):
             merge_access_level="maintainer",
             unprotect_access_level="maintainer")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,7 +18,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGroupVariablesResult> InvokeAsync(GetGroupVariablesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupVariablesResult>("gitlab:index/getGroupVariables:getGroupVariables", args ?? new GetGroupVariablesArgs(), options.WithDefaults());
@@ -53,7 +51,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupVariablesResult> Invoke(GetGroupVariablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupVariablesResult>("gitlab:index/getGroupVariables:getGroupVariables", args ?? new GetGroupVariablesInvokeArgs(), options.WithDefaults());
@@ -85,9 +81,15 @@ namespace Pulumi.GitLab
 
     public sealed class GetGroupVariablesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         [Input("environmentScope")]
         public string? EnvironmentScope { get; set; }
 
+        /// <summary>
+        /// The name or id of the group.
+        /// </summary>
         [Input("group", required: true)]
         public string Group { get; set; } = null!;
 
@@ -99,9 +101,15 @@ namespace Pulumi.GitLab
 
     public sealed class GetGroupVariablesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
 
+        /// <summary>
+        /// The name or id of the group.
+        /// </summary>
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
 

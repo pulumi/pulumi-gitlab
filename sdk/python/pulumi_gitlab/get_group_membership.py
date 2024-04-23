@@ -116,6 +116,7 @@ def get_group_membership(access_level: Optional[str] = None,
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
 
 
+    :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
     :param str full_path: The full path of the group.
     :param int group_id: The ID of the group.
     :param bool inherited: Return all project members including members through ancestor groups.
@@ -149,6 +150,7 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
 
 
+    :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
     :param str full_path: The full path of the group.
     :param int group_id: The ID of the group.
     :param bool inherited: Return all project members including members through ancestor groups.

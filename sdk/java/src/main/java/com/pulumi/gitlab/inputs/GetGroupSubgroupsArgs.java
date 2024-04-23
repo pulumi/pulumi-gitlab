@@ -34,9 +34,17 @@ public final class GetGroupSubgroupsArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.allAvailable);
     }
 
+    /**
+     * The ID of the group.
+     * 
+     */
     @Import(name="groupId", required=true)
     private Output<Integer> groupId;
 
+    /**
+     * @return The ID of the group.
+     * 
+     */
     public Output<Integer> groupId() {
         return this.groupId;
     }
@@ -131,9 +139,17 @@ public final class GetGroupSubgroupsArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.sort);
     }
 
+    /**
+     * Include group statistics (administrators only).
+     * 
+     */
     @Import(name="statistics")
     private @Nullable Output<Boolean> statistics;
 
+    /**
+     * @return Include group statistics (administrators only).
+     * 
+     */
     public Optional<Output<Boolean>> statistics() {
         return Optional.ofNullable(this.statistics);
     }
@@ -207,11 +223,23 @@ public final class GetGroupSubgroupsArgs extends com.pulumi.resources.InvokeArgs
             return allAvailable(Output.of(allAvailable));
         }
 
+        /**
+         * @param groupId The ID of the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(Output<Integer> groupId) {
             $.groupId = groupId;
             return this;
         }
 
+        /**
+         * @param groupId The ID of the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(Integer groupId) {
             return groupId(Output.of(groupId));
         }
@@ -352,11 +380,23 @@ public final class GetGroupSubgroupsArgs extends com.pulumi.resources.InvokeArgs
             return sort(Output.of(sort));
         }
 
+        /**
+         * @param statistics Include group statistics (administrators only).
+         * 
+         * @return builder
+         * 
+         */
         public Builder statistics(@Nullable Output<Boolean> statistics) {
             $.statistics = statistics;
             return this;
         }
 
+        /**
+         * @param statistics Include group statistics (administrators only).
+         * 
+         * @return builder
+         * 
+         */
         public Builder statistics(Boolean statistics) {
             return statistics(Output.of(statistics));
         }

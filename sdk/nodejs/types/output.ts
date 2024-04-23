@@ -1124,7 +1124,7 @@ export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
 
 export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
      */
     accessLevel: string;
     /**
@@ -1967,7 +1967,7 @@ export interface GetReleaseAssetsSource {
      */
     format: string;
     /**
-     * The URL of the link
+     * The URL of the source
      */
     url: string;
 }

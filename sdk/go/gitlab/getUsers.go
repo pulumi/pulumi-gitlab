@@ -21,7 +21,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
@@ -76,7 +74,8 @@ type GetUsersArgs struct {
 	CreatedBefore *string `pulumi:"createdBefore"`
 	// Lookup users by external provider. (Requires administrator privileges)
 	ExternProvider *string `pulumi:"externProvider"`
-	ExternUid      *string `pulumi:"externUid"`
+	// Lookup users by external UID. (Requires administrator privileges)
+	ExternUid *string `pulumi:"externUid"`
 	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy *string `pulumi:"orderBy"`
 	// Search users by username, name or email.
@@ -136,7 +135,8 @@ type GetUsersOutputArgs struct {
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
 	// Lookup users by external provider. (Requires administrator privileges)
 	ExternProvider pulumi.StringPtrInput `pulumi:"externProvider"`
-	ExternUid      pulumi.StringPtrInput `pulumi:"externUid"`
+	// Lookup users by external UID. (Requires administrator privileges)
+	ExternUid pulumi.StringPtrInput `pulumi:"externUid"`
 	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// Search users by username, name or email.

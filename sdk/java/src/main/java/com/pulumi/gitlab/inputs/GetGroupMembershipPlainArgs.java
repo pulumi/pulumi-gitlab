@@ -16,9 +16,17 @@ public final class GetGroupMembershipPlainArgs extends com.pulumi.resources.Invo
 
     public static final GetGroupMembershipPlainArgs Empty = new GetGroupMembershipPlainArgs();
 
+    /**
+     * Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * 
+     */
     @Import(name="accessLevel")
     private @Nullable String accessLevel;
 
+    /**
+     * @return Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * 
+     */
     public Optional<String> accessLevel() {
         return Optional.ofNullable(this.accessLevel);
     }
@@ -95,6 +103,12 @@ public final class GetGroupMembershipPlainArgs extends com.pulumi.resources.Invo
             $ = new GetGroupMembershipPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessLevel Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessLevel(@Nullable String accessLevel) {
             $.accessLevel = accessLevel;
             return this;

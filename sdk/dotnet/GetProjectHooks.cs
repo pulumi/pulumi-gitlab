@@ -18,7 +18,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectHooksResult> InvokeAsync(GetProjectHooksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectHooksResult>("gitlab:index/getProjectHooks:getProjectHooks", args ?? new GetProjectHooksArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.GitLab
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.GitLab
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectHooksResult> Invoke(GetProjectHooksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectHooksResult>("gitlab:index/getProjectHooks:getProjectHooks", args ?? new GetProjectHooksInvokeArgs(), options.WithDefaults());
@@ -81,6 +77,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectHooksArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -92,6 +91,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectHooksInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
