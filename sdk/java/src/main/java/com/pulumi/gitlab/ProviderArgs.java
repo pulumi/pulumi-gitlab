@@ -84,25 +84,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clientKey);
     }
 
-    /**
-     * (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-     * configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
-     * the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
-     * `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
-     * backups of your state.
-     * 
-     */
     @Import(name="earlyAuthCheck", json=true)
     private @Nullable Output<Boolean> earlyAuthCheck;
 
-    /**
-     * @return (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-     * configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
-     * the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
-     * `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
-     * backups of your state.
-     * 
-     */
     public Optional<Output<Boolean>> earlyAuthCheck() {
         return Optional.ofNullable(this.earlyAuthCheck);
     }
@@ -265,31 +249,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return clientKey(Output.of(clientKey));
         }
 
-        /**
-         * @param earlyAuthCheck (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-         * configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
-         * the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
-         * `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
-         * backups of your state.
-         * 
-         * @return builder
-         * 
-         */
         public Builder earlyAuthCheck(@Nullable Output<Boolean> earlyAuthCheck) {
             $.earlyAuthCheck = earlyAuthCheck;
             return this;
         }
 
-        /**
-         * @param earlyAuthCheck (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-         * configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
-         * the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
-         * `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
-         * backups of your state.
-         * 
-         * @return builder
-         * 
-         */
         public Builder earlyAuthCheck(Boolean earlyAuthCheck) {
             return earlyAuthCheck(Output.of(earlyAuthCheck));
         }
