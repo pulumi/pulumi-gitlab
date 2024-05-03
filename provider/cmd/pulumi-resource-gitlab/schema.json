@@ -3996,8 +3996,7 @@
                 "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when\n`client_cert` is set.\n"
             },
             "earlyAuthCheck": {
-                "type": "boolean",
-                "description": "(Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider\nconfiguration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if\nthe GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the\n`GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep\nbackups of your state.\n"
+                "type": "boolean"
             },
             "insecure": {
                 "type": "boolean",
@@ -4027,8 +4026,7 @@
                 "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when\n`client_cert` is set.\n"
             },
             "earlyAuthCheck": {
-                "type": "boolean",
-                "description": "(Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider\nconfiguration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if\nthe GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the\n`GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep\nbackups of your state.\n"
+                "type": "boolean"
             },
             "insecure": {
                 "type": "boolean",
@@ -11415,8 +11413,7 @@
                     "description": "ID of the project you want to activate integration on.\n"
                 },
                 "repositoryUrl": {
-                    "type": "string",
-                    "description": "The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.\n"
+                    "type": "string"
                 },
                 "staticContext": {
                     "type": "boolean",
@@ -11452,8 +11449,7 @@
                     "willReplaceOnChanges": true
                 },
                 "repositoryUrl": {
-                    "type": "string",
-                    "description": "The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.\n"
+                    "type": "string"
                 },
                 "staticContext": {
                     "type": "boolean",
@@ -11487,8 +11483,7 @@
                         "willReplaceOnChanges": true
                     },
                     "repositoryUrl": {
-                        "type": "string",
-                        "description": "The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.\n"
+                        "type": "string"
                     },
                     "staticContext": {
                         "type": "boolean",
@@ -13067,8 +13062,7 @@
                     "description": "The branch/tag name to be triggered.\n"
                 },
                 "takeOwnership": {
-                    "type": "boolean",
-                    "description": "When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline\nprior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside\nTerraform.\n"
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -13108,8 +13102,7 @@
                     "description": "The branch/tag name to be triggered.\n"
                 },
                 "takeOwnership": {
-                    "type": "boolean",
-                    "description": "When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline\nprior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside\nTerraform.\n"
+                    "type": "boolean"
                 }
             },
             "requiredInputs": [
@@ -13154,8 +13147,7 @@
                         "description": "The branch/tag name to be triggered.\n"
                     },
                     "takeOwnership": {
-                        "type": "boolean",
-                        "description": "When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline\nprior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside\nTerraform.\n"
+                        "type": "boolean"
                     }
                 },
                 "type": "object"
@@ -18599,8 +18591,7 @@
                     "description": "ID of the project you want to activate integration on.\n"
                 },
                 "repositoryUrl": {
-                    "type": "string",
-                    "description": "The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.\n"
+                    "type": "string"
                 },
                 "staticContext": {
                     "type": "boolean",
@@ -18636,8 +18627,7 @@
                     "willReplaceOnChanges": true
                 },
                 "repositoryUrl": {
-                    "type": "string",
-                    "description": "The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.\n"
+                    "type": "string"
                 },
                 "staticContext": {
                     "type": "boolean",
@@ -18671,8 +18661,7 @@
                         "willReplaceOnChanges": true
                     },
                     "repositoryUrl": {
-                        "type": "string",
-                        "description": "The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.\n"
+                        "type": "string"
                     },
                     "staticContext": {
                         "type": "boolean",
