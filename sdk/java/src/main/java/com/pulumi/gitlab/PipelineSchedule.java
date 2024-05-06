@@ -179,21 +179,9 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
     public Output<String> ref() {
         return this.ref;
     }
-    /**
-     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-     * Terraform.
-     * 
-     */
     @Export(name="takeOwnership", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> takeOwnership;
 
-    /**
-     * @return When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-     * Terraform.
-     * 
-     */
     public Output<Boolean> takeOwnership() {
         return this.takeOwnership;
     }

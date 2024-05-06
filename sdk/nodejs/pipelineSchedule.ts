@@ -91,11 +91,6 @@ export class PipelineSchedule extends pulumi.CustomResource {
      * The branch/tag name to be triggered.
      */
     public readonly ref!: pulumi.Output<string>;
-    /**
-     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-     * Terraform.
-     */
     public readonly takeOwnership!: pulumi.Output<boolean>;
 
     /**
@@ -185,11 +180,6 @@ export interface PipelineScheduleState {
      * The branch/tag name to be triggered.
      */
     ref?: pulumi.Input<string>;
-    /**
-     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-     * Terraform.
-     */
     takeOwnership?: pulumi.Input<boolean>;
 }
 
@@ -221,10 +211,5 @@ export interface PipelineScheduleArgs {
      * The branch/tag name to be triggered.
      */
     ref: pulumi.Input<string>;
-    /**
-     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-     * Terraform.
-     */
     takeOwnership?: pulumi.Input<boolean>;
 }
