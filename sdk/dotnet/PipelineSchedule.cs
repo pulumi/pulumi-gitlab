@@ -94,11 +94,6 @@ namespace Pulumi.GitLab
         [Output("ref")]
         public Output<string> Ref { get; private set; } = null!;
 
-        /// <summary>
-        /// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-        /// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-        /// Terraform.
-        /// </summary>
         [Output("takeOwnership")]
         public Output<bool> TakeOwnership { get; private set; } = null!;
 
@@ -184,11 +179,6 @@ namespace Pulumi.GitLab
         [Input("ref", required: true)]
         public Input<string> Ref { get; set; } = null!;
 
-        /// <summary>
-        /// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-        /// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-        /// Terraform.
-        /// </summary>
         [Input("takeOwnership")]
         public Input<bool>? TakeOwnership { get; set; }
 
@@ -248,11 +238,6 @@ namespace Pulumi.GitLab
         [Input("ref")]
         public Input<string>? Ref { get; set; }
 
-        /// <summary>
-        /// When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-        /// prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-        /// Terraform.
-        /// </summary>
         [Input("takeOwnership")]
         public Input<bool>? TakeOwnership { get; set; }
 

@@ -121,17 +121,9 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    /**
-     * The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-     * 
-     */
     @Export(name="repositoryUrl", refs={String.class}, tree="[0]")
     private Output<String> repositoryUrl;
 
-    /**
-     * @return The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-     * 
-     */
     public Output<String> repositoryUrl() {
         return this.repositoryUrl;
     }

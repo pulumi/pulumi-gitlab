@@ -21,7 +21,6 @@ class IntegrationGithubArgs:
         """
         The set of arguments for constructing a IntegrationGithub resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[str] repository_url: The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
         :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         """
@@ -46,9 +45,6 @@ class IntegrationGithubArgs:
     @property
     @pulumi.getter(name="repositoryUrl")
     def repository_url(self) -> pulumi.Input[str]:
-        """
-        The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-        """
         return pulumi.get(self, "repository_url")
 
     @repository_url.setter
@@ -96,7 +92,6 @@ class _IntegrationGithubState:
         :param pulumi.Input[bool] active: Whether the integration is active.
         :param pulumi.Input[str] created_at: Create time.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[str] repository_url: The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
         :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         :param pulumi.Input[str] title: Title.
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
@@ -158,9 +153,6 @@ class _IntegrationGithubState:
     @property
     @pulumi.getter(name="repositoryUrl")
     def repository_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-        """
         return pulumi.get(self, "repository_url")
 
     @repository_url.setter
@@ -262,7 +254,6 @@ class IntegrationGithub(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[str] repository_url: The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
         :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
         """
@@ -377,7 +368,6 @@ class IntegrationGithub(pulumi.CustomResource):
         :param pulumi.Input[bool] active: Whether the integration is active.
         :param pulumi.Input[str] created_at: Create time.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[str] repository_url: The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
         :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         :param pulumi.Input[str] title: Title.
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
@@ -424,9 +414,6 @@ class IntegrationGithub(pulumi.CustomResource):
     @property
     @pulumi.getter(name="repositoryUrl")
     def repository_url(self) -> pulumi.Output[str]:
-        """
-        The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-        """
         return pulumi.get(self, "repository_url")
 
     @property
