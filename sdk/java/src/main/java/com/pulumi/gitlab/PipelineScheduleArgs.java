@@ -107,21 +107,9 @@ public final class PipelineScheduleArgs extends com.pulumi.resources.ResourceArg
         return this.ref;
     }
 
-    /**
-     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-     * Terraform.
-     * 
-     */
     @Import(name="takeOwnership")
     private @Nullable Output<Boolean> takeOwnership;
 
-    /**
-     * @return When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-     * Terraform.
-     * 
-     */
     public Optional<Output<Boolean>> takeOwnership() {
         return Optional.ofNullable(this.takeOwnership);
     }
@@ -282,27 +270,11 @@ public final class PipelineScheduleArgs extends com.pulumi.resources.ResourceArg
             return ref(Output.of(ref));
         }
 
-        /**
-         * @param takeOwnership When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-         * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-         * Terraform.
-         * 
-         * @return builder
-         * 
-         */
         public Builder takeOwnership(@Nullable Output<Boolean> takeOwnership) {
             $.takeOwnership = takeOwnership;
             return this;
         }
 
-        /**
-         * @param takeOwnership When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-         * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-         * Terraform.
-         * 
-         * @return builder
-         * 
-         */
         public Builder takeOwnership(Boolean takeOwnership) {
             return takeOwnership(Output.of(takeOwnership));
         }

@@ -32,17 +32,9 @@ public final class ServiceGithubArgs extends com.pulumi.resources.ResourceArgs {
         return this.project;
     }
 
-    /**
-     * The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-     * 
-     */
     @Import(name="repositoryUrl", required=true)
     private Output<String> repositoryUrl;
 
-    /**
-     * @return The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-     * 
-     */
     public Output<String> repositoryUrl() {
         return this.repositoryUrl;
     }
@@ -125,23 +117,11 @@ public final class ServiceGithubArgs extends com.pulumi.resources.ResourceArgs {
             return project(Output.of(project));
         }
 
-        /**
-         * @param repositoryUrl The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-         * 
-         * @return builder
-         * 
-         */
         public Builder repositoryUrl(Output<String> repositoryUrl) {
             $.repositoryUrl = repositoryUrl;
             return this;
         }
 
-        /**
-         * @param repositoryUrl The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-         * 
-         * @return builder
-         * 
-         */
         public Builder repositoryUrl(String repositoryUrl) {
             return repositoryUrl(Output.of(repositoryUrl));
         }

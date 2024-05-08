@@ -31,11 +31,6 @@ class ProviderArgs:
         :param pulumi.Input[str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
         :param pulumi.Input[str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
                `client_cert` is set.
-        :param pulumi.Input[bool] early_auth_check: (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-               configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
-               the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
-               `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
-               backups of your state.
         :param pulumi.Input[bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
         :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
                used in this provider for authentication (using Bearer authorization token). See
@@ -112,13 +107,6 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="earlyAuthCheck")
     def early_auth_check(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-        configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
-        the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
-        `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
-        backups of your state.
-        """
         return pulumi.get(self, "early_auth_check")
 
     @early_auth_check.setter
@@ -182,11 +170,6 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
         :param pulumi.Input[str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
                `client_cert` is set.
-        :param pulumi.Input[bool] early_auth_check: (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-               configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
-               the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
-               `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
-               backups of your state.
         :param pulumi.Input[bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
         :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
                used in this provider for authentication (using Bearer authorization token). See
