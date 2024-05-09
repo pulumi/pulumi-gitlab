@@ -29,9 +29,6 @@ class PipelineScheduleArgs:
         :param pulumi.Input[str] ref: The branch/tag name to be triggered.
         :param pulumi.Input[bool] active: The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         :param pulumi.Input[str] cron_timezone: The timezone.
-        :param pulumi.Input[bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-               prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-               Terraform.
         """
         pulumi.set(__self__, "cron", cron)
         pulumi.set(__self__, "description", description)
@@ -119,11 +116,6 @@ class PipelineScheduleArgs:
     @property
     @pulumi.getter(name="takeOwnership")
     def take_ownership(self) -> Optional[pulumi.Input[bool]]:
-        """
-        When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-        prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-        Terraform.
-        """
         return pulumi.get(self, "take_ownership")
 
     @take_ownership.setter
@@ -153,9 +145,6 @@ class _PipelineScheduleState:
         :param pulumi.Input[int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[str] ref: The branch/tag name to be triggered.
-        :param pulumi.Input[bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-               prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-               Terraform.
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -275,11 +264,6 @@ class _PipelineScheduleState:
     @property
     @pulumi.getter(name="takeOwnership")
     def take_ownership(self) -> Optional[pulumi.Input[bool]]:
-        """
-        When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-        prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-        Terraform.
-        """
         return pulumi.get(self, "take_ownership")
 
     @take_ownership.setter
@@ -334,9 +318,6 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the pipeline schedule.
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[str] ref: The branch/tag name to be triggered.
-        :param pulumi.Input[bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-               prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-               Terraform.
         """
         ...
     @overload
@@ -452,9 +433,6 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[str] ref: The branch/tag name to be triggered.
-        :param pulumi.Input[bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-               prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-               Terraform.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -538,10 +516,5 @@ class PipelineSchedule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="takeOwnership")
     def take_ownership(self) -> pulumi.Output[bool]:
-        """
-        When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-        prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-        Terraform.
-        """
         return pulumi.get(self, "take_ownership")
 
