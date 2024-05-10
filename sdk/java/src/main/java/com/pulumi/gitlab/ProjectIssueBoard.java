@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,33 +59,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(&#34;example project&#34;)
- *             .description(&#34;Lorem Ipsum&#34;)
- *             .visibilityLevel(&#34;public&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name("example project")
+ *             .description("Lorem Ipsum")
+ *             .visibilityLevel("public")
  *             .build());
  * 
- *         var exampleUser = new User(&#34;exampleUser&#34;, UserArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .username(&#34;example&#34;)
- *             .email(&#34;example@example.com&#34;)
- *             .password(&#34;example1$$$&#34;)
+ *         var exampleUser = new User("exampleUser", UserArgs.builder()        
+ *             .name("example")
+ *             .username("example")
+ *             .email("example{@literal @}example.com")
+ *             .password("example1$$$")
  *             .build());
  * 
- *         var exampleProjectMembership = new ProjectMembership(&#34;exampleProjectMembership&#34;, ProjectMembershipArgs.builder()        
+ *         var exampleProjectMembership = new ProjectMembership("exampleProjectMembership", ProjectMembershipArgs.builder()        
  *             .projectId(example.id())
  *             .userId(exampleUser.id())
- *             .accessLevel(&#34;developer&#34;)
+ *             .accessLevel("developer")
  *             .build());
  * 
- *         var exampleProjectMilestone = new ProjectMilestone(&#34;exampleProjectMilestone&#34;, ProjectMilestoneArgs.builder()        
+ *         var exampleProjectMilestone = new ProjectMilestone("exampleProjectMilestone", ProjectMilestoneArgs.builder()        
  *             .project(example.id())
- *             .title(&#34;m1&#34;)
+ *             .title("m1")
  *             .build());
  * 
- *         var this_ = new ProjectIssueBoard(&#34;this&#34;, ProjectIssueBoardArgs.builder()        
+ *         var this_ = new ProjectIssueBoard("this", ProjectIssueBoardArgs.builder()        
  *             .project(example.id())
- *             .name(&#34;Test Issue Board&#34;)
+ *             .name("Test Issue Board")
  *             .lists(            
  *                 ProjectIssueBoardListArgs.builder()
  *                     .assigneeId(exampleUser.id())
@@ -96,9 +97,9 @@ import javax.annotation.Nullable;
  *                 .dependsOn(exampleProjectMembership)
  *                 .build());
  * 
- *         var listSyntax = new ProjectIssueBoard(&#34;listSyntax&#34;, ProjectIssueBoardArgs.builder()        
+ *         var listSyntax = new ProjectIssueBoard("listSyntax", ProjectIssueBoardArgs.builder()        
  *             .project(example.id())
- *             .name(&#34;Test Issue Board with list syntax&#34;)
+ *             .name("Test Issue Board with list syntax")
  *             .lists(            
  *                 ProjectIssueBoardListArgs.builder()
  *                     .assigneeId(exampleUser.id())
@@ -112,7 +113,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

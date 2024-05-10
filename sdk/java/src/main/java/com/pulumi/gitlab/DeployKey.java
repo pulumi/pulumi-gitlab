@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,15 +48,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DeployKey(&#34;example&#34;, DeployKeyArgs.builder()        
- *             .project(&#34;example/deploying&#34;)
- *             .title(&#34;Example deploy key&#34;)
- *             .key(&#34;ssh-ed25519 AAAA...&#34;)
+ *         var example = new DeployKey("example", DeployKeyArgs.builder()        
+ *             .project("example/deploying")
+ *             .title("Example deploy key")
+ *             .key("ssh-ed25519 AAAA...")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

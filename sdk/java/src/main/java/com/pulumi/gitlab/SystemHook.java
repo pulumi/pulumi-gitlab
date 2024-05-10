@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,9 +48,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new SystemHook(&#34;example&#34;, SystemHookArgs.builder()        
- *             .url(&#34;https://example.com/hook-%d&#34;)
- *             .token(&#34;secret-token&#34;)
+ *         var example = new SystemHook("example", SystemHookArgs.builder()        
+ *             .url("https://example.com/hook-%d")
+ *             .token("secret-token")
  *             .pushEvents(true)
  *             .tagPushEvents(true)
  *             .mergeRequestsEvents(true)
@@ -59,7 +60,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,11 +51,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new User(&#34;example&#34;, UserArgs.builder()        
- *             .name(&#34;Example Foo&#34;)
- *             .username(&#34;example&#34;)
- *             .password(&#34;superPassword&#34;)
- *             .email(&#34;gitlab@user.create&#34;)
+ *         var example = new User("example", UserArgs.builder()        
+ *             .name("Example Foo")
+ *             .username("example")
+ *             .password("superPassword")
+ *             .email("gitlab{@literal @}user.create")
  *             .isAdmin(true)
  *             .projectsLimit(4)
  *             .canCreateGroup(false)
@@ -64,7 +65,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

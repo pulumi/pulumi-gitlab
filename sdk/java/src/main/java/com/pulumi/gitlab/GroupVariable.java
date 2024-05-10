@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,18 +45,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new GroupVariable(&#34;example&#34;, GroupVariableArgs.builder()        
- *             .group(&#34;12345&#34;)
- *             .key(&#34;group_variable_key&#34;)
- *             .value(&#34;group_variable_value&#34;)
+ *         var example = new GroupVariable("example", GroupVariableArgs.builder()        
+ *             .group("12345")
+ *             .key("group_variable_key")
+ *             .value("group_variable_value")
  *             .protected_(false)
  *             .masked(false)
- *             .environmentScope(&#34;*&#34;)
+ *             .environmentScope("*")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,21 +48,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project(&#34;awesomeProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;awesome_project&#34;)
- *             .description(&#34;My awesome project.&#34;)
- *             .visibilityLevel(&#34;public&#34;)
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *             .name("awesome_project")
+ *             .description("My awesome project.")
+ *             .visibilityLevel("public")
  *             .build());
  * 
- *         var tracker = new ServiceCustomIssueTracker(&#34;tracker&#34;, ServiceCustomIssueTrackerArgs.builder()        
+ *         var tracker = new ServiceCustomIssueTracker("tracker", ServiceCustomIssueTrackerArgs.builder()        
  *             .project(awesomeProject.id())
- *             .projectUrl(&#34;https://customtracker.com/issues&#34;)
- *             .issuesUrl(&#34;https://customtracker.com/TEST-:id&#34;)
+ *             .projectUrl("https://customtracker.com/issues")
+ *             .issuesUrl("https://customtracker.com/TEST-:id")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

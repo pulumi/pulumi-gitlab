@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,16 +45,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PipelineSchedule(&#34;example&#34;, PipelineScheduleArgs.builder()        
- *             .project(&#34;12345&#34;)
- *             .description(&#34;Used to schedule builds&#34;)
- *             .ref(&#34;master&#34;)
- *             .cron(&#34;0 1 * * *&#34;)
+ *         var example = new PipelineSchedule("example", PipelineScheduleArgs.builder()        
+ *             .project("12345")
+ *             .description("Used to schedule builds")
+ *             .ref("master")
+ *             .cron("0 1 * * *")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -179,21 +181,9 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
     public Output<String> ref() {
         return this.ref;
     }
-    /**
-     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-     * Terraform.
-     * 
-     */
     @Export(name="takeOwnership", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> takeOwnership;
 
-    /**
-     * @return When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline
-     * prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside
-     * Terraform.
-     * 
-     */
     public Output<Boolean> takeOwnership() {
         return this.takeOwnership;
     }

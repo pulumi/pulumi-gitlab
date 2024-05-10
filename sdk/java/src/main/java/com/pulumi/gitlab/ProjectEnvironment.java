@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,27 +45,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .path(&#34;example&#34;)
- *             .description(&#34;An example group&#34;)
+ *         var this_ = new Group("this", GroupArgs.builder()        
+ *             .name("example")
+ *             .path("example")
+ *             .description("An example group")
  *             .build());
  * 
- *         var thisProject = new Project(&#34;thisProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;example&#34;)
+ *         var thisProject = new Project("thisProject", ProjectArgs.builder()        
+ *             .name("example")
  *             .namespaceId(this_.id())
  *             .initializeWithReadme(true)
  *             .build());
  * 
- *         var thisProjectEnvironment = new ProjectEnvironment(&#34;thisProjectEnvironment&#34;, ProjectEnvironmentArgs.builder()        
+ *         var thisProjectEnvironment = new ProjectEnvironment("thisProjectEnvironment", ProjectEnvironmentArgs.builder()        
  *             .project(thisProject.id())
- *             .name(&#34;example&#34;)
- *             .externalUrl(&#34;www.example.com&#34;)
+ *             .name("example")
+ *             .externalUrl("www.example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

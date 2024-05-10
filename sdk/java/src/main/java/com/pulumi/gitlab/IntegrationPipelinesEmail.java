@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,22 +48,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project(&#34;awesomeProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;awesome_project&#34;)
- *             .description(&#34;My awesome project.&#34;)
- *             .visibilityLevel(&#34;public&#34;)
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *             .name("awesome_project")
+ *             .description("My awesome project.")
+ *             .visibilityLevel("public")
  *             .build());
  * 
- *         var email = new IntegrationPipelinesEmail(&#34;email&#34;, IntegrationPipelinesEmailArgs.builder()        
+ *         var email = new IntegrationPipelinesEmail("email", IntegrationPipelinesEmailArgs.builder()        
  *             .project(awesomeProject.id())
- *             .recipients(&#34;gitlab@user.create&#34;)
+ *             .recipients("gitlab{@literal @}user.create")
  *             .notifyOnlyBrokenPipelines(true)
- *             .branchesToBeNotified(&#34;all&#34;)
+ *             .branchesToBeNotified("all")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

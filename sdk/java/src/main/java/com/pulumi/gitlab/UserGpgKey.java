@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,29 +50,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = GitlabFunctions.getUser(GetUserArgs.builder()
- *             .username(&#34;example-user&#34;)
+ *             .username("example-user")
  *             .build());
  * 
  *         // Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
- *         var exampleUserGpgKey = new UserGpgKey(&#34;exampleUserGpgKey&#34;, UserGpgKeyArgs.builder()        
- *             .userId(example.applyValue(getUserResult -&gt; getUserResult.id()))
- *             .key(&#34;&#34;&#34;
+ *         var exampleUserGpgKey = new UserGpgKey("exampleUserGpgKey", UserGpgKeyArgs.builder()        
+ *             .userId(example.applyValue(getUserResult -> getUserResult.id()))
+ *             .key("""
  * -----BEGIN PGP PUBLIC KEY BLOCK-----
  * ...
- * -----END PGP PUBLIC KEY BLOCK-----            &#34;&#34;&#34;)
+ * -----END PGP PUBLIC KEY BLOCK-----            """)
  *             .build());
  * 
  *         // Manages a GPG key for the current user
- *         var exampleUser = new UserGpgKey(&#34;exampleUser&#34;, UserGpgKeyArgs.builder()        
- *             .key(&#34;&#34;&#34;
+ *         var exampleUser = new UserGpgKey("exampleUser", UserGpgKeyArgs.builder()        
+ *             .key("""
  * -----BEGIN PGP PUBLIC KEY BLOCK-----
  * ...
- * -----END PGP PUBLIC KEY BLOCK-----            &#34;&#34;&#34;)
+ * -----END PGP PUBLIC KEY BLOCK-----            """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

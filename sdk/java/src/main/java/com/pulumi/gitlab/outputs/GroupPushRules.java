@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GroupPushRules {
     /**
-     * @return All commit author emails must match this regex, e.g. `@my-company.com$`.
+     * @return All commit author emails must match this regex, e.g. `{@literal @}my-company.com$`.
      * 
      */
     private @Nullable String authorEmailRegex;
@@ -71,7 +71,7 @@ public final class GroupPushRules {
 
     private GroupPushRules() {}
     /**
-     * @return All commit author emails must match this regex, e.g. `@my-company.com$`.
+     * @return All commit author emails must match this regex, e.g. `{@literal @}my-company.com$`.
      * 
      */
     public Optional<String> authorEmailRegex() {

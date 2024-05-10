@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,15 +47,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ProjectHook(&#34;example&#34;, ProjectHookArgs.builder()        
- *             .project(&#34;example/hooked&#34;)
- *             .url(&#34;https://example.com/hook/example&#34;)
+ *         var example = new ProjectHook("example", ProjectHookArgs.builder()        
+ *             .project("example/hooked")
+ *             .url("https://example.com/hook/example")
  *             .mergeRequestsEvents(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
