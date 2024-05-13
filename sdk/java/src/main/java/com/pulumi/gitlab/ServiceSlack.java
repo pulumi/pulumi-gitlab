@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,23 +49,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project(&#34;awesomeProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;awesome_project&#34;)
- *             .description(&#34;My awesome project.&#34;)
- *             .visibilityLevel(&#34;public&#34;)
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *             .name("awesome_project")
+ *             .description("My awesome project.")
+ *             .visibilityLevel("public")
  *             .build());
  * 
- *         var slack = new ServiceSlack(&#34;slack&#34;, ServiceSlackArgs.builder()        
+ *         var slack = new ServiceSlack("slack", ServiceSlackArgs.builder()        
  *             .project(awesomeProject.id())
- *             .webhook(&#34;https://webhook.com&#34;)
- *             .username(&#34;myuser&#34;)
+ *             .webhook("https://webhook.com")
+ *             .username("myuser")
  *             .pushEvents(true)
- *             .pushChannel(&#34;push_chan&#34;)
+ *             .pushChannel("push_chan")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

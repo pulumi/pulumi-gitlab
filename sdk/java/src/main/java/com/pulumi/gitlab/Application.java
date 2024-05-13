@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,16 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var oidc = new Application(&#34;oidc&#34;, ApplicationArgs.builder()        
+ *         var oidc = new Application("oidc", ApplicationArgs.builder()        
  *             .confidential(true)
- *             .scopes(&#34;openid&#34;)
- *             .name(&#34;company_oidc&#34;)
- *             .redirectUrl(&#34;https://mycompany.com&#34;)
+ *             .scopes("openid")
+ *             .name("company_oidc")
+ *             .redirectUrl("https://mycompany.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

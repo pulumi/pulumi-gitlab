@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,12 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
- *             .name(&#34;Example&#34;)
- *             .description(&#34;My example project&#34;)
+ *         var foo = new Project("foo", ProjectArgs.builder()        
+ *             .name("Example")
+ *             .description("My example project")
  *             .build());
  * 
- *         var fooProjectLevelMrApprovals = new ProjectLevelMrApprovals(&#34;fooProjectLevelMrApprovals&#34;, ProjectLevelMrApprovalsArgs.builder()        
+ *         var fooProjectLevelMrApprovals = new ProjectLevelMrApprovals("fooProjectLevelMrApprovals", ProjectLevelMrApprovalsArgs.builder()        
  *             .project(foo.id())
  *             .resetApprovalsOnPush(true)
  *             .disableOverridingApproversPerMergeRequest(false)
@@ -62,7 +63,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

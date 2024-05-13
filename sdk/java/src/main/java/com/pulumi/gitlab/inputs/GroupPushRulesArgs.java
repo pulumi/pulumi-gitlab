@@ -18,14 +18,14 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
     public static final GroupPushRulesArgs Empty = new GroupPushRulesArgs();
 
     /**
-     * All commit author emails must match this regex, e.g. `@my-company.com$`.
+     * All commit author emails must match this regex, e.g. `{@literal @}my-company.com$`.
      * 
      */
     @Import(name="authorEmailRegex")
     private @Nullable Output<String> authorEmailRegex;
 
     /**
-     * @return All commit author emails must match this regex, e.g. `@my-company.com$`.
+     * @return All commit author emails must match this regex, e.g. `{@literal @}my-company.com$`.
      * 
      */
     public Optional<Output<String>> authorEmailRegex() {
@@ -217,7 +217,7 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorEmailRegex All commit author emails must match this regex, e.g. `@my-company.com$`.
+         * @param authorEmailRegex All commit author emails must match this regex, e.g. `{@literal @}my-company.com$`.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorEmailRegex All commit author emails must match this regex, e.g. `@my-company.com$`.
+         * @param authorEmailRegex All commit author emails must match this regex, e.g. `{@literal @}my-company.com$`.
          * 
          * @return builder
          * 

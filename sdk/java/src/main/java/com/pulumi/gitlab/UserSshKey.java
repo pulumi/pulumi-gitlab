@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,19 +48,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = GitlabFunctions.getUser(GetUserArgs.builder()
- *             .username(&#34;example-user&#34;)
+ *             .username("example-user")
  *             .build());
  * 
- *         var exampleUserSshKey = new UserSshKey(&#34;exampleUserSshKey&#34;, UserSshKeyArgs.builder()        
- *             .userId(example.applyValue(getUserResult -&gt; getUserResult.id()))
- *             .title(&#34;example-key&#34;)
- *             .key(&#34;ssh-ed25519 AAAA...&#34;)
- *             .expiresAt(&#34;2016-01-21T00:00:00.000Z&#34;)
+ *         var exampleUserSshKey = new UserSshKey("exampleUserSshKey", UserSshKeyArgs.builder()        
+ *             .userId(example.applyValue(getUserResult -> getUserResult.id()))
+ *             .title("example-key")
+ *             .key("ssh-ed25519 AAAA...")
+ *             .expiresAt("2016-01-21T00:00:00.000Z")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

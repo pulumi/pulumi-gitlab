@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,21 +47,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project(&#34;awesomeProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;awesome_project&#34;)
- *             .description(&#34;My awesome project.&#34;)
- *             .visibilityLevel(&#34;public&#34;)
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *             .name("awesome_project")
+ *             .description("My awesome project.")
+ *             .visibilityLevel("public")
  *             .build());
  * 
- *         var teams = new IntegrationMicrosoftTeams(&#34;teams&#34;, IntegrationMicrosoftTeamsArgs.builder()        
+ *         var teams = new IntegrationMicrosoftTeams("teams", IntegrationMicrosoftTeamsArgs.builder()        
  *             .project(awesomeProject.id())
- *             .webhook(&#34;https://testurl.com/?token=XYZ&#34;)
+ *             .webhook("https://testurl.com/?token=XYZ")
  *             .pushEvents(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

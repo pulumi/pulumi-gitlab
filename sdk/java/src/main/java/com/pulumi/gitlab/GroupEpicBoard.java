@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,26 +53,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
- *             .name(&#34;test_group&#34;)
- *             .path(&#34;test_group&#34;)
- *             .description(&#34;An example group&#34;)
+ *         var example = new Group("example", GroupArgs.builder()        
+ *             .name("test_group")
+ *             .path("test_group")
+ *             .description("An example group")
  *             .build());
  * 
- *         var label1 = new GroupLabel(&#34;label1&#34;, GroupLabelArgs.builder()        
+ *         var label1 = new GroupLabel("label1", GroupLabelArgs.builder()        
  *             .group(example.id())
- *             .color(&#34;#FF0000&#34;)
- *             .name(&#34;red-label&#34;)
+ *             .color("#FF0000")
+ *             .name("red-label")
  *             .build());
  * 
- *         var label3 = new GroupLabel(&#34;label3&#34;, GroupLabelArgs.builder()        
+ *         var label3 = new GroupLabel("label3", GroupLabelArgs.builder()        
  *             .group(example.id())
- *             .name(&#34;label-3&#34;)
- *             .color(&#34;#003000&#34;)
+ *             .name("label-3")
+ *             .color("#003000")
  *             .build());
  * 
- *         var epicBoard = new GroupEpicBoard(&#34;epicBoard&#34;, GroupEpicBoardArgs.builder()        
- *             .name(&#34;epic board 6&#34;)
+ *         var epicBoard = new GroupEpicBoard("epicBoard", GroupEpicBoardArgs.builder()        
+ *             .name("epic board 6")
  *             .group(example.path())
  *             .lists(GroupEpicBoardListArgs.builder()
  *                 .labelId(label1.labelId())
@@ -80,7 +81,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,27 +53,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Group(&#34;foo&#34;, GroupArgs.builder()        
- *             .name(&#34;group&#34;)
- *             .path(&#34;group&#34;)
- *             .description(&#34;An example group&#34;)
+ *         var foo = new Group("foo", GroupArgs.builder()        
+ *             .name("group")
+ *             .path("group")
+ *             .description("An example group")
  *             .build());
  * 
- *         var bar = new Project(&#34;bar&#34;, ProjectArgs.builder()        
- *             .name(&#34;template project&#34;)
- *             .description(&#34;contains file templates&#34;)
- *             .visibilityLevel(&#34;public&#34;)
+ *         var bar = new Project("bar", ProjectArgs.builder()        
+ *             .name("template project")
+ *             .description("contains file templates")
+ *             .visibilityLevel("public")
  *             .namespaceId(foo.id())
  *             .build());
  * 
- *         var templateLink = new GroupProjectFileTemplate(&#34;templateLink&#34;, GroupProjectFileTemplateArgs.builder()        
+ *         var templateLink = new GroupProjectFileTemplate("templateLink", GroupProjectFileTemplateArgs.builder()        
  *             .groupId(foo.id())
  *             .fileTemplateProjectId(bar.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

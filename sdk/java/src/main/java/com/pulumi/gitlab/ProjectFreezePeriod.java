@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,16 +44,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var schedule = new ProjectFreezePeriod(&#34;schedule&#34;, ProjectFreezePeriodArgs.builder()        
+ *         var schedule = new ProjectFreezePeriod("schedule", ProjectFreezePeriodArgs.builder()        
  *             .project(foo.id())
- *             .freezeStart(&#34;0 23 * * 5&#34;)
- *             .freezeEnd(&#34;0 7 * * 1&#34;)
- *             .cronTimezone(&#34;UTC&#34;)
+ *             .freezeStart("0 23 * * 5")
+ *             .freezeEnd("0 7 * * 1")
+ *             .cronTimezone("UTC")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

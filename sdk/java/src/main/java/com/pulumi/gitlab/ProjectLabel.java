@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,24 +45,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fixme = new ProjectLabel(&#34;fixme&#34;, ProjectLabelArgs.builder()        
- *             .project(&#34;example&#34;)
- *             .name(&#34;fixme&#34;)
- *             .description(&#34;issue with failing tests&#34;)
- *             .color(&#34;#ffcc00&#34;)
+ *         var fixme = new ProjectLabel("fixme", ProjectLabelArgs.builder()        
+ *             .project("example")
+ *             .name("fixme")
+ *             .description("issue with failing tests")
+ *             .color("#ffcc00")
  *             .build());
  * 
  *         // Scoped label
- *         var devopsCreate = new ProjectLabel(&#34;devopsCreate&#34;, ProjectLabelArgs.builder()        
+ *         var devopsCreate = new ProjectLabel("devopsCreate", ProjectLabelArgs.builder()        
  *             .project(example.id())
- *             .name(&#34;devops::create&#34;)
- *             .description(&#34;issue for creating infrastructure resources&#34;)
- *             .color(&#34;#ffa500&#34;)
+ *             .name("devops::create")
+ *             .description("issue for creating infrastructure resources")
+ *             .color("#ffa500")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -107,14 +107,14 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
      * 
      */
     @Import(name="pipelineConfigurationFullPath")
     private @Nullable Output<String> pipelineConfigurationFullPath;
 
     /**
-     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
      * 
      */
     public Optional<Output<String>> pipelineConfigurationFullPath() {
@@ -278,7 +278,7 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pipelineConfigurationFullPath Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+         * @param pipelineConfigurationFullPath Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pipelineConfigurationFullPath Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+         * @param pipelineConfigurationFullPath Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
          * 
          * @return builder
          * 

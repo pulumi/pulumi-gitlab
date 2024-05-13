@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,21 +49,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a project for the branch to use
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .description(&#34;An example project&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name("example")
+ *             .description("An example project")
  *             .namespaceId(exampleGitlabGroup.id())
  *             .build());
  * 
- *         var exampleBranch = new Branch(&#34;exampleBranch&#34;, BranchArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .ref(&#34;main&#34;)
+ *         var exampleBranch = new Branch("exampleBranch", BranchArgs.builder()        
+ *             .name("example")
+ *             .ref("main")
  *             .project(example.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,54 +46,55 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .path(&#34;example&#34;)
- *             .description(&#34;An example group&#34;)
+ *         var this_ = new Group("this", GroupArgs.builder()        
+ *             .name("example")
+ *             .path("example")
+ *             .description("An example group")
  *             .build());
  * 
- *         var thisProject = new Project(&#34;thisProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;example&#34;)
+ *         var thisProject = new Project("thisProject", ProjectArgs.builder()        
+ *             .name("example")
  *             .namespaceId(this_.id())
  *             .initializeWithReadme(true)
  *             .build());
  * 
- *         var thisRepositoryFile = new RepositoryFile(&#34;thisRepositoryFile&#34;, RepositoryFileArgs.builder()        
+ *         var thisRepositoryFile = new RepositoryFile("thisRepositoryFile", RepositoryFileArgs.builder()        
  *             .project(thisProject.id())
- *             .filePath(&#34;meow.txt&#34;)
- *             .branch(&#34;main&#34;)
+ *             .filePath("meow.txt")
+ *             .branch("main")
  *             .content(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                 .input(&#34;Meow goes the cat&#34;)
+ *                 .input("Meow goes the cat")
  *                 .build()).result())
- *             .authorEmail(&#34;terraform@example.com&#34;)
- *             .authorName(&#34;Terraform&#34;)
- *             .commitMessage(&#34;feature: add meow file&#34;)
+ *             .authorEmail("terraform{@literal @}example.com")
+ *             .authorName("Terraform")
+ *             .commitMessage("feature: add meow file")
  *             .build());
  * 
- *         var readme = new RepositoryFile(&#34;readme&#34;, RepositoryFileArgs.builder()        
+ *         var readme = new RepositoryFile("readme", RepositoryFileArgs.builder()        
  *             .project(thisProject.id())
- *             .filePath(&#34;readme.txt&#34;)
- *             .branch(&#34;main&#34;)
- *             .content(&#34;Meow goes the cat&#34;)
- *             .authorEmail(&#34;terraform@example.com&#34;)
- *             .authorName(&#34;Terraform&#34;)
- *             .commitMessage(&#34;feature: add readme file&#34;)
+ *             .filePath("readme.txt")
+ *             .branch("main")
+ *             .content("Meow goes the cat")
+ *             .authorEmail("terraform{@literal @}example.com")
+ *             .authorName("Terraform")
+ *             .commitMessage("feature: add readme file")
  *             .build());
  * 
- *         var readmeForDogs = new RepositoryFile(&#34;readmeForDogs&#34;, RepositoryFileArgs.builder()        
+ *         var readmeForDogs = new RepositoryFile("readmeForDogs", RepositoryFileArgs.builder()        
  *             .project(thisProject.id())
- *             .filePath(&#34;readme.txt&#34;)
- *             .branch(&#34;main&#34;)
- *             .content(&#34;Bark goes the dog&#34;)
- *             .authorEmail(&#34;terraform@example.com&#34;)
- *             .authorName(&#34;Terraform&#34;)
- *             .commitMessage(&#34;feature: update readme file&#34;)
+ *             .filePath("readme.txt")
+ *             .branch("main")
+ *             .content("Bark goes the dog")
+ *             .authorEmail("terraform{@literal @}example.com")
+ *             .authorName("Terraform")
+ *             .commitMessage("feature: update readme file")
  *             .overwriteOnCreate(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
