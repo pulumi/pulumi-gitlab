@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,40 +45,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Group(&#34;foo&#34;, GroupArgs.builder()        
- *             .name(&#34;foo-group&#34;)
+ *         var foo = new Group("foo", GroupArgs.builder()        
+ *             .name("foo-group")
  *             .build());
  * 
- *         var example = new GroupBadge(&#34;example&#34;, GroupBadgeArgs.builder()        
+ *         var example = new GroupBadge("example", GroupBadgeArgs.builder()        
  *             .group(foo.id())
- *             .linkUrl(&#34;https://example.com/badge-123&#34;)
- *             .imageUrl(&#34;https://example.com/badge-123.svg&#34;)
+ *             .linkUrl("https://example.com/badge-123")
+ *             .imageUrl("https://example.com/badge-123.svg")
  *             .build());
  * 
  *         // Pipeline status badges with placeholders will be enabled for each project
- *         var gitlabPipeline = new GroupBadge(&#34;gitlabPipeline&#34;, GroupBadgeArgs.builder()        
+ *         var gitlabPipeline = new GroupBadge("gitlabPipeline", GroupBadgeArgs.builder()        
  *             .group(foo.id())
- *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}&#34;)
- *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg&#34;)
+ *             .linkUrl("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}")
+ *             .imageUrl("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
  *             .build());
  * 
  *         // Test coverage report badges with placeholders will be enabled for each project
- *         var gitlabCoverage = new GroupBadge(&#34;gitlabCoverage&#34;, GroupBadgeArgs.builder()        
+ *         var gitlabCoverage = new GroupBadge("gitlabCoverage", GroupBadgeArgs.builder()        
  *             .group(foo.id())
- *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/jobs&#34;)
- *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg&#34;)
+ *             .linkUrl("https://gitlab.example.com/%{project_path}/-/jobs")
+ *             .imageUrl("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
  *             .build());
  * 
  *         // Latest release badges with placeholders will be enabled for each project
- *         var gitlabRelease = new GroupBadge(&#34;gitlabRelease&#34;, GroupBadgeArgs.builder()        
+ *         var gitlabRelease = new GroupBadge("gitlabRelease", GroupBadgeArgs.builder()        
  *             .group(foo.id())
- *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/releases&#34;)
- *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/-/badges/release.svg&#34;)
+ *             .linkUrl("https://gitlab.example.com/%{project_path}/-/releases")
+ *             .imageUrl("https://gitlab.example.com/%{project_path}/-/badges/release.svg")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

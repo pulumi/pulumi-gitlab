@@ -140,7 +140,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -167,7 +168,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -182,7 +184,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -209,7 +212,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -224,7 +228,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -251,7 +256,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -266,7 +272,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -293,7 +300,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -346,7 +354,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -368,13 +377,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getClusterAgent(GetClusterAgentArgs.builder()
-     *             .project(&#34;12345&#34;)
+     *             .project("12345")
      *             .agentId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -391,7 +401,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -413,13 +424,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getClusterAgent(GetClusterAgentArgs.builder()
-     *             .project(&#34;12345&#34;)
+     *             .project("12345")
      *             .agentId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -436,7 +448,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -458,13 +471,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getClusterAgent(GetClusterAgentArgs.builder()
-     *             .project(&#34;12345&#34;)
+     *             .project("12345")
      *             .agentId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -481,7 +495,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -503,13 +518,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getClusterAgent(GetClusterAgentArgs.builder()
-     *             .project(&#34;12345&#34;)
+     *             .project("12345")
      *             .agentId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -526,7 +542,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -548,12 +565,13 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var agents = GitlabFunctions.getClusterAgents(GetClusterAgentsArgs.builder()
-     *             .project(&#34;12345&#34;)
+     *             .project("12345")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -570,7 +588,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -592,12 +611,13 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var agents = GitlabFunctions.getClusterAgents(GetClusterAgentsArgs.builder()
-     *             .project(&#34;12345&#34;)
+     *             .project("12345")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -614,7 +634,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -636,12 +657,13 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var agents = GitlabFunctions.getClusterAgents(GetClusterAgentsArgs.builder()
-     *             .project(&#34;12345&#34;)
+     *             .project("12345")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -658,7 +680,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -680,12 +703,13 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var agents = GitlabFunctions.getClusterAgents(GetClusterAgentsArgs.builder()
-     *             .project(&#34;12345&#34;)
+     *             .project("12345")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -700,7 +724,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -722,13 +747,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .namespacePath(&#34;top-level-group&#34;)
-     *             .name(&#34;HIPAA&#34;)
+     *             .namespacePath("top-level-group")
+     *             .name("HIPAA")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -743,7 +769,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -765,13 +792,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .namespacePath(&#34;top-level-group&#34;)
-     *             .name(&#34;HIPAA&#34;)
+     *             .namespacePath("top-level-group")
+     *             .name("HIPAA")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -786,7 +814,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -808,13 +837,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .namespacePath(&#34;top-level-group&#34;)
-     *             .name(&#34;HIPAA&#34;)
+     *             .namespacePath("top-level-group")
+     *             .name("HIPAA")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -829,7 +859,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -851,13 +882,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getComplianceFramework(GetComplianceFrameworkArgs.builder()
-     *             .namespacePath(&#34;top-level-group&#34;)
-     *             .name(&#34;HIPAA&#34;)
+     *             .namespacePath("top-level-group")
+     *             .name("HIPAA")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -872,7 +904,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -896,7 +929,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -911,7 +945,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -935,7 +970,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -950,7 +986,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -974,7 +1011,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -989,7 +1027,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1013,7 +1052,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1028,7 +1068,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1052,7 +1093,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1067,7 +1109,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1091,7 +1134,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1160,7 +1204,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1183,17 +1228,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
      *             .hookId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1208,7 +1254,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1231,17 +1278,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
      *             .hookId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1256,7 +1304,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1279,17 +1328,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
      *             .hookId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1304,7 +1354,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1327,17 +1378,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
      *             .hookId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1352,7 +1404,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1375,16 +1428,17 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
-     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1399,7 +1453,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1422,16 +1477,17 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
-     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1446,7 +1502,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1469,16 +1526,17 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
-     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1493,7 +1551,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1516,16 +1575,17 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
-     *             .group(example.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1594,7 +1654,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1616,13 +1677,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
-     *             .groupId(&#34;123456&#34;)
+     *             .groupId("123456")
      *             .build());
      * 
-     *         ctx.export(&#34;subgroups&#34;, subgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *         ctx.export("subgroups", subgroups.applyValue(getGroupSubgroupsResult -> getGroupSubgroupsResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1637,7 +1699,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1659,13 +1722,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
-     *             .groupId(&#34;123456&#34;)
+     *             .groupId("123456")
      *             .build());
      * 
-     *         ctx.export(&#34;subgroups&#34;, subgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *         ctx.export("subgroups", subgroups.applyValue(getGroupSubgroupsResult -> getGroupSubgroupsResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1680,7 +1744,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1702,13 +1767,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
-     *             .groupId(&#34;123456&#34;)
+     *             .groupId("123456")
      *             .build());
      * 
-     *         ctx.export(&#34;subgroups&#34;, subgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *         ctx.export("subgroups", subgroups.applyValue(getGroupSubgroupsResult -> getGroupSubgroupsResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1723,7 +1789,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1745,13 +1812,14 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
-     *             .groupId(&#34;123456&#34;)
+     *             .groupId("123456")
      *             .build());
      * 
-     *         ctx.export(&#34;subgroups&#34;, subgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *         ctx.export("subgroups", subgroups.applyValue(getGroupSubgroupsResult -> getGroupSubgroupsResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1766,7 +1834,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1788,20 +1857,21 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .key(&#34;foo&#34;)
+     *             .group("my/example/group")
+     *             .key("foo")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var bar = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .key(&#34;bar&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .group("my/example/group")
+     *             .key("bar")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1816,7 +1886,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1838,20 +1909,21 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .key(&#34;foo&#34;)
+     *             .group("my/example/group")
+     *             .key("foo")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var bar = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .key(&#34;bar&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .group("my/example/group")
+     *             .key("bar")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1866,7 +1938,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1888,20 +1961,21 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .key(&#34;foo&#34;)
+     *             .group("my/example/group")
+     *             .key("foo")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var bar = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .key(&#34;bar&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .group("my/example/group")
+     *             .key("bar")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1916,7 +1990,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1938,20 +2013,21 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .key(&#34;foo&#34;)
+     *             .group("my/example/group")
+     *             .key("foo")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var bar = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .key(&#34;bar&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .group("my/example/group")
+     *             .key("bar")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1966,7 +2042,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1988,18 +2065,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
+     *             .group("my/example/group")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .group("my/example/group")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2014,7 +2092,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2036,18 +2115,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
+     *             .group("my/example/group")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .group("my/example/group")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2062,7 +2142,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2084,18 +2165,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
+     *             .group("my/example/group")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .group("my/example/group")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2110,7 +2192,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2132,18 +2215,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
+     *             .group("my/example/group")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getGroupVariables(GetGroupVariablesArgs.builder()
-     *             .group(&#34;my/example/group&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .group("my/example/group")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2162,7 +2246,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2184,17 +2269,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .search(&#34;GitLab&#34;)
+     *             .search("GitLab")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2213,7 +2299,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2235,17 +2322,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .search(&#34;GitLab&#34;)
+     *             .search("GitLab")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2264,7 +2352,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2286,17 +2375,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .search(&#34;GitLab&#34;)
+     *             .search("GitLab")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2315,7 +2405,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2337,17 +2428,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .search(&#34;GitLab&#34;)
+     *             .search("GitLab")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2366,7 +2458,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2388,17 +2481,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .search(&#34;GitLab&#34;)
+     *             .search("GitLab")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2417,7 +2511,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2439,17 +2534,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
-     *             .search(&#34;GitLab&#34;)
+     *             .search("GitLab")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2530,7 +2626,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2552,12 +2649,13 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getInstanceVariable(GetInstanceVariableArgs.builder()
-     *             .key(&#34;foo&#34;)
+     *             .key("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2572,7 +2670,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2594,12 +2693,13 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getInstanceVariable(GetInstanceVariableArgs.builder()
-     *             .key(&#34;foo&#34;)
+     *             .key("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2614,7 +2714,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2636,12 +2737,13 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getInstanceVariable(GetInstanceVariableArgs.builder()
-     *             .key(&#34;foo&#34;)
+     *             .key("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2656,7 +2758,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2678,12 +2781,13 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getInstanceVariable(GetInstanceVariableArgs.builder()
-     *             .key(&#34;foo&#34;)
+     *             .key("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2698,7 +2802,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2722,7 +2827,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2737,7 +2843,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2761,7 +2868,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2776,7 +2884,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2800,7 +2909,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2815,7 +2925,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2839,7 +2950,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2854,7 +2966,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2878,7 +2991,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2893,7 +3007,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2917,7 +3032,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2932,7 +3048,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2956,7 +3073,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2971,7 +3089,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2995,7 +3114,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3010,7 +3130,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3034,7 +3155,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3049,7 +3171,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3073,7 +3196,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3088,7 +3212,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3112,7 +3237,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3127,7 +3253,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3151,7 +3278,8 @@ public final class GitlabFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3256,7 +3384,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3279,17 +3408,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
      *             .hookId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3304,7 +3434,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3327,17 +3458,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
      *             .hookId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3352,7 +3484,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3375,17 +3508,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
      *             .hookId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3400,7 +3534,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3423,17 +3558,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
      *             .hookId(1)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3448,7 +3584,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3471,16 +3608,17 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
-     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3495,7 +3633,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3518,16 +3657,17 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
-     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3542,7 +3682,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3565,16 +3706,17 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
-     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3589,7 +3731,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3612,16 +3755,17 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
-     *             .project(example.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3636,7 +3780,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3659,18 +3804,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
      *             .iid(1)
      *             .build());
      * 
-     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, webUrl);
+     *         ctx.export("welcomeIssueWebUrl", webUrl);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3685,7 +3831,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3708,18 +3855,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
      *             .iid(1)
      *             .build());
      * 
-     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, webUrl);
+     *         ctx.export("welcomeIssueWebUrl", webUrl);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3734,7 +3882,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3757,18 +3906,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
      *             .iid(1)
      *             .build());
      * 
-     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, webUrl);
+     *         ctx.export("welcomeIssueWebUrl", webUrl);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3783,7 +3933,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3806,18 +3957,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.id()))
+     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
      *             .iid(1)
      *             .build());
      * 
-     *         ctx.export(&#34;welcomeIssueWebUrl&#34;, webUrl);
+     *         ctx.export("welcomeIssueWebUrl", webUrl);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3832,7 +3984,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3855,17 +4008,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.id()))
-     *             .search(&#34;foo&#34;)
+     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .search("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3880,7 +4034,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3903,17 +4058,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.id()))
-     *             .search(&#34;foo&#34;)
+     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .search("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3928,7 +4084,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3951,17 +4108,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.id()))
-     *             .search(&#34;foo&#34;)
+     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .search("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3976,7 +4134,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3999,17 +4158,18 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .id("foo/bar/baz")
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.id()))
-     *             .search(&#34;foo&#34;)
+     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .search("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4306,7 +4466,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4328,20 +4489,21 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .key(&#34;foo&#34;)
+     *             .project("my/example/project")
+     *             .key("foo")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var bar = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .key(&#34;bar&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .project("my/example/project")
+     *             .key("bar")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4356,7 +4518,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4378,20 +4541,21 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .key(&#34;foo&#34;)
+     *             .project("my/example/project")
+     *             .key("foo")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var bar = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .key(&#34;bar&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .project("my/example/project")
+     *             .key("bar")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4406,7 +4570,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4428,20 +4593,21 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .key(&#34;foo&#34;)
+     *             .project("my/example/project")
+     *             .key("foo")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var bar = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .key(&#34;bar&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .project("my/example/project")
+     *             .key("bar")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4456,7 +4622,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4478,20 +4645,21 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .key(&#34;foo&#34;)
+     *             .project("my/example/project")
+     *             .key("foo")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var bar = GitlabFunctions.getProjectVariable(GetProjectVariableArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .key(&#34;bar&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .project("my/example/project")
+     *             .key("bar")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4506,7 +4674,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4528,18 +4697,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
+     *             .project("my/example/project")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .project("my/example/project")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4554,7 +4724,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4576,18 +4747,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
+     *             .project("my/example/project")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .project("my/example/project")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4602,7 +4774,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4624,18 +4797,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
+     *             .project("my/example/project")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .project("my/example/project")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4650,7 +4824,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4672,18 +4847,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
+     *             .project("my/example/project")
      *             .build());
      * 
      *         // Using an environment scope
      *         final var stagingVars = GitlabFunctions.getProjectVariables(GetProjectVariablesArgs.builder()
-     *             .project(&#34;my/example/project&#34;)
-     *             .environmentScope(&#34;staging/*&#34;)
+     *             .project("my/example/project")
+     *             .environmentScope("staging/*")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4702,7 +4878,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4726,25 +4903,26 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;mygroup&#34;)
+     *             .fullPath("mygroup")
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .orderBy(&#34;name&#34;)
+     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
      *             .build());
      * 
      *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .search(&#34;postgresql&#34;)
-     *             .visibility(&#34;private&#34;)
+     *             .search("postgresql")
+     *             .visibility("private")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4763,7 +4941,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4787,25 +4966,26 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;mygroup&#34;)
+     *             .fullPath("mygroup")
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .orderBy(&#34;name&#34;)
+     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
      *             .build());
      * 
      *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .search(&#34;postgresql&#34;)
-     *             .visibility(&#34;private&#34;)
+     *             .search("postgresql")
+     *             .visibility("private")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4824,7 +5004,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4848,25 +5029,26 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;mygroup&#34;)
+     *             .fullPath("mygroup")
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .orderBy(&#34;name&#34;)
+     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
      *             .build());
      * 
      *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .search(&#34;postgresql&#34;)
-     *             .visibility(&#34;private&#34;)
+     *             .search("postgresql")
+     *             .visibility("private")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4885,7 +5067,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4909,25 +5092,26 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;mygroup&#34;)
+     *             .fullPath("mygroup")
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .orderBy(&#34;name&#34;)
+     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
      *             .build());
      * 
      *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .search(&#34;postgresql&#34;)
-     *             .visibility(&#34;private&#34;)
+     *             .search("postgresql")
+     *             .visibility("private")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4946,7 +5130,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4970,25 +5155,26 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;mygroup&#34;)
+     *             .fullPath("mygroup")
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .orderBy(&#34;name&#34;)
+     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
      *             .build());
      * 
      *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .search(&#34;postgresql&#34;)
-     *             .visibility(&#34;private&#34;)
+     *             .search("postgresql")
+     *             .visibility("private")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5007,7 +5193,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5031,25 +5218,26 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // List projects within a group tree
      *         final var mygroup = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .fullPath(&#34;mygroup&#34;)
+     *             .fullPath("mygroup")
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -&gt; getGroupResult.id()))
-     *             .orderBy(&#34;name&#34;)
+     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
      *             .build());
      * 
      *         // List projects using the search syntax
      *         final var projects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .search(&#34;postgresql&#34;)
-     *             .visibility(&#34;private&#34;)
+     *             .search("postgresql")
+     *             .visibility("private")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5064,7 +5252,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5088,12 +5277,13 @@ public final class GitlabFunctions {
      *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
      *             .projectId(1234)
-     *             .tagName(&#34;v1.0&#34;)
+     *             .tagName("v1.0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5108,7 +5298,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5132,12 +5323,13 @@ public final class GitlabFunctions {
      *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
      *             .projectId(1234)
-     *             .tagName(&#34;v1.0&#34;)
+     *             .tagName("v1.0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5152,7 +5344,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5176,12 +5369,13 @@ public final class GitlabFunctions {
      *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
      *             .projectId(1234)
-     *             .tagName(&#34;v1.0&#34;)
+     *             .tagName("v1.0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5196,7 +5390,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5220,12 +5415,13 @@ public final class GitlabFunctions {
      *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
      *             .projectId(1234)
-     *             .tagName(&#34;v1.0&#34;)
+     *             .tagName("v1.0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5312,7 +5508,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5334,14 +5531,15 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getRepositoryFile(GetRepositoryFileArgs.builder()
-     *             .project(&#34;example&#34;)
-     *             .ref(&#34;main&#34;)
-     *             .filePath(&#34;README.md&#34;)
+     *             .project("example")
+     *             .ref("main")
+     *             .filePath("README.md")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5356,7 +5554,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5378,14 +5577,15 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getRepositoryFile(GetRepositoryFileArgs.builder()
-     *             .project(&#34;example&#34;)
-     *             .ref(&#34;main&#34;)
-     *             .filePath(&#34;README.md&#34;)
+     *             .project("example")
+     *             .ref("main")
+     *             .filePath("README.md")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5400,7 +5600,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5422,14 +5623,15 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getRepositoryFile(GetRepositoryFileArgs.builder()
-     *             .project(&#34;example&#34;)
-     *             .ref(&#34;main&#34;)
-     *             .filePath(&#34;README.md&#34;)
+     *             .project("example")
+     *             .ref("main")
+     *             .filePath("README.md")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5444,7 +5646,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5466,14 +5669,15 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getRepositoryFile(GetRepositoryFileArgs.builder()
-     *             .project(&#34;example&#34;)
-     *             .ref(&#34;main&#34;)
-     *             .filePath(&#34;README.md&#34;)
+     *             .project("example")
+     *             .ref("main")
+     *             .filePath("README.md")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5488,7 +5692,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5510,15 +5715,16 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = GitlabFunctions.getRepositoryTree(GetRepositoryTreeArgs.builder()
-     *             .project(&#34;example&#34;)
-     *             .ref(&#34;main&#34;)
-     *             .path(&#34;ExampleSubFolder&#34;)
+     *             .project("example")
+     *             .ref("main")
+     *             .path("ExampleSubFolder")
      *             .recursive(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5533,7 +5739,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5555,15 +5762,16 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = GitlabFunctions.getRepositoryTree(GetRepositoryTreeArgs.builder()
-     *             .project(&#34;example&#34;)
-     *             .ref(&#34;main&#34;)
-     *             .path(&#34;ExampleSubFolder&#34;)
+     *             .project("example")
+     *             .ref("main")
+     *             .path("ExampleSubFolder")
      *             .recursive(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5578,7 +5786,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5600,15 +5809,16 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = GitlabFunctions.getRepositoryTree(GetRepositoryTreeArgs.builder()
-     *             .project(&#34;example&#34;)
-     *             .ref(&#34;main&#34;)
-     *             .path(&#34;ExampleSubFolder&#34;)
+     *             .project("example")
+     *             .ref("main")
+     *             .path("ExampleSubFolder")
      *             .recursive(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5623,7 +5833,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5645,15 +5856,16 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = GitlabFunctions.getRepositoryTree(GetRepositoryTreeArgs.builder()
-     *             .project(&#34;example&#34;)
-     *             .ref(&#34;main&#34;)
-     *             .path(&#34;ExampleSubFolder&#34;)
+     *             .project("example")
+     *             .ref("main")
+     *             .path("ExampleSubFolder")
      *             .recursive(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5810,7 +6022,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5832,18 +6045,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
-     *             .createdBefore(&#34;2019-01-01&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
+     *             .createdBefore("2019-01-01")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .search(&#34;username&#34;)
+     *             .search("username")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5862,7 +6076,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5884,18 +6099,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
-     *             .createdBefore(&#34;2019-01-01&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
+     *             .createdBefore("2019-01-01")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .search(&#34;username&#34;)
+     *             .search("username")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5914,7 +6130,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5936,18 +6153,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
-     *             .createdBefore(&#34;2019-01-01&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
+     *             .createdBefore("2019-01-01")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .search(&#34;username&#34;)
+     *             .search("username")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5966,7 +6184,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5988,18 +6207,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
-     *             .createdBefore(&#34;2019-01-01&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
+     *             .createdBefore("2019-01-01")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .search(&#34;username&#34;)
+     *             .search("username")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6018,7 +6238,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6040,18 +6261,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
-     *             .createdBefore(&#34;2019-01-01&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
+     *             .createdBefore("2019-01-01")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .search(&#34;username&#34;)
+     *             .search("username")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6070,7 +6292,8 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6092,18 +6315,19 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .sort(&#34;desc&#34;)
-     *             .orderBy(&#34;name&#34;)
-     *             .createdBefore(&#34;2019-01-01&#34;)
+     *             .sort("desc")
+     *             .orderBy("name")
+     *             .createdBefore("2019-01-01")
      *             .build());
      * 
      *         final var example-two = GitlabFunctions.getUsers(GetUsersArgs.builder()
-     *             .search(&#34;username&#34;)
+     *             .search("username")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

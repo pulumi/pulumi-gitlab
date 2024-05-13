@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,23 +46,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PipelineSchedule(&#34;example&#34;, PipelineScheduleArgs.builder()        
- *             .project(&#34;12345&#34;)
- *             .description(&#34;Used to schedule builds&#34;)
- *             .ref(&#34;master&#34;)
- *             .cron(&#34;0 1 * * *&#34;)
+ *         var example = new PipelineSchedule("example", PipelineScheduleArgs.builder()        
+ *             .project("12345")
+ *             .description("Used to schedule builds")
+ *             .ref("master")
+ *             .cron("0 1 * * *")
  *             .build());
  * 
- *         var examplePipelineScheduleVariable = new PipelineScheduleVariable(&#34;examplePipelineScheduleVariable&#34;, PipelineScheduleVariableArgs.builder()        
+ *         var examplePipelineScheduleVariable = new PipelineScheduleVariable("examplePipelineScheduleVariable", PipelineScheduleVariableArgs.builder()        
  *             .project(example.project())
  *             .pipelineScheduleId(example.pipelineScheduleId())
- *             .key(&#34;EXAMPLE_KEY&#34;)
- *             .value(&#34;example&#34;)
+ *             .key("EXAMPLE_KEY")
+ *             .value("example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

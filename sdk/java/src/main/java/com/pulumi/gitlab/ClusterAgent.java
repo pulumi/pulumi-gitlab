@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,30 +55,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ClusterAgent(&#34;example&#34;, ClusterAgentArgs.builder()        
- *             .project(&#34;12345&#34;)
- *             .name(&#34;agent-1&#34;)
+ *         var example = new ClusterAgent("example", ClusterAgentArgs.builder()        
+ *             .project("12345")
+ *             .name("agent-1")
  *             .build());
  * 
  *         // Optionally, configure the agent as described in
  *         // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
- *         var exampleAgentConfig = new RepositoryFile(&#34;exampleAgentConfig&#34;, RepositoryFileArgs.builder()        
+ *         var exampleAgentConfig = new RepositoryFile("exampleAgentConfig", RepositoryFileArgs.builder()        
  *             .project(example.project())
- *             .branch(&#34;main&#34;)
- *             .filePath(example.name().applyValue(name -&gt; String.format(&#34;.gitlab/agents/%s/config.yaml&#34;, name)))
+ *             .branch("main")
+ *             .filePath(example.name().applyValue(name -> String.format(".gitlab/agents/%s/config.yaml", name)))
  *             .content(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                 .input(&#34;&#34;&#34;
+ *                 .input("""
  * # the GitLab Agent for Kubernetes configuration goes here ...
- *                 &#34;&#34;&#34;)
+ *                 """)
  *                 .build()).result())
- *             .authorEmail(&#34;terraform@example.com&#34;)
- *             .authorName(&#34;Terraform&#34;)
- *             .commitMessage(example.name().applyValue(name -&gt; String.format(&#34;feature: add agent config for %s [skip ci]&#34;, name)))
+ *             .authorEmail("terraform{@literal @}example.com")
+ *             .authorName("Terraform")
+ *             .commitMessage(example.name().applyValue(name -> String.format("feature: add agent config for %s [skip ci]", name)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,22 +48,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new InstanceCluster(&#34;bar&#34;, InstanceClusterArgs.builder()        
- *             .name(&#34;bar-cluster&#34;)
- *             .domain(&#34;example.com&#34;)
+ *         var bar = new InstanceCluster("bar", InstanceClusterArgs.builder()        
+ *             .name("bar-cluster")
+ *             .domain("example.com")
  *             .enabled(true)
- *             .kubernetesApiUrl(&#34;https://124.124.124&#34;)
- *             .kubernetesToken(&#34;some-token&#34;)
- *             .kubernetesCaCert(&#34;some-cert&#34;)
- *             .kubernetesNamespace(&#34;namespace&#34;)
- *             .kubernetesAuthorizationType(&#34;rbac&#34;)
- *             .environmentScope(&#34;*&#34;)
- *             .managementProjectId(&#34;123456&#34;)
+ *             .kubernetesApiUrl("https://124.124.124")
+ *             .kubernetesToken("some-token")
+ *             .kubernetesCaCert("some-cert")
+ *             .kubernetesNamespace("namespace")
+ *             .kubernetesAuthorizationType("rbac")
+ *             .environmentScope("*")
+ *             .managementProjectId("123456")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

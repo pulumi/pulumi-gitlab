@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,15 +43,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new GroupSamlLink(&#34;test&#34;, GroupSamlLinkArgs.builder()        
- *             .group(&#34;12345&#34;)
- *             .accessLevel(&#34;developer&#34;)
- *             .samlGroupName(&#34;samlgroupname1&#34;)
+ *         var test = new GroupSamlLink("test", GroupSamlLinkArgs.builder()        
+ *             .group("12345")
+ *             .accessLevel("developer")
+ *             .samlGroupName("samlgroupname1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

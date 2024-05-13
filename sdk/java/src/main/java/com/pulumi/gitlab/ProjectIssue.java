@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,26 +47,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
- *             .name(&#34;example project&#34;)
- *             .description(&#34;Lorem Ipsum&#34;)
- *             .visibilityLevel(&#34;public&#34;)
+ *         var foo = new Project("foo", ProjectArgs.builder()        
+ *             .name("example project")
+ *             .description("Lorem Ipsum")
+ *             .visibilityLevel("public")
  *             .build());
  * 
- *         var welcomeIssue = new ProjectIssue(&#34;welcomeIssue&#34;, ProjectIssueArgs.builder()        
+ *         var welcomeIssue = new ProjectIssue("welcomeIssue", ProjectIssueArgs.builder()        
  *             .project(foo.id())
- *             .title(&#34;Welcome!&#34;)
- *             .description(foo.name().applyValue(name -&gt; &#34;&#34;&#34;
+ *             .title("Welcome!")
+ *             .description(foo.name().applyValue(name -> """
  *   Welcome to the %s project!
  * 
- * &#34;, name)))
+ * ", name)))
  *             .discussionLocked(true)
  *             .build());
  * 
- *         ctx.export(&#34;welcomeIssueWebUrl&#34;, webUrl);
+ *         ctx.export("welcomeIssueWebUrl", webUrl);
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

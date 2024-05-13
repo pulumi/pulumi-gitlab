@@ -81,9 +81,6 @@ export class ServiceGithub extends pulumi.CustomResource {
      * ID of the project you want to activate integration on.
      */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-     */
     public readonly repositoryUrl!: pulumi.Output<string>;
     /**
      * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
@@ -166,9 +163,6 @@ export interface ServiceGithubState {
      * ID of the project you want to activate integration on.
      */
     project?: pulumi.Input<string>;
-    /**
-     * The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-     */
     repositoryUrl?: pulumi.Input<string>;
     /**
      * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
@@ -196,9 +190,6 @@ export interface ServiceGithubArgs {
      * ID of the project you want to activate integration on.
      */
     project: pulumi.Input<string>;
-    /**
-     * The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-     */
     repositoryUrl: pulumi.Input<string>;
     /**
      * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.

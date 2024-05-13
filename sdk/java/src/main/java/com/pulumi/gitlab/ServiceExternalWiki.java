@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,20 +48,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project(&#34;awesomeProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;awesome_project&#34;)
- *             .description(&#34;My awesome project.&#34;)
- *             .visibilityLevel(&#34;public&#34;)
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *             .name("awesome_project")
+ *             .description("My awesome project.")
+ *             .visibilityLevel("public")
  *             .build());
  * 
- *         var wiki = new ServiceExternalWiki(&#34;wiki&#34;, ServiceExternalWikiArgs.builder()        
+ *         var wiki = new ServiceExternalWiki("wiki", ServiceExternalWikiArgs.builder()        
  *             .project(awesomeProject.id())
- *             .externalWikiUrl(&#34;https://MyAwesomeExternalWikiURL.com&#34;)
+ *             .externalWikiUrl("https://MyAwesomeExternalWikiURL.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

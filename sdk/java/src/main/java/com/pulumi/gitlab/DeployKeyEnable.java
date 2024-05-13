@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,31 +50,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // A repo to host the deployment key
- *         var parent = new Project(&#34;parent&#34;, ProjectArgs.builder()        
- *             .name(&#34;parent_project&#34;)
+ *         var parent = new Project("parent", ProjectArgs.builder()        
+ *             .name("parent_project")
  *             .build());
  * 
  *         // A second repo to use the deployment key from the parent project
- *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
- *             .name(&#34;foo_project&#34;)
+ *         var foo = new Project("foo", ProjectArgs.builder()        
+ *             .name("foo_project")
  *             .build());
  * 
  *         // Upload a deployment key for the parent repo
- *         var parentDeployKey = new DeployKey(&#34;parentDeployKey&#34;, DeployKeyArgs.builder()        
+ *         var parentDeployKey = new DeployKey("parentDeployKey", DeployKeyArgs.builder()        
  *             .project(parent.id())
- *             .title(&#34;Example deploy key&#34;)
- *             .key(&#34;ssh-ed25519 AAAA...&#34;)
+ *             .title("Example deploy key")
+ *             .key("ssh-ed25519 AAAA...")
  *             .build());
  * 
  *         // Enable the deployment key on the second repo
- *         var fooDeployKeyEnable = new DeployKeyEnable(&#34;fooDeployKeyEnable&#34;, DeployKeyEnableArgs.builder()        
+ *         var fooDeployKeyEnable = new DeployKeyEnable("fooDeployKeyEnable", DeployKeyEnableArgs.builder()        
  *             .project(foo.id())
  *             .keyId(parentDeployKey.deployKeyId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

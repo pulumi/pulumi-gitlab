@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,16 +45,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fixme = new GroupLabel(&#34;fixme&#34;, GroupLabelArgs.builder()        
- *             .group(&#34;example&#34;)
- *             .name(&#34;fixme&#34;)
- *             .description(&#34;issue with failing tests&#34;)
- *             .color(&#34;#ffcc00&#34;)
+ *         var fixme = new GroupLabel("fixme", GroupLabelArgs.builder()        
+ *             .group("example")
+ *             .name("fixme")
+ *             .description("issue with failing tests")
+ *             .color("#ffcc00")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

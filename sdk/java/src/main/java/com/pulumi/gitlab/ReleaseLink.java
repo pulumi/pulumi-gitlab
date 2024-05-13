@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,22 +49,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a project
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .description(&#34;An example project&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name("example")
+ *             .description("An example project")
  *             .build());
  * 
  *         // Can create release link only to a tag associated with a release
- *         var exampleReleaseLink = new ReleaseLink(&#34;exampleReleaseLink&#34;, ReleaseLinkArgs.builder()        
+ *         var exampleReleaseLink = new ReleaseLink("exampleReleaseLink", ReleaseLinkArgs.builder()        
  *             .project(example.id())
- *             .tagName(&#34;tag_name_associated_with_release&#34;)
- *             .name(&#34;test&#34;)
- *             .url(&#34;https://test/&#34;)
+ *             .tagName("tag_name_associated_with_release")
+ *             .name("test")
+ *             .url("https://test/")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

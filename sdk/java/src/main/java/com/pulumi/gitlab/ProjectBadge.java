@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,44 +45,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
- *             .name(&#34;foo-project&#34;)
+ *         var foo = new Project("foo", ProjectArgs.builder()        
+ *             .name("foo-project")
  *             .build());
  * 
- *         var example = new ProjectBadge(&#34;example&#34;, ProjectBadgeArgs.builder()        
+ *         var example = new ProjectBadge("example", ProjectBadgeArgs.builder()        
  *             .project(foo.id())
- *             .linkUrl(&#34;https://example.com/badge-123&#34;)
- *             .imageUrl(&#34;https://example.com/badge-123.svg&#34;)
- *             .name(&#34;badge-123&#34;)
+ *             .linkUrl("https://example.com/badge-123")
+ *             .imageUrl("https://example.com/badge-123.svg")
+ *             .name("badge-123")
  *             .build());
  * 
  *         // Pipeline status badges with placeholders will be enabled
- *         var gitlabPipeline = new ProjectBadge(&#34;gitlabPipeline&#34;, ProjectBadgeArgs.builder()        
+ *         var gitlabPipeline = new ProjectBadge("gitlabPipeline", ProjectBadgeArgs.builder()        
  *             .project(foo.id())
- *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}&#34;)
- *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg&#34;)
- *             .name(&#34;badge-pipeline&#34;)
+ *             .linkUrl("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}")
+ *             .imageUrl("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
+ *             .name("badge-pipeline")
  *             .build());
  * 
  *         // Test coverage report badges with placeholders will be enabled
- *         var gitlabCoverage = new ProjectBadge(&#34;gitlabCoverage&#34;, ProjectBadgeArgs.builder()        
+ *         var gitlabCoverage = new ProjectBadge("gitlabCoverage", ProjectBadgeArgs.builder()        
  *             .project(foo.id())
- *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/jobs&#34;)
- *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg&#34;)
- *             .name(&#34;badge-coverage&#34;)
+ *             .linkUrl("https://gitlab.example.com/%{project_path}/-/jobs")
+ *             .imageUrl("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
+ *             .name("badge-coverage")
  *             .build());
  * 
  *         // Latest release badges with placeholders will be enabled
- *         var gitlabRelease = new ProjectBadge(&#34;gitlabRelease&#34;, ProjectBadgeArgs.builder()        
+ *         var gitlabRelease = new ProjectBadge("gitlabRelease", ProjectBadgeArgs.builder()        
  *             .project(foo.id())
- *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/releases&#34;)
- *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/-/badges/release.svg&#34;)
- *             .name(&#34;badge-release&#34;)
+ *             .linkUrl("https://gitlab.example.com/%{project_path}/-/releases")
+ *             .imageUrl("https://gitlab.example.com/%{project_path}/-/badges/release.svg")
+ *             .name("badge-release")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

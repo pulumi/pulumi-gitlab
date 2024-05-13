@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,23 +56,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new GroupAccessToken(&#34;example&#34;, GroupAccessTokenArgs.builder()        
- *             .group(&#34;25&#34;)
- *             .name(&#34;Example project access token&#34;)
- *             .expiresAt(&#34;2020-03-14&#34;)
- *             .accessLevel(&#34;developer&#34;)
- *             .scopes(&#34;api&#34;)
+ *         var example = new GroupAccessToken("example", GroupAccessTokenArgs.builder()        
+ *             .group("25")
+ *             .name("Example project access token")
+ *             .expiresAt("2020-03-14")
+ *             .accessLevel("developer")
+ *             .scopes("api")
  *             .build());
  * 
- *         var exampleGroupVariable = new GroupVariable(&#34;exampleGroupVariable&#34;, GroupVariableArgs.builder()        
- *             .group(&#34;25&#34;)
- *             .key(&#34;gat&#34;)
+ *         var exampleGroupVariable = new GroupVariable("exampleGroupVariable", GroupVariableArgs.builder()        
+ *             .group("25")
+ *             .key("gat")
  *             .value(example.token())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

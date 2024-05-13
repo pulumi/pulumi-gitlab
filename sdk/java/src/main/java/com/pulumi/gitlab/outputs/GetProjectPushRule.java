@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectPushRule {
     /**
-     * @return All commit author emails must match this regex, e.g. `@my-company.com$`.
+     * @return All commit author emails must match this regex, e.g. `{@literal @}my-company.com$`.
      * 
      */
     private String authorEmailRegex;
@@ -70,7 +70,7 @@ public final class GetProjectPushRule {
 
     private GetProjectPushRule() {}
     /**
-     * @return All commit author emails must match this regex, e.g. `@my-company.com$`.
+     * @return All commit author emails must match this regex, e.g. `{@literal @}my-company.com$`.
      * 
      */
     public String authorEmailRegex() {

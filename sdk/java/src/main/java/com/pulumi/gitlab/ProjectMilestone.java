@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,20 +49,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a project for the milestone to use
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .description(&#34;An example project&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name("example")
+ *             .description("An example project")
  *             .namespaceId(exampleGitlabGroup.id())
  *             .build());
  * 
- *         var exampleProjectMilestone = new ProjectMilestone(&#34;exampleProjectMilestone&#34;, ProjectMilestoneArgs.builder()        
+ *         var exampleProjectMilestone = new ProjectMilestone("exampleProjectMilestone", ProjectMilestoneArgs.builder()        
  *             .project(example.id())
- *             .title(&#34;example&#34;)
+ *             .title("example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
