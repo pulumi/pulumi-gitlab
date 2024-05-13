@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,23 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sample = new ComplianceFramework(&#34;sample&#34;, ComplianceFrameworkArgs.builder()        
- *             .namespacePath(&#34;top-level-group&#34;)
- *             .name(&#34;HIPAA&#34;)
- *             .description(&#34;A HIPAA Compliance Framework&#34;)
- *             .color(&#34;#87BEEF&#34;)
+ *         var sample = new ComplianceFramework("sample", ComplianceFrameworkArgs.builder()        
+ *             .namespacePath("top-level-group")
+ *             .name("HIPAA")
+ *             .description("A HIPAA Compliance Framework")
+ *             .color("#87BEEF")
  *             .default_(false)
- *             .pipelineConfigurationFullPath(&#34;.hipaa.yml@top-level-group/compliance-frameworks&#34;)
+ *             .pipelineConfigurationFullPath(".hipaa.yml{@literal @}top-level-group/compliance-frameworks")
  *             .build());
  * 
- *         var sampleProjectComplianceFramework = new ProjectComplianceFramework(&#34;sampleProjectComplianceFramework&#34;, ProjectComplianceFrameworkArgs.builder()        
+ *         var sampleProjectComplianceFramework = new ProjectComplianceFramework("sampleProjectComplianceFramework", ProjectComplianceFrameworkArgs.builder()        
  *             .complianceFrameworkId(sample.frameworkId())
- *             .project(&#34;12345678&#34;)
+ *             .project("12345678")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

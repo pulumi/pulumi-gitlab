@@ -28,7 +28,7 @@ type Provider struct {
 	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
 	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-	// `client_cert` is set.
+	// `clientCert` is set.
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
 	// used in this provider for authentication (using Bearer authorization token). See
@@ -71,14 +71,9 @@ type providerArgs struct {
 	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
 	ClientCert *string `pulumi:"clientCert"`
 	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-	// `client_cert` is set.
-	ClientKey *string `pulumi:"clientKey"`
-	// (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-	// configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
-	// the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
-	// `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
-	// backups of your state.
-	EarlyAuthCheck *bool `pulumi:"earlyAuthCheck"`
+	// `clientCert` is set.
+	ClientKey      *string `pulumi:"clientKey"`
+	EarlyAuthCheck *bool   `pulumi:"earlyAuthCheck"`
 	// When set to true this disables SSL verification of the connection to the GitLab instance.
 	Insecure *bool `pulumi:"insecure"`
 	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
@@ -100,13 +95,8 @@ type ProviderArgs struct {
 	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
 	ClientCert pulumi.StringPtrInput
 	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-	// `client_cert` is set.
-	ClientKey pulumi.StringPtrInput
-	// (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-	// configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
-	// the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
-	// `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
-	// backups of your state.
+	// `clientCert` is set.
+	ClientKey      pulumi.StringPtrInput
 	EarlyAuthCheck pulumi.BoolPtrInput
 	// When set to true this disables SSL verification of the connection to the GitLab instance.
 	Insecure pulumi.BoolPtrInput
@@ -173,7 +163,7 @@ func (o ProviderOutput) ClientCert() pulumi.StringPtrOutput {
 }
 
 // File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-// `client_cert` is set.
+// `clientCert` is set.
 func (o ProviderOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKey }).(pulumi.StringPtrOutput)
 }

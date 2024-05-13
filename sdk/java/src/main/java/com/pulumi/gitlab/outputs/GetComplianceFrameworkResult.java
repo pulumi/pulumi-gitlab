@@ -43,7 +43,7 @@ public final class GetComplianceFrameworkResult {
      */
     private String namespacePath;
     /**
-     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
      * 
      */
     private String pipelineConfigurationFullPath;
@@ -95,7 +95,7 @@ public final class GetComplianceFrameworkResult {
         return this.namespacePath;
     }
     /**
-     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
      * 
      */
     public String pipelineConfigurationFullPath() {

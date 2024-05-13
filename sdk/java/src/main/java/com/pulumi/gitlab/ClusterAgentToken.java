@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,45 +56,46 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create token for an agent
- *         var example = new ClusterAgentToken(&#34;example&#34;, ClusterAgentTokenArgs.builder()        
- *             .project(&#34;12345&#34;)
+ *         var example = new ClusterAgentToken("example", ClusterAgentTokenArgs.builder()        
+ *             .project("12345")
  *             .agentId(42)
- *             .name(&#34;some-token&#34;)
- *             .description(&#34;some token&#34;)
+ *             .name("some-token")
+ *             .description("some token")
  *             .build());
  * 
  *         // The following example creates a GitLab Agent for Kubernetes in a given project,
  *         // creates a token and install the `gitlab-agent` Helm Chart.
  *         // (see https://gitlab.com/gitlab-org/charts/gitlab-agent)
  *         final var this = GitlabFunctions.getProject(GetProjectArgs.builder()
- *             .pathWithNamespace(&#34;my-org/example&#34;)
+ *             .pathWithNamespace("my-org/example")
  *             .build());
  * 
- *         var thisClusterAgent = new ClusterAgent(&#34;thisClusterAgent&#34;, ClusterAgentArgs.builder()        
+ *         var thisClusterAgent = new ClusterAgent("thisClusterAgent", ClusterAgentArgs.builder()        
  *             .project(this_.id())
- *             .name(&#34;my-agent&#34;)
+ *             .name("my-agent")
  *             .build());
  * 
- *         var thisClusterAgentToken = new ClusterAgentToken(&#34;thisClusterAgentToken&#34;, ClusterAgentTokenArgs.builder()        
+ *         var thisClusterAgentToken = new ClusterAgentToken("thisClusterAgentToken", ClusterAgentTokenArgs.builder()        
  *             .project(this_.id())
  *             .agentId(thisClusterAgent.agentId())
- *             .name(&#34;my-agent-token&#34;)
- *             .description(&#34;Token for the my-agent used with `gitlab-agent` Helm Chart&#34;)
+ *             .name("my-agent-token")
+ *             .description("Token for the my-agent used with `gitlab-agent` Helm Chart")
  *             .build());
  * 
- *         var gitlabAgent = new Release(&#34;gitlabAgent&#34;, ReleaseArgs.builder()        
- *             .name(&#34;gitlab-agent&#34;)
- *             .namespace(&#34;gitlab-agent&#34;)
+ *         var gitlabAgent = new Release("gitlabAgent", ReleaseArgs.builder()        
+ *             .name("gitlab-agent")
+ *             .namespace("gitlab-agent")
  *             .createNamespace(true)
- *             .repository(&#34;https://charts.gitlab.io&#34;)
- *             .chart(&#34;gitlab-agent&#34;)
- *             .version(&#34;1.2.0&#34;)
+ *             .repository("https://charts.gitlab.io")
+ *             .chart("gitlab-agent")
+ *             .version("1.2.0")
  *             .set(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

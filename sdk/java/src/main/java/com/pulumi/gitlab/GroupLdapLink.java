@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,16 +45,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new GroupLdapLink(&#34;test&#34;, GroupLdapLinkArgs.builder()        
- *             .groupId(&#34;12345&#34;)
- *             .cn(&#34;testuser&#34;)
- *             .groupAccess(&#34;developer&#34;)
- *             .ldapProvider(&#34;ldapmain&#34;)
+ *         var test = new GroupLdapLink("test", GroupLdapLinkArgs.builder()        
+ *             .groupId("12345")
+ *             .cn("testuser")
+ *             .groupAccess("developer")
+ *             .ldapProvider("ldapmain")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

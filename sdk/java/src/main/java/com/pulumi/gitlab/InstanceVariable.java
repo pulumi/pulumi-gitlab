@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,16 +45,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new InstanceVariable(&#34;example&#34;, InstanceVariableArgs.builder()        
- *             .key(&#34;instance_variable_key&#34;)
- *             .value(&#34;instance_variable_value&#34;)
+ *         var example = new InstanceVariable("example", InstanceVariableArgs.builder()        
+ *             .key("instance_variable_key")
+ *             .value("instance_variable_value")
  *             .protected_(false)
  *             .masked(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

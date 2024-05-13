@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,18 +51,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sample = new ComplianceFramework(&#34;sample&#34;, ComplianceFrameworkArgs.builder()        
- *             .namespacePath(&#34;top-level-group&#34;)
- *             .name(&#34;HIPAA&#34;)
- *             .description(&#34;A HIPAA Compliance Framework&#34;)
- *             .color(&#34;#87BEEF&#34;)
+ *         var sample = new ComplianceFramework("sample", ComplianceFrameworkArgs.builder()        
+ *             .namespacePath("top-level-group")
+ *             .name("HIPAA")
+ *             .description("A HIPAA Compliance Framework")
+ *             .color("#87BEEF")
  *             .default_(false)
- *             .pipelineConfigurationFullPath(&#34;.hipaa.yml@top-level-group/compliance-frameworks&#34;)
+ *             .pipelineConfigurationFullPath(".hipaa.yml{@literal @}top-level-group/compliance-frameworks")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -160,14 +162,14 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
         return this.namespacePath;
     }
     /**
-     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
      * 
      */
     @Export(name="pipelineConfigurationFullPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pipelineConfigurationFullPath;
 
     /**
-     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
      * 
      */
     public Output<Optional<String>> pipelineConfigurationFullPath() {

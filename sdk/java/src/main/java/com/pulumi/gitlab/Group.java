@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,26 +53,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .path(&#34;example&#34;)
- *             .description(&#34;An example group&#34;)
+ *         var example = new Group("example", GroupArgs.builder()        
+ *             .name("example")
+ *             .path("example")
+ *             .description("An example group")
  *             .build());
  * 
  *         // Create a project in the example group
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;example&#34;)
- *             .description(&#34;An example project&#34;)
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *             .name("example")
+ *             .description("An example project")
  *             .namespaceId(example.id())
  *             .build());
  * 
  *         // Group with custom push rules
- *         var example_two = new Group(&#34;example-two&#34;, GroupArgs.builder()        
- *             .name(&#34;example-two&#34;)
- *             .path(&#34;example-two&#34;)
- *             .description(&#34;An example group with push rules&#34;)
+ *         var example_two = new Group("example-two", GroupArgs.builder()        
+ *             .name("example-two")
+ *             .path("example-two")
+ *             .description("An example group with push rules")
  *             .pushRules(GroupPushRulesArgs.builder()
- *                 .authorEmailRegex(&#34;@example\\.com$&#34;)
+ *                 .authorEmailRegex("{@literal @}example\\.com$")
  *                 .commitCommitterCheck(true)
  *                 .memberCheck(true)
  *                 .preventSecrets(true)
@@ -80,7 +81,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

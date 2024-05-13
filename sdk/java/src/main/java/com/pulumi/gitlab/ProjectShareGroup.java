@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,15 +45,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new ProjectShareGroup(&#34;test&#34;, ProjectShareGroupArgs.builder()        
- *             .project(&#34;12345&#34;)
+ *         var test = new ProjectShareGroup("test", ProjectShareGroupArgs.builder()        
+ *             .project("12345")
  *             .groupId(1337)
- *             .groupAccess(&#34;guest&#34;)
+ *             .groupAccess("guest")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

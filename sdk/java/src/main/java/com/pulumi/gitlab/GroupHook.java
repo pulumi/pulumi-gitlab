@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,20 +47,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new GroupHook(&#34;example&#34;, GroupHookArgs.builder()        
- *             .group(&#34;example/hooked&#34;)
- *             .url(&#34;https://example.com/hook/example&#34;)
+ *         var example = new GroupHook("example", GroupHookArgs.builder()        
+ *             .group("example/hooked")
+ *             .url("https://example.com/hook/example")
  *             .mergeRequestsEvents(true)
  *             .build());
  * 
  *         // Setting all attributes
- *         var allAttributes = new GroupHook(&#34;allAttributes&#34;, GroupHookArgs.builder()        
+ *         var allAttributes = new GroupHook("allAttributes", GroupHookArgs.builder()        
  *             .group(1)
- *             .url(&#34;http://example.com&#34;)
- *             .token(&#34;supersecret&#34;)
+ *             .url("http://example.com")
+ *             .token("supersecret")
  *             .enableSslVerification(false)
  *             .pushEvents(true)
- *             .pushEventsBranchFilter(&#34;devel&#34;)
+ *             .pushEventsBranchFilter("devel")
  *             .issuesEvents(false)
  *             .confidentialIssuesEvents(false)
  *             .mergeRequestsEvents(true)
@@ -76,7 +77,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

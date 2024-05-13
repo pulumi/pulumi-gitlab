@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,15 +44,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var attr = new UserCustomAttribute(&#34;attr&#34;, UserCustomAttributeArgs.builder()        
- *             .user(&#34;42&#34;)
- *             .key(&#34;location&#34;)
- *             .value(&#34;Greenland&#34;)
+ *         var attr = new UserCustomAttribute("attr", UserCustomAttributeArgs.builder()        
+ *             .user("42")
+ *             .key("location")
+ *             .value("Greenland")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

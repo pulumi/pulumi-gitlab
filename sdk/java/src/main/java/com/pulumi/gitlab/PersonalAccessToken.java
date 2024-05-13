@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,22 +50,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PersonalAccessToken(&#34;example&#34;, PersonalAccessTokenArgs.builder()        
- *             .userId(&#34;25&#34;)
- *             .name(&#34;Example personal access token&#34;)
- *             .expiresAt(&#34;2020-03-14&#34;)
- *             .scopes(&#34;api&#34;)
+ *         var example = new PersonalAccessToken("example", PersonalAccessTokenArgs.builder()        
+ *             .userId("25")
+ *             .name("Example personal access token")
+ *             .expiresAt("2020-03-14")
+ *             .scopes("api")
  *             .build());
  * 
- *         var exampleProjectVariable = new ProjectVariable(&#34;exampleProjectVariable&#34;, ProjectVariableArgs.builder()        
+ *         var exampleProjectVariable = new ProjectVariable("exampleProjectVariable", ProjectVariableArgs.builder()        
  *             .project(exampleGitlabProject.id())
- *             .key(&#34;pat&#34;)
+ *             .key("pat")
  *             .value(example.token())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
