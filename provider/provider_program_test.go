@@ -79,7 +79,7 @@ func testProviderUpgradeWithOpts(
 		baselineVersion = defaultBaselineVersion
 	}
 
-	if os.Getenv("PULUMI_GITLAB_TOKEN") == "" {
+	if os.Getenv("GITLAB_TOKEN") == "" {
 		t.Setenv("GITLAB_TOKEN", os.Getenv("PULUMI_GITLAB_TOKEN"))
 	}
 	test := pulumitest.NewPulumiTest(t, dir,
@@ -103,7 +103,7 @@ func testProgram(t *testing.T, dir string) {
 	}
 	cwd, err := os.Getwd()
 	require.NoError(t, err)
-	if os.Getenv("PULUMI_GITLAB_TOKEN") == "" {
+	if os.Getenv("GITLAB_TOKEN") == "" {
 		t.Setenv("GITLAB_TOKEN", os.Getenv("PULUMI_GITLAB_TOKEN"))
 	}
 	test := pulumitest.NewPulumiTest(t, dir,
