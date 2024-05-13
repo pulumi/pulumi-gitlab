@@ -9,11 +9,5 @@ resources:
   my_gitlab_project:
     properties:
       description: A minimal GitLab project for Pulumi
-      initializeWithReadme: true
-      issuesEnabled: true
-      mergeRequestsEnabled: true
-
-      snippetsEnabled: true
       visibilityLevel: public
-      wikiEnabled: true
     type: gitlab:Project
