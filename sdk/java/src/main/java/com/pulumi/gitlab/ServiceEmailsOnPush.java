@@ -49,13 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
  *             .visibilityLevel("public")
  *             .build());
  * 
- *         var emails = new ServiceEmailsOnPush("emails", ServiceEmailsOnPushArgs.builder()        
+ *         var emails = new ServiceEmailsOnPush("emails", ServiceEmailsOnPushArgs.builder()
  *             .project(awesomeProject.id())
  *             .recipients("myrecipient{@literal @}example.com myotherrecipient{@literal @}example.com")
  *             .build());

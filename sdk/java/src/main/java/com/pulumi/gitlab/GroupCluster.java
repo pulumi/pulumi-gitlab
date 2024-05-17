@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Group("foo", GroupArgs.builder()        
+ *         var foo = new Group("foo", GroupArgs.builder()
  *             .name("foo-group")
  *             .path("foo-path")
  *             .build());
  * 
- *         var bar = new GroupCluster("bar", GroupClusterArgs.builder()        
+ *         var bar = new GroupCluster("bar", GroupClusterArgs.builder()
  *             .group(foo.id())
  *             .name("bar-cluster")
  *             .domain("example.com")

@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var schedule = new ProjectFreezePeriod("schedule", ProjectFreezePeriodArgs.builder()        
+ *         var schedule = new ProjectFreezePeriod("schedule", ProjectFreezePeriodArgs.builder()
  *             .project(foo.id())
  *             .freezeStart("0 23 * * 5")
  *             .freezeEnd("0 7 * * 1")

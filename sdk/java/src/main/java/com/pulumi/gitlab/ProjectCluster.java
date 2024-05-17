@@ -50,11 +50,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Project("foo", ProjectArgs.builder()        
+ *         var foo = new Project("foo", ProjectArgs.builder()
  *             .name("foo-project")
  *             .build());
  * 
- *         var bar = new ProjectCluster("bar", ProjectClusterArgs.builder()        
+ *         var bar = new ProjectCluster("bar", ProjectClusterArgs.builder()
  *             .project(foo.id())
  *             .name("bar-cluster")
  *             .domain("example.com")

@@ -49,13 +49,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a project for the milestone to use
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name("example")
  *             .description("An example project")
  *             .namespaceId(exampleGitlabGroup.id())
  *             .build());
  * 
- *         var exampleProjectMilestone = new ProjectMilestone("exampleProjectMilestone", ProjectMilestoneArgs.builder()        
+ *         var exampleProjectMilestone = new ProjectMilestone("exampleProjectMilestone", ProjectMilestoneArgs.builder()
  *             .project(example.id())
  *             .title("example")
  *             .build());

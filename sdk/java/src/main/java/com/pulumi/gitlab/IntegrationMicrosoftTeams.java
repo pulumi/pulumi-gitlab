@@ -47,13 +47,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
  *             .visibilityLevel("public")
  *             .build());
  * 
- *         var teams = new IntegrationMicrosoftTeams("teams", IntegrationMicrosoftTeamsArgs.builder()        
+ *         var teams = new IntegrationMicrosoftTeams("teams", IntegrationMicrosoftTeamsArgs.builder()
  *             .project(awesomeProject.id())
  *             .webhook("https://testurl.com/?token=XYZ")
  *             .pushEvents(true)

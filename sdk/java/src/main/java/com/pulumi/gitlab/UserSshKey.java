@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .username("example-user")
  *             .build());
  * 
- *         var exampleUserSshKey = new UserSshKey("exampleUserSshKey", UserSshKeyArgs.builder()        
+ *         var exampleUserSshKey = new UserSshKey("exampleUserSshKey", UserSshKeyArgs.builder()
  *             .userId(example.applyValue(getUserResult -> getUserResult.id()))
  *             .title("example-key")
  *             .key("ssh-ed25519 AAAA...")

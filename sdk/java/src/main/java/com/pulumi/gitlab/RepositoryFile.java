@@ -46,19 +46,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group("this", GroupArgs.builder()        
+ *         var this_ = new Group("this", GroupArgs.builder()
  *             .name("example")
  *             .path("example")
  *             .description("An example group")
  *             .build());
  * 
- *         var thisProject = new Project("thisProject", ProjectArgs.builder()        
+ *         var thisProject = new Project("thisProject", ProjectArgs.builder()
  *             .name("example")
  *             .namespaceId(this_.id())
  *             .initializeWithReadme(true)
  *             .build());
  * 
- *         var thisRepositoryFile = new RepositoryFile("thisRepositoryFile", RepositoryFileArgs.builder()        
+ *         var thisRepositoryFile = new RepositoryFile("thisRepositoryFile", RepositoryFileArgs.builder()
  *             .project(thisProject.id())
  *             .filePath("meow.txt")
  *             .branch("main")
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .commitMessage("feature: add meow file")
  *             .build());
  * 
- *         var readme = new RepositoryFile("readme", RepositoryFileArgs.builder()        
+ *         var readme = new RepositoryFile("readme", RepositoryFileArgs.builder()
  *             .project(thisProject.id())
  *             .filePath("readme.txt")
  *             .branch("main")
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .commitMessage("feature: add readme file")
  *             .build());
  * 
- *         var readmeForDogs = new RepositoryFile("readmeForDogs", RepositoryFileArgs.builder()        
+ *         var readmeForDogs = new RepositoryFile("readmeForDogs", RepositoryFileArgs.builder()
  *             .project(thisProject.id())
  *             .filePath("readme.txt")
  *             .branch("main")
