@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gitlab/provider/v6
+module github.com/pulumi/pulumi-gitlab/provider/v7
 
 go 1.22
 

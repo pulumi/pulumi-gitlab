@@ -1,18 +1,15 @@
-From 18761699bdd108b060a30a4a96f8740c4ac96d85 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ian Wahbe <ian@wahbe.com>
 Date: Mon, 15 May 2023 14:33:58 -0700
-Subject: [PATCH 1/2] fork
+Subject: [PATCH] fork
 
----
- .../provider/sdk/resource_gitlab_project.go   | 41 ++++++++++---------
- 1 file changed, 21 insertions(+), 20 deletions(-)
 
 diff --git a/internal/provider/sdk/resource_gitlab_project.go b/internal/provider/sdk/resource_gitlab_project.go
-index b3394eda..78dd874e 100644
+index 79e7be15..84cbdcc6 100644
 --- a/internal/provider/sdk/resource_gitlab_project.go
 +++ b/internal/provider/sdk/resource_gitlab_project.go
-@@ -371,33 +371,34 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{
- 		ValidateFunc: validation.StringInSlice([]string{"public", "private", "enabled", "disabled"}, true),
+@@ -398,33 +398,34 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{
+ 		ValidateFunc: validation.StringInSlice(validPagesAccessLevelValues, true),
  	},
  	// The GitLab API requires that import_url is also set when mirror options are used
 -	// Ref: https://gitlab.com/gitlab-org/terraform-provider-gitlab/pull/449#discussion_r549729230
@@ -66,6 +63,3 @@ index b3394eda..78dd874e 100644
  	},
  	"build_coverage_regex": {
  		Description: "Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.",
--- 
-2.40.1
-

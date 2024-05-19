@@ -1,16 +1,12 @@
-From 948e51b4c31d50fefc91b2534b094e240f5a0102 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ian Wahbe <ian@wahbe.com>
 Date: Mon, 15 May 2023 14:33:58 -0700
-Subject: [PATCH 2/2] expose-provider
+Subject: [PATCH] expose-provider
 
----
- shim/shim.go | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
- create mode 100644 shim/shim.go
 
 diff --git a/shim/shim.go b/shim/shim.go
 new file mode 100644
-index 00000000..1d694048
+index 00000000..79644333
 --- /dev/null
 +++ b/shim/shim.go
 @@ -0,0 +1,17 @@
@@ -31,6 +27,3 @@ index 00000000..1d694048
 +func SDKProvider() *schema.Provider {
 +	return sdkProvider.New("")()
 +}
--- 
-2.40.1
-
