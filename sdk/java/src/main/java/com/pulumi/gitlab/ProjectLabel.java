@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fixme = new ProjectLabel("fixme", ProjectLabelArgs.builder()        
+ *         var fixme = new ProjectLabel("fixme", ProjectLabelArgs.builder()
  *             .project("example")
  *             .name("fixme")
  *             .description("issue with failing tests")
@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Scoped label
- *         var devopsCreate = new ProjectLabel("devopsCreate", ProjectLabelArgs.builder()        
+ *         var devopsCreate = new ProjectLabel("devopsCreate", ProjectLabelArgs.builder()
  *             .project(example.id())
  *             .name("devops::create")
  *             .description("issue for creating infrastructure resources")

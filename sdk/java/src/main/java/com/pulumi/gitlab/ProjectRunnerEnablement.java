@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new ProjectRunnerEnablement("foo", ProjectRunnerEnablementArgs.builder()        
+ *         var foo = new ProjectRunnerEnablement("foo", ProjectRunnerEnablementArgs.builder()
  *             .project(5)
  *             .runnerId(7)
  *             .build());

@@ -46,13 +46,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
  *             .visibilityLevel("public")
  *             .build());
  * 
- *         var tracker = new IntegrationCustomIssueTracker("tracker", IntegrationCustomIssueTrackerArgs.builder()        
+ *         var tracker = new IntegrationCustomIssueTracker("tracker", IntegrationCustomIssueTrackerArgs.builder()
  *             .project(awesomeProject.id())
  *             .projectUrl("https://customtracker.com/issues")
  *             .issuesUrl("https://customtracker.com/TEST-:id")

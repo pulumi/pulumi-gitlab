@@ -45,19 +45,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Group("this", GroupArgs.builder()        
+ *         var this_ = new Group("this", GroupArgs.builder()
  *             .name("example")
  *             .path("example")
  *             .description("An example group")
  *             .build());
  * 
- *         var thisProject = new Project("thisProject", ProjectArgs.builder()        
+ *         var thisProject = new Project("thisProject", ProjectArgs.builder()
  *             .name("example")
  *             .namespaceId(this_.id())
  *             .initializeWithReadme(true)
  *             .build());
  * 
- *         var thisProjectEnvironment = new ProjectEnvironment("thisProjectEnvironment", ProjectEnvironmentArgs.builder()        
+ *         var thisProjectEnvironment = new ProjectEnvironment("thisProjectEnvironment", ProjectEnvironmentArgs.builder()
  *             .project(thisProject.id())
  *             .name("example")
  *             .externalUrl("www.example.com")

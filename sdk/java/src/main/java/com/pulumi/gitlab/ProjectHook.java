@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ProjectHook("example", ProjectHookArgs.builder()        
+ *         var example = new ProjectHook("example", ProjectHookArgs.builder()
  *             .project("example/hooked")
  *             .url("https://example.com/hook/example")
  *             .mergeRequestsEvents(true)

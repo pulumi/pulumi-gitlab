@@ -47,13 +47,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new ProjectMembership("test", ProjectMembershipArgs.builder()        
+ *         var test = new ProjectMembership("test", ProjectMembershipArgs.builder()
  *             .project("12345")
  *             .userId(1337)
  *             .accessLevel("guest")
  *             .build());
  * 
- *         var example = new ProjectMembership("example", ProjectMembershipArgs.builder()        
+ *         var example = new ProjectMembership("example", ProjectMembershipArgs.builder()
  *             .project("67890")
  *             .userId(1234)
  *             .accessLevel("guest")

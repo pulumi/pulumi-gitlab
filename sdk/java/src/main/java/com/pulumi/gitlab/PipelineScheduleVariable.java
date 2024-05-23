@@ -46,14 +46,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PipelineSchedule("example", PipelineScheduleArgs.builder()        
+ *         var example = new PipelineSchedule("example", PipelineScheduleArgs.builder()
  *             .project("12345")
  *             .description("Used to schedule builds")
  *             .ref("master")
  *             .cron("0 1 * * *")
  *             .build());
  * 
- *         var examplePipelineScheduleVariable = new PipelineScheduleVariable("examplePipelineScheduleVariable", PipelineScheduleVariableArgs.builder()        
+ *         var examplePipelineScheduleVariable = new PipelineScheduleVariable("examplePipelineScheduleVariable", PipelineScheduleVariableArgs.builder()
  *             .project(example.project())
  *             .pipelineScheduleId(example.pipelineScheduleId())
  *             .key("EXAMPLE_KEY")

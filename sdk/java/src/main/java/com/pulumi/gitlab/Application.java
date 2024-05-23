@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var oidc = new Application("oidc", ApplicationArgs.builder()        
+ *         var oidc = new Application("oidc", ApplicationArgs.builder()
  *             .confidential(true)
  *             .scopes("openid")
  *             .name("company_oidc")
