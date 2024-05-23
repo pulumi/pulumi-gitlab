@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fixme = new GroupLabel("fixme", GroupLabelArgs.builder()        
+ *         var fixme = new GroupLabel("fixme", GroupLabelArgs.builder()
  *             .group("example")
  *             .name("fixme")
  *             .description("issue with failing tests")

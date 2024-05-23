@@ -50,14 +50,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PersonalAccessToken("example", PersonalAccessTokenArgs.builder()        
+ *         var example = new PersonalAccessToken("example", PersonalAccessTokenArgs.builder()
  *             .userId("25")
  *             .name("Example personal access token")
  *             .expiresAt("2020-03-14")
  *             .scopes("api")
  *             .build());
  * 
- *         var exampleProjectVariable = new ProjectVariable("exampleProjectVariable", ProjectVariableArgs.builder()        
+ *         var exampleProjectVariable = new ProjectVariable("exampleProjectVariable", ProjectVariableArgs.builder()
  *             .project(exampleGitlabProject.id())
  *             .key("pat")
  *             .value(example.token())

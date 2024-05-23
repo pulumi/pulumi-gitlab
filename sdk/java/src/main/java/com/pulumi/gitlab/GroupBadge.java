@@ -45,32 +45,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Group("foo", GroupArgs.builder()        
+ *         var foo = new Group("foo", GroupArgs.builder()
  *             .name("foo-group")
  *             .build());
  * 
- *         var example = new GroupBadge("example", GroupBadgeArgs.builder()        
+ *         var example = new GroupBadge("example", GroupBadgeArgs.builder()
  *             .group(foo.id())
  *             .linkUrl("https://example.com/badge-123")
  *             .imageUrl("https://example.com/badge-123.svg")
  *             .build());
  * 
  *         // Pipeline status badges with placeholders will be enabled for each project
- *         var gitlabPipeline = new GroupBadge("gitlabPipeline", GroupBadgeArgs.builder()        
+ *         var gitlabPipeline = new GroupBadge("gitlabPipeline", GroupBadgeArgs.builder()
  *             .group(foo.id())
  *             .linkUrl("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}")
  *             .imageUrl("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
  *             .build());
  * 
  *         // Test coverage report badges with placeholders will be enabled for each project
- *         var gitlabCoverage = new GroupBadge("gitlabCoverage", GroupBadgeArgs.builder()        
+ *         var gitlabCoverage = new GroupBadge("gitlabCoverage", GroupBadgeArgs.builder()
  *             .group(foo.id())
  *             .linkUrl("https://gitlab.example.com/%{project_path}/-/jobs")
  *             .imageUrl("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
  *             .build());
  * 
  *         // Latest release badges with placeholders will be enabled for each project
- *         var gitlabRelease = new GroupBadge("gitlabRelease", GroupBadgeArgs.builder()        
+ *         var gitlabRelease = new GroupBadge("gitlabRelease", GroupBadgeArgs.builder()
  *             .group(foo.id())
  *             .linkUrl("https://gitlab.example.com/%{project_path}/-/releases")
  *             .imageUrl("https://gitlab.example.com/%{project_path}/-/badges/release.svg")

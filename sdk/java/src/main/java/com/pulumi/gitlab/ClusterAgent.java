@@ -55,14 +55,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ClusterAgent("example", ClusterAgentArgs.builder()        
+ *         var example = new ClusterAgent("example", ClusterAgentArgs.builder()
  *             .project("12345")
  *             .name("agent-1")
  *             .build());
  * 
  *         // Optionally, configure the agent as described in
  *         // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
- *         var exampleAgentConfig = new RepositoryFile("exampleAgentConfig", RepositoryFileArgs.builder()        
+ *         var exampleAgentConfig = new RepositoryFile("exampleAgentConfig", RepositoryFileArgs.builder()
  *             .project(example.project())
  *             .branch("main")
  *             .filePath(example.name().applyValue(name -> String.format(".gitlab/agents/%s/config.yaml", name)))

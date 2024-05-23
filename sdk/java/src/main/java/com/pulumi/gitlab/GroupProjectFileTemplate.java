@@ -53,20 +53,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Group("foo", GroupArgs.builder()        
+ *         var foo = new Group("foo", GroupArgs.builder()
  *             .name("group")
  *             .path("group")
  *             .description("An example group")
  *             .build());
  * 
- *         var bar = new Project("bar", ProjectArgs.builder()        
+ *         var bar = new Project("bar", ProjectArgs.builder()
  *             .name("template project")
  *             .description("contains file templates")
  *             .visibilityLevel("public")
  *             .namespaceId(foo.id())
  *             .build());
  * 
- *         var templateLink = new GroupProjectFileTemplate("templateLink", GroupProjectFileTemplateArgs.builder()        
+ *         var templateLink = new GroupProjectFileTemplate("templateLink", GroupProjectFileTemplateArgs.builder()
  *             .groupId(foo.id())
  *             .fileTemplateProjectId(bar.id())
  *             .build());

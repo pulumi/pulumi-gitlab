@@ -53,25 +53,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Group("example", GroupArgs.builder()        
+ *         var example = new Group("example", GroupArgs.builder()
  *             .name("test_group")
  *             .path("test_group")
  *             .description("An example group")
  *             .build());
  * 
- *         var label1 = new GroupLabel("label1", GroupLabelArgs.builder()        
+ *         var label1 = new GroupLabel("label1", GroupLabelArgs.builder()
  *             .group(example.id())
  *             .color("#FF0000")
  *             .name("red-label")
  *             .build());
  * 
- *         var label3 = new GroupLabel("label3", GroupLabelArgs.builder()        
+ *         var label3 = new GroupLabel("label3", GroupLabelArgs.builder()
  *             .group(example.id())
  *             .name("label-3")
  *             .color("#003000")
  *             .build());
  * 
- *         var epicBoard = new GroupEpicBoard("epicBoard", GroupEpicBoardArgs.builder()        
+ *         var epicBoard = new GroupEpicBoard("epicBoard", GroupEpicBoardArgs.builder()
  *             .name("epic board 6")
  *             .group(example.path())
  *             .lists(GroupEpicBoardListArgs.builder()
