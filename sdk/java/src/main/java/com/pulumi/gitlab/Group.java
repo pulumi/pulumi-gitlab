@@ -53,21 +53,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Group("example", GroupArgs.builder()        
+ *         var example = new Group("example", GroupArgs.builder()
  *             .name("example")
  *             .path("example")
  *             .description("An example group")
  *             .build());
  * 
  *         // Create a project in the example group
- *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
  *             .name("example")
  *             .description("An example project")
  *             .namespaceId(example.id())
  *             .build());
  * 
  *         // Group with custom push rules
- *         var example_two = new Group("example-two", GroupArgs.builder()        
+ *         var example_two = new Group("example-two", GroupArgs.builder()
  *             .name("example-two")
  *             .path("example-two")
  *             .description("An example group with push rules")

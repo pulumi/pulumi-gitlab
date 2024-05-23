@@ -49,13 +49,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a project
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name("example")
  *             .description("An example project")
  *             .build());
  * 
  *         // Can create release link only to a tag associated with a release
- *         var exampleReleaseLink = new ReleaseLink("exampleReleaseLink", ReleaseLinkArgs.builder()        
+ *         var exampleReleaseLink = new ReleaseLink("exampleReleaseLink", ReleaseLinkArgs.builder()
  *             .project(example.id())
  *             .tagName("tag_name_associated_with_release")
  *             .name("test")

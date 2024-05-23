@@ -45,11 +45,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Project("foo", ProjectArgs.builder()        
+ *         var foo = new Project("foo", ProjectArgs.builder()
  *             .name("foo-project")
  *             .build());
  * 
- *         var example = new ProjectBadge("example", ProjectBadgeArgs.builder()        
+ *         var example = new ProjectBadge("example", ProjectBadgeArgs.builder()
  *             .project(foo.id())
  *             .linkUrl("https://example.com/badge-123")
  *             .imageUrl("https://example.com/badge-123.svg")
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Pipeline status badges with placeholders will be enabled
- *         var gitlabPipeline = new ProjectBadge("gitlabPipeline", ProjectBadgeArgs.builder()        
+ *         var gitlabPipeline = new ProjectBadge("gitlabPipeline", ProjectBadgeArgs.builder()
  *             .project(foo.id())
  *             .linkUrl("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}")
  *             .imageUrl("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Test coverage report badges with placeholders will be enabled
- *         var gitlabCoverage = new ProjectBadge("gitlabCoverage", ProjectBadgeArgs.builder()        
+ *         var gitlabCoverage = new ProjectBadge("gitlabCoverage", ProjectBadgeArgs.builder()
  *             .project(foo.id())
  *             .linkUrl("https://gitlab.example.com/%{project_path}/-/jobs")
  *             .imageUrl("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Latest release badges with placeholders will be enabled
- *         var gitlabRelease = new ProjectBadge("gitlabRelease", ProjectBadgeArgs.builder()        
+ *         var gitlabRelease = new ProjectBadge("gitlabRelease", ProjectBadgeArgs.builder()
  *             .project(foo.id())
  *             .linkUrl("https://gitlab.example.com/%{project_path}/-/releases")
  *             .imageUrl("https://gitlab.example.com/%{project_path}/-/badges/release.svg")

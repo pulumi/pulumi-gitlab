@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new SystemHook("example", SystemHookArgs.builder()        
+ *         var example = new SystemHook("example", SystemHookArgs.builder()
  *             .url("https://example.com/hook-%d")
  *             .token("secret-token")
  *             .pushEvents(true)

@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
  *             .visibilityLevel("public")
  *             .build());
  * 
- *         var github = new ServiceGithub("github", ServiceGithubArgs.builder()        
+ *         var github = new ServiceGithub("github", ServiceGithubArgs.builder()
  *             .project(awesomeProject.id())
  *             .token("REDACTED")
  *             .repositoryUrl("https://github.com/gitlabhq/terraform-provider-gitlab")

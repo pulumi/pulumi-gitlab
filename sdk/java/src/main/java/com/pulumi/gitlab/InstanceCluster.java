@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new InstanceCluster("bar", InstanceClusterArgs.builder()        
+ *         var bar = new InstanceCluster("bar", InstanceClusterArgs.builder()
  *             .name("bar-cluster")
  *             .domain("example.com")
  *             .enabled(true)

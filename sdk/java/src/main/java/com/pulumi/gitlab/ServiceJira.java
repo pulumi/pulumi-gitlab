@@ -50,13 +50,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
  *             .visibilityLevel("public")
  *             .build());
  * 
- *         var jira = new ServiceJira("jira", ServiceJiraArgs.builder()        
+ *         var jira = new ServiceJira("jira", ServiceJiraArgs.builder()
  *             .project(awesomeProject.id())
  *             .url("https://jira.example.com")
  *             .username("user")

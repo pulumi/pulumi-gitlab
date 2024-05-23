@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new GroupVariable("example", GroupVariableArgs.builder()        
+ *         var example = new GroupVariable("example", GroupVariableArgs.builder()
  *             .group("12345")
  *             .key("group_variable_key")
  *             .value("group_variable_value")

@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PipelineTrigger("example", PipelineTriggerArgs.builder()        
+ *         var example = new PipelineTrigger("example", PipelineTriggerArgs.builder()
  *             .project("12345")
  *             .description("Used to trigger builds")
  *             .build());

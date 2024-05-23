@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new GroupShareGroup("test", GroupShareGroupArgs.builder()        
+ *         var test = new GroupShareGroup("test", GroupShareGroupArgs.builder()
  *             .groupId(foo.id())
  *             .shareGroupId(bar.id())
  *             .groupAccess("guest")

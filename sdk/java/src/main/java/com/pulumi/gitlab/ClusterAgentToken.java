@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create token for an agent
- *         var example = new ClusterAgentToken("example", ClusterAgentTokenArgs.builder()        
+ *         var example = new ClusterAgentToken("example", ClusterAgentTokenArgs.builder()
  *             .project("12345")
  *             .agentId(42)
  *             .name("some-token")
@@ -70,19 +70,19 @@ import javax.annotation.Nullable;
  *             .pathWithNamespace("my-org/example")
  *             .build());
  * 
- *         var thisClusterAgent = new ClusterAgent("thisClusterAgent", ClusterAgentArgs.builder()        
+ *         var thisClusterAgent = new ClusterAgent("thisClusterAgent", ClusterAgentArgs.builder()
  *             .project(this_.id())
  *             .name("my-agent")
  *             .build());
  * 
- *         var thisClusterAgentToken = new ClusterAgentToken("thisClusterAgentToken", ClusterAgentTokenArgs.builder()        
+ *         var thisClusterAgentToken = new ClusterAgentToken("thisClusterAgentToken", ClusterAgentTokenArgs.builder()
  *             .project(this_.id())
  *             .agentId(thisClusterAgent.agentId())
  *             .name("my-agent-token")
  *             .description("Token for the my-agent used with `gitlab-agent` Helm Chart")
  *             .build());
  * 
- *         var gitlabAgent = new Release("gitlabAgent", ReleaseArgs.builder()        
+ *         var gitlabAgent = new Release("gitlabAgent", ReleaseArgs.builder()
  *             .name("gitlab-agent")
  *             .namespace("gitlab-agent")
  *             .createNamespace(true)

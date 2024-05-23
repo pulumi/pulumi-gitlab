@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new ProjectMirror("foo", ProjectMirrorArgs.builder()        
+ *         var foo = new ProjectMirror("foo", ProjectMirrorArgs.builder()
  *             .project("1")
  *             .url("https://username:password{@literal @}github.com/org/repository.git")
  *             .build());
