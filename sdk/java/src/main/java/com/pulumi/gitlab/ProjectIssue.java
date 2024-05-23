@@ -47,13 +47,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Project("foo", ProjectArgs.builder()        
+ *         var foo = new Project("foo", ProjectArgs.builder()
  *             .name("example project")
  *             .description("Lorem Ipsum")
  *             .visibilityLevel("public")
  *             .build());
  * 
- *         var welcomeIssue = new ProjectIssue("welcomeIssue", ProjectIssueArgs.builder()        
+ *         var welcomeIssue = new ProjectIssue("welcomeIssue", ProjectIssueArgs.builder()
  *             .project(foo.id())
  *             .title("Welcome!")
  *             .description(foo.name().applyValue(name -> """

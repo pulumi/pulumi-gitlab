@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DeployKey("example", DeployKeyArgs.builder()        
+ *         var example = new DeployKey("example", DeployKeyArgs.builder()
  *             .project("example/deploying")
  *             .title("Example deploy key")
  *             .key("ssh-ed25519 AAAA...")

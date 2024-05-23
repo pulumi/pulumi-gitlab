@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a project for the tag to use
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name("example")
  *             .description("An example project")
  *             .namespaceId(exampleGitlabGroup.id())
  *             .build());
  * 
- *         var exampleProjectTag = new ProjectTag("exampleProjectTag", ProjectTagArgs.builder()        
+ *         var exampleProjectTag = new ProjectTag("exampleProjectTag", ProjectTagArgs.builder()
  *             .name("example")
  *             .ref("main")
  *             .project(example.id())

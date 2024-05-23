@@ -47,14 +47,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new GroupHook("example", GroupHookArgs.builder()        
+ *         var example = new GroupHook("example", GroupHookArgs.builder()
  *             .group("example/hooked")
  *             .url("https://example.com/hook/example")
  *             .mergeRequestsEvents(true)
  *             .build());
  * 
  *         // Setting all attributes
- *         var allAttributes = new GroupHook("allAttributes", GroupHookArgs.builder()        
+ *         var allAttributes = new GroupHook("allAttributes", GroupHookArgs.builder()
  *             .group(1)
  *             .url("http://example.com")
  *             .token("supersecret")

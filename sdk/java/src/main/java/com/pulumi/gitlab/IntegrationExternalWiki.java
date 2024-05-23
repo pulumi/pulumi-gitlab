@@ -46,13 +46,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
  *             .visibilityLevel("public")
  *             .build());
  * 
- *         var wiki = new IntegrationExternalWiki("wiki", IntegrationExternalWikiArgs.builder()        
+ *         var wiki = new IntegrationExternalWiki("wiki", IntegrationExternalWikiArgs.builder()
  *             .project(awesomeProject.id())
  *             .externalWikiUrl("https://MyAwesomeExternalWikiURL.com")
  *             .build());

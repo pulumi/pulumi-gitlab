@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new GroupAccessToken("example", GroupAccessTokenArgs.builder()        
+ *         var example = new GroupAccessToken("example", GroupAccessTokenArgs.builder()
  *             .group("25")
  *             .name("Example project access token")
  *             .expiresAt("2020-03-14")
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .scopes("api")
  *             .build());
  * 
- *         var exampleGroupVariable = new GroupVariable("exampleGroupVariable", GroupVariableArgs.builder()        
+ *         var exampleGroupVariable = new GroupVariable("exampleGroupVariable", GroupVariableArgs.builder()
  *             .group("25")
  *             .key("gat")
  *             .value(example.token())

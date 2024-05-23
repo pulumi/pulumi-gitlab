@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tagProtect = new TagProtection("tagProtect", TagProtectionArgs.builder()        
+ *         var tagProtect = new TagProtection("tagProtect", TagProtectionArgs.builder()
  *             .project("12345")
  *             .tag("TagProtected")
  *             .createAccessLevel("developer")

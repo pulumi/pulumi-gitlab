@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ProjectAccessToken("example", ProjectAccessTokenArgs.builder()        
+ *         var example = new ProjectAccessToken("example", ProjectAccessTokenArgs.builder()
  *             .project("25")
  *             .name("Example project access token")
  *             .expiresAt("2020-03-14")
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .scopes("api")
  *             .build());
  * 
- *         var exampleProjectVariable = new ProjectVariable("exampleProjectVariable", ProjectVariableArgs.builder()        
+ *         var exampleProjectVariable = new ProjectVariable("exampleProjectVariable", ProjectVariableArgs.builder()
  *             .project(exampleGitlabProject.id())
  *             .key("pat")
  *             .value(example.token())

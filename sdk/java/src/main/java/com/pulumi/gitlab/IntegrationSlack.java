@@ -47,13 +47,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()        
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
  *             .visibilityLevel("public")
  *             .build());
  * 
- *         var slack = new IntegrationSlack("slack", IntegrationSlackArgs.builder()        
+ *         var slack = new IntegrationSlack("slack", IntegrationSlackArgs.builder()
  *             .project(awesomeProject.id())
  *             .webhook("https://webhook.com")
  *             .username("myuser")

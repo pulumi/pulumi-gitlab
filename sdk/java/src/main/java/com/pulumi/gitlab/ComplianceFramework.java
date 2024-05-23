@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sample = new ComplianceFramework("sample", ComplianceFrameworkArgs.builder()        
+ *         var sample = new ComplianceFramework("sample", ComplianceFrameworkArgs.builder()
  *             .namespacePath("top-level-group")
  *             .name("HIPAA")
  *             .description("A HIPAA Compliance Framework")
