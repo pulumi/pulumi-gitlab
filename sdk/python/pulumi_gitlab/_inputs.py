@@ -811,6 +811,7 @@ class GroupPushRulesArgs:
                  author_email_regex: Optional[pulumi.Input[str]] = None,
                  branch_name_regex: Optional[pulumi.Input[str]] = None,
                  commit_committer_check: Optional[pulumi.Input[bool]] = None,
+                 commit_committer_name_check: Optional[pulumi.Input[bool]] = None,
                  commit_message_negative_regex: Optional[pulumi.Input[str]] = None,
                  commit_message_regex: Optional[pulumi.Input[str]] = None,
                  deny_delete_tag: Optional[pulumi.Input[bool]] = None,
@@ -823,6 +824,7 @@ class GroupPushRulesArgs:
         :param pulumi.Input[str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param pulumi.Input[str] branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         :param pulumi.Input[bool] commit_committer_check: Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        :param pulumi.Input[bool] commit_committer_name_check: Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
         :param pulumi.Input[str] commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
         :param pulumi.Input[str] commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         :param pulumi.Input[bool] deny_delete_tag: Deny deleting a tag.
@@ -838,6 +840,8 @@ class GroupPushRulesArgs:
             pulumi.set(__self__, "branch_name_regex", branch_name_regex)
         if commit_committer_check is not None:
             pulumi.set(__self__, "commit_committer_check", commit_committer_check)
+        if commit_committer_name_check is not None:
+            pulumi.set(__self__, "commit_committer_name_check", commit_committer_name_check)
         if commit_message_negative_regex is not None:
             pulumi.set(__self__, "commit_message_negative_regex", commit_message_negative_regex)
         if commit_message_regex is not None:
@@ -890,6 +894,18 @@ class GroupPushRulesArgs:
     @commit_committer_check.setter
     def commit_committer_check(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "commit_committer_check", value)
+
+    @property
+    @pulumi.getter(name="commitCommitterNameCheck")
+    def commit_committer_name_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        """
+        return pulumi.get(self, "commit_committer_name_check")
+
+    @commit_committer_name_check.setter
+    def commit_committer_name_check(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "commit_committer_name_check", value)
 
     @property
     @pulumi.getter(name="commitMessageNegativeRegex")
@@ -1536,6 +1552,7 @@ class ProjectPushRulesArgs:
                  author_email_regex: Optional[pulumi.Input[str]] = None,
                  branch_name_regex: Optional[pulumi.Input[str]] = None,
                  commit_committer_check: Optional[pulumi.Input[bool]] = None,
+                 commit_committer_name_check: Optional[pulumi.Input[bool]] = None,
                  commit_message_negative_regex: Optional[pulumi.Input[str]] = None,
                  commit_message_regex: Optional[pulumi.Input[str]] = None,
                  deny_delete_tag: Optional[pulumi.Input[bool]] = None,
@@ -1548,7 +1565,8 @@ class ProjectPushRulesArgs:
         :param pulumi.Input[str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param pulumi.Input[str] branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         :param pulumi.Input[bool] commit_committer_check: Users can only push commits to this repository that were committed with one of their own verified emails.
-        :param pulumi.Input[str] commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        :param pulumi.Input[bool] commit_committer_name_check: Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        :param pulumi.Input[str] commit_message_negative_regex: No commit message is allowed to match this regex, e.g. `ssh\\:\\/\\/`.
         :param pulumi.Input[str] commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         :param pulumi.Input[bool] deny_delete_tag: Deny deleting a tag.
         :param pulumi.Input[str] file_name_regex: All committed filenames must not match this regex, e.g. `(jar|exe)$`.
@@ -1563,6 +1581,8 @@ class ProjectPushRulesArgs:
             pulumi.set(__self__, "branch_name_regex", branch_name_regex)
         if commit_committer_check is not None:
             pulumi.set(__self__, "commit_committer_check", commit_committer_check)
+        if commit_committer_name_check is not None:
+            pulumi.set(__self__, "commit_committer_name_check", commit_committer_name_check)
         if commit_message_negative_regex is not None:
             pulumi.set(__self__, "commit_message_negative_regex", commit_message_negative_regex)
         if commit_message_regex is not None:
@@ -1617,10 +1637,22 @@ class ProjectPushRulesArgs:
         pulumi.set(self, "commit_committer_check", value)
 
     @property
+    @pulumi.getter(name="commitCommitterNameCheck")
+    def commit_committer_name_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        """
+        return pulumi.get(self, "commit_committer_name_check")
+
+    @commit_committer_name_check.setter
+    def commit_committer_name_check(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "commit_committer_name_check", value)
+
+    @property
     @pulumi.getter(name="commitMessageNegativeRegex")
     def commit_message_negative_regex(self) -> Optional[pulumi.Input[str]]:
         """
-        No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        No commit message is allowed to match this regex, e.g. `ssh\\:\\/\\/`.
         """
         return pulumi.get(self, "commit_message_negative_regex")
 

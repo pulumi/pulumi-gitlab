@@ -165,12 +165,6 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Disable email notifications.
-     *
-     * @deprecated use `emailsEnabled` instead.
-     */
-    public readonly emailsDisabled!: pulumi.Output<boolean>;
-    /**
      * Enable email notifications.
      */
     public readonly emailsEnabled!: pulumi.Output<boolean>;
@@ -510,7 +504,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["containerRegistryEnabled"] = state ? state.containerRegistryEnabled : undefined;
             resourceInputs["defaultBranch"] = state ? state.defaultBranch : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["emailsDisabled"] = state ? state.emailsDisabled : undefined;
             resourceInputs["emailsEnabled"] = state ? state.emailsEnabled : undefined;
             resourceInputs["emptyRepo"] = state ? state.emptyRepo : undefined;
             resourceInputs["environmentsAccessLevel"] = state ? state.environmentsAccessLevel : undefined;
@@ -611,7 +604,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["containerRegistryEnabled"] = args ? args.containerRegistryEnabled : undefined;
             resourceInputs["defaultBranch"] = args ? args.defaultBranch : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["emailsDisabled"] = args ? args.emailsDisabled : undefined;
             resourceInputs["emailsEnabled"] = args ? args.emailsEnabled : undefined;
             resourceInputs["environmentsAccessLevel"] = args ? args.environmentsAccessLevel : undefined;
             resourceInputs["externalAuthorizationClassificationLabel"] = args ? args.externalAuthorizationClassificationLabel : undefined;
@@ -809,12 +801,6 @@ export interface ProjectState {
      * A description of the project.
      */
     description?: pulumi.Input<string>;
-    /**
-     * Disable email notifications.
-     *
-     * @deprecated use `emailsEnabled` instead.
-     */
-    emailsDisabled?: pulumi.Input<boolean>;
     /**
      * Enable email notifications.
      */
@@ -1228,12 +1214,6 @@ export interface ProjectArgs {
      * A description of the project.
      */
     description?: pulumi.Input<string>;
-    /**
-     * Disable email notifications.
-     *
-     * @deprecated use `emailsEnabled` instead.
-     */
-    emailsDisabled?: pulumi.Input<boolean>;
     /**
      * Enable email notifications.
      */

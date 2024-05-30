@@ -55,12 +55,6 @@ namespace Pulumi.GitLab
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of approvals required to deploy to this environment.
-        /// </summary>
-        [Output("requiredApprovalCount")]
-        public Output<int> RequiredApprovalCount { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a ProjectProtectedEnvironment resource with the given unique name, arguments, and options.
@@ -143,12 +137,6 @@ namespace Pulumi.GitLab
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// The number of approvals required to deploy to this environment.
-        /// </summary>
-        [Input("requiredApprovalCount")]
-        public Input<int>? RequiredApprovalCount { get; set; }
-
         public ProjectProtectedEnvironmentArgs()
         {
         }
@@ -192,12 +180,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The number of approvals required to deploy to this environment.
-        /// </summary>
-        [Input("requiredApprovalCount")]
-        public Input<int>? RequiredApprovalCount { get; set; }
 
         public ProjectProtectedEnvironmentState()
         {

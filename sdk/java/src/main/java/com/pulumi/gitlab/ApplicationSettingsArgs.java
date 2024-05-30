@@ -2104,6 +2104,21 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="minimumPasswordLength")
+    private @Nullable Output<Integer> minimumPasswordLength;
+
+    /**
+     * @return Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Integer>> minimumPasswordLength() {
+        return Optional.ofNullable(this.minimumPasswordLength);
+    }
+
+    /**
      * Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
      * 
      */
@@ -3803,6 +3818,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.maxPersonalAccessTokenLifetime = $.maxPersonalAccessTokenLifetime;
         this.maxSshKeyLifetime = $.maxSshKeyLifetime;
         this.metricsMethodCallThreshold = $.metricsMethodCallThreshold;
+        this.minimumPasswordLength = $.minimumPasswordLength;
         this.mirrorAvailable = $.mirrorAvailable;
         this.mirrorCapacityThreshold = $.mirrorCapacityThreshold;
         this.mirrorMaxCapacity = $.mirrorMaxCapacity;
@@ -6920,6 +6936,27 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
          */
         public Builder metricsMethodCallThreshold(Integer metricsMethodCallThreshold) {
             return metricsMethodCallThreshold(Output.of(metricsMethodCallThreshold));
+        }
+
+        /**
+         * @param minimumPasswordLength Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumPasswordLength(@Nullable Output<Integer> minimumPasswordLength) {
+            $.minimumPasswordLength = minimumPasswordLength;
+            return this;
+        }
+
+        /**
+         * @param minimumPasswordLength Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumPasswordLength(Integer minimumPasswordLength) {
+            return minimumPasswordLength(Output.of(minimumPasswordLength));
         }
 
         /**

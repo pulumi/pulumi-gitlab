@@ -43,6 +43,10 @@ export interface GetInstanceVariableArgs {
  */
 export interface GetInstanceVariableResult {
     /**
+     * The description of the variable. Maximum of 255 characters.
+     */
+    readonly description: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

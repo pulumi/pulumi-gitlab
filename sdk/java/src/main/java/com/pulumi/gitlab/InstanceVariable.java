@@ -70,6 +70,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/instanceVariable:InstanceVariable")
 public class InstanceVariable extends com.pulumi.resources.CustomResource {
     /**
+     * The description of the variable. Maximum of 255 characters.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The description of the variable. Maximum of 255 characters.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
      * The name of the variable.
      * 
      */

@@ -17,6 +17,21 @@ public final class InstanceVariableState extends com.pulumi.resources.ResourceAr
     public static final InstanceVariableState Empty = new InstanceVariableState();
 
     /**
+     * The description of the variable. Maximum of 255 characters.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the variable. Maximum of 255 characters.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The name of the variable.
      * 
      */
@@ -109,6 +124,7 @@ public final class InstanceVariableState extends com.pulumi.resources.ResourceAr
     private InstanceVariableState() {}
 
     private InstanceVariableState(InstanceVariableState $) {
+        this.description = $.description;
         this.key = $.key;
         this.masked = $.masked;
         this.protected_ = $.protected_;
@@ -133,6 +149,27 @@ public final class InstanceVariableState extends com.pulumi.resources.ResourceAr
 
         public Builder(InstanceVariableState defaults) {
             $ = new InstanceVariableState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description The description of the variable. Maximum of 255 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the variable. Maximum of 255 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

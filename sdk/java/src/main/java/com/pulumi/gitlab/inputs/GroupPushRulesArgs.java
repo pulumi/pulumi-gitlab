@@ -63,6 +63,21 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     * 
+     */
+    @Import(name="commitCommitterNameCheck")
+    private @Nullable Output<Boolean> commitCommitterNameCheck;
+
+    /**
+     * @return Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     * 
+     */
+    public Optional<Output<Boolean>> commitCommitterNameCheck() {
+        return Optional.ofNullable(this.commitCommitterNameCheck);
+    }
+
+    /**
      * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
      * 
      */
@@ -188,6 +203,7 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
         this.authorEmailRegex = $.authorEmailRegex;
         this.branchNameRegex = $.branchNameRegex;
         this.commitCommitterCheck = $.commitCommitterCheck;
+        this.commitCommitterNameCheck = $.commitCommitterNameCheck;
         this.commitMessageNegativeRegex = $.commitMessageNegativeRegex;
         this.commitMessageRegex = $.commitMessageRegex;
         this.denyDeleteTag = $.denyDeleteTag;
@@ -277,6 +293,27 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder commitCommitterCheck(Boolean commitCommitterCheck) {
             return commitCommitterCheck(Output.of(commitCommitterCheck));
+        }
+
+        /**
+         * @param commitCommitterNameCheck Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commitCommitterNameCheck(@Nullable Output<Boolean> commitCommitterNameCheck) {
+            $.commitCommitterNameCheck = commitCommitterNameCheck;
+            return this;
+        }
+
+        /**
+         * @param commitCommitterNameCheck Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commitCommitterNameCheck(Boolean commitCommitterNameCheck) {
+            return commitCommitterNameCheck(Output.of(commitCommitterNameCheck));
         }
 
         /**

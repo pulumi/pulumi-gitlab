@@ -13,6 +13,84 @@ namespace Pulumi.GitLab
     /// The `gitlab.UserRunner` resource allows creating a GitLab runner using the new [GitLab Runner Registration Flow](https://docs.gitlab.com/ee/ci/runners/new_creation_workflow.html).
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#create-a-runner)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a project runner
+    ///     var projectRunner = new GitLab.UserRunner("project_runner", new()
+    ///     {
+    ///         RunnerType = "project_type",
+    ///         ProjectId = 123456,
+    ///         Description = "A runner created using a user access token instead of a registration token",
+    ///         TagLists = new[]
+    ///         {
+    ///             "a-tag",
+    ///             "other-tag",
+    ///         },
+    ///         Untagged = true,
+    ///     });
+    /// 
+    ///     // Create a group runner
+    ///     var groupRunner = new GitLab.UserRunner("group_runner", new()
+    ///     {
+    ///         RunnerType = "group_type",
+    ///         GroupId = 123456,
+    ///     });
+    /// 
+    ///     // Create a instance runner
+    ///     var instanceRunner = new GitLab.UserRunner("instance_runner", new()
+    ///     {
+    ///         RunnerType = "instance_type",
+    ///     });
+    /// 
+    ///     var configToml = groupRunner.Token.Apply(token =&gt; @$"concurrent = 1
+    /// check_interval = 0
+    /// 
+    /// [session_server]
+    ///   session_timeout = 1800
+    /// 
+    /// [[runners]]
+    ///   name = ""my_gitlab_runner""
+    ///   url = ""https://example.gitlab.com""
+    ///   token = ""{token}""
+    ///   executor = ""docker""
+    /// 
+    ///   [runners.custom_build_dir]
+    ///   [runners.cache]
+    ///     [runners.cache.s3]
+    ///     [runners.cache.gcs]
+    ///     [runners.cache.azure]
+    ///   [runners.docker]
+    ///     tls_verify = false
+    ///     image = ""ubuntu""
+    ///     privileged = true
+    ///     disable_entrypoint_overwrite = false
+    ///     oom_kill_disable = false
+    ///     disable_cache = false
+    ///     volumes = [""/cache"", ""/certs/client""]
+    ///     shm_size = 0
+    /// ");
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// You can import a gitlab runner using its ID
+    /// 
+    /// Note: Importing a runner will not provide access to the `token` attribute
+    /// 
+    /// ```sh
+    /// $ pulumi import gitlab:index/userRunner:UserRunner example 12345
+    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/userRunner:UserRunner")]
     public partial class UserRunner : global::Pulumi.CustomResource

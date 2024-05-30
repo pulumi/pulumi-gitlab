@@ -80,6 +80,7 @@ from .integration_custom_issue_tracker import *
 from .integration_emails_on_push import *
 from .integration_external_wiki import *
 from .integration_github import *
+from .integration_jenkins import *
 from .integration_jira import *
 from .integration_mattermost import *
 from .integration_microsoft_teams import *
@@ -104,6 +105,7 @@ from .project_hook import *
 from .project_issue import *
 from .project_issue_board import *
 from .project_job_token_scope import *
+from .project_job_token_scopes import *
 from .project_label import *
 from .project_level_mr_approvals import *
 from .project_level_notifications import *
@@ -111,6 +113,7 @@ from .project_membership import *
 from .project_milestone import *
 from .project_mirror import *
 from .project_protected_environment import *
+from .project_push_rules import *
 from .project_runner_enablement import *
 from .project_share_group import *
 from .project_tag import *
@@ -414,6 +417,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/integrationJenkins",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationJenkins:IntegrationJenkins": "IntegrationJenkins"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/integrationJira",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -606,6 +617,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectJobTokenScopes",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes": "ProjectJobTokenScopes"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectLabel",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -658,6 +677,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment": "ProjectProtectedEnvironment"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectPushRules",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectPushRules:ProjectPushRules": "ProjectPushRules"
   }
  },
  {

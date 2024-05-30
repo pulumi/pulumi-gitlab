@@ -18,7 +18,7 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
     public static final GroupLdapLinkArgs Empty = new GroupLdapLinkArgs();
 
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
      * Use `group_access` instead of the `access_level` attribute.
@@ -29,7 +29,7 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
      * Use `group_access` instead of the `access_level` attribute.
@@ -101,14 +101,14 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     @Import(name="groupAccess")
     private @Nullable Output<String> groupAccess;
 
     /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Optional<Output<String>> groupAccess() {
@@ -161,7 +161,7 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLevel Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+         * @param accessLevel Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLevel Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+         * @param accessLevel Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 

@@ -31,6 +31,12 @@ namespace Pulumi.GitLab.Inputs
         public Input<bool>? CommitCommitterCheck { get; set; }
 
         /// <summary>
+        /// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        /// </summary>
+        [Input("commitCommitterNameCheck")]
+        public Input<bool>? CommitCommitterNameCheck { get; set; }
+
+        /// <summary>
         /// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
         /// </summary>
         [Input("commitMessageNegativeRegex")]

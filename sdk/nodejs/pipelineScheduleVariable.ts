@@ -81,6 +81,10 @@ export class PipelineScheduleVariable extends pulumi.CustomResource {
      * Value of the variable.
      */
     public readonly value!: pulumi.Output<string>;
+    /**
+     * The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
+     */
+    public readonly variableType!: pulumi.Output<string>;
 
     /**
      * Create a PipelineScheduleVariable resource with the given unique name, arguments, and options.
@@ -99,6 +103,7 @@ export class PipelineScheduleVariable extends pulumi.CustomResource {
             resourceInputs["pipelineScheduleId"] = state ? state.pipelineScheduleId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["variableType"] = state ? state.variableType : undefined;
         } else {
             const args = argsOrState as PipelineScheduleVariableArgs | undefined;
             if ((!args || args.key === undefined) && !opts.urn) {
@@ -117,6 +122,7 @@ export class PipelineScheduleVariable extends pulumi.CustomResource {
             resourceInputs["pipelineScheduleId"] = args ? args.pipelineScheduleId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["variableType"] = args ? args.variableType : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PipelineScheduleVariable.__pulumiType, name, resourceInputs, opts);
@@ -143,6 +149,10 @@ export interface PipelineScheduleVariableState {
      * Value of the variable.
      */
     value?: pulumi.Input<string>;
+    /**
+     * The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
+     */
+    variableType?: pulumi.Input<string>;
 }
 
 /**
@@ -165,4 +175,8 @@ export interface PipelineScheduleVariableArgs {
      * Value of the variable.
      */
     value: pulumi.Input<string>;
+    /**
+     * The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
+     */
+    variableType?: pulumi.Input<string>;
 }

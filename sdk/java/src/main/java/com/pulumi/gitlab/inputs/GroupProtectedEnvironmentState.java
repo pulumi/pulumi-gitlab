@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gitlab.inputs.GroupProtectedEnvironmentApprovalRuleArgs;
 import com.pulumi.gitlab.inputs.GroupProtectedEnvironmentDeployAccessLevelArgs;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -79,21 +78,6 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
         return Optional.ofNullable(this.group);
     }
 
-    /**
-     * The number of approvals required to deploy to this environment.
-     * 
-     */
-    @Import(name="requiredApprovalCount")
-    private @Nullable Output<Integer> requiredApprovalCount;
-
-    /**
-     * @return The number of approvals required to deploy to this environment.
-     * 
-     */
-    public Optional<Output<Integer>> requiredApprovalCount() {
-        return Optional.ofNullable(this.requiredApprovalCount);
-    }
-
     private GroupProtectedEnvironmentState() {}
 
     private GroupProtectedEnvironmentState(GroupProtectedEnvironmentState $) {
@@ -101,7 +85,6 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
         this.deployAccessLevels = $.deployAccessLevels;
         this.environment = $.environment;
         this.group = $.group;
-        this.requiredApprovalCount = $.requiredApprovalCount;
     }
 
     public static Builder builder() {
@@ -224,27 +207,6 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
          */
         public Builder group(String group) {
             return group(Output.of(group));
-        }
-
-        /**
-         * @param requiredApprovalCount The number of approvals required to deploy to this environment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requiredApprovalCount(@Nullable Output<Integer> requiredApprovalCount) {
-            $.requiredApprovalCount = requiredApprovalCount;
-            return this;
-        }
-
-        /**
-         * @param requiredApprovalCount The number of approvals required to deploy to this environment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requiredApprovalCount(Integer requiredApprovalCount) {
-            return requiredApprovalCount(Output.of(requiredApprovalCount));
         }
 
         public GroupProtectedEnvironmentState build() {

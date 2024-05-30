@@ -68,10 +68,6 @@ export class GroupProtectedEnvironment extends pulumi.CustomResource {
      * The ID or full path of the group which the protected environment is created against.
      */
     public readonly group!: pulumi.Output<string>;
-    /**
-     * The number of approvals required to deploy to this environment.
-     */
-    public readonly requiredApprovalCount!: pulumi.Output<number>;
 
     /**
      * Create a GroupProtectedEnvironment resource with the given unique name, arguments, and options.
@@ -90,7 +86,6 @@ export class GroupProtectedEnvironment extends pulumi.CustomResource {
             resourceInputs["deployAccessLevels"] = state ? state.deployAccessLevels : undefined;
             resourceInputs["environment"] = state ? state.environment : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["requiredApprovalCount"] = state ? state.requiredApprovalCount : undefined;
         } else {
             const args = argsOrState as GroupProtectedEnvironmentArgs | undefined;
             if ((!args || args.deployAccessLevels === undefined) && !opts.urn) {
@@ -106,7 +101,6 @@ export class GroupProtectedEnvironment extends pulumi.CustomResource {
             resourceInputs["deployAccessLevels"] = args ? args.deployAccessLevels : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["requiredApprovalCount"] = args ? args.requiredApprovalCount : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupProtectedEnvironment.__pulumiType, name, resourceInputs, opts);
@@ -133,10 +127,6 @@ export interface GroupProtectedEnvironmentState {
      * The ID or full path of the group which the protected environment is created against.
      */
     group?: pulumi.Input<string>;
-    /**
-     * The number of approvals required to deploy to this environment.
-     */
-    requiredApprovalCount?: pulumi.Input<number>;
 }
 
 /**
@@ -159,8 +149,4 @@ export interface GroupProtectedEnvironmentArgs {
      * The ID or full path of the group which the protected environment is created against.
      */
     group: pulumi.Input<string>;
-    /**
-     * The number of approvals required to deploy to this environment.
-     */
-    requiredApprovalCount?: pulumi.Input<number>;
 }

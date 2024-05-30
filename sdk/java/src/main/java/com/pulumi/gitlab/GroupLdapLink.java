@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupLdapLink:GroupLdapLink")
 public class GroupLdapLink extends com.pulumi.resources.CustomResource {
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
      * Use `group_access` instead of the `access_level` attribute.
@@ -56,7 +56,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> accessLevel;
 
     /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Output<Optional<String>> accessLevel() {
@@ -119,14 +119,14 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
         return this.group;
     }
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     @Export(name="groupAccess", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupAccess;
 
     /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Output<Optional<String>> groupAccess() {

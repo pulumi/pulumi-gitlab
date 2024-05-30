@@ -380,6 +380,11 @@ export type IntegrationGithub = import("./integrationGithub").IntegrationGithub;
 export const IntegrationGithub: typeof import("./integrationGithub").IntegrationGithub = null as any;
 utilities.lazyLoad(exports, ["IntegrationGithub"], () => require("./integrationGithub"));
 
+export { IntegrationJenkinsArgs, IntegrationJenkinsState } from "./integrationJenkins";
+export type IntegrationJenkins = import("./integrationJenkins").IntegrationJenkins;
+export const IntegrationJenkins: typeof import("./integrationJenkins").IntegrationJenkins = null as any;
+utilities.lazyLoad(exports, ["IntegrationJenkins"], () => require("./integrationJenkins"));
+
 export { IntegrationJiraArgs, IntegrationJiraState } from "./integrationJira";
 export type IntegrationJira = import("./integrationJira").IntegrationJira;
 export const IntegrationJira: typeof import("./integrationJira").IntegrationJira = null as any;
@@ -500,6 +505,11 @@ export type ProjectJobTokenScope = import("./projectJobTokenScope").ProjectJobTo
 export const ProjectJobTokenScope: typeof import("./projectJobTokenScope").ProjectJobTokenScope = null as any;
 utilities.lazyLoad(exports, ["ProjectJobTokenScope"], () => require("./projectJobTokenScope"));
 
+export { ProjectJobTokenScopesArgs, ProjectJobTokenScopesState } from "./projectJobTokenScopes";
+export type ProjectJobTokenScopes = import("./projectJobTokenScopes").ProjectJobTokenScopes;
+export const ProjectJobTokenScopes: typeof import("./projectJobTokenScopes").ProjectJobTokenScopes = null as any;
+utilities.lazyLoad(exports, ["ProjectJobTokenScopes"], () => require("./projectJobTokenScopes"));
+
 export { ProjectLabelArgs, ProjectLabelState } from "./projectLabel";
 export type ProjectLabel = import("./projectLabel").ProjectLabel;
 export const ProjectLabel: typeof import("./projectLabel").ProjectLabel = null as any;
@@ -534,6 +544,11 @@ export { ProjectProtectedEnvironmentArgs, ProjectProtectedEnvironmentState } fro
 export type ProjectProtectedEnvironment = import("./projectProtectedEnvironment").ProjectProtectedEnvironment;
 export const ProjectProtectedEnvironment: typeof import("./projectProtectedEnvironment").ProjectProtectedEnvironment = null as any;
 utilities.lazyLoad(exports, ["ProjectProtectedEnvironment"], () => require("./projectProtectedEnvironment"));
+
+export { ProjectPushRulesArgs, ProjectPushRulesState } from "./projectPushRules";
+export type ProjectPushRules = import("./projectPushRules").ProjectPushRules;
+export const ProjectPushRules: typeof import("./projectPushRules").ProjectPushRules = null as any;
+utilities.lazyLoad(exports, ["ProjectPushRules"], () => require("./projectPushRules"));
 
 export { ProjectRunnerEnablementArgs, ProjectRunnerEnablementState } from "./projectRunnerEnablement";
 export type ProjectRunnerEnablement = import("./projectRunnerEnablement").ProjectRunnerEnablement;
@@ -735,6 +750,8 @@ const _module = {
                 return new IntegrationExternalWiki(name, <any>undefined, { urn })
             case "gitlab:index/integrationGithub:IntegrationGithub":
                 return new IntegrationGithub(name, <any>undefined, { urn })
+            case "gitlab:index/integrationJenkins:IntegrationJenkins":
+                return new IntegrationJenkins(name, <any>undefined, { urn })
             case "gitlab:index/integrationJira:IntegrationJira":
                 return new IntegrationJira(name, <any>undefined, { urn })
             case "gitlab:index/integrationMattermost:IntegrationMattermost":
@@ -783,6 +800,8 @@ const _module = {
                 return new ProjectIssueBoard(name, <any>undefined, { urn })
             case "gitlab:index/projectJobTokenScope:ProjectJobTokenScope":
                 return new ProjectJobTokenScope(name, <any>undefined, { urn })
+            case "gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes":
+                return new ProjectJobTokenScopes(name, <any>undefined, { urn })
             case "gitlab:index/projectLabel:ProjectLabel":
                 return new ProjectLabel(name, <any>undefined, { urn })
             case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
@@ -797,6 +816,8 @@ const _module = {
                 return new ProjectMirror(name, <any>undefined, { urn })
             case "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment":
                 return new ProjectProtectedEnvironment(name, <any>undefined, { urn })
+            case "gitlab:index/projectPushRules:ProjectPushRules":
+                return new ProjectPushRules(name, <any>undefined, { urn })
             case "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement":
                 return new ProjectRunnerEnablement(name, <any>undefined, { urn })
             case "gitlab:index/projectShareGroup:ProjectShareGroup":
@@ -881,6 +902,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/integrationCustomIssueTra
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationEmailsOnPush", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationExternalWiki", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationGithub", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationJenkins", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationJira", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationMattermost", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationMicrosoftTeams", _module)
@@ -905,6 +927,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssue", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssueBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectJobTokenScope", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectJobTokenScopes", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelMrApprovals", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelNotifications", _module)
@@ -912,6 +935,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _modu
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMilestone", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMirror", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectProtectedEnvironment", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectPushRules", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectRunnerEnablement", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectTag", _module)

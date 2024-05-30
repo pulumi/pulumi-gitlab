@@ -34,7 +34,7 @@ namespace Pulumi.GitLab
     public partial class GroupLdapLink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Output("accessLevel")]
         public Output<string?> AccessLevel { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GitLab
         public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Output("groupAccess")]
         public Output<string?> GroupAccess { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.GitLab
     public sealed class GroupLdapLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -152,7 +152,7 @@ namespace Pulumi.GitLab
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.GitLab
     public sealed class GroupLdapLinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -202,7 +202,7 @@ namespace Pulumi.GitLab
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }

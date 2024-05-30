@@ -14,6 +14,10 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetInstanceVariablesVariableResult
     {
         /// <summary>
+        /// The description of the variable. Maximum of 255 characters.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// The name of the variable.
         /// </summary>
         public readonly string Key;
@@ -40,6 +44,8 @@ namespace Pulumi.GitLab.Outputs
 
         [OutputConstructor]
         private GetInstanceVariablesVariableResult(
+            string description,
+
             string key,
 
             bool masked,
@@ -52,6 +58,7 @@ namespace Pulumi.GitLab.Outputs
 
             string variableType)
         {
+            Description = description;
             Key = key;
             Masked = masked;
             Protected = @protected;

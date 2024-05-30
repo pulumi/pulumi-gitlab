@@ -19,15 +19,13 @@ class ProjectProtectedEnvironmentArgs:
                  environment: pulumi.Input[str],
                  project: pulumi.Input[str],
                  approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]]] = None,
-                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
-                 required_approval_count: Optional[pulumi.Input[int]] = None):
+                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] = None):
         """
         The set of arguments for constructing a ProjectProtectedEnvironment resource.
         :param pulumi.Input[str] environment: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project which the protected environment is created against.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
-        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "project", project)
@@ -35,8 +33,6 @@ class ProjectProtectedEnvironmentArgs:
             pulumi.set(__self__, "approval_rules", approval_rules)
         if deploy_access_levels is not None:
             pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
-        if required_approval_count is not None:
-            pulumi.set(__self__, "required_approval_count", required_approval_count)
 
     @property
     @pulumi.getter
@@ -86,18 +82,6 @@ class ProjectProtectedEnvironmentArgs:
     def deploy_access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]):
         pulumi.set(self, "deploy_access_levels", value)
 
-    @property
-    @pulumi.getter(name="requiredApprovalCount")
-    def required_approval_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of approvals required to deploy to this environment.
-        """
-        return pulumi.get(self, "required_approval_count")
-
-    @required_approval_count.setter
-    def required_approval_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "required_approval_count", value)
-
 
 @pulumi.input_type
 class _ProjectProtectedEnvironmentState:
@@ -105,15 +89,13 @@ class _ProjectProtectedEnvironmentState:
                  approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]]] = None,
                  deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 required_approval_count: Optional[pulumi.Input[int]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectProtectedEnvironment resources.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project which the protected environment is created against.
-        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         if approval_rules is not None:
             pulumi.set(__self__, "approval_rules", approval_rules)
@@ -123,8 +105,6 @@ class _ProjectProtectedEnvironmentState:
             pulumi.set(__self__, "environment", environment)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if required_approval_count is not None:
-            pulumi.set(__self__, "required_approval_count", required_approval_count)
 
     @property
     @pulumi.getter(name="approvalRules")
@@ -174,18 +154,6 @@ class _ProjectProtectedEnvironmentState:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter(name="requiredApprovalCount")
-    def required_approval_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of approvals required to deploy to this environment.
-        """
-        return pulumi.get(self, "required_approval_count")
-
-    @required_approval_count.setter
-    def required_approval_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "required_approval_count", value)
-
 
 class ProjectProtectedEnvironment(pulumi.CustomResource):
     @overload
@@ -196,7 +164,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
                  deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 required_approval_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         The `ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
@@ -223,7 +190,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project which the protected environment is created against.
-        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         ...
     @overload
@@ -269,7 +235,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
                  deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 required_approval_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -287,7 +252,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["required_approval_count"] = required_approval_count
         super(ProjectProtectedEnvironment, __self__).__init__(
             'gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment',
             resource_name,
@@ -301,8 +265,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
             approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentApprovalRuleArgs']]]]] = None,
             deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None,
-            required_approval_count: Optional[pulumi.Input[int]] = None) -> 'ProjectProtectedEnvironment':
+            project: Optional[pulumi.Input[str]] = None) -> 'ProjectProtectedEnvironment':
         """
         Get an existing ProjectProtectedEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -314,7 +277,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project which the protected environment is created against.
-        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -324,7 +286,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         __props__.__dict__["deploy_access_levels"] = deploy_access_levels
         __props__.__dict__["environment"] = environment
         __props__.__dict__["project"] = project
-        __props__.__dict__["required_approval_count"] = required_approval_count
         return ProjectProtectedEnvironment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -358,12 +319,4 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         The ID or full path of the project which the protected environment is created against.
         """
         return pulumi.get(self, "project")
-
-    @property
-    @pulumi.getter(name="requiredApprovalCount")
-    def required_approval_count(self) -> pulumi.Output[int]:
-        """
-        The number of approvals required to deploy to this environment.
-        """
-        return pulumi.get(self, "required_approval_count")
 

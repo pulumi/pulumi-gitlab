@@ -420,24 +420,6 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Disable email notifications.
-     * 
-     * @deprecated
-     * use `emails_enabled` instead.
-     * 
-     */
-    @Deprecated /* use `emails_enabled` instead. */
-    @Export(name="emailsDisabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> emailsDisabled;
-
-    /**
-     * @return Disable email notifications.
-     * 
-     */
-    public Output<Boolean> emailsDisabled() {
-        return this.emailsDisabled;
-    }
-    /**
      * Enable email notifications.
      * 
      */

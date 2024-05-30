@@ -22,7 +22,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_disabled=None, emails_enabled=None, empty_repo=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
+    def __init__(__self__, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_enabled=None, empty_repo=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
         if analytics_access_level and not isinstance(analytics_access_level, str):
             raise TypeError("Expected argument 'analytics_access_level' to be a str")
         pulumi.set(__self__, "analytics_access_level", analytics_access_level)
@@ -74,9 +74,6 @@ class GetProjectResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if emails_disabled and not isinstance(emails_disabled, bool):
-            raise TypeError("Expected argument 'emails_disabled' to be a bool")
-        pulumi.set(__self__, "emails_disabled", emails_disabled)
         if emails_enabled and not isinstance(emails_enabled, bool):
             raise TypeError("Expected argument 'emails_enabled' to be a bool")
         pulumi.set(__self__, "emails_enabled", emails_enabled)
@@ -360,17 +357,6 @@ class GetProjectResult:
         A description of the project.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> bool:
-        """
-        Disable email notifications.
-        """
-        warnings.warn("""Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.""", DeprecationWarning)
-        pulumi.log.warn("""emails_disabled is deprecated: Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.""")
-
-        return pulumi.get(self, "emails_disabled")
 
     @property
     @pulumi.getter(name="emailsEnabled")
@@ -788,7 +774,6 @@ class AwaitableGetProjectResult(GetProjectResult):
             container_registry_access_level=self.container_registry_access_level,
             default_branch=self.default_branch,
             description=self.description,
-            emails_disabled=self.emails_disabled,
             emails_enabled=self.emails_enabled,
             empty_repo=self.empty_repo,
             environments_access_level=self.environments_access_level,
@@ -882,7 +867,6 @@ def get_project(ci_default_git_depth: Optional[int] = None,
         container_registry_access_level=pulumi.get(__ret__, 'container_registry_access_level'),
         default_branch=pulumi.get(__ret__, 'default_branch'),
         description=pulumi.get(__ret__, 'description'),
-        emails_disabled=pulumi.get(__ret__, 'emails_disabled'),
         emails_enabled=pulumi.get(__ret__, 'emails_enabled'),
         empty_repo=pulumi.get(__ret__, 'empty_repo'),
         environments_access_level=pulumi.get(__ret__, 'environments_access_level'),

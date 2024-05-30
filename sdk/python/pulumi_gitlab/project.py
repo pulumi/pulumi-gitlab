@@ -41,7 +41,6 @@ class ProjectArgs:
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 emails_disabled: Optional[pulumi.Input[bool]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  environments_access_level: Optional[pulumi.Input[str]] = None,
                  external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
@@ -139,7 +138,6 @@ class ProjectArgs:
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
-        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] external_authorization_classification_label: The classification label for the project.
@@ -268,11 +266,6 @@ class ProjectArgs:
             pulumi.set(__self__, "default_branch", default_branch)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if emails_disabled is not None:
-            warnings.warn("""use `emails_enabled` instead.""", DeprecationWarning)
-            pulumi.log.warn("""emails_disabled is deprecated: use `emails_enabled` instead.""")
-        if emails_disabled is not None:
-            pulumi.set(__self__, "emails_disabled", emails_disabled)
         if emails_enabled is not None:
             pulumi.set(__self__, "emails_enabled", emails_enabled)
         if environments_access_level is not None:
@@ -722,21 +715,6 @@ class ProjectArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Disable email notifications.
-        """
-        warnings.warn("""use `emails_enabled` instead.""", DeprecationWarning)
-        pulumi.log.warn("""emails_disabled is deprecated: use `emails_enabled` instead.""")
-
-        return pulumi.get(self, "emails_disabled")
-
-    @emails_disabled.setter
-    def emails_disabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "emails_disabled", value)
 
     @property
     @pulumi.getter(name="emailsEnabled")
@@ -1582,7 +1560,6 @@ class _ProjectState:
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 emails_disabled: Optional[pulumi.Input[bool]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  empty_repo: Optional[pulumi.Input[bool]] = None,
                  environments_access_level: Optional[pulumi.Input[str]] = None,
@@ -1687,7 +1664,6 @@ class _ProjectState:
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
-        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[bool] empty_repo: Whether the project is empty.
         :param pulumi.Input[str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1824,11 +1800,6 @@ class _ProjectState:
             pulumi.set(__self__, "default_branch", default_branch)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if emails_disabled is not None:
-            warnings.warn("""use `emails_enabled` instead.""", DeprecationWarning)
-            pulumi.log.warn("""emails_disabled is deprecated: use `emails_enabled` instead.""")
-        if emails_disabled is not None:
-            pulumi.set(__self__, "emails_disabled", emails_disabled)
         if emails_enabled is not None:
             pulumi.set(__self__, "emails_enabled", emails_enabled)
         if empty_repo is not None:
@@ -2302,21 +2273,6 @@ class _ProjectState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Disable email notifications.
-        """
-        warnings.warn("""use `emails_enabled` instead.""", DeprecationWarning)
-        pulumi.log.warn("""emails_disabled is deprecated: use `emails_enabled` instead.""")
-
-        return pulumi.get(self, "emails_disabled")
-
-    @emails_disabled.setter
-    def emails_disabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "emails_disabled", value)
 
     @property
     @pulumi.getter(name="emailsEnabled")
@@ -3235,7 +3191,6 @@ class Project(pulumi.CustomResource):
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 emails_disabled: Optional[pulumi.Input[bool]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  environments_access_level: Optional[pulumi.Input[str]] = None,
                  external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
@@ -3353,7 +3308,6 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
-        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] external_authorization_classification_label: The classification label for the project.
@@ -3491,7 +3445,6 @@ class Project(pulumi.CustomResource):
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 emails_disabled: Optional[pulumi.Input[bool]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  environments_access_level: Optional[pulumi.Input[str]] = None,
                  external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
@@ -3593,7 +3546,6 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["container_registry_enabled"] = container_registry_enabled
             __props__.__dict__["default_branch"] = default_branch
             __props__.__dict__["description"] = description
-            __props__.__dict__["emails_disabled"] = emails_disabled
             __props__.__dict__["emails_enabled"] = emails_enabled
             __props__.__dict__["environments_access_level"] = environments_access_level
             __props__.__dict__["external_authorization_classification_label"] = external_authorization_classification_label
@@ -3706,7 +3658,6 @@ class Project(pulumi.CustomResource):
             container_registry_enabled: Optional[pulumi.Input[bool]] = None,
             default_branch: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            emails_disabled: Optional[pulumi.Input[bool]] = None,
             emails_enabled: Optional[pulumi.Input[bool]] = None,
             empty_repo: Optional[pulumi.Input[bool]] = None,
             environments_access_level: Optional[pulumi.Input[str]] = None,
@@ -3816,7 +3767,6 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
-        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[bool] empty_repo: Whether the project is empty.
         :param pulumi.Input[str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3925,7 +3875,6 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["container_registry_enabled"] = container_registry_enabled
         __props__.__dict__["default_branch"] = default_branch
         __props__.__dict__["description"] = description
-        __props__.__dict__["emails_disabled"] = emails_disabled
         __props__.__dict__["emails_enabled"] = emails_enabled
         __props__.__dict__["empty_repo"] = empty_repo
         __props__.__dict__["environments_access_level"] = environments_access_level
@@ -4217,17 +4166,6 @@ class Project(pulumi.CustomResource):
         A description of the project.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> pulumi.Output[bool]:
-        """
-        Disable email notifications.
-        """
-        warnings.warn("""use `emails_enabled` instead.""", DeprecationWarning)
-        pulumi.log.warn("""emails_disabled is deprecated: use `emails_enabled` instead.""")
-
-        return pulumi.get(self, "emails_disabled")
 
     @property
     @pulumi.getter(name="emailsEnabled")

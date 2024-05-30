@@ -12,7 +12,6 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentState;
 import com.pulumi.gitlab.outputs.ProjectProtectedEnvironmentApprovalRule;
 import com.pulumi.gitlab.outputs.ProjectProtectedEnvironmentDeployAccessLevel;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -95,20 +94,6 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      */
     public Output<String> project() {
         return this.project;
-    }
-    /**
-     * The number of approvals required to deploy to this environment.
-     * 
-     */
-    @Export(name="requiredApprovalCount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> requiredApprovalCount;
-
-    /**
-     * @return The number of approvals required to deploy to this environment.
-     * 
-     */
-    public Output<Integer> requiredApprovalCount() {
-        return this.requiredApprovalCount;
     }
 
     /**

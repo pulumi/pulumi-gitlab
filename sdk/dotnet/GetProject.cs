@@ -166,10 +166,6 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Disable email notifications.
-        /// </summary>
-        public readonly bool EmailsDisabled;
-        /// <summary>
         /// Enable email notifications.
         /// </summary>
         public readonly bool EmailsEnabled;
@@ -402,8 +398,6 @@ namespace Pulumi.GitLab
 
             string description,
 
-            bool emailsDisabled,
-
             bool emailsEnabled,
 
             bool emptyRepo,
@@ -519,7 +513,6 @@ namespace Pulumi.GitLab
             ContainerRegistryAccessLevel = containerRegistryAccessLevel;
             DefaultBranch = defaultBranch;
             Description = description;
-            EmailsDisabled = emailsDisabled;
             EmailsEnabled = emailsEnabled;
             EmptyRepo = emptyRepo;
             EnvironmentsAccessLevel = environmentsAccessLevel;

@@ -18,6 +18,21 @@ public final class InstanceVariableArgs extends com.pulumi.resources.ResourceArg
     public static final InstanceVariableArgs Empty = new InstanceVariableArgs();
 
     /**
+     * The description of the variable. Maximum of 255 characters.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the variable. Maximum of 255 characters.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The name of the variable.
      * 
      */
@@ -110,6 +125,7 @@ public final class InstanceVariableArgs extends com.pulumi.resources.ResourceArg
     private InstanceVariableArgs() {}
 
     private InstanceVariableArgs(InstanceVariableArgs $) {
+        this.description = $.description;
         this.key = $.key;
         this.masked = $.masked;
         this.protected_ = $.protected_;
@@ -134,6 +150,27 @@ public final class InstanceVariableArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(InstanceVariableArgs defaults) {
             $ = new InstanceVariableArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description The description of the variable. Maximum of 255 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the variable. Maximum of 255 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

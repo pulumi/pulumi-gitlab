@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -55,6 +55,8 @@ import (
 type InstanceVariable struct {
 	pulumi.CustomResourceState
 
+	// The description of the variable. Maximum of 255 characters.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
@@ -105,6 +107,8 @@ func GetInstanceVariable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceVariable resources.
 type instanceVariableState struct {
+	// The description of the variable. Maximum of 255 characters.
+	Description *string `pulumi:"description"`
 	// The name of the variable.
 	Key *string `pulumi:"key"`
 	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
@@ -120,6 +124,8 @@ type instanceVariableState struct {
 }
 
 type InstanceVariableState struct {
+	// The description of the variable. Maximum of 255 characters.
+	Description pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringPtrInput
 	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
@@ -139,6 +145,8 @@ func (InstanceVariableState) ElementType() reflect.Type {
 }
 
 type instanceVariableArgs struct {
+	// The description of the variable. Maximum of 255 characters.
+	Description *string `pulumi:"description"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
 	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
@@ -155,6 +163,8 @@ type instanceVariableArgs struct {
 
 // The set of arguments for constructing a InstanceVariable resource.
 type InstanceVariableArgs struct {
+	// The description of the variable. Maximum of 255 characters.
+	Description pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringInput
 	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
@@ -254,6 +264,11 @@ func (o InstanceVariableOutput) ToInstanceVariableOutput() InstanceVariableOutpu
 
 func (o InstanceVariableOutput) ToInstanceVariableOutputWithContext(ctx context.Context) InstanceVariableOutput {
 	return o
+}
+
+// The description of the variable. Maximum of 255 characters.
+func (o InstanceVariableOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceVariable) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The name of the variable.

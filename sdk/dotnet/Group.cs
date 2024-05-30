@@ -113,12 +113,6 @@ namespace Pulumi.GitLab
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Disable email notifications.
-        /// </summary>
-        [Output("emailsDisabled")]
-        public Output<bool> EmailsDisabled { get; private set; } = null!;
-
-        /// <summary>
         /// Enable email notifications.
         /// </summary>
         [Output("emailsEnabled")]
@@ -349,12 +343,6 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Disable email notifications.
-        /// </summary>
-        [Input("emailsDisabled")]
-        public Input<bool>? EmailsDisabled { get; set; }
-
-        /// <summary>
         /// Enable email notifications.
         /// </summary>
         [Input("emailsEnabled")]
@@ -529,12 +517,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Disable email notifications.
-        /// </summary>
-        [Input("emailsDisabled")]
-        public Input<bool>? EmailsDisabled { get; set; }
 
         /// <summary>
         /// Enable email notifications.

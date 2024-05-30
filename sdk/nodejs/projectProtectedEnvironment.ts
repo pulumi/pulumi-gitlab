@@ -69,10 +69,6 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
      * The ID or full path of the project which the protected environment is created against.
      */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The number of approvals required to deploy to this environment.
-     */
-    public readonly requiredApprovalCount!: pulumi.Output<number>;
 
     /**
      * Create a ProjectProtectedEnvironment resource with the given unique name, arguments, and options.
@@ -91,7 +87,6 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
             resourceInputs["deployAccessLevels"] = state ? state.deployAccessLevels : undefined;
             resourceInputs["environment"] = state ? state.environment : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["requiredApprovalCount"] = state ? state.requiredApprovalCount : undefined;
         } else {
             const args = argsOrState as ProjectProtectedEnvironmentArgs | undefined;
             if ((!args || args.environment === undefined) && !opts.urn) {
@@ -104,7 +99,6 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
             resourceInputs["deployAccessLevels"] = args ? args.deployAccessLevels : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["requiredApprovalCount"] = args ? args.requiredApprovalCount : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectProtectedEnvironment.__pulumiType, name, resourceInputs, opts);
@@ -131,10 +125,6 @@ export interface ProjectProtectedEnvironmentState {
      * The ID or full path of the project which the protected environment is created against.
      */
     project?: pulumi.Input<string>;
-    /**
-     * The number of approvals required to deploy to this environment.
-     */
-    requiredApprovalCount?: pulumi.Input<number>;
 }
 
 /**
@@ -157,8 +147,4 @@ export interface ProjectProtectedEnvironmentArgs {
      * The ID or full path of the project which the protected environment is created against.
      */
     project: pulumi.Input<string>;
-    /**
-     * The number of approvals required to deploy to this environment.
-     */
-    requiredApprovalCount?: pulumi.Input<number>;
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,10 +90,6 @@ type Project struct {
 	DefaultBranch pulumi.StringOutput `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Disable email notifications.
-	//
-	// Deprecated: use `emailsEnabled` instead.
-	EmailsDisabled pulumi.BoolOutput `pulumi:"emailsDisabled"`
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolOutput `pulumi:"emailsEnabled"`
 	// Whether the project is empty.
@@ -189,7 +185,7 @@ type Project struct {
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs pulumi.BoolOutput `pulumi:"publicJobs"`
 	// Push rules for the project.
-	PushRules ProjectPushRulesOutput `pulumi:"pushRules"`
+	PushRules ProjectPushRulesTypeOutput `pulumi:"pushRules"`
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
 	ReleasesAccessLevel pulumi.StringOutput `pulumi:"releasesAccessLevel"`
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -347,10 +343,6 @@ type projectState struct {
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description *string `pulumi:"description"`
-	// Disable email notifications.
-	//
-	// Deprecated: use `emailsEnabled` instead.
-	EmailsDisabled *bool `pulumi:"emailsDisabled"`
 	// Enable email notifications.
 	EmailsEnabled *bool `pulumi:"emailsEnabled"`
 	// Whether the project is empty.
@@ -446,7 +438,7 @@ type projectState struct {
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs *bool `pulumi:"publicJobs"`
 	// Push rules for the project.
-	PushRules *ProjectPushRules `pulumi:"pushRules"`
+	PushRules *ProjectPushRulesType `pulumi:"pushRules"`
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
 	ReleasesAccessLevel *string `pulumi:"releasesAccessLevel"`
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -567,10 +559,6 @@ type ProjectState struct {
 	DefaultBranch pulumi.StringPtrInput
 	// A description of the project.
 	Description pulumi.StringPtrInput
-	// Disable email notifications.
-	//
-	// Deprecated: use `emailsEnabled` instead.
-	EmailsDisabled pulumi.BoolPtrInput
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolPtrInput
 	// Whether the project is empty.
@@ -666,7 +654,7 @@ type ProjectState struct {
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs pulumi.BoolPtrInput
 	// Push rules for the project.
-	PushRules ProjectPushRulesPtrInput
+	PushRules ProjectPushRulesTypePtrInput
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
 	ReleasesAccessLevel pulumi.StringPtrInput
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -789,10 +777,6 @@ type projectArgs struct {
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description *string `pulumi:"description"`
-	// Disable email notifications.
-	//
-	// Deprecated: use `emailsEnabled` instead.
-	EmailsDisabled *bool `pulumi:"emailsDisabled"`
 	// Enable email notifications.
 	EmailsEnabled *bool `pulumi:"emailsEnabled"`
 	// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -882,7 +866,7 @@ type projectArgs struct {
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs *bool `pulumi:"publicJobs"`
 	// Push rules for the project.
-	PushRules *ProjectPushRules `pulumi:"pushRules"`
+	PushRules *ProjectPushRulesType `pulumi:"pushRules"`
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
 	ReleasesAccessLevel *string `pulumi:"releasesAccessLevel"`
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -996,10 +980,6 @@ type ProjectArgs struct {
 	DefaultBranch pulumi.StringPtrInput
 	// A description of the project.
 	Description pulumi.StringPtrInput
-	// Disable email notifications.
-	//
-	// Deprecated: use `emailsEnabled` instead.
-	EmailsDisabled pulumi.BoolPtrInput
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolPtrInput
 	// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1089,7 +1069,7 @@ type ProjectArgs struct {
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs pulumi.BoolPtrInput
 	// Push rules for the project.
-	PushRules ProjectPushRulesPtrInput
+	PushRules ProjectPushRulesTypePtrInput
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
 	ReleasesAccessLevel pulumi.StringPtrInput
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -1368,13 +1348,6 @@ func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Disable email notifications.
-//
-// Deprecated: use `emailsEnabled` instead.
-func (o ProjectOutput) EmailsDisabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.EmailsDisabled }).(pulumi.BoolOutput)
-}
-
 // Enable email notifications.
 func (o ProjectOutput) EmailsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.EmailsEnabled }).(pulumi.BoolOutput)
@@ -1605,8 +1578,8 @@ func (o ProjectOutput) PublicJobs() pulumi.BoolOutput {
 }
 
 // Push rules for the project.
-func (o ProjectOutput) PushRules() ProjectPushRulesOutput {
-	return o.ApplyT(func(v *Project) ProjectPushRulesOutput { return v.PushRules }).(ProjectPushRulesOutput)
+func (o ProjectOutput) PushRules() ProjectPushRulesTypeOutput {
+	return o.ApplyT(func(v *Project) ProjectPushRulesTypeOutput { return v.PushRules }).(ProjectPushRulesTypeOutput)
 }
 
 // Set the releases access level. Valid values are `disabled`, `private`, `enabled`.

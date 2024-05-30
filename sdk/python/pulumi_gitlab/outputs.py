@@ -886,6 +886,8 @@ class GroupPushRules(dict):
             suggest = "branch_name_regex"
         elif key == "commitCommitterCheck":
             suggest = "commit_committer_check"
+        elif key == "commitCommitterNameCheck":
+            suggest = "commit_committer_name_check"
         elif key == "commitMessageNegativeRegex":
             suggest = "commit_message_negative_regex"
         elif key == "commitMessageRegex":
@@ -918,6 +920,7 @@ class GroupPushRules(dict):
                  author_email_regex: Optional[str] = None,
                  branch_name_regex: Optional[str] = None,
                  commit_committer_check: Optional[bool] = None,
+                 commit_committer_name_check: Optional[bool] = None,
                  commit_message_negative_regex: Optional[str] = None,
                  commit_message_regex: Optional[str] = None,
                  deny_delete_tag: Optional[bool] = None,
@@ -930,6 +933,7 @@ class GroupPushRules(dict):
         :param str author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param str branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         :param bool commit_committer_check: Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        :param bool commit_committer_name_check: Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
         :param str commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
         :param str commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         :param bool deny_delete_tag: Deny deleting a tag.
@@ -945,6 +949,8 @@ class GroupPushRules(dict):
             pulumi.set(__self__, "branch_name_regex", branch_name_regex)
         if commit_committer_check is not None:
             pulumi.set(__self__, "commit_committer_check", commit_committer_check)
+        if commit_committer_name_check is not None:
+            pulumi.set(__self__, "commit_committer_name_check", commit_committer_name_check)
         if commit_message_negative_regex is not None:
             pulumi.set(__self__, "commit_message_negative_regex", commit_message_negative_regex)
         if commit_message_regex is not None:
@@ -985,6 +991,14 @@ class GroupPushRules(dict):
         Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
         """
         return pulumi.get(self, "commit_committer_check")
+
+    @property
+    @pulumi.getter(name="commitCommitterNameCheck")
+    def commit_committer_name_check(self) -> Optional[bool]:
+        """
+        Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        """
+        return pulumi.get(self, "commit_committer_name_check")
 
     @property
     @pulumi.getter(name="commitMessageNegativeRegex")
@@ -1615,6 +1629,8 @@ class ProjectPushRules(dict):
             suggest = "branch_name_regex"
         elif key == "commitCommitterCheck":
             suggest = "commit_committer_check"
+        elif key == "commitCommitterNameCheck":
+            suggest = "commit_committer_name_check"
         elif key == "commitMessageNegativeRegex":
             suggest = "commit_message_negative_regex"
         elif key == "commitMessageRegex":
@@ -1647,6 +1663,7 @@ class ProjectPushRules(dict):
                  author_email_regex: Optional[str] = None,
                  branch_name_regex: Optional[str] = None,
                  commit_committer_check: Optional[bool] = None,
+                 commit_committer_name_check: Optional[bool] = None,
                  commit_message_negative_regex: Optional[str] = None,
                  commit_message_regex: Optional[str] = None,
                  deny_delete_tag: Optional[bool] = None,
@@ -1659,7 +1676,8 @@ class ProjectPushRules(dict):
         :param str author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param str branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         :param bool commit_committer_check: Users can only push commits to this repository that were committed with one of their own verified emails.
-        :param str commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        :param bool commit_committer_name_check: Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        :param str commit_message_negative_regex: No commit message is allowed to match this regex, e.g. `ssh\\:\\/\\/`.
         :param str commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         :param bool deny_delete_tag: Deny deleting a tag.
         :param str file_name_regex: All committed filenames must not match this regex, e.g. `(jar|exe)$`.
@@ -1674,6 +1692,8 @@ class ProjectPushRules(dict):
             pulumi.set(__self__, "branch_name_regex", branch_name_regex)
         if commit_committer_check is not None:
             pulumi.set(__self__, "commit_committer_check", commit_committer_check)
+        if commit_committer_name_check is not None:
+            pulumi.set(__self__, "commit_committer_name_check", commit_committer_name_check)
         if commit_message_negative_regex is not None:
             pulumi.set(__self__, "commit_message_negative_regex", commit_message_negative_regex)
         if commit_message_regex is not None:
@@ -1716,10 +1736,18 @@ class ProjectPushRules(dict):
         return pulumi.get(self, "commit_committer_check")
 
     @property
+    @pulumi.getter(name="commitCommitterNameCheck")
+    def commit_committer_name_check(self) -> Optional[bool]:
+        """
+        Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        """
+        return pulumi.get(self, "commit_committer_name_check")
+
+    @property
     @pulumi.getter(name="commitMessageNegativeRegex")
     def commit_message_negative_regex(self) -> Optional[str]:
         """
-        No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        No commit message is allowed to match this regex, e.g. `ssh\\:\\/\\/`.
         """
         return pulumi.get(self, "commit_message_negative_regex")
 
@@ -2669,7 +2697,6 @@ class GetGroupSubgroupsSubgroupResult(dict):
                  created_at: str,
                  default_branch_protection: int,
                  description: str,
-                 emails_disabled: bool,
                  emails_enabled: bool,
                  file_template_project_id: int,
                  full_name: str,
@@ -2697,7 +2724,6 @@ class GetGroupSubgroupsSubgroupResult(dict):
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "emails_disabled", emails_disabled)
         pulumi.set(__self__, "emails_enabled", emails_enabled)
         pulumi.set(__self__, "file_template_project_id", file_template_project_id)
         pulumi.set(__self__, "full_name", full_name)
@@ -2745,11 +2771,6 @@ class GetGroupSubgroupsSubgroupResult(dict):
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> bool:
-        return pulumi.get(self, "emails_disabled")
 
     @property
     @pulumi.getter(name="emailsEnabled")
@@ -3311,6 +3332,7 @@ class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult(dict):
 @pulumi.output_type
 class GetInstanceVariablesVariableResult(dict):
     def __init__(__self__, *,
+                 description: str,
                  key: str,
                  masked: bool,
                  protected: bool,
@@ -3318,6 +3340,7 @@ class GetInstanceVariablesVariableResult(dict):
                  value: str,
                  variable_type: str):
         """
+        :param str description: The description of the variable. Maximum of 255 characters.
         :param str key: The name of the variable.
         :param bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
@@ -3325,12 +3348,21 @@ class GetInstanceVariablesVariableResult(dict):
         :param str value: The value of the variable.
         :param str variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "masked", masked)
         pulumi.set(__self__, "protected", protected)
         pulumi.set(__self__, "raw", raw)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the variable. Maximum of 255 characters.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -5012,6 +5044,7 @@ class GetProjectPushRuleResult(dict):
                  author_email_regex: str,
                  branch_name_regex: str,
                  commit_committer_check: bool,
+                 commit_committer_name_check: bool,
                  commit_message_negative_regex: str,
                  commit_message_regex: str,
                  deny_delete_tag: bool,
@@ -5024,6 +5057,7 @@ class GetProjectPushRuleResult(dict):
         :param str author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param str branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         :param bool commit_committer_check: Users can only push commits to this repository that were committed with one of their own verified emails.
+        :param bool commit_committer_name_check: Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
         :param str commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
         :param str commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         :param bool deny_delete_tag: Deny deleting a tag.
@@ -5036,6 +5070,7 @@ class GetProjectPushRuleResult(dict):
         pulumi.set(__self__, "author_email_regex", author_email_regex)
         pulumi.set(__self__, "branch_name_regex", branch_name_regex)
         pulumi.set(__self__, "commit_committer_check", commit_committer_check)
+        pulumi.set(__self__, "commit_committer_name_check", commit_committer_name_check)
         pulumi.set(__self__, "commit_message_negative_regex", commit_message_negative_regex)
         pulumi.set(__self__, "commit_message_regex", commit_message_regex)
         pulumi.set(__self__, "deny_delete_tag", deny_delete_tag)
@@ -5068,6 +5103,14 @@ class GetProjectPushRuleResult(dict):
         Users can only push commits to this repository that were committed with one of their own verified emails.
         """
         return pulumi.get(self, "commit_committer_check")
+
+    @property
+    @pulumi.getter(name="commitCommitterNameCheck")
+    def commit_committer_name_check(self) -> bool:
+        """
+        Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        """
+        return pulumi.get(self, "commit_committer_name_check")
 
     @property
     @pulumi.getter(name="commitMessageNegativeRegex")
@@ -5707,7 +5750,6 @@ class GetProjectsProjectResult(dict):
                  custom_attributes: Sequence[Mapping[str, str]],
                  default_branch: str,
                  description: str,
-                 emails_disabled: bool,
                  emails_enabled: bool,
                  empty_repo: bool,
                  environments_access_level: str,
@@ -5752,7 +5794,6 @@ class GetProjectsProjectResult(dict):
                  path: str,
                  path_with_namespace: str,
                  permissions: Sequence['outputs.GetProjectsProjectPermissionResult'],
-                 public: bool,
                  public_builds: bool,
                  readme_url: str,
                  releases_access_level: str,
@@ -5806,7 +5847,6 @@ class GetProjectsProjectResult(dict):
         :param Sequence[Mapping[str, str]] custom_attributes: Custom attributes for the project.
         :param str default_branch: The default branch name of the project.
         :param str description: The description of the project.
-        :param bool emails_disabled: Disable email notifications.
         :param bool emails_enabled: Enable email notifications.
         :param bool empty_repo: Whether the project is empty.
         :param str environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -5850,7 +5890,6 @@ class GetProjectsProjectResult(dict):
         :param str path: The path of the project.
         :param str path_with_namespace: In `group/subgroup/project` or `user/project` format.
         :param Sequence['GetProjectsProjectPermissionArgs'] permissions: Permissions for the project.
-        :param bool public: Whether the project is public.
         :param bool public_builds: Whether public builds are enabled for the project.
         :param str readme_url: The remote url of the project.
         :param str releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
@@ -5904,7 +5943,6 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "custom_attributes", custom_attributes)
         pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "emails_disabled", emails_disabled)
         pulumi.set(__self__, "emails_enabled", emails_enabled)
         pulumi.set(__self__, "empty_repo", empty_repo)
         pulumi.set(__self__, "environments_access_level", environments_access_level)
@@ -5949,7 +5987,6 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "path_with_namespace", path_with_namespace)
         pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "public", public)
         pulumi.set(__self__, "public_builds", public_builds)
         pulumi.set(__self__, "readme_url", readme_url)
         pulumi.set(__self__, "releases_access_level", releases_access_level)
@@ -6184,17 +6221,6 @@ class GetProjectsProjectResult(dict):
         The description of the project.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> bool:
-        """
-        Disable email notifications.
-        """
-        warnings.warn("""Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.""", DeprecationWarning)
-        pulumi.log.warn("""emails_disabled is deprecated: Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.""")
-
-        return pulumi.get(self, "emails_disabled")
 
     @property
     @pulumi.getter(name="emailsEnabled")
@@ -6544,14 +6570,6 @@ class GetProjectsProjectResult(dict):
         Permissions for the project.
         """
         return pulumi.get(self, "permissions")
-
-    @property
-    @pulumi.getter
-    def public(self) -> bool:
-        """
-        Whether the project is public.
-        """
-        return pulumi.get(self, "public")
 
     @property
     @pulumi.getter(name="publicBuilds")

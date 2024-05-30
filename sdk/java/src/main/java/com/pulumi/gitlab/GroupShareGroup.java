@@ -84,14 +84,14 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiresAt);
     }
     /**
-     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     @Export(name="groupAccess", refs={String.class}, tree="[0]")
     private Output<String> groupAccess;
 
     /**
-     * @return The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * @return The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Output<String> groupAccess() {

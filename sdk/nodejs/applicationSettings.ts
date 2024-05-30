@@ -592,6 +592,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly metricsMethodCallThreshold!: pulumi.Output<number>;
     /**
+     * Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     */
+    public readonly minimumPasswordLength!: pulumi.Output<number>;
+    /**
      * Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
      */
     public readonly mirrorAvailable!: pulumi.Output<boolean>;
@@ -1158,6 +1162,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["maxPersonalAccessTokenLifetime"] = state ? state.maxPersonalAccessTokenLifetime : undefined;
             resourceInputs["maxSshKeyLifetime"] = state ? state.maxSshKeyLifetime : undefined;
             resourceInputs["metricsMethodCallThreshold"] = state ? state.metricsMethodCallThreshold : undefined;
+            resourceInputs["minimumPasswordLength"] = state ? state.minimumPasswordLength : undefined;
             resourceInputs["mirrorAvailable"] = state ? state.mirrorAvailable : undefined;
             resourceInputs["mirrorCapacityThreshold"] = state ? state.mirrorCapacityThreshold : undefined;
             resourceInputs["mirrorMaxCapacity"] = state ? state.mirrorMaxCapacity : undefined;
@@ -1401,6 +1406,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["maxPersonalAccessTokenLifetime"] = args ? args.maxPersonalAccessTokenLifetime : undefined;
             resourceInputs["maxSshKeyLifetime"] = args ? args.maxSshKeyLifetime : undefined;
             resourceInputs["metricsMethodCallThreshold"] = args ? args.metricsMethodCallThreshold : undefined;
+            resourceInputs["minimumPasswordLength"] = args ? args.minimumPasswordLength : undefined;
             resourceInputs["mirrorAvailable"] = args ? args.mirrorAvailable : undefined;
             resourceInputs["mirrorCapacityThreshold"] = args ? args.mirrorCapacityThreshold : undefined;
             resourceInputs["mirrorMaxCapacity"] = args ? args.mirrorMaxCapacity : undefined;
@@ -2073,6 +2079,10 @@ export interface ApplicationSettingsState {
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */
     metricsMethodCallThreshold?: pulumi.Input<number>;
+    /**
+     * Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     */
+    minimumPasswordLength?: pulumi.Input<number>;
     /**
      * Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
      */
@@ -3051,6 +3061,10 @@ export interface ApplicationSettingsArgs {
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */
     metricsMethodCallThreshold?: pulumi.Input<number>;
+    /**
+     * Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     */
+    minimumPasswordLength?: pulumi.Input<number>;
     /**
      * Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
      */

@@ -78,14 +78,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectMembership:ProjectMembership")
 public class ProjectMembership extends com.pulumi.resources.CustomResource {
     /**
-     * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
-     * @return The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * @return The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Output<String> accessLevel() {

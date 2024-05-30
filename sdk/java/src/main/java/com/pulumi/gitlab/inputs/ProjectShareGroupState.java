@@ -17,7 +17,7 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
     public static final ProjectShareGroupState Empty = new ProjectShareGroupState();
 
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
      * Use `group_access` instead of the `access_level` attribute.
@@ -28,7 +28,7 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
      * Use `group_access` instead of the `access_level` attribute.
@@ -40,14 +40,14 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     @Import(name="groupAccess")
     private @Nullable Output<String> groupAccess;
 
     /**
-     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Optional<Output<String>> groupAccess() {
@@ -112,7 +112,7 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accessLevel The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+         * @param accessLevel The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accessLevel The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+         * @param accessLevel The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param groupAccess The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+         * @param groupAccess The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param groupAccess The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+         * @param groupAccess The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 

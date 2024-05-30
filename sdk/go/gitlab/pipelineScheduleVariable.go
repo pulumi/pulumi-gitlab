@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,6 +72,8 @@ type PipelineScheduleVariable struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Value of the variable.
 	Value pulumi.StringOutput `pulumi:"value"`
+	// The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
+	VariableType pulumi.StringOutput `pulumi:"variableType"`
 }
 
 // NewPipelineScheduleVariable registers a new resource with the given unique name, arguments, and options.
@@ -124,6 +126,8 @@ type pipelineScheduleVariableState struct {
 	Project *string `pulumi:"project"`
 	// Value of the variable.
 	Value *string `pulumi:"value"`
+	// The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
+	VariableType *string `pulumi:"variableType"`
 }
 
 type PipelineScheduleVariableState struct {
@@ -135,6 +139,8 @@ type PipelineScheduleVariableState struct {
 	Project pulumi.StringPtrInput
 	// Value of the variable.
 	Value pulumi.StringPtrInput
+	// The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
+	VariableType pulumi.StringPtrInput
 }
 
 func (PipelineScheduleVariableState) ElementType() reflect.Type {
@@ -150,6 +156,8 @@ type pipelineScheduleVariableArgs struct {
 	Project string `pulumi:"project"`
 	// Value of the variable.
 	Value string `pulumi:"value"`
+	// The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
+	VariableType *string `pulumi:"variableType"`
 }
 
 // The set of arguments for constructing a PipelineScheduleVariable resource.
@@ -162,6 +170,8 @@ type PipelineScheduleVariableArgs struct {
 	Project pulumi.StringInput
 	// Value of the variable.
 	Value pulumi.StringInput
+	// The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
+	VariableType pulumi.StringPtrInput
 }
 
 func (PipelineScheduleVariableArgs) ElementType() reflect.Type {
@@ -269,6 +279,11 @@ func (o PipelineScheduleVariableOutput) Project() pulumi.StringOutput {
 // Value of the variable.
 func (o PipelineScheduleVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineScheduleVariable) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
+// The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
+func (o PipelineScheduleVariableOutput) VariableType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineScheduleVariable) pulumi.StringOutput { return v.VariableType }).(pulumi.StringOutput)
 }
 
 type PipelineScheduleVariableArrayOutput struct{ *pulumi.OutputState }

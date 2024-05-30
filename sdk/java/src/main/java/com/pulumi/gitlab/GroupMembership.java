@@ -73,14 +73,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupMembership:GroupMembership")
 public class GroupMembership extends com.pulumi.resources.CustomResource {
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
-     * @return Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
+     * @return Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      * 
      */
     public Output<String> accessLevel() {

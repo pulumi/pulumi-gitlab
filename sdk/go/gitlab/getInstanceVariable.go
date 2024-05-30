@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -58,6 +58,8 @@ type LookupInstanceVariableArgs struct {
 
 // A collection of values returned by getInstanceVariable.
 type LookupInstanceVariableResult struct {
+	// The description of the variable. Maximum of 255 characters.
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the variable.
@@ -110,6 +112,11 @@ func (o LookupInstanceVariableResultOutput) ToLookupInstanceVariableResultOutput
 
 func (o LookupInstanceVariableResultOutput) ToLookupInstanceVariableResultOutputWithContext(ctx context.Context) LookupInstanceVariableResultOutput {
 	return o
+}
+
+// The description of the variable. Maximum of 255 characters.
+func (o LookupInstanceVariableResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceVariableResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -19,14 +19,14 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
     public static final GroupMembershipArgs Empty = new GroupMembershipArgs();
 
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      * 
      */
     @Import(name="accessLevel", required=true)
     private Output<String> accessLevel;
 
     /**
-     * @return Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
+     * @return Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      * 
      */
     public Output<String> accessLevel() {
@@ -154,7 +154,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accessLevel Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
+         * @param accessLevel Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accessLevel Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
+         * @param accessLevel Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
          * 
          * @return builder
          * 

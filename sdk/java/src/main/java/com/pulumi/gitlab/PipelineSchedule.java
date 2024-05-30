@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *         var example = new PipelineSchedule("example", PipelineScheduleArgs.builder()
  *             .project("12345")
  *             .description("Used to schedule builds")
- *             .ref("master")
+ *             .ref("refs/heads/main")
  *             .cron("0 1 * * *")
  *             .build());
  * 
@@ -168,14 +168,14 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The branch/tag name to be triggered.
+     * The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      * 
      */
     @Export(name="ref", refs={String.class}, tree="[0]")
     private Output<String> ref;
 
     /**
-     * @return The branch/tag name to be triggered.
+     * @return The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      * 
      */
     public Output<String> ref() {

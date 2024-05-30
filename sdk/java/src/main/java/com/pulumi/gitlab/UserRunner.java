@@ -22,6 +22,98 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#create-a-runner)
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.UserRunner;
+ * import com.pulumi.gitlab.UserRunnerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Create a project runner
+ *         var projectRunner = new UserRunner("projectRunner", UserRunnerArgs.builder()
+ *             .runnerType("project_type")
+ *             .projectId(123456)
+ *             .description("A runner created using a user access token instead of a registration token")
+ *             .tagLists(            
+ *                 "a-tag",
+ *                 "other-tag")
+ *             .untagged(true)
+ *             .build());
+ * 
+ *         // Create a group runner
+ *         var groupRunner = new UserRunner("groupRunner", UserRunnerArgs.builder()
+ *             .runnerType("group_type")
+ *             .groupId(123456)
+ *             .build());
+ * 
+ *         // Create a instance runner
+ *         var instanceRunner = new UserRunner("instanceRunner", UserRunnerArgs.builder()
+ *             .runnerType("instance_type")
+ *             .build());
+ * 
+ *         final var configToml = groupRunner.token().applyValue(token -> """
+ * concurrent = 1
+ * check_interval = 0
+ * 
+ * [session_server]
+ *   session_timeout = 1800
+ * 
+ * [[runners]]
+ *   name = "my_gitlab_runner"
+ *   url = "https://example.gitlab.com"
+ *   token = "%s"
+ *   executor = "docker"
+ * 
+ *   [runners.custom_build_dir]
+ *   [runners.cache]
+ *     [runners.cache.s3]
+ *     [runners.cache.gcs]
+ *     [runners.cache.azure]
+ *   [runners.docker]
+ *     tls_verify = false
+ *     image = "ubuntu"
+ *     privileged = true
+ *     disable_entrypoint_overwrite = false
+ *     oom_kill_disable = false
+ *     disable_cache = false
+ *     volumes = ["/cache", "/certs/client"]
+ *     shm_size = 0
+ * ", token));
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * You can import a gitlab runner using its ID
+ * 
+ * Note: Importing a runner will not provide access to the `token` attribute
+ * 
+ * ```sh
+ * $ pulumi import gitlab:index/userRunner:UserRunner example 12345
+ * ```
+ * 
  */
 @ResourceType(type="gitlab:index/userRunner:UserRunner")
 public class UserRunner extends com.pulumi.resources.CustomResource {

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -297,6 +297,8 @@ type ApplicationSettings struct {
 	MaxSshKeyLifetime pulumi.IntOutput `pulumi:"maxSshKeyLifetime"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntOutput `pulumi:"metricsMethodCallThreshold"`
+	// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+	MinimumPasswordLength pulumi.IntOutput `pulumi:"minimumPasswordLength"`
 	// Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
 	MirrorAvailable pulumi.BoolOutput `pulumi:"mirrorAvailable"`
 	// Minimum capacity to be available before scheduling more mirrors preemptively.
@@ -882,6 +884,8 @@ type applicationSettingsState struct {
 	MaxSshKeyLifetime *int `pulumi:"maxSshKeyLifetime"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold *int `pulumi:"metricsMethodCallThreshold"`
+	// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+	MinimumPasswordLength *int `pulumi:"minimumPasswordLength"`
 	// Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
 	MirrorAvailable *bool `pulumi:"mirrorAvailable"`
 	// Minimum capacity to be available before scheduling more mirrors preemptively.
@@ -1375,6 +1379,8 @@ type ApplicationSettingsState struct {
 	MaxSshKeyLifetime pulumi.IntPtrInput
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntPtrInput
+	// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+	MinimumPasswordLength pulumi.IntPtrInput
 	// Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
 	MirrorAvailable pulumi.BoolPtrInput
 	// Minimum capacity to be available before scheduling more mirrors preemptively.
@@ -1872,6 +1878,8 @@ type applicationSettingsArgs struct {
 	MaxSshKeyLifetime *int `pulumi:"maxSshKeyLifetime"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold *int `pulumi:"metricsMethodCallThreshold"`
+	// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+	MinimumPasswordLength *int `pulumi:"minimumPasswordLength"`
 	// Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
 	MirrorAvailable *bool `pulumi:"mirrorAvailable"`
 	// Minimum capacity to be available before scheduling more mirrors preemptively.
@@ -2366,6 +2374,8 @@ type ApplicationSettingsArgs struct {
 	MaxSshKeyLifetime pulumi.IntPtrInput
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntPtrInput
+	// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+	MinimumPasswordLength pulumi.IntPtrInput
 	// Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
 	MirrorAvailable pulumi.BoolPtrInput
 	// Minimum capacity to be available before scheduling more mirrors preemptively.
@@ -3359,6 +3369,11 @@ func (o ApplicationSettingsOutput) MaxSshKeyLifetime() pulumi.IntOutput {
 // A method call is only tracked when it takes longer than the given amount of milliseconds.
 func (o ApplicationSettingsOutput) MetricsMethodCallThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MetricsMethodCallThreshold }).(pulumi.IntOutput)
+}
+
+// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+func (o ApplicationSettingsOutput) MinimumPasswordLength() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MinimumPasswordLength }).(pulumi.IntOutput)
 }
 
 // Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
