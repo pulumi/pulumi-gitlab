@@ -8,13 +8,108 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The `UserRunner` resource allows creating a GitLab runner using the new [GitLab Runner Registration Flow](https://docs.gitlab.com/ee/ci/runners/new_creation_workflow.html).
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#create-a-runner)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a project runner
+//			_, err := gitlab.NewUserRunner(ctx, "project_runner", &gitlab.UserRunnerArgs{
+//				RunnerType:  pulumi.String("project_type"),
+//				ProjectId:   pulumi.Int(123456),
+//				Description: pulumi.String("A runner created using a user access token instead of a registration token"),
+//				TagLists: pulumi.StringArray{
+//					pulumi.String("a-tag"),
+//					pulumi.String("other-tag"),
+//				},
+//				Untagged: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a group runner
+//			groupRunner, err := gitlab.NewUserRunner(ctx, "group_runner", &gitlab.UserRunnerArgs{
+//				RunnerType: pulumi.String("group_type"),
+//				GroupId:    pulumi.Int(123456),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a instance runner
+//			_, err = gitlab.NewUserRunner(ctx, "instance_runner", &gitlab.UserRunnerArgs{
+//				RunnerType: pulumi.String("instance_type"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = groupRunner.Token.ApplyT(func(token string) (string, error) {
+//				return fmt.Sprintf(`concurrent = 1
+//
+// check_interval = 0
+//
+// [session_server]
+//
+//	session_timeout = 1800
+//
+// [[runners]]
+//
+//	name = "my_gitlab_runner"
+//	url = "https://example.gitlab.com"
+//	token = "%v"
+//	executor = "docker"
+//
+//	[runners.custom_build_dir]
+//	[runners.cache]
+//	  [runners.cache.s3]
+//	  [runners.cache.gcs]
+//	  [runners.cache.azure]
+//	[runners.docker]
+//	  tls_verify = false
+//	  image = "ubuntu"
+//	  privileged = true
+//	  disable_entrypoint_overwrite = false
+//	  oom_kill_disable = false
+//	  disable_cache = false
+//	  volumes = ["/cache", "/certs/client"]
+//	  shm_size = 0
+//
+// `, token), nil
+//
+//			}).(pulumi.StringOutput)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # You can import a gitlab runner using its ID
+//
+// Note: Importing a runner will not provide access to the `token` attribute
+//
+// ```sh
+// $ pulumi import gitlab:index/userRunner:UserRunner example 12345
+// ```
 type UserRunner struct {
 	pulumi.CustomResourceState
 

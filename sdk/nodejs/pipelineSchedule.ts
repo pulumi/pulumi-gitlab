@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * const example = new gitlab.PipelineSchedule("example", {
  *     project: "12345",
  *     description: "Used to schedule builds",
- *     ref: "master",
+ *     ref: "refs/heads/main",
  *     cron: "0 1 * * *",
  * });
  * ```
@@ -88,7 +88,7 @@ export class PipelineSchedule extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The branch/tag name to be triggered.
+     * The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      */
     public readonly ref!: pulumi.Output<string>;
     public readonly takeOwnership!: pulumi.Output<boolean>;
@@ -177,7 +177,7 @@ export interface PipelineScheduleState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The branch/tag name to be triggered.
+     * The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      */
     ref?: pulumi.Input<string>;
     takeOwnership?: pulumi.Input<boolean>;
@@ -208,7 +208,7 @@ export interface PipelineScheduleArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The branch/tag name to be triggered.
+     * The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      */
     ref: pulumi.Input<string>;
     takeOwnership?: pulumi.Input<boolean>;

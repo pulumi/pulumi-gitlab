@@ -93,14 +93,14 @@ public final class PipelineScheduleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The branch/tag name to be triggered.
+     * The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      * 
      */
     @Import(name="ref", required=true)
     private Output<String> ref;
 
     /**
-     * @return The branch/tag name to be triggered.
+     * @return The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      * 
      */
     public Output<String> ref() {
@@ -250,7 +250,7 @@ public final class PipelineScheduleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ref The branch/tag name to be triggered.
+         * @param ref The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class PipelineScheduleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ref The branch/tag name to be triggered.
+         * @param ref The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
          * 
          * @return builder
          * 

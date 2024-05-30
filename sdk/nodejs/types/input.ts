@@ -518,6 +518,10 @@ export interface GroupPushRules {
      */
     commitCommitterCheck?: pulumi.Input<boolean>;
     /**
+     * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     */
+    commitCommitterNameCheck?: pulumi.Input<boolean>;
+    /**
      * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
      */
     commitMessageNegativeRegex?: pulumi.Input<string>;
@@ -709,7 +713,11 @@ export interface ProjectPushRules {
      */
     commitCommitterCheck?: pulumi.Input<boolean>;
     /**
-     * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     */
+    commitCommitterNameCheck?: pulumi.Input<boolean>;
+    /**
+     * No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
      */
     commitMessageNegativeRegex?: pulumi.Input<string>;
     /**

@@ -60,6 +60,10 @@ export class InstanceVariable extends pulumi.CustomResource {
     }
 
     /**
+     * The description of the variable. Maximum of 255 characters.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * The name of the variable.
      */
     public readonly key!: pulumi.Output<string>;
@@ -97,6 +101,7 @@ export class InstanceVariable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceVariableState | undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["masked"] = state ? state.masked : undefined;
             resourceInputs["protected"] = state ? state.protected : undefined;
@@ -111,6 +116,7 @@ export class InstanceVariable extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["masked"] = args ? args.masked : undefined;
             resourceInputs["protected"] = args ? args.protected : undefined;
@@ -127,6 +133,10 @@ export class InstanceVariable extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceVariable resources.
  */
 export interface InstanceVariableState {
+    /**
+     * The description of the variable. Maximum of 255 characters.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The name of the variable.
      */
@@ -157,6 +167,10 @@ export interface InstanceVariableState {
  * The set of arguments for constructing a InstanceVariable resource.
  */
 export interface InstanceVariableArgs {
+    /**
+     * The description of the variable. Maximum of 255 characters.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The name of the variable.
      */

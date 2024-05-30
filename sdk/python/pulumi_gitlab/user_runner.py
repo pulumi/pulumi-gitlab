@@ -383,6 +383,67 @@ class UserRunner(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#create-a-runner)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Create a project runner
+        project_runner = gitlab.UserRunner("project_runner",
+            runner_type="project_type",
+            project_id=123456,
+            description="A runner created using a user access token instead of a registration token",
+            tag_lists=[
+                "a-tag",
+                "other-tag",
+            ],
+            untagged=True)
+        # Create a group runner
+        group_runner = gitlab.UserRunner("group_runner",
+            runner_type="group_type",
+            group_id=123456)
+        # Create a instance runner
+        instance_runner = gitlab.UserRunner("instance_runner", runner_type="instance_type")
+        config_toml = group_runner.token.apply(lambda token: f\"\"\"concurrent = 1
+        check_interval = 0
+
+        [session_server]
+          session_timeout = 1800
+
+        [[runners]]
+          name = "my_gitlab_runner"
+          url = "https://example.gitlab.com"
+          token = "{token}"
+          executor = "docker"
+
+          [runners.custom_build_dir]
+          [runners.cache]
+            [runners.cache.s3]
+            [runners.cache.gcs]
+            [runners.cache.azure]
+          [runners.docker]
+            tls_verify = false
+            image = "ubuntu"
+            privileged = true
+            disable_entrypoint_overwrite = false
+            oom_kill_disable = false
+            disable_cache = false
+            volumes = ["/cache", "/certs/client"]
+            shm_size = 0
+        \"\"\")
+        ```
+
+        ## Import
+
+        You can import a gitlab runner using its ID
+
+        Note: Importing a runner will not provide access to the `token` attribute
+
+        ```sh
+        $ pulumi import gitlab:index/userRunner:UserRunner example 12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
@@ -406,6 +467,67 @@ class UserRunner(pulumi.CustomResource):
         The `UserRunner` resource allows creating a GitLab runner using the new [GitLab Runner Registration Flow](https://docs.gitlab.com/ee/ci/runners/new_creation_workflow.html).
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#create-a-runner)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Create a project runner
+        project_runner = gitlab.UserRunner("project_runner",
+            runner_type="project_type",
+            project_id=123456,
+            description="A runner created using a user access token instead of a registration token",
+            tag_lists=[
+                "a-tag",
+                "other-tag",
+            ],
+            untagged=True)
+        # Create a group runner
+        group_runner = gitlab.UserRunner("group_runner",
+            runner_type="group_type",
+            group_id=123456)
+        # Create a instance runner
+        instance_runner = gitlab.UserRunner("instance_runner", runner_type="instance_type")
+        config_toml = group_runner.token.apply(lambda token: f\"\"\"concurrent = 1
+        check_interval = 0
+
+        [session_server]
+          session_timeout = 1800
+
+        [[runners]]
+          name = "my_gitlab_runner"
+          url = "https://example.gitlab.com"
+          token = "{token}"
+          executor = "docker"
+
+          [runners.custom_build_dir]
+          [runners.cache]
+            [runners.cache.s3]
+            [runners.cache.gcs]
+            [runners.cache.azure]
+          [runners.docker]
+            tls_verify = false
+            image = "ubuntu"
+            privileged = true
+            disable_entrypoint_overwrite = false
+            oom_kill_disable = false
+            disable_cache = false
+            volumes = ["/cache", "/certs/client"]
+            shm_size = 0
+        \"\"\")
+        ```
+
+        ## Import
+
+        You can import a gitlab runner using its ID
+
+        Note: Importing a runner will not provide access to the `token` attribute
+
+        ```sh
+        $ pulumi import gitlab:index/userRunner:UserRunner example 12345
+        ```
 
         :param str resource_name: The name of the resource.
         :param UserRunnerArgs args: The arguments to use to populate this resource's properties.

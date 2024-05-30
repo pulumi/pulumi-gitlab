@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceVariableResult {
     /**
+     * @return The description of the variable. Maximum of 255 characters.
+     * 
+     */
+    private String description;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -48,6 +53,13 @@ public final class GetInstanceVariableResult {
     private String variableType;
 
     private GetInstanceVariableResult() {}
+    /**
+     * @return The description of the variable. Maximum of 255 characters.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -107,6 +119,7 @@ public final class GetInstanceVariableResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String description;
         private String id;
         private String key;
         private Boolean masked;
@@ -117,6 +130,7 @@ public final class GetInstanceVariableResult {
         public Builder() {}
         public Builder(GetInstanceVariableResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.key = defaults.key;
     	      this.masked = defaults.masked;
@@ -126,6 +140,14 @@ public final class GetInstanceVariableResult {
     	      this.variableType = defaults.variableType;
         }
 
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstanceVariableResult", "description");
+            }
+            this.description = description;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -184,6 +206,7 @@ public final class GetInstanceVariableResult {
         }
         public GetInstanceVariableResult build() {
             final var _resultValue = new GetInstanceVariableResult();
+            _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.key = key;
             _resultValue.masked = masked;

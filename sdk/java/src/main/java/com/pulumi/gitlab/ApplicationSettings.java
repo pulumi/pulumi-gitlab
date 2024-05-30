@@ -1959,6 +1959,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.metricsMethodCallThreshold;
     }
     /**
+     * Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="minimumPasswordLength", refs={Integer.class}, tree="[0]")
+    private Output<Integer> minimumPasswordLength;
+
+    /**
+     * @return Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     * 
+     */
+    public Output<Integer> minimumPasswordLength() {
+        return this.minimumPasswordLength;
+    }
+    /**
      * Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
      * 
      */

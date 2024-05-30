@@ -118,10 +118,6 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Disable email notifications.
-        /// </summary>
-        public readonly bool EmailsDisabled;
-        /// <summary>
         /// Enable email notifications.
         /// </summary>
         public readonly bool EmailsEnabled;
@@ -295,10 +291,6 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectPermissionResult> Permissions;
         /// <summary>
-        /// Whether the project is public.
-        /// </summary>
-        public readonly bool Public;
-        /// <summary>
         /// Whether public builds are enabled for the project.
         /// </summary>
         public readonly bool PublicBuilds;
@@ -457,8 +449,6 @@ namespace Pulumi.GitLab.Outputs
 
             string description,
 
-            bool emailsDisabled,
-
             bool emailsEnabled,
 
             bool emptyRepo,
@@ -547,8 +537,6 @@ namespace Pulumi.GitLab.Outputs
 
             ImmutableArray<Outputs.GetProjectsProjectPermissionResult> permissions,
 
-            bool @public,
-
             bool publicBuilds,
 
             string readmeUrl,
@@ -627,7 +615,6 @@ namespace Pulumi.GitLab.Outputs
             CustomAttributes = customAttributes;
             DefaultBranch = defaultBranch;
             Description = description;
-            EmailsDisabled = emailsDisabled;
             EmailsEnabled = emailsEnabled;
             EmptyRepo = emptyRepo;
             EnvironmentsAccessLevel = environmentsAccessLevel;
@@ -672,7 +659,6 @@ namespace Pulumi.GitLab.Outputs
             Path = path;
             PathWithNamespace = pathWithNamespace;
             Permissions = permissions;
-            Public = @public;
             PublicBuilds = publicBuilds;
             ReadmeUrl = readmeUrl;
             ReleasesAccessLevel = releasesAccessLevel;

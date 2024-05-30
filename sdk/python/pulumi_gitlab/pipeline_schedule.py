@@ -26,7 +26,7 @@ class PipelineScheduleArgs:
         :param pulumi.Input[str] cron: The cron (e.g. `0 1 * * *`).
         :param pulumi.Input[str] description: The description of the pipeline schedule.
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
-        :param pulumi.Input[str] ref: The branch/tag name to be triggered.
+        :param pulumi.Input[str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         :param pulumi.Input[bool] active: The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         :param pulumi.Input[str] cron_timezone: The timezone.
         """
@@ -81,7 +81,7 @@ class PipelineScheduleArgs:
     @pulumi.getter
     def ref(self) -> pulumi.Input[str]:
         """
-        The branch/tag name to be triggered.
+        The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         """
         return pulumi.get(self, "ref")
 
@@ -144,7 +144,7 @@ class _PipelineScheduleState:
         :param pulumi.Input[int] owner: The ID of the user that owns the pipeline schedule.
         :param pulumi.Input[int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
-        :param pulumi.Input[str] ref: The branch/tag name to be triggered.
+        :param pulumi.Input[str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -253,7 +253,7 @@ class _PipelineScheduleState:
     @pulumi.getter
     def ref(self) -> Optional[pulumi.Input[str]]:
         """
-        The branch/tag name to be triggered.
+        The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         """
         return pulumi.get(self, "ref")
 
@@ -298,7 +298,7 @@ class PipelineSchedule(pulumi.CustomResource):
         example = gitlab.PipelineSchedule("example",
             project="12345",
             description="Used to schedule builds",
-            ref="master",
+            ref="refs/heads/main",
             cron="0 1 * * *")
         ```
 
@@ -317,7 +317,7 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] cron_timezone: The timezone.
         :param pulumi.Input[str] description: The description of the pipeline schedule.
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
-        :param pulumi.Input[str] ref: The branch/tag name to be triggered.
+        :param pulumi.Input[str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         """
         ...
     @overload
@@ -339,7 +339,7 @@ class PipelineSchedule(pulumi.CustomResource):
         example = gitlab.PipelineSchedule("example",
             project="12345",
             description="Used to schedule builds",
-            ref="master",
+            ref="refs/heads/main",
             cron="0 1 * * *")
         ```
 
@@ -432,7 +432,7 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[int] owner: The ID of the user that owns the pipeline schedule.
         :param pulumi.Input[int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
-        :param pulumi.Input[str] ref: The branch/tag name to be triggered.
+        :param pulumi.Input[str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -509,7 +509,7 @@ class PipelineSchedule(pulumi.CustomResource):
     @pulumi.getter
     def ref(self) -> pulumi.Output[str]:
         """
-        The branch/tag name to be triggered.
+        The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         """
         return pulumi.get(self, "ref")
 

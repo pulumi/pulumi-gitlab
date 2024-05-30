@@ -104,15 +104,6 @@ public final class GetProjectResult {
      */
     private String description;
     /**
-     * @return Disable email notifications.
-     * 
-     * @deprecated
-     * Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.
-     * 
-     */
-    @Deprecated /* Use of `emails_disabled` is deprecated. Use `emails_enabled` instead. */
-    private Boolean emailsDisabled;
-    /**
      * @return Enable email notifications.
      * 
      */
@@ -477,17 +468,6 @@ public final class GetProjectResult {
      */
     public String description() {
         return this.description;
-    }
-    /**
-     * @return Disable email notifications.
-     * 
-     * @deprecated
-     * Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.
-     * 
-     */
-    @Deprecated /* Use of `emails_disabled` is deprecated. Use `emails_enabled` instead. */
-    public Boolean emailsDisabled() {
-        return this.emailsDisabled;
     }
     /**
      * @return Enable email notifications.
@@ -859,7 +839,6 @@ public final class GetProjectResult {
         private String containerRegistryAccessLevel;
         private String defaultBranch;
         private String description;
-        private Boolean emailsDisabled;
         private Boolean emailsEnabled;
         private Boolean emptyRepo;
         private String environmentsAccessLevel;
@@ -929,7 +908,6 @@ public final class GetProjectResult {
     	      this.containerRegistryAccessLevel = defaults.containerRegistryAccessLevel;
     	      this.defaultBranch = defaults.defaultBranch;
     	      this.description = defaults.description;
-    	      this.emailsDisabled = defaults.emailsDisabled;
     	      this.emailsEnabled = defaults.emailsEnabled;
     	      this.emptyRepo = defaults.emptyRepo;
     	      this.environmentsAccessLevel = defaults.environmentsAccessLevel;
@@ -1118,14 +1096,6 @@ public final class GetProjectResult {
               throw new MissingRequiredPropertyException("GetProjectResult", "description");
             }
             this.description = description;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder emailsDisabled(Boolean emailsDisabled) {
-            if (emailsDisabled == null) {
-              throw new MissingRequiredPropertyException("GetProjectResult", "emailsDisabled");
-            }
-            this.emailsDisabled = emailsDisabled;
             return this;
         }
         @CustomType.Setter
@@ -1546,7 +1516,6 @@ public final class GetProjectResult {
             _resultValue.containerRegistryAccessLevel = containerRegistryAccessLevel;
             _resultValue.defaultBranch = defaultBranch;
             _resultValue.description = description;
-            _resultValue.emailsDisabled = emailsDisabled;
             _resultValue.emailsEnabled = emailsEnabled;
             _resultValue.emptyRepo = emptyRepo;
             _resultValue.environmentsAccessLevel = environmentsAccessLevel;

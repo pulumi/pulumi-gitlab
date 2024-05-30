@@ -63,14 +63,29 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     * 
+     */
+    @Import(name="commitCommitterNameCheck")
+    private @Nullable Output<Boolean> commitCommitterNameCheck;
+
+    /**
+     * @return Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     * 
+     */
+    public Optional<Output<Boolean>> commitCommitterNameCheck() {
+        return Optional.ofNullable(this.commitCommitterNameCheck);
+    }
+
+    /**
+     * No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
      * 
      */
     @Import(name="commitMessageNegativeRegex")
     private @Nullable Output<String> commitMessageNegativeRegex;
 
     /**
-     * @return No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     * @return No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
      * 
      */
     public Optional<Output<String>> commitMessageNegativeRegex() {
@@ -188,6 +203,7 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
         this.authorEmailRegex = $.authorEmailRegex;
         this.branchNameRegex = $.branchNameRegex;
         this.commitCommitterCheck = $.commitCommitterCheck;
+        this.commitCommitterNameCheck = $.commitCommitterNameCheck;
         this.commitMessageNegativeRegex = $.commitMessageNegativeRegex;
         this.commitMessageRegex = $.commitMessageRegex;
         this.denyDeleteTag = $.denyDeleteTag;
@@ -280,7 +296,28 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param commitMessageNegativeRegex No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+         * @param commitCommitterNameCheck Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commitCommitterNameCheck(@Nullable Output<Boolean> commitCommitterNameCheck) {
+            $.commitCommitterNameCheck = commitCommitterNameCheck;
+            return this;
+        }
+
+        /**
+         * @param commitCommitterNameCheck Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commitCommitterNameCheck(Boolean commitCommitterNameCheck) {
+            return commitCommitterNameCheck(Output.of(commitCommitterNameCheck));
+        }
+
+        /**
+         * @param commitMessageNegativeRegex No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
          * 
          * @return builder
          * 
@@ -291,7 +328,7 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param commitMessageNegativeRegex No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+         * @param commitMessageNegativeRegex No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
          * 
          * @return builder
          * 

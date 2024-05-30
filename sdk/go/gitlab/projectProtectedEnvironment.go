@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,8 +41,6 @@ type ProjectProtectedEnvironment struct {
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// The ID or full path of the project which the protected environment is created against.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount pulumi.IntOutput `pulumi:"requiredApprovalCount"`
 }
 
 // NewProjectProtectedEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -89,8 +87,6 @@ type projectProtectedEnvironmentState struct {
 	Environment *string `pulumi:"environment"`
 	// The ID or full path of the project which the protected environment is created against.
 	Project *string `pulumi:"project"`
-	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount *int `pulumi:"requiredApprovalCount"`
 }
 
 type ProjectProtectedEnvironmentState struct {
@@ -102,8 +98,6 @@ type ProjectProtectedEnvironmentState struct {
 	Environment pulumi.StringPtrInput
 	// The ID or full path of the project which the protected environment is created against.
 	Project pulumi.StringPtrInput
-	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount pulumi.IntPtrInput
 }
 
 func (ProjectProtectedEnvironmentState) ElementType() reflect.Type {
@@ -119,8 +113,6 @@ type projectProtectedEnvironmentArgs struct {
 	Environment string `pulumi:"environment"`
 	// The ID or full path of the project which the protected environment is created against.
 	Project string `pulumi:"project"`
-	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount *int `pulumi:"requiredApprovalCount"`
 }
 
 // The set of arguments for constructing a ProjectProtectedEnvironment resource.
@@ -133,8 +125,6 @@ type ProjectProtectedEnvironmentArgs struct {
 	Environment pulumi.StringInput
 	// The ID or full path of the project which the protected environment is created against.
 	Project pulumi.StringInput
-	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount pulumi.IntPtrInput
 }
 
 func (ProjectProtectedEnvironmentArgs) ElementType() reflect.Type {
@@ -246,11 +236,6 @@ func (o ProjectProtectedEnvironmentOutput) Environment() pulumi.StringOutput {
 // The ID or full path of the project which the protected environment is created against.
 func (o ProjectProtectedEnvironmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectProtectedEnvironment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
-}
-
-// The number of approvals required to deploy to this environment.
-func (o ProjectProtectedEnvironmentOutput) RequiredApprovalCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *ProjectProtectedEnvironment) pulumi.IntOutput { return v.RequiredApprovalCount }).(pulumi.IntOutput)
 }
 
 type ProjectProtectedEnvironmentArrayOutput struct{ *pulumi.OutputState }

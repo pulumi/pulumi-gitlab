@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,7 +33,7 @@ import (
 //			_, err := gitlab.NewPipelineSchedule(ctx, "example", &gitlab.PipelineScheduleArgs{
 //				Project:     pulumi.String("12345"),
 //				Description: pulumi.String("Used to schedule builds"),
-//				Ref:         pulumi.String("master"),
+//				Ref:         pulumi.String("refs/heads/main"),
 //				Cron:        pulumi.String("0 1 * * *"),
 //			})
 //			if err != nil {
@@ -69,7 +69,7 @@ type PipelineSchedule struct {
 	PipelineScheduleId pulumi.IntOutput `pulumi:"pipelineScheduleId"`
 	// The name or id of the project to add the schedule to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The branch/tag name to be triggered.
+	// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
 	Ref           pulumi.StringOutput `pulumi:"ref"`
 	TakeOwnership pulumi.BoolOutput   `pulumi:"takeOwnership"`
 }
@@ -130,7 +130,7 @@ type pipelineScheduleState struct {
 	PipelineScheduleId *int `pulumi:"pipelineScheduleId"`
 	// The name or id of the project to add the schedule to.
 	Project *string `pulumi:"project"`
-	// The branch/tag name to be triggered.
+	// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
 	Ref           *string `pulumi:"ref"`
 	TakeOwnership *bool   `pulumi:"takeOwnership"`
 }
@@ -150,7 +150,7 @@ type PipelineScheduleState struct {
 	PipelineScheduleId pulumi.IntPtrInput
 	// The name or id of the project to add the schedule to.
 	Project pulumi.StringPtrInput
-	// The branch/tag name to be triggered.
+	// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
 	Ref           pulumi.StringPtrInput
 	TakeOwnership pulumi.BoolPtrInput
 }
@@ -170,7 +170,7 @@ type pipelineScheduleArgs struct {
 	Description string `pulumi:"description"`
 	// The name or id of the project to add the schedule to.
 	Project string `pulumi:"project"`
-	// The branch/tag name to be triggered.
+	// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
 	Ref           string `pulumi:"ref"`
 	TakeOwnership *bool  `pulumi:"takeOwnership"`
 }
@@ -187,7 +187,7 @@ type PipelineScheduleArgs struct {
 	Description pulumi.StringInput
 	// The name or id of the project to add the schedule to.
 	Project pulumi.StringInput
-	// The branch/tag name to be triggered.
+	// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
 	Ref           pulumi.StringInput
 	TakeOwnership pulumi.BoolPtrInput
 }
@@ -314,7 +314,7 @@ func (o PipelineScheduleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The branch/tag name to be triggered.
+// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
 func (o PipelineScheduleOutput) Ref() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
 }

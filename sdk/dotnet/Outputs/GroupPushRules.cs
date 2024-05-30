@@ -26,6 +26,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool? CommitCommitterCheck;
         /// <summary>
+        /// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        /// </summary>
+        public readonly bool? CommitCommitterNameCheck;
+        /// <summary>
         /// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
         /// </summary>
         public readonly string? CommitMessageNegativeRegex;
@@ -66,6 +70,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool? commitCommitterCheck,
 
+            bool? commitCommitterNameCheck,
+
             string? commitMessageNegativeRegex,
 
             string? commitMessageRegex,
@@ -85,6 +91,7 @@ namespace Pulumi.GitLab.Outputs
             AuthorEmailRegex = authorEmailRegex;
             BranchNameRegex = branchNameRegex;
             CommitCommitterCheck = commitCommitterCheck;
+            CommitCommitterNameCheck = commitCommitterNameCheck;
             CommitMessageNegativeRegex = commitMessageNegativeRegex;
             CommitMessageRegex = commitMessageRegex;
             DenyDeleteTag = denyDeleteTag;

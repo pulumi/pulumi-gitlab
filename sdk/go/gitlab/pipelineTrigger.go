@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,7 +59,7 @@ type PipelineTrigger struct {
 	PipelineTriggerId pulumi.IntOutput `pulumi:"pipelineTriggerId"`
 	// The name or id of the project to add the trigger to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The pipeline trigger token.
+	// The pipeline trigger token. This value is not available during import.
 	Token pulumi.StringOutput `pulumi:"token"`
 }
 
@@ -109,7 +109,7 @@ type pipelineTriggerState struct {
 	PipelineTriggerId *int `pulumi:"pipelineTriggerId"`
 	// The name or id of the project to add the trigger to.
 	Project *string `pulumi:"project"`
-	// The pipeline trigger token.
+	// The pipeline trigger token. This value is not available during import.
 	Token *string `pulumi:"token"`
 }
 
@@ -120,7 +120,7 @@ type PipelineTriggerState struct {
 	PipelineTriggerId pulumi.IntPtrInput
 	// The name or id of the project to add the trigger to.
 	Project pulumi.StringPtrInput
-	// The pipeline trigger token.
+	// The pipeline trigger token. This value is not available during import.
 	Token pulumi.StringPtrInput
 }
 
@@ -245,7 +245,7 @@ func (o PipelineTriggerOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineTrigger) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The pipeline trigger token.
+// The pipeline trigger token. This value is not available during import.
 func (o PipelineTriggerOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineTrigger) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }

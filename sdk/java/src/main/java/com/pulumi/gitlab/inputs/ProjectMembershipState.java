@@ -17,14 +17,14 @@ public final class ProjectMembershipState extends com.pulumi.resources.ResourceA
     public static final ProjectMembershipState Empty = new ProjectMembershipState();
 
     /**
-     * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * @return The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -104,7 +104,7 @@ public final class ProjectMembershipState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accessLevel The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+         * @param accessLevel The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ProjectMembershipState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accessLevel The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+         * @param accessLevel The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 

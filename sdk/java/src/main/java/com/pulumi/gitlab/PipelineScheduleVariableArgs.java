@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PipelineScheduleVariableArgs extends com.pulumi.resources.ResourceArgs {
@@ -75,6 +77,21 @@ public final class PipelineScheduleVariableArgs extends com.pulumi.resources.Res
         return this.value;
     }
 
+    /**
+     * The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+     * 
+     */
+    @Import(name="variableType")
+    private @Nullable Output<String> variableType;
+
+    /**
+     * @return The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+     * 
+     */
+    public Optional<Output<String>> variableType() {
+        return Optional.ofNullable(this.variableType);
+    }
+
     private PipelineScheduleVariableArgs() {}
 
     private PipelineScheduleVariableArgs(PipelineScheduleVariableArgs $) {
@@ -82,6 +99,7 @@ public final class PipelineScheduleVariableArgs extends com.pulumi.resources.Res
         this.pipelineScheduleId = $.pipelineScheduleId;
         this.project = $.project;
         this.value = $.value;
+        this.variableType = $.variableType;
     }
 
     public static Builder builder() {
@@ -184,6 +202,27 @@ public final class PipelineScheduleVariableArgs extends com.pulumi.resources.Res
          */
         public Builder value(String value) {
             return value(Output.of(value));
+        }
+
+        /**
+         * @param variableType The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variableType(@Nullable Output<String> variableType) {
+            $.variableType = variableType;
+            return this;
+        }
+
+        /**
+         * @param variableType The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variableType(String variableType) {
+            return variableType(Output.of(variableType));
         }
 
         public PipelineScheduleVariableArgs build() {

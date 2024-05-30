@@ -12,7 +12,6 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupProtectedEnvironmentState;
 import com.pulumi.gitlab.outputs.GroupProtectedEnvironmentApprovalRule;
 import com.pulumi.gitlab.outputs.GroupProtectedEnvironmentDeployAccessLevel;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -93,20 +92,6 @@ public class GroupProtectedEnvironment extends com.pulumi.resources.CustomResour
      */
     public Output<String> group() {
         return this.group;
-    }
-    /**
-     * The number of approvals required to deploy to this environment.
-     * 
-     */
-    @Export(name="requiredApprovalCount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> requiredApprovalCount;
-
-    /**
-     * @return The number of approvals required to deploy to this environment.
-     * 
-     */
-    public Output<Integer> requiredApprovalCount() {
-        return this.requiredApprovalCount;
     }
 
     /**

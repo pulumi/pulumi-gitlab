@@ -330,7 +330,6 @@ export interface GetGroupSubgroupsSubgroup {
     createdAt: string;
     defaultBranchProtection: number;
     description: string;
-    emailsDisabled: boolean;
     emailsEnabled: boolean;
     fileTemplateProjectId: number;
     fullName: string;
@@ -520,6 +519,10 @@ export interface GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
 }
 
 export interface GetInstanceVariablesVariable {
+    /**
+     * The description of the variable. Maximum of 255 characters.
+     */
+    description: string;
     /**
      * The name of the variable.
      */
@@ -1155,6 +1158,10 @@ export interface GetProjectPushRule {
      */
     commitCommitterCheck: boolean;
     /**
+     * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     */
+    commitCommitterNameCheck: boolean;
+    /**
      * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
      */
     commitMessageNegativeRegex: string;
@@ -1495,12 +1502,6 @@ export interface GetProjectsProject {
      */
     description: string;
     /**
-     * Disable email notifications.
-     *
-     * @deprecated Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
-     */
-    emailsDisabled: boolean;
-    /**
      * Enable email notifications.
      */
     emailsEnabled: boolean;
@@ -1673,10 +1674,6 @@ export interface GetProjectsProject {
      * Permissions for the project.
      */
     permissions: outputs.GetProjectsProjectPermission[];
-    /**
-     * Whether the project is public.
-     */
-    public: boolean;
     /**
      * Whether public builds are enabled for the project.
      */
@@ -2289,6 +2286,10 @@ export interface GroupPushRules {
      */
     commitCommitterCheck: boolean;
     /**
+     * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     */
+    commitCommitterNameCheck: boolean;
+    /**
      * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
      */
     commitMessageNegativeRegex: string;
@@ -2480,7 +2481,11 @@ export interface ProjectPushRules {
      */
     commitCommitterCheck?: boolean;
     /**
-     * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     */
+    commitCommitterNameCheck?: boolean;
+    /**
+     * No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
      */
     commitMessageNegativeRegex?: string;
     /**

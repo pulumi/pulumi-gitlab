@@ -62,14 +62,14 @@ public final class PipelineTriggerState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The pipeline trigger token.
+     * The pipeline trigger token. This value is not available during import.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return The pipeline trigger token.
+     * @return The pipeline trigger token. This value is not available during import.
      * 
      */
     public Optional<Output<String>> token() {
@@ -167,7 +167,7 @@ public final class PipelineTriggerState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param token The pipeline trigger token.
+         * @param token The pipeline trigger token. This value is not available during import.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class PipelineTriggerState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param token The pipeline trigger token.
+         * @param token The pipeline trigger token. This value is not available during import.
          * 
          * @return builder
          * 

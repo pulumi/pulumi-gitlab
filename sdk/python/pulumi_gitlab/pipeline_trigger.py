@@ -61,7 +61,7 @@ class _PipelineTriggerState:
         :param pulumi.Input[str] description: The description of the pipeline trigger.
         :param pulumi.Input[int] pipeline_trigger_id: The pipeline trigger id.
         :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
-        :param pulumi.Input[str] token: The pipeline trigger token.
+        :param pulumi.Input[str] token: The pipeline trigger token. This value is not available during import.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -112,7 +112,7 @@ class _PipelineTriggerState:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        The pipeline trigger token.
+        The pipeline trigger token. This value is not available during import.
         """
         return pulumi.get(self, "token")
 
@@ -248,7 +248,7 @@ class PipelineTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the pipeline trigger.
         :param pulumi.Input[int] pipeline_trigger_id: The pipeline trigger id.
         :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
-        :param pulumi.Input[str] token: The pipeline trigger token.
+        :param pulumi.Input[str] token: The pipeline trigger token. This value is not available during import.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -288,7 +288,7 @@ class PipelineTrigger(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[str]:
         """
-        The pipeline trigger token.
+        The pipeline trigger token. This value is not available during import.
         """
         return pulumi.get(self, "token")
 

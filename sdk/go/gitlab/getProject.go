@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,10 +72,6 @@ type LookupProjectResult struct {
 	DefaultBranch string `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description string `pulumi:"description"`
-	// Disable email notifications.
-	//
-	// Deprecated: Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
-	EmailsDisabled bool `pulumi:"emailsDisabled"`
 	// Enable email notifications.
 	EmailsEnabled bool `pulumi:"emailsEnabled"`
 	// Whether the project is empty.
@@ -305,13 +301,6 @@ func (o LookupProjectResultOutput) DefaultBranch() pulumi.StringOutput {
 // A description of the project.
 func (o LookupProjectResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Disable email notifications.
-//
-// Deprecated: Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
-func (o LookupProjectResultOutput) EmailsDisabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupProjectResult) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
 }
 
 // Enable email notifications.

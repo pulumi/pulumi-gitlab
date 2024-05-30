@@ -19,23 +19,19 @@ class GroupProtectedEnvironmentArgs:
                  deploy_access_levels: pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]],
                  environment: pulumi.Input[str],
                  group: pulumi.Input[str],
-                 approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None,
-                 required_approval_count: Optional[pulumi.Input[int]] = None):
+                 approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None):
         """
         The set of arguments for constructing a GroupProtectedEnvironment resource.
         :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
         :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash.
-        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "group", group)
         if approval_rules is not None:
             pulumi.set(__self__, "approval_rules", approval_rules)
-        if required_approval_count is not None:
-            pulumi.set(__self__, "required_approval_count", required_approval_count)
 
     @property
     @pulumi.getter(name="deployAccessLevels")
@@ -85,18 +81,6 @@ class GroupProtectedEnvironmentArgs:
     def approval_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]):
         pulumi.set(self, "approval_rules", value)
 
-    @property
-    @pulumi.getter(name="requiredApprovalCount")
-    def required_approval_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of approvals required to deploy to this environment.
-        """
-        return pulumi.get(self, "required_approval_count")
-
-    @required_approval_count.setter
-    def required_approval_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "required_approval_count", value)
-
 
 @pulumi.input_type
 class _GroupProtectedEnvironmentState:
@@ -104,15 +88,13 @@ class _GroupProtectedEnvironmentState:
                  approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None,
                  deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 group: Optional[pulumi.Input[str]] = None,
-                 required_approval_count: Optional[pulumi.Input[int]] = None):
+                 group: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupProtectedEnvironment resources.
         :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash.
         :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
-        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         if approval_rules is not None:
             pulumi.set(__self__, "approval_rules", approval_rules)
@@ -122,8 +104,6 @@ class _GroupProtectedEnvironmentState:
             pulumi.set(__self__, "environment", environment)
         if group is not None:
             pulumi.set(__self__, "group", group)
-        if required_approval_count is not None:
-            pulumi.set(__self__, "required_approval_count", required_approval_count)
 
     @property
     @pulumi.getter(name="approvalRules")
@@ -173,18 +153,6 @@ class _GroupProtectedEnvironmentState:
     def group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "group", value)
 
-    @property
-    @pulumi.getter(name="requiredApprovalCount")
-    def required_approval_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of approvals required to deploy to this environment.
-        """
-        return pulumi.get(self, "required_approval_count")
-
-    @required_approval_count.setter
-    def required_approval_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "required_approval_count", value)
-
 
 class GroupProtectedEnvironment(pulumi.CustomResource):
     @overload
@@ -195,7 +163,6 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
                  deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 required_approval_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         The `GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
@@ -221,7 +188,6 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentDeployAccessLevelArgs']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
-        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         ...
     @overload
@@ -266,7 +232,6 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
                  deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 required_approval_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -286,7 +251,6 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
-            __props__.__dict__["required_approval_count"] = required_approval_count
         super(GroupProtectedEnvironment, __self__).__init__(
             'gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment',
             resource_name,
@@ -300,8 +264,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
             approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentApprovalRuleArgs']]]]] = None,
             deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
-            group: Optional[pulumi.Input[str]] = None,
-            required_approval_count: Optional[pulumi.Input[int]] = None) -> 'GroupProtectedEnvironment':
+            group: Optional[pulumi.Input[str]] = None) -> 'GroupProtectedEnvironment':
         """
         Get an existing GroupProtectedEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -313,7 +276,6 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentDeployAccessLevelArgs']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
-        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -323,7 +285,6 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         __props__.__dict__["deploy_access_levels"] = deploy_access_levels
         __props__.__dict__["environment"] = environment
         __props__.__dict__["group"] = group
-        __props__.__dict__["required_approval_count"] = required_approval_count
         return GroupProtectedEnvironment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -357,12 +318,4 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         The ID or full path of the group which the protected environment is created against.
         """
         return pulumi.get(self, "group")
-
-    @property
-    @pulumi.getter(name="requiredApprovalCount")
-    def required_approval_count(self) -> pulumi.Output[int]:
-        """
-        The number of approvals required to deploy to this environment.
-        """
-        return pulumi.get(self, "required_approval_count")
 

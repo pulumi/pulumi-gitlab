@@ -151,6 +151,7 @@ class ApplicationSettingsArgs:
                  max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
                  max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
                  metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
+                 minimum_password_length: Optional[pulumi.Input[int]] = None,
                  mirror_available: Optional[pulumi.Input[bool]] = None,
                  mirror_capacity_threshold: Optional[pulumi.Input[int]] = None,
                  mirror_max_capacity: Optional[pulumi.Input[int]] = None,
@@ -396,6 +397,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
         :param pulumi.Input[int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
+        :param pulumi.Input[int] minimum_password_length: Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
         :param pulumi.Input[bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
         :param pulumi.Input[int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
@@ -784,6 +786,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "max_ssh_key_lifetime", max_ssh_key_lifetime)
         if metrics_method_call_threshold is not None:
             pulumi.set(__self__, "metrics_method_call_threshold", metrics_method_call_threshold)
+        if minimum_password_length is not None:
+            pulumi.set(__self__, "minimum_password_length", minimum_password_length)
         if mirror_available is not None:
             pulumi.set(__self__, "mirror_available", mirror_available)
         if mirror_capacity_threshold is not None:
@@ -2647,6 +2651,18 @@ class ApplicationSettingsArgs:
     @metrics_method_call_threshold.setter
     def metrics_method_call_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "metrics_method_call_threshold", value)
+
+    @property
+    @pulumi.getter(name="minimumPasswordLength")
+    def minimum_password_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "minimum_password_length")
+
+    @minimum_password_length.setter
+    def minimum_password_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minimum_password_length", value)
 
     @property
     @pulumi.getter(name="mirrorAvailable")
@@ -4037,6 +4053,7 @@ class _ApplicationSettingsState:
                  max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
                  max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
                  metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
+                 minimum_password_length: Optional[pulumi.Input[int]] = None,
                  mirror_available: Optional[pulumi.Input[bool]] = None,
                  mirror_capacity_threshold: Optional[pulumi.Input[int]] = None,
                  mirror_max_capacity: Optional[pulumi.Input[int]] = None,
@@ -4282,6 +4299,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
         :param pulumi.Input[int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
+        :param pulumi.Input[int] minimum_password_length: Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
         :param pulumi.Input[bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
         :param pulumi.Input[int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
@@ -4670,6 +4688,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "max_ssh_key_lifetime", max_ssh_key_lifetime)
         if metrics_method_call_threshold is not None:
             pulumi.set(__self__, "metrics_method_call_threshold", metrics_method_call_threshold)
+        if minimum_password_length is not None:
+            pulumi.set(__self__, "minimum_password_length", minimum_password_length)
         if mirror_available is not None:
             pulumi.set(__self__, "mirror_available", mirror_available)
         if mirror_capacity_threshold is not None:
@@ -6533,6 +6553,18 @@ class _ApplicationSettingsState:
     @metrics_method_call_threshold.setter
     def metrics_method_call_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "metrics_method_call_threshold", value)
+
+    @property
+    @pulumi.getter(name="minimumPasswordLength")
+    def minimum_password_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "minimum_password_length")
+
+    @minimum_password_length.setter
+    def minimum_password_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minimum_password_length", value)
 
     @property
     @pulumi.getter(name="mirrorAvailable")
@@ -7925,6 +7957,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
                  max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
                  metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
+                 minimum_password_length: Optional[pulumi.Input[int]] = None,
                  mirror_available: Optional[pulumi.Input[bool]] = None,
                  mirror_capacity_threshold: Optional[pulumi.Input[int]] = None,
                  mirror_max_capacity: Optional[pulumi.Input[int]] = None,
@@ -8174,6 +8207,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
         :param pulumi.Input[int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
+        :param pulumi.Input[int] minimum_password_length: Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
         :param pulumi.Input[bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
         :param pulumi.Input[int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
@@ -8440,6 +8474,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
                  max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
                  metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
+                 minimum_password_length: Optional[pulumi.Input[int]] = None,
                  mirror_available: Optional[pulumi.Input[bool]] = None,
                  mirror_capacity_threshold: Optional[pulumi.Input[int]] = None,
                  mirror_max_capacity: Optional[pulumi.Input[int]] = None,
@@ -8690,6 +8725,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["max_personal_access_token_lifetime"] = max_personal_access_token_lifetime
             __props__.__dict__["max_ssh_key_lifetime"] = max_ssh_key_lifetime
             __props__.__dict__["metrics_method_call_threshold"] = metrics_method_call_threshold
+            __props__.__dict__["minimum_password_length"] = minimum_password_length
             __props__.__dict__["mirror_available"] = mirror_available
             __props__.__dict__["mirror_capacity_threshold"] = mirror_capacity_threshold
             __props__.__dict__["mirror_max_capacity"] = mirror_max_capacity
@@ -8943,6 +8979,7 @@ class ApplicationSettings(pulumi.CustomResource):
             max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
             max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
             metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
+            minimum_password_length: Optional[pulumi.Input[int]] = None,
             mirror_available: Optional[pulumi.Input[bool]] = None,
             mirror_capacity_threshold: Optional[pulumi.Input[int]] = None,
             mirror_max_capacity: Optional[pulumi.Input[int]] = None,
@@ -9193,6 +9230,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
         :param pulumi.Input[int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
+        :param pulumi.Input[int] minimum_password_length: Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
         :param pulumi.Input[bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
         :param pulumi.Input[int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
@@ -9439,6 +9477,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["max_personal_access_token_lifetime"] = max_personal_access_token_lifetime
         __props__.__dict__["max_ssh_key_lifetime"] = max_ssh_key_lifetime
         __props__.__dict__["metrics_method_call_threshold"] = metrics_method_call_threshold
+        __props__.__dict__["minimum_password_length"] = minimum_password_length
         __props__.__dict__["mirror_available"] = mirror_available
         __props__.__dict__["mirror_capacity_threshold"] = mirror_capacity_threshold
         __props__.__dict__["mirror_max_capacity"] = mirror_max_capacity
@@ -10651,6 +10690,14 @@ class ApplicationSettings(pulumi.CustomResource):
         A method call is only tracked when it takes longer than the given amount of milliseconds.
         """
         return pulumi.get(self, "metrics_method_call_threshold")
+
+    @property
+    @pulumi.getter(name="minimumPasswordLength")
+    def minimum_password_length(self) -> pulumi.Output[int]:
+        """
+        Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "minimum_password_length")
 
     @property
     @pulumi.getter(name="mirrorAvailable")

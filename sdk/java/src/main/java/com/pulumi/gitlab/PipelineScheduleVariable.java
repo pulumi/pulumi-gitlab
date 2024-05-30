@@ -133,6 +133,20 @@ public class PipelineScheduleVariable extends com.pulumi.resources.CustomResourc
     public Output<String> value() {
         return this.value;
     }
+    /**
+     * The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+     * 
+     */
+    @Export(name="variableType", refs={String.class}, tree="[0]")
+    private Output<String> variableType;
+
+    /**
+     * @return The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+     * 
+     */
+    public Output<String> variableType() {
+        return this.variableType;
+    }
 
     /**
      *

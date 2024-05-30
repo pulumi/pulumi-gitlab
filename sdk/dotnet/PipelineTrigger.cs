@@ -63,7 +63,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The pipeline trigger token.
+        /// The pipeline trigger token. This value is not available during import.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// The pipeline trigger token.
+        /// The pipeline trigger token. This value is not available during import.
         /// </summary>
         public Input<string>? Token
         {

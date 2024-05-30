@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,8 +40,6 @@ type GroupProtectedEnvironment struct {
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// The ID or full path of the group which the protected environment is created against.
 	Group pulumi.StringOutput `pulumi:"group"`
-	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount pulumi.IntOutput `pulumi:"requiredApprovalCount"`
 }
 
 // NewGroupProtectedEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -91,8 +89,6 @@ type groupProtectedEnvironmentState struct {
 	Environment *string `pulumi:"environment"`
 	// The ID or full path of the group which the protected environment is created against.
 	Group *string `pulumi:"group"`
-	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount *int `pulumi:"requiredApprovalCount"`
 }
 
 type GroupProtectedEnvironmentState struct {
@@ -104,8 +100,6 @@ type GroupProtectedEnvironmentState struct {
 	Environment pulumi.StringPtrInput
 	// The ID or full path of the group which the protected environment is created against.
 	Group pulumi.StringPtrInput
-	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount pulumi.IntPtrInput
 }
 
 func (GroupProtectedEnvironmentState) ElementType() reflect.Type {
@@ -121,8 +115,6 @@ type groupProtectedEnvironmentArgs struct {
 	Environment string `pulumi:"environment"`
 	// The ID or full path of the group which the protected environment is created against.
 	Group string `pulumi:"group"`
-	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount *int `pulumi:"requiredApprovalCount"`
 }
 
 // The set of arguments for constructing a GroupProtectedEnvironment resource.
@@ -135,8 +127,6 @@ type GroupProtectedEnvironmentArgs struct {
 	Environment pulumi.StringInput
 	// The ID or full path of the group which the protected environment is created against.
 	Group pulumi.StringInput
-	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount pulumi.IntPtrInput
 }
 
 func (GroupProtectedEnvironmentArgs) ElementType() reflect.Type {
@@ -248,11 +238,6 @@ func (o GroupProtectedEnvironmentOutput) Environment() pulumi.StringOutput {
 // The ID or full path of the group which the protected environment is created against.
 func (o GroupProtectedEnvironmentOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupProtectedEnvironment) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
-}
-
-// The number of approvals required to deploy to this environment.
-func (o GroupProtectedEnvironmentOutput) RequiredApprovalCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *GroupProtectedEnvironment) pulumi.IntOutput { return v.RequiredApprovalCount }).(pulumi.IntOutput)
 }
 
 type GroupProtectedEnvironmentArrayOutput struct{ *pulumi.OutputState }

@@ -98,6 +98,10 @@ namespace Pulumi.GitLab
     public sealed class GetInstanceVariableResult
     {
         /// <summary>
+        /// The description of the variable. Maximum of 255 characters.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -128,6 +132,8 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetInstanceVariableResult(
+            string description,
+
             string id,
 
             string key,
@@ -142,6 +148,7 @@ namespace Pulumi.GitLab
 
             string variableType)
         {
+            Description = description;
             Id = id;
             Key = key;
             Masked = masked;

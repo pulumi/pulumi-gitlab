@@ -54,12 +54,6 @@ namespace Pulumi.GitLab
         [Output("group")]
         public Output<string> Group { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of approvals required to deploy to this environment.
-        /// </summary>
-        [Output("requiredApprovalCount")]
-        public Output<int> RequiredApprovalCount { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a GroupProtectedEnvironment resource with the given unique name, arguments, and options.
@@ -142,12 +136,6 @@ namespace Pulumi.GitLab
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
 
-        /// <summary>
-        /// The number of approvals required to deploy to this environment.
-        /// </summary>
-        [Input("requiredApprovalCount")]
-        public Input<int>? RequiredApprovalCount { get; set; }
-
         public GroupProtectedEnvironmentArgs()
         {
         }
@@ -191,12 +179,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
-
-        /// <summary>
-        /// The number of approvals required to deploy to this environment.
-        /// </summary>
-        [Input("requiredApprovalCount")]
-        public Input<int>? RequiredApprovalCount { get; set; }
 
         public GroupProtectedEnvironmentState()
         {

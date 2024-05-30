@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -98,10 +98,6 @@ type Group struct {
 	DefaultBranchProtection pulumi.IntOutput `pulumi:"defaultBranchProtection"`
 	// The group's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Disable email notifications.
-	//
-	// Deprecated: use `emailsEnabled` instead
-	EmailsDisabled pulumi.BoolOutput `pulumi:"emailsDisabled"`
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolOutput `pulumi:"emailsEnabled"`
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -203,10 +199,6 @@ type groupState struct {
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The group's description.
 	Description *string `pulumi:"description"`
-	// Disable email notifications.
-	//
-	// Deprecated: use `emailsEnabled` instead
-	EmailsDisabled *bool `pulumi:"emailsDisabled"`
 	// Enable email notifications.
 	EmailsEnabled *bool `pulumi:"emailsEnabled"`
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -272,10 +264,6 @@ type GroupState struct {
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The group's description.
 	Description pulumi.StringPtrInput
-	// Disable email notifications.
-	//
-	// Deprecated: use `emailsEnabled` instead
-	EmailsDisabled pulumi.BoolPtrInput
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolPtrInput
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -343,10 +331,6 @@ type groupArgs struct {
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The group's description.
 	Description *string `pulumi:"description"`
-	// Disable email notifications.
-	//
-	// Deprecated: use `emailsEnabled` instead
-	EmailsDisabled *bool `pulumi:"emailsDisabled"`
 	// Enable email notifications.
 	EmailsEnabled *bool `pulumi:"emailsEnabled"`
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -403,10 +387,6 @@ type GroupArgs struct {
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The group's description.
 	Description pulumi.StringPtrInput
-	// Disable email notifications.
-	//
-	// Deprecated: use `emailsEnabled` instead
-	EmailsDisabled pulumi.BoolPtrInput
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolPtrInput
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -566,13 +546,6 @@ func (o GroupOutput) DefaultBranchProtection() pulumi.IntOutput {
 // The group's description.
 func (o GroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Disable email notifications.
-//
-// Deprecated: use `emailsEnabled` instead
-func (o GroupOutput) EmailsDisabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.EmailsDisabled }).(pulumi.BoolOutput)
 }
 
 // Enable email notifications.

@@ -28,6 +28,11 @@ public final class GetProjectPushRule {
      */
     private Boolean commitCommitterCheck;
     /**
+     * @return Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     * 
+     */
+    private Boolean commitCommitterNameCheck;
+    /**
      * @return No commit message is allowed to match this regex, for example `ssh\:\/\/`.
      * 
      */
@@ -89,6 +94,13 @@ public final class GetProjectPushRule {
      */
     public Boolean commitCommitterCheck() {
         return this.commitCommitterCheck;
+    }
+    /**
+     * @return Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     * 
+     */
+    public Boolean commitCommitterNameCheck() {
+        return this.commitCommitterNameCheck;
     }
     /**
      * @return No commit message is allowed to match this regex, for example `ssh\:\/\/`.
@@ -159,6 +171,7 @@ public final class GetProjectPushRule {
         private String authorEmailRegex;
         private String branchNameRegex;
         private Boolean commitCommitterCheck;
+        private Boolean commitCommitterNameCheck;
         private String commitMessageNegativeRegex;
         private String commitMessageRegex;
         private Boolean denyDeleteTag;
@@ -173,6 +186,7 @@ public final class GetProjectPushRule {
     	      this.authorEmailRegex = defaults.authorEmailRegex;
     	      this.branchNameRegex = defaults.branchNameRegex;
     	      this.commitCommitterCheck = defaults.commitCommitterCheck;
+    	      this.commitCommitterNameCheck = defaults.commitCommitterNameCheck;
     	      this.commitMessageNegativeRegex = defaults.commitMessageNegativeRegex;
     	      this.commitMessageRegex = defaults.commitMessageRegex;
     	      this.denyDeleteTag = defaults.denyDeleteTag;
@@ -205,6 +219,14 @@ public final class GetProjectPushRule {
               throw new MissingRequiredPropertyException("GetProjectPushRule", "commitCommitterCheck");
             }
             this.commitCommitterCheck = commitCommitterCheck;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder commitCommitterNameCheck(Boolean commitCommitterNameCheck) {
+            if (commitCommitterNameCheck == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "commitCommitterNameCheck");
+            }
+            this.commitCommitterNameCheck = commitCommitterNameCheck;
             return this;
         }
         @CustomType.Setter
@@ -276,6 +298,7 @@ public final class GetProjectPushRule {
             _resultValue.authorEmailRegex = authorEmailRegex;
             _resultValue.branchNameRegex = branchNameRegex;
             _resultValue.commitCommitterCheck = commitCommitterCheck;
+            _resultValue.commitCommitterNameCheck = commitCommitterNameCheck;
             _resultValue.commitMessageNegativeRegex = commitMessageNegativeRegex;
             _resultValue.commitMessageRegex = commitMessageRegex;
             _resultValue.denyDeleteTag = denyDeleteTag;

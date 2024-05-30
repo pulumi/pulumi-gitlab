@@ -8,17 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The `ProjectJobTokenScope` resource allows to manage the CI/CD Job Token scope in a project.
+// Any projects added to the CI/CD Job Token scope outside of TF will be untouched by the resource.
+//
+// > Conflicts with the use of `ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
 //
 // ## Import
 //
-// GitLab project environments can be imported using an id made up of `projectId:targetProjectId`, e.g.
+// GitLab project job token scopes can be imported using an id made up of `projectId:targetProjectId`, e.g.
 //
 // ```sh
 // $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:321

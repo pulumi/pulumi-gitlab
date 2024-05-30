@@ -840,6 +840,12 @@ namespace Pulumi.GitLab
         public Output<int> MetricsMethodCallThreshold { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+        /// </summary>
+        [Output("minimumPasswordLength")]
+        public Output<int> MinimumPasswordLength { get; private set; } = null!;
+
+        /// <summary>
         /// Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
         /// </summary>
         [Output("mirrorAvailable")]
@@ -2504,6 +2510,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("metricsMethodCallThreshold")]
         public Input<int>? MetricsMethodCallThreshold { get; set; }
+
+        /// <summary>
+        /// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+        /// </summary>
+        [Input("minimumPasswordLength")]
+        public Input<int>? MinimumPasswordLength { get; set; }
 
         /// <summary>
         /// Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
@@ -4188,6 +4200,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("metricsMethodCallThreshold")]
         public Input<int>? MetricsMethodCallThreshold { get; set; }
+
+        /// <summary>
+        /// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+        /// </summary>
+        [Input("minimumPasswordLength")]
+        public Input<int>? MinimumPasswordLength { get; set; }
 
         /// <summary>
         /// Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.

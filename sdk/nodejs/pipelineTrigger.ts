@@ -70,7 +70,7 @@ export class PipelineTrigger extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The pipeline trigger token.
+     * The pipeline trigger token. This value is not available during import.
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
 
@@ -128,7 +128,7 @@ export interface PipelineTriggerState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The pipeline trigger token.
+     * The pipeline trigger token. This value is not available during import.
      */
     token?: pulumi.Input<string>;
 }

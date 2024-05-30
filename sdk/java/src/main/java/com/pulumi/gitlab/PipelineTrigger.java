@@ -110,14 +110,14 @@ public class PipelineTrigger extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The pipeline trigger token.
+     * The pipeline trigger token. This value is not available during import.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
-     * @return The pipeline trigger token.
+     * @return The pipeline trigger token. This value is not available during import.
      * 
      */
     public Output<String> token() {

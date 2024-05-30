@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1258,6 +1258,8 @@ type GroupPushRules struct {
 	BranchNameRegex *string `pulumi:"branchNameRegex"`
 	// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
 	CommitCommitterCheck *bool `pulumi:"commitCommitterCheck"`
+	// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+	CommitCommitterNameCheck *bool `pulumi:"commitCommitterNameCheck"`
 	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
 	CommitMessageNegativeRegex *string `pulumi:"commitMessageNegativeRegex"`
 	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
@@ -1294,6 +1296,8 @@ type GroupPushRulesArgs struct {
 	BranchNameRegex pulumi.StringPtrInput `pulumi:"branchNameRegex"`
 	// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
 	CommitCommitterCheck pulumi.BoolPtrInput `pulumi:"commitCommitterCheck"`
+	// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+	CommitCommitterNameCheck pulumi.BoolPtrInput `pulumi:"commitCommitterNameCheck"`
 	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
 	CommitMessageNegativeRegex pulumi.StringPtrInput `pulumi:"commitMessageNegativeRegex"`
 	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
@@ -1404,6 +1408,11 @@ func (o GroupPushRulesOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GroupPushRules) *bool { return v.CommitCommitterCheck }).(pulumi.BoolPtrOutput)
 }
 
+// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+func (o GroupPushRulesOutput) CommitCommitterNameCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *bool { return v.CommitCommitterNameCheck }).(pulumi.BoolPtrOutput)
+}
+
 // No commit message is allowed to match this regex, for example `ssh\:\/\/`.
 func (o GroupPushRulesOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupPushRules) *string { return v.CommitMessageNegativeRegex }).(pulumi.StringPtrOutput)
@@ -1495,6 +1504,16 @@ func (o GroupPushRulesPtrOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.CommitCommitterCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+func (o GroupPushRulesPtrOutput) CommitCommitterNameCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CommitCommitterNameCheck
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2553,14 +2572,16 @@ func (o ProjectProtectedEnvironmentDeployAccessLevelArrayOutput) Index(i pulumi.
 	}).(ProjectProtectedEnvironmentDeployAccessLevelOutput)
 }
 
-type ProjectPushRules struct {
+type ProjectPushRulesType struct {
 	// All commit author emails must match this regex, e.g. `@my-company.com$`.
 	AuthorEmailRegex *string `pulumi:"authorEmailRegex"`
 	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
 	BranchNameRegex *string `pulumi:"branchNameRegex"`
 	// Users can only push commits to this repository that were committed with one of their own verified emails.
 	CommitCommitterCheck *bool `pulumi:"commitCommitterCheck"`
-	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+	// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+	CommitCommitterNameCheck *bool `pulumi:"commitCommitterNameCheck"`
+	// No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
 	CommitMessageNegativeRegex *string `pulumi:"commitMessageNegativeRegex"`
 	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
 	CommitMessageRegex *string `pulumi:"commitMessageRegex"`
@@ -2578,25 +2599,27 @@ type ProjectPushRules struct {
 	RejectUnsignedCommits *bool `pulumi:"rejectUnsignedCommits"`
 }
 
-// ProjectPushRulesInput is an input type that accepts ProjectPushRulesArgs and ProjectPushRulesOutput values.
-// You can construct a concrete instance of `ProjectPushRulesInput` via:
+// ProjectPushRulesTypeInput is an input type that accepts ProjectPushRulesTypeArgs and ProjectPushRulesTypeOutput values.
+// You can construct a concrete instance of `ProjectPushRulesTypeInput` via:
 //
-//	ProjectPushRulesArgs{...}
-type ProjectPushRulesInput interface {
+//	ProjectPushRulesTypeArgs{...}
+type ProjectPushRulesTypeInput interface {
 	pulumi.Input
 
-	ToProjectPushRulesOutput() ProjectPushRulesOutput
-	ToProjectPushRulesOutputWithContext(context.Context) ProjectPushRulesOutput
+	ToProjectPushRulesTypeOutput() ProjectPushRulesTypeOutput
+	ToProjectPushRulesTypeOutputWithContext(context.Context) ProjectPushRulesTypeOutput
 }
 
-type ProjectPushRulesArgs struct {
+type ProjectPushRulesTypeArgs struct {
 	// All commit author emails must match this regex, e.g. `@my-company.com$`.
 	AuthorEmailRegex pulumi.StringPtrInput `pulumi:"authorEmailRegex"`
 	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
 	BranchNameRegex pulumi.StringPtrInput `pulumi:"branchNameRegex"`
 	// Users can only push commits to this repository that were committed with one of their own verified emails.
 	CommitCommitterCheck pulumi.BoolPtrInput `pulumi:"commitCommitterCheck"`
-	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+	// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+	CommitCommitterNameCheck pulumi.BoolPtrInput `pulumi:"commitCommitterNameCheck"`
+	// No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
 	CommitMessageNegativeRegex pulumi.StringPtrInput `pulumi:"commitMessageNegativeRegex"`
 	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
 	CommitMessageRegex pulumi.StringPtrInput `pulumi:"commitMessageRegex"`
@@ -2614,165 +2637,170 @@ type ProjectPushRulesArgs struct {
 	RejectUnsignedCommits pulumi.BoolPtrInput `pulumi:"rejectUnsignedCommits"`
 }
 
-func (ProjectPushRulesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectPushRules)(nil)).Elem()
+func (ProjectPushRulesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectPushRulesType)(nil)).Elem()
 }
 
-func (i ProjectPushRulesArgs) ToProjectPushRulesOutput() ProjectPushRulesOutput {
-	return i.ToProjectPushRulesOutputWithContext(context.Background())
+func (i ProjectPushRulesTypeArgs) ToProjectPushRulesTypeOutput() ProjectPushRulesTypeOutput {
+	return i.ToProjectPushRulesTypeOutputWithContext(context.Background())
 }
 
-func (i ProjectPushRulesArgs) ToProjectPushRulesOutputWithContext(ctx context.Context) ProjectPushRulesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectPushRulesOutput)
+func (i ProjectPushRulesTypeArgs) ToProjectPushRulesTypeOutputWithContext(ctx context.Context) ProjectPushRulesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPushRulesTypeOutput)
 }
 
-func (i ProjectPushRulesArgs) ToProjectPushRulesPtrOutput() ProjectPushRulesPtrOutput {
-	return i.ToProjectPushRulesPtrOutputWithContext(context.Background())
+func (i ProjectPushRulesTypeArgs) ToProjectPushRulesTypePtrOutput() ProjectPushRulesTypePtrOutput {
+	return i.ToProjectPushRulesTypePtrOutputWithContext(context.Background())
 }
 
-func (i ProjectPushRulesArgs) ToProjectPushRulesPtrOutputWithContext(ctx context.Context) ProjectPushRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectPushRulesOutput).ToProjectPushRulesPtrOutputWithContext(ctx)
+func (i ProjectPushRulesTypeArgs) ToProjectPushRulesTypePtrOutputWithContext(ctx context.Context) ProjectPushRulesTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPushRulesTypeOutput).ToProjectPushRulesTypePtrOutputWithContext(ctx)
 }
 
-// ProjectPushRulesPtrInput is an input type that accepts ProjectPushRulesArgs, ProjectPushRulesPtr and ProjectPushRulesPtrOutput values.
-// You can construct a concrete instance of `ProjectPushRulesPtrInput` via:
+// ProjectPushRulesTypePtrInput is an input type that accepts ProjectPushRulesTypeArgs, ProjectPushRulesTypePtr and ProjectPushRulesTypePtrOutput values.
+// You can construct a concrete instance of `ProjectPushRulesTypePtrInput` via:
 //
-//	        ProjectPushRulesArgs{...}
+//	        ProjectPushRulesTypeArgs{...}
 //
 //	or:
 //
 //	        nil
-type ProjectPushRulesPtrInput interface {
+type ProjectPushRulesTypePtrInput interface {
 	pulumi.Input
 
-	ToProjectPushRulesPtrOutput() ProjectPushRulesPtrOutput
-	ToProjectPushRulesPtrOutputWithContext(context.Context) ProjectPushRulesPtrOutput
+	ToProjectPushRulesTypePtrOutput() ProjectPushRulesTypePtrOutput
+	ToProjectPushRulesTypePtrOutputWithContext(context.Context) ProjectPushRulesTypePtrOutput
 }
 
-type projectPushRulesPtrType ProjectPushRulesArgs
+type projectPushRulesTypePtrType ProjectPushRulesTypeArgs
 
-func ProjectPushRulesPtr(v *ProjectPushRulesArgs) ProjectPushRulesPtrInput {
-	return (*projectPushRulesPtrType)(v)
+func ProjectPushRulesTypePtr(v *ProjectPushRulesTypeArgs) ProjectPushRulesTypePtrInput {
+	return (*projectPushRulesTypePtrType)(v)
 }
 
-func (*projectPushRulesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectPushRules)(nil)).Elem()
+func (*projectPushRulesTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectPushRulesType)(nil)).Elem()
 }
 
-func (i *projectPushRulesPtrType) ToProjectPushRulesPtrOutput() ProjectPushRulesPtrOutput {
-	return i.ToProjectPushRulesPtrOutputWithContext(context.Background())
+func (i *projectPushRulesTypePtrType) ToProjectPushRulesTypePtrOutput() ProjectPushRulesTypePtrOutput {
+	return i.ToProjectPushRulesTypePtrOutputWithContext(context.Background())
 }
 
-func (i *projectPushRulesPtrType) ToProjectPushRulesPtrOutputWithContext(ctx context.Context) ProjectPushRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectPushRulesPtrOutput)
+func (i *projectPushRulesTypePtrType) ToProjectPushRulesTypePtrOutputWithContext(ctx context.Context) ProjectPushRulesTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPushRulesTypePtrOutput)
 }
 
-type ProjectPushRulesOutput struct{ *pulumi.OutputState }
+type ProjectPushRulesTypeOutput struct{ *pulumi.OutputState }
 
-func (ProjectPushRulesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectPushRules)(nil)).Elem()
+func (ProjectPushRulesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectPushRulesType)(nil)).Elem()
 }
 
-func (o ProjectPushRulesOutput) ToProjectPushRulesOutput() ProjectPushRulesOutput {
+func (o ProjectPushRulesTypeOutput) ToProjectPushRulesTypeOutput() ProjectPushRulesTypeOutput {
 	return o
 }
 
-func (o ProjectPushRulesOutput) ToProjectPushRulesOutputWithContext(ctx context.Context) ProjectPushRulesOutput {
+func (o ProjectPushRulesTypeOutput) ToProjectPushRulesTypeOutputWithContext(ctx context.Context) ProjectPushRulesTypeOutput {
 	return o
 }
 
-func (o ProjectPushRulesOutput) ToProjectPushRulesPtrOutput() ProjectPushRulesPtrOutput {
-	return o.ToProjectPushRulesPtrOutputWithContext(context.Background())
+func (o ProjectPushRulesTypeOutput) ToProjectPushRulesTypePtrOutput() ProjectPushRulesTypePtrOutput {
+	return o.ToProjectPushRulesTypePtrOutputWithContext(context.Background())
 }
 
-func (o ProjectPushRulesOutput) ToProjectPushRulesPtrOutputWithContext(ctx context.Context) ProjectPushRulesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectPushRules) *ProjectPushRules {
+func (o ProjectPushRulesTypeOutput) ToProjectPushRulesTypePtrOutputWithContext(ctx context.Context) ProjectPushRulesTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectPushRulesType) *ProjectPushRulesType {
 		return &v
-	}).(ProjectPushRulesPtrOutput)
+	}).(ProjectPushRulesTypePtrOutput)
 }
 
 // All commit author emails must match this regex, e.g. `@my-company.com$`.
-func (o ProjectPushRulesOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *string { return v.AuthorEmailRegex }).(pulumi.StringPtrOutput)
+func (o ProjectPushRulesTypeOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *string { return v.AuthorEmailRegex }).(pulumi.StringPtrOutput)
 }
 
 // All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
-func (o ProjectPushRulesOutput) BranchNameRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *string { return v.BranchNameRegex }).(pulumi.StringPtrOutput)
+func (o ProjectPushRulesTypeOutput) BranchNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *string { return v.BranchNameRegex }).(pulumi.StringPtrOutput)
 }
 
 // Users can only push commits to this repository that were committed with one of their own verified emails.
-func (o ProjectPushRulesOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *bool { return v.CommitCommitterCheck }).(pulumi.BoolPtrOutput)
+func (o ProjectPushRulesTypeOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.CommitCommitterCheck }).(pulumi.BoolPtrOutput)
 }
 
-// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
-func (o ProjectPushRulesOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *string { return v.CommitMessageNegativeRegex }).(pulumi.StringPtrOutput)
+// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+func (o ProjectPushRulesTypeOutput) CommitCommitterNameCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.CommitCommitterNameCheck }).(pulumi.BoolPtrOutput)
+}
+
+// No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
+func (o ProjectPushRulesTypeOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *string { return v.CommitMessageNegativeRegex }).(pulumi.StringPtrOutput)
 }
 
 // All commit messages must match this regex, e.g. `Fixed \d+\..*`.
-func (o ProjectPushRulesOutput) CommitMessageRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *string { return v.CommitMessageRegex }).(pulumi.StringPtrOutput)
+func (o ProjectPushRulesTypeOutput) CommitMessageRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *string { return v.CommitMessageRegex }).(pulumi.StringPtrOutput)
 }
 
 // Deny deleting a tag.
-func (o ProjectPushRulesOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *bool { return v.DenyDeleteTag }).(pulumi.BoolPtrOutput)
+func (o ProjectPushRulesTypeOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.DenyDeleteTag }).(pulumi.BoolPtrOutput)
 }
 
 // All committed filenames must not match this regex, e.g. `(jar|exe)$`.
-func (o ProjectPushRulesOutput) FileNameRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *string { return v.FileNameRegex }).(pulumi.StringPtrOutput)
+func (o ProjectPushRulesTypeOutput) FileNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *string { return v.FileNameRegex }).(pulumi.StringPtrOutput)
 }
 
 // Maximum file size (MB).
-func (o ProjectPushRulesOutput) MaxFileSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *int { return v.MaxFileSize }).(pulumi.IntPtrOutput)
+func (o ProjectPushRulesTypeOutput) MaxFileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *int { return v.MaxFileSize }).(pulumi.IntPtrOutput)
 }
 
 // Restrict commits by author (email) to existing GitLab users.
-func (o ProjectPushRulesOutput) MemberCheck() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *bool { return v.MemberCheck }).(pulumi.BoolPtrOutput)
+func (o ProjectPushRulesTypeOutput) MemberCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.MemberCheck }).(pulumi.BoolPtrOutput)
 }
 
 // GitLab will reject any files that are likely to contain secrets.
-func (o ProjectPushRulesOutput) PreventSecrets() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *bool { return v.PreventSecrets }).(pulumi.BoolPtrOutput)
+func (o ProjectPushRulesTypeOutput) PreventSecrets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.PreventSecrets }).(pulumi.BoolPtrOutput)
 }
 
 // Reject commit when it’s not signed through GPG.
-func (o ProjectPushRulesOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *bool { return v.RejectUnsignedCommits }).(pulumi.BoolPtrOutput)
+func (o ProjectPushRulesTypeOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.RejectUnsignedCommits }).(pulumi.BoolPtrOutput)
 }
 
-type ProjectPushRulesPtrOutput struct{ *pulumi.OutputState }
+type ProjectPushRulesTypePtrOutput struct{ *pulumi.OutputState }
 
-func (ProjectPushRulesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectPushRules)(nil)).Elem()
+func (ProjectPushRulesTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectPushRulesType)(nil)).Elem()
 }
 
-func (o ProjectPushRulesPtrOutput) ToProjectPushRulesPtrOutput() ProjectPushRulesPtrOutput {
+func (o ProjectPushRulesTypePtrOutput) ToProjectPushRulesTypePtrOutput() ProjectPushRulesTypePtrOutput {
 	return o
 }
 
-func (o ProjectPushRulesPtrOutput) ToProjectPushRulesPtrOutputWithContext(ctx context.Context) ProjectPushRulesPtrOutput {
+func (o ProjectPushRulesTypePtrOutput) ToProjectPushRulesTypePtrOutputWithContext(ctx context.Context) ProjectPushRulesTypePtrOutput {
 	return o
 }
 
-func (o ProjectPushRulesPtrOutput) Elem() ProjectPushRulesOutput {
-	return o.ApplyT(func(v *ProjectPushRules) ProjectPushRules {
+func (o ProjectPushRulesTypePtrOutput) Elem() ProjectPushRulesTypeOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) ProjectPushRulesType {
 		if v != nil {
 			return *v
 		}
-		var ret ProjectPushRules
+		var ret ProjectPushRulesType
 		return ret
-	}).(ProjectPushRulesOutput)
+	}).(ProjectPushRulesTypeOutput)
 }
 
 // All commit author emails must match this regex, e.g. `@my-company.com$`.
-func (o ProjectPushRulesPtrOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *string {
+func (o ProjectPushRulesTypePtrOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *string {
 		if v == nil {
 			return nil
 		}
@@ -2781,8 +2809,8 @@ func (o ProjectPushRulesPtrOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
 }
 
 // All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
-func (o ProjectPushRulesPtrOutput) BranchNameRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *string {
+func (o ProjectPushRulesTypePtrOutput) BranchNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *string {
 		if v == nil {
 			return nil
 		}
@@ -2791,8 +2819,8 @@ func (o ProjectPushRulesPtrOutput) BranchNameRegex() pulumi.StringPtrOutput {
 }
 
 // Users can only push commits to this repository that were committed with one of their own verified emails.
-func (o ProjectPushRulesPtrOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *bool {
+func (o ProjectPushRulesTypePtrOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *bool {
 		if v == nil {
 			return nil
 		}
@@ -2800,9 +2828,19 @@ func (o ProjectPushRulesPtrOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
-func (o ProjectPushRulesPtrOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *string {
+// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+func (o ProjectPushRulesTypePtrOutput) CommitCommitterNameCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CommitCommitterNameCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
+func (o ProjectPushRulesTypePtrOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *string {
 		if v == nil {
 			return nil
 		}
@@ -2811,8 +2849,8 @@ func (o ProjectPushRulesPtrOutput) CommitMessageNegativeRegex() pulumi.StringPtr
 }
 
 // All commit messages must match this regex, e.g. `Fixed \d+\..*`.
-func (o ProjectPushRulesPtrOutput) CommitMessageRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *string {
+func (o ProjectPushRulesTypePtrOutput) CommitMessageRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *string {
 		if v == nil {
 			return nil
 		}
@@ -2821,8 +2859,8 @@ func (o ProjectPushRulesPtrOutput) CommitMessageRegex() pulumi.StringPtrOutput {
 }
 
 // Deny deleting a tag.
-func (o ProjectPushRulesPtrOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *bool {
+func (o ProjectPushRulesTypePtrOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *bool {
 		if v == nil {
 			return nil
 		}
@@ -2831,8 +2869,8 @@ func (o ProjectPushRulesPtrOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
 }
 
 // All committed filenames must not match this regex, e.g. `(jar|exe)$`.
-func (o ProjectPushRulesPtrOutput) FileNameRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *string {
+func (o ProjectPushRulesTypePtrOutput) FileNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *string {
 		if v == nil {
 			return nil
 		}
@@ -2841,8 +2879,8 @@ func (o ProjectPushRulesPtrOutput) FileNameRegex() pulumi.StringPtrOutput {
 }
 
 // Maximum file size (MB).
-func (o ProjectPushRulesPtrOutput) MaxFileSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *int {
+func (o ProjectPushRulesTypePtrOutput) MaxFileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *int {
 		if v == nil {
 			return nil
 		}
@@ -2851,8 +2889,8 @@ func (o ProjectPushRulesPtrOutput) MaxFileSize() pulumi.IntPtrOutput {
 }
 
 // Restrict commits by author (email) to existing GitLab users.
-func (o ProjectPushRulesPtrOutput) MemberCheck() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *bool {
+func (o ProjectPushRulesTypePtrOutput) MemberCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *bool {
 		if v == nil {
 			return nil
 		}
@@ -2861,8 +2899,8 @@ func (o ProjectPushRulesPtrOutput) MemberCheck() pulumi.BoolPtrOutput {
 }
 
 // GitLab will reject any files that are likely to contain secrets.
-func (o ProjectPushRulesPtrOutput) PreventSecrets() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *bool {
+func (o ProjectPushRulesTypePtrOutput) PreventSecrets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *bool {
 		if v == nil {
 			return nil
 		}
@@ -2871,8 +2909,8 @@ func (o ProjectPushRulesPtrOutput) PreventSecrets() pulumi.BoolPtrOutput {
 }
 
 // Reject commit when it’s not signed through GPG.
-func (o ProjectPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectPushRules) *bool {
+func (o ProjectPushRulesTypePtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *bool {
 		if v == nil {
 			return nil
 		}
@@ -4193,7 +4231,6 @@ type GetGroupSubgroupsSubgroup struct {
 	CreatedAt                      string            `pulumi:"createdAt"`
 	DefaultBranchProtection        int               `pulumi:"defaultBranchProtection"`
 	Description                    string            `pulumi:"description"`
-	EmailsDisabled                 bool              `pulumi:"emailsDisabled"`
 	EmailsEnabled                  bool              `pulumi:"emailsEnabled"`
 	FileTemplateProjectId          int               `pulumi:"fileTemplateProjectId"`
 	FullName                       string            `pulumi:"fullName"`
@@ -4235,7 +4272,6 @@ type GetGroupSubgroupsSubgroupArgs struct {
 	CreatedAt                      pulumi.StringInput    `pulumi:"createdAt"`
 	DefaultBranchProtection        pulumi.IntInput       `pulumi:"defaultBranchProtection"`
 	Description                    pulumi.StringInput    `pulumi:"description"`
-	EmailsDisabled                 pulumi.BoolInput      `pulumi:"emailsDisabled"`
 	EmailsEnabled                  pulumi.BoolInput      `pulumi:"emailsEnabled"`
 	FileTemplateProjectId          pulumi.IntInput       `pulumi:"fileTemplateProjectId"`
 	FullName                       pulumi.StringInput    `pulumi:"fullName"`
@@ -4329,10 +4365,6 @@ func (o GetGroupSubgroupsSubgroupOutput) DefaultBranchProtection() pulumi.IntOut
 
 func (o GetGroupSubgroupsSubgroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.Description }).(pulumi.StringOutput)
-}
-
-func (o GetGroupSubgroupsSubgroupOutput) EmailsDisabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
 }
 
 func (o GetGroupSubgroupsSubgroupOutput) EmailsEnabled() pulumi.BoolOutput {
@@ -5140,6 +5172,8 @@ func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput) Index(
 }
 
 type GetInstanceVariablesVariable struct {
+	// The description of the variable. Maximum of 255 characters.
+	Description string `pulumi:"description"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
 	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
@@ -5166,6 +5200,8 @@ type GetInstanceVariablesVariableInput interface {
 }
 
 type GetInstanceVariablesVariableArgs struct {
+	// The description of the variable. Maximum of 255 characters.
+	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the variable.
 	Key pulumi.StringInput `pulumi:"key"`
 	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
@@ -5229,6 +5265,11 @@ func (o GetInstanceVariablesVariableOutput) ToGetInstanceVariablesVariableOutput
 
 func (o GetInstanceVariablesVariableOutput) ToGetInstanceVariablesVariableOutputWithContext(ctx context.Context) GetInstanceVariablesVariableOutput {
 	return o
+}
+
+// The description of the variable. Maximum of 255 characters.
+func (o GetInstanceVariablesVariableOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceVariablesVariable) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The name of the variable.
@@ -7812,6 +7853,8 @@ type GetProjectPushRule struct {
 	BranchNameRegex string `pulumi:"branchNameRegex"`
 	// Users can only push commits to this repository that were committed with one of their own verified emails.
 	CommitCommitterCheck bool `pulumi:"commitCommitterCheck"`
+	// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+	CommitCommitterNameCheck bool `pulumi:"commitCommitterNameCheck"`
 	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
 	CommitMessageNegativeRegex string `pulumi:"commitMessageNegativeRegex"`
 	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
@@ -7848,6 +7891,8 @@ type GetProjectPushRuleArgs struct {
 	BranchNameRegex pulumi.StringInput `pulumi:"branchNameRegex"`
 	// Users can only push commits to this repository that were committed with one of their own verified emails.
 	CommitCommitterCheck pulumi.BoolInput `pulumi:"commitCommitterCheck"`
+	// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+	CommitCommitterNameCheck pulumi.BoolInput `pulumi:"commitCommitterNameCheck"`
 	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
 	CommitMessageNegativeRegex pulumi.StringInput `pulumi:"commitMessageNegativeRegex"`
 	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
@@ -7930,6 +7975,11 @@ func (o GetProjectPushRuleOutput) BranchNameRegex() pulumi.StringOutput {
 // Users can only push commits to this repository that were committed with one of their own verified emails.
 func (o GetProjectPushRuleOutput) CommitCommitterCheck() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectPushRule) bool { return v.CommitCommitterCheck }).(pulumi.BoolOutput)
+}
+
+// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+func (o GetProjectPushRuleOutput) CommitCommitterNameCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectPushRule) bool { return v.CommitCommitterNameCheck }).(pulumi.BoolOutput)
 }
 
 // No commit message is allowed to match this regex, for example `ssh\:\/\/`.
@@ -9066,10 +9116,6 @@ type GetProjectsProject struct {
 	DefaultBranch string `pulumi:"defaultBranch"`
 	// The description of the project.
 	Description string `pulumi:"description"`
-	// Disable email notifications.
-	//
-	// Deprecated: Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
-	EmailsDisabled bool `pulumi:"emailsDisabled"`
 	// Enable email notifications.
 	EmailsEnabled bool `pulumi:"emailsEnabled"`
 	// Whether the project is empty.
@@ -9157,8 +9203,6 @@ type GetProjectsProject struct {
 	PathWithNamespace string `pulumi:"pathWithNamespace"`
 	// Permissions for the project.
 	Permissions []GetProjectsProjectPermission `pulumi:"permissions"`
-	// Whether the project is public.
-	Public bool `pulumi:"public"`
 	// Whether public builds are enabled for the project.
 	PublicBuilds bool `pulumi:"publicBuilds"`
 	// The remote url of the project.
@@ -9277,10 +9321,6 @@ type GetProjectsProjectArgs struct {
 	DefaultBranch pulumi.StringInput `pulumi:"defaultBranch"`
 	// The description of the project.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Disable email notifications.
-	//
-	// Deprecated: Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
-	EmailsDisabled pulumi.BoolInput `pulumi:"emailsDisabled"`
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolInput `pulumi:"emailsEnabled"`
 	// Whether the project is empty.
@@ -9368,8 +9408,6 @@ type GetProjectsProjectArgs struct {
 	PathWithNamespace pulumi.StringInput `pulumi:"pathWithNamespace"`
 	// Permissions for the project.
 	Permissions GetProjectsProjectPermissionArrayInput `pulumi:"permissions"`
-	// Whether the project is public.
-	Public pulumi.BoolInput `pulumi:"public"`
 	// Whether public builds are enabled for the project.
 	PublicBuilds pulumi.BoolInput `pulumi:"publicBuilds"`
 	// The remote url of the project.
@@ -9607,13 +9645,6 @@ func (o GetProjectsProjectOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Disable email notifications.
-//
-// Deprecated: Use of `emailsDisabled` is deprecated. Use `emailsEnabled` instead.
-func (o GetProjectsProjectOutput) EmailsDisabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetProjectsProject) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
-}
-
 // Enable email notifications.
 func (o GetProjectsProjectOutput) EmailsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.EmailsEnabled }).(pulumi.BoolOutput)
@@ -9831,11 +9862,6 @@ func (o GetProjectsProjectOutput) PathWithNamespace() pulumi.StringOutput {
 // Permissions for the project.
 func (o GetProjectsProjectOutput) Permissions() GetProjectsProjectPermissionArrayOutput {
 	return o.ApplyT(func(v GetProjectsProject) []GetProjectsProjectPermission { return v.Permissions }).(GetProjectsProjectPermissionArrayOutput)
-}
-
-// Whether the project is public.
-func (o GetProjectsProjectOutput) Public() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetProjectsProject) bool { return v.Public }).(pulumi.BoolOutput)
 }
 
 // Whether public builds are enabled for the project.
@@ -12023,8 +12049,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentApprovalRuleArrayInput)(nil)).Elem(), ProjectProtectedEnvironmentApprovalRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelArrayInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesInput)(nil)).Elem(), ProjectPushRulesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesPtrInput)(nil)).Elem(), ProjectPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesTypeInput)(nil)).Elem(), ProjectPushRulesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesTypePtrInput)(nil)).Elem(), ProjectPushRulesTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagCommitInput)(nil)).Elem(), ProjectTagCommitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagCommitArrayInput)(nil)).Elem(), ProjectTagCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagReleaseInput)(nil)).Elem(), ProjectTagReleaseArgs{})
@@ -12158,8 +12184,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentApprovalRuleArrayOutput{})
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelOutput{})
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelArrayOutput{})
-	pulumi.RegisterOutputType(ProjectPushRulesOutput{})
-	pulumi.RegisterOutputType(ProjectPushRulesPtrOutput{})
+	pulumi.RegisterOutputType(ProjectPushRulesTypeOutput{})
+	pulumi.RegisterOutputType(ProjectPushRulesTypePtrOutput{})
 	pulumi.RegisterOutputType(ProjectTagCommitOutput{})
 	pulumi.RegisterOutputType(ProjectTagCommitArrayOutput{})
 	pulumi.RegisterOutputType(ProjectTagReleaseOutput{})

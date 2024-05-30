@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentApprovalRuleArgs;
 import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -79,21 +78,6 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         return Optional.ofNullable(this.project);
     }
 
-    /**
-     * The number of approvals required to deploy to this environment.
-     * 
-     */
-    @Import(name="requiredApprovalCount")
-    private @Nullable Output<Integer> requiredApprovalCount;
-
-    /**
-     * @return The number of approvals required to deploy to this environment.
-     * 
-     */
-    public Optional<Output<Integer>> requiredApprovalCount() {
-        return Optional.ofNullable(this.requiredApprovalCount);
-    }
-
     private ProjectProtectedEnvironmentState() {}
 
     private ProjectProtectedEnvironmentState(ProjectProtectedEnvironmentState $) {
@@ -101,7 +85,6 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         this.deployAccessLevels = $.deployAccessLevels;
         this.environment = $.environment;
         this.project = $.project;
-        this.requiredApprovalCount = $.requiredApprovalCount;
     }
 
     public static Builder builder() {
@@ -224,27 +207,6 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
          */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param requiredApprovalCount The number of approvals required to deploy to this environment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requiredApprovalCount(@Nullable Output<Integer> requiredApprovalCount) {
-            $.requiredApprovalCount = requiredApprovalCount;
-            return this;
-        }
-
-        /**
-         * @param requiredApprovalCount The number of approvals required to deploy to this environment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requiredApprovalCount(Integer requiredApprovalCount) {
-            return requiredApprovalCount(Output.of(requiredApprovalCount));
         }
 
         public ProjectProtectedEnvironmentState build() {

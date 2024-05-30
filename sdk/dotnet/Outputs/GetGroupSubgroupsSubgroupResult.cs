@@ -18,7 +18,6 @@ namespace Pulumi.GitLab.Outputs
         public readonly string CreatedAt;
         public readonly int DefaultBranchProtection;
         public readonly string Description;
-        public readonly bool EmailsDisabled;
         public readonly bool EmailsEnabled;
         public readonly int FileTemplateProjectId;
         public readonly string FullName;
@@ -53,8 +52,6 @@ namespace Pulumi.GitLab.Outputs
             int defaultBranchProtection,
 
             string description,
-
-            bool emailsDisabled,
 
             bool emailsEnabled,
 
@@ -105,7 +102,6 @@ namespace Pulumi.GitLab.Outputs
             CreatedAt = createdAt;
             DefaultBranchProtection = defaultBranchProtection;
             Description = description;
-            EmailsDisabled = emailsDisabled;
             EmailsEnabled = emailsEnabled;
             FileTemplateProjectId = fileTemplateProjectId;
             FullName = fullName;

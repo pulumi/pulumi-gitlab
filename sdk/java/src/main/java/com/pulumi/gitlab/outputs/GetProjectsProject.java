@@ -151,15 +151,6 @@ public final class GetProjectsProject {
      */
     private String description;
     /**
-     * @return Disable email notifications.
-     * 
-     * @deprecated
-     * Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.
-     * 
-     */
-    @Deprecated /* Use of `emails_disabled` is deprecated. Use `emails_enabled` instead. */
-    private Boolean emailsDisabled;
-    /**
      * @return Enable email notifications.
      * 
      */
@@ -375,11 +366,6 @@ public final class GetProjectsProject {
      * 
      */
     private List<GetProjectsProjectPermission> permissions;
-    /**
-     * @return Whether the project is public.
-     * 
-     */
-    private Boolean public_;
     /**
      * @return Whether public builds are enabled for the project.
      * 
@@ -695,17 +681,6 @@ public final class GetProjectsProject {
         return this.description;
     }
     /**
-     * @return Disable email notifications.
-     * 
-     * @deprecated
-     * Use of `emails_disabled` is deprecated. Use `emails_enabled` instead.
-     * 
-     */
-    @Deprecated /* Use of `emails_disabled` is deprecated. Use `emails_enabled` instead. */
-    public Boolean emailsDisabled() {
-        return this.emailsDisabled;
-    }
-    /**
      * @return Enable email notifications.
      * 
      */
@@ -1010,13 +985,6 @@ public final class GetProjectsProject {
         return this.permissions;
     }
     /**
-     * @return Whether the project is public.
-     * 
-     */
-    public Boolean public_() {
-        return this.public_;
-    }
-    /**
      * @return Whether public builds are enabled for the project.
      * 
      */
@@ -1234,7 +1202,6 @@ public final class GetProjectsProject {
         private List<Map<String,String>> customAttributes;
         private String defaultBranch;
         private String description;
-        private Boolean emailsDisabled;
         private Boolean emailsEnabled;
         private Boolean emptyRepo;
         private String environmentsAccessLevel;
@@ -1279,7 +1246,6 @@ public final class GetProjectsProject {
         private String path;
         private String pathWithNamespace;
         private List<GetProjectsProjectPermission> permissions;
-        private Boolean public_;
         private Boolean publicBuilds;
         private String readmeUrl;
         private String releasesAccessLevel;
@@ -1335,7 +1301,6 @@ public final class GetProjectsProject {
     	      this.customAttributes = defaults.customAttributes;
     	      this.defaultBranch = defaults.defaultBranch;
     	      this.description = defaults.description;
-    	      this.emailsDisabled = defaults.emailsDisabled;
     	      this.emailsEnabled = defaults.emailsEnabled;
     	      this.emptyRepo = defaults.emptyRepo;
     	      this.environmentsAccessLevel = defaults.environmentsAccessLevel;
@@ -1380,7 +1345,6 @@ public final class GetProjectsProject {
     	      this.path = defaults.path;
     	      this.pathWithNamespace = defaults.pathWithNamespace;
     	      this.permissions = defaults.permissions;
-    	      this.public_ = defaults.public_;
     	      this.publicBuilds = defaults.publicBuilds;
     	      this.readmeUrl = defaults.readmeUrl;
     	      this.releasesAccessLevel = defaults.releasesAccessLevel;
@@ -1618,14 +1582,6 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "description");
             }
             this.description = description;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder emailsDisabled(Boolean emailsDisabled) {
-            if (emailsDisabled == null) {
-              throw new MissingRequiredPropertyException("GetProjectsProject", "emailsDisabled");
-            }
-            this.emailsDisabled = emailsDisabled;
             return this;
         }
         @CustomType.Setter
@@ -1992,14 +1948,6 @@ public final class GetProjectsProject {
         public Builder permissions(GetProjectsProjectPermission... permissions) {
             return permissions(List.of(permissions));
         }
-        @CustomType.Setter("public")
-        public Builder public_(Boolean public_) {
-            if (public_ == null) {
-              throw new MissingRequiredPropertyException("GetProjectsProject", "public_");
-            }
-            this.public_ = public_;
-            return this;
-        }
         @CustomType.Setter
         public Builder publicBuilds(Boolean publicBuilds) {
             if (publicBuilds == null) {
@@ -2245,7 +2193,6 @@ public final class GetProjectsProject {
             _resultValue.customAttributes = customAttributes;
             _resultValue.defaultBranch = defaultBranch;
             _resultValue.description = description;
-            _resultValue.emailsDisabled = emailsDisabled;
             _resultValue.emailsEnabled = emailsEnabled;
             _resultValue.emptyRepo = emptyRepo;
             _resultValue.environmentsAccessLevel = environmentsAccessLevel;
@@ -2290,7 +2237,6 @@ public final class GetProjectsProject {
             _resultValue.path = path;
             _resultValue.pathWithNamespace = pathWithNamespace;
             _resultValue.permissions = permissions;
-            _resultValue.public_ = public_;
             _resultValue.publicBuilds = publicBuilds;
             _resultValue.readmeUrl = readmeUrl;
             _resultValue.releasesAccessLevel = releasesAccessLevel;

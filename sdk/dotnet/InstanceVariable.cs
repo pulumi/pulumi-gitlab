@@ -47,6 +47,12 @@ namespace Pulumi.GitLab
     public partial class InstanceVariable : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The description of the variable. Maximum of 255 characters.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the variable.
         /// </summary>
         [Output("key")]
@@ -129,6 +135,12 @@ namespace Pulumi.GitLab
     public sealed class InstanceVariableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The description of the variable. Maximum of 255 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The name of the variable.
         /// </summary>
         [Input("key", required: true)]
@@ -172,6 +184,12 @@ namespace Pulumi.GitLab
 
     public sealed class InstanceVariableState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the variable. Maximum of 255 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         /// <summary>
         /// The name of the variable.
         /// </summary>

@@ -8,6 +8,69 @@ import * as utilities from "./utilities";
  * The `gitlab.UserRunner` resource allows creating a GitLab runner using the new [GitLab Runner Registration Flow](https://docs.gitlab.com/ee/ci/runners/new_creation_workflow.html).
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#create-a-runner)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * // Create a project runner
+ * const projectRunner = new gitlab.UserRunner("project_runner", {
+ *     runnerType: "project_type",
+ *     projectId: 123456,
+ *     description: "A runner created using a user access token instead of a registration token",
+ *     tagLists: [
+ *         "a-tag",
+ *         "other-tag",
+ *     ],
+ *     untagged: true,
+ * });
+ * // Create a group runner
+ * const groupRunner = new gitlab.UserRunner("group_runner", {
+ *     runnerType: "group_type",
+ *     groupId: 123456,
+ * });
+ * // Create a instance runner
+ * const instanceRunner = new gitlab.UserRunner("instance_runner", {runnerType: "instance_type"});
+ * const configToml = pulumi.interpolate`concurrent = 1
+ * check_interval = 0
+ *
+ * [session_server]
+ *   session_timeout = 1800
+ *
+ * [[runners]]
+ *   name = "my_gitlab_runner"
+ *   url = "https://example.gitlab.com"
+ *   token = "${groupRunner.token}"
+ *   executor = "docker"
+ *
+ *   [runners.custom_build_dir]
+ *   [runners.cache]
+ *     [runners.cache.s3]
+ *     [runners.cache.gcs]
+ *     [runners.cache.azure]
+ *   [runners.docker]
+ *     tls_verify = false
+ *     image = "ubuntu"
+ *     privileged = true
+ *     disable_entrypoint_overwrite = false
+ *     oom_kill_disable = false
+ *     disable_cache = false
+ *     volumes = ["/cache", "/certs/client"]
+ *     shm_size = 0
+ * `;
+ * ```
+ *
+ * ## Import
+ *
+ * You can import a gitlab runner using its ID
+ *
+ * Note: Importing a runner will not provide access to the `token` attribute
+ *
+ * ```sh
+ * $ pulumi import gitlab:index/userRunner:UserRunner example 12345
+ * ```
  */
 export class UserRunner extends pulumi.CustomResource {
     /**

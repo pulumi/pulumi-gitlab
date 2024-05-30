@@ -22,7 +22,6 @@ class GroupArgs:
                  avatar_hash: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 emails_disabled: Optional[pulumi.Input[bool]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -51,7 +50,6 @@ class GroupArgs:
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[str] description: The group's description.
-        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
@@ -84,11 +82,6 @@ class GroupArgs:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if emails_disabled is not None:
-            warnings.warn("""use `emails_enabled` instead""", DeprecationWarning)
-            pulumi.log.warn("""emails_disabled is deprecated: use `emails_enabled` instead""")
-        if emails_disabled is not None:
-            pulumi.set(__self__, "emails_disabled", emails_disabled)
         if emails_enabled is not None:
             pulumi.set(__self__, "emails_enabled", emails_enabled)
         if extra_shared_runners_minutes_limit is not None:
@@ -201,21 +194,6 @@ class GroupArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Disable email notifications.
-        """
-        warnings.warn("""use `emails_enabled` instead""", DeprecationWarning)
-        pulumi.log.warn("""emails_disabled is deprecated: use `emails_enabled` instead""")
-
-        return pulumi.get(self, "emails_disabled")
-
-    @emails_disabled.setter
-    def emails_disabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "emails_disabled", value)
 
     @property
     @pulumi.getter(name="emailsEnabled")
@@ -467,7 +445,6 @@ class _GroupState:
                  avatar_url: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 emails_disabled: Optional[pulumi.Input[bool]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  full_name: Optional[pulumi.Input[str]] = None,
@@ -501,7 +478,6 @@ class _GroupState:
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[str] description: The group's description.
-        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[str] full_name: The full name of the group.
@@ -540,11 +516,6 @@ class _GroupState:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if emails_disabled is not None:
-            warnings.warn("""use `emails_enabled` instead""", DeprecationWarning)
-            pulumi.log.warn("""emails_disabled is deprecated: use `emails_enabled` instead""")
-        if emails_disabled is not None:
-            pulumi.set(__self__, "emails_disabled", emails_disabled)
         if emails_enabled is not None:
             pulumi.set(__self__, "emails_enabled", emails_enabled)
         if extra_shared_runners_minutes_limit is not None:
@@ -667,21 +638,6 @@ class _GroupState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Disable email notifications.
-        """
-        warnings.warn("""use `emails_enabled` instead""", DeprecationWarning)
-        pulumi.log.warn("""emails_disabled is deprecated: use `emails_enabled` instead""")
-
-        return pulumi.get(self, "emails_disabled")
-
-    @emails_disabled.setter
-    def emails_disabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "emails_disabled", value)
 
     @property
     @pulumi.getter(name="emailsEnabled")
@@ -994,7 +950,6 @@ class Group(pulumi.CustomResource):
                  avatar_hash: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 emails_disabled: Optional[pulumi.Input[bool]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1073,7 +1028,6 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[str] description: The group's description.
-        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
@@ -1171,7 +1125,6 @@ class Group(pulumi.CustomResource):
                  avatar_hash: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 emails_disabled: Optional[pulumi.Input[bool]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1207,7 +1160,6 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["avatar_hash"] = avatar_hash
             __props__.__dict__["default_branch_protection"] = default_branch_protection
             __props__.__dict__["description"] = description
-            __props__.__dict__["emails_disabled"] = emails_disabled
             __props__.__dict__["emails_enabled"] = emails_enabled
             __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
             __props__.__dict__["ip_restriction_ranges"] = ip_restriction_ranges
@@ -1254,7 +1206,6 @@ class Group(pulumi.CustomResource):
             avatar_url: Optional[pulumi.Input[str]] = None,
             default_branch_protection: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            emails_disabled: Optional[pulumi.Input[bool]] = None,
             emails_enabled: Optional[pulumi.Input[bool]] = None,
             extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
             full_name: Optional[pulumi.Input[str]] = None,
@@ -1293,7 +1244,6 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[str] description: The group's description.
-        :param pulumi.Input[bool] emails_disabled: Disable email notifications.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[str] full_name: The full name of the group.
@@ -1330,7 +1280,6 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["avatar_url"] = avatar_url
         __props__.__dict__["default_branch_protection"] = default_branch_protection
         __props__.__dict__["description"] = description
-        __props__.__dict__["emails_disabled"] = emails_disabled
         __props__.__dict__["emails_enabled"] = emails_enabled
         __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
         __props__.__dict__["full_name"] = full_name
@@ -1405,17 +1354,6 @@ class Group(pulumi.CustomResource):
         The group's description.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> pulumi.Output[bool]:
-        """
-        Disable email notifications.
-        """
-        warnings.warn("""use `emails_enabled` instead""", DeprecationWarning)
-        pulumi.log.warn("""emails_disabled is deprecated: use `emails_enabled` instead""")
-
-        return pulumi.get(self, "emails_disabled")
 
     @property
     @pulumi.getter(name="emailsEnabled")

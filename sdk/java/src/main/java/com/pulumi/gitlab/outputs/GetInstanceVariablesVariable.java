@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceVariablesVariable {
     /**
+     * @return The description of the variable. Maximum of 255 characters.
+     * 
+     */
+    private String description;
+    /**
      * @return The name of the variable.
      * 
      */
@@ -43,6 +48,13 @@ public final class GetInstanceVariablesVariable {
     private String variableType;
 
     private GetInstanceVariablesVariable() {}
+    /**
+     * @return The description of the variable. Maximum of 255 characters.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
     /**
      * @return The name of the variable.
      * 
@@ -95,6 +107,7 @@ public final class GetInstanceVariablesVariable {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String description;
         private String key;
         private Boolean masked;
         private Boolean protected_;
@@ -104,6 +117,7 @@ public final class GetInstanceVariablesVariable {
         public Builder() {}
         public Builder(GetInstanceVariablesVariable defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.key = defaults.key;
     	      this.masked = defaults.masked;
     	      this.protected_ = defaults.protected_;
@@ -112,6 +126,14 @@ public final class GetInstanceVariablesVariable {
     	      this.variableType = defaults.variableType;
         }
 
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstanceVariablesVariable", "description");
+            }
+            this.description = description;
+            return this;
+        }
         @CustomType.Setter
         public Builder key(String key) {
             if (key == null) {
@@ -162,6 +184,7 @@ public final class GetInstanceVariablesVariable {
         }
         public GetInstanceVariablesVariable build() {
             final var _resultValue = new GetInstanceVariablesVariable();
+            _resultValue.description = description;
             _resultValue.key = key;
             _resultValue.masked = masked;
             _resultValue.protected_ = protected_;

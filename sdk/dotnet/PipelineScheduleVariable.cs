@@ -78,6 +78,12 @@ namespace Pulumi.GitLab
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+        /// </summary>
+        [Output("variableType")]
+        public Output<string> VariableType { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a PipelineScheduleVariable resource with the given unique name, arguments, and options.
@@ -148,6 +154,12 @@ namespace Pulumi.GitLab
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
+        /// <summary>
+        /// The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+        /// </summary>
+        [Input("variableType")]
+        public Input<string>? VariableType { get; set; }
+
         public PipelineScheduleVariableArgs()
         {
         }
@@ -179,6 +191,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
+
+        /// <summary>
+        /// The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+        /// </summary>
+        [Input("variableType")]
+        public Input<string>? VariableType { get; set; }
 
         public PipelineScheduleVariableState()
         {

@@ -29,7 +29,12 @@ public final class ProjectPushRules {
      */
     private @Nullable Boolean commitCommitterCheck;
     /**
-     * @return No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     * @return Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     * 
+     */
+    private @Nullable Boolean commitCommitterNameCheck;
+    /**
+     * @return No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
      * 
      */
     private @Nullable String commitMessageNegativeRegex;
@@ -92,7 +97,14 @@ public final class ProjectPushRules {
         return Optional.ofNullable(this.commitCommitterCheck);
     }
     /**
-     * @return No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     * @return Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+     * 
+     */
+    public Optional<Boolean> commitCommitterNameCheck() {
+        return Optional.ofNullable(this.commitCommitterNameCheck);
+    }
+    /**
+     * @return No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
      * 
      */
     public Optional<String> commitMessageNegativeRegex() {
@@ -160,6 +172,7 @@ public final class ProjectPushRules {
         private @Nullable String authorEmailRegex;
         private @Nullable String branchNameRegex;
         private @Nullable Boolean commitCommitterCheck;
+        private @Nullable Boolean commitCommitterNameCheck;
         private @Nullable String commitMessageNegativeRegex;
         private @Nullable String commitMessageRegex;
         private @Nullable Boolean denyDeleteTag;
@@ -174,6 +187,7 @@ public final class ProjectPushRules {
     	      this.authorEmailRegex = defaults.authorEmailRegex;
     	      this.branchNameRegex = defaults.branchNameRegex;
     	      this.commitCommitterCheck = defaults.commitCommitterCheck;
+    	      this.commitCommitterNameCheck = defaults.commitCommitterNameCheck;
     	      this.commitMessageNegativeRegex = defaults.commitMessageNegativeRegex;
     	      this.commitMessageRegex = defaults.commitMessageRegex;
     	      this.denyDeleteTag = defaults.denyDeleteTag;
@@ -200,6 +214,12 @@ public final class ProjectPushRules {
         public Builder commitCommitterCheck(@Nullable Boolean commitCommitterCheck) {
 
             this.commitCommitterCheck = commitCommitterCheck;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder commitCommitterNameCheck(@Nullable Boolean commitCommitterNameCheck) {
+
+            this.commitCommitterNameCheck = commitCommitterNameCheck;
             return this;
         }
         @CustomType.Setter
@@ -255,6 +275,7 @@ public final class ProjectPushRules {
             _resultValue.authorEmailRegex = authorEmailRegex;
             _resultValue.branchNameRegex = branchNameRegex;
             _resultValue.commitCommitterCheck = commitCommitterCheck;
+            _resultValue.commitCommitterNameCheck = commitCommitterNameCheck;
             _resultValue.commitMessageNegativeRegex = commitMessageNegativeRegex;
             _resultValue.commitMessageRegex = commitMessageRegex;
             _resultValue.denyDeleteTag = denyDeleteTag;

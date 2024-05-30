@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gitlab/sdk/v7/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,6 +87,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IntegrationExternalWiki{}
 	case "gitlab:index/integrationGithub:IntegrationGithub":
 		r = &IntegrationGithub{}
+	case "gitlab:index/integrationJenkins:IntegrationJenkins":
+		r = &IntegrationJenkins{}
 	case "gitlab:index/integrationJira:IntegrationJira":
 		r = &IntegrationJira{}
 	case "gitlab:index/integrationMattermost:IntegrationMattermost":
@@ -135,6 +137,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectIssueBoard{}
 	case "gitlab:index/projectJobTokenScope:ProjectJobTokenScope":
 		r = &ProjectJobTokenScope{}
+	case "gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes":
+		r = &ProjectJobTokenScopes{}
 	case "gitlab:index/projectLabel:ProjectLabel":
 		r = &ProjectLabel{}
 	case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
@@ -149,6 +153,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectMirror{}
 	case "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment":
 		r = &ProjectProtectedEnvironment{}
+	case "gitlab:index/projectPushRules:ProjectPushRules":
+		r = &ProjectPushRules{}
 	case "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement":
 		r = &ProjectRunnerEnablement{}
 	case "gitlab:index/projectShareGroup:ProjectShareGroup":
@@ -393,6 +399,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/integrationJenkins",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/integrationJira",
 		&module{version},
 	)
@@ -513,6 +524,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectJobTokenScopes",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectLabel",
 		&module{version},
 	)
@@ -544,6 +560,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectProtectedEnvironment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectPushRules",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

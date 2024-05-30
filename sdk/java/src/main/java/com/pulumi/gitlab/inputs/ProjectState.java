@@ -433,29 +433,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Disable email notifications.
-     * 
-     * @deprecated
-     * use `emails_enabled` instead.
-     * 
-     */
-    @Deprecated /* use `emails_enabled` instead. */
-    @Import(name="emailsDisabled")
-    private @Nullable Output<Boolean> emailsDisabled;
-
-    /**
-     * @return Disable email notifications.
-     * 
-     * @deprecated
-     * use `emails_enabled` instead.
-     * 
-     */
-    @Deprecated /* use `emails_enabled` instead. */
-    public Optional<Output<Boolean>> emailsDisabled() {
-        return Optional.ofNullable(this.emailsDisabled);
-    }
-
-    /**
      * Enable email notifications.
      * 
      */
@@ -1603,7 +1580,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.containerRegistryEnabled = $.containerRegistryEnabled;
         this.defaultBranch = $.defaultBranch;
         this.description = $.description;
-        this.emailsDisabled = $.emailsDisabled;
         this.emailsEnabled = $.emailsEnabled;
         this.emptyRepo = $.emptyRepo;
         this.environmentsAccessLevel = $.environmentsAccessLevel;
@@ -2263,35 +2239,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
-        }
-
-        /**
-         * @param emailsDisabled Disable email notifications.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * use `emails_enabled` instead.
-         * 
-         */
-        @Deprecated /* use `emails_enabled` instead. */
-        public Builder emailsDisabled(@Nullable Output<Boolean> emailsDisabled) {
-            $.emailsDisabled = emailsDisabled;
-            return this;
-        }
-
-        /**
-         * @param emailsDisabled Disable email notifications.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * use `emails_enabled` instead.
-         * 
-         */
-        @Deprecated /* use `emails_enabled` instead. */
-        public Builder emailsDisabled(Boolean emailsDisabled) {
-            return emailsDisabled(Output.of(emailsDisabled));
         }
 
         /**

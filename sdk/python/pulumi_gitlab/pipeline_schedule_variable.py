@@ -17,18 +17,22 @@ class PipelineScheduleVariableArgs:
                  key: pulumi.Input[str],
                  pipeline_schedule_id: pulumi.Input[int],
                  project: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 value: pulumi.Input[str],
+                 variable_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PipelineScheduleVariable resource.
         :param pulumi.Input[str] key: Name of the variable.
         :param pulumi.Input[int] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
+        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "pipeline_schedule_id", pipeline_schedule_id)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "value", value)
+        if variable_type is not None:
+            pulumi.set(__self__, "variable_type", variable_type)
 
     @property
     @pulumi.getter
@@ -78,6 +82,18 @@ class PipelineScheduleVariableArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+    @property
+    @pulumi.getter(name="variableType")
+    def variable_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+        """
+        return pulumi.get(self, "variable_type")
+
+    @variable_type.setter
+    def variable_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "variable_type", value)
+
 
 @pulumi.input_type
 class _PipelineScheduleVariableState:
@@ -85,13 +101,15 @@ class _PipelineScheduleVariableState:
                  key: Optional[pulumi.Input[str]] = None,
                  pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 value: Optional[pulumi.Input[str]] = None,
+                 variable_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PipelineScheduleVariable resources.
         :param pulumi.Input[str] key: Name of the variable.
         :param pulumi.Input[int] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
+        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -101,6 +119,8 @@ class _PipelineScheduleVariableState:
             pulumi.set(__self__, "project", project)
         if value is not None:
             pulumi.set(__self__, "value", value)
+        if variable_type is not None:
+            pulumi.set(__self__, "variable_type", variable_type)
 
     @property
     @pulumi.getter
@@ -150,6 +170,18 @@ class _PipelineScheduleVariableState:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+    @property
+    @pulumi.getter(name="variableType")
+    def variable_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+        """
+        return pulumi.get(self, "variable_type")
+
+    @variable_type.setter
+    def variable_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "variable_type", value)
+
 
 class PipelineScheduleVariable(pulumi.CustomResource):
     @overload
@@ -160,6 +192,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
                  pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
+                 variable_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The `PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.
@@ -198,6 +231,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         :param pulumi.Input[int] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
+        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
         """
         ...
     @overload
@@ -255,6 +289,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
                  pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
+                 variable_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -276,6 +311,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
+            __props__.__dict__["variable_type"] = variable_type
         super(PipelineScheduleVariable, __self__).__init__(
             'gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable',
             resource_name,
@@ -289,7 +325,8 @@ class PipelineScheduleVariable(pulumi.CustomResource):
             key: Optional[pulumi.Input[str]] = None,
             pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            value: Optional[pulumi.Input[str]] = None) -> 'PipelineScheduleVariable':
+            value: Optional[pulumi.Input[str]] = None,
+            variable_type: Optional[pulumi.Input[str]] = None) -> 'PipelineScheduleVariable':
         """
         Get an existing PipelineScheduleVariable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -301,6 +338,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         :param pulumi.Input[int] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
+        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -310,6 +348,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         __props__.__dict__["pipeline_schedule_id"] = pipeline_schedule_id
         __props__.__dict__["project"] = project
         __props__.__dict__["value"] = value
+        __props__.__dict__["variable_type"] = variable_type
         return PipelineScheduleVariable(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -343,4 +382,12 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         Value of the variable.
         """
         return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="variableType")
+    def variable_type(self) -> pulumi.Output[str]:
+        """
+        The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+        """
+        return pulumi.get(self, "variable_type")
 

@@ -21,7 +21,10 @@ class GetInstanceVariableResult:
     """
     A collection of values returned by getInstanceVariable.
     """
-    def __init__(__self__, id=None, key=None, masked=None, protected=None, raw=None, value=None, variable_type=None):
+    def __init__(__self__, description=None, id=None, key=None, masked=None, protected=None, raw=None, value=None, variable_type=None):
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -43,6 +46,14 @@ class GetInstanceVariableResult:
         if variable_type and not isinstance(variable_type, str):
             raise TypeError("Expected argument 'variable_type' to be a str")
         pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the variable. Maximum of 255 characters.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -107,6 +118,7 @@ class AwaitableGetInstanceVariableResult(GetInstanceVariableResult):
         if False:
             yield self
         return GetInstanceVariableResult(
+            description=self.description,
             id=self.id,
             key=self.key,
             masked=self.masked,
@@ -141,6 +153,7 @@ def get_instance_variable(key: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getInstanceVariable:getInstanceVariable', __args__, opts=opts, typ=GetInstanceVariableResult).value
 
     return AwaitableGetInstanceVariableResult(
+        description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),
         masked=pulumi.get(__ret__, 'masked'),
