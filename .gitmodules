@@ -1,4 +1,0 @@
-[submodule "upstream"]
-	path = upstream
-	url = https://gitlab.com/gitlab-org/terraform-provider-gitlab.git
-        ignore = dirty
