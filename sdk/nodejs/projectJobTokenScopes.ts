@@ -12,6 +12,31 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const allowedSingleProject = new gitlab.ProjectJobTokenScopes("allowed_single_project", {
+ *     projectId: 111,
+ *     targetProjectIds: [123],
+ * });
+ * const allowedMultipleProject = new gitlab.ProjectJobTokenScopes("allowed_multiple_project", {
+ *     projectId: 111,
+ *     targetProjectIds: [
+ *         123,
+ *         456,
+ *         789,
+ *     ],
+ * });
+ * // This will remove all job token scopes, even if added outside of TF.
+ * const explicitDeny = new gitlab.ProjectJobTokenScopes("explicit_deny", {
+ *     projectId: 111,
+ *     targetProjectIds: [],
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitLab project job token scopes can be imported using an id made up of just the `project_id` as an integer

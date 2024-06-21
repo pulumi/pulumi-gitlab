@@ -19,6 +19,54 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectJobTokenScopes(ctx, "allowed_single_project", &gitlab.ProjectJobTokenScopesArgs{
+//				ProjectId: pulumi.Int(111),
+//				TargetProjectIds: pulumi.IntArray{
+//					pulumi.Int(123),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectJobTokenScopes(ctx, "allowed_multiple_project", &gitlab.ProjectJobTokenScopesArgs{
+//				ProjectId: pulumi.Int(111),
+//				TargetProjectIds: pulumi.IntArray{
+//					pulumi.Int(123),
+//					pulumi.Int(456),
+//					pulumi.Int(789),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// This will remove all job token scopes, even if added outside of TF.
+//			_, err = gitlab.NewProjectJobTokenScopes(ctx, "explicit_deny", &gitlab.ProjectJobTokenScopesArgs{
+//				ProjectId:        pulumi.Int(111),
+//				TargetProjectIds: pulumi.IntArray{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // GitLab project job token scopes can be imported using an id made up of just the `project_id` as an integer

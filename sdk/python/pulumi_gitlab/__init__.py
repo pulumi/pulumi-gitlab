@@ -86,6 +86,7 @@ from .integration_mattermost import *
 from .integration_microsoft_teams import *
 from .integration_pipelines_email import *
 from .integration_slack import *
+from .integration_telegram import *
 from .label import *
 from .pages_domain import *
 from .personal_access_token import *
@@ -461,6 +462,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/integrationSlack:IntegrationSlack": "IntegrationSlack"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/integrationTelegram",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationTelegram:IntegrationTelegram": "IntegrationTelegram"
   }
  },
  {

@@ -97,6 +97,7 @@
         "integrationMicrosoftTeams.ts",
         "integrationPipelinesEmail.ts",
         "integrationSlack.ts",
+        "integrationTelegram.ts",
         "label.ts",
         "pagesDomain.ts",
         "personalAccessToken.ts",

@@ -275,7 +275,7 @@ namespace Pulumi.GitLab
         public Output<string> InfrastructureAccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Create main branch with first commit containing a README.md file.
+        /// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         /// </summary>
         [Output("initializeWithReadme")]
         public Output<bool?> InitializeWithReadme { get; private set; } = null!;
@@ -919,7 +919,7 @@ namespace Pulumi.GitLab
         public Input<string>? InfrastructureAccessLevel { get; set; }
 
         /// <summary>
-        /// Create main branch with first commit containing a README.md file.
+        /// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         /// </summary>
         [Input("initializeWithReadme")]
         public Input<bool>? InitializeWithReadme { get; set; }
@@ -1526,7 +1526,7 @@ namespace Pulumi.GitLab
         public Input<string>? InfrastructureAccessLevel { get; set; }
 
         /// <summary>
-        /// Create main branch with first commit containing a README.md file.
+        /// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         /// </summary>
         [Input("initializeWithReadme")]
         public Input<bool>? InitializeWithReadme { get; set; }

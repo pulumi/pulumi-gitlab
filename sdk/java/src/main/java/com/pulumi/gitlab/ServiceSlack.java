@@ -123,6 +123,20 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
         return this.confidentialIssuesEvents;
     }
     /**
+     * The name of the channel to receive confidential note events notifications.
+     * 
+     */
+    @Export(name="confidentialNoteChannel", refs={String.class}, tree="[0]")
+    private Output<String> confidentialNoteChannel;
+
+    /**
+     * @return The name of the channel to receive confidential note events notifications.
+     * 
+     */
+    public Output<String> confidentialNoteChannel() {
+        return this.confidentialNoteChannel;
+    }
+    /**
      * Enable notifications for confidential note events.
      * 
      */

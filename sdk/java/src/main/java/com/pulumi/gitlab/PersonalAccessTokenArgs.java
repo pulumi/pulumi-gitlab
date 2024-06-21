@@ -22,15 +22,15 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
      * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      * 
      */
-    @Import(name="expiresAt", required=true)
-    private Output<String> expiresAt;
+    @Import(name="expiresAt")
+    private @Nullable Output<String> expiresAt;
 
     /**
      * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      * 
      */
-    public Output<String> expiresAt() {
-        return this.expiresAt;
+    public Optional<Output<String>> expiresAt() {
+        return Optional.ofNullable(this.expiresAt);
     }
 
     /**
@@ -49,14 +49,14 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.
+     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
      * 
      */
     @Import(name="scopes", required=true)
     private Output<List<String>> scopes;
 
     /**
-     * @return The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.
+     * @return The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
      * 
      */
     public Output<List<String>> scopes() {
@@ -111,7 +111,7 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder expiresAt(Output<String> expiresAt) {
+        public Builder expiresAt(@Nullable Output<String> expiresAt) {
             $.expiresAt = expiresAt;
             return this;
         }
@@ -148,7 +148,7 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.
+         * @param scopes The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.
+         * @param scopes The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.
+         * @param scopes The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
          * 
          * @return builder
          * 
@@ -200,9 +200,6 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
         }
 
         public PersonalAccessTokenArgs build() {
-            if ($.expiresAt == null) {
-                throw new MissingRequiredPropertyException("PersonalAccessTokenArgs", "expiresAt");
-            }
             if ($.scopes == null) {
                 throw new MissingRequiredPropertyException("PersonalAccessTokenArgs", "scopes");
             }

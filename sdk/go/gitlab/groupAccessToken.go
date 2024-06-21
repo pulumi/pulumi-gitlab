@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupAccessToken`resource allows to manage the lifecycle of a group access token.
+// The `GroupAccessToken` resource allows to manage the lifecycle of a group access token.
 //
 // > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
 //
@@ -90,7 +90,7 @@ type GroupAccessToken struct {
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration GroupAccessTokenRotationConfigurationPtrOutput `pulumi:"rotationConfiguration"`
-	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The token of the group access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -154,7 +154,7 @@ type groupAccessTokenState struct {
 	Revoked *bool `pulumi:"revoked"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration *GroupAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
-	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 	Scopes []string `pulumi:"scopes"`
 	// The token of the group access token. **Note**: the token is not available for imported resources.
 	Token *string `pulumi:"token"`
@@ -179,7 +179,7 @@ type GroupAccessTokenState struct {
 	Revoked pulumi.BoolPtrInput
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration GroupAccessTokenRotationConfigurationPtrInput
-	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 	Scopes pulumi.StringArrayInput
 	// The token of the group access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringPtrInput
@@ -202,7 +202,7 @@ type groupAccessTokenArgs struct {
 	Name *string `pulumi:"name"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration *GroupAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
-	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 	Scopes []string `pulumi:"scopes"`
 }
 
@@ -218,7 +218,7 @@ type GroupAccessTokenArgs struct {
 	Name pulumi.StringPtrInput
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration GroupAccessTokenRotationConfigurationPtrInput
-	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 	Scopes pulumi.StringArrayInput
 }
 
@@ -351,7 +351,7 @@ func (o GroupAccessTokenOutput) RotationConfiguration() GroupAccessTokenRotation
 	}).(GroupAccessTokenRotationConfigurationPtrOutput)
 }
 
-// The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
 func (o GroupAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

@@ -221,7 +221,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly infrastructureAccessLevel!: pulumi.Output<string>;
     /**
-     * Create main branch with first commit containing a README.md file.
+     * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
      */
     public readonly initializeWithReadme!: pulumi.Output<boolean | undefined>;
     /**
@@ -858,7 +858,7 @@ export interface ProjectState {
      */
     infrastructureAccessLevel?: pulumi.Input<string>;
     /**
-     * Create main branch with first commit containing a README.md file.
+     * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
      */
     initializeWithReadme?: pulumi.Input<boolean>;
     /**
@@ -1263,7 +1263,7 @@ export interface ProjectArgs {
      */
     infrastructureAccessLevel?: pulumi.Input<string>;
     /**
-     * Create main branch with first commit containing a README.md file.
+     * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
      */
     initializeWithReadme?: pulumi.Input<boolean>;
     /**

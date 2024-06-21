@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,21 @@ public final class GroupSamlLinkState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    @Import(name="memberRoleId")
+    private @Nullable Output<Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    public Optional<Output<Integer>> memberRoleId() {
+        return Optional.ofNullable(this.memberRoleId);
+    }
+
+    /**
      * The name of the SAML group.
      * 
      */
@@ -65,6 +81,7 @@ public final class GroupSamlLinkState extends com.pulumi.resources.ResourceArgs 
     private GroupSamlLinkState(GroupSamlLinkState $) {
         this.accessLevel = $.accessLevel;
         this.group = $.group;
+        this.memberRoleId = $.memberRoleId;
         this.samlGroupName = $.samlGroupName;
     }
 
@@ -126,6 +143,27 @@ public final class GroupSamlLinkState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder group(String group) {
             return group(Output.of(group));
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(@Nullable Output<Integer> memberRoleId) {
+            $.memberRoleId = memberRoleId;
+            return this;
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(Integer memberRoleId) {
+            return memberRoleId(Output.of(memberRoleId));
         }
 
         /**

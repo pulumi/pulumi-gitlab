@@ -118,7 +118,7 @@ type Project struct {
 	ImportUrlUsername pulumi.StringPtrOutput `pulumi:"importUrlUsername"`
 	// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
 	InfrastructureAccessLevel pulumi.StringOutput `pulumi:"infrastructureAccessLevel"`
-	// Create main branch with first commit containing a README.md file.
+	// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 	InitializeWithReadme pulumi.BoolPtrOutput `pulumi:"initializeWithReadme"`
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel pulumi.StringOutput `pulumi:"issuesAccessLevel"`
@@ -371,7 +371,7 @@ type projectState struct {
 	ImportUrlUsername *string `pulumi:"importUrlUsername"`
 	// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
 	InfrastructureAccessLevel *string `pulumi:"infrastructureAccessLevel"`
-	// Create main branch with first commit containing a README.md file.
+	// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 	InitializeWithReadme *bool `pulumi:"initializeWithReadme"`
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel *string `pulumi:"issuesAccessLevel"`
@@ -587,7 +587,7 @@ type ProjectState struct {
 	ImportUrlUsername pulumi.StringPtrInput
 	// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
 	InfrastructureAccessLevel pulumi.StringPtrInput
-	// Create main branch with first commit containing a README.md file.
+	// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 	InitializeWithReadme pulumi.BoolPtrInput
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel pulumi.StringPtrInput
@@ -801,7 +801,7 @@ type projectArgs struct {
 	ImportUrlUsername *string `pulumi:"importUrlUsername"`
 	// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
 	InfrastructureAccessLevel *string `pulumi:"infrastructureAccessLevel"`
-	// Create main branch with first commit containing a README.md file.
+	// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 	InitializeWithReadme *bool `pulumi:"initializeWithReadme"`
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel *string `pulumi:"issuesAccessLevel"`
@@ -1004,7 +1004,7 @@ type ProjectArgs struct {
 	ImportUrlUsername pulumi.StringPtrInput
 	// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
 	InfrastructureAccessLevel pulumi.StringPtrInput
-	// Create main branch with first commit containing a README.md file.
+	// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 	InitializeWithReadme pulumi.BoolPtrInput
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel pulumi.StringPtrInput
@@ -1418,7 +1418,7 @@ func (o ProjectOutput) InfrastructureAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.InfrastructureAccessLevel }).(pulumi.StringOutput)
 }
 
-// Create main branch with first commit containing a README.md file.
+// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 func (o ProjectOutput) InitializeWithReadme() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.InitializeWithReadme }).(pulumi.BoolPtrOutput)
 }

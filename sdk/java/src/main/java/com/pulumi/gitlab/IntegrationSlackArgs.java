@@ -63,6 +63,21 @@ public final class IntegrationSlackArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The name of the channel to receive confidential note events notifications.
+     * 
+     */
+    @Import(name="confidentialNoteChannel")
+    private @Nullable Output<String> confidentialNoteChannel;
+
+    /**
+     * @return The name of the channel to receive confidential note events notifications.
+     * 
+     */
+    public Optional<Output<String>> confidentialNoteChannel() {
+        return Optional.ofNullable(this.confidentialNoteChannel);
+    }
+
+    /**
      * Enable notifications for confidential note events.
      * 
      */
@@ -376,6 +391,7 @@ public final class IntegrationSlackArgs extends com.pulumi.resources.ResourceArg
         this.branchesToBeNotified = $.branchesToBeNotified;
         this.confidentialIssueChannel = $.confidentialIssueChannel;
         this.confidentialIssuesEvents = $.confidentialIssuesEvents;
+        this.confidentialNoteChannel = $.confidentialNoteChannel;
         this.confidentialNoteEvents = $.confidentialNoteEvents;
         this.issueChannel = $.issueChannel;
         this.issuesEvents = $.issuesEvents;
@@ -477,6 +493,27 @@ public final class IntegrationSlackArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder confidentialIssuesEvents(Boolean confidentialIssuesEvents) {
             return confidentialIssuesEvents(Output.of(confidentialIssuesEvents));
+        }
+
+        /**
+         * @param confidentialNoteChannel The name of the channel to receive confidential note events notifications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialNoteChannel(@Nullable Output<String> confidentialNoteChannel) {
+            $.confidentialNoteChannel = confidentialNoteChannel;
+            return this;
+        }
+
+        /**
+         * @param confidentialNoteChannel The name of the channel to receive confidential note events notifications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialNoteChannel(String confidentialNoteChannel) {
+            return confidentialNoteChannel(Output.of(confidentialNoteChannel));
         }
 
         /**

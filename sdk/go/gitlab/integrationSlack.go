@@ -70,6 +70,8 @@ type IntegrationSlack struct {
 	ConfidentialIssueChannel pulumi.StringPtrOutput `pulumi:"confidentialIssueChannel"`
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolOutput `pulumi:"confidentialIssuesEvents"`
+	// The name of the channel to receive confidential note events notifications.
+	ConfidentialNoteChannel pulumi.StringOutput `pulumi:"confidentialNoteChannel"`
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolOutput `pulumi:"confidentialNoteEvents"`
 	// The name of the channel to receive issue events notifications.
@@ -158,6 +160,8 @@ type integrationSlackState struct {
 	ConfidentialIssueChannel *string `pulumi:"confidentialIssueChannel"`
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
+	// The name of the channel to receive confidential note events notifications.
+	ConfidentialNoteChannel *string `pulumi:"confidentialNoteChannel"`
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
 	// The name of the channel to receive issue events notifications.
@@ -211,6 +215,8 @@ type IntegrationSlackState struct {
 	ConfidentialIssueChannel pulumi.StringPtrInput
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
+	// The name of the channel to receive confidential note events notifications.
+	ConfidentialNoteChannel pulumi.StringPtrInput
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
 	// The name of the channel to receive issue events notifications.
@@ -268,6 +274,8 @@ type integrationSlackArgs struct {
 	ConfidentialIssueChannel *string `pulumi:"confidentialIssueChannel"`
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
+	// The name of the channel to receive confidential note events notifications.
+	ConfidentialNoteChannel *string `pulumi:"confidentialNoteChannel"`
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
 	// The name of the channel to receive issue events notifications.
@@ -320,6 +328,8 @@ type IntegrationSlackArgs struct {
 	ConfidentialIssueChannel pulumi.StringPtrInput
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
+	// The name of the channel to receive confidential note events notifications.
+	ConfidentialNoteChannel pulumi.StringPtrInput
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
 	// The name of the channel to receive issue events notifications.
@@ -464,6 +474,11 @@ func (o IntegrationSlackOutput) ConfidentialIssueChannel() pulumi.StringPtrOutpu
 // Enable notifications for confidential issues events.
 func (o IntegrationSlackOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolOutput)
+}
+
+// The name of the channel to receive confidential note events notifications.
+func (o IntegrationSlackOutput) ConfidentialNoteChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationSlack) pulumi.StringOutput { return v.ConfidentialNoteChannel }).(pulumi.StringOutput)
 }
 
 // Enable notifications for confidential note events.
