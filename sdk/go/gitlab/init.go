@@ -99,6 +99,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IntegrationPipelinesEmail{}
 	case "gitlab:index/integrationSlack:IntegrationSlack":
 		r = &IntegrationSlack{}
+	case "gitlab:index/integrationTelegram:IntegrationTelegram":
+		r = &IntegrationTelegram{}
 	case "gitlab:index/label:Label":
 		r = &Label{}
 	case "gitlab:index/pagesDomain:PagesDomain":
@@ -425,6 +427,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/integrationSlack",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/integrationTelegram",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

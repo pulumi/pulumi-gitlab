@@ -75,6 +75,12 @@ namespace Pulumi.GitLab
         public Output<bool> ConfidentialIssuesEvents { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the channel to receive confidential note events notifications.
+        /// </summary>
+        [Output("confidentialNoteChannel")]
+        public Output<string> ConfidentialNoteChannel { get; private set; } = null!;
+
+        /// <summary>
         /// Enable notifications for confidential note events.
         /// </summary>
         [Output("confidentialNoteEvents")]
@@ -265,6 +271,12 @@ namespace Pulumi.GitLab
         public Input<bool>? ConfidentialIssuesEvents { get; set; }
 
         /// <summary>
+        /// The name of the channel to receive confidential note events notifications.
+        /// </summary>
+        [Input("confidentialNoteChannel")]
+        public Input<string>? ConfidentialNoteChannel { get; set; }
+
+        /// <summary>
         /// Enable notifications for confidential note events.
         /// </summary>
         [Input("confidentialNoteEvents")]
@@ -409,6 +421,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("confidentialIssuesEvents")]
         public Input<bool>? ConfidentialIssuesEvents { get; set; }
+
+        /// <summary>
+        /// The name of the channel to receive confidential note events notifications.
+        /// </summary>
+        [Input("confidentialNoteChannel")]
+        public Input<string>? ConfidentialNoteChannel { get; set; }
 
         /// <summary>
         /// Enable notifications for confidential note events.

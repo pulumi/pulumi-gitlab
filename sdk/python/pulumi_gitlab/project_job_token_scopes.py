@@ -105,6 +105,28 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        allowed_single_project = gitlab.ProjectJobTokenScopes("allowed_single_project",
+            project_id=111,
+            target_project_ids=[123])
+        allowed_multiple_project = gitlab.ProjectJobTokenScopes("allowed_multiple_project",
+            project_id=111,
+            target_project_ids=[
+                123,
+                456,
+                789,
+            ])
+        # This will remove all job token scopes, even if added outside of TF.
+        explicit_deny = gitlab.ProjectJobTokenScopes("explicit_deny",
+            project_id=111,
+            target_project_ids=[])
+        ```
+
         ## Import
 
         GitLab project job token scopes can be imported using an id made up of just the `project_id` as an integer
@@ -131,6 +153,28 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
         > Conflicts with the use of `ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        allowed_single_project = gitlab.ProjectJobTokenScopes("allowed_single_project",
+            project_id=111,
+            target_project_ids=[123])
+        allowed_multiple_project = gitlab.ProjectJobTokenScopes("allowed_multiple_project",
+            project_id=111,
+            target_project_ids=[
+                123,
+                456,
+                789,
+            ])
+        # This will remove all job token scopes, even if added outside of TF.
+        explicit_deny = gitlab.ProjectJobTokenScopes("explicit_deny",
+            project_id=111,
+            target_project_ids=[])
+        ```
 
         ## Import
 

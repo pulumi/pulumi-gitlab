@@ -9086,7 +9086,7 @@
             }
         },
         "gitlab:index/groupAccessToken:GroupAccessToken": {
-            "description": "The `gitlab.GroupAccessToken`resource allows to manage the lifecycle of a group access token.\n\n\u003e Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)\n\n\u003e Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.\n\n\u003e Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/group_access_tokens.html#automatic-reuse-detection) it's possible that a new Group Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.\n\n**Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.GroupAccessToken(\"example\", {\n    group: \"25\",\n    name: \"Example project access token\",\n    expiresAt: \"2020-03-14\",\n    accessLevel: \"developer\",\n    scopes: [\"api\"],\n});\nconst exampleGroupVariable = new gitlab.GroupVariable(\"example\", {\n    group: \"25\",\n    key: \"gat\",\n    value: example.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.GroupAccessToken(\"example\",\n    group=\"25\",\n    name=\"Example project access token\",\n    expires_at=\"2020-03-14\",\n    access_level=\"developer\",\n    scopes=[\"api\"])\nexample_group_variable = gitlab.GroupVariable(\"example\",\n    group=\"25\",\n    key=\"gat\",\n    value=example.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.GroupAccessToken(\"example\", new()\n    {\n        Group = \"25\",\n        Name = \"Example project access token\",\n        ExpiresAt = \"2020-03-14\",\n        AccessLevel = \"developer\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleGroupVariable = new GitLab.GroupVariable(\"example\", new()\n    {\n        Group = \"25\",\n        Key = \"gat\",\n        Value = example.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewGroupAccessToken(ctx, \"example\", \u0026gitlab.GroupAccessTokenArgs{\n\t\t\tGroup:       pulumi.String(\"25\"),\n\t\t\tName:        pulumi.String(\"Example project access token\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-03-14\"),\n\t\t\tAccessLevel: pulumi.String(\"developer\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupVariable(ctx, \"example\", \u0026gitlab.GroupVariableArgs{\n\t\t\tGroup: pulumi.String(\"25\"),\n\t\t\tKey:   pulumi.String(\"gat\"),\n\t\t\tValue: example.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupAccessToken;\nimport com.pulumi.gitlab.GroupAccessTokenArgs;\nimport com.pulumi.gitlab.GroupVariable;\nimport com.pulumi.gitlab.GroupVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new GroupAccessToken(\"example\", GroupAccessTokenArgs.builder()\n            .group(\"25\")\n            .name(\"Example project access token\")\n            .expiresAt(\"2020-03-14\")\n            .accessLevel(\"developer\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleGroupVariable = new GroupVariable(\"exampleGroupVariable\", GroupVariableArgs.builder()\n            .group(\"25\")\n            .key(\"gat\")\n            .value(example.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:GroupAccessToken\n    properties:\n      group: '25'\n      name: Example project access token\n      expiresAt: 2020-03-14\n      accessLevel: developer\n      scopes:\n        - api\n  exampleGroupVariable:\n    type: gitlab:GroupVariable\n    name: example\n    properties:\n      group: '25'\n      key: gat\n      value: ${example.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab Group Access Token can be imported using a key composed of `\u003cgroup-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example \"12345:1\"\n```\n\nATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
+            "description": "The `gitlab.GroupAccessToken` resource allows to manage the lifecycle of a group access token.\n\n\u003e Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)\n\n\u003e Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.\n\n\u003e Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/group_access_tokens.html#automatic-reuse-detection) it's possible that a new Group Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.\n\n**Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.GroupAccessToken(\"example\", {\n    group: \"25\",\n    name: \"Example project access token\",\n    expiresAt: \"2020-03-14\",\n    accessLevel: \"developer\",\n    scopes: [\"api\"],\n});\nconst exampleGroupVariable = new gitlab.GroupVariable(\"example\", {\n    group: \"25\",\n    key: \"gat\",\n    value: example.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.GroupAccessToken(\"example\",\n    group=\"25\",\n    name=\"Example project access token\",\n    expires_at=\"2020-03-14\",\n    access_level=\"developer\",\n    scopes=[\"api\"])\nexample_group_variable = gitlab.GroupVariable(\"example\",\n    group=\"25\",\n    key=\"gat\",\n    value=example.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.GroupAccessToken(\"example\", new()\n    {\n        Group = \"25\",\n        Name = \"Example project access token\",\n        ExpiresAt = \"2020-03-14\",\n        AccessLevel = \"developer\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleGroupVariable = new GitLab.GroupVariable(\"example\", new()\n    {\n        Group = \"25\",\n        Key = \"gat\",\n        Value = example.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewGroupAccessToken(ctx, \"example\", \u0026gitlab.GroupAccessTokenArgs{\n\t\t\tGroup:       pulumi.String(\"25\"),\n\t\t\tName:        pulumi.String(\"Example project access token\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-03-14\"),\n\t\t\tAccessLevel: pulumi.String(\"developer\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupVariable(ctx, \"example\", \u0026gitlab.GroupVariableArgs{\n\t\t\tGroup: pulumi.String(\"25\"),\n\t\t\tKey:   pulumi.String(\"gat\"),\n\t\t\tValue: example.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupAccessToken;\nimport com.pulumi.gitlab.GroupAccessTokenArgs;\nimport com.pulumi.gitlab.GroupVariable;\nimport com.pulumi.gitlab.GroupVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new GroupAccessToken(\"example\", GroupAccessTokenArgs.builder()\n            .group(\"25\")\n            .name(\"Example project access token\")\n            .expiresAt(\"2020-03-14\")\n            .accessLevel(\"developer\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleGroupVariable = new GroupVariable(\"exampleGroupVariable\", GroupVariableArgs.builder()\n            .group(\"25\")\n            .key(\"gat\")\n            .value(example.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:GroupAccessToken\n    properties:\n      group: '25'\n      name: Example project access token\n      expiresAt: 2020-03-14\n      accessLevel: developer\n      scopes:\n        - api\n  exampleGroupVariable:\n    type: gitlab:GroupVariable\n    name: example\n    properties:\n      group: '25'\n      key: gat\n      value: ${example.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab Group Access Token can be imported using a key composed of `\u003cgroup-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example \"12345:1\"\n```\n\nATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -9125,7 +9125,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
+                    "description": "The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                 },
                 "token": {
                     "type": "string",
@@ -9175,7 +9175,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
+                    "description": "The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                 }
             },
             "requiredInputs": [
@@ -9222,7 +9222,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
+                        "description": "The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                     },
                     "token": {
                         "type": "string",
@@ -10476,7 +10476,7 @@
             }
         },
         "gitlab:index/groupSamlLink:GroupSamlLink": {
-            "description": "The `gitlab.GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupSamlLink(\"test\", {\n    group: \"12345\",\n    accessLevel: \"developer\",\n    samlGroupName: \"samlgroupname1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupSamlLink(\"test\",\n    group=\"12345\",\n    access_level=\"developer\",\n    saml_group_name=\"samlgroupname1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new GitLab.GroupSamlLink(\"test\", new()\n    {\n        Group = \"12345\",\n        AccessLevel = \"developer\",\n        SamlGroupName = \"samlgroupname1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupSamlLink(ctx, \"test\", \u0026gitlab.GroupSamlLinkArgs{\n\t\t\tGroup:         pulumi.String(\"12345\"),\n\t\t\tAccessLevel:   pulumi.String(\"developer\"),\n\t\t\tSamlGroupName: pulumi.String(\"samlgroupname1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupSamlLink;\nimport com.pulumi.gitlab.GroupSamlLinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new GroupSamlLink(\"test\", GroupSamlLinkArgs.builder()\n            .group(\"12345\")\n            .accessLevel(\"developer\")\n            .samlGroupName(\"samlgroupname1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: gitlab:GroupSamlLink\n    properties:\n      group: '12345'\n      accessLevel: developer\n      samlGroupName: samlgroupname1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test \"12345:samlgroupname1\"\n```\n\n",
+            "description": "The `gitlab.GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// Basic example\nconst test = new gitlab.GroupSamlLink(\"test\", {\n    group: \"12345\",\n    accessLevel: \"developer\",\n    samlGroupName: \"samlgroupname1\",\n});\n// Example using a Custom Role (Ultimate only)\nconst testCustomRole = new gitlab.GroupSamlLink(\"test_custom_role\", {\n    group: \"12345\",\n    accessLevel: \"developer\",\n    samlGroupName: \"samlgroupname1\",\n    memberRoleId: 123,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# Basic example\ntest = gitlab.GroupSamlLink(\"test\",\n    group=\"12345\",\n    access_level=\"developer\",\n    saml_group_name=\"samlgroupname1\")\n# Example using a Custom Role (Ultimate only)\ntest_custom_role = gitlab.GroupSamlLink(\"test_custom_role\",\n    group=\"12345\",\n    access_level=\"developer\",\n    saml_group_name=\"samlgroupname1\",\n    member_role_id=123)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Basic example\n    var test = new GitLab.GroupSamlLink(\"test\", new()\n    {\n        Group = \"12345\",\n        AccessLevel = \"developer\",\n        SamlGroupName = \"samlgroupname1\",\n    });\n\n    // Example using a Custom Role (Ultimate only)\n    var testCustomRole = new GitLab.GroupSamlLink(\"test_custom_role\", new()\n    {\n        Group = \"12345\",\n        AccessLevel = \"developer\",\n        SamlGroupName = \"samlgroupname1\",\n        MemberRoleId = 123,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Basic example\n\t\t_, err := gitlab.NewGroupSamlLink(ctx, \"test\", \u0026gitlab.GroupSamlLinkArgs{\n\t\t\tGroup:         pulumi.String(\"12345\"),\n\t\t\tAccessLevel:   pulumi.String(\"developer\"),\n\t\t\tSamlGroupName: pulumi.String(\"samlgroupname1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example using a Custom Role (Ultimate only)\n\t\t_, err = gitlab.NewGroupSamlLink(ctx, \"test_custom_role\", \u0026gitlab.GroupSamlLinkArgs{\n\t\t\tGroup:         pulumi.String(\"12345\"),\n\t\t\tAccessLevel:   pulumi.String(\"developer\"),\n\t\t\tSamlGroupName: pulumi.String(\"samlgroupname1\"),\n\t\t\tMemberRoleId:  pulumi.Int(123),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupSamlLink;\nimport com.pulumi.gitlab.GroupSamlLinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Basic example\n        var test = new GroupSamlLink(\"test\", GroupSamlLinkArgs.builder()\n            .group(\"12345\")\n            .accessLevel(\"developer\")\n            .samlGroupName(\"samlgroupname1\")\n            .build());\n\n        // Example using a Custom Role (Ultimate only)\n        var testCustomRole = new GroupSamlLink(\"testCustomRole\", GroupSamlLinkArgs.builder()\n            .group(\"12345\")\n            .accessLevel(\"developer\")\n            .samlGroupName(\"samlgroupname1\")\n            .memberRoleId(123)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Basic example\n  test:\n    type: gitlab:GroupSamlLink\n    properties:\n      group: '12345'\n      accessLevel: developer\n      samlGroupName: samlgroupname1\n  # Example using a Custom Role (Ultimate only)\n  testCustomRole:\n    type: gitlab:GroupSamlLink\n    name: test_custom_role\n    properties:\n      group: '12345'\n      accessLevel: developer\n      samlGroupName: samlgroupname1\n      memberRoleId: 123\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test \"12345:samlgroupname1\"\n```\n\n",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -10485,6 +10485,10 @@
                 "group": {
                     "type": "string",
                     "description": "The ID or path of the group to add the SAML Group Link to.\n"
+                },
+                "memberRoleId": {
+                    "type": "integer",
+                    "description": "The ID of a custom member role. Only available for Ultimate instances.\n"
                 },
                 "samlGroupName": {
                     "type": "string",
@@ -10505,6 +10509,11 @@
                 "group": {
                     "type": "string",
                     "description": "The ID or path of the group to add the SAML Group Link to.\n",
+                    "willReplaceOnChanges": true
+                },
+                "memberRoleId": {
+                    "type": "integer",
+                    "description": "The ID of a custom member role. Only available for Ultimate instances.\n",
                     "willReplaceOnChanges": true
                 },
                 "samlGroupName": {
@@ -10529,6 +10538,11 @@
                     "group": {
                         "type": "string",
                         "description": "The ID or path of the group to add the SAML Group Link to.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "memberRoleId": {
+                        "type": "integer",
+                        "description": "The ID of a custom member role. Only available for Ultimate instances.\n",
                         "willReplaceOnChanges": true
                     },
                     "samlGroupName": {
@@ -12536,6 +12550,10 @@
                     "type": "boolean",
                     "description": "Enable notifications for confidential issues events.\n"
                 },
+                "confidentialNoteChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive confidential note events notifications.\n"
+                },
                 "confidentialNoteEvents": {
                     "type": "boolean",
                     "description": "Enable notifications for confidential note events.\n"
@@ -12625,6 +12643,7 @@
             "required": [
                 "branchesToBeNotified",
                 "confidentialIssuesEvents",
+                "confidentialNoteChannel",
                 "confidentialNoteEvents",
                 "issuesEvents",
                 "jobEvents",
@@ -12651,6 +12670,10 @@
                 "confidentialIssuesEvents": {
                     "type": "boolean",
                     "description": "Enable notifications for confidential issues events.\n"
+                },
+                "confidentialNoteChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive confidential note events notifications.\n"
                 },
                 "confidentialNoteEvents": {
                     "type": "boolean",
@@ -12754,6 +12777,10 @@
                         "type": "boolean",
                         "description": "Enable notifications for confidential issues events.\n"
                     },
+                    "confidentialNoteChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive confidential note events notifications.\n"
+                    },
                     "confidentialNoteEvents": {
                         "type": "boolean",
                         "description": "Enable notifications for confidential note events.\n"
@@ -12835,6 +12862,220 @@
                     "wikiPageChannel": {
                         "type": "string",
                         "description": "The name of the channel to receive wiki page events notifications.\n"
+                    },
+                    "wikiPageEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for wiki page events.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/integrationTelegram:IntegrationTelegram": {
+            "description": "The `gitlab.IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#telegram)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    name: \"awesome_project\",\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst _default = new gitlab.IntegrationTelegram(\"default\", {\n    token: \"123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11\",\n    room: \"-1000000000000000\",\n    notifyOnlyBrokenPipelines: false,\n    branchesToBeNotified: \"all\",\n    pushEvents: false,\n    issuesEvents: false,\n    confidentialIssuesEvents: false,\n    mergeRequestsEvents: false,\n    tagPushEvents: false,\n    noteEvents: false,\n    confidentialNoteEvents: false,\n    pipelineEvents: false,\n    wikiPageEvents: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesome_project\",\n    name=\"awesome_project\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\ndefault = gitlab.IntegrationTelegram(\"default\",\n    token=\"123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11\",\n    room=\"-1000000000000000\",\n    notify_only_broken_pipelines=False,\n    branches_to_be_notified=\"all\",\n    push_events=False,\n    issues_events=False,\n    confidential_issues_events=False,\n    merge_requests_events=False,\n    tag_push_events=False,\n    note_events=False,\n    confidential_note_events=False,\n    pipeline_events=False,\n    wiki_page_events=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesome_project\", new()\n    {\n        Name = \"awesome_project\",\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var @default = new GitLab.IntegrationTelegram(\"default\", new()\n    {\n        Token = \"123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11\",\n        Room = \"-1000000000000000\",\n        NotifyOnlyBrokenPipelines = false,\n        BranchesToBeNotified = \"all\",\n        PushEvents = false,\n        IssuesEvents = false,\n        ConfidentialIssuesEvents = false,\n        MergeRequestsEvents = false,\n        TagPushEvents = false,\n        NoteEvents = false,\n        ConfidentialNoteEvents = false,\n        PipelineEvents = false,\n        WikiPageEvents = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProject(ctx, \"awesome_project\", \u0026gitlab.ProjectArgs{\n\t\t\tName:            pulumi.String(\"awesome_project\"),\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewIntegrationTelegram(ctx, \"default\", \u0026gitlab.IntegrationTelegramArgs{\n\t\t\tToken:                     pulumi.String(\"123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11\"),\n\t\t\tRoom:                      pulumi.String(\"-1000000000000000\"),\n\t\t\tNotifyOnlyBrokenPipelines: pulumi.Bool(false),\n\t\t\tBranchesToBeNotified:      pulumi.String(\"all\"),\n\t\t\tPushEvents:                pulumi.Bool(false),\n\t\t\tIssuesEvents:              pulumi.Bool(false),\n\t\t\tConfidentialIssuesEvents:  pulumi.Bool(false),\n\t\t\tMergeRequestsEvents:       pulumi.Bool(false),\n\t\t\tTagPushEvents:             pulumi.Bool(false),\n\t\t\tNoteEvents:                pulumi.Bool(false),\n\t\t\tConfidentialNoteEvents:    pulumi.Bool(false),\n\t\t\tPipelineEvents:            pulumi.Bool(false),\n\t\t\tWikiPageEvents:            pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.IntegrationTelegram;\nimport com.pulumi.gitlab.IntegrationTelegramArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()\n            .name(\"awesome_project\")\n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var default_ = new IntegrationTelegram(\"default\", IntegrationTelegramArgs.builder()\n            .token(\"123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11\")\n            .room(\"-1000000000000000\")\n            .notifyOnlyBrokenPipelines(false)\n            .branchesToBeNotified(\"all\")\n            .pushEvents(false)\n            .issuesEvents(false)\n            .confidentialIssuesEvents(false)\n            .mergeRequestsEvents(false)\n            .tagPushEvents(false)\n            .noteEvents(false)\n            .confidentialNoteEvents(false)\n            .pipelineEvents(false)\n            .wikiPageEvents(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    name: awesome_project\n    properties:\n      name: awesome_project\n      description: My awesome project.\n      visibilityLevel: public\n  default:\n    type: gitlab:IntegrationTelegram\n    properties:\n      token: 123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11\n      room: '-1000000000000000'\n      notifyOnlyBrokenPipelines: false\n      branchesToBeNotified: all\n      pushEvents: false\n      issuesEvents: false\n      confidentialIssuesEvents: false\n      mergeRequestsEvents: false\n      tagPushEvents: false\n      noteEvents: false\n      confidentialNoteEvents: false\n      pipelineEvents: false\n      wikiPageEvents: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nYou can import a gitlab_integration_telegram state using the project ID, e.g.\n\n```sh\n$ pulumi import gitlab:index/integrationTelegram:IntegrationTelegram default 1\n```\n\n",
+            "properties": {
+                "branchesToBeNotified": {
+                    "type": "string",
+                    "description": "Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.\n"
+                },
+                "confidentialIssuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential issues events.\n"
+                },
+                "confidentialNoteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential note events.\n"
+                },
+                "issuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for issues events.\n"
+                },
+                "mergeRequestsEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merge requests events.\n"
+                },
+                "noteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for note events.\n"
+                },
+                "notifyOnlyBrokenPipelines": {
+                    "type": "boolean",
+                    "description": "Send notifications for broken pipelines.\n"
+                },
+                "pipelineEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for pipeline events.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The ID or full path of the project to integrate with Telegram.\n"
+                },
+                "pushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for push events.\n"
+                },
+                "room": {
+                    "type": "string",
+                    "description": "Unique identifier for the target chat or the username of the target channel (in the format `@channelusername`)\n"
+                },
+                "tagPushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for tag push events.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The Telegram bot token.\n",
+                    "secret": true
+                },
+                "wikiPageEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for wiki page events.\n"
+                }
+            },
+            "required": [
+                "branchesToBeNotified",
+                "confidentialIssuesEvents",
+                "confidentialNoteEvents",
+                "issuesEvents",
+                "mergeRequestsEvents",
+                "noteEvents",
+                "notifyOnlyBrokenPipelines",
+                "pipelineEvents",
+                "project",
+                "pushEvents",
+                "room",
+                "tagPushEvents",
+                "token",
+                "wikiPageEvents"
+            ],
+            "inputProperties": {
+                "branchesToBeNotified": {
+                    "type": "string",
+                    "description": "Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.\n"
+                },
+                "confidentialIssuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential issues events.\n"
+                },
+                "confidentialNoteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential note events.\n"
+                },
+                "issuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for issues events.\n"
+                },
+                "mergeRequestsEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merge requests events.\n"
+                },
+                "noteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for note events.\n"
+                },
+                "notifyOnlyBrokenPipelines": {
+                    "type": "boolean",
+                    "description": "Send notifications for broken pipelines.\n"
+                },
+                "pipelineEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for pipeline events.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The ID or full path of the project to integrate with Telegram.\n"
+                },
+                "pushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for push events.\n"
+                },
+                "room": {
+                    "type": "string",
+                    "description": "Unique identifier for the target chat or the username of the target channel (in the format `@channelusername`)\n"
+                },
+                "tagPushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for tag push events.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The Telegram bot token.\n",
+                    "secret": true
+                },
+                "wikiPageEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for wiki page events.\n"
+                }
+            },
+            "requiredInputs": [
+                "confidentialIssuesEvents",
+                "confidentialNoteEvents",
+                "issuesEvents",
+                "mergeRequestsEvents",
+                "noteEvents",
+                "pipelineEvents",
+                "project",
+                "pushEvents",
+                "room",
+                "tagPushEvents",
+                "token",
+                "wikiPageEvents"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationTelegram resources.\n",
+                "properties": {
+                    "branchesToBeNotified": {
+                        "type": "string",
+                        "description": "Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.\n"
+                    },
+                    "confidentialIssuesEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for confidential issues events.\n"
+                    },
+                    "confidentialNoteEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for confidential note events.\n"
+                    },
+                    "issuesEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for issues events.\n"
+                    },
+                    "mergeRequestsEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for merge requests events.\n"
+                    },
+                    "noteEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for note events.\n"
+                    },
+                    "notifyOnlyBrokenPipelines": {
+                        "type": "boolean",
+                        "description": "Send notifications for broken pipelines.\n"
+                    },
+                    "pipelineEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for pipeline events.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The ID or full path of the project to integrate with Telegram.\n"
+                    },
+                    "pushEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for push events.\n"
+                    },
+                    "room": {
+                        "type": "string",
+                        "description": "Unique identifier for the target chat or the username of the target channel (in the format `@channelusername`)\n"
+                    },
+                    "tagPushEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for tag push events.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The Telegram bot token.\n",
+                        "secret": true
                     },
                     "wikiPageEvents": {
                         "type": "boolean",
@@ -13078,7 +13319,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.\n"
+                    "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.\n"
                 },
                 "token": {
                     "type": "string",
@@ -13116,7 +13357,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.\n",
+                    "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.\n",
                     "willReplaceOnChanges": true
                 },
                 "userId": {
@@ -13126,7 +13367,6 @@
                 }
             },
             "requiredInputs": [
-                "expiresAt",
                 "scopes",
                 "userId"
             ],
@@ -13160,7 +13400,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.\n",
+                        "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.\n",
                         "willReplaceOnChanges": true
                     },
                     "token": {
@@ -13631,7 +13871,7 @@
                 },
                 "initializeWithReadme": {
                     "type": "boolean",
-                    "description": "Create main branch with first commit containing a README.md file.\n"
+                    "description": "Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.\n"
                 },
                 "issuesAccessLevel": {
                     "type": "string",
@@ -14102,7 +14342,7 @@
                 },
                 "initializeWithReadme": {
                     "type": "boolean",
-                    "description": "Create main branch with first commit containing a README.md file.\n"
+                    "description": "Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.\n"
                 },
                 "issuesAccessLevel": {
                     "type": "string",
@@ -14499,7 +14739,7 @@
                     },
                     "initializeWithReadme": {
                         "type": "boolean",
-                        "description": "Create main branch with first commit containing a README.md file.\n"
+                        "description": "Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.\n"
                     },
                     "issuesAccessLevel": {
                         "type": "string",
@@ -14788,7 +15028,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
+                    "description": "The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                 },
                 "token": {
                     "type": "string",
@@ -14838,7 +15078,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
+                    "description": "The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                 }
             },
             "requiredInputs": [
@@ -14885,7 +15125,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The scopes of the project access token. valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
+                        "description": "The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
                     },
                     "token": {
                         "type": "string",
@@ -16569,7 +16809,7 @@
             }
         },
         "gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes": {
-            "description": "The `gitlab.ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.\nAny project not within the defined set in this attribute will be removed, which allows this resource to be used as an explicit deny.\n\n\u003e Conflicts with the use of `gitlab.ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  allowedSingleProject:\n    type: gitlab:ProjectJobTokenScopes\n    name: allowed_single_project\n    properties:\n      project: gitlab-org/gitlab\n      targetProjectIds:\n        - 123\n  allowedMultipleProject:\n    type: gitlab:ProjectJobTokenScopes\n    name: allowed_multiple_project\n    properties:\n      project: gitlab-org/gitlab\n      targetProjectIds:\n        - 123\n        - 456\n        - 789\n  # This will remove all job token scopes, even if added outside of TF.\n  explicitDeny:\n    type: gitlab:ProjectJobTokenScopes\n    name: explicit_deny\n    properties:\n      project: gitlab-org/gitlab\n      targetProjectIds: []\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGitLab project job token scopes can be imported using an id made up of just the `project_id` as an integer\n\n```sh\n$ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123\n```\n\n",
+            "description": "The `gitlab.ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.\nAny project not within the defined set in this attribute will be removed, which allows this resource to be used as an explicit deny.\n\n\u003e Conflicts with the use of `gitlab.ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst allowedSingleProject = new gitlab.ProjectJobTokenScopes(\"allowed_single_project\", {\n    projectId: 111,\n    targetProjectIds: [123],\n});\nconst allowedMultipleProject = new gitlab.ProjectJobTokenScopes(\"allowed_multiple_project\", {\n    projectId: 111,\n    targetProjectIds: [\n        123,\n        456,\n        789,\n    ],\n});\n// This will remove all job token scopes, even if added outside of TF.\nconst explicitDeny = new gitlab.ProjectJobTokenScopes(\"explicit_deny\", {\n    projectId: 111,\n    targetProjectIds: [],\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nallowed_single_project = gitlab.ProjectJobTokenScopes(\"allowed_single_project\",\n    project_id=111,\n    target_project_ids=[123])\nallowed_multiple_project = gitlab.ProjectJobTokenScopes(\"allowed_multiple_project\",\n    project_id=111,\n    target_project_ids=[\n        123,\n        456,\n        789,\n    ])\n# This will remove all job token scopes, even if added outside of TF.\nexplicit_deny = gitlab.ProjectJobTokenScopes(\"explicit_deny\",\n    project_id=111,\n    target_project_ids=[])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var allowedSingleProject = new GitLab.ProjectJobTokenScopes(\"allowed_single_project\", new()\n    {\n        ProjectId = 111,\n        TargetProjectIds = new[]\n        {\n            123,\n        },\n    });\n\n    var allowedMultipleProject = new GitLab.ProjectJobTokenScopes(\"allowed_multiple_project\", new()\n    {\n        ProjectId = 111,\n        TargetProjectIds = new[]\n        {\n            123,\n            456,\n            789,\n        },\n    });\n\n    // This will remove all job token scopes, even if added outside of TF.\n    var explicitDeny = new GitLab.ProjectJobTokenScopes(\"explicit_deny\", new()\n    {\n        ProjectId = 111,\n        TargetProjectIds = new[] {},\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectJobTokenScopes(ctx, \"allowed_single_project\", \u0026gitlab.ProjectJobTokenScopesArgs{\n\t\t\tProjectId: pulumi.Int(111),\n\t\t\tTargetProjectIds: pulumi.IntArray{\n\t\t\t\tpulumi.Int(123),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectJobTokenScopes(ctx, \"allowed_multiple_project\", \u0026gitlab.ProjectJobTokenScopesArgs{\n\t\t\tProjectId: pulumi.Int(111),\n\t\t\tTargetProjectIds: pulumi.IntArray{\n\t\t\t\tpulumi.Int(123),\n\t\t\t\tpulumi.Int(456),\n\t\t\t\tpulumi.Int(789),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This will remove all job token scopes, even if added outside of TF.\n\t\t_, err = gitlab.NewProjectJobTokenScopes(ctx, \"explicit_deny\", \u0026gitlab.ProjectJobTokenScopesArgs{\n\t\t\tProjectId:        pulumi.Int(111),\n\t\t\tTargetProjectIds: pulumi.IntArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectJobTokenScopes;\nimport com.pulumi.gitlab.ProjectJobTokenScopesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var allowedSingleProject = new ProjectJobTokenScopes(\"allowedSingleProject\", ProjectJobTokenScopesArgs.builder()\n            .projectId(111)\n            .targetProjectIds(123)\n            .build());\n\n        var allowedMultipleProject = new ProjectJobTokenScopes(\"allowedMultipleProject\", ProjectJobTokenScopesArgs.builder()\n            .projectId(111)\n            .targetProjectIds(            \n                123,\n                456,\n                789)\n            .build());\n\n        // This will remove all job token scopes, even if added outside of TF.\n        var explicitDeny = new ProjectJobTokenScopes(\"explicitDeny\", ProjectJobTokenScopesArgs.builder()\n            .projectId(111)\n            .targetProjectIds()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  allowedSingleProject:\n    type: gitlab:ProjectJobTokenScopes\n    name: allowed_single_project\n    properties:\n      projectId: 111\n      targetProjectIds:\n        - 123\n  allowedMultipleProject:\n    type: gitlab:ProjectJobTokenScopes\n    name: allowed_multiple_project\n    properties:\n      projectId: 111\n      targetProjectIds:\n        - 123\n        - 456\n        - 789\n  # This will remove all job token scopes, even if added outside of TF.\n  explicitDeny:\n    type: gitlab:ProjectJobTokenScopes\n    name: explicit_deny\n    properties:\n      projectId: 111\n      targetProjectIds: []\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGitLab project job token scopes can be imported using an id made up of just the `project_id` as an integer\n\n```sh\n$ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123\n```\n\n",
             "properties": {
                 "projectId": {
                     "type": "integer",
@@ -19631,6 +19871,10 @@
                     "type": "boolean",
                     "description": "Enable notifications for confidential issues events.\n"
                 },
+                "confidentialNoteChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive confidential note events notifications.\n"
+                },
                 "confidentialNoteEvents": {
                     "type": "boolean",
                     "description": "Enable notifications for confidential note events.\n"
@@ -19720,6 +19964,7 @@
             "required": [
                 "branchesToBeNotified",
                 "confidentialIssuesEvents",
+                "confidentialNoteChannel",
                 "confidentialNoteEvents",
                 "issuesEvents",
                 "jobEvents",
@@ -19746,6 +19991,10 @@
                 "confidentialIssuesEvents": {
                     "type": "boolean",
                     "description": "Enable notifications for confidential issues events.\n"
+                },
+                "confidentialNoteChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive confidential note events notifications.\n"
                 },
                 "confidentialNoteEvents": {
                     "type": "boolean",
@@ -19848,6 +20097,10 @@
                     "confidentialIssuesEvents": {
                         "type": "boolean",
                         "description": "Enable notifications for confidential issues events.\n"
+                    },
+                    "confidentialNoteChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive confidential note events notifications.\n"
                     },
                     "confidentialNoteEvents": {
                         "type": "boolean",

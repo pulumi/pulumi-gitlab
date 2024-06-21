@@ -6,8 +6,11 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GroupSamlLinkArgs extends com.pulumi.resources.ResourceArgs {
@@ -45,6 +48,21 @@ public final class GroupSamlLinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    @Import(name="memberRoleId")
+    private @Nullable Output<Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    public Optional<Output<Integer>> memberRoleId() {
+        return Optional.ofNullable(this.memberRoleId);
+    }
+
+    /**
      * The name of the SAML group.
      * 
      */
@@ -64,6 +82,7 @@ public final class GroupSamlLinkArgs extends com.pulumi.resources.ResourceArgs {
     private GroupSamlLinkArgs(GroupSamlLinkArgs $) {
         this.accessLevel = $.accessLevel;
         this.group = $.group;
+        this.memberRoleId = $.memberRoleId;
         this.samlGroupName = $.samlGroupName;
     }
 
@@ -125,6 +144,27 @@ public final class GroupSamlLinkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder group(String group) {
             return group(Output.of(group));
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(@Nullable Output<Integer> memberRoleId) {
+            $.memberRoleId = memberRoleId;
+            return this;
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(Integer memberRoleId) {
+            return memberRoleId(Output.of(memberRoleId));
         }
 
         /**

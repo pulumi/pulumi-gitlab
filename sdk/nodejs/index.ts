@@ -410,6 +410,11 @@ export type IntegrationSlack = import("./integrationSlack").IntegrationSlack;
 export const IntegrationSlack: typeof import("./integrationSlack").IntegrationSlack = null as any;
 utilities.lazyLoad(exports, ["IntegrationSlack"], () => require("./integrationSlack"));
 
+export { IntegrationTelegramArgs, IntegrationTelegramState } from "./integrationTelegram";
+export type IntegrationTelegram = import("./integrationTelegram").IntegrationTelegram;
+export const IntegrationTelegram: typeof import("./integrationTelegram").IntegrationTelegram = null as any;
+utilities.lazyLoad(exports, ["IntegrationTelegram"], () => require("./integrationTelegram"));
+
 export { LabelArgs, LabelState } from "./label";
 export type Label = import("./label").Label;
 export const Label: typeof import("./label").Label = null as any;
@@ -762,6 +767,8 @@ const _module = {
                 return new IntegrationPipelinesEmail(name, <any>undefined, { urn })
             case "gitlab:index/integrationSlack:IntegrationSlack":
                 return new IntegrationSlack(name, <any>undefined, { urn })
+            case "gitlab:index/integrationTelegram:IntegrationTelegram":
+                return new IntegrationTelegram(name, <any>undefined, { urn })
             case "gitlab:index/label:Label":
                 return new Label(name, <any>undefined, { urn })
             case "gitlab:index/pagesDomain:PagesDomain":
@@ -908,6 +915,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/integrationMattermost", _
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationMicrosoftTeams", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationPipelinesEmail", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationSlack", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationTelegram", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/label", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pagesDomain", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/personalAccessToken", _module)

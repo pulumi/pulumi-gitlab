@@ -78,6 +78,10 @@ export class IntegrationSlack extends pulumi.CustomResource {
      */
     public readonly confidentialIssuesEvents!: pulumi.Output<boolean>;
     /**
+     * The name of the channel to receive confidential note events notifications.
+     */
+    public readonly confidentialNoteChannel!: pulumi.Output<string>;
+    /**
      * Enable notifications for confidential note events.
      */
     public readonly confidentialNoteEvents!: pulumi.Output<boolean>;
@@ -180,6 +184,7 @@ export class IntegrationSlack extends pulumi.CustomResource {
             resourceInputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
             resourceInputs["confidentialIssueChannel"] = state ? state.confidentialIssueChannel : undefined;
             resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
+            resourceInputs["confidentialNoteChannel"] = state ? state.confidentialNoteChannel : undefined;
             resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
             resourceInputs["issueChannel"] = state ? state.issueChannel : undefined;
             resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
@@ -212,6 +217,7 @@ export class IntegrationSlack extends pulumi.CustomResource {
             resourceInputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
             resourceInputs["confidentialIssueChannel"] = args ? args.confidentialIssueChannel : undefined;
             resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
+            resourceInputs["confidentialNoteChannel"] = args ? args.confidentialNoteChannel : undefined;
             resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
             resourceInputs["issueChannel"] = args ? args.issueChannel : undefined;
             resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
@@ -255,6 +261,10 @@ export interface IntegrationSlackState {
      * Enable notifications for confidential issues events.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
+    /**
+     * The name of the channel to receive confidential note events notifications.
+     */
+    confidentialNoteChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for confidential note events.
      */
@@ -359,6 +369,10 @@ export interface IntegrationSlackArgs {
      * Enable notifications for confidential issues events.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
+    /**
+     * The name of the channel to receive confidential note events notifications.
+     */
+    confidentialNoteChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for confidential note events.
      */

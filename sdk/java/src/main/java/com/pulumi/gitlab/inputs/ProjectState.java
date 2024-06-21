@@ -643,14 +643,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Create main branch with first commit containing a README.md file.
+     * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
      * 
      */
     @Import(name="initializeWithReadme")
     private @Nullable Output<Boolean> initializeWithReadme;
 
     /**
-     * @return Create main branch with first commit containing a README.md file.
+     * @return Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
      * 
      */
     public Optional<Output<Boolean>> initializeWithReadme() {
@@ -2536,7 +2536,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initializeWithReadme Create main branch with first commit containing a README.md file.
+         * @param initializeWithReadme Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
          * 
          * @return builder
          * 
@@ -2547,7 +2547,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initializeWithReadme Create main branch with first commit containing a README.md file.
+         * @param initializeWithReadme Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
          * 
          * @return builder
          * 

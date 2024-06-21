@@ -25,6 +25,51 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.ProjectJobTokenScopes;
+ * import com.pulumi.gitlab.ProjectJobTokenScopesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var allowedSingleProject = new ProjectJobTokenScopes("allowedSingleProject", ProjectJobTokenScopesArgs.builder()
+ *             .projectId(111)
+ *             .targetProjectIds(123)
+ *             .build());
+ * 
+ *         var allowedMultipleProject = new ProjectJobTokenScopes("allowedMultipleProject", ProjectJobTokenScopesArgs.builder()
+ *             .projectId(111)
+ *             .targetProjectIds(            
+ *                 123,
+ *                 456,
+ *                 789)
+ *             .build());
+ * 
+ *         // This will remove all job token scopes, even if added outside of TF.
+ *         var explicitDeny = new ProjectJobTokenScopes("explicitDeny", ProjectJobTokenScopesArgs.builder()
+ *             .projectId(111)
+ *             .targetProjectIds()
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

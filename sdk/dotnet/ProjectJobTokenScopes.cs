@@ -17,6 +17,46 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var allowedSingleProject = new GitLab.ProjectJobTokenScopes("allowed_single_project", new()
+    ///     {
+    ///         ProjectId = 111,
+    ///         TargetProjectIds = new[]
+    ///         {
+    ///             123,
+    ///         },
+    ///     });
+    /// 
+    ///     var allowedMultipleProject = new GitLab.ProjectJobTokenScopes("allowed_multiple_project", new()
+    ///     {
+    ///         ProjectId = 111,
+    ///         TargetProjectIds = new[]
+    ///         {
+    ///             123,
+    ///             456,
+    ///             789,
+    ///         },
+    ///     });
+    /// 
+    ///     // This will remove all job token scopes, even if added outside of TF.
+    ///     var explicitDeny = new GitLab.ProjectJobTokenScopes("explicit_deny", new()
+    ///     {
+    ///         ProjectId = 111,
+    ///         TargetProjectIds = new[] {},
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GitLab project job token scopes can be imported using an id made up of just the `project_id` as an integer

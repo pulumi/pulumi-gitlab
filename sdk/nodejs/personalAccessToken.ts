@@ -89,7 +89,7 @@ export class PersonalAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`.
+     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -124,9 +124,6 @@ export class PersonalAccessToken extends pulumi.CustomResource {
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as PersonalAccessTokenArgs | undefined;
-            if ((!args || args.expiresAt === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'expiresAt'");
-            }
             if ((!args || args.scopes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
@@ -174,7 +171,7 @@ export interface PersonalAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`.
+     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -194,13 +191,13 @@ export interface PersonalAccessTokenArgs {
     /**
      * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      */
-    expiresAt: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string>;
     /**
      * The name of the personal access token.
      */
     name?: pulumi.Input<string>;
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`.
+     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

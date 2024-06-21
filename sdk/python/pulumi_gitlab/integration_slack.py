@@ -19,6 +19,7 @@ class IntegrationSlackArgs:
                  branches_to_be_notified: Optional[pulumi.Input[str]] = None,
                  confidential_issue_channel: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_channel: Optional[pulumi.Input[str]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  issue_channel: Optional[pulumi.Input[str]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -44,6 +45,7 @@ class IntegrationSlackArgs:
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
+        :param pulumi.Input[str] confidential_note_channel: The name of the channel to receive confidential note events notifications.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -71,6 +73,8 @@ class IntegrationSlackArgs:
             pulumi.set(__self__, "confidential_issue_channel", confidential_issue_channel)
         if confidential_issues_events is not None:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+        if confidential_note_channel is not None:
+            pulumi.set(__self__, "confidential_note_channel", confidential_note_channel)
         if confidential_note_events is not None:
             pulumi.set(__self__, "confidential_note_events", confidential_note_events)
         if issue_channel is not None:
@@ -170,6 +174,18 @@ class IntegrationSlackArgs:
     @confidential_issues_events.setter
     def confidential_issues_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "confidential_issues_events", value)
+
+    @property
+    @pulumi.getter(name="confidentialNoteChannel")
+    def confidential_note_channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the channel to receive confidential note events notifications.
+        """
+        return pulumi.get(self, "confidential_note_channel")
+
+    @confidential_note_channel.setter
+    def confidential_note_channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "confidential_note_channel", value)
 
     @property
     @pulumi.getter(name="confidentialNoteEvents")
@@ -397,6 +413,7 @@ class _IntegrationSlackState:
                  branches_to_be_notified: Optional[pulumi.Input[str]] = None,
                  confidential_issue_channel: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_channel: Optional[pulumi.Input[str]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  issue_channel: Optional[pulumi.Input[str]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -423,6 +440,7 @@ class _IntegrationSlackState:
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
+        :param pulumi.Input[str] confidential_note_channel: The name of the channel to receive confidential note events notifications.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -451,6 +469,8 @@ class _IntegrationSlackState:
             pulumi.set(__self__, "confidential_issue_channel", confidential_issue_channel)
         if confidential_issues_events is not None:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+        if confidential_note_channel is not None:
+            pulumi.set(__self__, "confidential_note_channel", confidential_note_channel)
         if confidential_note_events is not None:
             pulumi.set(__self__, "confidential_note_events", confidential_note_events)
         if issue_channel is not None:
@@ -532,6 +552,18 @@ class _IntegrationSlackState:
     @confidential_issues_events.setter
     def confidential_issues_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "confidential_issues_events", value)
+
+    @property
+    @pulumi.getter(name="confidentialNoteChannel")
+    def confidential_note_channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the channel to receive confidential note events notifications.
+        """
+        return pulumi.get(self, "confidential_note_channel")
+
+    @confidential_note_channel.setter
+    def confidential_note_channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "confidential_note_channel", value)
 
     @property
     @pulumi.getter(name="confidentialNoteEvents")
@@ -797,6 +829,7 @@ class IntegrationSlack(pulumi.CustomResource):
                  branches_to_be_notified: Optional[pulumi.Input[str]] = None,
                  confidential_issue_channel: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_channel: Optional[pulumi.Input[str]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  issue_channel: Optional[pulumi.Input[str]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -854,6 +887,7 @@ class IntegrationSlack(pulumi.CustomResource):
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
+        :param pulumi.Input[str] confidential_note_channel: The name of the channel to receive confidential note events notifications.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -930,6 +964,7 @@ class IntegrationSlack(pulumi.CustomResource):
                  branches_to_be_notified: Optional[pulumi.Input[str]] = None,
                  confidential_issue_channel: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_channel: Optional[pulumi.Input[str]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  issue_channel: Optional[pulumi.Input[str]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -962,6 +997,7 @@ class IntegrationSlack(pulumi.CustomResource):
             __props__.__dict__["branches_to_be_notified"] = branches_to_be_notified
             __props__.__dict__["confidential_issue_channel"] = confidential_issue_channel
             __props__.__dict__["confidential_issues_events"] = confidential_issues_events
+            __props__.__dict__["confidential_note_channel"] = confidential_note_channel
             __props__.__dict__["confidential_note_events"] = confidential_note_events
             __props__.__dict__["issue_channel"] = issue_channel
             __props__.__dict__["issues_events"] = issues_events
@@ -1000,6 +1036,7 @@ class IntegrationSlack(pulumi.CustomResource):
             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
             confidential_issue_channel: Optional[pulumi.Input[str]] = None,
             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+            confidential_note_channel: Optional[pulumi.Input[str]] = None,
             confidential_note_events: Optional[pulumi.Input[bool]] = None,
             issue_channel: Optional[pulumi.Input[str]] = None,
             issues_events: Optional[pulumi.Input[bool]] = None,
@@ -1031,6 +1068,7 @@ class IntegrationSlack(pulumi.CustomResource):
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
+        :param pulumi.Input[str] confidential_note_channel: The name of the channel to receive confidential note events notifications.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -1060,6 +1098,7 @@ class IntegrationSlack(pulumi.CustomResource):
         __props__.__dict__["branches_to_be_notified"] = branches_to_be_notified
         __props__.__dict__["confidential_issue_channel"] = confidential_issue_channel
         __props__.__dict__["confidential_issues_events"] = confidential_issues_events
+        __props__.__dict__["confidential_note_channel"] = confidential_note_channel
         __props__.__dict__["confidential_note_events"] = confidential_note_events
         __props__.__dict__["issue_channel"] = issue_channel
         __props__.__dict__["issues_events"] = issues_events
@@ -1106,6 +1145,14 @@ class IntegrationSlack(pulumi.CustomResource):
         Enable notifications for confidential issues events.
         """
         return pulumi.get(self, "confidential_issues_events")
+
+    @property
+    @pulumi.getter(name="confidentialNoteChannel")
+    def confidential_note_channel(self) -> pulumi.Output[str]:
+        """
+        The name of the channel to receive confidential note events notifications.
+        """
+        return pulumi.get(self, "confidential_note_channel")
 
     @property
     @pulumi.getter(name="confidentialNoteEvents")

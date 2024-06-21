@@ -15,10 +15,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
+ * // Basic example
  * const test = new gitlab.GroupSamlLink("test", {
  *     group: "12345",
  *     accessLevel: "developer",
  *     samlGroupName: "samlgroupname1",
+ * });
+ * // Example using a Custom Role (Ultimate only)
+ * const testCustomRole = new gitlab.GroupSamlLink("test_custom_role", {
+ *     group: "12345",
+ *     accessLevel: "developer",
+ *     samlGroupName: "samlgroupname1",
+ *     memberRoleId: 123,
  * });
  * ```
  *
@@ -67,6 +75,10 @@ export class GroupSamlLink extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string>;
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    public readonly memberRoleId!: pulumi.Output<number | undefined>;
+    /**
      * The name of the SAML group.
      */
     public readonly samlGroupName!: pulumi.Output<string>;
@@ -86,6 +98,7 @@ export class GroupSamlLink extends pulumi.CustomResource {
             const state = argsOrState as GroupSamlLinkState | undefined;
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["memberRoleId"] = state ? state.memberRoleId : undefined;
             resourceInputs["samlGroupName"] = state ? state.samlGroupName : undefined;
         } else {
             const args = argsOrState as GroupSamlLinkArgs | undefined;
@@ -100,6 +113,7 @@ export class GroupSamlLink extends pulumi.CustomResource {
             }
             resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["memberRoleId"] = args ? args.memberRoleId : undefined;
             resourceInputs["samlGroupName"] = args ? args.samlGroupName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -120,6 +134,10 @@ export interface GroupSamlLinkState {
      */
     group?: pulumi.Input<string>;
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    memberRoleId?: pulumi.Input<number>;
+    /**
      * The name of the SAML group.
      */
     samlGroupName?: pulumi.Input<string>;
@@ -137,6 +155,10 @@ export interface GroupSamlLinkArgs {
      * The ID or path of the group to add the SAML Group Link to.
      */
     group: pulumi.Input<string>;
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    memberRoleId?: pulumi.Input<number>;
     /**
      * The name of the SAML group.
      */

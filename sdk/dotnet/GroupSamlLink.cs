@@ -24,11 +24,21 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Basic example
     ///     var test = new GitLab.GroupSamlLink("test", new()
     ///     {
     ///         Group = "12345",
     ///         AccessLevel = "developer",
     ///         SamlGroupName = "samlgroupname1",
+    ///     });
+    /// 
+    ///     // Example using a Custom Role (Ultimate only)
+    ///     var testCustomRole = new GitLab.GroupSamlLink("test_custom_role", new()
+    ///     {
+    ///         Group = "12345",
+    ///         AccessLevel = "developer",
+    ///         SamlGroupName = "samlgroupname1",
+    ///         MemberRoleId = 123,
     ///     });
     /// 
     /// });
@@ -56,6 +66,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("group")]
         public Output<string> Group { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// </summary>
+        [Output("memberRoleId")]
+        public Output<int?> MemberRoleId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the SAML group.
@@ -122,6 +138,12 @@ namespace Pulumi.GitLab
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// </summary>
+        [Input("memberRoleId")]
+        public Input<int>? MemberRoleId { get; set; }
+
+        /// <summary>
         /// The name of the SAML group.
         /// </summary>
         [Input("samlGroupName", required: true)]
@@ -146,6 +168,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
+
+        /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// </summary>
+        [Input("memberRoleId")]
+        public Input<int>? MemberRoleId { get; set; }
 
         /// <summary>
         /// The name of the SAML group.

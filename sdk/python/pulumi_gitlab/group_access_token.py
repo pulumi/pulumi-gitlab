@@ -25,7 +25,7 @@ class GroupAccessTokenArgs:
         """
         The set of arguments for constructing a GroupAccessToken resource.
         :param pulumi.Input[str] group: The ID or full path of the group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         :param pulumi.Input[str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format.
         :param pulumi.Input[str] name: The name of the group access token.
@@ -58,7 +58,7 @@ class GroupAccessTokenArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         """
         return pulumi.get(self, "scopes")
 
@@ -139,7 +139,7 @@ class _GroupAccessTokenState:
         :param pulumi.Input[str] name: The name of the group access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
         :param pulumi.Input['GroupAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         :param pulumi.Input[str] token: The token of the group access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The user_id associated to the token.
         """
@@ -266,7 +266,7 @@ class _GroupAccessTokenState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         """
         return pulumi.get(self, "scopes")
 
@@ -312,7 +312,7 @@ class GroupAccessToken(pulumi.CustomResource):
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        The `GroupAccessToken`resource allows to manage the lifecycle of a group access token.
+        The `GroupAccessToken` resource allows to manage the lifecycle of a group access token.
 
         > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
 
@@ -357,7 +357,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] group: The ID or full path of the group.
         :param pulumi.Input[str] name: The name of the group access token.
         :param pulumi.Input[pulumi.InputType['GroupAccessTokenRotationConfigurationArgs']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         """
         ...
     @overload
@@ -366,7 +366,7 @@ class GroupAccessToken(pulumi.CustomResource):
                  args: GroupAccessTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupAccessToken`resource allows to manage the lifecycle of a group access token.
+        The `GroupAccessToken` resource allows to manage the lifecycle of a group access token.
 
         > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
 
@@ -487,7 +487,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the group access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
         :param pulumi.Input[pulumi.InputType['GroupAccessTokenRotationConfigurationArgs']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         :param pulumi.Input[str] token: The token of the group access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The user_id associated to the token.
         """
@@ -576,7 +576,7 @@ class GroupAccessToken(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Sequence[str]]:
         """
-        The scopes of the group access token. Valid values are: `api`, `read_api`, `read_user`, `k8s_proxy`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         """
         return pulumi.get(self, "scopes")
 

@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.GroupSamlLinkArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupSamlLinkState;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -43,10 +45,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Basic example
  *         var test = new GroupSamlLink("test", GroupSamlLinkArgs.builder()
  *             .group("12345")
  *             .accessLevel("developer")
  *             .samlGroupName("samlgroupname1")
+ *             .build());
+ * 
+ *         // Example using a Custom Role (Ultimate only)
+ *         var testCustomRole = new GroupSamlLink("testCustomRole", GroupSamlLinkArgs.builder()
+ *             .group("12345")
+ *             .accessLevel("developer")
+ *             .samlGroupName("samlgroupname1")
+ *             .memberRoleId(123)
  *             .build());
  * 
  *     }
@@ -93,6 +104,20 @@ public class GroupSamlLink extends com.pulumi.resources.CustomResource {
      */
     public Output<String> group() {
         return this.group;
+    }
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    public Output<Optional<Integer>> memberRoleId() {
+        return Codegen.optional(this.memberRoleId);
     }
     /**
      * The name of the SAML group.

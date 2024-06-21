@@ -616,14 +616,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.infrastructureAccessLevel;
     }
     /**
-     * Create main branch with first commit containing a README.md file.
+     * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
      * 
      */
     @Export(name="initializeWithReadme", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> initializeWithReadme;
 
     /**
-     * @return Create main branch with first commit containing a README.md file.
+     * @return Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
      * 
      */
     public Output<Optional<Boolean>> initializeWithReadme() {

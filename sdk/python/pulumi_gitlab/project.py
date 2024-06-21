@@ -150,7 +150,7 @@ class ProjectArgs:
         :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
+        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
@@ -864,7 +864,7 @@ class ProjectArgs:
     @pulumi.getter(name="initializeWithReadme")
     def initialize_with_readme(self) -> Optional[pulumi.Input[bool]]:
         """
-        Create main branch with first commit containing a README.md file.
+        Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         """
         return pulumi.get(self, "initialize_with_readme")
 
@@ -1678,7 +1678,7 @@ class _ProjectState:
         :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
+        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
@@ -2446,7 +2446,7 @@ class _ProjectState:
     @pulumi.getter(name="initializeWithReadme")
     def initialize_with_readme(self) -> Optional[pulumi.Input[bool]]:
         """
-        Create main branch with first commit containing a README.md file.
+        Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         """
         return pulumi.get(self, "initialize_with_readme")
 
@@ -3320,7 +3320,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
+        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
@@ -3781,7 +3781,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
+        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
@@ -4283,7 +4283,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="initializeWithReadme")
     def initialize_with_readme(self) -> pulumi.Output[Optional[bool]]:
         """
-        Create main branch with first commit containing a README.md file.
+        Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         """
         return pulumi.get(self, "initialize_with_readme")
 

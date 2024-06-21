@@ -267,6 +267,10 @@
                 "current": "gitlab:index/integrationSlack:IntegrationSlack",
                 "majorVersion": 8
             },
+            "gitlab_integration_telegram": {
+                "current": "gitlab:index/integrationTelegram:IntegrationTelegram",
+                "majorVersion": 8
+            },
             "gitlab_label": {
                 "current": "gitlab:index/label:Label",
                 "majorVersion": 8
@@ -1088,6 +1092,7 @@
             "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams": 0,
             "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail": 0,
             "gitlab:index/integrationSlack:IntegrationSlack": 0,
+            "gitlab:index/integrationTelegram:IntegrationTelegram": 1,
             "gitlab:index/label:Label": 0,
             "gitlab:index/pagesDomain:PagesDomain": 1,
             "gitlab:index/personalAccessToken:PersonalAccessToken": 0,

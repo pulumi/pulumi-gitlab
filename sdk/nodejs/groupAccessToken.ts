@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.GroupAccessToken`resource allows to manage the lifecycle of a group access token.
+ * The `gitlab.GroupAccessToken` resource allows to manage the lifecycle of a group access token.
  *
  * > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
  *
@@ -108,7 +108,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
      */
     public readonly rotationConfiguration!: pulumi.Output<outputs.GroupAccessTokenRotationConfiguration | undefined>;
     /**
-     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -208,7 +208,7 @@ export interface GroupAccessTokenState {
      */
     rotationConfiguration?: pulumi.Input<inputs.GroupAccessTokenRotationConfiguration>;
     /**
-     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -246,7 +246,7 @@ export interface GroupAccessTokenArgs {
      */
     rotationConfiguration?: pulumi.Input<inputs.GroupAccessTokenRotationConfiguration>;
     /**
-     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readUser`, `k8sProxy`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }
