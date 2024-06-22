@@ -73,13 +73,11 @@ class GroupLdapLinkArgs:
 
     @property
     @pulumi.getter(name="accessLevel")
+    @_utilities.deprecated("""Use `group_access` instead of the `access_level` attribute.""")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
         Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         """
-        warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
-        pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
-
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -175,13 +173,11 @@ class _GroupLdapLinkState:
 
     @property
     @pulumi.getter(name="accessLevel")
+    @_utilities.deprecated("""Use `group_access` instead of the `access_level` attribute.""")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
         Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         """
-        warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
-        pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
-
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -421,13 +417,11 @@ class GroupLdapLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessLevel")
+    @_utilities.deprecated("""Use `group_access` instead of the `access_level` attribute.""")
     def access_level(self) -> pulumi.Output[Optional[str]]:
         """
         Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         """
-        warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
-        pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
-
         return pulumi.get(self, "access_level")
 
     @property

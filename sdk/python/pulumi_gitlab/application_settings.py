@@ -2309,13 +2309,11 @@ class ApplicationSettingsArgs:
 
     @property
     @pulumi.getter(name="housekeepingFullRepackPeriod")
+    @_utilities.deprecated("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
     def housekeeping_full_repack_period(self) -> Optional[pulumi.Input[int]]:
         """
         Number of Git pushes after which an incremental git repack is run.
         """
-        warnings.warn("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-        pulumi.log.warn("""housekeeping_full_repack_period is deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-
         return pulumi.get(self, "housekeeping_full_repack_period")
 
     @housekeeping_full_repack_period.setter
@@ -2324,13 +2322,11 @@ class ApplicationSettingsArgs:
 
     @property
     @pulumi.getter(name="housekeepingGcPeriod")
+    @_utilities.deprecated("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
     def housekeeping_gc_period(self) -> Optional[pulumi.Input[int]]:
         """
         Number of Git pushes after which git gc is run.
         """
-        warnings.warn("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-        pulumi.log.warn("""housekeeping_gc_period is deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-
         return pulumi.get(self, "housekeeping_gc_period")
 
     @housekeeping_gc_period.setter
@@ -2339,13 +2335,11 @@ class ApplicationSettingsArgs:
 
     @property
     @pulumi.getter(name="housekeepingIncrementalRepackPeriod")
+    @_utilities.deprecated("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
     def housekeeping_incremental_repack_period(self) -> Optional[pulumi.Input[int]]:
         """
         Number of Git pushes after which an incremental git repack is run.
         """
-        warnings.warn("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-        pulumi.log.warn("""housekeeping_incremental_repack_period is deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-
         return pulumi.get(self, "housekeeping_incremental_repack_period")
 
     @housekeeping_incremental_repack_period.setter
@@ -6211,13 +6205,11 @@ class _ApplicationSettingsState:
 
     @property
     @pulumi.getter(name="housekeepingFullRepackPeriod")
+    @_utilities.deprecated("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
     def housekeeping_full_repack_period(self) -> Optional[pulumi.Input[int]]:
         """
         Number of Git pushes after which an incremental git repack is run.
         """
-        warnings.warn("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-        pulumi.log.warn("""housekeeping_full_repack_period is deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-
         return pulumi.get(self, "housekeeping_full_repack_period")
 
     @housekeeping_full_repack_period.setter
@@ -6226,13 +6218,11 @@ class _ApplicationSettingsState:
 
     @property
     @pulumi.getter(name="housekeepingGcPeriod")
+    @_utilities.deprecated("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
     def housekeeping_gc_period(self) -> Optional[pulumi.Input[int]]:
         """
         Number of Git pushes after which git gc is run.
         """
-        warnings.warn("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-        pulumi.log.warn("""housekeeping_gc_period is deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-
         return pulumi.get(self, "housekeeping_gc_period")
 
     @housekeeping_gc_period.setter
@@ -6241,13 +6231,11 @@ class _ApplicationSettingsState:
 
     @property
     @pulumi.getter(name="housekeepingIncrementalRepackPeriod")
+    @_utilities.deprecated("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
     def housekeeping_incremental_repack_period(self) -> Optional[pulumi.Input[int]]:
         """
         Number of Git pushes after which an incremental git repack is run.
         """
-        warnings.warn("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-        pulumi.log.warn("""housekeeping_incremental_repack_period is deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-
         return pulumi.get(self, "housekeeping_incremental_repack_period")
 
     @housekeeping_incremental_repack_period.setter
@@ -10460,35 +10448,29 @@ class ApplicationSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="housekeepingFullRepackPeriod")
+    @_utilities.deprecated("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
     def housekeeping_full_repack_period(self) -> pulumi.Output[int]:
         """
         Number of Git pushes after which an incremental git repack is run.
         """
-        warnings.warn("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-        pulumi.log.warn("""housekeeping_full_repack_period is deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-
         return pulumi.get(self, "housekeeping_full_repack_period")
 
     @property
     @pulumi.getter(name="housekeepingGcPeriod")
+    @_utilities.deprecated("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
     def housekeeping_gc_period(self) -> pulumi.Output[int]:
         """
         Number of Git pushes after which git gc is run.
         """
-        warnings.warn("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-        pulumi.log.warn("""housekeeping_gc_period is deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-
         return pulumi.get(self, "housekeeping_gc_period")
 
     @property
     @pulumi.getter(name="housekeepingIncrementalRepackPeriod")
+    @_utilities.deprecated("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
     def housekeeping_incremental_repack_period(self) -> pulumi.Output[int]:
         """
         Number of Git pushes after which an incremental git repack is run.
         """
-        warnings.warn("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-        pulumi.log.warn("""housekeeping_incremental_repack_period is deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-
         return pulumi.get(self, "housekeeping_incremental_repack_period")
 
     @property

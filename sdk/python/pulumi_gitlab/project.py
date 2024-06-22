@@ -544,13 +544,11 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="buildCoverageRegex")
+    @_utilities.deprecated("""build_coverage_regex is removed in GitLab 15.0.""")
     def build_coverage_regex(self) -> Optional[pulumi.Input[str]]:
         """
         Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         """
-        warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
-        pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
-
         return pulumi.get(self, "build_coverage_regex")
 
     @build_coverage_regex.setter
@@ -679,13 +677,11 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="containerRegistryEnabled")
+    @_utilities.deprecated("""Use `container_registry_access_level` instead.""")
     def container_registry_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable container registry for the project.
         """
-        warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
-        pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
-
         return pulumi.get(self, "container_registry_enabled")
 
     @container_registry_enabled.setter
@@ -1174,13 +1170,11 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="pipelinesEnabled")
+    @_utilities.deprecated("""Deprecated in favor of `builds_access_level`""")
     def pipelines_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         """
-        warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
-        pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
-
         return pulumi.get(self, "pipelines_enabled")
 
     @pipelines_enabled.setter
@@ -1201,13 +1195,11 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="publicBuilds")
+    @_utilities.deprecated("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
     def public_builds(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, jobs can be viewed by non-project members.
         """
-        warnings.warn("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""", DeprecationWarning)
-        pulumi.log.warn("""public_builds is deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
-
         return pulumi.get(self, "public_builds")
 
     @public_builds.setter
@@ -2102,13 +2094,11 @@ class _ProjectState:
 
     @property
     @pulumi.getter(name="buildCoverageRegex")
+    @_utilities.deprecated("""build_coverage_regex is removed in GitLab 15.0.""")
     def build_coverage_regex(self) -> Optional[pulumi.Input[str]]:
         """
         Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         """
-        warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
-        pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
-
         return pulumi.get(self, "build_coverage_regex")
 
     @build_coverage_regex.setter
@@ -2237,13 +2227,11 @@ class _ProjectState:
 
     @property
     @pulumi.getter(name="containerRegistryEnabled")
+    @_utilities.deprecated("""Use `container_registry_access_level` instead.""")
     def container_registry_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable container registry for the project.
         """
-        warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
-        pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
-
         return pulumi.get(self, "container_registry_enabled")
 
     @container_registry_enabled.setter
@@ -2768,13 +2756,11 @@ class _ProjectState:
 
     @property
     @pulumi.getter(name="pipelinesEnabled")
+    @_utilities.deprecated("""Deprecated in favor of `builds_access_level`""")
     def pipelines_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         """
-        warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
-        pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
-
         return pulumi.get(self, "pipelines_enabled")
 
     @pipelines_enabled.setter
@@ -2795,13 +2781,11 @@ class _ProjectState:
 
     @property
     @pulumi.getter(name="publicBuilds")
+    @_utilities.deprecated("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
     def public_builds(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, jobs can be viewed by non-project members.
         """
-        warnings.warn("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""", DeprecationWarning)
-        pulumi.log.warn("""public_builds is deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
-
         return pulumi.get(self, "public_builds")
 
     @public_builds.setter
@@ -4051,13 +4035,11 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="buildCoverageRegex")
+    @_utilities.deprecated("""build_coverage_regex is removed in GitLab 15.0.""")
     def build_coverage_regex(self) -> pulumi.Output[Optional[str]]:
         """
         Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         """
-        warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
-        pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
-
         return pulumi.get(self, "build_coverage_regex")
 
     @property
@@ -4142,13 +4124,11 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerRegistryEnabled")
+    @_utilities.deprecated("""Use `container_registry_access_level` instead.""")
     def container_registry_enabled(self) -> pulumi.Output[bool]:
         """
         Enable container registry for the project.
         """
-        warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
-        pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
-
         return pulumi.get(self, "container_registry_enabled")
 
     @property
@@ -4497,13 +4477,11 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pipelinesEnabled")
+    @_utilities.deprecated("""Deprecated in favor of `builds_access_level`""")
     def pipelines_enabled(self) -> pulumi.Output[bool]:
         """
         Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         """
-        warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
-        pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
-
         return pulumi.get(self, "pipelines_enabled")
 
     @property
@@ -4516,13 +4494,11 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicBuilds")
+    @_utilities.deprecated("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
     def public_builds(self) -> pulumi.Output[bool]:
         """
         If true, jobs can be viewed by non-project members.
         """
-        warnings.warn("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""", DeprecationWarning)
-        pulumi.log.warn("""public_builds is deprecated: The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
-
         return pulumi.get(self, "public_builds")
 
     @property
