@@ -1120,13 +1120,11 @@ class ProjectContainerExpirationPolicyArgs:
 
     @property
     @pulumi.getter(name="nameRegex")
+    @_utilities.deprecated("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""")
     def name_regex(self) -> Optional[pulumi.Input[str]]:
         """
         The regular expression to match image names to delete.
         """
-        warnings.warn("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""", DeprecationWarning)
-        pulumi.log.warn("""name_regex is deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.""")
-
         return pulumi.get(self, "name_regex")
 
     @name_regex.setter
