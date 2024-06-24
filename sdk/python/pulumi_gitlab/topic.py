@@ -95,13 +95,11 @@ class TopicArgs:
 
     @property
     @pulumi.getter(name="softDestroy")
+    @_utilities.deprecated("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
     def soft_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
         Empty the topics fields instead of deleting it.
         """
-        warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
-        pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
-
         return pulumi.get(self, "soft_destroy")
 
     @soft_destroy.setter
@@ -221,13 +219,11 @@ class _TopicState:
 
     @property
     @pulumi.getter(name="softDestroy")
+    @_utilities.deprecated("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
     def soft_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
         Empty the topics fields instead of deleting it.
         """
-        warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
-        pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
-
         return pulumi.get(self, "soft_destroy")
 
     @soft_destroy.setter
@@ -444,13 +440,11 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="softDestroy")
+    @_utilities.deprecated("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
     def soft_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         Empty the topics fields instead of deleting it.
         """
-        warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
-        pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
-
         return pulumi.get(self, "soft_destroy")
 
     @property
