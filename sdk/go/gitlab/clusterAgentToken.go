@@ -28,7 +28,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
-//	"github.com/pulumi/pulumi-helm/sdk/v1/go/helm"
+//	"github.com/pulumi/pulumi-helm/sdk/go/helm"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = index.NewRelease(ctx, "gitlab_agent", &index.ReleaseArgs{
+//			_, err = helm.NewRelease(ctx, "gitlab_agent", &helm.ReleaseArgs{
 //				Name:            "gitlab-agent",
 //				Namespace:       "gitlab-agent",
 //				CreateNamespace: true,
