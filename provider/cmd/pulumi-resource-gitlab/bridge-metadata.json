@@ -454,6 +454,10 @@
                 "current": "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement",
                 "majorVersion": 8
             },
+            "gitlab_project_security_policy_attachment": {
+                "current": "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment",
+                "majorVersion": 8
+            },
             "gitlab_project_share_group": {
                 "current": "gitlab:index/projectShareGroup:ProjectShareGroup",
                 "majorVersion": 8
@@ -1095,7 +1099,7 @@
             "gitlab:index/integrationTelegram:IntegrationTelegram": 1,
             "gitlab:index/label:Label": 0,
             "gitlab:index/pagesDomain:PagesDomain": 1,
-            "gitlab:index/personalAccessToken:PersonalAccessToken": 0,
+            "gitlab:index/personalAccessToken:PersonalAccessToken": 1,
             "gitlab:index/pipelineSchedule:PipelineSchedule": 1,
             "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable": 0,
             "gitlab:index/pipelineTrigger:PipelineTrigger": 0,
@@ -1122,6 +1126,7 @@
             "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment": 1,
             "gitlab:index/projectPushRules:ProjectPushRules": 1,
             "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement": 0,
+            "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment": 1,
             "gitlab:index/projectShareGroup:ProjectShareGroup": 0,
             "gitlab:index/projectTag:ProjectTag": 0,
             "gitlab:index/projectVariable:ProjectVariable": 0,
