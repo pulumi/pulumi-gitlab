@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-gitlab/provider/v8
 
-go 1.22.4
+go 1.22.5
 
 require (
 	github.com/pulumi/providertest v0.0.13
@@ -128,7 +128,7 @@ require (
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework v1.10.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework-validators v0.13.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.23.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-mux v0.16.0 // indirect
@@ -213,7 +213,7 @@ require (
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
-	github.com/xanzy/go-gitlab v0.105.0 // indirect
+	github.com/xanzy/go-gitlab v0.106.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect

@@ -5,11 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token for a specified user.
+ * The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
  *
  * > This resource requires administration privileges.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
+ * > Use of the `timestamp()` function with expiresAt will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
+ *
+ * > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+ *
+ * > Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
+ *
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
  *
  * ## Example Usage
  *
@@ -77,7 +83,7 @@ export class PersonalAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * When the token will expire, YYYY-MM-DD format.
      */
     public readonly expiresAt!: pulumi.Output<string>;
     /**
@@ -89,15 +95,15 @@ export class PersonalAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`.
+     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
-     * The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+     * The token of the personal access token. **Note**: the token is not available for imported resources.
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
-     * The id of the user.
+     * The ID of the user.
      */
     public readonly userId!: pulumi.Output<number>;
 
@@ -159,7 +165,7 @@ export interface PersonalAccessTokenState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * When the token will expire, YYYY-MM-DD format.
      */
     expiresAt?: pulumi.Input<string>;
     /**
@@ -171,15 +177,15 @@ export interface PersonalAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`.
+     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+     * The token of the personal access token. **Note**: the token is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**
-     * The id of the user.
+     * The ID of the user.
      */
     userId?: pulumi.Input<number>;
 }
@@ -189,7 +195,7 @@ export interface PersonalAccessTokenState {
  */
 export interface PersonalAccessTokenArgs {
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * When the token will expire, YYYY-MM-DD format.
      */
     expiresAt?: pulumi.Input<string>;
     /**
@@ -197,11 +203,11 @@ export interface PersonalAccessTokenArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`.
+     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The id of the user.
+     * The ID of the user.
      */
     userId: pulumi.Input<number>;
 }

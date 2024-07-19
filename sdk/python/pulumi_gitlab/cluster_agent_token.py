@@ -428,6 +428,8 @@ class ClusterAgentToken(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["token"] = None
             __props__.__dict__["token_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ClusterAgentToken, __self__).__init__(
             'gitlab:index/clusterAgentToken:ClusterAgentToken',
             resource_name,

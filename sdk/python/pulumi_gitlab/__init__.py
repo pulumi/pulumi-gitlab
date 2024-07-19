@@ -116,6 +116,7 @@ from .project_mirror import *
 from .project_protected_environment import *
 from .project_push_rules import *
 from .project_runner_enablement import *
+from .project_security_policy_attachment import *
 from .project_share_group import *
 from .project_tag import *
 from .project_variable import *
@@ -702,6 +703,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement": "ProjectRunnerEnablement"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectSecurityPolicyAttachment",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment": "ProjectSecurityPolicyAttachment"
   }
  },
  {

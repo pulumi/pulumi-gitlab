@@ -10,11 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token for a specified user.
+    /// The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
     /// 
     /// &gt; This resource requires administration privileges.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
+    /// &gt; Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
+    /// 
+    /// &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+    /// 
+    /// &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
+    /// 
+    /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
     /// 
     /// ## Example Usage
     /// 
@@ -73,7 +79,7 @@ namespace Pulumi.GitLab
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        /// When the token will expire, YYYY-MM-DD format.
         /// </summary>
         [Output("expiresAt")]
         public Output<string> ExpiresAt { get; private set; } = null!;
@@ -91,19 +97,19 @@ namespace Pulumi.GitLab
         public Output<bool> Revoked { get; private set; } = null!;
 
         /// <summary>
-        /// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+        /// The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+        /// The token of the personal access token. **Note**: the token is not available for imported resources.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the user.
+        /// The ID of the user.
         /// </summary>
         [Output("userId")]
         public Output<int> UserId { get; private set; } = null!;
@@ -159,7 +165,7 @@ namespace Pulumi.GitLab
     public sealed class PersonalAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        /// When the token will expire, YYYY-MM-DD format.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -174,7 +180,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+        /// The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
         /// </summary>
         public InputList<string> Scopes
         {
@@ -183,7 +189,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The id of the user.
+        /// The ID of the user.
         /// </summary>
         [Input("userId", required: true)]
         public Input<int> UserId { get; set; } = null!;
@@ -209,7 +215,7 @@ namespace Pulumi.GitLab
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        /// When the token will expire, YYYY-MM-DD format.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -230,7 +236,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+        /// The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
         /// </summary>
         public InputList<string> Scopes
         {
@@ -242,7 +248,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+        /// The token of the personal access token. **Note**: the token is not available for imported resources.
         /// </summary>
         public Input<string>? Token
         {
@@ -255,7 +261,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The id of the user.
+        /// The ID of the user.
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }

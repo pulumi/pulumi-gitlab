@@ -7916,7 +7916,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "The secret token for the agent. The `token` is not available in imported resources.\n"
+                    "description": "The secret token for the agent. The `token` is not available in imported resources.\n",
+                    "secret": true
                 },
                 "tokenId": {
                     "type": "integer",
@@ -8001,7 +8002,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The secret token for the agent. The `token` is not available in imported resources.\n"
+                        "description": "The secret token for the agent. The `token` is not available in imported resources.\n",
+                        "secret": true
                     },
                     "tokenId": {
                         "type": "integer",
@@ -8118,7 +8120,7 @@
             }
         },
         "gitlab:index/deployKey:DeployKey": {
-            "description": "The `gitlab.DeployKey` resource allows to manage the lifecycle of a deploy key.\n\n\u003e To enable an already existing deploy key for another project use the `gitlab_project_deploy_key` resource.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.DeployKey(\"example\", {\n    project: \"example/deploying\",\n    title: \"Example deploy key\",\n    key: \"ssh-ed25519 AAAA...\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.DeployKey(\"example\",\n    project=\"example/deploying\",\n    title=\"Example deploy key\",\n    key=\"ssh-ed25519 AAAA...\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.DeployKey(\"example\", new()\n    {\n        Project = \"example/deploying\",\n        Title = \"Example deploy key\",\n        Key = \"ssh-ed25519 AAAA...\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewDeployKey(ctx, \"example\", \u0026gitlab.DeployKeyArgs{\n\t\t\tProject: pulumi.String(\"example/deploying\"),\n\t\t\tTitle:   pulumi.String(\"Example deploy key\"),\n\t\t\tKey:     pulumi.String(\"ssh-ed25519 AAAA...\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.DeployKey;\nimport com.pulumi.gitlab.DeployKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new DeployKey(\"example\", DeployKeyArgs.builder()\n            .project(\"example/deploying\")\n            .title(\"Example deploy key\")\n            .key(\"ssh-ed25519 AAAA...\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:DeployKey\n    properties:\n      project: example/deploying\n      title: Example deploy key\n      key: ssh-ed25519 AAAA...\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.\n\n`project_id` can be whatever the [get single project api][get_single_project] takes for\n\nits `:id` value, so for example:\n\n```sh\n$ pulumi import gitlab:index/deployKey:DeployKey test 1:3\n```\n\n```sh\n$ pulumi import gitlab:index/deployKey:DeployKey test richardc/example:3\n```\n\n",
+            "description": "The `gitlab.DeployKey` resource allows to manage the lifecycle of a deploy key.\n\n\u003e To enable an already existing deploy key for another project use the `gitlab.DeployKeyEnable` resource.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.DeployKey(\"example\", {\n    project: \"example/deploying\",\n    title: \"Example deploy key\",\n    key: \"ssh-ed25519 AAAA...\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.DeployKey(\"example\",\n    project=\"example/deploying\",\n    title=\"Example deploy key\",\n    key=\"ssh-ed25519 AAAA...\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.DeployKey(\"example\", new()\n    {\n        Project = \"example/deploying\",\n        Title = \"Example deploy key\",\n        Key = \"ssh-ed25519 AAAA...\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewDeployKey(ctx, \"example\", \u0026gitlab.DeployKeyArgs{\n\t\t\tProject: pulumi.String(\"example/deploying\"),\n\t\t\tTitle:   pulumi.String(\"Example deploy key\"),\n\t\t\tKey:     pulumi.String(\"ssh-ed25519 AAAA...\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.DeployKey;\nimport com.pulumi.gitlab.DeployKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new DeployKey(\"example\", DeployKeyArgs.builder()\n            .project(\"example/deploying\")\n            .title(\"Example deploy key\")\n            .key(\"ssh-ed25519 AAAA...\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:DeployKey\n    properties:\n      project: example/deploying\n      title: Example deploy key\n      key: ssh-ed25519 AAAA...\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.\n\n`project_id` can be whatever the [get single project api][get_single_project] takes for\n\nits `:id` value, so for example:\n\n```sh\n$ pulumi import gitlab:index/deployKey:DeployKey test 1:3\n```\n\n```sh\n$ pulumi import gitlab:index/deployKey:DeployKey test richardc/example:3\n```\n\n",
             "properties": {
                 "canPush": {
                     "type": "boolean",
@@ -13292,7 +13294,7 @@
             }
         },
         "gitlab:index/personalAccessToken:PersonalAccessToken": {
-            "description": "The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token for a specified user.\n\n\u003e This resource requires administration privileges.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.PersonalAccessToken(\"example\", {\n    userId: 25,\n    name: \"Example personal access token\",\n    expiresAt: \"2020-03-14\",\n    scopes: [\"api\"],\n});\nconst exampleProjectVariable = new gitlab.ProjectVariable(\"example\", {\n    project: exampleGitlabProject.id,\n    key: \"pat\",\n    value: example.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.PersonalAccessToken(\"example\",\n    user_id=25,\n    name=\"Example personal access token\",\n    expires_at=\"2020-03-14\",\n    scopes=[\"api\"])\nexample_project_variable = gitlab.ProjectVariable(\"example\",\n    project=example_gitlab_project[\"id\"],\n    key=\"pat\",\n    value=example.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.PersonalAccessToken(\"example\", new()\n    {\n        UserId = 25,\n        Name = \"Example personal access token\",\n        ExpiresAt = \"2020-03-14\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleProjectVariable = new GitLab.ProjectVariable(\"example\", new()\n    {\n        Project = exampleGitlabProject.Id,\n        Key = \"pat\",\n        Value = example.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewPersonalAccessToken(ctx, \"example\", \u0026gitlab.PersonalAccessTokenArgs{\n\t\t\tUserId:    pulumi.Int(25),\n\t\t\tName:      pulumi.String(\"Example personal access token\"),\n\t\t\tExpiresAt: pulumi.String(\"2020-03-14\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectVariable(ctx, \"example\", \u0026gitlab.ProjectVariableArgs{\n\t\t\tProject: pulumi.Any(exampleGitlabProject.Id),\n\t\t\tKey:     pulumi.String(\"pat\"),\n\t\t\tValue:   example.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.PersonalAccessToken;\nimport com.pulumi.gitlab.PersonalAccessTokenArgs;\nimport com.pulumi.gitlab.ProjectVariable;\nimport com.pulumi.gitlab.ProjectVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new PersonalAccessToken(\"example\", PersonalAccessTokenArgs.builder()\n            .userId(\"25\")\n            .name(\"Example personal access token\")\n            .expiresAt(\"2020-03-14\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleProjectVariable = new ProjectVariable(\"exampleProjectVariable\", ProjectVariableArgs.builder()\n            .project(exampleGitlabProject.id())\n            .key(\"pat\")\n            .value(example.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:PersonalAccessToken\n    properties:\n      userId: '25'\n      name: Example personal access token\n      expiresAt: 2020-03-14\n      scopes:\n        - api\n  exampleProjectVariable:\n    type: gitlab:ProjectVariable\n    name: example\n    properties:\n      project: ${exampleGitlabProject.id}\n      key: pat\n      value: ${example.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab Personal Access Token can be imported using a key composed of `\u003cuser-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example \"12345:1\"\n```\n\nNOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
+            "description": "The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.\n\n\u003e This resource requires administration privileges.\n\n\u003e Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.\n\n\u003e Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)\n\n\u003e Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.PersonalAccessToken(\"example\", {\n    userId: 25,\n    name: \"Example personal access token\",\n    expiresAt: \"2020-03-14\",\n    scopes: [\"api\"],\n});\nconst exampleProjectVariable = new gitlab.ProjectVariable(\"example\", {\n    project: exampleGitlabProject.id,\n    key: \"pat\",\n    value: example.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.PersonalAccessToken(\"example\",\n    user_id=25,\n    name=\"Example personal access token\",\n    expires_at=\"2020-03-14\",\n    scopes=[\"api\"])\nexample_project_variable = gitlab.ProjectVariable(\"example\",\n    project=example_gitlab_project[\"id\"],\n    key=\"pat\",\n    value=example.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.PersonalAccessToken(\"example\", new()\n    {\n        UserId = 25,\n        Name = \"Example personal access token\",\n        ExpiresAt = \"2020-03-14\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleProjectVariable = new GitLab.ProjectVariable(\"example\", new()\n    {\n        Project = exampleGitlabProject.Id,\n        Key = \"pat\",\n        Value = example.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewPersonalAccessToken(ctx, \"example\", \u0026gitlab.PersonalAccessTokenArgs{\n\t\t\tUserId:    pulumi.Int(25),\n\t\t\tName:      pulumi.String(\"Example personal access token\"),\n\t\t\tExpiresAt: pulumi.String(\"2020-03-14\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectVariable(ctx, \"example\", \u0026gitlab.ProjectVariableArgs{\n\t\t\tProject: pulumi.Any(exampleGitlabProject.Id),\n\t\t\tKey:     pulumi.String(\"pat\"),\n\t\t\tValue:   example.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.PersonalAccessToken;\nimport com.pulumi.gitlab.PersonalAccessTokenArgs;\nimport com.pulumi.gitlab.ProjectVariable;\nimport com.pulumi.gitlab.ProjectVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new PersonalAccessToken(\"example\", PersonalAccessTokenArgs.builder()\n            .userId(\"25\")\n            .name(\"Example personal access token\")\n            .expiresAt(\"2020-03-14\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleProjectVariable = new ProjectVariable(\"exampleProjectVariable\", ProjectVariableArgs.builder()\n            .project(exampleGitlabProject.id())\n            .key(\"pat\")\n            .value(example.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:PersonalAccessToken\n    properties:\n      userId: '25'\n      name: Example personal access token\n      expiresAt: 2020-03-14\n      scopes:\n        - api\n  exampleProjectVariable:\n    type: gitlab:ProjectVariable\n    name: example\n    properties:\n      project: ${exampleGitlabProject.id}\n      key: pat\n      value: ${example.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab Personal Access Token can be imported using a key composed of `\u003cuser-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example \"12345:1\"\n```\n\nNOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -13304,7 +13306,7 @@
                 },
                 "expiresAt": {
                     "type": "string",
-                    "description": "The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.\n"
+                    "description": "When the token will expire, YYYY-MM-DD format.\n"
                 },
                 "name": {
                     "type": "string",
@@ -13319,16 +13321,16 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.\n"
+                    "description": "The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`\n"
                 },
                 "token": {
                     "type": "string",
-                    "description": "The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.\n",
+                    "description": "The token of the personal access token. **Note**: the token is not available for imported resources.\n",
                     "secret": true
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The id of the user.\n"
+                    "description": "The ID of the user.\n"
                 }
             },
             "required": [
@@ -13344,26 +13346,22 @@
             "inputProperties": {
                 "expiresAt": {
                     "type": "string",
-                    "description": "The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.\n",
-                    "willReplaceOnChanges": true
+                    "description": "When the token will expire, YYYY-MM-DD format.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the personal access token.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the personal access token.\n"
                 },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`\n"
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The id of the user.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the user.\n"
                 }
             },
             "requiredInputs": [
@@ -13383,13 +13381,11 @@
                     },
                     "expiresAt": {
                         "type": "string",
-                        "description": "The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.\n",
-                        "willReplaceOnChanges": true
+                        "description": "When the token will expire, YYYY-MM-DD format.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the personal access token.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the personal access token.\n"
                     },
                     "revoked": {
                         "type": "boolean",
@@ -13400,18 +13396,16 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`\n"
                     },
                     "token": {
                         "type": "string",
-                        "description": "The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.\n",
+                        "description": "The token of the personal access token. **Note**: the token is not available for imported resources.\n",
                         "secret": true
                     },
                     "userId": {
                         "type": "integer",
-                        "description": "The id of the user.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the user.\n"
                     }
                 },
                 "type": "object"
@@ -17966,6 +17960,69 @@
                         "type": "integer",
                         "description": "The ID of a runner to enable for the project.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment": {
+            "description": "The `gitlab.ProjectSecurityPolicyAttachment` resource allows to attach a security policy project to a project.\n\n**Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#mutationsecuritypolicyprojectassign)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// This resource can be used to attach a security policy to a pre-existing project\nconst foo = new gitlab.ProjectSecurityPolicyAttachment(\"foo\", {\n    project: \"1234\",\n    policyProject: \"4567\",\n});\n// Or you can use Terraform to create a new project, add a policy to that project,\n// then attach that policy project to other projects.\nconst my_policy_project = new gitlab.Project(\"my-policy-project\", {name: \"security-policy-project\"});\nconst policy_yml = new gitlab.RepositoryFile(\"policy-yml\", {\n    project: my_policy_project.id,\n    filePath: \".gitlab/security-policies/my-policy.yml\",\n    branch: \"master\",\n    encoding: \"text\",\n    content: `---\napproval_policy:\n- name: test\ndescription: test\nenabled: true\nrules:\n- type: any_merge_request\n    branch_type: protected\n    commits: any\napproval_settings:\n    block_branch_modification: true\n    prevent_pushing_and_force_pushing: true\n    prevent_approval_by_author: true\n    prevent_approval_by_commit_author: true\n    remove_approvals_with_new_commit: true\n    require_password_to_approve: false\nfallback_behavior:\n    fail: closed\nactions:\n- type: send_bot_message\n    enabled: true\n`,\n});\nconst my_policy = new gitlab.index.ProjectSecurityPolicy(\"my-policy\", {\n    project: 1234,\n    policyProject: my_policy_project.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# This resource can be used to attach a security policy to a pre-existing project\nfoo = gitlab.ProjectSecurityPolicyAttachment(\"foo\",\n    project=\"1234\",\n    policy_project=\"4567\")\n# Or you can use Terraform to create a new project, add a policy to that project,\n# then attach that policy project to other projects.\nmy_policy_project = gitlab.Project(\"my-policy-project\", name=\"security-policy-project\")\npolicy_yml = gitlab.RepositoryFile(\"policy-yml\",\n    project=my_policy_project.id,\n    file_path=\".gitlab/security-policies/my-policy.yml\",\n    branch=\"master\",\n    encoding=\"text\",\n    content=\"\"\"---\napproval_policy:\n- name: test\ndescription: test\nenabled: true\nrules:\n- type: any_merge_request\n    branch_type: protected\n    commits: any\napproval_settings:\n    block_branch_modification: true\n    prevent_pushing_and_force_pushing: true\n    prevent_approval_by_author: true\n    prevent_approval_by_commit_author: true\n    remove_approvals_with_new_commit: true\n    require_password_to_approve: false\nfallback_behavior:\n    fail: closed\nactions:\n- type: send_bot_message\n    enabled: true\n\"\"\")\nmy_policy = gitlab.index.ProjectSecurityPolicy(\"my-policy\",\n    project=1234,\n    policy_project=my_policy_project.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // This resource can be used to attach a security policy to a pre-existing project\n    var foo = new GitLab.ProjectSecurityPolicyAttachment(\"foo\", new()\n    {\n        Project = \"1234\",\n        PolicyProject = \"4567\",\n    });\n\n    // Or you can use Terraform to create a new project, add a policy to that project,\n    // then attach that policy project to other projects.\n    var my_policy_project = new GitLab.Project(\"my-policy-project\", new()\n    {\n        Name = \"security-policy-project\",\n    });\n\n    var policy_yml = new GitLab.RepositoryFile(\"policy-yml\", new()\n    {\n        Project = my_policy_project.Id,\n        FilePath = \".gitlab/security-policies/my-policy.yml\",\n        Branch = \"master\",\n        Encoding = \"text\",\n        Content = @\"---\napproval_policy:\n- name: test\ndescription: test\nenabled: true\nrules:\n- type: any_merge_request\n    branch_type: protected\n    commits: any\napproval_settings:\n    block_branch_modification: true\n    prevent_pushing_and_force_pushing: true\n    prevent_approval_by_author: true\n    prevent_approval_by_commit_author: true\n    remove_approvals_with_new_commit: true\n    require_password_to_approve: false\nfallback_behavior:\n    fail: closed\nactions:\n- type: send_bot_message\n    enabled: true\n\",\n    });\n\n    var my_policy = new GitLab.Index.ProjectSecurityPolicy(\"my-policy\", new()\n    {\n        Project = 1234,\n        PolicyProject = my_policy_project.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// This resource can be used to attach a security policy to a pre-existing project\n\t\t_, err := gitlab.NewProjectSecurityPolicyAttachment(ctx, \"foo\", \u0026gitlab.ProjectSecurityPolicyAttachmentArgs{\n\t\t\tProject:       pulumi.String(\"1234\"),\n\t\t\tPolicyProject: pulumi.String(\"4567\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Or you can use Terraform to create a new project, add a policy to that project,\n\t\t// then attach that policy project to other projects.\n\t\t_, err = gitlab.NewProject(ctx, \"my-policy-project\", \u0026gitlab.ProjectArgs{\n\t\t\tName: pulumi.String(\"security-policy-project\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewRepositoryFile(ctx, \"policy-yml\", \u0026gitlab.RepositoryFileArgs{\n\t\t\tProject:  my_policy_project.ID(),\n\t\t\tFilePath: pulumi.String(\".gitlab/security-policies/my-policy.yml\"),\n\t\t\tBranch:   pulumi.String(\"master\"),\n\t\t\tEncoding: pulumi.String(\"text\"),\n\t\t\tContent: pulumi.String(`---\napproval_policy:\n- name: test\ndescription: test\nenabled: true\nrules:\n- type: any_merge_request\n    branch_type: protected\n    commits: any\napproval_settings:\n    block_branch_modification: true\n    prevent_pushing_and_force_pushing: true\n    prevent_approval_by_author: true\n    prevent_approval_by_commit_author: true\n    remove_approvals_with_new_commit: true\n    require_password_to_approve: false\nfallback_behavior:\n    fail: closed\nactions:\n- type: send_bot_message\n    enabled: true\n`),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectSecurityPolicy(ctx, \"my-policy\", \u0026gitlab.ProjectSecurityPolicyArgs{\n\t\t\tProject:       1234,\n\t\t\tPolicyProject: my_policy_project.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectSecurityPolicyAttachment;\nimport com.pulumi.gitlab.ProjectSecurityPolicyAttachmentArgs;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.RepositoryFile;\nimport com.pulumi.gitlab.RepositoryFileArgs;\nimport com.pulumi.gitlab.projectSecurityPolicy;\nimport com.pulumi.gitlab.ProjectSecurityPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // This resource can be used to attach a security policy to a pre-existing project\n        var foo = new ProjectSecurityPolicyAttachment(\"foo\", ProjectSecurityPolicyAttachmentArgs.builder()\n            .project(1234)\n            .policyProject(4567)\n            .build());\n\n        // Or you can use Terraform to create a new project, add a policy to that project,\n        // then attach that policy project to other projects.\n        var my_policy_project = new Project(\"my-policy-project\", ProjectArgs.builder()\n            .name(\"security-policy-project\")\n            .build());\n\n        var policy_yml = new RepositoryFile(\"policy-yml\", RepositoryFileArgs.builder()\n            .project(my_policy_project.id())\n            .filePath(\".gitlab/security-policies/my-policy.yml\")\n            .branch(\"master\")\n            .encoding(\"text\")\n            .content(\"\"\"\n---\napproval_policy:\n- name: test\ndescription: test\nenabled: true\nrules:\n- type: any_merge_request\n    branch_type: protected\n    commits: any\napproval_settings:\n    block_branch_modification: true\n    prevent_pushing_and_force_pushing: true\n    prevent_approval_by_author: true\n    prevent_approval_by_commit_author: true\n    remove_approvals_with_new_commit: true\n    require_password_to_approve: false\nfallback_behavior:\n    fail: closed\nactions:\n- type: send_bot_message\n    enabled: true\n            \"\"\")\n            .build());\n\n        var my_policy = new ProjectSecurityPolicy(\"my-policy\", ProjectSecurityPolicyArgs.builder()\n            .project(1234)\n            .policyProject(my_policy_project.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This resource can be used to attach a security policy to a pre-existing project\n  foo:\n    type: gitlab:ProjectSecurityPolicyAttachment\n    properties:\n      project: 1234\n      policyProject: 4567\n  # Or you can use Terraform to create a new project, add a policy to that project,\n  # then attach that policy project to other projects.\n  my-policy-project:\n    type: gitlab:Project\n    properties:\n      name: security-policy-project\n  policy-yml:\n    type: gitlab:RepositoryFile\n    properties:\n      project: ${[\"my-policy-project\"].id}\n      filePath: .gitlab/security-policies/my-policy.yml\n      branch: master\n      encoding: text\n      content: |\n        ---\n        approval_policy:\n        - name: test\n        description: test\n        enabled: true\n        rules:\n        - type: any_merge_request\n            branch_type: protected\n            commits: any\n        approval_settings:\n            block_branch_modification: true\n            prevent_pushing_and_force_pushing: true\n            prevent_approval_by_author: true\n            prevent_approval_by_commit_author: true\n            remove_approvals_with_new_commit: true\n            require_password_to_approve: false\n        fallback_behavior:\n            fail: closed\n        actions:\n        - type: send_bot_message\n            enabled: true\n  my-policy:\n    type: gitlab:projectSecurityPolicy\n    properties:\n      project: 1234\n      policyProject: ${[\"my-policy-project\"].id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGitLab project security policy attachments can be imported using an id made up of `project:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.\n\n```sh\n$ pulumi import gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment foo 1:2\n```\n\n",
+            "properties": {
+                "policyProject": {
+                    "type": "string",
+                    "description": "The ID or Full Path of the security policy project.\n"
+                },
+                "policyProjectGraphqlId": {
+                    "type": "string",
+                    "description": "The GraphQL ID of the security policy project.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The ID or Full Path of the project which will have the security policy project assigned to it.\n"
+                },
+                "projectGraphqlId": {
+                    "type": "string",
+                    "description": "The GraphQL ID of the project to which the security policty project will be attached.\n"
+                }
+            },
+            "required": [
+                "policyProject",
+                "policyProjectGraphqlId",
+                "project",
+                "projectGraphqlId"
+            ],
+            "inputProperties": {
+                "policyProject": {
+                    "type": "string",
+                    "description": "The ID or Full Path of the security policy project.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The ID or Full Path of the project which will have the security policy project assigned to it.\n"
+                }
+            },
+            "requiredInputs": [
+                "policyProject",
+                "project"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectSecurityPolicyAttachment resources.\n",
+                "properties": {
+                    "policyProject": {
+                        "type": "string",
+                        "description": "The ID or Full Path of the security policy project.\n"
+                    },
+                    "policyProjectGraphqlId": {
+                        "type": "string",
+                        "description": "The GraphQL ID of the security policy project.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The ID or Full Path of the project which will have the security policy project assigned to it.\n"
+                    },
+                    "projectGraphqlId": {
+                        "type": "string",
+                        "description": "The GraphQL ID of the project to which the security policty project will be attached.\n"
                     }
                 },
                 "type": "object"

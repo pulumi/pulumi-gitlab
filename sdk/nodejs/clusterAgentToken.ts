@@ -179,6 +179,8 @@ export class ClusterAgentToken extends pulumi.CustomResource {
             resourceInputs["tokenId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ClusterAgentToken.__pulumiType, name, resourceInputs, opts);
     }
 }

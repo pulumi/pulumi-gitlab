@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.DeployKey` resource allows to manage the lifecycle of a deploy key.
     /// 
-    /// &gt; To enable an already existing deploy key for another project use the `gitlab_project_deploy_key` resource.
+    /// &gt; To enable an already existing deploy key for another project use the `gitlab.DeployKeyEnable` resource.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html)
     /// 

@@ -17,11 +17,17 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token for a specified user.
+ * The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
  * 
  * &gt; This resource requires administration privileges.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
+ * &gt; Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it&#39;s recommended to use `plantimestamp()` or a static value instead.
+ * 
+ * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+ * 
+ * &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it&#39;s possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
+ * 
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
  * 
  * ## Example Usage
  * 
@@ -111,14 +117,14 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * When the token will expire, YYYY-MM-DD format.
      * 
      */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output<String> expiresAt;
 
     /**
-     * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * @return When the token will expire, YYYY-MM-DD format.
      * 
      */
     public Output<String> expiresAt() {
@@ -153,42 +159,42 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
         return this.revoked;
     }
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+     * The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
-     * @return The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+     * @return The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
      * 
      */
     public Output<List<String>> scopes() {
         return this.scopes;
     }
     /**
-     * The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+     * The token of the personal access token. **Note**: the token is not available for imported resources.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
-     * @return The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+     * @return The token of the personal access token. **Note**: the token is not available for imported resources.
      * 
      */
     public Output<String> token() {
         return this.token;
     }
     /**
-     * The id of the user.
+     * The ID of the user.
      * 
      */
     @Export(name="userId", refs={Integer.class}, tree="[0]")
     private Output<Integer> userId;
 
     /**
-     * @return The id of the user.
+     * @return The ID of the user.
      * 
      */
     public Output<Integer> userId() {
