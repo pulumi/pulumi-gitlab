@@ -159,6 +159,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectPushRules{}
 	case "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement":
 		r = &ProjectRunnerEnablement{}
+	case "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment":
+		r = &ProjectSecurityPolicyAttachment{}
 	case "gitlab:index/projectShareGroup:ProjectShareGroup":
 		r = &ProjectShareGroup{}
 	case "gitlab:index/projectTag:ProjectTag":
@@ -577,6 +579,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectRunnerEnablement",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectSecurityPolicyAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

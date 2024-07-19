@@ -560,6 +560,11 @@ export type ProjectRunnerEnablement = import("./projectRunnerEnablement").Projec
 export const ProjectRunnerEnablement: typeof import("./projectRunnerEnablement").ProjectRunnerEnablement = null as any;
 utilities.lazyLoad(exports, ["ProjectRunnerEnablement"], () => require("./projectRunnerEnablement"));
 
+export { ProjectSecurityPolicyAttachmentArgs, ProjectSecurityPolicyAttachmentState } from "./projectSecurityPolicyAttachment";
+export type ProjectSecurityPolicyAttachment = import("./projectSecurityPolicyAttachment").ProjectSecurityPolicyAttachment;
+export const ProjectSecurityPolicyAttachment: typeof import("./projectSecurityPolicyAttachment").ProjectSecurityPolicyAttachment = null as any;
+utilities.lazyLoad(exports, ["ProjectSecurityPolicyAttachment"], () => require("./projectSecurityPolicyAttachment"));
+
 export { ProjectShareGroupArgs, ProjectShareGroupState } from "./projectShareGroup";
 export type ProjectShareGroup = import("./projectShareGroup").ProjectShareGroup;
 export const ProjectShareGroup: typeof import("./projectShareGroup").ProjectShareGroup = null as any;
@@ -827,6 +832,8 @@ const _module = {
                 return new ProjectPushRules(name, <any>undefined, { urn })
             case "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement":
                 return new ProjectRunnerEnablement(name, <any>undefined, { urn })
+            case "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment":
+                return new ProjectSecurityPolicyAttachment(name, <any>undefined, { urn })
             case "gitlab:index/projectShareGroup:ProjectShareGroup":
                 return new ProjectShareGroup(name, <any>undefined, { urn })
             case "gitlab:index/projectTag:ProjectTag":
@@ -945,6 +952,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectMirror", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectProtectedEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectPushRules", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectRunnerEnablement", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectSecurityPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectTag", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectVariable", _module)

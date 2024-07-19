@@ -20,9 +20,9 @@ class PersonalAccessTokenArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PersonalAccessToken resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
-        :param pulumi.Input[int] user_id: The id of the user.
-        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[int] user_id: The ID of the user.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format.
         :param pulumi.Input[str] name: The name of the personal access token.
         """
         pulumi.set(__self__, "scopes", scopes)
@@ -36,7 +36,7 @@ class PersonalAccessTokenArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+        The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 
@@ -48,7 +48,7 @@ class PersonalAccessTokenArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[int]:
         """
-        The id of the user.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
@@ -60,7 +60,7 @@ class PersonalAccessTokenArgs:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        When the token will expire, YYYY-MM-DD format.
         """
         return pulumi.get(self, "expires_at")
 
@@ -96,12 +96,12 @@ class _PersonalAccessTokenState:
         Input properties used for looking up and filtering PersonalAccessToken resources.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format.
         :param pulumi.Input[str] name: The name of the personal access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
-        :param pulumi.Input[str] token: The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
-        :param pulumi.Input[int] user_id: The id of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[str] token: The token of the personal access token. **Note**: the token is not available for imported resources.
+        :param pulumi.Input[int] user_id: The ID of the user.
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -148,7 +148,7 @@ class _PersonalAccessTokenState:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        When the token will expire, YYYY-MM-DD format.
         """
         return pulumi.get(self, "expires_at")
 
@@ -184,7 +184,7 @@ class _PersonalAccessTokenState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+        The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 
@@ -196,7 +196,7 @@ class _PersonalAccessTokenState:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+        The token of the personal access token. **Note**: the token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
@@ -208,7 +208,7 @@ class _PersonalAccessTokenState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The id of the user.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
@@ -228,11 +228,17 @@ class PersonalAccessToken(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        The `PersonalAccessToken` resource allows to manage the lifecycle of a personal access token for a specified user.
+        The `PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
 
         > This resource requires administration privileges.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
+        > Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
+
+        > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+
+        > Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
+
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
 
         ## Example Usage
 
@@ -263,10 +269,10 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format.
         :param pulumi.Input[str] name: The name of the personal access token.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
-        :param pulumi.Input[int] user_id: The id of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[int] user_id: The ID of the user.
         """
         ...
     @overload
@@ -275,11 +281,17 @@ class PersonalAccessToken(pulumi.CustomResource):
                  args: PersonalAccessTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `PersonalAccessToken` resource allows to manage the lifecycle of a personal access token for a specified user.
+        The `PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
 
         > This resource requires administration privileges.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
+        > Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
+
+        > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+
+        > Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
+
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
 
         ## Example Usage
 
@@ -377,12 +389,12 @@ class PersonalAccessToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format.
         :param pulumi.Input[str] name: The name of the personal access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
-        :param pulumi.Input[str] token: The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
-        :param pulumi.Input[int] user_id: The id of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[str] token: The token of the personal access token. **Note**: the token is not available for imported resources.
+        :param pulumi.Input[int] user_id: The ID of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -418,7 +430,7 @@ class PersonalAccessToken(pulumi.CustomResource):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[str]:
         """
-        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        When the token will expire, YYYY-MM-DD format.
         """
         return pulumi.get(self, "expires_at")
 
@@ -442,7 +454,7 @@ class PersonalAccessToken(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Sequence[str]]:
         """
-        The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+        The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 
@@ -450,7 +462,7 @@ class PersonalAccessToken(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[str]:
         """
-        The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+        The token of the personal access token. **Note**: the token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
@@ -458,7 +470,7 @@ class PersonalAccessToken(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[int]:
         """
-        The id of the user.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 

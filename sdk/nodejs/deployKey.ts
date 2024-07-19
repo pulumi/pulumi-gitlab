@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.DeployKey` resource allows to manage the lifecycle of a deploy key.
  *
- * > To enable an already existing deploy key for another project use the `gitlabProjectDeployKey` resource.
+ * > To enable an already existing deploy key for another project use the `gitlab.DeployKeyEnable` resource.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html)
  *

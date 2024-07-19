@@ -127,6 +127,7 @@
         "projectProtectedEnvironment.ts",
         "projectPushRules.ts",
         "projectRunnerEnablement.ts",
+        "projectSecurityPolicyAttachment.ts",
         "projectShareGroup.ts",
         "projectTag.ts",
         "projectVariable.ts",

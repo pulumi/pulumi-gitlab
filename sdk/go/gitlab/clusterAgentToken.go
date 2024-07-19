@@ -140,6 +140,10 @@ func NewClusterAgentToken(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClusterAgentToken
 	err := ctx.RegisterResource("gitlab:index/clusterAgentToken:ClusterAgentToken", name, args, &resource, opts...)

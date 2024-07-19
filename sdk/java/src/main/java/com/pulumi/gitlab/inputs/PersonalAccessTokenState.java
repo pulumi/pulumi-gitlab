@@ -49,14 +49,14 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * When the token will expire, YYYY-MM-DD format.
      * 
      */
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+     * @return When the token will expire, YYYY-MM-DD format.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -94,14 +94,14 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+     * The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+     * @return The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -109,14 +109,14 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+     * The token of the personal access token. **Note**: the token is not available for imported resources.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+     * @return The token of the personal access token. **Note**: the token is not available for imported resources.
      * 
      */
     public Optional<Output<String>> token() {
@@ -124,14 +124,14 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The id of the user.
+     * The ID of the user.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The id of the user.
+     * @return The ID of the user.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -212,7 +212,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expiresAt The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expiresAt The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scopes The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+         * @param scopes The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scopes The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+         * @param scopes The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scopes The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`.
+         * @param scopes The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param token The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+         * @param token The token of the personal access token. **Note**: the token is not available for imported resources.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param token The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+         * @param token The token of the personal access token. **Note**: the token is not available for imported resources.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param userId The id of the user.
+         * @param userId The ID of the user.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param userId The id of the user.
+         * @param userId The ID of the user.
          * 
          * @return builder
          * 
