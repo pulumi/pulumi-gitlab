@@ -53,7 +53,7 @@ import (
 //				Project:       thisProject.ID(),
 //				FilePath:      pulumi.String("meow.txt"),
 //				Branch:        pulumi.String("main"),
-//				Content:       invokeBase64encode.Result,
+//				Content:       pulumi.String(invokeBase64encode.Result),
 //				AuthorEmail:   pulumi.String("terraform@example.com"),
 //				AuthorName:    pulumi.String("Terraform"),
 //				CommitMessage: pulumi.String("feature: add meow file"),
