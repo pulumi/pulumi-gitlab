@@ -1210,7 +1210,7 @@ class ProjectIssue(pulumi.CustomResource):
             references: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subscribed: Optional[pulumi.Input[bool]] = None,
-            task_completion_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueTaskCompletionStatusArgs']]]]] = None,
+            task_completion_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueTaskCompletionStatusArgs', 'ProjectIssueTaskCompletionStatusArgsDict']]]]] = None,
             time_estimate: Optional[pulumi.Input[int]] = None,
             title: Optional[pulumi.Input[str]] = None,
             total_time_spent: Optional[pulumi.Input[int]] = None,
@@ -1257,7 +1257,7 @@ class ProjectIssue(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] references: The references of the issue.
         :param pulumi.Input[str] state: The state of the issue. Valid values are: `opened`, `closed`.
         :param pulumi.Input[bool] subscribed: Whether the authenticated user is subscribed to the issue or not.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueTaskCompletionStatusArgs']]]] task_completion_statuses: The task completion status. It's always a one element list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueTaskCompletionStatusArgs', 'ProjectIssueTaskCompletionStatusArgsDict']]]] task_completion_statuses: The task completion status. It's always a one element list.
         :param pulumi.Input[int] time_estimate: The time estimate of the issue.
         :param pulumi.Input[str] title: The title of the issue.
         :param pulumi.Input[int] total_time_spent: The total time spent of the issue.

@@ -172,7 +172,7 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceVariable(String name) {
+    public InstanceVariable(java.lang.String name) {
         this(name, InstanceVariableArgs.Empty);
     }
     /**
@@ -180,7 +180,7 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceVariable(String name, InstanceVariableArgs args) {
+    public InstanceVariable(java.lang.String name, InstanceVariableArgs args) {
         this(name, args, null);
     }
     /**
@@ -189,15 +189,22 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceVariable(String name, InstanceVariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/instanceVariable:InstanceVariable", name, args == null ? InstanceVariableArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InstanceVariable(java.lang.String name, InstanceVariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/instanceVariable:InstanceVariable", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceVariable(String name, Output<String> id, @Nullable InstanceVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/instanceVariable:InstanceVariable", name, state, makeResourceOptions(options, id));
+    private InstanceVariable(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/instanceVariable:InstanceVariable", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InstanceVariableArgs makeArgs(InstanceVariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceVariableArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -213,7 +220,7 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceVariable get(String name, Output<String> id, @Nullable InstanceVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceVariable get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceVariable(name, id, state, options);
     }
 }

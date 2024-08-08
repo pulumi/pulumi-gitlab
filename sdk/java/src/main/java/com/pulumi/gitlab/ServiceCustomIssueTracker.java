@@ -180,7 +180,7 @@ public class ServiceCustomIssueTracker extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceCustomIssueTracker(String name) {
+    public ServiceCustomIssueTracker(java.lang.String name) {
         this(name, ServiceCustomIssueTrackerArgs.Empty);
     }
     /**
@@ -188,7 +188,7 @@ public class ServiceCustomIssueTracker extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceCustomIssueTracker(String name, ServiceCustomIssueTrackerArgs args) {
+    public ServiceCustomIssueTracker(java.lang.String name, ServiceCustomIssueTrackerArgs args) {
         this(name, args, null);
     }
     /**
@@ -197,15 +197,22 @@ public class ServiceCustomIssueTracker extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceCustomIssueTracker(String name, ServiceCustomIssueTrackerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker", name, args == null ? ServiceCustomIssueTrackerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceCustomIssueTracker(java.lang.String name, ServiceCustomIssueTrackerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceCustomIssueTracker(String name, Output<String> id, @Nullable ServiceCustomIssueTrackerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker", name, state, makeResourceOptions(options, id));
+    private ServiceCustomIssueTracker(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceCustomIssueTrackerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceCustomIssueTrackerArgs makeArgs(ServiceCustomIssueTrackerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceCustomIssueTrackerArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -221,7 +228,7 @@ public class ServiceCustomIssueTracker extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceCustomIssueTracker get(String name, Output<String> id, @Nullable ServiceCustomIssueTrackerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceCustomIssueTracker get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceCustomIssueTrackerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceCustomIssueTracker(name, id, state, options);
     }
 }

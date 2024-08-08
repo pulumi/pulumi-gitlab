@@ -118,10 +118,10 @@ class AwaitableGetProjectProtectedBranchResult(GetProjectProtectedBranchResult):
             push_access_levels=self.push_access_levels)
 
 
-def get_project_protected_branch(merge_access_levels: Optional[Sequence[pulumi.InputType['GetProjectProtectedBranchMergeAccessLevelArgs']]] = None,
+def get_project_protected_branch(merge_access_levels: Optional[Sequence[Union['GetProjectProtectedBranchMergeAccessLevelArgs', 'GetProjectProtectedBranchMergeAccessLevelArgsDict']]] = None,
                                  name: Optional[str] = None,
                                  project_id: Optional[str] = None,
-                                 push_access_levels: Optional[Sequence[pulumi.InputType['GetProjectProtectedBranchPushAccessLevelArgs']]] = None,
+                                 push_access_levels: Optional[Sequence[Union['GetProjectProtectedBranchPushAccessLevelArgs', 'GetProjectProtectedBranchPushAccessLevelArgsDict']]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectProtectedBranchResult:
     """
     The `get_project_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
@@ -129,10 +129,10 @@ def get_project_protected_branch(merge_access_levels: Optional[Sequence[pulumi.I
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
 
 
-    :param Sequence[pulumi.InputType['GetProjectProtectedBranchMergeAccessLevelArgs']] merge_access_levels: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+    :param Sequence[Union['GetProjectProtectedBranchMergeAccessLevelArgs', 'GetProjectProtectedBranchMergeAccessLevelArgsDict']] merge_access_levels: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
     :param str name: The name of the protected branch.
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
-    :param Sequence[pulumi.InputType['GetProjectProtectedBranchPushAccessLevelArgs']] push_access_levels: Array of access levels and user(s)/group(s) allowed to push to protected branch.
+    :param Sequence[Union['GetProjectProtectedBranchPushAccessLevelArgs', 'GetProjectProtectedBranchPushAccessLevelArgsDict']] push_access_levels: Array of access levels and user(s)/group(s) allowed to push to protected branch.
     """
     __args__ = dict()
     __args__['mergeAccessLevels'] = merge_access_levels
@@ -153,10 +153,10 @@ def get_project_protected_branch(merge_access_levels: Optional[Sequence[pulumi.I
 
 
 @_utilities.lift_output_func(get_project_protected_branch)
-def get_project_protected_branch_output(merge_access_levels: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetProjectProtectedBranchMergeAccessLevelArgs']]]]] = None,
+def get_project_protected_branch_output(merge_access_levels: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectProtectedBranchMergeAccessLevelArgs', 'GetProjectProtectedBranchMergeAccessLevelArgsDict']]]]] = None,
                                         name: Optional[pulumi.Input[str]] = None,
                                         project_id: Optional[pulumi.Input[str]] = None,
-                                        push_access_levels: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetProjectProtectedBranchPushAccessLevelArgs']]]]] = None,
+                                        push_access_levels: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectProtectedBranchPushAccessLevelArgs', 'GetProjectProtectedBranchPushAccessLevelArgsDict']]]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedBranchResult]:
     """
     The `get_project_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
@@ -164,9 +164,9 @@ def get_project_protected_branch_output(merge_access_levels: Optional[pulumi.Inp
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
 
 
-    :param Sequence[pulumi.InputType['GetProjectProtectedBranchMergeAccessLevelArgs']] merge_access_levels: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+    :param Sequence[Union['GetProjectProtectedBranchMergeAccessLevelArgs', 'GetProjectProtectedBranchMergeAccessLevelArgsDict']] merge_access_levels: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
     :param str name: The name of the protected branch.
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
-    :param Sequence[pulumi.InputType['GetProjectProtectedBranchPushAccessLevelArgs']] push_access_levels: Array of access levels and user(s)/group(s) allowed to push to protected branch.
+    :param Sequence[Union['GetProjectProtectedBranchPushAccessLevelArgs', 'GetProjectProtectedBranchPushAccessLevelArgsDict']] push_access_levels: Array of access levels and user(s)/group(s) allowed to push to protected branch.
     """
     ...

@@ -155,7 +155,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DeployToken(String name) {
+    public DeployToken(java.lang.String name) {
         this(name, DeployTokenArgs.Empty);
     }
     /**
@@ -163,7 +163,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DeployToken(String name, DeployTokenArgs args) {
+    public DeployToken(java.lang.String name, DeployTokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -172,15 +172,22 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DeployToken(String name, DeployTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/deployToken:DeployToken", name, args == null ? DeployTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DeployToken(java.lang.String name, DeployTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/deployToken:DeployToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DeployToken(String name, Output<String> id, @Nullable DeployTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/deployToken:DeployToken", name, state, makeResourceOptions(options, id));
+    private DeployToken(java.lang.String name, Output<java.lang.String> id, @Nullable DeployTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/deployToken:DeployToken", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DeployTokenArgs makeArgs(DeployTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DeployTokenArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -199,7 +206,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DeployToken get(String name, Output<String> id, @Nullable DeployTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DeployToken get(java.lang.String name, Output<java.lang.String> id, @Nullable DeployTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DeployToken(name, id, state, options);
     }
 }
