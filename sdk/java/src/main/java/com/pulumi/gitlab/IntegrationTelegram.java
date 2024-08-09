@@ -287,7 +287,7 @@ public class IntegrationTelegram extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IntegrationTelegram(String name) {
+    public IntegrationTelegram(java.lang.String name) {
         this(name, IntegrationTelegramArgs.Empty);
     }
     /**
@@ -295,7 +295,7 @@ public class IntegrationTelegram extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IntegrationTelegram(String name, IntegrationTelegramArgs args) {
+    public IntegrationTelegram(java.lang.String name, IntegrationTelegramArgs args) {
         this(name, args, null);
     }
     /**
@@ -304,15 +304,22 @@ public class IntegrationTelegram extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IntegrationTelegram(String name, IntegrationTelegramArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationTelegram:IntegrationTelegram", name, args == null ? IntegrationTelegramArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IntegrationTelegram(java.lang.String name, IntegrationTelegramArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationTelegram:IntegrationTelegram", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IntegrationTelegram(String name, Output<String> id, @Nullable IntegrationTelegramState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationTelegram:IntegrationTelegram", name, state, makeResourceOptions(options, id));
+    private IntegrationTelegram(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationTelegramState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationTelegram:IntegrationTelegram", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IntegrationTelegramArgs makeArgs(IntegrationTelegramArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IntegrationTelegramArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -331,7 +338,7 @@ public class IntegrationTelegram extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IntegrationTelegram get(String name, Output<String> id, @Nullable IntegrationTelegramState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IntegrationTelegram get(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationTelegramState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IntegrationTelegram(name, id, state, options);
     }
 }

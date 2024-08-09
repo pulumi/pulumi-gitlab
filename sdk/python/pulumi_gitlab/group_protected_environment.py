@@ -159,8 +159,8 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentApprovalRuleArgs']]]]] = None,
-                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
+                 approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
+                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -184,8 +184,8 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentApprovalRuleArgs']]]] approval_rules: Array of approval rules to deploy, with each described by a hash.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentDeployAccessLevelArgs']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
         """
@@ -228,8 +228,8 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentApprovalRuleArgs']]]]] = None,
-                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
+                 approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
+                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -261,8 +261,8 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentApprovalRuleArgs']]]]] = None,
-            deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
+            approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
+            deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             group: Optional[pulumi.Input[str]] = None) -> 'GroupProtectedEnvironment':
         """
@@ -272,8 +272,8 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentApprovalRuleArgs']]]] approval_rules: Array of approval rules to deploy, with each described by a hash.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupProtectedEnvironmentDeployAccessLevelArgs']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
         """

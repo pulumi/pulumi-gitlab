@@ -71,7 +71,7 @@ class AwaitableGetProjectProtectedBranchesResult(GetProjectProtectedBranchesResu
 
 
 def get_project_protected_branches(project_id: Optional[str] = None,
-                                   protected_branches: Optional[Sequence[pulumi.InputType['GetProjectProtectedBranchesProtectedBranchArgs']]] = None,
+                                   protected_branches: Optional[Sequence[Union['GetProjectProtectedBranchesProtectedBranchArgs', 'GetProjectProtectedBranchesProtectedBranchArgsDict']]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectProtectedBranchesResult:
     """
     The `get_project_protected_branches` data source allows details of the protected branches of a given project.
@@ -80,7 +80,7 @@ def get_project_protected_branches(project_id: Optional[str] = None,
 
 
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
-    :param Sequence[pulumi.InputType['GetProjectProtectedBranchesProtectedBranchArgs']] protected_branches: A list of protected branches, as defined below.
+    :param Sequence[Union['GetProjectProtectedBranchesProtectedBranchArgs', 'GetProjectProtectedBranchesProtectedBranchArgsDict']] protected_branches: A list of protected branches, as defined below.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
@@ -96,7 +96,7 @@ def get_project_protected_branches(project_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_project_protected_branches)
 def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]] = None,
-                                          protected_branches: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetProjectProtectedBranchesProtectedBranchArgs']]]]] = None,
+                                          protected_branches: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectProtectedBranchesProtectedBranchArgs', 'GetProjectProtectedBranchesProtectedBranchArgsDict']]]]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedBranchesResult]:
     """
     The `get_project_protected_branches` data source allows details of the protected branches of a given project.
@@ -105,6 +105,6 @@ def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]
 
 
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
-    :param Sequence[pulumi.InputType['GetProjectProtectedBranchesProtectedBranchArgs']] protected_branches: A list of protected branches, as defined below.
+    :param Sequence[Union['GetProjectProtectedBranchesProtectedBranchArgs', 'GetProjectProtectedBranchesProtectedBranchArgsDict']] protected_branches: A list of protected branches, as defined below.
     """
     ...

@@ -369,9 +369,9 @@ class BranchProtection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_force_push: Optional[pulumi.Input[bool]] = None,
-                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToMergeArgs']]]]] = None,
-                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]]] = None,
-                 allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToUnprotectArgs']]]]] = None,
+                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
+                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
+                 allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
                  code_owner_approval_required: Optional[pulumi.Input[bool]] = None,
                  merge_access_level: Optional[pulumi.Input[str]] = None,
@@ -395,34 +395,34 @@ class BranchProtection(pulumi.CustomResource):
             allow_force_push=True,
             code_owner_approval_required=True,
             allowed_to_pushes=[
-                gitlab.BranchProtectionAllowedToPushArgs(
-                    user_id=5,
-                ),
-                gitlab.BranchProtectionAllowedToPushArgs(
-                    user_id=521,
-                ),
+                {
+                    "user_id": 5,
+                },
+                {
+                    "user_id": 521,
+                },
             ],
             allowed_to_merges=[
-                gitlab.BranchProtectionAllowedToMergeArgs(
-                    user_id=15,
-                ),
-                gitlab.BranchProtectionAllowedToMergeArgs(
-                    user_id=37,
-                ),
+                {
+                    "user_id": 15,
+                },
+                {
+                    "user_id": 37,
+                },
             ],
             allowed_to_unprotects=[
-                gitlab.BranchProtectionAllowedToUnprotectArgs(
-                    user_id=15,
-                ),
-                gitlab.BranchProtectionAllowedToUnprotectArgs(
-                    group_id=42,
-                ),
+                {
+                    "user_id": 15,
+                },
+                {
+                    "group_id": 42,
+                },
             ])
         # Example using dynamic block
         main = gitlab.BranchProtection("main",
-            allowed_to_pushes=[gitlab.BranchProtectionAllowedToPushArgs(
-                user_id=entry["value"],
-            ) for entry in [{"key": k, "value": v} for k, v in [
+            allowed_to_pushes=[{
+                "user_id": entry["value"],
+            } for entry in [{"key": k, "value": v} for k, v in [
                 50,
                 55,
                 60,
@@ -445,9 +445,9 @@ class BranchProtection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_force_push: Can be set to true to allow users with push access to force push.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToMergeArgs']]]] allowed_to_merges: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]] allowed_to_pushes: Array of access levels and user(s)/group(s) allowed to push to protected branch.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToUnprotectArgs']]]] allowed_to_unprotects: Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]] allowed_to_merges: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]] allowed_to_pushes: Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]] allowed_to_unprotects: Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
         :param pulumi.Input[str] branch: Name of the branch.
         :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
         :param pulumi.Input[str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
@@ -477,34 +477,34 @@ class BranchProtection(pulumi.CustomResource):
             allow_force_push=True,
             code_owner_approval_required=True,
             allowed_to_pushes=[
-                gitlab.BranchProtectionAllowedToPushArgs(
-                    user_id=5,
-                ),
-                gitlab.BranchProtectionAllowedToPushArgs(
-                    user_id=521,
-                ),
+                {
+                    "user_id": 5,
+                },
+                {
+                    "user_id": 521,
+                },
             ],
             allowed_to_merges=[
-                gitlab.BranchProtectionAllowedToMergeArgs(
-                    user_id=15,
-                ),
-                gitlab.BranchProtectionAllowedToMergeArgs(
-                    user_id=37,
-                ),
+                {
+                    "user_id": 15,
+                },
+                {
+                    "user_id": 37,
+                },
             ],
             allowed_to_unprotects=[
-                gitlab.BranchProtectionAllowedToUnprotectArgs(
-                    user_id=15,
-                ),
-                gitlab.BranchProtectionAllowedToUnprotectArgs(
-                    group_id=42,
-                ),
+                {
+                    "user_id": 15,
+                },
+                {
+                    "group_id": 42,
+                },
             ])
         # Example using dynamic block
         main = gitlab.BranchProtection("main",
-            allowed_to_pushes=[gitlab.BranchProtectionAllowedToPushArgs(
-                user_id=entry["value"],
-            ) for entry in [{"key": k, "value": v} for k, v in [
+            allowed_to_pushes=[{
+                "user_id": entry["value"],
+            } for entry in [{"key": k, "value": v} for k, v in [
                 50,
                 55,
                 60,
@@ -540,9 +540,9 @@ class BranchProtection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_force_push: Optional[pulumi.Input[bool]] = None,
-                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToMergeArgs']]]]] = None,
-                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]]] = None,
-                 allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToUnprotectArgs']]]]] = None,
+                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
+                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
+                 allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
                  code_owner_approval_required: Optional[pulumi.Input[bool]] = None,
                  merge_access_level: Optional[pulumi.Input[str]] = None,
@@ -584,9 +584,9 @@ class BranchProtection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_force_push: Optional[pulumi.Input[bool]] = None,
-            allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToMergeArgs']]]]] = None,
-            allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]]] = None,
-            allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToUnprotectArgs']]]]] = None,
+            allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
+            allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
+            allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
             branch: Optional[pulumi.Input[str]] = None,
             branch_protection_id: Optional[pulumi.Input[int]] = None,
             code_owner_approval_required: Optional[pulumi.Input[bool]] = None,
@@ -602,9 +602,9 @@ class BranchProtection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_force_push: Can be set to true to allow users with push access to force push.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToMergeArgs']]]] allowed_to_merges: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]] allowed_to_pushes: Array of access levels and user(s)/group(s) allowed to push to protected branch.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToUnprotectArgs']]]] allowed_to_unprotects: Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]] allowed_to_merges: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]] allowed_to_pushes: Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]] allowed_to_unprotects: Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
         :param pulumi.Input[str] branch: Name of the branch.
         :param pulumi.Input[int] branch_protection_id: The ID of the branch protection (not the branch name).
         :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.

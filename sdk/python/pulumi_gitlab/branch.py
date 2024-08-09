@@ -385,7 +385,7 @@ class Branch(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             can_push: Optional[pulumi.Input[bool]] = None,
-            commits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchCommitArgs']]]]] = None,
+            commits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchCommitArgs', 'BranchCommitArgsDict']]]]] = None,
             default: Optional[pulumi.Input[bool]] = None,
             developer_can_merge: Optional[pulumi.Input[bool]] = None,
             developer_can_push: Optional[pulumi.Input[bool]] = None,
@@ -403,7 +403,7 @@ class Branch(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_push: Bool, true if you can push to the branch.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchCommitArgs']]]] commits: The commit associated with the branch ref.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchCommitArgs', 'BranchCommitArgsDict']]]] commits: The commit associated with the branch ref.
         :param pulumi.Input[bool] default: Bool, true if branch is the default branch for the project.
         :param pulumi.Input[bool] developer_can_merge: Bool, true if developer level access allows to merge branch.
         :param pulumi.Input[bool] developer_can_push: Bool, true if developer level access allows git push.

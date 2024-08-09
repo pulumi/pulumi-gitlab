@@ -356,13 +356,13 @@ class ProjectTag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            commits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagCommitArgs']]]]] = None,
+            commits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagCommitArgs', 'ProjectTagCommitArgsDict']]]]] = None,
             message: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protected: Optional[pulumi.Input[bool]] = None,
             ref: Optional[pulumi.Input[str]] = None,
-            releases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagReleaseArgs']]]]] = None,
+            releases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagReleaseArgs', 'ProjectTagReleaseArgsDict']]]]] = None,
             target: Optional[pulumi.Input[str]] = None) -> 'ProjectTag':
         """
         Get an existing ProjectTag resource's state with the given name, id, and optional extra
@@ -371,13 +371,13 @@ class ProjectTag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagCommitArgs']]]] commits: The commit associated with the tag.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagCommitArgs', 'ProjectTagCommitArgsDict']]]] commits: The commit associated with the tag.
         :param pulumi.Input[str] message: The message of the annotated tag.
         :param pulumi.Input[str] name: The name of a tag.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[bool] protected: Bool, true if tag has tag protection.
         :param pulumi.Input[str] ref: Create tag using commit SHA, another tag name, or branch name. This attribute is not available for imported resources.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagReleaseArgs']]]] releases: The release associated with the tag.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagReleaseArgs', 'ProjectTagReleaseArgsDict']]]] releases: The release associated with the tag.
         :param pulumi.Input[str] target: The unique id assigned to the commit by Gitlab.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

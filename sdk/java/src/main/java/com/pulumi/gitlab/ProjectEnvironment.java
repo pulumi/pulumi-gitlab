@@ -197,7 +197,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectEnvironment(String name) {
+    public ProjectEnvironment(java.lang.String name) {
         this(name, ProjectEnvironmentArgs.Empty);
     }
     /**
@@ -205,7 +205,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectEnvironment(String name, ProjectEnvironmentArgs args) {
+    public ProjectEnvironment(java.lang.String name, ProjectEnvironmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -214,15 +214,22 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectEnvironment(String name, ProjectEnvironmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectEnvironment:ProjectEnvironment", name, args == null ? ProjectEnvironmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectEnvironment(java.lang.String name, ProjectEnvironmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectEnvironment:ProjectEnvironment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectEnvironment(String name, Output<String> id, @Nullable ProjectEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectEnvironment:ProjectEnvironment", name, state, makeResourceOptions(options, id));
+    private ProjectEnvironment(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectEnvironment:ProjectEnvironment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectEnvironmentArgs makeArgs(ProjectEnvironmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectEnvironmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -238,7 +245,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectEnvironment get(String name, Output<String> id, @Nullable ProjectEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectEnvironment get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectEnvironment(name, id, state, options);
     }
 }

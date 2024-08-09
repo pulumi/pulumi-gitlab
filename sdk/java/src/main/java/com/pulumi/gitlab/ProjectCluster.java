@@ -314,7 +314,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectCluster(String name) {
+    public ProjectCluster(java.lang.String name) {
         this(name, ProjectClusterArgs.Empty);
     }
     /**
@@ -322,7 +322,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectCluster(String name, ProjectClusterArgs args) {
+    public ProjectCluster(java.lang.String name, ProjectClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -331,15 +331,22 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectCluster(String name, ProjectClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectCluster:ProjectCluster", name, args == null ? ProjectClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectCluster(java.lang.String name, ProjectClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectCluster:ProjectCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectCluster(String name, Output<String> id, @Nullable ProjectClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectCluster:ProjectCluster", name, state, makeResourceOptions(options, id));
+    private ProjectCluster(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectCluster:ProjectCluster", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectClusterArgs makeArgs(ProjectClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectClusterArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -358,7 +365,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectCluster get(String name, Output<String> id, @Nullable ProjectClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectCluster(name, id, state, options);
     }
 }

@@ -259,7 +259,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignee_id: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueBoardListArgs']]]]] = None,
+                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
                  milestone_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -284,7 +284,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] assignee_id: The assignee the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: The list of label names which the board should be scoped to. Requires a GitLab EE license.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueBoardListArgs']]]] lists: The list of issue board lists
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]] lists: The list of issue board lists
         :param pulumi.Input[int] milestone_id: The milestone the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[str] name: The name of the board.
         :param pulumi.Input[str] project: The ID or full path of the project maintained by the authenticated user.
@@ -328,7 +328,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignee_id: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueBoardListArgs']]]]] = None,
+                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
                  milestone_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -363,7 +363,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             assignee_id: Optional[pulumi.Input[int]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueBoardListArgs']]]]] = None,
+            lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
             milestone_id: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -377,7 +377,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] assignee_id: The assignee the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: The list of label names which the board should be scoped to. Requires a GitLab EE license.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueBoardListArgs']]]] lists: The list of issue board lists
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]] lists: The list of issue board lists
         :param pulumi.Input[int] milestone_id: The milestone the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[str] name: The name of the board.
         :param pulumi.Input[str] project: The ID or full path of the project maintained by the authenticated user.
