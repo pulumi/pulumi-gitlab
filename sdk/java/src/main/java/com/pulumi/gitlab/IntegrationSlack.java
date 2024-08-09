@@ -437,7 +437,7 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IntegrationSlack(String name) {
+    public IntegrationSlack(java.lang.String name) {
         this(name, IntegrationSlackArgs.Empty);
     }
     /**
@@ -445,7 +445,7 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IntegrationSlack(String name, IntegrationSlackArgs args) {
+    public IntegrationSlack(java.lang.String name, IntegrationSlackArgs args) {
         this(name, args, null);
     }
     /**
@@ -454,15 +454,22 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IntegrationSlack(String name, IntegrationSlackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationSlack:IntegrationSlack", name, args == null ? IntegrationSlackArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IntegrationSlack(java.lang.String name, IntegrationSlackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationSlack:IntegrationSlack", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IntegrationSlack(String name, Output<String> id, @Nullable IntegrationSlackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationSlack:IntegrationSlack", name, state, makeResourceOptions(options, id));
+    private IntegrationSlack(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationSlackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationSlack:IntegrationSlack", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IntegrationSlackArgs makeArgs(IntegrationSlackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IntegrationSlackArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -478,7 +485,7 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IntegrationSlack get(String name, Output<String> id, @Nullable IntegrationSlackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IntegrationSlack get(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationSlackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IntegrationSlack(name, id, state, options);
     }
 }

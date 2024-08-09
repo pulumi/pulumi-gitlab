@@ -3170,7 +3170,7 @@ class Project(pulumi.CustomResource):
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[bool]] = None,
-                 container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
+                 container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
@@ -3217,7 +3217,7 @@ class Project(pulumi.CustomResource):
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
                  public_jobs: Optional[pulumi.Input[bool]] = None,
-                 push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
+                 push_rules: Optional[pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
                  releases_access_level: Optional[pulumi.Input[str]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  repository_access_level: Optional[pulumi.Input[str]] = None,
@@ -3287,7 +3287,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
-        :param pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+        :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
@@ -3334,7 +3334,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[bool] public_jobs: If true, jobs can be viewed by non-project members.
-        :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
+        :param pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']] push_rules: Push rules for the project.
         :param pulumi.Input[str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3424,7 +3424,7 @@ class Project(pulumi.CustomResource):
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[bool]] = None,
-                 container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
+                 container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
@@ -3471,7 +3471,7 @@ class Project(pulumi.CustomResource):
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
                  public_jobs: Optional[pulumi.Input[bool]] = None,
-                 push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
+                 push_rules: Optional[pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
                  releases_access_level: Optional[pulumi.Input[str]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  repository_access_level: Optional[pulumi.Input[str]] = None,
@@ -3637,7 +3637,7 @@ class Project(pulumi.CustomResource):
             ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
             ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
             ci_separated_caches: Optional[pulumi.Input[bool]] = None,
-            container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
+            container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
             container_registry_access_level: Optional[pulumi.Input[str]] = None,
             container_registry_enabled: Optional[pulumi.Input[bool]] = None,
             default_branch: Optional[pulumi.Input[str]] = None,
@@ -3687,7 +3687,7 @@ class Project(pulumi.CustomResource):
             printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
             public_builds: Optional[pulumi.Input[bool]] = None,
             public_jobs: Optional[pulumi.Input[bool]] = None,
-            push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
+            push_rules: Optional[pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
             releases_access_level: Optional[pulumi.Input[str]] = None,
             remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
             repository_access_level: Optional[pulumi.Input[str]] = None,
@@ -3746,7 +3746,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
-        :param pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+        :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
@@ -3796,7 +3796,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[bool] public_jobs: If true, jobs can be viewed by non-project members.
-        :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
+        :param pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']] push_rules: Push rules for the project.
         :param pulumi.Input[str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.

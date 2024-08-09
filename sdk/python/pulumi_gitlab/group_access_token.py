@@ -308,7 +308,7 @@ class GroupAccessToken(pulumi.CustomResource):
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 rotation_configuration: Optional[pulumi.Input[pulumi.InputType['GroupAccessTokenRotationConfigurationArgs']]] = None,
+                 rotation_configuration: Optional[pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -356,7 +356,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format.
         :param pulumi.Input[str] group: The ID or full path of the group.
         :param pulumi.Input[str] name: The name of the group access token.
-        :param pulumi.Input[pulumi.InputType['GroupAccessTokenRotationConfigurationArgs']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         """
         ...
@@ -423,7 +423,7 @@ class GroupAccessToken(pulumi.CustomResource):
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 rotation_configuration: Optional[pulumi.Input[pulumi.InputType['GroupAccessTokenRotationConfigurationArgs']]] = None,
+                 rotation_configuration: Optional[pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -468,7 +468,7 @@ class GroupAccessToken(pulumi.CustomResource):
             group: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             revoked: Optional[pulumi.Input[bool]] = None,
-            rotation_configuration: Optional[pulumi.Input[pulumi.InputType['GroupAccessTokenRotationConfigurationArgs']]] = None,
+            rotation_configuration: Optional[pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']]] = None,
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             token: Optional[pulumi.Input[str]] = None,
             user_id: Optional[pulumi.Input[int]] = None) -> 'GroupAccessToken':
@@ -486,7 +486,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] group: The ID or full path of the group.
         :param pulumi.Input[str] name: The name of the group access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
-        :param pulumi.Input[pulumi.InputType['GroupAccessTokenRotationConfigurationArgs']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         :param pulumi.Input[str] token: The token of the group access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The user_id associated to the token.
