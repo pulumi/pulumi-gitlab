@@ -130,7 +130,7 @@ class GroupEpicBoard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupEpicBoardListArgs']]]]] = None,
+                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -161,9 +161,9 @@ class GroupEpicBoard(pulumi.CustomResource):
         epic_board = gitlab.GroupEpicBoard("epic_board",
             name="epic board 6",
             group=example.path,
-            lists=[gitlab.GroupEpicBoardListArgs(
-                label_id=label1.label_id,
-            )])
+            lists=[{
+                "label_id": label1.label_id,
+            }])
         ```
 
         ## Import
@@ -177,7 +177,7 @@ class GroupEpicBoard(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group owned by the authenticated user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupEpicBoardListArgs']]]] lists: The list of epic board lists.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]] lists: The list of epic board lists.
         :param pulumi.Input[str] name: The name of the board.
         """
         ...
@@ -214,9 +214,9 @@ class GroupEpicBoard(pulumi.CustomResource):
         epic_board = gitlab.GroupEpicBoard("epic_board",
             name="epic board 6",
             group=example.path,
-            lists=[gitlab.GroupEpicBoardListArgs(
-                label_id=label1.label_id,
-            )])
+            lists=[{
+                "label_id": label1.label_id,
+            }])
         ```
 
         ## Import
@@ -243,7 +243,7 @@ class GroupEpicBoard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupEpicBoardListArgs']]]]] = None,
+                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -270,7 +270,7 @@ class GroupEpicBoard(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             group: Optional[pulumi.Input[str]] = None,
-            lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupEpicBoardListArgs']]]]] = None,
+            lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'GroupEpicBoard':
         """
         Get an existing GroupEpicBoard resource's state with the given name, id, and optional extra
@@ -280,7 +280,7 @@ class GroupEpicBoard(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group owned by the authenticated user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupEpicBoardListArgs']]]] lists: The list of epic board lists.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]] lists: The list of epic board lists.
         :param pulumi.Input[str] name: The name of the board.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -127,7 +127,7 @@ class AwaitableGetReleaseResult(GetReleaseResult):
             tag_name=self.tag_name)
 
 
-def get_release(assets: Optional[pulumi.InputType['GetReleaseAssetsArgs']] = None,
+def get_release(assets: Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict']] = None,
                 project_id: Optional[str] = None,
                 tag_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReleaseResult:
@@ -148,7 +148,7 @@ def get_release(assets: Optional[pulumi.InputType['GetReleaseAssetsArgs']] = Non
     ```
 
 
-    :param pulumi.InputType['GetReleaseAssetsArgs'] assets: The assets for a release
+    :param Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict'] assets: The assets for a release
     :param str project_id: The ID or URL-encoded path of the project.
     :param str tag_name: The Git tag the release is associated with.
     """
@@ -171,7 +171,7 @@ def get_release(assets: Optional[pulumi.InputType['GetReleaseAssetsArgs']] = Non
 
 
 @_utilities.lift_output_func(get_release)
-def get_release_output(assets: Optional[pulumi.Input[Optional[pulumi.InputType['GetReleaseAssetsArgs']]]] = None,
+def get_release_output(assets: Optional[pulumi.Input[Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict']]]] = None,
                        project_id: Optional[pulumi.Input[str]] = None,
                        tag_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReleaseResult]:
@@ -192,7 +192,7 @@ def get_release_output(assets: Optional[pulumi.Input[Optional[pulumi.InputType['
     ```
 
 
-    :param pulumi.InputType['GetReleaseAssetsArgs'] assets: The assets for a release
+    :param Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict'] assets: The assets for a release
     :param str project_id: The ID or URL-encoded path of the project.
     :param str tag_name: The Git tag the release is associated with.
     """
