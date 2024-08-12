@@ -210,7 +210,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ReleaseLink(String name) {
+    public ReleaseLink(java.lang.String name) {
         this(name, ReleaseLinkArgs.Empty);
     }
     /**
@@ -218,7 +218,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ReleaseLink(String name, ReleaseLinkArgs args) {
+    public ReleaseLink(java.lang.String name, ReleaseLinkArgs args) {
         this(name, args, null);
     }
     /**
@@ -227,15 +227,22 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ReleaseLink(String name, ReleaseLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/releaseLink:ReleaseLink", name, args == null ? ReleaseLinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ReleaseLink(java.lang.String name, ReleaseLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/releaseLink:ReleaseLink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ReleaseLink(String name, Output<String> id, @Nullable ReleaseLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/releaseLink:ReleaseLink", name, state, makeResourceOptions(options, id));
+    private ReleaseLink(java.lang.String name, Output<java.lang.String> id, @Nullable ReleaseLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/releaseLink:ReleaseLink", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ReleaseLinkArgs makeArgs(ReleaseLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReleaseLinkArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -251,7 +258,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ReleaseLink get(String name, Output<String> id, @Nullable ReleaseLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ReleaseLink get(java.lang.String name, Output<java.lang.String> id, @Nullable ReleaseLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ReleaseLink(name, id, state, options);
     }
 }

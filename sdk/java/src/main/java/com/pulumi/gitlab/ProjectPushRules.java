@@ -35,15 +35,15 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sample = new ProjectPushRules("sample", ProjectPushRulesArgs.builder()
  *             .project(42)
- *             .authorEmailRegex("{@literal @}gitlab.com$")
+ *             .authorEmailRegex("}{@literal @}{@code gitlab.com$")
  *             .branchNameRegex("(feat|fix)\\/*")
  *             .commitCommitterCheck(true)
  *             .commitCommitterNameCheck(true)
@@ -57,8 +57,8 @@ import javax.annotation.Nullable;
  *             .rejectUnsignedCommits(false)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -261,7 +261,7 @@ public class ProjectPushRules extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectPushRules(String name) {
+    public ProjectPushRules(java.lang.String name) {
         this(name, ProjectPushRulesArgs.Empty);
     }
     /**
@@ -269,7 +269,7 @@ public class ProjectPushRules extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectPushRules(String name, ProjectPushRulesArgs args) {
+    public ProjectPushRules(java.lang.String name, ProjectPushRulesArgs args) {
         this(name, args, null);
     }
     /**
@@ -278,15 +278,22 @@ public class ProjectPushRules extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectPushRules(String name, ProjectPushRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectPushRules:ProjectPushRules", name, args == null ? ProjectPushRulesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectPushRules(java.lang.String name, ProjectPushRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectPushRules:ProjectPushRules", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectPushRules(String name, Output<String> id, @Nullable ProjectPushRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectPushRules:ProjectPushRules", name, state, makeResourceOptions(options, id));
+    private ProjectPushRules(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectPushRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectPushRules:ProjectPushRules", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectPushRulesArgs makeArgs(ProjectPushRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectPushRulesArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -302,7 +309,7 @@ public class ProjectPushRules extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectPushRules get(String name, Output<String> id, @Nullable ProjectPushRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectPushRules get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectPushRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectPushRules(name, id, state, options);
     }
 }

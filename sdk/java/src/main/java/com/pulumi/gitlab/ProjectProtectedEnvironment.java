@@ -100,7 +100,7 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectProtectedEnvironment(String name) {
+    public ProjectProtectedEnvironment(java.lang.String name) {
         this(name, ProjectProtectedEnvironmentArgs.Empty);
     }
     /**
@@ -108,7 +108,7 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectProtectedEnvironment(String name, ProjectProtectedEnvironmentArgs args) {
+    public ProjectProtectedEnvironment(java.lang.String name, ProjectProtectedEnvironmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -117,15 +117,22 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectProtectedEnvironment(String name, ProjectProtectedEnvironmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment", name, args == null ? ProjectProtectedEnvironmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectProtectedEnvironment(java.lang.String name, ProjectProtectedEnvironmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectProtectedEnvironment(String name, Output<String> id, @Nullable ProjectProtectedEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment", name, state, makeResourceOptions(options, id));
+    private ProjectProtectedEnvironment(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectProtectedEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectProtectedEnvironmentArgs makeArgs(ProjectProtectedEnvironmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectProtectedEnvironmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -141,7 +148,7 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectProtectedEnvironment get(String name, Output<String> id, @Nullable ProjectProtectedEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectProtectedEnvironment get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectProtectedEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectProtectedEnvironment(name, id, state, options);
     }
 }

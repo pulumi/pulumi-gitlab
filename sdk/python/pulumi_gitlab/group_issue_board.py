@@ -195,7 +195,7 @@ class GroupIssueBoard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupIssueBoardListArgs']]]]] = None,
+                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
                  milestone_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -210,7 +210,7 @@ class GroupIssueBoard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group owned by the authenticated user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: The list of label names which the board should be scoped to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupIssueBoardListArgs']]]] lists: The list of issue board lists.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]] lists: The list of issue board lists.
         :param pulumi.Input[int] milestone_id: The milestone the board should be scoped to.
         :param pulumi.Input[str] name: The name of the board.
         """
@@ -244,7 +244,7 @@ class GroupIssueBoard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupIssueBoardListArgs']]]]] = None,
+                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
                  milestone_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -275,7 +275,7 @@ class GroupIssueBoard(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             group: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupIssueBoardListArgs']]]]] = None,
+            lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
             milestone_id: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'GroupIssueBoard':
         """
@@ -287,7 +287,7 @@ class GroupIssueBoard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group owned by the authenticated user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: The list of label names which the board should be scoped to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupIssueBoardListArgs']]]] lists: The list of issue board lists.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]] lists: The list of issue board lists.
         :param pulumi.Input[int] milestone_id: The milestone the board should be scoped to.
         :param pulumi.Input[str] name: The name of the board.
         """
