@@ -7,14 +7,14 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.gitlab.ProjectSecurityPolicyAttachmentArgs;
+import com.pulumi.gitlab.GroupSecurityPolicyAttachmentArgs;
 import com.pulumi.gitlab.Utilities;
-import com.pulumi.gitlab.inputs.ProjectSecurityPolicyAttachmentState;
+import com.pulumi.gitlab.inputs.GroupSecurityPolicyAttachmentState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectSecurityPolicyAttachment` resource allows to attach a security policy project to a project.
+ * The `gitlab.GroupSecurityPolicyAttachment` resource allows to attach a security policy project to a group.
  * 
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#mutationsecuritypolicyprojectassign)
  * 
@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gitlab.ProjectSecurityPolicyAttachment;
- * import com.pulumi.gitlab.ProjectSecurityPolicyAttachmentArgs;
+ * import com.pulumi.gitlab.GroupSecurityPolicyAttachment;
+ * import com.pulumi.gitlab.GroupSecurityPolicyAttachmentArgs;
  * import com.pulumi.gitlab.Project;
  * import com.pulumi.gitlab.ProjectArgs;
  * import com.pulumi.gitlab.RepositoryFile;
@@ -47,14 +47,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // This resource can be used to attach a security policy to a pre-existing project
- *         var foo = new ProjectSecurityPolicyAttachment("foo", ProjectSecurityPolicyAttachmentArgs.builder()
- *             .project(1234)
+ *         // This resource can be used to attach a security policy to a pre-existing group
+ *         var foo = new GroupSecurityPolicyAttachment("foo", GroupSecurityPolicyAttachmentArgs.builder()
+ *             .group(1234)
  *             .policyProject(4567)
  *             .build());
  * 
  *         // Or you can use Terraform to create a new project, add a policy to that project,
- *         // then attach that policy project to other projects.
+ *         // then attach that policy project to other groups.
  *         var my_policy_project = new Project("my-policy-project", ProjectArgs.builder()
  *             .name("security-policy-project")
  *             .build());
@@ -89,8 +89,8 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var my_policy = new ProjectSecurityPolicyAttachment("my-policy", ProjectSecurityPolicyAttachmentArgs.builder()
- *             .project(1234)
+ *         var my_policy = new GroupSecurityPolicyAttachment("my-policy", GroupSecurityPolicyAttachmentArgs.builder()
+ *             .group(1234)
  *             .policyProject(my_policy_project.id())
  *             .build());
  * 
@@ -102,15 +102,43 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GitLab project security policy attachments can be imported using an id made up of `project:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
+ * GitLab group security policy attachments can be imported using an id made up of `group:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
  * 
  * ```sh
- * $ pulumi import gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment foo 1:2
+ * $ pulumi import gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment foo 1:2
  * ```
  * 
  */
-@ResourceType(type="gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment")
-public class ProjectSecurityPolicyAttachment extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment")
+public class GroupSecurityPolicyAttachment extends com.pulumi.resources.CustomResource {
+    /**
+     * The ID or Full Path of the group which will have the security policy project assigned to it.
+     * 
+     */
+    @Export(name="group", refs={String.class}, tree="[0]")
+    private Output<String> group;
+
+    /**
+     * @return The ID or Full Path of the group which will have the security policy project assigned to it.
+     * 
+     */
+    public Output<String> group() {
+        return this.group;
+    }
+    /**
+     * The GraphQL ID of the group to which the security policty project will be attached.
+     * 
+     */
+    @Export(name="groupGraphqlId", refs={String.class}, tree="[0]")
+    private Output<String> groupGraphqlId;
+
+    /**
+     * @return The GraphQL ID of the group to which the security policty project will be attached.
+     * 
+     */
+    public Output<String> groupGraphqlId() {
+        return this.groupGraphqlId;
+    }
     /**
      * The ID or Full Path of the security policy project.
      * 
@@ -139,48 +167,20 @@ public class ProjectSecurityPolicyAttachment extends com.pulumi.resources.Custom
     public Output<String> policyProjectGraphqlId() {
         return this.policyProjectGraphqlId;
     }
-    /**
-     * The ID or Full Path of the project which will have the security policy project assigned to it.
-     * 
-     */
-    @Export(name="project", refs={String.class}, tree="[0]")
-    private Output<String> project;
-
-    /**
-     * @return The ID or Full Path of the project which will have the security policy project assigned to it.
-     * 
-     */
-    public Output<String> project() {
-        return this.project;
-    }
-    /**
-     * The GraphQL ID of the project to which the security policty project will be attached.
-     * 
-     */
-    @Export(name="projectGraphqlId", refs={String.class}, tree="[0]")
-    private Output<String> projectGraphqlId;
-
-    /**
-     * @return The GraphQL ID of the project to which the security policty project will be attached.
-     * 
-     */
-    public Output<String> projectGraphqlId() {
-        return this.projectGraphqlId;
-    }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectSecurityPolicyAttachment(java.lang.String name) {
-        this(name, ProjectSecurityPolicyAttachmentArgs.Empty);
+    public GroupSecurityPolicyAttachment(java.lang.String name) {
+        this(name, GroupSecurityPolicyAttachmentArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectSecurityPolicyAttachment(java.lang.String name, ProjectSecurityPolicyAttachmentArgs args) {
+    public GroupSecurityPolicyAttachment(java.lang.String name, GroupSecurityPolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -189,19 +189,19 @@ public class ProjectSecurityPolicyAttachment extends com.pulumi.resources.Custom
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectSecurityPolicyAttachment(java.lang.String name, ProjectSecurityPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupSecurityPolicyAttachment(java.lang.String name, GroupSecurityPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectSecurityPolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectSecurityPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment", name, state, makeResourceOptions(options, id), false);
+    private GroupSecurityPolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable GroupSecurityPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ProjectSecurityPolicyAttachmentArgs makeArgs(ProjectSecurityPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static GroupSecurityPolicyAttachmentArgs makeArgs(GroupSecurityPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
-        return args == null ? ProjectSecurityPolicyAttachmentArgs.Empty : args;
+        return args == null ? GroupSecurityPolicyAttachmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
@@ -220,7 +220,7 @@ public class ProjectSecurityPolicyAttachment extends com.pulumi.resources.Custom
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectSecurityPolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectSecurityPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new ProjectSecurityPolicyAttachment(name, id, state, options);
+    public static GroupSecurityPolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupSecurityPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new GroupSecurityPolicyAttachment(name, id, state, options);
     }
 }

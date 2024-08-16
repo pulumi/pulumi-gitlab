@@ -2088,6 +2088,13 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.maxSshKeyLifetime);
     }
 
+    @Import(name="maxTerraformStateSizeBytes")
+    private @Nullable Output<Integer> maxTerraformStateSizeBytes;
+
+    public Optional<Output<Integer>> maxTerraformStateSizeBytes() {
+        return Optional.ofNullable(this.maxTerraformStateSizeBytes);
+    }
+
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      * 
@@ -3817,6 +3824,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.maxPagesSize = $.maxPagesSize;
         this.maxPersonalAccessTokenLifetime = $.maxPersonalAccessTokenLifetime;
         this.maxSshKeyLifetime = $.maxSshKeyLifetime;
+        this.maxTerraformStateSizeBytes = $.maxTerraformStateSizeBytes;
         this.metricsMethodCallThreshold = $.metricsMethodCallThreshold;
         this.minimumPasswordLength = $.minimumPasswordLength;
         this.mirrorAvailable = $.mirrorAvailable;
@@ -6915,6 +6923,15 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder maxSshKeyLifetime(Integer maxSshKeyLifetime) {
             return maxSshKeyLifetime(Output.of(maxSshKeyLifetime));
+        }
+
+        public Builder maxTerraformStateSizeBytes(@Nullable Output<Integer> maxTerraformStateSizeBytes) {
+            $.maxTerraformStateSizeBytes = maxTerraformStateSizeBytes;
+            return this;
+        }
+
+        public Builder maxTerraformStateSizeBytes(Integer maxTerraformStateSizeBytes) {
+            return maxTerraformStateSizeBytes(Output.of(maxTerraformStateSizeBytes));
         }
 
         /**

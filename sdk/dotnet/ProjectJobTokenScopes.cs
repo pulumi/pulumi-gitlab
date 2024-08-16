@@ -29,7 +29,7 @@ namespace Pulumi.GitLab
     /// {
     ///     var allowedSingleProject = new GitLab.ProjectJobTokenScopes("allowed_single_project", new()
     ///     {
-    ///         ProjectId = 111,
+    ///         Project = "111",
     ///         TargetProjectIds = new[]
     ///         {
     ///             123,
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
     /// 
     ///     var allowedMultipleProject = new GitLab.ProjectJobTokenScopes("allowed_multiple_project", new()
     ///     {
-    ///         ProjectId = 111,
+    ///         Project = "111",
     ///         TargetProjectIds = new[]
     ///         {
     ///             123,
@@ -47,10 +47,21 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
+    ///     var allowedMultipleGroups = new GitLab.ProjectJobTokenScopes("allowed_multiple_groups", new()
+    ///     {
+    ///         ProjectId = 111,
+    ///         TargetProjectIds = new[] {},
+    ///         TargetGroupIds = new[]
+    ///         {
+    ///             321,
+    ///             654,
+    ///         },
+    ///     });
+    /// 
     ///     // This will remove all job token scopes, even if added outside of TF.
     ///     var explicitDeny = new GitLab.ProjectJobTokenScopes("explicit_deny", new()
     ///     {
-    ///         ProjectId = 111,
+    ///         Project = "111",
     ///         TargetProjectIds = new[] {},
     ///     });
     /// 
@@ -59,7 +70,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab project job token scopes can be imported using an id made up of just the `project_id` as an integer
+    /// GitLab project job token scopes can be imported using an id made up of just the `project_id`
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123
@@ -69,10 +80,22 @@ namespace Pulumi.GitLab
     public partial class ProjectJobTokenScopes : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The ID or full path of the project.
+        /// </summary>
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project.
         /// </summary>
         [Output("projectId")]
         public Output<int> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of group IDs that are in the CI/CD job token inbound allowlist.
+        /// </summary>
+        [Output("targetGroupIds")]
+        public Output<ImmutableArray<int>> TargetGroupIds { get; private set; } = null!;
 
         /// <summary>
         /// A set of project IDs that are in the CI/CD job token inbound allowlist.
@@ -88,7 +111,7 @@ namespace Pulumi.GitLab
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ProjectJobTokenScopes(string name, ProjectJobTokenScopesArgs args, CustomResourceOptions? options = null)
+        public ProjectJobTokenScopes(string name, ProjectJobTokenScopesArgs? args = null, CustomResourceOptions? options = null)
             : base("gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes", name, args ?? new ProjectJobTokenScopesArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -127,12 +150,30 @@ namespace Pulumi.GitLab
     public sealed class ProjectJobTokenScopesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ID or full path of the project.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
         /// The ID of the project.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<int> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<int>? ProjectId { get; set; }
 
-        [Input("targetProjectIds", required: true)]
+        [Input("targetGroupIds")]
+        private InputList<int>? _targetGroupIds;
+
+        /// <summary>
+        /// A set of group IDs that are in the CI/CD job token inbound allowlist.
+        /// </summary>
+        public InputList<int> TargetGroupIds
+        {
+            get => _targetGroupIds ?? (_targetGroupIds = new InputList<int>());
+            set => _targetGroupIds = value;
+        }
+
+        [Input("targetProjectIds")]
         private InputList<int>? _targetProjectIds;
 
         /// <summary>
@@ -153,10 +194,28 @@ namespace Pulumi.GitLab
     public sealed class ProjectJobTokenScopesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ID or full path of the project.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
         /// The ID of the project.
         /// </summary>
         [Input("projectId")]
         public Input<int>? ProjectId { get; set; }
+
+        [Input("targetGroupIds")]
+        private InputList<int>? _targetGroupIds;
+
+        /// <summary>
+        /// A set of group IDs that are in the CI/CD job token inbound allowlist.
+        /// </summary>
+        public InputList<int> TargetGroupIds
+        {
+            get => _targetGroupIds ?? (_targetGroupIds = new InputList<int>());
+            set => _targetGroupIds = value;
+        }
 
         [Input("targetProjectIds")]
         private InputList<int>? _targetProjectIds;

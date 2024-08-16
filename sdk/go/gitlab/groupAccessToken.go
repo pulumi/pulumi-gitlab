@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := gitlab.NewGroupAccessToken(ctx, "example", &gitlab.GroupAccessTokenArgs{
 //				Group:       pulumi.String("25"),
-//				Name:        pulumi.String("Example project access token"),
+//				Name:        pulumi.String("Example group access token"),
 //				ExpiresAt:   pulumi.String("2020-03-14"),
 //				AccessLevel: pulumi.String("developer"),
 //				Scopes: pulumi.StringArray{

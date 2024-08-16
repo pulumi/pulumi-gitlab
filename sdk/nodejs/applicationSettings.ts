@@ -587,6 +587,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
      */
     public readonly maxSshKeyLifetime!: pulumi.Output<number>;
+    public readonly maxTerraformStateSizeBytes!: pulumi.Output<number>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */
@@ -1161,6 +1162,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["maxPagesSize"] = state ? state.maxPagesSize : undefined;
             resourceInputs["maxPersonalAccessTokenLifetime"] = state ? state.maxPersonalAccessTokenLifetime : undefined;
             resourceInputs["maxSshKeyLifetime"] = state ? state.maxSshKeyLifetime : undefined;
+            resourceInputs["maxTerraformStateSizeBytes"] = state ? state.maxTerraformStateSizeBytes : undefined;
             resourceInputs["metricsMethodCallThreshold"] = state ? state.metricsMethodCallThreshold : undefined;
             resourceInputs["minimumPasswordLength"] = state ? state.minimumPasswordLength : undefined;
             resourceInputs["mirrorAvailable"] = state ? state.mirrorAvailable : undefined;
@@ -1405,6 +1407,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["maxPagesSize"] = args ? args.maxPagesSize : undefined;
             resourceInputs["maxPersonalAccessTokenLifetime"] = args ? args.maxPersonalAccessTokenLifetime : undefined;
             resourceInputs["maxSshKeyLifetime"] = args ? args.maxSshKeyLifetime : undefined;
+            resourceInputs["maxTerraformStateSizeBytes"] = args ? args.maxTerraformStateSizeBytes : undefined;
             resourceInputs["metricsMethodCallThreshold"] = args ? args.metricsMethodCallThreshold : undefined;
             resourceInputs["minimumPasswordLength"] = args ? args.minimumPasswordLength : undefined;
             resourceInputs["mirrorAvailable"] = args ? args.mirrorAvailable : undefined;
@@ -2075,6 +2078,7 @@ export interface ApplicationSettingsState {
      * Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
      */
     maxSshKeyLifetime?: pulumi.Input<number>;
+    maxTerraformStateSizeBytes?: pulumi.Input<number>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */
@@ -3057,6 +3061,7 @@ export interface ApplicationSettingsArgs {
      * Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
      */
     maxSshKeyLifetime?: pulumi.Input<number>;
+    maxTerraformStateSizeBytes?: pulumi.Input<number>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */

@@ -1944,6 +1944,12 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
     public Output<Integer> maxSshKeyLifetime() {
         return this.maxSshKeyLifetime;
     }
+    @Export(name="maxTerraformStateSizeBytes", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxTerraformStateSizeBytes;
+
+    public Output<Integer> maxTerraformStateSizeBytes() {
+        return this.maxTerraformStateSizeBytes;
+    }
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      * 

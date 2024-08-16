@@ -341,6 +341,20 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.path;
     }
     /**
+     * Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+     * 
+     */
+    @Export(name="permanentlyRemoveOnDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> permanentlyRemoveOnDelete;
+
+    /**
+     * @return Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+     * 
+     */
+    public Output<Optional<Boolean>> permanentlyRemoveOnDelete() {
+        return Codegen.optional(this.permanentlyRemoveOnDelete);
+    }
+    /**
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      * 
      */

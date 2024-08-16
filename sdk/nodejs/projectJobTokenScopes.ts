@@ -19,27 +19,35 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const allowedSingleProject = new gitlab.ProjectJobTokenScopes("allowed_single_project", {
- *     projectId: 111,
+ *     project: "111",
  *     targetProjectIds: [123],
  * });
  * const allowedMultipleProject = new gitlab.ProjectJobTokenScopes("allowed_multiple_project", {
- *     projectId: 111,
+ *     project: "111",
  *     targetProjectIds: [
  *         123,
  *         456,
  *         789,
  *     ],
  * });
+ * const allowedMultipleGroups = new gitlab.ProjectJobTokenScopes("allowed_multiple_groups", {
+ *     projectId: 111,
+ *     targetProjectIds: [],
+ *     targetGroupIds: [
+ *         321,
+ *         654,
+ *     ],
+ * });
  * // This will remove all job token scopes, even if added outside of TF.
  * const explicitDeny = new gitlab.ProjectJobTokenScopes("explicit_deny", {
- *     projectId: 111,
+ *     project: "111",
  *     targetProjectIds: [],
  * });
  * ```
  *
  * ## Import
  *
- * GitLab project job token scopes can be imported using an id made up of just the `project_id` as an integer
+ * GitLab project job token scopes can be imported using an id made up of just the `project_id`
  *
  * ```sh
  * $ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123
@@ -74,9 +82,19 @@ export class ProjectJobTokenScopes extends pulumi.CustomResource {
     }
 
     /**
+     * The ID or full path of the project.
+     */
+    public readonly project!: pulumi.Output<string>;
+    /**
      * The ID of the project.
+     *
+     * @deprecated `projectId` has been deprecated. Use `project` instead.
      */
     public readonly projectId!: pulumi.Output<number>;
+    /**
+     * A set of group IDs that are in the CI/CD job token inbound allowlist.
+     */
+    public readonly targetGroupIds!: pulumi.Output<number[]>;
     /**
      * A set of project IDs that are in the CI/CD job token inbound allowlist.
      */
@@ -89,23 +107,21 @@ export class ProjectJobTokenScopes extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProjectJobTokenScopesArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ProjectJobTokenScopesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectJobTokenScopesArgs | ProjectJobTokenScopesState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectJobTokenScopesState | undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["targetGroupIds"] = state ? state.targetGroupIds : undefined;
             resourceInputs["targetProjectIds"] = state ? state.targetProjectIds : undefined;
         } else {
             const args = argsOrState as ProjectJobTokenScopesArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
-            }
-            if ((!args || args.targetProjectIds === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetProjectIds'");
-            }
+            resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["targetGroupIds"] = args ? args.targetGroupIds : undefined;
             resourceInputs["targetProjectIds"] = args ? args.targetProjectIds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -118,9 +134,19 @@ export class ProjectJobTokenScopes extends pulumi.CustomResource {
  */
 export interface ProjectJobTokenScopesState {
     /**
+     * The ID or full path of the project.
+     */
+    project?: pulumi.Input<string>;
+    /**
      * The ID of the project.
+     *
+     * @deprecated `projectId` has been deprecated. Use `project` instead.
      */
     projectId?: pulumi.Input<number>;
+    /**
+     * A set of group IDs that are in the CI/CD job token inbound allowlist.
+     */
+    targetGroupIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * A set of project IDs that are in the CI/CD job token inbound allowlist.
      */
@@ -132,11 +158,21 @@ export interface ProjectJobTokenScopesState {
  */
 export interface ProjectJobTokenScopesArgs {
     /**
-     * The ID of the project.
+     * The ID or full path of the project.
      */
-    projectId: pulumi.Input<number>;
+    project?: pulumi.Input<string>;
+    /**
+     * The ID of the project.
+     *
+     * @deprecated `projectId` has been deprecated. Use `project` instead.
+     */
+    projectId?: pulumi.Input<number>;
+    /**
+     * A set of group IDs that are in the CI/CD job token inbound allowlist.
+     */
+    targetGroupIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * A set of project IDs that are in the CI/CD job token inbound allowlist.
      */
-    targetProjectIds: pulumi.Input<pulumi.Input<number>[]>;
+    targetProjectIds?: pulumi.Input<pulumi.Input<number>[]>;
 }

@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * const example = new gitlab.GroupAccessToken("example", {
  *     group: "25",
- *     name: "Example project access token",
+ *     name: "Example group access token",
  *     expiresAt: "2020-03-14",
  *     accessLevel: "developer",
  *     scopes: ["api"],

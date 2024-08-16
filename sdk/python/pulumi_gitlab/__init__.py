@@ -24,6 +24,7 @@ from .get_current_user import *
 from .get_group import *
 from .get_group_hook import *
 from .get_group_hooks import *
+from .get_group_ids import *
 from .get_group_membership import *
 from .get_group_subgroups import *
 from .get_group_variable import *
@@ -37,6 +38,7 @@ from .get_project import *
 from .get_project_branches import *
 from .get_project_hook import *
 from .get_project_hooks import *
+from .get_project_ids import *
 from .get_project_issue import *
 from .get_project_issues import *
 from .get_project_membership import *
@@ -72,6 +74,7 @@ from .group_membership import *
 from .group_project_file_template import *
 from .group_protected_environment import *
 from .group_saml_link import *
+from .group_security_policy_attachment import *
 from .group_share_group import *
 from .group_variable import *
 from .instance_cluster import *
@@ -351,6 +354,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupSamlLink:GroupSamlLink": "GroupSamlLink"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupSecurityPolicyAttachment",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment": "GroupSecurityPolicyAttachment"
   }
  },
  {

@@ -51,8 +51,8 @@ import * as utilities from "./utilities";
  *     enabled: true
  * `,
  * });
- * const my_policy = new gitlab.index.ProjectSecurityPolicy("my-policy", {
- *     project: 1234,
+ * const my_policy = new gitlab.ProjectSecurityPolicyAttachment("my-policy", {
+ *     project: "1234",
  *     policyProject: my_policy_project.id,
  * });
  * ```

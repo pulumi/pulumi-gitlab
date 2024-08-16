@@ -85,8 +85,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewProjectSecurityPolicy(ctx, "my-policy", &gitlab.ProjectSecurityPolicyArgs{
-//				Project:       1234,
+//			_, err = gitlab.NewProjectSecurityPolicyAttachment(ctx, "my-policy", &gitlab.ProjectSecurityPolicyAttachmentArgs{
+//				Project:       pulumi.String("1234"),
 //				PolicyProject: my_policy_project.ID(),
 //			})
 //			if err != nil {

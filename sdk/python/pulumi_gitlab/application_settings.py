@@ -150,6 +150,7 @@ class ApplicationSettingsArgs:
                  max_pages_size: Optional[pulumi.Input[int]] = None,
                  max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
                  max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
+                 max_terraform_state_size_bytes: Optional[pulumi.Input[int]] = None,
                  metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
                  minimum_password_length: Optional[pulumi.Input[int]] = None,
                  mirror_available: Optional[pulumi.Input[bool]] = None,
@@ -784,6 +785,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "max_personal_access_token_lifetime", max_personal_access_token_lifetime)
         if max_ssh_key_lifetime is not None:
             pulumi.set(__self__, "max_ssh_key_lifetime", max_ssh_key_lifetime)
+        if max_terraform_state_size_bytes is not None:
+            pulumi.set(__self__, "max_terraform_state_size_bytes", max_terraform_state_size_bytes)
         if metrics_method_call_threshold is not None:
             pulumi.set(__self__, "metrics_method_call_threshold", metrics_method_call_threshold)
         if minimum_password_length is not None:
@@ -2633,6 +2636,15 @@ class ApplicationSettingsArgs:
     @max_ssh_key_lifetime.setter
     def max_ssh_key_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_ssh_key_lifetime", value)
+
+    @property
+    @pulumi.getter(name="maxTerraformStateSizeBytes")
+    def max_terraform_state_size_bytes(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_terraform_state_size_bytes")
+
+    @max_terraform_state_size_bytes.setter
+    def max_terraform_state_size_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_terraform_state_size_bytes", value)
 
     @property
     @pulumi.getter(name="metricsMethodCallThreshold")
@@ -4046,6 +4058,7 @@ class _ApplicationSettingsState:
                  max_pages_size: Optional[pulumi.Input[int]] = None,
                  max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
                  max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
+                 max_terraform_state_size_bytes: Optional[pulumi.Input[int]] = None,
                  metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
                  minimum_password_length: Optional[pulumi.Input[int]] = None,
                  mirror_available: Optional[pulumi.Input[bool]] = None,
@@ -4680,6 +4693,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "max_personal_access_token_lifetime", max_personal_access_token_lifetime)
         if max_ssh_key_lifetime is not None:
             pulumi.set(__self__, "max_ssh_key_lifetime", max_ssh_key_lifetime)
+        if max_terraform_state_size_bytes is not None:
+            pulumi.set(__self__, "max_terraform_state_size_bytes", max_terraform_state_size_bytes)
         if metrics_method_call_threshold is not None:
             pulumi.set(__self__, "metrics_method_call_threshold", metrics_method_call_threshold)
         if minimum_password_length is not None:
@@ -6529,6 +6544,15 @@ class _ApplicationSettingsState:
     @max_ssh_key_lifetime.setter
     def max_ssh_key_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_ssh_key_lifetime", value)
+
+    @property
+    @pulumi.getter(name="maxTerraformStateSizeBytes")
+    def max_terraform_state_size_bytes(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_terraform_state_size_bytes")
+
+    @max_terraform_state_size_bytes.setter
+    def max_terraform_state_size_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_terraform_state_size_bytes", value)
 
     @property
     @pulumi.getter(name="metricsMethodCallThreshold")
@@ -7944,6 +7968,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  max_pages_size: Optional[pulumi.Input[int]] = None,
                  max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
                  max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
+                 max_terraform_state_size_bytes: Optional[pulumi.Input[int]] = None,
                  metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
                  minimum_password_length: Optional[pulumi.Input[int]] = None,
                  mirror_available: Optional[pulumi.Input[bool]] = None,
@@ -8461,6 +8486,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  max_pages_size: Optional[pulumi.Input[int]] = None,
                  max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
                  max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
+                 max_terraform_state_size_bytes: Optional[pulumi.Input[int]] = None,
                  metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
                  minimum_password_length: Optional[pulumi.Input[int]] = None,
                  mirror_available: Optional[pulumi.Input[bool]] = None,
@@ -8712,6 +8738,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["max_pages_size"] = max_pages_size
             __props__.__dict__["max_personal_access_token_lifetime"] = max_personal_access_token_lifetime
             __props__.__dict__["max_ssh_key_lifetime"] = max_ssh_key_lifetime
+            __props__.__dict__["max_terraform_state_size_bytes"] = max_terraform_state_size_bytes
             __props__.__dict__["metrics_method_call_threshold"] = metrics_method_call_threshold
             __props__.__dict__["minimum_password_length"] = minimum_password_length
             __props__.__dict__["mirror_available"] = mirror_available
@@ -8966,6 +8993,7 @@ class ApplicationSettings(pulumi.CustomResource):
             max_pages_size: Optional[pulumi.Input[int]] = None,
             max_personal_access_token_lifetime: Optional[pulumi.Input[int]] = None,
             max_ssh_key_lifetime: Optional[pulumi.Input[int]] = None,
+            max_terraform_state_size_bytes: Optional[pulumi.Input[int]] = None,
             metrics_method_call_threshold: Optional[pulumi.Input[int]] = None,
             minimum_password_length: Optional[pulumi.Input[int]] = None,
             mirror_available: Optional[pulumi.Input[bool]] = None,
@@ -9464,6 +9492,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["max_pages_size"] = max_pages_size
         __props__.__dict__["max_personal_access_token_lifetime"] = max_personal_access_token_lifetime
         __props__.__dict__["max_ssh_key_lifetime"] = max_ssh_key_lifetime
+        __props__.__dict__["max_terraform_state_size_bytes"] = max_terraform_state_size_bytes
         __props__.__dict__["metrics_method_call_threshold"] = metrics_method_call_threshold
         __props__.__dict__["minimum_password_length"] = minimum_password_length
         __props__.__dict__["mirror_available"] = mirror_available
@@ -10664,6 +10693,11 @@ class ApplicationSettings(pulumi.CustomResource):
         Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
         """
         return pulumi.get(self, "max_ssh_key_lifetime")
+
+    @property
+    @pulumi.getter(name="maxTerraformStateSizeBytes")
+    def max_terraform_state_size_bytes(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "max_terraform_state_size_bytes")
 
     @property
     @pulumi.getter(name="metricsMethodCallThreshold")

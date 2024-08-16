@@ -9,20 +9,32 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ProjectSecurityPolicyAttachmentArgs', 'ProjectSecurityPolicyAttachment']
+__all__ = ['GroupSecurityPolicyAttachmentArgs', 'GroupSecurityPolicyAttachment']
 
 @pulumi.input_type
-class ProjectSecurityPolicyAttachmentArgs:
+class GroupSecurityPolicyAttachmentArgs:
     def __init__(__self__, *,
-                 policy_project: pulumi.Input[str],
-                 project: pulumi.Input[str]):
+                 group: pulumi.Input[str],
+                 policy_project: pulumi.Input[str]):
         """
-        The set of arguments for constructing a ProjectSecurityPolicyAttachment resource.
+        The set of arguments for constructing a GroupSecurityPolicyAttachment resource.
+        :param pulumi.Input[str] group: The ID or Full Path of the group which will have the security policy project assigned to it.
         :param pulumi.Input[str] policy_project: The ID or Full Path of the security policy project.
-        :param pulumi.Input[str] project: The ID or Full Path of the project which will have the security policy project assigned to it.
         """
+        pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "policy_project", policy_project)
-        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def group(self) -> pulumi.Input[str]:
+        """
+        The ID or Full Path of the group which will have the security policy project assigned to it.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group", value)
 
     @property
     @pulumi.getter(name="policyProject")
@@ -36,41 +48,53 @@ class ProjectSecurityPolicyAttachmentArgs:
     def policy_project(self, value: pulumi.Input[str]):
         pulumi.set(self, "policy_project", value)
 
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        The ID or Full Path of the project which will have the security policy project assigned to it.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
 
 @pulumi.input_type
-class _ProjectSecurityPolicyAttachmentState:
+class _GroupSecurityPolicyAttachmentState:
     def __init__(__self__, *,
+                 group: Optional[pulumi.Input[str]] = None,
+                 group_graphql_id: Optional[pulumi.Input[str]] = None,
                  policy_project: Optional[pulumi.Input[str]] = None,
-                 policy_project_graphql_id: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 project_graphql_id: Optional[pulumi.Input[str]] = None):
+                 policy_project_graphql_id: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering ProjectSecurityPolicyAttachment resources.
+        Input properties used for looking up and filtering GroupSecurityPolicyAttachment resources.
+        :param pulumi.Input[str] group: The ID or Full Path of the group which will have the security policy project assigned to it.
+        :param pulumi.Input[str] group_graphql_id: The GraphQL ID of the group to which the security policty project will be attached.
         :param pulumi.Input[str] policy_project: The ID or Full Path of the security policy project.
         :param pulumi.Input[str] policy_project_graphql_id: The GraphQL ID of the security policy project.
-        :param pulumi.Input[str] project: The ID or Full Path of the project which will have the security policy project assigned to it.
-        :param pulumi.Input[str] project_graphql_id: The GraphQL ID of the project to which the security policty project will be attached.
         """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if group_graphql_id is not None:
+            pulumi.set(__self__, "group_graphql_id", group_graphql_id)
         if policy_project is not None:
             pulumi.set(__self__, "policy_project", policy_project)
         if policy_project_graphql_id is not None:
             pulumi.set(__self__, "policy_project_graphql_id", policy_project_graphql_id)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if project_graphql_id is not None:
-            pulumi.set(__self__, "project_graphql_id", project_graphql_id)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID or Full Path of the group which will have the security policy project assigned to it.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter(name="groupGraphqlId")
+    def group_graphql_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GraphQL ID of the group to which the security policty project will be attached.
+        """
+        return pulumi.get(self, "group_graphql_id")
+
+    @group_graphql_id.setter
+    def group_graphql_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_graphql_id", value)
 
     @property
     @pulumi.getter(name="policyProject")
@@ -96,41 +120,17 @@ class _ProjectSecurityPolicyAttachmentState:
     def policy_project_graphql_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "policy_project_graphql_id", value)
 
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID or Full Path of the project which will have the security policy project assigned to it.
-        """
-        return pulumi.get(self, "project")
 
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="projectGraphqlId")
-    def project_graphql_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The GraphQL ID of the project to which the security policty project will be attached.
-        """
-        return pulumi.get(self, "project_graphql_id")
-
-    @project_graphql_id.setter
-    def project_graphql_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_graphql_id", value)
-
-
-class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
+class GroupSecurityPolicyAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 group: Optional[pulumi.Input[str]] = None,
                  policy_project: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The `ProjectSecurityPolicyAttachment` resource allows to attach a security policy project to a project.
+        The `GroupSecurityPolicyAttachment` resource allows to attach a security policy project to a group.
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#mutationsecuritypolicyprojectassign)
 
@@ -140,12 +140,12 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        # This resource can be used to attach a security policy to a pre-existing project
-        foo = gitlab.ProjectSecurityPolicyAttachment("foo",
-            project="1234",
+        # This resource can be used to attach a security policy to a pre-existing group
+        foo = gitlab.GroupSecurityPolicyAttachment("foo",
+            group="1234",
             policy_project="4567")
         # Or you can use Terraform to create a new project, add a policy to that project,
-        # then attach that policy project to other projects.
+        # then attach that policy project to other groups.
         my_policy_project = gitlab.Project("my-policy-project", name="security-policy-project")
         policy_yml = gitlab.RepositoryFile("policy-yml",
             project=my_policy_project.id,
@@ -174,32 +174,32 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
         - type: send_bot_message
             enabled: true
         \"\"\")
-        my_policy = gitlab.ProjectSecurityPolicyAttachment("my-policy",
-            project="1234",
+        my_policy = gitlab.GroupSecurityPolicyAttachment("my-policy",
+            group="1234",
             policy_project=my_policy_project.id)
         ```
 
         ## Import
 
-        GitLab project security policy attachments can be imported using an id made up of `project:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
+        GitLab group security policy attachments can be imported using an id made up of `group:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
 
         ```sh
-        $ pulumi import gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment foo 1:2
+        $ pulumi import gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment foo 1:2
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] group: The ID or Full Path of the group which will have the security policy project assigned to it.
         :param pulumi.Input[str] policy_project: The ID or Full Path of the security policy project.
-        :param pulumi.Input[str] project: The ID or Full Path of the project which will have the security policy project assigned to it.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProjectSecurityPolicyAttachmentArgs,
+                 args: GroupSecurityPolicyAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectSecurityPolicyAttachment` resource allows to attach a security policy project to a project.
+        The `GroupSecurityPolicyAttachment` resource allows to attach a security policy project to a group.
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#mutationsecuritypolicyprojectassign)
 
@@ -209,12 +209,12 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        # This resource can be used to attach a security policy to a pre-existing project
-        foo = gitlab.ProjectSecurityPolicyAttachment("foo",
-            project="1234",
+        # This resource can be used to attach a security policy to a pre-existing group
+        foo = gitlab.GroupSecurityPolicyAttachment("foo",
+            group="1234",
             policy_project="4567")
         # Or you can use Terraform to create a new project, add a policy to that project,
-        # then attach that policy project to other projects.
+        # then attach that policy project to other groups.
         my_policy_project = gitlab.Project("my-policy-project", name="security-policy-project")
         policy_yml = gitlab.RepositoryFile("policy-yml",
             project=my_policy_project.id,
@@ -243,26 +243,26 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
         - type: send_bot_message
             enabled: true
         \"\"\")
-        my_policy = gitlab.ProjectSecurityPolicyAttachment("my-policy",
-            project="1234",
+        my_policy = gitlab.GroupSecurityPolicyAttachment("my-policy",
+            group="1234",
             policy_project=my_policy_project.id)
         ```
 
         ## Import
 
-        GitLab project security policy attachments can be imported using an id made up of `project:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
+        GitLab group security policy attachments can be imported using an id made up of `group:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
 
         ```sh
-        $ pulumi import gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment foo 1:2
+        $ pulumi import gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment foo 1:2
         ```
 
         :param str resource_name: The name of the resource.
-        :param ProjectSecurityPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param GroupSecurityPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ProjectSecurityPolicyAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GroupSecurityPolicyAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -271,8 +271,8 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 group: Optional[pulumi.Input[str]] = None,
                  policy_project: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -280,18 +280,18 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ProjectSecurityPolicyAttachmentArgs.__new__(ProjectSecurityPolicyAttachmentArgs)
+            __props__ = GroupSecurityPolicyAttachmentArgs.__new__(GroupSecurityPolicyAttachmentArgs)
 
+            if group is None and not opts.urn:
+                raise TypeError("Missing required property 'group'")
+            __props__.__dict__["group"] = group
             if policy_project is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_project'")
             __props__.__dict__["policy_project"] = policy_project
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
-            __props__.__dict__["project"] = project
+            __props__.__dict__["group_graphql_id"] = None
             __props__.__dict__["policy_project_graphql_id"] = None
-            __props__.__dict__["project_graphql_id"] = None
-        super(ProjectSecurityPolicyAttachment, __self__).__init__(
-            'gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment',
+        super(GroupSecurityPolicyAttachment, __self__).__init__(
+            'gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment',
             resource_name,
             __props__,
             opts)
@@ -300,31 +300,47 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            group: Optional[pulumi.Input[str]] = None,
+            group_graphql_id: Optional[pulumi.Input[str]] = None,
             policy_project: Optional[pulumi.Input[str]] = None,
-            policy_project_graphql_id: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None,
-            project_graphql_id: Optional[pulumi.Input[str]] = None) -> 'ProjectSecurityPolicyAttachment':
+            policy_project_graphql_id: Optional[pulumi.Input[str]] = None) -> 'GroupSecurityPolicyAttachment':
         """
-        Get an existing ProjectSecurityPolicyAttachment resource's state with the given name, id, and optional extra
+        Get an existing GroupSecurityPolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] group: The ID or Full Path of the group which will have the security policy project assigned to it.
+        :param pulumi.Input[str] group_graphql_id: The GraphQL ID of the group to which the security policty project will be attached.
         :param pulumi.Input[str] policy_project: The ID or Full Path of the security policy project.
         :param pulumi.Input[str] policy_project_graphql_id: The GraphQL ID of the security policy project.
-        :param pulumi.Input[str] project: The ID or Full Path of the project which will have the security policy project assigned to it.
-        :param pulumi.Input[str] project_graphql_id: The GraphQL ID of the project to which the security policty project will be attached.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _ProjectSecurityPolicyAttachmentState.__new__(_ProjectSecurityPolicyAttachmentState)
+        __props__ = _GroupSecurityPolicyAttachmentState.__new__(_GroupSecurityPolicyAttachmentState)
 
+        __props__.__dict__["group"] = group
+        __props__.__dict__["group_graphql_id"] = group_graphql_id
         __props__.__dict__["policy_project"] = policy_project
         __props__.__dict__["policy_project_graphql_id"] = policy_project_graphql_id
-        __props__.__dict__["project"] = project
-        __props__.__dict__["project_graphql_id"] = project_graphql_id
-        return ProjectSecurityPolicyAttachment(resource_name, opts=opts, __props__=__props__)
+        return GroupSecurityPolicyAttachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def group(self) -> pulumi.Output[str]:
+        """
+        The ID or Full Path of the group which will have the security policy project assigned to it.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter(name="groupGraphqlId")
+    def group_graphql_id(self) -> pulumi.Output[str]:
+        """
+        The GraphQL ID of the group to which the security policty project will be attached.
+        """
+        return pulumi.get(self, "group_graphql_id")
 
     @property
     @pulumi.getter(name="policyProject")
@@ -341,20 +357,4 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
         The GraphQL ID of the security policy project.
         """
         return pulumi.get(self, "policy_project_graphql_id")
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Output[str]:
-        """
-        The ID or Full Path of the project which will have the security policy project assigned to it.
-        """
-        return pulumi.get(self, "project")
-
-    @property
-    @pulumi.getter(name="projectGraphqlId")
-    def project_graphql_id(self) -> pulumi.Output[str]:
-        """
-        The GraphQL ID of the project to which the security policty project will be attached.
-        """
-        return pulumi.get(self, "project_graphql_id")
 

@@ -275,6 +275,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+     * 
+     */
+    @Import(name="permanentlyRemoveOnDelete")
+    private @Nullable Output<Boolean> permanentlyRemoveOnDelete;
+
+    /**
+     * @return Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+     * 
+     */
+    public Optional<Output<Boolean>> permanentlyRemoveOnDelete() {
+        return Optional.ofNullable(this.permanentlyRemoveOnDelete);
+    }
+
+    /**
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      * 
      */
@@ -504,6 +519,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.parentId = $.parentId;
         this.path = $.path;
+        this.permanentlyRemoveOnDelete = $.permanentlyRemoveOnDelete;
         this.preventForkingOutsideGroup = $.preventForkingOutsideGroup;
         this.projectCreationLevel = $.projectCreationLevel;
         this.pushRules = $.pushRules;
@@ -903,6 +919,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param permanentlyRemoveOnDelete Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permanentlyRemoveOnDelete(@Nullable Output<Boolean> permanentlyRemoveOnDelete) {
+            $.permanentlyRemoveOnDelete = permanentlyRemoveOnDelete;
+            return this;
+        }
+
+        /**
+         * @param permanentlyRemoveOnDelete Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permanentlyRemoveOnDelete(Boolean permanentlyRemoveOnDelete) {
+            return permanentlyRemoveOnDelete(Output.of(permanentlyRemoveOnDelete));
         }
 
         /**
