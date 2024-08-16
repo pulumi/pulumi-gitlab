@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -34,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewProjectJobTokenScopes(ctx, "allowed_single_project", &gitlab.ProjectJobTokenScopesArgs{
-//				ProjectId: pulumi.Int(111),
+//				Project: pulumi.String("111"),
 //				TargetProjectIds: pulumi.IntArray{
 //					pulumi.Int(123),
 //				},
@@ -43,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectJobTokenScopes(ctx, "allowed_multiple_project", &gitlab.ProjectJobTokenScopesArgs{
-//				ProjectId: pulumi.Int(111),
+//				Project: pulumi.String("111"),
 //				TargetProjectIds: pulumi.IntArray{
 //					pulumi.Int(123),
 //					pulumi.Int(456),
@@ -53,9 +52,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = gitlab.NewProjectJobTokenScopes(ctx, "allowed_multiple_groups", &gitlab.ProjectJobTokenScopesArgs{
+//				ProjectId:        pulumi.Int(111),
+//				TargetProjectIds: pulumi.IntArray{},
+//				TargetGroupIds: pulumi.IntArray{
+//					pulumi.Int(321),
+//					pulumi.Int(654),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// This will remove all job token scopes, even if added outside of TF.
 //			_, err = gitlab.NewProjectJobTokenScopes(ctx, "explicit_deny", &gitlab.ProjectJobTokenScopesArgs{
-//				ProjectId:        pulumi.Int(111),
+//				Project:          pulumi.String("111"),
 //				TargetProjectIds: pulumi.IntArray{},
 //			})
 //			if err != nil {
@@ -69,7 +79,7 @@ import (
 //
 // ## Import
 //
-// GitLab project job token scopes can be imported using an id made up of just the `project_id` as an integer
+// GitLab project job token scopes can be imported using an id made up of just the `project_id`
 //
 // ```sh
 // $ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123
@@ -77,8 +87,14 @@ import (
 type ProjectJobTokenScopes struct {
 	pulumi.CustomResourceState
 
+	// The ID or full path of the project.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The ID of the project.
+	//
+	// Deprecated: `projectId` has been deprecated. Use `project` instead.
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
+	// A set of group IDs that are in the CI/CD job token inbound allowlist.
+	TargetGroupIds pulumi.IntArrayOutput `pulumi:"targetGroupIds"`
 	// A set of project IDs that are in the CI/CD job token inbound allowlist.
 	TargetProjectIds pulumi.IntArrayOutput `pulumi:"targetProjectIds"`
 }
@@ -87,15 +103,9 @@ type ProjectJobTokenScopes struct {
 func NewProjectJobTokenScopes(ctx *pulumi.Context,
 	name string, args *ProjectJobTokenScopesArgs, opts ...pulumi.ResourceOption) (*ProjectJobTokenScopes, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProjectJobTokenScopesArgs{}
 	}
 
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
-	}
-	if args.TargetProjectIds == nil {
-		return nil, errors.New("invalid value for required argument 'TargetProjectIds'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectJobTokenScopes
 	err := ctx.RegisterResource("gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes", name, args, &resource, opts...)
@@ -119,15 +129,27 @@ func GetProjectJobTokenScopes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectJobTokenScopes resources.
 type projectJobTokenScopesState struct {
+	// The ID or full path of the project.
+	Project *string `pulumi:"project"`
 	// The ID of the project.
+	//
+	// Deprecated: `projectId` has been deprecated. Use `project` instead.
 	ProjectId *int `pulumi:"projectId"`
+	// A set of group IDs that are in the CI/CD job token inbound allowlist.
+	TargetGroupIds []int `pulumi:"targetGroupIds"`
 	// A set of project IDs that are in the CI/CD job token inbound allowlist.
 	TargetProjectIds []int `pulumi:"targetProjectIds"`
 }
 
 type ProjectJobTokenScopesState struct {
+	// The ID or full path of the project.
+	Project pulumi.StringPtrInput
 	// The ID of the project.
+	//
+	// Deprecated: `projectId` has been deprecated. Use `project` instead.
 	ProjectId pulumi.IntPtrInput
+	// A set of group IDs that are in the CI/CD job token inbound allowlist.
+	TargetGroupIds pulumi.IntArrayInput
 	// A set of project IDs that are in the CI/CD job token inbound allowlist.
 	TargetProjectIds pulumi.IntArrayInput
 }
@@ -137,16 +159,28 @@ func (ProjectJobTokenScopesState) ElementType() reflect.Type {
 }
 
 type projectJobTokenScopesArgs struct {
+	// The ID or full path of the project.
+	Project *string `pulumi:"project"`
 	// The ID of the project.
-	ProjectId int `pulumi:"projectId"`
+	//
+	// Deprecated: `projectId` has been deprecated. Use `project` instead.
+	ProjectId *int `pulumi:"projectId"`
+	// A set of group IDs that are in the CI/CD job token inbound allowlist.
+	TargetGroupIds []int `pulumi:"targetGroupIds"`
 	// A set of project IDs that are in the CI/CD job token inbound allowlist.
 	TargetProjectIds []int `pulumi:"targetProjectIds"`
 }
 
 // The set of arguments for constructing a ProjectJobTokenScopes resource.
 type ProjectJobTokenScopesArgs struct {
+	// The ID or full path of the project.
+	Project pulumi.StringPtrInput
 	// The ID of the project.
-	ProjectId pulumi.IntInput
+	//
+	// Deprecated: `projectId` has been deprecated. Use `project` instead.
+	ProjectId pulumi.IntPtrInput
+	// A set of group IDs that are in the CI/CD job token inbound allowlist.
+	TargetGroupIds pulumi.IntArrayInput
 	// A set of project IDs that are in the CI/CD job token inbound allowlist.
 	TargetProjectIds pulumi.IntArrayInput
 }
@@ -238,9 +272,21 @@ func (o ProjectJobTokenScopesOutput) ToProjectJobTokenScopesOutputWithContext(ct
 	return o
 }
 
+// The ID or full path of the project.
+func (o ProjectJobTokenScopesOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectJobTokenScopes) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The ID of the project.
+//
+// Deprecated: `projectId` has been deprecated. Use `project` instead.
 func (o ProjectJobTokenScopesOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectJobTokenScopes) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
+}
+
+// A set of group IDs that are in the CI/CD job token inbound allowlist.
+func (o ProjectJobTokenScopesOutput) TargetGroupIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ProjectJobTokenScopes) pulumi.IntArrayOutput { return v.TargetGroupIds }).(pulumi.IntArrayOutput)
 }
 
 // A set of project IDs that are in the CI/CD job token inbound allowlist.

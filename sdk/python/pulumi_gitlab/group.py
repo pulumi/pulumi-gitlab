@@ -30,6 +30,7 @@ class GroupArgs:
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
+                 permanently_remove_on_delete: Optional[pulumi.Input[bool]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
                  push_rules: Optional[pulumi.Input['GroupPushRulesArgs']] = None,
@@ -58,6 +59,7 @@ class GroupArgs:
         :param pulumi.Input[bool] mentions_disabled: Disable the capability of a group from getting mentioned.
         :param pulumi.Input[str] name: The name of the group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
+        :param pulumi.Input[bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
         :param pulumi.Input['GroupPushRulesArgs'] push_rules: Push rules for the group.
@@ -98,6 +100,8 @@ class GroupArgs:
             pulumi.set(__self__, "name", name)
         if parent_id is not None:
             pulumi.set(__self__, "parent_id", parent_id)
+        if permanently_remove_on_delete is not None:
+            pulumi.set(__self__, "permanently_remove_on_delete", permanently_remove_on_delete)
         if prevent_forking_outside_group is not None:
             pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
         if project_creation_level is not None:
@@ -292,6 +296,18 @@ class GroupArgs:
         pulumi.set(self, "parent_id", value)
 
     @property
+    @pulumi.getter(name="permanentlyRemoveOnDelete")
+    def permanently_remove_on_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+        """
+        return pulumi.get(self, "permanently_remove_on_delete")
+
+    @permanently_remove_on_delete.setter
+    def permanently_remove_on_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "permanently_remove_on_delete", value)
+
+    @property
     @pulumi.getter(name="preventForkingOutsideGroup")
     def prevent_forking_outside_group(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -456,6 +472,7 @@ class _GroupState:
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 permanently_remove_on_delete: Optional[pulumi.Input[bool]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
                  push_rules: Optional[pulumi.Input['GroupPushRulesArgs']] = None,
@@ -489,6 +506,7 @@ class _GroupState:
         :param pulumi.Input[str] name: The name of the group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
+        :param pulumi.Input[bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
         :param pulumi.Input['GroupPushRulesArgs'] push_rules: Push rules for the group.
@@ -538,6 +556,8 @@ class _GroupState:
             pulumi.set(__self__, "parent_id", parent_id)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if permanently_remove_on_delete is not None:
+            pulumi.set(__self__, "permanently_remove_on_delete", permanently_remove_on_delete)
         if prevent_forking_outside_group is not None:
             pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
         if project_creation_level is not None:
@@ -772,6 +792,18 @@ class _GroupState:
         pulumi.set(self, "path", value)
 
     @property
+    @pulumi.getter(name="permanentlyRemoveOnDelete")
+    def permanently_remove_on_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+        """
+        return pulumi.get(self, "permanently_remove_on_delete")
+
+    @permanently_remove_on_delete.setter
+    def permanently_remove_on_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "permanently_remove_on_delete", value)
+
+    @property
     @pulumi.getter(name="preventForkingOutsideGroup")
     def prevent_forking_outside_group(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -959,6 +991,7 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 permanently_remove_on_delete: Optional[pulumi.Input[bool]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
                  push_rules: Optional[pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
@@ -1037,6 +1070,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
+        :param pulumi.Input[bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
         :param pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']] push_rules: Push rules for the group.
@@ -1134,6 +1168,7 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 permanently_remove_on_delete: Optional[pulumi.Input[bool]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
                  push_rules: Optional[pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
@@ -1171,6 +1206,7 @@ class Group(pulumi.CustomResource):
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
+            __props__.__dict__["permanently_remove_on_delete"] = permanently_remove_on_delete
             __props__.__dict__["prevent_forking_outside_group"] = prevent_forking_outside_group
             __props__.__dict__["project_creation_level"] = project_creation_level
             __props__.__dict__["push_rules"] = push_rules
@@ -1217,6 +1253,7 @@ class Group(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parent_id: Optional[pulumi.Input[int]] = None,
             path: Optional[pulumi.Input[str]] = None,
+            permanently_remove_on_delete: Optional[pulumi.Input[bool]] = None,
             prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
             project_creation_level: Optional[pulumi.Input[str]] = None,
             push_rules: Optional[pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
@@ -1255,6 +1292,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
+        :param pulumi.Input[bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
         :param pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']] push_rules: Push rules for the group.
@@ -1291,6 +1329,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent_id"] = parent_id
         __props__.__dict__["path"] = path
+        __props__.__dict__["permanently_remove_on_delete"] = permanently_remove_on_delete
         __props__.__dict__["prevent_forking_outside_group"] = prevent_forking_outside_group
         __props__.__dict__["project_creation_level"] = project_creation_level
         __props__.__dict__["push_rules"] = push_rules
@@ -1442,6 +1481,14 @@ class Group(pulumi.CustomResource):
         The path of the group.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="permanentlyRemoveOnDelete")
+    def permanently_remove_on_delete(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+        """
+        return pulumi.get(self, "permanently_remove_on_delete")
 
     @property
     @pulumi.getter(name="preventForkingOutsideGroup")

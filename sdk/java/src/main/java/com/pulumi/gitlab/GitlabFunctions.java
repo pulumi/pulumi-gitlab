@@ -23,6 +23,8 @@ import com.pulumi.gitlab.inputs.GetGroupHookArgs;
 import com.pulumi.gitlab.inputs.GetGroupHookPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
 import com.pulumi.gitlab.inputs.GetGroupHooksPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
+import com.pulumi.gitlab.inputs.GetGroupIdsPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupMembershipArgs;
 import com.pulumi.gitlab.inputs.GetGroupMembershipPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupPlainArgs;
@@ -45,6 +47,8 @@ import com.pulumi.gitlab.inputs.GetProjectHookArgs;
 import com.pulumi.gitlab.inputs.GetProjectHookPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectHooksArgs;
 import com.pulumi.gitlab.inputs.GetProjectHooksPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
+import com.pulumi.gitlab.inputs.GetProjectIdsPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssueArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssuePlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssuesArgs;
@@ -94,6 +98,7 @@ import com.pulumi.gitlab.outputs.GetComplianceFrameworkResult;
 import com.pulumi.gitlab.outputs.GetCurrentUserResult;
 import com.pulumi.gitlab.outputs.GetGroupHookResult;
 import com.pulumi.gitlab.outputs.GetGroupHooksResult;
+import com.pulumi.gitlab.outputs.GetGroupIdsResult;
 import com.pulumi.gitlab.outputs.GetGroupMembershipResult;
 import com.pulumi.gitlab.outputs.GetGroupResult;
 import com.pulumi.gitlab.outputs.GetGroupSubgroupsResult;
@@ -107,6 +112,7 @@ import com.pulumi.gitlab.outputs.GetMetadataResult;
 import com.pulumi.gitlab.outputs.GetProjectBranchesResult;
 import com.pulumi.gitlab.outputs.GetProjectHookResult;
 import com.pulumi.gitlab.outputs.GetProjectHooksResult;
+import com.pulumi.gitlab.outputs.GetProjectIdsResult;
 import com.pulumi.gitlab.outputs.GetProjectIssueResult;
 import com.pulumi.gitlab.outputs.GetProjectIssuesResult;
 import com.pulumi.gitlab.outputs.GetProjectMembershipResult;
@@ -1591,6 +1597,206 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetGroupHooksResult> getGroupHooksPlain(GetGroupHooksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupHooks:getGroupHooks", TypeShape.of(GetGroupHooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupIds` data source identification information for a given group, allowing a user to translate a full path or ID into the GraphQL ID of the group.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querygroup)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Group;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var newGroup = new Group("newGroup");
+     * 
+     *         // use group IDs to get additional information, such as the GraphQL ID
+     *         // for other resources
+     *         final var foo = GitlabFunctions.getGroupIds(GetGroupIdsArgs.builder()
+     *             .group("gitlab_group.new_group.id")
+     *             .build());
+     * 
+     *         ctx.export("graphQLId", foo.applyValue(getGroupIdsResult -> getGroupIdsResult.groupGraphqlId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupIdsResult> getGroupIds(GetGroupIdsArgs args) {
+        return getGroupIds(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupIds` data source identification information for a given group, allowing a user to translate a full path or ID into the GraphQL ID of the group.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querygroup)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Group;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var newGroup = new Group("newGroup");
+     * 
+     *         // use group IDs to get additional information, such as the GraphQL ID
+     *         // for other resources
+     *         final var foo = GitlabFunctions.getGroupIds(GetGroupIdsArgs.builder()
+     *             .group("gitlab_group.new_group.id")
+     *             .build());
+     * 
+     *         ctx.export("graphQLId", foo.applyValue(getGroupIdsResult -> getGroupIdsResult.groupGraphqlId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupIdsResult> getGroupIdsPlain(GetGroupIdsPlainArgs args) {
+        return getGroupIdsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupIds` data source identification information for a given group, allowing a user to translate a full path or ID into the GraphQL ID of the group.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querygroup)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Group;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var newGroup = new Group("newGroup");
+     * 
+     *         // use group IDs to get additional information, such as the GraphQL ID
+     *         // for other resources
+     *         final var foo = GitlabFunctions.getGroupIds(GetGroupIdsArgs.builder()
+     *             .group("gitlab_group.new_group.id")
+     *             .build());
+     * 
+     *         ctx.export("graphQLId", foo.applyValue(getGroupIdsResult -> getGroupIdsResult.groupGraphqlId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupIdsResult> getGroupIds(GetGroupIdsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupIds:getGroupIds", TypeShape.of(GetGroupIdsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupIds` data source identification information for a given group, allowing a user to translate a full path or ID into the GraphQL ID of the group.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querygroup)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Group;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var newGroup = new Group("newGroup");
+     * 
+     *         // use group IDs to get additional information, such as the GraphQL ID
+     *         // for other resources
+     *         final var foo = GitlabFunctions.getGroupIds(GetGroupIdsArgs.builder()
+     *             .group("gitlab_group.new_group.id")
+     *             .build());
+     * 
+     *         ctx.export("graphQLId", foo.applyValue(getGroupIdsResult -> getGroupIdsResult.groupGraphqlId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupIdsResult> getGroupIdsPlain(GetGroupIdsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupIds:getGroupIds", TypeShape.of(GetGroupIdsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
@@ -3771,6 +3977,206 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectHooksResult> getProjectHooksPlain(GetProjectHooksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectHooks:getProjectHooks", TypeShape.of(GetProjectHooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectIds` data source identification information for a given project, allowing a user to translate a full path or ID into the GraphQL ID of the project.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#queryproject)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var newProject = new Project("newProject");
+     * 
+     *         // use project IDs to get additional information, such as the GraphQL ID
+     *         // for other resources
+     *         final var foo = GitlabFunctions.getProjectIds(GetProjectIdsArgs.builder()
+     *             .project("gitlab_project.new_project.id")
+     *             .build());
+     * 
+     *         ctx.export("graphQLId", foo.applyValue(getProjectIdsResult -> getProjectIdsResult.projectGraphqlId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectIdsResult> getProjectIds(GetProjectIdsArgs args) {
+        return getProjectIds(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectIds` data source identification information for a given project, allowing a user to translate a full path or ID into the GraphQL ID of the project.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#queryproject)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var newProject = new Project("newProject");
+     * 
+     *         // use project IDs to get additional information, such as the GraphQL ID
+     *         // for other resources
+     *         final var foo = GitlabFunctions.getProjectIds(GetProjectIdsArgs.builder()
+     *             .project("gitlab_project.new_project.id")
+     *             .build());
+     * 
+     *         ctx.export("graphQLId", foo.applyValue(getProjectIdsResult -> getProjectIdsResult.projectGraphqlId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetProjectIdsResult> getProjectIdsPlain(GetProjectIdsPlainArgs args) {
+        return getProjectIdsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectIds` data source identification information for a given project, allowing a user to translate a full path or ID into the GraphQL ID of the project.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#queryproject)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var newProject = new Project("newProject");
+     * 
+     *         // use project IDs to get additional information, such as the GraphQL ID
+     *         // for other resources
+     *         final var foo = GitlabFunctions.getProjectIds(GetProjectIdsArgs.builder()
+     *             .project("gitlab_project.new_project.id")
+     *             .build());
+     * 
+     *         ctx.export("graphQLId", foo.applyValue(getProjectIdsResult -> getProjectIdsResult.projectGraphqlId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectIdsResult> getProjectIds(GetProjectIdsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectIds:getProjectIds", TypeShape.of(GetProjectIdsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectIds` data source identification information for a given project, allowing a user to translate a full path or ID into the GraphQL ID of the project.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#queryproject)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var newProject = new Project("newProject");
+     * 
+     *         // use project IDs to get additional information, such as the GraphQL ID
+     *         // for other resources
+     *         final var foo = GitlabFunctions.getProjectIds(GetProjectIdsArgs.builder()
+     *             .project("gitlab_project.new_project.id")
+     *             .build());
+     * 
+     *         ctx.export("graphQLId", foo.applyValue(getProjectIdsResult -> getProjectIdsResult.projectGraphqlId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetProjectIdsResult> getProjectIdsPlain(GetProjectIdsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectIds:getProjectIds", TypeShape.of(GetProjectIdsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.ProjectIssue` data source allows to retrieve details about an issue in a project.

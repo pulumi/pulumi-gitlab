@@ -68,9 +68,9 @@ namespace Pulumi.GitLab
     /// ",
     ///     });
     /// 
-    ///     var my_policy = new GitLab.Index.ProjectSecurityPolicy("my-policy", new()
+    ///     var my_policy = new GitLab.ProjectSecurityPolicyAttachment("my-policy", new()
     ///     {
-    ///         Project = 1234,
+    ///         Project = "1234",
     ///         PolicyProject = my_policy_project.Id,
     ///     });
     /// 

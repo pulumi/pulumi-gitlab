@@ -179,6 +179,12 @@ namespace Pulumi.GitLab
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+        /// </summary>
+        [Output("permanentlyRemoveOnDelete")]
+        public Output<bool?> PermanentlyRemoveOnDelete { get; private set; } = null!;
+
+        /// <summary>
         /// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         /// </summary>
         [Output("preventForkingOutsideGroup")]
@@ -403,6 +409,12 @@ namespace Pulumi.GitLab
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
+        /// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+        /// </summary>
+        [Input("permanentlyRemoveOnDelete")]
+        public Input<bool>? PermanentlyRemoveOnDelete { get; set; }
+
+        /// <summary>
         /// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         /// </summary>
         [Input("preventForkingOutsideGroup")]
@@ -589,6 +601,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+        /// </summary>
+        [Input("permanentlyRemoveOnDelete")]
+        public Input<bool>? PermanentlyRemoveOnDelete { get; set; }
 
         /// <summary>
         /// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.

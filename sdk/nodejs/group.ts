@@ -155,6 +155,10 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly path!: pulumi.Output<string>;
     /**
+     * Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+     */
+    public readonly permanentlyRemoveOnDelete!: pulumi.Output<boolean | undefined>;
+    /**
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
     public readonly preventForkingOutsideGroup!: pulumi.Output<boolean>;
@@ -241,6 +245,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parentId"] = state ? state.parentId : undefined;
             resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["permanentlyRemoveOnDelete"] = state ? state.permanentlyRemoveOnDelete : undefined;
             resourceInputs["preventForkingOutsideGroup"] = state ? state.preventForkingOutsideGroup : undefined;
             resourceInputs["projectCreationLevel"] = state ? state.projectCreationLevel : undefined;
             resourceInputs["pushRules"] = state ? state.pushRules : undefined;
@@ -274,6 +279,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parentId"] = args ? args.parentId : undefined;
             resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["permanentlyRemoveOnDelete"] = args ? args.permanentlyRemoveOnDelete : undefined;
             resourceInputs["preventForkingOutsideGroup"] = args ? args.preventForkingOutsideGroup : undefined;
             resourceInputs["projectCreationLevel"] = args ? args.projectCreationLevel : undefined;
             resourceInputs["pushRules"] = args ? args.pushRules : undefined;
@@ -371,6 +377,10 @@ export interface GroupState {
      * The path of the group.
      */
     path?: pulumi.Input<string>;
+    /**
+     * Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+     */
+    permanentlyRemoveOnDelete?: pulumi.Input<boolean>;
     /**
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
@@ -489,6 +499,10 @@ export interface GroupArgs {
      * The path of the group.
      */
     path: pulumi.Input<string>;
+    /**
+     * Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+     */
+    permanentlyRemoveOnDelete?: pulumi.Input<boolean>;
     /**
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */

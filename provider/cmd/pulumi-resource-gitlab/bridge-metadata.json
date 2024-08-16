@@ -206,6 +206,10 @@
                 "current": "gitlab:index/groupSamlLink:GroupSamlLink",
                 "majorVersion": 8
             },
+            "gitlab_group_security_policy_attachment": {
+                "current": "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment",
+                "majorVersion": 8
+            },
             "gitlab_group_share_group": {
                 "current": "gitlab:index/groupShareGroup:GroupShareGroup",
                 "majorVersion": 8
@@ -405,6 +409,9 @@
                 "current": "gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes",
                 "majorVersion": 8,
                 "fields": {
+                    "target_group_ids": {
+                        "maxItemsOne": false
+                    },
                     "target_project_ids": {
                         "maxItemsOne": false
                     }
@@ -646,6 +653,10 @@
                     }
                 }
             },
+            "gitlab_group_ids": {
+                "current": "gitlab:index/getGroupIds:getGroupIds",
+                "majorVersion": 8
+            },
             "gitlab_group_membership": {
                 "current": "gitlab:index/getGroupMembership:getGroupMembership",
                 "majorVersion": 8,
@@ -775,6 +786,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "gitlab_project_ids": {
+                "current": "gitlab:index/getProjectIds:getProjectIds",
+                "majorVersion": 8
             },
             "gitlab_project_issue": {
                 "current": "gitlab:index/getProjectIssue:getProjectIssue",
@@ -1082,6 +1097,7 @@
             "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate": 0,
             "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment": 1,
             "gitlab:index/groupSamlLink:GroupSamlLink": 0,
+            "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment": 1,
             "gitlab:index/groupShareGroup:GroupShareGroup": 0,
             "gitlab:index/groupVariable:GroupVariable": 0,
             "gitlab:index/instanceCluster:InstanceCluster": 0,
@@ -1160,6 +1176,7 @@
             "gitlab:index/getGroup:getGroup": 0,
             "gitlab:index/getGroupHook:getGroupHook": 0,
             "gitlab:index/getGroupHooks:getGroupHooks": 0,
+            "gitlab:index/getGroupIds:getGroupIds": 1,
             "gitlab:index/getGroupMembership:getGroupMembership": 0,
             "gitlab:index/getGroupSubgroups:getGroupSubgroups": 0,
             "gitlab:index/getGroupVariable:getGroupVariable": 0,
@@ -1173,6 +1190,7 @@
             "gitlab:index/getProjectBranches:getProjectBranches": 0,
             "gitlab:index/getProjectHook:getProjectHook": 0,
             "gitlab:index/getProjectHooks:getProjectHooks": 0,
+            "gitlab:index/getProjectIds:getProjectIds": 1,
             "gitlab:index/getProjectIssue:getProjectIssue": 0,
             "gitlab:index/getProjectIssues:getProjectIssues": 0,
             "gitlab:index/getProjectMembership:getProjectMembership": 0,

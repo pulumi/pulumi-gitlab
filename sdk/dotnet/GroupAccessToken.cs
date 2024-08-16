@@ -33,7 +33,7 @@ namespace Pulumi.GitLab
     ///     var example = new GitLab.GroupAccessToken("example", new()
     ///     {
     ///         Group = "25",
-    ///         Name = "Example project access token",
+    ///         Name = "Example group access token",
     ///         ExpiresAt = "2020-03-14",
     ///         AccessLevel = "developer",
     ///         Scopes = new[]

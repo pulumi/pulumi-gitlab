@@ -294,7 +294,8 @@ type ApplicationSettings struct {
 	// Maximum allowable lifetime for access tokens in days.
 	MaxPersonalAccessTokenLifetime pulumi.IntOutput `pulumi:"maxPersonalAccessTokenLifetime"`
 	// Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
-	MaxSshKeyLifetime pulumi.IntOutput `pulumi:"maxSshKeyLifetime"`
+	MaxSshKeyLifetime          pulumi.IntOutput `pulumi:"maxSshKeyLifetime"`
+	MaxTerraformStateSizeBytes pulumi.IntOutput `pulumi:"maxTerraformStateSizeBytes"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntOutput `pulumi:"metricsMethodCallThreshold"`
 	// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
@@ -881,7 +882,8 @@ type applicationSettingsState struct {
 	// Maximum allowable lifetime for access tokens in days.
 	MaxPersonalAccessTokenLifetime *int `pulumi:"maxPersonalAccessTokenLifetime"`
 	// Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
-	MaxSshKeyLifetime *int `pulumi:"maxSshKeyLifetime"`
+	MaxSshKeyLifetime          *int `pulumi:"maxSshKeyLifetime"`
+	MaxTerraformStateSizeBytes *int `pulumi:"maxTerraformStateSizeBytes"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold *int `pulumi:"metricsMethodCallThreshold"`
 	// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
@@ -1376,7 +1378,8 @@ type ApplicationSettingsState struct {
 	// Maximum allowable lifetime for access tokens in days.
 	MaxPersonalAccessTokenLifetime pulumi.IntPtrInput
 	// Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
-	MaxSshKeyLifetime pulumi.IntPtrInput
+	MaxSshKeyLifetime          pulumi.IntPtrInput
+	MaxTerraformStateSizeBytes pulumi.IntPtrInput
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntPtrInput
 	// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
@@ -1875,7 +1878,8 @@ type applicationSettingsArgs struct {
 	// Maximum allowable lifetime for access tokens in days.
 	MaxPersonalAccessTokenLifetime *int `pulumi:"maxPersonalAccessTokenLifetime"`
 	// Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
-	MaxSshKeyLifetime *int `pulumi:"maxSshKeyLifetime"`
+	MaxSshKeyLifetime          *int `pulumi:"maxSshKeyLifetime"`
+	MaxTerraformStateSizeBytes *int `pulumi:"maxTerraformStateSizeBytes"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold *int `pulumi:"metricsMethodCallThreshold"`
 	// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
@@ -2371,7 +2375,8 @@ type ApplicationSettingsArgs struct {
 	// Maximum allowable lifetime for access tokens in days.
 	MaxPersonalAccessTokenLifetime pulumi.IntPtrInput
 	// Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
-	MaxSshKeyLifetime pulumi.IntPtrInput
+	MaxSshKeyLifetime          pulumi.IntPtrInput
+	MaxTerraformStateSizeBytes pulumi.IntPtrInput
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntPtrInput
 	// Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
@@ -3364,6 +3369,10 @@ func (o ApplicationSettingsOutput) MaxPersonalAccessTokenLifetime() pulumi.IntOu
 // Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
 func (o ApplicationSettingsOutput) MaxSshKeyLifetime() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxSshKeyLifetime }).(pulumi.IntOutput)
+}
+
+func (o ApplicationSettingsOutput) MaxTerraformStateSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxTerraformStateSizeBytes }).(pulumi.IntOutput)
 }
 
 // A method call is only tracked when it takes longer than the given amount of milliseconds.

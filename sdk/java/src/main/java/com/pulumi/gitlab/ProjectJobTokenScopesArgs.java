@@ -5,10 +5,12 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ProjectJobTokenScopesArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,39 +18,79 @@ public final class ProjectJobTokenScopesArgs extends com.pulumi.resources.Resour
     public static final ProjectJobTokenScopesArgs Empty = new ProjectJobTokenScopesArgs();
 
     /**
-     * The ID of the project.
+     * The ID or full path of the project.
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<Integer> projectId;
+    @Import(name="project")
+    private @Nullable Output<String> project;
+
+    /**
+     * @return The ID or full path of the project.
+     * 
+     */
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * The ID of the project.
+     * 
+     * @deprecated
+     * `project_id` has been deprecated. Use `project` instead.
+     * 
+     */
+    @Deprecated /* `project_id` has been deprecated. Use `project` instead. */
+    @Import(name="projectId")
+    private @Nullable Output<Integer> projectId;
 
     /**
      * @return The ID of the project.
      * 
+     * @deprecated
+     * `project_id` has been deprecated. Use `project` instead.
+     * 
      */
-    public Output<Integer> projectId() {
-        return this.projectId;
+    @Deprecated /* `project_id` has been deprecated. Use `project` instead. */
+    public Optional<Output<Integer>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
+     * A set of group IDs that are in the CI/CD job token inbound allowlist.
+     * 
+     */
+    @Import(name="targetGroupIds")
+    private @Nullable Output<List<Integer>> targetGroupIds;
+
+    /**
+     * @return A set of group IDs that are in the CI/CD job token inbound allowlist.
+     * 
+     */
+    public Optional<Output<List<Integer>>> targetGroupIds() {
+        return Optional.ofNullable(this.targetGroupIds);
     }
 
     /**
      * A set of project IDs that are in the CI/CD job token inbound allowlist.
      * 
      */
-    @Import(name="targetProjectIds", required=true)
-    private Output<List<Integer>> targetProjectIds;
+    @Import(name="targetProjectIds")
+    private @Nullable Output<List<Integer>> targetProjectIds;
 
     /**
      * @return A set of project IDs that are in the CI/CD job token inbound allowlist.
      * 
      */
-    public Output<List<Integer>> targetProjectIds() {
-        return this.targetProjectIds;
+    public Optional<Output<List<Integer>>> targetProjectIds() {
+        return Optional.ofNullable(this.targetProjectIds);
     }
 
     private ProjectJobTokenScopesArgs() {}
 
     private ProjectJobTokenScopesArgs(ProjectJobTokenScopesArgs $) {
+        this.project = $.project;
         this.projectId = $.projectId;
+        this.targetGroupIds = $.targetGroupIds;
         this.targetProjectIds = $.targetProjectIds;
     }
 
@@ -71,12 +113,37 @@ public final class ProjectJobTokenScopesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId The ID of the project.
+         * @param project The ID or full path of the project.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(Output<Integer> projectId) {
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
+            return this;
+        }
+
+        /**
+         * @param project The ID or full path of the project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(String project) {
+            return project(Output.of(project));
+        }
+
+        /**
+         * @param projectId The ID of the project.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `project_id` has been deprecated. Use `project` instead.
+         * 
+         */
+        @Deprecated /* `project_id` has been deprecated. Use `project` instead. */
+        public Builder projectId(@Nullable Output<Integer> projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -86,9 +153,44 @@ public final class ProjectJobTokenScopesArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
+         * @deprecated
+         * `project_id` has been deprecated. Use `project` instead.
+         * 
          */
+        @Deprecated /* `project_id` has been deprecated. Use `project` instead. */
         public Builder projectId(Integer projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param targetGroupIds A set of group IDs that are in the CI/CD job token inbound allowlist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetGroupIds(@Nullable Output<List<Integer>> targetGroupIds) {
+            $.targetGroupIds = targetGroupIds;
+            return this;
+        }
+
+        /**
+         * @param targetGroupIds A set of group IDs that are in the CI/CD job token inbound allowlist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetGroupIds(List<Integer> targetGroupIds) {
+            return targetGroupIds(Output.of(targetGroupIds));
+        }
+
+        /**
+         * @param targetGroupIds A set of group IDs that are in the CI/CD job token inbound allowlist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetGroupIds(Integer... targetGroupIds) {
+            return targetGroupIds(List.of(targetGroupIds));
         }
 
         /**
@@ -97,7 +199,7 @@ public final class ProjectJobTokenScopesArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder targetProjectIds(Output<List<Integer>> targetProjectIds) {
+        public Builder targetProjectIds(@Nullable Output<List<Integer>> targetProjectIds) {
             $.targetProjectIds = targetProjectIds;
             return this;
         }
@@ -123,12 +225,6 @@ public final class ProjectJobTokenScopesArgs extends com.pulumi.resources.Resour
         }
 
         public ProjectJobTokenScopesArgs build() {
-            if ($.projectId == null) {
-                throw new MissingRequiredPropertyException("ProjectJobTokenScopesArgs", "projectId");
-            }
-            if ($.targetProjectIds == null) {
-                throw new MissingRequiredPropertyException("ProjectJobTokenScopesArgs", "targetProjectIds");
-            }
             return $;
         }
     }

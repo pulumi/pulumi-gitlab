@@ -100,6 +100,11 @@ export const getGroupHooks: typeof import("./getGroupHooks").getGroupHooks = nul
 export const getGroupHooksOutput: typeof import("./getGroupHooks").getGroupHooksOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupHooks","getGroupHooksOutput"], () => require("./getGroupHooks"));
 
+export { GetGroupIdsArgs, GetGroupIdsResult, GetGroupIdsOutputArgs } from "./getGroupIds";
+export const getGroupIds: typeof import("./getGroupIds").getGroupIds = null as any;
+export const getGroupIdsOutput: typeof import("./getGroupIds").getGroupIdsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupIds","getGroupIdsOutput"], () => require("./getGroupIds"));
+
 export { GetGroupMembershipArgs, GetGroupMembershipResult, GetGroupMembershipOutputArgs } from "./getGroupMembership";
 export const getGroupMembership: typeof import("./getGroupMembership").getGroupMembership = null as any;
 export const getGroupMembershipOutput: typeof import("./getGroupMembership").getGroupMembershipOutput = null as any;
@@ -164,6 +169,11 @@ export { GetProjectHooksArgs, GetProjectHooksResult, GetProjectHooksOutputArgs }
 export const getProjectHooks: typeof import("./getProjectHooks").getProjectHooks = null as any;
 export const getProjectHooksOutput: typeof import("./getProjectHooks").getProjectHooksOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectHooks","getProjectHooksOutput"], () => require("./getProjectHooks"));
+
+export { GetProjectIdsArgs, GetProjectIdsResult, GetProjectIdsOutputArgs } from "./getProjectIds";
+export const getProjectIds: typeof import("./getProjectIds").getProjectIds = null as any;
+export const getProjectIdsOutput: typeof import("./getProjectIds").getProjectIdsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectIds","getProjectIdsOutput"], () => require("./getProjectIds"));
 
 export { GetProjectIssueArgs, GetProjectIssueResult, GetProjectIssueOutputArgs } from "./getProjectIssue";
 export const getProjectIssue: typeof import("./getProjectIssue").getProjectIssue = null as any;
@@ -339,6 +349,11 @@ export { GroupSamlLinkArgs, GroupSamlLinkState } from "./groupSamlLink";
 export type GroupSamlLink = import("./groupSamlLink").GroupSamlLink;
 export const GroupSamlLink: typeof import("./groupSamlLink").GroupSamlLink = null as any;
 utilities.lazyLoad(exports, ["GroupSamlLink"], () => require("./groupSamlLink"));
+
+export { GroupSecurityPolicyAttachmentArgs, GroupSecurityPolicyAttachmentState } from "./groupSecurityPolicyAttachment";
+export type GroupSecurityPolicyAttachment = import("./groupSecurityPolicyAttachment").GroupSecurityPolicyAttachment;
+export const GroupSecurityPolicyAttachment: typeof import("./groupSecurityPolicyAttachment").GroupSecurityPolicyAttachment = null as any;
+utilities.lazyLoad(exports, ["GroupSecurityPolicyAttachment"], () => require("./groupSecurityPolicyAttachment"));
 
 export { GroupShareGroupArgs, GroupShareGroupState } from "./groupShareGroup";
 export type GroupShareGroup = import("./groupShareGroup").GroupShareGroup;
@@ -744,6 +759,8 @@ const _module = {
                 return new GroupProtectedEnvironment(name, <any>undefined, { urn })
             case "gitlab:index/groupSamlLink:GroupSamlLink":
                 return new GroupSamlLink(name, <any>undefined, { urn })
+            case "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment":
+                return new GroupSecurityPolicyAttachment(name, <any>undefined, { urn })
             case "gitlab:index/groupShareGroup:GroupShareGroup":
                 return new GroupShareGroup(name, <any>undefined, { urn })
             case "gitlab:index/groupVariable:GroupVariable":
@@ -908,6 +925,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupMembership", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/groupProjectFileTemplate", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupProtectedEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupSamlLink", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupSecurityPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceCluster", _module)

@@ -120,6 +120,8 @@ type Group struct {
 	ParentId pulumi.IntOutput `pulumi:"parentId"`
 	// The path of the group.
 	Path pulumi.StringOutput `pulumi:"path"`
+	// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+	PermanentlyRemoveOnDelete pulumi.BoolPtrOutput `pulumi:"permanentlyRemoveOnDelete"`
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolOutput `pulumi:"preventForkingOutsideGroup"`
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
@@ -221,6 +223,8 @@ type groupState struct {
 	ParentId *int `pulumi:"parentId"`
 	// The path of the group.
 	Path *string `pulumi:"path"`
+	// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+	PermanentlyRemoveOnDelete *bool `pulumi:"permanentlyRemoveOnDelete"`
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup *bool `pulumi:"preventForkingOutsideGroup"`
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
@@ -286,6 +290,8 @@ type GroupState struct {
 	ParentId pulumi.IntPtrInput
 	// The path of the group.
 	Path pulumi.StringPtrInput
+	// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+	PermanentlyRemoveOnDelete pulumi.BoolPtrInput
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolPtrInput
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
@@ -349,6 +355,8 @@ type groupArgs struct {
 	ParentId *int `pulumi:"parentId"`
 	// The path of the group.
 	Path string `pulumi:"path"`
+	// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+	PermanentlyRemoveOnDelete *bool `pulumi:"permanentlyRemoveOnDelete"`
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup *bool `pulumi:"preventForkingOutsideGroup"`
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
@@ -405,6 +413,8 @@ type GroupArgs struct {
 	ParentId pulumi.IntPtrInput
 	// The path of the group.
 	Path pulumi.StringInput
+	// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+	PermanentlyRemoveOnDelete pulumi.BoolPtrInput
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolPtrInput
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
@@ -601,6 +611,11 @@ func (o GroupOutput) ParentId() pulumi.IntOutput {
 // The path of the group.
 func (o GroupOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
+// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+func (o GroupOutput) PermanentlyRemoveOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.PermanentlyRemoveOnDelete }).(pulumi.BoolPtrOutput)
 }
 
 // Defaults to false. When enabled, users can not fork projects from this group to external namespaces.

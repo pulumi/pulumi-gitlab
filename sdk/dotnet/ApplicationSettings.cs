@@ -833,6 +833,9 @@ namespace Pulumi.GitLab
         [Output("maxSshKeyLifetime")]
         public Output<int> MaxSshKeyLifetime { get; private set; } = null!;
 
+        [Output("maxTerraformStateSizeBytes")]
+        public Output<int> MaxTerraformStateSizeBytes { get; private set; } = null!;
+
         /// <summary>
         /// A method call is only tracked when it takes longer than the given amount of milliseconds.
         /// </summary>
@@ -2504,6 +2507,9 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("maxSshKeyLifetime")]
         public Input<int>? MaxSshKeyLifetime { get; set; }
+
+        [Input("maxTerraformStateSizeBytes")]
+        public Input<int>? MaxTerraformStateSizeBytes { get; set; }
 
         /// <summary>
         /// A method call is only tracked when it takes longer than the given amount of milliseconds.
@@ -4194,6 +4200,9 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("maxSshKeyLifetime")]
         public Input<int>? MaxSshKeyLifetime { get; set; }
+
+        [Input("maxTerraformStateSizeBytes")]
+        public Input<int>? MaxTerraformStateSizeBytes { get; set; }
 
         /// <summary>
         /// A method call is only tracked when it takes longer than the given amount of milliseconds.
