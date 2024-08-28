@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectProtectedEnvironmentApprovalRule {
     /**
-     * @return Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+     * @return Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
      * 
      */
     private @Nullable String accessLevel;
@@ -23,7 +23,7 @@ public final class ProjectProtectedEnvironmentApprovalRule {
      */
     private @Nullable String accessLevelDescription;
     /**
-     * @return The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+     * @return The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
      * 
      */
     private @Nullable Integer groupId;
@@ -43,14 +43,14 @@ public final class ProjectProtectedEnvironmentApprovalRule {
      */
     private @Nullable Integer requiredApprovals;
     /**
-     * @return The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+     * @return The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
      * 
      */
     private @Nullable Integer userId;
 
     private ProjectProtectedEnvironmentApprovalRule() {}
     /**
-     * @return Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+     * @return Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
      * 
      */
     public Optional<String> accessLevel() {
@@ -64,7 +64,7 @@ public final class ProjectProtectedEnvironmentApprovalRule {
         return Optional.ofNullable(this.accessLevelDescription);
     }
     /**
-     * @return The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+     * @return The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
      * 
      */
     public Optional<Integer> groupId() {
@@ -92,7 +92,7 @@ public final class ProjectProtectedEnvironmentApprovalRule {
         return Optional.ofNullable(this.requiredApprovals);
     }
     /**
-     * @return The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+     * @return The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
      * 
      */
     public Optional<Integer> userId() {

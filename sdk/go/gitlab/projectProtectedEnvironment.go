@@ -33,9 +33,9 @@ import (
 type ProjectProtectedEnvironment struct {
 	pulumi.CustomResourceState
 
-	// Array of approval rules to deploy, with each described by a hash.
+	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules ProjectProtectedEnvironmentApprovalRuleArrayOutput `pulumi:"approvalRules"`
-	// Array of access levels allowed to deploy, with each described by a hash.
+	// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelArrayOutput `pulumi:"deployAccessLevels"`
 	// The name of the environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
@@ -79,9 +79,9 @@ func GetProjectProtectedEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectProtectedEnvironment resources.
 type projectProtectedEnvironmentState struct {
-	// Array of approval rules to deploy, with each described by a hash.
+	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules []ProjectProtectedEnvironmentApprovalRule `pulumi:"approvalRules"`
-	// Array of access levels allowed to deploy, with each described by a hash.
+	// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 	DeployAccessLevels []ProjectProtectedEnvironmentDeployAccessLevel `pulumi:"deployAccessLevels"`
 	// The name of the environment.
 	Environment *string `pulumi:"environment"`
@@ -90,9 +90,9 @@ type projectProtectedEnvironmentState struct {
 }
 
 type ProjectProtectedEnvironmentState struct {
-	// Array of approval rules to deploy, with each described by a hash.
+	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules ProjectProtectedEnvironmentApprovalRuleArrayInput
-	// Array of access levels allowed to deploy, with each described by a hash.
+	// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelArrayInput
 	// The name of the environment.
 	Environment pulumi.StringPtrInput
@@ -105,9 +105,9 @@ func (ProjectProtectedEnvironmentState) ElementType() reflect.Type {
 }
 
 type projectProtectedEnvironmentArgs struct {
-	// Array of approval rules to deploy, with each described by a hash.
+	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules []ProjectProtectedEnvironmentApprovalRule `pulumi:"approvalRules"`
-	// Array of access levels allowed to deploy, with each described by a hash.
+	// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 	DeployAccessLevels []ProjectProtectedEnvironmentDeployAccessLevel `pulumi:"deployAccessLevels"`
 	// The name of the environment.
 	Environment string `pulumi:"environment"`
@@ -117,9 +117,9 @@ type projectProtectedEnvironmentArgs struct {
 
 // The set of arguments for constructing a ProjectProtectedEnvironment resource.
 type ProjectProtectedEnvironmentArgs struct {
-	// Array of approval rules to deploy, with each described by a hash.
+	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules ProjectProtectedEnvironmentApprovalRuleArrayInput
-	// Array of access levels allowed to deploy, with each described by a hash.
+	// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelArrayInput
 	// The name of the environment.
 	Environment pulumi.StringInput
@@ -214,14 +214,14 @@ func (o ProjectProtectedEnvironmentOutput) ToProjectProtectedEnvironmentOutputWi
 	return o
 }
 
-// Array of approval rules to deploy, with each described by a hash.
+// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 func (o ProjectProtectedEnvironmentOutput) ApprovalRules() ProjectProtectedEnvironmentApprovalRuleArrayOutput {
 	return o.ApplyT(func(v *ProjectProtectedEnvironment) ProjectProtectedEnvironmentApprovalRuleArrayOutput {
 		return v.ApprovalRules
 	}).(ProjectProtectedEnvironmentApprovalRuleArrayOutput)
 }
 
-// Array of access levels allowed to deploy, with each described by a hash.
+// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 func (o ProjectProtectedEnvironmentOutput) DeployAccessLevels() ProjectProtectedEnvironmentDeployAccessLevelArrayOutput {
 	return o.ApplyT(func(v *ProjectProtectedEnvironment) ProjectProtectedEnvironmentDeployAccessLevelArrayOutput {
 		return v.DeployAccessLevels

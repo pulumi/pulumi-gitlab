@@ -23,7 +23,7 @@ class GroupSamlLinkArgs:
         :param pulumi.Input[str] access_level: Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[str] group: The ID or path of the group to add the SAML Group Link to.
         :param pulumi.Input[str] saml_group_name: The name of the SAML group.
-        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "group", group)
@@ -71,7 +71,7 @@ class GroupSamlLinkArgs:
     @pulumi.getter(name="memberRoleId")
     def member_role_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances.
+        The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         """
         return pulumi.get(self, "member_role_id")
 
@@ -91,7 +91,7 @@ class _GroupSamlLinkState:
         Input properties used for looking up and filtering GroupSamlLink resources.
         :param pulumi.Input[str] access_level: Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[str] group: The ID or path of the group to add the SAML Group Link to.
-        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         :param pulumi.Input[str] saml_group_name: The name of the SAML group.
         """
         if access_level is not None:
@@ -131,7 +131,7 @@ class _GroupSamlLinkState:
     @pulumi.getter(name="memberRoleId")
     def member_role_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances.
+        The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         """
         return pulumi.get(self, "member_role_id")
 
@@ -179,6 +179,8 @@ class GroupSamlLink(pulumi.CustomResource):
             access_level="developer",
             saml_group_name="samlgroupname1")
         # Example using a Custom Role (Ultimate only)
+        # When using the custom role, the `access_level` must match the
+        # base role used to create the custom role.
         test_custom_role = gitlab.GroupSamlLink("test_custom_role",
             group="12345",
             access_level="developer",
@@ -198,7 +200,7 @@ class GroupSamlLink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[str] group: The ID or path of the group to add the SAML Group Link to.
-        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         :param pulumi.Input[str] saml_group_name: The name of the SAML group.
         """
         ...
@@ -224,6 +226,8 @@ class GroupSamlLink(pulumi.CustomResource):
             access_level="developer",
             saml_group_name="samlgroupname1")
         # Example using a Custom Role (Ultimate only)
+        # When using the custom role, the `access_level` must match the
+        # base role used to create the custom role.
         test_custom_role = gitlab.GroupSamlLink("test_custom_role",
             group="12345",
             access_level="developer",
@@ -300,7 +304,7 @@ class GroupSamlLink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[str] group: The ID or path of the group to add the SAML Group Link to.
-        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         :param pulumi.Input[str] saml_group_name: The name of the SAML group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -333,7 +337,7 @@ class GroupSamlLink(pulumi.CustomResource):
     @pulumi.getter(name="memberRoleId")
     def member_role_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances.
+        The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         """
         return pulumi.get(self, "member_role_id")
 

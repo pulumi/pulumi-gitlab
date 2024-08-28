@@ -448,7 +448,7 @@ export interface GroupIssueBoardList {
 
 export interface GroupProtectedEnvironmentApprovalRule {
     /**
-     * Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+     * Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -456,7 +456,7 @@ export interface GroupProtectedEnvironmentApprovalRule {
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
-     * The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+     * The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
      */
     groupId?: pulumi.Input<number>;
     /**
@@ -472,14 +472,14 @@ export interface GroupProtectedEnvironmentApprovalRule {
      */
     requiredApprovals?: pulumi.Input<number>;
     /**
-     * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+     * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `accessLevel` and `groupId`.
      */
     userId?: pulumi.Input<number>;
 }
 
 export interface GroupProtectedEnvironmentDeployAccessLevel {
     /**
-     * Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+     * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -487,7 +487,7 @@ export interface GroupProtectedEnvironmentDeployAccessLevel {
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
-     * The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+     * The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
      */
     groupId?: pulumi.Input<number>;
     /**
@@ -499,7 +499,7 @@ export interface GroupProtectedEnvironmentDeployAccessLevel {
      */
     id?: pulumi.Input<number>;
     /**
-     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `accessLevel` and `groupId`.
      */
     userId?: pulumi.Input<number>;
 }
@@ -643,7 +643,7 @@ export interface ProjectIssueTaskCompletionStatus {
 
 export interface ProjectProtectedEnvironmentApprovalRule {
     /**
-     * Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+     * Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -651,7 +651,7 @@ export interface ProjectProtectedEnvironmentApprovalRule {
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
-     * The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+     * The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
      */
     groupId?: pulumi.Input<number>;
     /**
@@ -667,14 +667,14 @@ export interface ProjectProtectedEnvironmentApprovalRule {
      */
     requiredApprovals?: pulumi.Input<number>;
     /**
-     * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+     * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
      */
     userId?: pulumi.Input<number>;
 }
 
 export interface ProjectProtectedEnvironmentDeployAccessLevel {
     /**
-     * Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+     * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -682,7 +682,7 @@ export interface ProjectProtectedEnvironmentDeployAccessLevel {
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
-     * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+     * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
      */
     groupId?: pulumi.Input<number>;
     /**
@@ -694,7 +694,7 @@ export interface ProjectProtectedEnvironmentDeployAccessLevel {
      */
     id?: pulumi.Input<number>;
     /**
-     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
      */
     userId?: pulumi.Input<number>;
 }

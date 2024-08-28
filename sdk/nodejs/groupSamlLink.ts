@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  *     samlGroupName: "samlgroupname1",
  * });
  * // Example using a Custom Role (Ultimate only)
+ * // When using the custom role, the `access_level` must match the
+ * // base role used to create the custom role.
  * const testCustomRole = new gitlab.GroupSamlLink("test_custom_role", {
  *     group: "12345",
  *     accessLevel: "developer",
@@ -75,7 +77,7 @@ export class GroupSamlLink extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
      */
     public readonly memberRoleId!: pulumi.Output<number | undefined>;
     /**
@@ -134,7 +136,7 @@ export interface GroupSamlLinkState {
      */
     group?: pulumi.Input<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
      */
     memberRoleId?: pulumi.Input<number>;
     /**
@@ -156,7 +158,7 @@ export interface GroupSamlLinkArgs {
      */
     group: pulumi.Input<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
      */
     memberRoleId?: pulumi.Input<number>;
     /**

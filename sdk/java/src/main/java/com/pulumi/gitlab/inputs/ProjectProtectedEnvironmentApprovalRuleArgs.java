@@ -17,14 +17,14 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
     public static final ProjectProtectedEnvironmentApprovalRuleArgs Empty = new ProjectProtectedEnvironmentApprovalRuleArgs();
 
     /**
-     * Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+     * Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+     * @return Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -47,14 +47,14 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
     }
 
     /**
-     * The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+     * The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+     * @return The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -107,14 +107,14 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
     }
 
     /**
-     * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+     * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+     * @return The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -152,7 +152,7 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
         }
 
         /**
-         * @param accessLevel Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+         * @param accessLevel Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
         }
 
         /**
-         * @param accessLevel Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+         * @param accessLevel Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
         }
 
         /**
-         * @param groupId The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+         * @param groupId The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
         }
 
         /**
-         * @param groupId The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+         * @param groupId The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
         }
 
         /**
-         * @param userId The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+         * @param userId The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ProjectProtectedEnvironmentApprovalRuleArgs extends com.pulum
         }
 
         /**
-         * @param userId The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+         * @param userId The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
          * 
          * @return builder
          * 

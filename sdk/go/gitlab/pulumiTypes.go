@@ -959,11 +959,11 @@ func (o GroupIssueBoardListArrayOutput) Index(i pulumi.IntInput) GroupIssueBoard
 }
 
 type GroupProtectedEnvironmentApprovalRule struct {
-	// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+	// Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Readable description of level of access.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
-	// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+	// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
 	GroupId *int `pulumi:"groupId"`
 	// Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
 	GroupInheritanceType *int `pulumi:"groupInheritanceType"`
@@ -971,7 +971,7 @@ type GroupProtectedEnvironmentApprovalRule struct {
 	Id *int `pulumi:"id"`
 	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
 	RequiredApprovals *int `pulumi:"requiredApprovals"`
-	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `accessLevel` and `groupId`.
 	UserId *int `pulumi:"userId"`
 }
 
@@ -987,11 +987,11 @@ type GroupProtectedEnvironmentApprovalRuleInput interface {
 }
 
 type GroupProtectedEnvironmentApprovalRuleArgs struct {
-	// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+	// Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// Readable description of level of access.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
-	// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+	// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
 	// Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
 	GroupInheritanceType pulumi.IntPtrInput `pulumi:"groupInheritanceType"`
@@ -999,7 +999,7 @@ type GroupProtectedEnvironmentApprovalRuleArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
 	RequiredApprovals pulumi.IntPtrInput `pulumi:"requiredApprovals"`
-	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `accessLevel` and `groupId`.
 	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
 
@@ -1054,7 +1054,7 @@ func (o GroupProtectedEnvironmentApprovalRuleOutput) ToGroupProtectedEnvironment
 	return o
 }
 
-// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+// Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 func (o GroupProtectedEnvironmentApprovalRuleOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -1064,7 +1064,7 @@ func (o GroupProtectedEnvironmentApprovalRuleOutput) AccessLevelDescription() pu
 	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
 func (o GroupProtectedEnvironmentApprovalRuleOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
@@ -1084,7 +1084,7 @@ func (o GroupProtectedEnvironmentApprovalRuleOutput) RequiredApprovals() pulumi.
 	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *int { return v.RequiredApprovals }).(pulumi.IntPtrOutput)
 }
 
-// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `accessLevel` and `groupId`.
 func (o GroupProtectedEnvironmentApprovalRuleOutput) UserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GroupProtectedEnvironmentApprovalRule) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
@@ -1110,17 +1110,17 @@ func (o GroupProtectedEnvironmentApprovalRuleArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GroupProtectedEnvironmentDeployAccessLevel struct {
-	// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+	// Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Readable description of level of access.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
-	// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+	// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
 	GroupId *int `pulumi:"groupId"`
 	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
 	GroupInheritanceType *int `pulumi:"groupInheritanceType"`
 	// The unique ID of the Deploy Access Level object.
 	Id *int `pulumi:"id"`
-	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `accessLevel` and `groupId`.
 	UserId *int `pulumi:"userId"`
 }
 
@@ -1136,17 +1136,17 @@ type GroupProtectedEnvironmentDeployAccessLevelInput interface {
 }
 
 type GroupProtectedEnvironmentDeployAccessLevelArgs struct {
-	// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+	// Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// Readable description of level of access.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
-	// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+	// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
 	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
 	GroupInheritanceType pulumi.IntPtrInput `pulumi:"groupInheritanceType"`
 	// The unique ID of the Deploy Access Level object.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `accessLevel` and `groupId`.
 	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
 
@@ -1201,7 +1201,7 @@ func (o GroupProtectedEnvironmentDeployAccessLevelOutput) ToGroupProtectedEnviro
 	return o
 }
 
-// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+// Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 func (o GroupProtectedEnvironmentDeployAccessLevelOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -1211,7 +1211,7 @@ func (o GroupProtectedEnvironmentDeployAccessLevelOutput) AccessLevelDescription
 	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+// The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
 func (o GroupProtectedEnvironmentDeployAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
@@ -1226,7 +1226,7 @@ func (o GroupProtectedEnvironmentDeployAccessLevelOutput) Id() pulumi.IntPtrOutp
 	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+// The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `accessLevel` and `groupId`.
 func (o GroupProtectedEnvironmentDeployAccessLevelOutput) UserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GroupProtectedEnvironmentDeployAccessLevel) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
@@ -2280,11 +2280,11 @@ func (o ProjectIssueTaskCompletionStatusArrayOutput) Index(i pulumi.IntInput) Pr
 }
 
 type ProjectProtectedEnvironmentApprovalRule struct {
-	// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+	// Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Readable description of level of access.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
-	// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+	// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
 	GroupId *int `pulumi:"groupId"`
 	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
 	GroupInheritanceType *int `pulumi:"groupInheritanceType"`
@@ -2292,7 +2292,7 @@ type ProjectProtectedEnvironmentApprovalRule struct {
 	Id *int `pulumi:"id"`
 	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
 	RequiredApprovals *int `pulumi:"requiredApprovals"`
-	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
 	UserId *int `pulumi:"userId"`
 }
 
@@ -2308,11 +2308,11 @@ type ProjectProtectedEnvironmentApprovalRuleInput interface {
 }
 
 type ProjectProtectedEnvironmentApprovalRuleArgs struct {
-	// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+	// Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// Readable description of level of access.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
-	// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+	// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
 	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
 	GroupInheritanceType pulumi.IntPtrInput `pulumi:"groupInheritanceType"`
@@ -2320,7 +2320,7 @@ type ProjectProtectedEnvironmentApprovalRuleArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
 	RequiredApprovals pulumi.IntPtrInput `pulumi:"requiredApprovals"`
-	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+	// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
 	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
 
@@ -2375,7 +2375,7 @@ func (o ProjectProtectedEnvironmentApprovalRuleOutput) ToProjectProtectedEnviron
 	return o
 }
 
-// Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+// Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 func (o ProjectProtectedEnvironmentApprovalRuleOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -2385,7 +2385,7 @@ func (o ProjectProtectedEnvironmentApprovalRuleOutput) AccessLevelDescription() 
 	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+// The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
 func (o ProjectProtectedEnvironmentApprovalRuleOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
@@ -2405,7 +2405,7 @@ func (o ProjectProtectedEnvironmentApprovalRuleOutput) RequiredApprovals() pulum
 	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *int { return v.RequiredApprovals }).(pulumi.IntPtrOutput)
 }
 
-// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+// The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
 func (o ProjectProtectedEnvironmentApprovalRuleOutput) UserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectProtectedEnvironmentApprovalRule) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
@@ -2431,17 +2431,17 @@ func (o ProjectProtectedEnvironmentApprovalRuleArrayOutput) Index(i pulumi.IntIn
 }
 
 type ProjectProtectedEnvironmentDeployAccessLevel struct {
-	// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+	// Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Readable description of level of access.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
-	// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+	// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
 	GroupId *int `pulumi:"groupId"`
 	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
 	GroupInheritanceType *int `pulumi:"groupInheritanceType"`
 	// The unique ID of the Deploy Access Level object.
 	Id *int `pulumi:"id"`
-	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
 	UserId *int `pulumi:"userId"`
 }
 
@@ -2457,17 +2457,17 @@ type ProjectProtectedEnvironmentDeployAccessLevelInput interface {
 }
 
 type ProjectProtectedEnvironmentDeployAccessLevelArgs struct {
-	// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+	// Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// Readable description of level of access.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
-	// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+	// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
 	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
 	GroupInheritanceType pulumi.IntPtrInput `pulumi:"groupInheritanceType"`
 	// The unique ID of the Deploy Access Level object.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
 	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
 
@@ -2522,7 +2522,7 @@ func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) ToProjectProtectedEn
 	return o
 }
 
-// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+// Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevel) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -2532,7 +2532,7 @@ func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) AccessLevelDescripti
 	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevel) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
 func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
@@ -2547,7 +2547,7 @@ func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) Id() pulumi.IntPtrOu
 	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevel) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
 func (o ProjectProtectedEnvironmentDeployAccessLevelOutput) UserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevel) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }

@@ -22,10 +22,10 @@ class GroupProtectedEnvironmentArgs:
                  approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None):
         """
         The set of arguments for constructing a GroupProtectedEnvironment resource.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         """
         pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
         pulumi.set(__self__, "environment", environment)
@@ -37,7 +37,7 @@ class GroupProtectedEnvironmentArgs:
     @pulumi.getter(name="deployAccessLevels")
     def deploy_access_levels(self) -> pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]:
         """
-        Array of access levels allowed to deploy, with each described by a hash.
+        Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "deploy_access_levels")
 
@@ -73,7 +73,7 @@ class GroupProtectedEnvironmentArgs:
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]:
         """
-        Array of approval rules to deploy, with each described by a hash.
+        Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "approval_rules")
 
@@ -91,8 +91,8 @@ class _GroupProtectedEnvironmentState:
                  group: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupProtectedEnvironment resources.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
         """
@@ -109,7 +109,7 @@ class _GroupProtectedEnvironmentState:
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]:
         """
-        Array of approval rules to deploy, with each described by a hash.
+        Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "approval_rules")
 
@@ -121,7 +121,7 @@ class _GroupProtectedEnvironmentState:
     @pulumi.getter(name="deployAccessLevels")
     def deploy_access_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]:
         """
-        Array of access levels allowed to deploy, with each described by a hash.
+        Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "deploy_access_levels")
 
@@ -184,8 +184,8 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
         """
@@ -272,8 +272,8 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] group: The ID or full path of the group which the protected environment is created against.
         """
@@ -291,7 +291,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> pulumi.Output[Sequence['outputs.GroupProtectedEnvironmentApprovalRule']]:
         """
-        Array of approval rules to deploy, with each described by a hash.
+        Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "approval_rules")
 
@@ -299,7 +299,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
     @pulumi.getter(name="deployAccessLevels")
     def deploy_access_levels(self) -> pulumi.Output[Sequence['outputs.GroupProtectedEnvironmentDeployAccessLevel']]:
         """
-        Array of access levels allowed to deploy, with each described by a hash.
+        Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "deploy_access_levels")
 
