@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GroupProtectedEnvironmentDeployAccessLevel {
     /**
-     * @return Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+     * @return Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
      * 
      */
     private @Nullable String accessLevel;
@@ -23,7 +23,7 @@ public final class GroupProtectedEnvironmentDeployAccessLevel {
      */
     private @Nullable String accessLevelDescription;
     /**
-     * @return The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+     * @return The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
      * 
      */
     private @Nullable Integer groupId;
@@ -38,14 +38,14 @@ public final class GroupProtectedEnvironmentDeployAccessLevel {
      */
     private @Nullable Integer id;
     /**
-     * @return The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+     * @return The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
      * 
      */
     private @Nullable Integer userId;
 
     private GroupProtectedEnvironmentDeployAccessLevel() {}
     /**
-     * @return Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+     * @return Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
      * 
      */
     public Optional<String> accessLevel() {
@@ -59,7 +59,7 @@ public final class GroupProtectedEnvironmentDeployAccessLevel {
         return Optional.ofNullable(this.accessLevelDescription);
     }
     /**
-     * @return The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+     * @return The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
      * 
      */
     public Optional<Integer> groupId() {
@@ -80,7 +80,7 @@ public final class GroupProtectedEnvironmentDeployAccessLevel {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+     * @return The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
      * 
      */
     public Optional<Integer> userId() {

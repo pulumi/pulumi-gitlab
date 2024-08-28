@@ -33,6 +33,8 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example using a Custom Role (Ultimate only)
+    ///     // When using the custom role, the `access_level` must match the
+    ///     // base role used to create the custom role.
     ///     var testCustomRole = new GitLab.GroupSamlLink("test_custom_role", new()
     ///     {
     ///         Group = "12345",
@@ -68,7 +70,7 @@ namespace Pulumi.GitLab
         public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         /// </summary>
         [Output("memberRoleId")]
         public Output<int?> MemberRoleId { get; private set; } = null!;
@@ -138,7 +140,7 @@ namespace Pulumi.GitLab
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         /// </summary>
         [Input("memberRoleId")]
         public Input<int>? MemberRoleId { get; set; }
@@ -170,7 +172,7 @@ namespace Pulumi.GitLab
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         /// </summary>
         [Input("memberRoleId")]
         public Input<int>? MemberRoleId { get; set; }

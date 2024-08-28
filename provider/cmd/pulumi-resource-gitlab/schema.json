@@ -317,7 +317,7 @@
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.\n"
+                    "description": "Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
                     "type": "string",
@@ -325,7 +325,7 @@
                 },
                 "groupId": {
                     "type": "integer",
-                    "description": "The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.\n"
+                    "description": "The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.\n"
                 },
                 "groupInheritanceType": {
                     "type": "integer",
@@ -341,7 +341,7 @@
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.\n"
+                    "description": "The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.\n"
                 }
             },
             "type": "object",
@@ -360,7 +360,7 @@
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.\n"
+                    "description": "Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
                     "type": "string",
@@ -368,7 +368,7 @@
                 },
                 "groupId": {
                     "type": "integer",
-                    "description": "The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.\n"
+                    "description": "The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.\n"
                 },
                 "groupInheritanceType": {
                     "type": "integer",
@@ -380,7 +380,7 @@
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.\n"
+                    "description": "The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.\n"
                 }
             },
             "type": "object",
@@ -596,7 +596,7 @@
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.\n"
+                    "description": "Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
                     "type": "string",
@@ -604,7 +604,7 @@
                 },
                 "groupId": {
                     "type": "integer",
-                    "description": "The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.\n"
+                    "description": "The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.\n"
                 },
                 "groupInheritanceType": {
                     "type": "integer",
@@ -620,7 +620,7 @@
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.\n"
+                    "description": "The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.\n"
                 }
             },
             "type": "object",
@@ -639,7 +639,7 @@
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.\n"
+                    "description": "Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
                     "type": "string",
@@ -647,7 +647,7 @@
                 },
                 "groupId": {
                     "type": "integer",
-                    "description": "The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.\n"
+                    "description": "The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.\n"
                 },
                 "groupInheritanceType": {
                     "type": "integer",
@@ -659,7 +659,7 @@
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.\n"
+                    "description": "The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.\n"
                 }
             },
             "type": "object",
@@ -10417,14 +10417,14 @@
                     "items": {
                         "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentApprovalRule:GroupProtectedEnvironmentApprovalRule"
                     },
-                    "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                    "description": "Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.\n"
                 },
                 "deployAccessLevels": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentDeployAccessLevel:GroupProtectedEnvironmentDeployAccessLevel"
                     },
-                    "description": "Array of access levels allowed to deploy, with each described by a hash.\n"
+                    "description": "Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.\n"
                 },
                 "environment": {
                     "type": "string",
@@ -10447,14 +10447,14 @@
                     "items": {
                         "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentApprovalRule:GroupProtectedEnvironmentApprovalRule"
                     },
-                    "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                    "description": "Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.\n"
                 },
                 "deployAccessLevels": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentDeployAccessLevel:GroupProtectedEnvironmentDeployAccessLevel"
                     },
-                    "description": "Array of access levels allowed to deploy, with each described by a hash.\n"
+                    "description": "Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.\n"
                 },
                 "environment": {
                     "type": "string",
@@ -10478,14 +10478,14 @@
                         "items": {
                             "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentApprovalRule:GroupProtectedEnvironmentApprovalRule"
                         },
-                        "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                        "description": "Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.\n"
                     },
                     "deployAccessLevels": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/gitlab:index/GroupProtectedEnvironmentDeployAccessLevel:GroupProtectedEnvironmentDeployAccessLevel"
                         },
-                        "description": "Array of access levels allowed to deploy, with each described by a hash.\n"
+                        "description": "Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.\n"
                     },
                     "environment": {
                         "type": "string",
@@ -10500,7 +10500,7 @@
             }
         },
         "gitlab:index/groupSamlLink:GroupSamlLink": {
-            "description": "The `gitlab.GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// Basic example\nconst test = new gitlab.GroupSamlLink(\"test\", {\n    group: \"12345\",\n    accessLevel: \"developer\",\n    samlGroupName: \"samlgroupname1\",\n});\n// Example using a Custom Role (Ultimate only)\nconst testCustomRole = new gitlab.GroupSamlLink(\"test_custom_role\", {\n    group: \"12345\",\n    accessLevel: \"developer\",\n    samlGroupName: \"samlgroupname1\",\n    memberRoleId: 123,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# Basic example\ntest = gitlab.GroupSamlLink(\"test\",\n    group=\"12345\",\n    access_level=\"developer\",\n    saml_group_name=\"samlgroupname1\")\n# Example using a Custom Role (Ultimate only)\ntest_custom_role = gitlab.GroupSamlLink(\"test_custom_role\",\n    group=\"12345\",\n    access_level=\"developer\",\n    saml_group_name=\"samlgroupname1\",\n    member_role_id=123)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Basic example\n    var test = new GitLab.GroupSamlLink(\"test\", new()\n    {\n        Group = \"12345\",\n        AccessLevel = \"developer\",\n        SamlGroupName = \"samlgroupname1\",\n    });\n\n    // Example using a Custom Role (Ultimate only)\n    var testCustomRole = new GitLab.GroupSamlLink(\"test_custom_role\", new()\n    {\n        Group = \"12345\",\n        AccessLevel = \"developer\",\n        SamlGroupName = \"samlgroupname1\",\n        MemberRoleId = 123,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Basic example\n\t\t_, err := gitlab.NewGroupSamlLink(ctx, \"test\", \u0026gitlab.GroupSamlLinkArgs{\n\t\t\tGroup:         pulumi.String(\"12345\"),\n\t\t\tAccessLevel:   pulumi.String(\"developer\"),\n\t\t\tSamlGroupName: pulumi.String(\"samlgroupname1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example using a Custom Role (Ultimate only)\n\t\t_, err = gitlab.NewGroupSamlLink(ctx, \"test_custom_role\", \u0026gitlab.GroupSamlLinkArgs{\n\t\t\tGroup:         pulumi.String(\"12345\"),\n\t\t\tAccessLevel:   pulumi.String(\"developer\"),\n\t\t\tSamlGroupName: pulumi.String(\"samlgroupname1\"),\n\t\t\tMemberRoleId:  pulumi.Int(123),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupSamlLink;\nimport com.pulumi.gitlab.GroupSamlLinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Basic example\n        var test = new GroupSamlLink(\"test\", GroupSamlLinkArgs.builder()\n            .group(\"12345\")\n            .accessLevel(\"developer\")\n            .samlGroupName(\"samlgroupname1\")\n            .build());\n\n        // Example using a Custom Role (Ultimate only)\n        var testCustomRole = new GroupSamlLink(\"testCustomRole\", GroupSamlLinkArgs.builder()\n            .group(\"12345\")\n            .accessLevel(\"developer\")\n            .samlGroupName(\"samlgroupname1\")\n            .memberRoleId(123)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Basic example\n  test:\n    type: gitlab:GroupSamlLink\n    properties:\n      group: '12345'\n      accessLevel: developer\n      samlGroupName: samlgroupname1\n  # Example using a Custom Role (Ultimate only)\n  testCustomRole:\n    type: gitlab:GroupSamlLink\n    name: test_custom_role\n    properties:\n      group: '12345'\n      accessLevel: developer\n      samlGroupName: samlgroupname1\n      memberRoleId: 123\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test \"12345:samlgroupname1\"\n```\n\n",
+            "description": "The `gitlab.GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// Basic example\nconst test = new gitlab.GroupSamlLink(\"test\", {\n    group: \"12345\",\n    accessLevel: \"developer\",\n    samlGroupName: \"samlgroupname1\",\n});\n// Example using a Custom Role (Ultimate only)\n// When using the custom role, the `access_level` must match the\n// base role used to create the custom role.\nconst testCustomRole = new gitlab.GroupSamlLink(\"test_custom_role\", {\n    group: \"12345\",\n    accessLevel: \"developer\",\n    samlGroupName: \"samlgroupname1\",\n    memberRoleId: 123,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# Basic example\ntest = gitlab.GroupSamlLink(\"test\",\n    group=\"12345\",\n    access_level=\"developer\",\n    saml_group_name=\"samlgroupname1\")\n# Example using a Custom Role (Ultimate only)\n# When using the custom role, the `access_level` must match the\n# base role used to create the custom role.\ntest_custom_role = gitlab.GroupSamlLink(\"test_custom_role\",\n    group=\"12345\",\n    access_level=\"developer\",\n    saml_group_name=\"samlgroupname1\",\n    member_role_id=123)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Basic example\n    var test = new GitLab.GroupSamlLink(\"test\", new()\n    {\n        Group = \"12345\",\n        AccessLevel = \"developer\",\n        SamlGroupName = \"samlgroupname1\",\n    });\n\n    // Example using a Custom Role (Ultimate only)\n    // When using the custom role, the `access_level` must match the\n    // base role used to create the custom role.\n    var testCustomRole = new GitLab.GroupSamlLink(\"test_custom_role\", new()\n    {\n        Group = \"12345\",\n        AccessLevel = \"developer\",\n        SamlGroupName = \"samlgroupname1\",\n        MemberRoleId = 123,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Basic example\n\t\t_, err := gitlab.NewGroupSamlLink(ctx, \"test\", \u0026gitlab.GroupSamlLinkArgs{\n\t\t\tGroup:         pulumi.String(\"12345\"),\n\t\t\tAccessLevel:   pulumi.String(\"developer\"),\n\t\t\tSamlGroupName: pulumi.String(\"samlgroupname1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example using a Custom Role (Ultimate only)\n\t\t// When using the custom role, the `access_level` must match the\n\t\t// base role used to create the custom role.\n\t\t_, err = gitlab.NewGroupSamlLink(ctx, \"test_custom_role\", \u0026gitlab.GroupSamlLinkArgs{\n\t\t\tGroup:         pulumi.String(\"12345\"),\n\t\t\tAccessLevel:   pulumi.String(\"developer\"),\n\t\t\tSamlGroupName: pulumi.String(\"samlgroupname1\"),\n\t\t\tMemberRoleId:  pulumi.Int(123),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupSamlLink;\nimport com.pulumi.gitlab.GroupSamlLinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Basic example\n        var test = new GroupSamlLink(\"test\", GroupSamlLinkArgs.builder()\n            .group(\"12345\")\n            .accessLevel(\"developer\")\n            .samlGroupName(\"samlgroupname1\")\n            .build());\n\n        // Example using a Custom Role (Ultimate only)\n        // When using the custom role, the `access_level` must match the\n        // base role used to create the custom role.\n        var testCustomRole = new GroupSamlLink(\"testCustomRole\", GroupSamlLinkArgs.builder()\n            .group(\"12345\")\n            .accessLevel(\"developer\")\n            .samlGroupName(\"samlgroupname1\")\n            .memberRoleId(123)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Basic example\n  test:\n    type: gitlab:GroupSamlLink\n    properties:\n      group: '12345'\n      accessLevel: developer\n      samlGroupName: samlgroupname1\n  # Example using a Custom Role (Ultimate only)\n  # When using the custom role, the `access_level` must match the\n  # base role used to create the custom role.\n  testCustomRole:\n    type: gitlab:GroupSamlLink\n    name: test_custom_role\n    properties:\n      group: '12345'\n      accessLevel: developer\n      samlGroupName: samlgroupname1\n      memberRoleId: 123\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test \"12345:samlgroupname1\"\n```\n\n",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -10512,7 +10512,7 @@
                 },
                 "memberRoleId": {
                     "type": "integer",
-                    "description": "The ID of a custom member role. Only available for Ultimate instances.\n"
+                    "description": "The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.\n"
                 },
                 "samlGroupName": {
                     "type": "string",
@@ -10537,7 +10537,7 @@
                 },
                 "memberRoleId": {
                     "type": "integer",
-                    "description": "The ID of a custom member role. Only available for Ultimate instances.\n",
+                    "description": "The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.\n",
                     "willReplaceOnChanges": true
                 },
                 "samlGroupName": {
@@ -10566,7 +10566,7 @@
                     },
                     "memberRoleId": {
                         "type": "integer",
-                        "description": "The ID of a custom member role. Only available for Ultimate instances.\n",
+                        "description": "The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.\n",
                         "willReplaceOnChanges": true
                     },
                     "samlGroupName": {
@@ -17768,14 +17768,14 @@
                     "items": {
                         "$ref": "#/types/gitlab:index/ProjectProtectedEnvironmentApprovalRule:ProjectProtectedEnvironmentApprovalRule"
                     },
-                    "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                    "description": "Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.\n"
                 },
                 "deployAccessLevels": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/ProjectProtectedEnvironmentDeployAccessLevel:ProjectProtectedEnvironmentDeployAccessLevel"
                     },
-                    "description": "Array of access levels allowed to deploy, with each described by a hash.\n"
+                    "description": "Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.\n"
                 },
                 "environment": {
                     "type": "string",
@@ -17797,14 +17797,14 @@
                     "items": {
                         "$ref": "#/types/gitlab:index/ProjectProtectedEnvironmentApprovalRule:ProjectProtectedEnvironmentApprovalRule"
                     },
-                    "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                    "description": "Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.\n"
                 },
                 "deployAccessLevels": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/gitlab:index/ProjectProtectedEnvironmentDeployAccessLevel:ProjectProtectedEnvironmentDeployAccessLevel"
                     },
-                    "description": "Array of access levels allowed to deploy, with each described by a hash.\n"
+                    "description": "Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.\n"
                 },
                 "environment": {
                     "type": "string",
@@ -17827,14 +17827,14 @@
                         "items": {
                             "$ref": "#/types/gitlab:index/ProjectProtectedEnvironmentApprovalRule:ProjectProtectedEnvironmentApprovalRule"
                         },
-                        "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                        "description": "Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.\n"
                     },
                     "deployAccessLevels": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/gitlab:index/ProjectProtectedEnvironmentDeployAccessLevel:ProjectProtectedEnvironmentDeployAccessLevel"
                         },
-                        "description": "Array of access levels allowed to deploy, with each described by a hash.\n"
+                        "description": "Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.\n"
                     },
                     "environment": {
                         "type": "string",

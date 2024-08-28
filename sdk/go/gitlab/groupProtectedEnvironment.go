@@ -32,9 +32,9 @@ import (
 type GroupProtectedEnvironment struct {
 	pulumi.CustomResourceState
 
-	// Array of approval rules to deploy, with each described by a hash.
+	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules GroupProtectedEnvironmentApprovalRuleArrayOutput `pulumi:"approvalRules"`
-	// Array of access levels allowed to deploy, with each described by a hash.
+	// Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 	DeployAccessLevels GroupProtectedEnvironmentDeployAccessLevelArrayOutput `pulumi:"deployAccessLevels"`
 	// The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Environment pulumi.StringOutput `pulumi:"environment"`
@@ -81,9 +81,9 @@ func GetGroupProtectedEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupProtectedEnvironment resources.
 type groupProtectedEnvironmentState struct {
-	// Array of approval rules to deploy, with each described by a hash.
+	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules []GroupProtectedEnvironmentApprovalRule `pulumi:"approvalRules"`
-	// Array of access levels allowed to deploy, with each described by a hash.
+	// Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 	DeployAccessLevels []GroupProtectedEnvironmentDeployAccessLevel `pulumi:"deployAccessLevels"`
 	// The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Environment *string `pulumi:"environment"`
@@ -92,9 +92,9 @@ type groupProtectedEnvironmentState struct {
 }
 
 type GroupProtectedEnvironmentState struct {
-	// Array of approval rules to deploy, with each described by a hash.
+	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules GroupProtectedEnvironmentApprovalRuleArrayInput
-	// Array of access levels allowed to deploy, with each described by a hash.
+	// Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 	DeployAccessLevels GroupProtectedEnvironmentDeployAccessLevelArrayInput
 	// The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Environment pulumi.StringPtrInput
@@ -107,9 +107,9 @@ func (GroupProtectedEnvironmentState) ElementType() reflect.Type {
 }
 
 type groupProtectedEnvironmentArgs struct {
-	// Array of approval rules to deploy, with each described by a hash.
+	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules []GroupProtectedEnvironmentApprovalRule `pulumi:"approvalRules"`
-	// Array of access levels allowed to deploy, with each described by a hash.
+	// Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 	DeployAccessLevels []GroupProtectedEnvironmentDeployAccessLevel `pulumi:"deployAccessLevels"`
 	// The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Environment string `pulumi:"environment"`
@@ -119,9 +119,9 @@ type groupProtectedEnvironmentArgs struct {
 
 // The set of arguments for constructing a GroupProtectedEnvironment resource.
 type GroupProtectedEnvironmentArgs struct {
-	// Array of approval rules to deploy, with each described by a hash.
+	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules GroupProtectedEnvironmentApprovalRuleArrayInput
-	// Array of access levels allowed to deploy, with each described by a hash.
+	// Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 	DeployAccessLevels GroupProtectedEnvironmentDeployAccessLevelArrayInput
 	// The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Environment pulumi.StringInput
@@ -216,14 +216,14 @@ func (o GroupProtectedEnvironmentOutput) ToGroupProtectedEnvironmentOutputWithCo
 	return o
 }
 
-// Array of approval rules to deploy, with each described by a hash.
+// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 func (o GroupProtectedEnvironmentOutput) ApprovalRules() GroupProtectedEnvironmentApprovalRuleArrayOutput {
 	return o.ApplyT(func(v *GroupProtectedEnvironment) GroupProtectedEnvironmentApprovalRuleArrayOutput {
 		return v.ApprovalRules
 	}).(GroupProtectedEnvironmentApprovalRuleArrayOutput)
 }
 
-// Array of access levels allowed to deploy, with each described by a hash.
+// Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
 func (o GroupProtectedEnvironmentOutput) DeployAccessLevels() GroupProtectedEnvironmentDeployAccessLevelArrayOutput {
 	return o.ApplyT(func(v *GroupProtectedEnvironment) GroupProtectedEnvironmentDeployAccessLevelArrayOutput {
 		return v.DeployAccessLevels

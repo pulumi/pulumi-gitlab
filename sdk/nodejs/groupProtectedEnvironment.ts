@@ -53,11 +53,11 @@ export class GroupProtectedEnvironment extends pulumi.CustomResource {
     }
 
     /**
-     * Array of approval rules to deploy, with each described by a hash.
+     * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      */
     public readonly approvalRules!: pulumi.Output<outputs.GroupProtectedEnvironmentApprovalRule[]>;
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.
+     * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      */
     public readonly deployAccessLevels!: pulumi.Output<outputs.GroupProtectedEnvironmentDeployAccessLevel[]>;
     /**
@@ -112,11 +112,11 @@ export class GroupProtectedEnvironment extends pulumi.CustomResource {
  */
 export interface GroupProtectedEnvironmentState {
     /**
-     * Array of approval rules to deploy, with each described by a hash.
+     * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      */
     approvalRules?: pulumi.Input<pulumi.Input<inputs.GroupProtectedEnvironmentApprovalRule>[]>;
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.
+     * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      */
     deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.GroupProtectedEnvironmentDeployAccessLevel>[]>;
     /**
@@ -134,11 +134,11 @@ export interface GroupProtectedEnvironmentState {
  */
 export interface GroupProtectedEnvironmentArgs {
     /**
-     * Array of approval rules to deploy, with each described by a hash.
+     * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      */
     approvalRules?: pulumi.Input<pulumi.Input<inputs.GroupProtectedEnvironmentApprovalRule>[]>;
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.
+     * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      */
     deployAccessLevels: pulumi.Input<pulumi.Input<inputs.GroupProtectedEnvironmentDeployAccessLevel>[]>;
     /**

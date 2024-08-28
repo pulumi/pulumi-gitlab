@@ -38,28 +38,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment")
 public class GroupProtectedEnvironment extends com.pulumi.resources.CustomResource {
     /**
-     * Array of approval rules to deploy, with each described by a hash.
+     * Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
      * 
      */
     @Export(name="approvalRules", refs={List.class,GroupProtectedEnvironmentApprovalRule.class}, tree="[0,1]")
     private Output<List<GroupProtectedEnvironmentApprovalRule>> approvalRules;
 
     /**
-     * @return Array of approval rules to deploy, with each described by a hash.
+     * @return Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
      * 
      */
     public Output<List<GroupProtectedEnvironmentApprovalRule>> approvalRules() {
         return this.approvalRules;
     }
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.
+     * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
      * 
      */
     @Export(name="deployAccessLevels", refs={List.class,GroupProtectedEnvironmentDeployAccessLevel.class}, tree="[0,1]")
     private Output<List<GroupProtectedEnvironmentDeployAccessLevel>> deployAccessLevels;
 
     /**
-     * @return Array of access levels allowed to deploy, with each described by a hash.
+     * @return Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
      * 
      */
     public Output<List<GroupProtectedEnvironmentDeployAccessLevel>> deployAccessLevels() {

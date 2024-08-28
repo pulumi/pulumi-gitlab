@@ -19,14 +19,14 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
     public static final ProjectProtectedEnvironmentState Empty = new ProjectProtectedEnvironmentState();
 
     /**
-     * Array of approval rules to deploy, with each described by a hash.
+     * Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
      * 
      */
     @Import(name="approvalRules")
     private @Nullable Output<List<ProjectProtectedEnvironmentApprovalRuleArgs>> approvalRules;
 
     /**
-     * @return Array of approval rules to deploy, with each described by a hash.
+     * @return Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
      * 
      */
     public Optional<Output<List<ProjectProtectedEnvironmentApprovalRuleArgs>>> approvalRules() {
@@ -34,14 +34,14 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
     }
 
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
      * 
      */
     @Import(name="deployAccessLevels")
     private @Nullable Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>> deployAccessLevels;
 
     /**
-     * @return Array of access levels allowed to deploy, with each described by a hash.
+     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
      * 
      */
     public Optional<Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>>> deployAccessLevels() {
@@ -106,7 +106,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param approvalRules Array of approval rules to deploy, with each described by a hash.
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param approvalRules Array of approval rules to deploy, with each described by a hash.
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param approvalRules Array of approval rules to deploy, with each described by a hash.
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.
+         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.
+         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.
+         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
          * 
          * @return builder
          * 

@@ -40,6 +40,8 @@ import (
 //				return err
 //			}
 //			// Example using a Custom Role (Ultimate only)
+//			// When using the custom role, the `access_level` must match the
+//			// base role used to create the custom role.
 //			_, err = gitlab.NewGroupSamlLink(ctx, "test_custom_role", &gitlab.GroupSamlLinkArgs{
 //				Group:         pulumi.String("12345"),
 //				AccessLevel:   pulumi.String("developer"),
@@ -69,7 +71,7 @@ type GroupSamlLink struct {
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// The ID or path of the group to add the SAML Group Link to.
 	Group pulumi.StringOutput `pulumi:"group"`
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
 	MemberRoleId pulumi.IntPtrOutput `pulumi:"memberRoleId"`
 	// The name of the SAML group.
 	SamlGroupName pulumi.StringOutput `pulumi:"samlGroupName"`
@@ -118,7 +120,7 @@ type groupSamlLinkState struct {
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The ID or path of the group to add the SAML Group Link to.
 	Group *string `pulumi:"group"`
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
 	MemberRoleId *int `pulumi:"memberRoleId"`
 	// The name of the SAML group.
 	SamlGroupName *string `pulumi:"samlGroupName"`
@@ -129,7 +131,7 @@ type GroupSamlLinkState struct {
 	AccessLevel pulumi.StringPtrInput
 	// The ID or path of the group to add the SAML Group Link to.
 	Group pulumi.StringPtrInput
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
 	MemberRoleId pulumi.IntPtrInput
 	// The name of the SAML group.
 	SamlGroupName pulumi.StringPtrInput
@@ -144,7 +146,7 @@ type groupSamlLinkArgs struct {
 	AccessLevel string `pulumi:"accessLevel"`
 	// The ID or path of the group to add the SAML Group Link to.
 	Group string `pulumi:"group"`
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
 	MemberRoleId *int `pulumi:"memberRoleId"`
 	// The name of the SAML group.
 	SamlGroupName string `pulumi:"samlGroupName"`
@@ -156,7 +158,7 @@ type GroupSamlLinkArgs struct {
 	AccessLevel pulumi.StringInput
 	// The ID or path of the group to add the SAML Group Link to.
 	Group pulumi.StringInput
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
 	MemberRoleId pulumi.IntPtrInput
 	// The name of the SAML group.
 	SamlGroupName pulumi.StringInput
@@ -259,7 +261,7 @@ func (o GroupSamlLinkOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupSamlLink) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }
 
-// The ID of a custom member role. Only available for Ultimate instances.
+// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
 func (o GroupSamlLinkOutput) MemberRoleId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GroupSamlLink) pulumi.IntPtrOutput { return v.MemberRoleId }).(pulumi.IntPtrOutput)
 }

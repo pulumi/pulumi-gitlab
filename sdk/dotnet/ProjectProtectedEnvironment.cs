@@ -32,13 +32,13 @@ namespace Pulumi.GitLab
     public partial class ProjectProtectedEnvironment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Array of approval rules to deploy, with each described by a hash.
+        /// Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         /// </summary>
         [Output("approvalRules")]
         public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentApprovalRule>> ApprovalRules { get; private set; } = null!;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         /// </summary>
         [Output("deployAccessLevels")]
         public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentDeployAccessLevel>> DeployAccessLevels { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleArgs>? _approvalRules;
 
         /// <summary>
-        /// Array of approval rules to deploy, with each described by a hash.
+        /// Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         /// </summary>
         public InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleArgs> ApprovalRules
         {
@@ -117,7 +117,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>? _deployAccessLevels;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         /// </summary>
         public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs> DeployAccessLevels
         {
@@ -149,7 +149,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleGetArgs>? _approvalRules;
 
         /// <summary>
-        /// Array of approval rules to deploy, with each described by a hash.
+        /// Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         /// </summary>
         public InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleGetArgs> ApprovalRules
         {
@@ -161,7 +161,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs>? _deployAccessLevels;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         /// </summary>
         public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs> DeployAccessLevels
         {

@@ -594,13 +594,13 @@ class GroupProtectedEnvironmentApprovalRuleArgs:
                  required_approvals: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] access_level: Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+        :param pulumi.Input[str] access_level: Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[str] access_level_description: Readable description of level of access.
-        :param pulumi.Input[int] group_id: The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+        :param pulumi.Input[int] group_id: The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
         :param pulumi.Input[int] group_inheritance_type: Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param pulumi.Input[int] id: The unique ID of the Approval Rules object.
         :param pulumi.Input[int] required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
-        :param pulumi.Input[int] user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+        :param pulumi.Input[int] user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -621,7 +621,7 @@ class GroupProtectedEnvironmentApprovalRuleArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+        Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -645,7 +645,7 @@ class GroupProtectedEnvironmentApprovalRuleArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. This is mutually exclusive with user_id.
+        The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -693,7 +693,7 @@ class GroupProtectedEnvironmentApprovalRuleArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. This is mutually exclusive with group*id and required*approvals.
+        The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
@@ -712,12 +712,12 @@ class GroupProtectedEnvironmentDeployAccessLevelArgs:
                  id: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] access_level: Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+        :param pulumi.Input[str] access_level: Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[str] access_level_description: Readable description of level of access.
-        :param pulumi.Input[int] group_id: The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+        :param pulumi.Input[int] group_id: The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
         :param pulumi.Input[int] group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param pulumi.Input[int] id: The unique ID of the Deploy Access Level object.
-        :param pulumi.Input[int] user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+        :param pulumi.Input[int] user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -736,7 +736,7 @@ class GroupProtectedEnvironmentDeployAccessLevelArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+        Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -760,7 +760,7 @@ class GroupProtectedEnvironmentDeployAccessLevelArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group.
+        The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -796,7 +796,7 @@ class GroupProtectedEnvironmentDeployAccessLevelArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher.
+        The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
@@ -1333,13 +1333,13 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
                  required_approvals: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] access_level: Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+        :param pulumi.Input[str] access_level: Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[str] access_level_description: Readable description of level of access.
-        :param pulumi.Input[int] group_id: The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+        :param pulumi.Input[int] group_id: The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
         :param pulumi.Input[int] group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param pulumi.Input[int] id: The unique ID of the Approval Rules object.
         :param pulumi.Input[int] required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
-        :param pulumi.Input[int] user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+        :param pulumi.Input[int] user_id: The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -1360,7 +1360,7 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.
+        Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -1384,7 +1384,7 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.
+        The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -1432,7 +1432,7 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.
+        The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
@@ -1451,12 +1451,12 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
                  id: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] access_level: Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+        :param pulumi.Input[str] access_level: Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[str] access_level_description: Readable description of level of access.
-        :param pulumi.Input[int] group_id: The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+        :param pulumi.Input[int] group_id: The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
         :param pulumi.Input[int] group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param pulumi.Input[int] id: The unique ID of the Deploy Access Level object.
-        :param pulumi.Input[int] user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+        :param pulumi.Input[int] user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -1475,7 +1475,7 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+        Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -1499,7 +1499,7 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+        The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -1535,7 +1535,7 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+        The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
