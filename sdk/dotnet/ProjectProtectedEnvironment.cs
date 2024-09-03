@@ -13,10 +13,10 @@ namespace Pulumi.GitLab
     /// The `gitlab.ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
     /// 
     /// &gt; In order to use a user or group in the `deploy_access_levels` configuration,
-    ///    you need to make sure that users have access to the project and groups must have this project shared.
-    ///    You may use the `gitlab.ProjectMembership` and `gitlab_project_shared_group` resources to achieve this.
-    ///    Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
-    ///    In case this happens you will get perpetual state diffs.
+    /// you need to make sure that users have access to the project and groups must have this project shared.
+    /// You may use the `gitlab.ProjectMembership` and `gitlab_project_shared_group` resources to achieve this.
+    /// Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
+    /// In case this happens you will get perpetual state diffs.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_environments.html)
     /// 

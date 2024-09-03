@@ -95,14 +95,14 @@ public class ServiceJira extends com.pulumi.resources.CustomResource {
         return this.active;
     }
     /**
-     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
      * 
      */
     @Export(name="apiUrl", refs={String.class}, tree="[0]")
     private Output<String> apiUrl;
 
     /**
-     * @return The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * @return The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
      * 
      */
     public Output<String> apiUrl() {
@@ -333,14 +333,14 @@ public class ServiceJira extends com.pulumi.resources.CustomResource {
         return this.updatedAt;
     }
     /**
-     * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+     * The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+     * @return The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
      * 
      */
     public Output<String> url() {

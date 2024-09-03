@@ -68,12 +68,12 @@ export class GroupProjectFileTemplate extends pulumi.CustomResource {
 
     /**
      * The ID of the project that will be used for file templates. This project must be the direct
-     * 			child of the project defined by the group_id
+     * child of the project defined by the group_id
      */
     public readonly fileTemplateProjectId!: pulumi.Output<number>;
     /**
      * The ID of the group that will use the file template project. This group must be the direct
-     *             parent of the project defined by project_id
+     * parent of the project defined by project_id
      */
     public readonly groupId!: pulumi.Output<number>;
 
@@ -114,12 +114,12 @@ export class GroupProjectFileTemplate extends pulumi.CustomResource {
 export interface GroupProjectFileTemplateState {
     /**
      * The ID of the project that will be used for file templates. This project must be the direct
-     * 			child of the project defined by the group_id
+     * child of the project defined by the group_id
      */
     fileTemplateProjectId?: pulumi.Input<number>;
     /**
      * The ID of the group that will use the file template project. This group must be the direct
-     *             parent of the project defined by project_id
+     * parent of the project defined by project_id
      */
     groupId?: pulumi.Input<number>;
 }
@@ -130,12 +130,12 @@ export interface GroupProjectFileTemplateState {
 export interface GroupProjectFileTemplateArgs {
     /**
      * The ID of the project that will be used for file templates. This project must be the direct
-     * 			child of the project defined by the group_id
+     * child of the project defined by the group_id
      */
     fileTemplateProjectId: pulumi.Input<number>;
     /**
      * The ID of the group that will use the file template project. This group must be the direct
-     *             parent of the project defined by project_id
+     * parent of the project defined by project_id
      */
     groupId: pulumi.Input<number>;
 }

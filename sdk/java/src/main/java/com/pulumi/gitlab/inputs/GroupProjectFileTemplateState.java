@@ -17,7 +17,7 @@ public final class GroupProjectFileTemplateState extends com.pulumi.resources.Re
 
     /**
      * The ID of the project that will be used for file templates. This project must be the direct
-     * 			child of the project defined by the group_id
+     * child of the project defined by the group_id
      * 
      */
     @Import(name="fileTemplateProjectId")
@@ -25,7 +25,7 @@ public final class GroupProjectFileTemplateState extends com.pulumi.resources.Re
 
     /**
      * @return The ID of the project that will be used for file templates. This project must be the direct
-     * 			child of the project defined by the group_id
+     * child of the project defined by the group_id
      * 
      */
     public Optional<Output<Integer>> fileTemplateProjectId() {
@@ -34,7 +34,7 @@ public final class GroupProjectFileTemplateState extends com.pulumi.resources.Re
 
     /**
      * The ID of the group that will use the file template project. This group must be the direct
-     *             parent of the project defined by project_id
+     * parent of the project defined by project_id
      * 
      */
     @Import(name="groupId")
@@ -42,7 +42,7 @@ public final class GroupProjectFileTemplateState extends com.pulumi.resources.Re
 
     /**
      * @return The ID of the group that will use the file template project. This group must be the direct
-     *             parent of the project defined by project_id
+     * parent of the project defined by project_id
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -76,7 +76,7 @@ public final class GroupProjectFileTemplateState extends com.pulumi.resources.Re
 
         /**
          * @param fileTemplateProjectId The ID of the project that will be used for file templates. This project must be the direct
-         * 			child of the project defined by the group_id
+         * child of the project defined by the group_id
          * 
          * @return builder
          * 
@@ -88,7 +88,7 @@ public final class GroupProjectFileTemplateState extends com.pulumi.resources.Re
 
         /**
          * @param fileTemplateProjectId The ID of the project that will be used for file templates. This project must be the direct
-         * 			child of the project defined by the group_id
+         * child of the project defined by the group_id
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GroupProjectFileTemplateState extends com.pulumi.resources.Re
 
         /**
          * @param groupId The ID of the group that will use the file template project. This group must be the direct
-         *             parent of the project defined by project_id
+         * parent of the project defined by project_id
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class GroupProjectFileTemplateState extends com.pulumi.resources.Re
 
         /**
          * @param groupId The ID of the group that will use the file template project. This group must be the direct
-         *             parent of the project defined by project_id
+         * parent of the project defined by project_id
          * 
          * @return builder
          * 

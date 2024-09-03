@@ -80,7 +80,7 @@ type ServiceSlack struct {
 	IssueChannel pulumi.StringPtrOutput `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
 	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel pulumi.StringPtrOutput `pulumi:"mergeRequestChannel"`
@@ -112,7 +112,7 @@ type ServiceSlack struct {
 	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
-	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+	// Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
 	Webhook pulumi.StringOutput `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrOutput `pulumi:"wikiPageChannel"`
@@ -170,7 +170,7 @@ type serviceSlackState struct {
 	IssueChannel *string `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
 	JobEvents *bool `pulumi:"jobEvents"`
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel *string `pulumi:"mergeRequestChannel"`
@@ -202,7 +202,7 @@ type serviceSlackState struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username *string `pulumi:"username"`
-	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+	// Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
 	Webhook *string `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel *string `pulumi:"wikiPageChannel"`
@@ -225,7 +225,7 @@ type ServiceSlackState struct {
 	IssueChannel pulumi.StringPtrInput
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolPtrInput
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
 	JobEvents pulumi.BoolPtrInput
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel pulumi.StringPtrInput
@@ -257,7 +257,7 @@ type ServiceSlackState struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// Username to use.
 	Username pulumi.StringPtrInput
-	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+	// Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
 	Webhook pulumi.StringPtrInput
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrInput
@@ -314,7 +314,7 @@ type serviceSlackArgs struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username *string `pulumi:"username"`
-	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+	// Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
 	Webhook string `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel *string `pulumi:"wikiPageChannel"`
@@ -368,7 +368,7 @@ type ServiceSlackArgs struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// Username to use.
 	Username pulumi.StringPtrInput
-	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+	// Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
 	Webhook pulumi.StringInput
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrInput
@@ -498,7 +498,7 @@ func (o ServiceSlackOutput) IssuesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.IssuesEvents }).(pulumi.BoolOutput)
 }
 
-// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
 func (o ServiceSlackOutput) JobEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.JobEvents }).(pulumi.BoolOutput)
 }
@@ -575,7 +575,7 @@ func (o ServiceSlackOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
-// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+// Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
 func (o ServiceSlackOutput) Webhook() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceSlack) pulumi.StringOutput { return v.Webhook }).(pulumi.StringOutput)
 }

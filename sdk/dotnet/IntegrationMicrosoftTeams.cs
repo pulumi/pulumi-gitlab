@@ -137,7 +137,7 @@ namespace Pulumi.GitLab
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+        /// The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
         /// </summary>
         [Output("webhook")]
         public Output<string> Webhook { get; private set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.GitLab
         public Input<bool>? TagPushEvents { get; set; }
 
         /// <summary>
-        /// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+        /// The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
         /// </summary>
         [Input("webhook", required: true)]
         public Input<string> Webhook { get; set; } = null!;
@@ -365,7 +365,7 @@ namespace Pulumi.GitLab
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+        /// The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
         /// </summary>
         [Input("webhook")]
         public Input<string>? Webhook { get; set; }

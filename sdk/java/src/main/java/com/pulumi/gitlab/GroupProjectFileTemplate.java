@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
 public class GroupProjectFileTemplate extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the project that will be used for file templates. This project must be the direct
-     * 			child of the project defined by the group_id
+     * child of the project defined by the group_id
      * 
      */
     @Export(name="fileTemplateProjectId", refs={Integer.class}, tree="[0]")
@@ -90,7 +90,7 @@ public class GroupProjectFileTemplate extends com.pulumi.resources.CustomResourc
 
     /**
      * @return The ID of the project that will be used for file templates. This project must be the direct
-     * 			child of the project defined by the group_id
+     * child of the project defined by the group_id
      * 
      */
     public Output<Integer> fileTemplateProjectId() {
@@ -98,7 +98,7 @@ public class GroupProjectFileTemplate extends com.pulumi.resources.CustomResourc
     }
     /**
      * The ID of the group that will use the file template project. This group must be the direct
-     *             parent of the project defined by project_id
+     * parent of the project defined by project_id
      * 
      */
     @Export(name="groupId", refs={Integer.class}, tree="[0]")
@@ -106,7 +106,7 @@ public class GroupProjectFileTemplate extends com.pulumi.resources.CustomResourc
 
     /**
      * @return The ID of the group that will use the file template project. This group must be the direct
-     *             parent of the project defined by project_id
+     * parent of the project defined by project_id
      * 
      */
     public Output<Integer> groupId() {

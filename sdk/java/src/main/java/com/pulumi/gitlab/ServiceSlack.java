@@ -179,14 +179,14 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
         return this.issuesEvents;
     }
     /**
-     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
      * 
      */
     @Export(name="jobEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> jobEvents;
 
     /**
-     * @return Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     * @return Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
      * 
      */
     public Output<Boolean> jobEvents() {
@@ -393,14 +393,14 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.username);
     }
     /**
-     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
      * 
      */
     @Export(name="webhook", refs={String.class}, tree="[0]")
     private Output<String> webhook;
 
     /**
-     * @return Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * @return Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
      * 
      */
     public Output<String> webhook() {

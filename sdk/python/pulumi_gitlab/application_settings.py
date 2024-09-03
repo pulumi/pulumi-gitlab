@@ -368,8 +368,8 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[str] home_page_url: Redirect to this URL when not logged in.
         :param pulumi.Input[bool] housekeeping_enabled: Enable or disable Git housekeeping.
-               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+               If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+               Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         :param pulumi.Input[int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
@@ -2301,8 +2301,8 @@ class ApplicationSettingsArgs:
     def housekeeping_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable or disable Git housekeeping.
-        			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-        			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+        If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+        Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         """
         return pulumi.get(self, "housekeeping_enabled")
 
@@ -4276,8 +4276,8 @@ class _ApplicationSettingsState:
         :param pulumi.Input[bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[str] home_page_url: Redirect to this URL when not logged in.
         :param pulumi.Input[bool] housekeeping_enabled: Enable or disable Git housekeeping.
-               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+               If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+               Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         :param pulumi.Input[int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
@@ -6209,8 +6209,8 @@ class _ApplicationSettingsState:
     def housekeeping_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable or disable Git housekeeping.
-        			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-        			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+        If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+        Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         """
         return pulumi.get(self, "housekeeping_enabled")
 
@@ -8190,8 +8190,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[str] home_page_url: Redirect to this URL when not logged in.
         :param pulumi.Input[bool] housekeeping_enabled: Enable or disable Git housekeeping.
-               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+               If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+               Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         :param pulumi.Input[int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
@@ -9216,8 +9216,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[str] home_page_url: Redirect to this URL when not logged in.
         :param pulumi.Input[bool] housekeeping_enabled: Enable or disable Git housekeeping.
-               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+               If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+               Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         :param pulumi.Input[int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
@@ -10470,8 +10470,8 @@ class ApplicationSettings(pulumi.CustomResource):
     def housekeeping_enabled(self) -> pulumi.Output[bool]:
         """
         Enable or disable Git housekeeping.
-        			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-        			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+        If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+        Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
         """
         return pulumi.get(self, "housekeeping_enabled")
 

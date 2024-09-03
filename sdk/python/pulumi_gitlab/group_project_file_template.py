@@ -19,9 +19,9 @@ class GroupProjectFileTemplateArgs:
         """
         The set of arguments for constructing a GroupProjectFileTemplate resource.
         :param pulumi.Input[int] file_template_project_id: The ID of the project that will be used for file templates. This project must be the direct
-               			child of the project defined by the group_id
+               child of the project defined by the group_id
         :param pulumi.Input[int] group_id: The ID of the group that will use the file template project. This group must be the direct
-                           parent of the project defined by project_id
+               parent of the project defined by project_id
         """
         pulumi.set(__self__, "file_template_project_id", file_template_project_id)
         pulumi.set(__self__, "group_id", group_id)
@@ -31,7 +31,7 @@ class GroupProjectFileTemplateArgs:
     def file_template_project_id(self) -> pulumi.Input[int]:
         """
         The ID of the project that will be used for file templates. This project must be the direct
-        			child of the project defined by the group_id
+        child of the project defined by the group_id
         """
         return pulumi.get(self, "file_template_project_id")
 
@@ -44,7 +44,7 @@ class GroupProjectFileTemplateArgs:
     def group_id(self) -> pulumi.Input[int]:
         """
         The ID of the group that will use the file template project. This group must be the direct
-                    parent of the project defined by project_id
+        parent of the project defined by project_id
         """
         return pulumi.get(self, "group_id")
 
@@ -61,9 +61,9 @@ class _GroupProjectFileTemplateState:
         """
         Input properties used for looking up and filtering GroupProjectFileTemplate resources.
         :param pulumi.Input[int] file_template_project_id: The ID of the project that will be used for file templates. This project must be the direct
-               			child of the project defined by the group_id
+               child of the project defined by the group_id
         :param pulumi.Input[int] group_id: The ID of the group that will use the file template project. This group must be the direct
-                           parent of the project defined by project_id
+               parent of the project defined by project_id
         """
         if file_template_project_id is not None:
             pulumi.set(__self__, "file_template_project_id", file_template_project_id)
@@ -75,7 +75,7 @@ class _GroupProjectFileTemplateState:
     def file_template_project_id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the project that will be used for file templates. This project must be the direct
-        			child of the project defined by the group_id
+        child of the project defined by the group_id
         """
         return pulumi.get(self, "file_template_project_id")
 
@@ -88,7 +88,7 @@ class _GroupProjectFileTemplateState:
     def group_id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the group that will use the file template project. This group must be the direct
-                    parent of the project defined by project_id
+        parent of the project defined by project_id
         """
         return pulumi.get(self, "group_id")
 
@@ -139,9 +139,9 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] file_template_project_id: The ID of the project that will be used for file templates. This project must be the direct
-               			child of the project defined by the group_id
+               child of the project defined by the group_id
         :param pulumi.Input[int] group_id: The ID of the group that will use the file template project. This group must be the direct
-                           parent of the project defined by project_id
+               parent of the project defined by project_id
         """
         ...
     @overload
@@ -232,9 +232,9 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] file_template_project_id: The ID of the project that will be used for file templates. This project must be the direct
-               			child of the project defined by the group_id
+               child of the project defined by the group_id
         :param pulumi.Input[int] group_id: The ID of the group that will use the file template project. This group must be the direct
-                           parent of the project defined by project_id
+               parent of the project defined by project_id
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -249,7 +249,7 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
     def file_template_project_id(self) -> pulumi.Output[int]:
         """
         The ID of the project that will be used for file templates. This project must be the direct
-        			child of the project defined by the group_id
+        child of the project defined by the group_id
         """
         return pulumi.get(self, "file_template_project_id")
 
@@ -258,7 +258,7 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
     def group_id(self) -> pulumi.Output[int]:
         """
         The ID of the group that will use the file template project. This group must be the direct
-                    parent of the project defined by project_id
+        parent of the project defined by project_id
         """
         return pulumi.get(self, "group_id")
 

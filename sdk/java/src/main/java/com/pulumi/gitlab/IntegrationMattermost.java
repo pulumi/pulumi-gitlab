@@ -359,14 +359,14 @@ public class IntegrationMattermost extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.username);
     }
     /**
-     * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+     * Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
      * 
      */
     @Export(name="webhook", refs={String.class}, tree="[0]")
     private Output<String> webhook;
 
     /**
-     * @return Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+     * @return Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
      * 
      */
     public Output<String> webhook() {

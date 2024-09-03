@@ -85,7 +85,7 @@ export class Runner extends pulumi.CustomResource {
     public readonly runUntagged!: pulumi.Output<boolean>;
     /**
      * The status of runners to show, one of: online and offline. active and paused are also possible values
-     * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+     * which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -177,7 +177,7 @@ export interface RunnerState {
     runUntagged?: pulumi.Input<boolean>;
     /**
      * The status of runners to show, one of: online and offline. active and paused are also possible values
-     * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+     * which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
      */
     status?: pulumi.Input<string>;
     /**

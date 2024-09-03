@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
  * The `gitlab.ClusterAgent` resource allows to manage the lifecycle of a GitLab Agent for Kubernetes.
  * 
  * &gt; Note that this resource only registers the agent, but doesn&#39;t configure it.
- *    The configuration needs to be manually added as described in
- *    [the docs](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file).
- *    However, a `gitlab.RepositoryFile` resource may be used to achieve that.
+ * The configuration needs to be manually added as described in
+ * [the docs](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file).
+ * However, a `gitlab.RepositoryFile` resource may be used to achieve that.
  * 
  * &gt; Requires at least maintainer permissions on the project.
  * 

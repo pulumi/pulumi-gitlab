@@ -175,7 +175,7 @@ namespace Pulumi.GitLab
         public Output<string?> Username { get; private set; } = null!;
 
         /// <summary>
-        /// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+        /// Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
         /// </summary>
         [Output("webhook")]
         public Output<string> Webhook { get; private set; } = null!;
@@ -359,7 +359,7 @@ namespace Pulumi.GitLab
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+        /// Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
         /// </summary>
         [Input("webhook", required: true)]
         public Input<string> Webhook { get; set; } = null!;
@@ -505,7 +505,7 @@ namespace Pulumi.GitLab
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+        /// Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
         /// </summary>
         [Input("webhook")]
         public Input<string>? Webhook { get; set; }

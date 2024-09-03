@@ -34,9 +34,9 @@ class IntegrationJiraArgs:
         The set of arguments for constructing a IntegrationJira resource.
         :param pulumi.Input[str] password: The password of the user created to be used with GitLab/JIRA.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+        :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
         :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
-        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -106,7 +106,7 @@ class IntegrationJiraArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+        The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
         """
         return pulumi.get(self, "url")
 
@@ -130,7 +130,7 @@ class IntegrationJiraArgs:
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
         """
         return pulumi.get(self, "api_url")
 
@@ -297,7 +297,7 @@ class _IntegrationJiraState:
         """
         Input properties used for looking up and filtering IntegrationJira resources.
         :param pulumi.Input[bool] active: Whether the integration is active.
-        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[str] created_at: Create time.
@@ -314,7 +314,7 @@ class _IntegrationJiraState:
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag_push events.
         :param pulumi.Input[str] title: Title.
         :param pulumi.Input[str] updated_at: Update time.
-        :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+        :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
         :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
         """
         if active is not None:
@@ -374,7 +374,7 @@ class _IntegrationJiraState:
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
         """
         return pulumi.get(self, "api_url")
 
@@ -578,7 +578,7 @@ class _IntegrationJiraState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+        The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
         """
         return pulumi.get(self, "url")
 
@@ -653,7 +653,7 @@ class IntegrationJira(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -667,7 +667,7 @@ class IntegrationJira(pulumi.CustomResource):
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
         :param pulumi.Input[bool] push_events: Enable notifications for push events.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag_push events.
-        :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+        :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
         :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
         """
         ...
@@ -814,7 +814,7 @@ class IntegrationJira(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether the integration is active.
-        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[str] created_at: Create time.
@@ -831,7 +831,7 @@ class IntegrationJira(pulumi.CustomResource):
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag_push events.
         :param pulumi.Input[str] title: Title.
         :param pulumi.Input[str] updated_at: Update time.
-        :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+        :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
         :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -872,7 +872,7 @@ class IntegrationJira(pulumi.CustomResource):
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> pulumi.Output[str]:
         """
-        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
         """
         return pulumi.get(self, "api_url")
 
@@ -1008,7 +1008,7 @@ class IntegrationJira(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+        The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
         """
         return pulumi.get(self, "url")
 

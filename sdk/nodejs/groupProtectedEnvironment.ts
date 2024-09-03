@@ -10,9 +10,9 @@ import * as utilities from "./utilities";
  * The `gitlab.GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
  *
  * > In order to use a userId in the `deployAccessLevels` configuration,
- *    you need to make sure that users have access to the group with Maintainer role or higher.
- *    In order to use a groupId in the `deployAccessLevels` configuration,
- *    the groupId must be a sub-group under the given group.
+ * you need to make sure that users have access to the group with Maintainer role or higher.
+ * In order to use a groupId in the `deployAccessLevels` configuration,
+ * the groupId must be a sub-group under the given group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_protected_environments.html)
  *

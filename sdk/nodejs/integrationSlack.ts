@@ -94,7 +94,7 @@ export class IntegrationSlack extends pulumi.CustomResource {
      */
     public readonly issuesEvents!: pulumi.Output<boolean>;
     /**
-     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
      */
     public /*out*/ readonly jobEvents!: pulumi.Output<boolean>;
     /**
@@ -156,7 +156,7 @@ export class IntegrationSlack extends pulumi.CustomResource {
      */
     public readonly username!: pulumi.Output<string | undefined>;
     /**
-     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
      */
     public readonly webhook!: pulumi.Output<string>;
     /**
@@ -278,7 +278,7 @@ export interface IntegrationSlackState {
      */
     issuesEvents?: pulumi.Input<boolean>;
     /**
-     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
      */
     jobEvents?: pulumi.Input<boolean>;
     /**
@@ -340,7 +340,7 @@ export interface IntegrationSlackState {
      */
     username?: pulumi.Input<string>;
     /**
-     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
      */
     webhook?: pulumi.Input<string>;
     /**
@@ -444,7 +444,7 @@ export interface IntegrationSlackArgs {
      */
     username?: pulumi.Input<string>;
     /**
-     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
      */
     webhook: pulumi.Input<string>;
     /**

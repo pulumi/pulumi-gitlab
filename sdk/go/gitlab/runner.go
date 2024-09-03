@@ -49,7 +49,7 @@ type Runner struct {
 	// Whether the runner should handle untagged jobs.
 	RunUntagged pulumi.BoolOutput `pulumi:"runUntagged"`
 	// The status of runners to show, one of: online and offline. active and paused are also possible values
-	// 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+	// which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// List of runner’s tags.
 	TagLists pulumi.StringArrayOutput `pulumi:"tagLists"`
@@ -113,7 +113,7 @@ type runnerState struct {
 	// Whether the runner should handle untagged jobs.
 	RunUntagged *bool `pulumi:"runUntagged"`
 	// The status of runners to show, one of: online and offline. active and paused are also possible values
-	// 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+	// which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
 	Status *string `pulumi:"status"`
 	// List of runner’s tags.
 	TagLists []string `pulumi:"tagLists"`
@@ -137,7 +137,7 @@ type RunnerState struct {
 	// Whether the runner should handle untagged jobs.
 	RunUntagged pulumi.BoolPtrInput
 	// The status of runners to show, one of: online and offline. active and paused are also possible values
-	// 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+	// which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
 	Status pulumi.StringPtrInput
 	// List of runner’s tags.
 	TagLists pulumi.StringArrayInput
@@ -314,8 +314,7 @@ func (o RunnerOutput) RunUntagged() pulumi.BoolOutput {
 }
 
 // The status of runners to show, one of: online and offline. active and paused are also possible values
-//
-//	which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+// which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
 func (o RunnerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runner) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

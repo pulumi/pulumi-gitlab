@@ -232,8 +232,8 @@ type ApplicationSettings struct {
 	// Redirect to this URL when not logged in.
 	HomePageUrl pulumi.StringOutput `pulumi:"homePageUrl"`
 	// Enable or disable Git housekeeping.
-	// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-	// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+	// If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+	// Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
 	HousekeepingEnabled pulumi.BoolOutput `pulumi:"housekeepingEnabled"`
 	// Number of Git pushes after which an incremental git repack is run.
 	//
@@ -820,8 +820,8 @@ type applicationSettingsState struct {
 	// Redirect to this URL when not logged in.
 	HomePageUrl *string `pulumi:"homePageUrl"`
 	// Enable or disable Git housekeeping.
-	// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-	// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+	// If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+	// Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
 	HousekeepingEnabled *bool `pulumi:"housekeepingEnabled"`
 	// Number of Git pushes after which an incremental git repack is run.
 	//
@@ -1316,8 +1316,8 @@ type ApplicationSettingsState struct {
 	// Redirect to this URL when not logged in.
 	HomePageUrl pulumi.StringPtrInput
 	// Enable or disable Git housekeeping.
-	// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-	// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+	// If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+	// Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
 	HousekeepingEnabled pulumi.BoolPtrInput
 	// Number of Git pushes after which an incremental git repack is run.
 	//
@@ -1816,8 +1816,8 @@ type applicationSettingsArgs struct {
 	// Redirect to this URL when not logged in.
 	HomePageUrl *string `pulumi:"homePageUrl"`
 	// Enable or disable Git housekeeping.
-	// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-	// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+	// If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+	// Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
 	HousekeepingEnabled *bool `pulumi:"housekeepingEnabled"`
 	// Number of Git pushes after which an incremental git repack is run.
 	//
@@ -2313,8 +2313,8 @@ type ApplicationSettingsArgs struct {
 	// Redirect to this URL when not logged in.
 	HomePageUrl pulumi.StringPtrInput
 	// Enable or disable Git housekeeping.
-	// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-	// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+	// If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+	// Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
 	HousekeepingEnabled pulumi.BoolPtrInput
 	// Number of Git pushes after which an incremental git repack is run.
 	//
@@ -3223,9 +3223,8 @@ func (o ApplicationSettingsOutput) HomePageUrl() pulumi.StringOutput {
 }
 
 // Enable or disable Git housekeeping.
-//
-//	If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-//	Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+// If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
+// Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
 func (o ApplicationSettingsOutput) HousekeepingEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.HousekeepingEnabled }).(pulumi.BoolOutput)
 }

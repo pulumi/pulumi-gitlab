@@ -341,14 +341,14 @@ public final class ServiceSlackArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
      * 
      */
     @Import(name="webhook", required=true)
     private Output<String> webhook;
 
     /**
-     * @return Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * @return Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
      * 
      */
     public Output<String> webhook() {
@@ -882,7 +882,7 @@ public final class ServiceSlackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhook Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+         * @param webhook Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
          * 
          * @return builder
          * 
@@ -893,7 +893,7 @@ public final class ServiceSlackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhook Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+         * @param webhook Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
          * 
          * @return builder
          * 

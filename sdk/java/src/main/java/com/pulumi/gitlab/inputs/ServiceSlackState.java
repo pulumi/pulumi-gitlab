@@ -122,14 +122,14 @@ public final class ServiceSlackState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
      * 
      */
     @Import(name="jobEvents")
     private @Nullable Output<Boolean> jobEvents;
 
     /**
-     * @return Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     * @return Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
      * 
      */
     public Optional<Output<Boolean>> jobEvents() {
@@ -355,14 +355,14 @@ public final class ServiceSlackState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
      * 
      */
     @Import(name="webhook")
     private @Nullable Output<String> webhook;
 
     /**
-     * @return Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+     * @return Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
      * 
      */
     public Optional<Output<String>> webhook() {
@@ -595,7 +595,7 @@ public final class ServiceSlackState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobEvents Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+         * @param jobEvents Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class ServiceSlackState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobEvents Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+         * @param jobEvents Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
          * 
          * @return builder
          * 
@@ -918,7 +918,7 @@ public final class ServiceSlackState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhook Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+         * @param webhook Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
          * 
          * @return builder
          * 
@@ -929,7 +929,7 @@ public final class ServiceSlackState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhook Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+         * @param webhook Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
          * 
          * @return builder
          * 

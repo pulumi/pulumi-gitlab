@@ -170,7 +170,7 @@ class _RunnerState:
         :param pulumi.Input[str] registration_token: The registration token used to register the runner.
         :param pulumi.Input[bool] run_untagged: Whether the runner should handle untagged jobs.
         :param pulumi.Input[str] status: The status of runners to show, one of: online and offline. active and paused are also possible values
-               			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+               which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tag_lists: List of runner’s tags.
         """
         if access_level is not None:
@@ -295,7 +295,7 @@ class _RunnerState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The status of runners to show, one of: online and offline. active and paused are also possible values
-        			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+        which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
         """
         return pulumi.get(self, "status")
 
@@ -467,7 +467,7 @@ class Runner(pulumi.CustomResource):
         :param pulumi.Input[str] registration_token: The registration token used to register the runner.
         :param pulumi.Input[bool] run_untagged: Whether the runner should handle untagged jobs.
         :param pulumi.Input[str] status: The status of runners to show, one of: online and offline. active and paused are also possible values
-               			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+               which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tag_lists: List of runner’s tags.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -555,7 +555,7 @@ class Runner(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         The status of runners to show, one of: online and offline. active and paused are also possible values
-        			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+        which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
         """
         return pulumi.get(self, "status")
 

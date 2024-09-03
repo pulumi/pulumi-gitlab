@@ -60,7 +60,7 @@ namespace Pulumi.GitLab
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
         /// </summary>
         [Output("apiUrl")]
         public Output<string> ApiUrl { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.GitLab
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+        /// The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationJiraArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
         /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.GitLab
         public Input<bool>? TagPushEvents { get; set; }
 
         /// <summary>
-        /// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+        /// The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -344,7 +344,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
         /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
@@ -456,7 +456,7 @@ namespace Pulumi.GitLab
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+        /// The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

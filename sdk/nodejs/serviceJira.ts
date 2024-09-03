@@ -71,7 +71,7 @@ export class ServiceJira extends pulumi.CustomResource {
      */
     public /*out*/ readonly active!: pulumi.Output<boolean>;
     /**
-     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
      */
     public readonly apiUrl!: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export class ServiceJira extends pulumi.CustomResource {
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+     * The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -231,7 +231,7 @@ export interface ServiceJiraState {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
      */
     apiUrl?: pulumi.Input<string>;
     /**
@@ -299,7 +299,7 @@ export interface ServiceJiraState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+     * The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
      */
     url?: pulumi.Input<string>;
     /**
@@ -313,7 +313,7 @@ export interface ServiceJiraState {
  */
 export interface ServiceJiraArgs {
     /**
-     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
      */
     apiUrl?: pulumi.Input<string>;
     /**
@@ -369,7 +369,7 @@ export interface ServiceJiraArgs {
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
-     * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+     * The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
      */
     url: pulumi.Input<string>;
     /**

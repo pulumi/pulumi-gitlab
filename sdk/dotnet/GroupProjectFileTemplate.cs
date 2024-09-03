@@ -59,14 +59,14 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The ID of the project that will be used for file templates. This project must be the direct
-        /// 			child of the project defined by the group_id
+        /// child of the project defined by the group_id
         /// </summary>
         [Output("fileTemplateProjectId")]
         public Output<int> FileTemplateProjectId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the group that will use the file template project. This group must be the direct
-        ///             parent of the project defined by project_id
+        /// parent of the project defined by project_id
         /// </summary>
         [Output("groupId")]
         public Output<int> GroupId { get; private set; } = null!;
@@ -119,14 +119,14 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The ID of the project that will be used for file templates. This project must be the direct
-        /// 			child of the project defined by the group_id
+        /// child of the project defined by the group_id
         /// </summary>
         [Input("fileTemplateProjectId", required: true)]
         public Input<int> FileTemplateProjectId { get; set; } = null!;
 
         /// <summary>
         /// The ID of the group that will use the file template project. This group must be the direct
-        ///             parent of the project defined by project_id
+        /// parent of the project defined by project_id
         /// </summary>
         [Input("groupId", required: true)]
         public Input<int> GroupId { get; set; } = null!;
@@ -141,14 +141,14 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The ID of the project that will be used for file templates. This project must be the direct
-        /// 			child of the project defined by the group_id
+        /// child of the project defined by the group_id
         /// </summary>
         [Input("fileTemplateProjectId")]
         public Input<int>? FileTemplateProjectId { get; set; }
 
         /// <summary>
         /// The ID of the group that will use the file template project. This group must be the direct
-        ///             parent of the project defined by project_id
+        /// parent of the project defined by project_id
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
