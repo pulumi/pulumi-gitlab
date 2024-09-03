@@ -65,7 +65,7 @@ type IntegrationJira struct {
 
 	// Whether the integration is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
-	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
 	ApiUrl pulumi.StringOutput `pulumi:"apiUrl"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolOutput `pulumi:"commentOnEventEnabled"`
@@ -99,7 +99,7 @@ type IntegrationJira struct {
 	Title pulumi.StringOutput `pulumi:"title"`
 	// Update time.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+	// The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
 	Url pulumi.StringOutput `pulumi:"url"`
 	// The username of the user created to be used with GitLab/JIRA.
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -156,7 +156,7 @@ func GetIntegrationJira(ctx *pulumi.Context,
 type integrationJiraState struct {
 	// Whether the integration is active.
 	Active *bool `pulumi:"active"`
-	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
 	ApiUrl *string `pulumi:"apiUrl"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
@@ -190,7 +190,7 @@ type integrationJiraState struct {
 	Title *string `pulumi:"title"`
 	// Update time.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+	// The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
 	Url *string `pulumi:"url"`
 	// The username of the user created to be used with GitLab/JIRA.
 	Username *string `pulumi:"username"`
@@ -199,7 +199,7 @@ type integrationJiraState struct {
 type IntegrationJiraState struct {
 	// Whether the integration is active.
 	Active pulumi.BoolPtrInput
-	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
 	ApiUrl pulumi.StringPtrInput
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolPtrInput
@@ -233,7 +233,7 @@ type IntegrationJiraState struct {
 	Title pulumi.StringPtrInput
 	// Update time.
 	UpdatedAt pulumi.StringPtrInput
-	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+	// The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
 	Url pulumi.StringPtrInput
 	// The username of the user created to be used with GitLab/JIRA.
 	Username pulumi.StringPtrInput
@@ -244,7 +244,7 @@ func (IntegrationJiraState) ElementType() reflect.Type {
 }
 
 type integrationJiraArgs struct {
-	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
 	ApiUrl *string `pulumi:"apiUrl"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
@@ -272,7 +272,7 @@ type integrationJiraArgs struct {
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Enable notifications for tagPush events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+	// The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
 	Url string `pulumi:"url"`
 	// The username of the user created to be used with GitLab/JIRA.
 	Username string `pulumi:"username"`
@@ -280,7 +280,7 @@ type integrationJiraArgs struct {
 
 // The set of arguments for constructing a IntegrationJira resource.
 type IntegrationJiraArgs struct {
-	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
 	ApiUrl pulumi.StringPtrInput
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolPtrInput
@@ -308,7 +308,7 @@ type IntegrationJiraArgs struct {
 	PushEvents pulumi.BoolPtrInput
 	// Enable notifications for tagPush events.
 	TagPushEvents pulumi.BoolPtrInput
-	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+	// The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
 	Url pulumi.StringInput
 	// The username of the user created to be used with GitLab/JIRA.
 	Username pulumi.StringInput
@@ -406,7 +406,7 @@ func (o IntegrationJiraOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v *IntegrationJira) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
 }
 
-// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+// The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
 func (o IntegrationJiraOutput) ApiUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationJira) pulumi.StringOutput { return v.ApiUrl }).(pulumi.StringOutput)
 }
@@ -491,7 +491,7 @@ func (o IntegrationJiraOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationJira) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+// The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
 func (o IntegrationJiraOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationJira) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

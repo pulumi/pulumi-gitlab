@@ -49,7 +49,7 @@ class GroupArgs:
         :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
-        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[int] default_branch_protection: See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -179,7 +179,7 @@ class GroupArgs:
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
-        See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -493,7 +493,7 @@ class _GroupState:
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
-        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[int] default_branch_protection: See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -639,7 +639,7 @@ class _GroupState:
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
-        See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -1059,7 +1059,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
-        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[int] default_branch_protection: See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -1279,7 +1279,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
-        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[int] default_branch_protection: See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -1382,7 +1382,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> pulumi.Output[int]:
         """
-        See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 

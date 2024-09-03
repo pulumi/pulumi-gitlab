@@ -140,7 +140,7 @@ public final class RunnerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The status of runners to show, one of: online and offline. active and paused are also possible values
-     * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+     * which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
      * 
      */
     @Import(name="status")
@@ -148,7 +148,7 @@ public final class RunnerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The status of runners to show, one of: online and offline. active and paused are also possible values
-     * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+     * which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
      * 
      */
     public Optional<Output<String>> status() {
@@ -373,7 +373,7 @@ public final class RunnerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The status of runners to show, one of: online and offline. active and paused are also possible values
-         * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+         * which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class RunnerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The status of runners to show, one of: online and offline. active and paused are also possible values
-         * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+         * which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
          * 
          * @return builder
          * 

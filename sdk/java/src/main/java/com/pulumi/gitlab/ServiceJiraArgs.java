@@ -18,14 +18,14 @@ public final class ServiceJiraArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServiceJiraArgs Empty = new ServiceJiraArgs();
 
     /**
-     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
      * 
      */
     @Import(name="apiUrl")
     private @Nullable Output<String> apiUrl;
 
     /**
-     * @return The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * @return The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
      * 
      */
     public Optional<Output<String>> apiUrl() {
@@ -228,14 +228,14 @@ public final class ServiceJiraArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+     * The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+     * @return The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
      * 
      */
     public Output<String> url() {
@@ -297,7 +297,7 @@ public final class ServiceJiraArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiUrl The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+         * @param apiUrl The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class ServiceJiraArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiUrl The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+         * @param apiUrl The base URL to the Jira instance API. Web URL value is used if not set. For example, [https://jira-api.example.com](https://jira-api.example.com).
          * 
          * @return builder
          * 
@@ -591,7 +591,7 @@ public final class ServiceJiraArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+         * @param url The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
          * 
          * @return builder
          * 
@@ -602,7 +602,7 @@ public final class ServiceJiraArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
+         * @param url The URL to the JIRA project which is being linked to this GitLab project. For example, [https://jira.example.com](https://jira.example.com).
          * 
          * @return builder
          * 

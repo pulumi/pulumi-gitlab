@@ -94,7 +94,7 @@ type Group struct {
 	AvatarHash pulumi.StringOutput `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringOutput `pulumi:"avatarUrl"`
-	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+	// See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
 	DefaultBranchProtection pulumi.IntOutput `pulumi:"defaultBranchProtection"`
 	// The group's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -197,7 +197,7 @@ type groupState struct {
 	AvatarHash *string `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl *string `pulumi:"avatarUrl"`
-	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+	// See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The group's description.
 	Description *string `pulumi:"description"`
@@ -264,7 +264,7 @@ type GroupState struct {
 	AvatarHash pulumi.StringPtrInput
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringPtrInput
-	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+	// See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The group's description.
 	Description pulumi.StringPtrInput
@@ -333,7 +333,7 @@ type groupArgs struct {
 	Avatar *string `pulumi:"avatar"`
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash *string `pulumi:"avatarHash"`
-	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+	// See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The group's description.
 	Description *string `pulumi:"description"`
@@ -391,7 +391,7 @@ type GroupArgs struct {
 	Avatar pulumi.StringPtrInput
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash pulumi.StringPtrInput
-	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+	// See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The group's description.
 	Description pulumi.StringPtrInput
@@ -548,7 +548,7 @@ func (o GroupOutput) AvatarUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.AvatarUrl }).(pulumi.StringOutput)
 }
 
-// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+// See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
 func (o GroupOutput) DefaultBranchProtection() pulumi.IntOutput {
 	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.DefaultBranchProtection }).(pulumi.IntOutput)
 }

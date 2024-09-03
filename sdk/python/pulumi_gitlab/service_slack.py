@@ -41,7 +41,7 @@ class ServiceSlackArgs:
         """
         The set of arguments for constructing a ServiceSlack resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
@@ -131,7 +131,7 @@ class ServiceSlackArgs:
     @pulumi.getter
     def webhook(self) -> pulumi.Input[str]:
         """
-        Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
@@ -442,7 +442,7 @@ class _ServiceSlackState:
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
-        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
         :param pulumi.Input[str] merge_request_channel: The name of the channel to receive merge request events notifications.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge requests events.
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
@@ -457,7 +457,7 @@ class _ServiceSlackState:
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -603,7 +603,7 @@ class _ServiceSlackState:
     @pulumi.getter(name="jobEvents")
     def job_events(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
         """
         return pulumi.get(self, "job_events")
 
@@ -784,7 +784,7 @@ class _ServiceSlackState:
     @pulumi.getter
     def webhook(self) -> Optional[pulumi.Input[str]]:
         """
-        Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
@@ -903,7 +903,7 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -1072,7 +1072,7 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
-        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
         :param pulumi.Input[str] merge_request_channel: The name of the channel to receive merge request events notifications.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge requests events.
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
@@ -1087,7 +1087,7 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -1182,7 +1182,7 @@ class ServiceSlack(pulumi.CustomResource):
     @pulumi.getter(name="jobEvents")
     def job_events(self) -> pulumi.Output[bool]:
         """
-        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
         """
         return pulumi.get(self, "job_events")
 
@@ -1303,7 +1303,7 @@ class ServiceSlack(pulumi.CustomResource):
     @pulumi.getter
     def webhook(self) -> pulumi.Output[str]:
         """
-        Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 

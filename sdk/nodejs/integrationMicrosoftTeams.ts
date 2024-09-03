@@ -120,7 +120,7 @@ export class IntegrationMicrosoftTeams extends pulumi.CustomResource {
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+     * The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
      */
     public readonly webhook!: pulumi.Output<string>;
     /**
@@ -248,7 +248,7 @@ export interface IntegrationMicrosoftTeamsState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+     * The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
      */
     webhook?: pulumi.Input<string>;
     /**
@@ -306,7 +306,7 @@ export interface IntegrationMicrosoftTeamsArgs {
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
-     * The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+     * The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
      */
     webhook: pulumi.Input<string>;
     /**

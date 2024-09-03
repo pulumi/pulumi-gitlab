@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
  * The `gitlab.GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
  * 
  * &gt; In order to use a user_id in the `deploy_access_levels` configuration,
- *    you need to make sure that users have access to the group with Maintainer role or higher.
- *    In order to use a group_id in the `deploy_access_levels` configuration,
- *    the group_id must be a sub-group under the given group.
+ * you need to make sure that users have access to the group with Maintainer role or higher.
+ * In order to use a group_id in the `deploy_access_levels` configuration,
+ * the group_id must be a sub-group under the given group.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_protected_environments.html)
  * 

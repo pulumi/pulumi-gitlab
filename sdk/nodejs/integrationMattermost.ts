@@ -146,7 +146,7 @@ export class IntegrationMattermost extends pulumi.CustomResource {
      */
     public readonly username!: pulumi.Output<string | undefined>;
     /**
-     * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+     * Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
      */
     public readonly webhook!: pulumi.Output<string>;
     /**
@@ -316,7 +316,7 @@ export interface IntegrationMattermostState {
      */
     username?: pulumi.Input<string>;
     /**
-     * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+     * Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
      */
     webhook?: pulumi.Input<string>;
     /**
@@ -414,7 +414,7 @@ export interface IntegrationMattermostArgs {
      */
     username?: pulumi.Input<string>;
     /**
-     * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+     * Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
      */
     webhook: pulumi.Input<string>;
     /**

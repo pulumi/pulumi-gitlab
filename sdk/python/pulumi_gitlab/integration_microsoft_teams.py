@@ -30,7 +30,7 @@ class IntegrationMicrosoftTeamsArgs:
         """
         The set of arguments for constructing a IntegrationMicrosoftTeams resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[str] webhook: The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issue events
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events
@@ -84,7 +84,7 @@ class IntegrationMicrosoftTeamsArgs:
     @pulumi.getter
     def webhook(self) -> pulumi.Input[str]:
         """
-        The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+        The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
@@ -260,7 +260,7 @@ class _IntegrationMicrosoftTeamsState:
         :param pulumi.Input[bool] push_events: Enable notifications for push events
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events
         :param pulumi.Input[str] updated_at: Update time.
-        :param pulumi.Input[str] webhook: The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events
         """
         if active is not None:
@@ -468,7 +468,7 @@ class _IntegrationMicrosoftTeamsState:
     @pulumi.getter
     def webhook(self) -> Optional[pulumi.Input[str]]:
         """
-        The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+        The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
@@ -550,7 +550,7 @@ class IntegrationMicrosoftTeams(pulumi.CustomResource):
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[bool] push_events: Enable notifications for push events
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events
-        :param pulumi.Input[str] webhook: The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events
         """
         ...
@@ -692,7 +692,7 @@ class IntegrationMicrosoftTeams(pulumi.CustomResource):
         :param pulumi.Input[bool] push_events: Enable notifications for push events
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events
         :param pulumi.Input[str] updated_at: Update time.
-        :param pulumi.Input[str] webhook: The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -833,7 +833,7 @@ class IntegrationMicrosoftTeams(pulumi.CustomResource):
     @pulumi.getter
     def webhook(self) -> pulumi.Output[str]:
         """
-        The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+        The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 

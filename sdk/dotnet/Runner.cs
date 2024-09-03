@@ -81,7 +81,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The status of runners to show, one of: online and offline. active and paused are also possible values
-        /// 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+        /// which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -285,7 +285,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The status of runners to show, one of: online and offline. active and paused are also possible values
-        /// 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+        /// which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

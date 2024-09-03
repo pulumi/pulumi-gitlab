@@ -317,14 +317,14 @@ public final class IntegrationMattermostState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+     * Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
      * 
      */
     @Import(name="webhook")
     private @Nullable Output<String> webhook;
 
     /**
-     * @return Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+     * @return Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
      * 
      */
     public Optional<Output<String>> webhook() {
@@ -828,7 +828,7 @@ public final class IntegrationMattermostState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param webhook Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+         * @param webhook Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
          * 
          * @return builder
          * 
@@ -839,7 +839,7 @@ public final class IntegrationMattermostState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param webhook Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+         * @param webhook Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
          * 
          * @return builder
          * 

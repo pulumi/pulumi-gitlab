@@ -183,14 +183,14 @@ public final class ServiceMicrosoftTeamsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+     * The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
      * 
      */
     @Import(name="webhook", required=true)
     private Output<String> webhook;
 
     /**
-     * @return The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+     * @return The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
      * 
      */
     public Output<String> webhook() {
@@ -480,7 +480,7 @@ public final class ServiceMicrosoftTeamsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param webhook The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+         * @param webhook The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class ServiceMicrosoftTeamsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param webhook The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+         * @param webhook The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
          * 
          * @return builder
          * 

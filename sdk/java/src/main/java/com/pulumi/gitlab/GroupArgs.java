@@ -66,14 +66,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      */
     @Import(name="defaultBranchProtection")
     private @Nullable Output<Integer> defaultBranchProtection;
 
     /**
-     * @return See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * @return See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      */
     public Optional<Output<Integer>> defaultBranchProtection() {
@@ -539,7 +539,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultBranchProtection See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+         * @param defaultBranchProtection See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultBranchProtection See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+         * @param defaultBranchProtection See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
          * 
          * @return builder
          * 

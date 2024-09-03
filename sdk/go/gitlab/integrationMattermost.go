@@ -104,7 +104,7 @@ type IntegrationMattermost struct {
 	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
-	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+	// Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
 	Webhook pulumi.StringOutput `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrOutput `pulumi:"wikiPageChannel"`
@@ -188,7 +188,7 @@ type integrationMattermostState struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username *string `pulumi:"username"`
-	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+	// Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
 	Webhook *string `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel *string `pulumi:"wikiPageChannel"`
@@ -237,7 +237,7 @@ type IntegrationMattermostState struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// Username to use.
 	Username pulumi.StringPtrInput
-	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+	// Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
 	Webhook pulumi.StringPtrInput
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrInput
@@ -290,7 +290,7 @@ type integrationMattermostArgs struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username *string `pulumi:"username"`
-	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+	// Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
 	Webhook string `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel *string `pulumi:"wikiPageChannel"`
@@ -340,7 +340,7 @@ type IntegrationMattermostArgs struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// Username to use.
 	Username pulumi.StringPtrInput
-	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+	// Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
 	Webhook pulumi.StringInput
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrInput
@@ -535,7 +535,7 @@ func (o IntegrationMattermostOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
-// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+// Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
 func (o IntegrationMattermostOutput) Webhook() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationMattermost) pulumi.StringOutput { return v.Webhook }).(pulumi.StringOutput)
 }

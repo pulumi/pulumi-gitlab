@@ -103,7 +103,7 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
     /**
-     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
      */
     public readonly defaultBranchProtection!: pulumi.Output<number>;
     /**
@@ -326,7 +326,7 @@ export interface GroupState {
      */
     avatarUrl?: pulumi.Input<string>;
     /**
-     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
      */
     defaultBranchProtection?: pulumi.Input<number>;
     /**
@@ -456,7 +456,7 @@ export interface GroupArgs {
      */
     avatarHash?: pulumi.Input<string>;
     /**
-     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
      */
     defaultBranchProtection?: pulumi.Input<number>;
     /**

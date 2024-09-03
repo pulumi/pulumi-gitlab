@@ -99,7 +99,7 @@ namespace Pulumi.GitLab
         public Output<bool> IssuesEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
         /// </summary>
         [Output("jobEvents")]
         public Output<bool> JobEvents { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.GitLab
         public Output<string?> Username { get; private set; } = null!;
 
         /// <summary>
-        /// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        /// Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
         /// </summary>
         [Output("webhook")]
         public Output<string> Webhook { get; private set; } = null!;
@@ -379,7 +379,7 @@ namespace Pulumi.GitLab
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        /// Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
         /// </summary>
         [Input("webhook", required: true)]
         public Input<string> Webhook { get; set; } = null!;
@@ -447,7 +447,7 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to [https://github.com/xanzy/go-gitlab/issues/1354](https://github.com/xanzy/go-gitlab/issues/1354).
         /// </summary>
         [Input("jobEvents")]
         public Input<bool>? JobEvents { get; set; }
@@ -537,7 +537,7 @@ namespace Pulumi.GitLab
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
+        /// Webhook URL (Example, [https://hooks.slack.com/services/...)](https://hooks.slack.com/services/...)). This value cannot be imported.
         /// </summary>
         [Input("webhook")]
         public Input<string>? Webhook { get; set; }

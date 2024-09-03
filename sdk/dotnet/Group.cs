@@ -101,7 +101,7 @@ namespace Pulumi.GitLab
         public Output<string> AvatarUrl { get; private set; } = null!;
 
         /// <summary>
-        /// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        /// See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
         /// </summary>
         [Output("defaultBranchProtection")]
         public Output<int> DefaultBranchProtection { get; private set; } = null!;
@@ -337,7 +337,7 @@ namespace Pulumi.GitLab
         public Input<string>? AvatarHash { get; set; }
 
         /// <summary>
-        /// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        /// See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }
@@ -519,7 +519,7 @@ namespace Pulumi.GitLab
         public Input<string>? AvatarUrl { get; set; }
 
         /// <summary>
-        /// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        /// See [https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection](https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection). Valid values are: `0`, `1`, `2`, `3`, `4`.
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }

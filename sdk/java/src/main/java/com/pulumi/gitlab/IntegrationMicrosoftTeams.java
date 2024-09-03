@@ -273,14 +273,14 @@ public class IntegrationMicrosoftTeams extends com.pulumi.resources.CustomResour
         return this.updatedAt;
     }
     /**
-     * The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+     * The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
      * 
      */
     @Export(name="webhook", refs={String.class}, tree="[0]")
     private Output<String> webhook;
 
     /**
-     * @return The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
+     * @return The Microsoft Teams webhook (Example, [https://outlook.office.com/webhook/...)](https://outlook.office.com/webhook/...)). This value cannot be imported.
      * 
      */
     public Output<String> webhook() {

@@ -40,7 +40,7 @@ class IntegrationMattermostArgs:
         """
         The set of arguments for constructing a IntegrationMattermost resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
@@ -124,7 +124,7 @@ class IntegrationMattermostArgs:
     @pulumi.getter
     def webhook(self) -> pulumi.Input[str]:
         """
-        Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+        Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
@@ -433,7 +433,7 @@ class _IntegrationMattermostState:
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -728,7 +728,7 @@ class _IntegrationMattermostState:
     @pulumi.getter
     def webhook(self) -> Optional[pulumi.Input[str]]:
         """
-        Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+        Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
@@ -843,7 +843,7 @@ class IntegrationMattermost(pulumi.CustomResource):
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -1018,7 +1018,7 @@ class IntegrationMattermost(pulumi.CustomResource):
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+        :param pulumi.Input[str] webhook: Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -1215,7 +1215,7 @@ class IntegrationMattermost(pulumi.CustomResource):
     @pulumi.getter
     def webhook(self) -> pulumi.Output[str]:
         """
-        Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
+        Webhook URL (Example, [https://mattermost.yourdomain.com/hooks/...)](https://mattermost.yourdomain.com/hooks/...)). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
