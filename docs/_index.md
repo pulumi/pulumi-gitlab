@@ -12,6 +12,7 @@ The gitlab provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab`](https://github.com/pulumi/pulumi-gitlab)
 * .NET: [`Pulumi.Gitlab`](https://www.nuget.org/packages/Pulumi.Gitlab)
 * Java: [`com.pulumi/gitlab`](https://central.sonatype.com/artifact/com.pulumi/gitlab)
+## Overview
 
 Use the GitLab provider to interact with GitLab resources, like
 users, groups, projects and more. You must configure the provider with
