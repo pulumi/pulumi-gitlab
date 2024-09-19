@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getComplianceFramework(args: GetComplianceFrameworkArgs, opts?: pulumi.InvokeOptions): Promise<GetComplianceFrameworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getComplianceFramework:getComplianceFramework", {
         "name": args.name,
@@ -96,7 +95,11 @@ export interface GetComplianceFrameworkResult {
  * ```
  */
 export function getComplianceFrameworkOutput(args: GetComplianceFrameworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComplianceFrameworkResult> {
-    return pulumi.output(args).apply((a: any) => getComplianceFramework(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getComplianceFramework:getComplianceFramework", {
+        "name": args.name,
+        "namespacePath": args.namespacePath,
+    }, opts);
 }
 
 /**

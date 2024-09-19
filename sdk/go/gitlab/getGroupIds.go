@@ -78,14 +78,20 @@ type GetGroupIdsResult struct {
 
 func GetGroupIdsOutput(ctx *pulumi.Context, args GetGroupIdsOutputArgs, opts ...pulumi.InvokeOption) GetGroupIdsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGroupIdsResult, error) {
+		ApplyT(func(v interface{}) (GetGroupIdsResultOutput, error) {
 			args := v.(GetGroupIdsArgs)
-			r, err := GetGroupIds(ctx, &args, opts...)
-			var s GetGroupIdsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGroupIdsResult
+			secret, err := ctx.InvokePackageRaw("gitlab:index/getGroupIds:getGroupIds", args, &rv, "", opts...)
+			if err != nil {
+				return GetGroupIdsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGroupIdsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGroupIdsResultOutput), nil
+			}
+			return output, nil
 		}).(GetGroupIdsResultOutput)
 }
 

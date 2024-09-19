@@ -83,14 +83,20 @@ type GetRepositoryTreeResult struct {
 
 func GetRepositoryTreeOutput(ctx *pulumi.Context, args GetRepositoryTreeOutputArgs, opts ...pulumi.InvokeOption) GetRepositoryTreeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRepositoryTreeResult, error) {
+		ApplyT(func(v interface{}) (GetRepositoryTreeResultOutput, error) {
 			args := v.(GetRepositoryTreeArgs)
-			r, err := GetRepositoryTree(ctx, &args, opts...)
-			var s GetRepositoryTreeResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRepositoryTreeResult
+			secret, err := ctx.InvokePackageRaw("gitlab:index/getRepositoryTree:getRepositoryTree", args, &rv, "", opts...)
+			if err != nil {
+				return GetRepositoryTreeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRepositoryTreeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRepositoryTreeResultOutput), nil
+			}
+			return output, nil
 		}).(GetRepositoryTreeResultOutput)
 }
 

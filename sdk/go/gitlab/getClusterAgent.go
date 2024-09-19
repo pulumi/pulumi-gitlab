@@ -79,14 +79,20 @@ type LookupClusterAgentResult struct {
 
 func LookupClusterAgentOutput(ctx *pulumi.Context, args LookupClusterAgentOutputArgs, opts ...pulumi.InvokeOption) LookupClusterAgentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupClusterAgentResult, error) {
+		ApplyT(func(v interface{}) (LookupClusterAgentResultOutput, error) {
 			args := v.(LookupClusterAgentArgs)
-			r, err := LookupClusterAgent(ctx, &args, opts...)
-			var s LookupClusterAgentResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupClusterAgentResult
+			secret, err := ctx.InvokePackageRaw("gitlab:index/getClusterAgent:getClusterAgent", args, &rv, "", opts...)
+			if err != nil {
+				return LookupClusterAgentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupClusterAgentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupClusterAgentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupClusterAgentResultOutput)
 }
 

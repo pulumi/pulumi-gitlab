@@ -70,14 +70,20 @@ type GetClusterAgentsResult struct {
 
 func GetClusterAgentsOutput(ctx *pulumi.Context, args GetClusterAgentsOutputArgs, opts ...pulumi.InvokeOption) GetClusterAgentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetClusterAgentsResult, error) {
+		ApplyT(func(v interface{}) (GetClusterAgentsResultOutput, error) {
 			args := v.(GetClusterAgentsArgs)
-			r, err := GetClusterAgents(ctx, &args, opts...)
-			var s GetClusterAgentsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetClusterAgentsResult
+			secret, err := ctx.InvokePackageRaw("gitlab:index/getClusterAgents:getClusterAgents", args, &rv, "", opts...)
+			if err != nil {
+				return GetClusterAgentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetClusterAgentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetClusterAgentsResultOutput), nil
+			}
+			return output, nil
 		}).(GetClusterAgentsResultOutput)
 }
 

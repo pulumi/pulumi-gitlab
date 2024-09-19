@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
  */
 export function getProjectMilestone(args: GetProjectMilestoneArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMilestoneResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectMilestone:getProjectMilestone", {
         "milestoneId": args.milestoneId,
@@ -99,7 +98,11 @@ export interface GetProjectMilestoneResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
  */
 export function getProjectMilestoneOutput(args: GetProjectMilestoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMilestoneResult> {
-    return pulumi.output(args).apply((a: any) => getProjectMilestone(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectMilestone:getProjectMilestone", {
+        "milestoneId": args.milestoneId,
+        "project": args.project,
+    }, opts);
 }
 
 /**

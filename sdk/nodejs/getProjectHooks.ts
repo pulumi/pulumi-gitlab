@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getProjectHooks(args: GetProjectHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectHooksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectHooks:getProjectHooks", {
         "project": args.project,
@@ -80,7 +79,10 @@ export interface GetProjectHooksResult {
  * ```
  */
 export function getProjectHooksOutput(args: GetProjectHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectHooksResult> {
-    return pulumi.output(args).apply((a: any) => getProjectHooks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectHooks:getProjectHooks", {
+        "project": args.project,
+    }, opts);
 }
 
 /**

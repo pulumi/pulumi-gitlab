@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getCurrentUser(opts?: pulumi.InvokeOptions): Promise<GetCurrentUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getCurrentUser:getCurrentUser", {
     }, opts);
@@ -81,5 +80,7 @@ export interface GetCurrentUserResult {
  * ```
  */
 export function getCurrentUserOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentUserResult> {
-    return pulumi.output(getCurrentUser(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getCurrentUser:getCurrentUser", {
+    }, opts);
 }

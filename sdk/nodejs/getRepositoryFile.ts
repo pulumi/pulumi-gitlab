@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRepositoryFile(args: GetRepositoryFileArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryFileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getRepositoryFile:getRepositoryFile", {
         "filePath": args.filePath,
@@ -126,7 +125,12 @@ export interface GetRepositoryFileResult {
  * ```
  */
 export function getRepositoryFileOutput(args: GetRepositoryFileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryFileResult> {
-    return pulumi.output(args).apply((a: any) => getRepositoryFile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getRepositoryFile:getRepositoryFile", {
+        "filePath": args.filePath,
+        "project": args.project,
+        "ref": args.ref,
+    }, opts);
 }
 
 /**

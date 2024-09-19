@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGroupIds(args: GetGroupIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupIdsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getGroupIds:getGroupIds", {
         "group": args.group,
@@ -85,7 +84,10 @@ export interface GetGroupIdsResult {
  * ```
  */
 export function getGroupIdsOutput(args: GetGroupIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupIdsResult> {
-    return pulumi.output(args).apply((a: any) => getGroupIds(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getGroupIds:getGroupIds", {
+        "group": args.group,
+    }, opts);
 }
 
 /**

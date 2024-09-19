@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getInstanceVariables(opts?: pulumi.InvokeOptions): Promise<GetInstanceVariablesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getInstanceVariables:getInstanceVariables", {
     }, opts);
@@ -55,5 +54,7 @@ export interface GetInstanceVariablesResult {
  * ```
  */
 export function getInstanceVariablesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceVariablesResult> {
-    return pulumi.output(getInstanceVariables(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getInstanceVariables:getInstanceVariables", {
+    }, opts);
 }
