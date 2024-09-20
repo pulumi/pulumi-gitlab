@@ -82,6 +82,10 @@
                 "type": "boolean",
                 "description": "When set to true this disables SSL verification of the connection to the GitLab instance.\n"
             },
+            "retries": {
+                "type": "integer",
+                "description": "The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.\n"
+            },
             "token": {
                 "type": "string",
                 "description": "The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is\nused in this provider for authentication (using Bearer authorization token). See\nhttps://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment\nvariable.\n",
@@ -90,6 +94,43 @@
         }
     },
     "types": {
+        "gitlab:index/ApplicationSettingsDefaultBranchProtectionDefaults:ApplicationSettingsDefaultBranchProtectionDefaults": {
+            "properties": {
+                "allowForcePush": {
+                    "type": "boolean",
+                    "description": "Allow force push for all users with push access.\n"
+                },
+                "allowedToMerges": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).\n"
+                },
+                "allowedToPushes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).\n"
+                },
+                "developerCanInitialPush": {
+                    "type": "boolean",
+                    "description": "Allow developers to initial push.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "allowForcePush",
+                        "allowedToMerges",
+                        "allowedToPushes",
+                        "developerCanInitialPush"
+                    ]
+                }
+            }
+        },
         "gitlab:index/BranchCommit:BranchCommit": {
             "properties": {
                 "authorEmail": {
@@ -262,6 +303,43 @@
                 "expirationDays",
                 "rotateBeforeDays"
             ]
+        },
+        "gitlab:index/GroupDefaultBranchProtectionDefaults:GroupDefaultBranchProtectionDefaults": {
+            "properties": {
+                "allowForcePush": {
+                    "type": "boolean",
+                    "description": "Allow force push for all users with push access.\n"
+                },
+                "allowedToMerges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.\n"
+                },
+                "allowedToPushes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.\n"
+                },
+                "developerCanInitialPush": {
+                    "type": "boolean",
+                    "description": "Allow developers to initial push.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "allowForcePush",
+                        "allowedToMerges",
+                        "allowedToPushes",
+                        "developerCanInitialPush"
+                    ]
+                }
+            }
         },
         "gitlab:index/GroupEpicBoardList:GroupEpicBoardList": {
             "properties": {
@@ -440,6 +518,10 @@
                     "type": "boolean",
                     "description": "GitLab will reject any files that are likely to contain secrets.\n"
                 },
+                "rejectNonDcoCommits": {
+                    "type": "boolean",
+                    "description": "Reject commit when it’s not DCO certified.\n"
+                },
                 "rejectUnsignedCommits": {
                     "type": "boolean",
                     "description": "Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions \u003e= 16.4.\n"
@@ -460,6 +542,7 @@
                         "maxFileSize",
                         "memberCheck",
                         "preventSecrets",
+                        "rejectNonDcoCommits",
                         "rejectUnsignedCommits"
                     ]
                 }
@@ -719,6 +802,10 @@
                     "type": "boolean",
                     "description": "GitLab will reject any files that are likely to contain secrets.\n"
                 },
+                "rejectNonDcoCommits": {
+                    "type": "boolean",
+                    "description": "Reject commit when it’s not DCO certified.\n"
+                },
                 "rejectUnsignedCommits": {
                     "type": "boolean",
                     "description": "Reject commit when it’s not signed through GPG.\n"
@@ -820,21 +907,19 @@
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "Level of access.\n"
+                    "description": "Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "accessLevelDescription": {
                     "type": "string",
-                    "description": "Readable description of level of access.\n"
+                    "description": "Readable description of access level.\n"
                 },
                 "groupId": {
                     "type": "integer",
-                    "description": "The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.\n"
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.\n"
                 }
             },
             "type": "object",
@@ -1592,6 +1677,211 @@
                 "enabled",
                 "externalUrl",
                 "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getPipelineScheduleLastPipeline:getPipelineScheduleLastPipeline": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The pipeline ID.\n"
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "The ref of the pipeline.\n"
+                },
+                "sha": {
+                    "type": "string",
+                    "description": "The SHA of the pipeline.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of pipelines, one of: created, waiting*for*resource, preparing, pending, running, success, failed, canceled, skipped, manual, scheduled.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "ref",
+                "sha",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getPipelineScheduleOwner:getPipelineScheduleOwner": {
+            "properties": {
+                "avatarUrl": {
+                    "type": "string",
+                    "description": "Image URL for the user's avatar.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The user ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "User's state, one of: active, blocked.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username.\n"
+                },
+                "webUrl": {
+                    "type": "string",
+                    "description": "URL to the user's profile.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "avatarUrl",
+                "id",
+                "name",
+                "state",
+                "username",
+                "webUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getPipelineScheduleVariable:getPipelineScheduleVariable": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The key of a variable.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of a variable.\n"
+                },
+                "variableType": {
+                    "type": "string",
+                    "description": "The type of a variable, one of: env_var and file.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value",
+                "variableType"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getPipelineSchedulesPipelineSchedule:getPipelineSchedulesPipelineSchedule": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "The activation status of pipeline schedule.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The datetime of when the schedule was created.\n"
+                },
+                "cron": {
+                    "type": "string",
+                    "description": "The cron (e.g. `0 1 * * *`).\n"
+                },
+                "cronTimezone": {
+                    "type": "string",
+                    "description": "The timezone.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the pipeline schedule.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The pipeline schedule id.\n"
+                },
+                "nextRunAt": {
+                    "type": "string",
+                    "description": "The datetime of when the schedule will next run.\n"
+                },
+                "owner": {
+                    "$ref": "#/types/gitlab:index/getPipelineSchedulesPipelineScheduleOwner:getPipelineSchedulesPipelineScheduleOwner",
+                    "description": "The details of the pipeline schedule owner.\n"
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `main`.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The datetime of when the schedule was last updated.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active",
+                "createdAt",
+                "cron",
+                "cronTimezone",
+                "description",
+                "id",
+                "nextRunAt",
+                "owner",
+                "ref",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getPipelineSchedulesPipelineScheduleOwner:getPipelineSchedulesPipelineScheduleOwner": {
+            "properties": {
+                "avatarUrl": {
+                    "type": "string",
+                    "description": "Image URL for the user's avatar.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The user ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "User's state, one of: active, blocked.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username.\n"
+                },
+                "webUrl": {
+                    "type": "string",
+                    "description": "URL to the user's profile.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "avatarUrl",
+                "id",
+                "name",
+                "state",
+                "username",
+                "webUrl"
             ],
             "language": {
                 "nodejs": {
@@ -2455,6 +2745,101 @@
                 }
             }
         },
+        "gitlab:index/getProjectProtectedTagCreateAccessLevel:getProjectProtectedTagCreateAccessLevel": {
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Access level allowed to create protected tags.\n"
+                },
+                "accessLevelDescription": {
+                    "type": "string",
+                    "description": "Readable description of access level.\n"
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The ID of a GitLab group allowed to perform the relevant action.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the create access level.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of a GitLab user allowed to perform the relevant action.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessLevel",
+                "accessLevelDescription",
+                "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getProjectProtectedTagsProtectedTag:getProjectProtectedTagsProtectedTag": {
+            "properties": {
+                "createAccessLevels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/getProjectProtectedTagsProtectedTagCreateAccessLevel:getProjectProtectedTagsProtectedTagCreateAccessLevel"
+                    },
+                    "description": "Array of access levels/user(s)/group(s) allowed to create protected tags.\n"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The name of the protected tag.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createAccessLevels",
+                "tag"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getProjectProtectedTagsProtectedTagCreateAccessLevel:getProjectProtectedTagsProtectedTagCreateAccessLevel": {
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Access level allowed to create protected tags.\n"
+                },
+                "accessLevelDescription": {
+                    "type": "string",
+                    "description": "Readable description of access level.\n"
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The ID of a GitLab group allowed to perform the relevant action.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the create access level.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of a GitLab user allowed to perform the relevant action.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessLevel",
+                "accessLevelDescription",
+                "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "gitlab:index/getProjectPushRule:getProjectPushRule": {
             "properties": {
                 "authorEmailRegex": {
@@ -2501,6 +2886,10 @@
                     "type": "boolean",
                     "description": "GitLab will reject any files that are likely to contain secrets.\n"
                 },
+                "rejectNonDcoCommits": {
+                    "type": "boolean",
+                    "description": "Reject commit when it’s not DCO certified.\n"
+                },
                 "rejectUnsignedCommits": {
                     "type": "boolean",
                     "description": "Reject commit when it’s not signed through GPG.\n"
@@ -2519,6 +2908,7 @@
                 "maxFileSize",
                 "memberCheck",
                 "preventSecrets",
+                "rejectNonDcoCommits",
                 "rejectUnsignedCommits"
             ],
             "language": {
@@ -4010,6 +4400,10 @@
                 "type": "boolean",
                 "description": "When set to true this disables SSL verification of the connection to the GitLab instance.\n"
             },
+            "retries": {
+                "type": "integer",
+                "description": "The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.\n"
+            },
             "token": {
                 "type": "string",
                 "description": "The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is\nused in this provider for authentication (using Bearer authorization token). See\nhttps://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment\nvariable.\n",
@@ -4039,6 +4433,10 @@
             "insecure": {
                 "type": "boolean",
                 "description": "When set to true this disables SSL verification of the connection to the GitLab instance.\n"
+            },
+            "retries": {
+                "type": "integer",
+                "description": "The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.\n"
             },
             "token": {
                 "type": "string",
@@ -4176,6 +4574,10 @@
                     "type": "boolean",
                     "description": "(If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.\n"
                 },
+                "allowAccountDeletion": {
+                    "type": "boolean",
+                    "description": "Set to true to allow users to delete their accounts. Premium and Ultimate only.\n"
+                },
                 "allowGroupOwnersToManageLdap": {
                     "type": "boolean",
                     "description": "Set to true to allow group owners to manage LDAP.\n"
@@ -4188,9 +4590,21 @@
                     "type": "boolean",
                     "description": "Allow requests to the local network from web hooks and services.\n"
                 },
+                "allowProjectCreationForGuestAndBelow": {
+                    "type": "boolean",
+                    "description": "Indicates whether users assigned up to the Guest role can create groups and personal projects.\n"
+                },
+                "allowRunnerRegistrationToken": {
+                    "type": "boolean",
+                    "description": "Allow using a registration token to create a runner.\n"
+                },
                 "archiveBuildsInHumanReadable": {
                     "type": "string",
                     "description": "Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.\n"
+                },
+                "asciidocMaxIncludes": {
+                    "type": "integer",
+                    "description": "Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.\n"
                 },
                 "assetProxyAllowlists": {
                     "type": "array",
@@ -4216,6 +4630,10 @@
                     "type": "boolean",
                     "description": "By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.\n"
                 },
+                "autoBanUserOnExcessiveProjectsDownload": {
+                    "type": "boolean",
+                    "description": "When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.\n"
+                },
                 "autoDevopsDomain": {
                     "type": "string",
                     "description": "Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.\n"
@@ -4228,6 +4646,18 @@
                     "type": "boolean",
                     "description": "Enabling this permits automatic allocation of purchased storage in a namespace.\n"
                 },
+                "bulkImportConcurrentPipelineBatchLimit": {
+                    "type": "integer",
+                    "description": "Maximum simultaneous Direct Transfer batches to process.\n"
+                },
+                "bulkImportEnabled": {
+                    "type": "boolean",
+                    "description": "Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.\n"
+                },
+                "bulkImportMaxDownloadFileSize": {
+                    "type": "integer",
+                    "description": "Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.\n"
+                },
                 "canCreateGroup": {
                     "type": "boolean",
                     "description": "Indicates whether users can create top-level groups. Introduced in GitLab 15.5.\n"
@@ -4236,9 +4666,29 @@
                     "type": "boolean",
                     "description": "Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.\n"
                 },
+                "ciMaxIncludes": {
+                    "type": "integer",
+                    "description": "The maximum number of includes per pipeline.\n"
+                },
+                "ciMaxTotalYamlSizeBytes": {
+                    "type": "integer",
+                    "description": "The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.\n"
+                },
                 "commitEmailHostname": {
                     "type": "string",
                     "description": "Custom hostname (for private commit emails).\n"
+                },
+                "concurrentBitbucketImportJobsLimit": {
+                    "type": "integer",
+                    "description": "Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.\n"
+                },
+                "concurrentBitbucketServerImportJobsLimit": {
+                    "type": "integer",
+                    "description": "Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.\n"
+                },
+                "concurrentGithubImportJobsLimit": {
+                    "type": "integer",
+                    "description": "Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.\n"
                 },
                 "containerExpirationPoliciesEnableHistoricEntries": {
                     "type": "boolean",
@@ -4268,6 +4718,14 @@
                     "type": "boolean",
                     "description": "Enable automatic deactivation of dormant users.\n"
                 },
+                "deactivateDormantUsersPeriod": {
+                    "type": "integer",
+                    "description": "Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.\n"
+                },
+                "decompressArchiveFileTimeout": {
+                    "type": "integer",
+                    "description": "Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.\n"
+                },
                 "defaultArtifactsExpireIn": {
                     "type": "string",
                     "description": "Set the default expiration time for each job’s artifacts.\n"
@@ -4280,6 +4738,10 @@
                     "type": "integer",
                     "description": "Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.\n"
                 },
+                "defaultBranchProtectionDefaults": {
+                    "$ref": "#/types/gitlab:index/ApplicationSettingsDefaultBranchProtectionDefaults:ApplicationSettingsDefaultBranchProtectionDefaults",
+                    "description": "The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.\n"
+                },
                 "defaultCiConfigPath": {
                     "type": "string",
                     "description": "Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).\n"
@@ -4287,6 +4749,10 @@
                 "defaultGroupVisibility": {
                     "type": "string",
                     "description": "What visibility level new groups receive. Can take private, internal and public as a parameter.\n"
+                },
+                "defaultPreferredLanguage": {
+                    "type": "string",
+                    "description": "Default preferred language for users who are not logged in.\n"
                 },
                 "defaultProjectCreation": {
                     "type": "integer",
@@ -4304,13 +4770,29 @@
                     "type": "string",
                     "description": "What visibility level new snippets receive. Can take private, internal and public as a parameter.\n"
                 },
+                "defaultSyntaxHighlightingTheme": {
+                    "type": "integer",
+                    "description": "Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)\n"
+                },
                 "deleteInactiveProjects": {
                     "type": "boolean",
                     "description": "Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).\n"
                 },
+                "deleteUnconfirmedUsers": {
+                    "type": "boolean",
+                    "description": "Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.\n"
+                },
                 "deletionAdjournedPeriod": {
                     "type": "integer",
                     "description": "The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.\n"
+                },
+                "diagramsnetEnabled": {
+                    "type": "boolean",
+                    "description": "(If enabled, requires diagramsnet_url) Enable Diagrams.net integration.\n"
+                },
+                "diagramsnetUrl": {
+                    "type": "string",
+                    "description": "The Diagrams.net instance URL for integration.\n"
                 },
                 "diffMaxFiles": {
                     "type": "integer",
@@ -4324,9 +4806,17 @@
                     "type": "integer",
                     "description": "Maximum diff patch size, in bytes.\n"
                 },
+                "disableAdminOauthScopes": {
+                    "type": "boolean",
+                    "description": "Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.\n"
+                },
                 "disableFeedToken": {
                     "type": "boolean",
                     "description": "Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).\n"
+                },
+                "disablePersonalAccessTokens": {
+                    "type": "boolean",
+                    "description": "Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.\n"
                 },
                 "disabledOauthSignInSources": {
                     "type": "array",
@@ -4357,9 +4847,17 @@
                     },
                     "description": "Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.\n"
                 },
+                "downstreamPipelineTriggerLimitPerProjectUserSha": {
+                    "type": "integer",
+                    "description": "Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.\n"
+                },
                 "dsaKeyRestriction": {
                     "type": "integer",
                     "description": "The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.\n"
+                },
+                "duoFeaturesEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.\n"
                 },
                 "ecdsaKeyRestriction": {
                     "type": "integer",
@@ -5187,21 +5685,34 @@
                 "afterSignUpText",
                 "akismetApiKey",
                 "akismetEnabled",
+                "allowAccountDeletion",
                 "allowGroupOwnersToManageLdap",
                 "allowLocalRequestsFromSystemHooks",
                 "allowLocalRequestsFromWebHooksAndServices",
+                "allowProjectCreationForGuestAndBelow",
+                "allowRunnerRegistrationToken",
                 "archiveBuildsInHumanReadable",
+                "asciidocMaxIncludes",
                 "assetProxyAllowlists",
                 "assetProxyEnabled",
                 "assetProxySecretKey",
                 "assetProxyUrl",
                 "authorizedKeysEnabled",
+                "autoBanUserOnExcessiveProjectsDownload",
                 "autoDevopsDomain",
                 "autoDevopsEnabled",
                 "automaticPurchasedStorageAllocation",
+                "bulkImportConcurrentPipelineBatchLimit",
+                "bulkImportEnabled",
+                "bulkImportMaxDownloadFileSize",
                 "canCreateGroup",
                 "checkNamespacePlan",
+                "ciMaxIncludes",
+                "ciMaxTotalYamlSizeBytes",
                 "commitEmailHostname",
+                "concurrentBitbucketImportJobsLimit",
+                "concurrentBitbucketServerImportJobsLimit",
+                "concurrentGithubImportJobsLimit",
                 "containerExpirationPoliciesEnableHistoricEntries",
                 "containerRegistryCleanupTagsServiceMaxListSize",
                 "containerRegistryDeleteTagsServiceTimeout",
@@ -5209,27 +5720,39 @@
                 "containerRegistryExpirationPoliciesWorkerCapacity",
                 "containerRegistryTokenExpireDelay",
                 "deactivateDormantUsers",
+                "deactivateDormantUsersPeriod",
+                "decompressArchiveFileTimeout",
                 "defaultArtifactsExpireIn",
                 "defaultBranchName",
                 "defaultBranchProtection",
+                "defaultBranchProtectionDefaults",
                 "defaultCiConfigPath",
                 "defaultGroupVisibility",
+                "defaultPreferredLanguage",
                 "defaultProjectCreation",
                 "defaultProjectVisibility",
                 "defaultProjectsLimit",
                 "defaultSnippetVisibility",
+                "defaultSyntaxHighlightingTheme",
                 "deleteInactiveProjects",
+                "deleteUnconfirmedUsers",
                 "deletionAdjournedPeriod",
+                "diagramsnetEnabled",
+                "diagramsnetUrl",
                 "diffMaxFiles",
                 "diffMaxLines",
                 "diffMaxPatchBytes",
+                "disableAdminOauthScopes",
                 "disableFeedToken",
+                "disablePersonalAccessTokens",
                 "disabledOauthSignInSources",
                 "dnsRebindingProtectionEnabled",
                 "domainAllowlists",
                 "domainDenylists",
                 "domainDenylistEnabled",
+                "downstreamPipelineTriggerLimitPerProjectUserSha",
                 "dsaKeyRestriction",
+                "duoFeaturesEnabled",
                 "ecdsaKeyRestriction",
                 "ecdsaSkKeyRestriction",
                 "ed25519KeyRestriction",
@@ -5451,6 +5974,10 @@
                     "type": "boolean",
                     "description": "(If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.\n"
                 },
+                "allowAccountDeletion": {
+                    "type": "boolean",
+                    "description": "Set to true to allow users to delete their accounts. Premium and Ultimate only.\n"
+                },
                 "allowGroupOwnersToManageLdap": {
                     "type": "boolean",
                     "description": "Set to true to allow group owners to manage LDAP.\n"
@@ -5463,9 +5990,21 @@
                     "type": "boolean",
                     "description": "Allow requests to the local network from web hooks and services.\n"
                 },
+                "allowProjectCreationForGuestAndBelow": {
+                    "type": "boolean",
+                    "description": "Indicates whether users assigned up to the Guest role can create groups and personal projects.\n"
+                },
+                "allowRunnerRegistrationToken": {
+                    "type": "boolean",
+                    "description": "Allow using a registration token to create a runner.\n"
+                },
                 "archiveBuildsInHumanReadable": {
                     "type": "string",
                     "description": "Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.\n"
+                },
+                "asciidocMaxIncludes": {
+                    "type": "integer",
+                    "description": "Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.\n"
                 },
                 "assetProxyAllowlists": {
                     "type": "array",
@@ -5491,6 +6030,10 @@
                     "type": "boolean",
                     "description": "By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.\n"
                 },
+                "autoBanUserOnExcessiveProjectsDownload": {
+                    "type": "boolean",
+                    "description": "When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.\n"
+                },
                 "autoDevopsDomain": {
                     "type": "string",
                     "description": "Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.\n"
@@ -5503,6 +6046,18 @@
                     "type": "boolean",
                     "description": "Enabling this permits automatic allocation of purchased storage in a namespace.\n"
                 },
+                "bulkImportConcurrentPipelineBatchLimit": {
+                    "type": "integer",
+                    "description": "Maximum simultaneous Direct Transfer batches to process.\n"
+                },
+                "bulkImportEnabled": {
+                    "type": "boolean",
+                    "description": "Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.\n"
+                },
+                "bulkImportMaxDownloadFileSize": {
+                    "type": "integer",
+                    "description": "Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.\n"
+                },
                 "canCreateGroup": {
                     "type": "boolean",
                     "description": "Indicates whether users can create top-level groups. Introduced in GitLab 15.5.\n"
@@ -5511,9 +6066,29 @@
                     "type": "boolean",
                     "description": "Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.\n"
                 },
+                "ciMaxIncludes": {
+                    "type": "integer",
+                    "description": "The maximum number of includes per pipeline.\n"
+                },
+                "ciMaxTotalYamlSizeBytes": {
+                    "type": "integer",
+                    "description": "The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.\n"
+                },
                 "commitEmailHostname": {
                     "type": "string",
                     "description": "Custom hostname (for private commit emails).\n"
+                },
+                "concurrentBitbucketImportJobsLimit": {
+                    "type": "integer",
+                    "description": "Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.\n"
+                },
+                "concurrentBitbucketServerImportJobsLimit": {
+                    "type": "integer",
+                    "description": "Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.\n"
+                },
+                "concurrentGithubImportJobsLimit": {
+                    "type": "integer",
+                    "description": "Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.\n"
                 },
                 "containerExpirationPoliciesEnableHistoricEntries": {
                     "type": "boolean",
@@ -5543,6 +6118,14 @@
                     "type": "boolean",
                     "description": "Enable automatic deactivation of dormant users.\n"
                 },
+                "deactivateDormantUsersPeriod": {
+                    "type": "integer",
+                    "description": "Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.\n"
+                },
+                "decompressArchiveFileTimeout": {
+                    "type": "integer",
+                    "description": "Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.\n"
+                },
                 "defaultArtifactsExpireIn": {
                     "type": "string",
                     "description": "Set the default expiration time for each job’s artifacts.\n"
@@ -5555,6 +6138,10 @@
                     "type": "integer",
                     "description": "Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.\n"
                 },
+                "defaultBranchProtectionDefaults": {
+                    "$ref": "#/types/gitlab:index/ApplicationSettingsDefaultBranchProtectionDefaults:ApplicationSettingsDefaultBranchProtectionDefaults",
+                    "description": "The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.\n"
+                },
                 "defaultCiConfigPath": {
                     "type": "string",
                     "description": "Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).\n"
@@ -5562,6 +6149,10 @@
                 "defaultGroupVisibility": {
                     "type": "string",
                     "description": "What visibility level new groups receive. Can take private, internal and public as a parameter.\n"
+                },
+                "defaultPreferredLanguage": {
+                    "type": "string",
+                    "description": "Default preferred language for users who are not logged in.\n"
                 },
                 "defaultProjectCreation": {
                     "type": "integer",
@@ -5579,13 +6170,29 @@
                     "type": "string",
                     "description": "What visibility level new snippets receive. Can take private, internal and public as a parameter.\n"
                 },
+                "defaultSyntaxHighlightingTheme": {
+                    "type": "integer",
+                    "description": "Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)\n"
+                },
                 "deleteInactiveProjects": {
                     "type": "boolean",
                     "description": "Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).\n"
                 },
+                "deleteUnconfirmedUsers": {
+                    "type": "boolean",
+                    "description": "Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.\n"
+                },
                 "deletionAdjournedPeriod": {
                     "type": "integer",
                     "description": "The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.\n"
+                },
+                "diagramsnetEnabled": {
+                    "type": "boolean",
+                    "description": "(If enabled, requires diagramsnet_url) Enable Diagrams.net integration.\n"
+                },
+                "diagramsnetUrl": {
+                    "type": "string",
+                    "description": "The Diagrams.net instance URL for integration.\n"
                 },
                 "diffMaxFiles": {
                     "type": "integer",
@@ -5599,9 +6206,17 @@
                     "type": "integer",
                     "description": "Maximum diff patch size, in bytes.\n"
                 },
+                "disableAdminOauthScopes": {
+                    "type": "boolean",
+                    "description": "Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.\n"
+                },
                 "disableFeedToken": {
                     "type": "boolean",
                     "description": "Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).\n"
+                },
+                "disablePersonalAccessTokens": {
+                    "type": "boolean",
+                    "description": "Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.\n"
                 },
                 "disabledOauthSignInSources": {
                     "type": "array",
@@ -5632,9 +6247,17 @@
                     },
                     "description": "Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.\n"
                 },
+                "downstreamPipelineTriggerLimitPerProjectUserSha": {
+                    "type": "integer",
+                    "description": "Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.\n"
+                },
                 "dsaKeyRestriction": {
                     "type": "integer",
                     "description": "The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.\n"
+                },
+                "duoFeaturesEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.\n"
                 },
                 "ecdsaKeyRestriction": {
                     "type": "integer",
@@ -6483,6 +7106,10 @@
                         "type": "boolean",
                         "description": "(If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.\n"
                     },
+                    "allowAccountDeletion": {
+                        "type": "boolean",
+                        "description": "Set to true to allow users to delete their accounts. Premium and Ultimate only.\n"
+                    },
                     "allowGroupOwnersToManageLdap": {
                         "type": "boolean",
                         "description": "Set to true to allow group owners to manage LDAP.\n"
@@ -6495,9 +7122,21 @@
                         "type": "boolean",
                         "description": "Allow requests to the local network from web hooks and services.\n"
                     },
+                    "allowProjectCreationForGuestAndBelow": {
+                        "type": "boolean",
+                        "description": "Indicates whether users assigned up to the Guest role can create groups and personal projects.\n"
+                    },
+                    "allowRunnerRegistrationToken": {
+                        "type": "boolean",
+                        "description": "Allow using a registration token to create a runner.\n"
+                    },
                     "archiveBuildsInHumanReadable": {
                         "type": "string",
                         "description": "Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.\n"
+                    },
+                    "asciidocMaxIncludes": {
+                        "type": "integer",
+                        "description": "Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.\n"
                     },
                     "assetProxyAllowlists": {
                         "type": "array",
@@ -6523,6 +7162,10 @@
                         "type": "boolean",
                         "description": "By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.\n"
                     },
+                    "autoBanUserOnExcessiveProjectsDownload": {
+                        "type": "boolean",
+                        "description": "When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.\n"
+                    },
                     "autoDevopsDomain": {
                         "type": "string",
                         "description": "Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.\n"
@@ -6535,6 +7178,18 @@
                         "type": "boolean",
                         "description": "Enabling this permits automatic allocation of purchased storage in a namespace.\n"
                     },
+                    "bulkImportConcurrentPipelineBatchLimit": {
+                        "type": "integer",
+                        "description": "Maximum simultaneous Direct Transfer batches to process.\n"
+                    },
+                    "bulkImportEnabled": {
+                        "type": "boolean",
+                        "description": "Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.\n"
+                    },
+                    "bulkImportMaxDownloadFileSize": {
+                        "type": "integer",
+                        "description": "Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.\n"
+                    },
                     "canCreateGroup": {
                         "type": "boolean",
                         "description": "Indicates whether users can create top-level groups. Introduced in GitLab 15.5.\n"
@@ -6543,9 +7198,29 @@
                         "type": "boolean",
                         "description": "Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.\n"
                     },
+                    "ciMaxIncludes": {
+                        "type": "integer",
+                        "description": "The maximum number of includes per pipeline.\n"
+                    },
+                    "ciMaxTotalYamlSizeBytes": {
+                        "type": "integer",
+                        "description": "The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.\n"
+                    },
                     "commitEmailHostname": {
                         "type": "string",
                         "description": "Custom hostname (for private commit emails).\n"
+                    },
+                    "concurrentBitbucketImportJobsLimit": {
+                        "type": "integer",
+                        "description": "Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.\n"
+                    },
+                    "concurrentBitbucketServerImportJobsLimit": {
+                        "type": "integer",
+                        "description": "Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.\n"
+                    },
+                    "concurrentGithubImportJobsLimit": {
+                        "type": "integer",
+                        "description": "Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.\n"
                     },
                     "containerExpirationPoliciesEnableHistoricEntries": {
                         "type": "boolean",
@@ -6575,6 +7250,14 @@
                         "type": "boolean",
                         "description": "Enable automatic deactivation of dormant users.\n"
                     },
+                    "deactivateDormantUsersPeriod": {
+                        "type": "integer",
+                        "description": "Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.\n"
+                    },
+                    "decompressArchiveFileTimeout": {
+                        "type": "integer",
+                        "description": "Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.\n"
+                    },
                     "defaultArtifactsExpireIn": {
                         "type": "string",
                         "description": "Set the default expiration time for each job’s artifacts.\n"
@@ -6587,6 +7270,10 @@
                         "type": "integer",
                         "description": "Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.\n"
                     },
+                    "defaultBranchProtectionDefaults": {
+                        "$ref": "#/types/gitlab:index/ApplicationSettingsDefaultBranchProtectionDefaults:ApplicationSettingsDefaultBranchProtectionDefaults",
+                        "description": "The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.\n"
+                    },
                     "defaultCiConfigPath": {
                         "type": "string",
                         "description": "Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).\n"
@@ -6594,6 +7281,10 @@
                     "defaultGroupVisibility": {
                         "type": "string",
                         "description": "What visibility level new groups receive. Can take private, internal and public as a parameter.\n"
+                    },
+                    "defaultPreferredLanguage": {
+                        "type": "string",
+                        "description": "Default preferred language for users who are not logged in.\n"
                     },
                     "defaultProjectCreation": {
                         "type": "integer",
@@ -6611,13 +7302,29 @@
                         "type": "string",
                         "description": "What visibility level new snippets receive. Can take private, internal and public as a parameter.\n"
                     },
+                    "defaultSyntaxHighlightingTheme": {
+                        "type": "integer",
+                        "description": "Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)\n"
+                    },
                     "deleteInactiveProjects": {
                         "type": "boolean",
                         "description": "Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).\n"
                     },
+                    "deleteUnconfirmedUsers": {
+                        "type": "boolean",
+                        "description": "Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.\n"
+                    },
                     "deletionAdjournedPeriod": {
                         "type": "integer",
                         "description": "The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.\n"
+                    },
+                    "diagramsnetEnabled": {
+                        "type": "boolean",
+                        "description": "(If enabled, requires diagramsnet_url) Enable Diagrams.net integration.\n"
+                    },
+                    "diagramsnetUrl": {
+                        "type": "string",
+                        "description": "The Diagrams.net instance URL for integration.\n"
                     },
                     "diffMaxFiles": {
                         "type": "integer",
@@ -6631,9 +7338,17 @@
                         "type": "integer",
                         "description": "Maximum diff patch size, in bytes.\n"
                     },
+                    "disableAdminOauthScopes": {
+                        "type": "boolean",
+                        "description": "Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.\n"
+                    },
                     "disableFeedToken": {
                         "type": "boolean",
                         "description": "Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).\n"
+                    },
+                    "disablePersonalAccessTokens": {
+                        "type": "boolean",
+                        "description": "Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.\n"
                     },
                     "disabledOauthSignInSources": {
                         "type": "array",
@@ -6664,9 +7379,17 @@
                         },
                         "description": "Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.\n"
                     },
+                    "downstreamPipelineTriggerLimitPerProjectUserSha": {
+                        "type": "integer",
+                        "description": "Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.\n"
+                    },
                     "dsaKeyRestriction": {
                         "type": "integer",
                         "description": "The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.\n"
+                    },
+                    "duoFeaturesEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.\n"
                     },
                     "ecdsaKeyRestriction": {
                         "type": "integer",
@@ -8690,7 +9413,7 @@
             }
         },
         "gitlab:index/group:Group": {
-            "description": "The `gitlab.Group` resource allows to manage the lifecycle of a group.\n\n\u003e On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.Group(\"example\", {\n    name: \"example\",\n    path: \"example\",\n    description: \"An example group\",\n});\n// Create a project in the example group\nconst exampleProject = new gitlab.Project(\"example\", {\n    name: \"example\",\n    description: \"An example project\",\n    namespaceId: example.id,\n});\n// Group with custom push rules\nconst example_two = new gitlab.Group(\"example-two\", {\n    name: \"example-two\",\n    path: \"example-two\",\n    description: \"An example group with push rules\",\n    pushRules: {\n        authorEmailRegex: \"@example\\\\.com$\",\n        commitCommitterCheck: true,\n        memberCheck: true,\n        preventSecrets: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.Group(\"example\",\n    name=\"example\",\n    path=\"example\",\n    description=\"An example group\")\n# Create a project in the example group\nexample_project = gitlab.Project(\"example\",\n    name=\"example\",\n    description=\"An example project\",\n    namespace_id=example.id)\n# Group with custom push rules\nexample_two = gitlab.Group(\"example-two\",\n    name=\"example-two\",\n    path=\"example-two\",\n    description=\"An example group with push rules\",\n    push_rules={\n        \"author_email_regex\": \"@example\\\\.com$\",\n        \"commit_committer_check\": True,\n        \"member_check\": True,\n        \"prevent_secrets\": True,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.Group(\"example\", new()\n    {\n        Name = \"example\",\n        Path = \"example\",\n        Description = \"An example group\",\n    });\n\n    // Create a project in the example group\n    var exampleProject = new GitLab.Project(\"example\", new()\n    {\n        Name = \"example\",\n        Description = \"An example project\",\n        NamespaceId = example.Id,\n    });\n\n    // Group with custom push rules\n    var example_two = new GitLab.Group(\"example-two\", new()\n    {\n        Name = \"example-two\",\n        Path = \"example-two\",\n        Description = \"An example group with push rules\",\n        PushRules = new GitLab.Inputs.GroupPushRulesArgs\n        {\n            AuthorEmailRegex = \"@example\\\\.com$\",\n            CommitCommitterCheck = true,\n            MemberCheck = true,\n            PreventSecrets = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewGroup(ctx, \"example\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tPath:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create a project in the example group\n\t\t_, err = gitlab.NewProject(ctx, \"example\", \u0026gitlab.ProjectArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example project\"),\n\t\t\tNamespaceId: example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Group with custom push rules\n\t\t_, err = gitlab.NewGroup(ctx, \"example-two\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example-two\"),\n\t\t\tPath:        pulumi.String(\"example-two\"),\n\t\t\tDescription: pulumi.String(\"An example group with push rules\"),\n\t\t\tPushRules: \u0026gitlab.GroupPushRulesArgs{\n\t\t\t\tAuthorEmailRegex:     pulumi.String(\"@example\\\\.com$\"),\n\t\t\t\tCommitCommitterCheck: pulumi.Bool(true),\n\t\t\t\tMemberCheck:          pulumi.Bool(true),\n\t\t\t\tPreventSecrets:       pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.inputs.GroupPushRulesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()\n            .name(\"example\")\n            .path(\"example\")\n            .description(\"An example group\")\n            .build());\n\n        // Create a project in the example group\n        var exampleProject = new Project(\"exampleProject\", ProjectArgs.builder()\n            .name(\"example\")\n            .description(\"An example project\")\n            .namespaceId(example.id())\n            .build());\n\n        // Group with custom push rules\n        var example_two = new Group(\"example-two\", GroupArgs.builder()\n            .name(\"example-two\")\n            .path(\"example-two\")\n            .description(\"An example group with push rules\")\n            .pushRules(GroupPushRulesArgs.builder()\n                .authorEmailRegex(\"@example\\\\.com$\")\n                .commitCommitterCheck(true)\n                .memberCheck(true)\n                .preventSecrets(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:Group\n    properties:\n      name: example\n      path: example\n      description: An example group\n  # Create a project in the example group\n  exampleProject:\n    type: gitlab:Project\n    name: example\n    properties:\n      name: example\n      description: An example project\n      namespaceId: ${example.id}\n  # Group with custom push rules\n  example-two:\n    type: gitlab:Group\n    properties:\n      name: example-two\n      path: example-two\n      description: An example group with push rules\n      pushRules:\n        authorEmailRegex: '@example\\.com$'\n        commitCommitterCheck: true\n        memberCheck: true\n        preventSecrets: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import gitlab:index/group:Group You can import a group state using `\u003cresource\u003e \u003cid\u003e`. The\n```\n\n`id` can be whatever the [details of a group][details_of_a_group] api takes for\n\nits `:id` value, so for example:\n\n```sh\n$ pulumi import gitlab:index/group:Group example example\n```\n\n",
+            "description": "The `gitlab.Group` resource allows to manage the lifecycle of a group.\n\n\u003e On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.Group(\"example\", {\n    name: \"example\",\n    path: \"example\",\n    description: \"An example group\",\n});\n// Create a project in the example group\nconst exampleProject = new gitlab.Project(\"example\", {\n    name: \"example\",\n    description: \"An example project\",\n    namespaceId: example.id,\n});\n// Group with custom push rules\nconst example_two = new gitlab.Group(\"example-two\", {\n    name: \"example-two\",\n    path: \"example-two\",\n    description: \"An example group with push rules\",\n    pushRules: {\n        authorEmailRegex: \"@example\\\\.com$\",\n        commitCommitterCheck: true,\n        memberCheck: true,\n        preventSecrets: true,\n    },\n});\n// Group with custom default branch protection defaults\nconst example_three = new gitlab.Group(\"example-three\", {\n    name: \"example-three\",\n    path: \"example-three\",\n    description: \"An example group with default branch protection defaults\",\n    defaultBranchProtectionDefaults: {\n        allowedToPushes: [\"developer\"],\n        allowForcePush: true,\n        allowedToMerges: [\n            \"developer\",\n            \"maintainer\",\n        ],\n        developerCanInitialPush: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.Group(\"example\",\n    name=\"example\",\n    path=\"example\",\n    description=\"An example group\")\n# Create a project in the example group\nexample_project = gitlab.Project(\"example\",\n    name=\"example\",\n    description=\"An example project\",\n    namespace_id=example.id)\n# Group with custom push rules\nexample_two = gitlab.Group(\"example-two\",\n    name=\"example-two\",\n    path=\"example-two\",\n    description=\"An example group with push rules\",\n    push_rules={\n        \"author_email_regex\": \"@example\\\\.com$\",\n        \"commit_committer_check\": True,\n        \"member_check\": True,\n        \"prevent_secrets\": True,\n    })\n# Group with custom default branch protection defaults\nexample_three = gitlab.Group(\"example-three\",\n    name=\"example-three\",\n    path=\"example-three\",\n    description=\"An example group with default branch protection defaults\",\n    default_branch_protection_defaults={\n        \"allowed_to_pushes\": [\"developer\"],\n        \"allow_force_push\": True,\n        \"allowed_to_merges\": [\n            \"developer\",\n            \"maintainer\",\n        ],\n        \"developer_can_initial_push\": True,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.Group(\"example\", new()\n    {\n        Name = \"example\",\n        Path = \"example\",\n        Description = \"An example group\",\n    });\n\n    // Create a project in the example group\n    var exampleProject = new GitLab.Project(\"example\", new()\n    {\n        Name = \"example\",\n        Description = \"An example project\",\n        NamespaceId = example.Id,\n    });\n\n    // Group with custom push rules\n    var example_two = new GitLab.Group(\"example-two\", new()\n    {\n        Name = \"example-two\",\n        Path = \"example-two\",\n        Description = \"An example group with push rules\",\n        PushRules = new GitLab.Inputs.GroupPushRulesArgs\n        {\n            AuthorEmailRegex = \"@example\\\\.com$\",\n            CommitCommitterCheck = true,\n            MemberCheck = true,\n            PreventSecrets = true,\n        },\n    });\n\n    // Group with custom default branch protection defaults\n    var example_three = new GitLab.Group(\"example-three\", new()\n    {\n        Name = \"example-three\",\n        Path = \"example-three\",\n        Description = \"An example group with default branch protection defaults\",\n        DefaultBranchProtectionDefaults = new GitLab.Inputs.GroupDefaultBranchProtectionDefaultsArgs\n        {\n            AllowedToPushes = new[]\n            {\n                \"developer\",\n            },\n            AllowForcePush = true,\n            AllowedToMerges = new[]\n            {\n                \"developer\",\n                \"maintainer\",\n            },\n            DeveloperCanInitialPush = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewGroup(ctx, \"example\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tPath:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create a project in the example group\n\t\t_, err = gitlab.NewProject(ctx, \"example\", \u0026gitlab.ProjectArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example project\"),\n\t\t\tNamespaceId: example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Group with custom push rules\n\t\t_, err = gitlab.NewGroup(ctx, \"example-two\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example-two\"),\n\t\t\tPath:        pulumi.String(\"example-two\"),\n\t\t\tDescription: pulumi.String(\"An example group with push rules\"),\n\t\t\tPushRules: \u0026gitlab.GroupPushRulesArgs{\n\t\t\t\tAuthorEmailRegex:     pulumi.String(\"@example\\\\.com$\"),\n\t\t\t\tCommitCommitterCheck: pulumi.Bool(true),\n\t\t\t\tMemberCheck:          pulumi.Bool(true),\n\t\t\t\tPreventSecrets:       pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Group with custom default branch protection defaults\n\t\t_, err = gitlab.NewGroup(ctx, \"example-three\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example-three\"),\n\t\t\tPath:        pulumi.String(\"example-three\"),\n\t\t\tDescription: pulumi.String(\"An example group with default branch protection defaults\"),\n\t\t\tDefaultBranchProtectionDefaults: \u0026gitlab.GroupDefaultBranchProtectionDefaultsArgs{\n\t\t\t\tAllowedToPushes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"developer\"),\n\t\t\t\t},\n\t\t\t\tAllowForcePush: pulumi.Bool(true),\n\t\t\t\tAllowedToMerges: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"developer\"),\n\t\t\t\t\tpulumi.String(\"maintainer\"),\n\t\t\t\t},\n\t\t\t\tDeveloperCanInitialPush: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.inputs.GroupPushRulesArgs;\nimport com.pulumi.gitlab.inputs.GroupDefaultBranchProtectionDefaultsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()\n            .name(\"example\")\n            .path(\"example\")\n            .description(\"An example group\")\n            .build());\n\n        // Create a project in the example group\n        var exampleProject = new Project(\"exampleProject\", ProjectArgs.builder()\n            .name(\"example\")\n            .description(\"An example project\")\n            .namespaceId(example.id())\n            .build());\n\n        // Group with custom push rules\n        var example_two = new Group(\"example-two\", GroupArgs.builder()\n            .name(\"example-two\")\n            .path(\"example-two\")\n            .description(\"An example group with push rules\")\n            .pushRules(GroupPushRulesArgs.builder()\n                .authorEmailRegex(\"@example\\\\.com$\")\n                .commitCommitterCheck(true)\n                .memberCheck(true)\n                .preventSecrets(true)\n                .build())\n            .build());\n\n        // Group with custom default branch protection defaults\n        var example_three = new Group(\"example-three\", GroupArgs.builder()\n            .name(\"example-three\")\n            .path(\"example-three\")\n            .description(\"An example group with default branch protection defaults\")\n            .defaultBranchProtectionDefaults(GroupDefaultBranchProtectionDefaultsArgs.builder()\n                .allowedToPushes(\"developer\")\n                .allowForcePush(true)\n                .allowedToMerges(                \n                    \"developer\",\n                    \"maintainer\")\n                .developerCanInitialPush(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:Group\n    properties:\n      name: example\n      path: example\n      description: An example group\n  # Create a project in the example group\n  exampleProject:\n    type: gitlab:Project\n    name: example\n    properties:\n      name: example\n      description: An example project\n      namespaceId: ${example.id}\n  # Group with custom push rules\n  example-two:\n    type: gitlab:Group\n    properties:\n      name: example-two\n      path: example-two\n      description: An example group with push rules\n      pushRules:\n        authorEmailRegex: '@example\\.com$'\n        commitCommitterCheck: true\n        memberCheck: true\n        preventSecrets: true\n  # Group with custom default branch protection defaults\n  example-three:\n    type: gitlab:Group\n    properties:\n      name: example-three\n      path: example-three\n      description: An example group with default branch protection defaults\n      defaultBranchProtectionDefaults:\n        allowedToPushes:\n          - developer\n        allowForcePush: true\n        allowedToMerges:\n          - developer\n          - maintainer\n        developerCanInitialPush: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import gitlab:index/group:Group You can import a group state using `\u003cresource\u003e \u003cid\u003e`. The\n```\n\n`id` can be whatever the [details of a group][details_of_a_group] api takes for\n\nits `:id` value, so for example:\n\n```sh\n$ pulumi import gitlab:index/group:Group example example\n```\n\n",
             "properties": {
                 "autoDevopsEnabled": {
                     "type": "boolean",
@@ -8710,7 +9433,12 @@
                 },
                 "defaultBranchProtection": {
                     "type": "integer",
-                    "description": "See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.\n"
+                    "description": "See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.\n",
+                    "deprecationMessage": "Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead."
+                },
+                "defaultBranchProtectionDefaults": {
+                    "$ref": "#/types/gitlab:index/GroupDefaultBranchProtectionDefaults:GroupDefaultBranchProtectionDefaults",
+                    "description": "The default branch protection defaults\n"
                 },
                 "description": {
                     "type": "string",
@@ -8830,6 +9558,7 @@
                 "avatarHash",
                 "avatarUrl",
                 "defaultBranchProtection",
+                "defaultBranchProtectionDefaults",
                 "emailsEnabled",
                 "extraSharedRunnersMinutesLimit",
                 "fullName",
@@ -8869,7 +9598,12 @@
                 },
                 "defaultBranchProtection": {
                     "type": "integer",
-                    "description": "See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.\n"
+                    "description": "See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.\n",
+                    "deprecationMessage": "Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead."
+                },
+                "defaultBranchProtectionDefaults": {
+                    "$ref": "#/types/gitlab:index/GroupDefaultBranchProtectionDefaults:GroupDefaultBranchProtectionDefaults",
+                    "description": "The default branch protection defaults\n"
                 },
                 "description": {
                     "type": "string",
@@ -8991,7 +9725,12 @@
                     },
                     "defaultBranchProtection": {
                         "type": "integer",
-                        "description": "See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.\n"
+                        "description": "See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.\n",
+                        "deprecationMessage": "Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead."
+                    },
+                    "defaultBranchProtectionDefaults": {
+                        "$ref": "#/types/gitlab:index/GroupDefaultBranchProtectionDefaults:GroupDefaultBranchProtectionDefaults",
+                        "description": "The default branch protection defaults\n"
                     },
                     "description": {
                         "type": "string",
@@ -10091,8 +10830,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the label.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the label.\n"
                 }
             },
             "requiredInputs": [
@@ -10120,8 +10858,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the label.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the label.\n"
                     }
                 },
                 "type": "object"
@@ -11759,7 +12496,7 @@
             }
         },
         "gitlab:index/integrationJira:IntegrationJira": {
-            "description": "The `gitlab.IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    name: \"awesome_project\",\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst jira = new gitlab.IntegrationJira(\"jira\", {\n    project: awesomeProject.id,\n    url: \"https://jira.example.com\",\n    username: \"user\",\n    password: \"mypass\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesome_project\",\n    name=\"awesome_project\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\njira = gitlab.IntegrationJira(\"jira\",\n    project=awesome_project.id,\n    url=\"https://jira.example.com\",\n    username=\"user\",\n    password=\"mypass\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesome_project\", new()\n    {\n        Name = \"awesome_project\",\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var jira = new GitLab.IntegrationJira(\"jira\", new()\n    {\n        Project = awesomeProject.Id,\n        Url = \"https://jira.example.com\",\n        Username = \"user\",\n        Password = \"mypass\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesome_project\", \u0026gitlab.ProjectArgs{\n\t\t\tName:            pulumi.String(\"awesome_project\"),\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewIntegrationJira(ctx, \"jira\", \u0026gitlab.IntegrationJiraArgs{\n\t\t\tProject:  awesomeProject.ID(),\n\t\t\tUrl:      pulumi.String(\"https://jira.example.com\"),\n\t\t\tUsername: pulumi.String(\"user\"),\n\t\t\tPassword: pulumi.String(\"mypass\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.IntegrationJira;\nimport com.pulumi.gitlab.IntegrationJiraArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()\n            .name(\"awesome_project\")\n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var jira = new IntegrationJira(\"jira\", IntegrationJiraArgs.builder()\n            .project(awesomeProject.id())\n            .url(\"https://jira.example.com\")\n            .username(\"user\")\n            .password(\"mypass\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    name: awesome_project\n    properties:\n      name: awesome_project\n      description: My awesome project.\n      visibilityLevel: public\n  jira:\n    type: gitlab:IntegrationJira\n    properties:\n      project: ${awesomeProject.id}\n      url: https://jira.example.com\n      username: user\n      password: mypass\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nYou can import a gitlab_integration_jira state using the project ID, e.g.\n\n```sh\n$ pulumi import gitlab:index/integrationJira:IntegrationJira jira 1\n```\n\n",
+            "description": "The `gitlab.IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    name: \"awesome_project\",\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst jira = new gitlab.IntegrationJira(\"jira\", {\n    project: awesomeProject.id,\n    url: \"https://jira.example.com\",\n    username: \"user\",\n    password: \"mypass\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesome_project\",\n    name=\"awesome_project\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\njira = gitlab.IntegrationJira(\"jira\",\n    project=awesome_project.id,\n    url=\"https://jira.example.com\",\n    username=\"user\",\n    password=\"mypass\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesome_project\", new()\n    {\n        Name = \"awesome_project\",\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var jira = new GitLab.IntegrationJira(\"jira\", new()\n    {\n        Project = awesomeProject.Id,\n        Url = \"https://jira.example.com\",\n        Username = \"user\",\n        Password = \"mypass\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesome_project\", \u0026gitlab.ProjectArgs{\n\t\t\tName:            pulumi.String(\"awesome_project\"),\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewIntegrationJira(ctx, \"jira\", \u0026gitlab.IntegrationJiraArgs{\n\t\t\tProject:  awesomeProject.ID(),\n\t\t\tUrl:      pulumi.String(\"https://jira.example.com\"),\n\t\t\tUsername: pulumi.String(\"user\"),\n\t\t\tPassword: pulumi.String(\"mypass\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.IntegrationJira;\nimport com.pulumi.gitlab.IntegrationJiraArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()\n            .name(\"awesome_project\")\n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var jira = new IntegrationJira(\"jira\", IntegrationJiraArgs.builder()\n            .project(awesomeProject.id())\n            .url(\"https://jira.example.com\")\n            .username(\"user\")\n            .password(\"mypass\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    name: awesome_project\n    properties:\n      name: awesome_project\n      description: My awesome project.\n      visibilityLevel: public\n  jira:\n    type: gitlab:IntegrationJira\n    properties:\n      project: ${awesomeProject.id}\n      url: https://jira.example.com\n      username: user\n      password: mypass\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nYou can import a gitlab_integration_jira state using the project ID, e.g.\n\n```sh\n$ pulumi import gitlab:index/integrationJira:IntegrationJira jira 1\n```\n\n",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -11781,34 +12518,38 @@
                     "type": "string",
                     "description": "Create time.\n"
                 },
-                "issuesEvents": {
+                "issuesEnabled": {
                     "type": "boolean",
-                    "description": "Enable notifications for issues events.\n"
+                    "description": "Enable viewing Jira issues in GitLab.\n"
+                },
+                "jiraAuthType": {
+                    "type": "integer",
+                    "description": "The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.\n"
+                },
+                "jiraIssuePrefix": {
+                    "type": "string",
+                    "description": "Prefix to match Jira issue keys.\n"
+                },
+                "jiraIssueRegex": {
+                    "type": "string",
+                    "description": "Regular expression to match Jira issue keys.\n"
+                },
+                "jiraIssueTransitionAutomatic": {
+                    "type": "boolean",
+                    "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
                 },
                 "jiraIssueTransitionId": {
                     "type": "string",
                     "description": "The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration \u003e Issues \u003e Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.\n"
                 },
-                "jobEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for job events.\n"
-                },
                 "mergeRequestsEvents": {
                     "type": "boolean",
                     "description": "Enable notifications for merge request events\n"
                 },
-                "noteEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for note events.\n"
-                },
                 "password": {
                     "type": "string",
-                    "description": "The password of the user created to be used with GitLab/JIRA.\n",
+                    "description": "The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.\n",
                     "secret": true
-                },
-                "pipelineEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for pipeline events.\n"
                 },
                 "project": {
                     "type": "string",
@@ -11818,13 +12559,12 @@
                     "type": "string",
                     "description": "The short identifier for your JIRA project, all uppercase, e.g., PROJ.\n"
                 },
-                "pushEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for push events.\n"
-                },
-                "tagPushEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for tag_push events.\n"
+                "projectKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.\n"
                 },
                 "title": {
                     "type": "string",
@@ -11838,30 +12578,26 @@
                     "type": "string",
                     "description": "The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.\n"
                 },
+                "useInheritedSettings": {
+                    "type": "boolean",
+                    "description": "Indicates whether or not to inherit default settings. Defaults to false.\n"
+                },
                 "username": {
                     "type": "string",
-                    "description": "The username of the user created to be used with GitLab/JIRA.\n"
+                    "description": "The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).\n"
                 }
             },
             "required": [
                 "active",
                 "apiUrl",
-                "commentOnEventEnabled",
                 "commitEvents",
                 "createdAt",
-                "issuesEvents",
-                "jobEvents",
                 "mergeRequestsEvents",
-                "noteEvents",
                 "password",
-                "pipelineEvents",
                 "project",
-                "pushEvents",
-                "tagPushEvents",
                 "title",
                 "updatedAt",
-                "url",
-                "username"
+                "url"
             ],
             "inputProperties": {
                 "apiUrl": {
@@ -11876,34 +12612,38 @@
                     "type": "boolean",
                     "description": "Enable notifications for commit events\n"
                 },
-                "issuesEvents": {
+                "issuesEnabled": {
                     "type": "boolean",
-                    "description": "Enable notifications for issues events.\n"
+                    "description": "Enable viewing Jira issues in GitLab.\n"
+                },
+                "jiraAuthType": {
+                    "type": "integer",
+                    "description": "The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.\n"
+                },
+                "jiraIssuePrefix": {
+                    "type": "string",
+                    "description": "Prefix to match Jira issue keys.\n"
+                },
+                "jiraIssueRegex": {
+                    "type": "string",
+                    "description": "Regular expression to match Jira issue keys.\n"
+                },
+                "jiraIssueTransitionAutomatic": {
+                    "type": "boolean",
+                    "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
                 },
                 "jiraIssueTransitionId": {
                     "type": "string",
                     "description": "The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration \u003e Issues \u003e Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.\n"
                 },
-                "jobEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for job events.\n"
-                },
                 "mergeRequestsEvents": {
                     "type": "boolean",
                     "description": "Enable notifications for merge request events\n"
                 },
-                "noteEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for note events.\n"
-                },
                 "password": {
                     "type": "string",
-                    "description": "The password of the user created to be used with GitLab/JIRA.\n",
+                    "description": "The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.\n",
                     "secret": true
-                },
-                "pipelineEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for pipeline events.\n"
                 },
                 "project": {
                     "type": "string",
@@ -11914,28 +12654,30 @@
                     "type": "string",
                     "description": "The short identifier for your JIRA project, all uppercase, e.g., PROJ.\n"
                 },
-                "pushEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for push events.\n"
-                },
-                "tagPushEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for tag_push events.\n"
+                "projectKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.\n"
                 },
                 "url": {
                     "type": "string",
                     "description": "The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.\n"
                 },
+                "useInheritedSettings": {
+                    "type": "boolean",
+                    "description": "Indicates whether or not to inherit default settings. Defaults to false.\n"
+                },
                 "username": {
                     "type": "string",
-                    "description": "The username of the user created to be used with GitLab/JIRA.\n"
+                    "description": "The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).\n"
                 }
             },
             "requiredInputs": [
                 "password",
                 "project",
-                "url",
-                "username"
+                "url"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering IntegrationJira resources.\n",
@@ -11960,34 +12702,38 @@
                         "type": "string",
                         "description": "Create time.\n"
                     },
-                    "issuesEvents": {
+                    "issuesEnabled": {
                         "type": "boolean",
-                        "description": "Enable notifications for issues events.\n"
+                        "description": "Enable viewing Jira issues in GitLab.\n"
+                    },
+                    "jiraAuthType": {
+                        "type": "integer",
+                        "description": "The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.\n"
+                    },
+                    "jiraIssuePrefix": {
+                        "type": "string",
+                        "description": "Prefix to match Jira issue keys.\n"
+                    },
+                    "jiraIssueRegex": {
+                        "type": "string",
+                        "description": "Regular expression to match Jira issue keys.\n"
+                    },
+                    "jiraIssueTransitionAutomatic": {
+                        "type": "boolean",
+                        "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
                     },
                     "jiraIssueTransitionId": {
                         "type": "string",
                         "description": "The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration \u003e Issues \u003e Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.\n"
                     },
-                    "jobEvents": {
-                        "type": "boolean",
-                        "description": "Enable notifications for job events.\n"
-                    },
                     "mergeRequestsEvents": {
                         "type": "boolean",
                         "description": "Enable notifications for merge request events\n"
                     },
-                    "noteEvents": {
-                        "type": "boolean",
-                        "description": "Enable notifications for note events.\n"
-                    },
                     "password": {
                         "type": "string",
-                        "description": "The password of the user created to be used with GitLab/JIRA.\n",
+                        "description": "The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.\n",
                         "secret": true
-                    },
-                    "pipelineEvents": {
-                        "type": "boolean",
-                        "description": "Enable notifications for pipeline events.\n"
                     },
                     "project": {
                         "type": "string",
@@ -11998,13 +12744,12 @@
                         "type": "string",
                         "description": "The short identifier for your JIRA project, all uppercase, e.g., PROJ.\n"
                     },
-                    "pushEvents": {
-                        "type": "boolean",
-                        "description": "Enable notifications for push events.\n"
-                    },
-                    "tagPushEvents": {
-                        "type": "boolean",
-                        "description": "Enable notifications for tag_push events.\n"
+                    "projectKeys": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.\n"
                     },
                     "title": {
                         "type": "string",
@@ -12018,9 +12763,13 @@
                         "type": "string",
                         "description": "The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.\n"
                     },
+                    "useInheritedSettings": {
+                        "type": "boolean",
+                        "description": "Indicates whether or not to inherit default settings. Defaults to false.\n"
+                    },
                     "username": {
                         "type": "string",
-                        "description": "The username of the user created to be used with GitLab/JIRA.\n"
+                        "description": "The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).\n"
                     }
                 },
                 "type": "object"
@@ -13253,6 +14002,126 @@
                 "type": "object"
             }
         },
+        "gitlab:index/memberRole:MemberRole": {
+            "description": "The `gitlab.MemberRole` resource allows to manage the lifecycle of a custom member role.\n\nCustom roles allow an organization to create user roles with the precise privileges and permissions required for that organization’s needs.\n\n\u003e This resource requires an Ultimate license.\n\n\u003e Most custom roles are considered billable users that use a seat. [Custom roles billing and seat usage](https://docs.gitlab.com/ee/user/custom_roles.html#billing-and-seat-usage)\n\n\u003e There can be only 10 custom roles on your instance or namespace. See [issue 450929](https://gitlab.com/gitlab-org/gitlab/-/issues/450929) for more details.\n\n**Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationmemberrolecreate)\n",
+            "properties": {
+                "baseAccessLevel": {
+                    "type": "string",
+                    "description": "The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for the member role.\n"
+                },
+                "editPath": {
+                    "type": "string",
+                    "description": "The Web UI path to edit the member role\n"
+                },
+                "enabledPermissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_CODE`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`\n"
+                },
+                "groupPath": {
+                    "type": "string",
+                    "description": "Full path of the namespace to create the member role in. **Required for SAAS** **Not allowed for self-managed**\n"
+                },
+                "iid": {
+                    "type": "integer",
+                    "description": "The id integer value extracted from the `id` attribute\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for the member role.\n"
+                }
+            },
+            "required": [
+                "baseAccessLevel",
+                "createdAt",
+                "description",
+                "editPath",
+                "enabledPermissions",
+                "groupPath",
+                "iid",
+                "name"
+            ],
+            "inputProperties": {
+                "baseAccessLevel": {
+                    "type": "string",
+                    "description": "The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for the member role.\n"
+                },
+                "enabledPermissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_CODE`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`\n"
+                },
+                "groupPath": {
+                    "type": "string",
+                    "description": "Full path of the namespace to create the member role in. **Required for SAAS** **Not allowed for self-managed**\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for the member role.\n"
+                }
+            },
+            "requiredInputs": [
+                "baseAccessLevel",
+                "enabledPermissions"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MemberRole resources.\n",
+                "properties": {
+                    "baseAccessLevel": {
+                        "type": "string",
+                        "description": "The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description for the member role.\n"
+                    },
+                    "editPath": {
+                        "type": "string",
+                        "description": "The Web UI path to edit the member role\n"
+                    },
+                    "enabledPermissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_CODE`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`\n"
+                    },
+                    "groupPath": {
+                        "type": "string",
+                        "description": "Full path of the namespace to create the member role in. **Required for SAAS** **Not allowed for self-managed**\n"
+                    },
+                    "iid": {
+                        "type": "integer",
+                        "description": "The id integer value extracted from the `id` attribute\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name for the member role.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/pagesDomain:PagesDomain": {
             "description": "The `gitlab.PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)\n\n## Import\n\nGitLab pages domain can be imported using an id made up of `projectId:domain` _without_ the http protocol, e.g.\n\n```sh\n$ pulumi import gitlab:index/pagesDomain:PagesDomain this 123:example.com\n```\n\n",
             "properties": {
@@ -14061,6 +14930,10 @@
                     "description": "Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.\n",
                     "deprecationMessage": "Deprecated in favor of `builds_access_level`"
                 },
+                "preReceiveSecretDetectionEnabled": {
+                    "type": "boolean",
+                    "description": "Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.\n"
+                },
                 "printingMergeRequestLinkEnabled": {
                     "type": "boolean",
                     "description": "Show link to create/view merge request when pushing from the command line\n"
@@ -14243,6 +15116,7 @@
                 "pagesAccessLevel",
                 "pathWithNamespace",
                 "pipelinesEnabled",
+                "preReceiveSecretDetectionEnabled",
                 "printingMergeRequestLinkEnabled",
                 "publicBuilds",
                 "publicJobs",
@@ -14527,6 +15401,10 @@
                     "type": "boolean",
                     "description": "Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.\n",
                     "deprecationMessage": "Deprecated in favor of `builds_access_level`"
+                },
+                "preReceiveSecretDetectionEnabled": {
+                    "type": "boolean",
+                    "description": "Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.\n"
                 },
                 "printingMergeRequestLinkEnabled": {
                     "type": "boolean",
@@ -14929,6 +15807,10 @@
                         "description": "Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.\n",
                         "deprecationMessage": "Deprecated in favor of `builds_access_level`"
                     },
+                    "preReceiveSecretDetectionEnabled": {
+                        "type": "boolean",
+                        "description": "Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.\n"
+                    },
                     "printingMergeRequestLinkEnabled": {
                         "type": "boolean",
                         "description": "Show link to create/view merge request when pushing from the command line\n"
@@ -15256,9 +16138,13 @@
                     },
                     "description": "A list of protected branch IDs (not branch names) for which the rule applies.\n"
                 },
+                "reportType": {
+                    "type": "string",
+                    "description": "Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.\n"
+                },
                 "ruleType": {
                     "type": "string",
-                    "description": "String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.\n"
+                    "description": "String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.\n"
                 },
                 "userIds": {
                     "type": "array",
@@ -15272,6 +16158,7 @@
                 "approvalsRequired",
                 "name",
                 "project",
+                "reportType",
                 "ruleType"
             ],
             "inputProperties": {
@@ -15310,9 +16197,14 @@
                     },
                     "description": "A list of protected branch IDs (not branch names) for which the rule applies.\n"
                 },
+                "reportType": {
+                    "type": "string",
+                    "description": "Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.\n",
+                    "willReplaceOnChanges": true
+                },
                 "ruleType": {
                     "type": "string",
-                    "description": "String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.\n",
+                    "description": "String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.\n",
                     "willReplaceOnChanges": true
                 },
                 "userIds": {
@@ -15365,9 +16257,14 @@
                         },
                         "description": "A list of protected branch IDs (not branch names) for which the rule applies.\n"
                     },
+                    "reportType": {
+                        "type": "string",
+                        "description": "Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "ruleType": {
                         "type": "string",
-                        "description": "String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.\n",
+                        "description": "String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.\n",
                         "willReplaceOnChanges": true
                     },
                     "userIds": {
@@ -17899,6 +18796,10 @@
                     "type": "string",
                     "description": "The ID or URL-encoded path of the project.\n"
                 },
+                "rejectNonDcoCommits": {
+                    "type": "boolean",
+                    "description": "Reject commit when it’s not DCO certified.\n"
+                },
                 "rejectUnsignedCommits": {
                     "type": "boolean",
                     "description": "Reject commit when it’s not signed.\n"
@@ -17917,6 +18818,7 @@
                 "memberCheck",
                 "preventSecrets",
                 "project",
+                "rejectNonDcoCommits",
                 "rejectUnsignedCommits"
             ],
             "inputProperties": {
@@ -17967,6 +18869,10 @@
                 "project": {
                     "type": "string",
                     "description": "The ID or URL-encoded path of the project.\n"
+                },
+                "rejectNonDcoCommits": {
+                    "type": "boolean",
+                    "description": "Reject commit when it’s not DCO certified.\n"
                 },
                 "rejectUnsignedCommits": {
                     "type": "boolean",
@@ -18026,6 +18932,10 @@
                     "project": {
                         "type": "string",
                         "description": "The ID or URL-encoded path of the project.\n"
+                    },
+                    "rejectNonDcoCommits": {
+                        "type": "boolean",
+                        "description": "Reject commit when it’s not DCO certified.\n"
                     },
                     "rejectUnsignedCommits": {
                         "type": "boolean",
@@ -19479,7 +20389,7 @@
             }
         },
         "gitlab:index/serviceJira:ServiceJira": {
-            "description": "The `gitlab.ServiceJira` resource allows to manage the lifecycle of a project integration with Jira.\n\n\u003e This resource is deprecated. use `gitlab.IntegrationJira`instead!\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    name: \"awesome_project\",\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst jira = new gitlab.ServiceJira(\"jira\", {\n    project: awesomeProject.id,\n    url: \"https://jira.example.com\",\n    username: \"user\",\n    password: \"mypass\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesome_project\",\n    name=\"awesome_project\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\njira = gitlab.ServiceJira(\"jira\",\n    project=awesome_project.id,\n    url=\"https://jira.example.com\",\n    username=\"user\",\n    password=\"mypass\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesome_project\", new()\n    {\n        Name = \"awesome_project\",\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var jira = new GitLab.ServiceJira(\"jira\", new()\n    {\n        Project = awesomeProject.Id,\n        Url = \"https://jira.example.com\",\n        Username = \"user\",\n        Password = \"mypass\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesome_project\", \u0026gitlab.ProjectArgs{\n\t\t\tName:            pulumi.String(\"awesome_project\"),\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewServiceJira(ctx, \"jira\", \u0026gitlab.ServiceJiraArgs{\n\t\t\tProject:  awesomeProject.ID(),\n\t\t\tUrl:      pulumi.String(\"https://jira.example.com\"),\n\t\t\tUsername: pulumi.String(\"user\"),\n\t\t\tPassword: pulumi.String(\"mypass\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.ServiceJira;\nimport com.pulumi.gitlab.ServiceJiraArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()\n            .name(\"awesome_project\")\n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var jira = new ServiceJira(\"jira\", ServiceJiraArgs.builder()\n            .project(awesomeProject.id())\n            .url(\"https://jira.example.com\")\n            .username(\"user\")\n            .password(\"mypass\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    name: awesome_project\n    properties:\n      name: awesome_project\n      description: My awesome project.\n      visibilityLevel: public\n  jira:\n    type: gitlab:ServiceJira\n    properties:\n      project: ${awesomeProject.id}\n      url: https://jira.example.com\n      username: user\n      password: mypass\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nYou can import a gitlab_service_jira state using the project ID, e.g.\n\n```sh\n$ pulumi import gitlab:index/serviceJira:ServiceJira jira 1\n```\n\n",
+            "description": "The `gitlab.ServiceJira` resource allows to manage the lifecycle of a project integration with Jira.\n\n\u003e This resource is deprecated. use `gitlab.IntegrationJira`instead!\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    name: \"awesome_project\",\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst jira = new gitlab.ServiceJira(\"jira\", {\n    project: awesomeProject.id,\n    url: \"https://jira.example.com\",\n    username: \"user\",\n    password: \"mypass\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesome_project\",\n    name=\"awesome_project\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\njira = gitlab.ServiceJira(\"jira\",\n    project=awesome_project.id,\n    url=\"https://jira.example.com\",\n    username=\"user\",\n    password=\"mypass\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesome_project\", new()\n    {\n        Name = \"awesome_project\",\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var jira = new GitLab.ServiceJira(\"jira\", new()\n    {\n        Project = awesomeProject.Id,\n        Url = \"https://jira.example.com\",\n        Username = \"user\",\n        Password = \"mypass\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesome_project\", \u0026gitlab.ProjectArgs{\n\t\t\tName:            pulumi.String(\"awesome_project\"),\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewServiceJira(ctx, \"jira\", \u0026gitlab.ServiceJiraArgs{\n\t\t\tProject:  awesomeProject.ID(),\n\t\t\tUrl:      pulumi.String(\"https://jira.example.com\"),\n\t\t\tUsername: pulumi.String(\"user\"),\n\t\t\tPassword: pulumi.String(\"mypass\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.ServiceJira;\nimport com.pulumi.gitlab.ServiceJiraArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()\n            .name(\"awesome_project\")\n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var jira = new ServiceJira(\"jira\", ServiceJiraArgs.builder()\n            .project(awesomeProject.id())\n            .url(\"https://jira.example.com\")\n            .username(\"user\")\n            .password(\"mypass\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    name: awesome_project\n    properties:\n      name: awesome_project\n      description: My awesome project.\n      visibilityLevel: public\n  jira:\n    type: gitlab:ServiceJira\n    properties:\n      project: ${awesomeProject.id}\n      url: https://jira.example.com\n      username: user\n      password: mypass\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nYou can import a gitlab_service_jira state using the project ID, e.g.\n\n```sh\n$ pulumi import gitlab:index/serviceJira:ServiceJira jira 1\n```\n\n",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -19501,34 +20411,38 @@
                     "type": "string",
                     "description": "Create time.\n"
                 },
-                "issuesEvents": {
+                "issuesEnabled": {
                     "type": "boolean",
-                    "description": "Enable notifications for issues events.\n"
+                    "description": "Enable viewing Jira issues in GitLab.\n"
+                },
+                "jiraAuthType": {
+                    "type": "integer",
+                    "description": "The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.\n"
+                },
+                "jiraIssuePrefix": {
+                    "type": "string",
+                    "description": "Prefix to match Jira issue keys.\n"
+                },
+                "jiraIssueRegex": {
+                    "type": "string",
+                    "description": "Regular expression to match Jira issue keys.\n"
+                },
+                "jiraIssueTransitionAutomatic": {
+                    "type": "boolean",
+                    "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
                 },
                 "jiraIssueTransitionId": {
                     "type": "string",
                     "description": "The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration \u003e Issues \u003e Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.\n"
                 },
-                "jobEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for job events.\n"
-                },
                 "mergeRequestsEvents": {
                     "type": "boolean",
                     "description": "Enable notifications for merge request events\n"
                 },
-                "noteEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for note events.\n"
-                },
                 "password": {
                     "type": "string",
-                    "description": "The password of the user created to be used with GitLab/JIRA.\n",
+                    "description": "The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.\n",
                     "secret": true
-                },
-                "pipelineEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for pipeline events.\n"
                 },
                 "project": {
                     "type": "string",
@@ -19538,13 +20452,12 @@
                     "type": "string",
                     "description": "The short identifier for your JIRA project, all uppercase, e.g., PROJ.\n"
                 },
-                "pushEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for push events.\n"
-                },
-                "tagPushEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for tag_push events.\n"
+                "projectKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.\n"
                 },
                 "title": {
                     "type": "string",
@@ -19558,30 +20471,26 @@
                     "type": "string",
                     "description": "The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.\n"
                 },
+                "useInheritedSettings": {
+                    "type": "boolean",
+                    "description": "Indicates whether or not to inherit default settings. Defaults to false.\n"
+                },
                 "username": {
                     "type": "string",
-                    "description": "The username of the user created to be used with GitLab/JIRA.\n"
+                    "description": "The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).\n"
                 }
             },
             "required": [
                 "active",
                 "apiUrl",
-                "commentOnEventEnabled",
                 "commitEvents",
                 "createdAt",
-                "issuesEvents",
-                "jobEvents",
                 "mergeRequestsEvents",
-                "noteEvents",
                 "password",
-                "pipelineEvents",
                 "project",
-                "pushEvents",
-                "tagPushEvents",
                 "title",
                 "updatedAt",
-                "url",
-                "username"
+                "url"
             ],
             "inputProperties": {
                 "apiUrl": {
@@ -19596,34 +20505,38 @@
                     "type": "boolean",
                     "description": "Enable notifications for commit events\n"
                 },
-                "issuesEvents": {
+                "issuesEnabled": {
                     "type": "boolean",
-                    "description": "Enable notifications for issues events.\n"
+                    "description": "Enable viewing Jira issues in GitLab.\n"
+                },
+                "jiraAuthType": {
+                    "type": "integer",
+                    "description": "The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.\n"
+                },
+                "jiraIssuePrefix": {
+                    "type": "string",
+                    "description": "Prefix to match Jira issue keys.\n"
+                },
+                "jiraIssueRegex": {
+                    "type": "string",
+                    "description": "Regular expression to match Jira issue keys.\n"
+                },
+                "jiraIssueTransitionAutomatic": {
+                    "type": "boolean",
+                    "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
                 },
                 "jiraIssueTransitionId": {
                     "type": "string",
                     "description": "The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration \u003e Issues \u003e Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.\n"
                 },
-                "jobEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for job events.\n"
-                },
                 "mergeRequestsEvents": {
                     "type": "boolean",
                     "description": "Enable notifications for merge request events\n"
                 },
-                "noteEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for note events.\n"
-                },
                 "password": {
                     "type": "string",
-                    "description": "The password of the user created to be used with GitLab/JIRA.\n",
+                    "description": "The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.\n",
                     "secret": true
-                },
-                "pipelineEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for pipeline events.\n"
                 },
                 "project": {
                     "type": "string",
@@ -19634,28 +20547,30 @@
                     "type": "string",
                     "description": "The short identifier for your JIRA project, all uppercase, e.g., PROJ.\n"
                 },
-                "pushEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for push events.\n"
-                },
-                "tagPushEvents": {
-                    "type": "boolean",
-                    "description": "Enable notifications for tag_push events.\n"
+                "projectKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.\n"
                 },
                 "url": {
                     "type": "string",
                     "description": "The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.\n"
                 },
+                "useInheritedSettings": {
+                    "type": "boolean",
+                    "description": "Indicates whether or not to inherit default settings. Defaults to false.\n"
+                },
                 "username": {
                     "type": "string",
-                    "description": "The username of the user created to be used with GitLab/JIRA.\n"
+                    "description": "The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).\n"
                 }
             },
             "requiredInputs": [
                 "password",
                 "project",
-                "url",
-                "username"
+                "url"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ServiceJira resources.\n",
@@ -19680,34 +20595,38 @@
                         "type": "string",
                         "description": "Create time.\n"
                     },
-                    "issuesEvents": {
+                    "issuesEnabled": {
                         "type": "boolean",
-                        "description": "Enable notifications for issues events.\n"
+                        "description": "Enable viewing Jira issues in GitLab.\n"
+                    },
+                    "jiraAuthType": {
+                        "type": "integer",
+                        "description": "The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.\n"
+                    },
+                    "jiraIssuePrefix": {
+                        "type": "string",
+                        "description": "Prefix to match Jira issue keys.\n"
+                    },
+                    "jiraIssueRegex": {
+                        "type": "string",
+                        "description": "Regular expression to match Jira issue keys.\n"
+                    },
+                    "jiraIssueTransitionAutomatic": {
+                        "type": "boolean",
+                        "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
                     },
                     "jiraIssueTransitionId": {
                         "type": "string",
                         "description": "The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration \u003e Issues \u003e Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.\n"
                     },
-                    "jobEvents": {
-                        "type": "boolean",
-                        "description": "Enable notifications for job events.\n"
-                    },
                     "mergeRequestsEvents": {
                         "type": "boolean",
                         "description": "Enable notifications for merge request events\n"
                     },
-                    "noteEvents": {
-                        "type": "boolean",
-                        "description": "Enable notifications for note events.\n"
-                    },
                     "password": {
                         "type": "string",
-                        "description": "The password of the user created to be used with GitLab/JIRA.\n",
+                        "description": "The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.\n",
                         "secret": true
-                    },
-                    "pipelineEvents": {
-                        "type": "boolean",
-                        "description": "Enable notifications for pipeline events.\n"
                     },
                     "project": {
                         "type": "string",
@@ -19718,13 +20637,12 @@
                         "type": "string",
                         "description": "The short identifier for your JIRA project, all uppercase, e.g., PROJ.\n"
                     },
-                    "pushEvents": {
-                        "type": "boolean",
-                        "description": "Enable notifications for push events.\n"
-                    },
-                    "tagPushEvents": {
-                        "type": "boolean",
-                        "description": "Enable notifications for tag_push events.\n"
+                    "projectKeys": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.\n"
                     },
                     "title": {
                         "type": "string",
@@ -19738,9 +20656,13 @@
                         "type": "string",
                         "description": "The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.\n"
                     },
+                    "useInheritedSettings": {
+                        "type": "boolean",
+                        "description": "Indicates whether or not to inherit default settings. Defaults to false.\n"
+                    },
                     "username": {
                         "type": "string",
-                        "description": "The username of the user created to be used with GitLab/JIRA.\n"
+                        "description": "The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).\n"
                     }
                 },
                 "type": "object"
@@ -20505,11 +21427,11 @@
                     "items": {
                         "$ref": "#/types/gitlab:index/TagProtectionAllowedToCreate:TagProtectionAllowedToCreate"
                     },
-                    "description": "User or group which are allowed to create.\n"
+                    "description": "Array of access levels/user(s)/group(s) allowed to create protected tags.\n"
                 },
                 "createAccessLevel": {
                     "type": "string",
-                    "description": "Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.\n"
+                    "description": "Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "project": {
                     "type": "string",
@@ -20531,27 +21453,22 @@
                     "items": {
                         "$ref": "#/types/gitlab:index/TagProtectionAllowedToCreate:TagProtectionAllowedToCreate"
                     },
-                    "description": "User or group which are allowed to create.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Array of access levels/user(s)/group(s) allowed to create protected tags.\n"
                 },
                 "createAccessLevel": {
                     "type": "string",
-                    "description": "Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The id of the project.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The id of the project.\n"
                 },
                 "tag": {
                     "type": "string",
-                    "description": "Name of the tag or wildcard.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Name of the tag or wildcard.\n"
                 }
             },
             "requiredInputs": [
-                "createAccessLevel",
                 "project",
                 "tag"
             ],
@@ -20563,23 +21480,19 @@
                         "items": {
                             "$ref": "#/types/gitlab:index/TagProtectionAllowedToCreate:TagProtectionAllowedToCreate"
                         },
-                        "description": "User or group which are allowed to create.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Array of access levels/user(s)/group(s) allowed to create protected tags.\n"
                     },
                     "createAccessLevel": {
                         "type": "string",
-                        "description": "Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The id of the project.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The id of the project.\n"
                     },
                     "tag": {
                         "type": "string",
-                        "description": "Name of the tag or wildcard.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Name of the tag or wildcard.\n"
                     }
                 },
                 "type": "object"
@@ -20697,6 +21610,14 @@
                     "type": "string",
                     "description": "The e-mail address of the user.\n"
                 },
+                "externUid": {
+                    "type": "string",
+                    "description": "String, a specific external authentication provider UID.\n"
+                },
+                "externalProvider": {
+                    "type": "string",
+                    "description": "String, the external provider.\n"
+                },
                 "isAdmin": {
                     "type": "boolean",
                     "description": "Boolean, defaults to false.  Whether to enable administrative privileges\n"
@@ -20757,6 +21678,14 @@
                 "email": {
                     "type": "string",
                     "description": "The e-mail address of the user.\n"
+                },
+                "externUid": {
+                    "type": "string",
+                    "description": "String, a specific external authentication provider UID.\n"
+                },
+                "externalProvider": {
+                    "type": "string",
+                    "description": "String, the external provider.\n"
                 },
                 "isAdmin": {
                     "type": "boolean",
@@ -20821,6 +21750,14 @@
                     "email": {
                         "type": "string",
                         "description": "The e-mail address of the user.\n"
+                    },
+                    "externUid": {
+                        "type": "string",
+                        "description": "String, a specific external authentication provider UID.\n"
+                    },
+                    "externalProvider": {
+                        "type": "string",
+                        "description": "String, the external provider.\n"
                     },
                     "isAdmin": {
                         "type": "boolean",
@@ -20993,6 +21930,143 @@
                         "type": "integer",
                         "description": "The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/userImpersonationToken:UserImpersonationToken": {
+            "description": "The `gitlab.UserImpersonationToken` resource allows to manage impersonation tokens of users.\nRequires administrator access. Token values are returned once. You are only able to create impersonation tokens to impersonate the user and perform both API calls and Git reads and writes. The user can’t see these tokens in their profile settings page.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#create-an-impersonation-token)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst _this = new gitlab.UserImpersonationToken(\"this\", {\n    userId: 12345,\n    name: \"token_name\",\n    scopes: [\"api\"],\n    expiresAt: \"2024-08-27\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nthis = gitlab.UserImpersonationToken(\"this\",\n    user_id=12345,\n    name=\"token_name\",\n    scopes=[\"api\"],\n    expires_at=\"2024-08-27\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new GitLab.UserImpersonationToken(\"this\", new()\n    {\n        UserId = 12345,\n        Name = \"token_name\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n        ExpiresAt = \"2024-08-27\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewUserImpersonationToken(ctx, \"this\", \u0026gitlab.UserImpersonationTokenArgs{\n\t\t\tUserId: pulumi.Int(12345),\n\t\t\tName:   pulumi.String(\"token_name\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t\tExpiresAt: pulumi.String(\"2024-08-27\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.UserImpersonationToken;\nimport com.pulumi.gitlab.UserImpersonationTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new UserImpersonationToken(\"this\", UserImpersonationTokenArgs.builder()\n            .userId(12345)\n            .name(\"token_name\")\n            .scopes(\"api\")\n            .expiresAt(\"2024-08-27\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: gitlab:UserImpersonationToken\n    properties:\n      userId: 12345\n      name: token_name\n      scopes:\n        - api\n      expiresAt: 2024-08-27\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab User Impersonation Token can be imported using a key composed of `\u003cuser-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/userImpersonationToken:UserImpersonationToken example \"12345:1\"\n```\n\nNOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "True if the token is active.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Time the token has been created, RFC3339 format.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Expiration date of the impersonation token in ISO format (YYYY-MM-DD).\n"
+                },
+                "impersonation": {
+                    "type": "boolean",
+                    "description": "True as the token is always an impersonation token.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the impersonation token.\n"
+                },
+                "revoked": {
+                    "type": "boolean",
+                    "description": "True if the token is revoked.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The token of the user impersonation token. **Note**: the token is not available for imported resources.\n",
+                    "secret": true
+                },
+                "tokenId": {
+                    "type": "integer",
+                    "description": "ID of the impersonation token.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of the user.\n"
+                }
+            },
+            "required": [
+                "active",
+                "createdAt",
+                "expiresAt",
+                "impersonation",
+                "name",
+                "revoked",
+                "scopes",
+                "token",
+                "tokenId",
+                "userId"
+            ],
+            "inputProperties": {
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Expiration date of the impersonation token in ISO format (YYYY-MM-DD).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the impersonation token.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of the user.\n"
+                }
+            },
+            "requiredInputs": [
+                "expiresAt",
+                "scopes",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserImpersonationToken resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "True if the token is active.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Time the token has been created, RFC3339 format.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "Expiration date of the impersonation token in ISO format (YYYY-MM-DD).\n"
+                    },
+                    "impersonation": {
+                        "type": "boolean",
+                        "description": "True as the token is always an impersonation token.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the impersonation token.\n"
+                    },
+                    "revoked": {
+                        "type": "boolean",
+                        "description": "True if the token is revoked.\n"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The token of the user impersonation token. **Note**: the token is not available for imported resources.\n",
+                        "secret": true
+                    },
+                    "tokenId": {
+                        "type": "integer",
+                        "description": "ID of the impersonation token.\n"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "The ID of the user.\n"
                     }
                 },
                 "type": "object"
@@ -22532,6 +23606,152 @@
                     "kas",
                     "revision",
                     "version"
+                ],
+                "type": "object"
+            }
+        },
+        "gitlab:index/getPipelineSchedule:getPipelineSchedule": {
+            "description": "The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getPipelineSchedule({\n    project: \"12345\",\n    pipelineScheduleId: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_pipeline_schedule(project=\"12345\",\n    pipeline_schedule_id=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetPipelineSchedule.Invoke(new()\n    {\n        Project = \"12345\",\n        PipelineScheduleId = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupPipelineSchedule(ctx, \u0026gitlab.LookupPipelineScheduleArgs{\n\t\t\tProject:            \"12345\",\n\t\t\tPipelineScheduleId: 1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getPipelineSchedule(GetPipelineScheduleArgs.builder()\n            .project(\"12345\")\n            .pipelineScheduleId(1)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getPipelineSchedule\n      Arguments:\n        project: '12345'\n        pipelineScheduleId: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPipelineSchedule.\n",
+                "properties": {
+                    "cronTimezone": {
+                        "type": "string",
+                        "description": "The timezone.\n"
+                    },
+                    "pipelineScheduleId": {
+                        "type": "integer",
+                        "description": "The pipeline schedule id.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the schedule to.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "pipelineScheduleId",
+                    "project"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPipelineSchedule.\n",
+                "properties": {
+                    "active": {
+                        "description": "The activation status of pipeline schedule.\n",
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "description": "The datetime of when the schedule was created.\n",
+                        "type": "string"
+                    },
+                    "cron": {
+                        "description": "The cron (e.g. `0 1 * * *`).\n",
+                        "type": "string"
+                    },
+                    "cronTimezone": {
+                        "description": "The timezone.\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the pipeline schedule.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "lastPipeline": {
+                        "$ref": "#/types/gitlab:index/getPipelineScheduleLastPipeline:getPipelineScheduleLastPipeline",
+                        "description": "The details of the last pipeline run by the schedule.\n"
+                    },
+                    "nextRunAt": {
+                        "description": "The datetime of when the schedule will next run.\n",
+                        "type": "string"
+                    },
+                    "owner": {
+                        "$ref": "#/types/gitlab:index/getPipelineScheduleOwner:getPipelineScheduleOwner",
+                        "description": "The details of the pipeline schedule owner.\n"
+                    },
+                    "pipelineScheduleId": {
+                        "description": "The pipeline schedule id.\n",
+                        "type": "integer"
+                    },
+                    "project": {
+                        "description": "The name or id of the project to add the schedule to.\n",
+                        "type": "string"
+                    },
+                    "ref": {
+                        "description": "The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `main`.\n",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "The datetime of when the schedule was last updated.\n",
+                        "type": "string"
+                    },
+                    "variables": {
+                        "description": "The list of the pipeline schedule variables.\n",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getPipelineScheduleVariable:getPipelineScheduleVariable"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "active",
+                    "createdAt",
+                    "cron",
+                    "cronTimezone",
+                    "description",
+                    "id",
+                    "lastPipeline",
+                    "nextRunAt",
+                    "owner",
+                    "pipelineScheduleId",
+                    "project",
+                    "ref",
+                    "updatedAt",
+                    "variables"
+                ],
+                "type": "object"
+            }
+        },
+        "gitlab:index/getPipelineSchedules:getPipelineSchedules": {
+            "description": "The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getPipelineSchedules({\n    project: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_pipeline_schedules(project=\"12345\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetPipelineSchedules.Invoke(new()\n    {\n        Project = \"12345\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetPipelineSchedules(ctx, \u0026gitlab.GetPipelineSchedulesArgs{\n\t\t\tProject: \"12345\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getPipelineSchedules(GetPipelineSchedulesArgs.builder()\n            .project(\"12345\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getPipelineSchedules\n      Arguments:\n        project: '12345'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPipelineSchedules.\n",
+                "properties": {
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the schedule to.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPipelineSchedules.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "pipelineSchedules": {
+                        "description": "The list of pipeline schedules.\n",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getPipelineSchedulesPipelineSchedule:getPipelineSchedulesPipelineSchedule"
+                        },
+                        "type": "array"
+                    },
+                    "project": {
+                        "description": "The name or id of the project to add the schedule to.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "pipelineSchedules",
+                    "project"
                 ],
                 "type": "object"
             }
@@ -24077,6 +25297,100 @@
                 "required": [
                     "id",
                     "projectId"
+                ],
+                "type": "object"
+            }
+        },
+        "gitlab:index/getProjectProtectedTag:getProjectProtectedTag": {
+            "description": "The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#get-a-single-protected-tag-or-wildcard-protected-tag)\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProjectProtectedTag.\n",
+                "properties": {
+                    "project": {
+                        "type": "string",
+                        "description": "The integer or path with namespace that uniquely identifies the project.\n"
+                    },
+                    "tag": {
+                        "type": "string",
+                        "description": "The name of the protected tag.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project",
+                    "tag"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProjectProtectedTag.\n",
+                "properties": {
+                    "createAccessLevels": {
+                        "description": "Array of access levels/user(s)/group(s) allowed to create protected tags.\n",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getProjectProtectedTagCreateAccessLevel:getProjectProtectedTagCreateAccessLevel"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The ID of this resource. In the format of `\u003ctag\u003e`.\n",
+                        "type": "string"
+                    },
+                    "project": {
+                        "description": "The integer or path with namespace that uniquely identifies the project.\n",
+                        "type": "string"
+                    },
+                    "tag": {
+                        "description": "The name of the protected tag.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "createAccessLevels",
+                    "id",
+                    "project",
+                    "tag"
+                ],
+                "type": "object"
+            }
+        },
+        "gitlab:index/getProjectProtectedTags:getProjectProtectedTags": {
+            "description": "The `gitlab.getProjectProtectedTags` data source allows details of the protected tags of a given project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProjectProtectedTags.\n",
+                "properties": {
+                    "project": {
+                        "type": "string",
+                        "description": "The integer or path with namespace that uniquely identifies the project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProjectProtectedTags.\n",
+                "properties": {
+                    "id": {
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
+                    },
+                    "project": {
+                        "description": "The integer or path with namespace that uniquely identifies the project.\n",
+                        "type": "string"
+                    },
+                    "protectedTags": {
+                        "description": "A list of protected tags, as defined below.\n",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getProjectProtectedTagsProtectedTag:getProjectProtectedTagsProtectedTag"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "project",
+                    "protectedTags"
                 ],
                 "type": "object"
             }
