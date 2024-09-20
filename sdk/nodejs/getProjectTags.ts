@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
  */
 export function getProjectTags(args: GetProjectTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectTagsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectTags:getProjectTags", {
         "orderBy": args.orderBy,
@@ -79,7 +78,13 @@ export interface GetProjectTagsResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
  */
 export function getProjectTagsOutput(args: GetProjectTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectTagsResult> {
-    return pulumi.output(args).apply((a: any) => getProjectTags(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectTags:getProjectTags", {
+        "orderBy": args.orderBy,
+        "project": args.project,
+        "search": args.search,
+        "sort": args.sort,
+    }, opts);
 }
 
 /**

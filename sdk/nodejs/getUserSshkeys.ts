@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  */
 export function getUserSshkeys(args?: GetUserSshkeysArgs, opts?: pulumi.InvokeOptions): Promise<GetUserSshkeysResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getUserSshkeys:getUserSshkeys", {
         "userId": args.userId,
@@ -62,7 +61,12 @@ export interface GetUserSshkeysResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
  */
 export function getUserSshkeysOutput(args?: GetUserSshkeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserSshkeysResult> {
-    return pulumi.output(args).apply((a: any) => getUserSshkeys(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getUserSshkeys:getUserSshkeys", {
+        "userId": args.userId,
+        "username": args.username,
+    }, opts);
 }
 
 /**

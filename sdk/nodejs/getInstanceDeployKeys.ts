@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  */
 export function getInstanceDeployKeys(args?: GetInstanceDeployKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceDeployKeysResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", {
         "public": args.public,
@@ -57,7 +56,11 @@ export interface GetInstanceDeployKeysResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
  */
 export function getInstanceDeployKeysOutput(args?: GetInstanceDeployKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceDeployKeysResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceDeployKeys(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", {
+        "public": args.public,
+    }, opts);
 }
 
 /**

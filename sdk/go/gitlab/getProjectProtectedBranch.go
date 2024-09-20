@@ -56,14 +56,20 @@ type GetProjectProtectedBranchResult struct {
 
 func GetProjectProtectedBranchOutput(ctx *pulumi.Context, args GetProjectProtectedBranchOutputArgs, opts ...pulumi.InvokeOption) GetProjectProtectedBranchResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetProjectProtectedBranchResult, error) {
+		ApplyT(func(v interface{}) (GetProjectProtectedBranchResultOutput, error) {
 			args := v.(GetProjectProtectedBranchArgs)
-			r, err := GetProjectProtectedBranch(ctx, &args, opts...)
-			var s GetProjectProtectedBranchResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetProjectProtectedBranchResult
+			secret, err := ctx.InvokePackageRaw("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", args, &rv, "", opts...)
+			if err != nil {
+				return GetProjectProtectedBranchResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetProjectProtectedBranchResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetProjectProtectedBranchResultOutput), nil
+			}
+			return output, nil
 		}).(GetProjectProtectedBranchResultOutput)
 }
 

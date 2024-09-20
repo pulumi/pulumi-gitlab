@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRepositoryTree(args: GetRepositoryTreeArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryTreeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getRepositoryTree:getRepositoryTree", {
         "path": args.path,
@@ -107,7 +106,13 @@ export interface GetRepositoryTreeResult {
  * ```
  */
 export function getRepositoryTreeOutput(args: GetRepositoryTreeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryTreeResult> {
-    return pulumi.output(args).apply((a: any) => getRepositoryTree(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getRepositoryTree:getRepositoryTree", {
+        "path": args.path,
+        "project": args.project,
+        "recursive": args.recursive,
+        "ref": args.ref,
+    }, opts);
 }
 
 /**

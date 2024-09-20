@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
  */
 export function getProjectTag(args: GetProjectTagArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectTagResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectTag:getProjectTag", {
         "name": args.name,
@@ -77,7 +76,11 @@ export interface GetProjectTagResult {
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
  */
 export function getProjectTagOutput(args: GetProjectTagOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectTagResult> {
-    return pulumi.output(args).apply((a: any) => getProjectTag(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectTag:getProjectTag", {
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

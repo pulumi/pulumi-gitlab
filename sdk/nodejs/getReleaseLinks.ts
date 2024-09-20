@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
  */
 export function getReleaseLinks(args: GetReleaseLinksArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseLinksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getReleaseLinks:getReleaseLinks", {
         "project": args.project,
@@ -61,7 +60,11 @@ export interface GetReleaseLinksResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
  */
 export function getReleaseLinksOutput(args: GetReleaseLinksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseLinksResult> {
-    return pulumi.output(args).apply((a: any) => getReleaseLinks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getReleaseLinks:getReleaseLinks", {
+        "project": args.project,
+        "tagName": args.tagName,
+    }, opts);
 }
 
 /**

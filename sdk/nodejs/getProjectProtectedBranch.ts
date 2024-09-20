@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
  */
 export function getProjectProtectedBranch(args: GetProjectProtectedBranchArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectProtectedBranchResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", {
         "mergeAccessLevels": args.mergeAccessLevels,
@@ -83,7 +82,13 @@ export interface GetProjectProtectedBranchResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
  */
 export function getProjectProtectedBranchOutput(args: GetProjectProtectedBranchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectProtectedBranchResult> {
-    return pulumi.output(args).apply((a: any) => getProjectProtectedBranch(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", {
+        "mergeAccessLevels": args.mergeAccessLevels,
+        "name": args.name,
+        "projectId": args.projectId,
+        "pushAccessLevels": args.pushAccessLevels,
+    }, opts);
 }
 
 /**

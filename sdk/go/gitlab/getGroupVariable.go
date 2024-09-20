@@ -96,14 +96,20 @@ type LookupGroupVariableResult struct {
 
 func LookupGroupVariableOutput(ctx *pulumi.Context, args LookupGroupVariableOutputArgs, opts ...pulumi.InvokeOption) LookupGroupVariableResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGroupVariableResult, error) {
+		ApplyT(func(v interface{}) (LookupGroupVariableResultOutput, error) {
 			args := v.(LookupGroupVariableArgs)
-			r, err := LookupGroupVariable(ctx, &args, opts...)
-			var s LookupGroupVariableResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupGroupVariableResult
+			secret, err := ctx.InvokePackageRaw("gitlab:index/getGroupVariable:getGroupVariable", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGroupVariableResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGroupVariableResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGroupVariableResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGroupVariableResultOutput)
 }
 

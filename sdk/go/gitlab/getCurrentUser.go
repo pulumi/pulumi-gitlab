@@ -71,13 +71,19 @@ type GetCurrentUserResult struct {
 }
 
 func GetCurrentUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCurrentUserResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetCurrentUserResult, error) {
-		r, err := GetCurrentUser(ctx, opts...)
-		var s GetCurrentUserResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetCurrentUserResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetCurrentUserResult
+		secret, err := ctx.InvokePackageRaw("gitlab:index/getCurrentUser:getCurrentUser", nil, &rv, "", opts...)
+		if err != nil {
+			return GetCurrentUserResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetCurrentUserResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetCurrentUserResultOutput), nil
+		}
+		return output, nil
 	}).(GetCurrentUserResultOutput)
 }
 

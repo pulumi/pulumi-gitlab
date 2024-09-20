@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGroupSubgroups(args: GetGroupSubgroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupSubgroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getGroupSubgroups:getGroupSubgroups", {
         "allAvailable": args.allAvailable,
@@ -165,7 +164,19 @@ export interface GetGroupSubgroupsResult {
  * ```
  */
 export function getGroupSubgroupsOutput(args: GetGroupSubgroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupSubgroupsResult> {
-    return pulumi.output(args).apply((a: any) => getGroupSubgroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getGroupSubgroups:getGroupSubgroups", {
+        "allAvailable": args.allAvailable,
+        "groupId": args.groupId,
+        "minAccessLevel": args.minAccessLevel,
+        "orderBy": args.orderBy,
+        "owned": args.owned,
+        "search": args.search,
+        "skipGroups": args.skipGroups,
+        "sort": args.sort,
+        "statistics": args.statistics,
+        "withCustomAttributes": args.withCustomAttributes,
+    }, opts);
 }
 
 /**

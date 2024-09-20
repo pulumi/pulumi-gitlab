@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  */
 export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMembershipResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectMembership:getProjectMembership", {
         "fullPath": args.fullPath,
@@ -84,7 +83,14 @@ export interface GetProjectMembershipResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
  */
 export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMembershipResult> {
-    return pulumi.output(args).apply((a: any) => getProjectMembership(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectMembership:getProjectMembership", {
+        "fullPath": args.fullPath,
+        "inherited": args.inherited,
+        "projectId": args.projectId,
+        "query": args.query,
+    }, opts);
 }
 
 /**

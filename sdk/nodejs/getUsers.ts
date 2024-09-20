@@ -33,7 +33,6 @@ import * as utilities from "./utilities";
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getUsers:getUsers", {
         "active": args.active,
@@ -165,7 +164,19 @@ export interface GetUsersResult {
  * ```
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
-    return pulumi.output(args).apply((a: any) => getUsers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getUsers:getUsers", {
+        "active": args.active,
+        "blocked": args.blocked,
+        "createdAfter": args.createdAfter,
+        "createdBefore": args.createdBefore,
+        "externProvider": args.externProvider,
+        "externUid": args.externUid,
+        "orderBy": args.orderBy,
+        "search": args.search,
+        "sort": args.sort,
+    }, opts);
 }
 
 /**

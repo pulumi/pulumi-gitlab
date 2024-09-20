@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getProjectIssue(args: GetProjectIssueArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIssueResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectIssue:getProjectIssue", {
         "iid": args.iid,
@@ -237,7 +236,11 @@ export interface GetProjectIssueResult {
  * ```
  */
 export function getProjectIssueOutput(args: GetProjectIssueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIssueResult> {
-    return pulumi.output(args).apply((a: any) => getProjectIssue(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectIssue:getProjectIssue", {
+        "iid": args.iid,
+        "project": args.project,
+    }, opts);
 }
 
 /**

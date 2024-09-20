@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
  */
 export function getProjectProtectedBranches(args: GetProjectProtectedBranchesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectProtectedBranchesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", {
         "projectId": args.projectId,
@@ -57,7 +56,11 @@ export interface GetProjectProtectedBranchesResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
  */
 export function getProjectProtectedBranchesOutput(args: GetProjectProtectedBranchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectProtectedBranchesResult> {
-    return pulumi.output(args).apply((a: any) => getProjectProtectedBranches(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", {
+        "projectId": args.projectId,
+        "protectedBranches": args.protectedBranches,
+    }, opts);
 }
 
 /**

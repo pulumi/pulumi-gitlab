@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGroupVariables(args: GetGroupVariablesArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupVariablesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getGroupVariables:getGroupVariables", {
         "environmentScope": args.environmentScope,
@@ -93,7 +92,11 @@ export interface GetGroupVariablesResult {
  * ```
  */
 export function getGroupVariablesOutput(args: GetGroupVariablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupVariablesResult> {
-    return pulumi.output(args).apply((a: any) => getGroupVariables(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getGroupVariables:getGroupVariables", {
+        "environmentScope": args.environmentScope,
+        "group": args.group,
+    }, opts);
 }
 
 /**
