@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getClusterAgents(args: GetClusterAgentsArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAgentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getClusterAgents:getClusterAgents", {
         "project": args.project,
@@ -78,7 +77,10 @@ export interface GetClusterAgentsResult {
  * ```
  */
 export function getClusterAgentsOutput(args: GetClusterAgentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAgentsResult> {
-    return pulumi.output(args).apply((a: any) => getClusterAgents(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getClusterAgents:getClusterAgents", {
+        "project": args.project,
+    }, opts);
 }
 
 /**

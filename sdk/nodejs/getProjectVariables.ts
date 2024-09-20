@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getProjectVariables(args: GetProjectVariablesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVariablesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectVariables:getProjectVariables", {
         "environmentScope": args.environmentScope,
@@ -93,7 +92,11 @@ export interface GetProjectVariablesResult {
  * ```
  */
 export function getProjectVariablesOutput(args: GetProjectVariablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectVariablesResult> {
-    return pulumi.output(args).apply((a: any) => getProjectVariables(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectVariables:getProjectVariables", {
+        "environmentScope": args.environmentScope,
+        "project": args.project,
+    }, opts);
 }
 
 /**

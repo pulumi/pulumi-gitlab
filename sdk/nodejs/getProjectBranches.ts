@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
  */
 export function getProjectBranches(args: GetProjectBranchesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectBranchesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectBranches:getProjectBranches", {
         "project": args.project,
@@ -52,7 +51,10 @@ export interface GetProjectBranchesResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
  */
 export function getProjectBranchesOutput(args: GetProjectBranchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectBranchesResult> {
-    return pulumi.output(args).apply((a: any) => getProjectBranches(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectBranches:getProjectBranches", {
+        "project": args.project,
+    }, opts);
 }
 
 /**

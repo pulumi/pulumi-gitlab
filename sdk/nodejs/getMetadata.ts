@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getMetadata(opts?: pulumi.InvokeOptions): Promise<GetMetadataResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getMetadata:getMetadata", {
     }, opts);
@@ -67,5 +66,7 @@ export interface GetMetadataResult {
  * ```
  */
 export function getMetadataOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetMetadataResult> {
-    return pulumi.output(getMetadata(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getMetadata:getMetadata", {
+    }, opts);
 }

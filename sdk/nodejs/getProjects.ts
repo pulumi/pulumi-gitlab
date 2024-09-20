@@ -40,7 +40,6 @@ import * as utilities from "./utilities";
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjects:getProjects", {
         "archived": args.archived,
@@ -296,7 +295,32 @@ export interface GetProjectsResult {
  * ```
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
-    return pulumi.output(args).apply((a: any) => getProjects(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjects:getProjects", {
+        "archived": args.archived,
+        "groupId": args.groupId,
+        "includeSubgroups": args.includeSubgroups,
+        "maxQueryablePages": args.maxQueryablePages,
+        "membership": args.membership,
+        "minAccessLevel": args.minAccessLevel,
+        "orderBy": args.orderBy,
+        "owned": args.owned,
+        "page": args.page,
+        "perPage": args.perPage,
+        "search": args.search,
+        "simple": args.simple,
+        "sort": args.sort,
+        "starred": args.starred,
+        "statistics": args.statistics,
+        "topics": args.topics,
+        "visibility": args.visibility,
+        "withCustomAttributes": args.withCustomAttributes,
+        "withIssuesEnabled": args.withIssuesEnabled,
+        "withMergeRequestsEnabled": args.withMergeRequestsEnabled,
+        "withProgrammingLanguage": args.withProgrammingLanguage,
+        "withShared": args.withShared,
+    }, opts);
 }
 
 /**

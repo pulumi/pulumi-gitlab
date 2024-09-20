@@ -66,14 +66,20 @@ type LookupProjectMilestoneResult struct {
 
 func LookupProjectMilestoneOutput(ctx *pulumi.Context, args LookupProjectMilestoneOutputArgs, opts ...pulumi.InvokeOption) LookupProjectMilestoneResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProjectMilestoneResult, error) {
+		ApplyT(func(v interface{}) (LookupProjectMilestoneResultOutput, error) {
 			args := v.(LookupProjectMilestoneArgs)
-			r, err := LookupProjectMilestone(ctx, &args, opts...)
-			var s LookupProjectMilestoneResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupProjectMilestoneResult
+			secret, err := ctx.InvokePackageRaw("gitlab:index/getProjectMilestone:getProjectMilestone", args, &rv, "", opts...)
+			if err != nil {
+				return LookupProjectMilestoneResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupProjectMilestoneResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupProjectMilestoneResultOutput), nil
+			}
+			return output, nil
 		}).(LookupProjectMilestoneResultOutput)
 }
 

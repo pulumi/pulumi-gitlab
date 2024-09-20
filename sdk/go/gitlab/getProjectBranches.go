@@ -42,14 +42,20 @@ type GetProjectBranchesResult struct {
 
 func GetProjectBranchesOutput(ctx *pulumi.Context, args GetProjectBranchesOutputArgs, opts ...pulumi.InvokeOption) GetProjectBranchesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetProjectBranchesResult, error) {
+		ApplyT(func(v interface{}) (GetProjectBranchesResultOutput, error) {
 			args := v.(GetProjectBranchesArgs)
-			r, err := GetProjectBranches(ctx, &args, opts...)
-			var s GetProjectBranchesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetProjectBranchesResult
+			secret, err := ctx.InvokePackageRaw("gitlab:index/getProjectBranches:getProjectBranches", args, &rv, "", opts...)
+			if err != nil {
+				return GetProjectBranchesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetProjectBranchesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetProjectBranchesResultOutput), nil
+			}
+			return output, nil
 		}).(GetProjectBranchesResultOutput)
 }
 

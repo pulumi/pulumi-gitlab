@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
  */
 export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getApplication:getApplication", {
         "id": args.id,
@@ -52,7 +51,10 @@ export interface GetApplicationResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
  */
 export function getApplicationOutput(args: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
-    return pulumi.output(args).apply((a: any) => getApplication(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getApplication:getApplication", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

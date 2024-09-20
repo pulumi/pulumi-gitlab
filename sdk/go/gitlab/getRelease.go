@@ -83,14 +83,20 @@ type GetReleaseResult struct {
 
 func GetReleaseOutput(ctx *pulumi.Context, args GetReleaseOutputArgs, opts ...pulumi.InvokeOption) GetReleaseResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetReleaseResult, error) {
+		ApplyT(func(v interface{}) (GetReleaseResultOutput, error) {
 			args := v.(GetReleaseArgs)
-			r, err := GetRelease(ctx, &args, opts...)
-			var s GetReleaseResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetReleaseResult
+			secret, err := ctx.InvokePackageRaw("gitlab:index/getRelease:getRelease", args, &rv, "", opts...)
+			if err != nil {
+				return GetReleaseResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetReleaseResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetReleaseResultOutput), nil
+			}
+			return output, nil
 		}).(GetReleaseResultOutput)
 }
 

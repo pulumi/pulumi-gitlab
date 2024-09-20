@@ -46,14 +46,20 @@ type GetUserSshkeysResult struct {
 
 func GetUserSshkeysOutput(ctx *pulumi.Context, args GetUserSshkeysOutputArgs, opts ...pulumi.InvokeOption) GetUserSshkeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetUserSshkeysResult, error) {
+		ApplyT(func(v interface{}) (GetUserSshkeysResultOutput, error) {
 			args := v.(GetUserSshkeysArgs)
-			r, err := GetUserSshkeys(ctx, &args, opts...)
-			var s GetUserSshkeysResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetUserSshkeysResult
+			secret, err := ctx.InvokePackageRaw("gitlab:index/getUserSshkeys:getUserSshkeys", args, &rv, "", opts...)
+			if err != nil {
+				return GetUserSshkeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetUserSshkeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetUserSshkeysResultOutput), nil
+			}
+			return output, nil
 		}).(GetUserSshkeysResultOutput)
 }
 

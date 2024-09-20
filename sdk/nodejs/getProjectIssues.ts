@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getProjectIssues(args: GetProjectIssuesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIssuesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectIssues:getProjectIssues", {
         "assigneeId": args.assigneeId,
@@ -307,7 +306,35 @@ export interface GetProjectIssuesResult {
  * ```
  */
 export function getProjectIssuesOutput(args: GetProjectIssuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIssuesResult> {
-    return pulumi.output(args).apply((a: any) => getProjectIssues(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectIssues:getProjectIssues", {
+        "assigneeId": args.assigneeId,
+        "assigneeUsername": args.assigneeUsername,
+        "authorId": args.authorId,
+        "confidential": args.confidential,
+        "createdAfter": args.createdAfter,
+        "createdBefore": args.createdBefore,
+        "dueDate": args.dueDate,
+        "iids": args.iids,
+        "issueType": args.issueType,
+        "labels": args.labels,
+        "milestone": args.milestone,
+        "myReactionEmoji": args.myReactionEmoji,
+        "notAssigneeIds": args.notAssigneeIds,
+        "notAuthorIds": args.notAuthorIds,
+        "notLabels": args.notLabels,
+        "notMilestone": args.notMilestone,
+        "notMyReactionEmojis": args.notMyReactionEmojis,
+        "orderBy": args.orderBy,
+        "project": args.project,
+        "scope": args.scope,
+        "search": args.search,
+        "sort": args.sort,
+        "updatedAfter": args.updatedAfter,
+        "updatedBefore": args.updatedBefore,
+        "weight": args.weight,
+        "withLabelsDetails": args.withLabelsDetails,
+    }, opts);
 }
 
 /**

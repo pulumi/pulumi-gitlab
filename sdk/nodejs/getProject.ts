@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProject:getProject", {
         "ciDefaultGitDepth": args.ciDefaultGitDepth,
@@ -320,7 +319,14 @@ export interface GetProjectResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
  */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
-    return pulumi.output(args).apply((a: any) => getProject(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProject:getProject", {
+        "ciDefaultGitDepth": args.ciDefaultGitDepth,
+        "id": args.id,
+        "pathWithNamespace": args.pathWithNamespace,
+        "publicBuilds": args.publicBuilds,
+    }, opts);
 }
 
 /**

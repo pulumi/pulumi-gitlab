@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRelease(args: GetReleaseArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getRelease:getRelease", {
         "assets": args.assets,
@@ -105,7 +104,12 @@ export interface GetReleaseResult {
  * ```
  */
 export function getReleaseOutput(args: GetReleaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseResult> {
-    return pulumi.output(args).apply((a: any) => getRelease(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getRelease:getRelease", {
+        "assets": args.assets,
+        "projectId": args.projectId,
+        "tagName": args.tagName,
+    }, opts);
 }
 
 /**

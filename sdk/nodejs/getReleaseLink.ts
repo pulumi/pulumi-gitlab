@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
  */
 export function getReleaseLink(args: GetReleaseLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseLinkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getReleaseLink:getReleaseLink", {
         "linkId": args.linkId,
@@ -88,7 +87,12 @@ export interface GetReleaseLinkResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
  */
 export function getReleaseLinkOutput(args: GetReleaseLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseLinkResult> {
-    return pulumi.output(args).apply((a: any) => getReleaseLink(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getReleaseLink:getReleaseLink", {
+        "linkId": args.linkId,
+        "project": args.project,
+        "tagName": args.tagName,
+    }, opts);
 }
 
 /**

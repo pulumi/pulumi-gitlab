@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
  */
 export function getProjectMilestones(args: GetProjectMilestonesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMilestonesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectMilestones:getProjectMilestones", {
         "iids": args.iids,
@@ -97,7 +96,15 @@ export interface GetProjectMilestonesResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
  */
 export function getProjectMilestonesOutput(args: GetProjectMilestonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMilestonesResult> {
-    return pulumi.output(args).apply((a: any) => getProjectMilestones(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getProjectMilestones:getProjectMilestones", {
+        "iids": args.iids,
+        "includeParentMilestones": args.includeParentMilestones,
+        "project": args.project,
+        "search": args.search,
+        "state": args.state,
+        "title": args.title,
+    }, opts);
 }
 
 /**

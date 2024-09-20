@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  */
 export function getGroupMembership(args?: GetGroupMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMembershipResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getGroupMembership:getGroupMembership", {
         "accessLevel": args.accessLevel,
@@ -80,7 +79,14 @@ export interface GetGroupMembershipResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
  */
 export function getGroupMembershipOutput(args?: GetGroupMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMembershipResult> {
-    return pulumi.output(args).apply((a: any) => getGroupMembership(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gitlab:index/getGroupMembership:getGroupMembership", {
+        "accessLevel": args.accessLevel,
+        "fullPath": args.fullPath,
+        "groupId": args.groupId,
+        "inherited": args.inherited,
+    }, opts);
 }
 
 /**
