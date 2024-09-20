@@ -70,6 +70,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["earlyAuthCheck"] = pulumi.output(args ? args.earlyAuthCheck : undefined).apply(JSON.stringify);
             resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
+            resourceInputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -108,6 +109,10 @@ export interface ProviderArgs {
      * When set to true this disables SSL verification of the connection to the GitLab instance.
      */
     insecure?: pulumi.Input<boolean>;
+    /**
+     * The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+     */
+    retries?: pulumi.Input<number>;
     /**
      * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
      * used in this provider for authentication (using Bearer authorization token). See

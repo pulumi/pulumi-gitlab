@@ -6,6 +6,7 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -107,6 +108,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+     * 
+     */
+    @Import(name="retries", json=true)
+    private @Nullable Output<Integer> retries;
+
+    /**
+     * @return The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+     * 
+     */
+    public Optional<Output<Integer>> retries() {
+        return Optional.ofNullable(this.retries);
+    }
+
+    /**
      * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
      * used in this provider for authentication (using Bearer authorization token). See
      * https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
@@ -136,6 +152,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientKey = $.clientKey;
         this.earlyAuthCheck = $.earlyAuthCheck;
         this.insecure = $.insecure;
+        this.retries = $.retries;
         this.token = $.token;
     }
 
@@ -277,6 +294,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder insecure(Boolean insecure) {
             return insecure(Output.of(insecure));
+        }
+
+        /**
+         * @param retries The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retries(@Nullable Output<Integer> retries) {
+            $.retries = retries;
+            return this;
+        }
+
+        /**
+         * @param retries The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retries(Integer retries) {
+            return retries(Output.of(retries));
         }
 
         /**

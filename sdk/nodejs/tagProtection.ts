@@ -65,11 +65,11 @@ export class TagProtection extends pulumi.CustomResource {
     }
 
     /**
-     * User or group which are allowed to create.
+     * Array of access levels/user(s)/group(s) allowed to create protected tags.
      */
     public readonly allowedToCreates!: pulumi.Output<outputs.TagProtectionAllowedToCreate[] | undefined>;
     /**
-     * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
      */
     public readonly createAccessLevel!: pulumi.Output<string>;
     /**
@@ -100,9 +100,6 @@ export class TagProtection extends pulumi.CustomResource {
             resourceInputs["tag"] = state ? state.tag : undefined;
         } else {
             const args = argsOrState as TagProtectionArgs | undefined;
-            if ((!args || args.createAccessLevel === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'createAccessLevel'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -124,11 +121,11 @@ export class TagProtection extends pulumi.CustomResource {
  */
 export interface TagProtectionState {
     /**
-     * User or group which are allowed to create.
+     * Array of access levels/user(s)/group(s) allowed to create protected tags.
      */
     allowedToCreates?: pulumi.Input<pulumi.Input<inputs.TagProtectionAllowedToCreate>[]>;
     /**
-     * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
      */
     createAccessLevel?: pulumi.Input<string>;
     /**
@@ -146,13 +143,13 @@ export interface TagProtectionState {
  */
 export interface TagProtectionArgs {
     /**
-     * User or group which are allowed to create.
+     * Array of access levels/user(s)/group(s) allowed to create protected tags.
      */
     allowedToCreates?: pulumi.Input<pulumi.Input<inputs.TagProtectionAllowedToCreate>[]>;
     /**
-     * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
      */
-    createAccessLevel: pulumi.Input<string>;
+    createAccessLevel?: pulumi.Input<string>;
     /**
      * The id of the project.
      */

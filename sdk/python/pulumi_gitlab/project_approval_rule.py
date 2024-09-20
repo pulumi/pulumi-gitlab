@@ -21,6 +21,7 @@ class ProjectApprovalRuleArgs:
                  group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 report_type: Optional[pulumi.Input[str]] = None,
                  rule_type: Optional[pulumi.Input[str]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
@@ -32,7 +33,8 @@ class ProjectApprovalRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs whose members can approve of the merge request.
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
-        :param pulumi.Input[str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        :param pulumi.Input[str] report_type: Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        :param pulumi.Input[str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         pulumi.set(__self__, "approvals_required", approvals_required)
@@ -47,6 +49,8 @@ class ProjectApprovalRuleArgs:
             pulumi.set(__self__, "name", name)
         if protected_branch_ids is not None:
             pulumi.set(__self__, "protected_branch_ids", protected_branch_ids)
+        if report_type is not None:
+            pulumi.set(__self__, "report_type", report_type)
         if rule_type is not None:
             pulumi.set(__self__, "rule_type", rule_type)
         if user_ids is not None:
@@ -137,10 +141,22 @@ class ProjectApprovalRuleArgs:
         pulumi.set(self, "protected_branch_ids", value)
 
     @property
+    @pulumi.getter(name="reportType")
+    def report_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        """
+        return pulumi.get(self, "report_type")
+
+    @report_type.setter
+    def report_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "report_type", value)
+
+    @property
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> Optional[pulumi.Input[str]]:
         """
-        String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         """
         return pulumi.get(self, "rule_type")
 
@@ -171,6 +187,7 @@ class _ProjectApprovalRuleState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 report_type: Optional[pulumi.Input[str]] = None,
                  rule_type: Optional[pulumi.Input[str]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
@@ -182,7 +199,8 @@ class _ProjectApprovalRuleState:
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
-        :param pulumi.Input[str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        :param pulumi.Input[str] report_type: Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        :param pulumi.Input[str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         if applies_to_all_protected_branches is not None:
@@ -199,6 +217,8 @@ class _ProjectApprovalRuleState:
             pulumi.set(__self__, "project", project)
         if protected_branch_ids is not None:
             pulumi.set(__self__, "protected_branch_ids", protected_branch_ids)
+        if report_type is not None:
+            pulumi.set(__self__, "report_type", report_type)
         if rule_type is not None:
             pulumi.set(__self__, "rule_type", rule_type)
         if user_ids is not None:
@@ -289,10 +309,22 @@ class _ProjectApprovalRuleState:
         pulumi.set(self, "protected_branch_ids", value)
 
     @property
+    @pulumi.getter(name="reportType")
+    def report_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        """
+        return pulumi.get(self, "report_type")
+
+    @report_type.setter
+    def report_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "report_type", value)
+
+    @property
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> Optional[pulumi.Input[str]]:
         """
-        String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         """
         return pulumi.get(self, "rule_type")
 
@@ -325,6 +357,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 report_type: Optional[pulumi.Input[str]] = None,
                  rule_type: Optional[pulumi.Input[str]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
@@ -348,7 +381,8 @@ class ProjectApprovalRule(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
-        :param pulumi.Input[str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        :param pulumi.Input[str] report_type: Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        :param pulumi.Input[str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         ...
@@ -390,6 +424,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 report_type: Optional[pulumi.Input[str]] = None,
                  rule_type: Optional[pulumi.Input[str]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
@@ -412,6 +447,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["protected_branch_ids"] = protected_branch_ids
+            __props__.__dict__["report_type"] = report_type
             __props__.__dict__["rule_type"] = rule_type
             __props__.__dict__["user_ids"] = user_ids
         super(ProjectApprovalRule, __self__).__init__(
@@ -431,6 +467,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+            report_type: Optional[pulumi.Input[str]] = None,
             rule_type: Optional[pulumi.Input[str]] = None,
             user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None) -> 'ProjectApprovalRule':
         """
@@ -447,7 +484,8 @@ class ProjectApprovalRule(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
-        :param pulumi.Input[str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        :param pulumi.Input[str] report_type: Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        :param pulumi.Input[str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -461,6 +499,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["protected_branch_ids"] = protected_branch_ids
+        __props__.__dict__["report_type"] = report_type
         __props__.__dict__["rule_type"] = rule_type
         __props__.__dict__["user_ids"] = user_ids
         return ProjectApprovalRule(resource_name, opts=opts, __props__=__props__)
@@ -522,10 +561,18 @@ class ProjectApprovalRule(pulumi.CustomResource):
         return pulumi.get(self, "protected_branch_ids")
 
     @property
+    @pulumi.getter(name="reportType")
+    def report_type(self) -> pulumi.Output[str]:
+        """
+        Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        """
+        return pulumi.get(self, "report_type")
+
+    @property
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> pulumi.Output[str]:
         """
-        String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         """
         return pulumi.get(self, "rule_type")
 

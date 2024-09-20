@@ -183,6 +183,21 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Reject commit when it’s not DCO certified.
+     * 
+     */
+    @Import(name="rejectNonDcoCommits")
+    private @Nullable Output<Boolean> rejectNonDcoCommits;
+
+    /**
+     * @return Reject commit when it’s not DCO certified.
+     * 
+     */
+    public Optional<Output<Boolean>> rejectNonDcoCommits() {
+        return Optional.ofNullable(this.rejectNonDcoCommits);
+    }
+
+    /**
      * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
      * 
      */
@@ -211,6 +226,7 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
         this.maxFileSize = $.maxFileSize;
         this.memberCheck = $.memberCheck;
         this.preventSecrets = $.preventSecrets;
+        this.rejectNonDcoCommits = $.rejectNonDcoCommits;
         this.rejectUnsignedCommits = $.rejectUnsignedCommits;
     }
 
@@ -461,6 +477,27 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder preventSecrets(Boolean preventSecrets) {
             return preventSecrets(Output.of(preventSecrets));
+        }
+
+        /**
+         * @param rejectNonDcoCommits Reject commit when it’s not DCO certified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectNonDcoCommits(@Nullable Output<Boolean> rejectNonDcoCommits) {
+            $.rejectNonDcoCommits = rejectNonDcoCommits;
+            return this;
+        }
+
+        /**
+         * @param rejectNonDcoCommits Reject commit when it’s not DCO certified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectNonDcoCommits(Boolean rejectNonDcoCommits) {
+            return rejectNonDcoCommits(Output.of(rejectNonDcoCommits));
         }
 
         /**

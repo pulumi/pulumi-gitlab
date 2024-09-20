@@ -19,14 +19,14 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
     public static final TagProtectionArgs Empty = new TagProtectionArgs();
 
     /**
-     * User or group which are allowed to create.
+     * Array of access levels/user(s)/group(s) allowed to create protected tags.
      * 
      */
     @Import(name="allowedToCreates")
     private @Nullable Output<List<TagProtectionAllowedToCreateArgs>> allowedToCreates;
 
     /**
-     * @return User or group which are allowed to create.
+     * @return Array of access levels/user(s)/group(s) allowed to create protected tags.
      * 
      */
     public Optional<Output<List<TagProtectionAllowedToCreateArgs>>> allowedToCreates() {
@@ -34,18 +34,18 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
-    @Import(name="createAccessLevel", required=true)
-    private Output<String> createAccessLevel;
+    @Import(name="createAccessLevel")
+    private @Nullable Output<String> createAccessLevel;
 
     /**
-     * @return Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
-    public Output<String> createAccessLevel() {
-        return this.createAccessLevel;
+    public Optional<Output<String>> createAccessLevel() {
+        return Optional.ofNullable(this.createAccessLevel);
     }
 
     /**
@@ -106,7 +106,7 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedToCreates User or group which are allowed to create.
+         * @param allowedToCreates Array of access levels/user(s)/group(s) allowed to create protected tags.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedToCreates User or group which are allowed to create.
+         * @param allowedToCreates Array of access levels/user(s)/group(s) allowed to create protected tags.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedToCreates User or group which are allowed to create.
+         * @param allowedToCreates Array of access levels/user(s)/group(s) allowed to create protected tags.
          * 
          * @return builder
          * 
@@ -137,18 +137,18 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createAccessLevel Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param createAccessLevel Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
          * 
          * @return builder
          * 
          */
-        public Builder createAccessLevel(Output<String> createAccessLevel) {
+        public Builder createAccessLevel(@Nullable Output<String> createAccessLevel) {
             $.createAccessLevel = createAccessLevel;
             return this;
         }
 
         /**
-         * @param createAccessLevel Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param createAccessLevel Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
          * 
          * @return builder
          * 
@@ -200,9 +200,6 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TagProtectionArgs build() {
-            if ($.createAccessLevel == null) {
-                throw new MissingRequiredPropertyException("TagProtectionArgs", "createAccessLevel");
-            }
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("TagProtectionArgs", "project");
             }

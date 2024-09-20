@@ -40,6 +40,10 @@ import com.pulumi.gitlab.inputs.GetInstanceDeployKeysArgs;
 import com.pulumi.gitlab.inputs.GetInstanceDeployKeysPlainArgs;
 import com.pulumi.gitlab.inputs.GetInstanceVariableArgs;
 import com.pulumi.gitlab.inputs.GetInstanceVariablePlainArgs;
+import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
+import com.pulumi.gitlab.inputs.GetPipelineSchedulePlainArgs;
+import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
+import com.pulumi.gitlab.inputs.GetPipelineSchedulesPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectArgs;
 import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
 import com.pulumi.gitlab.inputs.GetProjectBranchesPlainArgs;
@@ -64,6 +68,10 @@ import com.pulumi.gitlab.inputs.GetProjectProtectedBranchArgs;
 import com.pulumi.gitlab.inputs.GetProjectProtectedBranchPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectProtectedBranchesArgs;
 import com.pulumi.gitlab.inputs.GetProjectProtectedBranchesPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectProtectedTagArgs;
+import com.pulumi.gitlab.inputs.GetProjectProtectedTagPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectProtectedTagsArgs;
+import com.pulumi.gitlab.inputs.GetProjectProtectedTagsPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectTagArgs;
 import com.pulumi.gitlab.inputs.GetProjectTagPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectTagsArgs;
@@ -109,6 +117,8 @@ import com.pulumi.gitlab.outputs.GetInstanceDeployKeysResult;
 import com.pulumi.gitlab.outputs.GetInstanceVariableResult;
 import com.pulumi.gitlab.outputs.GetInstanceVariablesResult;
 import com.pulumi.gitlab.outputs.GetMetadataResult;
+import com.pulumi.gitlab.outputs.GetPipelineScheduleResult;
+import com.pulumi.gitlab.outputs.GetPipelineSchedulesResult;
 import com.pulumi.gitlab.outputs.GetProjectBranchesResult;
 import com.pulumi.gitlab.outputs.GetProjectHookResult;
 import com.pulumi.gitlab.outputs.GetProjectHooksResult;
@@ -120,6 +130,8 @@ import com.pulumi.gitlab.outputs.GetProjectMilestoneResult;
 import com.pulumi.gitlab.outputs.GetProjectMilestonesResult;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchResult;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchesResult;
+import com.pulumi.gitlab.outputs.GetProjectProtectedTagResult;
+import com.pulumi.gitlab.outputs.GetProjectProtectedTagsResult;
 import com.pulumi.gitlab.outputs.GetProjectResult;
 import com.pulumi.gitlab.outputs.GetProjectTagResult;
 import com.pulumi.gitlab.outputs.GetProjectTagsResult;
@@ -3493,6 +3505,362 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getMetadata:getMetadata", TypeShape.of(GetMetadataResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getPipelineSchedule(GetPipelineScheduleArgs.builder()
+     *             .project("12345")
+     *             .pipelineScheduleId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPipelineScheduleResult> getPipelineSchedule(GetPipelineScheduleArgs args) {
+        return getPipelineSchedule(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getPipelineSchedule(GetPipelineScheduleArgs.builder()
+     *             .project("12345")
+     *             .pipelineScheduleId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPipelineScheduleResult> getPipelineSchedulePlain(GetPipelineSchedulePlainArgs args) {
+        return getPipelineSchedulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getPipelineSchedule(GetPipelineScheduleArgs.builder()
+     *             .project("12345")
+     *             .pipelineScheduleId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPipelineScheduleResult> getPipelineSchedule(GetPipelineScheduleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getPipelineSchedule:getPipelineSchedule", TypeShape.of(GetPipelineScheduleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getPipelineSchedule(GetPipelineScheduleArgs.builder()
+     *             .project("12345")
+     *             .pipelineScheduleId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPipelineScheduleResult> getPipelineSchedulePlain(GetPipelineSchedulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getPipelineSchedule:getPipelineSchedule", TypeShape.of(GetPipelineScheduleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getPipelineSchedules(GetPipelineSchedulesArgs.builder()
+     *             .project("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPipelineSchedulesResult> getPipelineSchedules(GetPipelineSchedulesArgs args) {
+        return getPipelineSchedules(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getPipelineSchedules(GetPipelineSchedulesArgs.builder()
+     *             .project("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPipelineSchedulesResult> getPipelineSchedulesPlain(GetPipelineSchedulesPlainArgs args) {
+        return getPipelineSchedulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getPipelineSchedules(GetPipelineSchedulesArgs.builder()
+     *             .project("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPipelineSchedulesResult> getPipelineSchedules(GetPipelineSchedulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getPipelineSchedules:getPipelineSchedules", TypeShape.of(GetPipelineSchedulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getPipelineSchedules(GetPipelineSchedulesArgs.builder()
+     *             .project("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPipelineSchedulesResult> getPipelineSchedulesPlain(GetPipelineSchedulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getPipelineSchedules:getPipelineSchedules", TypeShape.of(GetPipelineSchedulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
@@ -4791,6 +5159,78 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectProtectedBranchesResult> getProjectProtectedBranchesPlain(GetProjectProtectedBranchesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", TypeShape.of(GetProjectProtectedBranchesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#get-a-single-protected-tag-or-wildcard-protected-tag)
+     * 
+     */
+    public static Output<GetProjectProtectedTagResult> getProjectProtectedTag(GetProjectProtectedTagArgs args) {
+        return getProjectProtectedTag(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#get-a-single-protected-tag-or-wildcard-protected-tag)
+     * 
+     */
+    public static CompletableFuture<GetProjectProtectedTagResult> getProjectProtectedTagPlain(GetProjectProtectedTagPlainArgs args) {
+        return getProjectProtectedTagPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#get-a-single-protected-tag-or-wildcard-protected-tag)
+     * 
+     */
+    public static Output<GetProjectProtectedTagResult> getProjectProtectedTag(GetProjectProtectedTagArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectProtectedTag:getProjectProtectedTag", TypeShape.of(GetProjectProtectedTagResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#get-a-single-protected-tag-or-wildcard-protected-tag)
+     * 
+     */
+    public static CompletableFuture<GetProjectProtectedTagResult> getProjectProtectedTagPlain(GetProjectProtectedTagPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectProtectedTag:getProjectProtectedTag", TypeShape.of(GetProjectProtectedTagResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectProtectedTags` data source allows details of the protected tags of a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)
+     * 
+     */
+    public static Output<GetProjectProtectedTagsResult> getProjectProtectedTags(GetProjectProtectedTagsArgs args) {
+        return getProjectProtectedTags(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectProtectedTags` data source allows details of the protected tags of a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)
+     * 
+     */
+    public static CompletableFuture<GetProjectProtectedTagsResult> getProjectProtectedTagsPlain(GetProjectProtectedTagsPlainArgs args) {
+        return getProjectProtectedTagsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectProtectedTags` data source allows details of the protected tags of a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)
+     * 
+     */
+    public static Output<GetProjectProtectedTagsResult> getProjectProtectedTags(GetProjectProtectedTagsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectProtectedTags:getProjectProtectedTags", TypeShape.of(GetProjectProtectedTagsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectProtectedTags` data source allows details of the protected tags of a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)
+     * 
+     */
+    public static CompletableFuture<GetProjectProtectedTagsResult> getProjectProtectedTagsPlain(GetProjectProtectedTagsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectProtectedTags:getProjectProtectedTags", TypeShape.of(GetProjectProtectedTagsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.

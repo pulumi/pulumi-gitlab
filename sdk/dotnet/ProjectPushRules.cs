@@ -124,6 +124,12 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Reject commit when it’s not DCO certified.
+        /// </summary>
+        [Output("rejectNonDcoCommits")]
+        public Output<bool> RejectNonDcoCommits { get; private set; } = null!;
+
+        /// <summary>
         /// Reject commit when it’s not signed.
         /// </summary>
         [Output("rejectUnsignedCommits")]
@@ -248,6 +254,12 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// Reject commit when it’s not DCO certified.
+        /// </summary>
+        [Input("rejectNonDcoCommits")]
+        public Input<bool>? RejectNonDcoCommits { get; set; }
+
+        /// <summary>
         /// Reject commit when it’s not signed.
         /// </summary>
         [Input("rejectUnsignedCommits")]
@@ -332,6 +344,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Reject commit when it’s not DCO certified.
+        /// </summary>
+        [Input("rejectNonDcoCommits")]
+        public Input<bool>? RejectNonDcoCommits { get; set; }
 
         /// <summary>
         /// Reject commit when it’s not signed.

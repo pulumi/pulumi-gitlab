@@ -113,6 +113,10 @@ export class ProjectPushRules extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Reject commit when it’s not DCO certified.
+     */
+    public readonly rejectNonDcoCommits!: pulumi.Output<boolean>;
+    /**
      * Reject commit when it’s not signed.
      */
     public readonly rejectUnsignedCommits!: pulumi.Output<boolean>;
@@ -142,6 +146,7 @@ export class ProjectPushRules extends pulumi.CustomResource {
             resourceInputs["memberCheck"] = state ? state.memberCheck : undefined;
             resourceInputs["preventSecrets"] = state ? state.preventSecrets : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["rejectNonDcoCommits"] = state ? state.rejectNonDcoCommits : undefined;
             resourceInputs["rejectUnsignedCommits"] = state ? state.rejectUnsignedCommits : undefined;
         } else {
             const args = argsOrState as ProjectPushRulesArgs | undefined;
@@ -160,6 +165,7 @@ export class ProjectPushRules extends pulumi.CustomResource {
             resourceInputs["memberCheck"] = args ? args.memberCheck : undefined;
             resourceInputs["preventSecrets"] = args ? args.preventSecrets : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rejectNonDcoCommits"] = args ? args.rejectNonDcoCommits : undefined;
             resourceInputs["rejectUnsignedCommits"] = args ? args.rejectUnsignedCommits : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -220,6 +226,10 @@ export interface ProjectPushRulesState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Reject commit when it’s not DCO certified.
+     */
+    rejectNonDcoCommits?: pulumi.Input<boolean>;
+    /**
      * Reject commit when it’s not signed.
      */
     rejectUnsignedCommits?: pulumi.Input<boolean>;
@@ -277,6 +287,10 @@ export interface ProjectPushRulesArgs {
      * The ID or URL-encoded path of the project.
      */
     project: pulumi.Input<string>;
+    /**
+     * Reject commit when it’s not DCO certified.
+     */
+    rejectNonDcoCommits?: pulumi.Input<boolean>;
     /**
      * Reject commit when it’s not signed.
      */

@@ -75,6 +75,17 @@ Object.defineProperty(exports, "insecure", {
 });
 
 /**
+ * The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+ */
+export declare const retries: number | undefined;
+Object.defineProperty(exports, "retries", {
+    get() {
+        return __config.getObject<number>("retries");
+    },
+    enumerable: true,
+});
+
+/**
  * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
  * used in this provider for authentication (using Bearer authorization token). See
  * https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment

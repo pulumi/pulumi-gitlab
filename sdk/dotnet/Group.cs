@@ -56,6 +56,28 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
+    ///     // Group with custom default branch protection defaults
+    ///     var example_three = new GitLab.Group("example-three", new()
+    ///     {
+    ///         Name = "example-three",
+    ///         Path = "example-three",
+    ///         Description = "An example group with default branch protection defaults",
+    ///         DefaultBranchProtectionDefaults = new GitLab.Inputs.GroupDefaultBranchProtectionDefaultsArgs
+    ///         {
+    ///             AllowedToPushes = new[]
+    ///             {
+    ///                 "developer",
+    ///             },
+    ///             AllowForcePush = true,
+    ///             AllowedToMerges = new[]
+    ///             {
+    ///                 "developer",
+    ///                 "maintainer",
+    ///             },
+    ///             DeveloperCanInitialPush = true,
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -105,6 +127,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("defaultBranchProtection")]
         public Output<int> DefaultBranchProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// The default branch protection defaults
+        /// </summary>
+        [Output("defaultBranchProtectionDefaults")]
+        public Output<Outputs.GroupDefaultBranchProtectionDefaults> DefaultBranchProtectionDefaults { get; private set; } = null!;
 
         /// <summary>
         /// The group's description.
@@ -343,6 +371,12 @@ namespace Pulumi.GitLab
         public Input<int>? DefaultBranchProtection { get; set; }
 
         /// <summary>
+        /// The default branch protection defaults
+        /// </summary>
+        [Input("defaultBranchProtectionDefaults")]
+        public Input<Inputs.GroupDefaultBranchProtectionDefaultsArgs>? DefaultBranchProtectionDefaults { get; set; }
+
+        /// <summary>
         /// The group's description.
         /// </summary>
         [Input("description")]
@@ -523,6 +557,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }
+
+        /// <summary>
+        /// The default branch protection defaults
+        /// </summary>
+        [Input("defaultBranchProtectionDefaults")]
+        public Input<Inputs.GroupDefaultBranchProtectionDefaultsGetArgs>? DefaultBranchProtectionDefaults { get; set; }
 
         /// <summary>
         /// The group's description.

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.GroupArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupState;
+import com.pulumi.gitlab.outputs.GroupDefaultBranchProtectionDefaults;
 import com.pulumi.gitlab.outputs.GroupPushRules;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -40,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gitlab.Project;
  * import com.pulumi.gitlab.ProjectArgs;
  * import com.pulumi.gitlab.inputs.GroupPushRulesArgs;
+ * import com.pulumi.gitlab.inputs.GroupDefaultBranchProtectionDefaultsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -76,6 +78,21 @@ import javax.annotation.Nullable;
  *                 .commitCommitterCheck(true)
  *                 .memberCheck(true)
  *                 .preventSecrets(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         // Group with custom default branch protection defaults
+ *         var example_three = new Group("example-three", GroupArgs.builder()
+ *             .name("example-three")
+ *             .path("example-three")
+ *             .description("An example group with default branch protection defaults")
+ *             .defaultBranchProtectionDefaults(GroupDefaultBranchProtectionDefaultsArgs.builder()
+ *                 .allowedToPushes("developer")
+ *                 .allowForcePush(true)
+ *                 .allowedToMerges(                
+ *                     "developer",
+ *                     "maintainer")
+ *                 .developerCanInitialPush(true)
  *                 .build())
  *             .build());
  * 
@@ -161,7 +178,11 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
+     * @deprecated
+     * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
+     * 
      */
+    @Deprecated /* Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead. */
     @Export(name="defaultBranchProtection", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultBranchProtection;
 
@@ -171,6 +192,20 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> defaultBranchProtection() {
         return this.defaultBranchProtection;
+    }
+    /**
+     * The default branch protection defaults
+     * 
+     */
+    @Export(name="defaultBranchProtectionDefaults", refs={GroupDefaultBranchProtectionDefaults.class}, tree="[0]")
+    private Output<GroupDefaultBranchProtectionDefaults> defaultBranchProtectionDefaults;
+
+    /**
+     * @return The default branch protection defaults
+     * 
+     */
+    public Output<GroupDefaultBranchProtectionDefaults> defaultBranchProtectionDefaults() {
+        return this.defaultBranchProtectionDefaults;
     }
     /**
      * The group&#39;s description.

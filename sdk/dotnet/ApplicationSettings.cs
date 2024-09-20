@@ -52,6 +52,12 @@ namespace Pulumi.GitLab
         public Output<bool> AkismetEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Set to true to allow users to delete their accounts. Premium and Ultimate only.
+        /// </summary>
+        [Output("allowAccountDeletion")]
+        public Output<bool> AllowAccountDeletion { get; private set; } = null!;
+
+        /// <summary>
         /// Set to true to allow group owners to manage LDAP.
         /// </summary>
         [Output("allowGroupOwnersToManageLdap")]
@@ -70,10 +76,28 @@ namespace Pulumi.GitLab
         public Output<bool> AllowLocalRequestsFromWebHooksAndServices { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether users assigned up to the Guest role can create groups and personal projects.
+        /// </summary>
+        [Output("allowProjectCreationForGuestAndBelow")]
+        public Output<bool> AllowProjectCreationForGuestAndBelow { get; private set; } = null!;
+
+        /// <summary>
+        /// Allow using a registration token to create a runner.
+        /// </summary>
+        [Output("allowRunnerRegistrationToken")]
+        public Output<bool> AllowRunnerRegistrationToken { get; private set; } = null!;
+
+        /// <summary>
         /// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
         /// </summary>
         [Output("archiveBuildsInHumanReadable")]
         public Output<string> ArchiveBuildsInHumanReadable { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+        /// </summary>
+        [Output("asciidocMaxIncludes")]
+        public Output<int> AsciidocMaxIncludes { get; private set; } = null!;
 
         /// <summary>
         /// Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
@@ -106,6 +130,12 @@ namespace Pulumi.GitLab
         public Output<bool> AuthorizedKeysEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+        /// </summary>
+        [Output("autoBanUserOnExcessiveProjectsDownload")]
+        public Output<bool> AutoBanUserOnExcessiveProjectsDownload { get; private set; } = null!;
+
+        /// <summary>
         /// Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         /// </summary>
         [Output("autoDevopsDomain")]
@@ -124,6 +154,24 @@ namespace Pulumi.GitLab
         public Output<bool> AutomaticPurchasedStorageAllocation { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum simultaneous Direct Transfer batches to process.
+        /// </summary>
+        [Output("bulkImportConcurrentPipelineBatchLimit")]
+        public Output<int> BulkImportConcurrentPipelineBatchLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+        /// </summary>
+        [Output("bulkImportEnabled")]
+        public Output<bool> BulkImportEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+        /// </summary>
+        [Output("bulkImportMaxDownloadFileSize")]
+        public Output<int> BulkImportMaxDownloadFileSize { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         /// </summary>
         [Output("canCreateGroup")]
@@ -136,10 +184,40 @@ namespace Pulumi.GitLab
         public Output<bool> CheckNamespacePlan { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum number of includes per pipeline.
+        /// </summary>
+        [Output("ciMaxIncludes")]
+        public Output<int> CiMaxIncludes { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+        /// </summary>
+        [Output("ciMaxTotalYamlSizeBytes")]
+        public Output<int> CiMaxTotalYamlSizeBytes { get; private set; } = null!;
+
+        /// <summary>
         /// Custom hostname (for private commit emails).
         /// </summary>
         [Output("commitEmailHostname")]
         public Output<string> CommitEmailHostname { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+        /// </summary>
+        [Output("concurrentBitbucketImportJobsLimit")]
+        public Output<int> ConcurrentBitbucketImportJobsLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+        /// </summary>
+        [Output("concurrentBitbucketServerImportJobsLimit")]
+        public Output<int> ConcurrentBitbucketServerImportJobsLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+        /// </summary>
+        [Output("concurrentGithubImportJobsLimit")]
+        public Output<int> ConcurrentGithubImportJobsLimit { get; private set; } = null!;
 
         /// <summary>
         /// Enable cleanup policies for all projects.
@@ -184,6 +262,18 @@ namespace Pulumi.GitLab
         public Output<bool> DeactivateDormantUsers { get; private set; } = null!;
 
         /// <summary>
+        /// Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+        /// </summary>
+        [Output("deactivateDormantUsersPeriod")]
+        public Output<int> DeactivateDormantUsersPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+        /// </summary>
+        [Output("decompressArchiveFileTimeout")]
+        public Output<int> DecompressArchiveFileTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// Set the default expiration time for each job’s artifacts.
         /// </summary>
         [Output("defaultArtifactsExpireIn")]
@@ -202,6 +292,12 @@ namespace Pulumi.GitLab
         public Output<int> DefaultBranchProtection { get; private set; } = null!;
 
         /// <summary>
+        /// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+        /// </summary>
+        [Output("defaultBranchProtectionDefaults")]
+        public Output<Outputs.ApplicationSettingsDefaultBranchProtectionDefaults> DefaultBranchProtectionDefaults { get; private set; } = null!;
+
+        /// <summary>
         /// Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         /// </summary>
         [Output("defaultCiConfigPath")]
@@ -212,6 +308,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("defaultGroupVisibility")]
         public Output<string> DefaultGroupVisibility { get; private set; } = null!;
+
+        /// <summary>
+        /// Default preferred language for users who are not logged in.
+        /// </summary>
+        [Output("defaultPreferredLanguage")]
+        public Output<string> DefaultPreferredLanguage { get; private set; } = null!;
 
         /// <summary>
         /// Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
@@ -238,16 +340,40 @@ namespace Pulumi.GitLab
         public Output<string> DefaultSnippetVisibility { get; private set; } = null!;
 
         /// <summary>
+        /// Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+        /// </summary>
+        [Output("defaultSyntaxHighlightingTheme")]
+        public Output<int> DefaultSyntaxHighlightingTheme { get; private set; } = null!;
+
+        /// <summary>
         /// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
         /// </summary>
         [Output("deleteInactiveProjects")]
         public Output<bool> DeleteInactiveProjects { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Output("deleteUnconfirmedUsers")]
+        public Output<bool> DeleteUnconfirmedUsers { get; private set; } = null!;
+
+        /// <summary>
         /// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         /// </summary>
         [Output("deletionAdjournedPeriod")]
         public Output<int> DeletionAdjournedPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+        /// </summary>
+        [Output("diagramsnetEnabled")]
+        public Output<bool> DiagramsnetEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The Diagrams.net instance URL for integration.
+        /// </summary>
+        [Output("diagramsnetUrl")]
+        public Output<string> DiagramsnetUrl { get; private set; } = null!;
 
         /// <summary>
         /// Maximum files in a diff.
@@ -268,10 +394,22 @@ namespace Pulumi.GitLab
         public Output<int> DiffMaxPatchBytes { get; private set; } = null!;
 
         /// <summary>
+        /// Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+        /// </summary>
+        [Output("disableAdminOauthScopes")]
+        public Output<bool> DisableAdminOauthScopes { get; private set; } = null!;
+
+        /// <summary>
         /// Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
         /// </summary>
         [Output("disableFeedToken")]
         public Output<bool> DisableFeedToken { get; private set; } = null!;
+
+        /// <summary>
+        /// Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+        /// </summary>
+        [Output("disablePersonalAccessTokens")]
+        public Output<bool> DisablePersonalAccessTokens { get; private set; } = null!;
 
         /// <summary>
         /// Disabled OAuth sign-in sources.
@@ -304,10 +442,22 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<string>> DomainDenylists { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+        /// </summary>
+        [Output("downstreamPipelineTriggerLimitPerProjectUserSha")]
+        public Output<int> DownstreamPipelineTriggerLimitPerProjectUserSha { get; private set; } = null!;
+
+        /// <summary>
         /// The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
         /// </summary>
         [Output("dsaKeyRestriction")]
         public Output<int> DsaKeyRestriction { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Output("duoFeaturesEnabled")]
+        public Output<bool> DuoFeaturesEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
@@ -1583,6 +1733,12 @@ namespace Pulumi.GitLab
         public Input<bool>? AkismetEnabled { get; set; }
 
         /// <summary>
+        /// Set to true to allow users to delete their accounts. Premium and Ultimate only.
+        /// </summary>
+        [Input("allowAccountDeletion")]
+        public Input<bool>? AllowAccountDeletion { get; set; }
+
+        /// <summary>
         /// Set to true to allow group owners to manage LDAP.
         /// </summary>
         [Input("allowGroupOwnersToManageLdap")]
@@ -1601,10 +1757,28 @@ namespace Pulumi.GitLab
         public Input<bool>? AllowLocalRequestsFromWebHooksAndServices { get; set; }
 
         /// <summary>
+        /// Indicates whether users assigned up to the Guest role can create groups and personal projects.
+        /// </summary>
+        [Input("allowProjectCreationForGuestAndBelow")]
+        public Input<bool>? AllowProjectCreationForGuestAndBelow { get; set; }
+
+        /// <summary>
+        /// Allow using a registration token to create a runner.
+        /// </summary>
+        [Input("allowRunnerRegistrationToken")]
+        public Input<bool>? AllowRunnerRegistrationToken { get; set; }
+
+        /// <summary>
         /// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
         /// </summary>
         [Input("archiveBuildsInHumanReadable")]
         public Input<string>? ArchiveBuildsInHumanReadable { get; set; }
+
+        /// <summary>
+        /// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+        /// </summary>
+        [Input("asciidocMaxIncludes")]
+        public Input<int>? AsciidocMaxIncludes { get; set; }
 
         [Input("assetProxyAllowlists")]
         private InputList<string>? _assetProxyAllowlists;
@@ -1653,6 +1827,12 @@ namespace Pulumi.GitLab
         public Input<bool>? AuthorizedKeysEnabled { get; set; }
 
         /// <summary>
+        /// When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+        /// </summary>
+        [Input("autoBanUserOnExcessiveProjectsDownload")]
+        public Input<bool>? AutoBanUserOnExcessiveProjectsDownload { get; set; }
+
+        /// <summary>
         /// Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         /// </summary>
         [Input("autoDevopsDomain")]
@@ -1671,6 +1851,24 @@ namespace Pulumi.GitLab
         public Input<bool>? AutomaticPurchasedStorageAllocation { get; set; }
 
         /// <summary>
+        /// Maximum simultaneous Direct Transfer batches to process.
+        /// </summary>
+        [Input("bulkImportConcurrentPipelineBatchLimit")]
+        public Input<int>? BulkImportConcurrentPipelineBatchLimit { get; set; }
+
+        /// <summary>
+        /// Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+        /// </summary>
+        [Input("bulkImportEnabled")]
+        public Input<bool>? BulkImportEnabled { get; set; }
+
+        /// <summary>
+        /// Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+        /// </summary>
+        [Input("bulkImportMaxDownloadFileSize")]
+        public Input<int>? BulkImportMaxDownloadFileSize { get; set; }
+
+        /// <summary>
         /// Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         /// </summary>
         [Input("canCreateGroup")]
@@ -1683,10 +1881,40 @@ namespace Pulumi.GitLab
         public Input<bool>? CheckNamespacePlan { get; set; }
 
         /// <summary>
+        /// The maximum number of includes per pipeline.
+        /// </summary>
+        [Input("ciMaxIncludes")]
+        public Input<int>? CiMaxIncludes { get; set; }
+
+        /// <summary>
+        /// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+        /// </summary>
+        [Input("ciMaxTotalYamlSizeBytes")]
+        public Input<int>? CiMaxTotalYamlSizeBytes { get; set; }
+
+        /// <summary>
         /// Custom hostname (for private commit emails).
         /// </summary>
         [Input("commitEmailHostname")]
         public Input<string>? CommitEmailHostname { get; set; }
+
+        /// <summary>
+        /// Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+        /// </summary>
+        [Input("concurrentBitbucketImportJobsLimit")]
+        public Input<int>? ConcurrentBitbucketImportJobsLimit { get; set; }
+
+        /// <summary>
+        /// Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+        /// </summary>
+        [Input("concurrentBitbucketServerImportJobsLimit")]
+        public Input<int>? ConcurrentBitbucketServerImportJobsLimit { get; set; }
+
+        /// <summary>
+        /// Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+        /// </summary>
+        [Input("concurrentGithubImportJobsLimit")]
+        public Input<int>? ConcurrentGithubImportJobsLimit { get; set; }
 
         /// <summary>
         /// Enable cleanup policies for all projects.
@@ -1731,6 +1959,18 @@ namespace Pulumi.GitLab
         public Input<bool>? DeactivateDormantUsers { get; set; }
 
         /// <summary>
+        /// Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+        /// </summary>
+        [Input("deactivateDormantUsersPeriod")]
+        public Input<int>? DeactivateDormantUsersPeriod { get; set; }
+
+        /// <summary>
+        /// Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+        /// </summary>
+        [Input("decompressArchiveFileTimeout")]
+        public Input<int>? DecompressArchiveFileTimeout { get; set; }
+
+        /// <summary>
         /// Set the default expiration time for each job’s artifacts.
         /// </summary>
         [Input("defaultArtifactsExpireIn")]
@@ -1749,6 +1989,12 @@ namespace Pulumi.GitLab
         public Input<int>? DefaultBranchProtection { get; set; }
 
         /// <summary>
+        /// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+        /// </summary>
+        [Input("defaultBranchProtectionDefaults")]
+        public Input<Inputs.ApplicationSettingsDefaultBranchProtectionDefaultsArgs>? DefaultBranchProtectionDefaults { get; set; }
+
+        /// <summary>
         /// Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         /// </summary>
         [Input("defaultCiConfigPath")]
@@ -1759,6 +2005,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("defaultGroupVisibility")]
         public Input<string>? DefaultGroupVisibility { get; set; }
+
+        /// <summary>
+        /// Default preferred language for users who are not logged in.
+        /// </summary>
+        [Input("defaultPreferredLanguage")]
+        public Input<string>? DefaultPreferredLanguage { get; set; }
 
         /// <summary>
         /// Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
@@ -1785,16 +2037,40 @@ namespace Pulumi.GitLab
         public Input<string>? DefaultSnippetVisibility { get; set; }
 
         /// <summary>
+        /// Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+        /// </summary>
+        [Input("defaultSyntaxHighlightingTheme")]
+        public Input<int>? DefaultSyntaxHighlightingTheme { get; set; }
+
+        /// <summary>
         /// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
         /// </summary>
         [Input("deleteInactiveProjects")]
         public Input<bool>? DeleteInactiveProjects { get; set; }
 
         /// <summary>
+        /// Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Input("deleteUnconfirmedUsers")]
+        public Input<bool>? DeleteUnconfirmedUsers { get; set; }
+
+        /// <summary>
         /// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         /// </summary>
         [Input("deletionAdjournedPeriod")]
         public Input<int>? DeletionAdjournedPeriod { get; set; }
+
+        /// <summary>
+        /// (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+        /// </summary>
+        [Input("diagramsnetEnabled")]
+        public Input<bool>? DiagramsnetEnabled { get; set; }
+
+        /// <summary>
+        /// The Diagrams.net instance URL for integration.
+        /// </summary>
+        [Input("diagramsnetUrl")]
+        public Input<string>? DiagramsnetUrl { get; set; }
 
         /// <summary>
         /// Maximum files in a diff.
@@ -1815,10 +2091,22 @@ namespace Pulumi.GitLab
         public Input<int>? DiffMaxPatchBytes { get; set; }
 
         /// <summary>
+        /// Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+        /// </summary>
+        [Input("disableAdminOauthScopes")]
+        public Input<bool>? DisableAdminOauthScopes { get; set; }
+
+        /// <summary>
         /// Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
         /// </summary>
         [Input("disableFeedToken")]
         public Input<bool>? DisableFeedToken { get; set; }
+
+        /// <summary>
+        /// Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+        /// </summary>
+        [Input("disablePersonalAccessTokens")]
+        public Input<bool>? DisablePersonalAccessTokens { get; set; }
 
         [Input("disabledOauthSignInSources")]
         private InputList<string>? _disabledOauthSignInSources;
@@ -1869,10 +2157,22 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
+        /// Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+        /// </summary>
+        [Input("downstreamPipelineTriggerLimitPerProjectUserSha")]
+        public Input<int>? DownstreamPipelineTriggerLimitPerProjectUserSha { get; set; }
+
+        /// <summary>
         /// The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
         /// </summary>
         [Input("dsaKeyRestriction")]
         public Input<int>? DsaKeyRestriction { get; set; }
+
+        /// <summary>
+        /// Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Input("duoFeaturesEnabled")]
+        public Input<bool>? DuoFeaturesEnabled { get; set; }
 
         /// <summary>
         /// The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
@@ -3276,6 +3576,12 @@ namespace Pulumi.GitLab
         public Input<bool>? AkismetEnabled { get; set; }
 
         /// <summary>
+        /// Set to true to allow users to delete their accounts. Premium and Ultimate only.
+        /// </summary>
+        [Input("allowAccountDeletion")]
+        public Input<bool>? AllowAccountDeletion { get; set; }
+
+        /// <summary>
         /// Set to true to allow group owners to manage LDAP.
         /// </summary>
         [Input("allowGroupOwnersToManageLdap")]
@@ -3294,10 +3600,28 @@ namespace Pulumi.GitLab
         public Input<bool>? AllowLocalRequestsFromWebHooksAndServices { get; set; }
 
         /// <summary>
+        /// Indicates whether users assigned up to the Guest role can create groups and personal projects.
+        /// </summary>
+        [Input("allowProjectCreationForGuestAndBelow")]
+        public Input<bool>? AllowProjectCreationForGuestAndBelow { get; set; }
+
+        /// <summary>
+        /// Allow using a registration token to create a runner.
+        /// </summary>
+        [Input("allowRunnerRegistrationToken")]
+        public Input<bool>? AllowRunnerRegistrationToken { get; set; }
+
+        /// <summary>
         /// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
         /// </summary>
         [Input("archiveBuildsInHumanReadable")]
         public Input<string>? ArchiveBuildsInHumanReadable { get; set; }
+
+        /// <summary>
+        /// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+        /// </summary>
+        [Input("asciidocMaxIncludes")]
+        public Input<int>? AsciidocMaxIncludes { get; set; }
 
         [Input("assetProxyAllowlists")]
         private InputList<string>? _assetProxyAllowlists;
@@ -3346,6 +3670,12 @@ namespace Pulumi.GitLab
         public Input<bool>? AuthorizedKeysEnabled { get; set; }
 
         /// <summary>
+        /// When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+        /// </summary>
+        [Input("autoBanUserOnExcessiveProjectsDownload")]
+        public Input<bool>? AutoBanUserOnExcessiveProjectsDownload { get; set; }
+
+        /// <summary>
         /// Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         /// </summary>
         [Input("autoDevopsDomain")]
@@ -3364,6 +3694,24 @@ namespace Pulumi.GitLab
         public Input<bool>? AutomaticPurchasedStorageAllocation { get; set; }
 
         /// <summary>
+        /// Maximum simultaneous Direct Transfer batches to process.
+        /// </summary>
+        [Input("bulkImportConcurrentPipelineBatchLimit")]
+        public Input<int>? BulkImportConcurrentPipelineBatchLimit { get; set; }
+
+        /// <summary>
+        /// Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+        /// </summary>
+        [Input("bulkImportEnabled")]
+        public Input<bool>? BulkImportEnabled { get; set; }
+
+        /// <summary>
+        /// Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+        /// </summary>
+        [Input("bulkImportMaxDownloadFileSize")]
+        public Input<int>? BulkImportMaxDownloadFileSize { get; set; }
+
+        /// <summary>
         /// Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         /// </summary>
         [Input("canCreateGroup")]
@@ -3376,10 +3724,40 @@ namespace Pulumi.GitLab
         public Input<bool>? CheckNamespacePlan { get; set; }
 
         /// <summary>
+        /// The maximum number of includes per pipeline.
+        /// </summary>
+        [Input("ciMaxIncludes")]
+        public Input<int>? CiMaxIncludes { get; set; }
+
+        /// <summary>
+        /// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+        /// </summary>
+        [Input("ciMaxTotalYamlSizeBytes")]
+        public Input<int>? CiMaxTotalYamlSizeBytes { get; set; }
+
+        /// <summary>
         /// Custom hostname (for private commit emails).
         /// </summary>
         [Input("commitEmailHostname")]
         public Input<string>? CommitEmailHostname { get; set; }
+
+        /// <summary>
+        /// Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+        /// </summary>
+        [Input("concurrentBitbucketImportJobsLimit")]
+        public Input<int>? ConcurrentBitbucketImportJobsLimit { get; set; }
+
+        /// <summary>
+        /// Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+        /// </summary>
+        [Input("concurrentBitbucketServerImportJobsLimit")]
+        public Input<int>? ConcurrentBitbucketServerImportJobsLimit { get; set; }
+
+        /// <summary>
+        /// Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+        /// </summary>
+        [Input("concurrentGithubImportJobsLimit")]
+        public Input<int>? ConcurrentGithubImportJobsLimit { get; set; }
 
         /// <summary>
         /// Enable cleanup policies for all projects.
@@ -3424,6 +3802,18 @@ namespace Pulumi.GitLab
         public Input<bool>? DeactivateDormantUsers { get; set; }
 
         /// <summary>
+        /// Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+        /// </summary>
+        [Input("deactivateDormantUsersPeriod")]
+        public Input<int>? DeactivateDormantUsersPeriod { get; set; }
+
+        /// <summary>
+        /// Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+        /// </summary>
+        [Input("decompressArchiveFileTimeout")]
+        public Input<int>? DecompressArchiveFileTimeout { get; set; }
+
+        /// <summary>
         /// Set the default expiration time for each job’s artifacts.
         /// </summary>
         [Input("defaultArtifactsExpireIn")]
@@ -3442,6 +3832,12 @@ namespace Pulumi.GitLab
         public Input<int>? DefaultBranchProtection { get; set; }
 
         /// <summary>
+        /// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+        /// </summary>
+        [Input("defaultBranchProtectionDefaults")]
+        public Input<Inputs.ApplicationSettingsDefaultBranchProtectionDefaultsGetArgs>? DefaultBranchProtectionDefaults { get; set; }
+
+        /// <summary>
         /// Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         /// </summary>
         [Input("defaultCiConfigPath")]
@@ -3452,6 +3848,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("defaultGroupVisibility")]
         public Input<string>? DefaultGroupVisibility { get; set; }
+
+        /// <summary>
+        /// Default preferred language for users who are not logged in.
+        /// </summary>
+        [Input("defaultPreferredLanguage")]
+        public Input<string>? DefaultPreferredLanguage { get; set; }
 
         /// <summary>
         /// Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
@@ -3478,16 +3880,40 @@ namespace Pulumi.GitLab
         public Input<string>? DefaultSnippetVisibility { get; set; }
 
         /// <summary>
+        /// Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+        /// </summary>
+        [Input("defaultSyntaxHighlightingTheme")]
+        public Input<int>? DefaultSyntaxHighlightingTheme { get; set; }
+
+        /// <summary>
         /// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
         /// </summary>
         [Input("deleteInactiveProjects")]
         public Input<bool>? DeleteInactiveProjects { get; set; }
 
         /// <summary>
+        /// Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Input("deleteUnconfirmedUsers")]
+        public Input<bool>? DeleteUnconfirmedUsers { get; set; }
+
+        /// <summary>
         /// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         /// </summary>
         [Input("deletionAdjournedPeriod")]
         public Input<int>? DeletionAdjournedPeriod { get; set; }
+
+        /// <summary>
+        /// (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+        /// </summary>
+        [Input("diagramsnetEnabled")]
+        public Input<bool>? DiagramsnetEnabled { get; set; }
+
+        /// <summary>
+        /// The Diagrams.net instance URL for integration.
+        /// </summary>
+        [Input("diagramsnetUrl")]
+        public Input<string>? DiagramsnetUrl { get; set; }
 
         /// <summary>
         /// Maximum files in a diff.
@@ -3508,10 +3934,22 @@ namespace Pulumi.GitLab
         public Input<int>? DiffMaxPatchBytes { get; set; }
 
         /// <summary>
+        /// Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+        /// </summary>
+        [Input("disableAdminOauthScopes")]
+        public Input<bool>? DisableAdminOauthScopes { get; set; }
+
+        /// <summary>
         /// Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
         /// </summary>
         [Input("disableFeedToken")]
         public Input<bool>? DisableFeedToken { get; set; }
+
+        /// <summary>
+        /// Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+        /// </summary>
+        [Input("disablePersonalAccessTokens")]
+        public Input<bool>? DisablePersonalAccessTokens { get; set; }
 
         [Input("disabledOauthSignInSources")]
         private InputList<string>? _disabledOauthSignInSources;
@@ -3562,10 +4000,22 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
+        /// Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+        /// </summary>
+        [Input("downstreamPipelineTriggerLimitPerProjectUserSha")]
+        public Input<int>? DownstreamPipelineTriggerLimitPerProjectUserSha { get; set; }
+
+        /// <summary>
         /// The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
         /// </summary>
         [Input("dsaKeyRestriction")]
         public Input<int>? DsaKeyRestriction { get; set; }
+
+        /// <summary>
+        /// Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Input("duoFeaturesEnabled")]
+        public Input<bool>? DuoFeaturesEnabled { get; set; }
 
         /// <summary>
         /// The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.

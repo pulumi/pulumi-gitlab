@@ -27,14 +27,22 @@ type ApplicationSettings struct {
 	AkismetApiKey pulumi.StringOutput `pulumi:"akismetApiKey"`
 	// (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
 	AkismetEnabled pulumi.BoolOutput `pulumi:"akismetEnabled"`
+	// Set to true to allow users to delete their accounts. Premium and Ultimate only.
+	AllowAccountDeletion pulumi.BoolOutput `pulumi:"allowAccountDeletion"`
 	// Set to true to allow group owners to manage LDAP.
 	AllowGroupOwnersToManageLdap pulumi.BoolOutput `pulumi:"allowGroupOwnersToManageLdap"`
 	// Allow requests to the local network from system hooks.
 	AllowLocalRequestsFromSystemHooks pulumi.BoolOutput `pulumi:"allowLocalRequestsFromSystemHooks"`
 	// Allow requests to the local network from web hooks and services.
 	AllowLocalRequestsFromWebHooksAndServices pulumi.BoolOutput `pulumi:"allowLocalRequestsFromWebHooksAndServices"`
+	// Indicates whether users assigned up to the Guest role can create groups and personal projects.
+	AllowProjectCreationForGuestAndBelow pulumi.BoolOutput `pulumi:"allowProjectCreationForGuestAndBelow"`
+	// Allow using a registration token to create a runner.
+	AllowRunnerRegistrationToken pulumi.BoolOutput `pulumi:"allowRunnerRegistrationToken"`
 	// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 	ArchiveBuildsInHumanReadable pulumi.StringOutput `pulumi:"archiveBuildsInHumanReadable"`
+	// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+	AsciidocMaxIncludes pulumi.IntOutput `pulumi:"asciidocMaxIncludes"`
 	// Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
 	AssetProxyAllowlists pulumi.StringArrayOutput `pulumi:"assetProxyAllowlists"`
 	// (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
@@ -45,18 +53,36 @@ type ApplicationSettings struct {
 	AssetProxyUrl pulumi.StringOutput `pulumi:"assetProxyUrl"`
 	// By default, we write to the authorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
 	AuthorizedKeysEnabled pulumi.BoolOutput `pulumi:"authorizedKeysEnabled"`
+	// When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+	AutoBanUserOnExcessiveProjectsDownload pulumi.BoolOutput `pulumi:"autoBanUserOnExcessiveProjectsDownload"`
 	// Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
 	AutoDevopsDomain pulumi.StringOutput `pulumi:"autoDevopsDomain"`
 	// Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
 	AutoDevopsEnabled pulumi.BoolOutput `pulumi:"autoDevopsEnabled"`
 	// Enabling this permits automatic allocation of purchased storage in a namespace.
 	AutomaticPurchasedStorageAllocation pulumi.BoolOutput `pulumi:"automaticPurchasedStorageAllocation"`
+	// Maximum simultaneous Direct Transfer batches to process.
+	BulkImportConcurrentPipelineBatchLimit pulumi.IntOutput `pulumi:"bulkImportConcurrentPipelineBatchLimit"`
+	// Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+	BulkImportEnabled pulumi.BoolOutput `pulumi:"bulkImportEnabled"`
+	// Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+	BulkImportMaxDownloadFileSize pulumi.IntOutput `pulumi:"bulkImportMaxDownloadFileSize"`
 	// Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
 	CanCreateGroup pulumi.BoolOutput `pulumi:"canCreateGroup"`
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan pulumi.BoolOutput `pulumi:"checkNamespacePlan"`
+	// The maximum number of includes per pipeline.
+	CiMaxIncludes pulumi.IntOutput `pulumi:"ciMaxIncludes"`
+	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+	CiMaxTotalYamlSizeBytes pulumi.IntOutput `pulumi:"ciMaxTotalYamlSizeBytes"`
 	// Custom hostname (for private commit emails).
 	CommitEmailHostname pulumi.StringOutput `pulumi:"commitEmailHostname"`
+	// Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+	ConcurrentBitbucketImportJobsLimit pulumi.IntOutput `pulumi:"concurrentBitbucketImportJobsLimit"`
+	// Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+	ConcurrentBitbucketServerImportJobsLimit pulumi.IntOutput `pulumi:"concurrentBitbucketServerImportJobsLimit"`
+	// Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+	ConcurrentGithubImportJobsLimit pulumi.IntOutput `pulumi:"concurrentGithubImportJobsLimit"`
 	// Enable cleanup policies for all projects.
 	ContainerExpirationPoliciesEnableHistoricEntries pulumi.BoolOutput `pulumi:"containerExpirationPoliciesEnableHistoricEntries"`
 	// The maximum number of tags that can be deleted in a single execution of cleanup policies.
@@ -71,16 +97,24 @@ type ApplicationSettings struct {
 	ContainerRegistryTokenExpireDelay pulumi.IntOutput `pulumi:"containerRegistryTokenExpireDelay"`
 	// Enable automatic deactivation of dormant users.
 	DeactivateDormantUsers pulumi.BoolOutput `pulumi:"deactivateDormantUsers"`
+	// Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+	DeactivateDormantUsersPeriod pulumi.IntOutput `pulumi:"deactivateDormantUsersPeriod"`
+	// Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+	DecompressArchiveFileTimeout pulumi.IntOutput `pulumi:"decompressArchiveFileTimeout"`
 	// Set the default expiration time for each job’s artifacts.
 	DefaultArtifactsExpireIn pulumi.StringOutput `pulumi:"defaultArtifactsExpireIn"`
 	// Instance-level custom initial branch name (introduced in GitLab 13.2).
 	DefaultBranchName pulumi.StringOutput `pulumi:"defaultBranchName"`
 	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
 	DefaultBranchProtection pulumi.IntOutput `pulumi:"defaultBranchProtection"`
+	// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+	DefaultBranchProtectionDefaults ApplicationSettingsDefaultBranchProtectionDefaultsOutput `pulumi:"defaultBranchProtectionDefaults"`
 	// Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
 	DefaultCiConfigPath pulumi.StringOutput `pulumi:"defaultCiConfigPath"`
 	// What visibility level new groups receive. Can take private, internal and public as a parameter.
 	DefaultGroupVisibility pulumi.StringOutput `pulumi:"defaultGroupVisibility"`
+	// Default preferred language for users who are not logged in.
+	DefaultPreferredLanguage pulumi.StringOutput `pulumi:"defaultPreferredLanguage"`
 	// Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
 	DefaultProjectCreation pulumi.IntOutput `pulumi:"defaultProjectCreation"`
 	// What visibility level new projects receive. Can take private, internal and public as a parameter.
@@ -89,18 +123,30 @@ type ApplicationSettings struct {
 	DefaultProjectsLimit pulumi.IntOutput `pulumi:"defaultProjectsLimit"`
 	// What visibility level new snippets receive. Can take private, internal and public as a parameter.
 	DefaultSnippetVisibility pulumi.StringOutput `pulumi:"defaultSnippetVisibility"`
+	// Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+	DefaultSyntaxHighlightingTheme pulumi.IntOutput `pulumi:"defaultSyntaxHighlightingTheme"`
 	// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
 	DeleteInactiveProjects pulumi.BoolOutput `pulumi:"deleteInactiveProjects"`
+	// Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+	DeleteUnconfirmedUsers pulumi.BoolOutput `pulumi:"deleteUnconfirmedUsers"`
 	// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
 	DeletionAdjournedPeriod pulumi.IntOutput `pulumi:"deletionAdjournedPeriod"`
+	// (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+	DiagramsnetEnabled pulumi.BoolOutput `pulumi:"diagramsnetEnabled"`
+	// The Diagrams.net instance URL for integration.
+	DiagramsnetUrl pulumi.StringOutput `pulumi:"diagramsnetUrl"`
 	// Maximum files in a diff.
 	DiffMaxFiles pulumi.IntOutput `pulumi:"diffMaxFiles"`
 	// Maximum lines in a diff.
 	DiffMaxLines pulumi.IntOutput `pulumi:"diffMaxLines"`
 	// Maximum diff patch size, in bytes.
 	DiffMaxPatchBytes pulumi.IntOutput `pulumi:"diffMaxPatchBytes"`
+	// Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+	DisableAdminOauthScopes pulumi.BoolOutput `pulumi:"disableAdminOauthScopes"`
 	// Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
 	DisableFeedToken pulumi.BoolOutput `pulumi:"disableFeedToken"`
+	// Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+	DisablePersonalAccessTokens pulumi.BoolOutput `pulumi:"disablePersonalAccessTokens"`
 	// Disabled OAuth sign-in sources.
 	DisabledOauthSignInSources pulumi.StringArrayOutput `pulumi:"disabledOauthSignInSources"`
 	// Enforce DNS rebinding attack protection.
@@ -111,8 +157,12 @@ type ApplicationSettings struct {
 	DomainDenylistEnabled pulumi.BoolOutput `pulumi:"domainDenylistEnabled"`
 	// Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
 	DomainDenylists pulumi.StringArrayOutput `pulumi:"domainDenylists"`
+	// Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+	DownstreamPipelineTriggerLimitPerProjectUserSha pulumi.IntOutput `pulumi:"downstreamPipelineTriggerLimitPerProjectUserSha"`
 	// The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
 	DsaKeyRestriction pulumi.IntOutput `pulumi:"dsaKeyRestriction"`
+	// Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+	DuoFeaturesEnabled pulumi.BoolOutput `pulumi:"duoFeaturesEnabled"`
 	// The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
 	EcdsaKeyRestriction pulumi.IntOutput `pulumi:"ecdsaKeyRestriction"`
 	// The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
@@ -615,14 +665,22 @@ type applicationSettingsState struct {
 	AkismetApiKey *string `pulumi:"akismetApiKey"`
 	// (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
 	AkismetEnabled *bool `pulumi:"akismetEnabled"`
+	// Set to true to allow users to delete their accounts. Premium and Ultimate only.
+	AllowAccountDeletion *bool `pulumi:"allowAccountDeletion"`
 	// Set to true to allow group owners to manage LDAP.
 	AllowGroupOwnersToManageLdap *bool `pulumi:"allowGroupOwnersToManageLdap"`
 	// Allow requests to the local network from system hooks.
 	AllowLocalRequestsFromSystemHooks *bool `pulumi:"allowLocalRequestsFromSystemHooks"`
 	// Allow requests to the local network from web hooks and services.
 	AllowLocalRequestsFromWebHooksAndServices *bool `pulumi:"allowLocalRequestsFromWebHooksAndServices"`
+	// Indicates whether users assigned up to the Guest role can create groups and personal projects.
+	AllowProjectCreationForGuestAndBelow *bool `pulumi:"allowProjectCreationForGuestAndBelow"`
+	// Allow using a registration token to create a runner.
+	AllowRunnerRegistrationToken *bool `pulumi:"allowRunnerRegistrationToken"`
 	// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 	ArchiveBuildsInHumanReadable *string `pulumi:"archiveBuildsInHumanReadable"`
+	// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+	AsciidocMaxIncludes *int `pulumi:"asciidocMaxIncludes"`
 	// Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
 	AssetProxyAllowlists []string `pulumi:"assetProxyAllowlists"`
 	// (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
@@ -633,18 +691,36 @@ type applicationSettingsState struct {
 	AssetProxyUrl *string `pulumi:"assetProxyUrl"`
 	// By default, we write to the authorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
 	AuthorizedKeysEnabled *bool `pulumi:"authorizedKeysEnabled"`
+	// When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+	AutoBanUserOnExcessiveProjectsDownload *bool `pulumi:"autoBanUserOnExcessiveProjectsDownload"`
 	// Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
 	AutoDevopsDomain *string `pulumi:"autoDevopsDomain"`
 	// Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
 	// Enabling this permits automatic allocation of purchased storage in a namespace.
 	AutomaticPurchasedStorageAllocation *bool `pulumi:"automaticPurchasedStorageAllocation"`
+	// Maximum simultaneous Direct Transfer batches to process.
+	BulkImportConcurrentPipelineBatchLimit *int `pulumi:"bulkImportConcurrentPipelineBatchLimit"`
+	// Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+	BulkImportEnabled *bool `pulumi:"bulkImportEnabled"`
+	// Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+	BulkImportMaxDownloadFileSize *int `pulumi:"bulkImportMaxDownloadFileSize"`
 	// Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan *bool `pulumi:"checkNamespacePlan"`
+	// The maximum number of includes per pipeline.
+	CiMaxIncludes *int `pulumi:"ciMaxIncludes"`
+	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+	CiMaxTotalYamlSizeBytes *int `pulumi:"ciMaxTotalYamlSizeBytes"`
 	// Custom hostname (for private commit emails).
 	CommitEmailHostname *string `pulumi:"commitEmailHostname"`
+	// Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+	ConcurrentBitbucketImportJobsLimit *int `pulumi:"concurrentBitbucketImportJobsLimit"`
+	// Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+	ConcurrentBitbucketServerImportJobsLimit *int `pulumi:"concurrentBitbucketServerImportJobsLimit"`
+	// Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+	ConcurrentGithubImportJobsLimit *int `pulumi:"concurrentGithubImportJobsLimit"`
 	// Enable cleanup policies for all projects.
 	ContainerExpirationPoliciesEnableHistoricEntries *bool `pulumi:"containerExpirationPoliciesEnableHistoricEntries"`
 	// The maximum number of tags that can be deleted in a single execution of cleanup policies.
@@ -659,16 +735,24 @@ type applicationSettingsState struct {
 	ContainerRegistryTokenExpireDelay *int `pulumi:"containerRegistryTokenExpireDelay"`
 	// Enable automatic deactivation of dormant users.
 	DeactivateDormantUsers *bool `pulumi:"deactivateDormantUsers"`
+	// Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+	DeactivateDormantUsersPeriod *int `pulumi:"deactivateDormantUsersPeriod"`
+	// Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+	DecompressArchiveFileTimeout *int `pulumi:"decompressArchiveFileTimeout"`
 	// Set the default expiration time for each job’s artifacts.
 	DefaultArtifactsExpireIn *string `pulumi:"defaultArtifactsExpireIn"`
 	// Instance-level custom initial branch name (introduced in GitLab 13.2).
 	DefaultBranchName *string `pulumi:"defaultBranchName"`
 	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
+	// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+	DefaultBranchProtectionDefaults *ApplicationSettingsDefaultBranchProtectionDefaults `pulumi:"defaultBranchProtectionDefaults"`
 	// Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
 	DefaultCiConfigPath *string `pulumi:"defaultCiConfigPath"`
 	// What visibility level new groups receive. Can take private, internal and public as a parameter.
 	DefaultGroupVisibility *string `pulumi:"defaultGroupVisibility"`
+	// Default preferred language for users who are not logged in.
+	DefaultPreferredLanguage *string `pulumi:"defaultPreferredLanguage"`
 	// Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
 	DefaultProjectCreation *int `pulumi:"defaultProjectCreation"`
 	// What visibility level new projects receive. Can take private, internal and public as a parameter.
@@ -677,18 +761,30 @@ type applicationSettingsState struct {
 	DefaultProjectsLimit *int `pulumi:"defaultProjectsLimit"`
 	// What visibility level new snippets receive. Can take private, internal and public as a parameter.
 	DefaultSnippetVisibility *string `pulumi:"defaultSnippetVisibility"`
+	// Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+	DefaultSyntaxHighlightingTheme *int `pulumi:"defaultSyntaxHighlightingTheme"`
 	// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
 	DeleteInactiveProjects *bool `pulumi:"deleteInactiveProjects"`
+	// Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+	DeleteUnconfirmedUsers *bool `pulumi:"deleteUnconfirmedUsers"`
 	// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
 	DeletionAdjournedPeriod *int `pulumi:"deletionAdjournedPeriod"`
+	// (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+	DiagramsnetEnabled *bool `pulumi:"diagramsnetEnabled"`
+	// The Diagrams.net instance URL for integration.
+	DiagramsnetUrl *string `pulumi:"diagramsnetUrl"`
 	// Maximum files in a diff.
 	DiffMaxFiles *int `pulumi:"diffMaxFiles"`
 	// Maximum lines in a diff.
 	DiffMaxLines *int `pulumi:"diffMaxLines"`
 	// Maximum diff patch size, in bytes.
 	DiffMaxPatchBytes *int `pulumi:"diffMaxPatchBytes"`
+	// Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+	DisableAdminOauthScopes *bool `pulumi:"disableAdminOauthScopes"`
 	// Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
 	DisableFeedToken *bool `pulumi:"disableFeedToken"`
+	// Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+	DisablePersonalAccessTokens *bool `pulumi:"disablePersonalAccessTokens"`
 	// Disabled OAuth sign-in sources.
 	DisabledOauthSignInSources []string `pulumi:"disabledOauthSignInSources"`
 	// Enforce DNS rebinding attack protection.
@@ -699,8 +795,12 @@ type applicationSettingsState struct {
 	DomainDenylistEnabled *bool `pulumi:"domainDenylistEnabled"`
 	// Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
 	DomainDenylists []string `pulumi:"domainDenylists"`
+	// Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+	DownstreamPipelineTriggerLimitPerProjectUserSha *int `pulumi:"downstreamPipelineTriggerLimitPerProjectUserSha"`
 	// The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
 	DsaKeyRestriction *int `pulumi:"dsaKeyRestriction"`
+	// Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+	DuoFeaturesEnabled *bool `pulumi:"duoFeaturesEnabled"`
 	// The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
 	EcdsaKeyRestriction *int `pulumi:"ecdsaKeyRestriction"`
 	// The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
@@ -1111,14 +1211,22 @@ type ApplicationSettingsState struct {
 	AkismetApiKey pulumi.StringPtrInput
 	// (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
 	AkismetEnabled pulumi.BoolPtrInput
+	// Set to true to allow users to delete their accounts. Premium and Ultimate only.
+	AllowAccountDeletion pulumi.BoolPtrInput
 	// Set to true to allow group owners to manage LDAP.
 	AllowGroupOwnersToManageLdap pulumi.BoolPtrInput
 	// Allow requests to the local network from system hooks.
 	AllowLocalRequestsFromSystemHooks pulumi.BoolPtrInput
 	// Allow requests to the local network from web hooks and services.
 	AllowLocalRequestsFromWebHooksAndServices pulumi.BoolPtrInput
+	// Indicates whether users assigned up to the Guest role can create groups and personal projects.
+	AllowProjectCreationForGuestAndBelow pulumi.BoolPtrInput
+	// Allow using a registration token to create a runner.
+	AllowRunnerRegistrationToken pulumi.BoolPtrInput
 	// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 	ArchiveBuildsInHumanReadable pulumi.StringPtrInput
+	// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+	AsciidocMaxIncludes pulumi.IntPtrInput
 	// Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
 	AssetProxyAllowlists pulumi.StringArrayInput
 	// (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
@@ -1129,18 +1237,36 @@ type ApplicationSettingsState struct {
 	AssetProxyUrl pulumi.StringPtrInput
 	// By default, we write to the authorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
 	AuthorizedKeysEnabled pulumi.BoolPtrInput
+	// When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+	AutoBanUserOnExcessiveProjectsDownload pulumi.BoolPtrInput
 	// Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
 	AutoDevopsDomain pulumi.StringPtrInput
 	// Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
 	AutoDevopsEnabled pulumi.BoolPtrInput
 	// Enabling this permits automatic allocation of purchased storage in a namespace.
 	AutomaticPurchasedStorageAllocation pulumi.BoolPtrInput
+	// Maximum simultaneous Direct Transfer batches to process.
+	BulkImportConcurrentPipelineBatchLimit pulumi.IntPtrInput
+	// Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+	BulkImportEnabled pulumi.BoolPtrInput
+	// Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+	BulkImportMaxDownloadFileSize pulumi.IntPtrInput
 	// Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
 	CanCreateGroup pulumi.BoolPtrInput
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan pulumi.BoolPtrInput
+	// The maximum number of includes per pipeline.
+	CiMaxIncludes pulumi.IntPtrInput
+	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+	CiMaxTotalYamlSizeBytes pulumi.IntPtrInput
 	// Custom hostname (for private commit emails).
 	CommitEmailHostname pulumi.StringPtrInput
+	// Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+	ConcurrentBitbucketImportJobsLimit pulumi.IntPtrInput
+	// Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+	ConcurrentBitbucketServerImportJobsLimit pulumi.IntPtrInput
+	// Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+	ConcurrentGithubImportJobsLimit pulumi.IntPtrInput
 	// Enable cleanup policies for all projects.
 	ContainerExpirationPoliciesEnableHistoricEntries pulumi.BoolPtrInput
 	// The maximum number of tags that can be deleted in a single execution of cleanup policies.
@@ -1155,16 +1281,24 @@ type ApplicationSettingsState struct {
 	ContainerRegistryTokenExpireDelay pulumi.IntPtrInput
 	// Enable automatic deactivation of dormant users.
 	DeactivateDormantUsers pulumi.BoolPtrInput
+	// Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+	DeactivateDormantUsersPeriod pulumi.IntPtrInput
+	// Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+	DecompressArchiveFileTimeout pulumi.IntPtrInput
 	// Set the default expiration time for each job’s artifacts.
 	DefaultArtifactsExpireIn pulumi.StringPtrInput
 	// Instance-level custom initial branch name (introduced in GitLab 13.2).
 	DefaultBranchName pulumi.StringPtrInput
 	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
 	DefaultBranchProtection pulumi.IntPtrInput
+	// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+	DefaultBranchProtectionDefaults ApplicationSettingsDefaultBranchProtectionDefaultsPtrInput
 	// Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
 	DefaultCiConfigPath pulumi.StringPtrInput
 	// What visibility level new groups receive. Can take private, internal and public as a parameter.
 	DefaultGroupVisibility pulumi.StringPtrInput
+	// Default preferred language for users who are not logged in.
+	DefaultPreferredLanguage pulumi.StringPtrInput
 	// Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
 	DefaultProjectCreation pulumi.IntPtrInput
 	// What visibility level new projects receive. Can take private, internal and public as a parameter.
@@ -1173,18 +1307,30 @@ type ApplicationSettingsState struct {
 	DefaultProjectsLimit pulumi.IntPtrInput
 	// What visibility level new snippets receive. Can take private, internal and public as a parameter.
 	DefaultSnippetVisibility pulumi.StringPtrInput
+	// Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+	DefaultSyntaxHighlightingTheme pulumi.IntPtrInput
 	// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
 	DeleteInactiveProjects pulumi.BoolPtrInput
+	// Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+	DeleteUnconfirmedUsers pulumi.BoolPtrInput
 	// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
 	DeletionAdjournedPeriod pulumi.IntPtrInput
+	// (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+	DiagramsnetEnabled pulumi.BoolPtrInput
+	// The Diagrams.net instance URL for integration.
+	DiagramsnetUrl pulumi.StringPtrInput
 	// Maximum files in a diff.
 	DiffMaxFiles pulumi.IntPtrInput
 	// Maximum lines in a diff.
 	DiffMaxLines pulumi.IntPtrInput
 	// Maximum diff patch size, in bytes.
 	DiffMaxPatchBytes pulumi.IntPtrInput
+	// Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+	DisableAdminOauthScopes pulumi.BoolPtrInput
 	// Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
 	DisableFeedToken pulumi.BoolPtrInput
+	// Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+	DisablePersonalAccessTokens pulumi.BoolPtrInput
 	// Disabled OAuth sign-in sources.
 	DisabledOauthSignInSources pulumi.StringArrayInput
 	// Enforce DNS rebinding attack protection.
@@ -1195,8 +1341,12 @@ type ApplicationSettingsState struct {
 	DomainDenylistEnabled pulumi.BoolPtrInput
 	// Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
 	DomainDenylists pulumi.StringArrayInput
+	// Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+	DownstreamPipelineTriggerLimitPerProjectUserSha pulumi.IntPtrInput
 	// The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
 	DsaKeyRestriction pulumi.IntPtrInput
+	// Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+	DuoFeaturesEnabled pulumi.BoolPtrInput
 	// The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
 	EcdsaKeyRestriction pulumi.IntPtrInput
 	// The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
@@ -1611,14 +1761,22 @@ type applicationSettingsArgs struct {
 	AkismetApiKey *string `pulumi:"akismetApiKey"`
 	// (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
 	AkismetEnabled *bool `pulumi:"akismetEnabled"`
+	// Set to true to allow users to delete their accounts. Premium and Ultimate only.
+	AllowAccountDeletion *bool `pulumi:"allowAccountDeletion"`
 	// Set to true to allow group owners to manage LDAP.
 	AllowGroupOwnersToManageLdap *bool `pulumi:"allowGroupOwnersToManageLdap"`
 	// Allow requests to the local network from system hooks.
 	AllowLocalRequestsFromSystemHooks *bool `pulumi:"allowLocalRequestsFromSystemHooks"`
 	// Allow requests to the local network from web hooks and services.
 	AllowLocalRequestsFromWebHooksAndServices *bool `pulumi:"allowLocalRequestsFromWebHooksAndServices"`
+	// Indicates whether users assigned up to the Guest role can create groups and personal projects.
+	AllowProjectCreationForGuestAndBelow *bool `pulumi:"allowProjectCreationForGuestAndBelow"`
+	// Allow using a registration token to create a runner.
+	AllowRunnerRegistrationToken *bool `pulumi:"allowRunnerRegistrationToken"`
 	// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 	ArchiveBuildsInHumanReadable *string `pulumi:"archiveBuildsInHumanReadable"`
+	// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+	AsciidocMaxIncludes *int `pulumi:"asciidocMaxIncludes"`
 	// Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
 	AssetProxyAllowlists []string `pulumi:"assetProxyAllowlists"`
 	// (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
@@ -1629,18 +1787,36 @@ type applicationSettingsArgs struct {
 	AssetProxyUrl *string `pulumi:"assetProxyUrl"`
 	// By default, we write to the authorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
 	AuthorizedKeysEnabled *bool `pulumi:"authorizedKeysEnabled"`
+	// When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+	AutoBanUserOnExcessiveProjectsDownload *bool `pulumi:"autoBanUserOnExcessiveProjectsDownload"`
 	// Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
 	AutoDevopsDomain *string `pulumi:"autoDevopsDomain"`
 	// Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
 	// Enabling this permits automatic allocation of purchased storage in a namespace.
 	AutomaticPurchasedStorageAllocation *bool `pulumi:"automaticPurchasedStorageAllocation"`
+	// Maximum simultaneous Direct Transfer batches to process.
+	BulkImportConcurrentPipelineBatchLimit *int `pulumi:"bulkImportConcurrentPipelineBatchLimit"`
+	// Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+	BulkImportEnabled *bool `pulumi:"bulkImportEnabled"`
+	// Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+	BulkImportMaxDownloadFileSize *int `pulumi:"bulkImportMaxDownloadFileSize"`
 	// Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan *bool `pulumi:"checkNamespacePlan"`
+	// The maximum number of includes per pipeline.
+	CiMaxIncludes *int `pulumi:"ciMaxIncludes"`
+	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+	CiMaxTotalYamlSizeBytes *int `pulumi:"ciMaxTotalYamlSizeBytes"`
 	// Custom hostname (for private commit emails).
 	CommitEmailHostname *string `pulumi:"commitEmailHostname"`
+	// Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+	ConcurrentBitbucketImportJobsLimit *int `pulumi:"concurrentBitbucketImportJobsLimit"`
+	// Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+	ConcurrentBitbucketServerImportJobsLimit *int `pulumi:"concurrentBitbucketServerImportJobsLimit"`
+	// Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+	ConcurrentGithubImportJobsLimit *int `pulumi:"concurrentGithubImportJobsLimit"`
 	// Enable cleanup policies for all projects.
 	ContainerExpirationPoliciesEnableHistoricEntries *bool `pulumi:"containerExpirationPoliciesEnableHistoricEntries"`
 	// The maximum number of tags that can be deleted in a single execution of cleanup policies.
@@ -1655,16 +1831,24 @@ type applicationSettingsArgs struct {
 	ContainerRegistryTokenExpireDelay *int `pulumi:"containerRegistryTokenExpireDelay"`
 	// Enable automatic deactivation of dormant users.
 	DeactivateDormantUsers *bool `pulumi:"deactivateDormantUsers"`
+	// Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+	DeactivateDormantUsersPeriod *int `pulumi:"deactivateDormantUsersPeriod"`
+	// Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+	DecompressArchiveFileTimeout *int `pulumi:"decompressArchiveFileTimeout"`
 	// Set the default expiration time for each job’s artifacts.
 	DefaultArtifactsExpireIn *string `pulumi:"defaultArtifactsExpireIn"`
 	// Instance-level custom initial branch name (introduced in GitLab 13.2).
 	DefaultBranchName *string `pulumi:"defaultBranchName"`
 	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
+	// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+	DefaultBranchProtectionDefaults *ApplicationSettingsDefaultBranchProtectionDefaults `pulumi:"defaultBranchProtectionDefaults"`
 	// Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
 	DefaultCiConfigPath *string `pulumi:"defaultCiConfigPath"`
 	// What visibility level new groups receive. Can take private, internal and public as a parameter.
 	DefaultGroupVisibility *string `pulumi:"defaultGroupVisibility"`
+	// Default preferred language for users who are not logged in.
+	DefaultPreferredLanguage *string `pulumi:"defaultPreferredLanguage"`
 	// Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
 	DefaultProjectCreation *int `pulumi:"defaultProjectCreation"`
 	// What visibility level new projects receive. Can take private, internal and public as a parameter.
@@ -1673,18 +1857,30 @@ type applicationSettingsArgs struct {
 	DefaultProjectsLimit *int `pulumi:"defaultProjectsLimit"`
 	// What visibility level new snippets receive. Can take private, internal and public as a parameter.
 	DefaultSnippetVisibility *string `pulumi:"defaultSnippetVisibility"`
+	// Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+	DefaultSyntaxHighlightingTheme *int `pulumi:"defaultSyntaxHighlightingTheme"`
 	// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
 	DeleteInactiveProjects *bool `pulumi:"deleteInactiveProjects"`
+	// Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+	DeleteUnconfirmedUsers *bool `pulumi:"deleteUnconfirmedUsers"`
 	// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
 	DeletionAdjournedPeriod *int `pulumi:"deletionAdjournedPeriod"`
+	// (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+	DiagramsnetEnabled *bool `pulumi:"diagramsnetEnabled"`
+	// The Diagrams.net instance URL for integration.
+	DiagramsnetUrl *string `pulumi:"diagramsnetUrl"`
 	// Maximum files in a diff.
 	DiffMaxFiles *int `pulumi:"diffMaxFiles"`
 	// Maximum lines in a diff.
 	DiffMaxLines *int `pulumi:"diffMaxLines"`
 	// Maximum diff patch size, in bytes.
 	DiffMaxPatchBytes *int `pulumi:"diffMaxPatchBytes"`
+	// Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+	DisableAdminOauthScopes *bool `pulumi:"disableAdminOauthScopes"`
 	// Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
 	DisableFeedToken *bool `pulumi:"disableFeedToken"`
+	// Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+	DisablePersonalAccessTokens *bool `pulumi:"disablePersonalAccessTokens"`
 	// Disabled OAuth sign-in sources.
 	DisabledOauthSignInSources []string `pulumi:"disabledOauthSignInSources"`
 	// Enforce DNS rebinding attack protection.
@@ -1695,8 +1891,12 @@ type applicationSettingsArgs struct {
 	DomainDenylistEnabled *bool `pulumi:"domainDenylistEnabled"`
 	// Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
 	DomainDenylists []string `pulumi:"domainDenylists"`
+	// Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+	DownstreamPipelineTriggerLimitPerProjectUserSha *int `pulumi:"downstreamPipelineTriggerLimitPerProjectUserSha"`
 	// The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
 	DsaKeyRestriction *int `pulumi:"dsaKeyRestriction"`
+	// Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+	DuoFeaturesEnabled *bool `pulumi:"duoFeaturesEnabled"`
 	// The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
 	EcdsaKeyRestriction *int `pulumi:"ecdsaKeyRestriction"`
 	// The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
@@ -2108,14 +2308,22 @@ type ApplicationSettingsArgs struct {
 	AkismetApiKey pulumi.StringPtrInput
 	// (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
 	AkismetEnabled pulumi.BoolPtrInput
+	// Set to true to allow users to delete their accounts. Premium and Ultimate only.
+	AllowAccountDeletion pulumi.BoolPtrInput
 	// Set to true to allow group owners to manage LDAP.
 	AllowGroupOwnersToManageLdap pulumi.BoolPtrInput
 	// Allow requests to the local network from system hooks.
 	AllowLocalRequestsFromSystemHooks pulumi.BoolPtrInput
 	// Allow requests to the local network from web hooks and services.
 	AllowLocalRequestsFromWebHooksAndServices pulumi.BoolPtrInput
+	// Indicates whether users assigned up to the Guest role can create groups and personal projects.
+	AllowProjectCreationForGuestAndBelow pulumi.BoolPtrInput
+	// Allow using a registration token to create a runner.
+	AllowRunnerRegistrationToken pulumi.BoolPtrInput
 	// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 	ArchiveBuildsInHumanReadable pulumi.StringPtrInput
+	// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+	AsciidocMaxIncludes pulumi.IntPtrInput
 	// Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
 	AssetProxyAllowlists pulumi.StringArrayInput
 	// (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
@@ -2126,18 +2334,36 @@ type ApplicationSettingsArgs struct {
 	AssetProxyUrl pulumi.StringPtrInput
 	// By default, we write to the authorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
 	AuthorizedKeysEnabled pulumi.BoolPtrInput
+	// When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+	AutoBanUserOnExcessiveProjectsDownload pulumi.BoolPtrInput
 	// Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
 	AutoDevopsDomain pulumi.StringPtrInput
 	// Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
 	AutoDevopsEnabled pulumi.BoolPtrInput
 	// Enabling this permits automatic allocation of purchased storage in a namespace.
 	AutomaticPurchasedStorageAllocation pulumi.BoolPtrInput
+	// Maximum simultaneous Direct Transfer batches to process.
+	BulkImportConcurrentPipelineBatchLimit pulumi.IntPtrInput
+	// Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+	BulkImportEnabled pulumi.BoolPtrInput
+	// Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+	BulkImportMaxDownloadFileSize pulumi.IntPtrInput
 	// Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
 	CanCreateGroup pulumi.BoolPtrInput
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan pulumi.BoolPtrInput
+	// The maximum number of includes per pipeline.
+	CiMaxIncludes pulumi.IntPtrInput
+	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+	CiMaxTotalYamlSizeBytes pulumi.IntPtrInput
 	// Custom hostname (for private commit emails).
 	CommitEmailHostname pulumi.StringPtrInput
+	// Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+	ConcurrentBitbucketImportJobsLimit pulumi.IntPtrInput
+	// Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+	ConcurrentBitbucketServerImportJobsLimit pulumi.IntPtrInput
+	// Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+	ConcurrentGithubImportJobsLimit pulumi.IntPtrInput
 	// Enable cleanup policies for all projects.
 	ContainerExpirationPoliciesEnableHistoricEntries pulumi.BoolPtrInput
 	// The maximum number of tags that can be deleted in a single execution of cleanup policies.
@@ -2152,16 +2378,24 @@ type ApplicationSettingsArgs struct {
 	ContainerRegistryTokenExpireDelay pulumi.IntPtrInput
 	// Enable automatic deactivation of dormant users.
 	DeactivateDormantUsers pulumi.BoolPtrInput
+	// Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+	DeactivateDormantUsersPeriod pulumi.IntPtrInput
+	// Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+	DecompressArchiveFileTimeout pulumi.IntPtrInput
 	// Set the default expiration time for each job’s artifacts.
 	DefaultArtifactsExpireIn pulumi.StringPtrInput
 	// Instance-level custom initial branch name (introduced in GitLab 13.2).
 	DefaultBranchName pulumi.StringPtrInput
 	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
 	DefaultBranchProtection pulumi.IntPtrInput
+	// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+	DefaultBranchProtectionDefaults ApplicationSettingsDefaultBranchProtectionDefaultsPtrInput
 	// Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
 	DefaultCiConfigPath pulumi.StringPtrInput
 	// What visibility level new groups receive. Can take private, internal and public as a parameter.
 	DefaultGroupVisibility pulumi.StringPtrInput
+	// Default preferred language for users who are not logged in.
+	DefaultPreferredLanguage pulumi.StringPtrInput
 	// Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
 	DefaultProjectCreation pulumi.IntPtrInput
 	// What visibility level new projects receive. Can take private, internal and public as a parameter.
@@ -2170,18 +2404,30 @@ type ApplicationSettingsArgs struct {
 	DefaultProjectsLimit pulumi.IntPtrInput
 	// What visibility level new snippets receive. Can take private, internal and public as a parameter.
 	DefaultSnippetVisibility pulumi.StringPtrInput
+	// Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+	DefaultSyntaxHighlightingTheme pulumi.IntPtrInput
 	// Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
 	DeleteInactiveProjects pulumi.BoolPtrInput
+	// Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+	DeleteUnconfirmedUsers pulumi.BoolPtrInput
 	// The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
 	DeletionAdjournedPeriod pulumi.IntPtrInput
+	// (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+	DiagramsnetEnabled pulumi.BoolPtrInput
+	// The Diagrams.net instance URL for integration.
+	DiagramsnetUrl pulumi.StringPtrInput
 	// Maximum files in a diff.
 	DiffMaxFiles pulumi.IntPtrInput
 	// Maximum lines in a diff.
 	DiffMaxLines pulumi.IntPtrInput
 	// Maximum diff patch size, in bytes.
 	DiffMaxPatchBytes pulumi.IntPtrInput
+	// Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+	DisableAdminOauthScopes pulumi.BoolPtrInput
 	// Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
 	DisableFeedToken pulumi.BoolPtrInput
+	// Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+	DisablePersonalAccessTokens pulumi.BoolPtrInput
 	// Disabled OAuth sign-in sources.
 	DisabledOauthSignInSources pulumi.StringArrayInput
 	// Enforce DNS rebinding attack protection.
@@ -2192,8 +2438,12 @@ type ApplicationSettingsArgs struct {
 	DomainDenylistEnabled pulumi.BoolPtrInput
 	// Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
 	DomainDenylists pulumi.StringArrayInput
+	// Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+	DownstreamPipelineTriggerLimitPerProjectUserSha pulumi.IntPtrInput
 	// The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
 	DsaKeyRestriction pulumi.IntPtrInput
+	// Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+	DuoFeaturesEnabled pulumi.BoolPtrInput
 	// The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
 	EcdsaKeyRestriction pulumi.IntPtrInput
 	// The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
@@ -2708,6 +2958,11 @@ func (o ApplicationSettingsOutput) AkismetEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AkismetEnabled }).(pulumi.BoolOutput)
 }
 
+// Set to true to allow users to delete their accounts. Premium and Ultimate only.
+func (o ApplicationSettingsOutput) AllowAccountDeletion() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AllowAccountDeletion }).(pulumi.BoolOutput)
+}
+
 // Set to true to allow group owners to manage LDAP.
 func (o ApplicationSettingsOutput) AllowGroupOwnersToManageLdap() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AllowGroupOwnersToManageLdap }).(pulumi.BoolOutput)
@@ -2723,9 +2978,24 @@ func (o ApplicationSettingsOutput) AllowLocalRequestsFromWebHooksAndServices() p
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AllowLocalRequestsFromWebHooksAndServices }).(pulumi.BoolOutput)
 }
 
+// Indicates whether users assigned up to the Guest role can create groups and personal projects.
+func (o ApplicationSettingsOutput) AllowProjectCreationForGuestAndBelow() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AllowProjectCreationForGuestAndBelow }).(pulumi.BoolOutput)
+}
+
+// Allow using a registration token to create a runner.
+func (o ApplicationSettingsOutput) AllowRunnerRegistrationToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AllowRunnerRegistrationToken }).(pulumi.BoolOutput)
+}
+
 // Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 func (o ApplicationSettingsOutput) ArchiveBuildsInHumanReadable() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.ArchiveBuildsInHumanReadable }).(pulumi.StringOutput)
+}
+
+// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+func (o ApplicationSettingsOutput) AsciidocMaxIncludes() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.AsciidocMaxIncludes }).(pulumi.IntOutput)
 }
 
 // Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
@@ -2753,6 +3023,11 @@ func (o ApplicationSettingsOutput) AuthorizedKeysEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AuthorizedKeysEnabled }).(pulumi.BoolOutput)
 }
 
+// When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+func (o ApplicationSettingsOutput) AutoBanUserOnExcessiveProjectsDownload() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AutoBanUserOnExcessiveProjectsDownload }).(pulumi.BoolOutput)
+}
+
 // Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
 func (o ApplicationSettingsOutput) AutoDevopsDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.AutoDevopsDomain }).(pulumi.StringOutput)
@@ -2768,6 +3043,21 @@ func (o ApplicationSettingsOutput) AutomaticPurchasedStorageAllocation() pulumi.
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AutomaticPurchasedStorageAllocation }).(pulumi.BoolOutput)
 }
 
+// Maximum simultaneous Direct Transfer batches to process.
+func (o ApplicationSettingsOutput) BulkImportConcurrentPipelineBatchLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.BulkImportConcurrentPipelineBatchLimit }).(pulumi.IntOutput)
+}
+
+// Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+func (o ApplicationSettingsOutput) BulkImportEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.BulkImportEnabled }).(pulumi.BoolOutput)
+}
+
+// Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+func (o ApplicationSettingsOutput) BulkImportMaxDownloadFileSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.BulkImportMaxDownloadFileSize }).(pulumi.IntOutput)
+}
+
 // Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
 func (o ApplicationSettingsOutput) CanCreateGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.CanCreateGroup }).(pulumi.BoolOutput)
@@ -2778,9 +3068,34 @@ func (o ApplicationSettingsOutput) CheckNamespacePlan() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.CheckNamespacePlan }).(pulumi.BoolOutput)
 }
 
+// The maximum number of includes per pipeline.
+func (o ApplicationSettingsOutput) CiMaxIncludes() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.CiMaxIncludes }).(pulumi.IntOutput)
+}
+
+// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+func (o ApplicationSettingsOutput) CiMaxTotalYamlSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.CiMaxTotalYamlSizeBytes }).(pulumi.IntOutput)
+}
+
 // Custom hostname (for private commit emails).
 func (o ApplicationSettingsOutput) CommitEmailHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.CommitEmailHostname }).(pulumi.StringOutput)
+}
+
+// Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+func (o ApplicationSettingsOutput) ConcurrentBitbucketImportJobsLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ConcurrentBitbucketImportJobsLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+func (o ApplicationSettingsOutput) ConcurrentBitbucketServerImportJobsLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ConcurrentBitbucketServerImportJobsLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+func (o ApplicationSettingsOutput) ConcurrentGithubImportJobsLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ConcurrentGithubImportJobsLimit }).(pulumi.IntOutput)
 }
 
 // Enable cleanup policies for all projects.
@@ -2822,6 +3137,16 @@ func (o ApplicationSettingsOutput) DeactivateDormantUsers() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DeactivateDormantUsers }).(pulumi.BoolOutput)
 }
 
+// Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+func (o ApplicationSettingsOutput) DeactivateDormantUsersPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.DeactivateDormantUsersPeriod }).(pulumi.IntOutput)
+}
+
+// Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+func (o ApplicationSettingsOutput) DecompressArchiveFileTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.DecompressArchiveFileTimeout }).(pulumi.IntOutput)
+}
+
 // Set the default expiration time for each job’s artifacts.
 func (o ApplicationSettingsOutput) DefaultArtifactsExpireIn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.DefaultArtifactsExpireIn }).(pulumi.StringOutput)
@@ -2837,6 +3162,13 @@ func (o ApplicationSettingsOutput) DefaultBranchProtection() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.DefaultBranchProtection }).(pulumi.IntOutput)
 }
 
+// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+func (o ApplicationSettingsOutput) DefaultBranchProtectionDefaults() ApplicationSettingsDefaultBranchProtectionDefaultsOutput {
+	return o.ApplyT(func(v *ApplicationSettings) ApplicationSettingsDefaultBranchProtectionDefaultsOutput {
+		return v.DefaultBranchProtectionDefaults
+	}).(ApplicationSettingsDefaultBranchProtectionDefaultsOutput)
+}
+
 // Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
 func (o ApplicationSettingsOutput) DefaultCiConfigPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.DefaultCiConfigPath }).(pulumi.StringOutput)
@@ -2845,6 +3177,11 @@ func (o ApplicationSettingsOutput) DefaultCiConfigPath() pulumi.StringOutput {
 // What visibility level new groups receive. Can take private, internal and public as a parameter.
 func (o ApplicationSettingsOutput) DefaultGroupVisibility() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.DefaultGroupVisibility }).(pulumi.StringOutput)
+}
+
+// Default preferred language for users who are not logged in.
+func (o ApplicationSettingsOutput) DefaultPreferredLanguage() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.DefaultPreferredLanguage }).(pulumi.StringOutput)
 }
 
 // Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
@@ -2867,14 +3204,34 @@ func (o ApplicationSettingsOutput) DefaultSnippetVisibility() pulumi.StringOutpu
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.DefaultSnippetVisibility }).(pulumi.StringOutput)
 }
 
+// Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+func (o ApplicationSettingsOutput) DefaultSyntaxHighlightingTheme() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.DefaultSyntaxHighlightingTheme }).(pulumi.IntOutput)
+}
+
 // Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
 func (o ApplicationSettingsOutput) DeleteInactiveProjects() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DeleteInactiveProjects }).(pulumi.BoolOutput)
 }
 
+// Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+func (o ApplicationSettingsOutput) DeleteUnconfirmedUsers() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DeleteUnconfirmedUsers }).(pulumi.BoolOutput)
+}
+
 // The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
 func (o ApplicationSettingsOutput) DeletionAdjournedPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.DeletionAdjournedPeriod }).(pulumi.IntOutput)
+}
+
+// (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+func (o ApplicationSettingsOutput) DiagramsnetEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DiagramsnetEnabled }).(pulumi.BoolOutput)
+}
+
+// The Diagrams.net instance URL for integration.
+func (o ApplicationSettingsOutput) DiagramsnetUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.DiagramsnetUrl }).(pulumi.StringOutput)
 }
 
 // Maximum files in a diff.
@@ -2892,9 +3249,19 @@ func (o ApplicationSettingsOutput) DiffMaxPatchBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.DiffMaxPatchBytes }).(pulumi.IntOutput)
 }
 
+// Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+func (o ApplicationSettingsOutput) DisableAdminOauthScopes() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DisableAdminOauthScopes }).(pulumi.BoolOutput)
+}
+
 // Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
 func (o ApplicationSettingsOutput) DisableFeedToken() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DisableFeedToken }).(pulumi.BoolOutput)
+}
+
+// Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+func (o ApplicationSettingsOutput) DisablePersonalAccessTokens() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DisablePersonalAccessTokens }).(pulumi.BoolOutput)
 }
 
 // Disabled OAuth sign-in sources.
@@ -2922,9 +3289,21 @@ func (o ApplicationSettingsOutput) DomainDenylists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringArrayOutput { return v.DomainDenylists }).(pulumi.StringArrayOutput)
 }
 
+// Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+func (o ApplicationSettingsOutput) DownstreamPipelineTriggerLimitPerProjectUserSha() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.DownstreamPipelineTriggerLimitPerProjectUserSha
+	}).(pulumi.IntOutput)
+}
+
 // The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
 func (o ApplicationSettingsOutput) DsaKeyRestriction() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.DsaKeyRestriction }).(pulumi.IntOutput)
+}
+
+// Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+func (o ApplicationSettingsOutput) DuoFeaturesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DuoFeaturesEnabled }).(pulumi.BoolOutput)
 }
 
 // The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.

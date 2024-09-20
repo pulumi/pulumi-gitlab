@@ -5,6 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ApplicationSettingsDefaultBranchProtectionDefaults {
+    /**
+     * Allow force push for all users with push access.
+     */
+    allowForcePush?: pulumi.Input<boolean>;
+    /**
+     * An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+     */
+    allowedToMerges?: pulumi.Input<any[]>;
+    /**
+     * An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+     */
+    allowedToPushes?: pulumi.Input<any[]>;
+    /**
+     * Allow developers to initial push.
+     */
+    developerCanInitialPush?: pulumi.Input<boolean>;
+}
+
 export interface BranchCommit {
     /**
      * The email of the author.
@@ -416,6 +435,25 @@ export interface GroupAccessTokenRotationConfiguration {
     rotateBeforeDays: pulumi.Input<number>;
 }
 
+export interface GroupDefaultBranchProtectionDefaults {
+    /**
+     * Allow force push for all users with push access.
+     */
+    allowForcePush?: pulumi.Input<boolean>;
+    /**
+     * An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+     */
+    allowedToMerges?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+     */
+    allowedToPushes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allow developers to initial push.
+     */
+    developerCanInitialPush?: pulumi.Input<boolean>;
+}
+
 export interface GroupEpicBoardList {
     /**
      * The ID of the list.
@@ -549,6 +587,10 @@ export interface GroupPushRules {
      * GitLab will reject any files that are likely to contain secrets.
      */
     preventSecrets?: pulumi.Input<boolean>;
+    /**
+     * Reject commit when it’s not DCO certified.
+     */
+    rejectNonDcoCommits?: pulumi.Input<boolean>;
     /**
      * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
      */
@@ -745,6 +787,10 @@ export interface ProjectPushRules {
      */
     preventSecrets?: pulumi.Input<boolean>;
     /**
+     * Reject commit when it’s not DCO certified.
+     */
+    rejectNonDcoCommits?: pulumi.Input<boolean>;
+    /**
      * Reject commit when it’s not signed through GPG.
      */
     rejectUnsignedCommits?: pulumi.Input<boolean>;
@@ -810,11 +856,11 @@ export interface ProjectTagRelease {
 
 export interface TagProtectionAllowedToCreate {
     /**
-     * Level of access.
+     * Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
-     * Readable description of level of access.
+     * Readable description of access level.
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**

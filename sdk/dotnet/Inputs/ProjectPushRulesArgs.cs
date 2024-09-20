@@ -79,6 +79,12 @@ namespace Pulumi.GitLab.Inputs
         public Input<bool>? PreventSecrets { get; set; }
 
         /// <summary>
+        /// Reject commit when it’s not DCO certified.
+        /// </summary>
+        [Input("rejectNonDcoCommits")]
+        public Input<bool>? RejectNonDcoCommits { get; set; }
+
+        /// <summary>
         /// Reject commit when it’s not signed through GPG.
         /// </summary>
         [Input("rejectUnsignedCommits")]

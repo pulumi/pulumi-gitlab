@@ -443,6 +443,12 @@ namespace Pulumi.GitLab
         public Output<bool> PipelinesEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        /// </summary>
+        [Output("preReceiveSecretDetectionEnabled")]
+        public Output<bool> PreReceiveSecretDetectionEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Show link to create/view merge request when pushing from the command line
         /// </summary>
         [Output("printingMergeRequestLinkEnabled")]
@@ -1081,6 +1087,12 @@ namespace Pulumi.GitLab
         public Input<bool>? PipelinesEnabled { get; set; }
 
         /// <summary>
+        /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        /// </summary>
+        [Input("preReceiveSecretDetectionEnabled")]
+        public Input<bool>? PreReceiveSecretDetectionEnabled { get; set; }
+
+        /// <summary>
         /// Show link to create/view merge request when pushing from the command line
         /// </summary>
         [Input("printingMergeRequestLinkEnabled")]
@@ -1692,6 +1704,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pipelinesEnabled")]
         public Input<bool>? PipelinesEnabled { get; set; }
+
+        /// <summary>
+        /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        /// </summary>
+        [Input("preReceiveSecretDetectionEnabled")]
+        public Input<bool>? PreReceiveSecretDetectionEnabled { get; set; }
 
         /// <summary>
         /// Show link to create/view merge request when pushing from the command line

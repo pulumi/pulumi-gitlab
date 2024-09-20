@@ -13,13 +13,13 @@ namespace Pulumi.GitLab.Inputs
     public sealed class TagProtectionAllowedToCreateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Level of access.
+        /// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
-        /// Readable description of level of access.
+        /// Readable description of access level.
         /// </summary>
         [Input("accessLevelDescription")]
         public Input<string>? AccessLevelDescription { get; set; }

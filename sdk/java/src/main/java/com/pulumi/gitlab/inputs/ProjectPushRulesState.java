@@ -198,6 +198,21 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Reject commit when it’s not DCO certified.
+     * 
+     */
+    @Import(name="rejectNonDcoCommits")
+    private @Nullable Output<Boolean> rejectNonDcoCommits;
+
+    /**
+     * @return Reject commit when it’s not DCO certified.
+     * 
+     */
+    public Optional<Output<Boolean>> rejectNonDcoCommits() {
+        return Optional.ofNullable(this.rejectNonDcoCommits);
+    }
+
+    /**
      * Reject commit when it’s not signed.
      * 
      */
@@ -227,6 +242,7 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
         this.memberCheck = $.memberCheck;
         this.preventSecrets = $.preventSecrets;
         this.project = $.project;
+        this.rejectNonDcoCommits = $.rejectNonDcoCommits;
         this.rejectUnsignedCommits = $.rejectUnsignedCommits;
     }
 
@@ -498,6 +514,27 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param rejectNonDcoCommits Reject commit when it’s not DCO certified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectNonDcoCommits(@Nullable Output<Boolean> rejectNonDcoCommits) {
+            $.rejectNonDcoCommits = rejectNonDcoCommits;
+            return this;
+        }
+
+        /**
+         * @param rejectNonDcoCommits Reject commit when it’s not DCO certified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectNonDcoCommits(Boolean rejectNonDcoCommits) {
+            return rejectNonDcoCommits(Output.of(rejectNonDcoCommits));
         }
 
         /**
