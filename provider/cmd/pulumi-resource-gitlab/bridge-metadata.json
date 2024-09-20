@@ -17,6 +17,19 @@
                     "asset_proxy_allowlist": {
                         "maxItemsOne": false
                     },
+                    "default_branch_protection_defaults": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_to_merge": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_to_push": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "disabled_oauth_sign_in_sources": {
                         "maxItemsOne": false
                     },
@@ -120,6 +133,19 @@
                 "current": "gitlab:index/group:Group",
                 "majorVersion": 8,
                 "fields": {
+                    "default_branch_protection_defaults": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_to_merge": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_to_push": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "ip_restriction_ranges": {
                         "maxItemsOne": false
                     },
@@ -248,7 +274,12 @@
             },
             "gitlab_integration_jira": {
                 "current": "gitlab:index/integrationJira:IntegrationJira",
-                "majorVersion": 8
+                "majorVersion": 8,
+                "fields": {
+                    "project_keys": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_integration_mattermost": {
                 "current": "gitlab:index/integrationMattermost:IntegrationMattermost",
@@ -278,6 +309,15 @@
             "gitlab_label": {
                 "current": "gitlab:index/label:Label",
                 "majorVersion": 8
+            },
+            "gitlab_member_role": {
+                "current": "gitlab:index/memberRole:MemberRole",
+                "majorVersion": 8,
+                "fields": {
+                    "enabled_permissions": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_pages_domain": {
                 "current": "gitlab:index/pagesDomain:PagesDomain",
@@ -527,7 +567,12 @@
             },
             "gitlab_service_jira": {
                 "current": "gitlab:index/serviceJira:ServiceJira",
-                "majorVersion": 8
+                "majorVersion": 8,
+                "fields": {
+                    "project_keys": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_service_microsoft_teams": {
                 "current": "gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams",
@@ -574,6 +619,15 @@
             "gitlab_user_gpgkey": {
                 "current": "gitlab:index/userGpgKey:UserGpgKey",
                 "majorVersion": 8
+            },
+            "gitlab_user_impersonation_token": {
+                "current": "gitlab:index/userImpersonationToken:UserImpersonationToken",
+                "majorVersion": 8,
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_user_runner": {
                 "current": "gitlab:index/userRunner:UserRunner",
@@ -732,6 +786,24 @@
             "gitlab_metadata": {
                 "current": "gitlab:index/getMetadata:getMetadata",
                 "majorVersion": 8
+            },
+            "gitlab_pipeline_schedule": {
+                "current": "gitlab:index/getPipelineSchedule:getPipelineSchedule",
+                "majorVersion": 8,
+                "fields": {
+                    "variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "gitlab_pipeline_schedules": {
+                "current": "gitlab:index/getPipelineSchedules:getPipelineSchedules",
+                "majorVersion": 8,
+                "fields": {
+                    "pipeline_schedules": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project": {
                 "current": "gitlab:index/getProject:getProject",
@@ -895,6 +967,31 @@
                                     "maxItemsOne": false
                                 },
                                 "push_access_levels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "gitlab_project_protected_tag": {
+                "current": "gitlab:index/getProjectProtectedTag:getProjectProtectedTag",
+                "majorVersion": 8,
+                "fields": {
+                    "create_access_levels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "gitlab_project_protected_tags": {
+                "current": "gitlab:index/getProjectProtectedTags:getProjectProtectedTags",
+                "majorVersion": 8,
+                "fields": {
+                    "protected_tags": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "create_access_levels": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1114,6 +1211,7 @@
             "gitlab:index/integrationSlack:IntegrationSlack": 0,
             "gitlab:index/integrationTelegram:IntegrationTelegram": 1,
             "gitlab:index/label:Label": 0,
+            "gitlab:index/memberRole:MemberRole": 1,
             "gitlab:index/pagesDomain:PagesDomain": 1,
             "gitlab:index/personalAccessToken:PersonalAccessToken": 1,
             "gitlab:index/pipelineSchedule:PipelineSchedule": 1,
@@ -1158,11 +1256,12 @@
             "gitlab:index/servicePipelinesEmail:ServicePipelinesEmail": 0,
             "gitlab:index/serviceSlack:ServiceSlack": 0,
             "gitlab:index/systemHook:SystemHook": 0,
-            "gitlab:index/tagProtection:TagProtection": 0,
+            "gitlab:index/tagProtection:TagProtection": 1,
             "gitlab:index/topic:Topic": 0,
             "gitlab:index/user:User": 0,
             "gitlab:index/userCustomAttribute:UserCustomAttribute": 0,
             "gitlab:index/userGpgKey:UserGpgKey": 0,
+            "gitlab:index/userImpersonationToken:UserImpersonationToken": 1,
             "gitlab:index/userRunner:UserRunner": 1,
             "gitlab:index/userSshKey:UserSshKey": 0
         },
@@ -1186,6 +1285,8 @@
             "gitlab:index/getInstanceVariable:getInstanceVariable": 0,
             "gitlab:index/getInstanceVariables:getInstanceVariables": 0,
             "gitlab:index/getMetadata:getMetadata": 1,
+            "gitlab:index/getPipelineSchedule:getPipelineSchedule": 1,
+            "gitlab:index/getPipelineSchedules:getPipelineSchedules": 1,
             "gitlab:index/getProject:getProject": 0,
             "gitlab:index/getProjectBranches:getProjectBranches": 0,
             "gitlab:index/getProjectHook:getProjectHook": 0,
@@ -1198,6 +1299,8 @@
             "gitlab:index/getProjectMilestones:getProjectMilestones": 0,
             "gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch": 1,
             "gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches": 1,
+            "gitlab:index/getProjectProtectedTag:getProjectProtectedTag": 1,
+            "gitlab:index/getProjectProtectedTags:getProjectProtectedTags": 1,
             "gitlab:index/getProjectTag:getProjectTag": 0,
             "gitlab:index/getProjectTags:getProjectTags": 0,
             "gitlab:index/getProjectVariable:getProjectVariable": 0,
