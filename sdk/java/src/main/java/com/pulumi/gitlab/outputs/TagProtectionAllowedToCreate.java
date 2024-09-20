@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TagProtectionAllowedToCreate {
     /**
-     * @return Level of access.
+     * @return Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
     private @Nullable String accessLevel;
     /**
-     * @return Readable description of level of access.
+     * @return Readable description of access level.
      * 
      */
     private @Nullable String accessLevelDescription;
@@ -35,14 +35,14 @@ public final class TagProtectionAllowedToCreate {
 
     private TagProtectionAllowedToCreate() {}
     /**
-     * @return Level of access.
+     * @return Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
     public Optional<String> accessLevel() {
         return Optional.ofNullable(this.accessLevel);
     }
     /**
-     * @return Readable description of level of access.
+     * @return Readable description of access level.
      * 
      */
     public Optional<String> accessLevelDescription() {

@@ -10,11 +10,13 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'ApplicationSettingsDefaultBranchProtectionDefaultsArgs',
     'BranchCommitArgs',
     'BranchProtectionAllowedToMergeArgs',
     'BranchProtectionAllowedToPushArgs',
     'BranchProtectionAllowedToUnprotectArgs',
     'GroupAccessTokenRotationConfigurationArgs',
+    'GroupDefaultBranchProtectionDefaultsArgs',
     'GroupEpicBoardListArgs',
     'GroupIssueBoardListArgs',
     'GroupProtectedEnvironmentApprovalRuleArgs',
@@ -39,6 +41,77 @@ __all__ = [
     'GetReleaseAssetsLinkArgs',
     'GetReleaseAssetsSourceArgs',
 ]
+
+@pulumi.input_type
+class ApplicationSettingsDefaultBranchProtectionDefaultsArgs:
+    def __init__(__self__, *,
+                 allow_force_push: Optional[pulumi.Input[bool]] = None,
+                 allowed_to_merges: Optional[pulumi.Input[Sequence[Any]]] = None,
+                 allowed_to_pushes: Optional[pulumi.Input[Sequence[Any]]] = None,
+                 developer_can_initial_push: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] allow_force_push: Allow force push for all users with push access.
+        :param pulumi.Input[Sequence[Any]] allowed_to_merges: An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+        :param pulumi.Input[Sequence[Any]] allowed_to_pushes: An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+        :param pulumi.Input[bool] developer_can_initial_push: Allow developers to initial push.
+        """
+        if allow_force_push is not None:
+            pulumi.set(__self__, "allow_force_push", allow_force_push)
+        if allowed_to_merges is not None:
+            pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
+        if allowed_to_pushes is not None:
+            pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+        if developer_can_initial_push is not None:
+            pulumi.set(__self__, "developer_can_initial_push", developer_can_initial_push)
+
+    @property
+    @pulumi.getter(name="allowForcePush")
+    def allow_force_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow force push for all users with push access.
+        """
+        return pulumi.get(self, "allow_force_push")
+
+    @allow_force_push.setter
+    def allow_force_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_force_push", value)
+
+    @property
+    @pulumi.getter(name="allowedToMerges")
+    def allowed_to_merges(self) -> Optional[pulumi.Input[Sequence[Any]]]:
+        """
+        An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+        """
+        return pulumi.get(self, "allowed_to_merges")
+
+    @allowed_to_merges.setter
+    def allowed_to_merges(self, value: Optional[pulumi.Input[Sequence[Any]]]):
+        pulumi.set(self, "allowed_to_merges", value)
+
+    @property
+    @pulumi.getter(name="allowedToPushes")
+    def allowed_to_pushes(self) -> Optional[pulumi.Input[Sequence[Any]]]:
+        """
+        An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+        """
+        return pulumi.get(self, "allowed_to_pushes")
+
+    @allowed_to_pushes.setter
+    def allowed_to_pushes(self, value: Optional[pulumi.Input[Sequence[Any]]]):
+        pulumi.set(self, "allowed_to_pushes", value)
+
+    @property
+    @pulumi.getter(name="developerCanInitialPush")
+    def developer_can_initial_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow developers to initial push.
+        """
+        return pulumi.get(self, "developer_can_initial_push")
+
+    @developer_can_initial_push.setter
+    def developer_can_initial_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "developer_can_initial_push", value)
+
 
 @pulumi.input_type
 class BranchCommitArgs:
@@ -474,6 +547,77 @@ class GroupAccessTokenRotationConfigurationArgs:
 
 
 @pulumi.input_type
+class GroupDefaultBranchProtectionDefaultsArgs:
+    def __init__(__self__, *,
+                 allow_force_push: Optional[pulumi.Input[bool]] = None,
+                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 developer_can_initial_push: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] allow_force_push: Allow force push for all users with push access.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_to_merges: An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_to_pushes: An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+        :param pulumi.Input[bool] developer_can_initial_push: Allow developers to initial push.
+        """
+        if allow_force_push is not None:
+            pulumi.set(__self__, "allow_force_push", allow_force_push)
+        if allowed_to_merges is not None:
+            pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
+        if allowed_to_pushes is not None:
+            pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+        if developer_can_initial_push is not None:
+            pulumi.set(__self__, "developer_can_initial_push", developer_can_initial_push)
+
+    @property
+    @pulumi.getter(name="allowForcePush")
+    def allow_force_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow force push for all users with push access.
+        """
+        return pulumi.get(self, "allow_force_push")
+
+    @allow_force_push.setter
+    def allow_force_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_force_push", value)
+
+    @property
+    @pulumi.getter(name="allowedToMerges")
+    def allowed_to_merges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+        """
+        return pulumi.get(self, "allowed_to_merges")
+
+    @allowed_to_merges.setter
+    def allowed_to_merges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_to_merges", value)
+
+    @property
+    @pulumi.getter(name="allowedToPushes")
+    def allowed_to_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+        """
+        return pulumi.get(self, "allowed_to_pushes")
+
+    @allowed_to_pushes.setter
+    def allowed_to_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_to_pushes", value)
+
+    @property
+    @pulumi.getter(name="developerCanInitialPush")
+    def developer_can_initial_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow developers to initial push.
+        """
+        return pulumi.get(self, "developer_can_initial_push")
+
+    @developer_can_initial_push.setter
+    def developer_can_initial_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "developer_can_initial_push", value)
+
+
+@pulumi.input_type
 class GroupEpicBoardListArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[int]] = None,
@@ -819,6 +963,7 @@ class GroupPushRulesArgs:
                  max_file_size: Optional[pulumi.Input[int]] = None,
                  member_check: Optional[pulumi.Input[bool]] = None,
                  prevent_secrets: Optional[pulumi.Input[bool]] = None,
+                 reject_non_dco_commits: Optional[pulumi.Input[bool]] = None,
                  reject_unsigned_commits: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -832,6 +977,7 @@ class GroupPushRulesArgs:
         :param pulumi.Input[int] max_file_size: Maximum file size (MB) allowed.
         :param pulumi.Input[bool] member_check: Allows only GitLab users to author commits.
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
+        :param pulumi.Input[bool] reject_non_dco_commits: Reject commit when it’s not DCO certified.
         :param pulumi.Input[bool] reject_unsigned_commits: Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
         """
         if author_email_regex is not None:
@@ -856,6 +1002,8 @@ class GroupPushRulesArgs:
             pulumi.set(__self__, "member_check", member_check)
         if prevent_secrets is not None:
             pulumi.set(__self__, "prevent_secrets", prevent_secrets)
+        if reject_non_dco_commits is not None:
+            pulumi.set(__self__, "reject_non_dco_commits", reject_non_dco_commits)
         if reject_unsigned_commits is not None:
             pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
 
@@ -990,6 +1138,18 @@ class GroupPushRulesArgs:
     @prevent_secrets.setter
     def prevent_secrets(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prevent_secrets", value)
+
+    @property
+    @pulumi.getter(name="rejectNonDcoCommits")
+    def reject_non_dco_commits(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Reject commit when it’s not DCO certified.
+        """
+        return pulumi.get(self, "reject_non_dco_commits")
+
+    @reject_non_dco_commits.setter
+    def reject_non_dco_commits(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reject_non_dco_commits", value)
 
     @property
     @pulumi.getter(name="rejectUnsignedCommits")
@@ -1558,6 +1718,7 @@ class ProjectPushRulesArgs:
                  max_file_size: Optional[pulumi.Input[int]] = None,
                  member_check: Optional[pulumi.Input[bool]] = None,
                  prevent_secrets: Optional[pulumi.Input[bool]] = None,
+                 reject_non_dco_commits: Optional[pulumi.Input[bool]] = None,
                  reject_unsigned_commits: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -1571,6 +1732,7 @@ class ProjectPushRulesArgs:
         :param pulumi.Input[int] max_file_size: Maximum file size (MB).
         :param pulumi.Input[bool] member_check: Restrict commits by author (email) to existing GitLab users.
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
+        :param pulumi.Input[bool] reject_non_dco_commits: Reject commit when it’s not DCO certified.
         :param pulumi.Input[bool] reject_unsigned_commits: Reject commit when it’s not signed through GPG.
         """
         if author_email_regex is not None:
@@ -1595,6 +1757,8 @@ class ProjectPushRulesArgs:
             pulumi.set(__self__, "member_check", member_check)
         if prevent_secrets is not None:
             pulumi.set(__self__, "prevent_secrets", prevent_secrets)
+        if reject_non_dco_commits is not None:
+            pulumi.set(__self__, "reject_non_dco_commits", reject_non_dco_commits)
         if reject_unsigned_commits is not None:
             pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
 
@@ -1729,6 +1893,18 @@ class ProjectPushRulesArgs:
     @prevent_secrets.setter
     def prevent_secrets(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prevent_secrets", value)
+
+    @property
+    @pulumi.getter(name="rejectNonDcoCommits")
+    def reject_non_dco_commits(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Reject commit when it’s not DCO certified.
+        """
+        return pulumi.get(self, "reject_non_dco_commits")
+
+    @reject_non_dco_commits.setter
+    def reject_non_dco_commits(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reject_non_dco_commits", value)
 
     @property
     @pulumi.getter(name="rejectUnsignedCommits")
@@ -1973,8 +2149,8 @@ class TagProtectionAllowedToCreateArgs:
                  group_id: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] access_level: Level of access.
-        :param pulumi.Input[str] access_level_description: Readable description of level of access.
+        :param pulumi.Input[str] access_level: Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[str] access_level_description: Readable description of access level.
         :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
@@ -1991,7 +2167,7 @@ class TagProtectionAllowedToCreateArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Level of access.
+        Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -2003,7 +2179,7 @@ class TagProtectionAllowedToCreateArgs:
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> Optional[pulumi.Input[str]]:
         """
-        Readable description of level of access.
+        Readable description of access level.
         """
         return pulumi.get(self, "access_level_description")
 

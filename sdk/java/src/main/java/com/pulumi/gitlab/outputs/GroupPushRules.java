@@ -69,6 +69,11 @@ public final class GroupPushRules {
      */
     private @Nullable Boolean preventSecrets;
     /**
+     * @return Reject commit when it’s not DCO certified.
+     * 
+     */
+    private @Nullable Boolean rejectNonDcoCommits;
+    /**
      * @return Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
      * 
      */
@@ -153,6 +158,13 @@ public final class GroupPushRules {
         return Optional.ofNullable(this.preventSecrets);
     }
     /**
+     * @return Reject commit when it’s not DCO certified.
+     * 
+     */
+    public Optional<Boolean> rejectNonDcoCommits() {
+        return Optional.ofNullable(this.rejectNonDcoCommits);
+    }
+    /**
      * @return Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
      * 
      */
@@ -180,6 +192,7 @@ public final class GroupPushRules {
         private @Nullable Integer maxFileSize;
         private @Nullable Boolean memberCheck;
         private @Nullable Boolean preventSecrets;
+        private @Nullable Boolean rejectNonDcoCommits;
         private @Nullable Boolean rejectUnsignedCommits;
         public Builder() {}
         public Builder(GroupPushRules defaults) {
@@ -195,6 +208,7 @@ public final class GroupPushRules {
     	      this.maxFileSize = defaults.maxFileSize;
     	      this.memberCheck = defaults.memberCheck;
     	      this.preventSecrets = defaults.preventSecrets;
+    	      this.rejectNonDcoCommits = defaults.rejectNonDcoCommits;
     	      this.rejectUnsignedCommits = defaults.rejectUnsignedCommits;
         }
 
@@ -265,6 +279,12 @@ public final class GroupPushRules {
             return this;
         }
         @CustomType.Setter
+        public Builder rejectNonDcoCommits(@Nullable Boolean rejectNonDcoCommits) {
+
+            this.rejectNonDcoCommits = rejectNonDcoCommits;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rejectUnsignedCommits(@Nullable Boolean rejectUnsignedCommits) {
 
             this.rejectUnsignedCommits = rejectUnsignedCommits;
@@ -283,6 +303,7 @@ public final class GroupPushRules {
             _resultValue.maxFileSize = maxFileSize;
             _resultValue.memberCheck = memberCheck;
             _resultValue.preventSecrets = preventSecrets;
+            _resultValue.rejectNonDcoCommits = rejectNonDcoCommits;
             _resultValue.rejectUnsignedCommits = rejectUnsignedCommits;
             return _resultValue;
         }

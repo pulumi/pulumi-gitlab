@@ -6,7 +6,9 @@ package com.pulumi.gitlab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -92,18 +94,78 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable notifications for issues events.
+     * Enable viewing Jira issues in GitLab.
      * 
      */
-    @Import(name="issuesEvents")
-    private @Nullable Output<Boolean> issuesEvents;
+    @Import(name="issuesEnabled")
+    private @Nullable Output<Boolean> issuesEnabled;
 
     /**
-     * @return Enable notifications for issues events.
+     * @return Enable viewing Jira issues in GitLab.
      * 
      */
-    public Optional<Output<Boolean>> issuesEvents() {
-        return Optional.ofNullable(this.issuesEvents);
+    public Optional<Output<Boolean>> issuesEnabled() {
+        return Optional.ofNullable(this.issuesEnabled);
+    }
+
+    /**
+     * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+     * 
+     */
+    @Import(name="jiraAuthType")
+    private @Nullable Output<Integer> jiraAuthType;
+
+    /**
+     * @return The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+     * 
+     */
+    public Optional<Output<Integer>> jiraAuthType() {
+        return Optional.ofNullable(this.jiraAuthType);
+    }
+
+    /**
+     * Prefix to match Jira issue keys.
+     * 
+     */
+    @Import(name="jiraIssuePrefix")
+    private @Nullable Output<String> jiraIssuePrefix;
+
+    /**
+     * @return Prefix to match Jira issue keys.
+     * 
+     */
+    public Optional<Output<String>> jiraIssuePrefix() {
+        return Optional.ofNullable(this.jiraIssuePrefix);
+    }
+
+    /**
+     * Regular expression to match Jira issue keys.
+     * 
+     */
+    @Import(name="jiraIssueRegex")
+    private @Nullable Output<String> jiraIssueRegex;
+
+    /**
+     * @return Regular expression to match Jira issue keys.
+     * 
+     */
+    public Optional<Output<String>> jiraIssueRegex() {
+        return Optional.ofNullable(this.jiraIssueRegex);
+    }
+
+    /**
+     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+     * 
+     */
+    @Import(name="jiraIssueTransitionAutomatic")
+    private @Nullable Output<Boolean> jiraIssueTransitionAutomatic;
+
+    /**
+     * @return Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> jiraIssueTransitionAutomatic() {
+        return Optional.ofNullable(this.jiraIssueTransitionAutomatic);
     }
 
     /**
@@ -122,21 +184,6 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable notifications for job events.
-     * 
-     */
-    @Import(name="jobEvents")
-    private @Nullable Output<Boolean> jobEvents;
-
-    /**
-     * @return Enable notifications for job events.
-     * 
-     */
-    public Optional<Output<Boolean>> jobEvents() {
-        return Optional.ofNullable(this.jobEvents);
-    }
-
-    /**
      * Enable notifications for merge request events
      * 
      */
@@ -152,48 +199,18 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable notifications for note events.
-     * 
-     */
-    @Import(name="noteEvents")
-    private @Nullable Output<Boolean> noteEvents;
-
-    /**
-     * @return Enable notifications for note events.
-     * 
-     */
-    public Optional<Output<Boolean>> noteEvents() {
-        return Optional.ofNullable(this.noteEvents);
-    }
-
-    /**
-     * The password of the user created to be used with GitLab/JIRA.
+     * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the user created to be used with GitLab/JIRA.
+     * @return The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
      * 
      */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
-    }
-
-    /**
-     * Enable notifications for pipeline events.
-     * 
-     */
-    @Import(name="pipelineEvents")
-    private @Nullable Output<Boolean> pipelineEvents;
-
-    /**
-     * @return Enable notifications for pipeline events.
-     * 
-     */
-    public Optional<Output<Boolean>> pipelineEvents() {
-        return Optional.ofNullable(this.pipelineEvents);
     }
 
     /**
@@ -227,33 +244,18 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable notifications for push events.
+     * Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      * 
      */
-    @Import(name="pushEvents")
-    private @Nullable Output<Boolean> pushEvents;
+    @Import(name="projectKeys")
+    private @Nullable Output<List<String>> projectKeys;
 
     /**
-     * @return Enable notifications for push events.
+     * @return Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      * 
      */
-    public Optional<Output<Boolean>> pushEvents() {
-        return Optional.ofNullable(this.pushEvents);
-    }
-
-    /**
-     * Enable notifications for tag_push events.
-     * 
-     */
-    @Import(name="tagPushEvents")
-    private @Nullable Output<Boolean> tagPushEvents;
-
-    /**
-     * @return Enable notifications for tag_push events.
-     * 
-     */
-    public Optional<Output<Boolean>> tagPushEvents() {
-        return Optional.ofNullable(this.tagPushEvents);
+    public Optional<Output<List<String>>> projectKeys() {
+        return Optional.ofNullable(this.projectKeys);
     }
 
     /**
@@ -302,14 +304,29 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The username of the user created to be used with GitLab/JIRA.
+     * Indicates whether or not to inherit default settings. Defaults to false.
+     * 
+     */
+    @Import(name="useInheritedSettings")
+    private @Nullable Output<Boolean> useInheritedSettings;
+
+    /**
+     * @return Indicates whether or not to inherit default settings. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> useInheritedSettings() {
+        return Optional.ofNullable(this.useInheritedSettings);
+    }
+
+    /**
+     * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The username of the user created to be used with GitLab/JIRA.
+     * @return The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
      * 
      */
     public Optional<Output<String>> username() {
@@ -324,20 +341,21 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
         this.commentOnEventEnabled = $.commentOnEventEnabled;
         this.commitEvents = $.commitEvents;
         this.createdAt = $.createdAt;
-        this.issuesEvents = $.issuesEvents;
+        this.issuesEnabled = $.issuesEnabled;
+        this.jiraAuthType = $.jiraAuthType;
+        this.jiraIssuePrefix = $.jiraIssuePrefix;
+        this.jiraIssueRegex = $.jiraIssueRegex;
+        this.jiraIssueTransitionAutomatic = $.jiraIssueTransitionAutomatic;
         this.jiraIssueTransitionId = $.jiraIssueTransitionId;
-        this.jobEvents = $.jobEvents;
         this.mergeRequestsEvents = $.mergeRequestsEvents;
-        this.noteEvents = $.noteEvents;
         this.password = $.password;
-        this.pipelineEvents = $.pipelineEvents;
         this.project = $.project;
         this.projectKey = $.projectKey;
-        this.pushEvents = $.pushEvents;
-        this.tagPushEvents = $.tagPushEvents;
+        this.projectKeys = $.projectKeys;
         this.title = $.title;
         this.updatedAt = $.updatedAt;
         this.url = $.url;
+        this.useInheritedSettings = $.useInheritedSettings;
         this.username = $.username;
     }
 
@@ -465,24 +483,108 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param issuesEvents Enable notifications for issues events.
+         * @param issuesEnabled Enable viewing Jira issues in GitLab.
          * 
          * @return builder
          * 
          */
-        public Builder issuesEvents(@Nullable Output<Boolean> issuesEvents) {
-            $.issuesEvents = issuesEvents;
+        public Builder issuesEnabled(@Nullable Output<Boolean> issuesEnabled) {
+            $.issuesEnabled = issuesEnabled;
             return this;
         }
 
         /**
-         * @param issuesEvents Enable notifications for issues events.
+         * @param issuesEnabled Enable viewing Jira issues in GitLab.
          * 
          * @return builder
          * 
          */
-        public Builder issuesEvents(Boolean issuesEvents) {
-            return issuesEvents(Output.of(issuesEvents));
+        public Builder issuesEnabled(Boolean issuesEnabled) {
+            return issuesEnabled(Output.of(issuesEnabled));
+        }
+
+        /**
+         * @param jiraAuthType The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraAuthType(@Nullable Output<Integer> jiraAuthType) {
+            $.jiraAuthType = jiraAuthType;
+            return this;
+        }
+
+        /**
+         * @param jiraAuthType The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraAuthType(Integer jiraAuthType) {
+            return jiraAuthType(Output.of(jiraAuthType));
+        }
+
+        /**
+         * @param jiraIssuePrefix Prefix to match Jira issue keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraIssuePrefix(@Nullable Output<String> jiraIssuePrefix) {
+            $.jiraIssuePrefix = jiraIssuePrefix;
+            return this;
+        }
+
+        /**
+         * @param jiraIssuePrefix Prefix to match Jira issue keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraIssuePrefix(String jiraIssuePrefix) {
+            return jiraIssuePrefix(Output.of(jiraIssuePrefix));
+        }
+
+        /**
+         * @param jiraIssueRegex Regular expression to match Jira issue keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraIssueRegex(@Nullable Output<String> jiraIssueRegex) {
+            $.jiraIssueRegex = jiraIssueRegex;
+            return this;
+        }
+
+        /**
+         * @param jiraIssueRegex Regular expression to match Jira issue keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraIssueRegex(String jiraIssueRegex) {
+            return jiraIssueRegex(Output.of(jiraIssueRegex));
+        }
+
+        /**
+         * @param jiraIssueTransitionAutomatic Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraIssueTransitionAutomatic(@Nullable Output<Boolean> jiraIssueTransitionAutomatic) {
+            $.jiraIssueTransitionAutomatic = jiraIssueTransitionAutomatic;
+            return this;
+        }
+
+        /**
+         * @param jiraIssueTransitionAutomatic Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraIssueTransitionAutomatic(Boolean jiraIssueTransitionAutomatic) {
+            return jiraIssueTransitionAutomatic(Output.of(jiraIssueTransitionAutomatic));
         }
 
         /**
@@ -507,27 +609,6 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param jobEvents Enable notifications for job events.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder jobEvents(@Nullable Output<Boolean> jobEvents) {
-            $.jobEvents = jobEvents;
-            return this;
-        }
-
-        /**
-         * @param jobEvents Enable notifications for job events.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder jobEvents(Boolean jobEvents) {
-            return jobEvents(Output.of(jobEvents));
-        }
-
-        /**
          * @param mergeRequestsEvents Enable notifications for merge request events
          * 
          * @return builder
@@ -549,28 +630,7 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param noteEvents Enable notifications for note events.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder noteEvents(@Nullable Output<Boolean> noteEvents) {
-            $.noteEvents = noteEvents;
-            return this;
-        }
-
-        /**
-         * @param noteEvents Enable notifications for note events.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder noteEvents(Boolean noteEvents) {
-            return noteEvents(Output.of(noteEvents));
-        }
-
-        /**
-         * @param password The password of the user created to be used with GitLab/JIRA.
+         * @param password The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
          * 
          * @return builder
          * 
@@ -581,34 +641,13 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param password The password of the user created to be used with GitLab/JIRA.
+         * @param password The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
          * 
          * @return builder
          * 
          */
         public Builder password(String password) {
             return password(Output.of(password));
-        }
-
-        /**
-         * @param pipelineEvents Enable notifications for pipeline events.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder pipelineEvents(@Nullable Output<Boolean> pipelineEvents) {
-            $.pipelineEvents = pipelineEvents;
-            return this;
-        }
-
-        /**
-         * @param pipelineEvents Enable notifications for pipeline events.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder pipelineEvents(Boolean pipelineEvents) {
-            return pipelineEvents(Output.of(pipelineEvents));
         }
 
         /**
@@ -654,45 +693,34 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pushEvents Enable notifications for push events.
+         * @param projectKeys Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
          * 
          * @return builder
          * 
          */
-        public Builder pushEvents(@Nullable Output<Boolean> pushEvents) {
-            $.pushEvents = pushEvents;
+        public Builder projectKeys(@Nullable Output<List<String>> projectKeys) {
+            $.projectKeys = projectKeys;
             return this;
         }
 
         /**
-         * @param pushEvents Enable notifications for push events.
+         * @param projectKeys Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
          * 
          * @return builder
          * 
          */
-        public Builder pushEvents(Boolean pushEvents) {
-            return pushEvents(Output.of(pushEvents));
+        public Builder projectKeys(List<String> projectKeys) {
+            return projectKeys(Output.of(projectKeys));
         }
 
         /**
-         * @param tagPushEvents Enable notifications for tag_push events.
+         * @param projectKeys Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
          * 
          * @return builder
          * 
          */
-        public Builder tagPushEvents(@Nullable Output<Boolean> tagPushEvents) {
-            $.tagPushEvents = tagPushEvents;
-            return this;
-        }
-
-        /**
-         * @param tagPushEvents Enable notifications for tag_push events.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tagPushEvents(Boolean tagPushEvents) {
-            return tagPushEvents(Output.of(tagPushEvents));
+        public Builder projectKeys(String... projectKeys) {
+            return projectKeys(List.of(projectKeys));
         }
 
         /**
@@ -759,7 +787,28 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param username The username of the user created to be used with GitLab/JIRA.
+         * @param useInheritedSettings Indicates whether or not to inherit default settings. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useInheritedSettings(@Nullable Output<Boolean> useInheritedSettings) {
+            $.useInheritedSettings = useInheritedSettings;
+            return this;
+        }
+
+        /**
+         * @param useInheritedSettings Indicates whether or not to inherit default settings. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useInheritedSettings(Boolean useInheritedSettings) {
+            return useInheritedSettings(Output.of(useInheritedSettings));
+        }
+
+        /**
+         * @param username The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
          * 
          * @return builder
          * 
@@ -770,7 +819,7 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param username The username of the user created to be used with GitLab/JIRA.
+         * @param username The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
          * 
          * @return builder
          * 

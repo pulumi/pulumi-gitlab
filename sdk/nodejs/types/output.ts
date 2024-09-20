@@ -5,6 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ApplicationSettingsDefaultBranchProtectionDefaults {
+    /**
+     * Allow force push for all users with push access.
+     */
+    allowForcePush: boolean;
+    /**
+     * An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+     */
+    allowedToMerges: any[];
+    /**
+     * An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+     */
+    allowedToPushes: any[];
+    /**
+     * Allow developers to initial push.
+     */
+    developerCanInitialPush: boolean;
+}
+
 export interface BranchCommit {
     /**
      * The email of the author.
@@ -562,6 +581,137 @@ export interface GetMetadataKas {
      * Version of KAS. It’s null if kas.enabled is false.
      */
     version: string;
+}
+
+export interface GetPipelineScheduleLastPipeline {
+    /**
+     * The pipeline ID.
+     */
+    id: number;
+    /**
+     * The ref of the pipeline.
+     */
+    ref: string;
+    /**
+     * The SHA of the pipeline.
+     */
+    sha: string;
+    /**
+     * The status of pipelines, one of: created, waiting*for*resource, preparing, pending, running, success, failed, canceled, skipped, manual, scheduled.
+     */
+    status: string;
+}
+
+export interface GetPipelineScheduleOwner {
+    /**
+     * Image URL for the user's avatar.
+     */
+    avatarUrl: string;
+    /**
+     * The user ID.
+     */
+    id: number;
+    /**
+     * Name.
+     */
+    name: string;
+    /**
+     * User's state, one of: active, blocked.
+     */
+    state: string;
+    /**
+     * Username.
+     */
+    username: string;
+    /**
+     * URL to the user's profile.
+     */
+    webUrl: string;
+}
+
+export interface GetPipelineScheduleVariable {
+    /**
+     * The key of a variable.
+     */
+    key: string;
+    /**
+     * The value of a variable.
+     */
+    value: string;
+    /**
+     * The type of a variable, one of: envVar and file.
+     */
+    variableType: string;
+}
+
+export interface GetPipelineSchedulesPipelineSchedule {
+    /**
+     * The activation status of pipeline schedule.
+     */
+    active: boolean;
+    /**
+     * The datetime of when the schedule was created.
+     */
+    createdAt: string;
+    /**
+     * The cron (e.g. `0 1 * * *`).
+     */
+    cron: string;
+    /**
+     * The timezone.
+     */
+    cronTimezone: string;
+    /**
+     * The description of the pipeline schedule.
+     */
+    description: string;
+    /**
+     * The pipeline schedule id.
+     */
+    id: string;
+    /**
+     * The datetime of when the schedule will next run.
+     */
+    nextRunAt: string;
+    /**
+     * The details of the pipeline schedule owner.
+     */
+    owner: outputs.GetPipelineSchedulesPipelineScheduleOwner;
+    /**
+     * The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `main`.
+     */
+    ref: string;
+    /**
+     * The datetime of when the schedule was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetPipelineSchedulesPipelineScheduleOwner {
+    /**
+     * Image URL for the user's avatar.
+     */
+    avatarUrl: string;
+    /**
+     * The user ID.
+     */
+    id: number;
+    /**
+     * Name.
+     */
+    name: string;
+    /**
+     * User's state, one of: active, blocked.
+     */
+    state: string;
+    /**
+     * Username.
+     */
+    username: string;
+    /**
+     * URL to the user's profile.
+     */
+    webUrl: string;
 }
 
 export interface GetProjectBranchesBranch {
@@ -1144,6 +1294,63 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
     userId?: number;
 }
 
+export interface GetProjectProtectedTagCreateAccessLevel {
+    /**
+     * Access level allowed to create protected tags.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action.
+     */
+    groupId?: number;
+    /**
+     * The ID of the create access level.
+     */
+    id: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action.
+     */
+    userId?: number;
+}
+
+export interface GetProjectProtectedTagsProtectedTag {
+    /**
+     * Array of access levels/user(s)/group(s) allowed to create protected tags.
+     */
+    createAccessLevels: outputs.GetProjectProtectedTagsProtectedTagCreateAccessLevel[];
+    /**
+     * The name of the protected tag.
+     */
+    tag: string;
+}
+
+export interface GetProjectProtectedTagsProtectedTagCreateAccessLevel {
+    /**
+     * Access level allowed to create protected tags.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action.
+     */
+    groupId?: number;
+    /**
+     * The ID of the create access level.
+     */
+    id: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action.
+     */
+    userId?: number;
+}
+
 export interface GetProjectPushRule {
     /**
      * All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -1189,6 +1396,10 @@ export interface GetProjectPushRule {
      * GitLab will reject any files that are likely to contain secrets.
      */
     preventSecrets: boolean;
+    /**
+     * Reject commit when it’s not DCO certified.
+     */
+    rejectNonDcoCommits: boolean;
     /**
      * Reject commit when it’s not signed through GPG.
      */
@@ -2184,6 +2395,25 @@ export interface GroupAccessTokenRotationConfiguration {
     rotateBeforeDays: number;
 }
 
+export interface GroupDefaultBranchProtectionDefaults {
+    /**
+     * Allow force push for all users with push access.
+     */
+    allowForcePush: boolean;
+    /**
+     * An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+     */
+    allowedToMerges: string[];
+    /**
+     * An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+     */
+    allowedToPushes: string[];
+    /**
+     * Allow developers to initial push.
+     */
+    developerCanInitialPush: boolean;
+}
+
 export interface GroupEpicBoardList {
     /**
      * The ID of the list.
@@ -2317,6 +2547,10 @@ export interface GroupPushRules {
      * GitLab will reject any files that are likely to contain secrets.
      */
     preventSecrets: boolean;
+    /**
+     * Reject commit when it’s not DCO certified.
+     */
+    rejectNonDcoCommits: boolean;
     /**
      * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
      */
@@ -2513,6 +2747,10 @@ export interface ProjectPushRules {
      */
     preventSecrets?: boolean;
     /**
+     * Reject commit when it’s not DCO certified.
+     */
+    rejectNonDcoCommits?: boolean;
+    /**
      * Reject commit when it’s not signed through GPG.
      */
     rejectUnsignedCommits?: boolean;
@@ -2578,11 +2816,11 @@ export interface ProjectTagRelease {
 
 export interface TagProtectionAllowedToCreate {
     /**
-     * Level of access.
+     * Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
      */
     accessLevel: string;
     /**
-     * Readable description of level of access.
+     * Readable description of access level.
      */
     accessLevelDescription: string;
     /**

@@ -84,6 +84,8 @@ type ProjectPushRules struct {
 	PreventSecrets pulumi.BoolOutput `pulumi:"preventSecrets"`
 	// The ID or URL-encoded path of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits pulumi.BoolOutput `pulumi:"rejectNonDcoCommits"`
 	// Reject commit when it’s not signed.
 	RejectUnsignedCommits pulumi.BoolOutput `pulumi:"rejectUnsignedCommits"`
 }
@@ -145,6 +147,8 @@ type projectPushRulesState struct {
 	PreventSecrets *bool `pulumi:"preventSecrets"`
 	// The ID or URL-encoded path of the project.
 	Project *string `pulumi:"project"`
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits *bool `pulumi:"rejectNonDcoCommits"`
 	// Reject commit when it’s not signed.
 	RejectUnsignedCommits *bool `pulumi:"rejectUnsignedCommits"`
 }
@@ -174,6 +178,8 @@ type ProjectPushRulesState struct {
 	PreventSecrets pulumi.BoolPtrInput
 	// The ID or URL-encoded path of the project.
 	Project pulumi.StringPtrInput
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits pulumi.BoolPtrInput
 	// Reject commit when it’s not signed.
 	RejectUnsignedCommits pulumi.BoolPtrInput
 }
@@ -207,6 +213,8 @@ type projectPushRulesArgs struct {
 	PreventSecrets *bool `pulumi:"preventSecrets"`
 	// The ID or URL-encoded path of the project.
 	Project string `pulumi:"project"`
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits *bool `pulumi:"rejectNonDcoCommits"`
 	// Reject commit when it’s not signed.
 	RejectUnsignedCommits *bool `pulumi:"rejectUnsignedCommits"`
 }
@@ -237,6 +245,8 @@ type ProjectPushRulesArgs struct {
 	PreventSecrets pulumi.BoolPtrInput
 	// The ID or URL-encoded path of the project.
 	Project pulumi.StringInput
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits pulumi.BoolPtrInput
 	// Reject commit when it’s not signed.
 	RejectUnsignedCommits pulumi.BoolPtrInput
 }
@@ -386,6 +396,11 @@ func (o ProjectPushRulesOutput) PreventSecrets() pulumi.BoolOutput {
 // The ID or URL-encoded path of the project.
 func (o ProjectPushRulesOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectPushRules) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Reject commit when it’s not DCO certified.
+func (o ProjectPushRulesOutput) RejectNonDcoCommits() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectPushRules) pulumi.BoolOutput { return v.RejectNonDcoCommits }).(pulumi.BoolOutput)
 }
 
 // Reject commit when it’s not signed.

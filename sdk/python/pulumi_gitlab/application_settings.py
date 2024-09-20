@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ApplicationSettingsArgs', 'ApplicationSettings']
 
@@ -20,21 +22,34 @@ class ApplicationSettingsArgs:
                  after_sign_up_text: Optional[pulumi.Input[str]] = None,
                  akismet_api_key: Optional[pulumi.Input[str]] = None,
                  akismet_enabled: Optional[pulumi.Input[bool]] = None,
+                 allow_account_deletion: Optional[pulumi.Input[bool]] = None,
                  allow_group_owners_to_manage_ldap: Optional[pulumi.Input[bool]] = None,
                  allow_local_requests_from_system_hooks: Optional[pulumi.Input[bool]] = None,
                  allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[bool]] = None,
+                 allow_project_creation_for_guest_and_below: Optional[pulumi.Input[bool]] = None,
+                 allow_runner_registration_token: Optional[pulumi.Input[bool]] = None,
                  archive_builds_in_human_readable: Optional[pulumi.Input[str]] = None,
+                 asciidoc_max_includes: Optional[pulumi.Input[int]] = None,
                  asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_proxy_enabled: Optional[pulumi.Input[bool]] = None,
                  asset_proxy_secret_key: Optional[pulumi.Input[str]] = None,
                  asset_proxy_url: Optional[pulumi.Input[str]] = None,
                  authorized_keys_enabled: Optional[pulumi.Input[bool]] = None,
+                 auto_ban_user_on_excessive_projects_download: Optional[pulumi.Input[bool]] = None,
                  auto_devops_domain: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
+                 bulk_import_concurrent_pipeline_batch_limit: Optional[pulumi.Input[int]] = None,
+                 bulk_import_enabled: Optional[pulumi.Input[bool]] = None,
+                 bulk_import_max_download_file_size: Optional[pulumi.Input[int]] = None,
                  can_create_group: Optional[pulumi.Input[bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[bool]] = None,
+                 ci_max_includes: Optional[pulumi.Input[int]] = None,
+                 ci_max_total_yaml_size_bytes: Optional[pulumi.Input[int]] = None,
                  commit_email_hostname: Optional[pulumi.Input[str]] = None,
+                 concurrent_bitbucket_import_jobs_limit: Optional[pulumi.Input[int]] = None,
+                 concurrent_bitbucket_server_import_jobs_limit: Optional[pulumi.Input[int]] = None,
+                 concurrent_github_import_jobs_limit: Optional[pulumi.Input[int]] = None,
                  container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
                  container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[int]] = None,
                  container_registry_delete_tags_service_timeout: Optional[pulumi.Input[int]] = None,
@@ -42,27 +57,39 @@ class ApplicationSettingsArgs:
                  container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
                  container_registry_token_expire_delay: Optional[pulumi.Input[int]] = None,
                  deactivate_dormant_users: Optional[pulumi.Input[bool]] = None,
+                 deactivate_dormant_users_period: Optional[pulumi.Input[int]] = None,
+                 decompress_archive_file_timeout: Optional[pulumi.Input[int]] = None,
                  default_artifacts_expire_in: Optional[pulumi.Input[str]] = None,
                  default_branch_name: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
+                 default_branch_protection_defaults: Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']] = None,
                  default_ci_config_path: Optional[pulumi.Input[str]] = None,
                  default_group_visibility: Optional[pulumi.Input[str]] = None,
+                 default_preferred_language: Optional[pulumi.Input[str]] = None,
                  default_project_creation: Optional[pulumi.Input[int]] = None,
                  default_project_visibility: Optional[pulumi.Input[str]] = None,
                  default_projects_limit: Optional[pulumi.Input[int]] = None,
                  default_snippet_visibility: Optional[pulumi.Input[str]] = None,
+                 default_syntax_highlighting_theme: Optional[pulumi.Input[int]] = None,
                  delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
+                 delete_unconfirmed_users: Optional[pulumi.Input[bool]] = None,
                  deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
+                 diagramsnet_enabled: Optional[pulumi.Input[bool]] = None,
+                 diagramsnet_url: Optional[pulumi.Input[str]] = None,
                  diff_max_files: Optional[pulumi.Input[int]] = None,
                  diff_max_lines: Optional[pulumi.Input[int]] = None,
                  diff_max_patch_bytes: Optional[pulumi.Input[int]] = None,
+                 disable_admin_oauth_scopes: Optional[pulumi.Input[bool]] = None,
                  disable_feed_token: Optional[pulumi.Input[bool]] = None,
+                 disable_personal_access_tokens: Optional[pulumi.Input[bool]] = None,
                  disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_rebinding_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain_denylist_enabled: Optional[pulumi.Input[bool]] = None,
                  domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 downstream_pipeline_trigger_limit_per_project_user_sha: Optional[pulumi.Input[int]] = None,
                  dsa_key_restriction: Optional[pulumi.Input[int]] = None,
+                 duo_features_enabled: Optional[pulumi.Input[bool]] = None,
                  ecdsa_key_restriction: Optional[pulumi.Input[int]] = None,
                  ecdsa_sk_key_restriction: Optional[pulumi.Input[int]] = None,
                  ed25519_key_restriction: Optional[pulumi.Input[int]] = None,
@@ -265,21 +292,34 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] after_sign_up_text: Text shown to the user after signing up.
         :param pulumi.Input[str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
+        :param pulumi.Input[bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
         :param pulumi.Input[bool] allow_group_owners_to_manage_ldap: Set to true to allow group owners to manage LDAP.
         :param pulumi.Input[bool] allow_local_requests_from_system_hooks: Allow requests to the local network from system hooks.
         :param pulumi.Input[bool] allow_local_requests_from_web_hooks_and_services: Allow requests to the local network from web hooks and services.
+        :param pulumi.Input[bool] allow_project_creation_for_guest_and_below: Indicates whether users assigned up to the Guest role can create groups and personal projects.
+        :param pulumi.Input[bool] allow_runner_registration_token: Allow using a registration token to create a runner.
         :param pulumi.Input[str] archive_builds_in_human_readable: Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
+        :param pulumi.Input[int] asciidoc_max_includes: Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_proxy_allowlists: Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] asset_proxy_enabled: (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
         :param pulumi.Input[str] asset_proxy_secret_key: Shared secret with the asset proxy server. GitLab restart is required to apply changes.
         :param pulumi.Input[str] asset_proxy_url: URL of the asset proxy server. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] authorized_keys_enabled: By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
+        :param pulumi.Input[bool] auto_ban_user_on_excessive_projects_download: When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
         :param pulumi.Input[str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
         :param pulumi.Input[bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
+        :param pulumi.Input[int] bulk_import_concurrent_pipeline_batch_limit: Maximum simultaneous Direct Transfer batches to process.
+        :param pulumi.Input[bool] bulk_import_enabled: Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+        :param pulumi.Input[int] bulk_import_max_download_file_size: Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
         :param pulumi.Input[bool] can_create_group: Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         :param pulumi.Input[bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
+        :param pulumi.Input[int] ci_max_includes: The maximum number of includes per pipeline.
+        :param pulumi.Input[int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[str] commit_email_hostname: Custom hostname (for private commit emails).
+        :param pulumi.Input[int] concurrent_bitbucket_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+        :param pulumi.Input[int] concurrent_bitbucket_server_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+        :param pulumi.Input[int] concurrent_github_import_jobs_limit: Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
         :param pulumi.Input[bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
         :param pulumi.Input[int] container_registry_cleanup_tags_service_max_list_size: The maximum number of tags that can be deleted in a single execution of cleanup policies.
         :param pulumi.Input[int] container_registry_delete_tags_service_timeout: The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
@@ -287,27 +327,39 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[int] container_registry_expiration_policies_worker_capacity: Number of workers for cleanup policies.
         :param pulumi.Input[int] container_registry_token_expire_delay: Container Registry token duration in minutes.
         :param pulumi.Input[bool] deactivate_dormant_users: Enable automatic deactivation of dormant users.
+        :param pulumi.Input[int] deactivate_dormant_users_period: Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+        :param pulumi.Input[int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
         :param pulumi.Input[str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[str] default_branch_name: Instance-level custom initial branch name (introduced in GitLab 13.2).
         :param pulumi.Input[int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        :param pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[str] default_preferred_language: Default preferred language for users who are not logged in.
         :param pulumi.Input[int] default_project_creation: Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
         :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_projects_limit: Project limit per user.
         :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[int] default_syntax_highlighting_theme: Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
         :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+        :param pulumi.Input[bool] delete_unconfirmed_users: Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
+        :param pulumi.Input[bool] diagramsnet_enabled: (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+        :param pulumi.Input[str] diagramsnet_url: The Diagrams.net instance URL for integration.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
+        :param pulumi.Input[bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
         :param pulumi.Input[bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
+        :param pulumi.Input[bool] disable_personal_access_tokens: Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Null means there is no restriction.
         :param pulumi.Input[bool] domain_denylist_enabled: (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_denylists: Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
+        :param pulumi.Input[int] downstream_pipeline_trigger_limit_per_project_user_sha: Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
         :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
+        :param pulumi.Input[bool] duo_features_enabled: Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
         :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
         :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
@@ -516,14 +568,22 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "akismet_api_key", akismet_api_key)
         if akismet_enabled is not None:
             pulumi.set(__self__, "akismet_enabled", akismet_enabled)
+        if allow_account_deletion is not None:
+            pulumi.set(__self__, "allow_account_deletion", allow_account_deletion)
         if allow_group_owners_to_manage_ldap is not None:
             pulumi.set(__self__, "allow_group_owners_to_manage_ldap", allow_group_owners_to_manage_ldap)
         if allow_local_requests_from_system_hooks is not None:
             pulumi.set(__self__, "allow_local_requests_from_system_hooks", allow_local_requests_from_system_hooks)
         if allow_local_requests_from_web_hooks_and_services is not None:
             pulumi.set(__self__, "allow_local_requests_from_web_hooks_and_services", allow_local_requests_from_web_hooks_and_services)
+        if allow_project_creation_for_guest_and_below is not None:
+            pulumi.set(__self__, "allow_project_creation_for_guest_and_below", allow_project_creation_for_guest_and_below)
+        if allow_runner_registration_token is not None:
+            pulumi.set(__self__, "allow_runner_registration_token", allow_runner_registration_token)
         if archive_builds_in_human_readable is not None:
             pulumi.set(__self__, "archive_builds_in_human_readable", archive_builds_in_human_readable)
+        if asciidoc_max_includes is not None:
+            pulumi.set(__self__, "asciidoc_max_includes", asciidoc_max_includes)
         if asset_proxy_allowlists is not None:
             pulumi.set(__self__, "asset_proxy_allowlists", asset_proxy_allowlists)
         if asset_proxy_enabled is not None:
@@ -534,18 +594,36 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "asset_proxy_url", asset_proxy_url)
         if authorized_keys_enabled is not None:
             pulumi.set(__self__, "authorized_keys_enabled", authorized_keys_enabled)
+        if auto_ban_user_on_excessive_projects_download is not None:
+            pulumi.set(__self__, "auto_ban_user_on_excessive_projects_download", auto_ban_user_on_excessive_projects_download)
         if auto_devops_domain is not None:
             pulumi.set(__self__, "auto_devops_domain", auto_devops_domain)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if automatic_purchased_storage_allocation is not None:
             pulumi.set(__self__, "automatic_purchased_storage_allocation", automatic_purchased_storage_allocation)
+        if bulk_import_concurrent_pipeline_batch_limit is not None:
+            pulumi.set(__self__, "bulk_import_concurrent_pipeline_batch_limit", bulk_import_concurrent_pipeline_batch_limit)
+        if bulk_import_enabled is not None:
+            pulumi.set(__self__, "bulk_import_enabled", bulk_import_enabled)
+        if bulk_import_max_download_file_size is not None:
+            pulumi.set(__self__, "bulk_import_max_download_file_size", bulk_import_max_download_file_size)
         if can_create_group is not None:
             pulumi.set(__self__, "can_create_group", can_create_group)
         if check_namespace_plan is not None:
             pulumi.set(__self__, "check_namespace_plan", check_namespace_plan)
+        if ci_max_includes is not None:
+            pulumi.set(__self__, "ci_max_includes", ci_max_includes)
+        if ci_max_total_yaml_size_bytes is not None:
+            pulumi.set(__self__, "ci_max_total_yaml_size_bytes", ci_max_total_yaml_size_bytes)
         if commit_email_hostname is not None:
             pulumi.set(__self__, "commit_email_hostname", commit_email_hostname)
+        if concurrent_bitbucket_import_jobs_limit is not None:
+            pulumi.set(__self__, "concurrent_bitbucket_import_jobs_limit", concurrent_bitbucket_import_jobs_limit)
+        if concurrent_bitbucket_server_import_jobs_limit is not None:
+            pulumi.set(__self__, "concurrent_bitbucket_server_import_jobs_limit", concurrent_bitbucket_server_import_jobs_limit)
+        if concurrent_github_import_jobs_limit is not None:
+            pulumi.set(__self__, "concurrent_github_import_jobs_limit", concurrent_github_import_jobs_limit)
         if container_expiration_policies_enable_historic_entries is not None:
             pulumi.set(__self__, "container_expiration_policies_enable_historic_entries", container_expiration_policies_enable_historic_entries)
         if container_registry_cleanup_tags_service_max_list_size is not None:
@@ -560,16 +638,24 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "container_registry_token_expire_delay", container_registry_token_expire_delay)
         if deactivate_dormant_users is not None:
             pulumi.set(__self__, "deactivate_dormant_users", deactivate_dormant_users)
+        if deactivate_dormant_users_period is not None:
+            pulumi.set(__self__, "deactivate_dormant_users_period", deactivate_dormant_users_period)
+        if decompress_archive_file_timeout is not None:
+            pulumi.set(__self__, "decompress_archive_file_timeout", decompress_archive_file_timeout)
         if default_artifacts_expire_in is not None:
             pulumi.set(__self__, "default_artifacts_expire_in", default_artifacts_expire_in)
         if default_branch_name is not None:
             pulumi.set(__self__, "default_branch_name", default_branch_name)
         if default_branch_protection is not None:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
+        if default_branch_protection_defaults is not None:
+            pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         if default_ci_config_path is not None:
             pulumi.set(__self__, "default_ci_config_path", default_ci_config_path)
         if default_group_visibility is not None:
             pulumi.set(__self__, "default_group_visibility", default_group_visibility)
+        if default_preferred_language is not None:
+            pulumi.set(__self__, "default_preferred_language", default_preferred_language)
         if default_project_creation is not None:
             pulumi.set(__self__, "default_project_creation", default_project_creation)
         if default_project_visibility is not None:
@@ -578,18 +664,30 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "default_projects_limit", default_projects_limit)
         if default_snippet_visibility is not None:
             pulumi.set(__self__, "default_snippet_visibility", default_snippet_visibility)
+        if default_syntax_highlighting_theme is not None:
+            pulumi.set(__self__, "default_syntax_highlighting_theme", default_syntax_highlighting_theme)
         if delete_inactive_projects is not None:
             pulumi.set(__self__, "delete_inactive_projects", delete_inactive_projects)
+        if delete_unconfirmed_users is not None:
+            pulumi.set(__self__, "delete_unconfirmed_users", delete_unconfirmed_users)
         if deletion_adjourned_period is not None:
             pulumi.set(__self__, "deletion_adjourned_period", deletion_adjourned_period)
+        if diagramsnet_enabled is not None:
+            pulumi.set(__self__, "diagramsnet_enabled", diagramsnet_enabled)
+        if diagramsnet_url is not None:
+            pulumi.set(__self__, "diagramsnet_url", diagramsnet_url)
         if diff_max_files is not None:
             pulumi.set(__self__, "diff_max_files", diff_max_files)
         if diff_max_lines is not None:
             pulumi.set(__self__, "diff_max_lines", diff_max_lines)
         if diff_max_patch_bytes is not None:
             pulumi.set(__self__, "diff_max_patch_bytes", diff_max_patch_bytes)
+        if disable_admin_oauth_scopes is not None:
+            pulumi.set(__self__, "disable_admin_oauth_scopes", disable_admin_oauth_scopes)
         if disable_feed_token is not None:
             pulumi.set(__self__, "disable_feed_token", disable_feed_token)
+        if disable_personal_access_tokens is not None:
+            pulumi.set(__self__, "disable_personal_access_tokens", disable_personal_access_tokens)
         if disabled_oauth_sign_in_sources is not None:
             pulumi.set(__self__, "disabled_oauth_sign_in_sources", disabled_oauth_sign_in_sources)
         if dns_rebinding_protection_enabled is not None:
@@ -600,8 +698,12 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "domain_denylist_enabled", domain_denylist_enabled)
         if domain_denylists is not None:
             pulumi.set(__self__, "domain_denylists", domain_denylists)
+        if downstream_pipeline_trigger_limit_per_project_user_sha is not None:
+            pulumi.set(__self__, "downstream_pipeline_trigger_limit_per_project_user_sha", downstream_pipeline_trigger_limit_per_project_user_sha)
         if dsa_key_restriction is not None:
             pulumi.set(__self__, "dsa_key_restriction", dsa_key_restriction)
+        if duo_features_enabled is not None:
+            pulumi.set(__self__, "duo_features_enabled", duo_features_enabled)
         if ecdsa_key_restriction is not None:
             pulumi.set(__self__, "ecdsa_key_restriction", ecdsa_key_restriction)
         if ecdsa_sk_key_restriction is not None:
@@ -1073,6 +1175,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "akismet_enabled", value)
 
     @property
+    @pulumi.getter(name="allowAccountDeletion")
+    def allow_account_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to allow users to delete their accounts. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_account_deletion")
+
+    @allow_account_deletion.setter
+    def allow_account_deletion(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_account_deletion", value)
+
+    @property
     @pulumi.getter(name="allowGroupOwnersToManageLdap")
     def allow_group_owners_to_manage_ldap(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1109,6 +1223,30 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "allow_local_requests_from_web_hooks_and_services", value)
 
     @property
+    @pulumi.getter(name="allowProjectCreationForGuestAndBelow")
+    def allow_project_creation_for_guest_and_below(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether users assigned up to the Guest role can create groups and personal projects.
+        """
+        return pulumi.get(self, "allow_project_creation_for_guest_and_below")
+
+    @allow_project_creation_for_guest_and_below.setter
+    def allow_project_creation_for_guest_and_below(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_project_creation_for_guest_and_below", value)
+
+    @property
+    @pulumi.getter(name="allowRunnerRegistrationToken")
+    def allow_runner_registration_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow using a registration token to create a runner.
+        """
+        return pulumi.get(self, "allow_runner_registration_token")
+
+    @allow_runner_registration_token.setter
+    def allow_runner_registration_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_runner_registration_token", value)
+
+    @property
     @pulumi.getter(name="archiveBuildsInHumanReadable")
     def archive_builds_in_human_readable(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1119,6 +1257,18 @@ class ApplicationSettingsArgs:
     @archive_builds_in_human_readable.setter
     def archive_builds_in_human_readable(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "archive_builds_in_human_readable", value)
+
+    @property
+    @pulumi.getter(name="asciidocMaxIncludes")
+    def asciidoc_max_includes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+        """
+        return pulumi.get(self, "asciidoc_max_includes")
+
+    @asciidoc_max_includes.setter
+    def asciidoc_max_includes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "asciidoc_max_includes", value)
 
     @property
     @pulumi.getter(name="assetProxyAllowlists")
@@ -1181,6 +1331,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "authorized_keys_enabled", value)
 
     @property
+    @pulumi.getter(name="autoBanUserOnExcessiveProjectsDownload")
+    def auto_ban_user_on_excessive_projects_download(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+        """
+        return pulumi.get(self, "auto_ban_user_on_excessive_projects_download")
+
+    @auto_ban_user_on_excessive_projects_download.setter
+    def auto_ban_user_on_excessive_projects_download(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_ban_user_on_excessive_projects_download", value)
+
+    @property
     @pulumi.getter(name="autoDevopsDomain")
     def auto_devops_domain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1217,6 +1379,42 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "automatic_purchased_storage_allocation", value)
 
     @property
+    @pulumi.getter(name="bulkImportConcurrentPipelineBatchLimit")
+    def bulk_import_concurrent_pipeline_batch_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum simultaneous Direct Transfer batches to process.
+        """
+        return pulumi.get(self, "bulk_import_concurrent_pipeline_batch_limit")
+
+    @bulk_import_concurrent_pipeline_batch_limit.setter
+    def bulk_import_concurrent_pipeline_batch_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bulk_import_concurrent_pipeline_batch_limit", value)
+
+    @property
+    @pulumi.getter(name="bulkImportEnabled")
+    def bulk_import_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+        """
+        return pulumi.get(self, "bulk_import_enabled")
+
+    @bulk_import_enabled.setter
+    def bulk_import_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bulk_import_enabled", value)
+
+    @property
+    @pulumi.getter(name="bulkImportMaxDownloadFileSize")
+    def bulk_import_max_download_file_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+        """
+        return pulumi.get(self, "bulk_import_max_download_file_size")
+
+    @bulk_import_max_download_file_size.setter
+    def bulk_import_max_download_file_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bulk_import_max_download_file_size", value)
+
+    @property
     @pulumi.getter(name="canCreateGroup")
     def can_create_group(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1241,6 +1439,30 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "check_namespace_plan", value)
 
     @property
+    @pulumi.getter(name="ciMaxIncludes")
+    def ci_max_includes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of includes per pipeline.
+        """
+        return pulumi.get(self, "ci_max_includes")
+
+    @ci_max_includes.setter
+    def ci_max_includes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ci_max_includes", value)
+
+    @property
+    @pulumi.getter(name="ciMaxTotalYamlSizeBytes")
+    def ci_max_total_yaml_size_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+        """
+        return pulumi.get(self, "ci_max_total_yaml_size_bytes")
+
+    @ci_max_total_yaml_size_bytes.setter
+    def ci_max_total_yaml_size_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ci_max_total_yaml_size_bytes", value)
+
+    @property
     @pulumi.getter(name="commitEmailHostname")
     def commit_email_hostname(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1251,6 +1473,42 @@ class ApplicationSettingsArgs:
     @commit_email_hostname.setter
     def commit_email_hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "commit_email_hostname", value)
+
+    @property
+    @pulumi.getter(name="concurrentBitbucketImportJobsLimit")
+    def concurrent_bitbucket_import_jobs_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+        """
+        return pulumi.get(self, "concurrent_bitbucket_import_jobs_limit")
+
+    @concurrent_bitbucket_import_jobs_limit.setter
+    def concurrent_bitbucket_import_jobs_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "concurrent_bitbucket_import_jobs_limit", value)
+
+    @property
+    @pulumi.getter(name="concurrentBitbucketServerImportJobsLimit")
+    def concurrent_bitbucket_server_import_jobs_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+        """
+        return pulumi.get(self, "concurrent_bitbucket_server_import_jobs_limit")
+
+    @concurrent_bitbucket_server_import_jobs_limit.setter
+    def concurrent_bitbucket_server_import_jobs_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "concurrent_bitbucket_server_import_jobs_limit", value)
+
+    @property
+    @pulumi.getter(name="concurrentGithubImportJobsLimit")
+    def concurrent_github_import_jobs_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+        """
+        return pulumi.get(self, "concurrent_github_import_jobs_limit")
+
+    @concurrent_github_import_jobs_limit.setter
+    def concurrent_github_import_jobs_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "concurrent_github_import_jobs_limit", value)
 
     @property
     @pulumi.getter(name="containerExpirationPoliciesEnableHistoricEntries")
@@ -1337,6 +1595,30 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "deactivate_dormant_users", value)
 
     @property
+    @pulumi.getter(name="deactivateDormantUsersPeriod")
+    def deactivate_dormant_users_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+        """
+        return pulumi.get(self, "deactivate_dormant_users_period")
+
+    @deactivate_dormant_users_period.setter
+    def deactivate_dormant_users_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deactivate_dormant_users_period", value)
+
+    @property
+    @pulumi.getter(name="decompressArchiveFileTimeout")
+    def decompress_archive_file_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+        """
+        return pulumi.get(self, "decompress_archive_file_timeout")
+
+    @decompress_archive_file_timeout.setter
+    def decompress_archive_file_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "decompress_archive_file_timeout", value)
+
+    @property
     @pulumi.getter(name="defaultArtifactsExpireIn")
     def default_artifacts_expire_in(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1373,6 +1655,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "default_branch_protection", value)
 
     @property
+    @pulumi.getter(name="defaultBranchProtectionDefaults")
+    def default_branch_protection_defaults(self) -> Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]:
+        """
+        The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+        """
+        return pulumi.get(self, "default_branch_protection_defaults")
+
+    @default_branch_protection_defaults.setter
+    def default_branch_protection_defaults(self, value: Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]):
+        pulumi.set(self, "default_branch_protection_defaults", value)
+
+    @property
     @pulumi.getter(name="defaultCiConfigPath")
     def default_ci_config_path(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1395,6 +1689,18 @@ class ApplicationSettingsArgs:
     @default_group_visibility.setter
     def default_group_visibility(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_group_visibility", value)
+
+    @property
+    @pulumi.getter(name="defaultPreferredLanguage")
+    def default_preferred_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default preferred language for users who are not logged in.
+        """
+        return pulumi.get(self, "default_preferred_language")
+
+    @default_preferred_language.setter
+    def default_preferred_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_preferred_language", value)
 
     @property
     @pulumi.getter(name="defaultProjectCreation")
@@ -1445,6 +1751,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "default_snippet_visibility", value)
 
     @property
+    @pulumi.getter(name="defaultSyntaxHighlightingTheme")
+    def default_syntax_highlighting_theme(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+        """
+        return pulumi.get(self, "default_syntax_highlighting_theme")
+
+    @default_syntax_highlighting_theme.setter
+    def default_syntax_highlighting_theme(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_syntax_highlighting_theme", value)
+
+    @property
     @pulumi.getter(name="deleteInactiveProjects")
     def delete_inactive_projects(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1457,6 +1775,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "delete_inactive_projects", value)
 
     @property
+    @pulumi.getter(name="deleteUnconfirmedUsers")
+    def delete_unconfirmed_users(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "delete_unconfirmed_users")
+
+    @delete_unconfirmed_users.setter
+    def delete_unconfirmed_users(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_unconfirmed_users", value)
+
+    @property
     @pulumi.getter(name="deletionAdjournedPeriod")
     def deletion_adjourned_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1467,6 +1797,30 @@ class ApplicationSettingsArgs:
     @deletion_adjourned_period.setter
     def deletion_adjourned_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "deletion_adjourned_period", value)
+
+    @property
+    @pulumi.getter(name="diagramsnetEnabled")
+    def diagramsnet_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+        """
+        return pulumi.get(self, "diagramsnet_enabled")
+
+    @diagramsnet_enabled.setter
+    def diagramsnet_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "diagramsnet_enabled", value)
+
+    @property
+    @pulumi.getter(name="diagramsnetUrl")
+    def diagramsnet_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Diagrams.net instance URL for integration.
+        """
+        return pulumi.get(self, "diagramsnet_url")
+
+    @diagramsnet_url.setter
+    def diagramsnet_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "diagramsnet_url", value)
 
     @property
     @pulumi.getter(name="diffMaxFiles")
@@ -1505,6 +1859,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "diff_max_patch_bytes", value)
 
     @property
+    @pulumi.getter(name="disableAdminOauthScopes")
+    def disable_admin_oauth_scopes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+        """
+        return pulumi.get(self, "disable_admin_oauth_scopes")
+
+    @disable_admin_oauth_scopes.setter
+    def disable_admin_oauth_scopes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_admin_oauth_scopes", value)
+
+    @property
     @pulumi.getter(name="disableFeedToken")
     def disable_feed_token(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1515,6 +1881,18 @@ class ApplicationSettingsArgs:
     @disable_feed_token.setter
     def disable_feed_token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_feed_token", value)
+
+    @property
+    @pulumi.getter(name="disablePersonalAccessTokens")
+    def disable_personal_access_tokens(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+        """
+        return pulumi.get(self, "disable_personal_access_tokens")
+
+    @disable_personal_access_tokens.setter
+    def disable_personal_access_tokens(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_personal_access_tokens", value)
 
     @property
     @pulumi.getter(name="disabledOauthSignInSources")
@@ -1577,6 +1955,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "domain_denylists", value)
 
     @property
+    @pulumi.getter(name="downstreamPipelineTriggerLimitPerProjectUserSha")
+    def downstream_pipeline_trigger_limit_per_project_user_sha(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+        """
+        return pulumi.get(self, "downstream_pipeline_trigger_limit_per_project_user_sha")
+
+    @downstream_pipeline_trigger_limit_per_project_user_sha.setter
+    def downstream_pipeline_trigger_limit_per_project_user_sha(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "downstream_pipeline_trigger_limit_per_project_user_sha", value)
+
+    @property
     @pulumi.getter(name="dsaKeyRestriction")
     def dsa_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1587,6 +1977,18 @@ class ApplicationSettingsArgs:
     @dsa_key_restriction.setter
     def dsa_key_restriction(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "dsa_key_restriction", value)
+
+    @property
+    @pulumi.getter(name="duoFeaturesEnabled")
+    def duo_features_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "duo_features_enabled")
+
+    @duo_features_enabled.setter
+    def duo_features_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "duo_features_enabled", value)
 
     @property
     @pulumi.getter(name="ecdsaKeyRestriction")
@@ -3928,21 +4330,34 @@ class _ApplicationSettingsState:
                  after_sign_up_text: Optional[pulumi.Input[str]] = None,
                  akismet_api_key: Optional[pulumi.Input[str]] = None,
                  akismet_enabled: Optional[pulumi.Input[bool]] = None,
+                 allow_account_deletion: Optional[pulumi.Input[bool]] = None,
                  allow_group_owners_to_manage_ldap: Optional[pulumi.Input[bool]] = None,
                  allow_local_requests_from_system_hooks: Optional[pulumi.Input[bool]] = None,
                  allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[bool]] = None,
+                 allow_project_creation_for_guest_and_below: Optional[pulumi.Input[bool]] = None,
+                 allow_runner_registration_token: Optional[pulumi.Input[bool]] = None,
                  archive_builds_in_human_readable: Optional[pulumi.Input[str]] = None,
+                 asciidoc_max_includes: Optional[pulumi.Input[int]] = None,
                  asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_proxy_enabled: Optional[pulumi.Input[bool]] = None,
                  asset_proxy_secret_key: Optional[pulumi.Input[str]] = None,
                  asset_proxy_url: Optional[pulumi.Input[str]] = None,
                  authorized_keys_enabled: Optional[pulumi.Input[bool]] = None,
+                 auto_ban_user_on_excessive_projects_download: Optional[pulumi.Input[bool]] = None,
                  auto_devops_domain: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
+                 bulk_import_concurrent_pipeline_batch_limit: Optional[pulumi.Input[int]] = None,
+                 bulk_import_enabled: Optional[pulumi.Input[bool]] = None,
+                 bulk_import_max_download_file_size: Optional[pulumi.Input[int]] = None,
                  can_create_group: Optional[pulumi.Input[bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[bool]] = None,
+                 ci_max_includes: Optional[pulumi.Input[int]] = None,
+                 ci_max_total_yaml_size_bytes: Optional[pulumi.Input[int]] = None,
                  commit_email_hostname: Optional[pulumi.Input[str]] = None,
+                 concurrent_bitbucket_import_jobs_limit: Optional[pulumi.Input[int]] = None,
+                 concurrent_bitbucket_server_import_jobs_limit: Optional[pulumi.Input[int]] = None,
+                 concurrent_github_import_jobs_limit: Optional[pulumi.Input[int]] = None,
                  container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
                  container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[int]] = None,
                  container_registry_delete_tags_service_timeout: Optional[pulumi.Input[int]] = None,
@@ -3950,27 +4365,39 @@ class _ApplicationSettingsState:
                  container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
                  container_registry_token_expire_delay: Optional[pulumi.Input[int]] = None,
                  deactivate_dormant_users: Optional[pulumi.Input[bool]] = None,
+                 deactivate_dormant_users_period: Optional[pulumi.Input[int]] = None,
+                 decompress_archive_file_timeout: Optional[pulumi.Input[int]] = None,
                  default_artifacts_expire_in: Optional[pulumi.Input[str]] = None,
                  default_branch_name: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
+                 default_branch_protection_defaults: Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']] = None,
                  default_ci_config_path: Optional[pulumi.Input[str]] = None,
                  default_group_visibility: Optional[pulumi.Input[str]] = None,
+                 default_preferred_language: Optional[pulumi.Input[str]] = None,
                  default_project_creation: Optional[pulumi.Input[int]] = None,
                  default_project_visibility: Optional[pulumi.Input[str]] = None,
                  default_projects_limit: Optional[pulumi.Input[int]] = None,
                  default_snippet_visibility: Optional[pulumi.Input[str]] = None,
+                 default_syntax_highlighting_theme: Optional[pulumi.Input[int]] = None,
                  delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
+                 delete_unconfirmed_users: Optional[pulumi.Input[bool]] = None,
                  deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
+                 diagramsnet_enabled: Optional[pulumi.Input[bool]] = None,
+                 diagramsnet_url: Optional[pulumi.Input[str]] = None,
                  diff_max_files: Optional[pulumi.Input[int]] = None,
                  diff_max_lines: Optional[pulumi.Input[int]] = None,
                  diff_max_patch_bytes: Optional[pulumi.Input[int]] = None,
+                 disable_admin_oauth_scopes: Optional[pulumi.Input[bool]] = None,
                  disable_feed_token: Optional[pulumi.Input[bool]] = None,
+                 disable_personal_access_tokens: Optional[pulumi.Input[bool]] = None,
                  disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_rebinding_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain_denylist_enabled: Optional[pulumi.Input[bool]] = None,
                  domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 downstream_pipeline_trigger_limit_per_project_user_sha: Optional[pulumi.Input[int]] = None,
                  dsa_key_restriction: Optional[pulumi.Input[int]] = None,
+                 duo_features_enabled: Optional[pulumi.Input[bool]] = None,
                  ecdsa_key_restriction: Optional[pulumi.Input[int]] = None,
                  ecdsa_sk_key_restriction: Optional[pulumi.Input[int]] = None,
                  ed25519_key_restriction: Optional[pulumi.Input[int]] = None,
@@ -4173,21 +4600,34 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] after_sign_up_text: Text shown to the user after signing up.
         :param pulumi.Input[str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
+        :param pulumi.Input[bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
         :param pulumi.Input[bool] allow_group_owners_to_manage_ldap: Set to true to allow group owners to manage LDAP.
         :param pulumi.Input[bool] allow_local_requests_from_system_hooks: Allow requests to the local network from system hooks.
         :param pulumi.Input[bool] allow_local_requests_from_web_hooks_and_services: Allow requests to the local network from web hooks and services.
+        :param pulumi.Input[bool] allow_project_creation_for_guest_and_below: Indicates whether users assigned up to the Guest role can create groups and personal projects.
+        :param pulumi.Input[bool] allow_runner_registration_token: Allow using a registration token to create a runner.
         :param pulumi.Input[str] archive_builds_in_human_readable: Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
+        :param pulumi.Input[int] asciidoc_max_includes: Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_proxy_allowlists: Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] asset_proxy_enabled: (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
         :param pulumi.Input[str] asset_proxy_secret_key: Shared secret with the asset proxy server. GitLab restart is required to apply changes.
         :param pulumi.Input[str] asset_proxy_url: URL of the asset proxy server. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] authorized_keys_enabled: By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
+        :param pulumi.Input[bool] auto_ban_user_on_excessive_projects_download: When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
         :param pulumi.Input[str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
         :param pulumi.Input[bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
+        :param pulumi.Input[int] bulk_import_concurrent_pipeline_batch_limit: Maximum simultaneous Direct Transfer batches to process.
+        :param pulumi.Input[bool] bulk_import_enabled: Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+        :param pulumi.Input[int] bulk_import_max_download_file_size: Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
         :param pulumi.Input[bool] can_create_group: Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         :param pulumi.Input[bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
+        :param pulumi.Input[int] ci_max_includes: The maximum number of includes per pipeline.
+        :param pulumi.Input[int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[str] commit_email_hostname: Custom hostname (for private commit emails).
+        :param pulumi.Input[int] concurrent_bitbucket_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+        :param pulumi.Input[int] concurrent_bitbucket_server_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+        :param pulumi.Input[int] concurrent_github_import_jobs_limit: Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
         :param pulumi.Input[bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
         :param pulumi.Input[int] container_registry_cleanup_tags_service_max_list_size: The maximum number of tags that can be deleted in a single execution of cleanup policies.
         :param pulumi.Input[int] container_registry_delete_tags_service_timeout: The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
@@ -4195,27 +4635,39 @@ class _ApplicationSettingsState:
         :param pulumi.Input[int] container_registry_expiration_policies_worker_capacity: Number of workers for cleanup policies.
         :param pulumi.Input[int] container_registry_token_expire_delay: Container Registry token duration in minutes.
         :param pulumi.Input[bool] deactivate_dormant_users: Enable automatic deactivation of dormant users.
+        :param pulumi.Input[int] deactivate_dormant_users_period: Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+        :param pulumi.Input[int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
         :param pulumi.Input[str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[str] default_branch_name: Instance-level custom initial branch name (introduced in GitLab 13.2).
         :param pulumi.Input[int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        :param pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[str] default_preferred_language: Default preferred language for users who are not logged in.
         :param pulumi.Input[int] default_project_creation: Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
         :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_projects_limit: Project limit per user.
         :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[int] default_syntax_highlighting_theme: Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
         :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+        :param pulumi.Input[bool] delete_unconfirmed_users: Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
+        :param pulumi.Input[bool] diagramsnet_enabled: (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+        :param pulumi.Input[str] diagramsnet_url: The Diagrams.net instance URL for integration.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
+        :param pulumi.Input[bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
         :param pulumi.Input[bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
+        :param pulumi.Input[bool] disable_personal_access_tokens: Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Null means there is no restriction.
         :param pulumi.Input[bool] domain_denylist_enabled: (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_denylists: Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
+        :param pulumi.Input[int] downstream_pipeline_trigger_limit_per_project_user_sha: Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
         :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
+        :param pulumi.Input[bool] duo_features_enabled: Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
         :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
         :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
@@ -4424,14 +4876,22 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "akismet_api_key", akismet_api_key)
         if akismet_enabled is not None:
             pulumi.set(__self__, "akismet_enabled", akismet_enabled)
+        if allow_account_deletion is not None:
+            pulumi.set(__self__, "allow_account_deletion", allow_account_deletion)
         if allow_group_owners_to_manage_ldap is not None:
             pulumi.set(__self__, "allow_group_owners_to_manage_ldap", allow_group_owners_to_manage_ldap)
         if allow_local_requests_from_system_hooks is not None:
             pulumi.set(__self__, "allow_local_requests_from_system_hooks", allow_local_requests_from_system_hooks)
         if allow_local_requests_from_web_hooks_and_services is not None:
             pulumi.set(__self__, "allow_local_requests_from_web_hooks_and_services", allow_local_requests_from_web_hooks_and_services)
+        if allow_project_creation_for_guest_and_below is not None:
+            pulumi.set(__self__, "allow_project_creation_for_guest_and_below", allow_project_creation_for_guest_and_below)
+        if allow_runner_registration_token is not None:
+            pulumi.set(__self__, "allow_runner_registration_token", allow_runner_registration_token)
         if archive_builds_in_human_readable is not None:
             pulumi.set(__self__, "archive_builds_in_human_readable", archive_builds_in_human_readable)
+        if asciidoc_max_includes is not None:
+            pulumi.set(__self__, "asciidoc_max_includes", asciidoc_max_includes)
         if asset_proxy_allowlists is not None:
             pulumi.set(__self__, "asset_proxy_allowlists", asset_proxy_allowlists)
         if asset_proxy_enabled is not None:
@@ -4442,18 +4902,36 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "asset_proxy_url", asset_proxy_url)
         if authorized_keys_enabled is not None:
             pulumi.set(__self__, "authorized_keys_enabled", authorized_keys_enabled)
+        if auto_ban_user_on_excessive_projects_download is not None:
+            pulumi.set(__self__, "auto_ban_user_on_excessive_projects_download", auto_ban_user_on_excessive_projects_download)
         if auto_devops_domain is not None:
             pulumi.set(__self__, "auto_devops_domain", auto_devops_domain)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if automatic_purchased_storage_allocation is not None:
             pulumi.set(__self__, "automatic_purchased_storage_allocation", automatic_purchased_storage_allocation)
+        if bulk_import_concurrent_pipeline_batch_limit is not None:
+            pulumi.set(__self__, "bulk_import_concurrent_pipeline_batch_limit", bulk_import_concurrent_pipeline_batch_limit)
+        if bulk_import_enabled is not None:
+            pulumi.set(__self__, "bulk_import_enabled", bulk_import_enabled)
+        if bulk_import_max_download_file_size is not None:
+            pulumi.set(__self__, "bulk_import_max_download_file_size", bulk_import_max_download_file_size)
         if can_create_group is not None:
             pulumi.set(__self__, "can_create_group", can_create_group)
         if check_namespace_plan is not None:
             pulumi.set(__self__, "check_namespace_plan", check_namespace_plan)
+        if ci_max_includes is not None:
+            pulumi.set(__self__, "ci_max_includes", ci_max_includes)
+        if ci_max_total_yaml_size_bytes is not None:
+            pulumi.set(__self__, "ci_max_total_yaml_size_bytes", ci_max_total_yaml_size_bytes)
         if commit_email_hostname is not None:
             pulumi.set(__self__, "commit_email_hostname", commit_email_hostname)
+        if concurrent_bitbucket_import_jobs_limit is not None:
+            pulumi.set(__self__, "concurrent_bitbucket_import_jobs_limit", concurrent_bitbucket_import_jobs_limit)
+        if concurrent_bitbucket_server_import_jobs_limit is not None:
+            pulumi.set(__self__, "concurrent_bitbucket_server_import_jobs_limit", concurrent_bitbucket_server_import_jobs_limit)
+        if concurrent_github_import_jobs_limit is not None:
+            pulumi.set(__self__, "concurrent_github_import_jobs_limit", concurrent_github_import_jobs_limit)
         if container_expiration_policies_enable_historic_entries is not None:
             pulumi.set(__self__, "container_expiration_policies_enable_historic_entries", container_expiration_policies_enable_historic_entries)
         if container_registry_cleanup_tags_service_max_list_size is not None:
@@ -4468,16 +4946,24 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "container_registry_token_expire_delay", container_registry_token_expire_delay)
         if deactivate_dormant_users is not None:
             pulumi.set(__self__, "deactivate_dormant_users", deactivate_dormant_users)
+        if deactivate_dormant_users_period is not None:
+            pulumi.set(__self__, "deactivate_dormant_users_period", deactivate_dormant_users_period)
+        if decompress_archive_file_timeout is not None:
+            pulumi.set(__self__, "decompress_archive_file_timeout", decompress_archive_file_timeout)
         if default_artifacts_expire_in is not None:
             pulumi.set(__self__, "default_artifacts_expire_in", default_artifacts_expire_in)
         if default_branch_name is not None:
             pulumi.set(__self__, "default_branch_name", default_branch_name)
         if default_branch_protection is not None:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
+        if default_branch_protection_defaults is not None:
+            pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         if default_ci_config_path is not None:
             pulumi.set(__self__, "default_ci_config_path", default_ci_config_path)
         if default_group_visibility is not None:
             pulumi.set(__self__, "default_group_visibility", default_group_visibility)
+        if default_preferred_language is not None:
+            pulumi.set(__self__, "default_preferred_language", default_preferred_language)
         if default_project_creation is not None:
             pulumi.set(__self__, "default_project_creation", default_project_creation)
         if default_project_visibility is not None:
@@ -4486,18 +4972,30 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "default_projects_limit", default_projects_limit)
         if default_snippet_visibility is not None:
             pulumi.set(__self__, "default_snippet_visibility", default_snippet_visibility)
+        if default_syntax_highlighting_theme is not None:
+            pulumi.set(__self__, "default_syntax_highlighting_theme", default_syntax_highlighting_theme)
         if delete_inactive_projects is not None:
             pulumi.set(__self__, "delete_inactive_projects", delete_inactive_projects)
+        if delete_unconfirmed_users is not None:
+            pulumi.set(__self__, "delete_unconfirmed_users", delete_unconfirmed_users)
         if deletion_adjourned_period is not None:
             pulumi.set(__self__, "deletion_adjourned_period", deletion_adjourned_period)
+        if diagramsnet_enabled is not None:
+            pulumi.set(__self__, "diagramsnet_enabled", diagramsnet_enabled)
+        if diagramsnet_url is not None:
+            pulumi.set(__self__, "diagramsnet_url", diagramsnet_url)
         if diff_max_files is not None:
             pulumi.set(__self__, "diff_max_files", diff_max_files)
         if diff_max_lines is not None:
             pulumi.set(__self__, "diff_max_lines", diff_max_lines)
         if diff_max_patch_bytes is not None:
             pulumi.set(__self__, "diff_max_patch_bytes", diff_max_patch_bytes)
+        if disable_admin_oauth_scopes is not None:
+            pulumi.set(__self__, "disable_admin_oauth_scopes", disable_admin_oauth_scopes)
         if disable_feed_token is not None:
             pulumi.set(__self__, "disable_feed_token", disable_feed_token)
+        if disable_personal_access_tokens is not None:
+            pulumi.set(__self__, "disable_personal_access_tokens", disable_personal_access_tokens)
         if disabled_oauth_sign_in_sources is not None:
             pulumi.set(__self__, "disabled_oauth_sign_in_sources", disabled_oauth_sign_in_sources)
         if dns_rebinding_protection_enabled is not None:
@@ -4508,8 +5006,12 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "domain_denylist_enabled", domain_denylist_enabled)
         if domain_denylists is not None:
             pulumi.set(__self__, "domain_denylists", domain_denylists)
+        if downstream_pipeline_trigger_limit_per_project_user_sha is not None:
+            pulumi.set(__self__, "downstream_pipeline_trigger_limit_per_project_user_sha", downstream_pipeline_trigger_limit_per_project_user_sha)
         if dsa_key_restriction is not None:
             pulumi.set(__self__, "dsa_key_restriction", dsa_key_restriction)
+        if duo_features_enabled is not None:
+            pulumi.set(__self__, "duo_features_enabled", duo_features_enabled)
         if ecdsa_key_restriction is not None:
             pulumi.set(__self__, "ecdsa_key_restriction", ecdsa_key_restriction)
         if ecdsa_sk_key_restriction is not None:
@@ -4981,6 +5483,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "akismet_enabled", value)
 
     @property
+    @pulumi.getter(name="allowAccountDeletion")
+    def allow_account_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to allow users to delete their accounts. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_account_deletion")
+
+    @allow_account_deletion.setter
+    def allow_account_deletion(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_account_deletion", value)
+
+    @property
     @pulumi.getter(name="allowGroupOwnersToManageLdap")
     def allow_group_owners_to_manage_ldap(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -5017,6 +5531,30 @@ class _ApplicationSettingsState:
         pulumi.set(self, "allow_local_requests_from_web_hooks_and_services", value)
 
     @property
+    @pulumi.getter(name="allowProjectCreationForGuestAndBelow")
+    def allow_project_creation_for_guest_and_below(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether users assigned up to the Guest role can create groups and personal projects.
+        """
+        return pulumi.get(self, "allow_project_creation_for_guest_and_below")
+
+    @allow_project_creation_for_guest_and_below.setter
+    def allow_project_creation_for_guest_and_below(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_project_creation_for_guest_and_below", value)
+
+    @property
+    @pulumi.getter(name="allowRunnerRegistrationToken")
+    def allow_runner_registration_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow using a registration token to create a runner.
+        """
+        return pulumi.get(self, "allow_runner_registration_token")
+
+    @allow_runner_registration_token.setter
+    def allow_runner_registration_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_runner_registration_token", value)
+
+    @property
     @pulumi.getter(name="archiveBuildsInHumanReadable")
     def archive_builds_in_human_readable(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5027,6 +5565,18 @@ class _ApplicationSettingsState:
     @archive_builds_in_human_readable.setter
     def archive_builds_in_human_readable(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "archive_builds_in_human_readable", value)
+
+    @property
+    @pulumi.getter(name="asciidocMaxIncludes")
+    def asciidoc_max_includes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+        """
+        return pulumi.get(self, "asciidoc_max_includes")
+
+    @asciidoc_max_includes.setter
+    def asciidoc_max_includes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "asciidoc_max_includes", value)
 
     @property
     @pulumi.getter(name="assetProxyAllowlists")
@@ -5089,6 +5639,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "authorized_keys_enabled", value)
 
     @property
+    @pulumi.getter(name="autoBanUserOnExcessiveProjectsDownload")
+    def auto_ban_user_on_excessive_projects_download(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+        """
+        return pulumi.get(self, "auto_ban_user_on_excessive_projects_download")
+
+    @auto_ban_user_on_excessive_projects_download.setter
+    def auto_ban_user_on_excessive_projects_download(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_ban_user_on_excessive_projects_download", value)
+
+    @property
     @pulumi.getter(name="autoDevopsDomain")
     def auto_devops_domain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5125,6 +5687,42 @@ class _ApplicationSettingsState:
         pulumi.set(self, "automatic_purchased_storage_allocation", value)
 
     @property
+    @pulumi.getter(name="bulkImportConcurrentPipelineBatchLimit")
+    def bulk_import_concurrent_pipeline_batch_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum simultaneous Direct Transfer batches to process.
+        """
+        return pulumi.get(self, "bulk_import_concurrent_pipeline_batch_limit")
+
+    @bulk_import_concurrent_pipeline_batch_limit.setter
+    def bulk_import_concurrent_pipeline_batch_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bulk_import_concurrent_pipeline_batch_limit", value)
+
+    @property
+    @pulumi.getter(name="bulkImportEnabled")
+    def bulk_import_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+        """
+        return pulumi.get(self, "bulk_import_enabled")
+
+    @bulk_import_enabled.setter
+    def bulk_import_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bulk_import_enabled", value)
+
+    @property
+    @pulumi.getter(name="bulkImportMaxDownloadFileSize")
+    def bulk_import_max_download_file_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+        """
+        return pulumi.get(self, "bulk_import_max_download_file_size")
+
+    @bulk_import_max_download_file_size.setter
+    def bulk_import_max_download_file_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bulk_import_max_download_file_size", value)
+
+    @property
     @pulumi.getter(name="canCreateGroup")
     def can_create_group(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -5149,6 +5747,30 @@ class _ApplicationSettingsState:
         pulumi.set(self, "check_namespace_plan", value)
 
     @property
+    @pulumi.getter(name="ciMaxIncludes")
+    def ci_max_includes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of includes per pipeline.
+        """
+        return pulumi.get(self, "ci_max_includes")
+
+    @ci_max_includes.setter
+    def ci_max_includes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ci_max_includes", value)
+
+    @property
+    @pulumi.getter(name="ciMaxTotalYamlSizeBytes")
+    def ci_max_total_yaml_size_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+        """
+        return pulumi.get(self, "ci_max_total_yaml_size_bytes")
+
+    @ci_max_total_yaml_size_bytes.setter
+    def ci_max_total_yaml_size_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ci_max_total_yaml_size_bytes", value)
+
+    @property
     @pulumi.getter(name="commitEmailHostname")
     def commit_email_hostname(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5159,6 +5781,42 @@ class _ApplicationSettingsState:
     @commit_email_hostname.setter
     def commit_email_hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "commit_email_hostname", value)
+
+    @property
+    @pulumi.getter(name="concurrentBitbucketImportJobsLimit")
+    def concurrent_bitbucket_import_jobs_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+        """
+        return pulumi.get(self, "concurrent_bitbucket_import_jobs_limit")
+
+    @concurrent_bitbucket_import_jobs_limit.setter
+    def concurrent_bitbucket_import_jobs_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "concurrent_bitbucket_import_jobs_limit", value)
+
+    @property
+    @pulumi.getter(name="concurrentBitbucketServerImportJobsLimit")
+    def concurrent_bitbucket_server_import_jobs_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+        """
+        return pulumi.get(self, "concurrent_bitbucket_server_import_jobs_limit")
+
+    @concurrent_bitbucket_server_import_jobs_limit.setter
+    def concurrent_bitbucket_server_import_jobs_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "concurrent_bitbucket_server_import_jobs_limit", value)
+
+    @property
+    @pulumi.getter(name="concurrentGithubImportJobsLimit")
+    def concurrent_github_import_jobs_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+        """
+        return pulumi.get(self, "concurrent_github_import_jobs_limit")
+
+    @concurrent_github_import_jobs_limit.setter
+    def concurrent_github_import_jobs_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "concurrent_github_import_jobs_limit", value)
 
     @property
     @pulumi.getter(name="containerExpirationPoliciesEnableHistoricEntries")
@@ -5245,6 +5903,30 @@ class _ApplicationSettingsState:
         pulumi.set(self, "deactivate_dormant_users", value)
 
     @property
+    @pulumi.getter(name="deactivateDormantUsersPeriod")
+    def deactivate_dormant_users_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+        """
+        return pulumi.get(self, "deactivate_dormant_users_period")
+
+    @deactivate_dormant_users_period.setter
+    def deactivate_dormant_users_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deactivate_dormant_users_period", value)
+
+    @property
+    @pulumi.getter(name="decompressArchiveFileTimeout")
+    def decompress_archive_file_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+        """
+        return pulumi.get(self, "decompress_archive_file_timeout")
+
+    @decompress_archive_file_timeout.setter
+    def decompress_archive_file_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "decompress_archive_file_timeout", value)
+
+    @property
     @pulumi.getter(name="defaultArtifactsExpireIn")
     def default_artifacts_expire_in(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5281,6 +5963,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "default_branch_protection", value)
 
     @property
+    @pulumi.getter(name="defaultBranchProtectionDefaults")
+    def default_branch_protection_defaults(self) -> Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]:
+        """
+        The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+        """
+        return pulumi.get(self, "default_branch_protection_defaults")
+
+    @default_branch_protection_defaults.setter
+    def default_branch_protection_defaults(self, value: Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]):
+        pulumi.set(self, "default_branch_protection_defaults", value)
+
+    @property
     @pulumi.getter(name="defaultCiConfigPath")
     def default_ci_config_path(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5303,6 +5997,18 @@ class _ApplicationSettingsState:
     @default_group_visibility.setter
     def default_group_visibility(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_group_visibility", value)
+
+    @property
+    @pulumi.getter(name="defaultPreferredLanguage")
+    def default_preferred_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default preferred language for users who are not logged in.
+        """
+        return pulumi.get(self, "default_preferred_language")
+
+    @default_preferred_language.setter
+    def default_preferred_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_preferred_language", value)
 
     @property
     @pulumi.getter(name="defaultProjectCreation")
@@ -5353,6 +6059,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "default_snippet_visibility", value)
 
     @property
+    @pulumi.getter(name="defaultSyntaxHighlightingTheme")
+    def default_syntax_highlighting_theme(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+        """
+        return pulumi.get(self, "default_syntax_highlighting_theme")
+
+    @default_syntax_highlighting_theme.setter
+    def default_syntax_highlighting_theme(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_syntax_highlighting_theme", value)
+
+    @property
     @pulumi.getter(name="deleteInactiveProjects")
     def delete_inactive_projects(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -5365,6 +6083,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "delete_inactive_projects", value)
 
     @property
+    @pulumi.getter(name="deleteUnconfirmedUsers")
+    def delete_unconfirmed_users(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "delete_unconfirmed_users")
+
+    @delete_unconfirmed_users.setter
+    def delete_unconfirmed_users(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_unconfirmed_users", value)
+
+    @property
     @pulumi.getter(name="deletionAdjournedPeriod")
     def deletion_adjourned_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -5375,6 +6105,30 @@ class _ApplicationSettingsState:
     @deletion_adjourned_period.setter
     def deletion_adjourned_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "deletion_adjourned_period", value)
+
+    @property
+    @pulumi.getter(name="diagramsnetEnabled")
+    def diagramsnet_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+        """
+        return pulumi.get(self, "diagramsnet_enabled")
+
+    @diagramsnet_enabled.setter
+    def diagramsnet_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "diagramsnet_enabled", value)
+
+    @property
+    @pulumi.getter(name="diagramsnetUrl")
+    def diagramsnet_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Diagrams.net instance URL for integration.
+        """
+        return pulumi.get(self, "diagramsnet_url")
+
+    @diagramsnet_url.setter
+    def diagramsnet_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "diagramsnet_url", value)
 
     @property
     @pulumi.getter(name="diffMaxFiles")
@@ -5413,6 +6167,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "diff_max_patch_bytes", value)
 
     @property
+    @pulumi.getter(name="disableAdminOauthScopes")
+    def disable_admin_oauth_scopes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+        """
+        return pulumi.get(self, "disable_admin_oauth_scopes")
+
+    @disable_admin_oauth_scopes.setter
+    def disable_admin_oauth_scopes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_admin_oauth_scopes", value)
+
+    @property
     @pulumi.getter(name="disableFeedToken")
     def disable_feed_token(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -5423,6 +6189,18 @@ class _ApplicationSettingsState:
     @disable_feed_token.setter
     def disable_feed_token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_feed_token", value)
+
+    @property
+    @pulumi.getter(name="disablePersonalAccessTokens")
+    def disable_personal_access_tokens(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+        """
+        return pulumi.get(self, "disable_personal_access_tokens")
+
+    @disable_personal_access_tokens.setter
+    def disable_personal_access_tokens(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_personal_access_tokens", value)
 
     @property
     @pulumi.getter(name="disabledOauthSignInSources")
@@ -5485,6 +6263,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "domain_denylists", value)
 
     @property
+    @pulumi.getter(name="downstreamPipelineTriggerLimitPerProjectUserSha")
+    def downstream_pipeline_trigger_limit_per_project_user_sha(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+        """
+        return pulumi.get(self, "downstream_pipeline_trigger_limit_per_project_user_sha")
+
+    @downstream_pipeline_trigger_limit_per_project_user_sha.setter
+    def downstream_pipeline_trigger_limit_per_project_user_sha(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "downstream_pipeline_trigger_limit_per_project_user_sha", value)
+
+    @property
     @pulumi.getter(name="dsaKeyRestriction")
     def dsa_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
@@ -5495,6 +6285,18 @@ class _ApplicationSettingsState:
     @dsa_key_restriction.setter
     def dsa_key_restriction(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "dsa_key_restriction", value)
+
+    @property
+    @pulumi.getter(name="duoFeaturesEnabled")
+    def duo_features_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "duo_features_enabled")
+
+    @duo_features_enabled.setter
+    def duo_features_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "duo_features_enabled", value)
 
     @property
     @pulumi.getter(name="ecdsaKeyRestriction")
@@ -7838,21 +8640,34 @@ class ApplicationSettings(pulumi.CustomResource):
                  after_sign_up_text: Optional[pulumi.Input[str]] = None,
                  akismet_api_key: Optional[pulumi.Input[str]] = None,
                  akismet_enabled: Optional[pulumi.Input[bool]] = None,
+                 allow_account_deletion: Optional[pulumi.Input[bool]] = None,
                  allow_group_owners_to_manage_ldap: Optional[pulumi.Input[bool]] = None,
                  allow_local_requests_from_system_hooks: Optional[pulumi.Input[bool]] = None,
                  allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[bool]] = None,
+                 allow_project_creation_for_guest_and_below: Optional[pulumi.Input[bool]] = None,
+                 allow_runner_registration_token: Optional[pulumi.Input[bool]] = None,
                  archive_builds_in_human_readable: Optional[pulumi.Input[str]] = None,
+                 asciidoc_max_includes: Optional[pulumi.Input[int]] = None,
                  asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_proxy_enabled: Optional[pulumi.Input[bool]] = None,
                  asset_proxy_secret_key: Optional[pulumi.Input[str]] = None,
                  asset_proxy_url: Optional[pulumi.Input[str]] = None,
                  authorized_keys_enabled: Optional[pulumi.Input[bool]] = None,
+                 auto_ban_user_on_excessive_projects_download: Optional[pulumi.Input[bool]] = None,
                  auto_devops_domain: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
+                 bulk_import_concurrent_pipeline_batch_limit: Optional[pulumi.Input[int]] = None,
+                 bulk_import_enabled: Optional[pulumi.Input[bool]] = None,
+                 bulk_import_max_download_file_size: Optional[pulumi.Input[int]] = None,
                  can_create_group: Optional[pulumi.Input[bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[bool]] = None,
+                 ci_max_includes: Optional[pulumi.Input[int]] = None,
+                 ci_max_total_yaml_size_bytes: Optional[pulumi.Input[int]] = None,
                  commit_email_hostname: Optional[pulumi.Input[str]] = None,
+                 concurrent_bitbucket_import_jobs_limit: Optional[pulumi.Input[int]] = None,
+                 concurrent_bitbucket_server_import_jobs_limit: Optional[pulumi.Input[int]] = None,
+                 concurrent_github_import_jobs_limit: Optional[pulumi.Input[int]] = None,
                  container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
                  container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[int]] = None,
                  container_registry_delete_tags_service_timeout: Optional[pulumi.Input[int]] = None,
@@ -7860,27 +8675,39 @@ class ApplicationSettings(pulumi.CustomResource):
                  container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
                  container_registry_token_expire_delay: Optional[pulumi.Input[int]] = None,
                  deactivate_dormant_users: Optional[pulumi.Input[bool]] = None,
+                 deactivate_dormant_users_period: Optional[pulumi.Input[int]] = None,
+                 decompress_archive_file_timeout: Optional[pulumi.Input[int]] = None,
                  default_artifacts_expire_in: Optional[pulumi.Input[str]] = None,
                  default_branch_name: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
+                 default_branch_protection_defaults: Optional[pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
                  default_ci_config_path: Optional[pulumi.Input[str]] = None,
                  default_group_visibility: Optional[pulumi.Input[str]] = None,
+                 default_preferred_language: Optional[pulumi.Input[str]] = None,
                  default_project_creation: Optional[pulumi.Input[int]] = None,
                  default_project_visibility: Optional[pulumi.Input[str]] = None,
                  default_projects_limit: Optional[pulumi.Input[int]] = None,
                  default_snippet_visibility: Optional[pulumi.Input[str]] = None,
+                 default_syntax_highlighting_theme: Optional[pulumi.Input[int]] = None,
                  delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
+                 delete_unconfirmed_users: Optional[pulumi.Input[bool]] = None,
                  deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
+                 diagramsnet_enabled: Optional[pulumi.Input[bool]] = None,
+                 diagramsnet_url: Optional[pulumi.Input[str]] = None,
                  diff_max_files: Optional[pulumi.Input[int]] = None,
                  diff_max_lines: Optional[pulumi.Input[int]] = None,
                  diff_max_patch_bytes: Optional[pulumi.Input[int]] = None,
+                 disable_admin_oauth_scopes: Optional[pulumi.Input[bool]] = None,
                  disable_feed_token: Optional[pulumi.Input[bool]] = None,
+                 disable_personal_access_tokens: Optional[pulumi.Input[bool]] = None,
                  disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_rebinding_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain_denylist_enabled: Optional[pulumi.Input[bool]] = None,
                  domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 downstream_pipeline_trigger_limit_per_project_user_sha: Optional[pulumi.Input[int]] = None,
                  dsa_key_restriction: Optional[pulumi.Input[int]] = None,
+                 duo_features_enabled: Optional[pulumi.Input[bool]] = None,
                  ecdsa_key_restriction: Optional[pulumi.Input[int]] = None,
                  ecdsa_sk_key_restriction: Optional[pulumi.Input[int]] = None,
                  ed25519_key_restriction: Optional[pulumi.Input[int]] = None,
@@ -8087,21 +8914,34 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] after_sign_up_text: Text shown to the user after signing up.
         :param pulumi.Input[str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
+        :param pulumi.Input[bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
         :param pulumi.Input[bool] allow_group_owners_to_manage_ldap: Set to true to allow group owners to manage LDAP.
         :param pulumi.Input[bool] allow_local_requests_from_system_hooks: Allow requests to the local network from system hooks.
         :param pulumi.Input[bool] allow_local_requests_from_web_hooks_and_services: Allow requests to the local network from web hooks and services.
+        :param pulumi.Input[bool] allow_project_creation_for_guest_and_below: Indicates whether users assigned up to the Guest role can create groups and personal projects.
+        :param pulumi.Input[bool] allow_runner_registration_token: Allow using a registration token to create a runner.
         :param pulumi.Input[str] archive_builds_in_human_readable: Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
+        :param pulumi.Input[int] asciidoc_max_includes: Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_proxy_allowlists: Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] asset_proxy_enabled: (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
         :param pulumi.Input[str] asset_proxy_secret_key: Shared secret with the asset proxy server. GitLab restart is required to apply changes.
         :param pulumi.Input[str] asset_proxy_url: URL of the asset proxy server. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] authorized_keys_enabled: By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
+        :param pulumi.Input[bool] auto_ban_user_on_excessive_projects_download: When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
         :param pulumi.Input[str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
         :param pulumi.Input[bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
+        :param pulumi.Input[int] bulk_import_concurrent_pipeline_batch_limit: Maximum simultaneous Direct Transfer batches to process.
+        :param pulumi.Input[bool] bulk_import_enabled: Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+        :param pulumi.Input[int] bulk_import_max_download_file_size: Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
         :param pulumi.Input[bool] can_create_group: Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         :param pulumi.Input[bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
+        :param pulumi.Input[int] ci_max_includes: The maximum number of includes per pipeline.
+        :param pulumi.Input[int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[str] commit_email_hostname: Custom hostname (for private commit emails).
+        :param pulumi.Input[int] concurrent_bitbucket_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+        :param pulumi.Input[int] concurrent_bitbucket_server_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+        :param pulumi.Input[int] concurrent_github_import_jobs_limit: Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
         :param pulumi.Input[bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
         :param pulumi.Input[int] container_registry_cleanup_tags_service_max_list_size: The maximum number of tags that can be deleted in a single execution of cleanup policies.
         :param pulumi.Input[int] container_registry_delete_tags_service_timeout: The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
@@ -8109,27 +8949,39 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] container_registry_expiration_policies_worker_capacity: Number of workers for cleanup policies.
         :param pulumi.Input[int] container_registry_token_expire_delay: Container Registry token duration in minutes.
         :param pulumi.Input[bool] deactivate_dormant_users: Enable automatic deactivation of dormant users.
+        :param pulumi.Input[int] deactivate_dormant_users_period: Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+        :param pulumi.Input[int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
         :param pulumi.Input[str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[str] default_branch_name: Instance-level custom initial branch name (introduced in GitLab 13.2).
         :param pulumi.Input[int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        :param pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[str] default_preferred_language: Default preferred language for users who are not logged in.
         :param pulumi.Input[int] default_project_creation: Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
         :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_projects_limit: Project limit per user.
         :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[int] default_syntax_highlighting_theme: Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
         :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+        :param pulumi.Input[bool] delete_unconfirmed_users: Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
+        :param pulumi.Input[bool] diagramsnet_enabled: (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+        :param pulumi.Input[str] diagramsnet_url: The Diagrams.net instance URL for integration.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
+        :param pulumi.Input[bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
         :param pulumi.Input[bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
+        :param pulumi.Input[bool] disable_personal_access_tokens: Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Null means there is no restriction.
         :param pulumi.Input[bool] domain_denylist_enabled: (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_denylists: Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
+        :param pulumi.Input[int] downstream_pipeline_trigger_limit_per_project_user_sha: Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
         :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
+        :param pulumi.Input[bool] duo_features_enabled: Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
         :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
         :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
@@ -8356,21 +9208,34 @@ class ApplicationSettings(pulumi.CustomResource):
                  after_sign_up_text: Optional[pulumi.Input[str]] = None,
                  akismet_api_key: Optional[pulumi.Input[str]] = None,
                  akismet_enabled: Optional[pulumi.Input[bool]] = None,
+                 allow_account_deletion: Optional[pulumi.Input[bool]] = None,
                  allow_group_owners_to_manage_ldap: Optional[pulumi.Input[bool]] = None,
                  allow_local_requests_from_system_hooks: Optional[pulumi.Input[bool]] = None,
                  allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[bool]] = None,
+                 allow_project_creation_for_guest_and_below: Optional[pulumi.Input[bool]] = None,
+                 allow_runner_registration_token: Optional[pulumi.Input[bool]] = None,
                  archive_builds_in_human_readable: Optional[pulumi.Input[str]] = None,
+                 asciidoc_max_includes: Optional[pulumi.Input[int]] = None,
                  asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_proxy_enabled: Optional[pulumi.Input[bool]] = None,
                  asset_proxy_secret_key: Optional[pulumi.Input[str]] = None,
                  asset_proxy_url: Optional[pulumi.Input[str]] = None,
                  authorized_keys_enabled: Optional[pulumi.Input[bool]] = None,
+                 auto_ban_user_on_excessive_projects_download: Optional[pulumi.Input[bool]] = None,
                  auto_devops_domain: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
+                 bulk_import_concurrent_pipeline_batch_limit: Optional[pulumi.Input[int]] = None,
+                 bulk_import_enabled: Optional[pulumi.Input[bool]] = None,
+                 bulk_import_max_download_file_size: Optional[pulumi.Input[int]] = None,
                  can_create_group: Optional[pulumi.Input[bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[bool]] = None,
+                 ci_max_includes: Optional[pulumi.Input[int]] = None,
+                 ci_max_total_yaml_size_bytes: Optional[pulumi.Input[int]] = None,
                  commit_email_hostname: Optional[pulumi.Input[str]] = None,
+                 concurrent_bitbucket_import_jobs_limit: Optional[pulumi.Input[int]] = None,
+                 concurrent_bitbucket_server_import_jobs_limit: Optional[pulumi.Input[int]] = None,
+                 concurrent_github_import_jobs_limit: Optional[pulumi.Input[int]] = None,
                  container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
                  container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[int]] = None,
                  container_registry_delete_tags_service_timeout: Optional[pulumi.Input[int]] = None,
@@ -8378,27 +9243,39 @@ class ApplicationSettings(pulumi.CustomResource):
                  container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
                  container_registry_token_expire_delay: Optional[pulumi.Input[int]] = None,
                  deactivate_dormant_users: Optional[pulumi.Input[bool]] = None,
+                 deactivate_dormant_users_period: Optional[pulumi.Input[int]] = None,
+                 decompress_archive_file_timeout: Optional[pulumi.Input[int]] = None,
                  default_artifacts_expire_in: Optional[pulumi.Input[str]] = None,
                  default_branch_name: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
+                 default_branch_protection_defaults: Optional[pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
                  default_ci_config_path: Optional[pulumi.Input[str]] = None,
                  default_group_visibility: Optional[pulumi.Input[str]] = None,
+                 default_preferred_language: Optional[pulumi.Input[str]] = None,
                  default_project_creation: Optional[pulumi.Input[int]] = None,
                  default_project_visibility: Optional[pulumi.Input[str]] = None,
                  default_projects_limit: Optional[pulumi.Input[int]] = None,
                  default_snippet_visibility: Optional[pulumi.Input[str]] = None,
+                 default_syntax_highlighting_theme: Optional[pulumi.Input[int]] = None,
                  delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
+                 delete_unconfirmed_users: Optional[pulumi.Input[bool]] = None,
                  deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
+                 diagramsnet_enabled: Optional[pulumi.Input[bool]] = None,
+                 diagramsnet_url: Optional[pulumi.Input[str]] = None,
                  diff_max_files: Optional[pulumi.Input[int]] = None,
                  diff_max_lines: Optional[pulumi.Input[int]] = None,
                  diff_max_patch_bytes: Optional[pulumi.Input[int]] = None,
+                 disable_admin_oauth_scopes: Optional[pulumi.Input[bool]] = None,
                  disable_feed_token: Optional[pulumi.Input[bool]] = None,
+                 disable_personal_access_tokens: Optional[pulumi.Input[bool]] = None,
                  disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_rebinding_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain_denylist_enabled: Optional[pulumi.Input[bool]] = None,
                  domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 downstream_pipeline_trigger_limit_per_project_user_sha: Optional[pulumi.Input[int]] = None,
                  dsa_key_restriction: Optional[pulumi.Input[int]] = None,
+                 duo_features_enabled: Optional[pulumi.Input[bool]] = None,
                  ecdsa_key_restriction: Optional[pulumi.Input[int]] = None,
                  ecdsa_sk_key_restriction: Optional[pulumi.Input[int]] = None,
                  ed25519_key_restriction: Optional[pulumi.Input[int]] = None,
@@ -8608,21 +9485,34 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["after_sign_up_text"] = after_sign_up_text
             __props__.__dict__["akismet_api_key"] = None if akismet_api_key is None else pulumi.Output.secret(akismet_api_key)
             __props__.__dict__["akismet_enabled"] = akismet_enabled
+            __props__.__dict__["allow_account_deletion"] = allow_account_deletion
             __props__.__dict__["allow_group_owners_to_manage_ldap"] = allow_group_owners_to_manage_ldap
             __props__.__dict__["allow_local_requests_from_system_hooks"] = allow_local_requests_from_system_hooks
             __props__.__dict__["allow_local_requests_from_web_hooks_and_services"] = allow_local_requests_from_web_hooks_and_services
+            __props__.__dict__["allow_project_creation_for_guest_and_below"] = allow_project_creation_for_guest_and_below
+            __props__.__dict__["allow_runner_registration_token"] = allow_runner_registration_token
             __props__.__dict__["archive_builds_in_human_readable"] = archive_builds_in_human_readable
+            __props__.__dict__["asciidoc_max_includes"] = asciidoc_max_includes
             __props__.__dict__["asset_proxy_allowlists"] = asset_proxy_allowlists
             __props__.__dict__["asset_proxy_enabled"] = asset_proxy_enabled
             __props__.__dict__["asset_proxy_secret_key"] = None if asset_proxy_secret_key is None else pulumi.Output.secret(asset_proxy_secret_key)
             __props__.__dict__["asset_proxy_url"] = asset_proxy_url
             __props__.__dict__["authorized_keys_enabled"] = authorized_keys_enabled
+            __props__.__dict__["auto_ban_user_on_excessive_projects_download"] = auto_ban_user_on_excessive_projects_download
             __props__.__dict__["auto_devops_domain"] = auto_devops_domain
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
             __props__.__dict__["automatic_purchased_storage_allocation"] = automatic_purchased_storage_allocation
+            __props__.__dict__["bulk_import_concurrent_pipeline_batch_limit"] = bulk_import_concurrent_pipeline_batch_limit
+            __props__.__dict__["bulk_import_enabled"] = bulk_import_enabled
+            __props__.__dict__["bulk_import_max_download_file_size"] = bulk_import_max_download_file_size
             __props__.__dict__["can_create_group"] = can_create_group
             __props__.__dict__["check_namespace_plan"] = check_namespace_plan
+            __props__.__dict__["ci_max_includes"] = ci_max_includes
+            __props__.__dict__["ci_max_total_yaml_size_bytes"] = ci_max_total_yaml_size_bytes
             __props__.__dict__["commit_email_hostname"] = commit_email_hostname
+            __props__.__dict__["concurrent_bitbucket_import_jobs_limit"] = concurrent_bitbucket_import_jobs_limit
+            __props__.__dict__["concurrent_bitbucket_server_import_jobs_limit"] = concurrent_bitbucket_server_import_jobs_limit
+            __props__.__dict__["concurrent_github_import_jobs_limit"] = concurrent_github_import_jobs_limit
             __props__.__dict__["container_expiration_policies_enable_historic_entries"] = container_expiration_policies_enable_historic_entries
             __props__.__dict__["container_registry_cleanup_tags_service_max_list_size"] = container_registry_cleanup_tags_service_max_list_size
             __props__.__dict__["container_registry_delete_tags_service_timeout"] = container_registry_delete_tags_service_timeout
@@ -8630,27 +9520,39 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["container_registry_expiration_policies_worker_capacity"] = container_registry_expiration_policies_worker_capacity
             __props__.__dict__["container_registry_token_expire_delay"] = container_registry_token_expire_delay
             __props__.__dict__["deactivate_dormant_users"] = deactivate_dormant_users
+            __props__.__dict__["deactivate_dormant_users_period"] = deactivate_dormant_users_period
+            __props__.__dict__["decompress_archive_file_timeout"] = decompress_archive_file_timeout
             __props__.__dict__["default_artifacts_expire_in"] = default_artifacts_expire_in
             __props__.__dict__["default_branch_name"] = default_branch_name
             __props__.__dict__["default_branch_protection"] = default_branch_protection
+            __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
             __props__.__dict__["default_ci_config_path"] = default_ci_config_path
             __props__.__dict__["default_group_visibility"] = default_group_visibility
+            __props__.__dict__["default_preferred_language"] = default_preferred_language
             __props__.__dict__["default_project_creation"] = default_project_creation
             __props__.__dict__["default_project_visibility"] = default_project_visibility
             __props__.__dict__["default_projects_limit"] = default_projects_limit
             __props__.__dict__["default_snippet_visibility"] = default_snippet_visibility
+            __props__.__dict__["default_syntax_highlighting_theme"] = default_syntax_highlighting_theme
             __props__.__dict__["delete_inactive_projects"] = delete_inactive_projects
+            __props__.__dict__["delete_unconfirmed_users"] = delete_unconfirmed_users
             __props__.__dict__["deletion_adjourned_period"] = deletion_adjourned_period
+            __props__.__dict__["diagramsnet_enabled"] = diagramsnet_enabled
+            __props__.__dict__["diagramsnet_url"] = diagramsnet_url
             __props__.__dict__["diff_max_files"] = diff_max_files
             __props__.__dict__["diff_max_lines"] = diff_max_lines
             __props__.__dict__["diff_max_patch_bytes"] = diff_max_patch_bytes
+            __props__.__dict__["disable_admin_oauth_scopes"] = disable_admin_oauth_scopes
             __props__.__dict__["disable_feed_token"] = disable_feed_token
+            __props__.__dict__["disable_personal_access_tokens"] = disable_personal_access_tokens
             __props__.__dict__["disabled_oauth_sign_in_sources"] = disabled_oauth_sign_in_sources
             __props__.__dict__["dns_rebinding_protection_enabled"] = dns_rebinding_protection_enabled
             __props__.__dict__["domain_allowlists"] = domain_allowlists
             __props__.__dict__["domain_denylist_enabled"] = domain_denylist_enabled
             __props__.__dict__["domain_denylists"] = domain_denylists
+            __props__.__dict__["downstream_pipeline_trigger_limit_per_project_user_sha"] = downstream_pipeline_trigger_limit_per_project_user_sha
             __props__.__dict__["dsa_key_restriction"] = dsa_key_restriction
+            __props__.__dict__["duo_features_enabled"] = duo_features_enabled
             __props__.__dict__["ecdsa_key_restriction"] = ecdsa_key_restriction
             __props__.__dict__["ecdsa_sk_key_restriction"] = ecdsa_sk_key_restriction
             __props__.__dict__["ed25519_key_restriction"] = ed25519_key_restriction
@@ -8863,21 +9765,34 @@ class ApplicationSettings(pulumi.CustomResource):
             after_sign_up_text: Optional[pulumi.Input[str]] = None,
             akismet_api_key: Optional[pulumi.Input[str]] = None,
             akismet_enabled: Optional[pulumi.Input[bool]] = None,
+            allow_account_deletion: Optional[pulumi.Input[bool]] = None,
             allow_group_owners_to_manage_ldap: Optional[pulumi.Input[bool]] = None,
             allow_local_requests_from_system_hooks: Optional[pulumi.Input[bool]] = None,
             allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[bool]] = None,
+            allow_project_creation_for_guest_and_below: Optional[pulumi.Input[bool]] = None,
+            allow_runner_registration_token: Optional[pulumi.Input[bool]] = None,
             archive_builds_in_human_readable: Optional[pulumi.Input[str]] = None,
+            asciidoc_max_includes: Optional[pulumi.Input[int]] = None,
             asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             asset_proxy_enabled: Optional[pulumi.Input[bool]] = None,
             asset_proxy_secret_key: Optional[pulumi.Input[str]] = None,
             asset_proxy_url: Optional[pulumi.Input[str]] = None,
             authorized_keys_enabled: Optional[pulumi.Input[bool]] = None,
+            auto_ban_user_on_excessive_projects_download: Optional[pulumi.Input[bool]] = None,
             auto_devops_domain: Optional[pulumi.Input[str]] = None,
             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
             automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
+            bulk_import_concurrent_pipeline_batch_limit: Optional[pulumi.Input[int]] = None,
+            bulk_import_enabled: Optional[pulumi.Input[bool]] = None,
+            bulk_import_max_download_file_size: Optional[pulumi.Input[int]] = None,
             can_create_group: Optional[pulumi.Input[bool]] = None,
             check_namespace_plan: Optional[pulumi.Input[bool]] = None,
+            ci_max_includes: Optional[pulumi.Input[int]] = None,
+            ci_max_total_yaml_size_bytes: Optional[pulumi.Input[int]] = None,
             commit_email_hostname: Optional[pulumi.Input[str]] = None,
+            concurrent_bitbucket_import_jobs_limit: Optional[pulumi.Input[int]] = None,
+            concurrent_bitbucket_server_import_jobs_limit: Optional[pulumi.Input[int]] = None,
+            concurrent_github_import_jobs_limit: Optional[pulumi.Input[int]] = None,
             container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
             container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[int]] = None,
             container_registry_delete_tags_service_timeout: Optional[pulumi.Input[int]] = None,
@@ -8885,27 +9800,39 @@ class ApplicationSettings(pulumi.CustomResource):
             container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
             container_registry_token_expire_delay: Optional[pulumi.Input[int]] = None,
             deactivate_dormant_users: Optional[pulumi.Input[bool]] = None,
+            deactivate_dormant_users_period: Optional[pulumi.Input[int]] = None,
+            decompress_archive_file_timeout: Optional[pulumi.Input[int]] = None,
             default_artifacts_expire_in: Optional[pulumi.Input[str]] = None,
             default_branch_name: Optional[pulumi.Input[str]] = None,
             default_branch_protection: Optional[pulumi.Input[int]] = None,
+            default_branch_protection_defaults: Optional[pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
             default_ci_config_path: Optional[pulumi.Input[str]] = None,
             default_group_visibility: Optional[pulumi.Input[str]] = None,
+            default_preferred_language: Optional[pulumi.Input[str]] = None,
             default_project_creation: Optional[pulumi.Input[int]] = None,
             default_project_visibility: Optional[pulumi.Input[str]] = None,
             default_projects_limit: Optional[pulumi.Input[int]] = None,
             default_snippet_visibility: Optional[pulumi.Input[str]] = None,
+            default_syntax_highlighting_theme: Optional[pulumi.Input[int]] = None,
             delete_inactive_projects: Optional[pulumi.Input[bool]] = None,
+            delete_unconfirmed_users: Optional[pulumi.Input[bool]] = None,
             deletion_adjourned_period: Optional[pulumi.Input[int]] = None,
+            diagramsnet_enabled: Optional[pulumi.Input[bool]] = None,
+            diagramsnet_url: Optional[pulumi.Input[str]] = None,
             diff_max_files: Optional[pulumi.Input[int]] = None,
             diff_max_lines: Optional[pulumi.Input[int]] = None,
             diff_max_patch_bytes: Optional[pulumi.Input[int]] = None,
+            disable_admin_oauth_scopes: Optional[pulumi.Input[bool]] = None,
             disable_feed_token: Optional[pulumi.Input[bool]] = None,
+            disable_personal_access_tokens: Optional[pulumi.Input[bool]] = None,
             disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             dns_rebinding_protection_enabled: Optional[pulumi.Input[bool]] = None,
             domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             domain_denylist_enabled: Optional[pulumi.Input[bool]] = None,
             domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            downstream_pipeline_trigger_limit_per_project_user_sha: Optional[pulumi.Input[int]] = None,
             dsa_key_restriction: Optional[pulumi.Input[int]] = None,
+            duo_features_enabled: Optional[pulumi.Input[bool]] = None,
             ecdsa_key_restriction: Optional[pulumi.Input[int]] = None,
             ecdsa_sk_key_restriction: Optional[pulumi.Input[int]] = None,
             ed25519_key_restriction: Optional[pulumi.Input[int]] = None,
@@ -9113,21 +10040,34 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] after_sign_up_text: Text shown to the user after signing up.
         :param pulumi.Input[str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
+        :param pulumi.Input[bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
         :param pulumi.Input[bool] allow_group_owners_to_manage_ldap: Set to true to allow group owners to manage LDAP.
         :param pulumi.Input[bool] allow_local_requests_from_system_hooks: Allow requests to the local network from system hooks.
         :param pulumi.Input[bool] allow_local_requests_from_web_hooks_and_services: Allow requests to the local network from web hooks and services.
+        :param pulumi.Input[bool] allow_project_creation_for_guest_and_below: Indicates whether users assigned up to the Guest role can create groups and personal projects.
+        :param pulumi.Input[bool] allow_runner_registration_token: Allow using a registration token to create a runner.
         :param pulumi.Input[str] archive_builds_in_human_readable: Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
+        :param pulumi.Input[int] asciidoc_max_includes: Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_proxy_allowlists: Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] asset_proxy_enabled: (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
         :param pulumi.Input[str] asset_proxy_secret_key: Shared secret with the asset proxy server. GitLab restart is required to apply changes.
         :param pulumi.Input[str] asset_proxy_url: URL of the asset proxy server. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] authorized_keys_enabled: By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
+        :param pulumi.Input[bool] auto_ban_user_on_excessive_projects_download: When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
         :param pulumi.Input[str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
         :param pulumi.Input[bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
+        :param pulumi.Input[int] bulk_import_concurrent_pipeline_batch_limit: Maximum simultaneous Direct Transfer batches to process.
+        :param pulumi.Input[bool] bulk_import_enabled: Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+        :param pulumi.Input[int] bulk_import_max_download_file_size: Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
         :param pulumi.Input[bool] can_create_group: Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         :param pulumi.Input[bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
+        :param pulumi.Input[int] ci_max_includes: The maximum number of includes per pipeline.
+        :param pulumi.Input[int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[str] commit_email_hostname: Custom hostname (for private commit emails).
+        :param pulumi.Input[int] concurrent_bitbucket_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+        :param pulumi.Input[int] concurrent_bitbucket_server_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+        :param pulumi.Input[int] concurrent_github_import_jobs_limit: Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
         :param pulumi.Input[bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
         :param pulumi.Input[int] container_registry_cleanup_tags_service_max_list_size: The maximum number of tags that can be deleted in a single execution of cleanup policies.
         :param pulumi.Input[int] container_registry_delete_tags_service_timeout: The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
@@ -9135,27 +10075,39 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] container_registry_expiration_policies_worker_capacity: Number of workers for cleanup policies.
         :param pulumi.Input[int] container_registry_token_expire_delay: Container Registry token duration in minutes.
         :param pulumi.Input[bool] deactivate_dormant_users: Enable automatic deactivation of dormant users.
+        :param pulumi.Input[int] deactivate_dormant_users_period: Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+        :param pulumi.Input[int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
         :param pulumi.Input[str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[str] default_branch_name: Instance-level custom initial branch name (introduced in GitLab 13.2).
         :param pulumi.Input[int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        :param pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[str] default_preferred_language: Default preferred language for users who are not logged in.
         :param pulumi.Input[int] default_project_creation: Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
         :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_projects_limit: Project limit per user.
         :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[int] default_syntax_highlighting_theme: Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
         :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+        :param pulumi.Input[bool] delete_unconfirmed_users: Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
+        :param pulumi.Input[bool] diagramsnet_enabled: (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+        :param pulumi.Input[str] diagramsnet_url: The Diagrams.net instance URL for integration.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
+        :param pulumi.Input[bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
         :param pulumi.Input[bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
+        :param pulumi.Input[bool] disable_personal_access_tokens: Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Null means there is no restriction.
         :param pulumi.Input[bool] domain_denylist_enabled: (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_denylists: Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
+        :param pulumi.Input[int] downstream_pipeline_trigger_limit_per_project_user_sha: Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
         :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
+        :param pulumi.Input[bool] duo_features_enabled: Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
         :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
         :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
@@ -9362,21 +10314,34 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["after_sign_up_text"] = after_sign_up_text
         __props__.__dict__["akismet_api_key"] = akismet_api_key
         __props__.__dict__["akismet_enabled"] = akismet_enabled
+        __props__.__dict__["allow_account_deletion"] = allow_account_deletion
         __props__.__dict__["allow_group_owners_to_manage_ldap"] = allow_group_owners_to_manage_ldap
         __props__.__dict__["allow_local_requests_from_system_hooks"] = allow_local_requests_from_system_hooks
         __props__.__dict__["allow_local_requests_from_web_hooks_and_services"] = allow_local_requests_from_web_hooks_and_services
+        __props__.__dict__["allow_project_creation_for_guest_and_below"] = allow_project_creation_for_guest_and_below
+        __props__.__dict__["allow_runner_registration_token"] = allow_runner_registration_token
         __props__.__dict__["archive_builds_in_human_readable"] = archive_builds_in_human_readable
+        __props__.__dict__["asciidoc_max_includes"] = asciidoc_max_includes
         __props__.__dict__["asset_proxy_allowlists"] = asset_proxy_allowlists
         __props__.__dict__["asset_proxy_enabled"] = asset_proxy_enabled
         __props__.__dict__["asset_proxy_secret_key"] = asset_proxy_secret_key
         __props__.__dict__["asset_proxy_url"] = asset_proxy_url
         __props__.__dict__["authorized_keys_enabled"] = authorized_keys_enabled
+        __props__.__dict__["auto_ban_user_on_excessive_projects_download"] = auto_ban_user_on_excessive_projects_download
         __props__.__dict__["auto_devops_domain"] = auto_devops_domain
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
         __props__.__dict__["automatic_purchased_storage_allocation"] = automatic_purchased_storage_allocation
+        __props__.__dict__["bulk_import_concurrent_pipeline_batch_limit"] = bulk_import_concurrent_pipeline_batch_limit
+        __props__.__dict__["bulk_import_enabled"] = bulk_import_enabled
+        __props__.__dict__["bulk_import_max_download_file_size"] = bulk_import_max_download_file_size
         __props__.__dict__["can_create_group"] = can_create_group
         __props__.__dict__["check_namespace_plan"] = check_namespace_plan
+        __props__.__dict__["ci_max_includes"] = ci_max_includes
+        __props__.__dict__["ci_max_total_yaml_size_bytes"] = ci_max_total_yaml_size_bytes
         __props__.__dict__["commit_email_hostname"] = commit_email_hostname
+        __props__.__dict__["concurrent_bitbucket_import_jobs_limit"] = concurrent_bitbucket_import_jobs_limit
+        __props__.__dict__["concurrent_bitbucket_server_import_jobs_limit"] = concurrent_bitbucket_server_import_jobs_limit
+        __props__.__dict__["concurrent_github_import_jobs_limit"] = concurrent_github_import_jobs_limit
         __props__.__dict__["container_expiration_policies_enable_historic_entries"] = container_expiration_policies_enable_historic_entries
         __props__.__dict__["container_registry_cleanup_tags_service_max_list_size"] = container_registry_cleanup_tags_service_max_list_size
         __props__.__dict__["container_registry_delete_tags_service_timeout"] = container_registry_delete_tags_service_timeout
@@ -9384,27 +10349,39 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["container_registry_expiration_policies_worker_capacity"] = container_registry_expiration_policies_worker_capacity
         __props__.__dict__["container_registry_token_expire_delay"] = container_registry_token_expire_delay
         __props__.__dict__["deactivate_dormant_users"] = deactivate_dormant_users
+        __props__.__dict__["deactivate_dormant_users_period"] = deactivate_dormant_users_period
+        __props__.__dict__["decompress_archive_file_timeout"] = decompress_archive_file_timeout
         __props__.__dict__["default_artifacts_expire_in"] = default_artifacts_expire_in
         __props__.__dict__["default_branch_name"] = default_branch_name
         __props__.__dict__["default_branch_protection"] = default_branch_protection
+        __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
         __props__.__dict__["default_ci_config_path"] = default_ci_config_path
         __props__.__dict__["default_group_visibility"] = default_group_visibility
+        __props__.__dict__["default_preferred_language"] = default_preferred_language
         __props__.__dict__["default_project_creation"] = default_project_creation
         __props__.__dict__["default_project_visibility"] = default_project_visibility
         __props__.__dict__["default_projects_limit"] = default_projects_limit
         __props__.__dict__["default_snippet_visibility"] = default_snippet_visibility
+        __props__.__dict__["default_syntax_highlighting_theme"] = default_syntax_highlighting_theme
         __props__.__dict__["delete_inactive_projects"] = delete_inactive_projects
+        __props__.__dict__["delete_unconfirmed_users"] = delete_unconfirmed_users
         __props__.__dict__["deletion_adjourned_period"] = deletion_adjourned_period
+        __props__.__dict__["diagramsnet_enabled"] = diagramsnet_enabled
+        __props__.__dict__["diagramsnet_url"] = diagramsnet_url
         __props__.__dict__["diff_max_files"] = diff_max_files
         __props__.__dict__["diff_max_lines"] = diff_max_lines
         __props__.__dict__["diff_max_patch_bytes"] = diff_max_patch_bytes
+        __props__.__dict__["disable_admin_oauth_scopes"] = disable_admin_oauth_scopes
         __props__.__dict__["disable_feed_token"] = disable_feed_token
+        __props__.__dict__["disable_personal_access_tokens"] = disable_personal_access_tokens
         __props__.__dict__["disabled_oauth_sign_in_sources"] = disabled_oauth_sign_in_sources
         __props__.__dict__["dns_rebinding_protection_enabled"] = dns_rebinding_protection_enabled
         __props__.__dict__["domain_allowlists"] = domain_allowlists
         __props__.__dict__["domain_denylist_enabled"] = domain_denylist_enabled
         __props__.__dict__["domain_denylists"] = domain_denylists
+        __props__.__dict__["downstream_pipeline_trigger_limit_per_project_user_sha"] = downstream_pipeline_trigger_limit_per_project_user_sha
         __props__.__dict__["dsa_key_restriction"] = dsa_key_restriction
+        __props__.__dict__["duo_features_enabled"] = duo_features_enabled
         __props__.__dict__["ecdsa_key_restriction"] = ecdsa_key_restriction
         __props__.__dict__["ecdsa_sk_key_restriction"] = ecdsa_sk_key_restriction
         __props__.__dict__["ed25519_key_restriction"] = ed25519_key_restriction
@@ -9650,6 +10627,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "akismet_enabled")
 
     @property
+    @pulumi.getter(name="allowAccountDeletion")
+    def allow_account_deletion(self) -> pulumi.Output[bool]:
+        """
+        Set to true to allow users to delete their accounts. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_account_deletion")
+
+    @property
     @pulumi.getter(name="allowGroupOwnersToManageLdap")
     def allow_group_owners_to_manage_ldap(self) -> pulumi.Output[bool]:
         """
@@ -9674,12 +10659,36 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "allow_local_requests_from_web_hooks_and_services")
 
     @property
+    @pulumi.getter(name="allowProjectCreationForGuestAndBelow")
+    def allow_project_creation_for_guest_and_below(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether users assigned up to the Guest role can create groups and personal projects.
+        """
+        return pulumi.get(self, "allow_project_creation_for_guest_and_below")
+
+    @property
+    @pulumi.getter(name="allowRunnerRegistrationToken")
+    def allow_runner_registration_token(self) -> pulumi.Output[bool]:
+        """
+        Allow using a registration token to create a runner.
+        """
+        return pulumi.get(self, "allow_runner_registration_token")
+
+    @property
     @pulumi.getter(name="archiveBuildsInHumanReadable")
     def archive_builds_in_human_readable(self) -> pulumi.Output[str]:
         """
         Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
         """
         return pulumi.get(self, "archive_builds_in_human_readable")
+
+    @property
+    @pulumi.getter(name="asciidocMaxIncludes")
+    def asciidoc_max_includes(self) -> pulumi.Output[int]:
+        """
+        Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+        """
+        return pulumi.get(self, "asciidoc_max_includes")
 
     @property
     @pulumi.getter(name="assetProxyAllowlists")
@@ -9722,6 +10731,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "authorized_keys_enabled")
 
     @property
+    @pulumi.getter(name="autoBanUserOnExcessiveProjectsDownload")
+    def auto_ban_user_on_excessive_projects_download(self) -> pulumi.Output[bool]:
+        """
+        When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+        """
+        return pulumi.get(self, "auto_ban_user_on_excessive_projects_download")
+
+    @property
     @pulumi.getter(name="autoDevopsDomain")
     def auto_devops_domain(self) -> pulumi.Output[str]:
         """
@@ -9746,6 +10763,30 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "automatic_purchased_storage_allocation")
 
     @property
+    @pulumi.getter(name="bulkImportConcurrentPipelineBatchLimit")
+    def bulk_import_concurrent_pipeline_batch_limit(self) -> pulumi.Output[int]:
+        """
+        Maximum simultaneous Direct Transfer batches to process.
+        """
+        return pulumi.get(self, "bulk_import_concurrent_pipeline_batch_limit")
+
+    @property
+    @pulumi.getter(name="bulkImportEnabled")
+    def bulk_import_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+        """
+        return pulumi.get(self, "bulk_import_enabled")
+
+    @property
+    @pulumi.getter(name="bulkImportMaxDownloadFileSize")
+    def bulk_import_max_download_file_size(self) -> pulumi.Output[int]:
+        """
+        Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+        """
+        return pulumi.get(self, "bulk_import_max_download_file_size")
+
+    @property
     @pulumi.getter(name="canCreateGroup")
     def can_create_group(self) -> pulumi.Output[bool]:
         """
@@ -9762,12 +10803,52 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "check_namespace_plan")
 
     @property
+    @pulumi.getter(name="ciMaxIncludes")
+    def ci_max_includes(self) -> pulumi.Output[int]:
+        """
+        The maximum number of includes per pipeline.
+        """
+        return pulumi.get(self, "ci_max_includes")
+
+    @property
+    @pulumi.getter(name="ciMaxTotalYamlSizeBytes")
+    def ci_max_total_yaml_size_bytes(self) -> pulumi.Output[int]:
+        """
+        The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+        """
+        return pulumi.get(self, "ci_max_total_yaml_size_bytes")
+
+    @property
     @pulumi.getter(name="commitEmailHostname")
     def commit_email_hostname(self) -> pulumi.Output[str]:
         """
         Custom hostname (for private commit emails).
         """
         return pulumi.get(self, "commit_email_hostname")
+
+    @property
+    @pulumi.getter(name="concurrentBitbucketImportJobsLimit")
+    def concurrent_bitbucket_import_jobs_limit(self) -> pulumi.Output[int]:
+        """
+        Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+        """
+        return pulumi.get(self, "concurrent_bitbucket_import_jobs_limit")
+
+    @property
+    @pulumi.getter(name="concurrentBitbucketServerImportJobsLimit")
+    def concurrent_bitbucket_server_import_jobs_limit(self) -> pulumi.Output[int]:
+        """
+        Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+        """
+        return pulumi.get(self, "concurrent_bitbucket_server_import_jobs_limit")
+
+    @property
+    @pulumi.getter(name="concurrentGithubImportJobsLimit")
+    def concurrent_github_import_jobs_limit(self) -> pulumi.Output[int]:
+        """
+        Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+        """
+        return pulumi.get(self, "concurrent_github_import_jobs_limit")
 
     @property
     @pulumi.getter(name="containerExpirationPoliciesEnableHistoricEntries")
@@ -9826,6 +10907,22 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "deactivate_dormant_users")
 
     @property
+    @pulumi.getter(name="deactivateDormantUsersPeriod")
+    def deactivate_dormant_users_period(self) -> pulumi.Output[int]:
+        """
+        Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+        """
+        return pulumi.get(self, "deactivate_dormant_users_period")
+
+    @property
+    @pulumi.getter(name="decompressArchiveFileTimeout")
+    def decompress_archive_file_timeout(self) -> pulumi.Output[int]:
+        """
+        Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+        """
+        return pulumi.get(self, "decompress_archive_file_timeout")
+
+    @property
     @pulumi.getter(name="defaultArtifactsExpireIn")
     def default_artifacts_expire_in(self) -> pulumi.Output[str]:
         """
@@ -9850,6 +10947,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "default_branch_protection")
 
     @property
+    @pulumi.getter(name="defaultBranchProtectionDefaults")
+    def default_branch_protection_defaults(self) -> pulumi.Output['outputs.ApplicationSettingsDefaultBranchProtectionDefaults']:
+        """
+        The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+        """
+        return pulumi.get(self, "default_branch_protection_defaults")
+
+    @property
     @pulumi.getter(name="defaultCiConfigPath")
     def default_ci_config_path(self) -> pulumi.Output[str]:
         """
@@ -9864,6 +10969,14 @@ class ApplicationSettings(pulumi.CustomResource):
         What visibility level new groups receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_group_visibility")
+
+    @property
+    @pulumi.getter(name="defaultPreferredLanguage")
+    def default_preferred_language(self) -> pulumi.Output[str]:
+        """
+        Default preferred language for users who are not logged in.
+        """
+        return pulumi.get(self, "default_preferred_language")
 
     @property
     @pulumi.getter(name="defaultProjectCreation")
@@ -9898,6 +11011,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "default_snippet_visibility")
 
     @property
+    @pulumi.getter(name="defaultSyntaxHighlightingTheme")
+    def default_syntax_highlighting_theme(self) -> pulumi.Output[int]:
+        """
+        Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+        """
+        return pulumi.get(self, "default_syntax_highlighting_theme")
+
+    @property
     @pulumi.getter(name="deleteInactiveProjects")
     def delete_inactive_projects(self) -> pulumi.Output[bool]:
         """
@@ -9906,12 +11027,36 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "delete_inactive_projects")
 
     @property
+    @pulumi.getter(name="deleteUnconfirmedUsers")
+    def delete_unconfirmed_users(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "delete_unconfirmed_users")
+
+    @property
     @pulumi.getter(name="deletionAdjournedPeriod")
     def deletion_adjourned_period(self) -> pulumi.Output[int]:
         """
         The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         """
         return pulumi.get(self, "deletion_adjourned_period")
+
+    @property
+    @pulumi.getter(name="diagramsnetEnabled")
+    def diagramsnet_enabled(self) -> pulumi.Output[bool]:
+        """
+        (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+        """
+        return pulumi.get(self, "diagramsnet_enabled")
+
+    @property
+    @pulumi.getter(name="diagramsnetUrl")
+    def diagramsnet_url(self) -> pulumi.Output[str]:
+        """
+        The Diagrams.net instance URL for integration.
+        """
+        return pulumi.get(self, "diagramsnet_url")
 
     @property
     @pulumi.getter(name="diffMaxFiles")
@@ -9938,12 +11083,28 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "diff_max_patch_bytes")
 
     @property
+    @pulumi.getter(name="disableAdminOauthScopes")
+    def disable_admin_oauth_scopes(self) -> pulumi.Output[bool]:
+        """
+        Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+        """
+        return pulumi.get(self, "disable_admin_oauth_scopes")
+
+    @property
     @pulumi.getter(name="disableFeedToken")
     def disable_feed_token(self) -> pulumi.Output[bool]:
         """
         Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
         """
         return pulumi.get(self, "disable_feed_token")
+
+    @property
+    @pulumi.getter(name="disablePersonalAccessTokens")
+    def disable_personal_access_tokens(self) -> pulumi.Output[bool]:
+        """
+        Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+        """
+        return pulumi.get(self, "disable_personal_access_tokens")
 
     @property
     @pulumi.getter(name="disabledOauthSignInSources")
@@ -9986,12 +11147,28 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "domain_denylists")
 
     @property
+    @pulumi.getter(name="downstreamPipelineTriggerLimitPerProjectUserSha")
+    def downstream_pipeline_trigger_limit_per_project_user_sha(self) -> pulumi.Output[int]:
+        """
+        Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+        """
+        return pulumi.get(self, "downstream_pipeline_trigger_limit_per_project_user_sha")
+
+    @property
     @pulumi.getter(name="dsaKeyRestriction")
     def dsa_key_restriction(self) -> pulumi.Output[int]:
         """
         The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
         """
         return pulumi.get(self, "dsa_key_restriction")
+
+    @property
+    @pulumi.getter(name="duoFeaturesEnabled")
+    def duo_features_enabled(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "duo_features_enabled")
 
     @property
     @pulumi.getter(name="ecdsaKeyRestriction")

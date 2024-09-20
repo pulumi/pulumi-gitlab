@@ -124,6 +124,12 @@ namespace Pulumi.GitLab
         [Input("insecure", json: true)]
         public Input<bool>? Insecure { get; set; }
 
+        /// <summary>
+        /// The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+        /// </summary>
+        [Input("retries", json: true)]
+        public Input<int>? Retries { get; set; }
+
         [Input("token")]
         private Input<string>? _token;
 

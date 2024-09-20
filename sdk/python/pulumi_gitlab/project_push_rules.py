@@ -26,6 +26,7 @@ class ProjectPushRulesInitArgs:
                  max_file_size: Optional[pulumi.Input[int]] = None,
                  member_check: Optional[pulumi.Input[bool]] = None,
                  prevent_secrets: Optional[pulumi.Input[bool]] = None,
+                 reject_non_dco_commits: Optional[pulumi.Input[bool]] = None,
                  reject_unsigned_commits: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ProjectPushRules resource.
@@ -41,6 +42,7 @@ class ProjectPushRulesInitArgs:
         :param pulumi.Input[int] max_file_size: Maximum file size (MB).
         :param pulumi.Input[bool] member_check: Restrict commits by author (email) to existing GitLab users.
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
+        :param pulumi.Input[bool] reject_non_dco_commits: Reject commit when it’s not DCO certified.
         :param pulumi.Input[bool] reject_unsigned_commits: Reject commit when it’s not signed.
         """
         pulumi.set(__self__, "project", project)
@@ -66,6 +68,8 @@ class ProjectPushRulesInitArgs:
             pulumi.set(__self__, "member_check", member_check)
         if prevent_secrets is not None:
             pulumi.set(__self__, "prevent_secrets", prevent_secrets)
+        if reject_non_dco_commits is not None:
+            pulumi.set(__self__, "reject_non_dco_commits", reject_non_dco_commits)
         if reject_unsigned_commits is not None:
             pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
 
@@ -214,6 +218,18 @@ class ProjectPushRulesInitArgs:
         pulumi.set(self, "prevent_secrets", value)
 
     @property
+    @pulumi.getter(name="rejectNonDcoCommits")
+    def reject_non_dco_commits(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Reject commit when it’s not DCO certified.
+        """
+        return pulumi.get(self, "reject_non_dco_commits")
+
+    @reject_non_dco_commits.setter
+    def reject_non_dco_commits(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reject_non_dco_commits", value)
+
+    @property
     @pulumi.getter(name="rejectUnsignedCommits")
     def reject_unsigned_commits(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -241,6 +257,7 @@ class _ProjectPushRulesState:
                  member_check: Optional[pulumi.Input[bool]] = None,
                  prevent_secrets: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reject_non_dco_commits: Optional[pulumi.Input[bool]] = None,
                  reject_unsigned_commits: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ProjectPushRules resources.
@@ -256,6 +273,7 @@ class _ProjectPushRulesState:
         :param pulumi.Input[bool] member_check: Restrict commits by author (email) to existing GitLab users.
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
+        :param pulumi.Input[bool] reject_non_dco_commits: Reject commit when it’s not DCO certified.
         :param pulumi.Input[bool] reject_unsigned_commits: Reject commit when it’s not signed.
         """
         if author_email_regex is not None:
@@ -282,6 +300,8 @@ class _ProjectPushRulesState:
             pulumi.set(__self__, "prevent_secrets", prevent_secrets)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if reject_non_dco_commits is not None:
+            pulumi.set(__self__, "reject_non_dco_commits", reject_non_dco_commits)
         if reject_unsigned_commits is not None:
             pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
 
@@ -430,6 +450,18 @@ class _ProjectPushRulesState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="rejectNonDcoCommits")
+    def reject_non_dco_commits(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Reject commit when it’s not DCO certified.
+        """
+        return pulumi.get(self, "reject_non_dco_commits")
+
+    @reject_non_dco_commits.setter
+    def reject_non_dco_commits(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reject_non_dco_commits", value)
+
+    @property
     @pulumi.getter(name="rejectUnsignedCommits")
     def reject_unsigned_commits(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -459,6 +491,7 @@ class ProjectPushRules(pulumi.CustomResource):
                  member_check: Optional[pulumi.Input[bool]] = None,
                  prevent_secrets: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reject_non_dco_commits: Optional[pulumi.Input[bool]] = None,
                  reject_unsigned_commits: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -506,6 +539,7 @@ class ProjectPushRules(pulumi.CustomResource):
         :param pulumi.Input[bool] member_check: Restrict commits by author (email) to existing GitLab users.
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
+        :param pulumi.Input[bool] reject_non_dco_commits: Reject commit when it’s not DCO certified.
         :param pulumi.Input[bool] reject_unsigned_commits: Reject commit when it’s not signed.
         """
         ...
@@ -572,6 +606,7 @@ class ProjectPushRules(pulumi.CustomResource):
                  member_check: Optional[pulumi.Input[bool]] = None,
                  prevent_secrets: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reject_non_dco_commits: Optional[pulumi.Input[bool]] = None,
                  reject_unsigned_commits: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -596,6 +631,7 @@ class ProjectPushRules(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["reject_non_dco_commits"] = reject_non_dco_commits
             __props__.__dict__["reject_unsigned_commits"] = reject_unsigned_commits
         super(ProjectPushRules, __self__).__init__(
             'gitlab:index/projectPushRules:ProjectPushRules',
@@ -619,6 +655,7 @@ class ProjectPushRules(pulumi.CustomResource):
             member_check: Optional[pulumi.Input[bool]] = None,
             prevent_secrets: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            reject_non_dco_commits: Optional[pulumi.Input[bool]] = None,
             reject_unsigned_commits: Optional[pulumi.Input[bool]] = None) -> 'ProjectPushRules':
         """
         Get an existing ProjectPushRules resource's state with the given name, id, and optional extra
@@ -639,6 +676,7 @@ class ProjectPushRules(pulumi.CustomResource):
         :param pulumi.Input[bool] member_check: Restrict commits by author (email) to existing GitLab users.
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
+        :param pulumi.Input[bool] reject_non_dco_commits: Reject commit when it’s not DCO certified.
         :param pulumi.Input[bool] reject_unsigned_commits: Reject commit when it’s not signed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -657,6 +695,7 @@ class ProjectPushRules(pulumi.CustomResource):
         __props__.__dict__["member_check"] = member_check
         __props__.__dict__["prevent_secrets"] = prevent_secrets
         __props__.__dict__["project"] = project
+        __props__.__dict__["reject_non_dco_commits"] = reject_non_dco_commits
         __props__.__dict__["reject_unsigned_commits"] = reject_unsigned_commits
         return ProjectPushRules(resource_name, opts=opts, __props__=__props__)
 
@@ -755,6 +794,14 @@ class ProjectPushRules(pulumi.CustomResource):
         The ID or URL-encoded path of the project.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="rejectNonDcoCommits")
+    def reject_non_dco_commits(self) -> pulumi.Output[bool]:
+        """
+        Reject commit when it’s not DCO certified.
+        """
+        return pulumi.get(self, "reject_non_dco_commits")
 
     @property
     @pulumi.getter(name="rejectUnsignedCommits")

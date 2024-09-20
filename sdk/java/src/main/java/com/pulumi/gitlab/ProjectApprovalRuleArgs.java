@@ -125,14 +125,29 @@ public final class ProjectApprovalRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+     * Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+     * 
+     */
+    @Import(name="reportType")
+    private @Nullable Output<String> reportType;
+
+    /**
+     * @return Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+     * 
+     */
+    public Optional<Output<String>> reportType() {
+        return Optional.ofNullable(this.reportType);
+    }
+
+    /**
+     * String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
      * 
      */
     @Import(name="ruleType")
     private @Nullable Output<String> ruleType;
 
     /**
-     * @return String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+     * @return String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
      * 
      */
     public Optional<Output<String>> ruleType() {
@@ -164,6 +179,7 @@ public final class ProjectApprovalRuleArgs extends com.pulumi.resources.Resource
         this.name = $.name;
         this.project = $.project;
         this.protectedBranchIds = $.protectedBranchIds;
+        this.reportType = $.reportType;
         this.ruleType = $.ruleType;
         this.userIds = $.userIds;
     }
@@ -354,7 +370,28 @@ public final class ProjectApprovalRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ruleType String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+         * @param reportType Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reportType(@Nullable Output<String> reportType) {
+            $.reportType = reportType;
+            return this;
+        }
+
+        /**
+         * @param reportType Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reportType(String reportType) {
+            return reportType(Output.of(reportType));
+        }
+
+        /**
+         * @param ruleType String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
          * 
          * @return builder
          * 
@@ -365,7 +402,7 @@ public final class ProjectApprovalRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ruleType String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+         * @param ruleType String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
          * 
          * @return builder
          * 

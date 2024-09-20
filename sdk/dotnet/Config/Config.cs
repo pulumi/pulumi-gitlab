@@ -93,6 +93,16 @@ namespace Pulumi.GitLab
             set => _insecure.Set(value);
         }
 
+        private static readonly __Value<int?> _retries = new __Value<int?>(() => __config.GetInt32("retries"));
+        /// <summary>
+        /// The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+        /// </summary>
+        public static int? Retries
+        {
+            get => _retries.Get();
+            set => _retries.Set(value);
+        }
+
         private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
         /// <summary>
         /// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is

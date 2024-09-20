@@ -20,6 +20,7 @@ class ProviderArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  early_auth_check: Optional[pulumi.Input[bool]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 retries: Optional[pulumi.Input[int]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -32,6 +33,7 @@ class ProviderArgs:
         :param pulumi.Input[str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
                `client_cert` is set.
         :param pulumi.Input[bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
+        :param pulumi.Input[int] retries: The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
         :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
                used in this provider for authentication (using Bearer authorization token). See
                https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
@@ -49,6 +51,8 @@ class ProviderArgs:
             pulumi.set(__self__, "early_auth_check", early_auth_check)
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
+        if retries is not None:
+            pulumi.set(__self__, "retries", retries)
         if token is not None:
             pulumi.set(__self__, "token", token)
 
@@ -127,6 +131,18 @@ class ProviderArgs:
 
     @property
     @pulumi.getter
+    def retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+        """
+        return pulumi.get(self, "retries")
+
+    @retries.setter
+    def retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retries", value)
+
+    @property
+    @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
         The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
@@ -152,6 +168,7 @@ class Provider(pulumi.ProviderResource):
                  client_key: Optional[pulumi.Input[str]] = None,
                  early_auth_check: Optional[pulumi.Input[bool]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 retries: Optional[pulumi.Input[int]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -171,6 +188,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
                `client_cert` is set.
         :param pulumi.Input[bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
+        :param pulumi.Input[int] retries: The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
         :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
                used in this provider for authentication (using Bearer authorization token). See
                https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
@@ -209,6 +227,7 @@ class Provider(pulumi.ProviderResource):
                  client_key: Optional[pulumi.Input[str]] = None,
                  early_auth_check: Optional[pulumi.Input[bool]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 retries: Optional[pulumi.Input[int]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -225,6 +244,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_key"] = client_key
             __props__.__dict__["early_auth_check"] = pulumi.Output.from_input(early_auth_check).apply(pulumi.runtime.to_json) if early_auth_check is not None else None
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
+            __props__.__dict__["retries"] = pulumi.Output.from_input(retries).apply(pulumi.runtime.to_json) if retries is not None else None
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)

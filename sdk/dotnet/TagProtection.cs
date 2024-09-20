@@ -53,13 +53,13 @@ namespace Pulumi.GitLab
     public partial class TagProtection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// User or group which are allowed to create.
+        /// Array of access levels/user(s)/group(s) allowed to create protected tags.
         /// </summary>
         [Output("allowedToCreates")]
         public Output<ImmutableArray<Outputs.TagProtectionAllowedToCreate>> AllowedToCreates { get; private set; } = null!;
 
         /// <summary>
-        /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+        /// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Output("createAccessLevel")]
         public Output<string> CreateAccessLevel { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.TagProtectionAllowedToCreateArgs>? _allowedToCreates;
 
         /// <summary>
-        /// User or group which are allowed to create.
+        /// Array of access levels/user(s)/group(s) allowed to create protected tags.
         /// </summary>
         public InputList<Inputs.TagProtectionAllowedToCreateArgs> AllowedToCreates
         {
@@ -135,10 +135,10 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+        /// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
-        [Input("createAccessLevel", required: true)]
-        public Input<string> CreateAccessLevel { get; set; } = null!;
+        [Input("createAccessLevel")]
+        public Input<string>? CreateAccessLevel { get; set; }
 
         /// <summary>
         /// The id of the project.
@@ -164,7 +164,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.TagProtectionAllowedToCreateGetArgs>? _allowedToCreates;
 
         /// <summary>
-        /// User or group which are allowed to create.
+        /// Array of access levels/user(s)/group(s) allowed to create protected tags.
         /// </summary>
         public InputList<Inputs.TagProtectionAllowedToCreateGetArgs> AllowedToCreates
         {
@@ -173,7 +173,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+        /// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Input("createAccessLevel")]
         public Input<string>? CreateAccessLevel { get; set; }

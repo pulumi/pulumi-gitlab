@@ -40,6 +40,11 @@ insecure: Optional[bool]
 When set to true this disables SSL verification of the connection to the GitLab instance.
 """
 
+retries: Optional[int]
+"""
+The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+"""
+
 token: Optional[str]
 """
 The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is

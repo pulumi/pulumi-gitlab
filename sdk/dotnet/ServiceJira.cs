@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; This resource is deprecated. use `gitlab.IntegrationJira`instead!
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)
     /// 
     /// ## Example Usage
     /// 
@@ -71,7 +71,7 @@ namespace Pulumi.GitLab
         /// Enable comments inside Jira issues on each GitLab event (commit / merge request)
         /// </summary>
         [Output("commentOnEventEnabled")]
-        public Output<bool> CommentOnEventEnabled { get; private set; } = null!;
+        public Output<bool?> CommentOnEventEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for commit events
@@ -86,10 +86,34 @@ namespace Pulumi.GitLab
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for issues events.
+        /// Enable viewing Jira issues in GitLab.
         /// </summary>
-        [Output("issuesEvents")]
-        public Output<bool> IssuesEvents { get; private set; } = null!;
+        [Output("issuesEnabled")]
+        public Output<bool?> IssuesEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        /// </summary>
+        [Output("jiraAuthType")]
+        public Output<int?> JiraAuthType { get; private set; } = null!;
+
+        /// <summary>
+        /// Prefix to match Jira issue keys.
+        /// </summary>
+        [Output("jiraIssuePrefix")]
+        public Output<string?> JiraIssuePrefix { get; private set; } = null!;
+
+        /// <summary>
+        /// Regular expression to match Jira issue keys.
+        /// </summary>
+        [Output("jiraIssueRegex")]
+        public Output<string?> JiraIssueRegex { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+        /// </summary>
+        [Output("jiraIssueTransitionAutomatic")]
+        public Output<bool?> JiraIssueTransitionAutomatic { get; private set; } = null!;
 
         /// <summary>
         /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
@@ -98,34 +122,16 @@ namespace Pulumi.GitLab
         public Output<string?> JiraIssueTransitionId { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for job events.
-        /// </summary>
-        [Output("jobEvents")]
-        public Output<bool> JobEvents { get; private set; } = null!;
-
-        /// <summary>
         /// Enable notifications for merge request events
         /// </summary>
         [Output("mergeRequestsEvents")]
         public Output<bool> MergeRequestsEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for note events.
-        /// </summary>
-        [Output("noteEvents")]
-        public Output<bool> NoteEvents { get; private set; } = null!;
-
-        /// <summary>
-        /// The password of the user created to be used with GitLab/JIRA.
+        /// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable notifications for pipeline events.
-        /// </summary>
-        [Output("pipelineEvents")]
-        public Output<bool> PipelineEvents { get; private set; } = null!;
 
         /// <summary>
         /// ID of the project you want to activate integration on.
@@ -140,16 +146,10 @@ namespace Pulumi.GitLab
         public Output<string?> ProjectKey { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for push events.
+        /// Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         /// </summary>
-        [Output("pushEvents")]
-        public Output<bool> PushEvents { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable notifications for tag_push events.
-        /// </summary>
-        [Output("tagPushEvents")]
-        public Output<bool> TagPushEvents { get; private set; } = null!;
+        [Output("projectKeys")]
+        public Output<ImmutableArray<string>> ProjectKeys { get; private set; } = null!;
 
         /// <summary>
         /// Title.
@@ -170,10 +170,16 @@ namespace Pulumi.GitLab
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// The username of the user created to be used with GitLab/JIRA.
+        /// Indicates whether or not to inherit default settings. Defaults to false.
+        /// </summary>
+        [Output("useInheritedSettings")]
+        public Output<bool?> UseInheritedSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         /// </summary>
         [Output("username")]
-        public Output<string> Username { get; private set; } = null!;
+        public Output<string?> Username { get; private set; } = null!;
 
 
         /// <summary>
@@ -244,10 +250,34 @@ namespace Pulumi.GitLab
         public Input<bool>? CommitEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for issues events.
+        /// Enable viewing Jira issues in GitLab.
         /// </summary>
-        [Input("issuesEvents")]
-        public Input<bool>? IssuesEvents { get; set; }
+        [Input("issuesEnabled")]
+        public Input<bool>? IssuesEnabled { get; set; }
+
+        /// <summary>
+        /// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        /// </summary>
+        [Input("jiraAuthType")]
+        public Input<int>? JiraAuthType { get; set; }
+
+        /// <summary>
+        /// Prefix to match Jira issue keys.
+        /// </summary>
+        [Input("jiraIssuePrefix")]
+        public Input<string>? JiraIssuePrefix { get; set; }
+
+        /// <summary>
+        /// Regular expression to match Jira issue keys.
+        /// </summary>
+        [Input("jiraIssueRegex")]
+        public Input<string>? JiraIssueRegex { get; set; }
+
+        /// <summary>
+        /// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+        /// </summary>
+        [Input("jiraIssueTransitionAutomatic")]
+        public Input<bool>? JiraIssueTransitionAutomatic { get; set; }
 
         /// <summary>
         /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
@@ -256,28 +286,16 @@ namespace Pulumi.GitLab
         public Input<string>? JiraIssueTransitionId { get; set; }
 
         /// <summary>
-        /// Enable notifications for job events.
-        /// </summary>
-        [Input("jobEvents")]
-        public Input<bool>? JobEvents { get; set; }
-
-        /// <summary>
         /// Enable notifications for merge request events
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
 
-        /// <summary>
-        /// Enable notifications for note events.
-        /// </summary>
-        [Input("noteEvents")]
-        public Input<bool>? NoteEvents { get; set; }
-
         [Input("password", required: true)]
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the user created to be used with GitLab/JIRA.
+        /// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         /// </summary>
         public Input<string>? Password
         {
@@ -288,12 +306,6 @@ namespace Pulumi.GitLab
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
-
-        /// <summary>
-        /// Enable notifications for pipeline events.
-        /// </summary>
-        [Input("pipelineEvents")]
-        public Input<bool>? PipelineEvents { get; set; }
 
         /// <summary>
         /// ID of the project you want to activate integration on.
@@ -307,17 +319,17 @@ namespace Pulumi.GitLab
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
 
-        /// <summary>
-        /// Enable notifications for push events.
-        /// </summary>
-        [Input("pushEvents")]
-        public Input<bool>? PushEvents { get; set; }
+        [Input("projectKeys")]
+        private InputList<string>? _projectKeys;
 
         /// <summary>
-        /// Enable notifications for tag_push events.
+        /// Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         /// </summary>
-        [Input("tagPushEvents")]
-        public Input<bool>? TagPushEvents { get; set; }
+        public InputList<string> ProjectKeys
+        {
+            get => _projectKeys ?? (_projectKeys = new InputList<string>());
+            set => _projectKeys = value;
+        }
 
         /// <summary>
         /// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
@@ -326,10 +338,16 @@ namespace Pulumi.GitLab
         public Input<string> Url { get; set; } = null!;
 
         /// <summary>
-        /// The username of the user created to be used with GitLab/JIRA.
+        /// Indicates whether or not to inherit default settings. Defaults to false.
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("useInheritedSettings")]
+        public Input<bool>? UseInheritedSettings { get; set; }
+
+        /// <summary>
+        /// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public ServiceJiraArgs()
         {
@@ -370,10 +388,34 @@ namespace Pulumi.GitLab
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Enable notifications for issues events.
+        /// Enable viewing Jira issues in GitLab.
         /// </summary>
-        [Input("issuesEvents")]
-        public Input<bool>? IssuesEvents { get; set; }
+        [Input("issuesEnabled")]
+        public Input<bool>? IssuesEnabled { get; set; }
+
+        /// <summary>
+        /// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        /// </summary>
+        [Input("jiraAuthType")]
+        public Input<int>? JiraAuthType { get; set; }
+
+        /// <summary>
+        /// Prefix to match Jira issue keys.
+        /// </summary>
+        [Input("jiraIssuePrefix")]
+        public Input<string>? JiraIssuePrefix { get; set; }
+
+        /// <summary>
+        /// Regular expression to match Jira issue keys.
+        /// </summary>
+        [Input("jiraIssueRegex")]
+        public Input<string>? JiraIssueRegex { get; set; }
+
+        /// <summary>
+        /// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+        /// </summary>
+        [Input("jiraIssueTransitionAutomatic")]
+        public Input<bool>? JiraIssueTransitionAutomatic { get; set; }
 
         /// <summary>
         /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
@@ -382,28 +424,16 @@ namespace Pulumi.GitLab
         public Input<string>? JiraIssueTransitionId { get; set; }
 
         /// <summary>
-        /// Enable notifications for job events.
-        /// </summary>
-        [Input("jobEvents")]
-        public Input<bool>? JobEvents { get; set; }
-
-        /// <summary>
         /// Enable notifications for merge request events
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
 
-        /// <summary>
-        /// Enable notifications for note events.
-        /// </summary>
-        [Input("noteEvents")]
-        public Input<bool>? NoteEvents { get; set; }
-
         [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the user created to be used with GitLab/JIRA.
+        /// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         /// </summary>
         public Input<string>? Password
         {
@@ -414,12 +444,6 @@ namespace Pulumi.GitLab
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
-
-        /// <summary>
-        /// Enable notifications for pipeline events.
-        /// </summary>
-        [Input("pipelineEvents")]
-        public Input<bool>? PipelineEvents { get; set; }
 
         /// <summary>
         /// ID of the project you want to activate integration on.
@@ -433,17 +457,17 @@ namespace Pulumi.GitLab
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
 
-        /// <summary>
-        /// Enable notifications for push events.
-        /// </summary>
-        [Input("pushEvents")]
-        public Input<bool>? PushEvents { get; set; }
+        [Input("projectKeys")]
+        private InputList<string>? _projectKeys;
 
         /// <summary>
-        /// Enable notifications for tag_push events.
+        /// Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         /// </summary>
-        [Input("tagPushEvents")]
-        public Input<bool>? TagPushEvents { get; set; }
+        public InputList<string> ProjectKeys
+        {
+            get => _projectKeys ?? (_projectKeys = new InputList<string>());
+            set => _projectKeys = value;
+        }
 
         /// <summary>
         /// Title.
@@ -464,7 +488,13 @@ namespace Pulumi.GitLab
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// The username of the user created to be used with GitLab/JIRA.
+        /// Indicates whether or not to inherit default settings. Defaults to false.
+        /// </summary>
+        [Input("useInheritedSettings")]
+        public Input<bool>? UseInheritedSettings { get; set; }
+
+        /// <summary>
+        /// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

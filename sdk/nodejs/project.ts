@@ -335,6 +335,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly pipelinesEnabled!: pulumi.Output<boolean>;
     /**
+     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     */
+    public readonly preReceiveSecretDetectionEnabled!: pulumi.Output<boolean>;
+    /**
      * Show link to create/view merge request when pushing from the command line
      */
     public readonly printingMergeRequestLinkEnabled!: pulumi.Output<boolean>;
@@ -546,6 +550,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["path"] = state ? state.path : undefined;
             resourceInputs["pathWithNamespace"] = state ? state.pathWithNamespace : undefined;
             resourceInputs["pipelinesEnabled"] = state ? state.pipelinesEnabled : undefined;
+            resourceInputs["preReceiveSecretDetectionEnabled"] = state ? state.preReceiveSecretDetectionEnabled : undefined;
             resourceInputs["printingMergeRequestLinkEnabled"] = state ? state.printingMergeRequestLinkEnabled : undefined;
             resourceInputs["publicBuilds"] = state ? state.publicBuilds : undefined;
             resourceInputs["publicJobs"] = state ? state.publicJobs : undefined;
@@ -643,6 +648,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["pagesAccessLevel"] = args ? args.pagesAccessLevel : undefined;
             resourceInputs["path"] = args ? args.path : undefined;
             resourceInputs["pipelinesEnabled"] = args ? args.pipelinesEnabled : undefined;
+            resourceInputs["preReceiveSecretDetectionEnabled"] = args ? args.preReceiveSecretDetectionEnabled : undefined;
             resourceInputs["printingMergeRequestLinkEnabled"] = args ? args.printingMergeRequestLinkEnabled : undefined;
             resourceInputs["publicBuilds"] = args ? args.publicBuilds : undefined;
             resourceInputs["publicJobs"] = args ? args.publicJobs : undefined;
@@ -971,6 +977,10 @@ export interface ProjectState {
      * @deprecated Deprecated in favor of `buildsAccessLevel`
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     */
+    preReceiveSecretDetectionEnabled?: pulumi.Input<boolean>;
     /**
      * Show link to create/view merge request when pushing from the command line
      */
@@ -1372,6 +1382,10 @@ export interface ProjectArgs {
      * @deprecated Deprecated in favor of `buildsAccessLevel`
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     */
+    preReceiveSecretDetectionEnabled?: pulumi.Input<boolean>;
     /**
      * Show link to create/view merge request when pushing from the command line
      */

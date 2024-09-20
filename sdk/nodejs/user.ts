@@ -83,6 +83,14 @@ export class User extends pulumi.CustomResource {
      */
     public readonly email!: pulumi.Output<string>;
     /**
+     * String, a specific external authentication provider UID.
+     */
+    public readonly externUid!: pulumi.Output<string | undefined>;
+    /**
+     * String, the external provider.
+     */
+    public readonly externalProvider!: pulumi.Output<string | undefined>;
+    /**
      * Boolean, defaults to false.  Whether to enable administrative privileges
      */
     public readonly isAdmin!: pulumi.Output<boolean | undefined>;
@@ -142,6 +150,8 @@ export class User extends pulumi.CustomResource {
             const state = argsOrState as UserState | undefined;
             resourceInputs["canCreateGroup"] = state ? state.canCreateGroup : undefined;
             resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["externUid"] = state ? state.externUid : undefined;
+            resourceInputs["externalProvider"] = state ? state.externalProvider : undefined;
             resourceInputs["isAdmin"] = state ? state.isAdmin : undefined;
             resourceInputs["isExternal"] = state ? state.isExternal : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -163,6 +173,8 @@ export class User extends pulumi.CustomResource {
             }
             resourceInputs["canCreateGroup"] = args ? args.canCreateGroup : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["externUid"] = args ? args.externUid : undefined;
+            resourceInputs["externalProvider"] = args ? args.externalProvider : undefined;
             resourceInputs["isAdmin"] = args ? args.isAdmin : undefined;
             resourceInputs["isExternal"] = args ? args.isExternal : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -194,6 +206,14 @@ export interface UserState {
      * The e-mail address of the user.
      */
     email?: pulumi.Input<string>;
+    /**
+     * String, a specific external authentication provider UID.
+     */
+    externUid?: pulumi.Input<string>;
+    /**
+     * String, the external provider.
+     */
+    externalProvider?: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Whether to enable administrative privileges
      */
@@ -252,6 +272,14 @@ export interface UserArgs {
      * The e-mail address of the user.
      */
     email: pulumi.Input<string>;
+    /**
+     * String, a specific external authentication provider UID.
+     */
+    externUid?: pulumi.Input<string>;
+    /**
+     * String, the external provider.
+     */
+    externalProvider?: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Whether to enable administrative privileges
      */

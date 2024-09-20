@@ -76,6 +76,8 @@ type providerArgs struct {
 	EarlyAuthCheck *bool   `pulumi:"earlyAuthCheck"`
 	// When set to true this disables SSL verification of the connection to the GitLab instance.
 	Insecure *bool `pulumi:"insecure"`
+	// The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+	Retries *int `pulumi:"retries"`
 	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
 	// used in this provider for authentication (using Bearer authorization token). See
 	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
@@ -100,6 +102,8 @@ type ProviderArgs struct {
 	EarlyAuthCheck pulumi.BoolPtrInput
 	// When set to true this disables SSL verification of the connection to the GitLab instance.
 	Insecure pulumi.BoolPtrInput
+	// The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+	Retries pulumi.IntPtrInput
 	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
 	// used in this provider for authentication (using Bearer authorization token). See
 	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment

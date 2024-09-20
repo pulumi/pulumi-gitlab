@@ -130,14 +130,28 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protectedBranchIds);
     }
     /**
-     * String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+     * Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+     * 
+     */
+    @Export(name="reportType", refs={String.class}, tree="[0]")
+    private Output<String> reportType;
+
+    /**
+     * @return Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+     * 
+     */
+    public Output<String> reportType() {
+        return this.reportType;
+    }
+    /**
+     * String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
      * 
      */
     @Export(name="ruleType", refs={String.class}, tree="[0]")
     private Output<String> ruleType;
 
     /**
-     * @return String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+     * @return String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
      * 
      */
     public Output<String> ruleType() {

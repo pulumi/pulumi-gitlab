@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 
@@ -52,6 +53,13 @@ public final class Config {
  */
     public Optional<Boolean> insecure() {
         return Codegen.booleanProp("insecure").config(config).get();
+    }
+/**
+ * The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+ * 
+ */
+    public Optional<Integer> retries() {
+        return Codegen.integerProp("retries").config(config).get();
     }
 /**
  * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is

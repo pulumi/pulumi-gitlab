@@ -21,6 +21,7 @@ class GroupArgs:
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
+                 default_branch_protection_defaults: Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
@@ -50,6 +51,7 @@ class GroupArgs:
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -81,7 +83,12 @@ class GroupArgs:
         if avatar_hash is not None:
             pulumi.set(__self__, "avatar_hash", avatar_hash)
         if default_branch_protection is not None:
+            warnings.warn("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""", DeprecationWarning)
+            pulumi.log.warn("""default_branch_protection is deprecated: Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
+        if default_branch_protection is not None:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
+        if default_branch_protection_defaults is not None:
+            pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if emails_enabled is not None:
@@ -177,6 +184,7 @@ class GroupArgs:
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
+    @_utilities.deprecated("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
         See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
@@ -186,6 +194,18 @@ class GroupArgs:
     @default_branch_protection.setter
     def default_branch_protection(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "default_branch_protection", value)
+
+    @property
+    @pulumi.getter(name="defaultBranchProtectionDefaults")
+    def default_branch_protection_defaults(self) -> Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']]:
+        """
+        The default branch protection defaults
+        """
+        return pulumi.get(self, "default_branch_protection_defaults")
+
+    @default_branch_protection_defaults.setter
+    def default_branch_protection_defaults(self, value: Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']]):
+        pulumi.set(self, "default_branch_protection_defaults", value)
 
     @property
     @pulumi.getter
@@ -460,6 +480,7 @@ class _GroupState:
                  avatar_hash: Optional[pulumi.Input[str]] = None,
                  avatar_url: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
+                 default_branch_protection_defaults: Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
@@ -494,6 +515,7 @@ class _GroupState:
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -531,7 +553,12 @@ class _GroupState:
         if avatar_url is not None:
             pulumi.set(__self__, "avatar_url", avatar_url)
         if default_branch_protection is not None:
+            warnings.warn("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""", DeprecationWarning)
+            pulumi.log.warn("""default_branch_protection is deprecated: Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
+        if default_branch_protection is not None:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
+        if default_branch_protection_defaults is not None:
+            pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if emails_enabled is not None:
@@ -637,6 +664,7 @@ class _GroupState:
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
+    @_utilities.deprecated("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
         See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
@@ -646,6 +674,18 @@ class _GroupState:
     @default_branch_protection.setter
     def default_branch_protection(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "default_branch_protection", value)
+
+    @property
+    @pulumi.getter(name="defaultBranchProtectionDefaults")
+    def default_branch_protection_defaults(self) -> Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']]:
+        """
+        The default branch protection defaults
+        """
+        return pulumi.get(self, "default_branch_protection_defaults")
+
+    @default_branch_protection_defaults.setter
+    def default_branch_protection_defaults(self, value: Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']]):
+        pulumi.set(self, "default_branch_protection_defaults", value)
 
     @property
     @pulumi.getter
@@ -981,6 +1021,7 @@ class Group(pulumi.CustomResource):
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
+                 default_branch_protection_defaults: Optional[pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
@@ -1038,6 +1079,20 @@ class Group(pulumi.CustomResource):
                 "member_check": True,
                 "prevent_secrets": True,
             })
+        # Group with custom default branch protection defaults
+        example_three = gitlab.Group("example-three",
+            name="example-three",
+            path="example-three",
+            description="An example group with default branch protection defaults",
+            default_branch_protection_defaults={
+                "allowed_to_pushes": ["developer"],
+                "allow_force_push": True,
+                "allowed_to_merges": [
+                    "developer",
+                    "maintainer",
+                ],
+                "developer_can_initial_push": True,
+            })
         ```
 
         ## Import
@@ -1060,6 +1115,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -1123,6 +1179,20 @@ class Group(pulumi.CustomResource):
                 "member_check": True,
                 "prevent_secrets": True,
             })
+        # Group with custom default branch protection defaults
+        example_three = gitlab.Group("example-three",
+            name="example-three",
+            path="example-three",
+            description="An example group with default branch protection defaults",
+            default_branch_protection_defaults={
+                "allowed_to_pushes": ["developer"],
+                "allow_force_push": True,
+                "allowed_to_merges": [
+                    "developer",
+                    "maintainer",
+                ],
+                "developer_can_initial_push": True,
+            })
         ```
 
         ## Import
@@ -1158,6 +1228,7 @@ class Group(pulumi.CustomResource):
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
+                 default_branch_protection_defaults: Optional[pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_enabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
@@ -1194,6 +1265,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["avatar"] = avatar
             __props__.__dict__["avatar_hash"] = avatar_hash
             __props__.__dict__["default_branch_protection"] = default_branch_protection
+            __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
             __props__.__dict__["description"] = description
             __props__.__dict__["emails_enabled"] = emails_enabled
             __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
@@ -1241,6 +1313,7 @@ class Group(pulumi.CustomResource):
             avatar_hash: Optional[pulumi.Input[str]] = None,
             avatar_url: Optional[pulumi.Input[str]] = None,
             default_branch_protection: Optional[pulumi.Input[int]] = None,
+            default_branch_protection_defaults: Optional[pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             emails_enabled: Optional[pulumi.Input[bool]] = None,
             extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
@@ -1280,6 +1353,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -1317,6 +1391,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["avatar_hash"] = avatar_hash
         __props__.__dict__["avatar_url"] = avatar_url
         __props__.__dict__["default_branch_protection"] = default_branch_protection
+        __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
         __props__.__dict__["description"] = description
         __props__.__dict__["emails_enabled"] = emails_enabled
         __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
@@ -1380,11 +1455,20 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
+    @_utilities.deprecated("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
     def default_branch_protection(self) -> pulumi.Output[int]:
         """
         See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
+
+    @property
+    @pulumi.getter(name="defaultBranchProtectionDefaults")
+    def default_branch_protection_defaults(self) -> pulumi.Output['outputs.GroupDefaultBranchProtectionDefaults']:
+        """
+        The default branch protection defaults
+        """
+        return pulumi.get(self, "default_branch_protection_defaults")
 
     @property
     @pulumi.getter

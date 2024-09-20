@@ -66,7 +66,13 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<int>> ProtectedBranchIds { get; private set; } = null!;
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        /// </summary>
+        [Output("reportType")]
+        public Output<string> ReportType { get; private set; } = null!;
+
+        /// <summary>
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         /// </summary>
         [Output("ruleType")]
         public Output<string> RuleType { get; private set; } = null!;
@@ -178,7 +184,13 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        /// </summary>
+        [Input("reportType")]
+        public Input<string>? ReportType { get; set; }
+
+        /// <summary>
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         /// </summary>
         [Input("ruleType")]
         public Input<string>? RuleType { get; set; }
@@ -258,7 +270,13 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        /// </summary>
+        [Input("reportType")]
+        public Input<string>? ReportType { get; set; }
+
+        /// <summary>
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         /// </summary>
         [Input("ruleType")]
         public Input<string>? RuleType { get; set; }
