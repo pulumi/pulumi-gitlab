@@ -58,6 +58,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool? PreventSecrets;
         /// <summary>
+        /// Reject commit when it’s not DCO certified.
+        /// </summary>
+        public readonly bool? RejectNonDcoCommits;
+        /// <summary>
         /// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
         /// </summary>
         public readonly bool? RejectUnsignedCommits;
@@ -86,6 +90,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool? preventSecrets,
 
+            bool? rejectNonDcoCommits,
+
             bool? rejectUnsignedCommits)
         {
             AuthorEmailRegex = authorEmailRegex;
@@ -99,6 +105,7 @@ namespace Pulumi.GitLab.Outputs
             MaxFileSize = maxFileSize;
             MemberCheck = memberCheck;
             PreventSecrets = preventSecrets;
+            RejectNonDcoCommits = rejectNonDcoCommits;
             RejectUnsignedCommits = rejectUnsignedCommits;
         }
     }

@@ -64,6 +64,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Group with custom default branch protection defaults
+//			_, err = gitlab.NewGroup(ctx, "example-three", &gitlab.GroupArgs{
+//				Name:        pulumi.String("example-three"),
+//				Path:        pulumi.String("example-three"),
+//				Description: pulumi.String("An example group with default branch protection defaults"),
+//				DefaultBranchProtectionDefaults: &gitlab.GroupDefaultBranchProtectionDefaultsArgs{
+//					AllowedToPushes: pulumi.StringArray{
+//						pulumi.String("developer"),
+//					},
+//					AllowForcePush: pulumi.Bool(true),
+//					AllowedToMerges: pulumi.StringArray{
+//						pulumi.String("developer"),
+//						pulumi.String("maintainer"),
+//					},
+//					DeveloperCanInitialPush: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -95,7 +115,11 @@ type Group struct {
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringOutput `pulumi:"avatarUrl"`
 	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+	//
+	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
 	DefaultBranchProtection pulumi.IntOutput `pulumi:"defaultBranchProtection"`
+	// The default branch protection defaults
+	DefaultBranchProtectionDefaults GroupDefaultBranchProtectionDefaultsOutput `pulumi:"defaultBranchProtectionDefaults"`
 	// The group's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Enable email notifications.
@@ -198,7 +222,11 @@ type groupState struct {
 	// The URL of the avatar image.
 	AvatarUrl *string `pulumi:"avatarUrl"`
 	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+	//
+	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
+	// The default branch protection defaults
+	DefaultBranchProtectionDefaults *GroupDefaultBranchProtectionDefaults `pulumi:"defaultBranchProtectionDefaults"`
 	// The group's description.
 	Description *string `pulumi:"description"`
 	// Enable email notifications.
@@ -265,7 +293,11 @@ type GroupState struct {
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringPtrInput
 	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+	//
+	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
 	DefaultBranchProtection pulumi.IntPtrInput
+	// The default branch protection defaults
+	DefaultBranchProtectionDefaults GroupDefaultBranchProtectionDefaultsPtrInput
 	// The group's description.
 	Description pulumi.StringPtrInput
 	// Enable email notifications.
@@ -334,7 +366,11 @@ type groupArgs struct {
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash *string `pulumi:"avatarHash"`
 	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+	//
+	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
+	// The default branch protection defaults
+	DefaultBranchProtectionDefaults *GroupDefaultBranchProtectionDefaults `pulumi:"defaultBranchProtectionDefaults"`
 	// The group's description.
 	Description *string `pulumi:"description"`
 	// Enable email notifications.
@@ -392,7 +428,11 @@ type GroupArgs struct {
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash pulumi.StringPtrInput
 	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+	//
+	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
 	DefaultBranchProtection pulumi.IntPtrInput
+	// The default branch protection defaults
+	DefaultBranchProtectionDefaults GroupDefaultBranchProtectionDefaultsPtrInput
 	// The group's description.
 	Description pulumi.StringPtrInput
 	// Enable email notifications.
@@ -549,8 +589,15 @@ func (o GroupOutput) AvatarUrl() pulumi.StringOutput {
 }
 
 // See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+//
+// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
 func (o GroupOutput) DefaultBranchProtection() pulumi.IntOutput {
 	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.DefaultBranchProtection }).(pulumi.IntOutput)
+}
+
+// The default branch protection defaults
+func (o GroupOutput) DefaultBranchProtectionDefaults() GroupDefaultBranchProtectionDefaultsOutput {
+	return o.ApplyT(func(v *Group) GroupDefaultBranchProtectionDefaultsOutput { return v.DefaultBranchProtectionDefaults }).(GroupDefaultBranchProtectionDefaultsOutput)
 }
 
 // The group's description.

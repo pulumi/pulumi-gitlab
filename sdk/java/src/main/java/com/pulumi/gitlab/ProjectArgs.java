@@ -1011,6 +1011,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * 
+     */
+    @Import(name="preReceiveSecretDetectionEnabled")
+    private @Nullable Output<Boolean> preReceiveSecretDetectionEnabled;
+
+    /**
+     * @return Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * 
+     */
+    public Optional<Output<Boolean>> preReceiveSecretDetectionEnabled() {
+        return Optional.ofNullable(this.preReceiveSecretDetectionEnabled);
+    }
+
+    /**
      * Show link to create/view merge request when pushing from the command line
      * 
      */
@@ -1513,6 +1528,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.pagesAccessLevel = $.pagesAccessLevel;
         this.path = $.path;
         this.pipelinesEnabled = $.pipelinesEnabled;
+        this.preReceiveSecretDetectionEnabled = $.preReceiveSecretDetectionEnabled;
         this.printingMergeRequestLinkEnabled = $.printingMergeRequestLinkEnabled;
         this.publicBuilds = $.publicBuilds;
         this.publicJobs = $.publicJobs;
@@ -2933,6 +2949,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Deprecated in favor of `builds_access_level` */
         public Builder pipelinesEnabled(Boolean pipelinesEnabled) {
             return pipelinesEnabled(Output.of(pipelinesEnabled));
+        }
+
+        /**
+         * @param preReceiveSecretDetectionEnabled Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preReceiveSecretDetectionEnabled(@Nullable Output<Boolean> preReceiveSecretDetectionEnabled) {
+            $.preReceiveSecretDetectionEnabled = preReceiveSecretDetectionEnabled;
+            return this;
+        }
+
+        /**
+         * @param preReceiveSecretDetectionEnabled Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preReceiveSecretDetectionEnabled(Boolean preReceiveSecretDetectionEnabled) {
+            return preReceiveSecretDetectionEnabled(Output.of(preReceiveSecretDetectionEnabled));
         }
 
         /**

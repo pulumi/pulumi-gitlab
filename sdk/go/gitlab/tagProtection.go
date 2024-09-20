@@ -58,9 +58,9 @@ import (
 type TagProtection struct {
 	pulumi.CustomResourceState
 
-	// User or group which are allowed to create.
+	// Array of access levels/user(s)/group(s) allowed to create protected tags.
 	AllowedToCreates TagProtectionAllowedToCreateArrayOutput `pulumi:"allowedToCreates"`
-	// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
 	CreateAccessLevel pulumi.StringOutput `pulumi:"createAccessLevel"`
 	// The id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -75,9 +75,6 @@ func NewTagProtection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CreateAccessLevel == nil {
-		return nil, errors.New("invalid value for required argument 'CreateAccessLevel'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -107,9 +104,9 @@ func GetTagProtection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagProtection resources.
 type tagProtectionState struct {
-	// User or group which are allowed to create.
+	// Array of access levels/user(s)/group(s) allowed to create protected tags.
 	AllowedToCreates []TagProtectionAllowedToCreate `pulumi:"allowedToCreates"`
-	// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
 	CreateAccessLevel *string `pulumi:"createAccessLevel"`
 	// The id of the project.
 	Project *string `pulumi:"project"`
@@ -118,9 +115,9 @@ type tagProtectionState struct {
 }
 
 type TagProtectionState struct {
-	// User or group which are allowed to create.
+	// Array of access levels/user(s)/group(s) allowed to create protected tags.
 	AllowedToCreates TagProtectionAllowedToCreateArrayInput
-	// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
 	CreateAccessLevel pulumi.StringPtrInput
 	// The id of the project.
 	Project pulumi.StringPtrInput
@@ -133,10 +130,10 @@ func (TagProtectionState) ElementType() reflect.Type {
 }
 
 type tagProtectionArgs struct {
-	// User or group which are allowed to create.
+	// Array of access levels/user(s)/group(s) allowed to create protected tags.
 	AllowedToCreates []TagProtectionAllowedToCreate `pulumi:"allowedToCreates"`
-	// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
-	CreateAccessLevel string `pulumi:"createAccessLevel"`
+	// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+	CreateAccessLevel *string `pulumi:"createAccessLevel"`
 	// The id of the project.
 	Project string `pulumi:"project"`
 	// Name of the tag or wildcard.
@@ -145,10 +142,10 @@ type tagProtectionArgs struct {
 
 // The set of arguments for constructing a TagProtection resource.
 type TagProtectionArgs struct {
-	// User or group which are allowed to create.
+	// Array of access levels/user(s)/group(s) allowed to create protected tags.
 	AllowedToCreates TagProtectionAllowedToCreateArrayInput
-	// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
-	CreateAccessLevel pulumi.StringInput
+	// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+	CreateAccessLevel pulumi.StringPtrInput
 	// The id of the project.
 	Project pulumi.StringInput
 	// Name of the tag or wildcard.
@@ -242,12 +239,12 @@ func (o TagProtectionOutput) ToTagProtectionOutputWithContext(ctx context.Contex
 	return o
 }
 
-// User or group which are allowed to create.
+// Array of access levels/user(s)/group(s) allowed to create protected tags.
 func (o TagProtectionOutput) AllowedToCreates() TagProtectionAllowedToCreateArrayOutput {
 	return o.ApplyT(func(v *TagProtection) TagProtectionAllowedToCreateArrayOutput { return v.AllowedToCreates }).(TagProtectionAllowedToCreateArrayOutput)
 }
 
-// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
 func (o TagProtectionOutput) CreateAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagProtection) pulumi.StringOutput { return v.CreateAccessLevel }).(pulumi.StringOutput)
 }

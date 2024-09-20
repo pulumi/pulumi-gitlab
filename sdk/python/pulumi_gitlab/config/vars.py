@@ -59,6 +59,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('insecure')
 
     @property
+    def retries(self) -> Optional[int]:
+        """
+        The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
+        """
+        return __config__.get_int('retries')
+
+    @property
     def token(self) -> Optional[str]:
         """
         The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is

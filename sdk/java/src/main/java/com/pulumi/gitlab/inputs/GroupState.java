@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.GroupDefaultBranchProtectionDefaultsArgs;
 import com.pulumi.gitlab.inputs.GroupPushRulesArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -82,16 +83,39 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
+     * @deprecated
+     * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
+     * 
      */
+    @Deprecated /* Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead. */
     @Import(name="defaultBranchProtection")
     private @Nullable Output<Integer> defaultBranchProtection;
 
     /**
      * @return See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
+     * @deprecated
+     * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
+     * 
      */
+    @Deprecated /* Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead. */
     public Optional<Output<Integer>> defaultBranchProtection() {
         return Optional.ofNullable(this.defaultBranchProtection);
+    }
+
+    /**
+     * The default branch protection defaults
+     * 
+     */
+    @Import(name="defaultBranchProtectionDefaults")
+    private @Nullable Output<GroupDefaultBranchProtectionDefaultsArgs> defaultBranchProtectionDefaults;
+
+    /**
+     * @return The default branch protection defaults
+     * 
+     */
+    public Optional<Output<GroupDefaultBranchProtectionDefaultsArgs>> defaultBranchProtectionDefaults() {
+        return Optional.ofNullable(this.defaultBranchProtectionDefaults);
     }
 
     /**
@@ -507,6 +531,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.avatarHash = $.avatarHash;
         this.avatarUrl = $.avatarUrl;
         this.defaultBranchProtection = $.defaultBranchProtection;
+        this.defaultBranchProtectionDefaults = $.defaultBranchProtectionDefaults;
         this.description = $.description;
         this.emailsEnabled = $.emailsEnabled;
         this.extraSharedRunnersMinutesLimit = $.extraSharedRunnersMinutesLimit;
@@ -643,7 +668,11 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
+         * 
          */
+        @Deprecated /* Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead. */
         public Builder defaultBranchProtection(@Nullable Output<Integer> defaultBranchProtection) {
             $.defaultBranchProtection = defaultBranchProtection;
             return this;
@@ -654,9 +683,34 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
+         * 
          */
+        @Deprecated /* Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead. */
         public Builder defaultBranchProtection(Integer defaultBranchProtection) {
             return defaultBranchProtection(Output.of(defaultBranchProtection));
+        }
+
+        /**
+         * @param defaultBranchProtectionDefaults The default branch protection defaults
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultBranchProtectionDefaults(@Nullable Output<GroupDefaultBranchProtectionDefaultsArgs> defaultBranchProtectionDefaults) {
+            $.defaultBranchProtectionDefaults = defaultBranchProtectionDefaults;
+            return this;
+        }
+
+        /**
+         * @param defaultBranchProtectionDefaults The default branch protection defaults
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultBranchProtectionDefaults(GroupDefaultBranchProtectionDefaultsArgs defaultBranchProtectionDefaults) {
+            return defaultBranchProtectionDefaults(Output.of(defaultBranchProtectionDefaults));
         }
 
         /**

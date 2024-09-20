@@ -68,6 +68,11 @@ public final class GetProjectPushRule {
      */
     private Boolean preventSecrets;
     /**
+     * @return Reject commit when it’s not DCO certified.
+     * 
+     */
+    private Boolean rejectNonDcoCommits;
+    /**
      * @return Reject commit when it’s not signed through GPG.
      * 
      */
@@ -152,6 +157,13 @@ public final class GetProjectPushRule {
         return this.preventSecrets;
     }
     /**
+     * @return Reject commit when it’s not DCO certified.
+     * 
+     */
+    public Boolean rejectNonDcoCommits() {
+        return this.rejectNonDcoCommits;
+    }
+    /**
      * @return Reject commit when it’s not signed through GPG.
      * 
      */
@@ -179,6 +191,7 @@ public final class GetProjectPushRule {
         private Integer maxFileSize;
         private Boolean memberCheck;
         private Boolean preventSecrets;
+        private Boolean rejectNonDcoCommits;
         private Boolean rejectUnsignedCommits;
         public Builder() {}
         public Builder(GetProjectPushRule defaults) {
@@ -194,6 +207,7 @@ public final class GetProjectPushRule {
     	      this.maxFileSize = defaults.maxFileSize;
     	      this.memberCheck = defaults.memberCheck;
     	      this.preventSecrets = defaults.preventSecrets;
+    	      this.rejectNonDcoCommits = defaults.rejectNonDcoCommits;
     	      this.rejectUnsignedCommits = defaults.rejectUnsignedCommits;
         }
 
@@ -286,6 +300,14 @@ public final class GetProjectPushRule {
             return this;
         }
         @CustomType.Setter
+        public Builder rejectNonDcoCommits(Boolean rejectNonDcoCommits) {
+            if (rejectNonDcoCommits == null) {
+              throw new MissingRequiredPropertyException("GetProjectPushRule", "rejectNonDcoCommits");
+            }
+            this.rejectNonDcoCommits = rejectNonDcoCommits;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rejectUnsignedCommits(Boolean rejectUnsignedCommits) {
             if (rejectUnsignedCommits == null) {
               throw new MissingRequiredPropertyException("GetProjectPushRule", "rejectUnsignedCommits");
@@ -306,6 +328,7 @@ public final class GetProjectPushRule {
             _resultValue.maxFileSize = maxFileSize;
             _resultValue.memberCheck = memberCheck;
             _resultValue.preventSecrets = preventSecrets;
+            _resultValue.rejectNonDcoCommits = rejectNonDcoCommits;
             _resultValue.rejectUnsignedCommits = rejectUnsignedCommits;
             return _resultValue;
         }

@@ -11,6 +11,7 @@ import com.pulumi.gitlab.IntegrationJiraArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.IntegrationJiraState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)
  * 
  * ## Example Usage
  * 
@@ -111,14 +112,14 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="commentOnEventEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> commentOnEventEnabled;
+    private Output</* @Nullable */ Boolean> commentOnEventEnabled;
 
     /**
      * @return Enable comments inside Jira issues on each GitLab event (commit / merge request)
      * 
      */
-    public Output<Boolean> commentOnEventEnabled() {
-        return this.commentOnEventEnabled;
+    public Output<Optional<Boolean>> commentOnEventEnabled() {
+        return Codegen.optional(this.commentOnEventEnabled);
     }
     /**
      * Enable notifications for commit events
@@ -149,18 +150,74 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Enable notifications for issues events.
+     * Enable viewing Jira issues in GitLab.
      * 
      */
-    @Export(name="issuesEvents", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> issuesEvents;
+    @Export(name="issuesEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> issuesEnabled;
 
     /**
-     * @return Enable notifications for issues events.
+     * @return Enable viewing Jira issues in GitLab.
      * 
      */
-    public Output<Boolean> issuesEvents() {
-        return this.issuesEvents;
+    public Output<Optional<Boolean>> issuesEnabled() {
+        return Codegen.optional(this.issuesEnabled);
+    }
+    /**
+     * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+     * 
+     */
+    @Export(name="jiraAuthType", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> jiraAuthType;
+
+    /**
+     * @return The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+     * 
+     */
+    public Output<Optional<Integer>> jiraAuthType() {
+        return Codegen.optional(this.jiraAuthType);
+    }
+    /**
+     * Prefix to match Jira issue keys.
+     * 
+     */
+    @Export(name="jiraIssuePrefix", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> jiraIssuePrefix;
+
+    /**
+     * @return Prefix to match Jira issue keys.
+     * 
+     */
+    public Output<Optional<String>> jiraIssuePrefix() {
+        return Codegen.optional(this.jiraIssuePrefix);
+    }
+    /**
+     * Regular expression to match Jira issue keys.
+     * 
+     */
+    @Export(name="jiraIssueRegex", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> jiraIssueRegex;
+
+    /**
+     * @return Regular expression to match Jira issue keys.
+     * 
+     */
+    public Output<Optional<String>> jiraIssueRegex() {
+        return Codegen.optional(this.jiraIssueRegex);
+    }
+    /**
+     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+     * 
+     */
+    @Export(name="jiraIssueTransitionAutomatic", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> jiraIssueTransitionAutomatic;
+
+    /**
+     * @return Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+     * 
+     */
+    public Output<Optional<Boolean>> jiraIssueTransitionAutomatic() {
+        return Codegen.optional(this.jiraIssueTransitionAutomatic);
     }
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
@@ -177,20 +234,6 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.jiraIssueTransitionId);
     }
     /**
-     * Enable notifications for job events.
-     * 
-     */
-    @Export(name="jobEvents", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> jobEvents;
-
-    /**
-     * @return Enable notifications for job events.
-     * 
-     */
-    public Output<Boolean> jobEvents() {
-        return this.jobEvents;
-    }
-    /**
      * Enable notifications for merge request events
      * 
      */
@@ -205,46 +248,18 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
         return this.mergeRequestsEvents;
     }
     /**
-     * Enable notifications for note events.
-     * 
-     */
-    @Export(name="noteEvents", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> noteEvents;
-
-    /**
-     * @return Enable notifications for note events.
-     * 
-     */
-    public Output<Boolean> noteEvents() {
-        return this.noteEvents;
-    }
-    /**
-     * The password of the user created to be used with GitLab/JIRA.
+     * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the user created to be used with GitLab/JIRA.
+     * @return The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
      * 
      */
     public Output<String> password() {
         return this.password;
-    }
-    /**
-     * Enable notifications for pipeline events.
-     * 
-     */
-    @Export(name="pipelineEvents", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> pipelineEvents;
-
-    /**
-     * @return Enable notifications for pipeline events.
-     * 
-     */
-    public Output<Boolean> pipelineEvents() {
-        return this.pipelineEvents;
     }
     /**
      * ID of the project you want to activate integration on.
@@ -275,32 +290,18 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectKey);
     }
     /**
-     * Enable notifications for push events.
+     * Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      * 
      */
-    @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> pushEvents;
+    @Export(name="projectKeys", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> projectKeys;
 
     /**
-     * @return Enable notifications for push events.
+     * @return Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      * 
      */
-    public Output<Boolean> pushEvents() {
-        return this.pushEvents;
-    }
-    /**
-     * Enable notifications for tag_push events.
-     * 
-     */
-    @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> tagPushEvents;
-
-    /**
-     * @return Enable notifications for tag_push events.
-     * 
-     */
-    public Output<Boolean> tagPushEvents() {
-        return this.tagPushEvents;
+    public Output<Optional<List<String>>> projectKeys() {
+        return Codegen.optional(this.projectKeys);
     }
     /**
      * Title.
@@ -345,18 +346,32 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * The username of the user created to be used with GitLab/JIRA.
+     * Indicates whether or not to inherit default settings. Defaults to false.
+     * 
+     */
+    @Export(name="useInheritedSettings", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> useInheritedSettings;
+
+    /**
+     * @return Indicates whether or not to inherit default settings. Defaults to false.
+     * 
+     */
+    public Output<Optional<Boolean>> useInheritedSettings() {
+        return Codegen.optional(this.useInheritedSettings);
+    }
+    /**
+     * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
-    private Output<String> username;
+    private Output</* @Nullable */ String> username;
 
     /**
-     * @return The username of the user created to be used with GitLab/JIRA.
+     * @return The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
      * 
      */
-    public Output<String> username() {
-        return this.username;
+    public Output<Optional<String>> username() {
+        return Codegen.optional(this.username);
     }
 
     /**

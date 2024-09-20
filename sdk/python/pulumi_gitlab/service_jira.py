@@ -17,72 +17,77 @@ class ServiceJiraArgs:
                  password: pulumi.Input[str],
                  project: pulumi.Input[str],
                  url: pulumi.Input[str],
-                 username: pulumi.Input[str],
                  api_url: Optional[pulumi.Input[str]] = None,
                  comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
                  commit_events: Optional[pulumi.Input[bool]] = None,
-                 issues_events: Optional[pulumi.Input[bool]] = None,
+                 issues_enabled: Optional[pulumi.Input[bool]] = None,
+                 jira_auth_type: Optional[pulumi.Input[int]] = None,
+                 jira_issue_prefix: Optional[pulumi.Input[str]] = None,
+                 jira_issue_regex: Optional[pulumi.Input[str]] = None,
+                 jira_issue_transition_automatic: Optional[pulumi.Input[bool]] = None,
                  jira_issue_transition_id: Optional[pulumi.Input[str]] = None,
-                 job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
-                 note_events: Optional[pulumi.Input[bool]] = None,
-                 pipeline_events: Optional[pulumi.Input[bool]] = None,
                  project_key: Optional[pulumi.Input[str]] = None,
-                 push_events: Optional[pulumi.Input[bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[bool]] = None):
+                 project_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_inherited_settings: Optional[pulumi.Input[bool]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceJira resource.
-        :param pulumi.Input[str] password: The password of the user created to be used with GitLab/JIRA.
+        :param pulumi.Input[str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
-        :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
         :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
-        :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
+        :param pulumi.Input[bool] issues_enabled: Enable viewing Jira issues in GitLab.
+        :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
+        :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
+        :param pulumi.Input[bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
-        :param pulumi.Input[bool] job_events: Enable notifications for job events.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[bool] note_events: Enable notifications for note events.
-        :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
-        :param pulumi.Input[bool] push_events: Enable notifications for push events.
-        :param pulumi.Input[bool] tag_push_events: Enable notifications for tag_push events.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+        :param pulumi.Input[bool] use_inherited_settings: Indicates whether or not to inherit default settings. Defaults to false.
+        :param pulumi.Input[str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "url", url)
-        pulumi.set(__self__, "username", username)
         if api_url is not None:
             pulumi.set(__self__, "api_url", api_url)
         if comment_on_event_enabled is not None:
             pulumi.set(__self__, "comment_on_event_enabled", comment_on_event_enabled)
         if commit_events is not None:
             pulumi.set(__self__, "commit_events", commit_events)
-        if issues_events is not None:
-            pulumi.set(__self__, "issues_events", issues_events)
+        if issues_enabled is not None:
+            pulumi.set(__self__, "issues_enabled", issues_enabled)
+        if jira_auth_type is not None:
+            pulumi.set(__self__, "jira_auth_type", jira_auth_type)
+        if jira_issue_prefix is not None:
+            pulumi.set(__self__, "jira_issue_prefix", jira_issue_prefix)
+        if jira_issue_regex is not None:
+            pulumi.set(__self__, "jira_issue_regex", jira_issue_regex)
+        if jira_issue_transition_automatic is not None:
+            pulumi.set(__self__, "jira_issue_transition_automatic", jira_issue_transition_automatic)
         if jira_issue_transition_id is not None:
             pulumi.set(__self__, "jira_issue_transition_id", jira_issue_transition_id)
-        if job_events is not None:
-            pulumi.set(__self__, "job_events", job_events)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
-        if note_events is not None:
-            pulumi.set(__self__, "note_events", note_events)
-        if pipeline_events is not None:
-            pulumi.set(__self__, "pipeline_events", pipeline_events)
         if project_key is not None:
             pulumi.set(__self__, "project_key", project_key)
-        if push_events is not None:
-            pulumi.set(__self__, "push_events", push_events)
-        if tag_push_events is not None:
-            pulumi.set(__self__, "tag_push_events", tag_push_events)
+        if project_keys is not None:
+            pulumi.set(__self__, "project_keys", project_keys)
+        if use_inherited_settings is not None:
+            pulumi.set(__self__, "use_inherited_settings", use_inherited_settings)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
         """
-        The password of the user created to be used with GitLab/JIRA.
+        The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         """
         return pulumi.get(self, "password")
 
@@ -113,18 +118,6 @@ class ServiceJiraArgs:
     @url.setter
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
-
-    @property
-    @pulumi.getter
-    def username(self) -> pulumi.Input[str]:
-        """
-        The username of the user created to be used with GitLab/JIRA.
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: pulumi.Input[str]):
-        pulumi.set(self, "username", value)
 
     @property
     @pulumi.getter(name="apiUrl")
@@ -163,16 +156,64 @@ class ServiceJiraArgs:
         pulumi.set(self, "commit_events", value)
 
     @property
-    @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="issuesEnabled")
+    def issues_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable notifications for issues events.
+        Enable viewing Jira issues in GitLab.
         """
-        return pulumi.get(self, "issues_events")
+        return pulumi.get(self, "issues_enabled")
 
-    @issues_events.setter
-    def issues_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "issues_events", value)
+    @issues_enabled.setter
+    def issues_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "issues_enabled", value)
+
+    @property
+    @pulumi.getter(name="jiraAuthType")
+    def jira_auth_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        """
+        return pulumi.get(self, "jira_auth_type")
+
+    @jira_auth_type.setter
+    def jira_auth_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "jira_auth_type", value)
+
+    @property
+    @pulumi.getter(name="jiraIssuePrefix")
+    def jira_issue_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefix to match Jira issue keys.
+        """
+        return pulumi.get(self, "jira_issue_prefix")
+
+    @jira_issue_prefix.setter
+    def jira_issue_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jira_issue_prefix", value)
+
+    @property
+    @pulumi.getter(name="jiraIssueRegex")
+    def jira_issue_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regular expression to match Jira issue keys.
+        """
+        return pulumi.get(self, "jira_issue_regex")
+
+    @jira_issue_regex.setter
+    def jira_issue_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jira_issue_regex", value)
+
+    @property
+    @pulumi.getter(name="jiraIssueTransitionAutomatic")
+    def jira_issue_transition_automatic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+        """
+        return pulumi.get(self, "jira_issue_transition_automatic")
+
+    @jira_issue_transition_automatic.setter
+    def jira_issue_transition_automatic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "jira_issue_transition_automatic", value)
 
     @property
     @pulumi.getter(name="jiraIssueTransitionId")
@@ -187,18 +228,6 @@ class ServiceJiraArgs:
         pulumi.set(self, "jira_issue_transition_id", value)
 
     @property
-    @pulumi.getter(name="jobEvents")
-    def job_events(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable notifications for job events.
-        """
-        return pulumi.get(self, "job_events")
-
-    @job_events.setter
-    def job_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "job_events", value)
-
-    @property
     @pulumi.getter(name="mergeRequestsEvents")
     def merge_requests_events(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -209,30 +238,6 @@ class ServiceJiraArgs:
     @merge_requests_events.setter
     def merge_requests_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "merge_requests_events", value)
-
-    @property
-    @pulumi.getter(name="noteEvents")
-    def note_events(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable notifications for note events.
-        """
-        return pulumi.get(self, "note_events")
-
-    @note_events.setter
-    def note_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "note_events", value)
-
-    @property
-    @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable notifications for pipeline events.
-        """
-        return pulumi.get(self, "pipeline_events")
-
-    @pipeline_events.setter
-    def pipeline_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "pipeline_events", value)
 
     @property
     @pulumi.getter(name="projectKey")
@@ -247,28 +252,40 @@ class ServiceJiraArgs:
         pulumi.set(self, "project_key", value)
 
     @property
-    @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="projectKeys")
+    def project_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Enable notifications for push events.
+        Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         """
-        return pulumi.get(self, "push_events")
+        return pulumi.get(self, "project_keys")
 
-    @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "push_events", value)
+    @project_keys.setter
+    def project_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "project_keys", value)
 
     @property
-    @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="useInheritedSettings")
+    def use_inherited_settings(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable notifications for tag_push events.
+        Indicates whether or not to inherit default settings. Defaults to false.
         """
-        return pulumi.get(self, "tag_push_events")
+        return pulumi.get(self, "use_inherited_settings")
 
-    @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "tag_push_events", value)
+    @use_inherited_settings.setter
+    def use_inherited_settings(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_inherited_settings", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
@@ -279,20 +296,21 @@ class _ServiceJiraState:
                  comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
                  commit_events: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
-                 issues_events: Optional[pulumi.Input[bool]] = None,
+                 issues_enabled: Optional[pulumi.Input[bool]] = None,
+                 jira_auth_type: Optional[pulumi.Input[int]] = None,
+                 jira_issue_prefix: Optional[pulumi.Input[str]] = None,
+                 jira_issue_regex: Optional[pulumi.Input[str]] = None,
+                 jira_issue_transition_automatic: Optional[pulumi.Input[bool]] = None,
                  jira_issue_transition_id: Optional[pulumi.Input[str]] = None,
-                 job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
-                 note_events: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 pipeline_events: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_key: Optional[pulumi.Input[str]] = None,
-                 push_events: Optional[pulumi.Input[bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[bool]] = None,
+                 project_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
+                 use_inherited_settings: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceJira resources.
@@ -301,21 +319,22 @@ class _ServiceJiraState:
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[str] created_at: Create time.
-        :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
+        :param pulumi.Input[bool] issues_enabled: Enable viewing Jira issues in GitLab.
+        :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
+        :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
+        :param pulumi.Input[bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
-        :param pulumi.Input[bool] job_events: Enable notifications for job events.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[bool] note_events: Enable notifications for note events.
-        :param pulumi.Input[str] password: The password of the user created to be used with GitLab/JIRA.
-        :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
+        :param pulumi.Input[str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
-        :param pulumi.Input[bool] push_events: Enable notifications for push events.
-        :param pulumi.Input[bool] tag_push_events: Enable notifications for tag_push events.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[str] title: Title.
         :param pulumi.Input[str] updated_at: Update time.
         :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
-        :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
+        :param pulumi.Input[bool] use_inherited_settings: Indicates whether or not to inherit default settings. Defaults to false.
+        :param pulumi.Input[str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -327,34 +346,36 @@ class _ServiceJiraState:
             pulumi.set(__self__, "commit_events", commit_events)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
-        if issues_events is not None:
-            pulumi.set(__self__, "issues_events", issues_events)
+        if issues_enabled is not None:
+            pulumi.set(__self__, "issues_enabled", issues_enabled)
+        if jira_auth_type is not None:
+            pulumi.set(__self__, "jira_auth_type", jira_auth_type)
+        if jira_issue_prefix is not None:
+            pulumi.set(__self__, "jira_issue_prefix", jira_issue_prefix)
+        if jira_issue_regex is not None:
+            pulumi.set(__self__, "jira_issue_regex", jira_issue_regex)
+        if jira_issue_transition_automatic is not None:
+            pulumi.set(__self__, "jira_issue_transition_automatic", jira_issue_transition_automatic)
         if jira_issue_transition_id is not None:
             pulumi.set(__self__, "jira_issue_transition_id", jira_issue_transition_id)
-        if job_events is not None:
-            pulumi.set(__self__, "job_events", job_events)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
-        if note_events is not None:
-            pulumi.set(__self__, "note_events", note_events)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if pipeline_events is not None:
-            pulumi.set(__self__, "pipeline_events", pipeline_events)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if project_key is not None:
             pulumi.set(__self__, "project_key", project_key)
-        if push_events is not None:
-            pulumi.set(__self__, "push_events", push_events)
-        if tag_push_events is not None:
-            pulumi.set(__self__, "tag_push_events", tag_push_events)
+        if project_keys is not None:
+            pulumi.set(__self__, "project_keys", project_keys)
         if title is not None:
             pulumi.set(__self__, "title", title)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if use_inherited_settings is not None:
+            pulumi.set(__self__, "use_inherited_settings", use_inherited_settings)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -419,16 +440,64 @@ class _ServiceJiraState:
         pulumi.set(self, "created_at", value)
 
     @property
-    @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="issuesEnabled")
+    def issues_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable notifications for issues events.
+        Enable viewing Jira issues in GitLab.
         """
-        return pulumi.get(self, "issues_events")
+        return pulumi.get(self, "issues_enabled")
 
-    @issues_events.setter
-    def issues_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "issues_events", value)
+    @issues_enabled.setter
+    def issues_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "issues_enabled", value)
+
+    @property
+    @pulumi.getter(name="jiraAuthType")
+    def jira_auth_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        """
+        return pulumi.get(self, "jira_auth_type")
+
+    @jira_auth_type.setter
+    def jira_auth_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "jira_auth_type", value)
+
+    @property
+    @pulumi.getter(name="jiraIssuePrefix")
+    def jira_issue_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefix to match Jira issue keys.
+        """
+        return pulumi.get(self, "jira_issue_prefix")
+
+    @jira_issue_prefix.setter
+    def jira_issue_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jira_issue_prefix", value)
+
+    @property
+    @pulumi.getter(name="jiraIssueRegex")
+    def jira_issue_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regular expression to match Jira issue keys.
+        """
+        return pulumi.get(self, "jira_issue_regex")
+
+    @jira_issue_regex.setter
+    def jira_issue_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jira_issue_regex", value)
+
+    @property
+    @pulumi.getter(name="jiraIssueTransitionAutomatic")
+    def jira_issue_transition_automatic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+        """
+        return pulumi.get(self, "jira_issue_transition_automatic")
+
+    @jira_issue_transition_automatic.setter
+    def jira_issue_transition_automatic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "jira_issue_transition_automatic", value)
 
     @property
     @pulumi.getter(name="jiraIssueTransitionId")
@@ -443,18 +512,6 @@ class _ServiceJiraState:
         pulumi.set(self, "jira_issue_transition_id", value)
 
     @property
-    @pulumi.getter(name="jobEvents")
-    def job_events(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable notifications for job events.
-        """
-        return pulumi.get(self, "job_events")
-
-    @job_events.setter
-    def job_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "job_events", value)
-
-    @property
     @pulumi.getter(name="mergeRequestsEvents")
     def merge_requests_events(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -467,40 +524,16 @@ class _ServiceJiraState:
         pulumi.set(self, "merge_requests_events", value)
 
     @property
-    @pulumi.getter(name="noteEvents")
-    def note_events(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable notifications for note events.
-        """
-        return pulumi.get(self, "note_events")
-
-    @note_events.setter
-    def note_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "note_events", value)
-
-    @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the user created to be used with GitLab/JIRA.
+        The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         """
         return pulumi.get(self, "password")
 
     @password.setter
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable notifications for pipeline events.
-        """
-        return pulumi.get(self, "pipeline_events")
-
-    @pipeline_events.setter
-    def pipeline_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "pipeline_events", value)
 
     @property
     @pulumi.getter
@@ -527,28 +560,16 @@ class _ServiceJiraState:
         pulumi.set(self, "project_key", value)
 
     @property
-    @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="projectKeys")
+    def project_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Enable notifications for push events.
+        Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         """
-        return pulumi.get(self, "push_events")
+        return pulumi.get(self, "project_keys")
 
-    @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "push_events", value)
-
-    @property
-    @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable notifications for tag_push events.
-        """
-        return pulumi.get(self, "tag_push_events")
-
-    @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "tag_push_events", value)
+    @project_keys.setter
+    def project_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "project_keys", value)
 
     @property
     @pulumi.getter
@@ -587,10 +608,22 @@ class _ServiceJiraState:
         pulumi.set(self, "url", value)
 
     @property
+    @pulumi.getter(name="useInheritedSettings")
+    def use_inherited_settings(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether or not to inherit default settings. Defaults to false.
+        """
+        return pulumi.get(self, "use_inherited_settings")
+
+    @use_inherited_settings.setter
+    def use_inherited_settings(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_inherited_settings", value)
+
+    @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The username of the user created to be used with GitLab/JIRA.
+        The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         """
         return pulumi.get(self, "username")
 
@@ -607,18 +640,19 @@ class ServiceJira(pulumi.CustomResource):
                  api_url: Optional[pulumi.Input[str]] = None,
                  comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
                  commit_events: Optional[pulumi.Input[bool]] = None,
-                 issues_events: Optional[pulumi.Input[bool]] = None,
+                 issues_enabled: Optional[pulumi.Input[bool]] = None,
+                 jira_auth_type: Optional[pulumi.Input[int]] = None,
+                 jira_issue_prefix: Optional[pulumi.Input[str]] = None,
+                 jira_issue_regex: Optional[pulumi.Input[str]] = None,
+                 jira_issue_transition_automatic: Optional[pulumi.Input[bool]] = None,
                  jira_issue_transition_id: Optional[pulumi.Input[str]] = None,
-                 job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
-                 note_events: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 pipeline_events: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_key: Optional[pulumi.Input[str]] = None,
-                 push_events: Optional[pulumi.Input[bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[bool]] = None,
+                 project_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  url: Optional[pulumi.Input[str]] = None,
+                 use_inherited_settings: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -626,7 +660,7 @@ class ServiceJira(pulumi.CustomResource):
 
         > This resource is deprecated. use `IntegrationJira`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)
 
         ## Example Usage
 
@@ -658,19 +692,20 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
-        :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
+        :param pulumi.Input[bool] issues_enabled: Enable viewing Jira issues in GitLab.
+        :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
+        :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
+        :param pulumi.Input[bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
-        :param pulumi.Input[bool] job_events: Enable notifications for job events.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[bool] note_events: Enable notifications for note events.
-        :param pulumi.Input[str] password: The password of the user created to be used with GitLab/JIRA.
-        :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
+        :param pulumi.Input[str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
-        :param pulumi.Input[bool] push_events: Enable notifications for push events.
-        :param pulumi.Input[bool] tag_push_events: Enable notifications for tag_push events.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
-        :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
+        :param pulumi.Input[bool] use_inherited_settings: Indicates whether or not to inherit default settings. Defaults to false.
+        :param pulumi.Input[str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         """
         ...
     @overload
@@ -683,7 +718,7 @@ class ServiceJira(pulumi.CustomResource):
 
         > This resource is deprecated. use `IntegrationJira`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)
 
         ## Example Usage
 
@@ -728,18 +763,19 @@ class ServiceJira(pulumi.CustomResource):
                  api_url: Optional[pulumi.Input[str]] = None,
                  comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
                  commit_events: Optional[pulumi.Input[bool]] = None,
-                 issues_events: Optional[pulumi.Input[bool]] = None,
+                 issues_enabled: Optional[pulumi.Input[bool]] = None,
+                 jira_auth_type: Optional[pulumi.Input[int]] = None,
+                 jira_issue_prefix: Optional[pulumi.Input[str]] = None,
+                 jira_issue_regex: Optional[pulumi.Input[str]] = None,
+                 jira_issue_transition_automatic: Optional[pulumi.Input[bool]] = None,
                  jira_issue_transition_id: Optional[pulumi.Input[str]] = None,
-                 job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
-                 note_events: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 pipeline_events: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_key: Optional[pulumi.Input[str]] = None,
-                 push_events: Optional[pulumi.Input[bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[bool]] = None,
+                 project_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  url: Optional[pulumi.Input[str]] = None,
+                 use_inherited_settings: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -753,26 +789,25 @@ class ServiceJira(pulumi.CustomResource):
             __props__.__dict__["api_url"] = api_url
             __props__.__dict__["comment_on_event_enabled"] = comment_on_event_enabled
             __props__.__dict__["commit_events"] = commit_events
-            __props__.__dict__["issues_events"] = issues_events
+            __props__.__dict__["issues_enabled"] = issues_enabled
+            __props__.__dict__["jira_auth_type"] = jira_auth_type
+            __props__.__dict__["jira_issue_prefix"] = jira_issue_prefix
+            __props__.__dict__["jira_issue_regex"] = jira_issue_regex
+            __props__.__dict__["jira_issue_transition_automatic"] = jira_issue_transition_automatic
             __props__.__dict__["jira_issue_transition_id"] = jira_issue_transition_id
-            __props__.__dict__["job_events"] = job_events
             __props__.__dict__["merge_requests_events"] = merge_requests_events
-            __props__.__dict__["note_events"] = note_events
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
-            __props__.__dict__["pipeline_events"] = pipeline_events
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["project_key"] = project_key
-            __props__.__dict__["push_events"] = push_events
-            __props__.__dict__["tag_push_events"] = tag_push_events
+            __props__.__dict__["project_keys"] = project_keys
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
-            if username is None and not opts.urn:
-                raise TypeError("Missing required property 'username'")
+            __props__.__dict__["use_inherited_settings"] = use_inherited_settings
             __props__.__dict__["username"] = username
             __props__.__dict__["active"] = None
             __props__.__dict__["created_at"] = None
@@ -795,20 +830,21 @@ class ServiceJira(pulumi.CustomResource):
             comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
             commit_events: Optional[pulumi.Input[bool]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
-            issues_events: Optional[pulumi.Input[bool]] = None,
+            issues_enabled: Optional[pulumi.Input[bool]] = None,
+            jira_auth_type: Optional[pulumi.Input[int]] = None,
+            jira_issue_prefix: Optional[pulumi.Input[str]] = None,
+            jira_issue_regex: Optional[pulumi.Input[str]] = None,
+            jira_issue_transition_automatic: Optional[pulumi.Input[bool]] = None,
             jira_issue_transition_id: Optional[pulumi.Input[str]] = None,
-            job_events: Optional[pulumi.Input[bool]] = None,
             merge_requests_events: Optional[pulumi.Input[bool]] = None,
-            note_events: Optional[pulumi.Input[bool]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            pipeline_events: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
             project_key: Optional[pulumi.Input[str]] = None,
-            push_events: Optional[pulumi.Input[bool]] = None,
-            tag_push_events: Optional[pulumi.Input[bool]] = None,
+            project_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             title: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
+            use_inherited_settings: Optional[pulumi.Input[bool]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'ServiceJira':
         """
         Get an existing ServiceJira resource's state with the given name, id, and optional extra
@@ -822,21 +858,22 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[str] created_at: Create time.
-        :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
+        :param pulumi.Input[bool] issues_enabled: Enable viewing Jira issues in GitLab.
+        :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
+        :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
+        :param pulumi.Input[bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
-        :param pulumi.Input[bool] job_events: Enable notifications for job events.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[bool] note_events: Enable notifications for note events.
-        :param pulumi.Input[str] password: The password of the user created to be used with GitLab/JIRA.
-        :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
+        :param pulumi.Input[str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
-        :param pulumi.Input[bool] push_events: Enable notifications for push events.
-        :param pulumi.Input[bool] tag_push_events: Enable notifications for tag_push events.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[str] title: Title.
         :param pulumi.Input[str] updated_at: Update time.
         :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
-        :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
+        :param pulumi.Input[bool] use_inherited_settings: Indicates whether or not to inherit default settings. Defaults to false.
+        :param pulumi.Input[str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -847,20 +884,21 @@ class ServiceJira(pulumi.CustomResource):
         __props__.__dict__["comment_on_event_enabled"] = comment_on_event_enabled
         __props__.__dict__["commit_events"] = commit_events
         __props__.__dict__["created_at"] = created_at
-        __props__.__dict__["issues_events"] = issues_events
+        __props__.__dict__["issues_enabled"] = issues_enabled
+        __props__.__dict__["jira_auth_type"] = jira_auth_type
+        __props__.__dict__["jira_issue_prefix"] = jira_issue_prefix
+        __props__.__dict__["jira_issue_regex"] = jira_issue_regex
+        __props__.__dict__["jira_issue_transition_automatic"] = jira_issue_transition_automatic
         __props__.__dict__["jira_issue_transition_id"] = jira_issue_transition_id
-        __props__.__dict__["job_events"] = job_events
         __props__.__dict__["merge_requests_events"] = merge_requests_events
-        __props__.__dict__["note_events"] = note_events
         __props__.__dict__["password"] = password
-        __props__.__dict__["pipeline_events"] = pipeline_events
         __props__.__dict__["project"] = project
         __props__.__dict__["project_key"] = project_key
-        __props__.__dict__["push_events"] = push_events
-        __props__.__dict__["tag_push_events"] = tag_push_events
+        __props__.__dict__["project_keys"] = project_keys
         __props__.__dict__["title"] = title
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["url"] = url
+        __props__.__dict__["use_inherited_settings"] = use_inherited_settings
         __props__.__dict__["username"] = username
         return ServiceJira(resource_name, opts=opts, __props__=__props__)
 
@@ -882,7 +920,7 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="commentOnEventEnabled")
-    def comment_on_event_enabled(self) -> pulumi.Output[bool]:
+    def comment_on_event_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable comments inside Jira issues on each GitLab event (commit / merge request)
         """
@@ -905,12 +943,44 @@ class ServiceJira(pulumi.CustomResource):
         return pulumi.get(self, "created_at")
 
     @property
-    @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> pulumi.Output[bool]:
+    @pulumi.getter(name="issuesEnabled")
+    def issues_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable notifications for issues events.
+        Enable viewing Jira issues in GitLab.
         """
-        return pulumi.get(self, "issues_events")
+        return pulumi.get(self, "issues_enabled")
+
+    @property
+    @pulumi.getter(name="jiraAuthType")
+    def jira_auth_type(self) -> pulumi.Output[Optional[int]]:
+        """
+        The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        """
+        return pulumi.get(self, "jira_auth_type")
+
+    @property
+    @pulumi.getter(name="jiraIssuePrefix")
+    def jira_issue_prefix(self) -> pulumi.Output[Optional[str]]:
+        """
+        Prefix to match Jira issue keys.
+        """
+        return pulumi.get(self, "jira_issue_prefix")
+
+    @property
+    @pulumi.getter(name="jiraIssueRegex")
+    def jira_issue_regex(self) -> pulumi.Output[Optional[str]]:
+        """
+        Regular expression to match Jira issue keys.
+        """
+        return pulumi.get(self, "jira_issue_regex")
+
+    @property
+    @pulumi.getter(name="jiraIssueTransitionAutomatic")
+    def jira_issue_transition_automatic(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+        """
+        return pulumi.get(self, "jira_issue_transition_automatic")
 
     @property
     @pulumi.getter(name="jiraIssueTransitionId")
@@ -921,14 +991,6 @@ class ServiceJira(pulumi.CustomResource):
         return pulumi.get(self, "jira_issue_transition_id")
 
     @property
-    @pulumi.getter(name="jobEvents")
-    def job_events(self) -> pulumi.Output[bool]:
-        """
-        Enable notifications for job events.
-        """
-        return pulumi.get(self, "job_events")
-
-    @property
     @pulumi.getter(name="mergeRequestsEvents")
     def merge_requests_events(self) -> pulumi.Output[bool]:
         """
@@ -937,28 +999,12 @@ class ServiceJira(pulumi.CustomResource):
         return pulumi.get(self, "merge_requests_events")
 
     @property
-    @pulumi.getter(name="noteEvents")
-    def note_events(self) -> pulumi.Output[bool]:
-        """
-        Enable notifications for note events.
-        """
-        return pulumi.get(self, "note_events")
-
-    @property
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        The password of the user created to be used with GitLab/JIRA.
+        The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         """
         return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> pulumi.Output[bool]:
-        """
-        Enable notifications for pipeline events.
-        """
-        return pulumi.get(self, "pipeline_events")
 
     @property
     @pulumi.getter
@@ -977,20 +1023,12 @@ class ServiceJira(pulumi.CustomResource):
         return pulumi.get(self, "project_key")
 
     @property
-    @pulumi.getter(name="pushEvents")
-    def push_events(self) -> pulumi.Output[bool]:
+    @pulumi.getter(name="projectKeys")
+    def project_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Enable notifications for push events.
+        Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         """
-        return pulumi.get(self, "push_events")
-
-    @property
-    @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> pulumi.Output[bool]:
-        """
-        Enable notifications for tag_push events.
-        """
-        return pulumi.get(self, "tag_push_events")
+        return pulumi.get(self, "project_keys")
 
     @property
     @pulumi.getter
@@ -1017,10 +1055,18 @@ class ServiceJira(pulumi.CustomResource):
         return pulumi.get(self, "url")
 
     @property
-    @pulumi.getter
-    def username(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="useInheritedSettings")
+    def use_inherited_settings(self) -> pulumi.Output[Optional[bool]]:
         """
-        The username of the user created to be used with GitLab/JIRA.
+        Indicates whether or not to inherit default settings. Defaults to false.
+        """
+        return pulumi.get(self, "use_inherited_settings")
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Output[Optional[str]]:
+        """
+        The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         """
         return pulumi.get(self, "username")
 

@@ -150,6 +150,16 @@ export const getMetadata: typeof import("./getMetadata").getMetadata = null as a
 export const getMetadataOutput: typeof import("./getMetadata").getMetadataOutput = null as any;
 utilities.lazyLoad(exports, ["getMetadata","getMetadataOutput"], () => require("./getMetadata"));
 
+export { GetPipelineScheduleArgs, GetPipelineScheduleResult, GetPipelineScheduleOutputArgs } from "./getPipelineSchedule";
+export const getPipelineSchedule: typeof import("./getPipelineSchedule").getPipelineSchedule = null as any;
+export const getPipelineScheduleOutput: typeof import("./getPipelineSchedule").getPipelineScheduleOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineSchedule","getPipelineScheduleOutput"], () => require("./getPipelineSchedule"));
+
+export { GetPipelineSchedulesArgs, GetPipelineSchedulesResult, GetPipelineSchedulesOutputArgs } from "./getPipelineSchedules";
+export const getPipelineSchedules: typeof import("./getPipelineSchedules").getPipelineSchedules = null as any;
+export const getPipelineSchedulesOutput: typeof import("./getPipelineSchedules").getPipelineSchedulesOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineSchedules","getPipelineSchedulesOutput"], () => require("./getPipelineSchedules"));
+
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
@@ -209,6 +219,16 @@ export { GetProjectProtectedBranchesArgs, GetProjectProtectedBranchesResult, Get
 export const getProjectProtectedBranches: typeof import("./getProjectProtectedBranches").getProjectProtectedBranches = null as any;
 export const getProjectProtectedBranchesOutput: typeof import("./getProjectProtectedBranches").getProjectProtectedBranchesOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectProtectedBranches","getProjectProtectedBranchesOutput"], () => require("./getProjectProtectedBranches"));
+
+export { GetProjectProtectedTagArgs, GetProjectProtectedTagResult, GetProjectProtectedTagOutputArgs } from "./getProjectProtectedTag";
+export const getProjectProtectedTag: typeof import("./getProjectProtectedTag").getProjectProtectedTag = null as any;
+export const getProjectProtectedTagOutput: typeof import("./getProjectProtectedTag").getProjectProtectedTagOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectProtectedTag","getProjectProtectedTagOutput"], () => require("./getProjectProtectedTag"));
+
+export { GetProjectProtectedTagsArgs, GetProjectProtectedTagsResult, GetProjectProtectedTagsOutputArgs } from "./getProjectProtectedTags";
+export const getProjectProtectedTags: typeof import("./getProjectProtectedTags").getProjectProtectedTags = null as any;
+export const getProjectProtectedTagsOutput: typeof import("./getProjectProtectedTags").getProjectProtectedTagsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectProtectedTags","getProjectProtectedTagsOutput"], () => require("./getProjectProtectedTags"));
 
 export { GetProjectTagArgs, GetProjectTagResult, GetProjectTagOutputArgs } from "./getProjectTag";
 export const getProjectTag: typeof import("./getProjectTag").getProjectTag = null as any;
@@ -434,6 +454,11 @@ export { LabelArgs, LabelState } from "./label";
 export type Label = import("./label").Label;
 export const Label: typeof import("./label").Label = null as any;
 utilities.lazyLoad(exports, ["Label"], () => require("./label"));
+
+export { MemberRoleArgs, MemberRoleState } from "./memberRole";
+export type MemberRole = import("./memberRole").MemberRole;
+export const MemberRole: typeof import("./memberRole").MemberRole = null as any;
+utilities.lazyLoad(exports, ["MemberRole"], () => require("./memberRole"));
 
 export { PagesDomainArgs, PagesDomainState } from "./pagesDomain";
 export type PagesDomain = import("./pagesDomain").PagesDomain;
@@ -685,6 +710,11 @@ export type UserGpgKey = import("./userGpgKey").UserGpgKey;
 export const UserGpgKey: typeof import("./userGpgKey").UserGpgKey = null as any;
 utilities.lazyLoad(exports, ["UserGpgKey"], () => require("./userGpgKey"));
 
+export { UserImpersonationTokenArgs, UserImpersonationTokenState } from "./userImpersonationToken";
+export type UserImpersonationToken = import("./userImpersonationToken").UserImpersonationToken;
+export const UserImpersonationToken: typeof import("./userImpersonationToken").UserImpersonationToken = null as any;
+utilities.lazyLoad(exports, ["UserImpersonationToken"], () => require("./userImpersonationToken"));
+
 export { UserRunnerArgs, UserRunnerState } from "./userRunner";
 export type UserRunner = import("./userRunner").UserRunner;
 export const UserRunner: typeof import("./userRunner").UserRunner = null as any;
@@ -793,6 +823,8 @@ const _module = {
                 return new IntegrationTelegram(name, <any>undefined, { urn })
             case "gitlab:index/label:Label":
                 return new Label(name, <any>undefined, { urn })
+            case "gitlab:index/memberRole:MemberRole":
+                return new MemberRole(name, <any>undefined, { urn })
             case "gitlab:index/pagesDomain:PagesDomain":
                 return new PagesDomain(name, <any>undefined, { urn })
             case "gitlab:index/personalAccessToken:PersonalAccessToken":
@@ -891,6 +923,8 @@ const _module = {
                 return new UserCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/userGpgKey:UserGpgKey":
                 return new UserGpgKey(name, <any>undefined, { urn })
+            case "gitlab:index/userImpersonationToken:UserImpersonationToken":
+                return new UserImpersonationToken(name, <any>undefined, { urn })
             case "gitlab:index/userRunner:UserRunner":
                 return new UserRunner(name, <any>undefined, { urn })
             case "gitlab:index/userSshKey:UserSshKey":
@@ -942,6 +976,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/integrationPipelinesEmail
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationSlack", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationTelegram", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/label", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/memberRole", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pagesDomain", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/personalAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pipelineSchedule", _module)
@@ -991,6 +1026,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/topic", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/user", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userGpgKey", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/userImpersonationToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userRunner", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userSshKey", _module)
 pulumi.runtime.registerResourcePackage("gitlab", {

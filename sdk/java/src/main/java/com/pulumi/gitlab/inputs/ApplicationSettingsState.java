@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.ApplicationSettingsDefaultBranchProtectionDefaultsArgs;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -111,6 +112,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Set to true to allow users to delete their accounts. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="allowAccountDeletion")
+    private @Nullable Output<Boolean> allowAccountDeletion;
+
+    /**
+     * @return Set to true to allow users to delete their accounts. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> allowAccountDeletion() {
+        return Optional.ofNullable(this.allowAccountDeletion);
+    }
+
+    /**
      * Set to true to allow group owners to manage LDAP.
      * 
      */
@@ -156,6 +172,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Indicates whether users assigned up to the Guest role can create groups and personal projects.
+     * 
+     */
+    @Import(name="allowProjectCreationForGuestAndBelow")
+    private @Nullable Output<Boolean> allowProjectCreationForGuestAndBelow;
+
+    /**
+     * @return Indicates whether users assigned up to the Guest role can create groups and personal projects.
+     * 
+     */
+    public Optional<Output<Boolean>> allowProjectCreationForGuestAndBelow() {
+        return Optional.ofNullable(this.allowProjectCreationForGuestAndBelow);
+    }
+
+    /**
+     * Allow using a registration token to create a runner.
+     * 
+     */
+    @Import(name="allowRunnerRegistrationToken")
+    private @Nullable Output<Boolean> allowRunnerRegistrationToken;
+
+    /**
+     * @return Allow using a registration token to create a runner.
+     * 
+     */
+    public Optional<Output<Boolean>> allowRunnerRegistrationToken() {
+        return Optional.ofNullable(this.allowRunnerRegistrationToken);
+    }
+
+    /**
      * Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
      * 
      */
@@ -168,6 +214,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> archiveBuildsInHumanReadable() {
         return Optional.ofNullable(this.archiveBuildsInHumanReadable);
+    }
+
+    /**
+     * Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+     * 
+     */
+    @Import(name="asciidocMaxIncludes")
+    private @Nullable Output<Integer> asciidocMaxIncludes;
+
+    /**
+     * @return Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+     * 
+     */
+    public Optional<Output<Integer>> asciidocMaxIncludes() {
+        return Optional.ofNullable(this.asciidocMaxIncludes);
     }
 
     /**
@@ -246,6 +307,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+     * 
+     */
+    @Import(name="autoBanUserOnExcessiveProjectsDownload")
+    private @Nullable Output<Boolean> autoBanUserOnExcessiveProjectsDownload;
+
+    /**
+     * @return When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> autoBanUserOnExcessiveProjectsDownload() {
+        return Optional.ofNullable(this.autoBanUserOnExcessiveProjectsDownload);
+    }
+
+    /**
      * Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
      * 
      */
@@ -291,6 +367,51 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Maximum simultaneous Direct Transfer batches to process.
+     * 
+     */
+    @Import(name="bulkImportConcurrentPipelineBatchLimit")
+    private @Nullable Output<Integer> bulkImportConcurrentPipelineBatchLimit;
+
+    /**
+     * @return Maximum simultaneous Direct Transfer batches to process.
+     * 
+     */
+    public Optional<Output<Integer>> bulkImportConcurrentPipelineBatchLimit() {
+        return Optional.ofNullable(this.bulkImportConcurrentPipelineBatchLimit);
+    }
+
+    /**
+     * Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+     * 
+     */
+    @Import(name="bulkImportEnabled")
+    private @Nullable Output<Boolean> bulkImportEnabled;
+
+    /**
+     * @return Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+     * 
+     */
+    public Optional<Output<Boolean>> bulkImportEnabled() {
+        return Optional.ofNullable(this.bulkImportEnabled);
+    }
+
+    /**
+     * Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+     * 
+     */
+    @Import(name="bulkImportMaxDownloadFileSize")
+    private @Nullable Output<Integer> bulkImportMaxDownloadFileSize;
+
+    /**
+     * @return Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+     * 
+     */
+    public Optional<Output<Integer>> bulkImportMaxDownloadFileSize() {
+        return Optional.ofNullable(this.bulkImportMaxDownloadFileSize);
+    }
+
+    /**
      * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
      * 
      */
@@ -321,6 +442,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The maximum number of includes per pipeline.
+     * 
+     */
+    @Import(name="ciMaxIncludes")
+    private @Nullable Output<Integer> ciMaxIncludes;
+
+    /**
+     * @return The maximum number of includes per pipeline.
+     * 
+     */
+    public Optional<Output<Integer>> ciMaxIncludes() {
+        return Optional.ofNullable(this.ciMaxIncludes);
+    }
+
+    /**
+     * The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+     * 
+     */
+    @Import(name="ciMaxTotalYamlSizeBytes")
+    private @Nullable Output<Integer> ciMaxTotalYamlSizeBytes;
+
+    /**
+     * @return The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+     * 
+     */
+    public Optional<Output<Integer>> ciMaxTotalYamlSizeBytes() {
+        return Optional.ofNullable(this.ciMaxTotalYamlSizeBytes);
+    }
+
+    /**
      * Custom hostname (for private commit emails).
      * 
      */
@@ -333,6 +484,51 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> commitEmailHostname() {
         return Optional.ofNullable(this.commitEmailHostname);
+    }
+
+    /**
+     * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+     * 
+     */
+    @Import(name="concurrentBitbucketImportJobsLimit")
+    private @Nullable Output<Integer> concurrentBitbucketImportJobsLimit;
+
+    /**
+     * @return Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+     * 
+     */
+    public Optional<Output<Integer>> concurrentBitbucketImportJobsLimit() {
+        return Optional.ofNullable(this.concurrentBitbucketImportJobsLimit);
+    }
+
+    /**
+     * Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+     * 
+     */
+    @Import(name="concurrentBitbucketServerImportJobsLimit")
+    private @Nullable Output<Integer> concurrentBitbucketServerImportJobsLimit;
+
+    /**
+     * @return Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+     * 
+     */
+    public Optional<Output<Integer>> concurrentBitbucketServerImportJobsLimit() {
+        return Optional.ofNullable(this.concurrentBitbucketServerImportJobsLimit);
+    }
+
+    /**
+     * Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+     * 
+     */
+    @Import(name="concurrentGithubImportJobsLimit")
+    private @Nullable Output<Integer> concurrentGithubImportJobsLimit;
+
+    /**
+     * @return Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+     * 
+     */
+    public Optional<Output<Integer>> concurrentGithubImportJobsLimit() {
+        return Optional.ofNullable(this.concurrentGithubImportJobsLimit);
     }
 
     /**
@@ -441,6 +637,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+     * 
+     */
+    @Import(name="deactivateDormantUsersPeriod")
+    private @Nullable Output<Integer> deactivateDormantUsersPeriod;
+
+    /**
+     * @return Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+     * 
+     */
+    public Optional<Output<Integer>> deactivateDormantUsersPeriod() {
+        return Optional.ofNullable(this.deactivateDormantUsersPeriod);
+    }
+
+    /**
+     * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+     * 
+     */
+    @Import(name="decompressArchiveFileTimeout")
+    private @Nullable Output<Integer> decompressArchiveFileTimeout;
+
+    /**
+     * @return Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+     * 
+     */
+    public Optional<Output<Integer>> decompressArchiveFileTimeout() {
+        return Optional.ofNullable(this.decompressArchiveFileTimeout);
+    }
+
+    /**
      * Set the default expiration time for each job’s artifacts.
      * 
      */
@@ -486,6 +712,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+     * 
+     */
+    @Import(name="defaultBranchProtectionDefaults")
+    private @Nullable Output<ApplicationSettingsDefaultBranchProtectionDefaultsArgs> defaultBranchProtectionDefaults;
+
+    /**
+     * @return The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+     * 
+     */
+    public Optional<Output<ApplicationSettingsDefaultBranchProtectionDefaultsArgs>> defaultBranchProtectionDefaults() {
+        return Optional.ofNullable(this.defaultBranchProtectionDefaults);
+    }
+
+    /**
      * Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
      * 
      */
@@ -513,6 +754,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> defaultGroupVisibility() {
         return Optional.ofNullable(this.defaultGroupVisibility);
+    }
+
+    /**
+     * Default preferred language for users who are not logged in.
+     * 
+     */
+    @Import(name="defaultPreferredLanguage")
+    private @Nullable Output<String> defaultPreferredLanguage;
+
+    /**
+     * @return Default preferred language for users who are not logged in.
+     * 
+     */
+    public Optional<Output<String>> defaultPreferredLanguage() {
+        return Optional.ofNullable(this.defaultPreferredLanguage);
     }
 
     /**
@@ -576,6 +832,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+     * 
+     */
+    @Import(name="defaultSyntaxHighlightingTheme")
+    private @Nullable Output<Integer> defaultSyntaxHighlightingTheme;
+
+    /**
+     * @return Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+     * 
+     */
+    public Optional<Output<Integer>> defaultSyntaxHighlightingTheme() {
+        return Optional.ofNullable(this.defaultSyntaxHighlightingTheme);
+    }
+
+    /**
      * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      * 
      */
@@ -591,6 +862,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    @Import(name="deleteUnconfirmedUsers")
+    private @Nullable Output<Boolean> deleteUnconfirmedUsers;
+
+    /**
+     * @return Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> deleteUnconfirmedUsers() {
+        return Optional.ofNullable(this.deleteUnconfirmedUsers);
+    }
+
+    /**
      * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
      * 
      */
@@ -603,6 +889,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Integer>> deletionAdjournedPeriod() {
         return Optional.ofNullable(this.deletionAdjournedPeriod);
+    }
+
+    /**
+     * (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+     * 
+     */
+    @Import(name="diagramsnetEnabled")
+    private @Nullable Output<Boolean> diagramsnetEnabled;
+
+    /**
+     * @return (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+     * 
+     */
+    public Optional<Output<Boolean>> diagramsnetEnabled() {
+        return Optional.ofNullable(this.diagramsnetEnabled);
+    }
+
+    /**
+     * The Diagrams.net instance URL for integration.
+     * 
+     */
+    @Import(name="diagramsnetUrl")
+    private @Nullable Output<String> diagramsnetUrl;
+
+    /**
+     * @return The Diagrams.net instance URL for integration.
+     * 
+     */
+    public Optional<Output<String>> diagramsnetUrl() {
+        return Optional.ofNullable(this.diagramsnetUrl);
     }
 
     /**
@@ -651,6 +967,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+     * 
+     */
+    @Import(name="disableAdminOauthScopes")
+    private @Nullable Output<Boolean> disableAdminOauthScopes;
+
+    /**
+     * @return Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+     * 
+     */
+    public Optional<Output<Boolean>> disableAdminOauthScopes() {
+        return Optional.ofNullable(this.disableAdminOauthScopes);
+    }
+
+    /**
      * Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
      * 
      */
@@ -663,6 +994,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> disableFeedToken() {
         return Optional.ofNullable(this.disableFeedToken);
+    }
+
+    /**
+     * Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+     * 
+     */
+    @Import(name="disablePersonalAccessTokens")
+    private @Nullable Output<Boolean> disablePersonalAccessTokens;
+
+    /**
+     * @return Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+     * 
+     */
+    public Optional<Output<Boolean>> disablePersonalAccessTokens() {
+        return Optional.ofNullable(this.disablePersonalAccessTokens);
     }
 
     /**
@@ -741,6 +1087,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+     * 
+     */
+    @Import(name="downstreamPipelineTriggerLimitPerProjectUserSha")
+    private @Nullable Output<Integer> downstreamPipelineTriggerLimitPerProjectUserSha;
+
+    /**
+     * @return Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+     * 
+     */
+    public Optional<Output<Integer>> downstreamPipelineTriggerLimitPerProjectUserSha() {
+        return Optional.ofNullable(this.downstreamPipelineTriggerLimitPerProjectUserSha);
+    }
+
+    /**
      * The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      * 
      */
@@ -753,6 +1114,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Integer>> dsaKeyRestriction() {
         return Optional.ofNullable(this.dsaKeyRestriction);
+    }
+
+    /**
+     * Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    @Import(name="duoFeaturesEnabled")
+    private @Nullable Output<Boolean> duoFeaturesEnabled;
+
+    /**
+     * @return Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> duoFeaturesEnabled() {
+        return Optional.ofNullable(this.duoFeaturesEnabled);
     }
 
     /**
@@ -3694,21 +4070,34 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.afterSignUpText = $.afterSignUpText;
         this.akismetApiKey = $.akismetApiKey;
         this.akismetEnabled = $.akismetEnabled;
+        this.allowAccountDeletion = $.allowAccountDeletion;
         this.allowGroupOwnersToManageLdap = $.allowGroupOwnersToManageLdap;
         this.allowLocalRequestsFromSystemHooks = $.allowLocalRequestsFromSystemHooks;
         this.allowLocalRequestsFromWebHooksAndServices = $.allowLocalRequestsFromWebHooksAndServices;
+        this.allowProjectCreationForGuestAndBelow = $.allowProjectCreationForGuestAndBelow;
+        this.allowRunnerRegistrationToken = $.allowRunnerRegistrationToken;
         this.archiveBuildsInHumanReadable = $.archiveBuildsInHumanReadable;
+        this.asciidocMaxIncludes = $.asciidocMaxIncludes;
         this.assetProxyAllowlists = $.assetProxyAllowlists;
         this.assetProxyEnabled = $.assetProxyEnabled;
         this.assetProxySecretKey = $.assetProxySecretKey;
         this.assetProxyUrl = $.assetProxyUrl;
         this.authorizedKeysEnabled = $.authorizedKeysEnabled;
+        this.autoBanUserOnExcessiveProjectsDownload = $.autoBanUserOnExcessiveProjectsDownload;
         this.autoDevopsDomain = $.autoDevopsDomain;
         this.autoDevopsEnabled = $.autoDevopsEnabled;
         this.automaticPurchasedStorageAllocation = $.automaticPurchasedStorageAllocation;
+        this.bulkImportConcurrentPipelineBatchLimit = $.bulkImportConcurrentPipelineBatchLimit;
+        this.bulkImportEnabled = $.bulkImportEnabled;
+        this.bulkImportMaxDownloadFileSize = $.bulkImportMaxDownloadFileSize;
         this.canCreateGroup = $.canCreateGroup;
         this.checkNamespacePlan = $.checkNamespacePlan;
+        this.ciMaxIncludes = $.ciMaxIncludes;
+        this.ciMaxTotalYamlSizeBytes = $.ciMaxTotalYamlSizeBytes;
         this.commitEmailHostname = $.commitEmailHostname;
+        this.concurrentBitbucketImportJobsLimit = $.concurrentBitbucketImportJobsLimit;
+        this.concurrentBitbucketServerImportJobsLimit = $.concurrentBitbucketServerImportJobsLimit;
+        this.concurrentGithubImportJobsLimit = $.concurrentGithubImportJobsLimit;
         this.containerExpirationPoliciesEnableHistoricEntries = $.containerExpirationPoliciesEnableHistoricEntries;
         this.containerRegistryCleanupTagsServiceMaxListSize = $.containerRegistryCleanupTagsServiceMaxListSize;
         this.containerRegistryDeleteTagsServiceTimeout = $.containerRegistryDeleteTagsServiceTimeout;
@@ -3716,27 +4105,39 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.containerRegistryExpirationPoliciesWorkerCapacity = $.containerRegistryExpirationPoliciesWorkerCapacity;
         this.containerRegistryTokenExpireDelay = $.containerRegistryTokenExpireDelay;
         this.deactivateDormantUsers = $.deactivateDormantUsers;
+        this.deactivateDormantUsersPeriod = $.deactivateDormantUsersPeriod;
+        this.decompressArchiveFileTimeout = $.decompressArchiveFileTimeout;
         this.defaultArtifactsExpireIn = $.defaultArtifactsExpireIn;
         this.defaultBranchName = $.defaultBranchName;
         this.defaultBranchProtection = $.defaultBranchProtection;
+        this.defaultBranchProtectionDefaults = $.defaultBranchProtectionDefaults;
         this.defaultCiConfigPath = $.defaultCiConfigPath;
         this.defaultGroupVisibility = $.defaultGroupVisibility;
+        this.defaultPreferredLanguage = $.defaultPreferredLanguage;
         this.defaultProjectCreation = $.defaultProjectCreation;
         this.defaultProjectVisibility = $.defaultProjectVisibility;
         this.defaultProjectsLimit = $.defaultProjectsLimit;
         this.defaultSnippetVisibility = $.defaultSnippetVisibility;
+        this.defaultSyntaxHighlightingTheme = $.defaultSyntaxHighlightingTheme;
         this.deleteInactiveProjects = $.deleteInactiveProjects;
+        this.deleteUnconfirmedUsers = $.deleteUnconfirmedUsers;
         this.deletionAdjournedPeriod = $.deletionAdjournedPeriod;
+        this.diagramsnetEnabled = $.diagramsnetEnabled;
+        this.diagramsnetUrl = $.diagramsnetUrl;
         this.diffMaxFiles = $.diffMaxFiles;
         this.diffMaxLines = $.diffMaxLines;
         this.diffMaxPatchBytes = $.diffMaxPatchBytes;
+        this.disableAdminOauthScopes = $.disableAdminOauthScopes;
         this.disableFeedToken = $.disableFeedToken;
+        this.disablePersonalAccessTokens = $.disablePersonalAccessTokens;
         this.disabledOauthSignInSources = $.disabledOauthSignInSources;
         this.dnsRebindingProtectionEnabled = $.dnsRebindingProtectionEnabled;
         this.domainAllowlists = $.domainAllowlists;
         this.domainDenylistEnabled = $.domainDenylistEnabled;
         this.domainDenylists = $.domainDenylists;
+        this.downstreamPipelineTriggerLimitPerProjectUserSha = $.downstreamPipelineTriggerLimitPerProjectUserSha;
         this.dsaKeyRestriction = $.dsaKeyRestriction;
+        this.duoFeaturesEnabled = $.duoFeaturesEnabled;
         this.ecdsaKeyRestriction = $.ecdsaKeyRestriction;
         this.ecdsaSkKeyRestriction = $.ecdsaSkKeyRestriction;
         this.ed25519KeyRestriction = $.ed25519KeyRestriction;
@@ -4078,6 +4479,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param allowAccountDeletion Set to true to allow users to delete their accounts. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAccountDeletion(@Nullable Output<Boolean> allowAccountDeletion) {
+            $.allowAccountDeletion = allowAccountDeletion;
+            return this;
+        }
+
+        /**
+         * @param allowAccountDeletion Set to true to allow users to delete their accounts. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAccountDeletion(Boolean allowAccountDeletion) {
+            return allowAccountDeletion(Output.of(allowAccountDeletion));
+        }
+
+        /**
          * @param allowGroupOwnersToManageLdap Set to true to allow group owners to manage LDAP.
          * 
          * @return builder
@@ -4141,6 +4563,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param allowProjectCreationForGuestAndBelow Indicates whether users assigned up to the Guest role can create groups and personal projects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowProjectCreationForGuestAndBelow(@Nullable Output<Boolean> allowProjectCreationForGuestAndBelow) {
+            $.allowProjectCreationForGuestAndBelow = allowProjectCreationForGuestAndBelow;
+            return this;
+        }
+
+        /**
+         * @param allowProjectCreationForGuestAndBelow Indicates whether users assigned up to the Guest role can create groups and personal projects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowProjectCreationForGuestAndBelow(Boolean allowProjectCreationForGuestAndBelow) {
+            return allowProjectCreationForGuestAndBelow(Output.of(allowProjectCreationForGuestAndBelow));
+        }
+
+        /**
+         * @param allowRunnerRegistrationToken Allow using a registration token to create a runner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowRunnerRegistrationToken(@Nullable Output<Boolean> allowRunnerRegistrationToken) {
+            $.allowRunnerRegistrationToken = allowRunnerRegistrationToken;
+            return this;
+        }
+
+        /**
+         * @param allowRunnerRegistrationToken Allow using a registration token to create a runner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowRunnerRegistrationToken(Boolean allowRunnerRegistrationToken) {
+            return allowRunnerRegistrationToken(Output.of(allowRunnerRegistrationToken));
+        }
+
+        /**
          * @param archiveBuildsInHumanReadable Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
          * 
          * @return builder
@@ -4159,6 +4623,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder archiveBuildsInHumanReadable(String archiveBuildsInHumanReadable) {
             return archiveBuildsInHumanReadable(Output.of(archiveBuildsInHumanReadable));
+        }
+
+        /**
+         * @param asciidocMaxIncludes Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asciidocMaxIncludes(@Nullable Output<Integer> asciidocMaxIncludes) {
+            $.asciidocMaxIncludes = asciidocMaxIncludes;
+            return this;
+        }
+
+        /**
+         * @param asciidocMaxIncludes Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asciidocMaxIncludes(Integer asciidocMaxIncludes) {
+            return asciidocMaxIncludes(Output.of(asciidocMaxIncludes));
         }
 
         /**
@@ -4277,6 +4762,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param autoBanUserOnExcessiveProjectsDownload When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoBanUserOnExcessiveProjectsDownload(@Nullable Output<Boolean> autoBanUserOnExcessiveProjectsDownload) {
+            $.autoBanUserOnExcessiveProjectsDownload = autoBanUserOnExcessiveProjectsDownload;
+            return this;
+        }
+
+        /**
+         * @param autoBanUserOnExcessiveProjectsDownload When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoBanUserOnExcessiveProjectsDownload(Boolean autoBanUserOnExcessiveProjectsDownload) {
+            return autoBanUserOnExcessiveProjectsDownload(Output.of(autoBanUserOnExcessiveProjectsDownload));
+        }
+
+        /**
          * @param autoDevopsDomain Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
          * 
          * @return builder
@@ -4340,6 +4846,69 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param bulkImportConcurrentPipelineBatchLimit Maximum simultaneous Direct Transfer batches to process.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bulkImportConcurrentPipelineBatchLimit(@Nullable Output<Integer> bulkImportConcurrentPipelineBatchLimit) {
+            $.bulkImportConcurrentPipelineBatchLimit = bulkImportConcurrentPipelineBatchLimit;
+            return this;
+        }
+
+        /**
+         * @param bulkImportConcurrentPipelineBatchLimit Maximum simultaneous Direct Transfer batches to process.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bulkImportConcurrentPipelineBatchLimit(Integer bulkImportConcurrentPipelineBatchLimit) {
+            return bulkImportConcurrentPipelineBatchLimit(Output.of(bulkImportConcurrentPipelineBatchLimit));
+        }
+
+        /**
+         * @param bulkImportEnabled Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bulkImportEnabled(@Nullable Output<Boolean> bulkImportEnabled) {
+            $.bulkImportEnabled = bulkImportEnabled;
+            return this;
+        }
+
+        /**
+         * @param bulkImportEnabled Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bulkImportEnabled(Boolean bulkImportEnabled) {
+            return bulkImportEnabled(Output.of(bulkImportEnabled));
+        }
+
+        /**
+         * @param bulkImportMaxDownloadFileSize Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bulkImportMaxDownloadFileSize(@Nullable Output<Integer> bulkImportMaxDownloadFileSize) {
+            $.bulkImportMaxDownloadFileSize = bulkImportMaxDownloadFileSize;
+            return this;
+        }
+
+        /**
+         * @param bulkImportMaxDownloadFileSize Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bulkImportMaxDownloadFileSize(Integer bulkImportMaxDownloadFileSize) {
+            return bulkImportMaxDownloadFileSize(Output.of(bulkImportMaxDownloadFileSize));
+        }
+
+        /**
          * @param canCreateGroup Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
          * 
          * @return builder
@@ -4382,6 +4951,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param ciMaxIncludes The maximum number of includes per pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciMaxIncludes(@Nullable Output<Integer> ciMaxIncludes) {
+            $.ciMaxIncludes = ciMaxIncludes;
+            return this;
+        }
+
+        /**
+         * @param ciMaxIncludes The maximum number of includes per pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciMaxIncludes(Integer ciMaxIncludes) {
+            return ciMaxIncludes(Output.of(ciMaxIncludes));
+        }
+
+        /**
+         * @param ciMaxTotalYamlSizeBytes The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciMaxTotalYamlSizeBytes(@Nullable Output<Integer> ciMaxTotalYamlSizeBytes) {
+            $.ciMaxTotalYamlSizeBytes = ciMaxTotalYamlSizeBytes;
+            return this;
+        }
+
+        /**
+         * @param ciMaxTotalYamlSizeBytes The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciMaxTotalYamlSizeBytes(Integer ciMaxTotalYamlSizeBytes) {
+            return ciMaxTotalYamlSizeBytes(Output.of(ciMaxTotalYamlSizeBytes));
+        }
+
+        /**
          * @param commitEmailHostname Custom hostname (for private commit emails).
          * 
          * @return builder
@@ -4400,6 +5011,69 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder commitEmailHostname(String commitEmailHostname) {
             return commitEmailHostname(Output.of(commitEmailHostname));
+        }
+
+        /**
+         * @param concurrentBitbucketImportJobsLimit Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concurrentBitbucketImportJobsLimit(@Nullable Output<Integer> concurrentBitbucketImportJobsLimit) {
+            $.concurrentBitbucketImportJobsLimit = concurrentBitbucketImportJobsLimit;
+            return this;
+        }
+
+        /**
+         * @param concurrentBitbucketImportJobsLimit Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concurrentBitbucketImportJobsLimit(Integer concurrentBitbucketImportJobsLimit) {
+            return concurrentBitbucketImportJobsLimit(Output.of(concurrentBitbucketImportJobsLimit));
+        }
+
+        /**
+         * @param concurrentBitbucketServerImportJobsLimit Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concurrentBitbucketServerImportJobsLimit(@Nullable Output<Integer> concurrentBitbucketServerImportJobsLimit) {
+            $.concurrentBitbucketServerImportJobsLimit = concurrentBitbucketServerImportJobsLimit;
+            return this;
+        }
+
+        /**
+         * @param concurrentBitbucketServerImportJobsLimit Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concurrentBitbucketServerImportJobsLimit(Integer concurrentBitbucketServerImportJobsLimit) {
+            return concurrentBitbucketServerImportJobsLimit(Output.of(concurrentBitbucketServerImportJobsLimit));
+        }
+
+        /**
+         * @param concurrentGithubImportJobsLimit Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concurrentGithubImportJobsLimit(@Nullable Output<Integer> concurrentGithubImportJobsLimit) {
+            $.concurrentGithubImportJobsLimit = concurrentGithubImportJobsLimit;
+            return this;
+        }
+
+        /**
+         * @param concurrentGithubImportJobsLimit Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concurrentGithubImportJobsLimit(Integer concurrentGithubImportJobsLimit) {
+            return concurrentGithubImportJobsLimit(Output.of(concurrentGithubImportJobsLimit));
         }
 
         /**
@@ -4550,6 +5224,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param deactivateDormantUsersPeriod Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deactivateDormantUsersPeriod(@Nullable Output<Integer> deactivateDormantUsersPeriod) {
+            $.deactivateDormantUsersPeriod = deactivateDormantUsersPeriod;
+            return this;
+        }
+
+        /**
+         * @param deactivateDormantUsersPeriod Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deactivateDormantUsersPeriod(Integer deactivateDormantUsersPeriod) {
+            return deactivateDormantUsersPeriod(Output.of(deactivateDormantUsersPeriod));
+        }
+
+        /**
+         * @param decompressArchiveFileTimeout Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decompressArchiveFileTimeout(@Nullable Output<Integer> decompressArchiveFileTimeout) {
+            $.decompressArchiveFileTimeout = decompressArchiveFileTimeout;
+            return this;
+        }
+
+        /**
+         * @param decompressArchiveFileTimeout Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decompressArchiveFileTimeout(Integer decompressArchiveFileTimeout) {
+            return decompressArchiveFileTimeout(Output.of(decompressArchiveFileTimeout));
+        }
+
+        /**
          * @param defaultArtifactsExpireIn Set the default expiration time for each job’s artifacts.
          * 
          * @return builder
@@ -4613,6 +5329,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param defaultBranchProtectionDefaults The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultBranchProtectionDefaults(@Nullable Output<ApplicationSettingsDefaultBranchProtectionDefaultsArgs> defaultBranchProtectionDefaults) {
+            $.defaultBranchProtectionDefaults = defaultBranchProtectionDefaults;
+            return this;
+        }
+
+        /**
+         * @param defaultBranchProtectionDefaults The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultBranchProtectionDefaults(ApplicationSettingsDefaultBranchProtectionDefaultsArgs defaultBranchProtectionDefaults) {
+            return defaultBranchProtectionDefaults(Output.of(defaultBranchProtectionDefaults));
+        }
+
+        /**
          * @param defaultCiConfigPath Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
          * 
          * @return builder
@@ -4652,6 +5389,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder defaultGroupVisibility(String defaultGroupVisibility) {
             return defaultGroupVisibility(Output.of(defaultGroupVisibility));
+        }
+
+        /**
+         * @param defaultPreferredLanguage Default preferred language for users who are not logged in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPreferredLanguage(@Nullable Output<String> defaultPreferredLanguage) {
+            $.defaultPreferredLanguage = defaultPreferredLanguage;
+            return this;
+        }
+
+        /**
+         * @param defaultPreferredLanguage Default preferred language for users who are not logged in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPreferredLanguage(String defaultPreferredLanguage) {
+            return defaultPreferredLanguage(Output.of(defaultPreferredLanguage));
         }
 
         /**
@@ -4739,6 +5497,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param defaultSyntaxHighlightingTheme Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultSyntaxHighlightingTheme(@Nullable Output<Integer> defaultSyntaxHighlightingTheme) {
+            $.defaultSyntaxHighlightingTheme = defaultSyntaxHighlightingTheme;
+            return this;
+        }
+
+        /**
+         * @param defaultSyntaxHighlightingTheme Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultSyntaxHighlightingTheme(Integer defaultSyntaxHighlightingTheme) {
+            return defaultSyntaxHighlightingTheme(Output.of(defaultSyntaxHighlightingTheme));
+        }
+
+        /**
          * @param deleteInactiveProjects Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
          * 
          * @return builder
@@ -4760,6 +5539,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param deleteUnconfirmedUsers Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteUnconfirmedUsers(@Nullable Output<Boolean> deleteUnconfirmedUsers) {
+            $.deleteUnconfirmedUsers = deleteUnconfirmedUsers;
+            return this;
+        }
+
+        /**
+         * @param deleteUnconfirmedUsers Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteUnconfirmedUsers(Boolean deleteUnconfirmedUsers) {
+            return deleteUnconfirmedUsers(Output.of(deleteUnconfirmedUsers));
+        }
+
+        /**
          * @param deletionAdjournedPeriod The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
          * 
          * @return builder
@@ -4778,6 +5578,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder deletionAdjournedPeriod(Integer deletionAdjournedPeriod) {
             return deletionAdjournedPeriod(Output.of(deletionAdjournedPeriod));
+        }
+
+        /**
+         * @param diagramsnetEnabled (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diagramsnetEnabled(@Nullable Output<Boolean> diagramsnetEnabled) {
+            $.diagramsnetEnabled = diagramsnetEnabled;
+            return this;
+        }
+
+        /**
+         * @param diagramsnetEnabled (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diagramsnetEnabled(Boolean diagramsnetEnabled) {
+            return diagramsnetEnabled(Output.of(diagramsnetEnabled));
+        }
+
+        /**
+         * @param diagramsnetUrl The Diagrams.net instance URL for integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diagramsnetUrl(@Nullable Output<String> diagramsnetUrl) {
+            $.diagramsnetUrl = diagramsnetUrl;
+            return this;
+        }
+
+        /**
+         * @param diagramsnetUrl The Diagrams.net instance URL for integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diagramsnetUrl(String diagramsnetUrl) {
+            return diagramsnetUrl(Output.of(diagramsnetUrl));
         }
 
         /**
@@ -4844,6 +5686,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param disableAdminOauthScopes Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableAdminOauthScopes(@Nullable Output<Boolean> disableAdminOauthScopes) {
+            $.disableAdminOauthScopes = disableAdminOauthScopes;
+            return this;
+        }
+
+        /**
+         * @param disableAdminOauthScopes Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableAdminOauthScopes(Boolean disableAdminOauthScopes) {
+            return disableAdminOauthScopes(Output.of(disableAdminOauthScopes));
+        }
+
+        /**
          * @param disableFeedToken Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
          * 
          * @return builder
@@ -4862,6 +5725,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder disableFeedToken(Boolean disableFeedToken) {
             return disableFeedToken(Output.of(disableFeedToken));
+        }
+
+        /**
+         * @param disablePersonalAccessTokens Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePersonalAccessTokens(@Nullable Output<Boolean> disablePersonalAccessTokens) {
+            $.disablePersonalAccessTokens = disablePersonalAccessTokens;
+            return this;
+        }
+
+        /**
+         * @param disablePersonalAccessTokens Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePersonalAccessTokens(Boolean disablePersonalAccessTokens) {
+            return disablePersonalAccessTokens(Output.of(disablePersonalAccessTokens));
         }
 
         /**
@@ -5000,6 +5884,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param downstreamPipelineTriggerLimitPerProjectUserSha Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder downstreamPipelineTriggerLimitPerProjectUserSha(@Nullable Output<Integer> downstreamPipelineTriggerLimitPerProjectUserSha) {
+            $.downstreamPipelineTriggerLimitPerProjectUserSha = downstreamPipelineTriggerLimitPerProjectUserSha;
+            return this;
+        }
+
+        /**
+         * @param downstreamPipelineTriggerLimitPerProjectUserSha Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder downstreamPipelineTriggerLimitPerProjectUserSha(Integer downstreamPipelineTriggerLimitPerProjectUserSha) {
+            return downstreamPipelineTriggerLimitPerProjectUserSha(Output.of(downstreamPipelineTriggerLimitPerProjectUserSha));
+        }
+
+        /**
          * @param dsaKeyRestriction The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
          * 
          * @return builder
@@ -5018,6 +5923,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder dsaKeyRestriction(Integer dsaKeyRestriction) {
             return dsaKeyRestriction(Output.of(dsaKeyRestriction));
+        }
+
+        /**
+         * @param duoFeaturesEnabled Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duoFeaturesEnabled(@Nullable Output<Boolean> duoFeaturesEnabled) {
+            $.duoFeaturesEnabled = duoFeaturesEnabled;
+            return this;
+        }
+
+        /**
+         * @param duoFeaturesEnabled Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duoFeaturesEnabled(Boolean duoFeaturesEnabled) {
+            return duoFeaturesEnabled(Output.of(duoFeaturesEnabled));
         }
 
         /**

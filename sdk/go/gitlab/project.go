@@ -176,6 +176,8 @@ type Project struct {
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled pulumi.BoolOutput `pulumi:"pipelinesEnabled"`
+	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+	PreReceiveSecretDetectionEnabled pulumi.BoolOutput `pulumi:"preReceiveSecretDetectionEnabled"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolOutput `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
@@ -429,6 +431,8 @@ type projectState struct {
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
+	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+	PreReceiveSecretDetectionEnabled *bool `pulumi:"preReceiveSecretDetectionEnabled"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
@@ -645,6 +649,8 @@ type ProjectState struct {
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled pulumi.BoolPtrInput
+	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+	PreReceiveSecretDetectionEnabled pulumi.BoolPtrInput
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
@@ -857,6 +863,8 @@ type projectArgs struct {
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
+	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+	PreReceiveSecretDetectionEnabled *bool `pulumi:"preReceiveSecretDetectionEnabled"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
@@ -1060,6 +1068,8 @@ type ProjectArgs struct {
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled pulumi.BoolPtrInput
+	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+	PreReceiveSecretDetectionEnabled pulumi.BoolPtrInput
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
@@ -1558,6 +1568,11 @@ func (o ProjectOutput) PathWithNamespace() pulumi.StringOutput {
 // Deprecated: Deprecated in favor of `buildsAccessLevel`
 func (o ProjectOutput) PipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PipelinesEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+func (o ProjectOutput) PreReceiveSecretDetectionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PreReceiveSecretDetectionEnabled }).(pulumi.BoolOutput)
 }
 
 // Show link to create/view merge request when pushing from the command line

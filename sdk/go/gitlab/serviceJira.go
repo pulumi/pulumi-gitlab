@@ -16,7 +16,7 @@ import (
 //
 // > This resource is deprecated. use `IntegrationJira`instead!
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)
 //
 // ## Example Usage
 //
@@ -70,41 +70,43 @@ type ServiceJira struct {
 	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
 	ApiUrl pulumi.StringOutput `pulumi:"apiUrl"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
-	CommentOnEventEnabled pulumi.BoolOutput `pulumi:"commentOnEventEnabled"`
+	CommentOnEventEnabled pulumi.BoolPtrOutput `pulumi:"commentOnEventEnabled"`
 	// Enable notifications for commit events
 	CommitEvents pulumi.BoolOutput `pulumi:"commitEvents"`
 	// Create time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Enable notifications for issues events.
-	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
+	// Enable viewing Jira issues in GitLab.
+	IssuesEnabled pulumi.BoolPtrOutput `pulumi:"issuesEnabled"`
+	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+	JiraAuthType pulumi.IntPtrOutput `pulumi:"jiraAuthType"`
+	// Prefix to match Jira issue keys.
+	JiraIssuePrefix pulumi.StringPtrOutput `pulumi:"jiraIssuePrefix"`
+	// Regular expression to match Jira issue keys.
+	JiraIssueRegex pulumi.StringPtrOutput `pulumi:"jiraIssueRegex"`
+	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+	JiraIssueTransitionAutomatic pulumi.BoolPtrOutput `pulumi:"jiraIssueTransitionAutomatic"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId pulumi.StringPtrOutput `pulumi:"jiraIssueTransitionId"`
-	// Enable notifications for job events.
-	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
 	// Enable notifications for merge request events
 	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
-	// Enable notifications for note events.
-	NoteEvents pulumi.BoolOutput `pulumi:"noteEvents"`
-	// The password of the user created to be used with GitLab/JIRA.
+	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Enable notifications for pipeline events.
-	PipelineEvents pulumi.BoolOutput `pulumi:"pipelineEvents"`
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey pulumi.StringPtrOutput `pulumi:"projectKey"`
-	// Enable notifications for push events.
-	PushEvents pulumi.BoolOutput `pulumi:"pushEvents"`
-	// Enable notifications for tagPush events.
-	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
+	// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+	ProjectKeys pulumi.StringArrayOutput `pulumi:"projectKeys"`
 	// Title.
 	Title pulumi.StringOutput `pulumi:"title"`
 	// Update time.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url pulumi.StringOutput `pulumi:"url"`
-	// The username of the user created to be used with GitLab/JIRA.
-	Username pulumi.StringOutput `pulumi:"username"`
+	// Indicates whether or not to inherit default settings. Defaults to false.
+	UseInheritedSettings pulumi.BoolPtrOutput `pulumi:"useInheritedSettings"`
+	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
 // NewServiceJira registers a new resource with the given unique name, arguments, and options.
@@ -122,9 +124,6 @@ func NewServiceJira(ctx *pulumi.Context,
 	}
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
-	}
-	if args.Username == nil {
-		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
@@ -166,35 +165,37 @@ type serviceJiraState struct {
 	CommitEvents *bool `pulumi:"commitEvents"`
 	// Create time.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Enable notifications for issues events.
-	IssuesEvents *bool `pulumi:"issuesEvents"`
+	// Enable viewing Jira issues in GitLab.
+	IssuesEnabled *bool `pulumi:"issuesEnabled"`
+	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+	JiraAuthType *int `pulumi:"jiraAuthType"`
+	// Prefix to match Jira issue keys.
+	JiraIssuePrefix *string `pulumi:"jiraIssuePrefix"`
+	// Regular expression to match Jira issue keys.
+	JiraIssueRegex *string `pulumi:"jiraIssueRegex"`
+	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+	JiraIssueTransitionAutomatic *bool `pulumi:"jiraIssueTransitionAutomatic"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
-	// Enable notifications for job events.
-	JobEvents *bool `pulumi:"jobEvents"`
 	// Enable notifications for merge request events
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
-	// Enable notifications for note events.
-	NoteEvents *bool `pulumi:"noteEvents"`
-	// The password of the user created to be used with GitLab/JIRA.
+	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
 	Password *string `pulumi:"password"`
-	// Enable notifications for pipeline events.
-	PipelineEvents *bool `pulumi:"pipelineEvents"`
 	// ID of the project you want to activate integration on.
 	Project *string `pulumi:"project"`
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey *string `pulumi:"projectKey"`
-	// Enable notifications for push events.
-	PushEvents *bool `pulumi:"pushEvents"`
-	// Enable notifications for tagPush events.
-	TagPushEvents *bool `pulumi:"tagPushEvents"`
+	// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+	ProjectKeys []string `pulumi:"projectKeys"`
 	// Title.
 	Title *string `pulumi:"title"`
 	// Update time.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url *string `pulumi:"url"`
-	// The username of the user created to be used with GitLab/JIRA.
+	// Indicates whether or not to inherit default settings. Defaults to false.
+	UseInheritedSettings *bool `pulumi:"useInheritedSettings"`
+	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
 	Username *string `pulumi:"username"`
 }
 
@@ -209,35 +210,37 @@ type ServiceJiraState struct {
 	CommitEvents pulumi.BoolPtrInput
 	// Create time.
 	CreatedAt pulumi.StringPtrInput
-	// Enable notifications for issues events.
-	IssuesEvents pulumi.BoolPtrInput
+	// Enable viewing Jira issues in GitLab.
+	IssuesEnabled pulumi.BoolPtrInput
+	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+	JiraAuthType pulumi.IntPtrInput
+	// Prefix to match Jira issue keys.
+	JiraIssuePrefix pulumi.StringPtrInput
+	// Regular expression to match Jira issue keys.
+	JiraIssueRegex pulumi.StringPtrInput
+	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+	JiraIssueTransitionAutomatic pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId pulumi.StringPtrInput
-	// Enable notifications for job events.
-	JobEvents pulumi.BoolPtrInput
 	// Enable notifications for merge request events
 	MergeRequestsEvents pulumi.BoolPtrInput
-	// Enable notifications for note events.
-	NoteEvents pulumi.BoolPtrInput
-	// The password of the user created to be used with GitLab/JIRA.
+	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
 	Password pulumi.StringPtrInput
-	// Enable notifications for pipeline events.
-	PipelineEvents pulumi.BoolPtrInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringPtrInput
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey pulumi.StringPtrInput
-	// Enable notifications for push events.
-	PushEvents pulumi.BoolPtrInput
-	// Enable notifications for tagPush events.
-	TagPushEvents pulumi.BoolPtrInput
+	// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+	ProjectKeys pulumi.StringArrayInput
 	// Title.
 	Title pulumi.StringPtrInput
 	// Update time.
 	UpdatedAt pulumi.StringPtrInput
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url pulumi.StringPtrInput
-	// The username of the user created to be used with GitLab/JIRA.
+	// Indicates whether or not to inherit default settings. Defaults to false.
+	UseInheritedSettings pulumi.BoolPtrInput
+	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
 	Username pulumi.StringPtrInput
 }
 
@@ -252,32 +255,34 @@ type serviceJiraArgs struct {
 	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
 	// Enable notifications for commit events
 	CommitEvents *bool `pulumi:"commitEvents"`
-	// Enable notifications for issues events.
-	IssuesEvents *bool `pulumi:"issuesEvents"`
+	// Enable viewing Jira issues in GitLab.
+	IssuesEnabled *bool `pulumi:"issuesEnabled"`
+	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+	JiraAuthType *int `pulumi:"jiraAuthType"`
+	// Prefix to match Jira issue keys.
+	JiraIssuePrefix *string `pulumi:"jiraIssuePrefix"`
+	// Regular expression to match Jira issue keys.
+	JiraIssueRegex *string `pulumi:"jiraIssueRegex"`
+	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+	JiraIssueTransitionAutomatic *bool `pulumi:"jiraIssueTransitionAutomatic"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
-	// Enable notifications for job events.
-	JobEvents *bool `pulumi:"jobEvents"`
 	// Enable notifications for merge request events
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
-	// Enable notifications for note events.
-	NoteEvents *bool `pulumi:"noteEvents"`
-	// The password of the user created to be used with GitLab/JIRA.
+	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
 	Password string `pulumi:"password"`
-	// Enable notifications for pipeline events.
-	PipelineEvents *bool `pulumi:"pipelineEvents"`
 	// ID of the project you want to activate integration on.
 	Project string `pulumi:"project"`
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey *string `pulumi:"projectKey"`
-	// Enable notifications for push events.
-	PushEvents *bool `pulumi:"pushEvents"`
-	// Enable notifications for tagPush events.
-	TagPushEvents *bool `pulumi:"tagPushEvents"`
+	// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+	ProjectKeys []string `pulumi:"projectKeys"`
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url string `pulumi:"url"`
-	// The username of the user created to be used with GitLab/JIRA.
-	Username string `pulumi:"username"`
+	// Indicates whether or not to inherit default settings. Defaults to false.
+	UseInheritedSettings *bool `pulumi:"useInheritedSettings"`
+	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+	Username *string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a ServiceJira resource.
@@ -288,32 +293,34 @@ type ServiceJiraArgs struct {
 	CommentOnEventEnabled pulumi.BoolPtrInput
 	// Enable notifications for commit events
 	CommitEvents pulumi.BoolPtrInput
-	// Enable notifications for issues events.
-	IssuesEvents pulumi.BoolPtrInput
+	// Enable viewing Jira issues in GitLab.
+	IssuesEnabled pulumi.BoolPtrInput
+	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+	JiraAuthType pulumi.IntPtrInput
+	// Prefix to match Jira issue keys.
+	JiraIssuePrefix pulumi.StringPtrInput
+	// Regular expression to match Jira issue keys.
+	JiraIssueRegex pulumi.StringPtrInput
+	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+	JiraIssueTransitionAutomatic pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId pulumi.StringPtrInput
-	// Enable notifications for job events.
-	JobEvents pulumi.BoolPtrInput
 	// Enable notifications for merge request events
 	MergeRequestsEvents pulumi.BoolPtrInput
-	// Enable notifications for note events.
-	NoteEvents pulumi.BoolPtrInput
-	// The password of the user created to be used with GitLab/JIRA.
+	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
 	Password pulumi.StringInput
-	// Enable notifications for pipeline events.
-	PipelineEvents pulumi.BoolPtrInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringInput
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey pulumi.StringPtrInput
-	// Enable notifications for push events.
-	PushEvents pulumi.BoolPtrInput
-	// Enable notifications for tagPush events.
-	TagPushEvents pulumi.BoolPtrInput
+	// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+	ProjectKeys pulumi.StringArrayInput
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url pulumi.StringInput
-	// The username of the user created to be used with GitLab/JIRA.
-	Username pulumi.StringInput
+	// Indicates whether or not to inherit default settings. Defaults to false.
+	UseInheritedSettings pulumi.BoolPtrInput
+	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+	Username pulumi.StringPtrInput
 }
 
 func (ServiceJiraArgs) ElementType() reflect.Type {
@@ -414,8 +421,8 @@ func (o ServiceJiraOutput) ApiUrl() pulumi.StringOutput {
 }
 
 // Enable comments inside Jira issues on each GitLab event (commit / merge request)
-func (o ServiceJiraOutput) CommentOnEventEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.CommentOnEventEnabled }).(pulumi.BoolOutput)
+func (o ServiceJiraOutput) CommentOnEventEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceJira) pulumi.BoolPtrOutput { return v.CommentOnEventEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Enable notifications for commit events
@@ -428,9 +435,29 @@ func (o ServiceJiraOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Enable notifications for issues events.
-func (o ServiceJiraOutput) IssuesEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.IssuesEvents }).(pulumi.BoolOutput)
+// Enable viewing Jira issues in GitLab.
+func (o ServiceJiraOutput) IssuesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceJira) pulumi.BoolPtrOutput { return v.IssuesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+func (o ServiceJiraOutput) JiraAuthType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceJira) pulumi.IntPtrOutput { return v.JiraAuthType }).(pulumi.IntPtrOutput)
+}
+
+// Prefix to match Jira issue keys.
+func (o ServiceJiraOutput) JiraIssuePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceJira) pulumi.StringPtrOutput { return v.JiraIssuePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Regular expression to match Jira issue keys.
+func (o ServiceJiraOutput) JiraIssueRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceJira) pulumi.StringPtrOutput { return v.JiraIssueRegex }).(pulumi.StringPtrOutput)
+}
+
+// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+func (o ServiceJiraOutput) JiraIssueTransitionAutomatic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceJira) pulumi.BoolPtrOutput { return v.JiraIssueTransitionAutomatic }).(pulumi.BoolPtrOutput)
 }
 
 // The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
@@ -438,29 +465,14 @@ func (o ServiceJiraOutput) JiraIssueTransitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.StringPtrOutput { return v.JiraIssueTransitionId }).(pulumi.StringPtrOutput)
 }
 
-// Enable notifications for job events.
-func (o ServiceJiraOutput) JobEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.JobEvents }).(pulumi.BoolOutput)
-}
-
 // Enable notifications for merge request events
 func (o ServiceJiraOutput) MergeRequestsEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
 }
 
-// Enable notifications for note events.
-func (o ServiceJiraOutput) NoteEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.NoteEvents }).(pulumi.BoolOutput)
-}
-
-// The password of the user created to be used with GitLab/JIRA.
+// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
 func (o ServiceJiraOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
-}
-
-// Enable notifications for pipeline events.
-func (o ServiceJiraOutput) PipelineEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.PipelineEvents }).(pulumi.BoolOutput)
 }
 
 // ID of the project you want to activate integration on.
@@ -473,14 +485,9 @@ func (o ServiceJiraOutput) ProjectKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.StringPtrOutput { return v.ProjectKey }).(pulumi.StringPtrOutput)
 }
 
-// Enable notifications for push events.
-func (o ServiceJiraOutput) PushEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.PushEvents }).(pulumi.BoolOutput)
-}
-
-// Enable notifications for tagPush events.
-func (o ServiceJiraOutput) TagPushEvents() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.TagPushEvents }).(pulumi.BoolOutput)
+// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+func (o ServiceJiraOutput) ProjectKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceJira) pulumi.StringArrayOutput { return v.ProjectKeys }).(pulumi.StringArrayOutput)
 }
 
 // Title.
@@ -498,9 +505,14 @@ func (o ServiceJiraOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// The username of the user created to be used with GitLab/JIRA.
-func (o ServiceJiraOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceJira) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+// Indicates whether or not to inherit default settings. Defaults to false.
+func (o ServiceJiraOutput) UseInheritedSettings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceJira) pulumi.BoolPtrOutput { return v.UseInheritedSettings }).(pulumi.BoolPtrOutput)
+}
+
+// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+func (o ServiceJiraOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceJira) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type ServiceJiraArrayOutput struct{ *pulumi.OutputState }

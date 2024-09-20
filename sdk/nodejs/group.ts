@@ -42,6 +42,21 @@ import * as utilities from "./utilities";
  *         preventSecrets: true,
  *     },
  * });
+ * // Group with custom default branch protection defaults
+ * const example_three = new gitlab.Group("example-three", {
+ *     name: "example-three",
+ *     path: "example-three",
+ *     description: "An example group with default branch protection defaults",
+ *     defaultBranchProtectionDefaults: {
+ *         allowedToPushes: ["developer"],
+ *         allowForcePush: true,
+ *         allowedToMerges: [
+ *             "developer",
+ *             "maintainer",
+ *         ],
+ *         developerCanInitialPush: true,
+ *     },
+ * });
  * ```
  *
  * ## Import
@@ -104,8 +119,14 @@ export class Group extends pulumi.CustomResource {
     public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
     /**
      * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     *
+     * @deprecated Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
      */
     public readonly defaultBranchProtection!: pulumi.Output<number>;
+    /**
+     * The default branch protection defaults
+     */
+    public readonly defaultBranchProtectionDefaults!: pulumi.Output<outputs.GroupDefaultBranchProtectionDefaults>;
     /**
      * The group's description.
      */
@@ -233,6 +254,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
             resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
             resourceInputs["defaultBranchProtection"] = state ? state.defaultBranchProtection : undefined;
+            resourceInputs["defaultBranchProtectionDefaults"] = state ? state.defaultBranchProtectionDefaults : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["emailsEnabled"] = state ? state.emailsEnabled : undefined;
             resourceInputs["extraSharedRunnersMinutesLimit"] = state ? state.extraSharedRunnersMinutesLimit : undefined;
@@ -269,6 +291,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["avatar"] = args ? args.avatar : undefined;
             resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
             resourceInputs["defaultBranchProtection"] = args ? args.defaultBranchProtection : undefined;
+            resourceInputs["defaultBranchProtectionDefaults"] = args ? args.defaultBranchProtectionDefaults : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["emailsEnabled"] = args ? args.emailsEnabled : undefined;
             resourceInputs["extraSharedRunnersMinutesLimit"] = args ? args.extraSharedRunnersMinutesLimit : undefined;
@@ -327,8 +350,14 @@ export interface GroupState {
     avatarUrl?: pulumi.Input<string>;
     /**
      * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     *
+     * @deprecated Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
      */
     defaultBranchProtection?: pulumi.Input<number>;
+    /**
+     * The default branch protection defaults
+     */
+    defaultBranchProtectionDefaults?: pulumi.Input<inputs.GroupDefaultBranchProtectionDefaults>;
     /**
      * The group's description.
      */
@@ -457,8 +486,14 @@ export interface GroupArgs {
     avatarHash?: pulumi.Input<string>;
     /**
      * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     *
+     * @deprecated Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
      */
     defaultBranchProtection?: pulumi.Input<number>;
+    /**
+     * The default branch protection defaults
+     */
+    defaultBranchProtectionDefaults?: pulumi.Input<inputs.GroupDefaultBranchProtectionDefaults>;
     /**
      * The group's description.
      */

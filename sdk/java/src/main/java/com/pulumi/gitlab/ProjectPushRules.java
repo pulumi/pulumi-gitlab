@@ -243,6 +243,20 @@ public class ProjectPushRules extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * Reject commit when it’s not DCO certified.
+     * 
+     */
+    @Export(name="rejectNonDcoCommits", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> rejectNonDcoCommits;
+
+    /**
+     * @return Reject commit when it’s not DCO certified.
+     * 
+     */
+    public Output<Boolean> rejectNonDcoCommits() {
+        return this.rejectNonDcoCommits;
+    }
+    /**
      * Reject commit when it’s not signed.
      * 
      */

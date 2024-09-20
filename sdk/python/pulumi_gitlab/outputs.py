@@ -11,11 +11,13 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'ApplicationSettingsDefaultBranchProtectionDefaults',
     'BranchCommit',
     'BranchProtectionAllowedToMerge',
     'BranchProtectionAllowedToPush',
     'BranchProtectionAllowedToUnprotect',
     'GroupAccessTokenRotationConfiguration',
+    'GroupDefaultBranchProtectionDefaults',
     'GroupEpicBoardList',
     'GroupIssueBoardList',
     'GroupProtectedEnvironmentApprovalRule',
@@ -43,6 +45,11 @@ __all__ = [
     'GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult',
     'GetInstanceVariablesVariableResult',
     'GetMetadataKasResult',
+    'GetPipelineScheduleLastPipelineResult',
+    'GetPipelineScheduleOwnerResult',
+    'GetPipelineScheduleVariableResult',
+    'GetPipelineSchedulesPipelineScheduleResult',
+    'GetPipelineSchedulesPipelineScheduleOwnerResult',
     'GetProjectBranchesBranchResult',
     'GetProjectBranchesBranchCommitResult',
     'GetProjectContainerExpirationPolicyResult',
@@ -57,6 +64,9 @@ __all__ = [
     'GetProjectProtectedBranchesProtectedBranchResult',
     'GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult',
+    'GetProjectProtectedTagCreateAccessLevelResult',
+    'GetProjectProtectedTagsProtectedTagResult',
+    'GetProjectProtectedTagsProtectedTagCreateAccessLevelResult',
     'GetProjectPushRuleResult',
     'GetProjectSharedWithGroupResult',
     'GetProjectTagCommitResult',
@@ -80,6 +90,84 @@ __all__ = [
     'GetUserSshkeysKeyResult',
     'GetUsersUserResult',
 ]
+
+@pulumi.output_type
+class ApplicationSettingsDefaultBranchProtectionDefaults(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowForcePush":
+            suggest = "allow_force_push"
+        elif key == "allowedToMerges":
+            suggest = "allowed_to_merges"
+        elif key == "allowedToPushes":
+            suggest = "allowed_to_pushes"
+        elif key == "developerCanInitialPush":
+            suggest = "developer_can_initial_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationSettingsDefaultBranchProtectionDefaults. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationSettingsDefaultBranchProtectionDefaults.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationSettingsDefaultBranchProtectionDefaults.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_force_push: Optional[bool] = None,
+                 allowed_to_merges: Optional[Sequence[Any]] = None,
+                 allowed_to_pushes: Optional[Sequence[Any]] = None,
+                 developer_can_initial_push: Optional[bool] = None):
+        """
+        :param bool allow_force_push: Allow force push for all users with push access.
+        :param Sequence[Any] allowed_to_merges: An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+        :param Sequence[Any] allowed_to_pushes: An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+        :param bool developer_can_initial_push: Allow developers to initial push.
+        """
+        if allow_force_push is not None:
+            pulumi.set(__self__, "allow_force_push", allow_force_push)
+        if allowed_to_merges is not None:
+            pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
+        if allowed_to_pushes is not None:
+            pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+        if developer_can_initial_push is not None:
+            pulumi.set(__self__, "developer_can_initial_push", developer_can_initial_push)
+
+    @property
+    @pulumi.getter(name="allowForcePush")
+    def allow_force_push(self) -> Optional[bool]:
+        """
+        Allow force push for all users with push access.
+        """
+        return pulumi.get(self, "allow_force_push")
+
+    @property
+    @pulumi.getter(name="allowedToMerges")
+    def allowed_to_merges(self) -> Optional[Sequence[Any]]:
+        """
+        An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+        """
+        return pulumi.get(self, "allowed_to_merges")
+
+    @property
+    @pulumi.getter(name="allowedToPushes")
+    def allowed_to_pushes(self) -> Optional[Sequence[Any]]:
+        """
+        An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+        """
+        return pulumi.get(self, "allowed_to_pushes")
+
+    @property
+    @pulumi.getter(name="developerCanInitialPush")
+    def developer_can_initial_push(self) -> Optional[bool]:
+        """
+        Allow developers to initial push.
+        """
+        return pulumi.get(self, "developer_can_initial_push")
+
 
 @pulumi.output_type
 class BranchCommit(dict):
@@ -534,6 +622,84 @@ class GroupAccessTokenRotationConfiguration(dict):
 
 
 @pulumi.output_type
+class GroupDefaultBranchProtectionDefaults(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowForcePush":
+            suggest = "allow_force_push"
+        elif key == "allowedToMerges":
+            suggest = "allowed_to_merges"
+        elif key == "allowedToPushes":
+            suggest = "allowed_to_pushes"
+        elif key == "developerCanInitialPush":
+            suggest = "developer_can_initial_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupDefaultBranchProtectionDefaults. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupDefaultBranchProtectionDefaults.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupDefaultBranchProtectionDefaults.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_force_push: Optional[bool] = None,
+                 allowed_to_merges: Optional[Sequence[str]] = None,
+                 allowed_to_pushes: Optional[Sequence[str]] = None,
+                 developer_can_initial_push: Optional[bool] = None):
+        """
+        :param bool allow_force_push: Allow force push for all users with push access.
+        :param Sequence[str] allowed_to_merges: An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+        :param Sequence[str] allowed_to_pushes: An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+        :param bool developer_can_initial_push: Allow developers to initial push.
+        """
+        if allow_force_push is not None:
+            pulumi.set(__self__, "allow_force_push", allow_force_push)
+        if allowed_to_merges is not None:
+            pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
+        if allowed_to_pushes is not None:
+            pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+        if developer_can_initial_push is not None:
+            pulumi.set(__self__, "developer_can_initial_push", developer_can_initial_push)
+
+    @property
+    @pulumi.getter(name="allowForcePush")
+    def allow_force_push(self) -> Optional[bool]:
+        """
+        Allow force push for all users with push access.
+        """
+        return pulumi.get(self, "allow_force_push")
+
+    @property
+    @pulumi.getter(name="allowedToMerges")
+    def allowed_to_merges(self) -> Optional[Sequence[str]]:
+        """
+        An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+        """
+        return pulumi.get(self, "allowed_to_merges")
+
+    @property
+    @pulumi.getter(name="allowedToPushes")
+    def allowed_to_pushes(self) -> Optional[Sequence[str]]:
+        """
+        An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+        """
+        return pulumi.get(self, "allowed_to_pushes")
+
+    @property
+    @pulumi.getter(name="developerCanInitialPush")
+    def developer_can_initial_push(self) -> Optional[bool]:
+        """
+        Allow developers to initial push.
+        """
+        return pulumi.get(self, "developer_can_initial_push")
+
+
+@pulumi.output_type
 class GroupEpicBoardList(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -902,6 +1068,8 @@ class GroupPushRules(dict):
             suggest = "member_check"
         elif key == "preventSecrets":
             suggest = "prevent_secrets"
+        elif key == "rejectNonDcoCommits":
+            suggest = "reject_non_dco_commits"
         elif key == "rejectUnsignedCommits":
             suggest = "reject_unsigned_commits"
 
@@ -928,6 +1096,7 @@ class GroupPushRules(dict):
                  max_file_size: Optional[int] = None,
                  member_check: Optional[bool] = None,
                  prevent_secrets: Optional[bool] = None,
+                 reject_non_dco_commits: Optional[bool] = None,
                  reject_unsigned_commits: Optional[bool] = None):
         """
         :param str author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -941,6 +1110,7 @@ class GroupPushRules(dict):
         :param int max_file_size: Maximum file size (MB) allowed.
         :param bool member_check: Allows only GitLab users to author commits.
         :param bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
+        :param bool reject_non_dco_commits: Reject commit when it’s not DCO certified.
         :param bool reject_unsigned_commits: Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
         """
         if author_email_regex is not None:
@@ -965,6 +1135,8 @@ class GroupPushRules(dict):
             pulumi.set(__self__, "member_check", member_check)
         if prevent_secrets is not None:
             pulumi.set(__self__, "prevent_secrets", prevent_secrets)
+        if reject_non_dco_commits is not None:
+            pulumi.set(__self__, "reject_non_dco_commits", reject_non_dco_commits)
         if reject_unsigned_commits is not None:
             pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
 
@@ -1055,6 +1227,14 @@ class GroupPushRules(dict):
         GitLab will reject any files that are likely to contain secrets.
         """
         return pulumi.get(self, "prevent_secrets")
+
+    @property
+    @pulumi.getter(name="rejectNonDcoCommits")
+    def reject_non_dco_commits(self) -> Optional[bool]:
+        """
+        Reject commit when it’s not DCO certified.
+        """
+        return pulumi.get(self, "reject_non_dco_commits")
 
     @property
     @pulumi.getter(name="rejectUnsignedCommits")
@@ -1643,6 +1823,8 @@ class ProjectPushRules(dict):
             suggest = "member_check"
         elif key == "preventSecrets":
             suggest = "prevent_secrets"
+        elif key == "rejectNonDcoCommits":
+            suggest = "reject_non_dco_commits"
         elif key == "rejectUnsignedCommits":
             suggest = "reject_unsigned_commits"
 
@@ -1669,6 +1851,7 @@ class ProjectPushRules(dict):
                  max_file_size: Optional[int] = None,
                  member_check: Optional[bool] = None,
                  prevent_secrets: Optional[bool] = None,
+                 reject_non_dco_commits: Optional[bool] = None,
                  reject_unsigned_commits: Optional[bool] = None):
         """
         :param str author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -1682,6 +1865,7 @@ class ProjectPushRules(dict):
         :param int max_file_size: Maximum file size (MB).
         :param bool member_check: Restrict commits by author (email) to existing GitLab users.
         :param bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
+        :param bool reject_non_dco_commits: Reject commit when it’s not DCO certified.
         :param bool reject_unsigned_commits: Reject commit when it’s not signed through GPG.
         """
         if author_email_regex is not None:
@@ -1706,6 +1890,8 @@ class ProjectPushRules(dict):
             pulumi.set(__self__, "member_check", member_check)
         if prevent_secrets is not None:
             pulumi.set(__self__, "prevent_secrets", prevent_secrets)
+        if reject_non_dco_commits is not None:
+            pulumi.set(__self__, "reject_non_dco_commits", reject_non_dco_commits)
         if reject_unsigned_commits is not None:
             pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
 
@@ -1796,6 +1982,14 @@ class ProjectPushRules(dict):
         GitLab will reject any files that are likely to contain secrets.
         """
         return pulumi.get(self, "prevent_secrets")
+
+    @property
+    @pulumi.getter(name="rejectNonDcoCommits")
+    def reject_non_dco_commits(self) -> Optional[bool]:
+        """
+        Reject commit when it’s not DCO certified.
+        """
+        return pulumi.get(self, "reject_non_dco_commits")
 
     @property
     @pulumi.getter(name="rejectUnsignedCommits")
@@ -2055,8 +2249,8 @@ class TagProtectionAllowedToCreate(dict):
                  group_id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
-        :param str access_level: Level of access.
-        :param str access_level_description: Readable description of level of access.
+        :param str access_level: Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+        :param str access_level_description: Readable description of access level.
         :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
@@ -2073,7 +2267,7 @@ class TagProtectionAllowedToCreate(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[str]:
         """
-        Level of access.
+        Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -2081,7 +2275,7 @@ class TagProtectionAllowedToCreate(dict):
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> Optional[str]:
         """
-        Readable description of level of access.
+        Readable description of access level.
         """
         return pulumi.get(self, "access_level_description")
 
@@ -3449,6 +3643,360 @@ class GetMetadataKasResult(dict):
         Version of KAS. It’s null if kas.enabled is false.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetPipelineScheduleLastPipelineResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 ref: str,
+                 sha: str,
+                 status: str):
+        """
+        :param int id: The pipeline ID.
+        :param str ref: The ref of the pipeline.
+        :param str sha: The SHA of the pipeline.
+        :param str status: The status of pipelines, one of: created, waiting*for*resource, preparing, pending, running, success, failed, canceled, skipped, manual, scheduled.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ref", ref)
+        pulumi.set(__self__, "sha", sha)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The pipeline ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ref(self) -> str:
+        """
+        The ref of the pipeline.
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter
+    def sha(self) -> str:
+        """
+        The SHA of the pipeline.
+        """
+        return pulumi.get(self, "sha")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of pipelines, one of: created, waiting*for*resource, preparing, pending, running, success, failed, canceled, skipped, manual, scheduled.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetPipelineScheduleOwnerResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: str,
+                 id: int,
+                 name: str,
+                 state: str,
+                 username: str,
+                 web_url: str):
+        """
+        :param str avatar_url: Image URL for the user's avatar.
+        :param int id: The user ID.
+        :param str name: Name.
+        :param str state: User's state, one of: active, blocked.
+        :param str username: Username.
+        :param str web_url: URL to the user's profile.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> str:
+        """
+        Image URL for the user's avatar.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The user ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        User's state, one of: active, blocked.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        """
+        URL to the user's profile.
+        """
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetPipelineScheduleVariableResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 variable_type: str):
+        """
+        :param str key: The key of a variable.
+        :param str value: The value of a variable.
+        :param str variable_type: The type of a variable, one of: env_var and file.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of a variable.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of a variable.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="variableType")
+    def variable_type(self) -> str:
+        """
+        The type of a variable, one of: env_var and file.
+        """
+        return pulumi.get(self, "variable_type")
+
+
+@pulumi.output_type
+class GetPipelineSchedulesPipelineScheduleResult(dict):
+    def __init__(__self__, *,
+                 active: bool,
+                 created_at: str,
+                 cron: str,
+                 cron_timezone: str,
+                 description: str,
+                 id: str,
+                 next_run_at: str,
+                 owner: 'outputs.GetPipelineSchedulesPipelineScheduleOwnerResult',
+                 ref: str,
+                 updated_at: str):
+        """
+        :param bool active: The activation status of pipeline schedule.
+        :param str created_at: The datetime of when the schedule was created.
+        :param str cron: The cron (e.g. `0 1 * * *`).
+        :param str cron_timezone: The timezone.
+        :param str description: The description of the pipeline schedule.
+        :param str id: The pipeline schedule id.
+        :param str next_run_at: The datetime of when the schedule will next run.
+        :param 'GetPipelineSchedulesPipelineScheduleOwnerArgs' owner: The details of the pipeline schedule owner.
+        :param str ref: The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `main`.
+        :param str updated_at: The datetime of when the schedule was last updated.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "cron", cron)
+        pulumi.set(__self__, "cron_timezone", cron_timezone)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "next_run_at", next_run_at)
+        pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "ref", ref)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        """
+        The activation status of pipeline schedule.
+        """
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The datetime of when the schedule was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def cron(self) -> str:
+        """
+        The cron (e.g. `0 1 * * *`).
+        """
+        return pulumi.get(self, "cron")
+
+    @property
+    @pulumi.getter(name="cronTimezone")
+    def cron_timezone(self) -> str:
+        """
+        The timezone.
+        """
+        return pulumi.get(self, "cron_timezone")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the pipeline schedule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The pipeline schedule id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nextRunAt")
+    def next_run_at(self) -> str:
+        """
+        The datetime of when the schedule will next run.
+        """
+        return pulumi.get(self, "next_run_at")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> 'outputs.GetPipelineSchedulesPipelineScheduleOwnerResult':
+        """
+        The details of the pipeline schedule owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter
+    def ref(self) -> str:
+        """
+        The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `main`.
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        """
+        The datetime of when the schedule was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetPipelineSchedulesPipelineScheduleOwnerResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: str,
+                 id: int,
+                 name: str,
+                 state: str,
+                 username: str,
+                 web_url: str):
+        """
+        :param str avatar_url: Image URL for the user's avatar.
+        :param int id: The user ID.
+        :param str name: Name.
+        :param str state: User's state, one of: active, blocked.
+        :param str username: Username.
+        :param str web_url: URL to the user's profile.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> str:
+        """
+        Image URL for the user's avatar.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The user ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        User's state, one of: active, blocked.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        """
+        URL to the user's profile.
+        """
+        return pulumi.get(self, "web_url")
 
 
 @pulumi.output_type
@@ -5035,6 +5583,163 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
 
 
 @pulumi.output_type
+class GetProjectProtectedTagCreateAccessLevelResult(dict):
+    def __init__(__self__, *,
+                 access_level: str,
+                 access_level_description: str,
+                 id: int,
+                 group_id: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param str access_level: Access level allowed to create protected tags.
+        :param str access_level_description: Readable description of access level.
+        :param int id: The ID of the create access level.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_level_description", access_level_description)
+        pulumi.set(__self__, "id", id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> str:
+        """
+        Access level allowed to create protected tags.
+        """
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> str:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the create access level.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetProjectProtectedTagsProtectedTagResult(dict):
+    def __init__(__self__, *,
+                 create_access_levels: Sequence['outputs.GetProjectProtectedTagsProtectedTagCreateAccessLevelResult'],
+                 tag: str):
+        """
+        :param Sequence['GetProjectProtectedTagsProtectedTagCreateAccessLevelArgs'] create_access_levels: Array of access levels/user(s)/group(s) allowed to create protected tags.
+        :param str tag: The name of the protected tag.
+        """
+        pulumi.set(__self__, "create_access_levels", create_access_levels)
+        pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="createAccessLevels")
+    def create_access_levels(self) -> Sequence['outputs.GetProjectProtectedTagsProtectedTagCreateAccessLevelResult']:
+        """
+        Array of access levels/user(s)/group(s) allowed to create protected tags.
+        """
+        return pulumi.get(self, "create_access_levels")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        """
+        The name of the protected tag.
+        """
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetProjectProtectedTagsProtectedTagCreateAccessLevelResult(dict):
+    def __init__(__self__, *,
+                 access_level: str,
+                 access_level_description: str,
+                 id: int,
+                 group_id: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param str access_level: Access level allowed to create protected tags.
+        :param str access_level_description: Readable description of access level.
+        :param int id: The ID of the create access level.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_level_description", access_level_description)
+        pulumi.set(__self__, "id", id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> str:
+        """
+        Access level allowed to create protected tags.
+        """
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> str:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the create access level.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
 class GetProjectPushRuleResult(dict):
     def __init__(__self__, *,
                  author_email_regex: str,
@@ -5048,6 +5753,7 @@ class GetProjectPushRuleResult(dict):
                  max_file_size: int,
                  member_check: bool,
                  prevent_secrets: bool,
+                 reject_non_dco_commits: bool,
                  reject_unsigned_commits: bool):
         """
         :param str author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -5061,6 +5767,7 @@ class GetProjectPushRuleResult(dict):
         :param int max_file_size: Maximum file size (MB).
         :param bool member_check: Restrict commits by author (email) to existing GitLab users.
         :param bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
+        :param bool reject_non_dco_commits: Reject commit when it’s not DCO certified.
         :param bool reject_unsigned_commits: Reject commit when it’s not signed through GPG.
         """
         pulumi.set(__self__, "author_email_regex", author_email_regex)
@@ -5074,6 +5781,7 @@ class GetProjectPushRuleResult(dict):
         pulumi.set(__self__, "max_file_size", max_file_size)
         pulumi.set(__self__, "member_check", member_check)
         pulumi.set(__self__, "prevent_secrets", prevent_secrets)
+        pulumi.set(__self__, "reject_non_dco_commits", reject_non_dco_commits)
         pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
 
     @property
@@ -5163,6 +5871,14 @@ class GetProjectPushRuleResult(dict):
         GitLab will reject any files that are likely to contain secrets.
         """
         return pulumi.get(self, "prevent_secrets")
+
+    @property
+    @pulumi.getter(name="rejectNonDcoCommits")
+    def reject_non_dco_commits(self) -> bool:
+        """
+        Reject commit when it’s not DCO certified.
+        """
+        return pulumi.get(self, "reject_non_dco_commits")
 
     @property
     @pulumi.getter(name="rejectUnsignedCommits")

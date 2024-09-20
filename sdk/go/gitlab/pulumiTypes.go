@@ -13,6 +13,200 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ApplicationSettingsDefaultBranchProtectionDefaults struct {
+	// Allow force push for all users with push access.
+	AllowForcePush *bool `pulumi:"allowForcePush"`
+	// An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+	AllowedToMerges []interface{} `pulumi:"allowedToMerges"`
+	// An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+	AllowedToPushes []interface{} `pulumi:"allowedToPushes"`
+	// Allow developers to initial push.
+	DeveloperCanInitialPush *bool `pulumi:"developerCanInitialPush"`
+}
+
+// ApplicationSettingsDefaultBranchProtectionDefaultsInput is an input type that accepts ApplicationSettingsDefaultBranchProtectionDefaultsArgs and ApplicationSettingsDefaultBranchProtectionDefaultsOutput values.
+// You can construct a concrete instance of `ApplicationSettingsDefaultBranchProtectionDefaultsInput` via:
+//
+//	ApplicationSettingsDefaultBranchProtectionDefaultsArgs{...}
+type ApplicationSettingsDefaultBranchProtectionDefaultsInput interface {
+	pulumi.Input
+
+	ToApplicationSettingsDefaultBranchProtectionDefaultsOutput() ApplicationSettingsDefaultBranchProtectionDefaultsOutput
+	ToApplicationSettingsDefaultBranchProtectionDefaultsOutputWithContext(context.Context) ApplicationSettingsDefaultBranchProtectionDefaultsOutput
+}
+
+type ApplicationSettingsDefaultBranchProtectionDefaultsArgs struct {
+	// Allow force push for all users with push access.
+	AllowForcePush pulumi.BoolPtrInput `pulumi:"allowForcePush"`
+	// An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+	AllowedToMerges pulumi.ArrayInput `pulumi:"allowedToMerges"`
+	// An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+	AllowedToPushes pulumi.ArrayInput `pulumi:"allowedToPushes"`
+	// Allow developers to initial push.
+	DeveloperCanInitialPush pulumi.BoolPtrInput `pulumi:"developerCanInitialPush"`
+}
+
+func (ApplicationSettingsDefaultBranchProtectionDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSettingsDefaultBranchProtectionDefaults)(nil)).Elem()
+}
+
+func (i ApplicationSettingsDefaultBranchProtectionDefaultsArgs) ToApplicationSettingsDefaultBranchProtectionDefaultsOutput() ApplicationSettingsDefaultBranchProtectionDefaultsOutput {
+	return i.ToApplicationSettingsDefaultBranchProtectionDefaultsOutputWithContext(context.Background())
+}
+
+func (i ApplicationSettingsDefaultBranchProtectionDefaultsArgs) ToApplicationSettingsDefaultBranchProtectionDefaultsOutputWithContext(ctx context.Context) ApplicationSettingsDefaultBranchProtectionDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSettingsDefaultBranchProtectionDefaultsOutput)
+}
+
+func (i ApplicationSettingsDefaultBranchProtectionDefaultsArgs) ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput() ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput {
+	return i.ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationSettingsDefaultBranchProtectionDefaultsArgs) ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutputWithContext(ctx context.Context) ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSettingsDefaultBranchProtectionDefaultsOutput).ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutputWithContext(ctx)
+}
+
+// ApplicationSettingsDefaultBranchProtectionDefaultsPtrInput is an input type that accepts ApplicationSettingsDefaultBranchProtectionDefaultsArgs, ApplicationSettingsDefaultBranchProtectionDefaultsPtr and ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput values.
+// You can construct a concrete instance of `ApplicationSettingsDefaultBranchProtectionDefaultsPtrInput` via:
+//
+//	        ApplicationSettingsDefaultBranchProtectionDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationSettingsDefaultBranchProtectionDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput() ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput
+	ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutputWithContext(context.Context) ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput
+}
+
+type applicationSettingsDefaultBranchProtectionDefaultsPtrType ApplicationSettingsDefaultBranchProtectionDefaultsArgs
+
+func ApplicationSettingsDefaultBranchProtectionDefaultsPtr(v *ApplicationSettingsDefaultBranchProtectionDefaultsArgs) ApplicationSettingsDefaultBranchProtectionDefaultsPtrInput {
+	return (*applicationSettingsDefaultBranchProtectionDefaultsPtrType)(v)
+}
+
+func (*applicationSettingsDefaultBranchProtectionDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationSettingsDefaultBranchProtectionDefaults)(nil)).Elem()
+}
+
+func (i *applicationSettingsDefaultBranchProtectionDefaultsPtrType) ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput() ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput {
+	return i.ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationSettingsDefaultBranchProtectionDefaultsPtrType) ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutputWithContext(ctx context.Context) ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput)
+}
+
+type ApplicationSettingsDefaultBranchProtectionDefaultsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSettingsDefaultBranchProtectionDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSettingsDefaultBranchProtectionDefaults)(nil)).Elem()
+}
+
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) ToApplicationSettingsDefaultBranchProtectionDefaultsOutput() ApplicationSettingsDefaultBranchProtectionDefaultsOutput {
+	return o
+}
+
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) ToApplicationSettingsDefaultBranchProtectionDefaultsOutputWithContext(ctx context.Context) ApplicationSettingsDefaultBranchProtectionDefaultsOutput {
+	return o
+}
+
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput() ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput {
+	return o.ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutputWithContext(ctx context.Context) ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationSettingsDefaultBranchProtectionDefaults) *ApplicationSettingsDefaultBranchProtectionDefaults {
+		return &v
+	}).(ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput)
+}
+
+// Allow force push for all users with push access.
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) AllowForcePush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) *bool { return v.AllowForcePush }).(pulumi.BoolPtrOutput)
+}
+
+// An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) AllowedToMerges() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) []interface{} { return v.AllowedToMerges }).(pulumi.ArrayOutput)
+}
+
+// An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) AllowedToPushes() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) []interface{} { return v.AllowedToPushes }).(pulumi.ArrayOutput)
+}
+
+// Allow developers to initial push.
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) DeveloperCanInitialPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) *bool { return v.DeveloperCanInitialPush }).(pulumi.BoolPtrOutput)
+}
+
+type ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationSettingsDefaultBranchProtectionDefaults)(nil)).Elem()
+}
+
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput() ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput {
+	return o
+}
+
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) ToApplicationSettingsDefaultBranchProtectionDefaultsPtrOutputWithContext(ctx context.Context) ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput {
+	return o
+}
+
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) Elem() ApplicationSettingsDefaultBranchProtectionDefaultsOutput {
+	return o.ApplyT(func(v *ApplicationSettingsDefaultBranchProtectionDefaults) ApplicationSettingsDefaultBranchProtectionDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationSettingsDefaultBranchProtectionDefaults
+		return ret
+	}).(ApplicationSettingsDefaultBranchProtectionDefaultsOutput)
+}
+
+// Allow force push for all users with push access.
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) AllowForcePush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSettingsDefaultBranchProtectionDefaults) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowForcePush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) AllowedToMerges() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *ApplicationSettingsDefaultBranchProtectionDefaults) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedToMerges
+	}).(pulumi.ArrayOutput)
+}
+
+// An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) AllowedToPushes() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *ApplicationSettingsDefaultBranchProtectionDefaults) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedToPushes
+	}).(pulumi.ArrayOutput)
+}
+
+// Allow developers to initial push.
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) DeveloperCanInitialPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSettingsDefaultBranchProtectionDefaults) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeveloperCanInitialPush
+	}).(pulumi.BoolPtrOutput)
+}
+
 type BranchCommit struct {
 	// The email of the author.
 	AuthorEmail *string `pulumi:"authorEmail"`
@@ -728,6 +922,200 @@ func (o GroupAccessTokenRotationConfigurationPtrOutput) RotateBeforeDays() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
+type GroupDefaultBranchProtectionDefaults struct {
+	// Allow force push for all users with push access.
+	AllowForcePush *bool `pulumi:"allowForcePush"`
+	// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+	AllowedToMerges []string `pulumi:"allowedToMerges"`
+	// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+	AllowedToPushes []string `pulumi:"allowedToPushes"`
+	// Allow developers to initial push.
+	DeveloperCanInitialPush *bool `pulumi:"developerCanInitialPush"`
+}
+
+// GroupDefaultBranchProtectionDefaultsInput is an input type that accepts GroupDefaultBranchProtectionDefaultsArgs and GroupDefaultBranchProtectionDefaultsOutput values.
+// You can construct a concrete instance of `GroupDefaultBranchProtectionDefaultsInput` via:
+//
+//	GroupDefaultBranchProtectionDefaultsArgs{...}
+type GroupDefaultBranchProtectionDefaultsInput interface {
+	pulumi.Input
+
+	ToGroupDefaultBranchProtectionDefaultsOutput() GroupDefaultBranchProtectionDefaultsOutput
+	ToGroupDefaultBranchProtectionDefaultsOutputWithContext(context.Context) GroupDefaultBranchProtectionDefaultsOutput
+}
+
+type GroupDefaultBranchProtectionDefaultsArgs struct {
+	// Allow force push for all users with push access.
+	AllowForcePush pulumi.BoolPtrInput `pulumi:"allowForcePush"`
+	// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+	AllowedToMerges pulumi.StringArrayInput `pulumi:"allowedToMerges"`
+	// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+	AllowedToPushes pulumi.StringArrayInput `pulumi:"allowedToPushes"`
+	// Allow developers to initial push.
+	DeveloperCanInitialPush pulumi.BoolPtrInput `pulumi:"developerCanInitialPush"`
+}
+
+func (GroupDefaultBranchProtectionDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupDefaultBranchProtectionDefaults)(nil)).Elem()
+}
+
+func (i GroupDefaultBranchProtectionDefaultsArgs) ToGroupDefaultBranchProtectionDefaultsOutput() GroupDefaultBranchProtectionDefaultsOutput {
+	return i.ToGroupDefaultBranchProtectionDefaultsOutputWithContext(context.Background())
+}
+
+func (i GroupDefaultBranchProtectionDefaultsArgs) ToGroupDefaultBranchProtectionDefaultsOutputWithContext(ctx context.Context) GroupDefaultBranchProtectionDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDefaultBranchProtectionDefaultsOutput)
+}
+
+func (i GroupDefaultBranchProtectionDefaultsArgs) ToGroupDefaultBranchProtectionDefaultsPtrOutput() GroupDefaultBranchProtectionDefaultsPtrOutput {
+	return i.ToGroupDefaultBranchProtectionDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i GroupDefaultBranchProtectionDefaultsArgs) ToGroupDefaultBranchProtectionDefaultsPtrOutputWithContext(ctx context.Context) GroupDefaultBranchProtectionDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDefaultBranchProtectionDefaultsOutput).ToGroupDefaultBranchProtectionDefaultsPtrOutputWithContext(ctx)
+}
+
+// GroupDefaultBranchProtectionDefaultsPtrInput is an input type that accepts GroupDefaultBranchProtectionDefaultsArgs, GroupDefaultBranchProtectionDefaultsPtr and GroupDefaultBranchProtectionDefaultsPtrOutput values.
+// You can construct a concrete instance of `GroupDefaultBranchProtectionDefaultsPtrInput` via:
+//
+//	        GroupDefaultBranchProtectionDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupDefaultBranchProtectionDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToGroupDefaultBranchProtectionDefaultsPtrOutput() GroupDefaultBranchProtectionDefaultsPtrOutput
+	ToGroupDefaultBranchProtectionDefaultsPtrOutputWithContext(context.Context) GroupDefaultBranchProtectionDefaultsPtrOutput
+}
+
+type groupDefaultBranchProtectionDefaultsPtrType GroupDefaultBranchProtectionDefaultsArgs
+
+func GroupDefaultBranchProtectionDefaultsPtr(v *GroupDefaultBranchProtectionDefaultsArgs) GroupDefaultBranchProtectionDefaultsPtrInput {
+	return (*groupDefaultBranchProtectionDefaultsPtrType)(v)
+}
+
+func (*groupDefaultBranchProtectionDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupDefaultBranchProtectionDefaults)(nil)).Elem()
+}
+
+func (i *groupDefaultBranchProtectionDefaultsPtrType) ToGroupDefaultBranchProtectionDefaultsPtrOutput() GroupDefaultBranchProtectionDefaultsPtrOutput {
+	return i.ToGroupDefaultBranchProtectionDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *groupDefaultBranchProtectionDefaultsPtrType) ToGroupDefaultBranchProtectionDefaultsPtrOutputWithContext(ctx context.Context) GroupDefaultBranchProtectionDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDefaultBranchProtectionDefaultsPtrOutput)
+}
+
+type GroupDefaultBranchProtectionDefaultsOutput struct{ *pulumi.OutputState }
+
+func (GroupDefaultBranchProtectionDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupDefaultBranchProtectionDefaults)(nil)).Elem()
+}
+
+func (o GroupDefaultBranchProtectionDefaultsOutput) ToGroupDefaultBranchProtectionDefaultsOutput() GroupDefaultBranchProtectionDefaultsOutput {
+	return o
+}
+
+func (o GroupDefaultBranchProtectionDefaultsOutput) ToGroupDefaultBranchProtectionDefaultsOutputWithContext(ctx context.Context) GroupDefaultBranchProtectionDefaultsOutput {
+	return o
+}
+
+func (o GroupDefaultBranchProtectionDefaultsOutput) ToGroupDefaultBranchProtectionDefaultsPtrOutput() GroupDefaultBranchProtectionDefaultsPtrOutput {
+	return o.ToGroupDefaultBranchProtectionDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o GroupDefaultBranchProtectionDefaultsOutput) ToGroupDefaultBranchProtectionDefaultsPtrOutputWithContext(ctx context.Context) GroupDefaultBranchProtectionDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupDefaultBranchProtectionDefaults) *GroupDefaultBranchProtectionDefaults {
+		return &v
+	}).(GroupDefaultBranchProtectionDefaultsPtrOutput)
+}
+
+// Allow force push for all users with push access.
+func (o GroupDefaultBranchProtectionDefaultsOutput) AllowForcePush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupDefaultBranchProtectionDefaults) *bool { return v.AllowForcePush }).(pulumi.BoolPtrOutput)
+}
+
+// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+func (o GroupDefaultBranchProtectionDefaultsOutput) AllowedToMerges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GroupDefaultBranchProtectionDefaults) []string { return v.AllowedToMerges }).(pulumi.StringArrayOutput)
+}
+
+// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+func (o GroupDefaultBranchProtectionDefaultsOutput) AllowedToPushes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GroupDefaultBranchProtectionDefaults) []string { return v.AllowedToPushes }).(pulumi.StringArrayOutput)
+}
+
+// Allow developers to initial push.
+func (o GroupDefaultBranchProtectionDefaultsOutput) DeveloperCanInitialPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupDefaultBranchProtectionDefaults) *bool { return v.DeveloperCanInitialPush }).(pulumi.BoolPtrOutput)
+}
+
+type GroupDefaultBranchProtectionDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupDefaultBranchProtectionDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupDefaultBranchProtectionDefaults)(nil)).Elem()
+}
+
+func (o GroupDefaultBranchProtectionDefaultsPtrOutput) ToGroupDefaultBranchProtectionDefaultsPtrOutput() GroupDefaultBranchProtectionDefaultsPtrOutput {
+	return o
+}
+
+func (o GroupDefaultBranchProtectionDefaultsPtrOutput) ToGroupDefaultBranchProtectionDefaultsPtrOutputWithContext(ctx context.Context) GroupDefaultBranchProtectionDefaultsPtrOutput {
+	return o
+}
+
+func (o GroupDefaultBranchProtectionDefaultsPtrOutput) Elem() GroupDefaultBranchProtectionDefaultsOutput {
+	return o.ApplyT(func(v *GroupDefaultBranchProtectionDefaults) GroupDefaultBranchProtectionDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret GroupDefaultBranchProtectionDefaults
+		return ret
+	}).(GroupDefaultBranchProtectionDefaultsOutput)
+}
+
+// Allow force push for all users with push access.
+func (o GroupDefaultBranchProtectionDefaultsPtrOutput) AllowForcePush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupDefaultBranchProtectionDefaults) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowForcePush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+func (o GroupDefaultBranchProtectionDefaultsPtrOutput) AllowedToMerges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupDefaultBranchProtectionDefaults) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedToMerges
+	}).(pulumi.StringArrayOutput)
+}
+
+// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+func (o GroupDefaultBranchProtectionDefaultsPtrOutput) AllowedToPushes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupDefaultBranchProtectionDefaults) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedToPushes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Allow developers to initial push.
+func (o GroupDefaultBranchProtectionDefaultsPtrOutput) DeveloperCanInitialPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupDefaultBranchProtectionDefaults) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeveloperCanInitialPush
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GroupEpicBoardList struct {
 	// The ID of the list.
 	Id *int `pulumi:"id"`
@@ -1274,6 +1662,8 @@ type GroupPushRules struct {
 	MemberCheck *bool `pulumi:"memberCheck"`
 	// GitLab will reject any files that are likely to contain secrets.
 	PreventSecrets *bool `pulumi:"preventSecrets"`
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits *bool `pulumi:"rejectNonDcoCommits"`
 	// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
 	RejectUnsignedCommits *bool `pulumi:"rejectUnsignedCommits"`
 }
@@ -1312,6 +1702,8 @@ type GroupPushRulesArgs struct {
 	MemberCheck pulumi.BoolPtrInput `pulumi:"memberCheck"`
 	// GitLab will reject any files that are likely to contain secrets.
 	PreventSecrets pulumi.BoolPtrInput `pulumi:"preventSecrets"`
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits pulumi.BoolPtrInput `pulumi:"rejectNonDcoCommits"`
 	// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
 	RejectUnsignedCommits pulumi.BoolPtrInput `pulumi:"rejectUnsignedCommits"`
 }
@@ -1446,6 +1838,11 @@ func (o GroupPushRulesOutput) MemberCheck() pulumi.BoolPtrOutput {
 // GitLab will reject any files that are likely to contain secrets.
 func (o GroupPushRulesOutput) PreventSecrets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GroupPushRules) *bool { return v.PreventSecrets }).(pulumi.BoolPtrOutput)
+}
+
+// Reject commit when it’s not DCO certified.
+func (o GroupPushRulesOutput) RejectNonDcoCommits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupPushRules) *bool { return v.RejectNonDcoCommits }).(pulumi.BoolPtrOutput)
 }
 
 // Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
@@ -1584,6 +1981,16 @@ func (o GroupPushRulesPtrOutput) PreventSecrets() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.PreventSecrets
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Reject commit when it’s not DCO certified.
+func (o GroupPushRulesPtrOutput) RejectNonDcoCommits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RejectNonDcoCommits
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2595,6 +3002,8 @@ type ProjectPushRulesType struct {
 	MemberCheck *bool `pulumi:"memberCheck"`
 	// GitLab will reject any files that are likely to contain secrets.
 	PreventSecrets *bool `pulumi:"preventSecrets"`
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits *bool `pulumi:"rejectNonDcoCommits"`
 	// Reject commit when it’s not signed through GPG.
 	RejectUnsignedCommits *bool `pulumi:"rejectUnsignedCommits"`
 }
@@ -2633,6 +3042,8 @@ type ProjectPushRulesTypeArgs struct {
 	MemberCheck pulumi.BoolPtrInput `pulumi:"memberCheck"`
 	// GitLab will reject any files that are likely to contain secrets.
 	PreventSecrets pulumi.BoolPtrInput `pulumi:"preventSecrets"`
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits pulumi.BoolPtrInput `pulumi:"rejectNonDcoCommits"`
 	// Reject commit when it’s not signed through GPG.
 	RejectUnsignedCommits pulumi.BoolPtrInput `pulumi:"rejectUnsignedCommits"`
 }
@@ -2767,6 +3178,11 @@ func (o ProjectPushRulesTypeOutput) MemberCheck() pulumi.BoolPtrOutput {
 // GitLab will reject any files that are likely to contain secrets.
 func (o ProjectPushRulesTypeOutput) PreventSecrets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.PreventSecrets }).(pulumi.BoolPtrOutput)
+}
+
+// Reject commit when it’s not DCO certified.
+func (o ProjectPushRulesTypeOutput) RejectNonDcoCommits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.RejectNonDcoCommits }).(pulumi.BoolPtrOutput)
 }
 
 // Reject commit when it’s not signed through GPG.
@@ -2905,6 +3321,16 @@ func (o ProjectPushRulesTypePtrOutput) PreventSecrets() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.PreventSecrets
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Reject commit when it’s not DCO certified.
+func (o ProjectPushRulesTypePtrOutput) RejectNonDcoCommits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRulesType) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RejectNonDcoCommits
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -3212,9 +3638,9 @@ func (o ProjectTagReleaseArrayOutput) Index(i pulumi.IntInput) ProjectTagRelease
 }
 
 type TagProtectionAllowedToCreate struct {
-	// Level of access.
+	// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	// Readable description of access level.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
 	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
 	GroupId *int `pulumi:"groupId"`
@@ -3234,9 +3660,9 @@ type TagProtectionAllowedToCreateInput interface {
 }
 
 type TagProtectionAllowedToCreateArgs struct {
-	// Level of access.
+	// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	// Readable description of access level.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
 	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
@@ -3295,12 +3721,12 @@ func (o TagProtectionAllowedToCreateOutput) ToTagProtectionAllowedToCreateOutput
 	return o
 }
 
-// Level of access.
+// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
 func (o TagProtectionAllowedToCreateOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagProtectionAllowedToCreate) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// Readable description of level of access.
+// Readable description of access level.
 func (o TagProtectionAllowedToCreateOutput) AccessLevelDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagProtectionAllowedToCreate) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
@@ -5390,6 +5816,572 @@ func (o GetMetadataKasOutput) ExternalUrl() pulumi.StringOutput {
 // Version of KAS. It’s null if kas.enabled is false.
 func (o GetMetadataKasOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetadataKas) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetPipelineScheduleLastPipeline struct {
+	// The pipeline ID.
+	Id int `pulumi:"id"`
+	// The ref of the pipeline.
+	Ref string `pulumi:"ref"`
+	// The SHA of the pipeline.
+	Sha string `pulumi:"sha"`
+	// The status of pipelines, one of: created, waiting*for*resource, preparing, pending, running, success, failed, canceled, skipped, manual, scheduled.
+	Status string `pulumi:"status"`
+}
+
+// GetPipelineScheduleLastPipelineInput is an input type that accepts GetPipelineScheduleLastPipelineArgs and GetPipelineScheduleLastPipelineOutput values.
+// You can construct a concrete instance of `GetPipelineScheduleLastPipelineInput` via:
+//
+//	GetPipelineScheduleLastPipelineArgs{...}
+type GetPipelineScheduleLastPipelineInput interface {
+	pulumi.Input
+
+	ToGetPipelineScheduleLastPipelineOutput() GetPipelineScheduleLastPipelineOutput
+	ToGetPipelineScheduleLastPipelineOutputWithContext(context.Context) GetPipelineScheduleLastPipelineOutput
+}
+
+type GetPipelineScheduleLastPipelineArgs struct {
+	// The pipeline ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The ref of the pipeline.
+	Ref pulumi.StringInput `pulumi:"ref"`
+	// The SHA of the pipeline.
+	Sha pulumi.StringInput `pulumi:"sha"`
+	// The status of pipelines, one of: created, waiting*for*resource, preparing, pending, running, success, failed, canceled, skipped, manual, scheduled.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetPipelineScheduleLastPipelineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScheduleLastPipeline)(nil)).Elem()
+}
+
+func (i GetPipelineScheduleLastPipelineArgs) ToGetPipelineScheduleLastPipelineOutput() GetPipelineScheduleLastPipelineOutput {
+	return i.ToGetPipelineScheduleLastPipelineOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScheduleLastPipelineArgs) ToGetPipelineScheduleLastPipelineOutputWithContext(ctx context.Context) GetPipelineScheduleLastPipelineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScheduleLastPipelineOutput)
+}
+
+type GetPipelineScheduleLastPipelineOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScheduleLastPipelineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScheduleLastPipeline)(nil)).Elem()
+}
+
+func (o GetPipelineScheduleLastPipelineOutput) ToGetPipelineScheduleLastPipelineOutput() GetPipelineScheduleLastPipelineOutput {
+	return o
+}
+
+func (o GetPipelineScheduleLastPipelineOutput) ToGetPipelineScheduleLastPipelineOutputWithContext(ctx context.Context) GetPipelineScheduleLastPipelineOutput {
+	return o
+}
+
+// The pipeline ID.
+func (o GetPipelineScheduleLastPipelineOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScheduleLastPipeline) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The ref of the pipeline.
+func (o GetPipelineScheduleLastPipelineOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleLastPipeline) string { return v.Ref }).(pulumi.StringOutput)
+}
+
+// The SHA of the pipeline.
+func (o GetPipelineScheduleLastPipelineOutput) Sha() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleLastPipeline) string { return v.Sha }).(pulumi.StringOutput)
+}
+
+// The status of pipelines, one of: created, waiting*for*resource, preparing, pending, running, success, failed, canceled, skipped, manual, scheduled.
+func (o GetPipelineScheduleLastPipelineOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleLastPipeline) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetPipelineScheduleOwner struct {
+	// Image URL for the user's avatar.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The user ID.
+	Id int `pulumi:"id"`
+	// Name.
+	Name string `pulumi:"name"`
+	// User's state, one of: active, blocked.
+	State string `pulumi:"state"`
+	// Username.
+	Username string `pulumi:"username"`
+	// URL to the user's profile.
+	WebUrl string `pulumi:"webUrl"`
+}
+
+// GetPipelineScheduleOwnerInput is an input type that accepts GetPipelineScheduleOwnerArgs and GetPipelineScheduleOwnerOutput values.
+// You can construct a concrete instance of `GetPipelineScheduleOwnerInput` via:
+//
+//	GetPipelineScheduleOwnerArgs{...}
+type GetPipelineScheduleOwnerInput interface {
+	pulumi.Input
+
+	ToGetPipelineScheduleOwnerOutput() GetPipelineScheduleOwnerOutput
+	ToGetPipelineScheduleOwnerOutputWithContext(context.Context) GetPipelineScheduleOwnerOutput
+}
+
+type GetPipelineScheduleOwnerArgs struct {
+	// Image URL for the user's avatar.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// The user ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// Name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// User's state, one of: active, blocked.
+	State pulumi.StringInput `pulumi:"state"`
+	// Username.
+	Username pulumi.StringInput `pulumi:"username"`
+	// URL to the user's profile.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetPipelineScheduleOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScheduleOwner)(nil)).Elem()
+}
+
+func (i GetPipelineScheduleOwnerArgs) ToGetPipelineScheduleOwnerOutput() GetPipelineScheduleOwnerOutput {
+	return i.ToGetPipelineScheduleOwnerOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScheduleOwnerArgs) ToGetPipelineScheduleOwnerOutputWithContext(ctx context.Context) GetPipelineScheduleOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScheduleOwnerOutput)
+}
+
+type GetPipelineScheduleOwnerOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScheduleOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScheduleOwner)(nil)).Elem()
+}
+
+func (o GetPipelineScheduleOwnerOutput) ToGetPipelineScheduleOwnerOutput() GetPipelineScheduleOwnerOutput {
+	return o
+}
+
+func (o GetPipelineScheduleOwnerOutput) ToGetPipelineScheduleOwnerOutputWithContext(ctx context.Context) GetPipelineScheduleOwnerOutput {
+	return o
+}
+
+// Image URL for the user's avatar.
+func (o GetPipelineScheduleOwnerOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleOwner) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The user ID.
+func (o GetPipelineScheduleOwnerOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineScheduleOwner) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Name.
+func (o GetPipelineScheduleOwnerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleOwner) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// User's state, one of: active, blocked.
+func (o GetPipelineScheduleOwnerOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleOwner) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Username.
+func (o GetPipelineScheduleOwnerOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleOwner) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// URL to the user's profile.
+func (o GetPipelineScheduleOwnerOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleOwner) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+type GetPipelineScheduleVariableType struct {
+	// The key of a variable.
+	Key string `pulumi:"key"`
+	// The value of a variable.
+	Value string `pulumi:"value"`
+	// The type of a variable, one of: envVar and file.
+	VariableType string `pulumi:"variableType"`
+}
+
+// GetPipelineScheduleVariableTypeInput is an input type that accepts GetPipelineScheduleVariableTypeArgs and GetPipelineScheduleVariableTypeOutput values.
+// You can construct a concrete instance of `GetPipelineScheduleVariableTypeInput` via:
+//
+//	GetPipelineScheduleVariableTypeArgs{...}
+type GetPipelineScheduleVariableTypeInput interface {
+	pulumi.Input
+
+	ToGetPipelineScheduleVariableTypeOutput() GetPipelineScheduleVariableTypeOutput
+	ToGetPipelineScheduleVariableTypeOutputWithContext(context.Context) GetPipelineScheduleVariableTypeOutput
+}
+
+type GetPipelineScheduleVariableTypeArgs struct {
+	// The key of a variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of a variable.
+	Value pulumi.StringInput `pulumi:"value"`
+	// The type of a variable, one of: envVar and file.
+	VariableType pulumi.StringInput `pulumi:"variableType"`
+}
+
+func (GetPipelineScheduleVariableTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScheduleVariableType)(nil)).Elem()
+}
+
+func (i GetPipelineScheduleVariableTypeArgs) ToGetPipelineScheduleVariableTypeOutput() GetPipelineScheduleVariableTypeOutput {
+	return i.ToGetPipelineScheduleVariableTypeOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScheduleVariableTypeArgs) ToGetPipelineScheduleVariableTypeOutputWithContext(ctx context.Context) GetPipelineScheduleVariableTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScheduleVariableTypeOutput)
+}
+
+// GetPipelineScheduleVariableTypeArrayInput is an input type that accepts GetPipelineScheduleVariableTypeArray and GetPipelineScheduleVariableTypeArrayOutput values.
+// You can construct a concrete instance of `GetPipelineScheduleVariableTypeArrayInput` via:
+//
+//	GetPipelineScheduleVariableTypeArray{ GetPipelineScheduleVariableTypeArgs{...} }
+type GetPipelineScheduleVariableTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineScheduleVariableTypeArrayOutput() GetPipelineScheduleVariableTypeArrayOutput
+	ToGetPipelineScheduleVariableTypeArrayOutputWithContext(context.Context) GetPipelineScheduleVariableTypeArrayOutput
+}
+
+type GetPipelineScheduleVariableTypeArray []GetPipelineScheduleVariableTypeInput
+
+func (GetPipelineScheduleVariableTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScheduleVariableType)(nil)).Elem()
+}
+
+func (i GetPipelineScheduleVariableTypeArray) ToGetPipelineScheduleVariableTypeArrayOutput() GetPipelineScheduleVariableTypeArrayOutput {
+	return i.ToGetPipelineScheduleVariableTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScheduleVariableTypeArray) ToGetPipelineScheduleVariableTypeArrayOutputWithContext(ctx context.Context) GetPipelineScheduleVariableTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScheduleVariableTypeArrayOutput)
+}
+
+type GetPipelineScheduleVariableTypeOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScheduleVariableTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScheduleVariableType)(nil)).Elem()
+}
+
+func (o GetPipelineScheduleVariableTypeOutput) ToGetPipelineScheduleVariableTypeOutput() GetPipelineScheduleVariableTypeOutput {
+	return o
+}
+
+func (o GetPipelineScheduleVariableTypeOutput) ToGetPipelineScheduleVariableTypeOutputWithContext(ctx context.Context) GetPipelineScheduleVariableTypeOutput {
+	return o
+}
+
+// The key of a variable.
+func (o GetPipelineScheduleVariableTypeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleVariableType) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of a variable.
+func (o GetPipelineScheduleVariableTypeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleVariableType) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// The type of a variable, one of: envVar and file.
+func (o GetPipelineScheduleVariableTypeOutput) VariableType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleVariableType) string { return v.VariableType }).(pulumi.StringOutput)
+}
+
+type GetPipelineScheduleVariableTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScheduleVariableTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScheduleVariableType)(nil)).Elem()
+}
+
+func (o GetPipelineScheduleVariableTypeArrayOutput) ToGetPipelineScheduleVariableTypeArrayOutput() GetPipelineScheduleVariableTypeArrayOutput {
+	return o
+}
+
+func (o GetPipelineScheduleVariableTypeArrayOutput) ToGetPipelineScheduleVariableTypeArrayOutputWithContext(ctx context.Context) GetPipelineScheduleVariableTypeArrayOutput {
+	return o
+}
+
+func (o GetPipelineScheduleVariableTypeArrayOutput) Index(i pulumi.IntInput) GetPipelineScheduleVariableTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineScheduleVariableType {
+		return vs[0].([]GetPipelineScheduleVariableType)[vs[1].(int)]
+	}).(GetPipelineScheduleVariableTypeOutput)
+}
+
+type GetPipelineSchedulesPipelineSchedule struct {
+	// The activation status of pipeline schedule.
+	Active bool `pulumi:"active"`
+	// The datetime of when the schedule was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The cron (e.g. `0 1 * * *`).
+	Cron string `pulumi:"cron"`
+	// The timezone.
+	CronTimezone string `pulumi:"cronTimezone"`
+	// The description of the pipeline schedule.
+	Description string `pulumi:"description"`
+	// The pipeline schedule id.
+	Id string `pulumi:"id"`
+	// The datetime of when the schedule will next run.
+	NextRunAt string `pulumi:"nextRunAt"`
+	// The details of the pipeline schedule owner.
+	Owner GetPipelineSchedulesPipelineScheduleOwner `pulumi:"owner"`
+	// The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `main`.
+	Ref string `pulumi:"ref"`
+	// The datetime of when the schedule was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetPipelineSchedulesPipelineScheduleInput is an input type that accepts GetPipelineSchedulesPipelineScheduleArgs and GetPipelineSchedulesPipelineScheduleOutput values.
+// You can construct a concrete instance of `GetPipelineSchedulesPipelineScheduleInput` via:
+//
+//	GetPipelineSchedulesPipelineScheduleArgs{...}
+type GetPipelineSchedulesPipelineScheduleInput interface {
+	pulumi.Input
+
+	ToGetPipelineSchedulesPipelineScheduleOutput() GetPipelineSchedulesPipelineScheduleOutput
+	ToGetPipelineSchedulesPipelineScheduleOutputWithContext(context.Context) GetPipelineSchedulesPipelineScheduleOutput
+}
+
+type GetPipelineSchedulesPipelineScheduleArgs struct {
+	// The activation status of pipeline schedule.
+	Active pulumi.BoolInput `pulumi:"active"`
+	// The datetime of when the schedule was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The cron (e.g. `0 1 * * *`).
+	Cron pulumi.StringInput `pulumi:"cron"`
+	// The timezone.
+	CronTimezone pulumi.StringInput `pulumi:"cronTimezone"`
+	// The description of the pipeline schedule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The pipeline schedule id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The datetime of when the schedule will next run.
+	NextRunAt pulumi.StringInput `pulumi:"nextRunAt"`
+	// The details of the pipeline schedule owner.
+	Owner GetPipelineSchedulesPipelineScheduleOwnerInput `pulumi:"owner"`
+	// The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `main`.
+	Ref pulumi.StringInput `pulumi:"ref"`
+	// The datetime of when the schedule was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetPipelineSchedulesPipelineScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSchedulesPipelineSchedule)(nil)).Elem()
+}
+
+func (i GetPipelineSchedulesPipelineScheduleArgs) ToGetPipelineSchedulesPipelineScheduleOutput() GetPipelineSchedulesPipelineScheduleOutput {
+	return i.ToGetPipelineSchedulesPipelineScheduleOutputWithContext(context.Background())
+}
+
+func (i GetPipelineSchedulesPipelineScheduleArgs) ToGetPipelineSchedulesPipelineScheduleOutputWithContext(ctx context.Context) GetPipelineSchedulesPipelineScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSchedulesPipelineScheduleOutput)
+}
+
+// GetPipelineSchedulesPipelineScheduleArrayInput is an input type that accepts GetPipelineSchedulesPipelineScheduleArray and GetPipelineSchedulesPipelineScheduleArrayOutput values.
+// You can construct a concrete instance of `GetPipelineSchedulesPipelineScheduleArrayInput` via:
+//
+//	GetPipelineSchedulesPipelineScheduleArray{ GetPipelineSchedulesPipelineScheduleArgs{...} }
+type GetPipelineSchedulesPipelineScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineSchedulesPipelineScheduleArrayOutput() GetPipelineSchedulesPipelineScheduleArrayOutput
+	ToGetPipelineSchedulesPipelineScheduleArrayOutputWithContext(context.Context) GetPipelineSchedulesPipelineScheduleArrayOutput
+}
+
+type GetPipelineSchedulesPipelineScheduleArray []GetPipelineSchedulesPipelineScheduleInput
+
+func (GetPipelineSchedulesPipelineScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineSchedulesPipelineSchedule)(nil)).Elem()
+}
+
+func (i GetPipelineSchedulesPipelineScheduleArray) ToGetPipelineSchedulesPipelineScheduleArrayOutput() GetPipelineSchedulesPipelineScheduleArrayOutput {
+	return i.ToGetPipelineSchedulesPipelineScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineSchedulesPipelineScheduleArray) ToGetPipelineSchedulesPipelineScheduleArrayOutputWithContext(ctx context.Context) GetPipelineSchedulesPipelineScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSchedulesPipelineScheduleArrayOutput)
+}
+
+type GetPipelineSchedulesPipelineScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineSchedulesPipelineScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSchedulesPipelineSchedule)(nil)).Elem()
+}
+
+func (o GetPipelineSchedulesPipelineScheduleOutput) ToGetPipelineSchedulesPipelineScheduleOutput() GetPipelineSchedulesPipelineScheduleOutput {
+	return o
+}
+
+func (o GetPipelineSchedulesPipelineScheduleOutput) ToGetPipelineSchedulesPipelineScheduleOutputWithContext(ctx context.Context) GetPipelineSchedulesPipelineScheduleOutput {
+	return o
+}
+
+// The activation status of pipeline schedule.
+func (o GetPipelineSchedulesPipelineScheduleOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// The datetime of when the schedule was created.
+func (o GetPipelineSchedulesPipelineScheduleOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The cron (e.g. `0 1 * * *`).
+func (o GetPipelineSchedulesPipelineScheduleOutput) Cron() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) string { return v.Cron }).(pulumi.StringOutput)
+}
+
+// The timezone.
+func (o GetPipelineSchedulesPipelineScheduleOutput) CronTimezone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) string { return v.CronTimezone }).(pulumi.StringOutput)
+}
+
+// The description of the pipeline schedule.
+func (o GetPipelineSchedulesPipelineScheduleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The pipeline schedule id.
+func (o GetPipelineSchedulesPipelineScheduleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The datetime of when the schedule will next run.
+func (o GetPipelineSchedulesPipelineScheduleOutput) NextRunAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) string { return v.NextRunAt }).(pulumi.StringOutput)
+}
+
+// The details of the pipeline schedule owner.
+func (o GetPipelineSchedulesPipelineScheduleOutput) Owner() GetPipelineSchedulesPipelineScheduleOwnerOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) GetPipelineSchedulesPipelineScheduleOwner { return v.Owner }).(GetPipelineSchedulesPipelineScheduleOwnerOutput)
+}
+
+// The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `main`.
+func (o GetPipelineSchedulesPipelineScheduleOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) string { return v.Ref }).(pulumi.StringOutput)
+}
+
+// The datetime of when the schedule was last updated.
+func (o GetPipelineSchedulesPipelineScheduleOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetPipelineSchedulesPipelineScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineSchedulesPipelineScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineSchedulesPipelineSchedule)(nil)).Elem()
+}
+
+func (o GetPipelineSchedulesPipelineScheduleArrayOutput) ToGetPipelineSchedulesPipelineScheduleArrayOutput() GetPipelineSchedulesPipelineScheduleArrayOutput {
+	return o
+}
+
+func (o GetPipelineSchedulesPipelineScheduleArrayOutput) ToGetPipelineSchedulesPipelineScheduleArrayOutputWithContext(ctx context.Context) GetPipelineSchedulesPipelineScheduleArrayOutput {
+	return o
+}
+
+func (o GetPipelineSchedulesPipelineScheduleArrayOutput) Index(i pulumi.IntInput) GetPipelineSchedulesPipelineScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineSchedulesPipelineSchedule {
+		return vs[0].([]GetPipelineSchedulesPipelineSchedule)[vs[1].(int)]
+	}).(GetPipelineSchedulesPipelineScheduleOutput)
+}
+
+type GetPipelineSchedulesPipelineScheduleOwner struct {
+	// Image URL for the user's avatar.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The user ID.
+	Id int `pulumi:"id"`
+	// Name.
+	Name string `pulumi:"name"`
+	// User's state, one of: active, blocked.
+	State string `pulumi:"state"`
+	// Username.
+	Username string `pulumi:"username"`
+	// URL to the user's profile.
+	WebUrl string `pulumi:"webUrl"`
+}
+
+// GetPipelineSchedulesPipelineScheduleOwnerInput is an input type that accepts GetPipelineSchedulesPipelineScheduleOwnerArgs and GetPipelineSchedulesPipelineScheduleOwnerOutput values.
+// You can construct a concrete instance of `GetPipelineSchedulesPipelineScheduleOwnerInput` via:
+//
+//	GetPipelineSchedulesPipelineScheduleOwnerArgs{...}
+type GetPipelineSchedulesPipelineScheduleOwnerInput interface {
+	pulumi.Input
+
+	ToGetPipelineSchedulesPipelineScheduleOwnerOutput() GetPipelineSchedulesPipelineScheduleOwnerOutput
+	ToGetPipelineSchedulesPipelineScheduleOwnerOutputWithContext(context.Context) GetPipelineSchedulesPipelineScheduleOwnerOutput
+}
+
+type GetPipelineSchedulesPipelineScheduleOwnerArgs struct {
+	// Image URL for the user's avatar.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// The user ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// Name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// User's state, one of: active, blocked.
+	State pulumi.StringInput `pulumi:"state"`
+	// Username.
+	Username pulumi.StringInput `pulumi:"username"`
+	// URL to the user's profile.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetPipelineSchedulesPipelineScheduleOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSchedulesPipelineScheduleOwner)(nil)).Elem()
+}
+
+func (i GetPipelineSchedulesPipelineScheduleOwnerArgs) ToGetPipelineSchedulesPipelineScheduleOwnerOutput() GetPipelineSchedulesPipelineScheduleOwnerOutput {
+	return i.ToGetPipelineSchedulesPipelineScheduleOwnerOutputWithContext(context.Background())
+}
+
+func (i GetPipelineSchedulesPipelineScheduleOwnerArgs) ToGetPipelineSchedulesPipelineScheduleOwnerOutputWithContext(ctx context.Context) GetPipelineSchedulesPipelineScheduleOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSchedulesPipelineScheduleOwnerOutput)
+}
+
+type GetPipelineSchedulesPipelineScheduleOwnerOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineSchedulesPipelineScheduleOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSchedulesPipelineScheduleOwner)(nil)).Elem()
+}
+
+func (o GetPipelineSchedulesPipelineScheduleOwnerOutput) ToGetPipelineSchedulesPipelineScheduleOwnerOutput() GetPipelineSchedulesPipelineScheduleOwnerOutput {
+	return o
+}
+
+func (o GetPipelineSchedulesPipelineScheduleOwnerOutput) ToGetPipelineSchedulesPipelineScheduleOwnerOutputWithContext(ctx context.Context) GetPipelineSchedulesPipelineScheduleOwnerOutput {
+	return o
+}
+
+// Image URL for the user's avatar.
+func (o GetPipelineSchedulesPipelineScheduleOwnerOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineScheduleOwner) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The user ID.
+func (o GetPipelineSchedulesPipelineScheduleOwnerOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineScheduleOwner) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Name.
+func (o GetPipelineSchedulesPipelineScheduleOwnerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineScheduleOwner) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// User's state, one of: active, blocked.
+func (o GetPipelineSchedulesPipelineScheduleOwnerOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineScheduleOwner) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Username.
+func (o GetPipelineSchedulesPipelineScheduleOwnerOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineScheduleOwner) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// URL to the user's profile.
+func (o GetPipelineSchedulesPipelineScheduleOwnerOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineScheduleOwner) string { return v.WebUrl }).(pulumi.StringOutput)
 }
 
 type GetProjectBranchesBranch struct {
@@ -7846,6 +8838,380 @@ func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayOutput) In
 	}).(GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput)
 }
 
+type GetProjectProtectedTagCreateAccessLevel struct {
+	// Access level allowed to create protected tags.
+	AccessLevel string `pulumi:"accessLevel"`
+	// Readable description of access level.
+	AccessLevelDescription string `pulumi:"accessLevelDescription"`
+	// The ID of a GitLab group allowed to perform the relevant action.
+	GroupId *int `pulumi:"groupId"`
+	// The ID of the create access level.
+	Id int `pulumi:"id"`
+	// The ID of a GitLab user allowed to perform the relevant action.
+	UserId *int `pulumi:"userId"`
+}
+
+// GetProjectProtectedTagCreateAccessLevelInput is an input type that accepts GetProjectProtectedTagCreateAccessLevelArgs and GetProjectProtectedTagCreateAccessLevelOutput values.
+// You can construct a concrete instance of `GetProjectProtectedTagCreateAccessLevelInput` via:
+//
+//	GetProjectProtectedTagCreateAccessLevelArgs{...}
+type GetProjectProtectedTagCreateAccessLevelInput interface {
+	pulumi.Input
+
+	ToGetProjectProtectedTagCreateAccessLevelOutput() GetProjectProtectedTagCreateAccessLevelOutput
+	ToGetProjectProtectedTagCreateAccessLevelOutputWithContext(context.Context) GetProjectProtectedTagCreateAccessLevelOutput
+}
+
+type GetProjectProtectedTagCreateAccessLevelArgs struct {
+	// Access level allowed to create protected tags.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// Readable description of access level.
+	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
+	// The ID of a GitLab group allowed to perform the relevant action.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The ID of the create access level.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The ID of a GitLab user allowed to perform the relevant action.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (GetProjectProtectedTagCreateAccessLevelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectProtectedTagCreateAccessLevel)(nil)).Elem()
+}
+
+func (i GetProjectProtectedTagCreateAccessLevelArgs) ToGetProjectProtectedTagCreateAccessLevelOutput() GetProjectProtectedTagCreateAccessLevelOutput {
+	return i.ToGetProjectProtectedTagCreateAccessLevelOutputWithContext(context.Background())
+}
+
+func (i GetProjectProtectedTagCreateAccessLevelArgs) ToGetProjectProtectedTagCreateAccessLevelOutputWithContext(ctx context.Context) GetProjectProtectedTagCreateAccessLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectProtectedTagCreateAccessLevelOutput)
+}
+
+// GetProjectProtectedTagCreateAccessLevelArrayInput is an input type that accepts GetProjectProtectedTagCreateAccessLevelArray and GetProjectProtectedTagCreateAccessLevelArrayOutput values.
+// You can construct a concrete instance of `GetProjectProtectedTagCreateAccessLevelArrayInput` via:
+//
+//	GetProjectProtectedTagCreateAccessLevelArray{ GetProjectProtectedTagCreateAccessLevelArgs{...} }
+type GetProjectProtectedTagCreateAccessLevelArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectProtectedTagCreateAccessLevelArrayOutput() GetProjectProtectedTagCreateAccessLevelArrayOutput
+	ToGetProjectProtectedTagCreateAccessLevelArrayOutputWithContext(context.Context) GetProjectProtectedTagCreateAccessLevelArrayOutput
+}
+
+type GetProjectProtectedTagCreateAccessLevelArray []GetProjectProtectedTagCreateAccessLevelInput
+
+func (GetProjectProtectedTagCreateAccessLevelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectProtectedTagCreateAccessLevel)(nil)).Elem()
+}
+
+func (i GetProjectProtectedTagCreateAccessLevelArray) ToGetProjectProtectedTagCreateAccessLevelArrayOutput() GetProjectProtectedTagCreateAccessLevelArrayOutput {
+	return i.ToGetProjectProtectedTagCreateAccessLevelArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectProtectedTagCreateAccessLevelArray) ToGetProjectProtectedTagCreateAccessLevelArrayOutputWithContext(ctx context.Context) GetProjectProtectedTagCreateAccessLevelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectProtectedTagCreateAccessLevelArrayOutput)
+}
+
+type GetProjectProtectedTagCreateAccessLevelOutput struct{ *pulumi.OutputState }
+
+func (GetProjectProtectedTagCreateAccessLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectProtectedTagCreateAccessLevel)(nil)).Elem()
+}
+
+func (o GetProjectProtectedTagCreateAccessLevelOutput) ToGetProjectProtectedTagCreateAccessLevelOutput() GetProjectProtectedTagCreateAccessLevelOutput {
+	return o
+}
+
+func (o GetProjectProtectedTagCreateAccessLevelOutput) ToGetProjectProtectedTagCreateAccessLevelOutputWithContext(ctx context.Context) GetProjectProtectedTagCreateAccessLevelOutput {
+	return o
+}
+
+// Access level allowed to create protected tags.
+func (o GetProjectProtectedTagCreateAccessLevelOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagCreateAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// Readable description of access level.
+func (o GetProjectProtectedTagCreateAccessLevelOutput) AccessLevelDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagCreateAccessLevel) string { return v.AccessLevelDescription }).(pulumi.StringOutput)
+}
+
+// The ID of a GitLab group allowed to perform the relevant action.
+func (o GetProjectProtectedTagCreateAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagCreateAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the create access level.
+func (o GetProjectProtectedTagCreateAccessLevelOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagCreateAccessLevel) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The ID of a GitLab user allowed to perform the relevant action.
+func (o GetProjectProtectedTagCreateAccessLevelOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagCreateAccessLevel) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type GetProjectProtectedTagCreateAccessLevelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectProtectedTagCreateAccessLevelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectProtectedTagCreateAccessLevel)(nil)).Elem()
+}
+
+func (o GetProjectProtectedTagCreateAccessLevelArrayOutput) ToGetProjectProtectedTagCreateAccessLevelArrayOutput() GetProjectProtectedTagCreateAccessLevelArrayOutput {
+	return o
+}
+
+func (o GetProjectProtectedTagCreateAccessLevelArrayOutput) ToGetProjectProtectedTagCreateAccessLevelArrayOutputWithContext(ctx context.Context) GetProjectProtectedTagCreateAccessLevelArrayOutput {
+	return o
+}
+
+func (o GetProjectProtectedTagCreateAccessLevelArrayOutput) Index(i pulumi.IntInput) GetProjectProtectedTagCreateAccessLevelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectProtectedTagCreateAccessLevel {
+		return vs[0].([]GetProjectProtectedTagCreateAccessLevel)[vs[1].(int)]
+	}).(GetProjectProtectedTagCreateAccessLevelOutput)
+}
+
+type GetProjectProtectedTagsProtectedTag struct {
+	// Array of access levels/user(s)/group(s) allowed to create protected tags.
+	CreateAccessLevels []GetProjectProtectedTagsProtectedTagCreateAccessLevel `pulumi:"createAccessLevels"`
+	// The name of the protected tag.
+	Tag string `pulumi:"tag"`
+}
+
+// GetProjectProtectedTagsProtectedTagInput is an input type that accepts GetProjectProtectedTagsProtectedTagArgs and GetProjectProtectedTagsProtectedTagOutput values.
+// You can construct a concrete instance of `GetProjectProtectedTagsProtectedTagInput` via:
+//
+//	GetProjectProtectedTagsProtectedTagArgs{...}
+type GetProjectProtectedTagsProtectedTagInput interface {
+	pulumi.Input
+
+	ToGetProjectProtectedTagsProtectedTagOutput() GetProjectProtectedTagsProtectedTagOutput
+	ToGetProjectProtectedTagsProtectedTagOutputWithContext(context.Context) GetProjectProtectedTagsProtectedTagOutput
+}
+
+type GetProjectProtectedTagsProtectedTagArgs struct {
+	// Array of access levels/user(s)/group(s) allowed to create protected tags.
+	CreateAccessLevels GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayInput `pulumi:"createAccessLevels"`
+	// The name of the protected tag.
+	Tag pulumi.StringInput `pulumi:"tag"`
+}
+
+func (GetProjectProtectedTagsProtectedTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectProtectedTagsProtectedTag)(nil)).Elem()
+}
+
+func (i GetProjectProtectedTagsProtectedTagArgs) ToGetProjectProtectedTagsProtectedTagOutput() GetProjectProtectedTagsProtectedTagOutput {
+	return i.ToGetProjectProtectedTagsProtectedTagOutputWithContext(context.Background())
+}
+
+func (i GetProjectProtectedTagsProtectedTagArgs) ToGetProjectProtectedTagsProtectedTagOutputWithContext(ctx context.Context) GetProjectProtectedTagsProtectedTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectProtectedTagsProtectedTagOutput)
+}
+
+// GetProjectProtectedTagsProtectedTagArrayInput is an input type that accepts GetProjectProtectedTagsProtectedTagArray and GetProjectProtectedTagsProtectedTagArrayOutput values.
+// You can construct a concrete instance of `GetProjectProtectedTagsProtectedTagArrayInput` via:
+//
+//	GetProjectProtectedTagsProtectedTagArray{ GetProjectProtectedTagsProtectedTagArgs{...} }
+type GetProjectProtectedTagsProtectedTagArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectProtectedTagsProtectedTagArrayOutput() GetProjectProtectedTagsProtectedTagArrayOutput
+	ToGetProjectProtectedTagsProtectedTagArrayOutputWithContext(context.Context) GetProjectProtectedTagsProtectedTagArrayOutput
+}
+
+type GetProjectProtectedTagsProtectedTagArray []GetProjectProtectedTagsProtectedTagInput
+
+func (GetProjectProtectedTagsProtectedTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectProtectedTagsProtectedTag)(nil)).Elem()
+}
+
+func (i GetProjectProtectedTagsProtectedTagArray) ToGetProjectProtectedTagsProtectedTagArrayOutput() GetProjectProtectedTagsProtectedTagArrayOutput {
+	return i.ToGetProjectProtectedTagsProtectedTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectProtectedTagsProtectedTagArray) ToGetProjectProtectedTagsProtectedTagArrayOutputWithContext(ctx context.Context) GetProjectProtectedTagsProtectedTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectProtectedTagsProtectedTagArrayOutput)
+}
+
+type GetProjectProtectedTagsProtectedTagOutput struct{ *pulumi.OutputState }
+
+func (GetProjectProtectedTagsProtectedTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectProtectedTagsProtectedTag)(nil)).Elem()
+}
+
+func (o GetProjectProtectedTagsProtectedTagOutput) ToGetProjectProtectedTagsProtectedTagOutput() GetProjectProtectedTagsProtectedTagOutput {
+	return o
+}
+
+func (o GetProjectProtectedTagsProtectedTagOutput) ToGetProjectProtectedTagsProtectedTagOutputWithContext(ctx context.Context) GetProjectProtectedTagsProtectedTagOutput {
+	return o
+}
+
+// Array of access levels/user(s)/group(s) allowed to create protected tags.
+func (o GetProjectProtectedTagsProtectedTagOutput) CreateAccessLevels() GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagsProtectedTag) []GetProjectProtectedTagsProtectedTagCreateAccessLevel {
+		return v.CreateAccessLevels
+	}).(GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput)
+}
+
+// The name of the protected tag.
+func (o GetProjectProtectedTagsProtectedTagOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagsProtectedTag) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type GetProjectProtectedTagsProtectedTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectProtectedTagsProtectedTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectProtectedTagsProtectedTag)(nil)).Elem()
+}
+
+func (o GetProjectProtectedTagsProtectedTagArrayOutput) ToGetProjectProtectedTagsProtectedTagArrayOutput() GetProjectProtectedTagsProtectedTagArrayOutput {
+	return o
+}
+
+func (o GetProjectProtectedTagsProtectedTagArrayOutput) ToGetProjectProtectedTagsProtectedTagArrayOutputWithContext(ctx context.Context) GetProjectProtectedTagsProtectedTagArrayOutput {
+	return o
+}
+
+func (o GetProjectProtectedTagsProtectedTagArrayOutput) Index(i pulumi.IntInput) GetProjectProtectedTagsProtectedTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectProtectedTagsProtectedTag {
+		return vs[0].([]GetProjectProtectedTagsProtectedTag)[vs[1].(int)]
+	}).(GetProjectProtectedTagsProtectedTagOutput)
+}
+
+type GetProjectProtectedTagsProtectedTagCreateAccessLevel struct {
+	// Access level allowed to create protected tags.
+	AccessLevel string `pulumi:"accessLevel"`
+	// Readable description of access level.
+	AccessLevelDescription string `pulumi:"accessLevelDescription"`
+	// The ID of a GitLab group allowed to perform the relevant action.
+	GroupId *int `pulumi:"groupId"`
+	// The ID of the create access level.
+	Id int `pulumi:"id"`
+	// The ID of a GitLab user allowed to perform the relevant action.
+	UserId *int `pulumi:"userId"`
+}
+
+// GetProjectProtectedTagsProtectedTagCreateAccessLevelInput is an input type that accepts GetProjectProtectedTagsProtectedTagCreateAccessLevelArgs and GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput values.
+// You can construct a concrete instance of `GetProjectProtectedTagsProtectedTagCreateAccessLevelInput` via:
+//
+//	GetProjectProtectedTagsProtectedTagCreateAccessLevelArgs{...}
+type GetProjectProtectedTagsProtectedTagCreateAccessLevelInput interface {
+	pulumi.Input
+
+	ToGetProjectProtectedTagsProtectedTagCreateAccessLevelOutput() GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput
+	ToGetProjectProtectedTagsProtectedTagCreateAccessLevelOutputWithContext(context.Context) GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput
+}
+
+type GetProjectProtectedTagsProtectedTagCreateAccessLevelArgs struct {
+	// Access level allowed to create protected tags.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// Readable description of access level.
+	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
+	// The ID of a GitLab group allowed to perform the relevant action.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The ID of the create access level.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The ID of a GitLab user allowed to perform the relevant action.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (GetProjectProtectedTagsProtectedTagCreateAccessLevelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectProtectedTagsProtectedTagCreateAccessLevel)(nil)).Elem()
+}
+
+func (i GetProjectProtectedTagsProtectedTagCreateAccessLevelArgs) ToGetProjectProtectedTagsProtectedTagCreateAccessLevelOutput() GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput {
+	return i.ToGetProjectProtectedTagsProtectedTagCreateAccessLevelOutputWithContext(context.Background())
+}
+
+func (i GetProjectProtectedTagsProtectedTagCreateAccessLevelArgs) ToGetProjectProtectedTagsProtectedTagCreateAccessLevelOutputWithContext(ctx context.Context) GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput)
+}
+
+// GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayInput is an input type that accepts GetProjectProtectedTagsProtectedTagCreateAccessLevelArray and GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput values.
+// You can construct a concrete instance of `GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayInput` via:
+//
+//	GetProjectProtectedTagsProtectedTagCreateAccessLevelArray{ GetProjectProtectedTagsProtectedTagCreateAccessLevelArgs{...} }
+type GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput() GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput
+	ToGetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutputWithContext(context.Context) GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput
+}
+
+type GetProjectProtectedTagsProtectedTagCreateAccessLevelArray []GetProjectProtectedTagsProtectedTagCreateAccessLevelInput
+
+func (GetProjectProtectedTagsProtectedTagCreateAccessLevelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectProtectedTagsProtectedTagCreateAccessLevel)(nil)).Elem()
+}
+
+func (i GetProjectProtectedTagsProtectedTagCreateAccessLevelArray) ToGetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput() GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput {
+	return i.ToGetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectProtectedTagsProtectedTagCreateAccessLevelArray) ToGetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutputWithContext(ctx context.Context) GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput)
+}
+
+type GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput struct{ *pulumi.OutputState }
+
+func (GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectProtectedTagsProtectedTagCreateAccessLevel)(nil)).Elem()
+}
+
+func (o GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput) ToGetProjectProtectedTagsProtectedTagCreateAccessLevelOutput() GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput {
+	return o
+}
+
+func (o GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput) ToGetProjectProtectedTagsProtectedTagCreateAccessLevelOutputWithContext(ctx context.Context) GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput {
+	return o
+}
+
+// Access level allowed to create protected tags.
+func (o GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagsProtectedTagCreateAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// Readable description of access level.
+func (o GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput) AccessLevelDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagsProtectedTagCreateAccessLevel) string { return v.AccessLevelDescription }).(pulumi.StringOutput)
+}
+
+// The ID of a GitLab group allowed to perform the relevant action.
+func (o GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagsProtectedTagCreateAccessLevel) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the create access level.
+func (o GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagsProtectedTagCreateAccessLevel) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The ID of a GitLab user allowed to perform the relevant action.
+func (o GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectProtectedTagsProtectedTagCreateAccessLevel) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectProtectedTagsProtectedTagCreateAccessLevel)(nil)).Elem()
+}
+
+func (o GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput) ToGetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput() GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput {
+	return o
+}
+
+func (o GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput) ToGetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutputWithContext(ctx context.Context) GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput {
+	return o
+}
+
+func (o GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput) Index(i pulumi.IntInput) GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectProtectedTagsProtectedTagCreateAccessLevel {
+		return vs[0].([]GetProjectProtectedTagsProtectedTagCreateAccessLevel)[vs[1].(int)]
+	}).(GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput)
+}
+
 type GetProjectPushRule struct {
 	// All commit author emails must match this regex, e.g. `@my-company.com$`.
 	AuthorEmailRegex string `pulumi:"authorEmailRegex"`
@@ -7869,6 +9235,8 @@ type GetProjectPushRule struct {
 	MemberCheck bool `pulumi:"memberCheck"`
 	// GitLab will reject any files that are likely to contain secrets.
 	PreventSecrets bool `pulumi:"preventSecrets"`
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits bool `pulumi:"rejectNonDcoCommits"`
 	// Reject commit when it’s not signed through GPG.
 	RejectUnsignedCommits bool `pulumi:"rejectUnsignedCommits"`
 }
@@ -7907,6 +9275,8 @@ type GetProjectPushRuleArgs struct {
 	MemberCheck pulumi.BoolInput `pulumi:"memberCheck"`
 	// GitLab will reject any files that are likely to contain secrets.
 	PreventSecrets pulumi.BoolInput `pulumi:"preventSecrets"`
+	// Reject commit when it’s not DCO certified.
+	RejectNonDcoCommits pulumi.BoolInput `pulumi:"rejectNonDcoCommits"`
 	// Reject commit when it’s not signed through GPG.
 	RejectUnsignedCommits pulumi.BoolInput `pulumi:"rejectUnsignedCommits"`
 }
@@ -8015,6 +9385,11 @@ func (o GetProjectPushRuleOutput) MemberCheck() pulumi.BoolOutput {
 // GitLab will reject any files that are likely to contain secrets.
 func (o GetProjectPushRuleOutput) PreventSecrets() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectPushRule) bool { return v.PreventSecrets }).(pulumi.BoolOutput)
+}
+
+// Reject commit when it’s not DCO certified.
+func (o GetProjectPushRuleOutput) RejectNonDcoCommits() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectPushRule) bool { return v.RejectNonDcoCommits }).(pulumi.BoolOutput)
 }
 
 // Reject commit when it’s not signed through GPG.
@@ -12017,6 +13392,8 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSettingsDefaultBranchProtectionDefaultsInput)(nil)).Elem(), ApplicationSettingsDefaultBranchProtectionDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationSettingsDefaultBranchProtectionDefaultsPtrInput)(nil)).Elem(), ApplicationSettingsDefaultBranchProtectionDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchCommitInput)(nil)).Elem(), BranchCommitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchCommitArrayInput)(nil)).Elem(), BranchCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToMergeInput)(nil)).Elem(), BranchProtectionAllowedToMergeArgs{})
@@ -12027,6 +13404,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToUnprotectArrayInput)(nil)).Elem(), BranchProtectionAllowedToUnprotectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAccessTokenRotationConfigurationInput)(nil)).Elem(), GroupAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), GroupAccessTokenRotationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupDefaultBranchProtectionDefaultsInput)(nil)).Elem(), GroupDefaultBranchProtectionDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupDefaultBranchProtectionDefaultsPtrInput)(nil)).Elem(), GroupDefaultBranchProtectionDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupEpicBoardListInput)(nil)).Elem(), GroupEpicBoardListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupEpicBoardListArrayInput)(nil)).Elem(), GroupEpicBoardListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupIssueBoardListInput)(nil)).Elem(), GroupIssueBoardListArgs{})
@@ -12080,6 +13459,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceVariablesVariableInput)(nil)).Elem(), GetInstanceVariablesVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceVariablesVariableArrayInput)(nil)).Elem(), GetInstanceVariablesVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetadataKasInput)(nil)).Elem(), GetMetadataKasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScheduleLastPipelineInput)(nil)).Elem(), GetPipelineScheduleLastPipelineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScheduleOwnerInput)(nil)).Elem(), GetPipelineScheduleOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScheduleVariableTypeInput)(nil)).Elem(), GetPipelineScheduleVariableTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScheduleVariableTypeArrayInput)(nil)).Elem(), GetPipelineScheduleVariableTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSchedulesPipelineScheduleInput)(nil)).Elem(), GetPipelineSchedulesPipelineScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSchedulesPipelineScheduleArrayInput)(nil)).Elem(), GetPipelineSchedulesPipelineScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSchedulesPipelineScheduleOwnerInput)(nil)).Elem(), GetPipelineSchedulesPipelineScheduleOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchInput)(nil)).Elem(), GetProjectBranchesBranchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchArrayInput)(nil)).Elem(), GetProjectBranchesBranchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchCommitInput)(nil)).Elem(), GetProjectBranchesBranchCommitArgs{})
@@ -12108,6 +13494,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayInput)(nil)).Elem(), GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchesProtectedBranchPushAccessLevelInput)(nil)).Elem(), GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayInput)(nil)).Elem(), GetProjectProtectedBranchesProtectedBranchPushAccessLevelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedTagCreateAccessLevelInput)(nil)).Elem(), GetProjectProtectedTagCreateAccessLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedTagCreateAccessLevelArrayInput)(nil)).Elem(), GetProjectProtectedTagCreateAccessLevelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedTagsProtectedTagInput)(nil)).Elem(), GetProjectProtectedTagsProtectedTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedTagsProtectedTagArrayInput)(nil)).Elem(), GetProjectProtectedTagsProtectedTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedTagsProtectedTagCreateAccessLevelInput)(nil)).Elem(), GetProjectProtectedTagsProtectedTagCreateAccessLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayInput)(nil)).Elem(), GetProjectProtectedTagsProtectedTagCreateAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectPushRuleInput)(nil)).Elem(), GetProjectPushRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectPushRuleArrayInput)(nil)).Elem(), GetProjectPushRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectSharedWithGroupInput)(nil)).Elem(), GetProjectSharedWithGroupArgs{})
@@ -12152,6 +13544,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserSshkeysKeyArrayInput)(nil)).Elem(), GetUserSshkeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
+	pulumi.RegisterOutputType(ApplicationSettingsDefaultBranchProtectionDefaultsOutput{})
+	pulumi.RegisterOutputType(ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(BranchCommitOutput{})
 	pulumi.RegisterOutputType(BranchCommitArrayOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToMergeOutput{})
@@ -12162,6 +13556,8 @@ func init() {
 	pulumi.RegisterOutputType(BranchProtectionAllowedToUnprotectArrayOutput{})
 	pulumi.RegisterOutputType(GroupAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(GroupAccessTokenRotationConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GroupDefaultBranchProtectionDefaultsOutput{})
+	pulumi.RegisterOutputType(GroupDefaultBranchProtectionDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(GroupEpicBoardListOutput{})
 	pulumi.RegisterOutputType(GroupEpicBoardListArrayOutput{})
 	pulumi.RegisterOutputType(GroupIssueBoardListOutput{})
@@ -12215,6 +13611,13 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceVariablesVariableOutput{})
 	pulumi.RegisterOutputType(GetInstanceVariablesVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetMetadataKasOutput{})
+	pulumi.RegisterOutputType(GetPipelineScheduleLastPipelineOutput{})
+	pulumi.RegisterOutputType(GetPipelineScheduleOwnerOutput{})
+	pulumi.RegisterOutputType(GetPipelineScheduleVariableTypeOutput{})
+	pulumi.RegisterOutputType(GetPipelineScheduleVariableTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineSchedulesPipelineScheduleOutput{})
+	pulumi.RegisterOutputType(GetPipelineSchedulesPipelineScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineSchedulesPipelineScheduleOwnerOutput{})
 	pulumi.RegisterOutputType(GetProjectBranchesBranchOutput{})
 	pulumi.RegisterOutputType(GetProjectBranchesBranchArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectBranchesBranchCommitOutput{})
@@ -12243,6 +13646,12 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput{})
 	pulumi.RegisterOutputType(GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectProtectedTagCreateAccessLevelOutput{})
+	pulumi.RegisterOutputType(GetProjectProtectedTagCreateAccessLevelArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectProtectedTagsProtectedTagOutput{})
+	pulumi.RegisterOutputType(GetProjectProtectedTagsProtectedTagArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectProtectedTagsProtectedTagCreateAccessLevelOutput{})
+	pulumi.RegisterOutputType(GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectPushRuleOutput{})
 	pulumi.RegisterOutputType(GetProjectPushRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectSharedWithGroupOutput{})

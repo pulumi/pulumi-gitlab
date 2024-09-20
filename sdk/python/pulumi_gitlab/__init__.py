@@ -34,6 +34,8 @@ from .get_instance_deploy_keys import *
 from .get_instance_variable import *
 from .get_instance_variables import *
 from .get_metadata import *
+from .get_pipeline_schedule import *
+from .get_pipeline_schedules import *
 from .get_project import *
 from .get_project_branches import *
 from .get_project_hook import *
@@ -46,6 +48,8 @@ from .get_project_milestone import *
 from .get_project_milestones import *
 from .get_project_protected_branch import *
 from .get_project_protected_branches import *
+from .get_project_protected_tag import *
+from .get_project_protected_tags import *
 from .get_project_tag import *
 from .get_project_tags import *
 from .get_project_variable import *
@@ -91,6 +95,7 @@ from .integration_pipelines_email import *
 from .integration_slack import *
 from .integration_telegram import *
 from .label import *
+from .member_role import *
 from .pages_domain import *
 from .personal_access_token import *
 from .pipeline_schedule import *
@@ -141,6 +146,7 @@ from .topic import *
 from .user import *
 from .user_custom_attribute import *
 from .user_gpg_key import *
+from .user_impersonation_token import *
 from .user_runner import *
 from .user_ssh_key import *
 from ._inputs import *
@@ -490,6 +496,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/label:Label": "Label"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/memberRole",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/memberRole:MemberRole": "MemberRole"
   }
  },
  {
@@ -882,6 +896,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/userGpgKey:UserGpgKey": "UserGpgKey"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/userImpersonationToken",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/userImpersonationToken:UserImpersonationToken": "UserImpersonationToken"
   }
  },
  {

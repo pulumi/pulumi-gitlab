@@ -105,6 +105,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IntegrationTelegram{}
 	case "gitlab:index/label:Label":
 		r = &Label{}
+	case "gitlab:index/memberRole:MemberRole":
+		r = &MemberRole{}
 	case "gitlab:index/pagesDomain:PagesDomain":
 		r = &PagesDomain{}
 	case "gitlab:index/personalAccessToken:PersonalAccessToken":
@@ -203,6 +205,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserCustomAttribute{}
 	case "gitlab:index/userGpgKey:UserGpgKey":
 		r = &UserGpgKey{}
+	case "gitlab:index/userImpersonationToken:UserImpersonationToken":
+		r = &UserImpersonationToken{}
 	case "gitlab:index/userRunner:UserRunner":
 		r = &UserRunner{}
 	case "gitlab:index/userSshKey:UserSshKey":
@@ -450,6 +454,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/memberRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/pagesDomain",
 		&module{version},
 	)
@@ -691,6 +700,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/userGpgKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/userImpersonationToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

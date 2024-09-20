@@ -115,6 +115,34 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.email;
     }
     /**
+     * String, a specific external authentication provider UID.
+     * 
+     */
+    @Export(name="externUid", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> externUid;
+
+    /**
+     * @return String, a specific external authentication provider UID.
+     * 
+     */
+    public Output<Optional<String>> externUid() {
+        return Codegen.optional(this.externUid);
+    }
+    /**
+     * String, the external provider.
+     * 
+     */
+    @Export(name="externalProvider", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> externalProvider;
+
+    /**
+     * @return String, the external provider.
+     * 
+     */
+    public Output<Optional<String>> externalProvider() {
+        return Codegen.optional(this.externalProvider);
+    }
+    /**
      * Boolean, defaults to false.  Whether to enable administrative privileges
      * 
      */

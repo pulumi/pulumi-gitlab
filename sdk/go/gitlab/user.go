@@ -74,6 +74,10 @@ type User struct {
 	CanCreateGroup pulumi.BoolPtrOutput `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
+	// String, a specific external authentication provider UID.
+	ExternUid pulumi.StringPtrOutput `pulumi:"externUid"`
+	// String, the external provider.
+	ExternalProvider pulumi.StringPtrOutput `pulumi:"externalProvider"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrOutput `pulumi:"isAdmin"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -145,6 +149,10 @@ type userState struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email *string `pulumi:"email"`
+	// String, a specific external authentication provider UID.
+	ExternUid *string `pulumi:"externUid"`
+	// String, the external provider.
+	ExternalProvider *string `pulumi:"externalProvider"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin *bool `pulumi:"isAdmin"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -174,6 +182,10 @@ type UserState struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// The e-mail address of the user.
 	Email pulumi.StringPtrInput
+	// String, a specific external authentication provider UID.
+	ExternUid pulumi.StringPtrInput
+	// String, the external provider.
+	ExternalProvider pulumi.StringPtrInput
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrInput
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -207,6 +219,10 @@ type userArgs struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email string `pulumi:"email"`
+	// String, a specific external authentication provider UID.
+	ExternUid *string `pulumi:"externUid"`
+	// String, the external provider.
+	ExternalProvider *string `pulumi:"externalProvider"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin *bool `pulumi:"isAdmin"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -237,6 +253,10 @@ type UserArgs struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// The e-mail address of the user.
 	Email pulumi.StringInput
+	// String, a specific external authentication provider UID.
+	ExternUid pulumi.StringPtrInput
+	// String, the external provider.
+	ExternalProvider pulumi.StringPtrInput
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrInput
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -356,6 +376,16 @@ func (o UserOutput) CanCreateGroup() pulumi.BoolPtrOutput {
 // The e-mail address of the user.
 func (o UserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// String, a specific external authentication provider UID.
+func (o UserOutput) ExternUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.ExternUid }).(pulumi.StringPtrOutput)
+}
+
+// String, the external provider.
+func (o UserOutput) ExternalProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.ExternalProvider }).(pulumi.StringPtrOutput)
 }
 
 // Boolean, defaults to false.  Whether to enable administrative privileges

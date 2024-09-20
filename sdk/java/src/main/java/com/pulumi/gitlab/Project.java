@@ -1012,6 +1012,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.pipelinesEnabled;
     }
     /**
+     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * 
+     */
+    @Export(name="preReceiveSecretDetectionEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> preReceiveSecretDetectionEnabled;
+
+    /**
+     * @return Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * 
+     */
+    public Output<Boolean> preReceiveSecretDetectionEnabled() {
+        return this.preReceiveSecretDetectionEnabled;
+    }
+    /**
      * Show link to create/view merge request when pushing from the command line
      * 
      */

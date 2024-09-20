@@ -74,6 +74,18 @@ namespace Pulumi.GitLab
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
+        /// String, a specific external authentication provider UID.
+        /// </summary>
+        [Output("externUid")]
+        public Output<string?> ExternUid { get; private set; } = null!;
+
+        /// <summary>
+        /// String, the external provider.
+        /// </summary>
+        [Output("externalProvider")]
+        public Output<string?> ExternalProvider { get; private set; } = null!;
+
+        /// <summary>
         /// Boolean, defaults to false.  Whether to enable administrative privileges
         /// </summary>
         [Output("isAdmin")]
@@ -202,6 +214,18 @@ namespace Pulumi.GitLab
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
+        /// String, a specific external authentication provider UID.
+        /// </summary>
+        [Input("externUid")]
+        public Input<string>? ExternUid { get; set; }
+
+        /// <summary>
+        /// String, the external provider.
+        /// </summary>
+        [Input("externalProvider")]
+        public Input<string>? ExternalProvider { get; set; }
+
+        /// <summary>
         /// Boolean, defaults to false.  Whether to enable administrative privileges
         /// </summary>
         [Input("isAdmin")]
@@ -296,6 +320,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// String, a specific external authentication provider UID.
+        /// </summary>
+        [Input("externUid")]
+        public Input<string>? ExternUid { get; set; }
+
+        /// <summary>
+        /// String, the external provider.
+        /// </summary>
+        [Input("externalProvider")]
+        public Input<string>? ExternalProvider { get; set; }
 
         /// <summary>
         /// Boolean, defaults to false.  Whether to enable administrative privileges
