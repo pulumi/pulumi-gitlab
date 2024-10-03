@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -118,9 +123,6 @@ def get_metadata(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMet
         kas=pulumi.get(__ret__, 'kas'),
         revision=pulumi.get(__ret__, 'revision'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_metadata)
 def get_metadata_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetadataResult]:
     """
     The `get_metadata` data source retrieves the metadata of the GitLab instance.
@@ -136,4 +138,12 @@ def get_metadata_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
     this = gitlab.get_metadata()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getMetadata:getMetadata', __args__, opts=opts, typ=GetMetadataResult)
+    return __ret__.apply(lambda __response__: GetMetadataResult(
+        enterprise=pulumi.get(__response__, 'enterprise'),
+        id=pulumi.get(__response__, 'id'),
+        kas=pulumi.get(__response__, 'kas'),
+        revision=pulumi.get(__response__, 'revision'),
+        version=pulumi.get(__response__, 'version')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -169,9 +174,6 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         public_email=pulumi.get(__ret__, 'public_email'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_current_user)
 def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentUserResult]:
     """
     The `get_current_user` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
@@ -187,4 +189,16 @@ def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
     example = gitlab.get_current_user()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult)
+    return __ret__.apply(lambda __response__: GetCurrentUserResult(
+        bot=pulumi.get(__response__, 'bot'),
+        global_id=pulumi.get(__response__, 'global_id'),
+        global_namespace_id=pulumi.get(__response__, 'global_namespace_id'),
+        group_count=pulumi.get(__response__, 'group_count'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        namespace_id=pulumi.get(__response__, 'namespace_id'),
+        public_email=pulumi.get(__response__, 'public_email'),
+        username=pulumi.get(__response__, 'username')))

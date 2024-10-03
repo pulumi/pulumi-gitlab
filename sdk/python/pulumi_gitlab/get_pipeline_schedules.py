@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -94,9 +99,6 @@ def get_pipeline_schedules(project: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         pipeline_schedules=pulumi.get(__ret__, 'pipeline_schedules'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_pipeline_schedules)
 def get_pipeline_schedules_output(project: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPipelineSchedulesResult]:
     """
@@ -116,4 +118,11 @@ def get_pipeline_schedules_output(project: Optional[pulumi.Input[str]] = None,
 
     :param str project: The name or id of the project to add the schedule to.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getPipelineSchedules:getPipelineSchedules', __args__, opts=opts, typ=GetPipelineSchedulesResult)
+    return __ret__.apply(lambda __response__: GetPipelineSchedulesResult(
+        id=pulumi.get(__response__, 'id'),
+        pipeline_schedules=pulumi.get(__response__, 'pipeline_schedules'),
+        project=pulumi.get(__response__, 'project')))

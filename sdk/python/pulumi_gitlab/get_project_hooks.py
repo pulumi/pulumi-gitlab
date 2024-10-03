@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -98,9 +103,6 @@ def get_project_hooks(project: Optional[str] = None,
         hooks=pulumi.get(__ret__, 'hooks'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_project_hooks)
 def get_project_hooks_output(project: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectHooksResult]:
     """
@@ -121,4 +123,11 @@ def get_project_hooks_output(project: Optional[pulumi.Input[str]] = None,
 
     :param str project: The name or id of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectHooks:getProjectHooks', __args__, opts=opts, typ=GetProjectHooksResult)
+    return __ret__.apply(lambda __response__: GetProjectHooksResult(
+        hooks=pulumi.get(__response__, 'hooks'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project')))

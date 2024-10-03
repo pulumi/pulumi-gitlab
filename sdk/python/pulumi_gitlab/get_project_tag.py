@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -156,9 +161,6 @@ def get_project_tag(name: Optional[str] = None,
         protected=pulumi.get(__ret__, 'protected'),
         releases=pulumi.get(__ret__, 'releases'),
         target=pulumi.get(__ret__, 'target'))
-
-
-@_utilities.lift_output_func(get_project_tag)
 def get_project_tag_output(name: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectTagResult]:
@@ -171,4 +173,17 @@ def get_project_tag_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The name of a tag.
     :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectTag:getProjectTag', __args__, opts=opts, typ=GetProjectTagResult)
+    return __ret__.apply(lambda __response__: GetProjectTagResult(
+        commits=pulumi.get(__response__, 'commits'),
+        id=pulumi.get(__response__, 'id'),
+        message=pulumi.get(__response__, 'message'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        protected=pulumi.get(__response__, 'protected'),
+        releases=pulumi.get(__response__, 'releases'),
+        target=pulumi.get(__response__, 'target')))

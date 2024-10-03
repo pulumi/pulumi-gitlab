@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -337,9 +342,6 @@ def get_group_hook(group: Optional[str] = None,
         token=pulumi.get(__ret__, 'token'),
         url=pulumi.get(__ret__, 'url'),
         wiki_page_events=pulumi.get(__ret__, 'wiki_page_events'))
-
-
-@_utilities.lift_output_func(get_group_hook)
 def get_group_hook_output(group: Optional[pulumi.Input[str]] = None,
                           hook_id: Optional[pulumi.Input[int]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupHookResult]:
@@ -352,4 +354,31 @@ def get_group_hook_output(group: Optional[pulumi.Input[str]] = None,
     :param str group: The ID or full path of the group.
     :param int hook_id: The id of the group hook.
     """
-    ...
+    __args__ = dict()
+    __args__['group'] = group
+    __args__['hookId'] = hook_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupHook:getGroupHook', __args__, opts=opts, typ=GetGroupHookResult)
+    return __ret__.apply(lambda __response__: GetGroupHookResult(
+        confidential_issues_events=pulumi.get(__response__, 'confidential_issues_events'),
+        confidential_note_events=pulumi.get(__response__, 'confidential_note_events'),
+        custom_webhook_template=pulumi.get(__response__, 'custom_webhook_template'),
+        deployment_events=pulumi.get(__response__, 'deployment_events'),
+        enable_ssl_verification=pulumi.get(__response__, 'enable_ssl_verification'),
+        group=pulumi.get(__response__, 'group'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        hook_id=pulumi.get(__response__, 'hook_id'),
+        id=pulumi.get(__response__, 'id'),
+        issues_events=pulumi.get(__response__, 'issues_events'),
+        job_events=pulumi.get(__response__, 'job_events'),
+        merge_requests_events=pulumi.get(__response__, 'merge_requests_events'),
+        note_events=pulumi.get(__response__, 'note_events'),
+        pipeline_events=pulumi.get(__response__, 'pipeline_events'),
+        push_events=pulumi.get(__response__, 'push_events'),
+        push_events_branch_filter=pulumi.get(__response__, 'push_events_branch_filter'),
+        releases_events=pulumi.get(__response__, 'releases_events'),
+        subgroup_events=pulumi.get(__response__, 'subgroup_events'),
+        tag_push_events=pulumi.get(__response__, 'tag_push_events'),
+        token=pulumi.get(__response__, 'token'),
+        url=pulumi.get(__response__, 'url'),
+        wiki_page_events=pulumi.get(__response__, 'wiki_page_events')))

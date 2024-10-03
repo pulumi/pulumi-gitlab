@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -148,9 +153,6 @@ def get_repository_tree(path: Optional[str] = None,
         recursive=pulumi.get(__ret__, 'recursive'),
         ref=pulumi.get(__ret__, 'ref'),
         trees=pulumi.get(__ret__, 'trees'))
-
-
-@_utilities.lift_output_func(get_repository_tree)
 def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = None,
                                project: Optional[pulumi.Input[str]] = None,
                                recursive: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -179,4 +181,17 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
     :param bool recursive: Boolean value used to get a recursive tree (false by default).
     :param str ref: The name of a repository branch or tag.
     """
-    ...
+    __args__ = dict()
+    __args__['path'] = path
+    __args__['project'] = project
+    __args__['recursive'] = recursive
+    __args__['ref'] = ref
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getRepositoryTree:getRepositoryTree', __args__, opts=opts, typ=GetRepositoryTreeResult)
+    return __ret__.apply(lambda __response__: GetRepositoryTreeResult(
+        id=pulumi.get(__response__, 'id'),
+        path=pulumi.get(__response__, 'path'),
+        project=pulumi.get(__response__, 'project'),
+        recursive=pulumi.get(__response__, 'recursive'),
+        ref=pulumi.get(__response__, 'ref'),
+        trees=pulumi.get(__response__, 'trees')))
