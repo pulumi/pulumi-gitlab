@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -244,9 +249,6 @@ def get_pipeline_schedule(cron_timezone: Optional[str] = None,
         ref=pulumi.get(__ret__, 'ref'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         variables=pulumi.get(__ret__, 'variables'))
-
-
-@_utilities.lift_output_func(get_pipeline_schedule)
 def get_pipeline_schedule_output(cron_timezone: Optional[pulumi.Input[Optional[str]]] = None,
                                  pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
@@ -271,4 +273,24 @@ def get_pipeline_schedule_output(cron_timezone: Optional[pulumi.Input[Optional[s
     :param int pipeline_schedule_id: The pipeline schedule id.
     :param str project: The name or id of the project to add the schedule to.
     """
-    ...
+    __args__ = dict()
+    __args__['cronTimezone'] = cron_timezone
+    __args__['pipelineScheduleId'] = pipeline_schedule_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getPipelineSchedule:getPipelineSchedule', __args__, opts=opts, typ=GetPipelineScheduleResult)
+    return __ret__.apply(lambda __response__: GetPipelineScheduleResult(
+        active=pulumi.get(__response__, 'active'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        cron=pulumi.get(__response__, 'cron'),
+        cron_timezone=pulumi.get(__response__, 'cron_timezone'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        last_pipeline=pulumi.get(__response__, 'last_pipeline'),
+        next_run_at=pulumi.get(__response__, 'next_run_at'),
+        owner=pulumi.get(__response__, 'owner'),
+        pipeline_schedule_id=pulumi.get(__response__, 'pipeline_schedule_id'),
+        project=pulumi.get(__response__, 'project'),
+        ref=pulumi.get(__response__, 'ref'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        variables=pulumi.get(__response__, 'variables')))

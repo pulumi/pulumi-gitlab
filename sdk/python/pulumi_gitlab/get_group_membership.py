@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -136,9 +141,6 @@ def get_group_membership(access_level: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         inherited=pulumi.get(__ret__, 'inherited'),
         members=pulumi.get(__ret__, 'members'))
-
-
-@_utilities.lift_output_func(get_group_membership)
 def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str]]] = None,
                                 full_path: Optional[pulumi.Input[Optional[str]]] = None,
                                 group_id: Optional[pulumi.Input[Optional[int]]] = None,
@@ -155,4 +157,17 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
     :param int group_id: The ID of the group.
     :param bool inherited: Return all project members including members through ancestor groups.
     """
-    ...
+    __args__ = dict()
+    __args__['accessLevel'] = access_level
+    __args__['fullPath'] = full_path
+    __args__['groupId'] = group_id
+    __args__['inherited'] = inherited
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupMembership:getGroupMembership', __args__, opts=opts, typ=GetGroupMembershipResult)
+    return __ret__.apply(lambda __response__: GetGroupMembershipResult(
+        access_level=pulumi.get(__response__, 'access_level'),
+        full_path=pulumi.get(__response__, 'full_path'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        inherited=pulumi.get(__response__, 'inherited'),
+        members=pulumi.get(__response__, 'members')))

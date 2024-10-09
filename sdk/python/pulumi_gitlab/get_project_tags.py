@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -136,9 +141,6 @@ def get_project_tags(order_by: Optional[str] = None,
         search=pulumi.get(__ret__, 'search'),
         sort=pulumi.get(__ret__, 'sort'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_project_tags)
 def get_project_tags_output(order_by: Optional[pulumi.Input[Optional[str]]] = None,
                             project: Optional[pulumi.Input[str]] = None,
                             search: Optional[pulumi.Input[Optional[str]]] = None,
@@ -155,4 +157,17 @@ def get_project_tags_output(order_by: Optional[pulumi.Input[Optional[str]]] = No
     :param str search: Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `term` respectively. No other regular expressions are supported.
     :param str sort: Return tags sorted in `asc` or `desc` order. Default is `desc`.
     """
-    ...
+    __args__ = dict()
+    __args__['orderBy'] = order_by
+    __args__['project'] = project
+    __args__['search'] = search
+    __args__['sort'] = sort
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectTags:getProjectTags', __args__, opts=opts, typ=GetProjectTagsResult)
+    return __ret__.apply(lambda __response__: GetProjectTagsResult(
+        id=pulumi.get(__response__, 'id'),
+        order_by=pulumi.get(__response__, 'order_by'),
+        project=pulumi.get(__response__, 'project'),
+        search=pulumi.get(__response__, 'search'),
+        sort=pulumi.get(__response__, 'sort'),
+        tags=pulumi.get(__response__, 'tags')))

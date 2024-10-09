@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -584,9 +589,6 @@ def get_project_issue(iid: Optional[int] = None,
         user_notes_count=pulumi.get(__ret__, 'user_notes_count'),
         web_url=pulumi.get(__ret__, 'web_url'),
         weight=pulumi.get(__ret__, 'weight'))
-
-
-@_utilities.lift_output_func(get_project_issue)
 def get_project_issue_output(iid: Optional[pulumi.Input[int]] = None,
                              project: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectIssueResult]:
@@ -611,4 +613,49 @@ def get_project_issue_output(iid: Optional[pulumi.Input[int]] = None,
     :param int iid: The internal ID of the project's issue.
     :param str project: The name or ID of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['iid'] = iid
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectIssue:getProjectIssue', __args__, opts=opts, typ=GetProjectIssueResult)
+    return __ret__.apply(lambda __response__: GetProjectIssueResult(
+        assignee_ids=pulumi.get(__response__, 'assignee_ids'),
+        author_id=pulumi.get(__response__, 'author_id'),
+        closed_at=pulumi.get(__response__, 'closed_at'),
+        closed_by_user_id=pulumi.get(__response__, 'closed_by_user_id'),
+        confidential=pulumi.get(__response__, 'confidential'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        discussion_locked=pulumi.get(__response__, 'discussion_locked'),
+        discussion_to_resolve=pulumi.get(__response__, 'discussion_to_resolve'),
+        downvotes=pulumi.get(__response__, 'downvotes'),
+        due_date=pulumi.get(__response__, 'due_date'),
+        epic_id=pulumi.get(__response__, 'epic_id'),
+        epic_issue_id=pulumi.get(__response__, 'epic_issue_id'),
+        external_id=pulumi.get(__response__, 'external_id'),
+        human_time_estimate=pulumi.get(__response__, 'human_time_estimate'),
+        human_total_time_spent=pulumi.get(__response__, 'human_total_time_spent'),
+        id=pulumi.get(__response__, 'id'),
+        iid=pulumi.get(__response__, 'iid'),
+        issue_id=pulumi.get(__response__, 'issue_id'),
+        issue_link_id=pulumi.get(__response__, 'issue_link_id'),
+        issue_type=pulumi.get(__response__, 'issue_type'),
+        labels=pulumi.get(__response__, 'labels'),
+        links=pulumi.get(__response__, 'links'),
+        merge_request_to_resolve_discussions_of=pulumi.get(__response__, 'merge_request_to_resolve_discussions_of'),
+        merge_requests_count=pulumi.get(__response__, 'merge_requests_count'),
+        milestone_id=pulumi.get(__response__, 'milestone_id'),
+        moved_to_id=pulumi.get(__response__, 'moved_to_id'),
+        project=pulumi.get(__response__, 'project'),
+        references=pulumi.get(__response__, 'references'),
+        state=pulumi.get(__response__, 'state'),
+        subscribed=pulumi.get(__response__, 'subscribed'),
+        task_completion_statuses=pulumi.get(__response__, 'task_completion_statuses'),
+        time_estimate=pulumi.get(__response__, 'time_estimate'),
+        title=pulumi.get(__response__, 'title'),
+        total_time_spent=pulumi.get(__response__, 'total_time_spent'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        upvotes=pulumi.get(__response__, 'upvotes'),
+        user_notes_count=pulumi.get(__response__, 'user_notes_count'),
+        web_url=pulumi.get(__response__, 'web_url'),
+        weight=pulumi.get(__response__, 'weight')))

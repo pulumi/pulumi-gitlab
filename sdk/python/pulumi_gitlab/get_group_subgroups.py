@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -242,9 +247,6 @@ def get_group_subgroups(all_available: Optional[bool] = None,
         statistics=pulumi.get(__ret__, 'statistics'),
         subgroups=pulumi.get(__ret__, 'subgroups'),
         with_custom_attributes=pulumi.get(__ret__, 'with_custom_attributes'))
-
-
-@_utilities.lift_output_func(get_group_subgroups)
 def get_group_subgroups_output(all_available: Optional[pulumi.Input[Optional[bool]]] = None,
                                group_id: Optional[pulumi.Input[int]] = None,
                                min_access_level: Optional[pulumi.Input[Optional[str]]] = None,
@@ -283,4 +285,29 @@ def get_group_subgroups_output(all_available: Optional[pulumi.Input[Optional[boo
     :param bool statistics: Include group statistics (administrators only).
     :param bool with_custom_attributes: Include custom attributes in response (administrators only).
     """
-    ...
+    __args__ = dict()
+    __args__['allAvailable'] = all_available
+    __args__['groupId'] = group_id
+    __args__['minAccessLevel'] = min_access_level
+    __args__['orderBy'] = order_by
+    __args__['owned'] = owned
+    __args__['search'] = search
+    __args__['skipGroups'] = skip_groups
+    __args__['sort'] = sort
+    __args__['statistics'] = statistics
+    __args__['withCustomAttributes'] = with_custom_attributes
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupSubgroups:getGroupSubgroups', __args__, opts=opts, typ=GetGroupSubgroupsResult)
+    return __ret__.apply(lambda __response__: GetGroupSubgroupsResult(
+        all_available=pulumi.get(__response__, 'all_available'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        min_access_level=pulumi.get(__response__, 'min_access_level'),
+        order_by=pulumi.get(__response__, 'order_by'),
+        owned=pulumi.get(__response__, 'owned'),
+        search=pulumi.get(__response__, 'search'),
+        skip_groups=pulumi.get(__response__, 'skip_groups'),
+        sort=pulumi.get(__response__, 'sort'),
+        statistics=pulumi.get(__response__, 'statistics'),
+        subgroups=pulumi.get(__response__, 'subgroups'),
+        with_custom_attributes=pulumi.get(__response__, 'with_custom_attributes')))

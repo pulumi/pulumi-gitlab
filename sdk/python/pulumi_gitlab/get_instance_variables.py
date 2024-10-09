@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -79,9 +84,6 @@ def get_instance_variables(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     return AwaitableGetInstanceVariablesResult(
         id=pulumi.get(__ret__, 'id'),
         variables=pulumi.get(__ret__, 'variables'))
-
-
-@_utilities.lift_output_func(get_instance_variables)
 def get_instance_variables_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceVariablesResult]:
     """
     The `get_instance_variables` data source allows to retrieve all instance-level CI/CD variables.
@@ -97,4 +99,9 @@ def get_instance_variables_output(opts: Optional[pulumi.InvokeOptions] = None) -
     vars = gitlab.get_instance_variables()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getInstanceVariables:getInstanceVariables', __args__, opts=opts, typ=GetInstanceVariablesResult)
+    return __ret__.apply(lambda __response__: GetInstanceVariablesResult(
+        id=pulumi.get(__response__, 'id'),
+        variables=pulumi.get(__response__, 'variables')))

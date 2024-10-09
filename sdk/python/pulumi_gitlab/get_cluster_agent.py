@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -141,9 +146,6 @@ def get_cluster_agent(agent_id: Optional[int] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_cluster_agent)
 def get_cluster_agent_output(agent_id: Optional[pulumi.Input[int]] = None,
                              project: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterAgentResult]:
@@ -168,4 +170,15 @@ def get_cluster_agent_output(agent_id: Optional[pulumi.Input[int]] = None,
     :param int agent_id: The ID of the agent.
     :param str project: ID or full path of the project maintained by the authenticated user.
     """
-    ...
+    __args__ = dict()
+    __args__['agentId'] = agent_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getClusterAgent:getClusterAgent', __args__, opts=opts, typ=GetClusterAgentResult)
+    return __ret__.apply(lambda __response__: GetClusterAgentResult(
+        agent_id=pulumi.get(__response__, 'agent_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        created_by_user_id=pulumi.get(__response__, 'created_by_user_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project')))
