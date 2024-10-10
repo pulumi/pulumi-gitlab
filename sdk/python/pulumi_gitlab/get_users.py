@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -232,9 +237,6 @@ def get_users(active: Optional[bool] = None,
         search=pulumi.get(__ret__, 'search'),
         sort=pulumi.get(__ret__, 'sort'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_users)
 def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
                      blocked: Optional[pulumi.Input[Optional[bool]]] = None,
                      created_after: Optional[pulumi.Input[Optional[str]]] = None,
@@ -277,4 +279,27 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
     :param str search: Search users by username, name or email.
     :param str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
     """
-    ...
+    __args__ = dict()
+    __args__['active'] = active
+    __args__['blocked'] = blocked
+    __args__['createdAfter'] = created_after
+    __args__['createdBefore'] = created_before
+    __args__['externProvider'] = extern_provider
+    __args__['externUid'] = extern_uid
+    __args__['orderBy'] = order_by
+    __args__['search'] = search
+    __args__['sort'] = sort
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
+    return __ret__.apply(lambda __response__: GetUsersResult(
+        active=pulumi.get(__response__, 'active'),
+        blocked=pulumi.get(__response__, 'blocked'),
+        created_after=pulumi.get(__response__, 'created_after'),
+        created_before=pulumi.get(__response__, 'created_before'),
+        extern_provider=pulumi.get(__response__, 'extern_provider'),
+        extern_uid=pulumi.get(__response__, 'extern_uid'),
+        id=pulumi.get(__response__, 'id'),
+        order_by=pulumi.get(__response__, 'order_by'),
+        search=pulumi.get(__response__, 'search'),
+        sort=pulumi.get(__response__, 'sort'),
+        users=pulumi.get(__response__, 'users')))

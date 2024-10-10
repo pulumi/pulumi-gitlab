@@ -4,43 +4,101 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'ApplicationSettingsDefaultBranchProtectionDefaultsArgs',
+    'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict',
     'BranchCommitArgs',
+    'BranchCommitArgsDict',
     'BranchProtectionAllowedToMergeArgs',
+    'BranchProtectionAllowedToMergeArgsDict',
     'BranchProtectionAllowedToPushArgs',
+    'BranchProtectionAllowedToPushArgsDict',
     'BranchProtectionAllowedToUnprotectArgs',
+    'BranchProtectionAllowedToUnprotectArgsDict',
     'GroupAccessTokenRotationConfigurationArgs',
+    'GroupAccessTokenRotationConfigurationArgsDict',
     'GroupDefaultBranchProtectionDefaultsArgs',
+    'GroupDefaultBranchProtectionDefaultsArgsDict',
     'GroupEpicBoardListArgs',
+    'GroupEpicBoardListArgsDict',
     'GroupIssueBoardListArgs',
+    'GroupIssueBoardListArgsDict',
     'GroupProtectedEnvironmentApprovalRuleArgs',
+    'GroupProtectedEnvironmentApprovalRuleArgsDict',
     'GroupProtectedEnvironmentDeployAccessLevelArgs',
+    'GroupProtectedEnvironmentDeployAccessLevelArgsDict',
     'GroupPushRulesArgs',
+    'GroupPushRulesArgsDict',
     'ProjectAccessTokenRotationConfigurationArgs',
+    'ProjectAccessTokenRotationConfigurationArgsDict',
     'ProjectContainerExpirationPolicyArgs',
+    'ProjectContainerExpirationPolicyArgsDict',
     'ProjectIssueBoardListArgs',
+    'ProjectIssueBoardListArgsDict',
     'ProjectIssueTaskCompletionStatusArgs',
+    'ProjectIssueTaskCompletionStatusArgsDict',
     'ProjectProtectedEnvironmentApprovalRuleArgs',
+    'ProjectProtectedEnvironmentApprovalRuleArgsDict',
     'ProjectProtectedEnvironmentDeployAccessLevelArgs',
+    'ProjectProtectedEnvironmentDeployAccessLevelArgsDict',
     'ProjectPushRulesArgs',
+    'ProjectPushRulesArgsDict',
     'ProjectTagCommitArgs',
+    'ProjectTagCommitArgsDict',
     'ProjectTagReleaseArgs',
+    'ProjectTagReleaseArgsDict',
     'TagProtectionAllowedToCreateArgs',
+    'TagProtectionAllowedToCreateArgsDict',
     'GetProjectProtectedBranchMergeAccessLevelArgs',
+    'GetProjectProtectedBranchMergeAccessLevelArgsDict',
     'GetProjectProtectedBranchPushAccessLevelArgs',
+    'GetProjectProtectedBranchPushAccessLevelArgsDict',
     'GetProjectProtectedBranchesProtectedBranchArgs',
+    'GetProjectProtectedBranchesProtectedBranchArgsDict',
     'GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs',
+    'GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgsDict',
     'GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs',
+    'GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgsDict',
     'GetReleaseAssetsArgs',
+    'GetReleaseAssetsArgsDict',
     'GetReleaseAssetsLinkArgs',
+    'GetReleaseAssetsLinkArgsDict',
     'GetReleaseAssetsSourceArgs',
+    'GetReleaseAssetsSourceArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict(TypedDict):
+        allow_force_push: NotRequired[pulumi.Input[bool]]
+        """
+        Allow force push for all users with push access.
+        """
+        allowed_to_merges: NotRequired[pulumi.Input[Sequence[Any]]]
+        """
+        An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+        """
+        allowed_to_pushes: NotRequired[pulumi.Input[Sequence[Any]]]
+        """
+        An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+        """
+        developer_can_initial_push: NotRequired[pulumi.Input[bool]]
+        """
+        Allow developers to initial push.
+        """
+elif False:
+    ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationSettingsDefaultBranchProtectionDefaultsArgs:
@@ -112,6 +170,55 @@ class ApplicationSettingsDefaultBranchProtectionDefaultsArgs:
     def developer_can_initial_push(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "developer_can_initial_push", value)
 
+
+if not MYPY:
+    class BranchCommitArgsDict(TypedDict):
+        author_email: NotRequired[pulumi.Input[str]]
+        """
+        The email of the author.
+        """
+        author_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the author.
+        """
+        authored_date: NotRequired[pulumi.Input[str]]
+        """
+        The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
+        committed_date: NotRequired[pulumi.Input[str]]
+        """
+        The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
+        committer_email: NotRequired[pulumi.Input[str]]
+        """
+        The email of the user that committed.
+        """
+        committer_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the user that committed.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        The commit message
+        """
+        parent_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The id of the parents of the commit
+        """
+        short_id: NotRequired[pulumi.Input[str]]
+        """
+        The short id assigned to the commit by Gitlab.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the commit
+        """
+elif False:
+    BranchCommitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BranchCommitArgs:
@@ -296,6 +403,27 @@ class BranchCommitArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class BranchProtectionAllowedToMergeArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[str]]
+        """
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        """
+        access_level_description: NotRequired[pulumi.Input[str]]
+        """
+        Readable description of access level.
+        """
+        group_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        user_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+elif False:
+    BranchProtectionAllowedToMergeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BranchProtectionAllowedToMergeArgs:
     def __init__(__self__, *,
@@ -366,6 +494,27 @@ class BranchProtectionAllowedToMergeArgs:
     def user_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "user_id", value)
 
+
+if not MYPY:
+    class BranchProtectionAllowedToPushArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[str]]
+        """
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        """
+        access_level_description: NotRequired[pulumi.Input[str]]
+        """
+        Readable description of access level.
+        """
+        group_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        user_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+elif False:
+    BranchProtectionAllowedToPushArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BranchProtectionAllowedToPushArgs:
@@ -438,6 +587,27 @@ class BranchProtectionAllowedToPushArgs:
         pulumi.set(self, "user_id", value)
 
 
+if not MYPY:
+    class BranchProtectionAllowedToUnprotectArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[str]]
+        """
+        Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
+        """
+        access_level_description: NotRequired[pulumi.Input[str]]
+        """
+        Readable description of access level.
+        """
+        group_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        user_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+elif False:
+    BranchProtectionAllowedToUnprotectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BranchProtectionAllowedToUnprotectArgs:
     def __init__(__self__, *,
@@ -509,6 +679,19 @@ class BranchProtectionAllowedToUnprotectArgs:
         pulumi.set(self, "user_id", value)
 
 
+if not MYPY:
+    class GroupAccessTokenRotationConfigurationArgsDict(TypedDict):
+        expiration_days: pulumi.Input[int]
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        rotate_before_days: pulumi.Input[int]
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+elif False:
+    GroupAccessTokenRotationConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupAccessTokenRotationConfigurationArgs:
     def __init__(__self__, *,
@@ -545,6 +728,27 @@ class GroupAccessTokenRotationConfigurationArgs:
     def rotate_before_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "rotate_before_days", value)
 
+
+if not MYPY:
+    class GroupDefaultBranchProtectionDefaultsArgsDict(TypedDict):
+        allow_force_push: NotRequired[pulumi.Input[bool]]
+        """
+        Allow force push for all users with push access.
+        """
+        allowed_to_merges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+        """
+        allowed_to_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+        """
+        developer_can_initial_push: NotRequired[pulumi.Input[bool]]
+        """
+        Allow developers to initial push.
+        """
+elif False:
+    GroupDefaultBranchProtectionDefaultsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupDefaultBranchProtectionDefaultsArgs:
@@ -617,6 +821,23 @@ class GroupDefaultBranchProtectionDefaultsArgs:
         pulumi.set(self, "developer_can_initial_push", value)
 
 
+if not MYPY:
+    class GroupEpicBoardListArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the list.
+        """
+        label_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the label the list should be scoped to.
+        """
+        position: NotRequired[pulumi.Input[int]]
+        """
+        The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+        """
+elif False:
+    GroupEpicBoardListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupEpicBoardListArgs:
     def __init__(__self__, *,
@@ -672,6 +893,23 @@ class GroupEpicBoardListArgs:
         pulumi.set(self, "position", value)
 
 
+if not MYPY:
+    class GroupIssueBoardListArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the list.
+        """
+        label_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the label the list should be scoped to.
+        """
+        position: NotRequired[pulumi.Input[int]]
+        """
+        The explicit position of the list within the board, zero based.
+        """
+elif False:
+    GroupIssueBoardListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupIssueBoardListArgs:
     def __init__(__self__, *,
@@ -726,6 +964,39 @@ class GroupIssueBoardListArgs:
     def position(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "position", value)
 
+
+if not MYPY:
+    class GroupProtectedEnvironmentApprovalRuleArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[str]]
+        """
+        Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+        """
+        access_level_description: NotRequired[pulumi.Input[str]]
+        """
+        Readable description of level of access.
+        """
+        group_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
+        """
+        group_inheritance_type: NotRequired[pulumi.Input[int]]
+        """
+        Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The unique ID of the Approval Rules object.
+        """
+        required_approvals: NotRequired[pulumi.Input[int]]
+        """
+        The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+        """
+        user_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
+        """
+elif False:
+    GroupProtectedEnvironmentApprovalRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupProtectedEnvironmentApprovalRuleArgs:
@@ -846,6 +1117,35 @@ class GroupProtectedEnvironmentApprovalRuleArgs:
         pulumi.set(self, "user_id", value)
 
 
+if not MYPY:
+    class GroupProtectedEnvironmentDeployAccessLevelArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[str]]
+        """
+        Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+        """
+        access_level_description: NotRequired[pulumi.Input[str]]
+        """
+        Readable description of level of access.
+        """
+        group_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
+        """
+        group_inheritance_type: NotRequired[pulumi.Input[int]]
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The unique ID of the Deploy Access Level object.
+        """
+        user_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
+        """
+elif False:
+    GroupProtectedEnvironmentDeployAccessLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupProtectedEnvironmentDeployAccessLevelArgs:
     def __init__(__self__, *,
@@ -948,6 +1248,63 @@ class GroupProtectedEnvironmentDeployAccessLevelArgs:
     def user_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "user_id", value)
 
+
+if not MYPY:
+    class GroupPushRulesArgsDict(TypedDict):
+        author_email_regex: NotRequired[pulumi.Input[str]]
+        """
+        All commit author emails must match this regex, e.g. `@my-company.com$`.
+        """
+        branch_name_regex: NotRequired[pulumi.Input[str]]
+        """
+        All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
+        """
+        commit_committer_check: NotRequired[pulumi.Input[bool]]
+        """
+        Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        """
+        commit_committer_name_check: NotRequired[pulumi.Input[bool]]
+        """
+        Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        """
+        commit_message_negative_regex: NotRequired[pulumi.Input[str]]
+        """
+        No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        """
+        commit_message_regex: NotRequired[pulumi.Input[str]]
+        """
+        All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
+        """
+        deny_delete_tag: NotRequired[pulumi.Input[bool]]
+        """
+        Deny deleting a tag.
+        """
+        file_name_regex: NotRequired[pulumi.Input[str]]
+        """
+        Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
+        """
+        max_file_size: NotRequired[pulumi.Input[int]]
+        """
+        Maximum file size (MB) allowed.
+        """
+        member_check: NotRequired[pulumi.Input[bool]]
+        """
+        Allows only GitLab users to author commits.
+        """
+        prevent_secrets: NotRequired[pulumi.Input[bool]]
+        """
+        GitLab will reject any files that are likely to contain secrets.
+        """
+        reject_non_dco_commits: NotRequired[pulumi.Input[bool]]
+        """
+        Reject commit when it’s not DCO certified.
+        """
+        reject_unsigned_commits: NotRequired[pulumi.Input[bool]]
+        """
+        Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        """
+elif False:
+    GroupPushRulesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupPushRulesArgs:
@@ -1164,6 +1521,19 @@ class GroupPushRulesArgs:
         pulumi.set(self, "reject_unsigned_commits", value)
 
 
+if not MYPY:
+    class ProjectAccessTokenRotationConfigurationArgsDict(TypedDict):
+        expiration_days: pulumi.Input[int]
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        rotate_before_days: pulumi.Input[int]
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+elif False:
+    ProjectAccessTokenRotationConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectAccessTokenRotationConfigurationArgs:
     def __init__(__self__, *,
@@ -1200,6 +1570,43 @@ class ProjectAccessTokenRotationConfigurationArgs:
     def rotate_before_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "rotate_before_days", value)
 
+
+if not MYPY:
+    class ProjectContainerExpirationPolicyArgsDict(TypedDict):
+        cadence: NotRequired[pulumi.Input[str]]
+        """
+        The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the policy is enabled.
+        """
+        keep_n: NotRequired[pulumi.Input[int]]
+        """
+        The number of images to keep.
+        """
+        name_regex: NotRequired[pulumi.Input[str]]
+        """
+        The regular expression to match image names to delete.
+        """
+        name_regex_delete: NotRequired[pulumi.Input[str]]
+        """
+        The regular expression to match image names to delete.
+        """
+        name_regex_keep: NotRequired[pulumi.Input[str]]
+        """
+        The regular expression to match image names to keep.
+        """
+        next_run_at: NotRequired[pulumi.Input[str]]
+        """
+        The next time the policy will run.
+        """
+        older_than: NotRequired[pulumi.Input[str]]
+        """
+        The number of days to keep images.
+        """
+elif False:
+    ProjectContainerExpirationPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectContainerExpirationPolicyArgs:
@@ -1340,6 +1747,35 @@ class ProjectContainerExpirationPolicyArgs:
         pulumi.set(self, "older_than", value)
 
 
+if not MYPY:
+    class ProjectIssueBoardListArgsDict(TypedDict):
+        assignee_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the list
+        """
+        iteration_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the iteration the list should be scoped to. Requires a GitLab EE license.
+        """
+        label_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the label the list should be scoped to. Requires a GitLab EE license.
+        """
+        milestone_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+        """
+        position: NotRequired[pulumi.Input[int]]
+        """
+        The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+        """
+elif False:
+    ProjectIssueBoardListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectIssueBoardListArgs:
     def __init__(__self__, *,
@@ -1443,6 +1879,19 @@ class ProjectIssueBoardListArgs:
         pulumi.set(self, "position", value)
 
 
+if not MYPY:
+    class ProjectIssueTaskCompletionStatusArgsDict(TypedDict):
+        completed_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of tasks that are completed.
+        """
+        count: NotRequired[pulumi.Input[int]]
+        """
+        The number of tasks.
+        """
+elif False:
+    ProjectIssueTaskCompletionStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectIssueTaskCompletionStatusArgs:
     def __init__(__self__, *,
@@ -1481,6 +1930,39 @@ class ProjectIssueTaskCompletionStatusArgs:
     def count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "count", value)
 
+
+if not MYPY:
+    class ProjectProtectedEnvironmentApprovalRuleArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[str]]
+        """
+        Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+        """
+        access_level_description: NotRequired[pulumi.Input[str]]
+        """
+        Readable description of level of access.
+        """
+        group_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
+        """
+        group_inheritance_type: NotRequired[pulumi.Input[int]]
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The unique ID of the Approval Rules object.
+        """
+        required_approvals: NotRequired[pulumi.Input[int]]
+        """
+        The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
+        """
+        user_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
+        """
+elif False:
+    ProjectProtectedEnvironmentApprovalRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectProtectedEnvironmentApprovalRuleArgs:
@@ -1601,6 +2083,35 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
         pulumi.set(self, "user_id", value)
 
 
+if not MYPY:
+    class ProjectProtectedEnvironmentDeployAccessLevelArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[str]]
+        """
+        Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+        """
+        access_level_description: NotRequired[pulumi.Input[str]]
+        """
+        Readable description of level of access.
+        """
+        group_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
+        """
+        group_inheritance_type: NotRequired[pulumi.Input[int]]
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The unique ID of the Deploy Access Level object.
+        """
+        user_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
+        """
+elif False:
+    ProjectProtectedEnvironmentDeployAccessLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectProtectedEnvironmentDeployAccessLevelArgs:
     def __init__(__self__, *,
@@ -1703,6 +2214,63 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
     def user_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "user_id", value)
 
+
+if not MYPY:
+    class ProjectPushRulesArgsDict(TypedDict):
+        author_email_regex: NotRequired[pulumi.Input[str]]
+        """
+        All commit author emails must match this regex, e.g. `@my-company.com$`.
+        """
+        branch_name_regex: NotRequired[pulumi.Input[str]]
+        """
+        All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
+        """
+        commit_committer_check: NotRequired[pulumi.Input[bool]]
+        """
+        Users can only push commits to this repository that were committed with one of their own verified emails.
+        """
+        commit_committer_name_check: NotRequired[pulumi.Input[bool]]
+        """
+        Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
+        """
+        commit_message_negative_regex: NotRequired[pulumi.Input[str]]
+        """
+        No commit message is allowed to match this regex, e.g. `ssh\\:\\/\\/`.
+        """
+        commit_message_regex: NotRequired[pulumi.Input[str]]
+        """
+        All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
+        """
+        deny_delete_tag: NotRequired[pulumi.Input[bool]]
+        """
+        Deny deleting a tag.
+        """
+        file_name_regex: NotRequired[pulumi.Input[str]]
+        """
+        All committed filenames must not match this regex, e.g. `(jar|exe)$`.
+        """
+        max_file_size: NotRequired[pulumi.Input[int]]
+        """
+        Maximum file size (MB).
+        """
+        member_check: NotRequired[pulumi.Input[bool]]
+        """
+        Restrict commits by author (email) to existing GitLab users.
+        """
+        prevent_secrets: NotRequired[pulumi.Input[bool]]
+        """
+        GitLab will reject any files that are likely to contain secrets.
+        """
+        reject_non_dco_commits: NotRequired[pulumi.Input[bool]]
+        """
+        Reject commit when it’s not DCO certified.
+        """
+        reject_unsigned_commits: NotRequired[pulumi.Input[bool]]
+        """
+        Reject commit when it’s not signed through GPG.
+        """
+elif False:
+    ProjectPushRulesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectPushRulesArgs:
@@ -1919,6 +2487,55 @@ class ProjectPushRulesArgs:
         pulumi.set(self, "reject_unsigned_commits", value)
 
 
+if not MYPY:
+    class ProjectTagCommitArgsDict(TypedDict):
+        author_email: NotRequired[pulumi.Input[str]]
+        """
+        The email of the author.
+        """
+        author_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the author.
+        """
+        authored_date: NotRequired[pulumi.Input[str]]
+        """
+        The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
+        committed_date: NotRequired[pulumi.Input[str]]
+        """
+        The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
+        """
+        committer_email: NotRequired[pulumi.Input[str]]
+        """
+        The email of the user that committed.
+        """
+        committer_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the user that committed.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The unique id assigned to the commit by Gitlab.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        The commit message
+        """
+        parent_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The id of the parents of the commit
+        """
+        short_id: NotRequired[pulumi.Input[str]]
+        """
+        The short id assigned to the commit by Gitlab.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the commit
+        """
+elif False:
+    ProjectTagCommitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectTagCommitArgs:
     def __init__(__self__, *,
@@ -2102,6 +2719,19 @@ class ProjectTagCommitArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ProjectTagReleaseArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of release.
+        """
+        tag_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the tag.
+        """
+elif False:
+    ProjectTagReleaseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectTagReleaseArgs:
     def __init__(__self__, *,
@@ -2140,6 +2770,27 @@ class ProjectTagReleaseArgs:
     def tag_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag_name", value)
 
+
+if not MYPY:
+    class TagProtectionAllowedToCreateArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[str]]
+        """
+        Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+        """
+        access_level_description: NotRequired[pulumi.Input[str]]
+        """
+        Readable description of access level.
+        """
+        group_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        user_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+elif False:
+    TagProtectionAllowedToCreateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TagProtectionAllowedToCreateArgs:
@@ -2212,6 +2863,27 @@ class TagProtectionAllowedToCreateArgs:
         pulumi.set(self, "user_id", value)
 
 
+if not MYPY:
+    class GetProjectProtectedBranchMergeAccessLevelArgsDict(TypedDict):
+        access_level: str
+        """
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        """
+        access_level_description: str
+        """
+        Readable description of access level.
+        """
+        group_id: NotRequired[int]
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        user_id: NotRequired[int]
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+elif False:
+    GetProjectProtectedBranchMergeAccessLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetProjectProtectedBranchMergeAccessLevelArgs:
     def __init__(__self__, *,
@@ -2281,6 +2953,27 @@ class GetProjectProtectedBranchMergeAccessLevelArgs:
         pulumi.set(self, "user_id", value)
 
 
+if not MYPY:
+    class GetProjectProtectedBranchPushAccessLevelArgsDict(TypedDict):
+        access_level: str
+        """
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        """
+        access_level_description: str
+        """
+        Readable description of access level.
+        """
+        group_id: NotRequired[int]
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        user_id: NotRequired[int]
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+elif False:
+    GetProjectProtectedBranchPushAccessLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetProjectProtectedBranchPushAccessLevelArgs:
     def __init__(__self__, *,
@@ -2349,6 +3042,35 @@ class GetProjectProtectedBranchPushAccessLevelArgs:
     def user_id(self, value: Optional[int]):
         pulumi.set(self, "user_id", value)
 
+
+if not MYPY:
+    class GetProjectProtectedBranchesProtectedBranchArgsDict(TypedDict):
+        allow_force_push: bool
+        """
+        Whether force push is allowed.
+        """
+        code_owner_approval_required: bool
+        """
+        Reject code pushes that change files listed in the CODEOWNERS file.
+        """
+        id: int
+        """
+        The ID of this resource.
+        """
+        name: str
+        """
+        The name of the protected branch.
+        """
+        merge_access_levels: NotRequired[Sequence['GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgsDict']]
+        """
+        Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        """
+        push_access_levels: NotRequired[Sequence['GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgsDict']]
+        """
+        Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        """
+elif False:
+    GetProjectProtectedBranchesProtectedBranchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetProjectProtectedBranchesProtectedBranchArgs:
@@ -2449,6 +3171,27 @@ class GetProjectProtectedBranchesProtectedBranchArgs:
         pulumi.set(self, "push_access_levels", value)
 
 
+if not MYPY:
+    class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgsDict(TypedDict):
+        access_level: str
+        """
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        """
+        access_level_description: str
+        """
+        Readable description of access level.
+        """
+        group_id: NotRequired[int]
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        user_id: NotRequired[int]
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+elif False:
+    GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs:
     def __init__(__self__, *,
@@ -2517,6 +3260,27 @@ class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs:
     def user_id(self, value: Optional[int]):
         pulumi.set(self, "user_id", value)
 
+
+if not MYPY:
+    class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgsDict(TypedDict):
+        access_level: str
+        """
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        """
+        access_level_description: str
+        """
+        Readable description of access level.
+        """
+        group_id: NotRequired[int]
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        user_id: NotRequired[int]
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+elif False:
+    GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs:
@@ -2587,6 +3351,23 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs:
         pulumi.set(self, "user_id", value)
 
 
+if not MYPY:
+    class GetReleaseAssetsArgsDict(TypedDict):
+        count: int
+        """
+        The number of assets for a release
+        """
+        links: NotRequired[Sequence['GetReleaseAssetsLinkArgsDict']]
+        """
+        The links for a release
+        """
+        sources: NotRequired[Sequence['GetReleaseAssetsSourceArgsDict']]
+        """
+        The sources for a release
+        """
+elif False:
+    GetReleaseAssetsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetReleaseAssetsArgs:
     def __init__(__self__, *,
@@ -2640,6 +3421,27 @@ class GetReleaseAssetsArgs:
     def sources(self, value: Optional[Sequence['GetReleaseAssetsSourceArgs']]):
         pulumi.set(self, "sources", value)
 
+
+if not MYPY:
+    class GetReleaseAssetsLinkArgsDict(TypedDict):
+        id: int
+        """
+        The ID of the link
+        """
+        link_type: str
+        """
+        The type of the link
+        """
+        name: str
+        """
+        The name of the link
+        """
+        url: str
+        """
+        The URL of the link
+        """
+elif False:
+    GetReleaseAssetsLinkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetReleaseAssetsLinkArgs:
@@ -2707,6 +3509,19 @@ class GetReleaseAssetsLinkArgs:
     def url(self, value: str):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class GetReleaseAssetsSourceArgsDict(TypedDict):
+        format: str
+        """
+        The format of the source
+        """
+        url: str
+        """
+        The URL of the source
+        """
+elif False:
+    GetReleaseAssetsSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetReleaseAssetsSourceArgs:

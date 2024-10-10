@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -445,9 +450,6 @@ def get_projects(archived: Optional[bool] = None,
         with_merge_requests_enabled=pulumi.get(__ret__, 'with_merge_requests_enabled'),
         with_programming_language=pulumi.get(__ret__, 'with_programming_language'),
         with_shared=pulumi.get(__ret__, 'with_shared'))
-
-
-@_utilities.lift_output_func(get_projects)
 def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
                         group_id: Optional[pulumi.Input[Optional[int]]] = None,
                         include_subgroups: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -521,4 +523,53 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     :param str with_programming_language: Limit by projects which use the given programming language. Cannot be used with `group_id`.
     :param bool with_shared: Include projects shared to this group. Default is `true`. Needs `group_id`.
     """
-    ...
+    __args__ = dict()
+    __args__['archived'] = archived
+    __args__['groupId'] = group_id
+    __args__['includeSubgroups'] = include_subgroups
+    __args__['maxQueryablePages'] = max_queryable_pages
+    __args__['membership'] = membership
+    __args__['minAccessLevel'] = min_access_level
+    __args__['orderBy'] = order_by
+    __args__['owned'] = owned
+    __args__['page'] = page
+    __args__['perPage'] = per_page
+    __args__['search'] = search
+    __args__['simple'] = simple
+    __args__['sort'] = sort
+    __args__['starred'] = starred
+    __args__['statistics'] = statistics
+    __args__['topics'] = topics
+    __args__['visibility'] = visibility
+    __args__['withCustomAttributes'] = with_custom_attributes
+    __args__['withIssuesEnabled'] = with_issues_enabled
+    __args__['withMergeRequestsEnabled'] = with_merge_requests_enabled
+    __args__['withProgrammingLanguage'] = with_programming_language
+    __args__['withShared'] = with_shared
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjects:getProjects', __args__, opts=opts, typ=GetProjectsResult)
+    return __ret__.apply(lambda __response__: GetProjectsResult(
+        archived=pulumi.get(__response__, 'archived'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        include_subgroups=pulumi.get(__response__, 'include_subgroups'),
+        max_queryable_pages=pulumi.get(__response__, 'max_queryable_pages'),
+        membership=pulumi.get(__response__, 'membership'),
+        min_access_level=pulumi.get(__response__, 'min_access_level'),
+        order_by=pulumi.get(__response__, 'order_by'),
+        owned=pulumi.get(__response__, 'owned'),
+        page=pulumi.get(__response__, 'page'),
+        per_page=pulumi.get(__response__, 'per_page'),
+        projects=pulumi.get(__response__, 'projects'),
+        search=pulumi.get(__response__, 'search'),
+        simple=pulumi.get(__response__, 'simple'),
+        sort=pulumi.get(__response__, 'sort'),
+        starred=pulumi.get(__response__, 'starred'),
+        statistics=pulumi.get(__response__, 'statistics'),
+        topics=pulumi.get(__response__, 'topics'),
+        visibility=pulumi.get(__response__, 'visibility'),
+        with_custom_attributes=pulumi.get(__response__, 'with_custom_attributes'),
+        with_issues_enabled=pulumi.get(__response__, 'with_issues_enabled'),
+        with_merge_requests_enabled=pulumi.get(__response__, 'with_merge_requests_enabled'),
+        with_programming_language=pulumi.get(__response__, 'with_programming_language'),
+        with_shared=pulumi.get(__response__, 'with_shared')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -234,9 +239,6 @@ def get_repository_file(file_path: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         ref=pulumi.get(__ret__, 'ref'),
         size=pulumi.get(__ret__, 'size'))
-
-
-@_utilities.lift_output_func(get_repository_file)
 def get_repository_file_output(file_path: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[str]] = None,
                                ref: Optional[pulumi.Input[str]] = None,
@@ -262,4 +264,23 @@ def get_repository_file_output(file_path: Optional[pulumi.Input[str]] = None,
     :param str project: The name or ID of the project.
     :param str ref: The name of branch, tag or commit.
     """
-    ...
+    __args__ = dict()
+    __args__['filePath'] = file_path
+    __args__['project'] = project
+    __args__['ref'] = ref
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getRepositoryFile:getRepositoryFile', __args__, opts=opts, typ=GetRepositoryFileResult)
+    return __ret__.apply(lambda __response__: GetRepositoryFileResult(
+        blob_id=pulumi.get(__response__, 'blob_id'),
+        commit_id=pulumi.get(__response__, 'commit_id'),
+        content=pulumi.get(__response__, 'content'),
+        content_sha256=pulumi.get(__response__, 'content_sha256'),
+        encoding=pulumi.get(__response__, 'encoding'),
+        execute_filemode=pulumi.get(__response__, 'execute_filemode'),
+        file_name=pulumi.get(__response__, 'file_name'),
+        file_path=pulumi.get(__response__, 'file_path'),
+        id=pulumi.get(__response__, 'id'),
+        last_commit_id=pulumi.get(__response__, 'last_commit_id'),
+        project=pulumi.get(__response__, 'project'),
+        ref=pulumi.get(__response__, 'ref'),
+        size=pulumi.get(__response__, 'size')))

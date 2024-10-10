@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -452,9 +457,6 @@ def get_user(email: Optional[str] = None,
         user_provider=pulumi.get(__ret__, 'user_provider'),
         username=pulumi.get(__ret__, 'username'),
         website_url=pulumi.get(__ret__, 'website_url'))
-
-
-@_utilities.lift_output_func(get_user)
 def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
                     namespace_id: Optional[pulumi.Input[Optional[int]]] = None,
                     user_id: Optional[pulumi.Input[Optional[int]]] = None,
@@ -476,4 +478,41 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
     :param int user_id: The ID of the user.
     :param str username: The username of the user.
     """
-    ...
+    __args__ = dict()
+    __args__['email'] = email
+    __args__['namespaceId'] = namespace_id
+    __args__['userId'] = user_id
+    __args__['username'] = username
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    return __ret__.apply(lambda __response__: GetUserResult(
+        avatar_url=pulumi.get(__response__, 'avatar_url'),
+        bio=pulumi.get(__response__, 'bio'),
+        can_create_group=pulumi.get(__response__, 'can_create_group'),
+        can_create_project=pulumi.get(__response__, 'can_create_project'),
+        color_scheme_id=pulumi.get(__response__, 'color_scheme_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        current_sign_in_at=pulumi.get(__response__, 'current_sign_in_at'),
+        email=pulumi.get(__response__, 'email'),
+        extern_uid=pulumi.get(__response__, 'extern_uid'),
+        external=pulumi.get(__response__, 'external'),
+        id=pulumi.get(__response__, 'id'),
+        is_admin=pulumi.get(__response__, 'is_admin'),
+        is_bot=pulumi.get(__response__, 'is_bot'),
+        last_sign_in_at=pulumi.get(__response__, 'last_sign_in_at'),
+        linkedin=pulumi.get(__response__, 'linkedin'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        namespace_id=pulumi.get(__response__, 'namespace_id'),
+        note=pulumi.get(__response__, 'note'),
+        organization=pulumi.get(__response__, 'organization'),
+        projects_limit=pulumi.get(__response__, 'projects_limit'),
+        skype=pulumi.get(__response__, 'skype'),
+        state=pulumi.get(__response__, 'state'),
+        theme_id=pulumi.get(__response__, 'theme_id'),
+        twitter=pulumi.get(__response__, 'twitter'),
+        two_factor_enabled=pulumi.get(__response__, 'two_factor_enabled'),
+        user_id=pulumi.get(__response__, 'user_id'),
+        user_provider=pulumi.get(__response__, 'user_provider'),
+        username=pulumi.get(__response__, 'username'),
+        website_url=pulumi.get(__response__, 'website_url')))

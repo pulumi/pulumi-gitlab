@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -90,9 +95,6 @@ def get_instance_deploy_keys(public: Optional[bool] = None,
         deploy_keys=pulumi.get(__ret__, 'deploy_keys'),
         id=pulumi.get(__ret__, 'id'),
         public=pulumi.get(__ret__, 'public'))
-
-
-@_utilities.lift_output_func(get_instance_deploy_keys)
 def get_instance_deploy_keys_output(public: Optional[pulumi.Input[Optional[bool]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceDeployKeysResult]:
     """
@@ -105,4 +107,11 @@ def get_instance_deploy_keys_output(public: Optional[pulumi.Input[Optional[bool]
 
     :param bool public: Only return deploy keys that are public.
     """
-    ...
+    __args__ = dict()
+    __args__['public'] = public
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys', __args__, opts=opts, typ=GetInstanceDeployKeysResult)
+    return __ret__.apply(lambda __response__: GetInstanceDeployKeysResult(
+        deploy_keys=pulumi.get(__response__, 'deploy_keys'),
+        id=pulumi.get(__response__, 'id'),
+        public=pulumi.get(__response__, 'public')))

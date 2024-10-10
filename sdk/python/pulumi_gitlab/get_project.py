@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -916,9 +921,6 @@ def get_project(ci_default_git_depth: Optional[int] = None,
         web_url=pulumi.get(__ret__, 'web_url'),
         wiki_access_level=pulumi.get(__ret__, 'wiki_access_level'),
         wiki_enabled=pulumi.get(__ret__, 'wiki_enabled'))
-
-
-@_utilities.lift_output_func(get_project)
 def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]]] = None,
                        id: Optional[pulumi.Input[Optional[str]]] = None,
                        path_with_namespace: Optional[pulumi.Input[Optional[str]]] = None,
@@ -935,4 +937,77 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]
     :param str path_with_namespace: The path of the repository with namespace.
     :param bool public_builds: If true, jobs can be viewed by non-project members.
     """
-    ...
+    __args__ = dict()
+    __args__['ciDefaultGitDepth'] = ci_default_git_depth
+    __args__['id'] = id
+    __args__['pathWithNamespace'] = path_with_namespace
+    __args__['publicBuilds'] = public_builds
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
+    return __ret__.apply(lambda __response__: GetProjectResult(
+        analytics_access_level=pulumi.get(__response__, 'analytics_access_level'),
+        archived=pulumi.get(__response__, 'archived'),
+        auto_cancel_pending_pipelines=pulumi.get(__response__, 'auto_cancel_pending_pipelines'),
+        auto_devops_deploy_strategy=pulumi.get(__response__, 'auto_devops_deploy_strategy'),
+        auto_devops_enabled=pulumi.get(__response__, 'auto_devops_enabled'),
+        autoclose_referenced_issues=pulumi.get(__response__, 'autoclose_referenced_issues'),
+        build_git_strategy=pulumi.get(__response__, 'build_git_strategy'),
+        build_timeout=pulumi.get(__response__, 'build_timeout'),
+        builds_access_level=pulumi.get(__response__, 'builds_access_level'),
+        ci_config_path=pulumi.get(__response__, 'ci_config_path'),
+        ci_default_git_depth=pulumi.get(__response__, 'ci_default_git_depth'),
+        ci_restrict_pipeline_cancellation_role=pulumi.get(__response__, 'ci_restrict_pipeline_cancellation_role'),
+        ci_separated_caches=pulumi.get(__response__, 'ci_separated_caches'),
+        container_expiration_policies=pulumi.get(__response__, 'container_expiration_policies'),
+        container_registry_access_level=pulumi.get(__response__, 'container_registry_access_level'),
+        default_branch=pulumi.get(__response__, 'default_branch'),
+        description=pulumi.get(__response__, 'description'),
+        emails_enabled=pulumi.get(__response__, 'emails_enabled'),
+        empty_repo=pulumi.get(__response__, 'empty_repo'),
+        environments_access_level=pulumi.get(__response__, 'environments_access_level'),
+        external_authorization_classification_label=pulumi.get(__response__, 'external_authorization_classification_label'),
+        feature_flags_access_level=pulumi.get(__response__, 'feature_flags_access_level'),
+        forking_access_level=pulumi.get(__response__, 'forking_access_level'),
+        http_url_to_repo=pulumi.get(__response__, 'http_url_to_repo'),
+        id=pulumi.get(__response__, 'id'),
+        import_url=pulumi.get(__response__, 'import_url'),
+        infrastructure_access_level=pulumi.get(__response__, 'infrastructure_access_level'),
+        issues_access_level=pulumi.get(__response__, 'issues_access_level'),
+        issues_enabled=pulumi.get(__response__, 'issues_enabled'),
+        keep_latest_artifact=pulumi.get(__response__, 'keep_latest_artifact'),
+        lfs_enabled=pulumi.get(__response__, 'lfs_enabled'),
+        merge_commit_template=pulumi.get(__response__, 'merge_commit_template'),
+        merge_pipelines_enabled=pulumi.get(__response__, 'merge_pipelines_enabled'),
+        merge_requests_access_level=pulumi.get(__response__, 'merge_requests_access_level'),
+        merge_requests_enabled=pulumi.get(__response__, 'merge_requests_enabled'),
+        merge_trains_enabled=pulumi.get(__response__, 'merge_trains_enabled'),
+        monitor_access_level=pulumi.get(__response__, 'monitor_access_level'),
+        name=pulumi.get(__response__, 'name'),
+        namespace_id=pulumi.get(__response__, 'namespace_id'),
+        path=pulumi.get(__response__, 'path'),
+        path_with_namespace=pulumi.get(__response__, 'path_with_namespace'),
+        pipelines_enabled=pulumi.get(__response__, 'pipelines_enabled'),
+        printing_merge_request_link_enabled=pulumi.get(__response__, 'printing_merge_request_link_enabled'),
+        public_builds=pulumi.get(__response__, 'public_builds'),
+        push_rules=pulumi.get(__response__, 'push_rules'),
+        releases_access_level=pulumi.get(__response__, 'releases_access_level'),
+        remove_source_branch_after_merge=pulumi.get(__response__, 'remove_source_branch_after_merge'),
+        repository_access_level=pulumi.get(__response__, 'repository_access_level'),
+        repository_storage=pulumi.get(__response__, 'repository_storage'),
+        request_access_enabled=pulumi.get(__response__, 'request_access_enabled'),
+        requirements_access_level=pulumi.get(__response__, 'requirements_access_level'),
+        resolve_outdated_diff_discussions=pulumi.get(__response__, 'resolve_outdated_diff_discussions'),
+        restrict_user_defined_variables=pulumi.get(__response__, 'restrict_user_defined_variables'),
+        runners_token=pulumi.get(__response__, 'runners_token'),
+        security_and_compliance_access_level=pulumi.get(__response__, 'security_and_compliance_access_level'),
+        shared_with_groups=pulumi.get(__response__, 'shared_with_groups'),
+        snippets_access_level=pulumi.get(__response__, 'snippets_access_level'),
+        snippets_enabled=pulumi.get(__response__, 'snippets_enabled'),
+        squash_commit_template=pulumi.get(__response__, 'squash_commit_template'),
+        ssh_url_to_repo=pulumi.get(__response__, 'ssh_url_to_repo'),
+        suggestion_commit_message=pulumi.get(__response__, 'suggestion_commit_message'),
+        topics=pulumi.get(__response__, 'topics'),
+        visibility_level=pulumi.get(__response__, 'visibility_level'),
+        web_url=pulumi.get(__response__, 'web_url'),
+        wiki_access_level=pulumi.get(__response__, 'wiki_access_level'),
+        wiki_enabled=pulumi.get(__response__, 'wiki_enabled')))
