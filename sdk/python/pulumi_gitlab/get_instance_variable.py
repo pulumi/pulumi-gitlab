@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -161,9 +166,6 @@ def get_instance_variable(key: Optional[str] = None,
         raw=pulumi.get(__ret__, 'raw'),
         value=pulumi.get(__ret__, 'value'),
         variable_type=pulumi.get(__ret__, 'variable_type'))
-
-
-@_utilities.lift_output_func(get_instance_variable)
 def get_instance_variable_output(key: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceVariableResult]:
     """
@@ -183,4 +185,16 @@ def get_instance_variable_output(key: Optional[pulumi.Input[str]] = None,
 
     :param str key: The name of the variable.
     """
-    ...
+    __args__ = dict()
+    __args__['key'] = key
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getInstanceVariable:getInstanceVariable', __args__, opts=opts, typ=GetInstanceVariableResult)
+    return __ret__.apply(lambda __response__: GetInstanceVariableResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        key=pulumi.get(__response__, 'key'),
+        masked=pulumi.get(__response__, 'masked'),
+        protected=pulumi.get(__response__, 'protected'),
+        raw=pulumi.get(__response__, 'raw'),
+        value=pulumi.get(__response__, 'value'),
+        variable_type=pulumi.get(__response__, 'variable_type')))

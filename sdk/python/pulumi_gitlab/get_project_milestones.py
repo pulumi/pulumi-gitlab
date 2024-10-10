@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -168,9 +173,6 @@ def get_project_milestones(iids: Optional[Sequence[int]] = None,
         search=pulumi.get(__ret__, 'search'),
         state=pulumi.get(__ret__, 'state'),
         title=pulumi.get(__ret__, 'title'))
-
-
-@_utilities.lift_output_func(get_project_milestones)
 def get_project_milestones_output(iids: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                                   include_parent_milestones: Optional[pulumi.Input[Optional[bool]]] = None,
                                   project: Optional[pulumi.Input[str]] = None,
@@ -191,4 +193,21 @@ def get_project_milestones_output(iids: Optional[pulumi.Input[Optional[Sequence[
     :param str state: Return only `active` or `closed` milestones.
     :param str title: Return only the milestones having the given `title`.
     """
-    ...
+    __args__ = dict()
+    __args__['iids'] = iids
+    __args__['includeParentMilestones'] = include_parent_milestones
+    __args__['project'] = project
+    __args__['search'] = search
+    __args__['state'] = state
+    __args__['title'] = title
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectMilestones:getProjectMilestones', __args__, opts=opts, typ=GetProjectMilestonesResult)
+    return __ret__.apply(lambda __response__: GetProjectMilestonesResult(
+        id=pulumi.get(__response__, 'id'),
+        iids=pulumi.get(__response__, 'iids'),
+        include_parent_milestones=pulumi.get(__response__, 'include_parent_milestones'),
+        milestones=pulumi.get(__response__, 'milestones'),
+        project=pulumi.get(__response__, 'project'),
+        search=pulumi.get(__response__, 'search'),
+        state=pulumi.get(__response__, 'state'),
+        title=pulumi.get(__response__, 'title')))

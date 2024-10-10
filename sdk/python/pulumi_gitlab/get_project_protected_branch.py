@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -150,9 +155,6 @@ def get_project_protected_branch(merge_access_levels: Optional[Sequence[Union['G
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         push_access_levels=pulumi.get(__ret__, 'push_access_levels'))
-
-
-@_utilities.lift_output_func(get_project_protected_branch)
 def get_project_protected_branch_output(merge_access_levels: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectProtectedBranchMergeAccessLevelArgs', 'GetProjectProtectedBranchMergeAccessLevelArgsDict']]]]] = None,
                                         name: Optional[pulumi.Input[str]] = None,
                                         project_id: Optional[pulumi.Input[str]] = None,
@@ -169,4 +171,18 @@ def get_project_protected_branch_output(merge_access_levels: Optional[pulumi.Inp
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
     :param Sequence[Union['GetProjectProtectedBranchPushAccessLevelArgs', 'GetProjectProtectedBranchPushAccessLevelArgsDict']] push_access_levels: Array of access levels and user(s)/group(s) allowed to push to protected branch.
     """
-    ...
+    __args__ = dict()
+    __args__['mergeAccessLevels'] = merge_access_levels
+    __args__['name'] = name
+    __args__['projectId'] = project_id
+    __args__['pushAccessLevels'] = push_access_levels
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch', __args__, opts=opts, typ=GetProjectProtectedBranchResult)
+    return __ret__.apply(lambda __response__: GetProjectProtectedBranchResult(
+        allow_force_push=pulumi.get(__response__, 'allow_force_push'),
+        code_owner_approval_required=pulumi.get(__response__, 'code_owner_approval_required'),
+        id=pulumi.get(__response__, 'id'),
+        merge_access_levels=pulumi.get(__response__, 'merge_access_levels'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        push_access_levels=pulumi.get(__response__, 'push_access_levels')))

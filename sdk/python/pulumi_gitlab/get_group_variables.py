@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -116,9 +121,6 @@ def get_group_variables(environment_scope: Optional[str] = None,
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         variables=pulumi.get(__ret__, 'variables'))
-
-
-@_utilities.lift_output_func(get_group_variables)
 def get_group_variables_output(environment_scope: Optional[pulumi.Input[Optional[str]]] = None,
                                group: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupVariablesResult]:
@@ -143,4 +145,13 @@ def get_group_variables_output(environment_scope: Optional[pulumi.Input[Optional
     :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
     :param str group: The name or id of the group.
     """
-    ...
+    __args__ = dict()
+    __args__['environmentScope'] = environment_scope
+    __args__['group'] = group
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupVariables:getGroupVariables', __args__, opts=opts, typ=GetGroupVariablesResult)
+    return __ret__.apply(lambda __response__: GetGroupVariablesResult(
+        environment_scope=pulumi.get(__response__, 'environment_scope'),
+        group=pulumi.get(__response__, 'group'),
+        id=pulumi.get(__response__, 'id'),
+        variables=pulumi.get(__response__, 'variables')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -233,9 +238,6 @@ def get_project_milestone(milestone_id: Optional[int] = None,
         title=pulumi.get(__ret__, 'title'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         web_url=pulumi.get(__ret__, 'web_url'))
-
-
-@_utilities.lift_output_func(get_project_milestone)
 def get_project_milestone_output(milestone_id: Optional[pulumi.Input[int]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectMilestoneResult]:
@@ -248,4 +250,23 @@ def get_project_milestone_output(milestone_id: Optional[pulumi.Input[int]] = Non
     :param int milestone_id: The instance-wide ID of the project’s milestone.
     :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
     """
-    ...
+    __args__ = dict()
+    __args__['milestoneId'] = milestone_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectMilestone:getProjectMilestone', __args__, opts=opts, typ=GetProjectMilestoneResult)
+    return __ret__.apply(lambda __response__: GetProjectMilestoneResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        due_date=pulumi.get(__response__, 'due_date'),
+        expired=pulumi.get(__response__, 'expired'),
+        id=pulumi.get(__response__, 'id'),
+        iid=pulumi.get(__response__, 'iid'),
+        milestone_id=pulumi.get(__response__, 'milestone_id'),
+        project=pulumi.get(__response__, 'project'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        start_date=pulumi.get(__response__, 'start_date'),
+        state=pulumi.get(__response__, 'state'),
+        title=pulumi.get(__response__, 'title'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        web_url=pulumi.get(__response__, 'web_url')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -162,9 +167,6 @@ def get_compliance_framework(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         namespace_path=pulumi.get(__ret__, 'namespace_path'),
         pipeline_configuration_full_path=pulumi.get(__ret__, 'pipeline_configuration_full_path'))
-
-
-@_utilities.lift_output_func(get_compliance_framework)
 def get_compliance_framework_output(name: Optional[pulumi.Input[str]] = None,
                                     namespace_path: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComplianceFrameworkResult]:
@@ -187,4 +189,17 @@ def get_compliance_framework_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: Name for the compliance framework.
     :param str namespace_path: Full path of the namespace to where the compliance framework is.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['namespacePath'] = namespace_path
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getComplianceFramework:getComplianceFramework', __args__, opts=opts, typ=GetComplianceFrameworkResult)
+    return __ret__.apply(lambda __response__: GetComplianceFrameworkResult(
+        color=pulumi.get(__response__, 'color'),
+        default=pulumi.get(__response__, 'default'),
+        description=pulumi.get(__response__, 'description'),
+        framework_id=pulumi.get(__response__, 'framework_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        namespace_path=pulumi.get(__response__, 'namespace_path'),
+        pipeline_configuration_full_path=pulumi.get(__response__, 'pipeline_configuration_full_path')))

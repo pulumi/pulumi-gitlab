@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -104,9 +109,6 @@ def get_release_links(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         release_links=pulumi.get(__ret__, 'release_links'),
         tag_name=pulumi.get(__ret__, 'tag_name'))
-
-
-@_utilities.lift_output_func(get_release_links)
 def get_release_links_output(project: Optional[pulumi.Input[str]] = None,
                              tag_name: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReleaseLinksResult]:
@@ -119,4 +121,13 @@ def get_release_links_output(project: Optional[pulumi.Input[str]] = None,
     :param str project: The ID or full path to the project.
     :param str tag_name: The tag associated with the Release.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['tagName'] = tag_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getReleaseLinks:getReleaseLinks', __args__, opts=opts, typ=GetReleaseLinksResult)
+    return __ret__.apply(lambda __response__: GetReleaseLinksResult(
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        release_links=pulumi.get(__response__, 'release_links'),
+        tag_name=pulumi.get(__response__, 'tag_name')))

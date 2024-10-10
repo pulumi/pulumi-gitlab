@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -499,9 +504,6 @@ def get_project_issues(assignee_id: Optional[int] = None,
         updated_before=pulumi.get(__ret__, 'updated_before'),
         weight=pulumi.get(__ret__, 'weight'),
         with_labels_details=pulumi.get(__ret__, 'with_labels_details'))
-
-
-@_utilities.lift_output_func(get_project_issues)
 def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]] = None,
                               assignee_username: Optional[pulumi.Input[Optional[str]]] = None,
                               author_id: Optional[pulumi.Input[Optional[int]]] = None,
@@ -573,4 +575,61 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
     :param int weight: Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
     :param bool with_labels_details: If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
     """
-    ...
+    __args__ = dict()
+    __args__['assigneeId'] = assignee_id
+    __args__['assigneeUsername'] = assignee_username
+    __args__['authorId'] = author_id
+    __args__['confidential'] = confidential
+    __args__['createdAfter'] = created_after
+    __args__['createdBefore'] = created_before
+    __args__['dueDate'] = due_date
+    __args__['iids'] = iids
+    __args__['issueType'] = issue_type
+    __args__['labels'] = labels
+    __args__['milestone'] = milestone
+    __args__['myReactionEmoji'] = my_reaction_emoji
+    __args__['notAssigneeIds'] = not_assignee_ids
+    __args__['notAuthorIds'] = not_author_ids
+    __args__['notLabels'] = not_labels
+    __args__['notMilestone'] = not_milestone
+    __args__['notMyReactionEmojis'] = not_my_reaction_emojis
+    __args__['orderBy'] = order_by
+    __args__['project'] = project
+    __args__['scope'] = scope
+    __args__['search'] = search
+    __args__['sort'] = sort
+    __args__['updatedAfter'] = updated_after
+    __args__['updatedBefore'] = updated_before
+    __args__['weight'] = weight
+    __args__['withLabelsDetails'] = with_labels_details
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectIssues:getProjectIssues', __args__, opts=opts, typ=GetProjectIssuesResult)
+    return __ret__.apply(lambda __response__: GetProjectIssuesResult(
+        assignee_id=pulumi.get(__response__, 'assignee_id'),
+        assignee_username=pulumi.get(__response__, 'assignee_username'),
+        author_id=pulumi.get(__response__, 'author_id'),
+        confidential=pulumi.get(__response__, 'confidential'),
+        created_after=pulumi.get(__response__, 'created_after'),
+        created_before=pulumi.get(__response__, 'created_before'),
+        due_date=pulumi.get(__response__, 'due_date'),
+        id=pulumi.get(__response__, 'id'),
+        iids=pulumi.get(__response__, 'iids'),
+        issue_type=pulumi.get(__response__, 'issue_type'),
+        issues=pulumi.get(__response__, 'issues'),
+        labels=pulumi.get(__response__, 'labels'),
+        milestone=pulumi.get(__response__, 'milestone'),
+        my_reaction_emoji=pulumi.get(__response__, 'my_reaction_emoji'),
+        not_assignee_ids=pulumi.get(__response__, 'not_assignee_ids'),
+        not_author_ids=pulumi.get(__response__, 'not_author_ids'),
+        not_labels=pulumi.get(__response__, 'not_labels'),
+        not_milestone=pulumi.get(__response__, 'not_milestone'),
+        not_my_reaction_emojis=pulumi.get(__response__, 'not_my_reaction_emojis'),
+        order_by=pulumi.get(__response__, 'order_by'),
+        project=pulumi.get(__response__, 'project'),
+        scope=pulumi.get(__response__, 'scope'),
+        search=pulumi.get(__response__, 'search'),
+        sort=pulumi.get(__response__, 'sort'),
+        updated_after=pulumi.get(__response__, 'updated_after'),
+        updated_before=pulumi.get(__response__, 'updated_before'),
+        weight=pulumi.get(__response__, 'weight'),
+        with_labels_details=pulumi.get(__response__, 'with_labels_details')))
