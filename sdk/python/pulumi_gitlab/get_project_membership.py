@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -138,9 +143,6 @@ def get_project_membership(full_path: Optional[str] = None,
         members=pulumi.get(__ret__, 'members'),
         project_id=pulumi.get(__ret__, 'project_id'),
         query=pulumi.get(__ret__, 'query'))
-
-
-@_utilities.lift_output_func(get_project_membership)
 def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
                                   inherited: Optional[pulumi.Input[Optional[bool]]] = None,
                                   project_id: Optional[pulumi.Input[Optional[int]]] = None,
@@ -159,4 +161,17 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]
     :param int project_id: The ID of the project.
     :param str query: A query string to search for members
     """
-    ...
+    __args__ = dict()
+    __args__['fullPath'] = full_path
+    __args__['inherited'] = inherited
+    __args__['projectId'] = project_id
+    __args__['query'] = query
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectMembership:getProjectMembership', __args__, opts=opts, typ=GetProjectMembershipResult)
+    return __ret__.apply(lambda __response__: GetProjectMembershipResult(
+        full_path=pulumi.get(__response__, 'full_path'),
+        id=pulumi.get(__response__, 'id'),
+        inherited=pulumi.get(__response__, 'inherited'),
+        members=pulumi.get(__response__, 'members'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        query=pulumi.get(__response__, 'query')))

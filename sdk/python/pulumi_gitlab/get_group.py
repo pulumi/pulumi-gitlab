@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -325,9 +330,6 @@ def get_group(full_path: Optional[str] = None,
         visibility_level=pulumi.get(__ret__, 'visibility_level'),
         web_url=pulumi.get(__ret__, 'web_url'),
         wiki_access_level=pulumi.get(__ret__, 'wiki_access_level'))
-
-
-@_utilities.lift_output_func(get_group)
 def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
                      group_id: Optional[pulumi.Input[Optional[int]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
@@ -340,4 +342,30 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
     :param str full_path: The full path of the group.
     :param int group_id: The ID of the group.
     """
-    ...
+    __args__ = dict()
+    __args__['fullPath'] = full_path
+    __args__['groupId'] = group_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
+    return __ret__.apply(lambda __response__: GetGroupResult(
+        default_branch_protection=pulumi.get(__response__, 'default_branch_protection'),
+        description=pulumi.get(__response__, 'description'),
+        extra_shared_runners_minutes_limit=pulumi.get(__response__, 'extra_shared_runners_minutes_limit'),
+        full_name=pulumi.get(__response__, 'full_name'),
+        full_path=pulumi.get(__response__, 'full_path'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        lfs_enabled=pulumi.get(__response__, 'lfs_enabled'),
+        membership_lock=pulumi.get(__response__, 'membership_lock'),
+        name=pulumi.get(__response__, 'name'),
+        parent_id=pulumi.get(__response__, 'parent_id'),
+        path=pulumi.get(__response__, 'path'),
+        prevent_forking_outside_group=pulumi.get(__response__, 'prevent_forking_outside_group'),
+        request_access_enabled=pulumi.get(__response__, 'request_access_enabled'),
+        runners_token=pulumi.get(__response__, 'runners_token'),
+        shared_runners_minutes_limit=pulumi.get(__response__, 'shared_runners_minutes_limit'),
+        shared_runners_setting=pulumi.get(__response__, 'shared_runners_setting'),
+        shared_with_groups=pulumi.get(__response__, 'shared_with_groups'),
+        visibility_level=pulumi.get(__response__, 'visibility_level'),
+        web_url=pulumi.get(__response__, 'web_url'),
+        wiki_access_level=pulumi.get(__response__, 'wiki_access_level')))

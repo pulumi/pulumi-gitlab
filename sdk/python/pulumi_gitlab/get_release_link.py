@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -184,9 +189,6 @@ def get_release_link(link_id: Optional[int] = None,
         project=pulumi.get(__ret__, 'project'),
         tag_name=pulumi.get(__ret__, 'tag_name'),
         url=pulumi.get(__ret__, 'url'))
-
-
-@_utilities.lift_output_func(get_release_link)
 def get_release_link_output(link_id: Optional[pulumi.Input[int]] = None,
                             project: Optional[pulumi.Input[str]] = None,
                             tag_name: Optional[pulumi.Input[str]] = None,
@@ -201,4 +203,20 @@ def get_release_link_output(link_id: Optional[pulumi.Input[int]] = None,
     :param str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
     :param str tag_name: The tag associated with the Release.
     """
-    ...
+    __args__ = dict()
+    __args__['linkId'] = link_id
+    __args__['project'] = project
+    __args__['tagName'] = tag_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getReleaseLink:getReleaseLink', __args__, opts=opts, typ=GetReleaseLinkResult)
+    return __ret__.apply(lambda __response__: GetReleaseLinkResult(
+        direct_asset_url=pulumi.get(__response__, 'direct_asset_url'),
+        external=pulumi.get(__response__, 'external'),
+        filepath=pulumi.get(__response__, 'filepath'),
+        id=pulumi.get(__response__, 'id'),
+        link_id=pulumi.get(__response__, 'link_id'),
+        link_type=pulumi.get(__response__, 'link_type'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        tag_name=pulumi.get(__response__, 'tag_name'),
+        url=pulumi.get(__response__, 'url')))

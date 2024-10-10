@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -99,9 +104,6 @@ def get_cluster_agents(project: Optional[str] = None,
         cluster_agents=pulumi.get(__ret__, 'cluster_agents'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_cluster_agents)
 def get_cluster_agents_output(project: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterAgentsResult]:
     """
@@ -123,4 +125,11 @@ def get_cluster_agents_output(project: Optional[pulumi.Input[str]] = None,
 
     :param str project: The ID or full path of the project owned by the authenticated user.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getClusterAgents:getClusterAgents', __args__, opts=opts, typ=GetClusterAgentsResult)
+    return __ret__.apply(lambda __response__: GetClusterAgentsResult(
+        cluster_agents=pulumi.get(__response__, 'cluster_agents'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project')))
