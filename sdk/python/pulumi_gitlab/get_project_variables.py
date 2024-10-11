@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -116,9 +121,6 @@ def get_project_variables(environment_scope: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         variables=pulumi.get(__ret__, 'variables'))
-
-
-@_utilities.lift_output_func(get_project_variables)
 def get_project_variables_output(environment_scope: Optional[pulumi.Input[Optional[str]]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectVariablesResult]:
@@ -143,4 +145,13 @@ def get_project_variables_output(environment_scope: Optional[pulumi.Input[Option
     :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
     :param str project: The name or id of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['environmentScope'] = environment_scope
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectVariables:getProjectVariables', __args__, opts=opts, typ=GetProjectVariablesResult)
+    return __ret__.apply(lambda __response__: GetProjectVariablesResult(
+        environment_scope=pulumi.get(__response__, 'environment_scope'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        variables=pulumi.get(__response__, 'variables')))

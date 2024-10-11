@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -123,9 +128,6 @@ def get_project_ids(project: Optional[str] = None,
         project_full_path=pulumi.get(__ret__, 'project_full_path'),
         project_graphql_id=pulumi.get(__ret__, 'project_graphql_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-
-
-@_utilities.lift_output_func(get_project_ids)
 def get_project_ids_output(project: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectIdsResult]:
     """
@@ -149,4 +151,13 @@ def get_project_ids_output(project: Optional[pulumi.Input[str]] = None,
 
     :param str project: The ID or URL-encoded path of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectIds:getProjectIds', __args__, opts=opts, typ=GetProjectIdsResult)
+    return __ret__.apply(lambda __response__: GetProjectIdsResult(
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        project_full_path=pulumi.get(__response__, 'project_full_path'),
+        project_graphql_id=pulumi.get(__response__, 'project_graphql_id'),
+        project_id=pulumi.get(__response__, 'project_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -104,9 +109,6 @@ def get_project_protected_tag(project: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         tag=pulumi.get(__ret__, 'tag'))
-
-
-@_utilities.lift_output_func(get_project_protected_tag)
 def get_project_protected_tag_output(project: Optional[pulumi.Input[str]] = None,
                                      tag: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedTagResult]:
@@ -119,4 +121,13 @@ def get_project_protected_tag_output(project: Optional[pulumi.Input[str]] = None
     :param str project: The integer or path with namespace that uniquely identifies the project.
     :param str tag: The name of the protected tag.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['tag'] = tag
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectProtectedTag:getProjectProtectedTag', __args__, opts=opts, typ=GetProjectProtectedTagResult)
+    return __ret__.apply(lambda __response__: GetProjectProtectedTagResult(
+        create_access_levels=pulumi.get(__response__, 'create_access_levels'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        tag=pulumi.get(__response__, 'tag')))

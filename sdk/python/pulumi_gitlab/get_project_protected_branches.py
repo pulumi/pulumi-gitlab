@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -92,9 +97,6 @@ def get_project_protected_branches(project_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         protected_branches=pulumi.get(__ret__, 'protected_branches'))
-
-
-@_utilities.lift_output_func(get_project_protected_branches)
 def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]] = None,
                                           protected_branches: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectProtectedBranchesProtectedBranchArgs', 'GetProjectProtectedBranchesProtectedBranchArgsDict']]]]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedBranchesResult]:
@@ -107,4 +109,12 @@ def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]
     :param str project_id: The integer or path with namespace that uniquely identifies the project.
     :param Sequence[Union['GetProjectProtectedBranchesProtectedBranchArgs', 'GetProjectProtectedBranchesProtectedBranchArgsDict']] protected_branches: A list of protected branches, as defined below.
     """
-    ...
+    __args__ = dict()
+    __args__['projectId'] = project_id
+    __args__['protectedBranches'] = protected_branches
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches', __args__, opts=opts, typ=GetProjectProtectedBranchesResult)
+    return __ret__.apply(lambda __response__: GetProjectProtectedBranchesResult(
+        id=pulumi.get(__response__, 'id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        protected_branches=pulumi.get(__response__, 'protected_branches')))

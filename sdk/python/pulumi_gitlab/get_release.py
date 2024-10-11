@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -168,9 +173,6 @@ def get_release(assets: Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssets
         project_id=pulumi.get(__ret__, 'project_id'),
         released_at=pulumi.get(__ret__, 'released_at'),
         tag_name=pulumi.get(__ret__, 'tag_name'))
-
-
-@_utilities.lift_output_func(get_release)
 def get_release_output(assets: Optional[pulumi.Input[Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict']]]] = None,
                        project_id: Optional[pulumi.Input[str]] = None,
                        tag_name: Optional[pulumi.Input[str]] = None,
@@ -196,4 +198,18 @@ def get_release_output(assets: Optional[pulumi.Input[Optional[Union['GetReleaseA
     :param str project_id: The ID or URL-encoded path of the project.
     :param str tag_name: The Git tag the release is associated with.
     """
-    ...
+    __args__ = dict()
+    __args__['assets'] = assets
+    __args__['projectId'] = project_id
+    __args__['tagName'] = tag_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gitlab:index/getRelease:getRelease', __args__, opts=opts, typ=GetReleaseResult)
+    return __ret__.apply(lambda __response__: GetReleaseResult(
+        assets=pulumi.get(__response__, 'assets'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        released_at=pulumi.get(__response__, 'released_at'),
+        tag_name=pulumi.get(__response__, 'tag_name')))
