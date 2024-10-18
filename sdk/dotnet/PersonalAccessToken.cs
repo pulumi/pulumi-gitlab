@@ -18,6 +18,8 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
     /// 
+    /// &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+    /// 
     /// &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
     /// 
     /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
@@ -79,7 +81,7 @@ namespace Pulumi.GitLab
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// When the token will expire, YYYY-MM-DD format.
+        /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         /// </summary>
         [Output("expiresAt")]
         public Output<string> ExpiresAt { get; private set; } = null!;
@@ -95,6 +97,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("revoked")]
         public Output<bool> Revoked { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        /// </summary>
+        [Output("rotationConfiguration")]
+        public Output<Outputs.PersonalAccessTokenRotationConfiguration?> RotationConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
@@ -165,7 +173,7 @@ namespace Pulumi.GitLab
     public sealed class PersonalAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When the token will expire, YYYY-MM-DD format.
+        /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -175,6 +183,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        /// </summary>
+        [Input("rotationConfiguration")]
+        public Input<Inputs.PersonalAccessTokenRotationConfigurationArgs>? RotationConfiguration { get; set; }
 
         [Input("scopes", required: true)]
         private InputList<string>? _scopes;
@@ -215,7 +229,7 @@ namespace Pulumi.GitLab
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// When the token will expire, YYYY-MM-DD format.
+        /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -231,6 +245,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("revoked")]
         public Input<bool>? Revoked { get; set; }
+
+        /// <summary>
+        /// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        /// </summary>
+        [Input("rotationConfiguration")]
+        public Input<Inputs.PersonalAccessTokenRotationConfigurationGetArgs>? RotationConfiguration { get; set; }
 
         [Input("scopes")]
         private InputList<string>? _scopes;

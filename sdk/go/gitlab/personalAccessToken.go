@@ -20,6 +20,8 @@ import (
 //
 // > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
 //
+// > Use `rotationConfiguration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+//
 // > Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
 //
 // **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
@@ -79,12 +81,14 @@ type PersonalAccessToken struct {
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// When the token will expire, YYYY-MM-DD format.
+	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The name of the personal access token.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
+	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+	RotationConfiguration PersonalAccessTokenRotationConfigurationPtrOutput `pulumi:"rotationConfiguration"`
 	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The token of the personal access token. **Note**: the token is not available for imported resources.
@@ -137,12 +141,14 @@ type personalAccessTokenState struct {
 	Active *bool `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt *string `pulumi:"createdAt"`
-	// When the token will expire, YYYY-MM-DD format.
+	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the personal access token.
 	Name *string `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked *bool `pulumi:"revoked"`
+	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+	RotationConfiguration *PersonalAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
 	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
 	Scopes []string `pulumi:"scopes"`
 	// The token of the personal access token. **Note**: the token is not available for imported resources.
@@ -156,12 +162,14 @@ type PersonalAccessTokenState struct {
 	Active pulumi.BoolPtrInput
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringPtrInput
-	// When the token will expire, YYYY-MM-DD format.
+	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the personal access token.
 	Name pulumi.StringPtrInput
 	// True if the token is revoked.
 	Revoked pulumi.BoolPtrInput
+	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+	RotationConfiguration PersonalAccessTokenRotationConfigurationPtrInput
 	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
 	Scopes pulumi.StringArrayInput
 	// The token of the personal access token. **Note**: the token is not available for imported resources.
@@ -175,10 +183,12 @@ func (PersonalAccessTokenState) ElementType() reflect.Type {
 }
 
 type personalAccessTokenArgs struct {
-	// When the token will expire, YYYY-MM-DD format.
+	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the personal access token.
 	Name *string `pulumi:"name"`
+	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+	RotationConfiguration *PersonalAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
 	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
 	Scopes []string `pulumi:"scopes"`
 	// The ID of the user.
@@ -187,10 +197,12 @@ type personalAccessTokenArgs struct {
 
 // The set of arguments for constructing a PersonalAccessToken resource.
 type PersonalAccessTokenArgs struct {
-	// When the token will expire, YYYY-MM-DD format.
+	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the personal access token.
 	Name pulumi.StringPtrInput
+	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+	RotationConfiguration PersonalAccessTokenRotationConfigurationPtrInput
 	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
 	Scopes pulumi.StringArrayInput
 	// The ID of the user.
@@ -294,7 +306,7 @@ func (o PersonalAccessTokenOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// When the token will expire, YYYY-MM-DD format.
+// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 func (o PersonalAccessTokenOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
@@ -307,6 +319,13 @@ func (o PersonalAccessTokenOutput) Name() pulumi.StringOutput {
 // True if the token is revoked.
 func (o PersonalAccessTokenOutput) Revoked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.BoolOutput { return v.Revoked }).(pulumi.BoolOutput)
+}
+
+// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+func (o PersonalAccessTokenOutput) RotationConfiguration() PersonalAccessTokenRotationConfigurationPtrOutput {
+	return o.ApplyT(func(v *PersonalAccessToken) PersonalAccessTokenRotationConfigurationPtrOutput {
+		return v.RotationConfiguration
+	}).(PersonalAccessTokenRotationConfigurationPtrOutput)
 }
 
 // The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`

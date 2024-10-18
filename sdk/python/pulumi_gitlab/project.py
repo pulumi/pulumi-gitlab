@@ -22,6 +22,7 @@ __all__ = ['ProjectArgs', 'Project']
 class ProjectArgs:
     def __init__(__self__, *,
                  allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
+                 allow_pipeline_trigger_approve_deployment: Optional[pulumi.Input[bool]] = None,
                  analytics_access_level: Optional[pulumi.Input[str]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archive_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -74,6 +75,8 @@ class ProjectArgs:
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+                 model_experiments_access_level: Optional[pulumi.Input[str]] = None,
+                 model_registry_access_level: Optional[pulumi.Input[str]] = None,
                  monitor_access_level: Optional[pulumi.Input[str]] = None,
                  mr_default_target_self: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -117,6 +120,7 @@ class ProjectArgs:
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
+        :param pulumi.Input[bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
                This field **does not** work well in combination with the `ProjectApprovalRule` resource
@@ -172,6 +176,8 @@ class ProjectArgs:
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
         :param pulumi.Input[str] name: The name of the project.
@@ -219,6 +225,8 @@ class ProjectArgs:
         """
         if allow_merge_on_skipped_pipeline is not None:
             pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
+        if allow_pipeline_trigger_approve_deployment is not None:
+            pulumi.set(__self__, "allow_pipeline_trigger_approve_deployment", allow_pipeline_trigger_approve_deployment)
         if analytics_access_level is not None:
             pulumi.set(__self__, "analytics_access_level", analytics_access_level)
         if approvals_before_merge is not None:
@@ -329,6 +337,10 @@ class ProjectArgs:
             pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
         if mirror_trigger_builds is not None:
             pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
+        if model_experiments_access_level is not None:
+            pulumi.set(__self__, "model_experiments_access_level", model_experiments_access_level)
+        if model_registry_access_level is not None:
+            pulumi.set(__self__, "model_registry_access_level", model_registry_access_level)
         if monitor_access_level is not None:
             pulumi.set(__self__, "monitor_access_level", monitor_access_level)
         if mr_default_target_self is not None:
@@ -427,6 +439,18 @@ class ProjectArgs:
     @allow_merge_on_skipped_pipeline.setter
     def allow_merge_on_skipped_pipeline(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_merge_on_skipped_pipeline", value)
+
+    @property
+    @pulumi.getter(name="allowPipelineTriggerApproveDeployment")
+    def allow_pipeline_trigger_approve_deployment(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_pipeline_trigger_approve_deployment")
+
+    @allow_pipeline_trigger_approve_deployment.setter
+    def allow_pipeline_trigger_approve_deployment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_pipeline_trigger_approve_deployment", value)
 
     @property
     @pulumi.getter(name="analyticsAccessLevel")
@@ -1058,6 +1082,30 @@ class ProjectArgs:
         pulumi.set(self, "mirror_trigger_builds", value)
 
     @property
+    @pulumi.getter(name="modelExperimentsAccessLevel")
+    def model_experiments_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "model_experiments_access_level")
+
+    @model_experiments_access_level.setter
+    def model_experiments_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model_experiments_access_level", value)
+
+    @property
+    @pulumi.getter(name="modelRegistryAccessLevel")
+    def model_registry_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "model_registry_access_level")
+
+    @model_registry_access_level.setter
+    def model_registry_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model_registry_access_level", value)
+
+    @property
     @pulumi.getter(name="monitorAccessLevel")
     def monitor_access_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1548,6 +1596,7 @@ class ProjectArgs:
 class _ProjectState:
     def __init__(__self__, *,
                  allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
+                 allow_pipeline_trigger_approve_deployment: Optional[pulumi.Input[bool]] = None,
                  analytics_access_level: Optional[pulumi.Input[str]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archive_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -1603,6 +1652,8 @@ class _ProjectState:
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+                 model_experiments_access_level: Optional[pulumi.Input[str]] = None,
+                 model_registry_access_level: Optional[pulumi.Input[str]] = None,
                  monitor_access_level: Optional[pulumi.Input[str]] = None,
                  mr_default_target_self: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1650,6 +1701,7 @@ class _ProjectState:
         """
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
+        :param pulumi.Input[bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
                This field **does not** work well in combination with the `ProjectApprovalRule` resource
@@ -1708,6 +1760,8 @@ class _ProjectState:
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
         :param pulumi.Input[str] name: The name of the project.
@@ -1759,6 +1813,8 @@ class _ProjectState:
         """
         if allow_merge_on_skipped_pipeline is not None:
             pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
+        if allow_pipeline_trigger_approve_deployment is not None:
+            pulumi.set(__self__, "allow_pipeline_trigger_approve_deployment", allow_pipeline_trigger_approve_deployment)
         if analytics_access_level is not None:
             pulumi.set(__self__, "analytics_access_level", analytics_access_level)
         if approvals_before_merge is not None:
@@ -1875,6 +1931,10 @@ class _ProjectState:
             pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
         if mirror_trigger_builds is not None:
             pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
+        if model_experiments_access_level is not None:
+            pulumi.set(__self__, "model_experiments_access_level", model_experiments_access_level)
+        if model_registry_access_level is not None:
+            pulumi.set(__self__, "model_registry_access_level", model_registry_access_level)
         if monitor_access_level is not None:
             pulumi.set(__self__, "monitor_access_level", monitor_access_level)
         if mr_default_target_self is not None:
@@ -1981,6 +2041,18 @@ class _ProjectState:
     @allow_merge_on_skipped_pipeline.setter
     def allow_merge_on_skipped_pipeline(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_merge_on_skipped_pipeline", value)
+
+    @property
+    @pulumi.getter(name="allowPipelineTriggerApproveDeployment")
+    def allow_pipeline_trigger_approve_deployment(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_pipeline_trigger_approve_deployment")
+
+    @allow_pipeline_trigger_approve_deployment.setter
+    def allow_pipeline_trigger_approve_deployment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_pipeline_trigger_approve_deployment", value)
 
     @property
     @pulumi.getter(name="analyticsAccessLevel")
@@ -2648,6 +2720,30 @@ class _ProjectState:
         pulumi.set(self, "mirror_trigger_builds", value)
 
     @property
+    @pulumi.getter(name="modelExperimentsAccessLevel")
+    def model_experiments_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "model_experiments_access_level")
+
+    @model_experiments_access_level.setter
+    def model_experiments_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model_experiments_access_level", value)
+
+    @property
+    @pulumi.getter(name="modelRegistryAccessLevel")
+    def model_registry_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "model_registry_access_level")
+
+    @model_registry_access_level.setter
+    def model_registry_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model_registry_access_level", value)
+
+    @property
     @pulumi.getter(name="monitorAccessLevel")
     def monitor_access_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3188,6 +3284,7 @@ class Project(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
+                 allow_pipeline_trigger_approve_deployment: Optional[pulumi.Input[bool]] = None,
                  analytics_access_level: Optional[pulumi.Input[str]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archive_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -3240,6 +3337,8 @@ class Project(pulumi.CustomResource):
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+                 model_experiments_access_level: Optional[pulumi.Input[str]] = None,
+                 model_registry_access_level: Optional[pulumi.Input[str]] = None,
                  monitor_access_level: Optional[pulumi.Input[str]] = None,
                  mr_default_target_self: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -3303,6 +3402,7 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
+        :param pulumi.Input[bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
                This field **does not** work well in combination with the `ProjectApprovalRule` resource
@@ -3358,6 +3458,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
         :param pulumi.Input[str] name: The name of the project.
@@ -3444,6 +3546,7 @@ class Project(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
+                 allow_pipeline_trigger_approve_deployment: Optional[pulumi.Input[bool]] = None,
                  analytics_access_level: Optional[pulumi.Input[str]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archive_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -3496,6 +3599,8 @@ class Project(pulumi.CustomResource):
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+                 model_experiments_access_level: Optional[pulumi.Input[str]] = None,
+                 model_registry_access_level: Optional[pulumi.Input[str]] = None,
                  monitor_access_level: Optional[pulumi.Input[str]] = None,
                  mr_default_target_self: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -3546,6 +3651,7 @@ class Project(pulumi.CustomResource):
             __props__ = ProjectArgs.__new__(ProjectArgs)
 
             __props__.__dict__["allow_merge_on_skipped_pipeline"] = allow_merge_on_skipped_pipeline
+            __props__.__dict__["allow_pipeline_trigger_approve_deployment"] = allow_pipeline_trigger_approve_deployment
             __props__.__dict__["analytics_access_level"] = analytics_access_level
             __props__.__dict__["approvals_before_merge"] = approvals_before_merge
             __props__.__dict__["archive_on_destroy"] = archive_on_destroy
@@ -3598,6 +3704,8 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["mirror"] = mirror
             __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
             __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
+            __props__.__dict__["model_experiments_access_level"] = model_experiments_access_level
+            __props__.__dict__["model_registry_access_level"] = model_registry_access_level
             __props__.__dict__["monitor_access_level"] = monitor_access_level
             __props__.__dict__["mr_default_target_self"] = mr_default_target_self
             __props__.__dict__["name"] = name
@@ -3658,6 +3766,7 @@ class Project(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
+            allow_pipeline_trigger_approve_deployment: Optional[pulumi.Input[bool]] = None,
             analytics_access_level: Optional[pulumi.Input[str]] = None,
             approvals_before_merge: Optional[pulumi.Input[int]] = None,
             archive_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -3713,6 +3822,8 @@ class Project(pulumi.CustomResource):
             mirror: Optional[pulumi.Input[bool]] = None,
             mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
             mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+            model_experiments_access_level: Optional[pulumi.Input[str]] = None,
+            model_registry_access_level: Optional[pulumi.Input[str]] = None,
             monitor_access_level: Optional[pulumi.Input[str]] = None,
             mr_default_target_self: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -3765,6 +3876,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
+        :param pulumi.Input[bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
                This field **does not** work well in combination with the `ProjectApprovalRule` resource
@@ -3823,6 +3935,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
         :param pulumi.Input[str] name: The name of the project.
@@ -3877,6 +3991,7 @@ class Project(pulumi.CustomResource):
         __props__ = _ProjectState.__new__(_ProjectState)
 
         __props__.__dict__["allow_merge_on_skipped_pipeline"] = allow_merge_on_skipped_pipeline
+        __props__.__dict__["allow_pipeline_trigger_approve_deployment"] = allow_pipeline_trigger_approve_deployment
         __props__.__dict__["analytics_access_level"] = analytics_access_level
         __props__.__dict__["approvals_before_merge"] = approvals_before_merge
         __props__.__dict__["archive_on_destroy"] = archive_on_destroy
@@ -3932,6 +4047,8 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["mirror"] = mirror
         __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
         __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
+        __props__.__dict__["model_experiments_access_level"] = model_experiments_access_level
+        __props__.__dict__["model_registry_access_level"] = model_registry_access_level
         __props__.__dict__["monitor_access_level"] = monitor_access_level
         __props__.__dict__["mr_default_target_self"] = mr_default_target_self
         __props__.__dict__["name"] = name
@@ -3985,6 +4102,14 @@ class Project(pulumi.CustomResource):
         Set to true if you want to treat skipped pipelines as if they finished with success.
         """
         return pulumi.get(self, "allow_merge_on_skipped_pipeline")
+
+    @property
+    @pulumi.getter(name="allowPipelineTriggerApproveDeployment")
+    def allow_pipeline_trigger_approve_deployment(self) -> pulumi.Output[bool]:
+        """
+        Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_pipeline_trigger_approve_deployment")
 
     @property
     @pulumi.getter(name="analyticsAccessLevel")
@@ -4430,6 +4555,22 @@ class Project(pulumi.CustomResource):
         Enable trigger builds on pushes for a mirrored project.
         """
         return pulumi.get(self, "mirror_trigger_builds")
+
+    @property
+    @pulumi.getter(name="modelExperimentsAccessLevel")
+    def model_experiments_access_level(self) -> pulumi.Output[str]:
+        """
+        Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "model_experiments_access_level")
+
+    @property
+    @pulumi.getter(name="modelRegistryAccessLevel")
+    def model_registry_access_level(self) -> pulumi.Output[str]:
+        """
+        Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "model_registry_access_level")
 
     @property
     @pulumi.getter(name="monitorAccessLevel")

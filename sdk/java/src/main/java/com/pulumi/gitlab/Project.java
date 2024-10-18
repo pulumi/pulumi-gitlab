@@ -56,6 +56,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.allowMergeOnSkippedPipeline;
     }
     /**
+     * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="allowPipelineTriggerApproveDeployment", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowPipelineTriggerApproveDeployment;
+
+    /**
+     * @return Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> allowPipelineTriggerApproveDeployment() {
+        return this.allowPipelineTriggerApproveDeployment;
+    }
+    /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -838,6 +852,34 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> mirrorTriggerBuilds() {
         return this.mirrorTriggerBuilds;
+    }
+    /**
+     * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Export(name="modelExperimentsAccessLevel", refs={String.class}, tree="[0]")
+    private Output<String> modelExperimentsAccessLevel;
+
+    /**
+     * @return Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Output<String> modelExperimentsAccessLevel() {
+        return this.modelExperimentsAccessLevel;
+    }
+    /**
+     * Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Export(name="modelRegistryAccessLevel", refs={String.class}, tree="[0]")
+    private Output<String> modelRegistryAccessLevel;
+
+    /**
+     * @return Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Output<String> modelRegistryAccessLevel() {
+        return this.modelRegistryAccessLevel;
     }
     /**
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.

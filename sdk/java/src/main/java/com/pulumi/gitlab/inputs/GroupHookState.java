@@ -33,14 +33,14 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for confidential notes events.
+     * Invoke the hook for confidential note events.
      * 
      */
     @Import(name="confidentialNoteEvents")
     private @Nullable Output<Boolean> confidentialNoteEvents;
 
     /**
-     * @return Invoke the hook for confidential notes events.
+     * @return Invoke the hook for confidential note events.
      * 
      */
     public Optional<Output<Boolean>> confidentialNoteEvents() {
@@ -48,14 +48,14 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set a custom webhook template.
+     * Custom webhook template.
      * 
      */
     @Import(name="customWebhookTemplate")
     private @Nullable Output<String> customWebhookTemplate;
 
     /**
-     * @return Set a custom webhook template.
+     * @return Custom webhook template.
      * 
      */
     public Optional<Output<String>> customWebhookTemplate() {
@@ -78,14 +78,14 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable ssl verification when invoking the hook.
+     * Enable SSL verification when invoking the hook.
      * 
      */
     @Import(name="enableSslVerification")
     private @Nullable Output<Boolean> enableSslVerification;
 
     /**
-     * @return Enable ssl verification when invoking the hook.
+     * @return Enable SSL verification when invoking the hook.
      * 
      */
     public Optional<Output<Boolean>> enableSslVerification() {
@@ -93,14 +93,14 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID or full path of the group.
+     * The full path or id of the group to add the hook to.
      * 
      */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
-     * @return The ID or full path of the group.
+     * @return The full path or id of the group to add the hook to.
      * 
      */
     public Optional<Output<String>> group() {
@@ -168,14 +168,14 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for merge requests.
+     * Invoke the hook for merge requests events.
      * 
      */
     @Import(name="mergeRequestsEvents")
     private @Nullable Output<Boolean> mergeRequestsEvents;
 
     /**
-     * @return Invoke the hook for merge requests.
+     * @return Invoke the hook for merge requests events.
      * 
      */
     public Optional<Output<Boolean>> mergeRequestsEvents() {
@@ -183,14 +183,14 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for notes events.
+     * Invoke the hook for note events.
      * 
      */
     @Import(name="noteEvents")
     private @Nullable Output<Boolean> noteEvents;
 
     /**
-     * @return Invoke the hook for notes events.
+     * @return Invoke the hook for note events.
      * 
      */
     public Optional<Output<Boolean>> noteEvents() {
@@ -243,14 +243,14 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for releases events.
+     * Invoke the hook for release events.
      * 
      */
     @Import(name="releasesEvents")
     private @Nullable Output<Boolean> releasesEvents;
 
     /**
-     * @return Invoke the hook for releases events.
+     * @return Invoke the hook for release events.
      * 
      */
     public Optional<Output<Boolean>> releasesEvents() {
@@ -303,14 +303,14 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The url of the hook to invoke.
+     * The url of the hook to invoke. Forces re-creation to preserve `token`.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The url of the hook to invoke.
+     * @return The url of the hook to invoke. Forces re-creation to preserve `token`.
      * 
      */
     public Optional<Output<String>> url() {
@@ -398,7 +398,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param confidentialNoteEvents Invoke the hook for confidential notes events.
+         * @param confidentialNoteEvents Invoke the hook for confidential note events.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param confidentialNoteEvents Invoke the hook for confidential notes events.
+         * @param confidentialNoteEvents Invoke the hook for confidential note events.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customWebhookTemplate Set a custom webhook template.
+         * @param customWebhookTemplate Custom webhook template.
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customWebhookTemplate Set a custom webhook template.
+         * @param customWebhookTemplate Custom webhook template.
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableSslVerification Enable ssl verification when invoking the hook.
+         * @param enableSslVerification Enable SSL verification when invoking the hook.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableSslVerification Enable ssl verification when invoking the hook.
+         * @param enableSslVerification Enable SSL verification when invoking the hook.
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param group The ID or full path of the group.
+         * @param group The full path or id of the group to add the hook to.
          * 
          * @return builder
          * 
@@ -493,7 +493,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param group The ID or full path of the group.
+         * @param group The full path or id of the group to add the hook to.
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mergeRequestsEvents Invoke the hook for merge requests.
+         * @param mergeRequestsEvents Invoke the hook for merge requests events.
          * 
          * @return builder
          * 
@@ -598,7 +598,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mergeRequestsEvents Invoke the hook for merge requests.
+         * @param mergeRequestsEvents Invoke the hook for merge requests events.
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param noteEvents Invoke the hook for notes events.
+         * @param noteEvents Invoke the hook for note events.
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param noteEvents Invoke the hook for notes events.
+         * @param noteEvents Invoke the hook for note events.
          * 
          * @return builder
          * 
@@ -692,7 +692,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param releasesEvents Invoke the hook for releases events.
+         * @param releasesEvents Invoke the hook for release events.
          * 
          * @return builder
          * 
@@ -703,7 +703,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param releasesEvents Invoke the hook for releases events.
+         * @param releasesEvents Invoke the hook for release events.
          * 
          * @return builder
          * 
@@ -776,7 +776,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The url of the hook to invoke.
+         * @param url The url of the hook to invoke. Forces re-creation to preserve `token`.
          * 
          * @return builder
          * 
@@ -787,7 +787,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The url of the hook to invoke.
+         * @param url The url of the hook to invoke. Forces re-creation to preserve `token`.
          * 
          * @return builder
          * 

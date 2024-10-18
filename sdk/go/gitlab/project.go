@@ -33,6 +33,8 @@ type Project struct {
 
 	// Set to true if you want to treat skipped pipelines as if they finished with success.
 	AllowMergeOnSkippedPipeline pulumi.BoolOutput `pulumi:"allowMergeOnSkippedPipeline"`
+	// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+	AllowPipelineTriggerApproveDeployment pulumi.BoolOutput `pulumi:"allowPipelineTriggerApproveDeployment"`
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel pulumi.StringOutput `pulumi:"analyticsAccessLevel"`
 	// Number of merge request approvals required for merging. Default is 0.
@@ -150,6 +152,10 @@ type Project struct {
 	MirrorOverwritesDivergedBranches pulumi.BoolOutput `pulumi:"mirrorOverwritesDivergedBranches"`
 	// Enable trigger builds on pushes for a mirrored project.
 	MirrorTriggerBuilds pulumi.BoolOutput `pulumi:"mirrorTriggerBuilds"`
+	// Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+	ModelExperimentsAccessLevel pulumi.StringOutput `pulumi:"modelExperimentsAccessLevel"`
+	// Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+	ModelRegistryAccessLevel pulumi.StringOutput `pulumi:"modelRegistryAccessLevel"`
 	// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
 	MonitorAccessLevel pulumi.StringOutput `pulumi:"monitorAccessLevel"`
 	// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
@@ -288,6 +294,8 @@ func GetProject(ctx *pulumi.Context,
 type projectState struct {
 	// Set to true if you want to treat skipped pipelines as if they finished with success.
 	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
+	// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+	AllowPipelineTriggerApproveDeployment *bool `pulumi:"allowPipelineTriggerApproveDeployment"`
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel *string `pulumi:"analyticsAccessLevel"`
 	// Number of merge request approvals required for merging. Default is 0.
@@ -405,6 +413,10 @@ type projectState struct {
 	MirrorOverwritesDivergedBranches *bool `pulumi:"mirrorOverwritesDivergedBranches"`
 	// Enable trigger builds on pushes for a mirrored project.
 	MirrorTriggerBuilds *bool `pulumi:"mirrorTriggerBuilds"`
+	// Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+	ModelExperimentsAccessLevel *string `pulumi:"modelExperimentsAccessLevel"`
+	// Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+	ModelRegistryAccessLevel *string `pulumi:"modelRegistryAccessLevel"`
 	// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
 	MonitorAccessLevel *string `pulumi:"monitorAccessLevel"`
 	// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
@@ -506,6 +518,8 @@ type projectState struct {
 type ProjectState struct {
 	// Set to true if you want to treat skipped pipelines as if they finished with success.
 	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
+	// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+	AllowPipelineTriggerApproveDeployment pulumi.BoolPtrInput
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel pulumi.StringPtrInput
 	// Number of merge request approvals required for merging. Default is 0.
@@ -623,6 +637,10 @@ type ProjectState struct {
 	MirrorOverwritesDivergedBranches pulumi.BoolPtrInput
 	// Enable trigger builds on pushes for a mirrored project.
 	MirrorTriggerBuilds pulumi.BoolPtrInput
+	// Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+	ModelExperimentsAccessLevel pulumi.StringPtrInput
+	// Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+	ModelRegistryAccessLevel pulumi.StringPtrInput
 	// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
 	MonitorAccessLevel pulumi.StringPtrInput
 	// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
@@ -728,6 +746,8 @@ func (ProjectState) ElementType() reflect.Type {
 type projectArgs struct {
 	// Set to true if you want to treat skipped pipelines as if they finished with success.
 	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
+	// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+	AllowPipelineTriggerApproveDeployment *bool `pulumi:"allowPipelineTriggerApproveDeployment"`
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel *string `pulumi:"analyticsAccessLevel"`
 	// Number of merge request approvals required for merging. Default is 0.
@@ -839,6 +859,10 @@ type projectArgs struct {
 	MirrorOverwritesDivergedBranches *bool `pulumi:"mirrorOverwritesDivergedBranches"`
 	// Enable trigger builds on pushes for a mirrored project.
 	MirrorTriggerBuilds *bool `pulumi:"mirrorTriggerBuilds"`
+	// Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+	ModelExperimentsAccessLevel *string `pulumi:"modelExperimentsAccessLevel"`
+	// Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+	ModelRegistryAccessLevel *string `pulumi:"modelRegistryAccessLevel"`
 	// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
 	MonitorAccessLevel *string `pulumi:"monitorAccessLevel"`
 	// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
@@ -933,6 +957,8 @@ type projectArgs struct {
 type ProjectArgs struct {
 	// Set to true if you want to treat skipped pipelines as if they finished with success.
 	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
+	// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+	AllowPipelineTriggerApproveDeployment pulumi.BoolPtrInput
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel pulumi.StringPtrInput
 	// Number of merge request approvals required for merging. Default is 0.
@@ -1044,6 +1070,10 @@ type ProjectArgs struct {
 	MirrorOverwritesDivergedBranches pulumi.BoolPtrInput
 	// Enable trigger builds on pushes for a mirrored project.
 	MirrorTriggerBuilds pulumi.BoolPtrInput
+	// Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+	ModelExperimentsAccessLevel pulumi.StringPtrInput
+	// Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+	ModelRegistryAccessLevel pulumi.StringPtrInput
 	// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
 	MonitorAccessLevel pulumi.StringPtrInput
 	// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
@@ -1224,6 +1254,11 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 // Set to true if you want to treat skipped pipelines as if they finished with success.
 func (o ProjectOutput) AllowMergeOnSkippedPipeline() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.AllowMergeOnSkippedPipeline }).(pulumi.BoolOutput)
+}
+
+// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+func (o ProjectOutput) AllowPipelineTriggerApproveDeployment() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.AllowPipelineTriggerApproveDeployment }).(pulumi.BoolOutput)
 }
 
 // Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1506,6 +1541,16 @@ func (o ProjectOutput) MirrorOverwritesDivergedBranches() pulumi.BoolOutput {
 // Enable trigger builds on pushes for a mirrored project.
 func (o ProjectOutput) MirrorTriggerBuilds() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.MirrorTriggerBuilds }).(pulumi.BoolOutput)
+}
+
+// Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) ModelExperimentsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ModelExperimentsAccessLevel }).(pulumi.StringOutput)
+}
+
+// Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) ModelRegistryAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ModelRegistryAccessLevel }).(pulumi.StringOutput)
 }
 
 // Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.

@@ -320,6 +320,109 @@ export interface GetGroupMembershipMember {
     webUrl: string;
 }
 
+export interface GetGroupProvisionedUsersProvisionedUser {
+    /**
+     * The avatar URL of the provisioned user.
+     */
+    avatarUrl: string;
+    /**
+     * The bio of the provisioned user.
+     */
+    bio: string;
+    /**
+     * Whether the provisioned user is a bot.
+     */
+    bot: boolean;
+    /**
+     * The confirmation date of the provisioned user.
+     */
+    confirmedAt: string;
+    /**
+     * The creation date of the provisioned user.
+     */
+    createdAt: string;
+    /**
+     * The email of the provisioned user.
+     */
+    email: string;
+    /**
+     * Whether the provisioned user is external.
+     */
+    external: boolean;
+    /**
+     * The ID of the provisioned user.
+     */
+    id: string;
+    /**
+     * The job title of the provisioned user.
+     */
+    jobTitle: string;
+    /**
+     * The last activity date of the provisioned user.
+     */
+    lastActivityOn: string;
+    /**
+     * The last sign-in date of the provisioned user.
+     */
+    lastSignInAt: string;
+    /**
+     * The LinkedIn ID of the provisioned user.
+     */
+    linkedin: string;
+    /**
+     * The location of the provisioned user.
+     */
+    location: string;
+    /**
+     * The name of the provisioned user.
+     */
+    name: string;
+    /**
+     * The organization of the provisioned user.
+     */
+    organization: string;
+    /**
+     * Whether the provisioned user has a private profile.
+     */
+    privateProfile: boolean;
+    /**
+     * The pronouns of the provisioned user.
+     */
+    pronouns: string;
+    /**
+     * The public email of the provisioned user.
+     */
+    publicEmail: string;
+    /**
+     * The Skype ID of the provisioned user.
+     */
+    skype: string;
+    /**
+     * The state of the provisioned user.
+     */
+    state: string;
+    /**
+     * The Twitter ID of the provisioned user.
+     */
+    twitter: string;
+    /**
+     * Whether two-factor authentication is enabled for the provisioned user.
+     */
+    twoFactorEnabled: boolean;
+    /**
+     * The username of the provisioned user.
+     */
+    username: string;
+    /**
+     * The web URL of the provisioned user.
+     */
+    webUrl: string;
+    /**
+     * The website URL of the provisioned user.
+     */
+    websiteUrl: string;
+}
+
 export interface GetGroupSharedWithGroup {
     /**
      * Share with group expiration date.
@@ -668,7 +771,7 @@ export interface GetPipelineSchedulesPipelineSchedule {
     /**
      * The pipeline schedule id.
      */
-    id: string;
+    id: number;
     /**
      * The datetime of when the schedule will next run.
      */
@@ -1132,6 +1235,87 @@ export interface GetProjectMembershipMember {
     username: string;
     /**
      * User's website URL.
+     */
+    webUrl: string;
+}
+
+export interface GetProjectMergeRequestAssignee {
+    /**
+     * A link to the user's avatar image.
+     */
+    avatarUrl: string;
+    /**
+     * The internal ID number of the user.
+     */
+    id: number;
+    /**
+     * The name of the user.
+     */
+    name: string;
+    /**
+     * The state of the user account.
+     */
+    state: string;
+    /**
+     * The username of the user.
+     */
+    username: string;
+    /**
+     * A link to the user's profile page.
+     */
+    webUrl: string;
+}
+
+export interface GetProjectMergeRequestAuthor {
+    /**
+     * A link to the user's avatar image.
+     */
+    avatarUrl: string;
+    /**
+     * The internal ID number of the user.
+     */
+    id: number;
+    /**
+     * The name of the user.
+     */
+    name: string;
+    /**
+     * The state of the user account.
+     */
+    state: string;
+    /**
+     * The username of the user.
+     */
+    username: string;
+    /**
+     * A link to the user's profile page.
+     */
+    webUrl: string;
+}
+
+export interface GetProjectMergeRequestClosedBy {
+    /**
+     * A link to the user's avatar image.
+     */
+    avatarUrl: string;
+    /**
+     * The internal ID number of the user.
+     */
+    id: number;
+    /**
+     * The name of the user.
+     */
+    name: string;
+    /**
+     * The state of the user account.
+     */
+    state: string;
+    /**
+     * The username of the user.
+     */
+    username: string;
+    /**
+     * A link to the user's profile page.
      */
     webUrl: string;
 }
@@ -1617,6 +1801,10 @@ export interface GetProjectsProject {
      */
     allowMergeOnSkippedPipeline: boolean;
     /**
+     * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     */
+    allowPipelineTriggerApproveDeployment: boolean;
+    /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
     analyticsAccessLevel: string;
@@ -1836,6 +2024,14 @@ export interface GetProjectsProject {
      * The mirror user ID for the project.
      */
     mirrorUserId: number;
+    /**
+     * The visibility of machine learning model experiments.
+     */
+    modelExperimentsAccessLevel: string;
+    /**
+     * The visibility of machine learning model registry.
+     */
+    modelRegistryAccessLevel: string;
     /**
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -2401,11 +2597,11 @@ export interface GroupDefaultBranchProtectionDefaults {
      */
     allowForcePush: boolean;
     /**
-     * An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+     * An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
      */
     allowedToMerges: string[];
     /**
-     * An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+     * An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
      */
     allowedToPushes: string[];
     /**
@@ -2555,6 +2751,17 @@ export interface GroupPushRules {
      * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
      */
     rejectUnsignedCommits: boolean;
+}
+
+export interface PersonalAccessTokenRotationConfiguration {
+    /**
+     * The duration (in days) the new token should be valid for.
+     */
+    expirationDays: number;
+    /**
+     * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+     */
+    rotateBeforeDays: number;
 }
 
 export interface ProjectAccessTokenRotationConfiguration {

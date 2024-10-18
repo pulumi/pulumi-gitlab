@@ -34,6 +34,8 @@ type LookupGroupArgs struct {
 
 // A collection of values returned by getGroup.
 type LookupGroupResult struct {
+	// The default branch of the group.
+	DefaultBranch string `pulumi:"defaultBranch"`
 	// Whether developers and maintainers can push to the applicable default branch.
 	DefaultBranchProtection int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
@@ -122,6 +124,11 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOu
 
 func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
 	return o
+}
+
+// The default branch of the group.
+func (o LookupGroupResultOutput) DefaultBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.DefaultBranch }).(pulumi.StringOutput)
 }
 
 // Whether developers and maintainers can push to the applicable default branch.

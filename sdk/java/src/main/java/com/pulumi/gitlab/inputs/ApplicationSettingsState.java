@@ -1402,6 +1402,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="elasticsearchMaxCodeIndexingConcurrency")
+    private @Nullable Output<Integer> elasticsearchMaxCodeIndexingConcurrency;
+
+    /**
+     * @return Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Integer>> elasticsearchMaxCodeIndexingConcurrency() {
+        return Optional.ofNullable(this.elasticsearchMaxCodeIndexingConcurrency);
+    }
+
+    /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      * 
      */
@@ -1444,6 +1459,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<List<Integer>>> elasticsearchProjectIds() {
         return Optional.ofNullable(this.elasticsearchProjectIds);
+    }
+
+    /**
+     * Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="elasticsearchRequeueWorkers")
+    private @Nullable Output<Boolean> elasticsearchRequeueWorkers;
+
+    /**
+     * @return Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> elasticsearchRequeueWorkers() {
+        return Optional.ofNullable(this.elasticsearchRequeueWorkers);
     }
 
     /**
@@ -1492,6 +1522,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="elasticsearchWorkerNumberOfShards")
+    private @Nullable Output<Integer> elasticsearchWorkerNumberOfShards;
+
+    /**
+     * @return Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Integer>> elasticsearchWorkerNumberOfShards() {
+        return Optional.ofNullable(this.elasticsearchWorkerNumberOfShards);
+    }
+
+    /**
      * Additional text added to the bottom of every email for legal/auditing/compliance reasons.
      * 
      */
@@ -1519,6 +1564,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> emailAuthorInBody() {
         return Optional.ofNullable(this.emailAuthorInBody);
+    }
+
+    /**
+     * Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+     * 
+     */
+    @Import(name="emailConfirmationSetting")
+    private @Nullable Output<String> emailConfirmationSetting;
+
+    /**
+     * @return Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+     * 
+     */
+    public Optional<Output<String>> emailConfirmationSetting() {
+        return Optional.ofNullable(this.emailConfirmationSetting);
+    }
+
+    /**
+     * Show the external redirect page that warns you about user-generated content in GitLab Pages.
+     * 
+     */
+    @Import(name="enableArtifactExternalRedirectWarningPage")
+    private @Nullable Output<Boolean> enableArtifactExternalRedirectWarningPage;
+
+    /**
+     * @return Show the external redirect page that warns you about user-generated content in GitLab Pages.
+     * 
+     */
+    public Optional<Output<Boolean>> enableArtifactExternalRedirectWarningPage() {
+        return Optional.ofNullable(this.enableArtifactExternalRedirectWarningPage);
     }
 
     /**
@@ -1717,6 +1792,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+     * 
+     */
+    @Import(name="failedLoginAttemptsUnlockPeriodInMinutes")
+    private @Nullable Output<Integer> failedLoginAttemptsUnlockPeriodInMinutes;
+
+    /**
+     * @return Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+     * 
+     */
+    public Optional<Output<Integer>> failedLoginAttemptsUnlockPeriodInMinutes() {
+        return Optional.ofNullable(this.failedLoginAttemptsUnlockPeriodInMinutes);
+    }
+
+    /**
      * The ID of a project to load custom file templates from.
      * 
      */
@@ -1777,14 +1867,29 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     * 
+     */
+    @Import(name="gitRateLimitUsersAlertlists")
+    private @Nullable Output<List<Integer>> gitRateLimitUsersAlertlists;
+
+    /**
+     * @return List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     * 
+     */
+    public Optional<Output<List<Integer>>> gitRateLimitUsersAlertlists() {
+        return Optional.ofNullable(this.gitRateLimitUsersAlertlists);
+    }
+
+    /**
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
      * 
      */
     @Import(name="gitRateLimitUsersAllowlists")
     private @Nullable Output<List<String>> gitRateLimitUsersAllowlists;
 
     /**
-     * @return List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * @return List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
      * 
      */
     public Optional<Output<List<String>>> gitRateLimitUsersAllowlists() {
@@ -1849,6 +1954,96 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Integer>> gitalyTimeoutMedium() {
         return Optional.ofNullable(this.gitalyTimeoutMedium);
+    }
+
+    /**
+     * Indicates whether the instance was provisioned for GitLab Dedicated.
+     * 
+     */
+    @Import(name="gitlabDedicatedInstance")
+    private @Nullable Output<Boolean> gitlabDedicatedInstance;
+
+    /**
+     * @return Indicates whether the instance was provisioned for GitLab Dedicated.
+     * 
+     */
+    public Optional<Output<Boolean>> gitlabDedicatedInstance() {
+        return Optional.ofNullable(this.gitlabDedicatedInstance);
+    }
+
+    /**
+     * Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+     * 
+     */
+    @Import(name="gitlabEnvironmentToolkitInstance")
+    private @Nullable Output<Boolean> gitlabEnvironmentToolkitInstance;
+
+    /**
+     * @return Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+     * 
+     */
+    public Optional<Output<Boolean>> gitlabEnvironmentToolkitInstance() {
+        return Optional.ofNullable(this.gitlabEnvironmentToolkitInstance);
+    }
+
+    /**
+     * Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     * 
+     */
+    @Import(name="gitlabShellOperationLimit")
+    private @Nullable Output<Integer> gitlabShellOperationLimit;
+
+    /**
+     * @return Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     * 
+     */
+    public Optional<Output<Integer>> gitlabShellOperationLimit() {
+        return Optional.ofNullable(this.gitlabShellOperationLimit);
+    }
+
+    /**
+     * Enable Gitpod integration.
+     * 
+     */
+    @Import(name="gitpodEnabled")
+    private @Nullable Output<Boolean> gitpodEnabled;
+
+    /**
+     * @return Enable Gitpod integration.
+     * 
+     */
+    public Optional<Output<Boolean>> gitpodEnabled() {
+        return Optional.ofNullable(this.gitpodEnabled);
+    }
+
+    /**
+     * The Gitpod instance URL for integration.
+     * 
+     */
+    @Import(name="gitpodUrl")
+    private @Nullable Output<String> gitpodUrl;
+
+    /**
+     * @return The Gitpod instance URL for integration.
+     * 
+     */
+    public Optional<Output<String>> gitpodUrl() {
+        return Optional.ofNullable(this.gitpodUrl);
+    }
+
+    /**
+     * Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+     * 
+     */
+    @Import(name="globallyAllowedIps")
+    private @Nullable Output<String> globallyAllowedIps;
+
+    /**
+     * @return Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+     * 
+     */
+    public Optional<Output<String>> globallyAllowedIps() {
+        return Optional.ofNullable(this.globallyAllowedIps);
     }
 
     /**
@@ -2210,6 +2405,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     * 
+     */
+    @Import(name="includeOptionalMetricsInServicePing")
+    private @Nullable Output<Boolean> includeOptionalMetricsInServicePing;
+
+    /**
+     * @return Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     * 
+     */
+    public Optional<Output<Boolean>> includeOptionalMetricsInServicePing() {
+        return Optional.ofNullable(this.includeOptionalMetricsInServicePing);
+    }
+
+    /**
      * Enable Invisible CAPTCHA spam detection during sign-up.
      * 
      */
@@ -2240,6 +2450,51 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+     * 
+     */
+    @Import(name="jiraConnectApplicationKey")
+    private @Nullable Output<String> jiraConnectApplicationKey;
+
+    /**
+     * @return ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+     * 
+     */
+    public Optional<Output<String>> jiraConnectApplicationKey() {
+        return Optional.ofNullable(this.jiraConnectApplicationKey);
+    }
+
+    /**
+     * URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+     * 
+     */
+    @Import(name="jiraConnectProxyUrl")
+    private @Nullable Output<String> jiraConnectProxyUrl;
+
+    /**
+     * @return URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+     * 
+     */
+    public Optional<Output<String>> jiraConnectProxyUrl() {
+        return Optional.ofNullable(this.jiraConnectProxyUrl);
+    }
+
+    /**
+     * Enable public key storage for the GitLab for Jira Cloud app.
+     * 
+     */
+    @Import(name="jiraConnectPublicKeyStorageEnabled")
+    private @Nullable Output<Boolean> jiraConnectPublicKeyStorageEnabled;
+
+    /**
+     * @return Enable public key storage for the GitLab for Jira Cloud app.
+     * 
+     */
+    public Optional<Output<Boolean>> jiraConnectPublicKeyStorageEnabled() {
+        return Optional.ofNullable(this.jiraConnectPublicKeyStorageEnabled);
+    }
+
+    /**
      * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      * 
      */
@@ -2267,6 +2522,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Integer>> localMarkdownVersion() {
         return Optional.ofNullable(this.localMarkdownVersion);
+    }
+
+    /**
+     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    @Import(name="lockDuoFeaturesEnabled")
+    private @Nullable Output<Boolean> lockDuoFeaturesEnabled;
+
+    /**
+     * @return Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> lockDuoFeaturesEnabled() {
+        return Optional.ofNullable(this.lockDuoFeaturesEnabled);
     }
 
     /**
@@ -2330,6 +2600,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="mavenPackageRequestsForwarding")
+    private @Nullable Output<Boolean> mavenPackageRequestsForwarding;
+
+    /**
+     * @return Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> mavenPackageRequestsForwarding() {
+        return Optional.ofNullable(this.mavenPackageRequestsForwarding);
+    }
+
+    /**
      * Maximum artifacts size in MB.
      * 
      */
@@ -2360,6 +2645,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Maximum decompressed archive size in bytes.
+     * 
+     */
+    @Import(name="maxDecompressedArchiveSize")
+    private @Nullable Output<Integer> maxDecompressedArchiveSize;
+
+    /**
+     * @return Maximum decompressed archive size in bytes.
+     * 
+     */
+    public Optional<Output<Integer>> maxDecompressedArchiveSize() {
+        return Optional.ofNullable(this.maxDecompressedArchiveSize);
+    }
+
+    /**
      * Maximum export size in MB. 0 for unlimited.
      * 
      */
@@ -2375,6 +2675,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     * 
+     */
+    @Import(name="maxImportRemoteFileSize")
+    private @Nullable Output<Integer> maxImportRemoteFileSize;
+
+    /**
+     * @return Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     * 
+     */
+    public Optional<Output<Integer>> maxImportRemoteFileSize() {
+        return Optional.ofNullable(this.maxImportRemoteFileSize);
+    }
+
+    /**
      * Maximum import size in MB. 0 for unlimited.
      * 
      */
@@ -2387,6 +2702,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Integer>> maxImportSize() {
         return Optional.ofNullable(this.maxImportSize);
+    }
+
+    /**
+     * Maximum number of sign-in attempts before locking out the user.
+     * 
+     */
+    @Import(name="maxLoginAttempts")
+    private @Nullable Output<Integer> maxLoginAttempts;
+
+    /**
+     * @return Maximum number of sign-in attempts before locking out the user.
+     * 
+     */
+    public Optional<Output<Integer>> maxLoginAttempts() {
+        return Optional.ofNullable(this.maxLoginAttempts);
     }
 
     /**
@@ -2577,6 +2907,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * 
+     */
+    @Import(name="nugetSkipMetadataUrlValidation")
+    private @Nullable Output<Boolean> nugetSkipMetadataUrlValidation;
+
+    /**
+     * @return Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * 
+     */
+    public Optional<Output<Boolean>> nugetSkipMetadataUrlValidation() {
+        return Optional.ofNullable(this.nugetSkipMetadataUrlValidation);
+    }
+
+    /**
      * Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
      * 
      */
@@ -2589,6 +2934,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<List<String>>> outboundLocalRequestsWhitelists() {
         return Optional.ofNullable(this.outboundLocalRequestsWhitelists);
+    }
+
+    /**
+     * List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+     * 
+     */
+    @Import(name="packageMetadataPurlTypes")
+    private @Nullable Output<List<Integer>> packageMetadataPurlTypes;
+
+    /**
+     * @return List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+     * 
+     */
+    public Optional<Output<List<Integer>>> packageMetadataPurlTypes() {
+        return Optional.ofNullable(this.packageMetadataPurlTypes);
+    }
+
+    /**
+     * Enable to allow anyone to pull from Package Registry visible and changeable.
+     * 
+     */
+    @Import(name="packageRegistryAllowAnyoneToPullOption")
+    private @Nullable Output<Boolean> packageRegistryAllowAnyoneToPullOption;
+
+    /**
+     * @return Enable to allow anyone to pull from Package Registry visible and changeable.
+     * 
+     */
+    public Optional<Output<Boolean>> packageRegistryAllowAnyoneToPullOption() {
+        return Optional.ofNullable(this.packageRegistryAllowAnyoneToPullOption);
     }
 
     /**
@@ -2817,6 +3192,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     * 
+     */
+    @Import(name="projectJobsApiRateLimit")
+    private @Nullable Output<Integer> projectJobsApiRateLimit;
+
+    /**
+     * @return Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     * 
+     */
+    public Optional<Output<Integer>> projectJobsApiRateLimit() {
+        return Optional.ofNullable(this.projectJobsApiRateLimit);
+    }
+
+    /**
+     * Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     * 
+     */
+    @Import(name="projectsApiRateLimitUnauthenticated")
+    private @Nullable Output<Integer> projectsApiRateLimitUnauthenticated;
+
+    /**
+     * @return Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     * 
+     */
+    public Optional<Output<Integer>> projectsApiRateLimitUnauthenticated() {
+        return Optional.ofNullable(this.projectsApiRateLimitUnauthenticated);
+    }
+
+    /**
      * Enable Prometheus metrics.
      * 
      */
@@ -2982,6 +3387,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Enable receptive mode for GitLab Agents for Kubernetes.
+     * 
+     */
+    @Import(name="receptiveClusterAgentsEnabled")
+    private @Nullable Output<Boolean> receptiveClusterAgentsEnabled;
+
+    /**
+     * @return Enable receptive mode for GitLab Agents for Kubernetes.
+     * 
+     */
+    public Optional<Output<Boolean>> receptiveClusterAgentsEnabled() {
+        return Optional.ofNullable(this.receptiveClusterAgentsEnabled);
+    }
+
+    /**
+     * Enable Remember me setting. Introduced in GitLab 16.0.
+     * 
+     */
+    @Import(name="rememberMeEnabled")
+    private @Nullable Output<Boolean> rememberMeEnabled;
+
+    /**
+     * @return Enable Remember me setting. Introduced in GitLab 16.0.
+     * 
+     */
+    public Optional<Output<Boolean>> rememberMeEnabled() {
+        return Optional.ofNullable(this.rememberMeEnabled);
+    }
+
+    /**
      * GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
      * 
      */
@@ -3054,6 +3489,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> requireAdminApprovalAfterUserSignup() {
         return Optional.ofNullable(this.requireAdminApprovalAfterUserSignup);
+    }
+
+    /**
+     * Allow administrators to require 2FA for all administrators on the instance.
+     * 
+     */
+    @Import(name="requireAdminTwoFactorAuthentication")
+    private @Nullable Output<Boolean> requireAdminTwoFactorAuthentication;
+
+    /**
+     * @return Allow administrators to require 2FA for all administrators on the instance.
+     * 
+     */
+    public Optional<Output<Boolean>> requireAdminTwoFactorAuthentication() {
+        return Optional.ofNullable(this.requireAdminTwoFactorAuthentication);
+    }
+
+    /**
+     * When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+     * 
+     */
+    @Import(name="requirePersonalAccessTokenExpiry")
+    private @Nullable Output<Boolean> requirePersonalAccessTokenExpiry;
+
+    /**
+     * @return When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+     * 
+     */
+    public Optional<Output<Boolean>> requirePersonalAccessTokenExpiry() {
+        return Optional.ofNullable(this.requirePersonalAccessTokenExpiry);
     }
 
     /**
@@ -3132,6 +3597,51 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Maximum number of active merge request approval policies per security policy project. Maximum: 20
+     * 
+     */
+    @Import(name="securityApprovalPoliciesLimit")
+    private @Nullable Output<Integer> securityApprovalPoliciesLimit;
+
+    /**
+     * @return Maximum number of active merge request approval policies per security policy project. Maximum: 20
+     * 
+     */
+    public Optional<Output<Integer>> securityApprovalPoliciesLimit() {
+        return Optional.ofNullable(this.securityApprovalPoliciesLimit);
+    }
+
+    /**
+     * Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+     * 
+     */
+    @Import(name="securityPolicyGlobalGroupApproversEnabled")
+    private @Nullable Output<Boolean> securityPolicyGlobalGroupApproversEnabled;
+
+    /**
+     * @return Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+     * 
+     */
+    public Optional<Output<Boolean>> securityPolicyGlobalGroupApproversEnabled() {
+        return Optional.ofNullable(this.securityPolicyGlobalGroupApproversEnabled);
+    }
+
+    /**
+     * Public security contact information. Introduced in GitLab 16.7.
+     * 
+     */
+    @Import(name="securityTxtContent")
+    private @Nullable Output<String> securityTxtContent;
+
+    /**
+     * @return Public security contact information. Introduced in GitLab 16.7.
+     * 
+     */
+    public Optional<Output<String>> securityTxtContent() {
+        return Optional.ofNullable(this.securityTxtContent);
+    }
+
+    /**
      * Send confirmation email on sign-up.
      * 
      */
@@ -3144,6 +3654,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> sendUserConfirmationEmail() {
         return Optional.ofNullable(this.sendUserConfirmationEmail);
+    }
+
+    /**
+     * Flag to indicate if token expiry date can be optional for service account users
+     * 
+     */
+    @Import(name="serviceAccessTokensExpirationEnforced")
+    private @Nullable Output<Boolean> serviceAccessTokensExpirationEnforced;
+
+    /**
+     * @return Flag to indicate if token expiry date can be optional for service account users
+     * 
+     */
+    public Optional<Output<Boolean>> serviceAccessTokensExpirationEnforced() {
+        return Optional.ofNullable(this.serviceAccessTokensExpirationEnforced);
     }
 
     /**
@@ -3282,6 +3807,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Enable Silent admin exports.
+     * 
+     */
+    @Import(name="silentAdminExportsEnabled")
+    private @Nullable Output<Boolean> silentAdminExportsEnabled;
+
+    /**
+     * @return Enable Silent admin exports.
+     * 
+     */
+    public Optional<Output<Boolean>> silentAdminExportsEnabled() {
+        return Optional.ofNullable(this.silentAdminExportsEnabled);
+    }
+
+    /**
+     * Enable Silent mode.
+     * 
+     */
+    @Import(name="silentModeEnabled")
+    private @Nullable Output<Boolean> silentModeEnabled;
+
+    /**
+     * @return Enable Silent mode.
+     * 
+     */
+    public Optional<Output<Boolean>> silentModeEnabled() {
+        return Optional.ofNullable(this.silentModeEnabled);
+    }
+
+    /**
      * (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
      * 
      */
@@ -3417,6 +3972,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+     * 
+     */
+    @Import(name="snowplowDatabaseCollectorHostname")
+    private @Nullable Output<String> snowplowDatabaseCollectorHostname;
+
+    /**
+     * @return The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+     * 
+     */
+    public Optional<Output<String>> snowplowDatabaseCollectorHostname() {
+        return Optional.ofNullable(this.snowplowDatabaseCollectorHostname);
+    }
+
+    /**
      * Enable snowplow tracking.
      * 
      */
@@ -3519,6 +4089,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> spamCheckEndpointUrl() {
         return Optional.ofNullable(this.spamCheckEndpointUrl);
+    }
+
+    /**
+     * Authentication token for the external storage linked in static*objects*external*storage*url.
+     * 
+     */
+    @Import(name="staticObjectsExternalStorageAuthToken")
+    private @Nullable Output<String> staticObjectsExternalStorageAuthToken;
+
+    /**
+     * @return Authentication token for the external storage linked in static*objects*external*storage*url.
+     * 
+     */
+    public Optional<Output<String>> staticObjectsExternalStorageAuthToken() {
+        return Optional.ofNullable(this.staticObjectsExternalStorageAuthToken);
+    }
+
+    /**
+     * URL to an external storage for repository static objects.
+     * 
+     */
+    @Import(name="staticObjectsExternalStorageUrl")
+    private @Nullable Output<String> staticObjectsExternalStorageUrl;
+
+    /**
+     * @return URL to an external storage for repository static objects.
+     * 
+     */
+    public Optional<Output<String>> staticObjectsExternalStorageUrl() {
+        return Optional.ofNullable(this.staticObjectsExternalStorageUrl);
     }
 
     /**
@@ -3867,6 +4467,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    @Import(name="unconfirmedUsersDeleteAfterDays")
+    private @Nullable Output<Integer> unconfirmedUsersDeleteAfterDays;
+
+    /**
+     * @return Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Integer>> unconfirmedUsersDeleteAfterDays() {
+        return Optional.ofNullable(this.unconfirmedUsersDeleteAfterDays);
+    }
+
+    /**
      * (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
      * 
      */
@@ -3912,6 +4527,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Fetch GitLab Runner release version data from GitLab.com.
+     * 
+     */
+    @Import(name="updateRunnerVersionsEnabled")
+    private @Nullable Output<Boolean> updateRunnerVersionsEnabled;
+
+    /**
+     * @return Fetch GitLab Runner release version data from GitLab.com.
+     * 
+     */
+    public Optional<Output<Boolean>> updateRunnerVersionsEnabled() {
+        return Optional.ofNullable(this.updateRunnerVersionsEnabled);
+    }
+
+    /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      * 
      */
@@ -3924,6 +4554,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> usagePingEnabled() {
         return Optional.ofNullable(this.usagePingEnabled);
+    }
+
+    /**
+     * Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+     * 
+     */
+    @Import(name="useClickhouseForAnalytics")
+    private @Nullable Output<Boolean> useClickhouseForAnalytics;
+
+    /**
+     * @return Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> useClickhouseForAnalytics() {
+        return Optional.ofNullable(this.useClickhouseForAnalytics);
     }
 
     /**
@@ -3972,6 +4617,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Newly created users have private profile by default. Introduced in GitLab 15.8.
+     * 
+     */
+    @Import(name="userDefaultsToPrivateProfile")
+    private @Nullable Output<Boolean> userDefaultsToPrivateProfile;
+
+    /**
+     * @return Newly created users have private profile by default. Introduced in GitLab 15.8.
+     * 
+     */
+    public Optional<Output<Boolean>> userDefaultsToPrivateProfile() {
+        return Optional.ofNullable(this.userDefaultsToPrivateProfile);
+    }
+
+    /**
      * Allow users to register any application to use GitLab as an OAuth provider.
      * 
      */
@@ -3999,6 +4659,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> userShowAddSshKeyMessage() {
         return Optional.ofNullable(this.userShowAddSshKeyMessage);
+    }
+
+    /**
+     * List of types which are allowed to register a GitLab Runner. Can be [], [&#39;group&#39;], [&#39;project&#39;] or [&#39;group&#39;, &#39;project&#39;].
+     * 
+     */
+    @Import(name="validRunnerRegistrars")
+    private @Nullable Output<List<String>> validRunnerRegistrars;
+
+    /**
+     * @return List of types which are allowed to register a GitLab Runner. Can be [], [&#39;group&#39;], [&#39;project&#39;] or [&#39;group&#39;, &#39;project&#39;].
+     * 
+     */
+    public Optional<Output<List<String>>> validRunnerRegistrars() {
+        return Optional.ofNullable(this.validRunnerRegistrars);
     }
 
     /**
@@ -4032,14 +4707,14 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * What’s new variant, possible values: all*tiers, current*tier, and disabled.
+     * What&#39;s new variant, possible values: all*tiers, current*tier, and disabled.
      * 
      */
     @Import(name="whatsNewVariant")
     private @Nullable Output<String> whatsNewVariant;
 
     /**
-     * @return What’s new variant, possible values: all*tiers, current*tier, and disabled.
+     * @return What&#39;s new variant, possible values: all*tiers, current*tier, and disabled.
      * 
      */
     public Optional<Output<String>> whatsNewVariant() {
@@ -4156,14 +4831,19 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.elasticsearchLimitIndexing = $.elasticsearchLimitIndexing;
         this.elasticsearchMaxBulkConcurrency = $.elasticsearchMaxBulkConcurrency;
         this.elasticsearchMaxBulkSizeMb = $.elasticsearchMaxBulkSizeMb;
+        this.elasticsearchMaxCodeIndexingConcurrency = $.elasticsearchMaxCodeIndexingConcurrency;
         this.elasticsearchNamespaceIds = $.elasticsearchNamespaceIds;
         this.elasticsearchPassword = $.elasticsearchPassword;
         this.elasticsearchProjectIds = $.elasticsearchProjectIds;
+        this.elasticsearchRequeueWorkers = $.elasticsearchRequeueWorkers;
         this.elasticsearchSearch = $.elasticsearchSearch;
         this.elasticsearchUrls = $.elasticsearchUrls;
         this.elasticsearchUsername = $.elasticsearchUsername;
+        this.elasticsearchWorkerNumberOfShards = $.elasticsearchWorkerNumberOfShards;
         this.emailAdditionalText = $.emailAdditionalText;
         this.emailAuthorInBody = $.emailAuthorInBody;
+        this.emailConfirmationSetting = $.emailConfirmationSetting;
+        this.enableArtifactExternalRedirectWarningPage = $.enableArtifactExternalRedirectWarningPage;
         this.enabledGitAccessProtocol = $.enabledGitAccessProtocol;
         this.enforceNamespaceStorageLimit = $.enforceNamespaceStorageLimit;
         this.enforceTerms = $.enforceTerms;
@@ -4177,15 +4857,23 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.externalPipelineValidationServiceTimeout = $.externalPipelineValidationServiceTimeout;
         this.externalPipelineValidationServiceToken = $.externalPipelineValidationServiceToken;
         this.externalPipelineValidationServiceUrl = $.externalPipelineValidationServiceUrl;
+        this.failedLoginAttemptsUnlockPeriodInMinutes = $.failedLoginAttemptsUnlockPeriodInMinutes;
         this.fileTemplateProjectId = $.fileTemplateProjectId;
         this.firstDayOfWeek = $.firstDayOfWeek;
         this.geoNodeAllowedIps = $.geoNodeAllowedIps;
         this.geoStatusTimeout = $.geoStatusTimeout;
+        this.gitRateLimitUsersAlertlists = $.gitRateLimitUsersAlertlists;
         this.gitRateLimitUsersAllowlists = $.gitRateLimitUsersAllowlists;
         this.gitTwoFactorSessionExpiry = $.gitTwoFactorSessionExpiry;
         this.gitalyTimeoutDefault = $.gitalyTimeoutDefault;
         this.gitalyTimeoutFast = $.gitalyTimeoutFast;
         this.gitalyTimeoutMedium = $.gitalyTimeoutMedium;
+        this.gitlabDedicatedInstance = $.gitlabDedicatedInstance;
+        this.gitlabEnvironmentToolkitInstance = $.gitlabEnvironmentToolkitInstance;
+        this.gitlabShellOperationLimit = $.gitlabShellOperationLimit;
+        this.gitpodEnabled = $.gitpodEnabled;
+        this.gitpodUrl = $.gitpodUrl;
+        this.globallyAllowedIps = $.globallyAllowedIps;
         this.grafanaEnabled = $.grafanaEnabled;
         this.grafanaUrl = $.grafanaUrl;
         this.gravatarEnabled = $.gravatarEnabled;
@@ -4208,18 +4896,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.inactiveProjectsDeleteAfterMonths = $.inactiveProjectsDeleteAfterMonths;
         this.inactiveProjectsMinSizeMb = $.inactiveProjectsMinSizeMb;
         this.inactiveProjectsSendWarningEmailAfterMonths = $.inactiveProjectsSendWarningEmailAfterMonths;
+        this.includeOptionalMetricsInServicePing = $.includeOptionalMetricsInServicePing;
         this.invisibleCaptchaEnabled = $.invisibleCaptchaEnabled;
         this.issuesCreateLimit = $.issuesCreateLimit;
+        this.jiraConnectApplicationKey = $.jiraConnectApplicationKey;
+        this.jiraConnectProxyUrl = $.jiraConnectProxyUrl;
+        this.jiraConnectPublicKeyStorageEnabled = $.jiraConnectPublicKeyStorageEnabled;
         this.keepLatestArtifact = $.keepLatestArtifact;
         this.localMarkdownVersion = $.localMarkdownVersion;
+        this.lockDuoFeaturesEnabled = $.lockDuoFeaturesEnabled;
         this.mailgunEventsEnabled = $.mailgunEventsEnabled;
         this.mailgunSigningKey = $.mailgunSigningKey;
         this.maintenanceMode = $.maintenanceMode;
         this.maintenanceModeMessage = $.maintenanceModeMessage;
+        this.mavenPackageRequestsForwarding = $.mavenPackageRequestsForwarding;
         this.maxArtifactsSize = $.maxArtifactsSize;
         this.maxAttachmentSize = $.maxAttachmentSize;
+        this.maxDecompressedArchiveSize = $.maxDecompressedArchiveSize;
         this.maxExportSize = $.maxExportSize;
+        this.maxImportRemoteFileSize = $.maxImportRemoteFileSize;
         this.maxImportSize = $.maxImportSize;
+        this.maxLoginAttempts = $.maxLoginAttempts;
         this.maxNumberOfRepositoryDownloads = $.maxNumberOfRepositoryDownloads;
         this.maxNumberOfRepositoryDownloadsWithinTimePeriod = $.maxNumberOfRepositoryDownloadsWithinTimePeriod;
         this.maxPagesSize = $.maxPagesSize;
@@ -4233,7 +4930,10 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.mirrorMaxCapacity = $.mirrorMaxCapacity;
         this.mirrorMaxDelay = $.mirrorMaxDelay;
         this.npmPackageRequestsForwarding = $.npmPackageRequestsForwarding;
+        this.nugetSkipMetadataUrlValidation = $.nugetSkipMetadataUrlValidation;
         this.outboundLocalRequestsWhitelists = $.outboundLocalRequestsWhitelists;
+        this.packageMetadataPurlTypes = $.packageMetadataPurlTypes;
+        this.packageRegistryAllowAnyoneToPullOption = $.packageRegistryAllowAnyoneToPullOption;
         this.packageRegistryCleanupPoliciesWorkerCapacity = $.packageRegistryCleanupPoliciesWorkerCapacity;
         this.pagesDomainVerificationEnabled = $.pagesDomainVerificationEnabled;
         this.passwordAuthenticationEnabledForGit = $.passwordAuthenticationEnabledForGit;
@@ -4249,6 +4949,8 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.plantumlUrl = $.plantumlUrl;
         this.pollingIntervalMultiplier = $.pollingIntervalMultiplier;
         this.projectExportEnabled = $.projectExportEnabled;
+        this.projectJobsApiRateLimit = $.projectJobsApiRateLimit;
+        this.projectsApiRateLimitUnauthenticated = $.projectsApiRateLimitUnauthenticated;
         this.prometheusMetricsEnabled = $.prometheusMetricsEnabled;
         this.protectedCiVariables = $.protectedCiVariables;
         this.pushEventActivitiesLimit = $.pushEventActivitiesLimit;
@@ -4260,17 +4962,25 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.recaptchaPrivateKey = $.recaptchaPrivateKey;
         this.recaptchaSiteKey = $.recaptchaSiteKey;
         this.receiveMaxInputSize = $.receiveMaxInputSize;
+        this.receptiveClusterAgentsEnabled = $.receptiveClusterAgentsEnabled;
+        this.rememberMeEnabled = $.rememberMeEnabled;
         this.repositoryChecksEnabled = $.repositoryChecksEnabled;
         this.repositorySizeLimit = $.repositorySizeLimit;
         this.repositoryStorages = $.repositoryStorages;
         this.repositoryStoragesWeighted = $.repositoryStoragesWeighted;
         this.requireAdminApprovalAfterUserSignup = $.requireAdminApprovalAfterUserSignup;
+        this.requireAdminTwoFactorAuthentication = $.requireAdminTwoFactorAuthentication;
+        this.requirePersonalAccessTokenExpiry = $.requirePersonalAccessTokenExpiry;
         this.requireTwoFactorAuthentication = $.requireTwoFactorAuthentication;
         this.restrictedVisibilityLevels = $.restrictedVisibilityLevels;
         this.rsaKeyRestriction = $.rsaKeyRestriction;
         this.searchRateLimit = $.searchRateLimit;
         this.searchRateLimitUnauthenticated = $.searchRateLimitUnauthenticated;
+        this.securityApprovalPoliciesLimit = $.securityApprovalPoliciesLimit;
+        this.securityPolicyGlobalGroupApproversEnabled = $.securityPolicyGlobalGroupApproversEnabled;
+        this.securityTxtContent = $.securityTxtContent;
         this.sendUserConfirmationEmail = $.sendUserConfirmationEmail;
+        this.serviceAccessTokensExpirationEnforced = $.serviceAccessTokensExpirationEnforced;
         this.sessionExpireDelay = $.sessionExpireDelay;
         this.sharedRunnersEnabled = $.sharedRunnersEnabled;
         this.sharedRunnersMinutes = $.sharedRunnersMinutes;
@@ -4280,6 +4990,8 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.sidekiqJobLimiterMode = $.sidekiqJobLimiterMode;
         this.signInText = $.signInText;
         this.signupEnabled = $.signupEnabled;
+        this.silentAdminExportsEnabled = $.silentAdminExportsEnabled;
+        this.silentModeEnabled = $.silentModeEnabled;
         this.slackAppEnabled = $.slackAppEnabled;
         this.slackAppId = $.slackAppId;
         this.slackAppSecret = $.slackAppSecret;
@@ -4289,6 +5001,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.snowplowAppId = $.snowplowAppId;
         this.snowplowCollectorHostname = $.snowplowCollectorHostname;
         this.snowplowCookieDomain = $.snowplowCookieDomain;
+        this.snowplowDatabaseCollectorHostname = $.snowplowDatabaseCollectorHostname;
         this.snowplowEnabled = $.snowplowEnabled;
         this.sourcegraphEnabled = $.sourcegraphEnabled;
         this.sourcegraphPublicOnly = $.sourcegraphPublicOnly;
@@ -4296,6 +5009,8 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.spamCheckApiKey = $.spamCheckApiKey;
         this.spamCheckEndpointEnabled = $.spamCheckEndpointEnabled;
         this.spamCheckEndpointUrl = $.spamCheckEndpointUrl;
+        this.staticObjectsExternalStorageAuthToken = $.staticObjectsExternalStorageAuthToken;
+        this.staticObjectsExternalStorageUrl = $.staticObjectsExternalStorageUrl;
         this.suggestPipelineEnabled = $.suggestPipelineEnabled;
         this.terminalMaxSessionTime = $.terminalMaxSessionTime;
         this.terms = $.terms;
@@ -4319,15 +5034,20 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.throttleUnauthenticatedWebRequestsPerPeriod = $.throttleUnauthenticatedWebRequestsPerPeriod;
         this.timeTrackingLimitToHours = $.timeTrackingLimitToHours;
         this.twoFactorGracePeriod = $.twoFactorGracePeriod;
+        this.unconfirmedUsersDeleteAfterDays = $.unconfirmedUsersDeleteAfterDays;
         this.uniqueIpsLimitEnabled = $.uniqueIpsLimitEnabled;
         this.uniqueIpsLimitPerUser = $.uniqueIpsLimitPerUser;
         this.uniqueIpsLimitTimeWindow = $.uniqueIpsLimitTimeWindow;
+        this.updateRunnerVersionsEnabled = $.updateRunnerVersionsEnabled;
         this.usagePingEnabled = $.usagePingEnabled;
+        this.useClickhouseForAnalytics = $.useClickhouseForAnalytics;
         this.userDeactivationEmailsEnabled = $.userDeactivationEmailsEnabled;
         this.userDefaultExternal = $.userDefaultExternal;
         this.userDefaultInternalRegex = $.userDefaultInternalRegex;
+        this.userDefaultsToPrivateProfile = $.userDefaultsToPrivateProfile;
         this.userOauthApplications = $.userOauthApplications;
         this.userShowAddSshKeyMessage = $.userShowAddSshKeyMessage;
+        this.validRunnerRegistrars = $.validRunnerRegistrars;
         this.versionCheckEnabled = $.versionCheckEnabled;
         this.webIdeClientsidePreviewEnabled = $.webIdeClientsidePreviewEnabled;
         this.whatsNewVariant = $.whatsNewVariant;
@@ -6325,6 +7045,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param elasticsearchMaxCodeIndexingConcurrency Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder elasticsearchMaxCodeIndexingConcurrency(@Nullable Output<Integer> elasticsearchMaxCodeIndexingConcurrency) {
+            $.elasticsearchMaxCodeIndexingConcurrency = elasticsearchMaxCodeIndexingConcurrency;
+            return this;
+        }
+
+        /**
+         * @param elasticsearchMaxCodeIndexingConcurrency Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder elasticsearchMaxCodeIndexingConcurrency(Integer elasticsearchMaxCodeIndexingConcurrency) {
+            return elasticsearchMaxCodeIndexingConcurrency(Output.of(elasticsearchMaxCodeIndexingConcurrency));
+        }
+
+        /**
          * @param elasticsearchNamespaceIds The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
          * 
          * @return builder
@@ -6408,6 +7149,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param elasticsearchRequeueWorkers Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder elasticsearchRequeueWorkers(@Nullable Output<Boolean> elasticsearchRequeueWorkers) {
+            $.elasticsearchRequeueWorkers = elasticsearchRequeueWorkers;
+            return this;
+        }
+
+        /**
+         * @param elasticsearchRequeueWorkers Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder elasticsearchRequeueWorkers(Boolean elasticsearchRequeueWorkers) {
+            return elasticsearchRequeueWorkers(Output.of(elasticsearchRequeueWorkers));
+        }
+
+        /**
          * @param elasticsearchSearch Enable Elasticsearch search.
          * 
          * @return builder
@@ -6481,6 +7243,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param elasticsearchWorkerNumberOfShards Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder elasticsearchWorkerNumberOfShards(@Nullable Output<Integer> elasticsearchWorkerNumberOfShards) {
+            $.elasticsearchWorkerNumberOfShards = elasticsearchWorkerNumberOfShards;
+            return this;
+        }
+
+        /**
+         * @param elasticsearchWorkerNumberOfShards Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder elasticsearchWorkerNumberOfShards(Integer elasticsearchWorkerNumberOfShards) {
+            return elasticsearchWorkerNumberOfShards(Output.of(elasticsearchWorkerNumberOfShards));
+        }
+
+        /**
          * @param emailAdditionalText Additional text added to the bottom of every email for legal/auditing/compliance reasons.
          * 
          * @return builder
@@ -6520,6 +7303,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder emailAuthorInBody(Boolean emailAuthorInBody) {
             return emailAuthorInBody(Output.of(emailAuthorInBody));
+        }
+
+        /**
+         * @param emailConfirmationSetting Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailConfirmationSetting(@Nullable Output<String> emailConfirmationSetting) {
+            $.emailConfirmationSetting = emailConfirmationSetting;
+            return this;
+        }
+
+        /**
+         * @param emailConfirmationSetting Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailConfirmationSetting(String emailConfirmationSetting) {
+            return emailConfirmationSetting(Output.of(emailConfirmationSetting));
+        }
+
+        /**
+         * @param enableArtifactExternalRedirectWarningPage Show the external redirect page that warns you about user-generated content in GitLab Pages.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableArtifactExternalRedirectWarningPage(@Nullable Output<Boolean> enableArtifactExternalRedirectWarningPage) {
+            $.enableArtifactExternalRedirectWarningPage = enableArtifactExternalRedirectWarningPage;
+            return this;
+        }
+
+        /**
+         * @param enableArtifactExternalRedirectWarningPage Show the external redirect page that warns you about user-generated content in GitLab Pages.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableArtifactExternalRedirectWarningPage(Boolean enableArtifactExternalRedirectWarningPage) {
+            return enableArtifactExternalRedirectWarningPage(Output.of(enableArtifactExternalRedirectWarningPage));
         }
 
         /**
@@ -6796,6 +7621,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param failedLoginAttemptsUnlockPeriodInMinutes Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failedLoginAttemptsUnlockPeriodInMinutes(@Nullable Output<Integer> failedLoginAttemptsUnlockPeriodInMinutes) {
+            $.failedLoginAttemptsUnlockPeriodInMinutes = failedLoginAttemptsUnlockPeriodInMinutes;
+            return this;
+        }
+
+        /**
+         * @param failedLoginAttemptsUnlockPeriodInMinutes Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failedLoginAttemptsUnlockPeriodInMinutes(Integer failedLoginAttemptsUnlockPeriodInMinutes) {
+            return failedLoginAttemptsUnlockPeriodInMinutes(Output.of(failedLoginAttemptsUnlockPeriodInMinutes));
+        }
+
+        /**
          * @param fileTemplateProjectId The ID of a project to load custom file templates from.
          * 
          * @return builder
@@ -6880,7 +7726,38 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+         * @param gitRateLimitUsersAlertlists List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitRateLimitUsersAlertlists(@Nullable Output<List<Integer>> gitRateLimitUsersAlertlists) {
+            $.gitRateLimitUsersAlertlists = gitRateLimitUsersAlertlists;
+            return this;
+        }
+
+        /**
+         * @param gitRateLimitUsersAlertlists List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitRateLimitUsersAlertlists(List<Integer> gitRateLimitUsersAlertlists) {
+            return gitRateLimitUsersAlertlists(Output.of(gitRateLimitUsersAlertlists));
+        }
+
+        /**
+         * @param gitRateLimitUsersAlertlists List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitRateLimitUsersAlertlists(Integer... gitRateLimitUsersAlertlists) {
+            return gitRateLimitUsersAlertlists(List.of(gitRateLimitUsersAlertlists));
+        }
+
+        /**
+         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
          * 
          * @return builder
          * 
@@ -6891,7 +7768,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
          * 
          * @return builder
          * 
@@ -6901,7 +7778,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
          * 
          * @return builder
          * 
@@ -6992,6 +7869,132 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder gitalyTimeoutMedium(Integer gitalyTimeoutMedium) {
             return gitalyTimeoutMedium(Output.of(gitalyTimeoutMedium));
+        }
+
+        /**
+         * @param gitlabDedicatedInstance Indicates whether the instance was provisioned for GitLab Dedicated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabDedicatedInstance(@Nullable Output<Boolean> gitlabDedicatedInstance) {
+            $.gitlabDedicatedInstance = gitlabDedicatedInstance;
+            return this;
+        }
+
+        /**
+         * @param gitlabDedicatedInstance Indicates whether the instance was provisioned for GitLab Dedicated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabDedicatedInstance(Boolean gitlabDedicatedInstance) {
+            return gitlabDedicatedInstance(Output.of(gitlabDedicatedInstance));
+        }
+
+        /**
+         * @param gitlabEnvironmentToolkitInstance Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabEnvironmentToolkitInstance(@Nullable Output<Boolean> gitlabEnvironmentToolkitInstance) {
+            $.gitlabEnvironmentToolkitInstance = gitlabEnvironmentToolkitInstance;
+            return this;
+        }
+
+        /**
+         * @param gitlabEnvironmentToolkitInstance Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabEnvironmentToolkitInstance(Boolean gitlabEnvironmentToolkitInstance) {
+            return gitlabEnvironmentToolkitInstance(Output.of(gitlabEnvironmentToolkitInstance));
+        }
+
+        /**
+         * @param gitlabShellOperationLimit Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabShellOperationLimit(@Nullable Output<Integer> gitlabShellOperationLimit) {
+            $.gitlabShellOperationLimit = gitlabShellOperationLimit;
+            return this;
+        }
+
+        /**
+         * @param gitlabShellOperationLimit Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabShellOperationLimit(Integer gitlabShellOperationLimit) {
+            return gitlabShellOperationLimit(Output.of(gitlabShellOperationLimit));
+        }
+
+        /**
+         * @param gitpodEnabled Enable Gitpod integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitpodEnabled(@Nullable Output<Boolean> gitpodEnabled) {
+            $.gitpodEnabled = gitpodEnabled;
+            return this;
+        }
+
+        /**
+         * @param gitpodEnabled Enable Gitpod integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitpodEnabled(Boolean gitpodEnabled) {
+            return gitpodEnabled(Output.of(gitpodEnabled));
+        }
+
+        /**
+         * @param gitpodUrl The Gitpod instance URL for integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitpodUrl(@Nullable Output<String> gitpodUrl) {
+            $.gitpodUrl = gitpodUrl;
+            return this;
+        }
+
+        /**
+         * @param gitpodUrl The Gitpod instance URL for integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitpodUrl(String gitpodUrl) {
+            return gitpodUrl(Output.of(gitpodUrl));
+        }
+
+        /**
+         * @param globallyAllowedIps Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globallyAllowedIps(@Nullable Output<String> globallyAllowedIps) {
+            $.globallyAllowedIps = globallyAllowedIps;
+            return this;
+        }
+
+        /**
+         * @param globallyAllowedIps Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globallyAllowedIps(String globallyAllowedIps) {
+            return globallyAllowedIps(Output.of(globallyAllowedIps));
         }
 
         /**
@@ -7495,6 +8498,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param includeOptionalMetricsInServicePing Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeOptionalMetricsInServicePing(@Nullable Output<Boolean> includeOptionalMetricsInServicePing) {
+            $.includeOptionalMetricsInServicePing = includeOptionalMetricsInServicePing;
+            return this;
+        }
+
+        /**
+         * @param includeOptionalMetricsInServicePing Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeOptionalMetricsInServicePing(Boolean includeOptionalMetricsInServicePing) {
+            return includeOptionalMetricsInServicePing(Output.of(includeOptionalMetricsInServicePing));
+        }
+
+        /**
          * @param invisibleCaptchaEnabled Enable Invisible CAPTCHA spam detection during sign-up.
          * 
          * @return builder
@@ -7537,6 +8561,69 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param jiraConnectApplicationKey ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraConnectApplicationKey(@Nullable Output<String> jiraConnectApplicationKey) {
+            $.jiraConnectApplicationKey = jiraConnectApplicationKey;
+            return this;
+        }
+
+        /**
+         * @param jiraConnectApplicationKey ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraConnectApplicationKey(String jiraConnectApplicationKey) {
+            return jiraConnectApplicationKey(Output.of(jiraConnectApplicationKey));
+        }
+
+        /**
+         * @param jiraConnectProxyUrl URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraConnectProxyUrl(@Nullable Output<String> jiraConnectProxyUrl) {
+            $.jiraConnectProxyUrl = jiraConnectProxyUrl;
+            return this;
+        }
+
+        /**
+         * @param jiraConnectProxyUrl URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraConnectProxyUrl(String jiraConnectProxyUrl) {
+            return jiraConnectProxyUrl(Output.of(jiraConnectProxyUrl));
+        }
+
+        /**
+         * @param jiraConnectPublicKeyStorageEnabled Enable public key storage for the GitLab for Jira Cloud app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraConnectPublicKeyStorageEnabled(@Nullable Output<Boolean> jiraConnectPublicKeyStorageEnabled) {
+            $.jiraConnectPublicKeyStorageEnabled = jiraConnectPublicKeyStorageEnabled;
+            return this;
+        }
+
+        /**
+         * @param jiraConnectPublicKeyStorageEnabled Enable public key storage for the GitLab for Jira Cloud app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jiraConnectPublicKeyStorageEnabled(Boolean jiraConnectPublicKeyStorageEnabled) {
+            return jiraConnectPublicKeyStorageEnabled(Output.of(jiraConnectPublicKeyStorageEnabled));
+        }
+
+        /**
          * @param keepLatestArtifact Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
          * 
          * @return builder
@@ -7576,6 +8663,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder localMarkdownVersion(Integer localMarkdownVersion) {
             return localMarkdownVersion(Output.of(localMarkdownVersion));
+        }
+
+        /**
+         * @param lockDuoFeaturesEnabled Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockDuoFeaturesEnabled(@Nullable Output<Boolean> lockDuoFeaturesEnabled) {
+            $.lockDuoFeaturesEnabled = lockDuoFeaturesEnabled;
+            return this;
+        }
+
+        /**
+         * @param lockDuoFeaturesEnabled Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockDuoFeaturesEnabled(Boolean lockDuoFeaturesEnabled) {
+            return lockDuoFeaturesEnabled(Output.of(lockDuoFeaturesEnabled));
         }
 
         /**
@@ -7663,6 +8771,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param mavenPackageRequestsForwarding Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mavenPackageRequestsForwarding(@Nullable Output<Boolean> mavenPackageRequestsForwarding) {
+            $.mavenPackageRequestsForwarding = mavenPackageRequestsForwarding;
+            return this;
+        }
+
+        /**
+         * @param mavenPackageRequestsForwarding Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mavenPackageRequestsForwarding(Boolean mavenPackageRequestsForwarding) {
+            return mavenPackageRequestsForwarding(Output.of(mavenPackageRequestsForwarding));
+        }
+
+        /**
          * @param maxArtifactsSize Maximum artifacts size in MB.
          * 
          * @return builder
@@ -7705,6 +8834,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param maxDecompressedArchiveSize Maximum decompressed archive size in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxDecompressedArchiveSize(@Nullable Output<Integer> maxDecompressedArchiveSize) {
+            $.maxDecompressedArchiveSize = maxDecompressedArchiveSize;
+            return this;
+        }
+
+        /**
+         * @param maxDecompressedArchiveSize Maximum decompressed archive size in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxDecompressedArchiveSize(Integer maxDecompressedArchiveSize) {
+            return maxDecompressedArchiveSize(Output.of(maxDecompressedArchiveSize));
+        }
+
+        /**
          * @param maxExportSize Maximum export size in MB. 0 for unlimited.
          * 
          * @return builder
@@ -7726,6 +8876,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param maxImportRemoteFileSize Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxImportRemoteFileSize(@Nullable Output<Integer> maxImportRemoteFileSize) {
+            $.maxImportRemoteFileSize = maxImportRemoteFileSize;
+            return this;
+        }
+
+        /**
+         * @param maxImportRemoteFileSize Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxImportRemoteFileSize(Integer maxImportRemoteFileSize) {
+            return maxImportRemoteFileSize(Output.of(maxImportRemoteFileSize));
+        }
+
+        /**
          * @param maxImportSize Maximum import size in MB. 0 for unlimited.
          * 
          * @return builder
@@ -7744,6 +8915,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder maxImportSize(Integer maxImportSize) {
             return maxImportSize(Output.of(maxImportSize));
+        }
+
+        /**
+         * @param maxLoginAttempts Maximum number of sign-in attempts before locking out the user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxLoginAttempts(@Nullable Output<Integer> maxLoginAttempts) {
+            $.maxLoginAttempts = maxLoginAttempts;
+            return this;
+        }
+
+        /**
+         * @param maxLoginAttempts Maximum number of sign-in attempts before locking out the user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxLoginAttempts(Integer maxLoginAttempts) {
+            return maxLoginAttempts(Output.of(maxLoginAttempts));
         }
 
         /**
@@ -8008,6 +9200,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param nugetSkipMetadataUrlValidation Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nugetSkipMetadataUrlValidation(@Nullable Output<Boolean> nugetSkipMetadataUrlValidation) {
+            $.nugetSkipMetadataUrlValidation = nugetSkipMetadataUrlValidation;
+            return this;
+        }
+
+        /**
+         * @param nugetSkipMetadataUrlValidation Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nugetSkipMetadataUrlValidation(Boolean nugetSkipMetadataUrlValidation) {
+            return nugetSkipMetadataUrlValidation(Output.of(nugetSkipMetadataUrlValidation));
+        }
+
+        /**
          * @param outboundLocalRequestsWhitelists Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
          * 
          * @return builder
@@ -8036,6 +9249,58 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder outboundLocalRequestsWhitelists(String... outboundLocalRequestsWhitelists) {
             return outboundLocalRequestsWhitelists(List.of(outboundLocalRequestsWhitelists));
+        }
+
+        /**
+         * @param packageMetadataPurlTypes List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageMetadataPurlTypes(@Nullable Output<List<Integer>> packageMetadataPurlTypes) {
+            $.packageMetadataPurlTypes = packageMetadataPurlTypes;
+            return this;
+        }
+
+        /**
+         * @param packageMetadataPurlTypes List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageMetadataPurlTypes(List<Integer> packageMetadataPurlTypes) {
+            return packageMetadataPurlTypes(Output.of(packageMetadataPurlTypes));
+        }
+
+        /**
+         * @param packageMetadataPurlTypes List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageMetadataPurlTypes(Integer... packageMetadataPurlTypes) {
+            return packageMetadataPurlTypes(List.of(packageMetadataPurlTypes));
+        }
+
+        /**
+         * @param packageRegistryAllowAnyoneToPullOption Enable to allow anyone to pull from Package Registry visible and changeable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageRegistryAllowAnyoneToPullOption(@Nullable Output<Boolean> packageRegistryAllowAnyoneToPullOption) {
+            $.packageRegistryAllowAnyoneToPullOption = packageRegistryAllowAnyoneToPullOption;
+            return this;
+        }
+
+        /**
+         * @param packageRegistryAllowAnyoneToPullOption Enable to allow anyone to pull from Package Registry visible and changeable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageRegistryAllowAnyoneToPullOption(Boolean packageRegistryAllowAnyoneToPullOption) {
+            return packageRegistryAllowAnyoneToPullOption(Output.of(packageRegistryAllowAnyoneToPullOption));
         }
 
         /**
@@ -8354,6 +9619,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param projectJobsApiRateLimit Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectJobsApiRateLimit(@Nullable Output<Integer> projectJobsApiRateLimit) {
+            $.projectJobsApiRateLimit = projectJobsApiRateLimit;
+            return this;
+        }
+
+        /**
+         * @param projectJobsApiRateLimit Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectJobsApiRateLimit(Integer projectJobsApiRateLimit) {
+            return projectJobsApiRateLimit(Output.of(projectJobsApiRateLimit));
+        }
+
+        /**
+         * @param projectsApiRateLimitUnauthenticated Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectsApiRateLimitUnauthenticated(@Nullable Output<Integer> projectsApiRateLimitUnauthenticated) {
+            $.projectsApiRateLimitUnauthenticated = projectsApiRateLimitUnauthenticated;
+            return this;
+        }
+
+        /**
+         * @param projectsApiRateLimitUnauthenticated Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectsApiRateLimitUnauthenticated(Integer projectsApiRateLimitUnauthenticated) {
+            return projectsApiRateLimitUnauthenticated(Output.of(projectsApiRateLimitUnauthenticated));
+        }
+
+        /**
          * @param prometheusMetricsEnabled Enable Prometheus metrics.
          * 
          * @return builder
@@ -8585,6 +9892,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param receptiveClusterAgentsEnabled Enable receptive mode for GitLab Agents for Kubernetes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder receptiveClusterAgentsEnabled(@Nullable Output<Boolean> receptiveClusterAgentsEnabled) {
+            $.receptiveClusterAgentsEnabled = receptiveClusterAgentsEnabled;
+            return this;
+        }
+
+        /**
+         * @param receptiveClusterAgentsEnabled Enable receptive mode for GitLab Agents for Kubernetes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder receptiveClusterAgentsEnabled(Boolean receptiveClusterAgentsEnabled) {
+            return receptiveClusterAgentsEnabled(Output.of(receptiveClusterAgentsEnabled));
+        }
+
+        /**
+         * @param rememberMeEnabled Enable Remember me setting. Introduced in GitLab 16.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rememberMeEnabled(@Nullable Output<Boolean> rememberMeEnabled) {
+            $.rememberMeEnabled = rememberMeEnabled;
+            return this;
+        }
+
+        /**
+         * @param rememberMeEnabled Enable Remember me setting. Introduced in GitLab 16.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rememberMeEnabled(Boolean rememberMeEnabled) {
+            return rememberMeEnabled(Output.of(rememberMeEnabled));
+        }
+
+        /**
          * @param repositoryChecksEnabled GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
          * 
          * @return builder
@@ -8697,6 +10046,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder requireAdminApprovalAfterUserSignup(Boolean requireAdminApprovalAfterUserSignup) {
             return requireAdminApprovalAfterUserSignup(Output.of(requireAdminApprovalAfterUserSignup));
+        }
+
+        /**
+         * @param requireAdminTwoFactorAuthentication Allow administrators to require 2FA for all administrators on the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requireAdminTwoFactorAuthentication(@Nullable Output<Boolean> requireAdminTwoFactorAuthentication) {
+            $.requireAdminTwoFactorAuthentication = requireAdminTwoFactorAuthentication;
+            return this;
+        }
+
+        /**
+         * @param requireAdminTwoFactorAuthentication Allow administrators to require 2FA for all administrators on the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requireAdminTwoFactorAuthentication(Boolean requireAdminTwoFactorAuthentication) {
+            return requireAdminTwoFactorAuthentication(Output.of(requireAdminTwoFactorAuthentication));
+        }
+
+        /**
+         * @param requirePersonalAccessTokenExpiry When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requirePersonalAccessTokenExpiry(@Nullable Output<Boolean> requirePersonalAccessTokenExpiry) {
+            $.requirePersonalAccessTokenExpiry = requirePersonalAccessTokenExpiry;
+            return this;
+        }
+
+        /**
+         * @param requirePersonalAccessTokenExpiry When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requirePersonalAccessTokenExpiry(Boolean requirePersonalAccessTokenExpiry) {
+            return requirePersonalAccessTokenExpiry(Output.of(requirePersonalAccessTokenExpiry));
         }
 
         /**
@@ -8815,6 +10206,69 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param securityApprovalPoliciesLimit Maximum number of active merge request approval policies per security policy project. Maximum: 20
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityApprovalPoliciesLimit(@Nullable Output<Integer> securityApprovalPoliciesLimit) {
+            $.securityApprovalPoliciesLimit = securityApprovalPoliciesLimit;
+            return this;
+        }
+
+        /**
+         * @param securityApprovalPoliciesLimit Maximum number of active merge request approval policies per security policy project. Maximum: 20
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityApprovalPoliciesLimit(Integer securityApprovalPoliciesLimit) {
+            return securityApprovalPoliciesLimit(Output.of(securityApprovalPoliciesLimit));
+        }
+
+        /**
+         * @param securityPolicyGlobalGroupApproversEnabled Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicyGlobalGroupApproversEnabled(@Nullable Output<Boolean> securityPolicyGlobalGroupApproversEnabled) {
+            $.securityPolicyGlobalGroupApproversEnabled = securityPolicyGlobalGroupApproversEnabled;
+            return this;
+        }
+
+        /**
+         * @param securityPolicyGlobalGroupApproversEnabled Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicyGlobalGroupApproversEnabled(Boolean securityPolicyGlobalGroupApproversEnabled) {
+            return securityPolicyGlobalGroupApproversEnabled(Output.of(securityPolicyGlobalGroupApproversEnabled));
+        }
+
+        /**
+         * @param securityTxtContent Public security contact information. Introduced in GitLab 16.7.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityTxtContent(@Nullable Output<String> securityTxtContent) {
+            $.securityTxtContent = securityTxtContent;
+            return this;
+        }
+
+        /**
+         * @param securityTxtContent Public security contact information. Introduced in GitLab 16.7.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityTxtContent(String securityTxtContent) {
+            return securityTxtContent(Output.of(securityTxtContent));
+        }
+
+        /**
          * @param sendUserConfirmationEmail Send confirmation email on sign-up.
          * 
          * @return builder
@@ -8833,6 +10287,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder sendUserConfirmationEmail(Boolean sendUserConfirmationEmail) {
             return sendUserConfirmationEmail(Output.of(sendUserConfirmationEmail));
+        }
+
+        /**
+         * @param serviceAccessTokensExpirationEnforced Flag to indicate if token expiry date can be optional for service account users
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccessTokensExpirationEnforced(@Nullable Output<Boolean> serviceAccessTokensExpirationEnforced) {
+            $.serviceAccessTokensExpirationEnforced = serviceAccessTokensExpirationEnforced;
+            return this;
+        }
+
+        /**
+         * @param serviceAccessTokensExpirationEnforced Flag to indicate if token expiry date can be optional for service account users
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccessTokensExpirationEnforced(Boolean serviceAccessTokensExpirationEnforced) {
+            return serviceAccessTokensExpirationEnforced(Output.of(serviceAccessTokensExpirationEnforced));
         }
 
         /**
@@ -9025,6 +10500,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param silentAdminExportsEnabled Enable Silent admin exports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder silentAdminExportsEnabled(@Nullable Output<Boolean> silentAdminExportsEnabled) {
+            $.silentAdminExportsEnabled = silentAdminExportsEnabled;
+            return this;
+        }
+
+        /**
+         * @param silentAdminExportsEnabled Enable Silent admin exports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder silentAdminExportsEnabled(Boolean silentAdminExportsEnabled) {
+            return silentAdminExportsEnabled(Output.of(silentAdminExportsEnabled));
+        }
+
+        /**
+         * @param silentModeEnabled Enable Silent mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder silentModeEnabled(@Nullable Output<Boolean> silentModeEnabled) {
+            $.silentModeEnabled = silentModeEnabled;
+            return this;
+        }
+
+        /**
+         * @param silentModeEnabled Enable Silent mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder silentModeEnabled(Boolean silentModeEnabled) {
+            return silentModeEnabled(Output.of(silentModeEnabled));
+        }
+
+        /**
          * @param slackAppEnabled (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
          * 
          * @return builder
@@ -9214,6 +10731,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param snowplowDatabaseCollectorHostname The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snowplowDatabaseCollectorHostname(@Nullable Output<String> snowplowDatabaseCollectorHostname) {
+            $.snowplowDatabaseCollectorHostname = snowplowDatabaseCollectorHostname;
+            return this;
+        }
+
+        /**
+         * @param snowplowDatabaseCollectorHostname The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snowplowDatabaseCollectorHostname(String snowplowDatabaseCollectorHostname) {
+            return snowplowDatabaseCollectorHostname(Output.of(snowplowDatabaseCollectorHostname));
+        }
+
+        /**
          * @param snowplowEnabled Enable snowplow tracking.
          * 
          * @return builder
@@ -9358,6 +10896,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder spamCheckEndpointUrl(String spamCheckEndpointUrl) {
             return spamCheckEndpointUrl(Output.of(spamCheckEndpointUrl));
+        }
+
+        /**
+         * @param staticObjectsExternalStorageAuthToken Authentication token for the external storage linked in static*objects*external*storage*url.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staticObjectsExternalStorageAuthToken(@Nullable Output<String> staticObjectsExternalStorageAuthToken) {
+            $.staticObjectsExternalStorageAuthToken = staticObjectsExternalStorageAuthToken;
+            return this;
+        }
+
+        /**
+         * @param staticObjectsExternalStorageAuthToken Authentication token for the external storage linked in static*objects*external*storage*url.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staticObjectsExternalStorageAuthToken(String staticObjectsExternalStorageAuthToken) {
+            return staticObjectsExternalStorageAuthToken(Output.of(staticObjectsExternalStorageAuthToken));
+        }
+
+        /**
+         * @param staticObjectsExternalStorageUrl URL to an external storage for repository static objects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staticObjectsExternalStorageUrl(@Nullable Output<String> staticObjectsExternalStorageUrl) {
+            $.staticObjectsExternalStorageUrl = staticObjectsExternalStorageUrl;
+            return this;
+        }
+
+        /**
+         * @param staticObjectsExternalStorageUrl URL to an external storage for repository static objects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staticObjectsExternalStorageUrl(String staticObjectsExternalStorageUrl) {
+            return staticObjectsExternalStorageUrl(Output.of(staticObjectsExternalStorageUrl));
         }
 
         /**
@@ -9844,6 +11424,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param unconfirmedUsersDeleteAfterDays Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unconfirmedUsersDeleteAfterDays(@Nullable Output<Integer> unconfirmedUsersDeleteAfterDays) {
+            $.unconfirmedUsersDeleteAfterDays = unconfirmedUsersDeleteAfterDays;
+            return this;
+        }
+
+        /**
+         * @param unconfirmedUsersDeleteAfterDays Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unconfirmedUsersDeleteAfterDays(Integer unconfirmedUsersDeleteAfterDays) {
+            return unconfirmedUsersDeleteAfterDays(Output.of(unconfirmedUsersDeleteAfterDays));
+        }
+
+        /**
          * @param uniqueIpsLimitEnabled (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
          * 
          * @return builder
@@ -9907,6 +11508,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param updateRunnerVersionsEnabled Fetch GitLab Runner release version data from GitLab.com.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateRunnerVersionsEnabled(@Nullable Output<Boolean> updateRunnerVersionsEnabled) {
+            $.updateRunnerVersionsEnabled = updateRunnerVersionsEnabled;
+            return this;
+        }
+
+        /**
+         * @param updateRunnerVersionsEnabled Fetch GitLab Runner release version data from GitLab.com.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateRunnerVersionsEnabled(Boolean updateRunnerVersionsEnabled) {
+            return updateRunnerVersionsEnabled(Output.of(updateRunnerVersionsEnabled));
+        }
+
+        /**
          * @param usagePingEnabled Every week GitLab reports license usage back to GitLab, Inc.
          * 
          * @return builder
@@ -9925,6 +11547,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder usagePingEnabled(Boolean usagePingEnabled) {
             return usagePingEnabled(Output.of(usagePingEnabled));
+        }
+
+        /**
+         * @param useClickhouseForAnalytics Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useClickhouseForAnalytics(@Nullable Output<Boolean> useClickhouseForAnalytics) {
+            $.useClickhouseForAnalytics = useClickhouseForAnalytics;
+            return this;
+        }
+
+        /**
+         * @param useClickhouseForAnalytics Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useClickhouseForAnalytics(Boolean useClickhouseForAnalytics) {
+            return useClickhouseForAnalytics(Output.of(useClickhouseForAnalytics));
         }
 
         /**
@@ -9991,6 +11634,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param userDefaultsToPrivateProfile Newly created users have private profile by default. Introduced in GitLab 15.8.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDefaultsToPrivateProfile(@Nullable Output<Boolean> userDefaultsToPrivateProfile) {
+            $.userDefaultsToPrivateProfile = userDefaultsToPrivateProfile;
+            return this;
+        }
+
+        /**
+         * @param userDefaultsToPrivateProfile Newly created users have private profile by default. Introduced in GitLab 15.8.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDefaultsToPrivateProfile(Boolean userDefaultsToPrivateProfile) {
+            return userDefaultsToPrivateProfile(Output.of(userDefaultsToPrivateProfile));
+        }
+
+        /**
          * @param userOauthApplications Allow users to register any application to use GitLab as an OAuth provider.
          * 
          * @return builder
@@ -10030,6 +11694,37 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder userShowAddSshKeyMessage(Boolean userShowAddSshKeyMessage) {
             return userShowAddSshKeyMessage(Output.of(userShowAddSshKeyMessage));
+        }
+
+        /**
+         * @param validRunnerRegistrars List of types which are allowed to register a GitLab Runner. Can be [], [&#39;group&#39;], [&#39;project&#39;] or [&#39;group&#39;, &#39;project&#39;].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validRunnerRegistrars(@Nullable Output<List<String>> validRunnerRegistrars) {
+            $.validRunnerRegistrars = validRunnerRegistrars;
+            return this;
+        }
+
+        /**
+         * @param validRunnerRegistrars List of types which are allowed to register a GitLab Runner. Can be [], [&#39;group&#39;], [&#39;project&#39;] or [&#39;group&#39;, &#39;project&#39;].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validRunnerRegistrars(List<String> validRunnerRegistrars) {
+            return validRunnerRegistrars(Output.of(validRunnerRegistrars));
+        }
+
+        /**
+         * @param validRunnerRegistrars List of types which are allowed to register a GitLab Runner. Can be [], [&#39;group&#39;], [&#39;project&#39;] or [&#39;group&#39;, &#39;project&#39;].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validRunnerRegistrars(String... validRunnerRegistrars) {
+            return validRunnerRegistrars(List.of(validRunnerRegistrars));
         }
 
         /**
@@ -10075,7 +11770,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param whatsNewVariant What’s new variant, possible values: all*tiers, current*tier, and disabled.
+         * @param whatsNewVariant What&#39;s new variant, possible values: all*tiers, current*tier, and disabled.
          * 
          * @return builder
          * 
@@ -10086,7 +11781,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param whatsNewVariant What’s new variant, possible values: all*tiers, current*tier, and disabled.
+         * @param whatsNewVariant What&#39;s new variant, possible values: all*tiers, current*tier, and disabled.
          * 
          * @return builder
          * 

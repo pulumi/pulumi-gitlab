@@ -24,6 +24,7 @@ class ProviderArgs:
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  early_auth_check: Optional[pulumi.Input[bool]] = None,
+                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  token: Optional[pulumi.Input[str]] = None):
@@ -37,6 +38,7 @@ class ProviderArgs:
         :param pulumi.Input[str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
         :param pulumi.Input[str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
                `client_cert` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: A map of headers to append to all API request to the GitLab instance.
         :param pulumi.Input[bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
         :param pulumi.Input[int] retries: The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
         :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
@@ -54,6 +56,8 @@ class ProviderArgs:
             pulumi.set(__self__, "client_key", client_key)
         if early_auth_check is not None:
             pulumi.set(__self__, "early_auth_check", early_auth_check)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
         if retries is not None:
@@ -124,6 +128,18 @@ class ProviderArgs:
 
     @property
     @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of headers to append to all API request to the GitLab instance.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter
     def insecure(self) -> Optional[pulumi.Input[bool]]:
         """
         When set to true this disables SSL verification of the connection to the GitLab instance.
@@ -172,6 +188,7 @@ class Provider(pulumi.ProviderResource):
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  early_auth_check: Optional[pulumi.Input[bool]] = None,
+                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  token: Optional[pulumi.Input[str]] = None,
@@ -192,6 +209,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
         :param pulumi.Input[str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
                `client_cert` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: A map of headers to append to all API request to the GitLab instance.
         :param pulumi.Input[bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
         :param pulumi.Input[int] retries: The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
         :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
@@ -231,6 +249,7 @@ class Provider(pulumi.ProviderResource):
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  early_auth_check: Optional[pulumi.Input[bool]] = None,
+                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  token: Optional[pulumi.Input[str]] = None,
@@ -248,6 +267,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_cert"] = client_cert
             __props__.__dict__["client_key"] = client_key
             __props__.__dict__["early_auth_check"] = pulumi.Output.from_input(early_auth_check).apply(pulumi.runtime.to_json) if early_auth_check is not None else None
+            __props__.__dict__["headers"] = pulumi.Output.from_input(headers).apply(pulumi.runtime.to_json) if headers is not None else None
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
             __props__.__dict__["retries"] = pulumi.Output.from_input(retries).apply(pulumi.runtime.to_json) if retries is not None else None
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)

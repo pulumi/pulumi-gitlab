@@ -118,6 +118,18 @@ namespace Pulumi.GitLab
         [Input("earlyAuthCheck", json: true)]
         public Input<bool>? EarlyAuthCheck { get; set; }
 
+        [Input("headers", json: true)]
+        private InputMap<string>? _headers;
+
+        /// <summary>
+        /// A map of headers to append to all API request to the GitLab instance.
+        /// </summary>
+        public InputMap<string> Headers
+        {
+            get => _headers ?? (_headers = new InputMap<string>());
+            set => _headers = value;
+        }
+
         /// <summary>
         /// When set to true this disables SSL verification of the connection to the GitLab instance.
         /// </summary>

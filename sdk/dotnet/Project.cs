@@ -38,6 +38,12 @@ namespace Pulumi.GitLab
         public Output<bool> AllowMergeOnSkippedPipeline { get; private set; } = null!;
 
         /// <summary>
+        /// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+        /// </summary>
+        [Output("allowPipelineTriggerApproveDeployment")]
+        public Output<bool> AllowPipelineTriggerApproveDeployment { get; private set; } = null!;
+
+        /// <summary>
         /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         [Output("analyticsAccessLevel")]
@@ -371,6 +377,18 @@ namespace Pulumi.GitLab
         public Output<bool> MirrorTriggerBuilds { get; private set; } = null!;
 
         /// <summary>
+        /// Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("modelExperimentsAccessLevel")]
+        public Output<string> ModelExperimentsAccessLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("modelRegistryAccessLevel")]
+        public Output<string> ModelRegistryAccessLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         [Output("monitorAccessLevel")]
@@ -694,6 +712,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("allowMergeOnSkippedPipeline")]
         public Input<bool>? AllowMergeOnSkippedPipeline { get; set; }
+
+        /// <summary>
+        /// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+        /// </summary>
+        [Input("allowPipelineTriggerApproveDeployment")]
+        public Input<bool>? AllowPipelineTriggerApproveDeployment { get; set; }
 
         /// <summary>
         /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1021,6 +1045,18 @@ namespace Pulumi.GitLab
         public Input<bool>? MirrorTriggerBuilds { get; set; }
 
         /// <summary>
+        /// Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("modelExperimentsAccessLevel")]
+        public Input<string>? ModelExperimentsAccessLevel { get; set; }
+
+        /// <summary>
+        /// Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("modelRegistryAccessLevel")]
+        public Input<string>? ModelRegistryAccessLevel { get; set; }
+
+        /// <summary>
         /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         [Input("monitorAccessLevel")]
@@ -1289,6 +1325,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("allowMergeOnSkippedPipeline")]
         public Input<bool>? AllowMergeOnSkippedPipeline { get; set; }
+
+        /// <summary>
+        /// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+        /// </summary>
+        [Input("allowPipelineTriggerApproveDeployment")]
+        public Input<bool>? AllowPipelineTriggerApproveDeployment { get; set; }
 
         /// <summary>
         /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1632,6 +1674,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mirrorTriggerBuilds")]
         public Input<bool>? MirrorTriggerBuilds { get; set; }
+
+        /// <summary>
+        /// Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("modelExperimentsAccessLevel")]
+        public Input<string>? ModelExperimentsAccessLevel { get; set; }
+
+        /// <summary>
+        /// Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("modelRegistryAccessLevel")]
+        public Input<string>? ModelRegistryAccessLevel { get; set; }
 
         /// <summary>
         /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.

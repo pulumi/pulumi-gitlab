@@ -38,6 +38,11 @@ func GetEarlyAuthCheck(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gitlab:earlyAuthCheck")
 }
 
+// A map of headers to append to all API request to the GitLab instance.
+func GetHeaders(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gitlab:headers")
+}
+
 // When set to true this disables SSL verification of the connection to the GitLab instance.
 func GetInsecure(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gitlab:insecure")

@@ -64,6 +64,17 @@ Object.defineProperty(exports, "earlyAuthCheck", {
 });
 
 /**
+ * A map of headers to append to all API request to the GitLab instance.
+ */
+export declare const headers: {[key: string]: string} | undefined;
+Object.defineProperty(exports, "headers", {
+    get() {
+        return __config.getObject<{[key: string]: string}>("headers");
+    },
+    enumerable: true,
+});
+
+/**
  * When set to true this disables SSL verification of the connection to the GitLab instance.
  */
 export declare const insecure: boolean | undefined;

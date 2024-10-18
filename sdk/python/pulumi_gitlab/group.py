@@ -25,6 +25,7 @@ class GroupArgs:
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
+                 default_branch: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  default_branch_protection_defaults: Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -55,6 +56,7 @@ class GroupArgs:
         :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        :param pulumi.Input[str] default_branch: Initial default branch name.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
@@ -87,6 +89,8 @@ class GroupArgs:
             pulumi.set(__self__, "avatar", avatar)
         if avatar_hash is not None:
             pulumi.set(__self__, "avatar_hash", avatar_hash)
+        if default_branch is not None:
+            pulumi.set(__self__, "default_branch", default_branch)
         if default_branch_protection is not None:
             warnings.warn("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""", DeprecationWarning)
             pulumi.log.warn("""default_branch_protection is deprecated: Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
@@ -186,6 +190,18 @@ class GroupArgs:
     @avatar_hash.setter
     def avatar_hash(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "avatar_hash", value)
+
+    @property
+    @pulumi.getter(name="defaultBranch")
+    def default_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initial default branch name.
+        """
+        return pulumi.get(self, "default_branch")
+
+    @default_branch.setter
+    def default_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_branch", value)
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
@@ -484,6 +500,7 @@ class _GroupState:
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
                  avatar_url: Optional[pulumi.Input[str]] = None,
+                 default_branch: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  default_branch_protection_defaults: Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -519,6 +536,7 @@ class _GroupState:
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
+        :param pulumi.Input[str] default_branch: Initial default branch name.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
@@ -557,6 +575,8 @@ class _GroupState:
             pulumi.set(__self__, "avatar_hash", avatar_hash)
         if avatar_url is not None:
             pulumi.set(__self__, "avatar_url", avatar_url)
+        if default_branch is not None:
+            pulumi.set(__self__, "default_branch", default_branch)
         if default_branch_protection is not None:
             warnings.warn("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""", DeprecationWarning)
             pulumi.log.warn("""default_branch_protection is deprecated: Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
@@ -666,6 +686,18 @@ class _GroupState:
     @avatar_url.setter
     def avatar_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "avatar_url", value)
+
+    @property
+    @pulumi.getter(name="defaultBranch")
+    def default_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initial default branch name.
+        """
+        return pulumi.get(self, "default_branch")
+
+    @default_branch.setter
+    def default_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_branch", value)
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
@@ -1025,6 +1057,7 @@ class Group(pulumi.CustomResource):
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
+                 default_branch: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  default_branch_protection_defaults: Optional[pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1098,6 +1131,23 @@ class Group(pulumi.CustomResource):
                 ],
                 "developer_can_initial_push": True,
             })
+        # Group with custom default branch protection defaults
+        example_four = gitlab.Group("example-four",
+            name="example-four",
+            path="example-four",
+            description="An example group with default branch protection defaults",
+            default_branch_protection_defaults={
+                "allowed_to_pushes": ["no one"],
+                "allow_force_push": True,
+                "allowed_to_merges": ["no one"],
+                "developer_can_initial_push": True,
+            })
+        # Group with a default branch name specified
+        example_five = gitlab.Group("example-five",
+            name="example",
+            path="example",
+            default_branch="develop",
+            description="An example group with a default branch name")
         ```
 
         ## Import
@@ -1119,6 +1169,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        :param pulumi.Input[str] default_branch: Initial default branch name.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
@@ -1198,6 +1249,23 @@ class Group(pulumi.CustomResource):
                 ],
                 "developer_can_initial_push": True,
             })
+        # Group with custom default branch protection defaults
+        example_four = gitlab.Group("example-four",
+            name="example-four",
+            path="example-four",
+            description="An example group with default branch protection defaults",
+            default_branch_protection_defaults={
+                "allowed_to_pushes": ["no one"],
+                "allow_force_push": True,
+                "allowed_to_merges": ["no one"],
+                "developer_can_initial_push": True,
+            })
+        # Group with a default branch name specified
+        example_five = gitlab.Group("example-five",
+            name="example",
+            path="example",
+            default_branch="develop",
+            description="An example group with a default branch name")
         ```
 
         ## Import
@@ -1232,6 +1300,7 @@ class Group(pulumi.CustomResource):
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
+                 default_branch: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  default_branch_protection_defaults: Optional[pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1269,6 +1338,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
             __props__.__dict__["avatar"] = avatar
             __props__.__dict__["avatar_hash"] = avatar_hash
+            __props__.__dict__["default_branch"] = default_branch
             __props__.__dict__["default_branch_protection"] = default_branch_protection
             __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
             __props__.__dict__["description"] = description
@@ -1317,6 +1387,7 @@ class Group(pulumi.CustomResource):
             avatar: Optional[pulumi.Input[str]] = None,
             avatar_hash: Optional[pulumi.Input[str]] = None,
             avatar_url: Optional[pulumi.Input[str]] = None,
+            default_branch: Optional[pulumi.Input[str]] = None,
             default_branch_protection: Optional[pulumi.Input[int]] = None,
             default_branch_protection_defaults: Optional[pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1357,6 +1428,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
+        :param pulumi.Input[str] default_branch: Initial default branch name.
         :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
@@ -1395,6 +1467,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["avatar"] = avatar
         __props__.__dict__["avatar_hash"] = avatar_hash
         __props__.__dict__["avatar_url"] = avatar_url
+        __props__.__dict__["default_branch"] = default_branch
         __props__.__dict__["default_branch_protection"] = default_branch_protection
         __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
         __props__.__dict__["description"] = description
@@ -1457,6 +1530,14 @@ class Group(pulumi.CustomResource):
         The URL of the avatar image.
         """
         return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter(name="defaultBranch")
+    def default_branch(self) -> pulumi.Output[Optional[str]]:
+        """
+        Initial default branch name.
+        """
+        return pulumi.get(self, "default_branch")
 
     @property
     @pulumi.getter(name="defaultBranchProtection")

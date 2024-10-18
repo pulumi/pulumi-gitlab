@@ -6,6 +6,7 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gitlab.inputs.PersonalAccessTokenRotationConfigurationArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -19,14 +20,14 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
     public static final PersonalAccessTokenArgs Empty = new PersonalAccessTokenArgs();
 
     /**
-     * When the token will expire, YYYY-MM-DD format.
+     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return When the token will expire, YYYY-MM-DD format.
+     * @return When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -46,6 +47,21 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    @Import(name="rotationConfiguration")
+    private @Nullable Output<PersonalAccessTokenRotationConfigurationArgs> rotationConfiguration;
+
+    /**
+     * @return The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    public Optional<Output<PersonalAccessTokenRotationConfigurationArgs>> rotationConfiguration() {
+        return Optional.ofNullable(this.rotationConfiguration);
     }
 
     /**
@@ -83,6 +99,7 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
     private PersonalAccessTokenArgs(PersonalAccessTokenArgs $) {
         this.expiresAt = $.expiresAt;
         this.name = $.name;
+        this.rotationConfiguration = $.rotationConfiguration;
         this.scopes = $.scopes;
         this.userId = $.userId;
     }
@@ -106,7 +123,7 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expiresAt When the token will expire, YYYY-MM-DD format.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
          * 
          * @return builder
          * 
@@ -117,7 +134,7 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expiresAt When the token will expire, YYYY-MM-DD format.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
          * 
          * @return builder
          * 
@@ -145,6 +162,27 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(@Nullable Output<PersonalAccessTokenRotationConfigurationArgs> rotationConfiguration) {
+            $.rotationConfiguration = rotationConfiguration;
+            return this;
+        }
+
+        /**
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(PersonalAccessTokenRotationConfigurationArgs rotationConfiguration) {
+            return rotationConfiguration(Output.of(rotationConfiguration));
         }
 
         /**

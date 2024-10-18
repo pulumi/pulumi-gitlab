@@ -113,14 +113,19 @@ class ApplicationSettingsArgs:
                  elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
+                 elasticsearch_max_code_indexing_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_password: Optional[pulumi.Input[str]] = None,
                  elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 elasticsearch_requeue_workers: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_search: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elasticsearch_username: Optional[pulumi.Input[str]] = None,
+                 elasticsearch_worker_number_of_shards: Optional[pulumi.Input[int]] = None,
                  email_additional_text: Optional[pulumi.Input[str]] = None,
                  email_author_in_body: Optional[pulumi.Input[bool]] = None,
+                 email_confirmation_setting: Optional[pulumi.Input[str]] = None,
+                 enable_artifact_external_redirect_warning_page: Optional[pulumi.Input[bool]] = None,
                  enabled_git_access_protocol: Optional[pulumi.Input[str]] = None,
                  enforce_namespace_storage_limit: Optional[pulumi.Input[bool]] = None,
                  enforce_terms: Optional[pulumi.Input[bool]] = None,
@@ -134,15 +139,21 @@ class ApplicationSettingsArgs:
                  external_pipeline_validation_service_timeout: Optional[pulumi.Input[int]] = None,
                  external_pipeline_validation_service_token: Optional[pulumi.Input[str]] = None,
                  external_pipeline_validation_service_url: Optional[pulumi.Input[str]] = None,
+                 failed_login_attempts_unlock_period_in_minutes: Optional[pulumi.Input[int]] = None,
                  file_template_project_id: Optional[pulumi.Input[int]] = None,
                  first_day_of_week: Optional[pulumi.Input[int]] = None,
                  geo_node_allowed_ips: Optional[pulumi.Input[str]] = None,
                  geo_status_timeout: Optional[pulumi.Input[int]] = None,
+                 git_rate_limit_users_alertlists: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  git_two_factor_session_expiry: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_default: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_fast: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_medium: Optional[pulumi.Input[int]] = None,
+                 gitlab_shell_operation_limit: Optional[pulumi.Input[int]] = None,
+                 gitpod_enabled: Optional[pulumi.Input[bool]] = None,
+                 gitpod_url: Optional[pulumi.Input[str]] = None,
+                 globally_allowed_ips: Optional[pulumi.Input[str]] = None,
                  grafana_enabled: Optional[pulumi.Input[bool]] = None,
                  grafana_url: Optional[pulumi.Input[str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[bool]] = None,
@@ -165,18 +176,27 @@ class ApplicationSettingsArgs:
                  inactive_projects_delete_after_months: Optional[pulumi.Input[int]] = None,
                  inactive_projects_min_size_mb: Optional[pulumi.Input[int]] = None,
                  inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[int]] = None,
+                 include_optional_metrics_in_service_ping: Optional[pulumi.Input[bool]] = None,
                  invisible_captcha_enabled: Optional[pulumi.Input[bool]] = None,
                  issues_create_limit: Optional[pulumi.Input[int]] = None,
+                 jira_connect_application_key: Optional[pulumi.Input[str]] = None,
+                 jira_connect_proxy_url: Optional[pulumi.Input[str]] = None,
+                 jira_connect_public_key_storage_enabled: Optional[pulumi.Input[bool]] = None,
                  keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  local_markdown_version: Optional[pulumi.Input[int]] = None,
+                 lock_duo_features_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[str]] = None,
                  maintenance_mode: Optional[pulumi.Input[bool]] = None,
                  maintenance_mode_message: Optional[pulumi.Input[str]] = None,
+                 maven_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
                  max_artifacts_size: Optional[pulumi.Input[int]] = None,
                  max_attachment_size: Optional[pulumi.Input[int]] = None,
+                 max_decompressed_archive_size: Optional[pulumi.Input[int]] = None,
                  max_export_size: Optional[pulumi.Input[int]] = None,
+                 max_import_remote_file_size: Optional[pulumi.Input[int]] = None,
                  max_import_size: Optional[pulumi.Input[int]] = None,
+                 max_login_attempts: Optional[pulumi.Input[int]] = None,
                  max_number_of_repository_downloads: Optional[pulumi.Input[int]] = None,
                  max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[int]] = None,
                  max_pages_size: Optional[pulumi.Input[int]] = None,
@@ -190,7 +210,10 @@ class ApplicationSettingsArgs:
                  mirror_max_capacity: Optional[pulumi.Input[int]] = None,
                  mirror_max_delay: Optional[pulumi.Input[int]] = None,
                  npm_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
+                 nuget_skip_metadata_url_validation: Optional[pulumi.Input[bool]] = None,
                  outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 package_metadata_purl_types: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 package_registry_allow_anyone_to_pull_option: Optional[pulumi.Input[bool]] = None,
                  package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
                  pages_domain_verification_enabled: Optional[pulumi.Input[bool]] = None,
                  password_authentication_enabled_for_git: Optional[pulumi.Input[bool]] = None,
@@ -206,6 +229,8 @@ class ApplicationSettingsArgs:
                  plantuml_url: Optional[pulumi.Input[str]] = None,
                  polling_interval_multiplier: Optional[pulumi.Input[float]] = None,
                  project_export_enabled: Optional[pulumi.Input[bool]] = None,
+                 project_jobs_api_rate_limit: Optional[pulumi.Input[int]] = None,
+                 projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
                  prometheus_metrics_enabled: Optional[pulumi.Input[bool]] = None,
                  protected_ci_variables: Optional[pulumi.Input[bool]] = None,
                  push_event_activities_limit: Optional[pulumi.Input[int]] = None,
@@ -217,17 +242,25 @@ class ApplicationSettingsArgs:
                  recaptcha_private_key: Optional[pulumi.Input[str]] = None,
                  recaptcha_site_key: Optional[pulumi.Input[str]] = None,
                  receive_max_input_size: Optional[pulumi.Input[int]] = None,
+                 receptive_cluster_agents_enabled: Optional[pulumi.Input[bool]] = None,
+                 remember_me_enabled: Optional[pulumi.Input[bool]] = None,
                  repository_checks_enabled: Optional[pulumi.Input[bool]] = None,
                  repository_size_limit: Optional[pulumi.Input[int]] = None,
                  repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
                  require_admin_approval_after_user_signup: Optional[pulumi.Input[bool]] = None,
+                 require_admin_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
+                 require_personal_access_token_expiry: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  rsa_key_restriction: Optional[pulumi.Input[int]] = None,
                  search_rate_limit: Optional[pulumi.Input[int]] = None,
                  search_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
+                 security_approval_policies_limit: Optional[pulumi.Input[int]] = None,
+                 security_policy_global_group_approvers_enabled: Optional[pulumi.Input[bool]] = None,
+                 security_txt_content: Optional[pulumi.Input[str]] = None,
                  send_user_confirmation_email: Optional[pulumi.Input[bool]] = None,
+                 service_access_tokens_expiration_enforced: Optional[pulumi.Input[bool]] = None,
                  session_expire_delay: Optional[pulumi.Input[int]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  shared_runners_minutes: Optional[pulumi.Input[int]] = None,
@@ -237,6 +270,8 @@ class ApplicationSettingsArgs:
                  sidekiq_job_limiter_mode: Optional[pulumi.Input[str]] = None,
                  sign_in_text: Optional[pulumi.Input[str]] = None,
                  signup_enabled: Optional[pulumi.Input[bool]] = None,
+                 silent_admin_exports_enabled: Optional[pulumi.Input[bool]] = None,
+                 silent_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  slack_app_enabled: Optional[pulumi.Input[bool]] = None,
                  slack_app_id: Optional[pulumi.Input[str]] = None,
                  slack_app_secret: Optional[pulumi.Input[str]] = None,
@@ -246,6 +281,7 @@ class ApplicationSettingsArgs:
                  snowplow_app_id: Optional[pulumi.Input[str]] = None,
                  snowplow_collector_hostname: Optional[pulumi.Input[str]] = None,
                  snowplow_cookie_domain: Optional[pulumi.Input[str]] = None,
+                 snowplow_database_collector_hostname: Optional[pulumi.Input[str]] = None,
                  snowplow_enabled: Optional[pulumi.Input[bool]] = None,
                  sourcegraph_enabled: Optional[pulumi.Input[bool]] = None,
                  sourcegraph_public_only: Optional[pulumi.Input[bool]] = None,
@@ -253,6 +289,8 @@ class ApplicationSettingsArgs:
                  spam_check_api_key: Optional[pulumi.Input[str]] = None,
                  spam_check_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  spam_check_endpoint_url: Optional[pulumi.Input[str]] = None,
+                 static_objects_external_storage_auth_token: Optional[pulumi.Input[str]] = None,
+                 static_objects_external_storage_url: Optional[pulumi.Input[str]] = None,
                  suggest_pipeline_enabled: Optional[pulumi.Input[bool]] = None,
                  terminal_max_session_time: Optional[pulumi.Input[int]] = None,
                  terms: Optional[pulumi.Input[str]] = None,
@@ -276,15 +314,20 @@ class ApplicationSettingsArgs:
                  throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[int]] = None,
                  time_tracking_limit_to_hours: Optional[pulumi.Input[bool]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
+                 unconfirmed_users_delete_after_days: Optional[pulumi.Input[int]] = None,
                  unique_ips_limit_enabled: Optional[pulumi.Input[bool]] = None,
                  unique_ips_limit_per_user: Optional[pulumi.Input[int]] = None,
                  unique_ips_limit_time_window: Optional[pulumi.Input[int]] = None,
+                 update_runner_versions_enabled: Optional[pulumi.Input[bool]] = None,
                  usage_ping_enabled: Optional[pulumi.Input[bool]] = None,
+                 use_clickhouse_for_analytics: Optional[pulumi.Input[bool]] = None,
                  user_deactivation_emails_enabled: Optional[pulumi.Input[bool]] = None,
                  user_default_external: Optional[pulumi.Input[bool]] = None,
                  user_default_internal_regex: Optional[pulumi.Input[str]] = None,
+                 user_defaults_to_private_profile: Optional[pulumi.Input[bool]] = None,
                  user_oauth_applications: Optional[pulumi.Input[bool]] = None,
                  user_show_add_ssh_key_message: Optional[pulumi.Input[bool]] = None,
+                 valid_runner_registrars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version_check_enabled: Optional[pulumi.Input[bool]] = None,
                  web_ide_clientside_preview_enabled: Optional[pulumi.Input[bool]] = None,
                  whats_new_variant: Optional[pulumi.Input[str]] = None,
@@ -383,14 +426,19 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[bool] elasticsearch_limit_indexing: Limit Elasticsearch to index certain namespaces and projects.
         :param pulumi.Input[int] elasticsearch_max_bulk_concurrency: Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
         :param pulumi.Input[int] elasticsearch_max_bulk_size_mb: Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
+        :param pulumi.Input[int] elasticsearch_max_code_indexing_concurrency: Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[str] elasticsearch_password: The password of your Elasticsearch instance.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[bool] elasticsearch_requeue_workers: Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
         :param pulumi.Input[bool] elasticsearch_search: Enable Elasticsearch search.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_urls: The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
         :param pulumi.Input[str] elasticsearch_username: The username of your Elasticsearch instance.
+        :param pulumi.Input[int] elasticsearch_worker_number_of_shards: Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
         :param pulumi.Input[str] email_additional_text: Additional text added to the bottom of every email for legal/auditing/compliance reasons.
         :param pulumi.Input[bool] email_author_in_body: Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
+        :param pulumi.Input[str] email_confirmation_setting: Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+        :param pulumi.Input[bool] enable_artifact_external_redirect_warning_page: Show the external redirect page that warns you about user-generated content in GitLab Pages.
         :param pulumi.Input[str] enabled_git_access_protocol: Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
         :param pulumi.Input[bool] enforce_namespace_storage_limit: Enabling this permits enforcement of namespace storage limits.
         :param pulumi.Input[bool] enforce_terms: (If enabled, requires: terms) Enforce application ToS to all users.
@@ -404,15 +452,21 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[int] external_pipeline_validation_service_timeout: How long to wait for a response from the pipeline validation service. Assumes OK if it times out.
         :param pulumi.Input[str] external_pipeline_validation_service_token: Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
         :param pulumi.Input[str] external_pipeline_validation_service_url: URL to use for pipeline validation requests.
+        :param pulumi.Input[int] failed_login_attempts_unlock_period_in_minutes: Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
         :param pulumi.Input[int] file_template_project_id: The ID of a project to load custom file templates from.
         :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] git_rate_limit_users_alertlists: List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
         :param pulumi.Input[int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
         :param pulumi.Input[int] gitaly_timeout_default: Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_fast: Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_medium: Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
+        :param pulumi.Input[int] gitlab_shell_operation_limit: Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+        :param pulumi.Input[bool] gitpod_enabled: Enable Gitpod integration.
+        :param pulumi.Input[str] gitpod_url: The Gitpod instance URL for integration.
+        :param pulumi.Input[str] globally_allowed_ips: Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[str] grafana_url: Grafana URL.
         :param pulumi.Input[bool] gravatar_enabled: Enable Gravatar.
@@ -437,18 +491,27 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[bool] include_optional_metrics_in_service_ping: Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
         :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
         :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user.
+        :param pulumi.Input[str] jira_connect_application_key: ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+        :param pulumi.Input[str] jira_connect_proxy_url: URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+        :param pulumi.Input[bool] jira_connect_public_key_storage_enabled: Enable public key storage for the GitLab for Jira Cloud app.
         :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
+        :param pulumi.Input[bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
         :param pulumi.Input[str] maintenance_mode_message: Message displayed when instance is in maintenance mode.
+        :param pulumi.Input[bool] maven_package_requests_forwarding: Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
         :param pulumi.Input[int] max_artifacts_size: Maximum artifacts size in MB.
         :param pulumi.Input[int] max_attachment_size: Limit attachment size in MB.
+        :param pulumi.Input[int] max_decompressed_archive_size: Maximum decompressed archive size in bytes.
         :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_import_remote_file_size: Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
         :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_login_attempts: Maximum number of sign-in attempts before locking out the user.
         :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_pages_size: Maximum size of pages repositories in MB.
@@ -461,7 +524,10 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         :param pulumi.Input[bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
+        :param pulumi.Input[bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] package_metadata_purl_types: List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+        :param pulumi.Input[bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
         :param pulumi.Input[int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
         :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
@@ -477,6 +543,8 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[bool] project_export_enabled: Enable project export.
+        :param pulumi.Input[int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+        :param pulumi.Input[int] projects_api_rate_limit_unauthenticated: Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
         :param pulumi.Input[bool] prometheus_metrics_enabled: Enable Prometheus metrics.
         :param pulumi.Input[bool] protected_ci_variables: CI/CD variables are protected by default.
         :param pulumi.Input[int] push_event_activities_limit: Number of changes (branches or tags) in a single push to determine whether individual push events or bulk push events are created. Bulk push events are created if it surpasses that value.
@@ -488,17 +556,25 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[str] recaptcha_site_key: Site key for reCAPTCHA.
         :param pulumi.Input[int] receive_max_input_size: Maximum push size (MB).
+        :param pulumi.Input[bool] receptive_cluster_agents_enabled: Enable receptive mode for GitLab Agents for Kubernetes.
+        :param pulumi.Input[bool] remember_me_enabled: Enable Remember me setting. Introduced in GitLab 16.0.
         :param pulumi.Input[bool] repository_checks_enabled: GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         :param pulumi.Input[int] repository_size_limit: Size limit per repository (MB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] repository_storages: (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
+        :param pulumi.Input[bool] require_admin_two_factor_authentication: Allow administrators to require 2FA for all administrators on the instance.
+        :param pulumi.Input[bool] require_personal_access_token_expiry: When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
         :param pulumi.Input[bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
+        :param pulumi.Input[int] security_approval_policies_limit: Maximum number of active merge request approval policies per security policy project. Maximum: 20
+        :param pulumi.Input[bool] security_policy_global_group_approvers_enabled: Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+        :param pulumi.Input[str] security_txt_content: Public security contact information. Introduced in GitLab 16.7.
         :param pulumi.Input[bool] send_user_confirmation_email: Send confirmation email on sign-up.
+        :param pulumi.Input[bool] service_access_tokens_expiration_enforced: Flag to indicate if token expiry date can be optional for service account users
         :param pulumi.Input[int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
@@ -508,6 +584,8 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits.
         :param pulumi.Input[str] sign_in_text: Text on the login page.
         :param pulumi.Input[bool] signup_enabled: Enable registration.
+        :param pulumi.Input[bool] silent_admin_exports_enabled: Enable Silent admin exports.
+        :param pulumi.Input[bool] silent_mode_enabled: Enable Silent mode.
         :param pulumi.Input[bool] slack_app_enabled: (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         :param pulumi.Input[str] slack_app_id: The app ID of the Slack-app.
         :param pulumi.Input[str] slack_app_secret: The app secret of the Slack-app.
@@ -517,6 +595,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] snowplow_app_id: The Snowplow site name / application ID. (for example, gitlab)
         :param pulumi.Input[str] snowplow_collector_hostname: The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
         :param pulumi.Input[str] snowplow_cookie_domain: The Snowplow cookie domain. (for example, .gitlab.com)
+        :param pulumi.Input[str] snowplow_database_collector_hostname: The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
         :param pulumi.Input[bool] snowplow_enabled: Enable snowplow tracking.
         :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
         :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects.
@@ -524,6 +603,8 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] spam_check_api_key: API key used by GitLab for accessing the Spam Check service endpoint.
         :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint.
         :param pulumi.Input[str] spam_check_endpoint_url: URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
+        :param pulumi.Input[str] static_objects_external_storage_auth_token: Authentication token for the external storage linked in static*objects*external*storage*url.
+        :param pulumi.Input[str] static_objects_external_storage_url: URL to an external storage for repository static objects.
         :param pulumi.Input[bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
         :param pulumi.Input[int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
         :param pulumi.Input[str] terms: (Required by: enforce_terms) Markdown content for the ToS.
@@ -547,18 +628,23 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
         :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours.
         :param pulumi.Input[int] two_factor_grace_period: Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
+        :param pulumi.Input[int] unconfirmed_users_delete_after_days: Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[bool] unique_ips_limit_enabled: (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         :param pulumi.Input[int] unique_ips_limit_per_user: Maximum number of IPs per user.
         :param pulumi.Input[int] unique_ips_limit_time_window: How many seconds an IP is counted towards the limit.
+        :param pulumi.Input[bool] update_runner_versions_enabled: Fetch GitLab Runner release version data from GitLab.com.
         :param pulumi.Input[bool] usage_ping_enabled: Every week GitLab reports license usage back to GitLab, Inc.
+        :param pulumi.Input[bool] use_clickhouse_for_analytics: Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
         :param pulumi.Input[bool] user_deactivation_emails_enabled: Send an email to users upon account deactivation.
         :param pulumi.Input[bool] user_default_external: Newly registered users are external by default.
         :param pulumi.Input[str] user_default_internal_regex: Specify an email address regex pattern to identify default internal users.
+        :param pulumi.Input[bool] user_defaults_to_private_profile: Newly created users have private profile by default. Introduced in GitLab 15.8.
         :param pulumi.Input[bool] user_oauth_applications: Allow users to register any application to use GitLab as an OAuth provider.
         :param pulumi.Input[bool] user_show_add_ssh_key_message: When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valid_runner_registrars: List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
         :param pulumi.Input[bool] version_check_enabled: Let GitLab inform you when an update is available.
         :param pulumi.Input[bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
-        :param pulumi.Input[str] whats_new_variant: What’s new variant, possible values: all*tiers, current*tier, and disabled.
+        :param pulumi.Input[str] whats_new_variant: What's new variant, possible values: all*tiers, current*tier, and disabled.
         :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         if abuse_notification_email is not None:
@@ -745,22 +831,32 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "elasticsearch_max_bulk_concurrency", elasticsearch_max_bulk_concurrency)
         if elasticsearch_max_bulk_size_mb is not None:
             pulumi.set(__self__, "elasticsearch_max_bulk_size_mb", elasticsearch_max_bulk_size_mb)
+        if elasticsearch_max_code_indexing_concurrency is not None:
+            pulumi.set(__self__, "elasticsearch_max_code_indexing_concurrency", elasticsearch_max_code_indexing_concurrency)
         if elasticsearch_namespace_ids is not None:
             pulumi.set(__self__, "elasticsearch_namespace_ids", elasticsearch_namespace_ids)
         if elasticsearch_password is not None:
             pulumi.set(__self__, "elasticsearch_password", elasticsearch_password)
         if elasticsearch_project_ids is not None:
             pulumi.set(__self__, "elasticsearch_project_ids", elasticsearch_project_ids)
+        if elasticsearch_requeue_workers is not None:
+            pulumi.set(__self__, "elasticsearch_requeue_workers", elasticsearch_requeue_workers)
         if elasticsearch_search is not None:
             pulumi.set(__self__, "elasticsearch_search", elasticsearch_search)
         if elasticsearch_urls is not None:
             pulumi.set(__self__, "elasticsearch_urls", elasticsearch_urls)
         if elasticsearch_username is not None:
             pulumi.set(__self__, "elasticsearch_username", elasticsearch_username)
+        if elasticsearch_worker_number_of_shards is not None:
+            pulumi.set(__self__, "elasticsearch_worker_number_of_shards", elasticsearch_worker_number_of_shards)
         if email_additional_text is not None:
             pulumi.set(__self__, "email_additional_text", email_additional_text)
         if email_author_in_body is not None:
             pulumi.set(__self__, "email_author_in_body", email_author_in_body)
+        if email_confirmation_setting is not None:
+            pulumi.set(__self__, "email_confirmation_setting", email_confirmation_setting)
+        if enable_artifact_external_redirect_warning_page is not None:
+            pulumi.set(__self__, "enable_artifact_external_redirect_warning_page", enable_artifact_external_redirect_warning_page)
         if enabled_git_access_protocol is not None:
             pulumi.set(__self__, "enabled_git_access_protocol", enabled_git_access_protocol)
         if enforce_namespace_storage_limit is not None:
@@ -787,6 +883,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "external_pipeline_validation_service_token", external_pipeline_validation_service_token)
         if external_pipeline_validation_service_url is not None:
             pulumi.set(__self__, "external_pipeline_validation_service_url", external_pipeline_validation_service_url)
+        if failed_login_attempts_unlock_period_in_minutes is not None:
+            pulumi.set(__self__, "failed_login_attempts_unlock_period_in_minutes", failed_login_attempts_unlock_period_in_minutes)
         if file_template_project_id is not None:
             pulumi.set(__self__, "file_template_project_id", file_template_project_id)
         if first_day_of_week is not None:
@@ -795,6 +893,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "geo_node_allowed_ips", geo_node_allowed_ips)
         if geo_status_timeout is not None:
             pulumi.set(__self__, "geo_status_timeout", geo_status_timeout)
+        if git_rate_limit_users_alertlists is not None:
+            pulumi.set(__self__, "git_rate_limit_users_alertlists", git_rate_limit_users_alertlists)
         if git_rate_limit_users_allowlists is not None:
             pulumi.set(__self__, "git_rate_limit_users_allowlists", git_rate_limit_users_allowlists)
         if git_two_factor_session_expiry is not None:
@@ -805,6 +905,14 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "gitaly_timeout_fast", gitaly_timeout_fast)
         if gitaly_timeout_medium is not None:
             pulumi.set(__self__, "gitaly_timeout_medium", gitaly_timeout_medium)
+        if gitlab_shell_operation_limit is not None:
+            pulumi.set(__self__, "gitlab_shell_operation_limit", gitlab_shell_operation_limit)
+        if gitpod_enabled is not None:
+            pulumi.set(__self__, "gitpod_enabled", gitpod_enabled)
+        if gitpod_url is not None:
+            pulumi.set(__self__, "gitpod_url", gitpod_url)
+        if globally_allowed_ips is not None:
+            pulumi.set(__self__, "globally_allowed_ips", globally_allowed_ips)
         if grafana_enabled is not None:
             pulumi.set(__self__, "grafana_enabled", grafana_enabled)
         if grafana_url is not None:
@@ -858,14 +966,24 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "inactive_projects_min_size_mb", inactive_projects_min_size_mb)
         if inactive_projects_send_warning_email_after_months is not None:
             pulumi.set(__self__, "inactive_projects_send_warning_email_after_months", inactive_projects_send_warning_email_after_months)
+        if include_optional_metrics_in_service_ping is not None:
+            pulumi.set(__self__, "include_optional_metrics_in_service_ping", include_optional_metrics_in_service_ping)
         if invisible_captcha_enabled is not None:
             pulumi.set(__self__, "invisible_captcha_enabled", invisible_captcha_enabled)
         if issues_create_limit is not None:
             pulumi.set(__self__, "issues_create_limit", issues_create_limit)
+        if jira_connect_application_key is not None:
+            pulumi.set(__self__, "jira_connect_application_key", jira_connect_application_key)
+        if jira_connect_proxy_url is not None:
+            pulumi.set(__self__, "jira_connect_proxy_url", jira_connect_proxy_url)
+        if jira_connect_public_key_storage_enabled is not None:
+            pulumi.set(__self__, "jira_connect_public_key_storage_enabled", jira_connect_public_key_storage_enabled)
         if keep_latest_artifact is not None:
             pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if local_markdown_version is not None:
             pulumi.set(__self__, "local_markdown_version", local_markdown_version)
+        if lock_duo_features_enabled is not None:
+            pulumi.set(__self__, "lock_duo_features_enabled", lock_duo_features_enabled)
         if mailgun_events_enabled is not None:
             pulumi.set(__self__, "mailgun_events_enabled", mailgun_events_enabled)
         if mailgun_signing_key is not None:
@@ -874,14 +992,22 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "maintenance_mode", maintenance_mode)
         if maintenance_mode_message is not None:
             pulumi.set(__self__, "maintenance_mode_message", maintenance_mode_message)
+        if maven_package_requests_forwarding is not None:
+            pulumi.set(__self__, "maven_package_requests_forwarding", maven_package_requests_forwarding)
         if max_artifacts_size is not None:
             pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if max_attachment_size is not None:
             pulumi.set(__self__, "max_attachment_size", max_attachment_size)
+        if max_decompressed_archive_size is not None:
+            pulumi.set(__self__, "max_decompressed_archive_size", max_decompressed_archive_size)
         if max_export_size is not None:
             pulumi.set(__self__, "max_export_size", max_export_size)
+        if max_import_remote_file_size is not None:
+            pulumi.set(__self__, "max_import_remote_file_size", max_import_remote_file_size)
         if max_import_size is not None:
             pulumi.set(__self__, "max_import_size", max_import_size)
+        if max_login_attempts is not None:
+            pulumi.set(__self__, "max_login_attempts", max_login_attempts)
         if max_number_of_repository_downloads is not None:
             pulumi.set(__self__, "max_number_of_repository_downloads", max_number_of_repository_downloads)
         if max_number_of_repository_downloads_within_time_period is not None:
@@ -908,8 +1034,14 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "mirror_max_delay", mirror_max_delay)
         if npm_package_requests_forwarding is not None:
             pulumi.set(__self__, "npm_package_requests_forwarding", npm_package_requests_forwarding)
+        if nuget_skip_metadata_url_validation is not None:
+            pulumi.set(__self__, "nuget_skip_metadata_url_validation", nuget_skip_metadata_url_validation)
         if outbound_local_requests_whitelists is not None:
             pulumi.set(__self__, "outbound_local_requests_whitelists", outbound_local_requests_whitelists)
+        if package_metadata_purl_types is not None:
+            pulumi.set(__self__, "package_metadata_purl_types", package_metadata_purl_types)
+        if package_registry_allow_anyone_to_pull_option is not None:
+            pulumi.set(__self__, "package_registry_allow_anyone_to_pull_option", package_registry_allow_anyone_to_pull_option)
         if package_registry_cleanup_policies_worker_capacity is not None:
             pulumi.set(__self__, "package_registry_cleanup_policies_worker_capacity", package_registry_cleanup_policies_worker_capacity)
         if pages_domain_verification_enabled is not None:
@@ -940,6 +1072,10 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "polling_interval_multiplier", polling_interval_multiplier)
         if project_export_enabled is not None:
             pulumi.set(__self__, "project_export_enabled", project_export_enabled)
+        if project_jobs_api_rate_limit is not None:
+            pulumi.set(__self__, "project_jobs_api_rate_limit", project_jobs_api_rate_limit)
+        if projects_api_rate_limit_unauthenticated is not None:
+            pulumi.set(__self__, "projects_api_rate_limit_unauthenticated", projects_api_rate_limit_unauthenticated)
         if prometheus_metrics_enabled is not None:
             pulumi.set(__self__, "prometheus_metrics_enabled", prometheus_metrics_enabled)
         if protected_ci_variables is not None:
@@ -962,6 +1098,10 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "recaptcha_site_key", recaptcha_site_key)
         if receive_max_input_size is not None:
             pulumi.set(__self__, "receive_max_input_size", receive_max_input_size)
+        if receptive_cluster_agents_enabled is not None:
+            pulumi.set(__self__, "receptive_cluster_agents_enabled", receptive_cluster_agents_enabled)
+        if remember_me_enabled is not None:
+            pulumi.set(__self__, "remember_me_enabled", remember_me_enabled)
         if repository_checks_enabled is not None:
             pulumi.set(__self__, "repository_checks_enabled", repository_checks_enabled)
         if repository_size_limit is not None:
@@ -972,6 +1112,10 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "repository_storages_weighted", repository_storages_weighted)
         if require_admin_approval_after_user_signup is not None:
             pulumi.set(__self__, "require_admin_approval_after_user_signup", require_admin_approval_after_user_signup)
+        if require_admin_two_factor_authentication is not None:
+            pulumi.set(__self__, "require_admin_two_factor_authentication", require_admin_two_factor_authentication)
+        if require_personal_access_token_expiry is not None:
+            pulumi.set(__self__, "require_personal_access_token_expiry", require_personal_access_token_expiry)
         if require_two_factor_authentication is not None:
             pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
         if restricted_visibility_levels is not None:
@@ -982,8 +1126,16 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "search_rate_limit", search_rate_limit)
         if search_rate_limit_unauthenticated is not None:
             pulumi.set(__self__, "search_rate_limit_unauthenticated", search_rate_limit_unauthenticated)
+        if security_approval_policies_limit is not None:
+            pulumi.set(__self__, "security_approval_policies_limit", security_approval_policies_limit)
+        if security_policy_global_group_approvers_enabled is not None:
+            pulumi.set(__self__, "security_policy_global_group_approvers_enabled", security_policy_global_group_approvers_enabled)
+        if security_txt_content is not None:
+            pulumi.set(__self__, "security_txt_content", security_txt_content)
         if send_user_confirmation_email is not None:
             pulumi.set(__self__, "send_user_confirmation_email", send_user_confirmation_email)
+        if service_access_tokens_expiration_enforced is not None:
+            pulumi.set(__self__, "service_access_tokens_expiration_enforced", service_access_tokens_expiration_enforced)
         if session_expire_delay is not None:
             pulumi.set(__self__, "session_expire_delay", session_expire_delay)
         if shared_runners_enabled is not None:
@@ -1002,6 +1154,10 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "sign_in_text", sign_in_text)
         if signup_enabled is not None:
             pulumi.set(__self__, "signup_enabled", signup_enabled)
+        if silent_admin_exports_enabled is not None:
+            pulumi.set(__self__, "silent_admin_exports_enabled", silent_admin_exports_enabled)
+        if silent_mode_enabled is not None:
+            pulumi.set(__self__, "silent_mode_enabled", silent_mode_enabled)
         if slack_app_enabled is not None:
             pulumi.set(__self__, "slack_app_enabled", slack_app_enabled)
         if slack_app_id is not None:
@@ -1020,6 +1176,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "snowplow_collector_hostname", snowplow_collector_hostname)
         if snowplow_cookie_domain is not None:
             pulumi.set(__self__, "snowplow_cookie_domain", snowplow_cookie_domain)
+        if snowplow_database_collector_hostname is not None:
+            pulumi.set(__self__, "snowplow_database_collector_hostname", snowplow_database_collector_hostname)
         if snowplow_enabled is not None:
             pulumi.set(__self__, "snowplow_enabled", snowplow_enabled)
         if sourcegraph_enabled is not None:
@@ -1034,6 +1192,10 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "spam_check_endpoint_enabled", spam_check_endpoint_enabled)
         if spam_check_endpoint_url is not None:
             pulumi.set(__self__, "spam_check_endpoint_url", spam_check_endpoint_url)
+        if static_objects_external_storage_auth_token is not None:
+            pulumi.set(__self__, "static_objects_external_storage_auth_token", static_objects_external_storage_auth_token)
+        if static_objects_external_storage_url is not None:
+            pulumi.set(__self__, "static_objects_external_storage_url", static_objects_external_storage_url)
         if suggest_pipeline_enabled is not None:
             pulumi.set(__self__, "suggest_pipeline_enabled", suggest_pipeline_enabled)
         if terminal_max_session_time is not None:
@@ -1080,24 +1242,34 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "time_tracking_limit_to_hours", time_tracking_limit_to_hours)
         if two_factor_grace_period is not None:
             pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
+        if unconfirmed_users_delete_after_days is not None:
+            pulumi.set(__self__, "unconfirmed_users_delete_after_days", unconfirmed_users_delete_after_days)
         if unique_ips_limit_enabled is not None:
             pulumi.set(__self__, "unique_ips_limit_enabled", unique_ips_limit_enabled)
         if unique_ips_limit_per_user is not None:
             pulumi.set(__self__, "unique_ips_limit_per_user", unique_ips_limit_per_user)
         if unique_ips_limit_time_window is not None:
             pulumi.set(__self__, "unique_ips_limit_time_window", unique_ips_limit_time_window)
+        if update_runner_versions_enabled is not None:
+            pulumi.set(__self__, "update_runner_versions_enabled", update_runner_versions_enabled)
         if usage_ping_enabled is not None:
             pulumi.set(__self__, "usage_ping_enabled", usage_ping_enabled)
+        if use_clickhouse_for_analytics is not None:
+            pulumi.set(__self__, "use_clickhouse_for_analytics", use_clickhouse_for_analytics)
         if user_deactivation_emails_enabled is not None:
             pulumi.set(__self__, "user_deactivation_emails_enabled", user_deactivation_emails_enabled)
         if user_default_external is not None:
             pulumi.set(__self__, "user_default_external", user_default_external)
         if user_default_internal_regex is not None:
             pulumi.set(__self__, "user_default_internal_regex", user_default_internal_regex)
+        if user_defaults_to_private_profile is not None:
+            pulumi.set(__self__, "user_defaults_to_private_profile", user_defaults_to_private_profile)
         if user_oauth_applications is not None:
             pulumi.set(__self__, "user_oauth_applications", user_oauth_applications)
         if user_show_add_ssh_key_message is not None:
             pulumi.set(__self__, "user_show_add_ssh_key_message", user_show_add_ssh_key_message)
+        if valid_runner_registrars is not None:
+            pulumi.set(__self__, "valid_runner_registrars", valid_runner_registrars)
         if version_check_enabled is not None:
             pulumi.set(__self__, "version_check_enabled", version_check_enabled)
         if web_ide_clientside_preview_enabled is not None:
@@ -2212,6 +2384,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "elasticsearch_max_bulk_size_mb", value)
 
     @property
+    @pulumi.getter(name="elasticsearchMaxCodeIndexingConcurrency")
+    def elasticsearch_max_code_indexing_concurrency(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "elasticsearch_max_code_indexing_concurrency")
+
+    @elasticsearch_max_code_indexing_concurrency.setter
+    def elasticsearch_max_code_indexing_concurrency(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "elasticsearch_max_code_indexing_concurrency", value)
+
+    @property
     @pulumi.getter(name="elasticsearchNamespaceIds")
     def elasticsearch_namespace_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
@@ -2246,6 +2430,18 @@ class ApplicationSettingsArgs:
     @elasticsearch_project_ids.setter
     def elasticsearch_project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "elasticsearch_project_ids", value)
+
+    @property
+    @pulumi.getter(name="elasticsearchRequeueWorkers")
+    def elasticsearch_requeue_workers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "elasticsearch_requeue_workers")
+
+    @elasticsearch_requeue_workers.setter
+    def elasticsearch_requeue_workers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "elasticsearch_requeue_workers", value)
 
     @property
     @pulumi.getter(name="elasticsearchSearch")
@@ -2284,6 +2480,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "elasticsearch_username", value)
 
     @property
+    @pulumi.getter(name="elasticsearchWorkerNumberOfShards")
+    def elasticsearch_worker_number_of_shards(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "elasticsearch_worker_number_of_shards")
+
+    @elasticsearch_worker_number_of_shards.setter
+    def elasticsearch_worker_number_of_shards(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "elasticsearch_worker_number_of_shards", value)
+
+    @property
     @pulumi.getter(name="emailAdditionalText")
     def email_additional_text(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2306,6 +2514,30 @@ class ApplicationSettingsArgs:
     @email_author_in_body.setter
     def email_author_in_body(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "email_author_in_body", value)
+
+    @property
+    @pulumi.getter(name="emailConfirmationSetting")
+    def email_confirmation_setting(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+        """
+        return pulumi.get(self, "email_confirmation_setting")
+
+    @email_confirmation_setting.setter
+    def email_confirmation_setting(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email_confirmation_setting", value)
+
+    @property
+    @pulumi.getter(name="enableArtifactExternalRedirectWarningPage")
+    def enable_artifact_external_redirect_warning_page(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Show the external redirect page that warns you about user-generated content in GitLab Pages.
+        """
+        return pulumi.get(self, "enable_artifact_external_redirect_warning_page")
+
+    @enable_artifact_external_redirect_warning_page.setter
+    def enable_artifact_external_redirect_warning_page(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_artifact_external_redirect_warning_page", value)
 
     @property
     @pulumi.getter(name="enabledGitAccessProtocol")
@@ -2464,6 +2696,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "external_pipeline_validation_service_url", value)
 
     @property
+    @pulumi.getter(name="failedLoginAttemptsUnlockPeriodInMinutes")
+    def failed_login_attempts_unlock_period_in_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+        """
+        return pulumi.get(self, "failed_login_attempts_unlock_period_in_minutes")
+
+    @failed_login_attempts_unlock_period_in_minutes.setter
+    def failed_login_attempts_unlock_period_in_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failed_login_attempts_unlock_period_in_minutes", value)
+
+    @property
     @pulumi.getter(name="fileTemplateProjectId")
     def file_template_project_id(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2512,10 +2756,22 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "geo_status_timeout", value)
 
     @property
+    @pulumi.getter(name="gitRateLimitUsersAlertlists")
+    def git_rate_limit_users_alertlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+        """
+        return pulumi.get(self, "git_rate_limit_users_alertlists")
+
+    @git_rate_limit_users_alertlists.setter
+    def git_rate_limit_users_alertlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "git_rate_limit_users_alertlists", value)
+
+    @property
     @pulumi.getter(name="gitRateLimitUsersAllowlists")
     def git_rate_limit_users_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+        List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
         """
         return pulumi.get(self, "git_rate_limit_users_allowlists")
 
@@ -2570,6 +2826,54 @@ class ApplicationSettingsArgs:
     @gitaly_timeout_medium.setter
     def gitaly_timeout_medium(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "gitaly_timeout_medium", value)
+
+    @property
+    @pulumi.getter(name="gitlabShellOperationLimit")
+    def gitlab_shell_operation_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+        """
+        return pulumi.get(self, "gitlab_shell_operation_limit")
+
+    @gitlab_shell_operation_limit.setter
+    def gitlab_shell_operation_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "gitlab_shell_operation_limit", value)
+
+    @property
+    @pulumi.getter(name="gitpodEnabled")
+    def gitpod_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Gitpod integration.
+        """
+        return pulumi.get(self, "gitpod_enabled")
+
+    @gitpod_enabled.setter
+    def gitpod_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gitpod_enabled", value)
+
+    @property
+    @pulumi.getter(name="gitpodUrl")
+    def gitpod_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Gitpod instance URL for integration.
+        """
+        return pulumi.get(self, "gitpod_url")
+
+    @gitpod_url.setter
+    def gitpod_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gitpod_url", value)
+
+    @property
+    @pulumi.getter(name="globallyAllowedIps")
+    def globally_allowed_ips(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+        """
+        return pulumi.get(self, "globally_allowed_ips")
+
+    @globally_allowed_ips.setter
+    def globally_allowed_ips(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "globally_allowed_ips", value)
 
     @property
     @pulumi.getter(name="grafanaEnabled")
@@ -2841,6 +3145,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "inactive_projects_send_warning_email_after_months", value)
 
     @property
+    @pulumi.getter(name="includeOptionalMetricsInServicePing")
+    def include_optional_metrics_in_service_ping(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+        """
+        return pulumi.get(self, "include_optional_metrics_in_service_ping")
+
+    @include_optional_metrics_in_service_ping.setter
+    def include_optional_metrics_in_service_ping(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_optional_metrics_in_service_ping", value)
+
+    @property
     @pulumi.getter(name="invisibleCaptchaEnabled")
     def invisible_captcha_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2865,6 +3181,42 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "issues_create_limit", value)
 
     @property
+    @pulumi.getter(name="jiraConnectApplicationKey")
+    def jira_connect_application_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+        """
+        return pulumi.get(self, "jira_connect_application_key")
+
+    @jira_connect_application_key.setter
+    def jira_connect_application_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jira_connect_application_key", value)
+
+    @property
+    @pulumi.getter(name="jiraConnectProxyUrl")
+    def jira_connect_proxy_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+        """
+        return pulumi.get(self, "jira_connect_proxy_url")
+
+    @jira_connect_proxy_url.setter
+    def jira_connect_proxy_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jira_connect_proxy_url", value)
+
+    @property
+    @pulumi.getter(name="jiraConnectPublicKeyStorageEnabled")
+    def jira_connect_public_key_storage_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable public key storage for the GitLab for Jira Cloud app.
+        """
+        return pulumi.get(self, "jira_connect_public_key_storage_enabled")
+
+    @jira_connect_public_key_storage_enabled.setter
+    def jira_connect_public_key_storage_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "jira_connect_public_key_storage_enabled", value)
+
+    @property
     @pulumi.getter(name="keepLatestArtifact")
     def keep_latest_artifact(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2887,6 +3239,18 @@ class ApplicationSettingsArgs:
     @local_markdown_version.setter
     def local_markdown_version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "local_markdown_version", value)
+
+    @property
+    @pulumi.getter(name="lockDuoFeaturesEnabled")
+    def lock_duo_features_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "lock_duo_features_enabled")
+
+    @lock_duo_features_enabled.setter
+    def lock_duo_features_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lock_duo_features_enabled", value)
 
     @property
     @pulumi.getter(name="mailgunEventsEnabled")
@@ -2937,6 +3301,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "maintenance_mode_message", value)
 
     @property
+    @pulumi.getter(name="mavenPackageRequestsForwarding")
+    def maven_package_requests_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "maven_package_requests_forwarding")
+
+    @maven_package_requests_forwarding.setter
+    def maven_package_requests_forwarding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "maven_package_requests_forwarding", value)
+
+    @property
     @pulumi.getter(name="maxArtifactsSize")
     def max_artifacts_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2961,6 +3337,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "max_attachment_size", value)
 
     @property
+    @pulumi.getter(name="maxDecompressedArchiveSize")
+    def max_decompressed_archive_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum decompressed archive size in bytes.
+        """
+        return pulumi.get(self, "max_decompressed_archive_size")
+
+    @max_decompressed_archive_size.setter
+    def max_decompressed_archive_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_decompressed_archive_size", value)
+
+    @property
     @pulumi.getter(name="maxExportSize")
     def max_export_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2973,6 +3361,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "max_export_size", value)
 
     @property
+    @pulumi.getter(name="maxImportRemoteFileSize")
+    def max_import_remote_file_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+        """
+        return pulumi.get(self, "max_import_remote_file_size")
+
+    @max_import_remote_file_size.setter
+    def max_import_remote_file_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_import_remote_file_size", value)
+
+    @property
     @pulumi.getter(name="maxImportSize")
     def max_import_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2983,6 +3383,18 @@ class ApplicationSettingsArgs:
     @max_import_size.setter
     def max_import_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_import_size", value)
+
+    @property
+    @pulumi.getter(name="maxLoginAttempts")
+    def max_login_attempts(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of sign-in attempts before locking out the user.
+        """
+        return pulumi.get(self, "max_login_attempts")
+
+    @max_login_attempts.setter
+    def max_login_attempts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_login_attempts", value)
 
     @property
     @pulumi.getter(name="maxNumberOfRepositoryDownloads")
@@ -3138,6 +3550,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "npm_package_requests_forwarding", value)
 
     @property
+    @pulumi.getter(name="nugetSkipMetadataUrlValidation")
+    def nuget_skip_metadata_url_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "nuget_skip_metadata_url_validation")
+
+    @nuget_skip_metadata_url_validation.setter
+    def nuget_skip_metadata_url_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nuget_skip_metadata_url_validation", value)
+
+    @property
     @pulumi.getter(name="outboundLocalRequestsWhitelists")
     def outbound_local_requests_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -3148,6 +3572,30 @@ class ApplicationSettingsArgs:
     @outbound_local_requests_whitelists.setter
     def outbound_local_requests_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "outbound_local_requests_whitelists", value)
+
+    @property
+    @pulumi.getter(name="packageMetadataPurlTypes")
+    def package_metadata_purl_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+        """
+        return pulumi.get(self, "package_metadata_purl_types")
+
+    @package_metadata_purl_types.setter
+    def package_metadata_purl_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "package_metadata_purl_types", value)
+
+    @property
+    @pulumi.getter(name="packageRegistryAllowAnyoneToPullOption")
+    def package_registry_allow_anyone_to_pull_option(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable to allow anyone to pull from Package Registry visible and changeable.
+        """
+        return pulumi.get(self, "package_registry_allow_anyone_to_pull_option")
+
+    @package_registry_allow_anyone_to_pull_option.setter
+    def package_registry_allow_anyone_to_pull_option(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "package_registry_allow_anyone_to_pull_option", value)
 
     @property
     @pulumi.getter(name="packageRegistryCleanupPoliciesWorkerCapacity")
@@ -3330,6 +3778,30 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "project_export_enabled", value)
 
     @property
+    @pulumi.getter(name="projectJobsApiRateLimit")
+    def project_jobs_api_rate_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+        """
+        return pulumi.get(self, "project_jobs_api_rate_limit")
+
+    @project_jobs_api_rate_limit.setter
+    def project_jobs_api_rate_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "project_jobs_api_rate_limit", value)
+
+    @property
+    @pulumi.getter(name="projectsApiRateLimitUnauthenticated")
+    def projects_api_rate_limit_unauthenticated(self) -> Optional[pulumi.Input[int]]:
+        """
+        Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+        """
+        return pulumi.get(self, "projects_api_rate_limit_unauthenticated")
+
+    @projects_api_rate_limit_unauthenticated.setter
+    def projects_api_rate_limit_unauthenticated(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "projects_api_rate_limit_unauthenticated", value)
+
+    @property
     @pulumi.getter(name="prometheusMetricsEnabled")
     def prometheus_metrics_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -3462,6 +3934,30 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "receive_max_input_size", value)
 
     @property
+    @pulumi.getter(name="receptiveClusterAgentsEnabled")
+    def receptive_cluster_agents_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable receptive mode for GitLab Agents for Kubernetes.
+        """
+        return pulumi.get(self, "receptive_cluster_agents_enabled")
+
+    @receptive_cluster_agents_enabled.setter
+    def receptive_cluster_agents_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "receptive_cluster_agents_enabled", value)
+
+    @property
+    @pulumi.getter(name="rememberMeEnabled")
+    def remember_me_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Remember me setting. Introduced in GitLab 16.0.
+        """
+        return pulumi.get(self, "remember_me_enabled")
+
+    @remember_me_enabled.setter
+    def remember_me_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remember_me_enabled", value)
+
+    @property
     @pulumi.getter(name="repositoryChecksEnabled")
     def repository_checks_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -3520,6 +4016,30 @@ class ApplicationSettingsArgs:
     @require_admin_approval_after_user_signup.setter
     def require_admin_approval_after_user_signup(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "require_admin_approval_after_user_signup", value)
+
+    @property
+    @pulumi.getter(name="requireAdminTwoFactorAuthentication")
+    def require_admin_two_factor_authentication(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow administrators to require 2FA for all administrators on the instance.
+        """
+        return pulumi.get(self, "require_admin_two_factor_authentication")
+
+    @require_admin_two_factor_authentication.setter
+    def require_admin_two_factor_authentication(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_admin_two_factor_authentication", value)
+
+    @property
+    @pulumi.getter(name="requirePersonalAccessTokenExpiry")
+    def require_personal_access_token_expiry(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+        """
+        return pulumi.get(self, "require_personal_access_token_expiry")
+
+    @require_personal_access_token_expiry.setter
+    def require_personal_access_token_expiry(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_personal_access_token_expiry", value)
 
     @property
     @pulumi.getter(name="requireTwoFactorAuthentication")
@@ -3582,6 +4102,42 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "search_rate_limit_unauthenticated", value)
 
     @property
+    @pulumi.getter(name="securityApprovalPoliciesLimit")
+    def security_approval_policies_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of active merge request approval policies per security policy project. Maximum: 20
+        """
+        return pulumi.get(self, "security_approval_policies_limit")
+
+    @security_approval_policies_limit.setter
+    def security_approval_policies_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "security_approval_policies_limit", value)
+
+    @property
+    @pulumi.getter(name="securityPolicyGlobalGroupApproversEnabled")
+    def security_policy_global_group_approvers_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+        """
+        return pulumi.get(self, "security_policy_global_group_approvers_enabled")
+
+    @security_policy_global_group_approvers_enabled.setter
+    def security_policy_global_group_approvers_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "security_policy_global_group_approvers_enabled", value)
+
+    @property
+    @pulumi.getter(name="securityTxtContent")
+    def security_txt_content(self) -> Optional[pulumi.Input[str]]:
+        """
+        Public security contact information. Introduced in GitLab 16.7.
+        """
+        return pulumi.get(self, "security_txt_content")
+
+    @security_txt_content.setter
+    def security_txt_content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_txt_content", value)
+
+    @property
     @pulumi.getter(name="sendUserConfirmationEmail")
     def send_user_confirmation_email(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -3592,6 +4148,18 @@ class ApplicationSettingsArgs:
     @send_user_confirmation_email.setter
     def send_user_confirmation_email(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "send_user_confirmation_email", value)
+
+    @property
+    @pulumi.getter(name="serviceAccessTokensExpirationEnforced")
+    def service_access_tokens_expiration_enforced(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to indicate if token expiry date can be optional for service account users
+        """
+        return pulumi.get(self, "service_access_tokens_expiration_enforced")
+
+    @service_access_tokens_expiration_enforced.setter
+    def service_access_tokens_expiration_enforced(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "service_access_tokens_expiration_enforced", value)
 
     @property
     @pulumi.getter(name="sessionExpireDelay")
@@ -3702,6 +4270,30 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "signup_enabled", value)
 
     @property
+    @pulumi.getter(name="silentAdminExportsEnabled")
+    def silent_admin_exports_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Silent admin exports.
+        """
+        return pulumi.get(self, "silent_admin_exports_enabled")
+
+    @silent_admin_exports_enabled.setter
+    def silent_admin_exports_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "silent_admin_exports_enabled", value)
+
+    @property
+    @pulumi.getter(name="silentModeEnabled")
+    def silent_mode_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Silent mode.
+        """
+        return pulumi.get(self, "silent_mode_enabled")
+
+    @silent_mode_enabled.setter
+    def silent_mode_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "silent_mode_enabled", value)
+
+    @property
     @pulumi.getter(name="slackAppEnabled")
     def slack_app_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -3810,6 +4402,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "snowplow_cookie_domain", value)
 
     @property
+    @pulumi.getter(name="snowplowDatabaseCollectorHostname")
+    def snowplow_database_collector_hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+        """
+        return pulumi.get(self, "snowplow_database_collector_hostname")
+
+    @snowplow_database_collector_hostname.setter
+    def snowplow_database_collector_hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snowplow_database_collector_hostname", value)
+
+    @property
     @pulumi.getter(name="snowplowEnabled")
     def snowplow_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -3892,6 +4496,30 @@ class ApplicationSettingsArgs:
     @spam_check_endpoint_url.setter
     def spam_check_endpoint_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spam_check_endpoint_url", value)
+
+    @property
+    @pulumi.getter(name="staticObjectsExternalStorageAuthToken")
+    def static_objects_external_storage_auth_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authentication token for the external storage linked in static*objects*external*storage*url.
+        """
+        return pulumi.get(self, "static_objects_external_storage_auth_token")
+
+    @static_objects_external_storage_auth_token.setter
+    def static_objects_external_storage_auth_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "static_objects_external_storage_auth_token", value)
+
+    @property
+    @pulumi.getter(name="staticObjectsExternalStorageUrl")
+    def static_objects_external_storage_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to an external storage for repository static objects.
+        """
+        return pulumi.get(self, "static_objects_external_storage_url")
+
+    @static_objects_external_storage_url.setter
+    def static_objects_external_storage_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "static_objects_external_storage_url", value)
 
     @property
     @pulumi.getter(name="suggestPipelineEnabled")
@@ -4170,6 +4798,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "two_factor_grace_period", value)
 
     @property
+    @pulumi.getter(name="unconfirmedUsersDeleteAfterDays")
+    def unconfirmed_users_delete_after_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "unconfirmed_users_delete_after_days")
+
+    @unconfirmed_users_delete_after_days.setter
+    def unconfirmed_users_delete_after_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "unconfirmed_users_delete_after_days", value)
+
+    @property
     @pulumi.getter(name="uniqueIpsLimitEnabled")
     def unique_ips_limit_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -4206,6 +4846,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "unique_ips_limit_time_window", value)
 
     @property
+    @pulumi.getter(name="updateRunnerVersionsEnabled")
+    def update_runner_versions_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Fetch GitLab Runner release version data from GitLab.com.
+        """
+        return pulumi.get(self, "update_runner_versions_enabled")
+
+    @update_runner_versions_enabled.setter
+    def update_runner_versions_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_runner_versions_enabled", value)
+
+    @property
     @pulumi.getter(name="usagePingEnabled")
     def usage_ping_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -4216,6 +4868,18 @@ class ApplicationSettingsArgs:
     @usage_ping_enabled.setter
     def usage_ping_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "usage_ping_enabled", value)
+
+    @property
+    @pulumi.getter(name="useClickhouseForAnalytics")
+    def use_clickhouse_for_analytics(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+        """
+        return pulumi.get(self, "use_clickhouse_for_analytics")
+
+    @use_clickhouse_for_analytics.setter
+    def use_clickhouse_for_analytics(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_clickhouse_for_analytics", value)
 
     @property
     @pulumi.getter(name="userDeactivationEmailsEnabled")
@@ -4254,6 +4918,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "user_default_internal_regex", value)
 
     @property
+    @pulumi.getter(name="userDefaultsToPrivateProfile")
+    def user_defaults_to_private_profile(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Newly created users have private profile by default. Introduced in GitLab 15.8.
+        """
+        return pulumi.get(self, "user_defaults_to_private_profile")
+
+    @user_defaults_to_private_profile.setter
+    def user_defaults_to_private_profile(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_defaults_to_private_profile", value)
+
+    @property
     @pulumi.getter(name="userOauthApplications")
     def user_oauth_applications(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -4276,6 +4952,18 @@ class ApplicationSettingsArgs:
     @user_show_add_ssh_key_message.setter
     def user_show_add_ssh_key_message(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "user_show_add_ssh_key_message", value)
+
+    @property
+    @pulumi.getter(name="validRunnerRegistrars")
+    def valid_runner_registrars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
+        """
+        return pulumi.get(self, "valid_runner_registrars")
+
+    @valid_runner_registrars.setter
+    def valid_runner_registrars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "valid_runner_registrars", value)
 
     @property
     @pulumi.getter(name="versionCheckEnabled")
@@ -4305,7 +4993,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="whatsNewVariant")
     def whats_new_variant(self) -> Optional[pulumi.Input[str]]:
         """
-        What’s new variant, possible values: all*tiers, current*tier, and disabled.
+        What's new variant, possible values: all*tiers, current*tier, and disabled.
         """
         return pulumi.get(self, "whats_new_variant")
 
@@ -4421,14 +5109,19 @@ class _ApplicationSettingsState:
                  elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
+                 elasticsearch_max_code_indexing_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_password: Optional[pulumi.Input[str]] = None,
                  elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 elasticsearch_requeue_workers: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_search: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elasticsearch_username: Optional[pulumi.Input[str]] = None,
+                 elasticsearch_worker_number_of_shards: Optional[pulumi.Input[int]] = None,
                  email_additional_text: Optional[pulumi.Input[str]] = None,
                  email_author_in_body: Optional[pulumi.Input[bool]] = None,
+                 email_confirmation_setting: Optional[pulumi.Input[str]] = None,
+                 enable_artifact_external_redirect_warning_page: Optional[pulumi.Input[bool]] = None,
                  enabled_git_access_protocol: Optional[pulumi.Input[str]] = None,
                  enforce_namespace_storage_limit: Optional[pulumi.Input[bool]] = None,
                  enforce_terms: Optional[pulumi.Input[bool]] = None,
@@ -4442,15 +5135,23 @@ class _ApplicationSettingsState:
                  external_pipeline_validation_service_timeout: Optional[pulumi.Input[int]] = None,
                  external_pipeline_validation_service_token: Optional[pulumi.Input[str]] = None,
                  external_pipeline_validation_service_url: Optional[pulumi.Input[str]] = None,
+                 failed_login_attempts_unlock_period_in_minutes: Optional[pulumi.Input[int]] = None,
                  file_template_project_id: Optional[pulumi.Input[int]] = None,
                  first_day_of_week: Optional[pulumi.Input[int]] = None,
                  geo_node_allowed_ips: Optional[pulumi.Input[str]] = None,
                  geo_status_timeout: Optional[pulumi.Input[int]] = None,
+                 git_rate_limit_users_alertlists: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  git_two_factor_session_expiry: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_default: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_fast: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_medium: Optional[pulumi.Input[int]] = None,
+                 gitlab_dedicated_instance: Optional[pulumi.Input[bool]] = None,
+                 gitlab_environment_toolkit_instance: Optional[pulumi.Input[bool]] = None,
+                 gitlab_shell_operation_limit: Optional[pulumi.Input[int]] = None,
+                 gitpod_enabled: Optional[pulumi.Input[bool]] = None,
+                 gitpod_url: Optional[pulumi.Input[str]] = None,
+                 globally_allowed_ips: Optional[pulumi.Input[str]] = None,
                  grafana_enabled: Optional[pulumi.Input[bool]] = None,
                  grafana_url: Optional[pulumi.Input[str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[bool]] = None,
@@ -4473,18 +5174,27 @@ class _ApplicationSettingsState:
                  inactive_projects_delete_after_months: Optional[pulumi.Input[int]] = None,
                  inactive_projects_min_size_mb: Optional[pulumi.Input[int]] = None,
                  inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[int]] = None,
+                 include_optional_metrics_in_service_ping: Optional[pulumi.Input[bool]] = None,
                  invisible_captcha_enabled: Optional[pulumi.Input[bool]] = None,
                  issues_create_limit: Optional[pulumi.Input[int]] = None,
+                 jira_connect_application_key: Optional[pulumi.Input[str]] = None,
+                 jira_connect_proxy_url: Optional[pulumi.Input[str]] = None,
+                 jira_connect_public_key_storage_enabled: Optional[pulumi.Input[bool]] = None,
                  keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  local_markdown_version: Optional[pulumi.Input[int]] = None,
+                 lock_duo_features_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[str]] = None,
                  maintenance_mode: Optional[pulumi.Input[bool]] = None,
                  maintenance_mode_message: Optional[pulumi.Input[str]] = None,
+                 maven_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
                  max_artifacts_size: Optional[pulumi.Input[int]] = None,
                  max_attachment_size: Optional[pulumi.Input[int]] = None,
+                 max_decompressed_archive_size: Optional[pulumi.Input[int]] = None,
                  max_export_size: Optional[pulumi.Input[int]] = None,
+                 max_import_remote_file_size: Optional[pulumi.Input[int]] = None,
                  max_import_size: Optional[pulumi.Input[int]] = None,
+                 max_login_attempts: Optional[pulumi.Input[int]] = None,
                  max_number_of_repository_downloads: Optional[pulumi.Input[int]] = None,
                  max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[int]] = None,
                  max_pages_size: Optional[pulumi.Input[int]] = None,
@@ -4498,7 +5208,10 @@ class _ApplicationSettingsState:
                  mirror_max_capacity: Optional[pulumi.Input[int]] = None,
                  mirror_max_delay: Optional[pulumi.Input[int]] = None,
                  npm_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
+                 nuget_skip_metadata_url_validation: Optional[pulumi.Input[bool]] = None,
                  outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 package_metadata_purl_types: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 package_registry_allow_anyone_to_pull_option: Optional[pulumi.Input[bool]] = None,
                  package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
                  pages_domain_verification_enabled: Optional[pulumi.Input[bool]] = None,
                  password_authentication_enabled_for_git: Optional[pulumi.Input[bool]] = None,
@@ -4514,6 +5227,8 @@ class _ApplicationSettingsState:
                  plantuml_url: Optional[pulumi.Input[str]] = None,
                  polling_interval_multiplier: Optional[pulumi.Input[float]] = None,
                  project_export_enabled: Optional[pulumi.Input[bool]] = None,
+                 project_jobs_api_rate_limit: Optional[pulumi.Input[int]] = None,
+                 projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
                  prometheus_metrics_enabled: Optional[pulumi.Input[bool]] = None,
                  protected_ci_variables: Optional[pulumi.Input[bool]] = None,
                  push_event_activities_limit: Optional[pulumi.Input[int]] = None,
@@ -4525,17 +5240,25 @@ class _ApplicationSettingsState:
                  recaptcha_private_key: Optional[pulumi.Input[str]] = None,
                  recaptcha_site_key: Optional[pulumi.Input[str]] = None,
                  receive_max_input_size: Optional[pulumi.Input[int]] = None,
+                 receptive_cluster_agents_enabled: Optional[pulumi.Input[bool]] = None,
+                 remember_me_enabled: Optional[pulumi.Input[bool]] = None,
                  repository_checks_enabled: Optional[pulumi.Input[bool]] = None,
                  repository_size_limit: Optional[pulumi.Input[int]] = None,
                  repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
                  require_admin_approval_after_user_signup: Optional[pulumi.Input[bool]] = None,
+                 require_admin_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
+                 require_personal_access_token_expiry: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  rsa_key_restriction: Optional[pulumi.Input[int]] = None,
                  search_rate_limit: Optional[pulumi.Input[int]] = None,
                  search_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
+                 security_approval_policies_limit: Optional[pulumi.Input[int]] = None,
+                 security_policy_global_group_approvers_enabled: Optional[pulumi.Input[bool]] = None,
+                 security_txt_content: Optional[pulumi.Input[str]] = None,
                  send_user_confirmation_email: Optional[pulumi.Input[bool]] = None,
+                 service_access_tokens_expiration_enforced: Optional[pulumi.Input[bool]] = None,
                  session_expire_delay: Optional[pulumi.Input[int]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  shared_runners_minutes: Optional[pulumi.Input[int]] = None,
@@ -4545,6 +5268,8 @@ class _ApplicationSettingsState:
                  sidekiq_job_limiter_mode: Optional[pulumi.Input[str]] = None,
                  sign_in_text: Optional[pulumi.Input[str]] = None,
                  signup_enabled: Optional[pulumi.Input[bool]] = None,
+                 silent_admin_exports_enabled: Optional[pulumi.Input[bool]] = None,
+                 silent_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  slack_app_enabled: Optional[pulumi.Input[bool]] = None,
                  slack_app_id: Optional[pulumi.Input[str]] = None,
                  slack_app_secret: Optional[pulumi.Input[str]] = None,
@@ -4554,6 +5279,7 @@ class _ApplicationSettingsState:
                  snowplow_app_id: Optional[pulumi.Input[str]] = None,
                  snowplow_collector_hostname: Optional[pulumi.Input[str]] = None,
                  snowplow_cookie_domain: Optional[pulumi.Input[str]] = None,
+                 snowplow_database_collector_hostname: Optional[pulumi.Input[str]] = None,
                  snowplow_enabled: Optional[pulumi.Input[bool]] = None,
                  sourcegraph_enabled: Optional[pulumi.Input[bool]] = None,
                  sourcegraph_public_only: Optional[pulumi.Input[bool]] = None,
@@ -4561,6 +5287,8 @@ class _ApplicationSettingsState:
                  spam_check_api_key: Optional[pulumi.Input[str]] = None,
                  spam_check_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  spam_check_endpoint_url: Optional[pulumi.Input[str]] = None,
+                 static_objects_external_storage_auth_token: Optional[pulumi.Input[str]] = None,
+                 static_objects_external_storage_url: Optional[pulumi.Input[str]] = None,
                  suggest_pipeline_enabled: Optional[pulumi.Input[bool]] = None,
                  terminal_max_session_time: Optional[pulumi.Input[int]] = None,
                  terms: Optional[pulumi.Input[str]] = None,
@@ -4584,15 +5312,20 @@ class _ApplicationSettingsState:
                  throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[int]] = None,
                  time_tracking_limit_to_hours: Optional[pulumi.Input[bool]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
+                 unconfirmed_users_delete_after_days: Optional[pulumi.Input[int]] = None,
                  unique_ips_limit_enabled: Optional[pulumi.Input[bool]] = None,
                  unique_ips_limit_per_user: Optional[pulumi.Input[int]] = None,
                  unique_ips_limit_time_window: Optional[pulumi.Input[int]] = None,
+                 update_runner_versions_enabled: Optional[pulumi.Input[bool]] = None,
                  usage_ping_enabled: Optional[pulumi.Input[bool]] = None,
+                 use_clickhouse_for_analytics: Optional[pulumi.Input[bool]] = None,
                  user_deactivation_emails_enabled: Optional[pulumi.Input[bool]] = None,
                  user_default_external: Optional[pulumi.Input[bool]] = None,
                  user_default_internal_regex: Optional[pulumi.Input[str]] = None,
+                 user_defaults_to_private_profile: Optional[pulumi.Input[bool]] = None,
                  user_oauth_applications: Optional[pulumi.Input[bool]] = None,
                  user_show_add_ssh_key_message: Optional[pulumi.Input[bool]] = None,
+                 valid_runner_registrars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version_check_enabled: Optional[pulumi.Input[bool]] = None,
                  web_ide_clientside_preview_enabled: Optional[pulumi.Input[bool]] = None,
                  whats_new_variant: Optional[pulumi.Input[str]] = None,
@@ -4691,14 +5424,19 @@ class _ApplicationSettingsState:
         :param pulumi.Input[bool] elasticsearch_limit_indexing: Limit Elasticsearch to index certain namespaces and projects.
         :param pulumi.Input[int] elasticsearch_max_bulk_concurrency: Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
         :param pulumi.Input[int] elasticsearch_max_bulk_size_mb: Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
+        :param pulumi.Input[int] elasticsearch_max_code_indexing_concurrency: Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[str] elasticsearch_password: The password of your Elasticsearch instance.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[bool] elasticsearch_requeue_workers: Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
         :param pulumi.Input[bool] elasticsearch_search: Enable Elasticsearch search.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_urls: The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
         :param pulumi.Input[str] elasticsearch_username: The username of your Elasticsearch instance.
+        :param pulumi.Input[int] elasticsearch_worker_number_of_shards: Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
         :param pulumi.Input[str] email_additional_text: Additional text added to the bottom of every email for legal/auditing/compliance reasons.
         :param pulumi.Input[bool] email_author_in_body: Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
+        :param pulumi.Input[str] email_confirmation_setting: Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+        :param pulumi.Input[bool] enable_artifact_external_redirect_warning_page: Show the external redirect page that warns you about user-generated content in GitLab Pages.
         :param pulumi.Input[str] enabled_git_access_protocol: Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
         :param pulumi.Input[bool] enforce_namespace_storage_limit: Enabling this permits enforcement of namespace storage limits.
         :param pulumi.Input[bool] enforce_terms: (If enabled, requires: terms) Enforce application ToS to all users.
@@ -4712,15 +5450,23 @@ class _ApplicationSettingsState:
         :param pulumi.Input[int] external_pipeline_validation_service_timeout: How long to wait for a response from the pipeline validation service. Assumes OK if it times out.
         :param pulumi.Input[str] external_pipeline_validation_service_token: Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
         :param pulumi.Input[str] external_pipeline_validation_service_url: URL to use for pipeline validation requests.
+        :param pulumi.Input[int] failed_login_attempts_unlock_period_in_minutes: Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
         :param pulumi.Input[int] file_template_project_id: The ID of a project to load custom file templates from.
         :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] git_rate_limit_users_alertlists: List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
         :param pulumi.Input[int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
         :param pulumi.Input[int] gitaly_timeout_default: Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_fast: Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_medium: Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
+        :param pulumi.Input[bool] gitlab_dedicated_instance: Indicates whether the instance was provisioned for GitLab Dedicated.
+        :param pulumi.Input[bool] gitlab_environment_toolkit_instance: Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+        :param pulumi.Input[int] gitlab_shell_operation_limit: Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+        :param pulumi.Input[bool] gitpod_enabled: Enable Gitpod integration.
+        :param pulumi.Input[str] gitpod_url: The Gitpod instance URL for integration.
+        :param pulumi.Input[str] globally_allowed_ips: Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[str] grafana_url: Grafana URL.
         :param pulumi.Input[bool] gravatar_enabled: Enable Gravatar.
@@ -4745,18 +5491,27 @@ class _ApplicationSettingsState:
         :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[bool] include_optional_metrics_in_service_ping: Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
         :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
         :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user.
+        :param pulumi.Input[str] jira_connect_application_key: ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+        :param pulumi.Input[str] jira_connect_proxy_url: URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+        :param pulumi.Input[bool] jira_connect_public_key_storage_enabled: Enable public key storage for the GitLab for Jira Cloud app.
         :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
+        :param pulumi.Input[bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
         :param pulumi.Input[str] maintenance_mode_message: Message displayed when instance is in maintenance mode.
+        :param pulumi.Input[bool] maven_package_requests_forwarding: Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
         :param pulumi.Input[int] max_artifacts_size: Maximum artifacts size in MB.
         :param pulumi.Input[int] max_attachment_size: Limit attachment size in MB.
+        :param pulumi.Input[int] max_decompressed_archive_size: Maximum decompressed archive size in bytes.
         :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_import_remote_file_size: Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
         :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_login_attempts: Maximum number of sign-in attempts before locking out the user.
         :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_pages_size: Maximum size of pages repositories in MB.
@@ -4769,7 +5524,10 @@ class _ApplicationSettingsState:
         :param pulumi.Input[int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         :param pulumi.Input[bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
+        :param pulumi.Input[bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] package_metadata_purl_types: List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+        :param pulumi.Input[bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
         :param pulumi.Input[int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
         :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
@@ -4785,6 +5543,8 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[bool] project_export_enabled: Enable project export.
+        :param pulumi.Input[int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+        :param pulumi.Input[int] projects_api_rate_limit_unauthenticated: Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
         :param pulumi.Input[bool] prometheus_metrics_enabled: Enable Prometheus metrics.
         :param pulumi.Input[bool] protected_ci_variables: CI/CD variables are protected by default.
         :param pulumi.Input[int] push_event_activities_limit: Number of changes (branches or tags) in a single push to determine whether individual push events or bulk push events are created. Bulk push events are created if it surpasses that value.
@@ -4796,17 +5556,25 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[str] recaptcha_site_key: Site key for reCAPTCHA.
         :param pulumi.Input[int] receive_max_input_size: Maximum push size (MB).
+        :param pulumi.Input[bool] receptive_cluster_agents_enabled: Enable receptive mode for GitLab Agents for Kubernetes.
+        :param pulumi.Input[bool] remember_me_enabled: Enable Remember me setting. Introduced in GitLab 16.0.
         :param pulumi.Input[bool] repository_checks_enabled: GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         :param pulumi.Input[int] repository_size_limit: Size limit per repository (MB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] repository_storages: (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
+        :param pulumi.Input[bool] require_admin_two_factor_authentication: Allow administrators to require 2FA for all administrators on the instance.
+        :param pulumi.Input[bool] require_personal_access_token_expiry: When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
         :param pulumi.Input[bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
+        :param pulumi.Input[int] security_approval_policies_limit: Maximum number of active merge request approval policies per security policy project. Maximum: 20
+        :param pulumi.Input[bool] security_policy_global_group_approvers_enabled: Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+        :param pulumi.Input[str] security_txt_content: Public security contact information. Introduced in GitLab 16.7.
         :param pulumi.Input[bool] send_user_confirmation_email: Send confirmation email on sign-up.
+        :param pulumi.Input[bool] service_access_tokens_expiration_enforced: Flag to indicate if token expiry date can be optional for service account users
         :param pulumi.Input[int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
@@ -4816,6 +5584,8 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits.
         :param pulumi.Input[str] sign_in_text: Text on the login page.
         :param pulumi.Input[bool] signup_enabled: Enable registration.
+        :param pulumi.Input[bool] silent_admin_exports_enabled: Enable Silent admin exports.
+        :param pulumi.Input[bool] silent_mode_enabled: Enable Silent mode.
         :param pulumi.Input[bool] slack_app_enabled: (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         :param pulumi.Input[str] slack_app_id: The app ID of the Slack-app.
         :param pulumi.Input[str] slack_app_secret: The app secret of the Slack-app.
@@ -4825,6 +5595,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] snowplow_app_id: The Snowplow site name / application ID. (for example, gitlab)
         :param pulumi.Input[str] snowplow_collector_hostname: The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
         :param pulumi.Input[str] snowplow_cookie_domain: The Snowplow cookie domain. (for example, .gitlab.com)
+        :param pulumi.Input[str] snowplow_database_collector_hostname: The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
         :param pulumi.Input[bool] snowplow_enabled: Enable snowplow tracking.
         :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
         :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects.
@@ -4832,6 +5603,8 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] spam_check_api_key: API key used by GitLab for accessing the Spam Check service endpoint.
         :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint.
         :param pulumi.Input[str] spam_check_endpoint_url: URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
+        :param pulumi.Input[str] static_objects_external_storage_auth_token: Authentication token for the external storage linked in static*objects*external*storage*url.
+        :param pulumi.Input[str] static_objects_external_storage_url: URL to an external storage for repository static objects.
         :param pulumi.Input[bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
         :param pulumi.Input[int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
         :param pulumi.Input[str] terms: (Required by: enforce_terms) Markdown content for the ToS.
@@ -4855,18 +5628,23 @@ class _ApplicationSettingsState:
         :param pulumi.Input[int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
         :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours.
         :param pulumi.Input[int] two_factor_grace_period: Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
+        :param pulumi.Input[int] unconfirmed_users_delete_after_days: Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[bool] unique_ips_limit_enabled: (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         :param pulumi.Input[int] unique_ips_limit_per_user: Maximum number of IPs per user.
         :param pulumi.Input[int] unique_ips_limit_time_window: How many seconds an IP is counted towards the limit.
+        :param pulumi.Input[bool] update_runner_versions_enabled: Fetch GitLab Runner release version data from GitLab.com.
         :param pulumi.Input[bool] usage_ping_enabled: Every week GitLab reports license usage back to GitLab, Inc.
+        :param pulumi.Input[bool] use_clickhouse_for_analytics: Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
         :param pulumi.Input[bool] user_deactivation_emails_enabled: Send an email to users upon account deactivation.
         :param pulumi.Input[bool] user_default_external: Newly registered users are external by default.
         :param pulumi.Input[str] user_default_internal_regex: Specify an email address regex pattern to identify default internal users.
+        :param pulumi.Input[bool] user_defaults_to_private_profile: Newly created users have private profile by default. Introduced in GitLab 15.8.
         :param pulumi.Input[bool] user_oauth_applications: Allow users to register any application to use GitLab as an OAuth provider.
         :param pulumi.Input[bool] user_show_add_ssh_key_message: When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valid_runner_registrars: List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
         :param pulumi.Input[bool] version_check_enabled: Let GitLab inform you when an update is available.
         :param pulumi.Input[bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
-        :param pulumi.Input[str] whats_new_variant: What’s new variant, possible values: all*tiers, current*tier, and disabled.
+        :param pulumi.Input[str] whats_new_variant: What's new variant, possible values: all*tiers, current*tier, and disabled.
         :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         if abuse_notification_email is not None:
@@ -5053,22 +5831,32 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "elasticsearch_max_bulk_concurrency", elasticsearch_max_bulk_concurrency)
         if elasticsearch_max_bulk_size_mb is not None:
             pulumi.set(__self__, "elasticsearch_max_bulk_size_mb", elasticsearch_max_bulk_size_mb)
+        if elasticsearch_max_code_indexing_concurrency is not None:
+            pulumi.set(__self__, "elasticsearch_max_code_indexing_concurrency", elasticsearch_max_code_indexing_concurrency)
         if elasticsearch_namespace_ids is not None:
             pulumi.set(__self__, "elasticsearch_namespace_ids", elasticsearch_namespace_ids)
         if elasticsearch_password is not None:
             pulumi.set(__self__, "elasticsearch_password", elasticsearch_password)
         if elasticsearch_project_ids is not None:
             pulumi.set(__self__, "elasticsearch_project_ids", elasticsearch_project_ids)
+        if elasticsearch_requeue_workers is not None:
+            pulumi.set(__self__, "elasticsearch_requeue_workers", elasticsearch_requeue_workers)
         if elasticsearch_search is not None:
             pulumi.set(__self__, "elasticsearch_search", elasticsearch_search)
         if elasticsearch_urls is not None:
             pulumi.set(__self__, "elasticsearch_urls", elasticsearch_urls)
         if elasticsearch_username is not None:
             pulumi.set(__self__, "elasticsearch_username", elasticsearch_username)
+        if elasticsearch_worker_number_of_shards is not None:
+            pulumi.set(__self__, "elasticsearch_worker_number_of_shards", elasticsearch_worker_number_of_shards)
         if email_additional_text is not None:
             pulumi.set(__self__, "email_additional_text", email_additional_text)
         if email_author_in_body is not None:
             pulumi.set(__self__, "email_author_in_body", email_author_in_body)
+        if email_confirmation_setting is not None:
+            pulumi.set(__self__, "email_confirmation_setting", email_confirmation_setting)
+        if enable_artifact_external_redirect_warning_page is not None:
+            pulumi.set(__self__, "enable_artifact_external_redirect_warning_page", enable_artifact_external_redirect_warning_page)
         if enabled_git_access_protocol is not None:
             pulumi.set(__self__, "enabled_git_access_protocol", enabled_git_access_protocol)
         if enforce_namespace_storage_limit is not None:
@@ -5095,6 +5883,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "external_pipeline_validation_service_token", external_pipeline_validation_service_token)
         if external_pipeline_validation_service_url is not None:
             pulumi.set(__self__, "external_pipeline_validation_service_url", external_pipeline_validation_service_url)
+        if failed_login_attempts_unlock_period_in_minutes is not None:
+            pulumi.set(__self__, "failed_login_attempts_unlock_period_in_minutes", failed_login_attempts_unlock_period_in_minutes)
         if file_template_project_id is not None:
             pulumi.set(__self__, "file_template_project_id", file_template_project_id)
         if first_day_of_week is not None:
@@ -5103,6 +5893,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "geo_node_allowed_ips", geo_node_allowed_ips)
         if geo_status_timeout is not None:
             pulumi.set(__self__, "geo_status_timeout", geo_status_timeout)
+        if git_rate_limit_users_alertlists is not None:
+            pulumi.set(__self__, "git_rate_limit_users_alertlists", git_rate_limit_users_alertlists)
         if git_rate_limit_users_allowlists is not None:
             pulumi.set(__self__, "git_rate_limit_users_allowlists", git_rate_limit_users_allowlists)
         if git_two_factor_session_expiry is not None:
@@ -5113,6 +5905,18 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "gitaly_timeout_fast", gitaly_timeout_fast)
         if gitaly_timeout_medium is not None:
             pulumi.set(__self__, "gitaly_timeout_medium", gitaly_timeout_medium)
+        if gitlab_dedicated_instance is not None:
+            pulumi.set(__self__, "gitlab_dedicated_instance", gitlab_dedicated_instance)
+        if gitlab_environment_toolkit_instance is not None:
+            pulumi.set(__self__, "gitlab_environment_toolkit_instance", gitlab_environment_toolkit_instance)
+        if gitlab_shell_operation_limit is not None:
+            pulumi.set(__self__, "gitlab_shell_operation_limit", gitlab_shell_operation_limit)
+        if gitpod_enabled is not None:
+            pulumi.set(__self__, "gitpod_enabled", gitpod_enabled)
+        if gitpod_url is not None:
+            pulumi.set(__self__, "gitpod_url", gitpod_url)
+        if globally_allowed_ips is not None:
+            pulumi.set(__self__, "globally_allowed_ips", globally_allowed_ips)
         if grafana_enabled is not None:
             pulumi.set(__self__, "grafana_enabled", grafana_enabled)
         if grafana_url is not None:
@@ -5166,14 +5970,24 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "inactive_projects_min_size_mb", inactive_projects_min_size_mb)
         if inactive_projects_send_warning_email_after_months is not None:
             pulumi.set(__self__, "inactive_projects_send_warning_email_after_months", inactive_projects_send_warning_email_after_months)
+        if include_optional_metrics_in_service_ping is not None:
+            pulumi.set(__self__, "include_optional_metrics_in_service_ping", include_optional_metrics_in_service_ping)
         if invisible_captcha_enabled is not None:
             pulumi.set(__self__, "invisible_captcha_enabled", invisible_captcha_enabled)
         if issues_create_limit is not None:
             pulumi.set(__self__, "issues_create_limit", issues_create_limit)
+        if jira_connect_application_key is not None:
+            pulumi.set(__self__, "jira_connect_application_key", jira_connect_application_key)
+        if jira_connect_proxy_url is not None:
+            pulumi.set(__self__, "jira_connect_proxy_url", jira_connect_proxy_url)
+        if jira_connect_public_key_storage_enabled is not None:
+            pulumi.set(__self__, "jira_connect_public_key_storage_enabled", jira_connect_public_key_storage_enabled)
         if keep_latest_artifact is not None:
             pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if local_markdown_version is not None:
             pulumi.set(__self__, "local_markdown_version", local_markdown_version)
+        if lock_duo_features_enabled is not None:
+            pulumi.set(__self__, "lock_duo_features_enabled", lock_duo_features_enabled)
         if mailgun_events_enabled is not None:
             pulumi.set(__self__, "mailgun_events_enabled", mailgun_events_enabled)
         if mailgun_signing_key is not None:
@@ -5182,14 +5996,22 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "maintenance_mode", maintenance_mode)
         if maintenance_mode_message is not None:
             pulumi.set(__self__, "maintenance_mode_message", maintenance_mode_message)
+        if maven_package_requests_forwarding is not None:
+            pulumi.set(__self__, "maven_package_requests_forwarding", maven_package_requests_forwarding)
         if max_artifacts_size is not None:
             pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if max_attachment_size is not None:
             pulumi.set(__self__, "max_attachment_size", max_attachment_size)
+        if max_decompressed_archive_size is not None:
+            pulumi.set(__self__, "max_decompressed_archive_size", max_decompressed_archive_size)
         if max_export_size is not None:
             pulumi.set(__self__, "max_export_size", max_export_size)
+        if max_import_remote_file_size is not None:
+            pulumi.set(__self__, "max_import_remote_file_size", max_import_remote_file_size)
         if max_import_size is not None:
             pulumi.set(__self__, "max_import_size", max_import_size)
+        if max_login_attempts is not None:
+            pulumi.set(__self__, "max_login_attempts", max_login_attempts)
         if max_number_of_repository_downloads is not None:
             pulumi.set(__self__, "max_number_of_repository_downloads", max_number_of_repository_downloads)
         if max_number_of_repository_downloads_within_time_period is not None:
@@ -5216,8 +6038,14 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "mirror_max_delay", mirror_max_delay)
         if npm_package_requests_forwarding is not None:
             pulumi.set(__self__, "npm_package_requests_forwarding", npm_package_requests_forwarding)
+        if nuget_skip_metadata_url_validation is not None:
+            pulumi.set(__self__, "nuget_skip_metadata_url_validation", nuget_skip_metadata_url_validation)
         if outbound_local_requests_whitelists is not None:
             pulumi.set(__self__, "outbound_local_requests_whitelists", outbound_local_requests_whitelists)
+        if package_metadata_purl_types is not None:
+            pulumi.set(__self__, "package_metadata_purl_types", package_metadata_purl_types)
+        if package_registry_allow_anyone_to_pull_option is not None:
+            pulumi.set(__self__, "package_registry_allow_anyone_to_pull_option", package_registry_allow_anyone_to_pull_option)
         if package_registry_cleanup_policies_worker_capacity is not None:
             pulumi.set(__self__, "package_registry_cleanup_policies_worker_capacity", package_registry_cleanup_policies_worker_capacity)
         if pages_domain_verification_enabled is not None:
@@ -5248,6 +6076,10 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "polling_interval_multiplier", polling_interval_multiplier)
         if project_export_enabled is not None:
             pulumi.set(__self__, "project_export_enabled", project_export_enabled)
+        if project_jobs_api_rate_limit is not None:
+            pulumi.set(__self__, "project_jobs_api_rate_limit", project_jobs_api_rate_limit)
+        if projects_api_rate_limit_unauthenticated is not None:
+            pulumi.set(__self__, "projects_api_rate_limit_unauthenticated", projects_api_rate_limit_unauthenticated)
         if prometheus_metrics_enabled is not None:
             pulumi.set(__self__, "prometheus_metrics_enabled", prometheus_metrics_enabled)
         if protected_ci_variables is not None:
@@ -5270,6 +6102,10 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "recaptcha_site_key", recaptcha_site_key)
         if receive_max_input_size is not None:
             pulumi.set(__self__, "receive_max_input_size", receive_max_input_size)
+        if receptive_cluster_agents_enabled is not None:
+            pulumi.set(__self__, "receptive_cluster_agents_enabled", receptive_cluster_agents_enabled)
+        if remember_me_enabled is not None:
+            pulumi.set(__self__, "remember_me_enabled", remember_me_enabled)
         if repository_checks_enabled is not None:
             pulumi.set(__self__, "repository_checks_enabled", repository_checks_enabled)
         if repository_size_limit is not None:
@@ -5280,6 +6116,10 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "repository_storages_weighted", repository_storages_weighted)
         if require_admin_approval_after_user_signup is not None:
             pulumi.set(__self__, "require_admin_approval_after_user_signup", require_admin_approval_after_user_signup)
+        if require_admin_two_factor_authentication is not None:
+            pulumi.set(__self__, "require_admin_two_factor_authentication", require_admin_two_factor_authentication)
+        if require_personal_access_token_expiry is not None:
+            pulumi.set(__self__, "require_personal_access_token_expiry", require_personal_access_token_expiry)
         if require_two_factor_authentication is not None:
             pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
         if restricted_visibility_levels is not None:
@@ -5290,8 +6130,16 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "search_rate_limit", search_rate_limit)
         if search_rate_limit_unauthenticated is not None:
             pulumi.set(__self__, "search_rate_limit_unauthenticated", search_rate_limit_unauthenticated)
+        if security_approval_policies_limit is not None:
+            pulumi.set(__self__, "security_approval_policies_limit", security_approval_policies_limit)
+        if security_policy_global_group_approvers_enabled is not None:
+            pulumi.set(__self__, "security_policy_global_group_approvers_enabled", security_policy_global_group_approvers_enabled)
+        if security_txt_content is not None:
+            pulumi.set(__self__, "security_txt_content", security_txt_content)
         if send_user_confirmation_email is not None:
             pulumi.set(__self__, "send_user_confirmation_email", send_user_confirmation_email)
+        if service_access_tokens_expiration_enforced is not None:
+            pulumi.set(__self__, "service_access_tokens_expiration_enforced", service_access_tokens_expiration_enforced)
         if session_expire_delay is not None:
             pulumi.set(__self__, "session_expire_delay", session_expire_delay)
         if shared_runners_enabled is not None:
@@ -5310,6 +6158,10 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "sign_in_text", sign_in_text)
         if signup_enabled is not None:
             pulumi.set(__self__, "signup_enabled", signup_enabled)
+        if silent_admin_exports_enabled is not None:
+            pulumi.set(__self__, "silent_admin_exports_enabled", silent_admin_exports_enabled)
+        if silent_mode_enabled is not None:
+            pulumi.set(__self__, "silent_mode_enabled", silent_mode_enabled)
         if slack_app_enabled is not None:
             pulumi.set(__self__, "slack_app_enabled", slack_app_enabled)
         if slack_app_id is not None:
@@ -5328,6 +6180,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "snowplow_collector_hostname", snowplow_collector_hostname)
         if snowplow_cookie_domain is not None:
             pulumi.set(__self__, "snowplow_cookie_domain", snowplow_cookie_domain)
+        if snowplow_database_collector_hostname is not None:
+            pulumi.set(__self__, "snowplow_database_collector_hostname", snowplow_database_collector_hostname)
         if snowplow_enabled is not None:
             pulumi.set(__self__, "snowplow_enabled", snowplow_enabled)
         if sourcegraph_enabled is not None:
@@ -5342,6 +6196,10 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "spam_check_endpoint_enabled", spam_check_endpoint_enabled)
         if spam_check_endpoint_url is not None:
             pulumi.set(__self__, "spam_check_endpoint_url", spam_check_endpoint_url)
+        if static_objects_external_storage_auth_token is not None:
+            pulumi.set(__self__, "static_objects_external_storage_auth_token", static_objects_external_storage_auth_token)
+        if static_objects_external_storage_url is not None:
+            pulumi.set(__self__, "static_objects_external_storage_url", static_objects_external_storage_url)
         if suggest_pipeline_enabled is not None:
             pulumi.set(__self__, "suggest_pipeline_enabled", suggest_pipeline_enabled)
         if terminal_max_session_time is not None:
@@ -5388,24 +6246,34 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "time_tracking_limit_to_hours", time_tracking_limit_to_hours)
         if two_factor_grace_period is not None:
             pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
+        if unconfirmed_users_delete_after_days is not None:
+            pulumi.set(__self__, "unconfirmed_users_delete_after_days", unconfirmed_users_delete_after_days)
         if unique_ips_limit_enabled is not None:
             pulumi.set(__self__, "unique_ips_limit_enabled", unique_ips_limit_enabled)
         if unique_ips_limit_per_user is not None:
             pulumi.set(__self__, "unique_ips_limit_per_user", unique_ips_limit_per_user)
         if unique_ips_limit_time_window is not None:
             pulumi.set(__self__, "unique_ips_limit_time_window", unique_ips_limit_time_window)
+        if update_runner_versions_enabled is not None:
+            pulumi.set(__self__, "update_runner_versions_enabled", update_runner_versions_enabled)
         if usage_ping_enabled is not None:
             pulumi.set(__self__, "usage_ping_enabled", usage_ping_enabled)
+        if use_clickhouse_for_analytics is not None:
+            pulumi.set(__self__, "use_clickhouse_for_analytics", use_clickhouse_for_analytics)
         if user_deactivation_emails_enabled is not None:
             pulumi.set(__self__, "user_deactivation_emails_enabled", user_deactivation_emails_enabled)
         if user_default_external is not None:
             pulumi.set(__self__, "user_default_external", user_default_external)
         if user_default_internal_regex is not None:
             pulumi.set(__self__, "user_default_internal_regex", user_default_internal_regex)
+        if user_defaults_to_private_profile is not None:
+            pulumi.set(__self__, "user_defaults_to_private_profile", user_defaults_to_private_profile)
         if user_oauth_applications is not None:
             pulumi.set(__self__, "user_oauth_applications", user_oauth_applications)
         if user_show_add_ssh_key_message is not None:
             pulumi.set(__self__, "user_show_add_ssh_key_message", user_show_add_ssh_key_message)
+        if valid_runner_registrars is not None:
+            pulumi.set(__self__, "valid_runner_registrars", valid_runner_registrars)
         if version_check_enabled is not None:
             pulumi.set(__self__, "version_check_enabled", version_check_enabled)
         if web_ide_clientside_preview_enabled is not None:
@@ -6520,6 +7388,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "elasticsearch_max_bulk_size_mb", value)
 
     @property
+    @pulumi.getter(name="elasticsearchMaxCodeIndexingConcurrency")
+    def elasticsearch_max_code_indexing_concurrency(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "elasticsearch_max_code_indexing_concurrency")
+
+    @elasticsearch_max_code_indexing_concurrency.setter
+    def elasticsearch_max_code_indexing_concurrency(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "elasticsearch_max_code_indexing_concurrency", value)
+
+    @property
     @pulumi.getter(name="elasticsearchNamespaceIds")
     def elasticsearch_namespace_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
@@ -6554,6 +7434,18 @@ class _ApplicationSettingsState:
     @elasticsearch_project_ids.setter
     def elasticsearch_project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "elasticsearch_project_ids", value)
+
+    @property
+    @pulumi.getter(name="elasticsearchRequeueWorkers")
+    def elasticsearch_requeue_workers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "elasticsearch_requeue_workers")
+
+    @elasticsearch_requeue_workers.setter
+    def elasticsearch_requeue_workers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "elasticsearch_requeue_workers", value)
 
     @property
     @pulumi.getter(name="elasticsearchSearch")
@@ -6592,6 +7484,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "elasticsearch_username", value)
 
     @property
+    @pulumi.getter(name="elasticsearchWorkerNumberOfShards")
+    def elasticsearch_worker_number_of_shards(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "elasticsearch_worker_number_of_shards")
+
+    @elasticsearch_worker_number_of_shards.setter
+    def elasticsearch_worker_number_of_shards(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "elasticsearch_worker_number_of_shards", value)
+
+    @property
     @pulumi.getter(name="emailAdditionalText")
     def email_additional_text(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6614,6 +7518,30 @@ class _ApplicationSettingsState:
     @email_author_in_body.setter
     def email_author_in_body(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "email_author_in_body", value)
+
+    @property
+    @pulumi.getter(name="emailConfirmationSetting")
+    def email_confirmation_setting(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+        """
+        return pulumi.get(self, "email_confirmation_setting")
+
+    @email_confirmation_setting.setter
+    def email_confirmation_setting(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email_confirmation_setting", value)
+
+    @property
+    @pulumi.getter(name="enableArtifactExternalRedirectWarningPage")
+    def enable_artifact_external_redirect_warning_page(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Show the external redirect page that warns you about user-generated content in GitLab Pages.
+        """
+        return pulumi.get(self, "enable_artifact_external_redirect_warning_page")
+
+    @enable_artifact_external_redirect_warning_page.setter
+    def enable_artifact_external_redirect_warning_page(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_artifact_external_redirect_warning_page", value)
 
     @property
     @pulumi.getter(name="enabledGitAccessProtocol")
@@ -6772,6 +7700,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "external_pipeline_validation_service_url", value)
 
     @property
+    @pulumi.getter(name="failedLoginAttemptsUnlockPeriodInMinutes")
+    def failed_login_attempts_unlock_period_in_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+        """
+        return pulumi.get(self, "failed_login_attempts_unlock_period_in_minutes")
+
+    @failed_login_attempts_unlock_period_in_minutes.setter
+    def failed_login_attempts_unlock_period_in_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failed_login_attempts_unlock_period_in_minutes", value)
+
+    @property
     @pulumi.getter(name="fileTemplateProjectId")
     def file_template_project_id(self) -> Optional[pulumi.Input[int]]:
         """
@@ -6820,10 +7760,22 @@ class _ApplicationSettingsState:
         pulumi.set(self, "geo_status_timeout", value)
 
     @property
+    @pulumi.getter(name="gitRateLimitUsersAlertlists")
+    def git_rate_limit_users_alertlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+        """
+        return pulumi.get(self, "git_rate_limit_users_alertlists")
+
+    @git_rate_limit_users_alertlists.setter
+    def git_rate_limit_users_alertlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "git_rate_limit_users_alertlists", value)
+
+    @property
     @pulumi.getter(name="gitRateLimitUsersAllowlists")
     def git_rate_limit_users_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+        List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
         """
         return pulumi.get(self, "git_rate_limit_users_allowlists")
 
@@ -6878,6 +7830,78 @@ class _ApplicationSettingsState:
     @gitaly_timeout_medium.setter
     def gitaly_timeout_medium(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "gitaly_timeout_medium", value)
+
+    @property
+    @pulumi.getter(name="gitlabDedicatedInstance")
+    def gitlab_dedicated_instance(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the instance was provisioned for GitLab Dedicated.
+        """
+        return pulumi.get(self, "gitlab_dedicated_instance")
+
+    @gitlab_dedicated_instance.setter
+    def gitlab_dedicated_instance(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gitlab_dedicated_instance", value)
+
+    @property
+    @pulumi.getter(name="gitlabEnvironmentToolkitInstance")
+    def gitlab_environment_toolkit_instance(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+        """
+        return pulumi.get(self, "gitlab_environment_toolkit_instance")
+
+    @gitlab_environment_toolkit_instance.setter
+    def gitlab_environment_toolkit_instance(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gitlab_environment_toolkit_instance", value)
+
+    @property
+    @pulumi.getter(name="gitlabShellOperationLimit")
+    def gitlab_shell_operation_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+        """
+        return pulumi.get(self, "gitlab_shell_operation_limit")
+
+    @gitlab_shell_operation_limit.setter
+    def gitlab_shell_operation_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "gitlab_shell_operation_limit", value)
+
+    @property
+    @pulumi.getter(name="gitpodEnabled")
+    def gitpod_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Gitpod integration.
+        """
+        return pulumi.get(self, "gitpod_enabled")
+
+    @gitpod_enabled.setter
+    def gitpod_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gitpod_enabled", value)
+
+    @property
+    @pulumi.getter(name="gitpodUrl")
+    def gitpod_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Gitpod instance URL for integration.
+        """
+        return pulumi.get(self, "gitpod_url")
+
+    @gitpod_url.setter
+    def gitpod_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gitpod_url", value)
+
+    @property
+    @pulumi.getter(name="globallyAllowedIps")
+    def globally_allowed_ips(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+        """
+        return pulumi.get(self, "globally_allowed_ips")
+
+    @globally_allowed_ips.setter
+    def globally_allowed_ips(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "globally_allowed_ips", value)
 
     @property
     @pulumi.getter(name="grafanaEnabled")
@@ -7149,6 +8173,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "inactive_projects_send_warning_email_after_months", value)
 
     @property
+    @pulumi.getter(name="includeOptionalMetricsInServicePing")
+    def include_optional_metrics_in_service_ping(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+        """
+        return pulumi.get(self, "include_optional_metrics_in_service_ping")
+
+    @include_optional_metrics_in_service_ping.setter
+    def include_optional_metrics_in_service_ping(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_optional_metrics_in_service_ping", value)
+
+    @property
     @pulumi.getter(name="invisibleCaptchaEnabled")
     def invisible_captcha_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -7173,6 +8209,42 @@ class _ApplicationSettingsState:
         pulumi.set(self, "issues_create_limit", value)
 
     @property
+    @pulumi.getter(name="jiraConnectApplicationKey")
+    def jira_connect_application_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+        """
+        return pulumi.get(self, "jira_connect_application_key")
+
+    @jira_connect_application_key.setter
+    def jira_connect_application_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jira_connect_application_key", value)
+
+    @property
+    @pulumi.getter(name="jiraConnectProxyUrl")
+    def jira_connect_proxy_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+        """
+        return pulumi.get(self, "jira_connect_proxy_url")
+
+    @jira_connect_proxy_url.setter
+    def jira_connect_proxy_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jira_connect_proxy_url", value)
+
+    @property
+    @pulumi.getter(name="jiraConnectPublicKeyStorageEnabled")
+    def jira_connect_public_key_storage_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable public key storage for the GitLab for Jira Cloud app.
+        """
+        return pulumi.get(self, "jira_connect_public_key_storage_enabled")
+
+    @jira_connect_public_key_storage_enabled.setter
+    def jira_connect_public_key_storage_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "jira_connect_public_key_storage_enabled", value)
+
+    @property
     @pulumi.getter(name="keepLatestArtifact")
     def keep_latest_artifact(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -7195,6 +8267,18 @@ class _ApplicationSettingsState:
     @local_markdown_version.setter
     def local_markdown_version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "local_markdown_version", value)
+
+    @property
+    @pulumi.getter(name="lockDuoFeaturesEnabled")
+    def lock_duo_features_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "lock_duo_features_enabled")
+
+    @lock_duo_features_enabled.setter
+    def lock_duo_features_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lock_duo_features_enabled", value)
 
     @property
     @pulumi.getter(name="mailgunEventsEnabled")
@@ -7245,6 +8329,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "maintenance_mode_message", value)
 
     @property
+    @pulumi.getter(name="mavenPackageRequestsForwarding")
+    def maven_package_requests_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "maven_package_requests_forwarding")
+
+    @maven_package_requests_forwarding.setter
+    def maven_package_requests_forwarding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "maven_package_requests_forwarding", value)
+
+    @property
     @pulumi.getter(name="maxArtifactsSize")
     def max_artifacts_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -7269,6 +8365,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "max_attachment_size", value)
 
     @property
+    @pulumi.getter(name="maxDecompressedArchiveSize")
+    def max_decompressed_archive_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum decompressed archive size in bytes.
+        """
+        return pulumi.get(self, "max_decompressed_archive_size")
+
+    @max_decompressed_archive_size.setter
+    def max_decompressed_archive_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_decompressed_archive_size", value)
+
+    @property
     @pulumi.getter(name="maxExportSize")
     def max_export_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -7281,6 +8389,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "max_export_size", value)
 
     @property
+    @pulumi.getter(name="maxImportRemoteFileSize")
+    def max_import_remote_file_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+        """
+        return pulumi.get(self, "max_import_remote_file_size")
+
+    @max_import_remote_file_size.setter
+    def max_import_remote_file_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_import_remote_file_size", value)
+
+    @property
     @pulumi.getter(name="maxImportSize")
     def max_import_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -7291,6 +8411,18 @@ class _ApplicationSettingsState:
     @max_import_size.setter
     def max_import_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_import_size", value)
+
+    @property
+    @pulumi.getter(name="maxLoginAttempts")
+    def max_login_attempts(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of sign-in attempts before locking out the user.
+        """
+        return pulumi.get(self, "max_login_attempts")
+
+    @max_login_attempts.setter
+    def max_login_attempts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_login_attempts", value)
 
     @property
     @pulumi.getter(name="maxNumberOfRepositoryDownloads")
@@ -7446,6 +8578,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "npm_package_requests_forwarding", value)
 
     @property
+    @pulumi.getter(name="nugetSkipMetadataUrlValidation")
+    def nuget_skip_metadata_url_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "nuget_skip_metadata_url_validation")
+
+    @nuget_skip_metadata_url_validation.setter
+    def nuget_skip_metadata_url_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nuget_skip_metadata_url_validation", value)
+
+    @property
     @pulumi.getter(name="outboundLocalRequestsWhitelists")
     def outbound_local_requests_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -7456,6 +8600,30 @@ class _ApplicationSettingsState:
     @outbound_local_requests_whitelists.setter
     def outbound_local_requests_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "outbound_local_requests_whitelists", value)
+
+    @property
+    @pulumi.getter(name="packageMetadataPurlTypes")
+    def package_metadata_purl_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+        """
+        return pulumi.get(self, "package_metadata_purl_types")
+
+    @package_metadata_purl_types.setter
+    def package_metadata_purl_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "package_metadata_purl_types", value)
+
+    @property
+    @pulumi.getter(name="packageRegistryAllowAnyoneToPullOption")
+    def package_registry_allow_anyone_to_pull_option(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable to allow anyone to pull from Package Registry visible and changeable.
+        """
+        return pulumi.get(self, "package_registry_allow_anyone_to_pull_option")
+
+    @package_registry_allow_anyone_to_pull_option.setter
+    def package_registry_allow_anyone_to_pull_option(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "package_registry_allow_anyone_to_pull_option", value)
 
     @property
     @pulumi.getter(name="packageRegistryCleanupPoliciesWorkerCapacity")
@@ -7638,6 +8806,30 @@ class _ApplicationSettingsState:
         pulumi.set(self, "project_export_enabled", value)
 
     @property
+    @pulumi.getter(name="projectJobsApiRateLimit")
+    def project_jobs_api_rate_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+        """
+        return pulumi.get(self, "project_jobs_api_rate_limit")
+
+    @project_jobs_api_rate_limit.setter
+    def project_jobs_api_rate_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "project_jobs_api_rate_limit", value)
+
+    @property
+    @pulumi.getter(name="projectsApiRateLimitUnauthenticated")
+    def projects_api_rate_limit_unauthenticated(self) -> Optional[pulumi.Input[int]]:
+        """
+        Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+        """
+        return pulumi.get(self, "projects_api_rate_limit_unauthenticated")
+
+    @projects_api_rate_limit_unauthenticated.setter
+    def projects_api_rate_limit_unauthenticated(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "projects_api_rate_limit_unauthenticated", value)
+
+    @property
     @pulumi.getter(name="prometheusMetricsEnabled")
     def prometheus_metrics_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -7770,6 +8962,30 @@ class _ApplicationSettingsState:
         pulumi.set(self, "receive_max_input_size", value)
 
     @property
+    @pulumi.getter(name="receptiveClusterAgentsEnabled")
+    def receptive_cluster_agents_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable receptive mode for GitLab Agents for Kubernetes.
+        """
+        return pulumi.get(self, "receptive_cluster_agents_enabled")
+
+    @receptive_cluster_agents_enabled.setter
+    def receptive_cluster_agents_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "receptive_cluster_agents_enabled", value)
+
+    @property
+    @pulumi.getter(name="rememberMeEnabled")
+    def remember_me_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Remember me setting. Introduced in GitLab 16.0.
+        """
+        return pulumi.get(self, "remember_me_enabled")
+
+    @remember_me_enabled.setter
+    def remember_me_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remember_me_enabled", value)
+
+    @property
     @pulumi.getter(name="repositoryChecksEnabled")
     def repository_checks_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -7828,6 +9044,30 @@ class _ApplicationSettingsState:
     @require_admin_approval_after_user_signup.setter
     def require_admin_approval_after_user_signup(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "require_admin_approval_after_user_signup", value)
+
+    @property
+    @pulumi.getter(name="requireAdminTwoFactorAuthentication")
+    def require_admin_two_factor_authentication(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow administrators to require 2FA for all administrators on the instance.
+        """
+        return pulumi.get(self, "require_admin_two_factor_authentication")
+
+    @require_admin_two_factor_authentication.setter
+    def require_admin_two_factor_authentication(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_admin_two_factor_authentication", value)
+
+    @property
+    @pulumi.getter(name="requirePersonalAccessTokenExpiry")
+    def require_personal_access_token_expiry(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+        """
+        return pulumi.get(self, "require_personal_access_token_expiry")
+
+    @require_personal_access_token_expiry.setter
+    def require_personal_access_token_expiry(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_personal_access_token_expiry", value)
 
     @property
     @pulumi.getter(name="requireTwoFactorAuthentication")
@@ -7890,6 +9130,42 @@ class _ApplicationSettingsState:
         pulumi.set(self, "search_rate_limit_unauthenticated", value)
 
     @property
+    @pulumi.getter(name="securityApprovalPoliciesLimit")
+    def security_approval_policies_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of active merge request approval policies per security policy project. Maximum: 20
+        """
+        return pulumi.get(self, "security_approval_policies_limit")
+
+    @security_approval_policies_limit.setter
+    def security_approval_policies_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "security_approval_policies_limit", value)
+
+    @property
+    @pulumi.getter(name="securityPolicyGlobalGroupApproversEnabled")
+    def security_policy_global_group_approvers_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+        """
+        return pulumi.get(self, "security_policy_global_group_approvers_enabled")
+
+    @security_policy_global_group_approvers_enabled.setter
+    def security_policy_global_group_approvers_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "security_policy_global_group_approvers_enabled", value)
+
+    @property
+    @pulumi.getter(name="securityTxtContent")
+    def security_txt_content(self) -> Optional[pulumi.Input[str]]:
+        """
+        Public security contact information. Introduced in GitLab 16.7.
+        """
+        return pulumi.get(self, "security_txt_content")
+
+    @security_txt_content.setter
+    def security_txt_content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_txt_content", value)
+
+    @property
     @pulumi.getter(name="sendUserConfirmationEmail")
     def send_user_confirmation_email(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -7900,6 +9176,18 @@ class _ApplicationSettingsState:
     @send_user_confirmation_email.setter
     def send_user_confirmation_email(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "send_user_confirmation_email", value)
+
+    @property
+    @pulumi.getter(name="serviceAccessTokensExpirationEnforced")
+    def service_access_tokens_expiration_enforced(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to indicate if token expiry date can be optional for service account users
+        """
+        return pulumi.get(self, "service_access_tokens_expiration_enforced")
+
+    @service_access_tokens_expiration_enforced.setter
+    def service_access_tokens_expiration_enforced(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "service_access_tokens_expiration_enforced", value)
 
     @property
     @pulumi.getter(name="sessionExpireDelay")
@@ -8010,6 +9298,30 @@ class _ApplicationSettingsState:
         pulumi.set(self, "signup_enabled", value)
 
     @property
+    @pulumi.getter(name="silentAdminExportsEnabled")
+    def silent_admin_exports_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Silent admin exports.
+        """
+        return pulumi.get(self, "silent_admin_exports_enabled")
+
+    @silent_admin_exports_enabled.setter
+    def silent_admin_exports_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "silent_admin_exports_enabled", value)
+
+    @property
+    @pulumi.getter(name="silentModeEnabled")
+    def silent_mode_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Silent mode.
+        """
+        return pulumi.get(self, "silent_mode_enabled")
+
+    @silent_mode_enabled.setter
+    def silent_mode_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "silent_mode_enabled", value)
+
+    @property
     @pulumi.getter(name="slackAppEnabled")
     def slack_app_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -8118,6 +9430,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "snowplow_cookie_domain", value)
 
     @property
+    @pulumi.getter(name="snowplowDatabaseCollectorHostname")
+    def snowplow_database_collector_hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+        """
+        return pulumi.get(self, "snowplow_database_collector_hostname")
+
+    @snowplow_database_collector_hostname.setter
+    def snowplow_database_collector_hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snowplow_database_collector_hostname", value)
+
+    @property
     @pulumi.getter(name="snowplowEnabled")
     def snowplow_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -8200,6 +9524,30 @@ class _ApplicationSettingsState:
     @spam_check_endpoint_url.setter
     def spam_check_endpoint_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spam_check_endpoint_url", value)
+
+    @property
+    @pulumi.getter(name="staticObjectsExternalStorageAuthToken")
+    def static_objects_external_storage_auth_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authentication token for the external storage linked in static*objects*external*storage*url.
+        """
+        return pulumi.get(self, "static_objects_external_storage_auth_token")
+
+    @static_objects_external_storage_auth_token.setter
+    def static_objects_external_storage_auth_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "static_objects_external_storage_auth_token", value)
+
+    @property
+    @pulumi.getter(name="staticObjectsExternalStorageUrl")
+    def static_objects_external_storage_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to an external storage for repository static objects.
+        """
+        return pulumi.get(self, "static_objects_external_storage_url")
+
+    @static_objects_external_storage_url.setter
+    def static_objects_external_storage_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "static_objects_external_storage_url", value)
 
     @property
     @pulumi.getter(name="suggestPipelineEnabled")
@@ -8478,6 +9826,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "two_factor_grace_period", value)
 
     @property
+    @pulumi.getter(name="unconfirmedUsersDeleteAfterDays")
+    def unconfirmed_users_delete_after_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "unconfirmed_users_delete_after_days")
+
+    @unconfirmed_users_delete_after_days.setter
+    def unconfirmed_users_delete_after_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "unconfirmed_users_delete_after_days", value)
+
+    @property
     @pulumi.getter(name="uniqueIpsLimitEnabled")
     def unique_ips_limit_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -8514,6 +9874,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "unique_ips_limit_time_window", value)
 
     @property
+    @pulumi.getter(name="updateRunnerVersionsEnabled")
+    def update_runner_versions_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Fetch GitLab Runner release version data from GitLab.com.
+        """
+        return pulumi.get(self, "update_runner_versions_enabled")
+
+    @update_runner_versions_enabled.setter
+    def update_runner_versions_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_runner_versions_enabled", value)
+
+    @property
     @pulumi.getter(name="usagePingEnabled")
     def usage_ping_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -8524,6 +9896,18 @@ class _ApplicationSettingsState:
     @usage_ping_enabled.setter
     def usage_ping_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "usage_ping_enabled", value)
+
+    @property
+    @pulumi.getter(name="useClickhouseForAnalytics")
+    def use_clickhouse_for_analytics(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+        """
+        return pulumi.get(self, "use_clickhouse_for_analytics")
+
+    @use_clickhouse_for_analytics.setter
+    def use_clickhouse_for_analytics(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_clickhouse_for_analytics", value)
 
     @property
     @pulumi.getter(name="userDeactivationEmailsEnabled")
@@ -8562,6 +9946,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "user_default_internal_regex", value)
 
     @property
+    @pulumi.getter(name="userDefaultsToPrivateProfile")
+    def user_defaults_to_private_profile(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Newly created users have private profile by default. Introduced in GitLab 15.8.
+        """
+        return pulumi.get(self, "user_defaults_to_private_profile")
+
+    @user_defaults_to_private_profile.setter
+    def user_defaults_to_private_profile(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_defaults_to_private_profile", value)
+
+    @property
     @pulumi.getter(name="userOauthApplications")
     def user_oauth_applications(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -8584,6 +9980,18 @@ class _ApplicationSettingsState:
     @user_show_add_ssh_key_message.setter
     def user_show_add_ssh_key_message(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "user_show_add_ssh_key_message", value)
+
+    @property
+    @pulumi.getter(name="validRunnerRegistrars")
+    def valid_runner_registrars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
+        """
+        return pulumi.get(self, "valid_runner_registrars")
+
+    @valid_runner_registrars.setter
+    def valid_runner_registrars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "valid_runner_registrars", value)
 
     @property
     @pulumi.getter(name="versionCheckEnabled")
@@ -8613,7 +10021,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="whatsNewVariant")
     def whats_new_variant(self) -> Optional[pulumi.Input[str]]:
         """
-        What’s new variant, possible values: all*tiers, current*tier, and disabled.
+        What's new variant, possible values: all*tiers, current*tier, and disabled.
         """
         return pulumi.get(self, "whats_new_variant")
 
@@ -8731,14 +10139,19 @@ class ApplicationSettings(pulumi.CustomResource):
                  elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
+                 elasticsearch_max_code_indexing_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_password: Optional[pulumi.Input[str]] = None,
                  elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 elasticsearch_requeue_workers: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_search: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elasticsearch_username: Optional[pulumi.Input[str]] = None,
+                 elasticsearch_worker_number_of_shards: Optional[pulumi.Input[int]] = None,
                  email_additional_text: Optional[pulumi.Input[str]] = None,
                  email_author_in_body: Optional[pulumi.Input[bool]] = None,
+                 email_confirmation_setting: Optional[pulumi.Input[str]] = None,
+                 enable_artifact_external_redirect_warning_page: Optional[pulumi.Input[bool]] = None,
                  enabled_git_access_protocol: Optional[pulumi.Input[str]] = None,
                  enforce_namespace_storage_limit: Optional[pulumi.Input[bool]] = None,
                  enforce_terms: Optional[pulumi.Input[bool]] = None,
@@ -8752,15 +10165,21 @@ class ApplicationSettings(pulumi.CustomResource):
                  external_pipeline_validation_service_timeout: Optional[pulumi.Input[int]] = None,
                  external_pipeline_validation_service_token: Optional[pulumi.Input[str]] = None,
                  external_pipeline_validation_service_url: Optional[pulumi.Input[str]] = None,
+                 failed_login_attempts_unlock_period_in_minutes: Optional[pulumi.Input[int]] = None,
                  file_template_project_id: Optional[pulumi.Input[int]] = None,
                  first_day_of_week: Optional[pulumi.Input[int]] = None,
                  geo_node_allowed_ips: Optional[pulumi.Input[str]] = None,
                  geo_status_timeout: Optional[pulumi.Input[int]] = None,
+                 git_rate_limit_users_alertlists: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  git_two_factor_session_expiry: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_default: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_fast: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_medium: Optional[pulumi.Input[int]] = None,
+                 gitlab_shell_operation_limit: Optional[pulumi.Input[int]] = None,
+                 gitpod_enabled: Optional[pulumi.Input[bool]] = None,
+                 gitpod_url: Optional[pulumi.Input[str]] = None,
+                 globally_allowed_ips: Optional[pulumi.Input[str]] = None,
                  grafana_enabled: Optional[pulumi.Input[bool]] = None,
                  grafana_url: Optional[pulumi.Input[str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[bool]] = None,
@@ -8783,18 +10202,27 @@ class ApplicationSettings(pulumi.CustomResource):
                  inactive_projects_delete_after_months: Optional[pulumi.Input[int]] = None,
                  inactive_projects_min_size_mb: Optional[pulumi.Input[int]] = None,
                  inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[int]] = None,
+                 include_optional_metrics_in_service_ping: Optional[pulumi.Input[bool]] = None,
                  invisible_captcha_enabled: Optional[pulumi.Input[bool]] = None,
                  issues_create_limit: Optional[pulumi.Input[int]] = None,
+                 jira_connect_application_key: Optional[pulumi.Input[str]] = None,
+                 jira_connect_proxy_url: Optional[pulumi.Input[str]] = None,
+                 jira_connect_public_key_storage_enabled: Optional[pulumi.Input[bool]] = None,
                  keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  local_markdown_version: Optional[pulumi.Input[int]] = None,
+                 lock_duo_features_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[str]] = None,
                  maintenance_mode: Optional[pulumi.Input[bool]] = None,
                  maintenance_mode_message: Optional[pulumi.Input[str]] = None,
+                 maven_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
                  max_artifacts_size: Optional[pulumi.Input[int]] = None,
                  max_attachment_size: Optional[pulumi.Input[int]] = None,
+                 max_decompressed_archive_size: Optional[pulumi.Input[int]] = None,
                  max_export_size: Optional[pulumi.Input[int]] = None,
+                 max_import_remote_file_size: Optional[pulumi.Input[int]] = None,
                  max_import_size: Optional[pulumi.Input[int]] = None,
+                 max_login_attempts: Optional[pulumi.Input[int]] = None,
                  max_number_of_repository_downloads: Optional[pulumi.Input[int]] = None,
                  max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[int]] = None,
                  max_pages_size: Optional[pulumi.Input[int]] = None,
@@ -8808,7 +10236,10 @@ class ApplicationSettings(pulumi.CustomResource):
                  mirror_max_capacity: Optional[pulumi.Input[int]] = None,
                  mirror_max_delay: Optional[pulumi.Input[int]] = None,
                  npm_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
+                 nuget_skip_metadata_url_validation: Optional[pulumi.Input[bool]] = None,
                  outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 package_metadata_purl_types: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 package_registry_allow_anyone_to_pull_option: Optional[pulumi.Input[bool]] = None,
                  package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
                  pages_domain_verification_enabled: Optional[pulumi.Input[bool]] = None,
                  password_authentication_enabled_for_git: Optional[pulumi.Input[bool]] = None,
@@ -8824,6 +10255,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  plantuml_url: Optional[pulumi.Input[str]] = None,
                  polling_interval_multiplier: Optional[pulumi.Input[float]] = None,
                  project_export_enabled: Optional[pulumi.Input[bool]] = None,
+                 project_jobs_api_rate_limit: Optional[pulumi.Input[int]] = None,
+                 projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
                  prometheus_metrics_enabled: Optional[pulumi.Input[bool]] = None,
                  protected_ci_variables: Optional[pulumi.Input[bool]] = None,
                  push_event_activities_limit: Optional[pulumi.Input[int]] = None,
@@ -8835,17 +10268,25 @@ class ApplicationSettings(pulumi.CustomResource):
                  recaptcha_private_key: Optional[pulumi.Input[str]] = None,
                  recaptcha_site_key: Optional[pulumi.Input[str]] = None,
                  receive_max_input_size: Optional[pulumi.Input[int]] = None,
+                 receptive_cluster_agents_enabled: Optional[pulumi.Input[bool]] = None,
+                 remember_me_enabled: Optional[pulumi.Input[bool]] = None,
                  repository_checks_enabled: Optional[pulumi.Input[bool]] = None,
                  repository_size_limit: Optional[pulumi.Input[int]] = None,
                  repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
                  require_admin_approval_after_user_signup: Optional[pulumi.Input[bool]] = None,
+                 require_admin_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
+                 require_personal_access_token_expiry: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  rsa_key_restriction: Optional[pulumi.Input[int]] = None,
                  search_rate_limit: Optional[pulumi.Input[int]] = None,
                  search_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
+                 security_approval_policies_limit: Optional[pulumi.Input[int]] = None,
+                 security_policy_global_group_approvers_enabled: Optional[pulumi.Input[bool]] = None,
+                 security_txt_content: Optional[pulumi.Input[str]] = None,
                  send_user_confirmation_email: Optional[pulumi.Input[bool]] = None,
+                 service_access_tokens_expiration_enforced: Optional[pulumi.Input[bool]] = None,
                  session_expire_delay: Optional[pulumi.Input[int]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  shared_runners_minutes: Optional[pulumi.Input[int]] = None,
@@ -8855,6 +10296,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  sidekiq_job_limiter_mode: Optional[pulumi.Input[str]] = None,
                  sign_in_text: Optional[pulumi.Input[str]] = None,
                  signup_enabled: Optional[pulumi.Input[bool]] = None,
+                 silent_admin_exports_enabled: Optional[pulumi.Input[bool]] = None,
+                 silent_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  slack_app_enabled: Optional[pulumi.Input[bool]] = None,
                  slack_app_id: Optional[pulumi.Input[str]] = None,
                  slack_app_secret: Optional[pulumi.Input[str]] = None,
@@ -8864,6 +10307,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  snowplow_app_id: Optional[pulumi.Input[str]] = None,
                  snowplow_collector_hostname: Optional[pulumi.Input[str]] = None,
                  snowplow_cookie_domain: Optional[pulumi.Input[str]] = None,
+                 snowplow_database_collector_hostname: Optional[pulumi.Input[str]] = None,
                  snowplow_enabled: Optional[pulumi.Input[bool]] = None,
                  sourcegraph_enabled: Optional[pulumi.Input[bool]] = None,
                  sourcegraph_public_only: Optional[pulumi.Input[bool]] = None,
@@ -8871,6 +10315,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  spam_check_api_key: Optional[pulumi.Input[str]] = None,
                  spam_check_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  spam_check_endpoint_url: Optional[pulumi.Input[str]] = None,
+                 static_objects_external_storage_auth_token: Optional[pulumi.Input[str]] = None,
+                 static_objects_external_storage_url: Optional[pulumi.Input[str]] = None,
                  suggest_pipeline_enabled: Optional[pulumi.Input[bool]] = None,
                  terminal_max_session_time: Optional[pulumi.Input[int]] = None,
                  terms: Optional[pulumi.Input[str]] = None,
@@ -8894,15 +10340,20 @@ class ApplicationSettings(pulumi.CustomResource):
                  throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[int]] = None,
                  time_tracking_limit_to_hours: Optional[pulumi.Input[bool]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
+                 unconfirmed_users_delete_after_days: Optional[pulumi.Input[int]] = None,
                  unique_ips_limit_enabled: Optional[pulumi.Input[bool]] = None,
                  unique_ips_limit_per_user: Optional[pulumi.Input[int]] = None,
                  unique_ips_limit_time_window: Optional[pulumi.Input[int]] = None,
+                 update_runner_versions_enabled: Optional[pulumi.Input[bool]] = None,
                  usage_ping_enabled: Optional[pulumi.Input[bool]] = None,
+                 use_clickhouse_for_analytics: Optional[pulumi.Input[bool]] = None,
                  user_deactivation_emails_enabled: Optional[pulumi.Input[bool]] = None,
                  user_default_external: Optional[pulumi.Input[bool]] = None,
                  user_default_internal_regex: Optional[pulumi.Input[str]] = None,
+                 user_defaults_to_private_profile: Optional[pulumi.Input[bool]] = None,
                  user_oauth_applications: Optional[pulumi.Input[bool]] = None,
                  user_show_add_ssh_key_message: Optional[pulumi.Input[bool]] = None,
+                 valid_runner_registrars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version_check_enabled: Optional[pulumi.Input[bool]] = None,
                  web_ide_clientside_preview_enabled: Optional[pulumi.Input[bool]] = None,
                  whats_new_variant: Optional[pulumi.Input[str]] = None,
@@ -9005,14 +10456,19 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] elasticsearch_limit_indexing: Limit Elasticsearch to index certain namespaces and projects.
         :param pulumi.Input[int] elasticsearch_max_bulk_concurrency: Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
         :param pulumi.Input[int] elasticsearch_max_bulk_size_mb: Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
+        :param pulumi.Input[int] elasticsearch_max_code_indexing_concurrency: Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[str] elasticsearch_password: The password of your Elasticsearch instance.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[bool] elasticsearch_requeue_workers: Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
         :param pulumi.Input[bool] elasticsearch_search: Enable Elasticsearch search.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_urls: The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
         :param pulumi.Input[str] elasticsearch_username: The username of your Elasticsearch instance.
+        :param pulumi.Input[int] elasticsearch_worker_number_of_shards: Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
         :param pulumi.Input[str] email_additional_text: Additional text added to the bottom of every email for legal/auditing/compliance reasons.
         :param pulumi.Input[bool] email_author_in_body: Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
+        :param pulumi.Input[str] email_confirmation_setting: Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+        :param pulumi.Input[bool] enable_artifact_external_redirect_warning_page: Show the external redirect page that warns you about user-generated content in GitLab Pages.
         :param pulumi.Input[str] enabled_git_access_protocol: Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
         :param pulumi.Input[bool] enforce_namespace_storage_limit: Enabling this permits enforcement of namespace storage limits.
         :param pulumi.Input[bool] enforce_terms: (If enabled, requires: terms) Enforce application ToS to all users.
@@ -9026,15 +10482,21 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] external_pipeline_validation_service_timeout: How long to wait for a response from the pipeline validation service. Assumes OK if it times out.
         :param pulumi.Input[str] external_pipeline_validation_service_token: Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
         :param pulumi.Input[str] external_pipeline_validation_service_url: URL to use for pipeline validation requests.
+        :param pulumi.Input[int] failed_login_attempts_unlock_period_in_minutes: Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
         :param pulumi.Input[int] file_template_project_id: The ID of a project to load custom file templates from.
         :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] git_rate_limit_users_alertlists: List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
         :param pulumi.Input[int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
         :param pulumi.Input[int] gitaly_timeout_default: Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_fast: Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_medium: Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
+        :param pulumi.Input[int] gitlab_shell_operation_limit: Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+        :param pulumi.Input[bool] gitpod_enabled: Enable Gitpod integration.
+        :param pulumi.Input[str] gitpod_url: The Gitpod instance URL for integration.
+        :param pulumi.Input[str] globally_allowed_ips: Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[str] grafana_url: Grafana URL.
         :param pulumi.Input[bool] gravatar_enabled: Enable Gravatar.
@@ -9059,18 +10521,27 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[bool] include_optional_metrics_in_service_ping: Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
         :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
         :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user.
+        :param pulumi.Input[str] jira_connect_application_key: ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+        :param pulumi.Input[str] jira_connect_proxy_url: URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+        :param pulumi.Input[bool] jira_connect_public_key_storage_enabled: Enable public key storage for the GitLab for Jira Cloud app.
         :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
+        :param pulumi.Input[bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
         :param pulumi.Input[str] maintenance_mode_message: Message displayed when instance is in maintenance mode.
+        :param pulumi.Input[bool] maven_package_requests_forwarding: Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
         :param pulumi.Input[int] max_artifacts_size: Maximum artifacts size in MB.
         :param pulumi.Input[int] max_attachment_size: Limit attachment size in MB.
+        :param pulumi.Input[int] max_decompressed_archive_size: Maximum decompressed archive size in bytes.
         :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_import_remote_file_size: Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
         :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_login_attempts: Maximum number of sign-in attempts before locking out the user.
         :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_pages_size: Maximum size of pages repositories in MB.
@@ -9083,7 +10554,10 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         :param pulumi.Input[bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
+        :param pulumi.Input[bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] package_metadata_purl_types: List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+        :param pulumi.Input[bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
         :param pulumi.Input[int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
         :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
@@ -9099,6 +10573,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[bool] project_export_enabled: Enable project export.
+        :param pulumi.Input[int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+        :param pulumi.Input[int] projects_api_rate_limit_unauthenticated: Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
         :param pulumi.Input[bool] prometheus_metrics_enabled: Enable Prometheus metrics.
         :param pulumi.Input[bool] protected_ci_variables: CI/CD variables are protected by default.
         :param pulumi.Input[int] push_event_activities_limit: Number of changes (branches or tags) in a single push to determine whether individual push events or bulk push events are created. Bulk push events are created if it surpasses that value.
@@ -9110,17 +10586,25 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[str] recaptcha_site_key: Site key for reCAPTCHA.
         :param pulumi.Input[int] receive_max_input_size: Maximum push size (MB).
+        :param pulumi.Input[bool] receptive_cluster_agents_enabled: Enable receptive mode for GitLab Agents for Kubernetes.
+        :param pulumi.Input[bool] remember_me_enabled: Enable Remember me setting. Introduced in GitLab 16.0.
         :param pulumi.Input[bool] repository_checks_enabled: GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         :param pulumi.Input[int] repository_size_limit: Size limit per repository (MB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] repository_storages: (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
+        :param pulumi.Input[bool] require_admin_two_factor_authentication: Allow administrators to require 2FA for all administrators on the instance.
+        :param pulumi.Input[bool] require_personal_access_token_expiry: When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
         :param pulumi.Input[bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
+        :param pulumi.Input[int] security_approval_policies_limit: Maximum number of active merge request approval policies per security policy project. Maximum: 20
+        :param pulumi.Input[bool] security_policy_global_group_approvers_enabled: Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+        :param pulumi.Input[str] security_txt_content: Public security contact information. Introduced in GitLab 16.7.
         :param pulumi.Input[bool] send_user_confirmation_email: Send confirmation email on sign-up.
+        :param pulumi.Input[bool] service_access_tokens_expiration_enforced: Flag to indicate if token expiry date can be optional for service account users
         :param pulumi.Input[int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
@@ -9130,6 +10614,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits.
         :param pulumi.Input[str] sign_in_text: Text on the login page.
         :param pulumi.Input[bool] signup_enabled: Enable registration.
+        :param pulumi.Input[bool] silent_admin_exports_enabled: Enable Silent admin exports.
+        :param pulumi.Input[bool] silent_mode_enabled: Enable Silent mode.
         :param pulumi.Input[bool] slack_app_enabled: (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         :param pulumi.Input[str] slack_app_id: The app ID of the Slack-app.
         :param pulumi.Input[str] slack_app_secret: The app secret of the Slack-app.
@@ -9139,6 +10625,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] snowplow_app_id: The Snowplow site name / application ID. (for example, gitlab)
         :param pulumi.Input[str] snowplow_collector_hostname: The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
         :param pulumi.Input[str] snowplow_cookie_domain: The Snowplow cookie domain. (for example, .gitlab.com)
+        :param pulumi.Input[str] snowplow_database_collector_hostname: The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
         :param pulumi.Input[bool] snowplow_enabled: Enable snowplow tracking.
         :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
         :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects.
@@ -9146,6 +10633,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] spam_check_api_key: API key used by GitLab for accessing the Spam Check service endpoint.
         :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint.
         :param pulumi.Input[str] spam_check_endpoint_url: URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
+        :param pulumi.Input[str] static_objects_external_storage_auth_token: Authentication token for the external storage linked in static*objects*external*storage*url.
+        :param pulumi.Input[str] static_objects_external_storage_url: URL to an external storage for repository static objects.
         :param pulumi.Input[bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
         :param pulumi.Input[int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
         :param pulumi.Input[str] terms: (Required by: enforce_terms) Markdown content for the ToS.
@@ -9169,18 +10658,23 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
         :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours.
         :param pulumi.Input[int] two_factor_grace_period: Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
+        :param pulumi.Input[int] unconfirmed_users_delete_after_days: Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[bool] unique_ips_limit_enabled: (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         :param pulumi.Input[int] unique_ips_limit_per_user: Maximum number of IPs per user.
         :param pulumi.Input[int] unique_ips_limit_time_window: How many seconds an IP is counted towards the limit.
+        :param pulumi.Input[bool] update_runner_versions_enabled: Fetch GitLab Runner release version data from GitLab.com.
         :param pulumi.Input[bool] usage_ping_enabled: Every week GitLab reports license usage back to GitLab, Inc.
+        :param pulumi.Input[bool] use_clickhouse_for_analytics: Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
         :param pulumi.Input[bool] user_deactivation_emails_enabled: Send an email to users upon account deactivation.
         :param pulumi.Input[bool] user_default_external: Newly registered users are external by default.
         :param pulumi.Input[str] user_default_internal_regex: Specify an email address regex pattern to identify default internal users.
+        :param pulumi.Input[bool] user_defaults_to_private_profile: Newly created users have private profile by default. Introduced in GitLab 15.8.
         :param pulumi.Input[bool] user_oauth_applications: Allow users to register any application to use GitLab as an OAuth provider.
         :param pulumi.Input[bool] user_show_add_ssh_key_message: When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valid_runner_registrars: List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
         :param pulumi.Input[bool] version_check_enabled: Let GitLab inform you when an update is available.
         :param pulumi.Input[bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
-        :param pulumi.Input[str] whats_new_variant: What’s new variant, possible values: all*tiers, current*tier, and disabled.
+        :param pulumi.Input[str] whats_new_variant: What's new variant, possible values: all*tiers, current*tier, and disabled.
         :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         ...
@@ -9299,14 +10793,19 @@ class ApplicationSettings(pulumi.CustomResource):
                  elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
+                 elasticsearch_max_code_indexing_concurrency: Optional[pulumi.Input[int]] = None,
                  elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  elasticsearch_password: Optional[pulumi.Input[str]] = None,
                  elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 elasticsearch_requeue_workers: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_search: Optional[pulumi.Input[bool]] = None,
                  elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elasticsearch_username: Optional[pulumi.Input[str]] = None,
+                 elasticsearch_worker_number_of_shards: Optional[pulumi.Input[int]] = None,
                  email_additional_text: Optional[pulumi.Input[str]] = None,
                  email_author_in_body: Optional[pulumi.Input[bool]] = None,
+                 email_confirmation_setting: Optional[pulumi.Input[str]] = None,
+                 enable_artifact_external_redirect_warning_page: Optional[pulumi.Input[bool]] = None,
                  enabled_git_access_protocol: Optional[pulumi.Input[str]] = None,
                  enforce_namespace_storage_limit: Optional[pulumi.Input[bool]] = None,
                  enforce_terms: Optional[pulumi.Input[bool]] = None,
@@ -9320,15 +10819,21 @@ class ApplicationSettings(pulumi.CustomResource):
                  external_pipeline_validation_service_timeout: Optional[pulumi.Input[int]] = None,
                  external_pipeline_validation_service_token: Optional[pulumi.Input[str]] = None,
                  external_pipeline_validation_service_url: Optional[pulumi.Input[str]] = None,
+                 failed_login_attempts_unlock_period_in_minutes: Optional[pulumi.Input[int]] = None,
                  file_template_project_id: Optional[pulumi.Input[int]] = None,
                  first_day_of_week: Optional[pulumi.Input[int]] = None,
                  geo_node_allowed_ips: Optional[pulumi.Input[str]] = None,
                  geo_status_timeout: Optional[pulumi.Input[int]] = None,
+                 git_rate_limit_users_alertlists: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  git_two_factor_session_expiry: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_default: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_fast: Optional[pulumi.Input[int]] = None,
                  gitaly_timeout_medium: Optional[pulumi.Input[int]] = None,
+                 gitlab_shell_operation_limit: Optional[pulumi.Input[int]] = None,
+                 gitpod_enabled: Optional[pulumi.Input[bool]] = None,
+                 gitpod_url: Optional[pulumi.Input[str]] = None,
+                 globally_allowed_ips: Optional[pulumi.Input[str]] = None,
                  grafana_enabled: Optional[pulumi.Input[bool]] = None,
                  grafana_url: Optional[pulumi.Input[str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[bool]] = None,
@@ -9351,18 +10856,27 @@ class ApplicationSettings(pulumi.CustomResource):
                  inactive_projects_delete_after_months: Optional[pulumi.Input[int]] = None,
                  inactive_projects_min_size_mb: Optional[pulumi.Input[int]] = None,
                  inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[int]] = None,
+                 include_optional_metrics_in_service_ping: Optional[pulumi.Input[bool]] = None,
                  invisible_captcha_enabled: Optional[pulumi.Input[bool]] = None,
                  issues_create_limit: Optional[pulumi.Input[int]] = None,
+                 jira_connect_application_key: Optional[pulumi.Input[str]] = None,
+                 jira_connect_proxy_url: Optional[pulumi.Input[str]] = None,
+                 jira_connect_public_key_storage_enabled: Optional[pulumi.Input[bool]] = None,
                  keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  local_markdown_version: Optional[pulumi.Input[int]] = None,
+                 lock_duo_features_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[str]] = None,
                  maintenance_mode: Optional[pulumi.Input[bool]] = None,
                  maintenance_mode_message: Optional[pulumi.Input[str]] = None,
+                 maven_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
                  max_artifacts_size: Optional[pulumi.Input[int]] = None,
                  max_attachment_size: Optional[pulumi.Input[int]] = None,
+                 max_decompressed_archive_size: Optional[pulumi.Input[int]] = None,
                  max_export_size: Optional[pulumi.Input[int]] = None,
+                 max_import_remote_file_size: Optional[pulumi.Input[int]] = None,
                  max_import_size: Optional[pulumi.Input[int]] = None,
+                 max_login_attempts: Optional[pulumi.Input[int]] = None,
                  max_number_of_repository_downloads: Optional[pulumi.Input[int]] = None,
                  max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[int]] = None,
                  max_pages_size: Optional[pulumi.Input[int]] = None,
@@ -9376,7 +10890,10 @@ class ApplicationSettings(pulumi.CustomResource):
                  mirror_max_capacity: Optional[pulumi.Input[int]] = None,
                  mirror_max_delay: Optional[pulumi.Input[int]] = None,
                  npm_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
+                 nuget_skip_metadata_url_validation: Optional[pulumi.Input[bool]] = None,
                  outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 package_metadata_purl_types: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 package_registry_allow_anyone_to_pull_option: Optional[pulumi.Input[bool]] = None,
                  package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
                  pages_domain_verification_enabled: Optional[pulumi.Input[bool]] = None,
                  password_authentication_enabled_for_git: Optional[pulumi.Input[bool]] = None,
@@ -9392,6 +10909,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  plantuml_url: Optional[pulumi.Input[str]] = None,
                  polling_interval_multiplier: Optional[pulumi.Input[float]] = None,
                  project_export_enabled: Optional[pulumi.Input[bool]] = None,
+                 project_jobs_api_rate_limit: Optional[pulumi.Input[int]] = None,
+                 projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
                  prometheus_metrics_enabled: Optional[pulumi.Input[bool]] = None,
                  protected_ci_variables: Optional[pulumi.Input[bool]] = None,
                  push_event_activities_limit: Optional[pulumi.Input[int]] = None,
@@ -9403,17 +10922,25 @@ class ApplicationSettings(pulumi.CustomResource):
                  recaptcha_private_key: Optional[pulumi.Input[str]] = None,
                  recaptcha_site_key: Optional[pulumi.Input[str]] = None,
                  receive_max_input_size: Optional[pulumi.Input[int]] = None,
+                 receptive_cluster_agents_enabled: Optional[pulumi.Input[bool]] = None,
+                 remember_me_enabled: Optional[pulumi.Input[bool]] = None,
                  repository_checks_enabled: Optional[pulumi.Input[bool]] = None,
                  repository_size_limit: Optional[pulumi.Input[int]] = None,
                  repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
                  require_admin_approval_after_user_signup: Optional[pulumi.Input[bool]] = None,
+                 require_admin_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
+                 require_personal_access_token_expiry: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  rsa_key_restriction: Optional[pulumi.Input[int]] = None,
                  search_rate_limit: Optional[pulumi.Input[int]] = None,
                  search_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
+                 security_approval_policies_limit: Optional[pulumi.Input[int]] = None,
+                 security_policy_global_group_approvers_enabled: Optional[pulumi.Input[bool]] = None,
+                 security_txt_content: Optional[pulumi.Input[str]] = None,
                  send_user_confirmation_email: Optional[pulumi.Input[bool]] = None,
+                 service_access_tokens_expiration_enforced: Optional[pulumi.Input[bool]] = None,
                  session_expire_delay: Optional[pulumi.Input[int]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  shared_runners_minutes: Optional[pulumi.Input[int]] = None,
@@ -9423,6 +10950,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  sidekiq_job_limiter_mode: Optional[pulumi.Input[str]] = None,
                  sign_in_text: Optional[pulumi.Input[str]] = None,
                  signup_enabled: Optional[pulumi.Input[bool]] = None,
+                 silent_admin_exports_enabled: Optional[pulumi.Input[bool]] = None,
+                 silent_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  slack_app_enabled: Optional[pulumi.Input[bool]] = None,
                  slack_app_id: Optional[pulumi.Input[str]] = None,
                  slack_app_secret: Optional[pulumi.Input[str]] = None,
@@ -9432,6 +10961,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  snowplow_app_id: Optional[pulumi.Input[str]] = None,
                  snowplow_collector_hostname: Optional[pulumi.Input[str]] = None,
                  snowplow_cookie_domain: Optional[pulumi.Input[str]] = None,
+                 snowplow_database_collector_hostname: Optional[pulumi.Input[str]] = None,
                  snowplow_enabled: Optional[pulumi.Input[bool]] = None,
                  sourcegraph_enabled: Optional[pulumi.Input[bool]] = None,
                  sourcegraph_public_only: Optional[pulumi.Input[bool]] = None,
@@ -9439,6 +10969,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  spam_check_api_key: Optional[pulumi.Input[str]] = None,
                  spam_check_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  spam_check_endpoint_url: Optional[pulumi.Input[str]] = None,
+                 static_objects_external_storage_auth_token: Optional[pulumi.Input[str]] = None,
+                 static_objects_external_storage_url: Optional[pulumi.Input[str]] = None,
                  suggest_pipeline_enabled: Optional[pulumi.Input[bool]] = None,
                  terminal_max_session_time: Optional[pulumi.Input[int]] = None,
                  terms: Optional[pulumi.Input[str]] = None,
@@ -9462,15 +10994,20 @@ class ApplicationSettings(pulumi.CustomResource):
                  throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[int]] = None,
                  time_tracking_limit_to_hours: Optional[pulumi.Input[bool]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
+                 unconfirmed_users_delete_after_days: Optional[pulumi.Input[int]] = None,
                  unique_ips_limit_enabled: Optional[pulumi.Input[bool]] = None,
                  unique_ips_limit_per_user: Optional[pulumi.Input[int]] = None,
                  unique_ips_limit_time_window: Optional[pulumi.Input[int]] = None,
+                 update_runner_versions_enabled: Optional[pulumi.Input[bool]] = None,
                  usage_ping_enabled: Optional[pulumi.Input[bool]] = None,
+                 use_clickhouse_for_analytics: Optional[pulumi.Input[bool]] = None,
                  user_deactivation_emails_enabled: Optional[pulumi.Input[bool]] = None,
                  user_default_external: Optional[pulumi.Input[bool]] = None,
                  user_default_internal_regex: Optional[pulumi.Input[str]] = None,
+                 user_defaults_to_private_profile: Optional[pulumi.Input[bool]] = None,
                  user_oauth_applications: Optional[pulumi.Input[bool]] = None,
                  user_show_add_ssh_key_message: Optional[pulumi.Input[bool]] = None,
+                 valid_runner_registrars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version_check_enabled: Optional[pulumi.Input[bool]] = None,
                  web_ide_clientside_preview_enabled: Optional[pulumi.Input[bool]] = None,
                  whats_new_variant: Optional[pulumi.Input[str]] = None,
@@ -9576,14 +11113,19 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["elasticsearch_limit_indexing"] = elasticsearch_limit_indexing
             __props__.__dict__["elasticsearch_max_bulk_concurrency"] = elasticsearch_max_bulk_concurrency
             __props__.__dict__["elasticsearch_max_bulk_size_mb"] = elasticsearch_max_bulk_size_mb
+            __props__.__dict__["elasticsearch_max_code_indexing_concurrency"] = elasticsearch_max_code_indexing_concurrency
             __props__.__dict__["elasticsearch_namespace_ids"] = elasticsearch_namespace_ids
             __props__.__dict__["elasticsearch_password"] = None if elasticsearch_password is None else pulumi.Output.secret(elasticsearch_password)
             __props__.__dict__["elasticsearch_project_ids"] = elasticsearch_project_ids
+            __props__.__dict__["elasticsearch_requeue_workers"] = elasticsearch_requeue_workers
             __props__.__dict__["elasticsearch_search"] = elasticsearch_search
             __props__.__dict__["elasticsearch_urls"] = elasticsearch_urls
             __props__.__dict__["elasticsearch_username"] = elasticsearch_username
+            __props__.__dict__["elasticsearch_worker_number_of_shards"] = elasticsearch_worker_number_of_shards
             __props__.__dict__["email_additional_text"] = email_additional_text
             __props__.__dict__["email_author_in_body"] = email_author_in_body
+            __props__.__dict__["email_confirmation_setting"] = email_confirmation_setting
+            __props__.__dict__["enable_artifact_external_redirect_warning_page"] = enable_artifact_external_redirect_warning_page
             __props__.__dict__["enabled_git_access_protocol"] = enabled_git_access_protocol
             __props__.__dict__["enforce_namespace_storage_limit"] = enforce_namespace_storage_limit
             __props__.__dict__["enforce_terms"] = enforce_terms
@@ -9597,15 +11139,21 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["external_pipeline_validation_service_timeout"] = external_pipeline_validation_service_timeout
             __props__.__dict__["external_pipeline_validation_service_token"] = external_pipeline_validation_service_token
             __props__.__dict__["external_pipeline_validation_service_url"] = external_pipeline_validation_service_url
+            __props__.__dict__["failed_login_attempts_unlock_period_in_minutes"] = failed_login_attempts_unlock_period_in_minutes
             __props__.__dict__["file_template_project_id"] = file_template_project_id
             __props__.__dict__["first_day_of_week"] = first_day_of_week
             __props__.__dict__["geo_node_allowed_ips"] = geo_node_allowed_ips
             __props__.__dict__["geo_status_timeout"] = geo_status_timeout
+            __props__.__dict__["git_rate_limit_users_alertlists"] = git_rate_limit_users_alertlists
             __props__.__dict__["git_rate_limit_users_allowlists"] = git_rate_limit_users_allowlists
             __props__.__dict__["git_two_factor_session_expiry"] = git_two_factor_session_expiry
             __props__.__dict__["gitaly_timeout_default"] = gitaly_timeout_default
             __props__.__dict__["gitaly_timeout_fast"] = gitaly_timeout_fast
             __props__.__dict__["gitaly_timeout_medium"] = gitaly_timeout_medium
+            __props__.__dict__["gitlab_shell_operation_limit"] = gitlab_shell_operation_limit
+            __props__.__dict__["gitpod_enabled"] = gitpod_enabled
+            __props__.__dict__["gitpod_url"] = gitpod_url
+            __props__.__dict__["globally_allowed_ips"] = globally_allowed_ips
             __props__.__dict__["grafana_enabled"] = grafana_enabled
             __props__.__dict__["grafana_url"] = grafana_url
             __props__.__dict__["gravatar_enabled"] = gravatar_enabled
@@ -9628,18 +11176,27 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["inactive_projects_delete_after_months"] = inactive_projects_delete_after_months
             __props__.__dict__["inactive_projects_min_size_mb"] = inactive_projects_min_size_mb
             __props__.__dict__["inactive_projects_send_warning_email_after_months"] = inactive_projects_send_warning_email_after_months
+            __props__.__dict__["include_optional_metrics_in_service_ping"] = include_optional_metrics_in_service_ping
             __props__.__dict__["invisible_captcha_enabled"] = invisible_captcha_enabled
             __props__.__dict__["issues_create_limit"] = issues_create_limit
+            __props__.__dict__["jira_connect_application_key"] = jira_connect_application_key
+            __props__.__dict__["jira_connect_proxy_url"] = jira_connect_proxy_url
+            __props__.__dict__["jira_connect_public_key_storage_enabled"] = jira_connect_public_key_storage_enabled
             __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
             __props__.__dict__["local_markdown_version"] = local_markdown_version
+            __props__.__dict__["lock_duo_features_enabled"] = lock_duo_features_enabled
             __props__.__dict__["mailgun_events_enabled"] = mailgun_events_enabled
             __props__.__dict__["mailgun_signing_key"] = None if mailgun_signing_key is None else pulumi.Output.secret(mailgun_signing_key)
             __props__.__dict__["maintenance_mode"] = maintenance_mode
             __props__.__dict__["maintenance_mode_message"] = maintenance_mode_message
+            __props__.__dict__["maven_package_requests_forwarding"] = maven_package_requests_forwarding
             __props__.__dict__["max_artifacts_size"] = max_artifacts_size
             __props__.__dict__["max_attachment_size"] = max_attachment_size
+            __props__.__dict__["max_decompressed_archive_size"] = max_decompressed_archive_size
             __props__.__dict__["max_export_size"] = max_export_size
+            __props__.__dict__["max_import_remote_file_size"] = max_import_remote_file_size
             __props__.__dict__["max_import_size"] = max_import_size
+            __props__.__dict__["max_login_attempts"] = max_login_attempts
             __props__.__dict__["max_number_of_repository_downloads"] = max_number_of_repository_downloads
             __props__.__dict__["max_number_of_repository_downloads_within_time_period"] = max_number_of_repository_downloads_within_time_period
             __props__.__dict__["max_pages_size"] = max_pages_size
@@ -9653,7 +11210,10 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["mirror_max_capacity"] = mirror_max_capacity
             __props__.__dict__["mirror_max_delay"] = mirror_max_delay
             __props__.__dict__["npm_package_requests_forwarding"] = npm_package_requests_forwarding
+            __props__.__dict__["nuget_skip_metadata_url_validation"] = nuget_skip_metadata_url_validation
             __props__.__dict__["outbound_local_requests_whitelists"] = outbound_local_requests_whitelists
+            __props__.__dict__["package_metadata_purl_types"] = package_metadata_purl_types
+            __props__.__dict__["package_registry_allow_anyone_to_pull_option"] = package_registry_allow_anyone_to_pull_option
             __props__.__dict__["package_registry_cleanup_policies_worker_capacity"] = package_registry_cleanup_policies_worker_capacity
             __props__.__dict__["pages_domain_verification_enabled"] = pages_domain_verification_enabled
             __props__.__dict__["password_authentication_enabled_for_git"] = password_authentication_enabled_for_git
@@ -9669,6 +11229,8 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["plantuml_url"] = plantuml_url
             __props__.__dict__["polling_interval_multiplier"] = polling_interval_multiplier
             __props__.__dict__["project_export_enabled"] = project_export_enabled
+            __props__.__dict__["project_jobs_api_rate_limit"] = project_jobs_api_rate_limit
+            __props__.__dict__["projects_api_rate_limit_unauthenticated"] = projects_api_rate_limit_unauthenticated
             __props__.__dict__["prometheus_metrics_enabled"] = prometheus_metrics_enabled
             __props__.__dict__["protected_ci_variables"] = protected_ci_variables
             __props__.__dict__["push_event_activities_limit"] = push_event_activities_limit
@@ -9680,17 +11242,25 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["recaptcha_private_key"] = None if recaptcha_private_key is None else pulumi.Output.secret(recaptcha_private_key)
             __props__.__dict__["recaptcha_site_key"] = None if recaptcha_site_key is None else pulumi.Output.secret(recaptcha_site_key)
             __props__.__dict__["receive_max_input_size"] = receive_max_input_size
+            __props__.__dict__["receptive_cluster_agents_enabled"] = receptive_cluster_agents_enabled
+            __props__.__dict__["remember_me_enabled"] = remember_me_enabled
             __props__.__dict__["repository_checks_enabled"] = repository_checks_enabled
             __props__.__dict__["repository_size_limit"] = repository_size_limit
             __props__.__dict__["repository_storages"] = repository_storages
             __props__.__dict__["repository_storages_weighted"] = repository_storages_weighted
             __props__.__dict__["require_admin_approval_after_user_signup"] = require_admin_approval_after_user_signup
+            __props__.__dict__["require_admin_two_factor_authentication"] = require_admin_two_factor_authentication
+            __props__.__dict__["require_personal_access_token_expiry"] = require_personal_access_token_expiry
             __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
             __props__.__dict__["restricted_visibility_levels"] = restricted_visibility_levels
             __props__.__dict__["rsa_key_restriction"] = rsa_key_restriction
             __props__.__dict__["search_rate_limit"] = search_rate_limit
             __props__.__dict__["search_rate_limit_unauthenticated"] = search_rate_limit_unauthenticated
+            __props__.__dict__["security_approval_policies_limit"] = security_approval_policies_limit
+            __props__.__dict__["security_policy_global_group_approvers_enabled"] = security_policy_global_group_approvers_enabled
+            __props__.__dict__["security_txt_content"] = security_txt_content
             __props__.__dict__["send_user_confirmation_email"] = send_user_confirmation_email
+            __props__.__dict__["service_access_tokens_expiration_enforced"] = service_access_tokens_expiration_enforced
             __props__.__dict__["session_expire_delay"] = session_expire_delay
             __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
             __props__.__dict__["shared_runners_minutes"] = shared_runners_minutes
@@ -9700,6 +11270,8 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["sidekiq_job_limiter_mode"] = sidekiq_job_limiter_mode
             __props__.__dict__["sign_in_text"] = sign_in_text
             __props__.__dict__["signup_enabled"] = signup_enabled
+            __props__.__dict__["silent_admin_exports_enabled"] = silent_admin_exports_enabled
+            __props__.__dict__["silent_mode_enabled"] = silent_mode_enabled
             __props__.__dict__["slack_app_enabled"] = slack_app_enabled
             __props__.__dict__["slack_app_id"] = slack_app_id
             __props__.__dict__["slack_app_secret"] = None if slack_app_secret is None else pulumi.Output.secret(slack_app_secret)
@@ -9709,6 +11281,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["snowplow_app_id"] = snowplow_app_id
             __props__.__dict__["snowplow_collector_hostname"] = snowplow_collector_hostname
             __props__.__dict__["snowplow_cookie_domain"] = snowplow_cookie_domain
+            __props__.__dict__["snowplow_database_collector_hostname"] = snowplow_database_collector_hostname
             __props__.__dict__["snowplow_enabled"] = snowplow_enabled
             __props__.__dict__["sourcegraph_enabled"] = sourcegraph_enabled
             __props__.__dict__["sourcegraph_public_only"] = sourcegraph_public_only
@@ -9716,6 +11289,8 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["spam_check_api_key"] = None if spam_check_api_key is None else pulumi.Output.secret(spam_check_api_key)
             __props__.__dict__["spam_check_endpoint_enabled"] = spam_check_endpoint_enabled
             __props__.__dict__["spam_check_endpoint_url"] = spam_check_endpoint_url
+            __props__.__dict__["static_objects_external_storage_auth_token"] = None if static_objects_external_storage_auth_token is None else pulumi.Output.secret(static_objects_external_storage_auth_token)
+            __props__.__dict__["static_objects_external_storage_url"] = None if static_objects_external_storage_url is None else pulumi.Output.secret(static_objects_external_storage_url)
             __props__.__dict__["suggest_pipeline_enabled"] = suggest_pipeline_enabled
             __props__.__dict__["terminal_max_session_time"] = terminal_max_session_time
             __props__.__dict__["terms"] = terms
@@ -9739,20 +11314,27 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["throttle_unauthenticated_web_requests_per_period"] = throttle_unauthenticated_web_requests_per_period
             __props__.__dict__["time_tracking_limit_to_hours"] = time_tracking_limit_to_hours
             __props__.__dict__["two_factor_grace_period"] = two_factor_grace_period
+            __props__.__dict__["unconfirmed_users_delete_after_days"] = unconfirmed_users_delete_after_days
             __props__.__dict__["unique_ips_limit_enabled"] = unique_ips_limit_enabled
             __props__.__dict__["unique_ips_limit_per_user"] = unique_ips_limit_per_user
             __props__.__dict__["unique_ips_limit_time_window"] = unique_ips_limit_time_window
+            __props__.__dict__["update_runner_versions_enabled"] = update_runner_versions_enabled
             __props__.__dict__["usage_ping_enabled"] = usage_ping_enabled
+            __props__.__dict__["use_clickhouse_for_analytics"] = use_clickhouse_for_analytics
             __props__.__dict__["user_deactivation_emails_enabled"] = user_deactivation_emails_enabled
             __props__.__dict__["user_default_external"] = user_default_external
             __props__.__dict__["user_default_internal_regex"] = user_default_internal_regex
+            __props__.__dict__["user_defaults_to_private_profile"] = user_defaults_to_private_profile
             __props__.__dict__["user_oauth_applications"] = user_oauth_applications
             __props__.__dict__["user_show_add_ssh_key_message"] = user_show_add_ssh_key_message
+            __props__.__dict__["valid_runner_registrars"] = valid_runner_registrars
             __props__.__dict__["version_check_enabled"] = version_check_enabled
             __props__.__dict__["web_ide_clientside_preview_enabled"] = web_ide_clientside_preview_enabled
             __props__.__dict__["whats_new_variant"] = whats_new_variant
             __props__.__dict__["wiki_page_max_content_bytes"] = wiki_page_max_content_bytes
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["akismetApiKey", "assetProxySecretKey", "eksAccessKeyId", "eksSecretAccessKey", "elasticsearchAwsAccessKey", "elasticsearchAwsSecretAccessKey", "elasticsearchPassword", "externalAuthClientKey", "externalAuthClientKeyPass", "mailgunSigningKey", "recaptchaPrivateKey", "recaptchaSiteKey", "slackAppSecret", "slackAppSigningSecret", "spamCheckApiKey"])
+            __props__.__dict__["gitlab_dedicated_instance"] = None
+            __props__.__dict__["gitlab_environment_toolkit_instance"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["akismetApiKey", "assetProxySecretKey", "eksAccessKeyId", "eksSecretAccessKey", "elasticsearchAwsAccessKey", "elasticsearchAwsSecretAccessKey", "elasticsearchPassword", "externalAuthClientKey", "externalAuthClientKeyPass", "mailgunSigningKey", "recaptchaPrivateKey", "recaptchaSiteKey", "slackAppSecret", "slackAppSigningSecret", "spamCheckApiKey", "staticObjectsExternalStorageAuthToken", "staticObjectsExternalStorageUrl"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ApplicationSettings, __self__).__init__(
             'gitlab:index/applicationSettings:ApplicationSettings',
@@ -9856,14 +11438,19 @@ class ApplicationSettings(pulumi.CustomResource):
             elasticsearch_limit_indexing: Optional[pulumi.Input[bool]] = None,
             elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[int]] = None,
             elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[int]] = None,
+            elasticsearch_max_code_indexing_concurrency: Optional[pulumi.Input[int]] = None,
             elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             elasticsearch_password: Optional[pulumi.Input[str]] = None,
             elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+            elasticsearch_requeue_workers: Optional[pulumi.Input[bool]] = None,
             elasticsearch_search: Optional[pulumi.Input[bool]] = None,
             elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             elasticsearch_username: Optional[pulumi.Input[str]] = None,
+            elasticsearch_worker_number_of_shards: Optional[pulumi.Input[int]] = None,
             email_additional_text: Optional[pulumi.Input[str]] = None,
             email_author_in_body: Optional[pulumi.Input[bool]] = None,
+            email_confirmation_setting: Optional[pulumi.Input[str]] = None,
+            enable_artifact_external_redirect_warning_page: Optional[pulumi.Input[bool]] = None,
             enabled_git_access_protocol: Optional[pulumi.Input[str]] = None,
             enforce_namespace_storage_limit: Optional[pulumi.Input[bool]] = None,
             enforce_terms: Optional[pulumi.Input[bool]] = None,
@@ -9877,15 +11464,23 @@ class ApplicationSettings(pulumi.CustomResource):
             external_pipeline_validation_service_timeout: Optional[pulumi.Input[int]] = None,
             external_pipeline_validation_service_token: Optional[pulumi.Input[str]] = None,
             external_pipeline_validation_service_url: Optional[pulumi.Input[str]] = None,
+            failed_login_attempts_unlock_period_in_minutes: Optional[pulumi.Input[int]] = None,
             file_template_project_id: Optional[pulumi.Input[int]] = None,
             first_day_of_week: Optional[pulumi.Input[int]] = None,
             geo_node_allowed_ips: Optional[pulumi.Input[str]] = None,
             geo_status_timeout: Optional[pulumi.Input[int]] = None,
+            git_rate_limit_users_alertlists: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             git_two_factor_session_expiry: Optional[pulumi.Input[int]] = None,
             gitaly_timeout_default: Optional[pulumi.Input[int]] = None,
             gitaly_timeout_fast: Optional[pulumi.Input[int]] = None,
             gitaly_timeout_medium: Optional[pulumi.Input[int]] = None,
+            gitlab_dedicated_instance: Optional[pulumi.Input[bool]] = None,
+            gitlab_environment_toolkit_instance: Optional[pulumi.Input[bool]] = None,
+            gitlab_shell_operation_limit: Optional[pulumi.Input[int]] = None,
+            gitpod_enabled: Optional[pulumi.Input[bool]] = None,
+            gitpod_url: Optional[pulumi.Input[str]] = None,
+            globally_allowed_ips: Optional[pulumi.Input[str]] = None,
             grafana_enabled: Optional[pulumi.Input[bool]] = None,
             grafana_url: Optional[pulumi.Input[str]] = None,
             gravatar_enabled: Optional[pulumi.Input[bool]] = None,
@@ -9908,18 +11503,27 @@ class ApplicationSettings(pulumi.CustomResource):
             inactive_projects_delete_after_months: Optional[pulumi.Input[int]] = None,
             inactive_projects_min_size_mb: Optional[pulumi.Input[int]] = None,
             inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[int]] = None,
+            include_optional_metrics_in_service_ping: Optional[pulumi.Input[bool]] = None,
             invisible_captcha_enabled: Optional[pulumi.Input[bool]] = None,
             issues_create_limit: Optional[pulumi.Input[int]] = None,
+            jira_connect_application_key: Optional[pulumi.Input[str]] = None,
+            jira_connect_proxy_url: Optional[pulumi.Input[str]] = None,
+            jira_connect_public_key_storage_enabled: Optional[pulumi.Input[bool]] = None,
             keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
             local_markdown_version: Optional[pulumi.Input[int]] = None,
+            lock_duo_features_enabled: Optional[pulumi.Input[bool]] = None,
             mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
             mailgun_signing_key: Optional[pulumi.Input[str]] = None,
             maintenance_mode: Optional[pulumi.Input[bool]] = None,
             maintenance_mode_message: Optional[pulumi.Input[str]] = None,
+            maven_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
             max_artifacts_size: Optional[pulumi.Input[int]] = None,
             max_attachment_size: Optional[pulumi.Input[int]] = None,
+            max_decompressed_archive_size: Optional[pulumi.Input[int]] = None,
             max_export_size: Optional[pulumi.Input[int]] = None,
+            max_import_remote_file_size: Optional[pulumi.Input[int]] = None,
             max_import_size: Optional[pulumi.Input[int]] = None,
+            max_login_attempts: Optional[pulumi.Input[int]] = None,
             max_number_of_repository_downloads: Optional[pulumi.Input[int]] = None,
             max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[int]] = None,
             max_pages_size: Optional[pulumi.Input[int]] = None,
@@ -9933,7 +11537,10 @@ class ApplicationSettings(pulumi.CustomResource):
             mirror_max_capacity: Optional[pulumi.Input[int]] = None,
             mirror_max_delay: Optional[pulumi.Input[int]] = None,
             npm_package_requests_forwarding: Optional[pulumi.Input[bool]] = None,
+            nuget_skip_metadata_url_validation: Optional[pulumi.Input[bool]] = None,
             outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            package_metadata_purl_types: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+            package_registry_allow_anyone_to_pull_option: Optional[pulumi.Input[bool]] = None,
             package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[int]] = None,
             pages_domain_verification_enabled: Optional[pulumi.Input[bool]] = None,
             password_authentication_enabled_for_git: Optional[pulumi.Input[bool]] = None,
@@ -9949,6 +11556,8 @@ class ApplicationSettings(pulumi.CustomResource):
             plantuml_url: Optional[pulumi.Input[str]] = None,
             polling_interval_multiplier: Optional[pulumi.Input[float]] = None,
             project_export_enabled: Optional[pulumi.Input[bool]] = None,
+            project_jobs_api_rate_limit: Optional[pulumi.Input[int]] = None,
+            projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
             prometheus_metrics_enabled: Optional[pulumi.Input[bool]] = None,
             protected_ci_variables: Optional[pulumi.Input[bool]] = None,
             push_event_activities_limit: Optional[pulumi.Input[int]] = None,
@@ -9960,17 +11569,25 @@ class ApplicationSettings(pulumi.CustomResource):
             recaptcha_private_key: Optional[pulumi.Input[str]] = None,
             recaptcha_site_key: Optional[pulumi.Input[str]] = None,
             receive_max_input_size: Optional[pulumi.Input[int]] = None,
+            receptive_cluster_agents_enabled: Optional[pulumi.Input[bool]] = None,
+            remember_me_enabled: Optional[pulumi.Input[bool]] = None,
             repository_checks_enabled: Optional[pulumi.Input[bool]] = None,
             repository_size_limit: Optional[pulumi.Input[int]] = None,
             repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
             require_admin_approval_after_user_signup: Optional[pulumi.Input[bool]] = None,
+            require_admin_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
+            require_personal_access_token_expiry: Optional[pulumi.Input[bool]] = None,
             require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
             restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             rsa_key_restriction: Optional[pulumi.Input[int]] = None,
             search_rate_limit: Optional[pulumi.Input[int]] = None,
             search_rate_limit_unauthenticated: Optional[pulumi.Input[int]] = None,
+            security_approval_policies_limit: Optional[pulumi.Input[int]] = None,
+            security_policy_global_group_approvers_enabled: Optional[pulumi.Input[bool]] = None,
+            security_txt_content: Optional[pulumi.Input[str]] = None,
             send_user_confirmation_email: Optional[pulumi.Input[bool]] = None,
+            service_access_tokens_expiration_enforced: Optional[pulumi.Input[bool]] = None,
             session_expire_delay: Optional[pulumi.Input[int]] = None,
             shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
             shared_runners_minutes: Optional[pulumi.Input[int]] = None,
@@ -9980,6 +11597,8 @@ class ApplicationSettings(pulumi.CustomResource):
             sidekiq_job_limiter_mode: Optional[pulumi.Input[str]] = None,
             sign_in_text: Optional[pulumi.Input[str]] = None,
             signup_enabled: Optional[pulumi.Input[bool]] = None,
+            silent_admin_exports_enabled: Optional[pulumi.Input[bool]] = None,
+            silent_mode_enabled: Optional[pulumi.Input[bool]] = None,
             slack_app_enabled: Optional[pulumi.Input[bool]] = None,
             slack_app_id: Optional[pulumi.Input[str]] = None,
             slack_app_secret: Optional[pulumi.Input[str]] = None,
@@ -9989,6 +11608,7 @@ class ApplicationSettings(pulumi.CustomResource):
             snowplow_app_id: Optional[pulumi.Input[str]] = None,
             snowplow_collector_hostname: Optional[pulumi.Input[str]] = None,
             snowplow_cookie_domain: Optional[pulumi.Input[str]] = None,
+            snowplow_database_collector_hostname: Optional[pulumi.Input[str]] = None,
             snowplow_enabled: Optional[pulumi.Input[bool]] = None,
             sourcegraph_enabled: Optional[pulumi.Input[bool]] = None,
             sourcegraph_public_only: Optional[pulumi.Input[bool]] = None,
@@ -9996,6 +11616,8 @@ class ApplicationSettings(pulumi.CustomResource):
             spam_check_api_key: Optional[pulumi.Input[str]] = None,
             spam_check_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
             spam_check_endpoint_url: Optional[pulumi.Input[str]] = None,
+            static_objects_external_storage_auth_token: Optional[pulumi.Input[str]] = None,
+            static_objects_external_storage_url: Optional[pulumi.Input[str]] = None,
             suggest_pipeline_enabled: Optional[pulumi.Input[bool]] = None,
             terminal_max_session_time: Optional[pulumi.Input[int]] = None,
             terms: Optional[pulumi.Input[str]] = None,
@@ -10019,15 +11641,20 @@ class ApplicationSettings(pulumi.CustomResource):
             throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[int]] = None,
             time_tracking_limit_to_hours: Optional[pulumi.Input[bool]] = None,
             two_factor_grace_period: Optional[pulumi.Input[int]] = None,
+            unconfirmed_users_delete_after_days: Optional[pulumi.Input[int]] = None,
             unique_ips_limit_enabled: Optional[pulumi.Input[bool]] = None,
             unique_ips_limit_per_user: Optional[pulumi.Input[int]] = None,
             unique_ips_limit_time_window: Optional[pulumi.Input[int]] = None,
+            update_runner_versions_enabled: Optional[pulumi.Input[bool]] = None,
             usage_ping_enabled: Optional[pulumi.Input[bool]] = None,
+            use_clickhouse_for_analytics: Optional[pulumi.Input[bool]] = None,
             user_deactivation_emails_enabled: Optional[pulumi.Input[bool]] = None,
             user_default_external: Optional[pulumi.Input[bool]] = None,
             user_default_internal_regex: Optional[pulumi.Input[str]] = None,
+            user_defaults_to_private_profile: Optional[pulumi.Input[bool]] = None,
             user_oauth_applications: Optional[pulumi.Input[bool]] = None,
             user_show_add_ssh_key_message: Optional[pulumi.Input[bool]] = None,
+            valid_runner_registrars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             version_check_enabled: Optional[pulumi.Input[bool]] = None,
             web_ide_clientside_preview_enabled: Optional[pulumi.Input[bool]] = None,
             whats_new_variant: Optional[pulumi.Input[str]] = None,
@@ -10131,14 +11758,19 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] elasticsearch_limit_indexing: Limit Elasticsearch to index certain namespaces and projects.
         :param pulumi.Input[int] elasticsearch_max_bulk_concurrency: Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
         :param pulumi.Input[int] elasticsearch_max_bulk_size_mb: Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
+        :param pulumi.Input[int] elasticsearch_max_code_indexing_concurrency: Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_namespace_ids: The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         :param pulumi.Input[str] elasticsearch_password: The password of your Elasticsearch instance.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] elasticsearch_project_ids: The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
+        :param pulumi.Input[bool] elasticsearch_requeue_workers: Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
         :param pulumi.Input[bool] elasticsearch_search: Enable Elasticsearch search.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elasticsearch_urls: The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
         :param pulumi.Input[str] elasticsearch_username: The username of your Elasticsearch instance.
+        :param pulumi.Input[int] elasticsearch_worker_number_of_shards: Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
         :param pulumi.Input[str] email_additional_text: Additional text added to the bottom of every email for legal/auditing/compliance reasons.
         :param pulumi.Input[bool] email_author_in_body: Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
+        :param pulumi.Input[str] email_confirmation_setting: Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+        :param pulumi.Input[bool] enable_artifact_external_redirect_warning_page: Show the external redirect page that warns you about user-generated content in GitLab Pages.
         :param pulumi.Input[str] enabled_git_access_protocol: Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
         :param pulumi.Input[bool] enforce_namespace_storage_limit: Enabling this permits enforcement of namespace storage limits.
         :param pulumi.Input[bool] enforce_terms: (If enabled, requires: terms) Enforce application ToS to all users.
@@ -10152,15 +11784,23 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] external_pipeline_validation_service_timeout: How long to wait for a response from the pipeline validation service. Assumes OK if it times out.
         :param pulumi.Input[str] external_pipeline_validation_service_token: Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
         :param pulumi.Input[str] external_pipeline_validation_service_url: URL to use for pipeline validation requests.
+        :param pulumi.Input[int] failed_login_attempts_unlock_period_in_minutes: Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
         :param pulumi.Input[int] file_template_project_id: The ID of a project to load custom file templates from.
         :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] git_rate_limit_users_alertlists: List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
         :param pulumi.Input[int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
         :param pulumi.Input[int] gitaly_timeout_default: Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_fast: Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_medium: Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
+        :param pulumi.Input[bool] gitlab_dedicated_instance: Indicates whether the instance was provisioned for GitLab Dedicated.
+        :param pulumi.Input[bool] gitlab_environment_toolkit_instance: Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+        :param pulumi.Input[int] gitlab_shell_operation_limit: Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+        :param pulumi.Input[bool] gitpod_enabled: Enable Gitpod integration.
+        :param pulumi.Input[str] gitpod_url: The Gitpod instance URL for integration.
+        :param pulumi.Input[str] globally_allowed_ips: Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[str] grafana_url: Grafana URL.
         :param pulumi.Input[bool] gravatar_enabled: Enable Gravatar.
@@ -10185,18 +11825,27 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[bool] include_optional_metrics_in_service_ping: Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
         :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
         :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user.
+        :param pulumi.Input[str] jira_connect_application_key: ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+        :param pulumi.Input[str] jira_connect_proxy_url: URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+        :param pulumi.Input[bool] jira_connect_public_key_storage_enabled: Enable public key storage for the GitLab for Jira Cloud app.
         :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
+        :param pulumi.Input[bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
         :param pulumi.Input[str] maintenance_mode_message: Message displayed when instance is in maintenance mode.
+        :param pulumi.Input[bool] maven_package_requests_forwarding: Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
         :param pulumi.Input[int] max_artifacts_size: Maximum artifacts size in MB.
         :param pulumi.Input[int] max_attachment_size: Limit attachment size in MB.
+        :param pulumi.Input[int] max_decompressed_archive_size: Maximum decompressed archive size in bytes.
         :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_import_remote_file_size: Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
         :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_login_attempts: Maximum number of sign-in attempts before locking out the user.
         :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_pages_size: Maximum size of pages repositories in MB.
@@ -10209,7 +11858,10 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         :param pulumi.Input[bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
+        :param pulumi.Input[bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] package_metadata_purl_types: List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+        :param pulumi.Input[bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
         :param pulumi.Input[int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
         :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
@@ -10225,6 +11877,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[bool] project_export_enabled: Enable project export.
+        :param pulumi.Input[int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+        :param pulumi.Input[int] projects_api_rate_limit_unauthenticated: Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
         :param pulumi.Input[bool] prometheus_metrics_enabled: Enable Prometheus metrics.
         :param pulumi.Input[bool] protected_ci_variables: CI/CD variables are protected by default.
         :param pulumi.Input[int] push_event_activities_limit: Number of changes (branches or tags) in a single push to determine whether individual push events or bulk push events are created. Bulk push events are created if it surpasses that value.
@@ -10236,17 +11890,25 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[str] recaptcha_site_key: Site key for reCAPTCHA.
         :param pulumi.Input[int] receive_max_input_size: Maximum push size (MB).
+        :param pulumi.Input[bool] receptive_cluster_agents_enabled: Enable receptive mode for GitLab Agents for Kubernetes.
+        :param pulumi.Input[bool] remember_me_enabled: Enable Remember me setting. Introduced in GitLab 16.0.
         :param pulumi.Input[bool] repository_checks_enabled: GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         :param pulumi.Input[int] repository_size_limit: Size limit per repository (MB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] repository_storages: (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
+        :param pulumi.Input[bool] require_admin_two_factor_authentication: Allow administrators to require 2FA for all administrators on the instance.
+        :param pulumi.Input[bool] require_personal_access_token_expiry: When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
         :param pulumi.Input[bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
+        :param pulumi.Input[int] security_approval_policies_limit: Maximum number of active merge request approval policies per security policy project. Maximum: 20
+        :param pulumi.Input[bool] security_policy_global_group_approvers_enabled: Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+        :param pulumi.Input[str] security_txt_content: Public security contact information. Introduced in GitLab 16.7.
         :param pulumi.Input[bool] send_user_confirmation_email: Send confirmation email on sign-up.
+        :param pulumi.Input[bool] service_access_tokens_expiration_enforced: Flag to indicate if token expiry date can be optional for service account users
         :param pulumi.Input[int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
@@ -10256,6 +11918,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits.
         :param pulumi.Input[str] sign_in_text: Text on the login page.
         :param pulumi.Input[bool] signup_enabled: Enable registration.
+        :param pulumi.Input[bool] silent_admin_exports_enabled: Enable Silent admin exports.
+        :param pulumi.Input[bool] silent_mode_enabled: Enable Silent mode.
         :param pulumi.Input[bool] slack_app_enabled: (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         :param pulumi.Input[str] slack_app_id: The app ID of the Slack-app.
         :param pulumi.Input[str] slack_app_secret: The app secret of the Slack-app.
@@ -10265,6 +11929,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] snowplow_app_id: The Snowplow site name / application ID. (for example, gitlab)
         :param pulumi.Input[str] snowplow_collector_hostname: The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
         :param pulumi.Input[str] snowplow_cookie_domain: The Snowplow cookie domain. (for example, .gitlab.com)
+        :param pulumi.Input[str] snowplow_database_collector_hostname: The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
         :param pulumi.Input[bool] snowplow_enabled: Enable snowplow tracking.
         :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
         :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects.
@@ -10272,6 +11937,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] spam_check_api_key: API key used by GitLab for accessing the Spam Check service endpoint.
         :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint.
         :param pulumi.Input[str] spam_check_endpoint_url: URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
+        :param pulumi.Input[str] static_objects_external_storage_auth_token: Authentication token for the external storage linked in static*objects*external*storage*url.
+        :param pulumi.Input[str] static_objects_external_storage_url: URL to an external storage for repository static objects.
         :param pulumi.Input[bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
         :param pulumi.Input[int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
         :param pulumi.Input[str] terms: (Required by: enforce_terms) Markdown content for the ToS.
@@ -10295,18 +11962,23 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
         :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours.
         :param pulumi.Input[int] two_factor_grace_period: Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
+        :param pulumi.Input[int] unconfirmed_users_delete_after_days: Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[bool] unique_ips_limit_enabled: (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         :param pulumi.Input[int] unique_ips_limit_per_user: Maximum number of IPs per user.
         :param pulumi.Input[int] unique_ips_limit_time_window: How many seconds an IP is counted towards the limit.
+        :param pulumi.Input[bool] update_runner_versions_enabled: Fetch GitLab Runner release version data from GitLab.com.
         :param pulumi.Input[bool] usage_ping_enabled: Every week GitLab reports license usage back to GitLab, Inc.
+        :param pulumi.Input[bool] use_clickhouse_for_analytics: Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
         :param pulumi.Input[bool] user_deactivation_emails_enabled: Send an email to users upon account deactivation.
         :param pulumi.Input[bool] user_default_external: Newly registered users are external by default.
         :param pulumi.Input[str] user_default_internal_regex: Specify an email address regex pattern to identify default internal users.
+        :param pulumi.Input[bool] user_defaults_to_private_profile: Newly created users have private profile by default. Introduced in GitLab 15.8.
         :param pulumi.Input[bool] user_oauth_applications: Allow users to register any application to use GitLab as an OAuth provider.
         :param pulumi.Input[bool] user_show_add_ssh_key_message: When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valid_runner_registrars: List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
         :param pulumi.Input[bool] version_check_enabled: Let GitLab inform you when an update is available.
         :param pulumi.Input[bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
-        :param pulumi.Input[str] whats_new_variant: What’s new variant, possible values: all*tiers, current*tier, and disabled.
+        :param pulumi.Input[str] whats_new_variant: What's new variant, possible values: all*tiers, current*tier, and disabled.
         :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -10405,14 +12077,19 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["elasticsearch_limit_indexing"] = elasticsearch_limit_indexing
         __props__.__dict__["elasticsearch_max_bulk_concurrency"] = elasticsearch_max_bulk_concurrency
         __props__.__dict__["elasticsearch_max_bulk_size_mb"] = elasticsearch_max_bulk_size_mb
+        __props__.__dict__["elasticsearch_max_code_indexing_concurrency"] = elasticsearch_max_code_indexing_concurrency
         __props__.__dict__["elasticsearch_namespace_ids"] = elasticsearch_namespace_ids
         __props__.__dict__["elasticsearch_password"] = elasticsearch_password
         __props__.__dict__["elasticsearch_project_ids"] = elasticsearch_project_ids
+        __props__.__dict__["elasticsearch_requeue_workers"] = elasticsearch_requeue_workers
         __props__.__dict__["elasticsearch_search"] = elasticsearch_search
         __props__.__dict__["elasticsearch_urls"] = elasticsearch_urls
         __props__.__dict__["elasticsearch_username"] = elasticsearch_username
+        __props__.__dict__["elasticsearch_worker_number_of_shards"] = elasticsearch_worker_number_of_shards
         __props__.__dict__["email_additional_text"] = email_additional_text
         __props__.__dict__["email_author_in_body"] = email_author_in_body
+        __props__.__dict__["email_confirmation_setting"] = email_confirmation_setting
+        __props__.__dict__["enable_artifact_external_redirect_warning_page"] = enable_artifact_external_redirect_warning_page
         __props__.__dict__["enabled_git_access_protocol"] = enabled_git_access_protocol
         __props__.__dict__["enforce_namespace_storage_limit"] = enforce_namespace_storage_limit
         __props__.__dict__["enforce_terms"] = enforce_terms
@@ -10426,15 +12103,23 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["external_pipeline_validation_service_timeout"] = external_pipeline_validation_service_timeout
         __props__.__dict__["external_pipeline_validation_service_token"] = external_pipeline_validation_service_token
         __props__.__dict__["external_pipeline_validation_service_url"] = external_pipeline_validation_service_url
+        __props__.__dict__["failed_login_attempts_unlock_period_in_minutes"] = failed_login_attempts_unlock_period_in_minutes
         __props__.__dict__["file_template_project_id"] = file_template_project_id
         __props__.__dict__["first_day_of_week"] = first_day_of_week
         __props__.__dict__["geo_node_allowed_ips"] = geo_node_allowed_ips
         __props__.__dict__["geo_status_timeout"] = geo_status_timeout
+        __props__.__dict__["git_rate_limit_users_alertlists"] = git_rate_limit_users_alertlists
         __props__.__dict__["git_rate_limit_users_allowlists"] = git_rate_limit_users_allowlists
         __props__.__dict__["git_two_factor_session_expiry"] = git_two_factor_session_expiry
         __props__.__dict__["gitaly_timeout_default"] = gitaly_timeout_default
         __props__.__dict__["gitaly_timeout_fast"] = gitaly_timeout_fast
         __props__.__dict__["gitaly_timeout_medium"] = gitaly_timeout_medium
+        __props__.__dict__["gitlab_dedicated_instance"] = gitlab_dedicated_instance
+        __props__.__dict__["gitlab_environment_toolkit_instance"] = gitlab_environment_toolkit_instance
+        __props__.__dict__["gitlab_shell_operation_limit"] = gitlab_shell_operation_limit
+        __props__.__dict__["gitpod_enabled"] = gitpod_enabled
+        __props__.__dict__["gitpod_url"] = gitpod_url
+        __props__.__dict__["globally_allowed_ips"] = globally_allowed_ips
         __props__.__dict__["grafana_enabled"] = grafana_enabled
         __props__.__dict__["grafana_url"] = grafana_url
         __props__.__dict__["gravatar_enabled"] = gravatar_enabled
@@ -10457,18 +12142,27 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["inactive_projects_delete_after_months"] = inactive_projects_delete_after_months
         __props__.__dict__["inactive_projects_min_size_mb"] = inactive_projects_min_size_mb
         __props__.__dict__["inactive_projects_send_warning_email_after_months"] = inactive_projects_send_warning_email_after_months
+        __props__.__dict__["include_optional_metrics_in_service_ping"] = include_optional_metrics_in_service_ping
         __props__.__dict__["invisible_captcha_enabled"] = invisible_captcha_enabled
         __props__.__dict__["issues_create_limit"] = issues_create_limit
+        __props__.__dict__["jira_connect_application_key"] = jira_connect_application_key
+        __props__.__dict__["jira_connect_proxy_url"] = jira_connect_proxy_url
+        __props__.__dict__["jira_connect_public_key_storage_enabled"] = jira_connect_public_key_storage_enabled
         __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
         __props__.__dict__["local_markdown_version"] = local_markdown_version
+        __props__.__dict__["lock_duo_features_enabled"] = lock_duo_features_enabled
         __props__.__dict__["mailgun_events_enabled"] = mailgun_events_enabled
         __props__.__dict__["mailgun_signing_key"] = mailgun_signing_key
         __props__.__dict__["maintenance_mode"] = maintenance_mode
         __props__.__dict__["maintenance_mode_message"] = maintenance_mode_message
+        __props__.__dict__["maven_package_requests_forwarding"] = maven_package_requests_forwarding
         __props__.__dict__["max_artifacts_size"] = max_artifacts_size
         __props__.__dict__["max_attachment_size"] = max_attachment_size
+        __props__.__dict__["max_decompressed_archive_size"] = max_decompressed_archive_size
         __props__.__dict__["max_export_size"] = max_export_size
+        __props__.__dict__["max_import_remote_file_size"] = max_import_remote_file_size
         __props__.__dict__["max_import_size"] = max_import_size
+        __props__.__dict__["max_login_attempts"] = max_login_attempts
         __props__.__dict__["max_number_of_repository_downloads"] = max_number_of_repository_downloads
         __props__.__dict__["max_number_of_repository_downloads_within_time_period"] = max_number_of_repository_downloads_within_time_period
         __props__.__dict__["max_pages_size"] = max_pages_size
@@ -10482,7 +12176,10 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["mirror_max_capacity"] = mirror_max_capacity
         __props__.__dict__["mirror_max_delay"] = mirror_max_delay
         __props__.__dict__["npm_package_requests_forwarding"] = npm_package_requests_forwarding
+        __props__.__dict__["nuget_skip_metadata_url_validation"] = nuget_skip_metadata_url_validation
         __props__.__dict__["outbound_local_requests_whitelists"] = outbound_local_requests_whitelists
+        __props__.__dict__["package_metadata_purl_types"] = package_metadata_purl_types
+        __props__.__dict__["package_registry_allow_anyone_to_pull_option"] = package_registry_allow_anyone_to_pull_option
         __props__.__dict__["package_registry_cleanup_policies_worker_capacity"] = package_registry_cleanup_policies_worker_capacity
         __props__.__dict__["pages_domain_verification_enabled"] = pages_domain_verification_enabled
         __props__.__dict__["password_authentication_enabled_for_git"] = password_authentication_enabled_for_git
@@ -10498,6 +12195,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["plantuml_url"] = plantuml_url
         __props__.__dict__["polling_interval_multiplier"] = polling_interval_multiplier
         __props__.__dict__["project_export_enabled"] = project_export_enabled
+        __props__.__dict__["project_jobs_api_rate_limit"] = project_jobs_api_rate_limit
+        __props__.__dict__["projects_api_rate_limit_unauthenticated"] = projects_api_rate_limit_unauthenticated
         __props__.__dict__["prometheus_metrics_enabled"] = prometheus_metrics_enabled
         __props__.__dict__["protected_ci_variables"] = protected_ci_variables
         __props__.__dict__["push_event_activities_limit"] = push_event_activities_limit
@@ -10509,17 +12208,25 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["recaptcha_private_key"] = recaptcha_private_key
         __props__.__dict__["recaptcha_site_key"] = recaptcha_site_key
         __props__.__dict__["receive_max_input_size"] = receive_max_input_size
+        __props__.__dict__["receptive_cluster_agents_enabled"] = receptive_cluster_agents_enabled
+        __props__.__dict__["remember_me_enabled"] = remember_me_enabled
         __props__.__dict__["repository_checks_enabled"] = repository_checks_enabled
         __props__.__dict__["repository_size_limit"] = repository_size_limit
         __props__.__dict__["repository_storages"] = repository_storages
         __props__.__dict__["repository_storages_weighted"] = repository_storages_weighted
         __props__.__dict__["require_admin_approval_after_user_signup"] = require_admin_approval_after_user_signup
+        __props__.__dict__["require_admin_two_factor_authentication"] = require_admin_two_factor_authentication
+        __props__.__dict__["require_personal_access_token_expiry"] = require_personal_access_token_expiry
         __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
         __props__.__dict__["restricted_visibility_levels"] = restricted_visibility_levels
         __props__.__dict__["rsa_key_restriction"] = rsa_key_restriction
         __props__.__dict__["search_rate_limit"] = search_rate_limit
         __props__.__dict__["search_rate_limit_unauthenticated"] = search_rate_limit_unauthenticated
+        __props__.__dict__["security_approval_policies_limit"] = security_approval_policies_limit
+        __props__.__dict__["security_policy_global_group_approvers_enabled"] = security_policy_global_group_approvers_enabled
+        __props__.__dict__["security_txt_content"] = security_txt_content
         __props__.__dict__["send_user_confirmation_email"] = send_user_confirmation_email
+        __props__.__dict__["service_access_tokens_expiration_enforced"] = service_access_tokens_expiration_enforced
         __props__.__dict__["session_expire_delay"] = session_expire_delay
         __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
         __props__.__dict__["shared_runners_minutes"] = shared_runners_minutes
@@ -10529,6 +12236,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["sidekiq_job_limiter_mode"] = sidekiq_job_limiter_mode
         __props__.__dict__["sign_in_text"] = sign_in_text
         __props__.__dict__["signup_enabled"] = signup_enabled
+        __props__.__dict__["silent_admin_exports_enabled"] = silent_admin_exports_enabled
+        __props__.__dict__["silent_mode_enabled"] = silent_mode_enabled
         __props__.__dict__["slack_app_enabled"] = slack_app_enabled
         __props__.__dict__["slack_app_id"] = slack_app_id
         __props__.__dict__["slack_app_secret"] = slack_app_secret
@@ -10538,6 +12247,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["snowplow_app_id"] = snowplow_app_id
         __props__.__dict__["snowplow_collector_hostname"] = snowplow_collector_hostname
         __props__.__dict__["snowplow_cookie_domain"] = snowplow_cookie_domain
+        __props__.__dict__["snowplow_database_collector_hostname"] = snowplow_database_collector_hostname
         __props__.__dict__["snowplow_enabled"] = snowplow_enabled
         __props__.__dict__["sourcegraph_enabled"] = sourcegraph_enabled
         __props__.__dict__["sourcegraph_public_only"] = sourcegraph_public_only
@@ -10545,6 +12255,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["spam_check_api_key"] = spam_check_api_key
         __props__.__dict__["spam_check_endpoint_enabled"] = spam_check_endpoint_enabled
         __props__.__dict__["spam_check_endpoint_url"] = spam_check_endpoint_url
+        __props__.__dict__["static_objects_external_storage_auth_token"] = static_objects_external_storage_auth_token
+        __props__.__dict__["static_objects_external_storage_url"] = static_objects_external_storage_url
         __props__.__dict__["suggest_pipeline_enabled"] = suggest_pipeline_enabled
         __props__.__dict__["terminal_max_session_time"] = terminal_max_session_time
         __props__.__dict__["terms"] = terms
@@ -10568,15 +12280,20 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["throttle_unauthenticated_web_requests_per_period"] = throttle_unauthenticated_web_requests_per_period
         __props__.__dict__["time_tracking_limit_to_hours"] = time_tracking_limit_to_hours
         __props__.__dict__["two_factor_grace_period"] = two_factor_grace_period
+        __props__.__dict__["unconfirmed_users_delete_after_days"] = unconfirmed_users_delete_after_days
         __props__.__dict__["unique_ips_limit_enabled"] = unique_ips_limit_enabled
         __props__.__dict__["unique_ips_limit_per_user"] = unique_ips_limit_per_user
         __props__.__dict__["unique_ips_limit_time_window"] = unique_ips_limit_time_window
+        __props__.__dict__["update_runner_versions_enabled"] = update_runner_versions_enabled
         __props__.__dict__["usage_ping_enabled"] = usage_ping_enabled
+        __props__.__dict__["use_clickhouse_for_analytics"] = use_clickhouse_for_analytics
         __props__.__dict__["user_deactivation_emails_enabled"] = user_deactivation_emails_enabled
         __props__.__dict__["user_default_external"] = user_default_external
         __props__.__dict__["user_default_internal_regex"] = user_default_internal_regex
+        __props__.__dict__["user_defaults_to_private_profile"] = user_defaults_to_private_profile
         __props__.__dict__["user_oauth_applications"] = user_oauth_applications
         __props__.__dict__["user_show_add_ssh_key_message"] = user_show_add_ssh_key_message
+        __props__.__dict__["valid_runner_registrars"] = valid_runner_registrars
         __props__.__dict__["version_check_enabled"] = version_check_enabled
         __props__.__dict__["web_ide_clientside_preview_enabled"] = web_ide_clientside_preview_enabled
         __props__.__dict__["whats_new_variant"] = whats_new_variant
@@ -11320,6 +13037,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "elasticsearch_max_bulk_size_mb")
 
     @property
+    @pulumi.getter(name="elasticsearchMaxCodeIndexingConcurrency")
+    def elasticsearch_max_code_indexing_concurrency(self) -> pulumi.Output[int]:
+        """
+        Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "elasticsearch_max_code_indexing_concurrency")
+
+    @property
     @pulumi.getter(name="elasticsearchNamespaceIds")
     def elasticsearch_namespace_ids(self) -> pulumi.Output[Sequence[int]]:
         """
@@ -11342,6 +13067,14 @@ class ApplicationSettings(pulumi.CustomResource):
         The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """
         return pulumi.get(self, "elasticsearch_project_ids")
+
+    @property
+    @pulumi.getter(name="elasticsearchRequeueWorkers")
+    def elasticsearch_requeue_workers(self) -> pulumi.Output[bool]:
+        """
+        Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "elasticsearch_requeue_workers")
 
     @property
     @pulumi.getter(name="elasticsearchSearch")
@@ -11368,6 +13101,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "elasticsearch_username")
 
     @property
+    @pulumi.getter(name="elasticsearchWorkerNumberOfShards")
+    def elasticsearch_worker_number_of_shards(self) -> pulumi.Output[int]:
+        """
+        Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "elasticsearch_worker_number_of_shards")
+
+    @property
     @pulumi.getter(name="emailAdditionalText")
     def email_additional_text(self) -> pulumi.Output[str]:
         """
@@ -11382,6 +13123,22 @@ class ApplicationSettings(pulumi.CustomResource):
         Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
         """
         return pulumi.get(self, "email_author_in_body")
+
+    @property
+    @pulumi.getter(name="emailConfirmationSetting")
+    def email_confirmation_setting(self) -> pulumi.Output[str]:
+        """
+        Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+        """
+        return pulumi.get(self, "email_confirmation_setting")
+
+    @property
+    @pulumi.getter(name="enableArtifactExternalRedirectWarningPage")
+    def enable_artifact_external_redirect_warning_page(self) -> pulumi.Output[bool]:
+        """
+        Show the external redirect page that warns you about user-generated content in GitLab Pages.
+        """
+        return pulumi.get(self, "enable_artifact_external_redirect_warning_page")
 
     @property
     @pulumi.getter(name="enabledGitAccessProtocol")
@@ -11488,6 +13245,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "external_pipeline_validation_service_url")
 
     @property
+    @pulumi.getter(name="failedLoginAttemptsUnlockPeriodInMinutes")
+    def failed_login_attempts_unlock_period_in_minutes(self) -> pulumi.Output[int]:
+        """
+        Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+        """
+        return pulumi.get(self, "failed_login_attempts_unlock_period_in_minutes")
+
+    @property
     @pulumi.getter(name="fileTemplateProjectId")
     def file_template_project_id(self) -> pulumi.Output[int]:
         """
@@ -11520,10 +13285,18 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "geo_status_timeout")
 
     @property
+    @pulumi.getter(name="gitRateLimitUsersAlertlists")
+    def git_rate_limit_users_alertlists(self) -> pulumi.Output[Sequence[int]]:
+        """
+        List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+        """
+        return pulumi.get(self, "git_rate_limit_users_alertlists")
+
+    @property
     @pulumi.getter(name="gitRateLimitUsersAllowlists")
     def git_rate_limit_users_allowlists(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+        List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
         """
         return pulumi.get(self, "git_rate_limit_users_allowlists")
 
@@ -11558,6 +13331,54 @@ class ApplicationSettings(pulumi.CustomResource):
         Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
         """
         return pulumi.get(self, "gitaly_timeout_medium")
+
+    @property
+    @pulumi.getter(name="gitlabDedicatedInstance")
+    def gitlab_dedicated_instance(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether the instance was provisioned for GitLab Dedicated.
+        """
+        return pulumi.get(self, "gitlab_dedicated_instance")
+
+    @property
+    @pulumi.getter(name="gitlabEnvironmentToolkitInstance")
+    def gitlab_environment_toolkit_instance(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+        """
+        return pulumi.get(self, "gitlab_environment_toolkit_instance")
+
+    @property
+    @pulumi.getter(name="gitlabShellOperationLimit")
+    def gitlab_shell_operation_limit(self) -> pulumi.Output[int]:
+        """
+        Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+        """
+        return pulumi.get(self, "gitlab_shell_operation_limit")
+
+    @property
+    @pulumi.getter(name="gitpodEnabled")
+    def gitpod_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable Gitpod integration.
+        """
+        return pulumi.get(self, "gitpod_enabled")
+
+    @property
+    @pulumi.getter(name="gitpodUrl")
+    def gitpod_url(self) -> pulumi.Output[str]:
+        """
+        The Gitpod instance URL for integration.
+        """
+        return pulumi.get(self, "gitpod_url")
+
+    @property
+    @pulumi.getter(name="globallyAllowedIps")
+    def globally_allowed_ips(self) -> pulumi.Output[str]:
+        """
+        Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+        """
+        return pulumi.get(self, "globally_allowed_ips")
 
     @property
     @pulumi.getter(name="grafanaEnabled")
@@ -11741,6 +13562,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "inactive_projects_send_warning_email_after_months")
 
     @property
+    @pulumi.getter(name="includeOptionalMetricsInServicePing")
+    def include_optional_metrics_in_service_ping(self) -> pulumi.Output[bool]:
+        """
+        Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+        """
+        return pulumi.get(self, "include_optional_metrics_in_service_ping")
+
+    @property
     @pulumi.getter(name="invisibleCaptchaEnabled")
     def invisible_captcha_enabled(self) -> pulumi.Output[bool]:
         """
@@ -11757,6 +13586,30 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "issues_create_limit")
 
     @property
+    @pulumi.getter(name="jiraConnectApplicationKey")
+    def jira_connect_application_key(self) -> pulumi.Output[str]:
+        """
+        ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+        """
+        return pulumi.get(self, "jira_connect_application_key")
+
+    @property
+    @pulumi.getter(name="jiraConnectProxyUrl")
+    def jira_connect_proxy_url(self) -> pulumi.Output[str]:
+        """
+        URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+        """
+        return pulumi.get(self, "jira_connect_proxy_url")
+
+    @property
+    @pulumi.getter(name="jiraConnectPublicKeyStorageEnabled")
+    def jira_connect_public_key_storage_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable public key storage for the GitLab for Jira Cloud app.
+        """
+        return pulumi.get(self, "jira_connect_public_key_storage_enabled")
+
+    @property
     @pulumi.getter(name="keepLatestArtifact")
     def keep_latest_artifact(self) -> pulumi.Output[bool]:
         """
@@ -11771,6 +13624,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Increase this value when any cached Markdown should be invalidated.
         """
         return pulumi.get(self, "local_markdown_version")
+
+    @property
+    @pulumi.getter(name="lockDuoFeaturesEnabled")
+    def lock_duo_features_enabled(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "lock_duo_features_enabled")
 
     @property
     @pulumi.getter(name="mailgunEventsEnabled")
@@ -11805,6 +13666,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "maintenance_mode_message")
 
     @property
+    @pulumi.getter(name="mavenPackageRequestsForwarding")
+    def maven_package_requests_forwarding(self) -> pulumi.Output[bool]:
+        """
+        Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "maven_package_requests_forwarding")
+
+    @property
     @pulumi.getter(name="maxArtifactsSize")
     def max_artifacts_size(self) -> pulumi.Output[int]:
         """
@@ -11821,6 +13690,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "max_attachment_size")
 
     @property
+    @pulumi.getter(name="maxDecompressedArchiveSize")
+    def max_decompressed_archive_size(self) -> pulumi.Output[int]:
+        """
+        Maximum decompressed archive size in bytes.
+        """
+        return pulumi.get(self, "max_decompressed_archive_size")
+
+    @property
     @pulumi.getter(name="maxExportSize")
     def max_export_size(self) -> pulumi.Output[int]:
         """
@@ -11829,12 +13706,28 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "max_export_size")
 
     @property
+    @pulumi.getter(name="maxImportRemoteFileSize")
+    def max_import_remote_file_size(self) -> pulumi.Output[int]:
+        """
+        Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+        """
+        return pulumi.get(self, "max_import_remote_file_size")
+
+    @property
     @pulumi.getter(name="maxImportSize")
     def max_import_size(self) -> pulumi.Output[int]:
         """
         Maximum import size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_import_size")
+
+    @property
+    @pulumi.getter(name="maxLoginAttempts")
+    def max_login_attempts(self) -> pulumi.Output[int]:
+        """
+        Maximum number of sign-in attempts before locking out the user.
+        """
+        return pulumi.get(self, "max_login_attempts")
 
     @property
     @pulumi.getter(name="maxNumberOfRepositoryDownloads")
@@ -11938,12 +13831,36 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "npm_package_requests_forwarding")
 
     @property
+    @pulumi.getter(name="nugetSkipMetadataUrlValidation")
+    def nuget_skip_metadata_url_validation(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "nuget_skip_metadata_url_validation")
+
+    @property
     @pulumi.getter(name="outboundLocalRequestsWhitelists")
     def outbound_local_requests_whitelists(self) -> pulumi.Output[Sequence[str]]:
         """
         Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         """
         return pulumi.get(self, "outbound_local_requests_whitelists")
+
+    @property
+    @pulumi.getter(name="packageMetadataPurlTypes")
+    def package_metadata_purl_types(self) -> pulumi.Output[Sequence[int]]:
+        """
+        List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+        """
+        return pulumi.get(self, "package_metadata_purl_types")
+
+    @property
+    @pulumi.getter(name="packageRegistryAllowAnyoneToPullOption")
+    def package_registry_allow_anyone_to_pull_option(self) -> pulumi.Output[bool]:
+        """
+        Enable to allow anyone to pull from Package Registry visible and changeable.
+        """
+        return pulumi.get(self, "package_registry_allow_anyone_to_pull_option")
 
     @property
     @pulumi.getter(name="packageRegistryCleanupPoliciesWorkerCapacity")
@@ -12066,6 +13983,22 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "project_export_enabled")
 
     @property
+    @pulumi.getter(name="projectJobsApiRateLimit")
+    def project_jobs_api_rate_limit(self) -> pulumi.Output[int]:
+        """
+        Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+        """
+        return pulumi.get(self, "project_jobs_api_rate_limit")
+
+    @property
+    @pulumi.getter(name="projectsApiRateLimitUnauthenticated")
+    def projects_api_rate_limit_unauthenticated(self) -> pulumi.Output[int]:
+        """
+        Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+        """
+        return pulumi.get(self, "projects_api_rate_limit_unauthenticated")
+
+    @property
     @pulumi.getter(name="prometheusMetricsEnabled")
     def prometheus_metrics_enabled(self) -> pulumi.Output[bool]:
         """
@@ -12154,6 +14087,22 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "receive_max_input_size")
 
     @property
+    @pulumi.getter(name="receptiveClusterAgentsEnabled")
+    def receptive_cluster_agents_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable receptive mode for GitLab Agents for Kubernetes.
+        """
+        return pulumi.get(self, "receptive_cluster_agents_enabled")
+
+    @property
+    @pulumi.getter(name="rememberMeEnabled")
+    def remember_me_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable Remember me setting. Introduced in GitLab 16.0.
+        """
+        return pulumi.get(self, "remember_me_enabled")
+
+    @property
     @pulumi.getter(name="repositoryChecksEnabled")
     def repository_checks_enabled(self) -> pulumi.Output[bool]:
         """
@@ -12192,6 +14141,22 @@ class ApplicationSettings(pulumi.CustomResource):
         When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         """
         return pulumi.get(self, "require_admin_approval_after_user_signup")
+
+    @property
+    @pulumi.getter(name="requireAdminTwoFactorAuthentication")
+    def require_admin_two_factor_authentication(self) -> pulumi.Output[bool]:
+        """
+        Allow administrators to require 2FA for all administrators on the instance.
+        """
+        return pulumi.get(self, "require_admin_two_factor_authentication")
+
+    @property
+    @pulumi.getter(name="requirePersonalAccessTokenExpiry")
+    def require_personal_access_token_expiry(self) -> pulumi.Output[bool]:
+        """
+        When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+        """
+        return pulumi.get(self, "require_personal_access_token_expiry")
 
     @property
     @pulumi.getter(name="requireTwoFactorAuthentication")
@@ -12234,12 +14199,44 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "search_rate_limit_unauthenticated")
 
     @property
+    @pulumi.getter(name="securityApprovalPoliciesLimit")
+    def security_approval_policies_limit(self) -> pulumi.Output[int]:
+        """
+        Maximum number of active merge request approval policies per security policy project. Maximum: 20
+        """
+        return pulumi.get(self, "security_approval_policies_limit")
+
+    @property
+    @pulumi.getter(name="securityPolicyGlobalGroupApproversEnabled")
+    def security_policy_global_group_approvers_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+        """
+        return pulumi.get(self, "security_policy_global_group_approvers_enabled")
+
+    @property
+    @pulumi.getter(name="securityTxtContent")
+    def security_txt_content(self) -> pulumi.Output[str]:
+        """
+        Public security contact information. Introduced in GitLab 16.7.
+        """
+        return pulumi.get(self, "security_txt_content")
+
+    @property
     @pulumi.getter(name="sendUserConfirmationEmail")
     def send_user_confirmation_email(self) -> pulumi.Output[bool]:
         """
         Send confirmation email on sign-up.
         """
         return pulumi.get(self, "send_user_confirmation_email")
+
+    @property
+    @pulumi.getter(name="serviceAccessTokensExpirationEnforced")
+    def service_access_tokens_expiration_enforced(self) -> pulumi.Output[bool]:
+        """
+        Flag to indicate if token expiry date can be optional for service account users
+        """
+        return pulumi.get(self, "service_access_tokens_expiration_enforced")
 
     @property
     @pulumi.getter(name="sessionExpireDelay")
@@ -12314,6 +14311,22 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "signup_enabled")
 
     @property
+    @pulumi.getter(name="silentAdminExportsEnabled")
+    def silent_admin_exports_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable Silent admin exports.
+        """
+        return pulumi.get(self, "silent_admin_exports_enabled")
+
+    @property
+    @pulumi.getter(name="silentModeEnabled")
+    def silent_mode_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable Silent mode.
+        """
+        return pulumi.get(self, "silent_mode_enabled")
+
+    @property
     @pulumi.getter(name="slackAppEnabled")
     def slack_app_enabled(self) -> pulumi.Output[bool]:
         """
@@ -12386,6 +14399,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "snowplow_cookie_domain")
 
     @property
+    @pulumi.getter(name="snowplowDatabaseCollectorHostname")
+    def snowplow_database_collector_hostname(self) -> pulumi.Output[str]:
+        """
+        The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+        """
+        return pulumi.get(self, "snowplow_database_collector_hostname")
+
+    @property
     @pulumi.getter(name="snowplowEnabled")
     def snowplow_enabled(self) -> pulumi.Output[bool]:
         """
@@ -12440,6 +14461,22 @@ class ApplicationSettings(pulumi.CustomResource):
         URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
         """
         return pulumi.get(self, "spam_check_endpoint_url")
+
+    @property
+    @pulumi.getter(name="staticObjectsExternalStorageAuthToken")
+    def static_objects_external_storage_auth_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        Authentication token for the external storage linked in static*objects*external*storage*url.
+        """
+        return pulumi.get(self, "static_objects_external_storage_auth_token")
+
+    @property
+    @pulumi.getter(name="staticObjectsExternalStorageUrl")
+    def static_objects_external_storage_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        URL to an external storage for repository static objects.
+        """
+        return pulumi.get(self, "static_objects_external_storage_url")
 
     @property
     @pulumi.getter(name="suggestPipelineEnabled")
@@ -12626,6 +14663,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "two_factor_grace_period")
 
     @property
+    @pulumi.getter(name="unconfirmedUsersDeleteAfterDays")
+    def unconfirmed_users_delete_after_days(self) -> pulumi.Output[int]:
+        """
+        Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        """
+        return pulumi.get(self, "unconfirmed_users_delete_after_days")
+
+    @property
     @pulumi.getter(name="uniqueIpsLimitEnabled")
     def unique_ips_limit_enabled(self) -> pulumi.Output[bool]:
         """
@@ -12650,12 +14695,28 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "unique_ips_limit_time_window")
 
     @property
+    @pulumi.getter(name="updateRunnerVersionsEnabled")
+    def update_runner_versions_enabled(self) -> pulumi.Output[bool]:
+        """
+        Fetch GitLab Runner release version data from GitLab.com.
+        """
+        return pulumi.get(self, "update_runner_versions_enabled")
+
+    @property
     @pulumi.getter(name="usagePingEnabled")
     def usage_ping_enabled(self) -> pulumi.Output[bool]:
         """
         Every week GitLab reports license usage back to GitLab, Inc.
         """
         return pulumi.get(self, "usage_ping_enabled")
+
+    @property
+    @pulumi.getter(name="useClickhouseForAnalytics")
+    def use_clickhouse_for_analytics(self) -> pulumi.Output[bool]:
+        """
+        Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+        """
+        return pulumi.get(self, "use_clickhouse_for_analytics")
 
     @property
     @pulumi.getter(name="userDeactivationEmailsEnabled")
@@ -12682,6 +14743,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "user_default_internal_regex")
 
     @property
+    @pulumi.getter(name="userDefaultsToPrivateProfile")
+    def user_defaults_to_private_profile(self) -> pulumi.Output[bool]:
+        """
+        Newly created users have private profile by default. Introduced in GitLab 15.8.
+        """
+        return pulumi.get(self, "user_defaults_to_private_profile")
+
+    @property
     @pulumi.getter(name="userOauthApplications")
     def user_oauth_applications(self) -> pulumi.Output[bool]:
         """
@@ -12696,6 +14765,14 @@ class ApplicationSettings(pulumi.CustomResource):
         When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
         """
         return pulumi.get(self, "user_show_add_ssh_key_message")
+
+    @property
+    @pulumi.getter(name="validRunnerRegistrars")
+    def valid_runner_registrars(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
+        """
+        return pulumi.get(self, "valid_runner_registrars")
 
     @property
     @pulumi.getter(name="versionCheckEnabled")
@@ -12717,7 +14794,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="whatsNewVariant")
     def whats_new_variant(self) -> pulumi.Output[str]:
         """
-        What’s new variant, possible values: all*tiers, current*tier, and disabled.
+        What's new variant, possible values: all*tiers, current*tier, and disabled.
         """
         return pulumi.get(self, "whats_new_variant")
 

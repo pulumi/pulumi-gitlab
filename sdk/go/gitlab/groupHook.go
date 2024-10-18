@@ -81,47 +81,47 @@ type GroupHook struct {
 	pulumi.CustomResourceState
 
 	// Invoke the hook for confidential issues events.
-	ConfidentialIssuesEvents pulumi.BoolPtrOutput `pulumi:"confidentialIssuesEvents"`
-	// Invoke the hook for confidential notes events.
-	ConfidentialNoteEvents pulumi.BoolPtrOutput `pulumi:"confidentialNoteEvents"`
-	// Set a custom webhook template.
-	CustomWebhookTemplate pulumi.StringPtrOutput `pulumi:"customWebhookTemplate"`
+	ConfidentialIssuesEvents pulumi.BoolOutput `pulumi:"confidentialIssuesEvents"`
+	// Invoke the hook for confidential note events.
+	ConfidentialNoteEvents pulumi.BoolOutput `pulumi:"confidentialNoteEvents"`
+	// Custom webhook template.
+	CustomWebhookTemplate pulumi.StringOutput `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
-	DeploymentEvents pulumi.BoolPtrOutput `pulumi:"deploymentEvents"`
-	// Enable ssl verification when invoking the hook.
-	EnableSslVerification pulumi.BoolPtrOutput `pulumi:"enableSslVerification"`
-	// The ID or full path of the group.
+	DeploymentEvents pulumi.BoolOutput `pulumi:"deploymentEvents"`
+	// Enable SSL verification when invoking the hook.
+	EnableSslVerification pulumi.BoolOutput `pulumi:"enableSslVerification"`
+	// The full path or id of the group to add the hook to.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The id of the group for the hook.
 	GroupId pulumi.IntOutput `pulumi:"groupId"`
 	// The id of the group hook.
 	HookId pulumi.IntOutput `pulumi:"hookId"`
 	// Invoke the hook for issues events.
-	IssuesEvents pulumi.BoolPtrOutput `pulumi:"issuesEvents"`
+	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
 	// Invoke the hook for job events.
-	JobEvents pulumi.BoolPtrOutput `pulumi:"jobEvents"`
-	// Invoke the hook for merge requests.
-	MergeRequestsEvents pulumi.BoolPtrOutput `pulumi:"mergeRequestsEvents"`
-	// Invoke the hook for notes events.
-	NoteEvents pulumi.BoolPtrOutput `pulumi:"noteEvents"`
+	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
+	// Invoke the hook for merge requests events.
+	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
+	// Invoke the hook for note events.
+	NoteEvents pulumi.BoolOutput `pulumi:"noteEvents"`
 	// Invoke the hook for pipeline events.
-	PipelineEvents pulumi.BoolPtrOutput `pulumi:"pipelineEvents"`
+	PipelineEvents pulumi.BoolOutput `pulumi:"pipelineEvents"`
 	// Invoke the hook for push events.
-	PushEvents pulumi.BoolPtrOutput `pulumi:"pushEvents"`
+	PushEvents pulumi.BoolOutput `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
-	PushEventsBranchFilter pulumi.StringPtrOutput `pulumi:"pushEventsBranchFilter"`
-	// Invoke the hook for releases events.
-	ReleasesEvents pulumi.BoolPtrOutput `pulumi:"releasesEvents"`
+	PushEventsBranchFilter pulumi.StringOutput `pulumi:"pushEventsBranchFilter"`
+	// Invoke the hook for release events.
+	ReleasesEvents pulumi.BoolOutput `pulumi:"releasesEvents"`
 	// Invoke the hook for subgroup events.
-	SubgroupEvents pulumi.BoolPtrOutput `pulumi:"subgroupEvents"`
+	SubgroupEvents pulumi.BoolOutput `pulumi:"subgroupEvents"`
 	// Invoke the hook for tag push events.
-	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
+	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
-	Token pulumi.StringPtrOutput `pulumi:"token"`
-	// The url of the hook to invoke.
+	Token pulumi.StringOutput `pulumi:"token"`
+	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Invoke the hook for wiki page events.
-	WikiPageEvents pulumi.BoolPtrOutput `pulumi:"wikiPageEvents"`
+	WikiPageEvents pulumi.BoolOutput `pulumi:"wikiPageEvents"`
 }
 
 // NewGroupHook registers a new resource with the given unique name, arguments, and options.
@@ -169,15 +169,15 @@ func GetGroupHook(ctx *pulumi.Context,
 type groupHookState struct {
 	// Invoke the hook for confidential issues events.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
-	// Invoke the hook for confidential notes events.
+	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
-	// Set a custom webhook template.
+	// Custom webhook template.
 	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
-	// Enable ssl verification when invoking the hook.
+	// Enable SSL verification when invoking the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
-	// The ID or full path of the group.
+	// The full path or id of the group to add the hook to.
 	Group *string `pulumi:"group"`
 	// The id of the group for the hook.
 	GroupId *int `pulumi:"groupId"`
@@ -187,9 +187,9 @@ type groupHookState struct {
 	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// Invoke the hook for job events.
 	JobEvents *bool `pulumi:"jobEvents"`
-	// Invoke the hook for merge requests.
+	// Invoke the hook for merge requests events.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
-	// Invoke the hook for notes events.
+	// Invoke the hook for note events.
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Invoke the hook for pipeline events.
 	PipelineEvents *bool `pulumi:"pipelineEvents"`
@@ -197,7 +197,7 @@ type groupHookState struct {
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
 	PushEventsBranchFilter *string `pulumi:"pushEventsBranchFilter"`
-	// Invoke the hook for releases events.
+	// Invoke the hook for release events.
 	ReleasesEvents *bool `pulumi:"releasesEvents"`
 	// Invoke the hook for subgroup events.
 	SubgroupEvents *bool `pulumi:"subgroupEvents"`
@@ -205,7 +205,7 @@ type groupHookState struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token *string `pulumi:"token"`
-	// The url of the hook to invoke.
+	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url *string `pulumi:"url"`
 	// Invoke the hook for wiki page events.
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
@@ -214,15 +214,15 @@ type groupHookState struct {
 type GroupHookState struct {
 	// Invoke the hook for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
-	// Invoke the hook for confidential notes events.
+	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
-	// Set a custom webhook template.
+	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringPtrInput
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolPtrInput
-	// Enable ssl verification when invoking the hook.
+	// Enable SSL verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrInput
-	// The ID or full path of the group.
+	// The full path or id of the group to add the hook to.
 	Group pulumi.StringPtrInput
 	// The id of the group for the hook.
 	GroupId pulumi.IntPtrInput
@@ -232,9 +232,9 @@ type GroupHookState struct {
 	IssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for job events.
 	JobEvents pulumi.BoolPtrInput
-	// Invoke the hook for merge requests.
+	// Invoke the hook for merge requests events.
 	MergeRequestsEvents pulumi.BoolPtrInput
-	// Invoke the hook for notes events.
+	// Invoke the hook for note events.
 	NoteEvents pulumi.BoolPtrInput
 	// Invoke the hook for pipeline events.
 	PipelineEvents pulumi.BoolPtrInput
@@ -242,7 +242,7 @@ type GroupHookState struct {
 	PushEvents pulumi.BoolPtrInput
 	// Invoke the hook for push events on matching branches only.
 	PushEventsBranchFilter pulumi.StringPtrInput
-	// Invoke the hook for releases events.
+	// Invoke the hook for release events.
 	ReleasesEvents pulumi.BoolPtrInput
 	// Invoke the hook for subgroup events.
 	SubgroupEvents pulumi.BoolPtrInput
@@ -250,7 +250,7 @@ type GroupHookState struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringPtrInput
-	// The url of the hook to invoke.
+	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringPtrInput
 	// Invoke the hook for wiki page events.
 	WikiPageEvents pulumi.BoolPtrInput
@@ -263,23 +263,23 @@ func (GroupHookState) ElementType() reflect.Type {
 type groupHookArgs struct {
 	// Invoke the hook for confidential issues events.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
-	// Invoke the hook for confidential notes events.
+	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
-	// Set a custom webhook template.
+	// Custom webhook template.
 	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
-	// Enable ssl verification when invoking the hook.
+	// Enable SSL verification when invoking the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
-	// The ID or full path of the group.
+	// The full path or id of the group to add the hook to.
 	Group string `pulumi:"group"`
 	// Invoke the hook for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// Invoke the hook for job events.
 	JobEvents *bool `pulumi:"jobEvents"`
-	// Invoke the hook for merge requests.
+	// Invoke the hook for merge requests events.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
-	// Invoke the hook for notes events.
+	// Invoke the hook for note events.
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Invoke the hook for pipeline events.
 	PipelineEvents *bool `pulumi:"pipelineEvents"`
@@ -287,7 +287,7 @@ type groupHookArgs struct {
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
 	PushEventsBranchFilter *string `pulumi:"pushEventsBranchFilter"`
-	// Invoke the hook for releases events.
+	// Invoke the hook for release events.
 	ReleasesEvents *bool `pulumi:"releasesEvents"`
 	// Invoke the hook for subgroup events.
 	SubgroupEvents *bool `pulumi:"subgroupEvents"`
@@ -295,7 +295,7 @@ type groupHookArgs struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token *string `pulumi:"token"`
-	// The url of the hook to invoke.
+	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url string `pulumi:"url"`
 	// Invoke the hook for wiki page events.
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
@@ -305,23 +305,23 @@ type groupHookArgs struct {
 type GroupHookArgs struct {
 	// Invoke the hook for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
-	// Invoke the hook for confidential notes events.
+	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
-	// Set a custom webhook template.
+	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringPtrInput
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolPtrInput
-	// Enable ssl verification when invoking the hook.
+	// Enable SSL verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrInput
-	// The ID or full path of the group.
+	// The full path or id of the group to add the hook to.
 	Group pulumi.StringInput
 	// Invoke the hook for issues events.
 	IssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for job events.
 	JobEvents pulumi.BoolPtrInput
-	// Invoke the hook for merge requests.
+	// Invoke the hook for merge requests events.
 	MergeRequestsEvents pulumi.BoolPtrInput
-	// Invoke the hook for notes events.
+	// Invoke the hook for note events.
 	NoteEvents pulumi.BoolPtrInput
 	// Invoke the hook for pipeline events.
 	PipelineEvents pulumi.BoolPtrInput
@@ -329,7 +329,7 @@ type GroupHookArgs struct {
 	PushEvents pulumi.BoolPtrInput
 	// Invoke the hook for push events on matching branches only.
 	PushEventsBranchFilter pulumi.StringPtrInput
-	// Invoke the hook for releases events.
+	// Invoke the hook for release events.
 	ReleasesEvents pulumi.BoolPtrInput
 	// Invoke the hook for subgroup events.
 	SubgroupEvents pulumi.BoolPtrInput
@@ -337,7 +337,7 @@ type GroupHookArgs struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringPtrInput
-	// The url of the hook to invoke.
+	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringInput
 	// Invoke the hook for wiki page events.
 	WikiPageEvents pulumi.BoolPtrInput
@@ -431,31 +431,31 @@ func (o GroupHookOutput) ToGroupHookOutputWithContext(ctx context.Context) Group
 }
 
 // Invoke the hook for confidential issues events.
-func (o GroupHookOutput) ConfidentialIssuesEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolPtrOutput)
+func (o GroupHookOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolOutput)
 }
 
-// Invoke the hook for confidential notes events.
-func (o GroupHookOutput) ConfidentialNoteEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolPtrOutput)
+// Invoke the hook for confidential note events.
+func (o GroupHookOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
 }
 
-// Set a custom webhook template.
-func (o GroupHookOutput) CustomWebhookTemplate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.StringPtrOutput { return v.CustomWebhookTemplate }).(pulumi.StringPtrOutput)
+// Custom webhook template.
+func (o GroupHookOutput) CustomWebhookTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.StringOutput { return v.CustomWebhookTemplate }).(pulumi.StringOutput)
 }
 
 // Invoke the hook for deployment events.
-func (o GroupHookOutput) DeploymentEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.DeploymentEvents }).(pulumi.BoolPtrOutput)
+func (o GroupHookOutput) DeploymentEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.DeploymentEvents }).(pulumi.BoolOutput)
 }
 
-// Enable ssl verification when invoking the hook.
-func (o GroupHookOutput) EnableSslVerification() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.EnableSslVerification }).(pulumi.BoolPtrOutput)
+// Enable SSL verification when invoking the hook.
+func (o GroupHookOutput) EnableSslVerification() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.EnableSslVerification }).(pulumi.BoolOutput)
 }
 
-// The ID or full path of the group.
+// The full path or id of the group to add the hook to.
 func (o GroupHookOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupHook) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }
@@ -471,68 +471,68 @@ func (o GroupHookOutput) HookId() pulumi.IntOutput {
 }
 
 // Invoke the hook for issues events.
-func (o GroupHookOutput) IssuesEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.IssuesEvents }).(pulumi.BoolPtrOutput)
+func (o GroupHookOutput) IssuesEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.IssuesEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for job events.
-func (o GroupHookOutput) JobEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.JobEvents }).(pulumi.BoolPtrOutput)
+func (o GroupHookOutput) JobEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.JobEvents }).(pulumi.BoolOutput)
 }
 
-// Invoke the hook for merge requests.
-func (o GroupHookOutput) MergeRequestsEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.MergeRequestsEvents }).(pulumi.BoolPtrOutput)
+// Invoke the hook for merge requests events.
+func (o GroupHookOutput) MergeRequestsEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
 }
 
-// Invoke the hook for notes events.
-func (o GroupHookOutput) NoteEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.NoteEvents }).(pulumi.BoolPtrOutput)
+// Invoke the hook for note events.
+func (o GroupHookOutput) NoteEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.NoteEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for pipeline events.
-func (o GroupHookOutput) PipelineEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.PipelineEvents }).(pulumi.BoolPtrOutput)
+func (o GroupHookOutput) PipelineEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.PipelineEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for push events.
-func (o GroupHookOutput) PushEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.PushEvents }).(pulumi.BoolPtrOutput)
+func (o GroupHookOutput) PushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.PushEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for push events on matching branches only.
-func (o GroupHookOutput) PushEventsBranchFilter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.StringPtrOutput { return v.PushEventsBranchFilter }).(pulumi.StringPtrOutput)
+func (o GroupHookOutput) PushEventsBranchFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.StringOutput { return v.PushEventsBranchFilter }).(pulumi.StringOutput)
 }
 
-// Invoke the hook for releases events.
-func (o GroupHookOutput) ReleasesEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.ReleasesEvents }).(pulumi.BoolPtrOutput)
+// Invoke the hook for release events.
+func (o GroupHookOutput) ReleasesEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.ReleasesEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for subgroup events.
-func (o GroupHookOutput) SubgroupEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.SubgroupEvents }).(pulumi.BoolPtrOutput)
+func (o GroupHookOutput) SubgroupEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.SubgroupEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for tag push events.
-func (o GroupHookOutput) TagPushEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.TagPushEvents }).(pulumi.BoolPtrOutput)
+func (o GroupHookOutput) TagPushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
 // A token to present when invoking the hook. The token is not available for imported resources.
-func (o GroupHookOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+func (o GroupHookOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }
 
-// The url of the hook to invoke.
+// The url of the hook to invoke. Forces re-creation to preserve `token`.
 func (o GroupHookOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupHook) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
 // Invoke the hook for wiki page events.
-func (o GroupHookOutput) WikiPageEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupHook) pulumi.BoolPtrOutput { return v.WikiPageEvents }).(pulumi.BoolPtrOutput)
+func (o GroupHookOutput) WikiPageEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.WikiPageEvents }).(pulumi.BoolOutput)
 }
 
 type GroupHookArrayOutput struct{ *pulumi.OutputState }

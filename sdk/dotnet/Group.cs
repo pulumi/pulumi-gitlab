@@ -78,6 +78,36 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
+    ///     // Group with custom default branch protection defaults
+    ///     var example_four = new GitLab.Group("example-four", new()
+    ///     {
+    ///         Name = "example-four",
+    ///         Path = "example-four",
+    ///         Description = "An example group with default branch protection defaults",
+    ///         DefaultBranchProtectionDefaults = new GitLab.Inputs.GroupDefaultBranchProtectionDefaultsArgs
+    ///         {
+    ///             AllowedToPushes = new[]
+    ///             {
+    ///                 "no one",
+    ///             },
+    ///             AllowForcePush = true,
+    ///             AllowedToMerges = new[]
+    ///             {
+    ///                 "no one",
+    ///             },
+    ///             DeveloperCanInitialPush = true,
+    ///         },
+    ///     });
+    /// 
+    ///     // Group with a default branch name specified
+    ///     var example_five = new GitLab.Group("example-five", new()
+    ///     {
+    ///         Name = "example",
+    ///         Path = "example",
+    ///         DefaultBranch = "develop",
+    ///         Description = "An example group with a default branch name",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -121,6 +151,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("avatarUrl")]
         public Output<string> AvatarUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Initial default branch name.
+        /// </summary>
+        [Output("defaultBranch")]
+        public Output<string?> DefaultBranch { get; private set; } = null!;
 
         /// <summary>
         /// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
@@ -365,6 +401,12 @@ namespace Pulumi.GitLab
         public Input<string>? AvatarHash { get; set; }
 
         /// <summary>
+        /// Initial default branch name.
+        /// </summary>
+        [Input("defaultBranch")]
+        public Input<string>? DefaultBranch { get; set; }
+
+        /// <summary>
         /// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         /// </summary>
         [Input("defaultBranchProtection")]
@@ -551,6 +593,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("avatarUrl")]
         public Input<string>? AvatarUrl { get; set; }
+
+        /// <summary>
+        /// Initial default branch name.
+        /// </summary>
+        [Input("defaultBranch")]
+        public Input<string>? DefaultBranch { get; set; }
 
         /// <summary>
         /// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.

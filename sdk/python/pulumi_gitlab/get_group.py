@@ -27,7 +27,10 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, default_branch_protection=None, description=None, extra_shared_runners_minutes_limit=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, membership_lock=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, request_access_enabled=None, runners_token=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, visibility_level=None, web_url=None, wiki_access_level=None):
+    def __init__(__self__, default_branch=None, default_branch_protection=None, description=None, extra_shared_runners_minutes_limit=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, membership_lock=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, request_access_enabled=None, runners_token=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, visibility_level=None, web_url=None, wiki_access_level=None):
+        if default_branch and not isinstance(default_branch, str):
+            raise TypeError("Expected argument 'default_branch' to be a str")
+        pulumi.set(__self__, "default_branch", default_branch)
         if default_branch_protection and not isinstance(default_branch_protection, int):
             raise TypeError("Expected argument 'default_branch_protection' to be a int")
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
@@ -91,6 +94,14 @@ class GetGroupResult:
         if wiki_access_level and not isinstance(wiki_access_level, str):
             raise TypeError("Expected argument 'wiki_access_level' to be a str")
         pulumi.set(__self__, "wiki_access_level", wiki_access_level)
+
+    @property
+    @pulumi.getter(name="defaultBranch")
+    def default_branch(self) -> str:
+        """
+        The default branch of the group.
+        """
+        return pulumi.get(self, "default_branch")
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
@@ -267,6 +278,7 @@ class AwaitableGetGroupResult(GetGroupResult):
         if False:
             yield self
         return GetGroupResult(
+            default_branch=self.default_branch,
             default_branch_protection=self.default_branch_protection,
             description=self.description,
             extra_shared_runners_minutes_limit=self.extra_shared_runners_minutes_limit,
@@ -309,6 +321,7 @@ def get_group(full_path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
+        default_branch=pulumi.get(__ret__, 'default_branch'),
         default_branch_protection=pulumi.get(__ret__, 'default_branch_protection'),
         description=pulumi.get(__ret__, 'description'),
         extra_shared_runners_minutes_limit=pulumi.get(__ret__, 'extra_shared_runners_minutes_limit'),
@@ -348,6 +361,7 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
     return __ret__.apply(lambda __response__: GetGroupResult(
+        default_branch=pulumi.get(__response__, 'default_branch'),
         default_branch_protection=pulumi.get(__response__, 'default_branch_protection'),
         description=pulumi.get(__response__, 'description'),
         extra_shared_runners_minutes_limit=pulumi.get(__response__, 'extra_shared_runners_minutes_limit'),

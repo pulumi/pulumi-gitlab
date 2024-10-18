@@ -40,6 +40,11 @@ File path to client key when GitLab instance is behind company proxy. File must 
 
 earlyAuthCheck: Optional[bool]
 
+headers: Optional[str]
+"""
+A map of headers to append to all API request to the GitLab instance.
+"""
+
 insecure: Optional[bool]
 """
 When set to true this disables SSL verification of the connection to the GitLab instance.

@@ -925,9 +925,9 @@ func (o GroupAccessTokenRotationConfigurationPtrOutput) RotateBeforeDays() pulum
 type GroupDefaultBranchProtectionDefaults struct {
 	// Allow force push for all users with push access.
 	AllowForcePush *bool `pulumi:"allowForcePush"`
-	// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+	// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
 	AllowedToMerges []string `pulumi:"allowedToMerges"`
-	// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+	// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
 	AllowedToPushes []string `pulumi:"allowedToPushes"`
 	// Allow developers to initial push.
 	DeveloperCanInitialPush *bool `pulumi:"developerCanInitialPush"`
@@ -947,9 +947,9 @@ type GroupDefaultBranchProtectionDefaultsInput interface {
 type GroupDefaultBranchProtectionDefaultsArgs struct {
 	// Allow force push for all users with push access.
 	AllowForcePush pulumi.BoolPtrInput `pulumi:"allowForcePush"`
-	// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+	// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
 	AllowedToMerges pulumi.StringArrayInput `pulumi:"allowedToMerges"`
-	// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+	// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
 	AllowedToPushes pulumi.StringArrayInput `pulumi:"allowedToPushes"`
 	// Allow developers to initial push.
 	DeveloperCanInitialPush pulumi.BoolPtrInput `pulumi:"developerCanInitialPush"`
@@ -1037,12 +1037,12 @@ func (o GroupDefaultBranchProtectionDefaultsOutput) AllowForcePush() pulumi.Bool
 	return o.ApplyT(func(v GroupDefaultBranchProtectionDefaults) *bool { return v.AllowForcePush }).(pulumi.BoolPtrOutput)
 }
 
-// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
 func (o GroupDefaultBranchProtectionDefaultsOutput) AllowedToMerges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GroupDefaultBranchProtectionDefaults) []string { return v.AllowedToMerges }).(pulumi.StringArrayOutput)
 }
 
-// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
 func (o GroupDefaultBranchProtectionDefaultsOutput) AllowedToPushes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GroupDefaultBranchProtectionDefaults) []string { return v.AllowedToPushes }).(pulumi.StringArrayOutput)
 }
@@ -1086,7 +1086,7 @@ func (o GroupDefaultBranchProtectionDefaultsPtrOutput) AllowForcePush() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
 func (o GroupDefaultBranchProtectionDefaultsPtrOutput) AllowedToMerges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GroupDefaultBranchProtectionDefaults) []string {
 		if v == nil {
@@ -1096,7 +1096,7 @@ func (o GroupDefaultBranchProtectionDefaultsPtrOutput) AllowedToMerges() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
-// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
 func (o GroupDefaultBranchProtectionDefaultsPtrOutput) AllowedToPushes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GroupDefaultBranchProtectionDefaults) []string {
 		if v == nil {
@@ -2002,6 +2002,162 @@ func (o GroupPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 		}
 		return v.RejectUnsignedCommits
 	}).(pulumi.BoolPtrOutput)
+}
+
+type PersonalAccessTokenRotationConfiguration struct {
+	// The duration (in days) the new token should be valid for.
+	ExpirationDays int `pulumi:"expirationDays"`
+	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+	RotateBeforeDays int `pulumi:"rotateBeforeDays"`
+}
+
+// PersonalAccessTokenRotationConfigurationInput is an input type that accepts PersonalAccessTokenRotationConfigurationArgs and PersonalAccessTokenRotationConfigurationOutput values.
+// You can construct a concrete instance of `PersonalAccessTokenRotationConfigurationInput` via:
+//
+//	PersonalAccessTokenRotationConfigurationArgs{...}
+type PersonalAccessTokenRotationConfigurationInput interface {
+	pulumi.Input
+
+	ToPersonalAccessTokenRotationConfigurationOutput() PersonalAccessTokenRotationConfigurationOutput
+	ToPersonalAccessTokenRotationConfigurationOutputWithContext(context.Context) PersonalAccessTokenRotationConfigurationOutput
+}
+
+type PersonalAccessTokenRotationConfigurationArgs struct {
+	// The duration (in days) the new token should be valid for.
+	ExpirationDays pulumi.IntInput `pulumi:"expirationDays"`
+	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+	RotateBeforeDays pulumi.IntInput `pulumi:"rotateBeforeDays"`
+}
+
+func (PersonalAccessTokenRotationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersonalAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (i PersonalAccessTokenRotationConfigurationArgs) ToPersonalAccessTokenRotationConfigurationOutput() PersonalAccessTokenRotationConfigurationOutput {
+	return i.ToPersonalAccessTokenRotationConfigurationOutputWithContext(context.Background())
+}
+
+func (i PersonalAccessTokenRotationConfigurationArgs) ToPersonalAccessTokenRotationConfigurationOutputWithContext(ctx context.Context) PersonalAccessTokenRotationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersonalAccessTokenRotationConfigurationOutput)
+}
+
+func (i PersonalAccessTokenRotationConfigurationArgs) ToPersonalAccessTokenRotationConfigurationPtrOutput() PersonalAccessTokenRotationConfigurationPtrOutput {
+	return i.ToPersonalAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i PersonalAccessTokenRotationConfigurationArgs) ToPersonalAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) PersonalAccessTokenRotationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersonalAccessTokenRotationConfigurationOutput).ToPersonalAccessTokenRotationConfigurationPtrOutputWithContext(ctx)
+}
+
+// PersonalAccessTokenRotationConfigurationPtrInput is an input type that accepts PersonalAccessTokenRotationConfigurationArgs, PersonalAccessTokenRotationConfigurationPtr and PersonalAccessTokenRotationConfigurationPtrOutput values.
+// You can construct a concrete instance of `PersonalAccessTokenRotationConfigurationPtrInput` via:
+//
+//	        PersonalAccessTokenRotationConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PersonalAccessTokenRotationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToPersonalAccessTokenRotationConfigurationPtrOutput() PersonalAccessTokenRotationConfigurationPtrOutput
+	ToPersonalAccessTokenRotationConfigurationPtrOutputWithContext(context.Context) PersonalAccessTokenRotationConfigurationPtrOutput
+}
+
+type personalAccessTokenRotationConfigurationPtrType PersonalAccessTokenRotationConfigurationArgs
+
+func PersonalAccessTokenRotationConfigurationPtr(v *PersonalAccessTokenRotationConfigurationArgs) PersonalAccessTokenRotationConfigurationPtrInput {
+	return (*personalAccessTokenRotationConfigurationPtrType)(v)
+}
+
+func (*personalAccessTokenRotationConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersonalAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (i *personalAccessTokenRotationConfigurationPtrType) ToPersonalAccessTokenRotationConfigurationPtrOutput() PersonalAccessTokenRotationConfigurationPtrOutput {
+	return i.ToPersonalAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *personalAccessTokenRotationConfigurationPtrType) ToPersonalAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) PersonalAccessTokenRotationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersonalAccessTokenRotationConfigurationPtrOutput)
+}
+
+type PersonalAccessTokenRotationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (PersonalAccessTokenRotationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersonalAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (o PersonalAccessTokenRotationConfigurationOutput) ToPersonalAccessTokenRotationConfigurationOutput() PersonalAccessTokenRotationConfigurationOutput {
+	return o
+}
+
+func (o PersonalAccessTokenRotationConfigurationOutput) ToPersonalAccessTokenRotationConfigurationOutputWithContext(ctx context.Context) PersonalAccessTokenRotationConfigurationOutput {
+	return o
+}
+
+func (o PersonalAccessTokenRotationConfigurationOutput) ToPersonalAccessTokenRotationConfigurationPtrOutput() PersonalAccessTokenRotationConfigurationPtrOutput {
+	return o.ToPersonalAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o PersonalAccessTokenRotationConfigurationOutput) ToPersonalAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) PersonalAccessTokenRotationConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PersonalAccessTokenRotationConfiguration) *PersonalAccessTokenRotationConfiguration {
+		return &v
+	}).(PersonalAccessTokenRotationConfigurationPtrOutput)
+}
+
+// The duration (in days) the new token should be valid for.
+func (o PersonalAccessTokenRotationConfigurationOutput) ExpirationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v PersonalAccessTokenRotationConfiguration) int { return v.ExpirationDays }).(pulumi.IntOutput)
+}
+
+// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+func (o PersonalAccessTokenRotationConfigurationOutput) RotateBeforeDays() pulumi.IntOutput {
+	return o.ApplyT(func(v PersonalAccessTokenRotationConfiguration) int { return v.RotateBeforeDays }).(pulumi.IntOutput)
+}
+
+type PersonalAccessTokenRotationConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (PersonalAccessTokenRotationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersonalAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (o PersonalAccessTokenRotationConfigurationPtrOutput) ToPersonalAccessTokenRotationConfigurationPtrOutput() PersonalAccessTokenRotationConfigurationPtrOutput {
+	return o
+}
+
+func (o PersonalAccessTokenRotationConfigurationPtrOutput) ToPersonalAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) PersonalAccessTokenRotationConfigurationPtrOutput {
+	return o
+}
+
+func (o PersonalAccessTokenRotationConfigurationPtrOutput) Elem() PersonalAccessTokenRotationConfigurationOutput {
+	return o.ApplyT(func(v *PersonalAccessTokenRotationConfiguration) PersonalAccessTokenRotationConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret PersonalAccessTokenRotationConfiguration
+		return ret
+	}).(PersonalAccessTokenRotationConfigurationOutput)
+}
+
+// The duration (in days) the new token should be valid for.
+func (o PersonalAccessTokenRotationConfigurationPtrOutput) ExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PersonalAccessTokenRotationConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpirationDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+func (o PersonalAccessTokenRotationConfigurationPtrOutput) RotateBeforeDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PersonalAccessTokenRotationConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RotateBeforeDays
+	}).(pulumi.IntPtrOutput)
 }
 
 type ProjectAccessTokenRotationConfiguration struct {
@@ -4518,6 +4674,319 @@ func (o GetGroupMembershipMemberArrayOutput) Index(i pulumi.IntInput) GetGroupMe
 	}).(GetGroupMembershipMemberOutput)
 }
 
+type GetGroupProvisionedUsersProvisionedUser struct {
+	// The avatar URL of the provisioned user.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The bio of the provisioned user.
+	Bio string `pulumi:"bio"`
+	// Whether the provisioned user is a bot.
+	Bot bool `pulumi:"bot"`
+	// The confirmation date of the provisioned user.
+	ConfirmedAt string `pulumi:"confirmedAt"`
+	// The creation date of the provisioned user.
+	CreatedAt string `pulumi:"createdAt"`
+	// The email of the provisioned user.
+	Email string `pulumi:"email"`
+	// Whether the provisioned user is external.
+	External bool `pulumi:"external"`
+	// The ID of the provisioned user.
+	Id string `pulumi:"id"`
+	// The job title of the provisioned user.
+	JobTitle string `pulumi:"jobTitle"`
+	// The last activity date of the provisioned user.
+	LastActivityOn string `pulumi:"lastActivityOn"`
+	// The last sign-in date of the provisioned user.
+	LastSignInAt string `pulumi:"lastSignInAt"`
+	// The LinkedIn ID of the provisioned user.
+	Linkedin string `pulumi:"linkedin"`
+	// The location of the provisioned user.
+	Location string `pulumi:"location"`
+	// The name of the provisioned user.
+	Name string `pulumi:"name"`
+	// The organization of the provisioned user.
+	Organization string `pulumi:"organization"`
+	// Whether the provisioned user has a private profile.
+	PrivateProfile bool `pulumi:"privateProfile"`
+	// The pronouns of the provisioned user.
+	Pronouns string `pulumi:"pronouns"`
+	// The public email of the provisioned user.
+	PublicEmail string `pulumi:"publicEmail"`
+	// The Skype ID of the provisioned user.
+	Skype string `pulumi:"skype"`
+	// The state of the provisioned user.
+	State string `pulumi:"state"`
+	// The Twitter ID of the provisioned user.
+	Twitter string `pulumi:"twitter"`
+	// Whether two-factor authentication is enabled for the provisioned user.
+	TwoFactorEnabled bool `pulumi:"twoFactorEnabled"`
+	// The username of the provisioned user.
+	Username string `pulumi:"username"`
+	// The web URL of the provisioned user.
+	WebUrl string `pulumi:"webUrl"`
+	// The website URL of the provisioned user.
+	WebsiteUrl string `pulumi:"websiteUrl"`
+}
+
+// GetGroupProvisionedUsersProvisionedUserInput is an input type that accepts GetGroupProvisionedUsersProvisionedUserArgs and GetGroupProvisionedUsersProvisionedUserOutput values.
+// You can construct a concrete instance of `GetGroupProvisionedUsersProvisionedUserInput` via:
+//
+//	GetGroupProvisionedUsersProvisionedUserArgs{...}
+type GetGroupProvisionedUsersProvisionedUserInput interface {
+	pulumi.Input
+
+	ToGetGroupProvisionedUsersProvisionedUserOutput() GetGroupProvisionedUsersProvisionedUserOutput
+	ToGetGroupProvisionedUsersProvisionedUserOutputWithContext(context.Context) GetGroupProvisionedUsersProvisionedUserOutput
+}
+
+type GetGroupProvisionedUsersProvisionedUserArgs struct {
+	// The avatar URL of the provisioned user.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// The bio of the provisioned user.
+	Bio pulumi.StringInput `pulumi:"bio"`
+	// Whether the provisioned user is a bot.
+	Bot pulumi.BoolInput `pulumi:"bot"`
+	// The confirmation date of the provisioned user.
+	ConfirmedAt pulumi.StringInput `pulumi:"confirmedAt"`
+	// The creation date of the provisioned user.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The email of the provisioned user.
+	Email pulumi.StringInput `pulumi:"email"`
+	// Whether the provisioned user is external.
+	External pulumi.BoolInput `pulumi:"external"`
+	// The ID of the provisioned user.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The job title of the provisioned user.
+	JobTitle pulumi.StringInput `pulumi:"jobTitle"`
+	// The last activity date of the provisioned user.
+	LastActivityOn pulumi.StringInput `pulumi:"lastActivityOn"`
+	// The last sign-in date of the provisioned user.
+	LastSignInAt pulumi.StringInput `pulumi:"lastSignInAt"`
+	// The LinkedIn ID of the provisioned user.
+	Linkedin pulumi.StringInput `pulumi:"linkedin"`
+	// The location of the provisioned user.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The name of the provisioned user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The organization of the provisioned user.
+	Organization pulumi.StringInput `pulumi:"organization"`
+	// Whether the provisioned user has a private profile.
+	PrivateProfile pulumi.BoolInput `pulumi:"privateProfile"`
+	// The pronouns of the provisioned user.
+	Pronouns pulumi.StringInput `pulumi:"pronouns"`
+	// The public email of the provisioned user.
+	PublicEmail pulumi.StringInput `pulumi:"publicEmail"`
+	// The Skype ID of the provisioned user.
+	Skype pulumi.StringInput `pulumi:"skype"`
+	// The state of the provisioned user.
+	State pulumi.StringInput `pulumi:"state"`
+	// The Twitter ID of the provisioned user.
+	Twitter pulumi.StringInput `pulumi:"twitter"`
+	// Whether two-factor authentication is enabled for the provisioned user.
+	TwoFactorEnabled pulumi.BoolInput `pulumi:"twoFactorEnabled"`
+	// The username of the provisioned user.
+	Username pulumi.StringInput `pulumi:"username"`
+	// The web URL of the provisioned user.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+	// The website URL of the provisioned user.
+	WebsiteUrl pulumi.StringInput `pulumi:"websiteUrl"`
+}
+
+func (GetGroupProvisionedUsersProvisionedUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUser)(nil)).Elem()
+}
+
+func (i GetGroupProvisionedUsersProvisionedUserArgs) ToGetGroupProvisionedUsersProvisionedUserOutput() GetGroupProvisionedUsersProvisionedUserOutput {
+	return i.ToGetGroupProvisionedUsersProvisionedUserOutputWithContext(context.Background())
+}
+
+func (i GetGroupProvisionedUsersProvisionedUserArgs) ToGetGroupProvisionedUsersProvisionedUserOutputWithContext(ctx context.Context) GetGroupProvisionedUsersProvisionedUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupProvisionedUsersProvisionedUserOutput)
+}
+
+// GetGroupProvisionedUsersProvisionedUserArrayInput is an input type that accepts GetGroupProvisionedUsersProvisionedUserArray and GetGroupProvisionedUsersProvisionedUserArrayOutput values.
+// You can construct a concrete instance of `GetGroupProvisionedUsersProvisionedUserArrayInput` via:
+//
+//	GetGroupProvisionedUsersProvisionedUserArray{ GetGroupProvisionedUsersProvisionedUserArgs{...} }
+type GetGroupProvisionedUsersProvisionedUserArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupProvisionedUsersProvisionedUserArrayOutput() GetGroupProvisionedUsersProvisionedUserArrayOutput
+	ToGetGroupProvisionedUsersProvisionedUserArrayOutputWithContext(context.Context) GetGroupProvisionedUsersProvisionedUserArrayOutput
+}
+
+type GetGroupProvisionedUsersProvisionedUserArray []GetGroupProvisionedUsersProvisionedUserInput
+
+func (GetGroupProvisionedUsersProvisionedUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupProvisionedUsersProvisionedUser)(nil)).Elem()
+}
+
+func (i GetGroupProvisionedUsersProvisionedUserArray) ToGetGroupProvisionedUsersProvisionedUserArrayOutput() GetGroupProvisionedUsersProvisionedUserArrayOutput {
+	return i.ToGetGroupProvisionedUsersProvisionedUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupProvisionedUsersProvisionedUserArray) ToGetGroupProvisionedUsersProvisionedUserArrayOutputWithContext(ctx context.Context) GetGroupProvisionedUsersProvisionedUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupProvisionedUsersProvisionedUserArrayOutput)
+}
+
+type GetGroupProvisionedUsersProvisionedUserOutput struct{ *pulumi.OutputState }
+
+func (GetGroupProvisionedUsersProvisionedUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUser)(nil)).Elem()
+}
+
+func (o GetGroupProvisionedUsersProvisionedUserOutput) ToGetGroupProvisionedUsersProvisionedUserOutput() GetGroupProvisionedUsersProvisionedUserOutput {
+	return o
+}
+
+func (o GetGroupProvisionedUsersProvisionedUserOutput) ToGetGroupProvisionedUsersProvisionedUserOutputWithContext(ctx context.Context) GetGroupProvisionedUsersProvisionedUserOutput {
+	return o
+}
+
+// The avatar URL of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The bio of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Bio() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Bio }).(pulumi.StringOutput)
+}
+
+// Whether the provisioned user is a bot.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Bot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) bool { return v.Bot }).(pulumi.BoolOutput)
+}
+
+// The confirmation date of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) ConfirmedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.ConfirmedAt }).(pulumi.StringOutput)
+}
+
+// The creation date of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The email of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// Whether the provisioned user is external.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) External() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) bool { return v.External }).(pulumi.BoolOutput)
+}
+
+// The ID of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The job title of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) JobTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.JobTitle }).(pulumi.StringOutput)
+}
+
+// The last activity date of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) LastActivityOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.LastActivityOn }).(pulumi.StringOutput)
+}
+
+// The last sign-in date of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) LastSignInAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.LastSignInAt }).(pulumi.StringOutput)
+}
+
+// The LinkedIn ID of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Linkedin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Linkedin }).(pulumi.StringOutput)
+}
+
+// The location of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The organization of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+// Whether the provisioned user has a private profile.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) PrivateProfile() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) bool { return v.PrivateProfile }).(pulumi.BoolOutput)
+}
+
+// The pronouns of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Pronouns() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Pronouns }).(pulumi.StringOutput)
+}
+
+// The public email of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) PublicEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.PublicEmail }).(pulumi.StringOutput)
+}
+
+// The Skype ID of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Skype() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Skype }).(pulumi.StringOutput)
+}
+
+// The state of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The Twitter ID of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Twitter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Twitter }).(pulumi.StringOutput)
+}
+
+// Whether two-factor authentication is enabled for the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) TwoFactorEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) bool { return v.TwoFactorEnabled }).(pulumi.BoolOutput)
+}
+
+// The username of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// The web URL of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+// The website URL of the provisioned user.
+func (o GetGroupProvisionedUsersProvisionedUserOutput) WebsiteUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupProvisionedUsersProvisionedUser) string { return v.WebsiteUrl }).(pulumi.StringOutput)
+}
+
+type GetGroupProvisionedUsersProvisionedUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupProvisionedUsersProvisionedUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupProvisionedUsersProvisionedUser)(nil)).Elem()
+}
+
+func (o GetGroupProvisionedUsersProvisionedUserArrayOutput) ToGetGroupProvisionedUsersProvisionedUserArrayOutput() GetGroupProvisionedUsersProvisionedUserArrayOutput {
+	return o
+}
+
+func (o GetGroupProvisionedUsersProvisionedUserArrayOutput) ToGetGroupProvisionedUsersProvisionedUserArrayOutputWithContext(ctx context.Context) GetGroupProvisionedUsersProvisionedUserArrayOutput {
+	return o
+}
+
+func (o GetGroupProvisionedUsersProvisionedUserArrayOutput) Index(i pulumi.IntInput) GetGroupProvisionedUsersProvisionedUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupProvisionedUsersProvisionedUser {
+		return vs[0].([]GetGroupProvisionedUsersProvisionedUser)[vs[1].(int)]
+	}).(GetGroupProvisionedUsersProvisionedUserOutput)
+}
+
 type GetGroupSharedWithGroup struct {
 	// Share with group expiration date.
 	ExpiresAt string `pulumi:"expiresAt"`
@@ -6121,7 +6590,7 @@ type GetPipelineSchedulesPipelineSchedule struct {
 	// The description of the pipeline schedule.
 	Description string `pulumi:"description"`
 	// The pipeline schedule id.
-	Id string `pulumi:"id"`
+	Id int `pulumi:"id"`
 	// The datetime of when the schedule will next run.
 	NextRunAt string `pulumi:"nextRunAt"`
 	// The details of the pipeline schedule owner.
@@ -6155,7 +6624,7 @@ type GetPipelineSchedulesPipelineScheduleArgs struct {
 	// The description of the pipeline schedule.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The pipeline schedule id.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
 	// The datetime of when the schedule will next run.
 	NextRunAt pulumi.StringInput `pulumi:"nextRunAt"`
 	// The details of the pipeline schedule owner.
@@ -6243,8 +6712,8 @@ func (o GetPipelineSchedulesPipelineScheduleOutput) Description() pulumi.StringO
 }
 
 // The pipeline schedule id.
-func (o GetPipelineSchedulesPipelineScheduleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) string { return v.Id }).(pulumi.StringOutput)
+func (o GetPipelineSchedulesPipelineScheduleOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPipelineSchedulesPipelineSchedule) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // The datetime of when the schedule will next run.
@@ -7985,6 +8454,342 @@ func (o GetProjectMembershipMemberArrayOutput) Index(i pulumi.IntInput) GetProje
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectMembershipMember {
 		return vs[0].([]GetProjectMembershipMember)[vs[1].(int)]
 	}).(GetProjectMembershipMemberOutput)
+}
+
+type GetProjectMergeRequestAssignee struct {
+	// A link to the user's avatar image.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id float64 `pulumi:"id"`
+	// The name of the user.
+	Name string `pulumi:"name"`
+	// The state of the user account.
+	State string `pulumi:"state"`
+	// The username of the user.
+	Username string `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl string `pulumi:"webUrl"`
+}
+
+// GetProjectMergeRequestAssigneeInput is an input type that accepts GetProjectMergeRequestAssigneeArgs and GetProjectMergeRequestAssigneeOutput values.
+// You can construct a concrete instance of `GetProjectMergeRequestAssigneeInput` via:
+//
+//	GetProjectMergeRequestAssigneeArgs{...}
+type GetProjectMergeRequestAssigneeInput interface {
+	pulumi.Input
+
+	ToGetProjectMergeRequestAssigneeOutput() GetProjectMergeRequestAssigneeOutput
+	ToGetProjectMergeRequestAssigneeOutputWithContext(context.Context) GetProjectMergeRequestAssigneeOutput
+}
+
+type GetProjectMergeRequestAssigneeArgs struct {
+	// A link to the user's avatar image.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id pulumi.Float64Input `pulumi:"id"`
+	// The name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The state of the user account.
+	State pulumi.StringInput `pulumi:"state"`
+	// The username of the user.
+	Username pulumi.StringInput `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetProjectMergeRequestAssigneeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestAssignee)(nil)).Elem()
+}
+
+func (i GetProjectMergeRequestAssigneeArgs) ToGetProjectMergeRequestAssigneeOutput() GetProjectMergeRequestAssigneeOutput {
+	return i.ToGetProjectMergeRequestAssigneeOutputWithContext(context.Background())
+}
+
+func (i GetProjectMergeRequestAssigneeArgs) ToGetProjectMergeRequestAssigneeOutputWithContext(ctx context.Context) GetProjectMergeRequestAssigneeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMergeRequestAssigneeOutput)
+}
+
+// GetProjectMergeRequestAssigneeArrayInput is an input type that accepts GetProjectMergeRequestAssigneeArray and GetProjectMergeRequestAssigneeArrayOutput values.
+// You can construct a concrete instance of `GetProjectMergeRequestAssigneeArrayInput` via:
+//
+//	GetProjectMergeRequestAssigneeArray{ GetProjectMergeRequestAssigneeArgs{...} }
+type GetProjectMergeRequestAssigneeArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectMergeRequestAssigneeArrayOutput() GetProjectMergeRequestAssigneeArrayOutput
+	ToGetProjectMergeRequestAssigneeArrayOutputWithContext(context.Context) GetProjectMergeRequestAssigneeArrayOutput
+}
+
+type GetProjectMergeRequestAssigneeArray []GetProjectMergeRequestAssigneeInput
+
+func (GetProjectMergeRequestAssigneeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectMergeRequestAssignee)(nil)).Elem()
+}
+
+func (i GetProjectMergeRequestAssigneeArray) ToGetProjectMergeRequestAssigneeArrayOutput() GetProjectMergeRequestAssigneeArrayOutput {
+	return i.ToGetProjectMergeRequestAssigneeArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectMergeRequestAssigneeArray) ToGetProjectMergeRequestAssigneeArrayOutputWithContext(ctx context.Context) GetProjectMergeRequestAssigneeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMergeRequestAssigneeArrayOutput)
+}
+
+type GetProjectMergeRequestAssigneeOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMergeRequestAssigneeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestAssignee)(nil)).Elem()
+}
+
+func (o GetProjectMergeRequestAssigneeOutput) ToGetProjectMergeRequestAssigneeOutput() GetProjectMergeRequestAssigneeOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestAssigneeOutput) ToGetProjectMergeRequestAssigneeOutputWithContext(ctx context.Context) GetProjectMergeRequestAssigneeOutput {
+	return o
+}
+
+// A link to the user's avatar image.
+func (o GetProjectMergeRequestAssigneeOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAssignee) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The internal ID number of the user.
+func (o GetProjectMergeRequestAssigneeOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetProjectMergeRequestAssignee) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// The name of the user.
+func (o GetProjectMergeRequestAssigneeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAssignee) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the user account.
+func (o GetProjectMergeRequestAssigneeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAssignee) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The username of the user.
+func (o GetProjectMergeRequestAssigneeOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAssignee) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// A link to the user's profile page.
+func (o GetProjectMergeRequestAssigneeOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAssignee) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+type GetProjectMergeRequestAssigneeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMergeRequestAssigneeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectMergeRequestAssignee)(nil)).Elem()
+}
+
+func (o GetProjectMergeRequestAssigneeArrayOutput) ToGetProjectMergeRequestAssigneeArrayOutput() GetProjectMergeRequestAssigneeArrayOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestAssigneeArrayOutput) ToGetProjectMergeRequestAssigneeArrayOutputWithContext(ctx context.Context) GetProjectMergeRequestAssigneeArrayOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestAssigneeArrayOutput) Index(i pulumi.IntInput) GetProjectMergeRequestAssigneeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectMergeRequestAssignee {
+		return vs[0].([]GetProjectMergeRequestAssignee)[vs[1].(int)]
+	}).(GetProjectMergeRequestAssigneeOutput)
+}
+
+type GetProjectMergeRequestAuthor struct {
+	// A link to the user's avatar image.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id float64 `pulumi:"id"`
+	// The name of the user.
+	Name string `pulumi:"name"`
+	// The state of the user account.
+	State string `pulumi:"state"`
+	// The username of the user.
+	Username string `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl string `pulumi:"webUrl"`
+}
+
+// GetProjectMergeRequestAuthorInput is an input type that accepts GetProjectMergeRequestAuthorArgs and GetProjectMergeRequestAuthorOutput values.
+// You can construct a concrete instance of `GetProjectMergeRequestAuthorInput` via:
+//
+//	GetProjectMergeRequestAuthorArgs{...}
+type GetProjectMergeRequestAuthorInput interface {
+	pulumi.Input
+
+	ToGetProjectMergeRequestAuthorOutput() GetProjectMergeRequestAuthorOutput
+	ToGetProjectMergeRequestAuthorOutputWithContext(context.Context) GetProjectMergeRequestAuthorOutput
+}
+
+type GetProjectMergeRequestAuthorArgs struct {
+	// A link to the user's avatar image.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id pulumi.Float64Input `pulumi:"id"`
+	// The name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The state of the user account.
+	State pulumi.StringInput `pulumi:"state"`
+	// The username of the user.
+	Username pulumi.StringInput `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetProjectMergeRequestAuthorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestAuthor)(nil)).Elem()
+}
+
+func (i GetProjectMergeRequestAuthorArgs) ToGetProjectMergeRequestAuthorOutput() GetProjectMergeRequestAuthorOutput {
+	return i.ToGetProjectMergeRequestAuthorOutputWithContext(context.Background())
+}
+
+func (i GetProjectMergeRequestAuthorArgs) ToGetProjectMergeRequestAuthorOutputWithContext(ctx context.Context) GetProjectMergeRequestAuthorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMergeRequestAuthorOutput)
+}
+
+type GetProjectMergeRequestAuthorOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMergeRequestAuthorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestAuthor)(nil)).Elem()
+}
+
+func (o GetProjectMergeRequestAuthorOutput) ToGetProjectMergeRequestAuthorOutput() GetProjectMergeRequestAuthorOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestAuthorOutput) ToGetProjectMergeRequestAuthorOutputWithContext(ctx context.Context) GetProjectMergeRequestAuthorOutput {
+	return o
+}
+
+// A link to the user's avatar image.
+func (o GetProjectMergeRequestAuthorOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAuthor) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The internal ID number of the user.
+func (o GetProjectMergeRequestAuthorOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetProjectMergeRequestAuthor) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// The name of the user.
+func (o GetProjectMergeRequestAuthorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAuthor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the user account.
+func (o GetProjectMergeRequestAuthorOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAuthor) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The username of the user.
+func (o GetProjectMergeRequestAuthorOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAuthor) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// A link to the user's profile page.
+func (o GetProjectMergeRequestAuthorOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAuthor) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+type GetProjectMergeRequestClosedBy struct {
+	// A link to the user's avatar image.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id float64 `pulumi:"id"`
+	// The name of the user.
+	Name string `pulumi:"name"`
+	// The state of the user account.
+	State string `pulumi:"state"`
+	// The username of the user.
+	Username string `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl string `pulumi:"webUrl"`
+}
+
+// GetProjectMergeRequestClosedByInput is an input type that accepts GetProjectMergeRequestClosedByArgs and GetProjectMergeRequestClosedByOutput values.
+// You can construct a concrete instance of `GetProjectMergeRequestClosedByInput` via:
+//
+//	GetProjectMergeRequestClosedByArgs{...}
+type GetProjectMergeRequestClosedByInput interface {
+	pulumi.Input
+
+	ToGetProjectMergeRequestClosedByOutput() GetProjectMergeRequestClosedByOutput
+	ToGetProjectMergeRequestClosedByOutputWithContext(context.Context) GetProjectMergeRequestClosedByOutput
+}
+
+type GetProjectMergeRequestClosedByArgs struct {
+	// A link to the user's avatar image.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id pulumi.Float64Input `pulumi:"id"`
+	// The name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The state of the user account.
+	State pulumi.StringInput `pulumi:"state"`
+	// The username of the user.
+	Username pulumi.StringInput `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetProjectMergeRequestClosedByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestClosedBy)(nil)).Elem()
+}
+
+func (i GetProjectMergeRequestClosedByArgs) ToGetProjectMergeRequestClosedByOutput() GetProjectMergeRequestClosedByOutput {
+	return i.ToGetProjectMergeRequestClosedByOutputWithContext(context.Background())
+}
+
+func (i GetProjectMergeRequestClosedByArgs) ToGetProjectMergeRequestClosedByOutputWithContext(ctx context.Context) GetProjectMergeRequestClosedByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMergeRequestClosedByOutput)
+}
+
+type GetProjectMergeRequestClosedByOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMergeRequestClosedByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestClosedBy)(nil)).Elem()
+}
+
+func (o GetProjectMergeRequestClosedByOutput) ToGetProjectMergeRequestClosedByOutput() GetProjectMergeRequestClosedByOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestClosedByOutput) ToGetProjectMergeRequestClosedByOutputWithContext(ctx context.Context) GetProjectMergeRequestClosedByOutput {
+	return o
+}
+
+// A link to the user's avatar image.
+func (o GetProjectMergeRequestClosedByOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestClosedBy) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The internal ID number of the user.
+func (o GetProjectMergeRequestClosedByOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetProjectMergeRequestClosedBy) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// The name of the user.
+func (o GetProjectMergeRequestClosedByOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestClosedBy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the user account.
+func (o GetProjectMergeRequestClosedByOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestClosedBy) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The username of the user.
+func (o GetProjectMergeRequestClosedByOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestClosedBy) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// A link to the user's profile page.
+func (o GetProjectMergeRequestClosedByOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestClosedBy) string { return v.WebUrl }).(pulumi.StringOutput)
 }
 
 type GetProjectMilestonesMilestone struct {
@@ -10443,6 +11248,8 @@ type GetProjectsProject struct {
 	_links map[string]string `pulumi:"_links"`
 	// Whether allowMergeOnSkippedPipeline is enabled for the project.
 	AllowMergeOnSkippedPipeline bool `pulumi:"allowMergeOnSkippedPipeline"`
+	// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+	AllowPipelineTriggerApproveDeployment bool `pulumi:"allowPipelineTriggerApproveDeployment"`
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel string `pulumi:"analyticsAccessLevel"`
 	// The numbers of approvals needed in a merge requests.
@@ -10553,6 +11360,10 @@ type GetProjectsProject struct {
 	MirrorTriggerBuilds bool `pulumi:"mirrorTriggerBuilds"`
 	// The mirror user ID for the project.
 	MirrorUserId int `pulumi:"mirrorUserId"`
+	// The visibility of machine learning model experiments.
+	ModelExperimentsAccessLevel string `pulumi:"modelExperimentsAccessLevel"`
+	// The visibility of machine learning model registry.
+	ModelRegistryAccessLevel string `pulumi:"modelRegistryAccessLevel"`
 	// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
 	MonitorAccessLevel string `pulumi:"monitorAccessLevel"`
 	// The name of the project.
@@ -10648,6 +11459,8 @@ type GetProjectsProjectArgs struct {
 	_links pulumi.StringMapInput `pulumi:"_links"`
 	// Whether allowMergeOnSkippedPipeline is enabled for the project.
 	AllowMergeOnSkippedPipeline pulumi.BoolInput `pulumi:"allowMergeOnSkippedPipeline"`
+	// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+	AllowPipelineTriggerApproveDeployment pulumi.BoolInput `pulumi:"allowPipelineTriggerApproveDeployment"`
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel pulumi.StringInput `pulumi:"analyticsAccessLevel"`
 	// The numbers of approvals needed in a merge requests.
@@ -10758,6 +11571,10 @@ type GetProjectsProjectArgs struct {
 	MirrorTriggerBuilds pulumi.BoolInput `pulumi:"mirrorTriggerBuilds"`
 	// The mirror user ID for the project.
 	MirrorUserId pulumi.IntInput `pulumi:"mirrorUserId"`
+	// The visibility of machine learning model experiments.
+	ModelExperimentsAccessLevel pulumi.StringInput `pulumi:"modelExperimentsAccessLevel"`
+	// The visibility of machine learning model registry.
+	ModelRegistryAccessLevel pulumi.StringInput `pulumi:"modelRegistryAccessLevel"`
 	// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
 	MonitorAccessLevel pulumi.StringInput `pulumi:"monitorAccessLevel"`
 	// The name of the project.
@@ -10896,6 +11713,11 @@ func (o GetProjectsProjectOutput) _links() pulumi.StringMapOutput {
 // Whether allowMergeOnSkippedPipeline is enabled for the project.
 func (o GetProjectsProjectOutput) AllowMergeOnSkippedPipeline() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.AllowMergeOnSkippedPipeline }).(pulumi.BoolOutput)
+}
+
+// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+func (o GetProjectsProjectOutput) AllowPipelineTriggerApproveDeployment() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.AllowPipelineTriggerApproveDeployment }).(pulumi.BoolOutput)
 }
 
 // Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -11173,6 +11995,16 @@ func (o GetProjectsProjectOutput) MirrorTriggerBuilds() pulumi.BoolOutput {
 // The mirror user ID for the project.
 func (o GetProjectsProjectOutput) MirrorUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProject) int { return v.MirrorUserId }).(pulumi.IntOutput)
+}
+
+// The visibility of machine learning model experiments.
+func (o GetProjectsProjectOutput) ModelExperimentsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.ModelExperimentsAccessLevel }).(pulumi.StringOutput)
+}
+
+// The visibility of machine learning model registry.
+func (o GetProjectsProjectOutput) ModelRegistryAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.ModelRegistryAccessLevel }).(pulumi.StringOutput)
 }
 
 // Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
@@ -13416,6 +14248,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentDeployAccessLevelArrayInput)(nil)).Elem(), GroupProtectedEnvironmentDeployAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesInput)(nil)).Elem(), GroupPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesPtrInput)(nil)).Elem(), GroupPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PersonalAccessTokenRotationConfigurationInput)(nil)).Elem(), PersonalAccessTokenRotationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PersonalAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), PersonalAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessTokenRotationConfigurationInput)(nil)).Elem(), ProjectAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), ProjectAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
@@ -13444,6 +14278,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupHooksHookArrayInput)(nil)).Elem(), GetGroupHooksHookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberInput)(nil)).Elem(), GetGroupMembershipMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberArrayInput)(nil)).Elem(), GetGroupMembershipMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUserInput)(nil)).Elem(), GetGroupProvisionedUsersProvisionedUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUserArrayInput)(nil)).Elem(), GetGroupProvisionedUsersProvisionedUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSharedWithGroupInput)(nil)).Elem(), GetGroupSharedWithGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSharedWithGroupArrayInput)(nil)).Elem(), GetGroupSharedWithGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSubgroupsSubgroupInput)(nil)).Elem(), GetGroupSubgroupsSubgroupArgs{})
@@ -13482,6 +14318,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssuesIssueTaskCompletionStatusArrayInput)(nil)).Elem(), GetProjectIssuesIssueTaskCompletionStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMembershipMemberInput)(nil)).Elem(), GetProjectMembershipMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMembershipMemberArrayInput)(nil)).Elem(), GetProjectMembershipMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestAssigneeInput)(nil)).Elem(), GetProjectMergeRequestAssigneeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestAssigneeArrayInput)(nil)).Elem(), GetProjectMergeRequestAssigneeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestAuthorInput)(nil)).Elem(), GetProjectMergeRequestAuthorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestClosedByInput)(nil)).Elem(), GetProjectMergeRequestClosedByArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMilestonesMilestoneInput)(nil)).Elem(), GetProjectMilestonesMilestoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMilestonesMilestoneArrayInput)(nil)).Elem(), GetProjectMilestonesMilestoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchMergeAccessLevelInput)(nil)).Elem(), GetProjectProtectedBranchMergeAccessLevelArgs{})
@@ -13568,6 +14408,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupProtectedEnvironmentDeployAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(GroupPushRulesOutput{})
 	pulumi.RegisterOutputType(GroupPushRulesPtrOutput{})
+	pulumi.RegisterOutputType(PersonalAccessTokenRotationConfigurationOutput{})
+	pulumi.RegisterOutputType(PersonalAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ProjectAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(ProjectAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyOutput{})
@@ -13596,6 +14438,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupHooksHookArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupProvisionedUsersProvisionedUserOutput{})
+	pulumi.RegisterOutputType(GetGroupProvisionedUsersProvisionedUserArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSharedWithGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupSharedWithGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSubgroupsSubgroupOutput{})
@@ -13634,6 +14478,10 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectIssuesIssueTaskCompletionStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectMembershipMemberOutput{})
 	pulumi.RegisterOutputType(GetProjectMembershipMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectMergeRequestAssigneeOutput{})
+	pulumi.RegisterOutputType(GetProjectMergeRequestAssigneeArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectMergeRequestAuthorOutput{})
+	pulumi.RegisterOutputType(GetProjectMergeRequestClosedByOutput{})
 	pulumi.RegisterOutputType(GetProjectMilestonesMilestoneOutput{})
 	pulumi.RegisterOutputType(GetProjectMilestonesMilestoneArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectProtectedBranchMergeAccessLevelOutput{})

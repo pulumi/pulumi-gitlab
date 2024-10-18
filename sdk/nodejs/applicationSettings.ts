@@ -406,6 +406,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly elasticsearchMaxBulkSizeMb!: pulumi.Output<number>;
     /**
+     * Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+     */
+    public readonly elasticsearchMaxCodeIndexingConcurrency!: pulumi.Output<number>;
+    /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
     public readonly elasticsearchNamespaceIds!: pulumi.Output<number[]>;
@@ -417,6 +421,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
     public readonly elasticsearchProjectIds!: pulumi.Output<number[]>;
+    /**
+     * Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+     */
+    public readonly elasticsearchRequeueWorkers!: pulumi.Output<boolean>;
     /**
      * Enable Elasticsearch search.
      */
@@ -430,6 +438,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly elasticsearchUsername!: pulumi.Output<string>;
     /**
+     * Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+     */
+    public readonly elasticsearchWorkerNumberOfShards!: pulumi.Output<number>;
+    /**
      * Additional text added to the bottom of every email for legal/auditing/compliance reasons.
      */
     public readonly emailAdditionalText!: pulumi.Output<string>;
@@ -437,6 +449,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
      */
     public readonly emailAuthorInBody!: pulumi.Output<boolean>;
+    /**
+     * Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+     */
+    public readonly emailConfirmationSetting!: pulumi.Output<string>;
+    /**
+     * Show the external redirect page that warns you about user-generated content in GitLab Pages.
+     */
+    public readonly enableArtifactExternalRedirectWarningPage!: pulumi.Output<boolean>;
     /**
      * Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
      */
@@ -490,6 +510,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly externalPipelineValidationServiceUrl!: pulumi.Output<string>;
     /**
+     * Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+     */
+    public readonly failedLoginAttemptsUnlockPeriodInMinutes!: pulumi.Output<number>;
+    /**
      * The ID of a project to load custom file templates from.
      */
     public readonly fileTemplateProjectId!: pulumi.Output<number>;
@@ -506,7 +530,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly geoStatusTimeout!: pulumi.Output<number>;
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     */
+    public readonly gitRateLimitUsersAlertlists!: pulumi.Output<number[]>;
+    /**
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
      */
     public readonly gitRateLimitUsersAllowlists!: pulumi.Output<string[]>;
     /**
@@ -525,6 +553,30 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
      */
     public readonly gitalyTimeoutMedium!: pulumi.Output<number>;
+    /**
+     * Indicates whether the instance was provisioned for GitLab Dedicated.
+     */
+    public /*out*/ readonly gitlabDedicatedInstance!: pulumi.Output<boolean>;
+    /**
+     * Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+     */
+    public /*out*/ readonly gitlabEnvironmentToolkitInstance!: pulumi.Output<boolean>;
+    /**
+     * Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     */
+    public readonly gitlabShellOperationLimit!: pulumi.Output<number>;
+    /**
+     * Enable Gitpod integration.
+     */
+    public readonly gitpodEnabled!: pulumi.Output<boolean>;
+    /**
+     * The Gitpod instance URL for integration.
+     */
+    public readonly gitpodUrl!: pulumi.Output<string>;
+    /**
+     * Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+     */
+    public readonly globallyAllowedIps!: pulumi.Output<string>;
     /**
      * Enable Grafana.
      */
@@ -622,6 +674,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly inactiveProjectsSendWarningEmailAfterMonths!: pulumi.Output<number>;
     /**
+     * Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     */
+    public readonly includeOptionalMetricsInServicePing!: pulumi.Output<boolean>;
+    /**
      * Enable Invisible CAPTCHA spam detection during sign-up.
      */
     public readonly invisibleCaptchaEnabled!: pulumi.Output<boolean>;
@@ -630,6 +686,18 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly issuesCreateLimit!: pulumi.Output<number>;
     /**
+     * ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+     */
+    public readonly jiraConnectApplicationKey!: pulumi.Output<string>;
+    /**
+     * URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+     */
+    public readonly jiraConnectProxyUrl!: pulumi.Output<string>;
+    /**
+     * Enable public key storage for the GitLab for Jira Cloud app.
+     */
+    public readonly jiraConnectPublicKeyStorageEnabled!: pulumi.Output<boolean>;
+    /**
      * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      */
     public readonly keepLatestArtifact!: pulumi.Output<boolean>;
@@ -637,6 +705,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Increase this value when any cached Markdown should be invalidated.
      */
     public readonly localMarkdownVersion!: pulumi.Output<number>;
+    /**
+     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     */
+    public readonly lockDuoFeaturesEnabled!: pulumi.Output<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
@@ -654,6 +726,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly maintenanceModeMessage!: pulumi.Output<string>;
     /**
+     * Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+     */
+    public readonly mavenPackageRequestsForwarding!: pulumi.Output<boolean>;
+    /**
      * Maximum artifacts size in MB.
      */
     public readonly maxArtifactsSize!: pulumi.Output<number>;
@@ -662,13 +738,25 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly maxAttachmentSize!: pulumi.Output<number>;
     /**
+     * Maximum decompressed archive size in bytes.
+     */
+    public readonly maxDecompressedArchiveSize!: pulumi.Output<number>;
+    /**
      * Maximum export size in MB. 0 for unlimited.
      */
     public readonly maxExportSize!: pulumi.Output<number>;
     /**
+     * Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     */
+    public readonly maxImportRemoteFileSize!: pulumi.Output<number>;
+    /**
      * Maximum import size in MB. 0 for unlimited.
      */
     public readonly maxImportSize!: pulumi.Output<number>;
+    /**
+     * Maximum number of sign-in attempts before locking out the user.
+     */
+    public readonly maxLoginAttempts!: pulumi.Output<number>;
     /**
      * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      */
@@ -719,9 +807,21 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly npmPackageRequestsForwarding!: pulumi.Output<boolean>;
     /**
+     * Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     */
+    public readonly nugetSkipMetadataUrlValidation!: pulumi.Output<boolean>;
+    /**
      * Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
      */
     public readonly outboundLocalRequestsWhitelists!: pulumi.Output<string[]>;
+    /**
+     * List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+     */
+    public readonly packageMetadataPurlTypes!: pulumi.Output<number[]>;
+    /**
+     * Enable to allow anyone to pull from Package Registry visible and changeable.
+     */
+    public readonly packageRegistryAllowAnyoneToPullOption!: pulumi.Output<boolean>;
     /**
      * Number of workers assigned to the packages cleanup policies.
      */
@@ -783,6 +883,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly projectExportEnabled!: pulumi.Output<boolean>;
     /**
+     * Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     */
+    public readonly projectJobsApiRateLimit!: pulumi.Output<number>;
+    /**
+     * Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     */
+    public readonly projectsApiRateLimitUnauthenticated!: pulumi.Output<number>;
+    /**
      * Enable Prometheus metrics.
      */
     public readonly prometheusMetricsEnabled!: pulumi.Output<boolean>;
@@ -827,6 +935,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly receiveMaxInputSize!: pulumi.Output<number>;
     /**
+     * Enable receptive mode for GitLab Agents for Kubernetes.
+     */
+    public readonly receptiveClusterAgentsEnabled!: pulumi.Output<boolean>;
+    /**
+     * Enable Remember me setting. Introduced in GitLab 16.0.
+     */
+    public readonly rememberMeEnabled!: pulumi.Output<boolean>;
+    /**
      * GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
      */
     public readonly repositoryChecksEnabled!: pulumi.Output<boolean>;
@@ -846,6 +962,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
      */
     public readonly requireAdminApprovalAfterUserSignup!: pulumi.Output<boolean>;
+    /**
+     * Allow administrators to require 2FA for all administrators on the instance.
+     */
+    public readonly requireAdminTwoFactorAuthentication!: pulumi.Output<boolean>;
+    /**
+     * When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+     */
+    public readonly requirePersonalAccessTokenExpiry!: pulumi.Output<boolean>;
     /**
      * (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
      */
@@ -867,9 +991,25 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly searchRateLimitUnauthenticated!: pulumi.Output<number>;
     /**
+     * Maximum number of active merge request approval policies per security policy project. Maximum: 20
+     */
+    public readonly securityApprovalPoliciesLimit!: pulumi.Output<number>;
+    /**
+     * Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+     */
+    public readonly securityPolicyGlobalGroupApproversEnabled!: pulumi.Output<boolean>;
+    /**
+     * Public security contact information. Introduced in GitLab 16.7.
+     */
+    public readonly securityTxtContent!: pulumi.Output<string>;
+    /**
      * Send confirmation email on sign-up.
      */
     public readonly sendUserConfirmationEmail!: pulumi.Output<boolean>;
+    /**
+     * Flag to indicate if token expiry date can be optional for service account users
+     */
+    public readonly serviceAccessTokensExpirationEnforced!: pulumi.Output<boolean>;
     /**
      * Session duration in minutes. GitLab restart is required to apply changes.
      */
@@ -907,6 +1047,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly signupEnabled!: pulumi.Output<boolean>;
     /**
+     * Enable Silent admin exports.
+     */
+    public readonly silentAdminExportsEnabled!: pulumi.Output<boolean>;
+    /**
+     * Enable Silent mode.
+     */
+    public readonly silentModeEnabled!: pulumi.Output<boolean>;
+    /**
      * (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
      */
     public readonly slackAppEnabled!: pulumi.Output<boolean>;
@@ -943,6 +1091,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly snowplowCookieDomain!: pulumi.Output<string>;
     /**
+     * The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+     */
+    public readonly snowplowDatabaseCollectorHostname!: pulumi.Output<string>;
+    /**
      * Enable snowplow tracking.
      */
     public readonly snowplowEnabled!: pulumi.Output<boolean>;
@@ -970,6 +1122,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
      */
     public readonly spamCheckEndpointUrl!: pulumi.Output<string>;
+    /**
+     * Authentication token for the external storage linked in static*objects*external*storage*url.
+     */
+    public readonly staticObjectsExternalStorageAuthToken!: pulumi.Output<string | undefined>;
+    /**
+     * URL to an external storage for repository static objects.
+     */
+    public readonly staticObjectsExternalStorageUrl!: pulumi.Output<string | undefined>;
     /**
      * Enable pipeline suggestion banner.
      */
@@ -1063,6 +1223,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly twoFactorGracePeriod!: pulumi.Output<number>;
     /**
+     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     */
+    public readonly unconfirmedUsersDeleteAfterDays!: pulumi.Output<number>;
+    /**
      * (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
      */
     public readonly uniqueIpsLimitEnabled!: pulumi.Output<boolean>;
@@ -1075,9 +1239,17 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly uniqueIpsLimitTimeWindow!: pulumi.Output<number>;
     /**
+     * Fetch GitLab Runner release version data from GitLab.com.
+     */
+    public readonly updateRunnerVersionsEnabled!: pulumi.Output<boolean>;
+    /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      */
     public readonly usagePingEnabled!: pulumi.Output<boolean>;
+    /**
+     * Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+     */
+    public readonly useClickhouseForAnalytics!: pulumi.Output<boolean>;
     /**
      * Send an email to users upon account deactivation.
      */
@@ -1091,6 +1263,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly userDefaultInternalRegex!: pulumi.Output<string>;
     /**
+     * Newly created users have private profile by default. Introduced in GitLab 15.8.
+     */
+    public readonly userDefaultsToPrivateProfile!: pulumi.Output<boolean>;
+    /**
      * Allow users to register any application to use GitLab as an OAuth provider.
      */
     public readonly userOauthApplications!: pulumi.Output<boolean>;
@@ -1098,6 +1274,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
      */
     public readonly userShowAddSshKeyMessage!: pulumi.Output<boolean>;
+    /**
+     * List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
+     */
+    public readonly validRunnerRegistrars!: pulumi.Output<string[]>;
     /**
      * Let GitLab inform you when an update is available.
      */
@@ -1107,7 +1287,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly webIdeClientsidePreviewEnabled!: pulumi.Output<boolean>;
     /**
-     * What’s new variant, possible values: all*tiers, current*tier, and disabled.
+     * What's new variant, possible values: all*tiers, current*tier, and disabled.
      */
     public readonly whatsNewVariant!: pulumi.Output<string>;
     /**
@@ -1220,14 +1400,19 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["elasticsearchLimitIndexing"] = state ? state.elasticsearchLimitIndexing : undefined;
             resourceInputs["elasticsearchMaxBulkConcurrency"] = state ? state.elasticsearchMaxBulkConcurrency : undefined;
             resourceInputs["elasticsearchMaxBulkSizeMb"] = state ? state.elasticsearchMaxBulkSizeMb : undefined;
+            resourceInputs["elasticsearchMaxCodeIndexingConcurrency"] = state ? state.elasticsearchMaxCodeIndexingConcurrency : undefined;
             resourceInputs["elasticsearchNamespaceIds"] = state ? state.elasticsearchNamespaceIds : undefined;
             resourceInputs["elasticsearchPassword"] = state ? state.elasticsearchPassword : undefined;
             resourceInputs["elasticsearchProjectIds"] = state ? state.elasticsearchProjectIds : undefined;
+            resourceInputs["elasticsearchRequeueWorkers"] = state ? state.elasticsearchRequeueWorkers : undefined;
             resourceInputs["elasticsearchSearch"] = state ? state.elasticsearchSearch : undefined;
             resourceInputs["elasticsearchUrls"] = state ? state.elasticsearchUrls : undefined;
             resourceInputs["elasticsearchUsername"] = state ? state.elasticsearchUsername : undefined;
+            resourceInputs["elasticsearchWorkerNumberOfShards"] = state ? state.elasticsearchWorkerNumberOfShards : undefined;
             resourceInputs["emailAdditionalText"] = state ? state.emailAdditionalText : undefined;
             resourceInputs["emailAuthorInBody"] = state ? state.emailAuthorInBody : undefined;
+            resourceInputs["emailConfirmationSetting"] = state ? state.emailConfirmationSetting : undefined;
+            resourceInputs["enableArtifactExternalRedirectWarningPage"] = state ? state.enableArtifactExternalRedirectWarningPage : undefined;
             resourceInputs["enabledGitAccessProtocol"] = state ? state.enabledGitAccessProtocol : undefined;
             resourceInputs["enforceNamespaceStorageLimit"] = state ? state.enforceNamespaceStorageLimit : undefined;
             resourceInputs["enforceTerms"] = state ? state.enforceTerms : undefined;
@@ -1241,15 +1426,23 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["externalPipelineValidationServiceTimeout"] = state ? state.externalPipelineValidationServiceTimeout : undefined;
             resourceInputs["externalPipelineValidationServiceToken"] = state ? state.externalPipelineValidationServiceToken : undefined;
             resourceInputs["externalPipelineValidationServiceUrl"] = state ? state.externalPipelineValidationServiceUrl : undefined;
+            resourceInputs["failedLoginAttemptsUnlockPeriodInMinutes"] = state ? state.failedLoginAttemptsUnlockPeriodInMinutes : undefined;
             resourceInputs["fileTemplateProjectId"] = state ? state.fileTemplateProjectId : undefined;
             resourceInputs["firstDayOfWeek"] = state ? state.firstDayOfWeek : undefined;
             resourceInputs["geoNodeAllowedIps"] = state ? state.geoNodeAllowedIps : undefined;
             resourceInputs["geoStatusTimeout"] = state ? state.geoStatusTimeout : undefined;
+            resourceInputs["gitRateLimitUsersAlertlists"] = state ? state.gitRateLimitUsersAlertlists : undefined;
             resourceInputs["gitRateLimitUsersAllowlists"] = state ? state.gitRateLimitUsersAllowlists : undefined;
             resourceInputs["gitTwoFactorSessionExpiry"] = state ? state.gitTwoFactorSessionExpiry : undefined;
             resourceInputs["gitalyTimeoutDefault"] = state ? state.gitalyTimeoutDefault : undefined;
             resourceInputs["gitalyTimeoutFast"] = state ? state.gitalyTimeoutFast : undefined;
             resourceInputs["gitalyTimeoutMedium"] = state ? state.gitalyTimeoutMedium : undefined;
+            resourceInputs["gitlabDedicatedInstance"] = state ? state.gitlabDedicatedInstance : undefined;
+            resourceInputs["gitlabEnvironmentToolkitInstance"] = state ? state.gitlabEnvironmentToolkitInstance : undefined;
+            resourceInputs["gitlabShellOperationLimit"] = state ? state.gitlabShellOperationLimit : undefined;
+            resourceInputs["gitpodEnabled"] = state ? state.gitpodEnabled : undefined;
+            resourceInputs["gitpodUrl"] = state ? state.gitpodUrl : undefined;
+            resourceInputs["globallyAllowedIps"] = state ? state.globallyAllowedIps : undefined;
             resourceInputs["grafanaEnabled"] = state ? state.grafanaEnabled : undefined;
             resourceInputs["grafanaUrl"] = state ? state.grafanaUrl : undefined;
             resourceInputs["gravatarEnabled"] = state ? state.gravatarEnabled : undefined;
@@ -1272,18 +1465,27 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["inactiveProjectsDeleteAfterMonths"] = state ? state.inactiveProjectsDeleteAfterMonths : undefined;
             resourceInputs["inactiveProjectsMinSizeMb"] = state ? state.inactiveProjectsMinSizeMb : undefined;
             resourceInputs["inactiveProjectsSendWarningEmailAfterMonths"] = state ? state.inactiveProjectsSendWarningEmailAfterMonths : undefined;
+            resourceInputs["includeOptionalMetricsInServicePing"] = state ? state.includeOptionalMetricsInServicePing : undefined;
             resourceInputs["invisibleCaptchaEnabled"] = state ? state.invisibleCaptchaEnabled : undefined;
             resourceInputs["issuesCreateLimit"] = state ? state.issuesCreateLimit : undefined;
+            resourceInputs["jiraConnectApplicationKey"] = state ? state.jiraConnectApplicationKey : undefined;
+            resourceInputs["jiraConnectProxyUrl"] = state ? state.jiraConnectProxyUrl : undefined;
+            resourceInputs["jiraConnectPublicKeyStorageEnabled"] = state ? state.jiraConnectPublicKeyStorageEnabled : undefined;
             resourceInputs["keepLatestArtifact"] = state ? state.keepLatestArtifact : undefined;
             resourceInputs["localMarkdownVersion"] = state ? state.localMarkdownVersion : undefined;
+            resourceInputs["lockDuoFeaturesEnabled"] = state ? state.lockDuoFeaturesEnabled : undefined;
             resourceInputs["mailgunEventsEnabled"] = state ? state.mailgunEventsEnabled : undefined;
             resourceInputs["mailgunSigningKey"] = state ? state.mailgunSigningKey : undefined;
             resourceInputs["maintenanceMode"] = state ? state.maintenanceMode : undefined;
             resourceInputs["maintenanceModeMessage"] = state ? state.maintenanceModeMessage : undefined;
+            resourceInputs["mavenPackageRequestsForwarding"] = state ? state.mavenPackageRequestsForwarding : undefined;
             resourceInputs["maxArtifactsSize"] = state ? state.maxArtifactsSize : undefined;
             resourceInputs["maxAttachmentSize"] = state ? state.maxAttachmentSize : undefined;
+            resourceInputs["maxDecompressedArchiveSize"] = state ? state.maxDecompressedArchiveSize : undefined;
             resourceInputs["maxExportSize"] = state ? state.maxExportSize : undefined;
+            resourceInputs["maxImportRemoteFileSize"] = state ? state.maxImportRemoteFileSize : undefined;
             resourceInputs["maxImportSize"] = state ? state.maxImportSize : undefined;
+            resourceInputs["maxLoginAttempts"] = state ? state.maxLoginAttempts : undefined;
             resourceInputs["maxNumberOfRepositoryDownloads"] = state ? state.maxNumberOfRepositoryDownloads : undefined;
             resourceInputs["maxNumberOfRepositoryDownloadsWithinTimePeriod"] = state ? state.maxNumberOfRepositoryDownloadsWithinTimePeriod : undefined;
             resourceInputs["maxPagesSize"] = state ? state.maxPagesSize : undefined;
@@ -1297,7 +1499,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["mirrorMaxCapacity"] = state ? state.mirrorMaxCapacity : undefined;
             resourceInputs["mirrorMaxDelay"] = state ? state.mirrorMaxDelay : undefined;
             resourceInputs["npmPackageRequestsForwarding"] = state ? state.npmPackageRequestsForwarding : undefined;
+            resourceInputs["nugetSkipMetadataUrlValidation"] = state ? state.nugetSkipMetadataUrlValidation : undefined;
             resourceInputs["outboundLocalRequestsWhitelists"] = state ? state.outboundLocalRequestsWhitelists : undefined;
+            resourceInputs["packageMetadataPurlTypes"] = state ? state.packageMetadataPurlTypes : undefined;
+            resourceInputs["packageRegistryAllowAnyoneToPullOption"] = state ? state.packageRegistryAllowAnyoneToPullOption : undefined;
             resourceInputs["packageRegistryCleanupPoliciesWorkerCapacity"] = state ? state.packageRegistryCleanupPoliciesWorkerCapacity : undefined;
             resourceInputs["pagesDomainVerificationEnabled"] = state ? state.pagesDomainVerificationEnabled : undefined;
             resourceInputs["passwordAuthenticationEnabledForGit"] = state ? state.passwordAuthenticationEnabledForGit : undefined;
@@ -1313,6 +1518,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["plantumlUrl"] = state ? state.plantumlUrl : undefined;
             resourceInputs["pollingIntervalMultiplier"] = state ? state.pollingIntervalMultiplier : undefined;
             resourceInputs["projectExportEnabled"] = state ? state.projectExportEnabled : undefined;
+            resourceInputs["projectJobsApiRateLimit"] = state ? state.projectJobsApiRateLimit : undefined;
+            resourceInputs["projectsApiRateLimitUnauthenticated"] = state ? state.projectsApiRateLimitUnauthenticated : undefined;
             resourceInputs["prometheusMetricsEnabled"] = state ? state.prometheusMetricsEnabled : undefined;
             resourceInputs["protectedCiVariables"] = state ? state.protectedCiVariables : undefined;
             resourceInputs["pushEventActivitiesLimit"] = state ? state.pushEventActivitiesLimit : undefined;
@@ -1324,17 +1531,25 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["recaptchaPrivateKey"] = state ? state.recaptchaPrivateKey : undefined;
             resourceInputs["recaptchaSiteKey"] = state ? state.recaptchaSiteKey : undefined;
             resourceInputs["receiveMaxInputSize"] = state ? state.receiveMaxInputSize : undefined;
+            resourceInputs["receptiveClusterAgentsEnabled"] = state ? state.receptiveClusterAgentsEnabled : undefined;
+            resourceInputs["rememberMeEnabled"] = state ? state.rememberMeEnabled : undefined;
             resourceInputs["repositoryChecksEnabled"] = state ? state.repositoryChecksEnabled : undefined;
             resourceInputs["repositorySizeLimit"] = state ? state.repositorySizeLimit : undefined;
             resourceInputs["repositoryStorages"] = state ? state.repositoryStorages : undefined;
             resourceInputs["repositoryStoragesWeighted"] = state ? state.repositoryStoragesWeighted : undefined;
             resourceInputs["requireAdminApprovalAfterUserSignup"] = state ? state.requireAdminApprovalAfterUserSignup : undefined;
+            resourceInputs["requireAdminTwoFactorAuthentication"] = state ? state.requireAdminTwoFactorAuthentication : undefined;
+            resourceInputs["requirePersonalAccessTokenExpiry"] = state ? state.requirePersonalAccessTokenExpiry : undefined;
             resourceInputs["requireTwoFactorAuthentication"] = state ? state.requireTwoFactorAuthentication : undefined;
             resourceInputs["restrictedVisibilityLevels"] = state ? state.restrictedVisibilityLevels : undefined;
             resourceInputs["rsaKeyRestriction"] = state ? state.rsaKeyRestriction : undefined;
             resourceInputs["searchRateLimit"] = state ? state.searchRateLimit : undefined;
             resourceInputs["searchRateLimitUnauthenticated"] = state ? state.searchRateLimitUnauthenticated : undefined;
+            resourceInputs["securityApprovalPoliciesLimit"] = state ? state.securityApprovalPoliciesLimit : undefined;
+            resourceInputs["securityPolicyGlobalGroupApproversEnabled"] = state ? state.securityPolicyGlobalGroupApproversEnabled : undefined;
+            resourceInputs["securityTxtContent"] = state ? state.securityTxtContent : undefined;
             resourceInputs["sendUserConfirmationEmail"] = state ? state.sendUserConfirmationEmail : undefined;
+            resourceInputs["serviceAccessTokensExpirationEnforced"] = state ? state.serviceAccessTokensExpirationEnforced : undefined;
             resourceInputs["sessionExpireDelay"] = state ? state.sessionExpireDelay : undefined;
             resourceInputs["sharedRunnersEnabled"] = state ? state.sharedRunnersEnabled : undefined;
             resourceInputs["sharedRunnersMinutes"] = state ? state.sharedRunnersMinutes : undefined;
@@ -1344,6 +1559,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["sidekiqJobLimiterMode"] = state ? state.sidekiqJobLimiterMode : undefined;
             resourceInputs["signInText"] = state ? state.signInText : undefined;
             resourceInputs["signupEnabled"] = state ? state.signupEnabled : undefined;
+            resourceInputs["silentAdminExportsEnabled"] = state ? state.silentAdminExportsEnabled : undefined;
+            resourceInputs["silentModeEnabled"] = state ? state.silentModeEnabled : undefined;
             resourceInputs["slackAppEnabled"] = state ? state.slackAppEnabled : undefined;
             resourceInputs["slackAppId"] = state ? state.slackAppId : undefined;
             resourceInputs["slackAppSecret"] = state ? state.slackAppSecret : undefined;
@@ -1353,6 +1570,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["snowplowAppId"] = state ? state.snowplowAppId : undefined;
             resourceInputs["snowplowCollectorHostname"] = state ? state.snowplowCollectorHostname : undefined;
             resourceInputs["snowplowCookieDomain"] = state ? state.snowplowCookieDomain : undefined;
+            resourceInputs["snowplowDatabaseCollectorHostname"] = state ? state.snowplowDatabaseCollectorHostname : undefined;
             resourceInputs["snowplowEnabled"] = state ? state.snowplowEnabled : undefined;
             resourceInputs["sourcegraphEnabled"] = state ? state.sourcegraphEnabled : undefined;
             resourceInputs["sourcegraphPublicOnly"] = state ? state.sourcegraphPublicOnly : undefined;
@@ -1360,6 +1578,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["spamCheckApiKey"] = state ? state.spamCheckApiKey : undefined;
             resourceInputs["spamCheckEndpointEnabled"] = state ? state.spamCheckEndpointEnabled : undefined;
             resourceInputs["spamCheckEndpointUrl"] = state ? state.spamCheckEndpointUrl : undefined;
+            resourceInputs["staticObjectsExternalStorageAuthToken"] = state ? state.staticObjectsExternalStorageAuthToken : undefined;
+            resourceInputs["staticObjectsExternalStorageUrl"] = state ? state.staticObjectsExternalStorageUrl : undefined;
             resourceInputs["suggestPipelineEnabled"] = state ? state.suggestPipelineEnabled : undefined;
             resourceInputs["terminalMaxSessionTime"] = state ? state.terminalMaxSessionTime : undefined;
             resourceInputs["terms"] = state ? state.terms : undefined;
@@ -1383,15 +1603,20 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["throttleUnauthenticatedWebRequestsPerPeriod"] = state ? state.throttleUnauthenticatedWebRequestsPerPeriod : undefined;
             resourceInputs["timeTrackingLimitToHours"] = state ? state.timeTrackingLimitToHours : undefined;
             resourceInputs["twoFactorGracePeriod"] = state ? state.twoFactorGracePeriod : undefined;
+            resourceInputs["unconfirmedUsersDeleteAfterDays"] = state ? state.unconfirmedUsersDeleteAfterDays : undefined;
             resourceInputs["uniqueIpsLimitEnabled"] = state ? state.uniqueIpsLimitEnabled : undefined;
             resourceInputs["uniqueIpsLimitPerUser"] = state ? state.uniqueIpsLimitPerUser : undefined;
             resourceInputs["uniqueIpsLimitTimeWindow"] = state ? state.uniqueIpsLimitTimeWindow : undefined;
+            resourceInputs["updateRunnerVersionsEnabled"] = state ? state.updateRunnerVersionsEnabled : undefined;
             resourceInputs["usagePingEnabled"] = state ? state.usagePingEnabled : undefined;
+            resourceInputs["useClickhouseForAnalytics"] = state ? state.useClickhouseForAnalytics : undefined;
             resourceInputs["userDeactivationEmailsEnabled"] = state ? state.userDeactivationEmailsEnabled : undefined;
             resourceInputs["userDefaultExternal"] = state ? state.userDefaultExternal : undefined;
             resourceInputs["userDefaultInternalRegex"] = state ? state.userDefaultInternalRegex : undefined;
+            resourceInputs["userDefaultsToPrivateProfile"] = state ? state.userDefaultsToPrivateProfile : undefined;
             resourceInputs["userOauthApplications"] = state ? state.userOauthApplications : undefined;
             resourceInputs["userShowAddSshKeyMessage"] = state ? state.userShowAddSshKeyMessage : undefined;
+            resourceInputs["validRunnerRegistrars"] = state ? state.validRunnerRegistrars : undefined;
             resourceInputs["versionCheckEnabled"] = state ? state.versionCheckEnabled : undefined;
             resourceInputs["webIdeClientsidePreviewEnabled"] = state ? state.webIdeClientsidePreviewEnabled : undefined;
             resourceInputs["whatsNewVariant"] = state ? state.whatsNewVariant : undefined;
@@ -1490,14 +1715,19 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["elasticsearchLimitIndexing"] = args ? args.elasticsearchLimitIndexing : undefined;
             resourceInputs["elasticsearchMaxBulkConcurrency"] = args ? args.elasticsearchMaxBulkConcurrency : undefined;
             resourceInputs["elasticsearchMaxBulkSizeMb"] = args ? args.elasticsearchMaxBulkSizeMb : undefined;
+            resourceInputs["elasticsearchMaxCodeIndexingConcurrency"] = args ? args.elasticsearchMaxCodeIndexingConcurrency : undefined;
             resourceInputs["elasticsearchNamespaceIds"] = args ? args.elasticsearchNamespaceIds : undefined;
             resourceInputs["elasticsearchPassword"] = args?.elasticsearchPassword ? pulumi.secret(args.elasticsearchPassword) : undefined;
             resourceInputs["elasticsearchProjectIds"] = args ? args.elasticsearchProjectIds : undefined;
+            resourceInputs["elasticsearchRequeueWorkers"] = args ? args.elasticsearchRequeueWorkers : undefined;
             resourceInputs["elasticsearchSearch"] = args ? args.elasticsearchSearch : undefined;
             resourceInputs["elasticsearchUrls"] = args ? args.elasticsearchUrls : undefined;
             resourceInputs["elasticsearchUsername"] = args ? args.elasticsearchUsername : undefined;
+            resourceInputs["elasticsearchWorkerNumberOfShards"] = args ? args.elasticsearchWorkerNumberOfShards : undefined;
             resourceInputs["emailAdditionalText"] = args ? args.emailAdditionalText : undefined;
             resourceInputs["emailAuthorInBody"] = args ? args.emailAuthorInBody : undefined;
+            resourceInputs["emailConfirmationSetting"] = args ? args.emailConfirmationSetting : undefined;
+            resourceInputs["enableArtifactExternalRedirectWarningPage"] = args ? args.enableArtifactExternalRedirectWarningPage : undefined;
             resourceInputs["enabledGitAccessProtocol"] = args ? args.enabledGitAccessProtocol : undefined;
             resourceInputs["enforceNamespaceStorageLimit"] = args ? args.enforceNamespaceStorageLimit : undefined;
             resourceInputs["enforceTerms"] = args ? args.enforceTerms : undefined;
@@ -1511,15 +1741,21 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["externalPipelineValidationServiceTimeout"] = args ? args.externalPipelineValidationServiceTimeout : undefined;
             resourceInputs["externalPipelineValidationServiceToken"] = args ? args.externalPipelineValidationServiceToken : undefined;
             resourceInputs["externalPipelineValidationServiceUrl"] = args ? args.externalPipelineValidationServiceUrl : undefined;
+            resourceInputs["failedLoginAttemptsUnlockPeriodInMinutes"] = args ? args.failedLoginAttemptsUnlockPeriodInMinutes : undefined;
             resourceInputs["fileTemplateProjectId"] = args ? args.fileTemplateProjectId : undefined;
             resourceInputs["firstDayOfWeek"] = args ? args.firstDayOfWeek : undefined;
             resourceInputs["geoNodeAllowedIps"] = args ? args.geoNodeAllowedIps : undefined;
             resourceInputs["geoStatusTimeout"] = args ? args.geoStatusTimeout : undefined;
+            resourceInputs["gitRateLimitUsersAlertlists"] = args ? args.gitRateLimitUsersAlertlists : undefined;
             resourceInputs["gitRateLimitUsersAllowlists"] = args ? args.gitRateLimitUsersAllowlists : undefined;
             resourceInputs["gitTwoFactorSessionExpiry"] = args ? args.gitTwoFactorSessionExpiry : undefined;
             resourceInputs["gitalyTimeoutDefault"] = args ? args.gitalyTimeoutDefault : undefined;
             resourceInputs["gitalyTimeoutFast"] = args ? args.gitalyTimeoutFast : undefined;
             resourceInputs["gitalyTimeoutMedium"] = args ? args.gitalyTimeoutMedium : undefined;
+            resourceInputs["gitlabShellOperationLimit"] = args ? args.gitlabShellOperationLimit : undefined;
+            resourceInputs["gitpodEnabled"] = args ? args.gitpodEnabled : undefined;
+            resourceInputs["gitpodUrl"] = args ? args.gitpodUrl : undefined;
+            resourceInputs["globallyAllowedIps"] = args ? args.globallyAllowedIps : undefined;
             resourceInputs["grafanaEnabled"] = args ? args.grafanaEnabled : undefined;
             resourceInputs["grafanaUrl"] = args ? args.grafanaUrl : undefined;
             resourceInputs["gravatarEnabled"] = args ? args.gravatarEnabled : undefined;
@@ -1542,18 +1778,27 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["inactiveProjectsDeleteAfterMonths"] = args ? args.inactiveProjectsDeleteAfterMonths : undefined;
             resourceInputs["inactiveProjectsMinSizeMb"] = args ? args.inactiveProjectsMinSizeMb : undefined;
             resourceInputs["inactiveProjectsSendWarningEmailAfterMonths"] = args ? args.inactiveProjectsSendWarningEmailAfterMonths : undefined;
+            resourceInputs["includeOptionalMetricsInServicePing"] = args ? args.includeOptionalMetricsInServicePing : undefined;
             resourceInputs["invisibleCaptchaEnabled"] = args ? args.invisibleCaptchaEnabled : undefined;
             resourceInputs["issuesCreateLimit"] = args ? args.issuesCreateLimit : undefined;
+            resourceInputs["jiraConnectApplicationKey"] = args ? args.jiraConnectApplicationKey : undefined;
+            resourceInputs["jiraConnectProxyUrl"] = args ? args.jiraConnectProxyUrl : undefined;
+            resourceInputs["jiraConnectPublicKeyStorageEnabled"] = args ? args.jiraConnectPublicKeyStorageEnabled : undefined;
             resourceInputs["keepLatestArtifact"] = args ? args.keepLatestArtifact : undefined;
             resourceInputs["localMarkdownVersion"] = args ? args.localMarkdownVersion : undefined;
+            resourceInputs["lockDuoFeaturesEnabled"] = args ? args.lockDuoFeaturesEnabled : undefined;
             resourceInputs["mailgunEventsEnabled"] = args ? args.mailgunEventsEnabled : undefined;
             resourceInputs["mailgunSigningKey"] = args?.mailgunSigningKey ? pulumi.secret(args.mailgunSigningKey) : undefined;
             resourceInputs["maintenanceMode"] = args ? args.maintenanceMode : undefined;
             resourceInputs["maintenanceModeMessage"] = args ? args.maintenanceModeMessage : undefined;
+            resourceInputs["mavenPackageRequestsForwarding"] = args ? args.mavenPackageRequestsForwarding : undefined;
             resourceInputs["maxArtifactsSize"] = args ? args.maxArtifactsSize : undefined;
             resourceInputs["maxAttachmentSize"] = args ? args.maxAttachmentSize : undefined;
+            resourceInputs["maxDecompressedArchiveSize"] = args ? args.maxDecompressedArchiveSize : undefined;
             resourceInputs["maxExportSize"] = args ? args.maxExportSize : undefined;
+            resourceInputs["maxImportRemoteFileSize"] = args ? args.maxImportRemoteFileSize : undefined;
             resourceInputs["maxImportSize"] = args ? args.maxImportSize : undefined;
+            resourceInputs["maxLoginAttempts"] = args ? args.maxLoginAttempts : undefined;
             resourceInputs["maxNumberOfRepositoryDownloads"] = args ? args.maxNumberOfRepositoryDownloads : undefined;
             resourceInputs["maxNumberOfRepositoryDownloadsWithinTimePeriod"] = args ? args.maxNumberOfRepositoryDownloadsWithinTimePeriod : undefined;
             resourceInputs["maxPagesSize"] = args ? args.maxPagesSize : undefined;
@@ -1567,7 +1812,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["mirrorMaxCapacity"] = args ? args.mirrorMaxCapacity : undefined;
             resourceInputs["mirrorMaxDelay"] = args ? args.mirrorMaxDelay : undefined;
             resourceInputs["npmPackageRequestsForwarding"] = args ? args.npmPackageRequestsForwarding : undefined;
+            resourceInputs["nugetSkipMetadataUrlValidation"] = args ? args.nugetSkipMetadataUrlValidation : undefined;
             resourceInputs["outboundLocalRequestsWhitelists"] = args ? args.outboundLocalRequestsWhitelists : undefined;
+            resourceInputs["packageMetadataPurlTypes"] = args ? args.packageMetadataPurlTypes : undefined;
+            resourceInputs["packageRegistryAllowAnyoneToPullOption"] = args ? args.packageRegistryAllowAnyoneToPullOption : undefined;
             resourceInputs["packageRegistryCleanupPoliciesWorkerCapacity"] = args ? args.packageRegistryCleanupPoliciesWorkerCapacity : undefined;
             resourceInputs["pagesDomainVerificationEnabled"] = args ? args.pagesDomainVerificationEnabled : undefined;
             resourceInputs["passwordAuthenticationEnabledForGit"] = args ? args.passwordAuthenticationEnabledForGit : undefined;
@@ -1583,6 +1831,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["plantumlUrl"] = args ? args.plantumlUrl : undefined;
             resourceInputs["pollingIntervalMultiplier"] = args ? args.pollingIntervalMultiplier : undefined;
             resourceInputs["projectExportEnabled"] = args ? args.projectExportEnabled : undefined;
+            resourceInputs["projectJobsApiRateLimit"] = args ? args.projectJobsApiRateLimit : undefined;
+            resourceInputs["projectsApiRateLimitUnauthenticated"] = args ? args.projectsApiRateLimitUnauthenticated : undefined;
             resourceInputs["prometheusMetricsEnabled"] = args ? args.prometheusMetricsEnabled : undefined;
             resourceInputs["protectedCiVariables"] = args ? args.protectedCiVariables : undefined;
             resourceInputs["pushEventActivitiesLimit"] = args ? args.pushEventActivitiesLimit : undefined;
@@ -1594,17 +1844,25 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["recaptchaPrivateKey"] = args?.recaptchaPrivateKey ? pulumi.secret(args.recaptchaPrivateKey) : undefined;
             resourceInputs["recaptchaSiteKey"] = args?.recaptchaSiteKey ? pulumi.secret(args.recaptchaSiteKey) : undefined;
             resourceInputs["receiveMaxInputSize"] = args ? args.receiveMaxInputSize : undefined;
+            resourceInputs["receptiveClusterAgentsEnabled"] = args ? args.receptiveClusterAgentsEnabled : undefined;
+            resourceInputs["rememberMeEnabled"] = args ? args.rememberMeEnabled : undefined;
             resourceInputs["repositoryChecksEnabled"] = args ? args.repositoryChecksEnabled : undefined;
             resourceInputs["repositorySizeLimit"] = args ? args.repositorySizeLimit : undefined;
             resourceInputs["repositoryStorages"] = args ? args.repositoryStorages : undefined;
             resourceInputs["repositoryStoragesWeighted"] = args ? args.repositoryStoragesWeighted : undefined;
             resourceInputs["requireAdminApprovalAfterUserSignup"] = args ? args.requireAdminApprovalAfterUserSignup : undefined;
+            resourceInputs["requireAdminTwoFactorAuthentication"] = args ? args.requireAdminTwoFactorAuthentication : undefined;
+            resourceInputs["requirePersonalAccessTokenExpiry"] = args ? args.requirePersonalAccessTokenExpiry : undefined;
             resourceInputs["requireTwoFactorAuthentication"] = args ? args.requireTwoFactorAuthentication : undefined;
             resourceInputs["restrictedVisibilityLevels"] = args ? args.restrictedVisibilityLevels : undefined;
             resourceInputs["rsaKeyRestriction"] = args ? args.rsaKeyRestriction : undefined;
             resourceInputs["searchRateLimit"] = args ? args.searchRateLimit : undefined;
             resourceInputs["searchRateLimitUnauthenticated"] = args ? args.searchRateLimitUnauthenticated : undefined;
+            resourceInputs["securityApprovalPoliciesLimit"] = args ? args.securityApprovalPoliciesLimit : undefined;
+            resourceInputs["securityPolicyGlobalGroupApproversEnabled"] = args ? args.securityPolicyGlobalGroupApproversEnabled : undefined;
+            resourceInputs["securityTxtContent"] = args ? args.securityTxtContent : undefined;
             resourceInputs["sendUserConfirmationEmail"] = args ? args.sendUserConfirmationEmail : undefined;
+            resourceInputs["serviceAccessTokensExpirationEnforced"] = args ? args.serviceAccessTokensExpirationEnforced : undefined;
             resourceInputs["sessionExpireDelay"] = args ? args.sessionExpireDelay : undefined;
             resourceInputs["sharedRunnersEnabled"] = args ? args.sharedRunnersEnabled : undefined;
             resourceInputs["sharedRunnersMinutes"] = args ? args.sharedRunnersMinutes : undefined;
@@ -1614,6 +1872,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["sidekiqJobLimiterMode"] = args ? args.sidekiqJobLimiterMode : undefined;
             resourceInputs["signInText"] = args ? args.signInText : undefined;
             resourceInputs["signupEnabled"] = args ? args.signupEnabled : undefined;
+            resourceInputs["silentAdminExportsEnabled"] = args ? args.silentAdminExportsEnabled : undefined;
+            resourceInputs["silentModeEnabled"] = args ? args.silentModeEnabled : undefined;
             resourceInputs["slackAppEnabled"] = args ? args.slackAppEnabled : undefined;
             resourceInputs["slackAppId"] = args ? args.slackAppId : undefined;
             resourceInputs["slackAppSecret"] = args?.slackAppSecret ? pulumi.secret(args.slackAppSecret) : undefined;
@@ -1623,6 +1883,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["snowplowAppId"] = args ? args.snowplowAppId : undefined;
             resourceInputs["snowplowCollectorHostname"] = args ? args.snowplowCollectorHostname : undefined;
             resourceInputs["snowplowCookieDomain"] = args ? args.snowplowCookieDomain : undefined;
+            resourceInputs["snowplowDatabaseCollectorHostname"] = args ? args.snowplowDatabaseCollectorHostname : undefined;
             resourceInputs["snowplowEnabled"] = args ? args.snowplowEnabled : undefined;
             resourceInputs["sourcegraphEnabled"] = args ? args.sourcegraphEnabled : undefined;
             resourceInputs["sourcegraphPublicOnly"] = args ? args.sourcegraphPublicOnly : undefined;
@@ -1630,6 +1891,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["spamCheckApiKey"] = args?.spamCheckApiKey ? pulumi.secret(args.spamCheckApiKey) : undefined;
             resourceInputs["spamCheckEndpointEnabled"] = args ? args.spamCheckEndpointEnabled : undefined;
             resourceInputs["spamCheckEndpointUrl"] = args ? args.spamCheckEndpointUrl : undefined;
+            resourceInputs["staticObjectsExternalStorageAuthToken"] = args?.staticObjectsExternalStorageAuthToken ? pulumi.secret(args.staticObjectsExternalStorageAuthToken) : undefined;
+            resourceInputs["staticObjectsExternalStorageUrl"] = args?.staticObjectsExternalStorageUrl ? pulumi.secret(args.staticObjectsExternalStorageUrl) : undefined;
             resourceInputs["suggestPipelineEnabled"] = args ? args.suggestPipelineEnabled : undefined;
             resourceInputs["terminalMaxSessionTime"] = args ? args.terminalMaxSessionTime : undefined;
             resourceInputs["terms"] = args ? args.terms : undefined;
@@ -1653,22 +1916,29 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["throttleUnauthenticatedWebRequestsPerPeriod"] = args ? args.throttleUnauthenticatedWebRequestsPerPeriod : undefined;
             resourceInputs["timeTrackingLimitToHours"] = args ? args.timeTrackingLimitToHours : undefined;
             resourceInputs["twoFactorGracePeriod"] = args ? args.twoFactorGracePeriod : undefined;
+            resourceInputs["unconfirmedUsersDeleteAfterDays"] = args ? args.unconfirmedUsersDeleteAfterDays : undefined;
             resourceInputs["uniqueIpsLimitEnabled"] = args ? args.uniqueIpsLimitEnabled : undefined;
             resourceInputs["uniqueIpsLimitPerUser"] = args ? args.uniqueIpsLimitPerUser : undefined;
             resourceInputs["uniqueIpsLimitTimeWindow"] = args ? args.uniqueIpsLimitTimeWindow : undefined;
+            resourceInputs["updateRunnerVersionsEnabled"] = args ? args.updateRunnerVersionsEnabled : undefined;
             resourceInputs["usagePingEnabled"] = args ? args.usagePingEnabled : undefined;
+            resourceInputs["useClickhouseForAnalytics"] = args ? args.useClickhouseForAnalytics : undefined;
             resourceInputs["userDeactivationEmailsEnabled"] = args ? args.userDeactivationEmailsEnabled : undefined;
             resourceInputs["userDefaultExternal"] = args ? args.userDefaultExternal : undefined;
             resourceInputs["userDefaultInternalRegex"] = args ? args.userDefaultInternalRegex : undefined;
+            resourceInputs["userDefaultsToPrivateProfile"] = args ? args.userDefaultsToPrivateProfile : undefined;
             resourceInputs["userOauthApplications"] = args ? args.userOauthApplications : undefined;
             resourceInputs["userShowAddSshKeyMessage"] = args ? args.userShowAddSshKeyMessage : undefined;
+            resourceInputs["validRunnerRegistrars"] = args ? args.validRunnerRegistrars : undefined;
             resourceInputs["versionCheckEnabled"] = args ? args.versionCheckEnabled : undefined;
             resourceInputs["webIdeClientsidePreviewEnabled"] = args ? args.webIdeClientsidePreviewEnabled : undefined;
             resourceInputs["whatsNewVariant"] = args ? args.whatsNewVariant : undefined;
             resourceInputs["wikiPageMaxContentBytes"] = args ? args.wikiPageMaxContentBytes : undefined;
+            resourceInputs["gitlabDedicatedInstance"] = undefined /*out*/;
+            resourceInputs["gitlabEnvironmentToolkitInstance"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["akismetApiKey", "assetProxySecretKey", "eksAccessKeyId", "eksSecretAccessKey", "elasticsearchAwsAccessKey", "elasticsearchAwsSecretAccessKey", "elasticsearchPassword", "externalAuthClientKey", "externalAuthClientKeyPass", "mailgunSigningKey", "recaptchaPrivateKey", "recaptchaSiteKey", "slackAppSecret", "slackAppSigningSecret", "spamCheckApiKey"] };
+        const secretOpts = { additionalSecretOutputs: ["akismetApiKey", "assetProxySecretKey", "eksAccessKeyId", "eksSecretAccessKey", "elasticsearchAwsAccessKey", "elasticsearchAwsSecretAccessKey", "elasticsearchPassword", "externalAuthClientKey", "externalAuthClientKeyPass", "mailgunSigningKey", "recaptchaPrivateKey", "recaptchaSiteKey", "slackAppSecret", "slackAppSigningSecret", "spamCheckApiKey", "staticObjectsExternalStorageAuthToken", "staticObjectsExternalStorageUrl"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ApplicationSettings.__pulumiType, name, resourceInputs, opts);
     }
@@ -2047,6 +2317,10 @@ export interface ApplicationSettingsState {
      */
     elasticsearchMaxBulkSizeMb?: pulumi.Input<number>;
     /**
+     * Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+     */
+    elasticsearchMaxCodeIndexingConcurrency?: pulumi.Input<number>;
+    /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
     elasticsearchNamespaceIds?: pulumi.Input<pulumi.Input<number>[]>;
@@ -2058,6 +2332,10 @@ export interface ApplicationSettingsState {
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
     elasticsearchProjectIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+     */
+    elasticsearchRequeueWorkers?: pulumi.Input<boolean>;
     /**
      * Enable Elasticsearch search.
      */
@@ -2071,6 +2349,10 @@ export interface ApplicationSettingsState {
      */
     elasticsearchUsername?: pulumi.Input<string>;
     /**
+     * Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+     */
+    elasticsearchWorkerNumberOfShards?: pulumi.Input<number>;
+    /**
      * Additional text added to the bottom of every email for legal/auditing/compliance reasons.
      */
     emailAdditionalText?: pulumi.Input<string>;
@@ -2078,6 +2360,14 @@ export interface ApplicationSettingsState {
      * Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
      */
     emailAuthorInBody?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+     */
+    emailConfirmationSetting?: pulumi.Input<string>;
+    /**
+     * Show the external redirect page that warns you about user-generated content in GitLab Pages.
+     */
+    enableArtifactExternalRedirectWarningPage?: pulumi.Input<boolean>;
     /**
      * Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
      */
@@ -2131,6 +2421,10 @@ export interface ApplicationSettingsState {
      */
     externalPipelineValidationServiceUrl?: pulumi.Input<string>;
     /**
+     * Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+     */
+    failedLoginAttemptsUnlockPeriodInMinutes?: pulumi.Input<number>;
+    /**
      * The ID of a project to load custom file templates from.
      */
     fileTemplateProjectId?: pulumi.Input<number>;
@@ -2147,7 +2441,11 @@ export interface ApplicationSettingsState {
      */
     geoStatusTimeout?: pulumi.Input<number>;
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     */
+    gitRateLimitUsersAlertlists?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
      */
     gitRateLimitUsersAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2166,6 +2464,30 @@ export interface ApplicationSettingsState {
      * Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
      */
     gitalyTimeoutMedium?: pulumi.Input<number>;
+    /**
+     * Indicates whether the instance was provisioned for GitLab Dedicated.
+     */
+    gitlabDedicatedInstance?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+     */
+    gitlabEnvironmentToolkitInstance?: pulumi.Input<boolean>;
+    /**
+     * Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     */
+    gitlabShellOperationLimit?: pulumi.Input<number>;
+    /**
+     * Enable Gitpod integration.
+     */
+    gitpodEnabled?: pulumi.Input<boolean>;
+    /**
+     * The Gitpod instance URL for integration.
+     */
+    gitpodUrl?: pulumi.Input<string>;
+    /**
+     * Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+     */
+    globallyAllowedIps?: pulumi.Input<string>;
     /**
      * Enable Grafana.
      */
@@ -2263,6 +2585,10 @@ export interface ApplicationSettingsState {
      */
     inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
     /**
+     * Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     */
+    includeOptionalMetricsInServicePing?: pulumi.Input<boolean>;
+    /**
      * Enable Invisible CAPTCHA spam detection during sign-up.
      */
     invisibleCaptchaEnabled?: pulumi.Input<boolean>;
@@ -2271,6 +2597,18 @@ export interface ApplicationSettingsState {
      */
     issuesCreateLimit?: pulumi.Input<number>;
     /**
+     * ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+     */
+    jiraConnectApplicationKey?: pulumi.Input<string>;
+    /**
+     * URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+     */
+    jiraConnectProxyUrl?: pulumi.Input<string>;
+    /**
+     * Enable public key storage for the GitLab for Jira Cloud app.
+     */
+    jiraConnectPublicKeyStorageEnabled?: pulumi.Input<boolean>;
+    /**
      * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      */
     keepLatestArtifact?: pulumi.Input<boolean>;
@@ -2278,6 +2616,10 @@ export interface ApplicationSettingsState {
      * Increase this value when any cached Markdown should be invalidated.
      */
     localMarkdownVersion?: pulumi.Input<number>;
+    /**
+     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     */
+    lockDuoFeaturesEnabled?: pulumi.Input<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
@@ -2295,6 +2637,10 @@ export interface ApplicationSettingsState {
      */
     maintenanceModeMessage?: pulumi.Input<string>;
     /**
+     * Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+     */
+    mavenPackageRequestsForwarding?: pulumi.Input<boolean>;
+    /**
      * Maximum artifacts size in MB.
      */
     maxArtifactsSize?: pulumi.Input<number>;
@@ -2303,13 +2649,25 @@ export interface ApplicationSettingsState {
      */
     maxAttachmentSize?: pulumi.Input<number>;
     /**
+     * Maximum decompressed archive size in bytes.
+     */
+    maxDecompressedArchiveSize?: pulumi.Input<number>;
+    /**
      * Maximum export size in MB. 0 for unlimited.
      */
     maxExportSize?: pulumi.Input<number>;
     /**
+     * Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     */
+    maxImportRemoteFileSize?: pulumi.Input<number>;
+    /**
      * Maximum import size in MB. 0 for unlimited.
      */
     maxImportSize?: pulumi.Input<number>;
+    /**
+     * Maximum number of sign-in attempts before locking out the user.
+     */
+    maxLoginAttempts?: pulumi.Input<number>;
     /**
      * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      */
@@ -2360,9 +2718,21 @@ export interface ApplicationSettingsState {
      */
     npmPackageRequestsForwarding?: pulumi.Input<boolean>;
     /**
+     * Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     */
+    nugetSkipMetadataUrlValidation?: pulumi.Input<boolean>;
+    /**
      * Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
      */
     outboundLocalRequestsWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+     */
+    packageMetadataPurlTypes?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Enable to allow anyone to pull from Package Registry visible and changeable.
+     */
+    packageRegistryAllowAnyoneToPullOption?: pulumi.Input<boolean>;
     /**
      * Number of workers assigned to the packages cleanup policies.
      */
@@ -2424,6 +2794,14 @@ export interface ApplicationSettingsState {
      */
     projectExportEnabled?: pulumi.Input<boolean>;
     /**
+     * Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     */
+    projectJobsApiRateLimit?: pulumi.Input<number>;
+    /**
+     * Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     */
+    projectsApiRateLimitUnauthenticated?: pulumi.Input<number>;
+    /**
      * Enable Prometheus metrics.
      */
     prometheusMetricsEnabled?: pulumi.Input<boolean>;
@@ -2468,6 +2846,14 @@ export interface ApplicationSettingsState {
      */
     receiveMaxInputSize?: pulumi.Input<number>;
     /**
+     * Enable receptive mode for GitLab Agents for Kubernetes.
+     */
+    receptiveClusterAgentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable Remember me setting. Introduced in GitLab 16.0.
+     */
+    rememberMeEnabled?: pulumi.Input<boolean>;
+    /**
      * GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
      */
     repositoryChecksEnabled?: pulumi.Input<boolean>;
@@ -2487,6 +2873,14 @@ export interface ApplicationSettingsState {
      * When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
      */
     requireAdminApprovalAfterUserSignup?: pulumi.Input<boolean>;
+    /**
+     * Allow administrators to require 2FA for all administrators on the instance.
+     */
+    requireAdminTwoFactorAuthentication?: pulumi.Input<boolean>;
+    /**
+     * When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+     */
+    requirePersonalAccessTokenExpiry?: pulumi.Input<boolean>;
     /**
      * (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
      */
@@ -2508,9 +2902,25 @@ export interface ApplicationSettingsState {
      */
     searchRateLimitUnauthenticated?: pulumi.Input<number>;
     /**
+     * Maximum number of active merge request approval policies per security policy project. Maximum: 20
+     */
+    securityApprovalPoliciesLimit?: pulumi.Input<number>;
+    /**
+     * Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+     */
+    securityPolicyGlobalGroupApproversEnabled?: pulumi.Input<boolean>;
+    /**
+     * Public security contact information. Introduced in GitLab 16.7.
+     */
+    securityTxtContent?: pulumi.Input<string>;
+    /**
      * Send confirmation email on sign-up.
      */
     sendUserConfirmationEmail?: pulumi.Input<boolean>;
+    /**
+     * Flag to indicate if token expiry date can be optional for service account users
+     */
+    serviceAccessTokensExpirationEnforced?: pulumi.Input<boolean>;
     /**
      * Session duration in minutes. GitLab restart is required to apply changes.
      */
@@ -2548,6 +2958,14 @@ export interface ApplicationSettingsState {
      */
     signupEnabled?: pulumi.Input<boolean>;
     /**
+     * Enable Silent admin exports.
+     */
+    silentAdminExportsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable Silent mode.
+     */
+    silentModeEnabled?: pulumi.Input<boolean>;
+    /**
      * (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
      */
     slackAppEnabled?: pulumi.Input<boolean>;
@@ -2584,6 +3002,10 @@ export interface ApplicationSettingsState {
      */
     snowplowCookieDomain?: pulumi.Input<string>;
     /**
+     * The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+     */
+    snowplowDatabaseCollectorHostname?: pulumi.Input<string>;
+    /**
      * Enable snowplow tracking.
      */
     snowplowEnabled?: pulumi.Input<boolean>;
@@ -2611,6 +3033,14 @@ export interface ApplicationSettingsState {
      * URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
      */
     spamCheckEndpointUrl?: pulumi.Input<string>;
+    /**
+     * Authentication token for the external storage linked in static*objects*external*storage*url.
+     */
+    staticObjectsExternalStorageAuthToken?: pulumi.Input<string>;
+    /**
+     * URL to an external storage for repository static objects.
+     */
+    staticObjectsExternalStorageUrl?: pulumi.Input<string>;
     /**
      * Enable pipeline suggestion banner.
      */
@@ -2704,6 +3134,10 @@ export interface ApplicationSettingsState {
      */
     twoFactorGracePeriod?: pulumi.Input<number>;
     /**
+     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     */
+    unconfirmedUsersDeleteAfterDays?: pulumi.Input<number>;
+    /**
      * (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
      */
     uniqueIpsLimitEnabled?: pulumi.Input<boolean>;
@@ -2716,9 +3150,17 @@ export interface ApplicationSettingsState {
      */
     uniqueIpsLimitTimeWindow?: pulumi.Input<number>;
     /**
+     * Fetch GitLab Runner release version data from GitLab.com.
+     */
+    updateRunnerVersionsEnabled?: pulumi.Input<boolean>;
+    /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      */
     usagePingEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+     */
+    useClickhouseForAnalytics?: pulumi.Input<boolean>;
     /**
      * Send an email to users upon account deactivation.
      */
@@ -2732,6 +3174,10 @@ export interface ApplicationSettingsState {
      */
     userDefaultInternalRegex?: pulumi.Input<string>;
     /**
+     * Newly created users have private profile by default. Introduced in GitLab 15.8.
+     */
+    userDefaultsToPrivateProfile?: pulumi.Input<boolean>;
+    /**
      * Allow users to register any application to use GitLab as an OAuth provider.
      */
     userOauthApplications?: pulumi.Input<boolean>;
@@ -2739,6 +3185,10 @@ export interface ApplicationSettingsState {
      * When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
      */
     userShowAddSshKeyMessage?: pulumi.Input<boolean>;
+    /**
+     * List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
+     */
+    validRunnerRegistrars?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Let GitLab inform you when an update is available.
      */
@@ -2748,7 +3198,7 @@ export interface ApplicationSettingsState {
      */
     webIdeClientsidePreviewEnabled?: pulumi.Input<boolean>;
     /**
-     * What’s new variant, possible values: all*tiers, current*tier, and disabled.
+     * What's new variant, possible values: all*tiers, current*tier, and disabled.
      */
     whatsNewVariant?: pulumi.Input<string>;
     /**
@@ -3130,6 +3580,10 @@ export interface ApplicationSettingsArgs {
      */
     elasticsearchMaxBulkSizeMb?: pulumi.Input<number>;
     /**
+     * Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+     */
+    elasticsearchMaxCodeIndexingConcurrency?: pulumi.Input<number>;
+    /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
     elasticsearchNamespaceIds?: pulumi.Input<pulumi.Input<number>[]>;
@@ -3141,6 +3595,10 @@ export interface ApplicationSettingsArgs {
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
     elasticsearchProjectIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+     */
+    elasticsearchRequeueWorkers?: pulumi.Input<boolean>;
     /**
      * Enable Elasticsearch search.
      */
@@ -3154,6 +3612,10 @@ export interface ApplicationSettingsArgs {
      */
     elasticsearchUsername?: pulumi.Input<string>;
     /**
+     * Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+     */
+    elasticsearchWorkerNumberOfShards?: pulumi.Input<number>;
+    /**
      * Additional text added to the bottom of every email for legal/auditing/compliance reasons.
      */
     emailAdditionalText?: pulumi.Input<string>;
@@ -3161,6 +3623,14 @@ export interface ApplicationSettingsArgs {
      * Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
      */
     emailAuthorInBody?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+     */
+    emailConfirmationSetting?: pulumi.Input<string>;
+    /**
+     * Show the external redirect page that warns you about user-generated content in GitLab Pages.
+     */
+    enableArtifactExternalRedirectWarningPage?: pulumi.Input<boolean>;
     /**
      * Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
      */
@@ -3214,6 +3684,10 @@ export interface ApplicationSettingsArgs {
      */
     externalPipelineValidationServiceUrl?: pulumi.Input<string>;
     /**
+     * Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+     */
+    failedLoginAttemptsUnlockPeriodInMinutes?: pulumi.Input<number>;
+    /**
      * The ID of a project to load custom file templates from.
      */
     fileTemplateProjectId?: pulumi.Input<number>;
@@ -3230,7 +3704,11 @@ export interface ApplicationSettingsArgs {
      */
     geoStatusTimeout?: pulumi.Input<number>;
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     */
+    gitRateLimitUsersAlertlists?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
      */
     gitRateLimitUsersAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3249,6 +3727,22 @@ export interface ApplicationSettingsArgs {
      * Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
      */
     gitalyTimeoutMedium?: pulumi.Input<number>;
+    /**
+     * Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     */
+    gitlabShellOperationLimit?: pulumi.Input<number>;
+    /**
+     * Enable Gitpod integration.
+     */
+    gitpodEnabled?: pulumi.Input<boolean>;
+    /**
+     * The Gitpod instance URL for integration.
+     */
+    gitpodUrl?: pulumi.Input<string>;
+    /**
+     * Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+     */
+    globallyAllowedIps?: pulumi.Input<string>;
     /**
      * Enable Grafana.
      */
@@ -3346,6 +3840,10 @@ export interface ApplicationSettingsArgs {
      */
     inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
     /**
+     * Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     */
+    includeOptionalMetricsInServicePing?: pulumi.Input<boolean>;
+    /**
      * Enable Invisible CAPTCHA spam detection during sign-up.
      */
     invisibleCaptchaEnabled?: pulumi.Input<boolean>;
@@ -3354,6 +3852,18 @@ export interface ApplicationSettingsArgs {
      */
     issuesCreateLimit?: pulumi.Input<number>;
     /**
+     * ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+     */
+    jiraConnectApplicationKey?: pulumi.Input<string>;
+    /**
+     * URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+     */
+    jiraConnectProxyUrl?: pulumi.Input<string>;
+    /**
+     * Enable public key storage for the GitLab for Jira Cloud app.
+     */
+    jiraConnectPublicKeyStorageEnabled?: pulumi.Input<boolean>;
+    /**
      * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      */
     keepLatestArtifact?: pulumi.Input<boolean>;
@@ -3361,6 +3871,10 @@ export interface ApplicationSettingsArgs {
      * Increase this value when any cached Markdown should be invalidated.
      */
     localMarkdownVersion?: pulumi.Input<number>;
+    /**
+     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     */
+    lockDuoFeaturesEnabled?: pulumi.Input<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
@@ -3378,6 +3892,10 @@ export interface ApplicationSettingsArgs {
      */
     maintenanceModeMessage?: pulumi.Input<string>;
     /**
+     * Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+     */
+    mavenPackageRequestsForwarding?: pulumi.Input<boolean>;
+    /**
      * Maximum artifacts size in MB.
      */
     maxArtifactsSize?: pulumi.Input<number>;
@@ -3386,13 +3904,25 @@ export interface ApplicationSettingsArgs {
      */
     maxAttachmentSize?: pulumi.Input<number>;
     /**
+     * Maximum decompressed archive size in bytes.
+     */
+    maxDecompressedArchiveSize?: pulumi.Input<number>;
+    /**
      * Maximum export size in MB. 0 for unlimited.
      */
     maxExportSize?: pulumi.Input<number>;
     /**
+     * Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     */
+    maxImportRemoteFileSize?: pulumi.Input<number>;
+    /**
      * Maximum import size in MB. 0 for unlimited.
      */
     maxImportSize?: pulumi.Input<number>;
+    /**
+     * Maximum number of sign-in attempts before locking out the user.
+     */
+    maxLoginAttempts?: pulumi.Input<number>;
     /**
      * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      */
@@ -3443,9 +3973,21 @@ export interface ApplicationSettingsArgs {
      */
     npmPackageRequestsForwarding?: pulumi.Input<boolean>;
     /**
+     * Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     */
+    nugetSkipMetadataUrlValidation?: pulumi.Input<boolean>;
+    /**
      * Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
      */
     outboundLocalRequestsWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+     */
+    packageMetadataPurlTypes?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Enable to allow anyone to pull from Package Registry visible and changeable.
+     */
+    packageRegistryAllowAnyoneToPullOption?: pulumi.Input<boolean>;
     /**
      * Number of workers assigned to the packages cleanup policies.
      */
@@ -3507,6 +4049,14 @@ export interface ApplicationSettingsArgs {
      */
     projectExportEnabled?: pulumi.Input<boolean>;
     /**
+     * Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     */
+    projectJobsApiRateLimit?: pulumi.Input<number>;
+    /**
+     * Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     */
+    projectsApiRateLimitUnauthenticated?: pulumi.Input<number>;
+    /**
      * Enable Prometheus metrics.
      */
     prometheusMetricsEnabled?: pulumi.Input<boolean>;
@@ -3551,6 +4101,14 @@ export interface ApplicationSettingsArgs {
      */
     receiveMaxInputSize?: pulumi.Input<number>;
     /**
+     * Enable receptive mode for GitLab Agents for Kubernetes.
+     */
+    receptiveClusterAgentsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable Remember me setting. Introduced in GitLab 16.0.
+     */
+    rememberMeEnabled?: pulumi.Input<boolean>;
+    /**
      * GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
      */
     repositoryChecksEnabled?: pulumi.Input<boolean>;
@@ -3570,6 +4128,14 @@ export interface ApplicationSettingsArgs {
      * When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
      */
     requireAdminApprovalAfterUserSignup?: pulumi.Input<boolean>;
+    /**
+     * Allow administrators to require 2FA for all administrators on the instance.
+     */
+    requireAdminTwoFactorAuthentication?: pulumi.Input<boolean>;
+    /**
+     * When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+     */
+    requirePersonalAccessTokenExpiry?: pulumi.Input<boolean>;
     /**
      * (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
      */
@@ -3591,9 +4157,25 @@ export interface ApplicationSettingsArgs {
      */
     searchRateLimitUnauthenticated?: pulumi.Input<number>;
     /**
+     * Maximum number of active merge request approval policies per security policy project. Maximum: 20
+     */
+    securityApprovalPoliciesLimit?: pulumi.Input<number>;
+    /**
+     * Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+     */
+    securityPolicyGlobalGroupApproversEnabled?: pulumi.Input<boolean>;
+    /**
+     * Public security contact information. Introduced in GitLab 16.7.
+     */
+    securityTxtContent?: pulumi.Input<string>;
+    /**
      * Send confirmation email on sign-up.
      */
     sendUserConfirmationEmail?: pulumi.Input<boolean>;
+    /**
+     * Flag to indicate if token expiry date can be optional for service account users
+     */
+    serviceAccessTokensExpirationEnforced?: pulumi.Input<boolean>;
     /**
      * Session duration in minutes. GitLab restart is required to apply changes.
      */
@@ -3631,6 +4213,14 @@ export interface ApplicationSettingsArgs {
      */
     signupEnabled?: pulumi.Input<boolean>;
     /**
+     * Enable Silent admin exports.
+     */
+    silentAdminExportsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable Silent mode.
+     */
+    silentModeEnabled?: pulumi.Input<boolean>;
+    /**
      * (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
      */
     slackAppEnabled?: pulumi.Input<boolean>;
@@ -3667,6 +4257,10 @@ export interface ApplicationSettingsArgs {
      */
     snowplowCookieDomain?: pulumi.Input<string>;
     /**
+     * The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+     */
+    snowplowDatabaseCollectorHostname?: pulumi.Input<string>;
+    /**
      * Enable snowplow tracking.
      */
     snowplowEnabled?: pulumi.Input<boolean>;
@@ -3694,6 +4288,14 @@ export interface ApplicationSettingsArgs {
      * URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
      */
     spamCheckEndpointUrl?: pulumi.Input<string>;
+    /**
+     * Authentication token for the external storage linked in static*objects*external*storage*url.
+     */
+    staticObjectsExternalStorageAuthToken?: pulumi.Input<string>;
+    /**
+     * URL to an external storage for repository static objects.
+     */
+    staticObjectsExternalStorageUrl?: pulumi.Input<string>;
     /**
      * Enable pipeline suggestion banner.
      */
@@ -3787,6 +4389,10 @@ export interface ApplicationSettingsArgs {
      */
     twoFactorGracePeriod?: pulumi.Input<number>;
     /**
+     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     */
+    unconfirmedUsersDeleteAfterDays?: pulumi.Input<number>;
+    /**
      * (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
      */
     uniqueIpsLimitEnabled?: pulumi.Input<boolean>;
@@ -3799,9 +4405,17 @@ export interface ApplicationSettingsArgs {
      */
     uniqueIpsLimitTimeWindow?: pulumi.Input<number>;
     /**
+     * Fetch GitLab Runner release version data from GitLab.com.
+     */
+    updateRunnerVersionsEnabled?: pulumi.Input<boolean>;
+    /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      */
     usagePingEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+     */
+    useClickhouseForAnalytics?: pulumi.Input<boolean>;
     /**
      * Send an email to users upon account deactivation.
      */
@@ -3815,6 +4429,10 @@ export interface ApplicationSettingsArgs {
      */
     userDefaultInternalRegex?: pulumi.Input<string>;
     /**
+     * Newly created users have private profile by default. Introduced in GitLab 15.8.
+     */
+    userDefaultsToPrivateProfile?: pulumi.Input<boolean>;
+    /**
      * Allow users to register any application to use GitLab as an OAuth provider.
      */
     userOauthApplications?: pulumi.Input<boolean>;
@@ -3822,6 +4440,10 @@ export interface ApplicationSettingsArgs {
      * When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
      */
     userShowAddSshKeyMessage?: pulumi.Input<boolean>;
+    /**
+     * List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
+     */
+    validRunnerRegistrars?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Let GitLab inform you when an update is available.
      */
@@ -3831,7 +4453,7 @@ export interface ApplicationSettingsArgs {
      */
     webIdeClientsidePreviewEnabled?: pulumi.Input<boolean>;
     /**
-     * What’s new variant, possible values: all*tiers, current*tier, and disabled.
+     * What's new variant, possible values: all*tiers, current*tier, and disabled.
      */
     whatsNewVariant?: pulumi.Input<string>;
     /**

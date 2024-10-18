@@ -36,7 +36,7 @@ namespace Pulumi.GitLab.Outputs
         /// <summary>
         /// The pipeline schedule id.
         /// </summary>
-        public readonly string Id;
+        public readonly int Id;
         /// <summary>
         /// The datetime of when the schedule will next run.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Pulumi.GitLab.Outputs
 
             string description,
 
-            string id,
+            int id,
 
             string nextRunAt,
 

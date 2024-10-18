@@ -74,6 +74,8 @@ type providerArgs struct {
 	// `clientCert` is set.
 	ClientKey      *string `pulumi:"clientKey"`
 	EarlyAuthCheck *bool   `pulumi:"earlyAuthCheck"`
+	// A map of headers to append to all API request to the GitLab instance.
+	Headers map[string]string `pulumi:"headers"`
 	// When set to true this disables SSL verification of the connection to the GitLab instance.
 	Insecure *bool `pulumi:"insecure"`
 	// The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
@@ -100,6 +102,8 @@ type ProviderArgs struct {
 	// `clientCert` is set.
 	ClientKey      pulumi.StringPtrInput
 	EarlyAuthCheck pulumi.BoolPtrInput
+	// A map of headers to append to all API request to the GitLab instance.
+	Headers pulumi.StringMapInput
 	// When set to true this disables SSL verification of the connection to the GitLab instance.
 	Insecure pulumi.BoolPtrInput
 	// The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.

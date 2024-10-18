@@ -19,12 +19,12 @@ public final class GroupDefaultBranchProtectionDefaults {
      */
     private @Nullable Boolean allowForcePush;
     /**
-     * @return An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+     * @return An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
      * 
      */
     private @Nullable List<String> allowedToMerges;
     /**
-     * @return An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+     * @return An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
      * 
      */
     private @Nullable List<String> allowedToPushes;
@@ -43,14 +43,14 @@ public final class GroupDefaultBranchProtectionDefaults {
         return Optional.ofNullable(this.allowForcePush);
     }
     /**
-     * @return An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+     * @return An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
      * 
      */
     public List<String> allowedToMerges() {
         return this.allowedToMerges == null ? List.of() : this.allowedToMerges;
     }
     /**
-     * @return An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+     * @return An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
      * 
      */
     public List<String> allowedToPushes() {

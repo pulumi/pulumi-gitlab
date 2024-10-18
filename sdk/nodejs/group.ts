@@ -57,6 +57,25 @@ import * as utilities from "./utilities";
  *         developerCanInitialPush: true,
  *     },
  * });
+ * // Group with custom default branch protection defaults
+ * const example_four = new gitlab.Group("example-four", {
+ *     name: "example-four",
+ *     path: "example-four",
+ *     description: "An example group with default branch protection defaults",
+ *     defaultBranchProtectionDefaults: {
+ *         allowedToPushes: ["no one"],
+ *         allowForcePush: true,
+ *         allowedToMerges: ["no one"],
+ *         developerCanInitialPush: true,
+ *     },
+ * });
+ * // Group with a default branch name specified
+ * const example_five = new gitlab.Group("example-five", {
+ *     name: "example",
+ *     path: "example",
+ *     defaultBranch: "develop",
+ *     description: "An example group with a default branch name",
+ * });
  * ```
  *
  * ## Import
@@ -117,6 +136,10 @@ export class Group extends pulumi.CustomResource {
      * The URL of the avatar image.
      */
     public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
+    /**
+     * Initial default branch name.
+     */
+    public readonly defaultBranch!: pulumi.Output<string | undefined>;
     /**
      * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
@@ -253,6 +276,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["avatar"] = state ? state.avatar : undefined;
             resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
             resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
+            resourceInputs["defaultBranch"] = state ? state.defaultBranch : undefined;
             resourceInputs["defaultBranchProtection"] = state ? state.defaultBranchProtection : undefined;
             resourceInputs["defaultBranchProtectionDefaults"] = state ? state.defaultBranchProtectionDefaults : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -290,6 +314,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
             resourceInputs["avatar"] = args ? args.avatar : undefined;
             resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
+            resourceInputs["defaultBranch"] = args ? args.defaultBranch : undefined;
             resourceInputs["defaultBranchProtection"] = args ? args.defaultBranchProtection : undefined;
             resourceInputs["defaultBranchProtectionDefaults"] = args ? args.defaultBranchProtectionDefaults : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -348,6 +373,10 @@ export interface GroupState {
      * The URL of the avatar image.
      */
     avatarUrl?: pulumi.Input<string>;
+    /**
+     * Initial default branch name.
+     */
+    defaultBranch?: pulumi.Input<string>;
     /**
      * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
@@ -484,6 +513,10 @@ export interface GroupArgs {
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
     avatarHash?: pulumi.Input<string>;
+    /**
+     * Initial default branch name.
+     */
+    defaultBranch?: pulumi.Input<string>;
     /**
      * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *

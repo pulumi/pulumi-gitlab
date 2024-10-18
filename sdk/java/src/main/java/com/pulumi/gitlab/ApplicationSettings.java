@@ -17,6 +17,7 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -1314,6 +1315,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.elasticsearchMaxBulkSizeMb;
     }
     /**
+     * Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="elasticsearchMaxCodeIndexingConcurrency", refs={Integer.class}, tree="[0]")
+    private Output<Integer> elasticsearchMaxCodeIndexingConcurrency;
+
+    /**
+     * @return Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+     * 
+     */
+    public Output<Integer> elasticsearchMaxCodeIndexingConcurrency() {
+        return this.elasticsearchMaxCodeIndexingConcurrency;
+    }
+    /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      * 
      */
@@ -1354,6 +1369,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<List<Integer>> elasticsearchProjectIds() {
         return this.elasticsearchProjectIds;
+    }
+    /**
+     * Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="elasticsearchRequeueWorkers", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> elasticsearchRequeueWorkers;
+
+    /**
+     * @return Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> elasticsearchRequeueWorkers() {
+        return this.elasticsearchRequeueWorkers;
     }
     /**
      * Enable Elasticsearch search.
@@ -1398,6 +1427,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.elasticsearchUsername;
     }
     /**
+     * Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="elasticsearchWorkerNumberOfShards", refs={Integer.class}, tree="[0]")
+    private Output<Integer> elasticsearchWorkerNumberOfShards;
+
+    /**
+     * @return Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+     * 
+     */
+    public Output<Integer> elasticsearchWorkerNumberOfShards() {
+        return this.elasticsearchWorkerNumberOfShards;
+    }
+    /**
      * Additional text added to the bottom of every email for legal/auditing/compliance reasons.
      * 
      */
@@ -1424,6 +1467,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> emailAuthorInBody() {
         return this.emailAuthorInBody;
+    }
+    /**
+     * Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+     * 
+     */
+    @Export(name="emailConfirmationSetting", refs={String.class}, tree="[0]")
+    private Output<String> emailConfirmationSetting;
+
+    /**
+     * @return Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+     * 
+     */
+    public Output<String> emailConfirmationSetting() {
+        return this.emailConfirmationSetting;
+    }
+    /**
+     * Show the external redirect page that warns you about user-generated content in GitLab Pages.
+     * 
+     */
+    @Export(name="enableArtifactExternalRedirectWarningPage", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableArtifactExternalRedirectWarningPage;
+
+    /**
+     * @return Show the external redirect page that warns you about user-generated content in GitLab Pages.
+     * 
+     */
+    public Output<Boolean> enableArtifactExternalRedirectWarningPage() {
+        return this.enableArtifactExternalRedirectWarningPage;
     }
     /**
      * Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
@@ -1608,6 +1679,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.externalPipelineValidationServiceUrl;
     }
     /**
+     * Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+     * 
+     */
+    @Export(name="failedLoginAttemptsUnlockPeriodInMinutes", refs={Integer.class}, tree="[0]")
+    private Output<Integer> failedLoginAttemptsUnlockPeriodInMinutes;
+
+    /**
+     * @return Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+     * 
+     */
+    public Output<Integer> failedLoginAttemptsUnlockPeriodInMinutes() {
+        return this.failedLoginAttemptsUnlockPeriodInMinutes;
+    }
+    /**
      * The ID of a project to load custom file templates from.
      * 
      */
@@ -1664,14 +1749,28 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.geoStatusTimeout;
     }
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     * 
+     */
+    @Export(name="gitRateLimitUsersAlertlists", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output<List<Integer>> gitRateLimitUsersAlertlists;
+
+    /**
+     * @return List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     * 
+     */
+    public Output<List<Integer>> gitRateLimitUsersAlertlists() {
+        return this.gitRateLimitUsersAlertlists;
+    }
+    /**
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
      * 
      */
     @Export(name="gitRateLimitUsersAllowlists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> gitRateLimitUsersAllowlists;
 
     /**
-     * @return List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * @return List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
      * 
      */
     public Output<List<String>> gitRateLimitUsersAllowlists() {
@@ -1732,6 +1831,90 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> gitalyTimeoutMedium() {
         return this.gitalyTimeoutMedium;
+    }
+    /**
+     * Indicates whether the instance was provisioned for GitLab Dedicated.
+     * 
+     */
+    @Export(name="gitlabDedicatedInstance", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> gitlabDedicatedInstance;
+
+    /**
+     * @return Indicates whether the instance was provisioned for GitLab Dedicated.
+     * 
+     */
+    public Output<Boolean> gitlabDedicatedInstance() {
+        return this.gitlabDedicatedInstance;
+    }
+    /**
+     * Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+     * 
+     */
+    @Export(name="gitlabEnvironmentToolkitInstance", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> gitlabEnvironmentToolkitInstance;
+
+    /**
+     * @return Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+     * 
+     */
+    public Output<Boolean> gitlabEnvironmentToolkitInstance() {
+        return this.gitlabEnvironmentToolkitInstance;
+    }
+    /**
+     * Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     * 
+     */
+    @Export(name="gitlabShellOperationLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> gitlabShellOperationLimit;
+
+    /**
+     * @return Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     * 
+     */
+    public Output<Integer> gitlabShellOperationLimit() {
+        return this.gitlabShellOperationLimit;
+    }
+    /**
+     * Enable Gitpod integration.
+     * 
+     */
+    @Export(name="gitpodEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> gitpodEnabled;
+
+    /**
+     * @return Enable Gitpod integration.
+     * 
+     */
+    public Output<Boolean> gitpodEnabled() {
+        return this.gitpodEnabled;
+    }
+    /**
+     * The Gitpod instance URL for integration.
+     * 
+     */
+    @Export(name="gitpodUrl", refs={String.class}, tree="[0]")
+    private Output<String> gitpodUrl;
+
+    /**
+     * @return The Gitpod instance URL for integration.
+     * 
+     */
+    public Output<String> gitpodUrl() {
+        return this.gitpodUrl;
+    }
+    /**
+     * Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+     * 
+     */
+    @Export(name="globallyAllowedIps", refs={String.class}, tree="[0]")
+    private Output<String> globallyAllowedIps;
+
+    /**
+     * @return Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+     * 
+     */
+    public Output<String> globallyAllowedIps() {
+        return this.globallyAllowedIps;
     }
     /**
      * Enable Grafana.
@@ -2058,6 +2241,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.inactiveProjectsSendWarningEmailAfterMonths;
     }
     /**
+     * Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     * 
+     */
+    @Export(name="includeOptionalMetricsInServicePing", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> includeOptionalMetricsInServicePing;
+
+    /**
+     * @return Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     * 
+     */
+    public Output<Boolean> includeOptionalMetricsInServicePing() {
+        return this.includeOptionalMetricsInServicePing;
+    }
+    /**
      * Enable Invisible CAPTCHA spam detection during sign-up.
      * 
      */
@@ -2086,6 +2283,48 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.issuesCreateLimit;
     }
     /**
+     * ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+     * 
+     */
+    @Export(name="jiraConnectApplicationKey", refs={String.class}, tree="[0]")
+    private Output<String> jiraConnectApplicationKey;
+
+    /**
+     * @return ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+     * 
+     */
+    public Output<String> jiraConnectApplicationKey() {
+        return this.jiraConnectApplicationKey;
+    }
+    /**
+     * URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+     * 
+     */
+    @Export(name="jiraConnectProxyUrl", refs={String.class}, tree="[0]")
+    private Output<String> jiraConnectProxyUrl;
+
+    /**
+     * @return URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+     * 
+     */
+    public Output<String> jiraConnectProxyUrl() {
+        return this.jiraConnectProxyUrl;
+    }
+    /**
+     * Enable public key storage for the GitLab for Jira Cloud app.
+     * 
+     */
+    @Export(name="jiraConnectPublicKeyStorageEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> jiraConnectPublicKeyStorageEnabled;
+
+    /**
+     * @return Enable public key storage for the GitLab for Jira Cloud app.
+     * 
+     */
+    public Output<Boolean> jiraConnectPublicKeyStorageEnabled() {
+        return this.jiraConnectPublicKeyStorageEnabled;
+    }
+    /**
      * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      * 
      */
@@ -2112,6 +2351,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> localMarkdownVersion() {
         return this.localMarkdownVersion;
+    }
+    /**
+     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    @Export(name="lockDuoFeaturesEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> lockDuoFeaturesEnabled;
+
+    /**
+     * @return Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> lockDuoFeaturesEnabled() {
+        return this.lockDuoFeaturesEnabled;
     }
     /**
      * Enable Mailgun event receiver.
@@ -2170,6 +2423,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.maintenanceModeMessage;
     }
     /**
+     * Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="mavenPackageRequestsForwarding", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> mavenPackageRequestsForwarding;
+
+    /**
+     * @return Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> mavenPackageRequestsForwarding() {
+        return this.mavenPackageRequestsForwarding;
+    }
+    /**
      * Maximum artifacts size in MB.
      * 
      */
@@ -2198,6 +2465,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.maxAttachmentSize;
     }
     /**
+     * Maximum decompressed archive size in bytes.
+     * 
+     */
+    @Export(name="maxDecompressedArchiveSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxDecompressedArchiveSize;
+
+    /**
+     * @return Maximum decompressed archive size in bytes.
+     * 
+     */
+    public Output<Integer> maxDecompressedArchiveSize() {
+        return this.maxDecompressedArchiveSize;
+    }
+    /**
      * Maximum export size in MB. 0 for unlimited.
      * 
      */
@@ -2212,6 +2493,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.maxExportSize;
     }
     /**
+     * Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     * 
+     */
+    @Export(name="maxImportRemoteFileSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxImportRemoteFileSize;
+
+    /**
+     * @return Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     * 
+     */
+    public Output<Integer> maxImportRemoteFileSize() {
+        return this.maxImportRemoteFileSize;
+    }
+    /**
      * Maximum import size in MB. 0 for unlimited.
      * 
      */
@@ -2224,6 +2519,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> maxImportSize() {
         return this.maxImportSize;
+    }
+    /**
+     * Maximum number of sign-in attempts before locking out the user.
+     * 
+     */
+    @Export(name="maxLoginAttempts", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxLoginAttempts;
+
+    /**
+     * @return Maximum number of sign-in attempts before locking out the user.
+     * 
+     */
+    public Output<Integer> maxLoginAttempts() {
+        return this.maxLoginAttempts;
     }
     /**
      * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
@@ -2400,6 +2709,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.npmPackageRequestsForwarding;
     }
     /**
+     * Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * 
+     */
+    @Export(name="nugetSkipMetadataUrlValidation", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> nugetSkipMetadataUrlValidation;
+
+    /**
+     * @return Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * 
+     */
+    public Output<Boolean> nugetSkipMetadataUrlValidation() {
+        return this.nugetSkipMetadataUrlValidation;
+    }
+    /**
      * Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
      * 
      */
@@ -2412,6 +2735,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> outboundLocalRequestsWhitelists() {
         return this.outboundLocalRequestsWhitelists;
+    }
+    /**
+     * List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+     * 
+     */
+    @Export(name="packageMetadataPurlTypes", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output<List<Integer>> packageMetadataPurlTypes;
+
+    /**
+     * @return List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+     * 
+     */
+    public Output<List<Integer>> packageMetadataPurlTypes() {
+        return this.packageMetadataPurlTypes;
+    }
+    /**
+     * Enable to allow anyone to pull from Package Registry visible and changeable.
+     * 
+     */
+    @Export(name="packageRegistryAllowAnyoneToPullOption", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> packageRegistryAllowAnyoneToPullOption;
+
+    /**
+     * @return Enable to allow anyone to pull from Package Registry visible and changeable.
+     * 
+     */
+    public Output<Boolean> packageRegistryAllowAnyoneToPullOption() {
+        return this.packageRegistryAllowAnyoneToPullOption;
     }
     /**
      * Number of workers assigned to the packages cleanup policies.
@@ -2624,6 +2975,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.projectExportEnabled;
     }
     /**
+     * Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     * 
+     */
+    @Export(name="projectJobsApiRateLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> projectJobsApiRateLimit;
+
+    /**
+     * @return Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     * 
+     */
+    public Output<Integer> projectJobsApiRateLimit() {
+        return this.projectJobsApiRateLimit;
+    }
+    /**
+     * Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     * 
+     */
+    @Export(name="projectsApiRateLimitUnauthenticated", refs={Integer.class}, tree="[0]")
+    private Output<Integer> projectsApiRateLimitUnauthenticated;
+
+    /**
+     * @return Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     * 
+     */
+    public Output<Integer> projectsApiRateLimitUnauthenticated() {
+        return this.projectsApiRateLimitUnauthenticated;
+    }
+    /**
      * Enable Prometheus metrics.
      * 
      */
@@ -2778,6 +3157,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.receiveMaxInputSize;
     }
     /**
+     * Enable receptive mode for GitLab Agents for Kubernetes.
+     * 
+     */
+    @Export(name="receptiveClusterAgentsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> receptiveClusterAgentsEnabled;
+
+    /**
+     * @return Enable receptive mode for GitLab Agents for Kubernetes.
+     * 
+     */
+    public Output<Boolean> receptiveClusterAgentsEnabled() {
+        return this.receptiveClusterAgentsEnabled;
+    }
+    /**
+     * Enable Remember me setting. Introduced in GitLab 16.0.
+     * 
+     */
+    @Export(name="rememberMeEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> rememberMeEnabled;
+
+    /**
+     * @return Enable Remember me setting. Introduced in GitLab 16.0.
+     * 
+     */
+    public Output<Boolean> rememberMeEnabled() {
+        return this.rememberMeEnabled;
+    }
+    /**
      * GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
      * 
      */
@@ -2846,6 +3253,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> requireAdminApprovalAfterUserSignup() {
         return this.requireAdminApprovalAfterUserSignup;
+    }
+    /**
+     * Allow administrators to require 2FA for all administrators on the instance.
+     * 
+     */
+    @Export(name="requireAdminTwoFactorAuthentication", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> requireAdminTwoFactorAuthentication;
+
+    /**
+     * @return Allow administrators to require 2FA for all administrators on the instance.
+     * 
+     */
+    public Output<Boolean> requireAdminTwoFactorAuthentication() {
+        return this.requireAdminTwoFactorAuthentication;
+    }
+    /**
+     * When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+     * 
+     */
+    @Export(name="requirePersonalAccessTokenExpiry", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> requirePersonalAccessTokenExpiry;
+
+    /**
+     * @return When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+     * 
+     */
+    public Output<Boolean> requirePersonalAccessTokenExpiry() {
+        return this.requirePersonalAccessTokenExpiry;
     }
     /**
      * (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
@@ -2918,6 +3353,48 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.searchRateLimitUnauthenticated;
     }
     /**
+     * Maximum number of active merge request approval policies per security policy project. Maximum: 20
+     * 
+     */
+    @Export(name="securityApprovalPoliciesLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> securityApprovalPoliciesLimit;
+
+    /**
+     * @return Maximum number of active merge request approval policies per security policy project. Maximum: 20
+     * 
+     */
+    public Output<Integer> securityApprovalPoliciesLimit() {
+        return this.securityApprovalPoliciesLimit;
+    }
+    /**
+     * Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+     * 
+     */
+    @Export(name="securityPolicyGlobalGroupApproversEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> securityPolicyGlobalGroupApproversEnabled;
+
+    /**
+     * @return Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+     * 
+     */
+    public Output<Boolean> securityPolicyGlobalGroupApproversEnabled() {
+        return this.securityPolicyGlobalGroupApproversEnabled;
+    }
+    /**
+     * Public security contact information. Introduced in GitLab 16.7.
+     * 
+     */
+    @Export(name="securityTxtContent", refs={String.class}, tree="[0]")
+    private Output<String> securityTxtContent;
+
+    /**
+     * @return Public security contact information. Introduced in GitLab 16.7.
+     * 
+     */
+    public Output<String> securityTxtContent() {
+        return this.securityTxtContent;
+    }
+    /**
      * Send confirmation email on sign-up.
      * 
      */
@@ -2930,6 +3407,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> sendUserConfirmationEmail() {
         return this.sendUserConfirmationEmail;
+    }
+    /**
+     * Flag to indicate if token expiry date can be optional for service account users
+     * 
+     */
+    @Export(name="serviceAccessTokensExpirationEnforced", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> serviceAccessTokensExpirationEnforced;
+
+    /**
+     * @return Flag to indicate if token expiry date can be optional for service account users
+     * 
+     */
+    public Output<Boolean> serviceAccessTokensExpirationEnforced() {
+        return this.serviceAccessTokensExpirationEnforced;
     }
     /**
      * Session duration in minutes. GitLab restart is required to apply changes.
@@ -3058,6 +3549,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.signupEnabled;
     }
     /**
+     * Enable Silent admin exports.
+     * 
+     */
+    @Export(name="silentAdminExportsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> silentAdminExportsEnabled;
+
+    /**
+     * @return Enable Silent admin exports.
+     * 
+     */
+    public Output<Boolean> silentAdminExportsEnabled() {
+        return this.silentAdminExportsEnabled;
+    }
+    /**
+     * Enable Silent mode.
+     * 
+     */
+    @Export(name="silentModeEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> silentModeEnabled;
+
+    /**
+     * @return Enable Silent mode.
+     * 
+     */
+    public Output<Boolean> silentModeEnabled() {
+        return this.silentModeEnabled;
+    }
+    /**
      * (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
      * 
      */
@@ -3184,6 +3703,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.snowplowCookieDomain;
     }
     /**
+     * The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+     * 
+     */
+    @Export(name="snowplowDatabaseCollectorHostname", refs={String.class}, tree="[0]")
+    private Output<String> snowplowDatabaseCollectorHostname;
+
+    /**
+     * @return The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+     * 
+     */
+    public Output<String> snowplowDatabaseCollectorHostname() {
+        return this.snowplowDatabaseCollectorHostname;
+    }
+    /**
      * Enable snowplow tracking.
      * 
      */
@@ -3280,6 +3813,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<String> spamCheckEndpointUrl() {
         return this.spamCheckEndpointUrl;
+    }
+    /**
+     * Authentication token for the external storage linked in static*objects*external*storage*url.
+     * 
+     */
+    @Export(name="staticObjectsExternalStorageAuthToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> staticObjectsExternalStorageAuthToken;
+
+    /**
+     * @return Authentication token for the external storage linked in static*objects*external*storage*url.
+     * 
+     */
+    public Output<Optional<String>> staticObjectsExternalStorageAuthToken() {
+        return Codegen.optional(this.staticObjectsExternalStorageAuthToken);
+    }
+    /**
+     * URL to an external storage for repository static objects.
+     * 
+     */
+    @Export(name="staticObjectsExternalStorageUrl", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> staticObjectsExternalStorageUrl;
+
+    /**
+     * @return URL to an external storage for repository static objects.
+     * 
+     */
+    public Output<Optional<String>> staticObjectsExternalStorageUrl() {
+        return Codegen.optional(this.staticObjectsExternalStorageUrl);
     }
     /**
      * Enable pipeline suggestion banner.
@@ -3604,6 +4165,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.twoFactorGracePeriod;
     }
     /**
+     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    @Export(name="unconfirmedUsersDeleteAfterDays", refs={Integer.class}, tree="[0]")
+    private Output<Integer> unconfirmedUsersDeleteAfterDays;
+
+    /**
+     * @return Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * 
+     */
+    public Output<Integer> unconfirmedUsersDeleteAfterDays() {
+        return this.unconfirmedUsersDeleteAfterDays;
+    }
+    /**
      * (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
      * 
      */
@@ -3646,6 +4221,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.uniqueIpsLimitTimeWindow;
     }
     /**
+     * Fetch GitLab Runner release version data from GitLab.com.
+     * 
+     */
+    @Export(name="updateRunnerVersionsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> updateRunnerVersionsEnabled;
+
+    /**
+     * @return Fetch GitLab Runner release version data from GitLab.com.
+     * 
+     */
+    public Output<Boolean> updateRunnerVersionsEnabled() {
+        return this.updateRunnerVersionsEnabled;
+    }
+    /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      * 
      */
@@ -3658,6 +4247,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> usagePingEnabled() {
         return this.usagePingEnabled;
+    }
+    /**
+     * Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+     * 
+     */
+    @Export(name="useClickhouseForAnalytics", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> useClickhouseForAnalytics;
+
+    /**
+     * @return Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> useClickhouseForAnalytics() {
+        return this.useClickhouseForAnalytics;
     }
     /**
      * Send an email to users upon account deactivation.
@@ -3702,6 +4305,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.userDefaultInternalRegex;
     }
     /**
+     * Newly created users have private profile by default. Introduced in GitLab 15.8.
+     * 
+     */
+    @Export(name="userDefaultsToPrivateProfile", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> userDefaultsToPrivateProfile;
+
+    /**
+     * @return Newly created users have private profile by default. Introduced in GitLab 15.8.
+     * 
+     */
+    public Output<Boolean> userDefaultsToPrivateProfile() {
+        return this.userDefaultsToPrivateProfile;
+    }
+    /**
      * Allow users to register any application to use GitLab as an OAuth provider.
      * 
      */
@@ -3728,6 +4345,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> userShowAddSshKeyMessage() {
         return this.userShowAddSshKeyMessage;
+    }
+    /**
+     * List of types which are allowed to register a GitLab Runner. Can be [], [&#39;group&#39;], [&#39;project&#39;] or [&#39;group&#39;, &#39;project&#39;].
+     * 
+     */
+    @Export(name="validRunnerRegistrars", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> validRunnerRegistrars;
+
+    /**
+     * @return List of types which are allowed to register a GitLab Runner. Can be [], [&#39;group&#39;], [&#39;project&#39;] or [&#39;group&#39;, &#39;project&#39;].
+     * 
+     */
+    public Output<List<String>> validRunnerRegistrars() {
+        return this.validRunnerRegistrars;
     }
     /**
      * Let GitLab inform you when an update is available.
@@ -3758,14 +4389,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.webIdeClientsidePreviewEnabled;
     }
     /**
-     * What’s new variant, possible values: all*tiers, current*tier, and disabled.
+     * What&#39;s new variant, possible values: all*tiers, current*tier, and disabled.
      * 
      */
     @Export(name="whatsNewVariant", refs={String.class}, tree="[0]")
     private Output<String> whatsNewVariant;
 
     /**
-     * @return What’s new variant, possible values: all*tiers, current*tier, and disabled.
+     * @return What&#39;s new variant, possible values: all*tiers, current*tier, and disabled.
      * 
      */
     public Output<String> whatsNewVariant() {
@@ -3840,7 +4471,9 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
                 "recaptchaSiteKey",
                 "slackAppSecret",
                 "slackAppSigningSecret",
-                "spamCheckApiKey"
+                "spamCheckApiKey",
+                "staticObjectsExternalStorageAuthToken",
+                "staticObjectsExternalStorageUrl"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

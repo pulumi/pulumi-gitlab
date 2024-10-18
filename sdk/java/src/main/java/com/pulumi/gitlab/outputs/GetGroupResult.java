@@ -15,6 +15,11 @@ import java.util.Objects;
 @CustomType
 public final class GetGroupResult {
     /**
+     * @return The default branch of the group.
+     * 
+     */
+    private String defaultBranch;
+    /**
      * @return Whether developers and maintainers can push to the applicable default branch.
      * 
      */
@@ -121,6 +126,13 @@ public final class GetGroupResult {
     private String wikiAccessLevel;
 
     private GetGroupResult() {}
+    /**
+     * @return The default branch of the group.
+     * 
+     */
+    public String defaultBranch() {
+        return this.defaultBranch;
+    }
     /**
      * @return Whether developers and maintainers can push to the applicable default branch.
      * 
@@ -278,6 +290,7 @@ public final class GetGroupResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String defaultBranch;
         private Integer defaultBranchProtection;
         private String description;
         private Integer extraSharedRunnersMinutesLimit;
@@ -302,6 +315,7 @@ public final class GetGroupResult {
         public Builder() {}
         public Builder(GetGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.defaultBranch = defaults.defaultBranch;
     	      this.defaultBranchProtection = defaults.defaultBranchProtection;
     	      this.description = defaults.description;
     	      this.extraSharedRunnersMinutesLimit = defaults.extraSharedRunnersMinutesLimit;
@@ -325,6 +339,14 @@ public final class GetGroupResult {
     	      this.wikiAccessLevel = defaults.wikiAccessLevel;
         }
 
+        @CustomType.Setter
+        public Builder defaultBranch(String defaultBranch) {
+            if (defaultBranch == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "defaultBranch");
+            }
+            this.defaultBranch = defaultBranch;
+            return this;
+        }
         @CustomType.Setter
         public Builder defaultBranchProtection(Integer defaultBranchProtection) {
             if (defaultBranchProtection == null) {
@@ -498,6 +520,7 @@ public final class GetGroupResult {
         }
         public GetGroupResult build() {
             final var _resultValue = new GetGroupResult();
+            _resultValue.defaultBranch = defaultBranch;
             _resultValue.defaultBranchProtection = defaultBranchProtection;
             _resultValue.description = description;
             _resultValue.extraSharedRunnersMinutesLimit = extraSharedRunnersMinutesLimit;

@@ -128,6 +128,212 @@ export interface BranchProtectionAllowedToUnprotect {
     userId?: pulumi.Input<number>;
 }
 
+export interface GetGroupProvisionedUsersProvisionedUser {
+    /**
+     * The avatar URL of the provisioned user.
+     */
+    avatarUrl?: string;
+    /**
+     * The bio of the provisioned user.
+     */
+    bio?: string;
+    /**
+     * Whether the provisioned user is a bot.
+     */
+    bot?: boolean;
+    /**
+     * The confirmation date of the provisioned user.
+     */
+    confirmedAt?: string;
+    /**
+     * The creation date of the provisioned user.
+     */
+    createdAt?: string;
+    /**
+     * The email of the provisioned user.
+     */
+    email?: string;
+    /**
+     * Whether the provisioned user is external.
+     */
+    external?: boolean;
+    /**
+     * The ID of the provisioned user.
+     */
+    id?: string;
+    /**
+     * The job title of the provisioned user.
+     */
+    jobTitle?: string;
+    /**
+     * The last activity date of the provisioned user.
+     */
+    lastActivityOn?: string;
+    /**
+     * The last sign-in date of the provisioned user.
+     */
+    lastSignInAt?: string;
+    /**
+     * The LinkedIn ID of the provisioned user.
+     */
+    linkedin?: string;
+    /**
+     * The location of the provisioned user.
+     */
+    location?: string;
+    /**
+     * The name of the provisioned user.
+     */
+    name?: string;
+    /**
+     * The organization of the provisioned user.
+     */
+    organization?: string;
+    /**
+     * Whether the provisioned user has a private profile.
+     */
+    privateProfile?: boolean;
+    /**
+     * The pronouns of the provisioned user.
+     */
+    pronouns?: string;
+    /**
+     * The public email of the provisioned user.
+     */
+    publicEmail?: string;
+    /**
+     * The Skype ID of the provisioned user.
+     */
+    skype?: string;
+    /**
+     * The state of the provisioned user.
+     */
+    state?: string;
+    /**
+     * The Twitter ID of the provisioned user.
+     */
+    twitter?: string;
+    /**
+     * Whether two-factor authentication is enabled for the provisioned user.
+     */
+    twoFactorEnabled?: boolean;
+    /**
+     * The username of the provisioned user.
+     */
+    username?: string;
+    /**
+     * The web URL of the provisioned user.
+     */
+    webUrl?: string;
+    /**
+     * The website URL of the provisioned user.
+     */
+    websiteUrl?: string;
+}
+
+export interface GetGroupProvisionedUsersProvisionedUserArgs {
+    /**
+     * The avatar URL of the provisioned user.
+     */
+    avatarUrl?: pulumi.Input<string>;
+    /**
+     * The bio of the provisioned user.
+     */
+    bio?: pulumi.Input<string>;
+    /**
+     * Whether the provisioned user is a bot.
+     */
+    bot?: pulumi.Input<boolean>;
+    /**
+     * The confirmation date of the provisioned user.
+     */
+    confirmedAt?: pulumi.Input<string>;
+    /**
+     * The creation date of the provisioned user.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The email of the provisioned user.
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * Whether the provisioned user is external.
+     */
+    external?: pulumi.Input<boolean>;
+    /**
+     * The ID of the provisioned user.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The job title of the provisioned user.
+     */
+    jobTitle?: pulumi.Input<string>;
+    /**
+     * The last activity date of the provisioned user.
+     */
+    lastActivityOn?: pulumi.Input<string>;
+    /**
+     * The last sign-in date of the provisioned user.
+     */
+    lastSignInAt?: pulumi.Input<string>;
+    /**
+     * The LinkedIn ID of the provisioned user.
+     */
+    linkedin?: pulumi.Input<string>;
+    /**
+     * The location of the provisioned user.
+     */
+    location?: pulumi.Input<string>;
+    /**
+     * The name of the provisioned user.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The organization of the provisioned user.
+     */
+    organization?: pulumi.Input<string>;
+    /**
+     * Whether the provisioned user has a private profile.
+     */
+    privateProfile?: pulumi.Input<boolean>;
+    /**
+     * The pronouns of the provisioned user.
+     */
+    pronouns?: pulumi.Input<string>;
+    /**
+     * The public email of the provisioned user.
+     */
+    publicEmail?: pulumi.Input<string>;
+    /**
+     * The Skype ID of the provisioned user.
+     */
+    skype?: pulumi.Input<string>;
+    /**
+     * The state of the provisioned user.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * The Twitter ID of the provisioned user.
+     */
+    twitter?: pulumi.Input<string>;
+    /**
+     * Whether two-factor authentication is enabled for the provisioned user.
+     */
+    twoFactorEnabled?: pulumi.Input<boolean>;
+    /**
+     * The username of the provisioned user.
+     */
+    username?: pulumi.Input<string>;
+    /**
+     * The web URL of the provisioned user.
+     */
+    webUrl?: pulumi.Input<string>;
+    /**
+     * The website URL of the provisioned user.
+     */
+    websiteUrl?: pulumi.Input<string>;
+}
+
 export interface GetProjectProtectedBranchMergeAccessLevel {
     /**
      * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
@@ -441,11 +647,11 @@ export interface GroupDefaultBranchProtectionDefaults {
      */
     allowForcePush?: pulumi.Input<boolean>;
     /**
-     * An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+     * An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
      */
     allowedToMerges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+     * An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
      */
     allowedToPushes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -595,6 +801,17 @@ export interface GroupPushRules {
      * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
      */
     rejectUnsignedCommits?: pulumi.Input<boolean>;
+}
+
+export interface PersonalAccessTokenRotationConfiguration {
+    /**
+     * The duration (in days) the new token should be valid for.
+     */
+    expirationDays: pulumi.Input<number>;
+    /**
+     * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+     */
+    rotateBeforeDays: pulumi.Input<number>;
 }
 
 export interface ProjectAccessTokenRotationConfiguration {

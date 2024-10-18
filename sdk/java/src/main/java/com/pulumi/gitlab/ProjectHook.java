@@ -14,7 +14,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -77,70 +76,70 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="confidentialIssuesEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> confidentialIssuesEvents;
+    private Output<Boolean> confidentialIssuesEvents;
 
     /**
      * @return Invoke the hook for confidential issues events.
      * 
      */
-    public Output<Optional<Boolean>> confidentialIssuesEvents() {
-        return Codegen.optional(this.confidentialIssuesEvents);
+    public Output<Boolean> confidentialIssuesEvents() {
+        return this.confidentialIssuesEvents;
     }
     /**
-     * Invoke the hook for confidential notes events.
+     * Invoke the hook for confidential note events.
      * 
      */
     @Export(name="confidentialNoteEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> confidentialNoteEvents;
+    private Output<Boolean> confidentialNoteEvents;
 
     /**
-     * @return Invoke the hook for confidential notes events.
+     * @return Invoke the hook for confidential note events.
      * 
      */
-    public Output<Optional<Boolean>> confidentialNoteEvents() {
-        return Codegen.optional(this.confidentialNoteEvents);
+    public Output<Boolean> confidentialNoteEvents() {
+        return this.confidentialNoteEvents;
     }
     /**
-     * Set a custom webhook template.
+     * Custom webhook template.
      * 
      */
     @Export(name="customWebhookTemplate", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> customWebhookTemplate;
+    private Output<String> customWebhookTemplate;
 
     /**
-     * @return Set a custom webhook template.
+     * @return Custom webhook template.
      * 
      */
-    public Output<Optional<String>> customWebhookTemplate() {
-        return Codegen.optional(this.customWebhookTemplate);
+    public Output<String> customWebhookTemplate() {
+        return this.customWebhookTemplate;
     }
     /**
      * Invoke the hook for deployment events.
      * 
      */
     @Export(name="deploymentEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> deploymentEvents;
+    private Output<Boolean> deploymentEvents;
 
     /**
      * @return Invoke the hook for deployment events.
      * 
      */
-    public Output<Optional<Boolean>> deploymentEvents() {
-        return Codegen.optional(this.deploymentEvents);
+    public Output<Boolean> deploymentEvents() {
+        return this.deploymentEvents;
     }
     /**
-     * Enable ssl verification when invoking the hook.
+     * Enable SSL verification when invoking the hook.
      * 
      */
     @Export(name="enableSslVerification", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableSslVerification;
+    private Output<Boolean> enableSslVerification;
 
     /**
-     * @return Enable ssl verification when invoking the hook.
+     * @return Enable SSL verification when invoking the hook.
      * 
      */
-    public Output<Optional<Boolean>> enableSslVerification() {
-        return Codegen.optional(this.enableSslVerification);
+    public Output<Boolean> enableSslVerification() {
+        return this.enableSslVerification;
     }
     /**
      * The id of the project hook.
@@ -161,70 +160,70 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="issuesEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> issuesEvents;
+    private Output<Boolean> issuesEvents;
 
     /**
      * @return Invoke the hook for issues events.
      * 
      */
-    public Output<Optional<Boolean>> issuesEvents() {
-        return Codegen.optional(this.issuesEvents);
+    public Output<Boolean> issuesEvents() {
+        return this.issuesEvents;
     }
     /**
      * Invoke the hook for job events.
      * 
      */
     @Export(name="jobEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> jobEvents;
+    private Output<Boolean> jobEvents;
 
     /**
      * @return Invoke the hook for job events.
      * 
      */
-    public Output<Optional<Boolean>> jobEvents() {
-        return Codegen.optional(this.jobEvents);
+    public Output<Boolean> jobEvents() {
+        return this.jobEvents;
     }
     /**
-     * Invoke the hook for merge requests.
+     * Invoke the hook for merge requests events.
      * 
      */
     @Export(name="mergeRequestsEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mergeRequestsEvents;
+    private Output<Boolean> mergeRequestsEvents;
 
     /**
-     * @return Invoke the hook for merge requests.
+     * @return Invoke the hook for merge requests events.
      * 
      */
-    public Output<Optional<Boolean>> mergeRequestsEvents() {
-        return Codegen.optional(this.mergeRequestsEvents);
+    public Output<Boolean> mergeRequestsEvents() {
+        return this.mergeRequestsEvents;
     }
     /**
-     * Invoke the hook for notes events.
+     * Invoke the hook for note events.
      * 
      */
     @Export(name="noteEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> noteEvents;
+    private Output<Boolean> noteEvents;
 
     /**
-     * @return Invoke the hook for notes events.
+     * @return Invoke the hook for note events.
      * 
      */
-    public Output<Optional<Boolean>> noteEvents() {
-        return Codegen.optional(this.noteEvents);
+    public Output<Boolean> noteEvents() {
+        return this.noteEvents;
     }
     /**
      * Invoke the hook for pipeline events.
      * 
      */
     @Export(name="pipelineEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> pipelineEvents;
+    private Output<Boolean> pipelineEvents;
 
     /**
      * @return Invoke the hook for pipeline events.
      * 
      */
-    public Output<Optional<Boolean>> pipelineEvents() {
-        return Codegen.optional(this.pipelineEvents);
+    public Output<Boolean> pipelineEvents() {
+        return this.pipelineEvents;
     }
     /**
      * The name or id of the project to add the hook to.
@@ -259,70 +258,70 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> pushEvents;
+    private Output<Boolean> pushEvents;
 
     /**
      * @return Invoke the hook for push events.
      * 
      */
-    public Output<Optional<Boolean>> pushEvents() {
-        return Codegen.optional(this.pushEvents);
+    public Output<Boolean> pushEvents() {
+        return this.pushEvents;
     }
     /**
      * Invoke the hook for push events on matching branches only.
      * 
      */
     @Export(name="pushEventsBranchFilter", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> pushEventsBranchFilter;
+    private Output<String> pushEventsBranchFilter;
 
     /**
      * @return Invoke the hook for push events on matching branches only.
      * 
      */
-    public Output<Optional<String>> pushEventsBranchFilter() {
-        return Codegen.optional(this.pushEventsBranchFilter);
+    public Output<String> pushEventsBranchFilter() {
+        return this.pushEventsBranchFilter;
     }
     /**
-     * Invoke the hook for releases events.
+     * Invoke the hook for release events.
      * 
      */
     @Export(name="releasesEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> releasesEvents;
+    private Output<Boolean> releasesEvents;
 
     /**
-     * @return Invoke the hook for releases events.
+     * @return Invoke the hook for release events.
      * 
      */
-    public Output<Optional<Boolean>> releasesEvents() {
-        return Codegen.optional(this.releasesEvents);
+    public Output<Boolean> releasesEvents() {
+        return this.releasesEvents;
     }
     /**
      * Invoke the hook for tag push events.
      * 
      */
     @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> tagPushEvents;
+    private Output<Boolean> tagPushEvents;
 
     /**
      * @return Invoke the hook for tag push events.
      * 
      */
-    public Output<Optional<Boolean>> tagPushEvents() {
-        return Codegen.optional(this.tagPushEvents);
+    public Output<Boolean> tagPushEvents() {
+        return this.tagPushEvents;
     }
     /**
      * A token to present when invoking the hook. The token is not available for imported resources.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> token;
+    private Output<String> token;
 
     /**
      * @return A token to present when invoking the hook. The token is not available for imported resources.
      * 
      */
-    public Output<Optional<String>> token() {
-        return Codegen.optional(this.token);
+    public Output<String> token() {
+        return this.token;
     }
     /**
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
@@ -343,14 +342,14 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="wikiPageEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> wikiPageEvents;
+    private Output<Boolean> wikiPageEvents;
 
     /**
      * @return Invoke the hook for wiki page events.
      * 
      */
-    public Output<Optional<Boolean>> wikiPageEvents() {
-        return Codegen.optional(this.wikiPageEvents);
+    public Output<Boolean> wikiPageEvents() {
+        return this.wikiPageEvents;
     }
 
     /**

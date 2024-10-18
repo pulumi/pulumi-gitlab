@@ -51,31 +51,31 @@ namespace Pulumi.GitLab
         /// Invoke the hook for confidential issues events.
         /// </summary>
         [Output("confidentialIssuesEvents")]
-        public Output<bool?> ConfidentialIssuesEvents { get; private set; } = null!;
+        public Output<bool> ConfidentialIssuesEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Invoke the hook for confidential notes events.
+        /// Invoke the hook for confidential note events.
         /// </summary>
         [Output("confidentialNoteEvents")]
-        public Output<bool?> ConfidentialNoteEvents { get; private set; } = null!;
+        public Output<bool> ConfidentialNoteEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Set a custom webhook template.
+        /// Custom webhook template.
         /// </summary>
         [Output("customWebhookTemplate")]
-        public Output<string?> CustomWebhookTemplate { get; private set; } = null!;
+        public Output<string> CustomWebhookTemplate { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for deployment events.
         /// </summary>
         [Output("deploymentEvents")]
-        public Output<bool?> DeploymentEvents { get; private set; } = null!;
+        public Output<bool> DeploymentEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Enable ssl verification when invoking the hook.
+        /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Output("enableSslVerification")]
-        public Output<bool?> EnableSslVerification { get; private set; } = null!;
+        public Output<bool> EnableSslVerification { get; private set; } = null!;
 
         /// <summary>
         /// The id of the project hook.
@@ -87,31 +87,31 @@ namespace Pulumi.GitLab
         /// Invoke the hook for issues events.
         /// </summary>
         [Output("issuesEvents")]
-        public Output<bool?> IssuesEvents { get; private set; } = null!;
+        public Output<bool> IssuesEvents { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for job events.
         /// </summary>
         [Output("jobEvents")]
-        public Output<bool?> JobEvents { get; private set; } = null!;
+        public Output<bool> JobEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Invoke the hook for merge requests.
+        /// Invoke the hook for merge requests events.
         /// </summary>
         [Output("mergeRequestsEvents")]
-        public Output<bool?> MergeRequestsEvents { get; private set; } = null!;
+        public Output<bool> MergeRequestsEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Invoke the hook for notes events.
+        /// Invoke the hook for note events.
         /// </summary>
         [Output("noteEvents")]
-        public Output<bool?> NoteEvents { get; private set; } = null!;
+        public Output<bool> NoteEvents { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for pipeline events.
         /// </summary>
         [Output("pipelineEvents")]
-        public Output<bool?> PipelineEvents { get; private set; } = null!;
+        public Output<bool> PipelineEvents { get; private set; } = null!;
 
         /// <summary>
         /// The name or id of the project to add the hook to.
@@ -129,31 +129,31 @@ namespace Pulumi.GitLab
         /// Invoke the hook for push events.
         /// </summary>
         [Output("pushEvents")]
-        public Output<bool?> PushEvents { get; private set; } = null!;
+        public Output<bool> PushEvents { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for push events on matching branches only.
         /// </summary>
         [Output("pushEventsBranchFilter")]
-        public Output<string?> PushEventsBranchFilter { get; private set; } = null!;
+        public Output<string> PushEventsBranchFilter { get; private set; } = null!;
 
         /// <summary>
-        /// Invoke the hook for releases events.
+        /// Invoke the hook for release events.
         /// </summary>
         [Output("releasesEvents")]
-        public Output<bool?> ReleasesEvents { get; private set; } = null!;
+        public Output<bool> ReleasesEvents { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for tag push events.
         /// </summary>
         [Output("tagPushEvents")]
-        public Output<bool?> TagPushEvents { get; private set; } = null!;
+        public Output<bool> TagPushEvents { get; private set; } = null!;
 
         /// <summary>
         /// A token to present when invoking the hook. The token is not available for imported resources.
         /// </summary>
         [Output("token")]
-        public Output<string?> Token { get; private set; } = null!;
+        public Output<string> Token { get; private set; } = null!;
 
         /// <summary>
         /// The url of the hook to invoke. Forces re-creation to preserve `token`.
@@ -165,7 +165,7 @@ namespace Pulumi.GitLab
         /// Invoke the hook for wiki page events.
         /// </summary>
         [Output("wikiPageEvents")]
-        public Output<bool?> WikiPageEvents { get; private set; } = null!;
+        public Output<bool> WikiPageEvents { get; private set; } = null!;
 
 
         /// <summary>
@@ -224,13 +224,13 @@ namespace Pulumi.GitLab
         public Input<bool>? ConfidentialIssuesEvents { get; set; }
 
         /// <summary>
-        /// Invoke the hook for confidential notes events.
+        /// Invoke the hook for confidential note events.
         /// </summary>
         [Input("confidentialNoteEvents")]
         public Input<bool>? ConfidentialNoteEvents { get; set; }
 
         /// <summary>
-        /// Set a custom webhook template.
+        /// Custom webhook template.
         /// </summary>
         [Input("customWebhookTemplate")]
         public Input<string>? CustomWebhookTemplate { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.GitLab
         public Input<bool>? DeploymentEvents { get; set; }
 
         /// <summary>
-        /// Enable ssl verification when invoking the hook.
+        /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
@@ -260,13 +260,13 @@ namespace Pulumi.GitLab
         public Input<bool>? JobEvents { get; set; }
 
         /// <summary>
-        /// Invoke the hook for merge requests.
+        /// Invoke the hook for merge requests events.
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
 
         /// <summary>
-        /// Invoke the hook for notes events.
+        /// Invoke the hook for note events.
         /// </summary>
         [Input("noteEvents")]
         public Input<bool>? NoteEvents { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.GitLab
         public Input<string>? PushEventsBranchFilter { get; set; }
 
         /// <summary>
-        /// Invoke the hook for releases events.
+        /// Invoke the hook for release events.
         /// </summary>
         [Input("releasesEvents")]
         public Input<bool>? ReleasesEvents { get; set; }
@@ -350,13 +350,13 @@ namespace Pulumi.GitLab
         public Input<bool>? ConfidentialIssuesEvents { get; set; }
 
         /// <summary>
-        /// Invoke the hook for confidential notes events.
+        /// Invoke the hook for confidential note events.
         /// </summary>
         [Input("confidentialNoteEvents")]
         public Input<bool>? ConfidentialNoteEvents { get; set; }
 
         /// <summary>
-        /// Set a custom webhook template.
+        /// Custom webhook template.
         /// </summary>
         [Input("customWebhookTemplate")]
         public Input<string>? CustomWebhookTemplate { get; set; }
@@ -368,7 +368,7 @@ namespace Pulumi.GitLab
         public Input<bool>? DeploymentEvents { get; set; }
 
         /// <summary>
-        /// Enable ssl verification when invoking the hook.
+        /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
@@ -392,13 +392,13 @@ namespace Pulumi.GitLab
         public Input<bool>? JobEvents { get; set; }
 
         /// <summary>
-        /// Invoke the hook for merge requests.
+        /// Invoke the hook for merge requests events.
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
 
         /// <summary>
-        /// Invoke the hook for notes events.
+        /// Invoke the hook for note events.
         /// </summary>
         [Input("noteEvents")]
         public Input<bool>? NoteEvents { get; set; }
@@ -434,7 +434,7 @@ namespace Pulumi.GitLab
         public Input<string>? PushEventsBranchFilter { get; set; }
 
         /// <summary>
-        /// Invoke the hook for releases events.
+        /// Invoke the hook for release events.
         /// </summary>
         [Input("releasesEvents")]
         public Input<bool>? ReleasesEvents { get; set; }

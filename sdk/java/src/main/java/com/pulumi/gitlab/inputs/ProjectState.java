@@ -36,6 +36,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="allowPipelineTriggerApproveDeployment")
+    private @Nullable Output<Boolean> allowPipelineTriggerApproveDeployment;
+
+    /**
+     * @return Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> allowPipelineTriggerApproveDeployment() {
+        return Optional.ofNullable(this.allowPipelineTriggerApproveDeployment);
+    }
+
+    /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -883,6 +898,36 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Import(name="modelExperimentsAccessLevel")
+    private @Nullable Output<String> modelExperimentsAccessLevel;
+
+    /**
+     * @return Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Optional<Output<String>> modelExperimentsAccessLevel() {
+        return Optional.ofNullable(this.modelExperimentsAccessLevel);
+    }
+
+    /**
+     * Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Import(name="modelRegistryAccessLevel")
+    private @Nullable Output<String> modelRegistryAccessLevel;
+
+    /**
+     * @return Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Optional<Output<String>> modelRegistryAccessLevel() {
+        return Optional.ofNullable(this.modelRegistryAccessLevel);
+    }
+
+    /**
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -1570,6 +1615,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
     private ProjectState(ProjectState $) {
         this.allowMergeOnSkippedPipeline = $.allowMergeOnSkippedPipeline;
+        this.allowPipelineTriggerApproveDeployment = $.allowPipelineTriggerApproveDeployment;
         this.analyticsAccessLevel = $.analyticsAccessLevel;
         this.approvalsBeforeMerge = $.approvalsBeforeMerge;
         this.archiveOnDestroy = $.archiveOnDestroy;
@@ -1625,6 +1671,8 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.mirror = $.mirror;
         this.mirrorOverwritesDivergedBranches = $.mirrorOverwritesDivergedBranches;
         this.mirrorTriggerBuilds = $.mirrorTriggerBuilds;
+        this.modelExperimentsAccessLevel = $.modelExperimentsAccessLevel;
+        this.modelRegistryAccessLevel = $.modelRegistryAccessLevel;
         this.monitorAccessLevel = $.monitorAccessLevel;
         this.mrDefaultTargetSelf = $.mrDefaultTargetSelf;
         this.name = $.name;
@@ -1708,6 +1756,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowMergeOnSkippedPipeline(Boolean allowMergeOnSkippedPipeline) {
             return allowMergeOnSkippedPipeline(Output.of(allowMergeOnSkippedPipeline));
+        }
+
+        /**
+         * @param allowPipelineTriggerApproveDeployment Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowPipelineTriggerApproveDeployment(@Nullable Output<Boolean> allowPipelineTriggerApproveDeployment) {
+            $.allowPipelineTriggerApproveDeployment = allowPipelineTriggerApproveDeployment;
+            return this;
+        }
+
+        /**
+         * @param allowPipelineTriggerApproveDeployment Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowPipelineTriggerApproveDeployment(Boolean allowPipelineTriggerApproveDeployment) {
+            return allowPipelineTriggerApproveDeployment(Output.of(allowPipelineTriggerApproveDeployment));
         }
 
         /**
@@ -2885,6 +2954,48 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mirrorTriggerBuilds(Boolean mirrorTriggerBuilds) {
             return mirrorTriggerBuilds(Output.of(mirrorTriggerBuilds));
+        }
+
+        /**
+         * @param modelExperimentsAccessLevel Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelExperimentsAccessLevel(@Nullable Output<String> modelExperimentsAccessLevel) {
+            $.modelExperimentsAccessLevel = modelExperimentsAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param modelExperimentsAccessLevel Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelExperimentsAccessLevel(String modelExperimentsAccessLevel) {
+            return modelExperimentsAccessLevel(Output.of(modelExperimentsAccessLevel));
+        }
+
+        /**
+         * @param modelRegistryAccessLevel Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelRegistryAccessLevel(@Nullable Output<String> modelRegistryAccessLevel) {
+            $.modelRegistryAccessLevel = modelRegistryAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param modelRegistryAccessLevel Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelRegistryAccessLevel(String modelRegistryAccessLevel) {
+            return modelRegistryAccessLevel(Output.of(modelRegistryAccessLevel));
         }
 
         /**

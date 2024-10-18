@@ -28,6 +28,10 @@ import com.pulumi.gitlab.inputs.GetGroupIdsPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupMembershipArgs;
 import com.pulumi.gitlab.inputs.GetGroupMembershipPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupProvisionedUsersArgs;
+import com.pulumi.gitlab.inputs.GetGroupProvisionedUsersPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupServiceAccountArgs;
+import com.pulumi.gitlab.inputs.GetGroupServiceAccountPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
 import com.pulumi.gitlab.inputs.GetGroupSubgroupsPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupVariableArgs;
@@ -59,6 +63,8 @@ import com.pulumi.gitlab.inputs.GetProjectIssuesArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssuesPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectMembershipArgs;
 import com.pulumi.gitlab.inputs.GetProjectMembershipPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
+import com.pulumi.gitlab.inputs.GetProjectMergeRequestPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectMilestoneArgs;
 import com.pulumi.gitlab.inputs.GetProjectMilestonePlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectMilestonesArgs;
@@ -108,7 +114,9 @@ import com.pulumi.gitlab.outputs.GetGroupHookResult;
 import com.pulumi.gitlab.outputs.GetGroupHooksResult;
 import com.pulumi.gitlab.outputs.GetGroupIdsResult;
 import com.pulumi.gitlab.outputs.GetGroupMembershipResult;
+import com.pulumi.gitlab.outputs.GetGroupProvisionedUsersResult;
 import com.pulumi.gitlab.outputs.GetGroupResult;
+import com.pulumi.gitlab.outputs.GetGroupServiceAccountResult;
 import com.pulumi.gitlab.outputs.GetGroupSubgroupsResult;
 import com.pulumi.gitlab.outputs.GetGroupVariableResult;
 import com.pulumi.gitlab.outputs.GetGroupVariablesResult;
@@ -126,6 +134,7 @@ import com.pulumi.gitlab.outputs.GetProjectIdsResult;
 import com.pulumi.gitlab.outputs.GetProjectIssueResult;
 import com.pulumi.gitlab.outputs.GetProjectIssuesResult;
 import com.pulumi.gitlab.outputs.GetProjectMembershipResult;
+import com.pulumi.gitlab.outputs.GetProjectMergeRequestResult;
 import com.pulumi.gitlab.outputs.GetProjectMilestoneResult;
 import com.pulumi.gitlab.outputs.GetProjectMilestonesResult;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchResult;
@@ -1863,6 +1872,78 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain(GetGroupMembershipPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupMembership:getGroupMembership", TypeShape.of(GetGroupMembershipResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+     * 
+     */
+    public static Output<GetGroupProvisionedUsersResult> getGroupProvisionedUsers(GetGroupProvisionedUsersArgs args) {
+        return getGroupProvisionedUsers(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+     * 
+     */
+    public static CompletableFuture<GetGroupProvisionedUsersResult> getGroupProvisionedUsersPlain(GetGroupProvisionedUsersPlainArgs args) {
+        return getGroupProvisionedUsersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+     * 
+     */
+    public static Output<GetGroupProvisionedUsersResult> getGroupProvisionedUsers(GetGroupProvisionedUsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", TypeShape.of(GetGroupProvisionedUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+     * 
+     */
+    public static CompletableFuture<GetGroupProvisionedUsersResult> getGroupProvisionedUsersPlain(GetGroupProvisionedUsersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", TypeShape.of(GetGroupProvisionedUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+     * 
+     */
+    public static Output<GetGroupServiceAccountResult> getGroupServiceAccount(GetGroupServiceAccountArgs args) {
+        return getGroupServiceAccount(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+     * 
+     */
+    public static CompletableFuture<GetGroupServiceAccountResult> getGroupServiceAccountPlain(GetGroupServiceAccountPlainArgs args) {
+        return getGroupServiceAccountPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+     * 
+     */
+    public static Output<GetGroupServiceAccountResult> getGroupServiceAccount(GetGroupServiceAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", TypeShape.of(GetGroupServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+     * 
+     */
+    public static CompletableFuture<GetGroupServiceAccountResult> getGroupServiceAccountPlain(GetGroupServiceAccountPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", TypeShape.of(GetGroupServiceAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
@@ -5015,6 +5096,210 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain(GetProjectMembershipPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectMembership:getProjectMembership", TypeShape.of(GetProjectMembershipResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectMergeRequest` data source retrieves
+     * information about a single merge request related to a specific project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_requests.html#get-single-mr)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byProjectId = GitlabFunctions.getProjectMergeRequest(GetProjectMergeRequestArgs.builder()
+     *             .project("123")
+     *             .iid(456)
+     *             .build());
+     * 
+     *         final var byProjectName = GitlabFunctions.getProjectMergeRequest(GetProjectMergeRequestArgs.builder()
+     *             .project("company/group/project1")
+     *             .iid(3)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectMergeRequestResult> getProjectMergeRequest(GetProjectMergeRequestArgs args) {
+        return getProjectMergeRequest(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectMergeRequest` data source retrieves
+     * information about a single merge request related to a specific project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_requests.html#get-single-mr)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byProjectId = GitlabFunctions.getProjectMergeRequest(GetProjectMergeRequestArgs.builder()
+     *             .project("123")
+     *             .iid(456)
+     *             .build());
+     * 
+     *         final var byProjectName = GitlabFunctions.getProjectMergeRequest(GetProjectMergeRequestArgs.builder()
+     *             .project("company/group/project1")
+     *             .iid(3)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetProjectMergeRequestResult> getProjectMergeRequestPlain(GetProjectMergeRequestPlainArgs args) {
+        return getProjectMergeRequestPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectMergeRequest` data source retrieves
+     * information about a single merge request related to a specific project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_requests.html#get-single-mr)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byProjectId = GitlabFunctions.getProjectMergeRequest(GetProjectMergeRequestArgs.builder()
+     *             .project("123")
+     *             .iid(456)
+     *             .build());
+     * 
+     *         final var byProjectName = GitlabFunctions.getProjectMergeRequest(GetProjectMergeRequestArgs.builder()
+     *             .project("company/group/project1")
+     *             .iid(3)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectMergeRequestResult> getProjectMergeRequest(GetProjectMergeRequestArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectMergeRequest:getProjectMergeRequest", TypeShape.of(GetProjectMergeRequestResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectMergeRequest` data source retrieves
+     * information about a single merge request related to a specific project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_requests.html#get-single-mr)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byProjectId = GitlabFunctions.getProjectMergeRequest(GetProjectMergeRequestArgs.builder()
+     *             .project("123")
+     *             .iid(456)
+     *             .build());
+     * 
+     *         final var byProjectName = GitlabFunctions.getProjectMergeRequest(GetProjectMergeRequestArgs.builder()
+     *             .project("company/group/project1")
+     *             .iid(3)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetProjectMergeRequestResult> getProjectMergeRequestPlain(GetProjectMergeRequestPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectMergeRequest:getProjectMergeRequest", TypeShape.of(GetProjectMergeRequestResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.ProjectMilestone` data source allows get details of a project milestone.

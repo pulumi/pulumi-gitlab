@@ -568,6 +568,12 @@ namespace Pulumi.GitLab
         public Output<int> ElasticsearchMaxBulkSizeMb { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+        /// </summary>
+        [Output("elasticsearchMaxCodeIndexingConcurrency")]
+        public Output<int> ElasticsearchMaxCodeIndexingConcurrency { get; private set; } = null!;
+
+        /// <summary>
         /// The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         /// </summary>
         [Output("elasticsearchNamespaceIds")]
@@ -584,6 +590,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("elasticsearchProjectIds")]
         public Output<ImmutableArray<int>> ElasticsearchProjectIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+        /// </summary>
+        [Output("elasticsearchRequeueWorkers")]
+        public Output<bool> ElasticsearchRequeueWorkers { get; private set; } = null!;
 
         /// <summary>
         /// Enable Elasticsearch search.
@@ -604,6 +616,12 @@ namespace Pulumi.GitLab
         public Output<string> ElasticsearchUsername { get; private set; } = null!;
 
         /// <summary>
+        /// Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+        /// </summary>
+        [Output("elasticsearchWorkerNumberOfShards")]
+        public Output<int> ElasticsearchWorkerNumberOfShards { get; private set; } = null!;
+
+        /// <summary>
         /// Additional text added to the bottom of every email for legal/auditing/compliance reasons.
         /// </summary>
         [Output("emailAdditionalText")]
@@ -614,6 +632,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("emailAuthorInBody")]
         public Output<bool> EmailAuthorInBody { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+        /// </summary>
+        [Output("emailConfirmationSetting")]
+        public Output<string> EmailConfirmationSetting { get; private set; } = null!;
+
+        /// <summary>
+        /// Show the external redirect page that warns you about user-generated content in GitLab Pages.
+        /// </summary>
+        [Output("enableArtifactExternalRedirectWarningPage")]
+        public Output<bool> EnableArtifactExternalRedirectWarningPage { get; private set; } = null!;
 
         /// <summary>
         /// Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
@@ -694,6 +724,12 @@ namespace Pulumi.GitLab
         public Output<string> ExternalPipelineValidationServiceUrl { get; private set; } = null!;
 
         /// <summary>
+        /// Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+        /// </summary>
+        [Output("failedLoginAttemptsUnlockPeriodInMinutes")]
+        public Output<int> FailedLoginAttemptsUnlockPeriodInMinutes { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of a project to load custom file templates from.
         /// </summary>
         [Output("fileTemplateProjectId")]
@@ -718,7 +754,13 @@ namespace Pulumi.GitLab
         public Output<int> GeoStatusTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+        /// List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+        /// </summary>
+        [Output("gitRateLimitUsersAlertlists")]
+        public Output<ImmutableArray<int>> GitRateLimitUsersAlertlists { get; private set; } = null!;
+
+        /// <summary>
+        /// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
         /// </summary>
         [Output("gitRateLimitUsersAllowlists")]
         public Output<ImmutableArray<string>> GitRateLimitUsersAllowlists { get; private set; } = null!;
@@ -746,6 +788,42 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("gitalyTimeoutMedium")]
         public Output<int> GitalyTimeoutMedium { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the instance was provisioned for GitLab Dedicated.
+        /// </summary>
+        [Output("gitlabDedicatedInstance")]
+        public Output<bool> GitlabDedicatedInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+        /// </summary>
+        [Output("gitlabEnvironmentToolkitInstance")]
+        public Output<bool> GitlabEnvironmentToolkitInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+        /// </summary>
+        [Output("gitlabShellOperationLimit")]
+        public Output<int> GitlabShellOperationLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable Gitpod integration.
+        /// </summary>
+        [Output("gitpodEnabled")]
+        public Output<bool> GitpodEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The Gitpod instance URL for integration.
+        /// </summary>
+        [Output("gitpodUrl")]
+        public Output<string> GitpodUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+        /// </summary>
+        [Output("globallyAllowedIps")]
+        public Output<string> GloballyAllowedIps { get; private set; } = null!;
 
         /// <summary>
         /// Enable Grafana.
@@ -882,6 +960,12 @@ namespace Pulumi.GitLab
         public Output<int> InactiveProjectsSendWarningEmailAfterMonths { get; private set; } = null!;
 
         /// <summary>
+        /// Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+        /// </summary>
+        [Output("includeOptionalMetricsInServicePing")]
+        public Output<bool> IncludeOptionalMetricsInServicePing { get; private set; } = null!;
+
+        /// <summary>
         /// Enable Invisible CAPTCHA spam detection during sign-up.
         /// </summary>
         [Output("invisibleCaptchaEnabled")]
@@ -894,6 +978,24 @@ namespace Pulumi.GitLab
         public Output<int> IssuesCreateLimit { get; private set; } = null!;
 
         /// <summary>
+        /// ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+        /// </summary>
+        [Output("jiraConnectApplicationKey")]
+        public Output<string> JiraConnectApplicationKey { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+        /// </summary>
+        [Output("jiraConnectProxyUrl")]
+        public Output<string> JiraConnectProxyUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable public key storage for the GitLab for Jira Cloud app.
+        /// </summary>
+        [Output("jiraConnectPublicKeyStorageEnabled")]
+        public Output<bool> JiraConnectPublicKeyStorageEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         /// </summary>
         [Output("keepLatestArtifact")]
@@ -904,6 +1006,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("localMarkdownVersion")]
         public Output<int> LocalMarkdownVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Output("lockDuoFeaturesEnabled")]
+        public Output<bool> LockDuoFeaturesEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Enable Mailgun event receiver.
@@ -930,6 +1038,12 @@ namespace Pulumi.GitLab
         public Output<string> MaintenanceModeMessage { get; private set; } = null!;
 
         /// <summary>
+        /// Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+        /// </summary>
+        [Output("mavenPackageRequestsForwarding")]
+        public Output<bool> MavenPackageRequestsForwarding { get; private set; } = null!;
+
+        /// <summary>
         /// Maximum artifacts size in MB.
         /// </summary>
         [Output("maxArtifactsSize")]
@@ -942,16 +1056,34 @@ namespace Pulumi.GitLab
         public Output<int> MaxAttachmentSize { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum decompressed archive size in bytes.
+        /// </summary>
+        [Output("maxDecompressedArchiveSize")]
+        public Output<int> MaxDecompressedArchiveSize { get; private set; } = null!;
+
+        /// <summary>
         /// Maximum export size in MB. 0 for unlimited.
         /// </summary>
         [Output("maxExportSize")]
         public Output<int> MaxExportSize { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+        /// </summary>
+        [Output("maxImportRemoteFileSize")]
+        public Output<int> MaxImportRemoteFileSize { get; private set; } = null!;
+
+        /// <summary>
         /// Maximum import size in MB. 0 for unlimited.
         /// </summary>
         [Output("maxImportSize")]
         public Output<int> MaxImportSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum number of sign-in attempts before locking out the user.
+        /// </summary>
+        [Output("maxLoginAttempts")]
+        public Output<int> MaxLoginAttempts { get; private set; } = null!;
 
         /// <summary>
         /// Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
@@ -1029,10 +1161,28 @@ namespace Pulumi.GitLab
         public Output<bool> NpmPackageRequestsForwarding { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        /// </summary>
+        [Output("nugetSkipMetadataUrlValidation")]
+        public Output<bool> NugetSkipMetadataUrlValidation { get; private set; } = null!;
+
+        /// <summary>
         /// Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         /// </summary>
         [Output("outboundLocalRequestsWhitelists")]
         public Output<ImmutableArray<string>> OutboundLocalRequestsWhitelists { get; private set; } = null!;
+
+        /// <summary>
+        /// List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+        /// </summary>
+        [Output("packageMetadataPurlTypes")]
+        public Output<ImmutableArray<int>> PackageMetadataPurlTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable to allow anyone to pull from Package Registry visible and changeable.
+        /// </summary>
+        [Output("packageRegistryAllowAnyoneToPullOption")]
+        public Output<bool> PackageRegistryAllowAnyoneToPullOption { get; private set; } = null!;
 
         /// <summary>
         /// Number of workers assigned to the packages cleanup policies.
@@ -1125,6 +1275,18 @@ namespace Pulumi.GitLab
         public Output<bool> ProjectExportEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+        /// </summary>
+        [Output("projectJobsApiRateLimit")]
+        public Output<int> ProjectJobsApiRateLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+        /// </summary>
+        [Output("projectsApiRateLimitUnauthenticated")]
+        public Output<int> ProjectsApiRateLimitUnauthenticated { get; private set; } = null!;
+
+        /// <summary>
         /// Enable Prometheus metrics.
         /// </summary>
         [Output("prometheusMetricsEnabled")]
@@ -1191,6 +1353,18 @@ namespace Pulumi.GitLab
         public Output<int> ReceiveMaxInputSize { get; private set; } = null!;
 
         /// <summary>
+        /// Enable receptive mode for GitLab Agents for Kubernetes.
+        /// </summary>
+        [Output("receptiveClusterAgentsEnabled")]
+        public Output<bool> ReceptiveClusterAgentsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable Remember me setting. Introduced in GitLab 16.0.
+        /// </summary>
+        [Output("rememberMeEnabled")]
+        public Output<bool> RememberMeEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         /// </summary>
         [Output("repositoryChecksEnabled")]
@@ -1219,6 +1393,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("requireAdminApprovalAfterUserSignup")]
         public Output<bool> RequireAdminApprovalAfterUserSignup { get; private set; } = null!;
+
+        /// <summary>
+        /// Allow administrators to require 2FA for all administrators on the instance.
+        /// </summary>
+        [Output("requireAdminTwoFactorAuthentication")]
+        public Output<bool> RequireAdminTwoFactorAuthentication { get; private set; } = null!;
+
+        /// <summary>
+        /// When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+        /// </summary>
+        [Output("requirePersonalAccessTokenExpiry")]
+        public Output<bool> RequirePersonalAccessTokenExpiry { get; private set; } = null!;
 
         /// <summary>
         /// (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
@@ -1251,10 +1437,34 @@ namespace Pulumi.GitLab
         public Output<int> SearchRateLimitUnauthenticated { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum number of active merge request approval policies per security policy project. Maximum: 20
+        /// </summary>
+        [Output("securityApprovalPoliciesLimit")]
+        public Output<int> SecurityApprovalPoliciesLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+        /// </summary>
+        [Output("securityPolicyGlobalGroupApproversEnabled")]
+        public Output<bool> SecurityPolicyGlobalGroupApproversEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Public security contact information. Introduced in GitLab 16.7.
+        /// </summary>
+        [Output("securityTxtContent")]
+        public Output<string> SecurityTxtContent { get; private set; } = null!;
+
+        /// <summary>
         /// Send confirmation email on sign-up.
         /// </summary>
         [Output("sendUserConfirmationEmail")]
         public Output<bool> SendUserConfirmationEmail { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag to indicate if token expiry date can be optional for service account users
+        /// </summary>
+        [Output("serviceAccessTokensExpirationEnforced")]
+        public Output<bool> ServiceAccessTokensExpirationEnforced { get; private set; } = null!;
 
         /// <summary>
         /// Session duration in minutes. GitLab restart is required to apply changes.
@@ -1311,6 +1521,18 @@ namespace Pulumi.GitLab
         public Output<bool> SignupEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Enable Silent admin exports.
+        /// </summary>
+        [Output("silentAdminExportsEnabled")]
+        public Output<bool> SilentAdminExportsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable Silent mode.
+        /// </summary>
+        [Output("silentModeEnabled")]
+        public Output<bool> SilentModeEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         /// </summary>
         [Output("slackAppEnabled")]
@@ -1365,6 +1587,12 @@ namespace Pulumi.GitLab
         public Output<string> SnowplowCookieDomain { get; private set; } = null!;
 
         /// <summary>
+        /// The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+        /// </summary>
+        [Output("snowplowDatabaseCollectorHostname")]
+        public Output<string> SnowplowDatabaseCollectorHostname { get; private set; } = null!;
+
+        /// <summary>
         /// Enable snowplow tracking.
         /// </summary>
         [Output("snowplowEnabled")]
@@ -1405,6 +1633,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("spamCheckEndpointUrl")]
         public Output<string> SpamCheckEndpointUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Authentication token for the external storage linked in static*objects*external*storage*url.
+        /// </summary>
+        [Output("staticObjectsExternalStorageAuthToken")]
+        public Output<string?> StaticObjectsExternalStorageAuthToken { get; private set; } = null!;
+
+        /// <summary>
+        /// URL to an external storage for repository static objects.
+        /// </summary>
+        [Output("staticObjectsExternalStorageUrl")]
+        public Output<string?> StaticObjectsExternalStorageUrl { get; private set; } = null!;
 
         /// <summary>
         /// Enable pipeline suggestion banner.
@@ -1545,6 +1785,12 @@ namespace Pulumi.GitLab
         public Output<int> TwoFactorGracePeriod { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Output("unconfirmedUsersDeleteAfterDays")]
+        public Output<int> UnconfirmedUsersDeleteAfterDays { get; private set; } = null!;
+
+        /// <summary>
         /// (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         /// </summary>
         [Output("uniqueIpsLimitEnabled")]
@@ -1563,10 +1809,22 @@ namespace Pulumi.GitLab
         public Output<int> UniqueIpsLimitTimeWindow { get; private set; } = null!;
 
         /// <summary>
+        /// Fetch GitLab Runner release version data from GitLab.com.
+        /// </summary>
+        [Output("updateRunnerVersionsEnabled")]
+        public Output<bool> UpdateRunnerVersionsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Every week GitLab reports license usage back to GitLab, Inc.
         /// </summary>
         [Output("usagePingEnabled")]
         public Output<bool> UsagePingEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+        /// </summary>
+        [Output("useClickhouseForAnalytics")]
+        public Output<bool> UseClickhouseForAnalytics { get; private set; } = null!;
 
         /// <summary>
         /// Send an email to users upon account deactivation.
@@ -1587,6 +1845,12 @@ namespace Pulumi.GitLab
         public Output<string> UserDefaultInternalRegex { get; private set; } = null!;
 
         /// <summary>
+        /// Newly created users have private profile by default. Introduced in GitLab 15.8.
+        /// </summary>
+        [Output("userDefaultsToPrivateProfile")]
+        public Output<bool> UserDefaultsToPrivateProfile { get; private set; } = null!;
+
+        /// <summary>
         /// Allow users to register any application to use GitLab as an OAuth provider.
         /// </summary>
         [Output("userOauthApplications")]
@@ -1597,6 +1861,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("userShowAddSshKeyMessage")]
         public Output<bool> UserShowAddSshKeyMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
+        /// </summary>
+        [Output("validRunnerRegistrars")]
+        public Output<ImmutableArray<string>> ValidRunnerRegistrars { get; private set; } = null!;
 
         /// <summary>
         /// Let GitLab inform you when an update is available.
@@ -1611,7 +1881,7 @@ namespace Pulumi.GitLab
         public Output<bool> WebIdeClientsidePreviewEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// What’s new variant, possible values: all*tiers, current*tier, and disabled.
+        /// What's new variant, possible values: all*tiers, current*tier, and disabled.
         /// </summary>
         [Output("whatsNewVariant")]
         public Output<string> WhatsNewVariant { get; private set; } = null!;
@@ -1662,6 +1932,8 @@ namespace Pulumi.GitLab
                     "slackAppSecret",
                     "slackAppSigningSecret",
                     "spamCheckApiKey",
+                    "staticObjectsExternalStorageAuthToken",
+                    "staticObjectsExternalStorageUrl",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -2322,6 +2594,12 @@ namespace Pulumi.GitLab
         [Input("elasticsearchMaxBulkSizeMb")]
         public Input<int>? ElasticsearchMaxBulkSizeMb { get; set; }
 
+        /// <summary>
+        /// Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+        /// </summary>
+        [Input("elasticsearchMaxCodeIndexingConcurrency")]
+        public Input<int>? ElasticsearchMaxCodeIndexingConcurrency { get; set; }
+
         [Input("elasticsearchNamespaceIds")]
         private InputList<int>? _elasticsearchNamespaceIds;
 
@@ -2363,6 +2641,12 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
+        /// Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+        /// </summary>
+        [Input("elasticsearchRequeueWorkers")]
+        public Input<bool>? ElasticsearchRequeueWorkers { get; set; }
+
+        /// <summary>
         /// Enable Elasticsearch search.
         /// </summary>
         [Input("elasticsearchSearch")]
@@ -2387,6 +2671,12 @@ namespace Pulumi.GitLab
         public Input<string>? ElasticsearchUsername { get; set; }
 
         /// <summary>
+        /// Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+        /// </summary>
+        [Input("elasticsearchWorkerNumberOfShards")]
+        public Input<int>? ElasticsearchWorkerNumberOfShards { get; set; }
+
+        /// <summary>
         /// Additional text added to the bottom of every email for legal/auditing/compliance reasons.
         /// </summary>
         [Input("emailAdditionalText")]
@@ -2397,6 +2687,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("emailAuthorInBody")]
         public Input<bool>? EmailAuthorInBody { get; set; }
+
+        /// <summary>
+        /// Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+        /// </summary>
+        [Input("emailConfirmationSetting")]
+        public Input<string>? EmailConfirmationSetting { get; set; }
+
+        /// <summary>
+        /// Show the external redirect page that warns you about user-generated content in GitLab Pages.
+        /// </summary>
+        [Input("enableArtifactExternalRedirectWarningPage")]
+        public Input<bool>? EnableArtifactExternalRedirectWarningPage { get; set; }
 
         /// <summary>
         /// Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
@@ -2497,6 +2799,12 @@ namespace Pulumi.GitLab
         public Input<string>? ExternalPipelineValidationServiceUrl { get; set; }
 
         /// <summary>
+        /// Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+        /// </summary>
+        [Input("failedLoginAttemptsUnlockPeriodInMinutes")]
+        public Input<int>? FailedLoginAttemptsUnlockPeriodInMinutes { get; set; }
+
+        /// <summary>
         /// The ID of a project to load custom file templates from.
         /// </summary>
         [Input("fileTemplateProjectId")]
@@ -2520,11 +2828,23 @@ namespace Pulumi.GitLab
         [Input("geoStatusTimeout")]
         public Input<int>? GeoStatusTimeout { get; set; }
 
+        [Input("gitRateLimitUsersAlertlists")]
+        private InputList<int>? _gitRateLimitUsersAlertlists;
+
+        /// <summary>
+        /// List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+        /// </summary>
+        public InputList<int> GitRateLimitUsersAlertlists
+        {
+            get => _gitRateLimitUsersAlertlists ?? (_gitRateLimitUsersAlertlists = new InputList<int>());
+            set => _gitRateLimitUsersAlertlists = value;
+        }
+
         [Input("gitRateLimitUsersAllowlists")]
         private InputList<string>? _gitRateLimitUsersAllowlists;
 
         /// <summary>
-        /// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+        /// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
         /// </summary>
         public InputList<string> GitRateLimitUsersAllowlists
         {
@@ -2555,6 +2875,30 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("gitalyTimeoutMedium")]
         public Input<int>? GitalyTimeoutMedium { get; set; }
+
+        /// <summary>
+        /// Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+        /// </summary>
+        [Input("gitlabShellOperationLimit")]
+        public Input<int>? GitlabShellOperationLimit { get; set; }
+
+        /// <summary>
+        /// Enable Gitpod integration.
+        /// </summary>
+        [Input("gitpodEnabled")]
+        public Input<bool>? GitpodEnabled { get; set; }
+
+        /// <summary>
+        /// The Gitpod instance URL for integration.
+        /// </summary>
+        [Input("gitpodUrl")]
+        public Input<string>? GitpodUrl { get; set; }
+
+        /// <summary>
+        /// Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+        /// </summary>
+        [Input("globallyAllowedIps")]
+        public Input<string>? GloballyAllowedIps { get; set; }
 
         /// <summary>
         /// Enable Grafana.
@@ -2697,6 +3041,12 @@ namespace Pulumi.GitLab
         public Input<int>? InactiveProjectsSendWarningEmailAfterMonths { get; set; }
 
         /// <summary>
+        /// Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+        /// </summary>
+        [Input("includeOptionalMetricsInServicePing")]
+        public Input<bool>? IncludeOptionalMetricsInServicePing { get; set; }
+
+        /// <summary>
         /// Enable Invisible CAPTCHA spam detection during sign-up.
         /// </summary>
         [Input("invisibleCaptchaEnabled")]
@@ -2709,6 +3059,24 @@ namespace Pulumi.GitLab
         public Input<int>? IssuesCreateLimit { get; set; }
 
         /// <summary>
+        /// ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+        /// </summary>
+        [Input("jiraConnectApplicationKey")]
+        public Input<string>? JiraConnectApplicationKey { get; set; }
+
+        /// <summary>
+        /// URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+        /// </summary>
+        [Input("jiraConnectProxyUrl")]
+        public Input<string>? JiraConnectProxyUrl { get; set; }
+
+        /// <summary>
+        /// Enable public key storage for the GitLab for Jira Cloud app.
+        /// </summary>
+        [Input("jiraConnectPublicKeyStorageEnabled")]
+        public Input<bool>? JiraConnectPublicKeyStorageEnabled { get; set; }
+
+        /// <summary>
         /// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         /// </summary>
         [Input("keepLatestArtifact")]
@@ -2719,6 +3087,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("localMarkdownVersion")]
         public Input<int>? LocalMarkdownVersion { get; set; }
+
+        /// <summary>
+        /// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Input("lockDuoFeaturesEnabled")]
+        public Input<bool>? LockDuoFeaturesEnabled { get; set; }
 
         /// <summary>
         /// Enable Mailgun event receiver.
@@ -2755,6 +3129,12 @@ namespace Pulumi.GitLab
         public Input<string>? MaintenanceModeMessage { get; set; }
 
         /// <summary>
+        /// Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+        /// </summary>
+        [Input("mavenPackageRequestsForwarding")]
+        public Input<bool>? MavenPackageRequestsForwarding { get; set; }
+
+        /// <summary>
         /// Maximum artifacts size in MB.
         /// </summary>
         [Input("maxArtifactsSize")]
@@ -2767,16 +3147,34 @@ namespace Pulumi.GitLab
         public Input<int>? MaxAttachmentSize { get; set; }
 
         /// <summary>
+        /// Maximum decompressed archive size in bytes.
+        /// </summary>
+        [Input("maxDecompressedArchiveSize")]
+        public Input<int>? MaxDecompressedArchiveSize { get; set; }
+
+        /// <summary>
         /// Maximum export size in MB. 0 for unlimited.
         /// </summary>
         [Input("maxExportSize")]
         public Input<int>? MaxExportSize { get; set; }
 
         /// <summary>
+        /// Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+        /// </summary>
+        [Input("maxImportRemoteFileSize")]
+        public Input<int>? MaxImportRemoteFileSize { get; set; }
+
+        /// <summary>
         /// Maximum import size in MB. 0 for unlimited.
         /// </summary>
         [Input("maxImportSize")]
         public Input<int>? MaxImportSize { get; set; }
+
+        /// <summary>
+        /// Maximum number of sign-in attempts before locking out the user.
+        /// </summary>
+        [Input("maxLoginAttempts")]
+        public Input<int>? MaxLoginAttempts { get; set; }
 
         /// <summary>
         /// Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
@@ -2853,6 +3251,12 @@ namespace Pulumi.GitLab
         [Input("npmPackageRequestsForwarding")]
         public Input<bool>? NpmPackageRequestsForwarding { get; set; }
 
+        /// <summary>
+        /// Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        /// </summary>
+        [Input("nugetSkipMetadataUrlValidation")]
+        public Input<bool>? NugetSkipMetadataUrlValidation { get; set; }
+
         [Input("outboundLocalRequestsWhitelists")]
         private InputList<string>? _outboundLocalRequestsWhitelists;
 
@@ -2864,6 +3268,24 @@ namespace Pulumi.GitLab
             get => _outboundLocalRequestsWhitelists ?? (_outboundLocalRequestsWhitelists = new InputList<string>());
             set => _outboundLocalRequestsWhitelists = value;
         }
+
+        [Input("packageMetadataPurlTypes")]
+        private InputList<int>? _packageMetadataPurlTypes;
+
+        /// <summary>
+        /// List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+        /// </summary>
+        public InputList<int> PackageMetadataPurlTypes
+        {
+            get => _packageMetadataPurlTypes ?? (_packageMetadataPurlTypes = new InputList<int>());
+            set => _packageMetadataPurlTypes = value;
+        }
+
+        /// <summary>
+        /// Enable to allow anyone to pull from Package Registry visible and changeable.
+        /// </summary>
+        [Input("packageRegistryAllowAnyoneToPullOption")]
+        public Input<bool>? PackageRegistryAllowAnyoneToPullOption { get; set; }
 
         /// <summary>
         /// Number of workers assigned to the packages cleanup policies.
@@ -2956,6 +3378,18 @@ namespace Pulumi.GitLab
         public Input<bool>? ProjectExportEnabled { get; set; }
 
         /// <summary>
+        /// Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+        /// </summary>
+        [Input("projectJobsApiRateLimit")]
+        public Input<int>? ProjectJobsApiRateLimit { get; set; }
+
+        /// <summary>
+        /// Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+        /// </summary>
+        [Input("projectsApiRateLimitUnauthenticated")]
+        public Input<int>? ProjectsApiRateLimitUnauthenticated { get; set; }
+
+        /// <summary>
         /// Enable Prometheus metrics.
         /// </summary>
         [Input("prometheusMetricsEnabled")]
@@ -3042,6 +3476,18 @@ namespace Pulumi.GitLab
         public Input<int>? ReceiveMaxInputSize { get; set; }
 
         /// <summary>
+        /// Enable receptive mode for GitLab Agents for Kubernetes.
+        /// </summary>
+        [Input("receptiveClusterAgentsEnabled")]
+        public Input<bool>? ReceptiveClusterAgentsEnabled { get; set; }
+
+        /// <summary>
+        /// Enable Remember me setting. Introduced in GitLab 16.0.
+        /// </summary>
+        [Input("rememberMeEnabled")]
+        public Input<bool>? RememberMeEnabled { get; set; }
+
+        /// <summary>
         /// GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         /// </summary>
         [Input("repositoryChecksEnabled")]
@@ -3084,6 +3530,18 @@ namespace Pulumi.GitLab
         public Input<bool>? RequireAdminApprovalAfterUserSignup { get; set; }
 
         /// <summary>
+        /// Allow administrators to require 2FA for all administrators on the instance.
+        /// </summary>
+        [Input("requireAdminTwoFactorAuthentication")]
+        public Input<bool>? RequireAdminTwoFactorAuthentication { get; set; }
+
+        /// <summary>
+        /// When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+        /// </summary>
+        [Input("requirePersonalAccessTokenExpiry")]
+        public Input<bool>? RequirePersonalAccessTokenExpiry { get; set; }
+
+        /// <summary>
         /// (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         /// </summary>
         [Input("requireTwoFactorAuthentication")]
@@ -3120,10 +3578,34 @@ namespace Pulumi.GitLab
         public Input<int>? SearchRateLimitUnauthenticated { get; set; }
 
         /// <summary>
+        /// Maximum number of active merge request approval policies per security policy project. Maximum: 20
+        /// </summary>
+        [Input("securityApprovalPoliciesLimit")]
+        public Input<int>? SecurityApprovalPoliciesLimit { get; set; }
+
+        /// <summary>
+        /// Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+        /// </summary>
+        [Input("securityPolicyGlobalGroupApproversEnabled")]
+        public Input<bool>? SecurityPolicyGlobalGroupApproversEnabled { get; set; }
+
+        /// <summary>
+        /// Public security contact information. Introduced in GitLab 16.7.
+        /// </summary>
+        [Input("securityTxtContent")]
+        public Input<string>? SecurityTxtContent { get; set; }
+
+        /// <summary>
         /// Send confirmation email on sign-up.
         /// </summary>
         [Input("sendUserConfirmationEmail")]
         public Input<bool>? SendUserConfirmationEmail { get; set; }
+
+        /// <summary>
+        /// Flag to indicate if token expiry date can be optional for service account users
+        /// </summary>
+        [Input("serviceAccessTokensExpirationEnforced")]
+        public Input<bool>? ServiceAccessTokensExpirationEnforced { get; set; }
 
         /// <summary>
         /// Session duration in minutes. GitLab restart is required to apply changes.
@@ -3178,6 +3660,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("signupEnabled")]
         public Input<bool>? SignupEnabled { get; set; }
+
+        /// <summary>
+        /// Enable Silent admin exports.
+        /// </summary>
+        [Input("silentAdminExportsEnabled")]
+        public Input<bool>? SilentAdminExportsEnabled { get; set; }
+
+        /// <summary>
+        /// Enable Silent mode.
+        /// </summary>
+        [Input("silentModeEnabled")]
+        public Input<bool>? SilentModeEnabled { get; set; }
 
         /// <summary>
         /// (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
@@ -3254,6 +3748,12 @@ namespace Pulumi.GitLab
         public Input<string>? SnowplowCookieDomain { get; set; }
 
         /// <summary>
+        /// The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+        /// </summary>
+        [Input("snowplowDatabaseCollectorHostname")]
+        public Input<string>? SnowplowDatabaseCollectorHostname { get; set; }
+
+        /// <summary>
         /// Enable snowplow tracking.
         /// </summary>
         [Input("snowplowEnabled")]
@@ -3304,6 +3804,38 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("spamCheckEndpointUrl")]
         public Input<string>? SpamCheckEndpointUrl { get; set; }
+
+        [Input("staticObjectsExternalStorageAuthToken")]
+        private Input<string>? _staticObjectsExternalStorageAuthToken;
+
+        /// <summary>
+        /// Authentication token for the external storage linked in static*objects*external*storage*url.
+        /// </summary>
+        public Input<string>? StaticObjectsExternalStorageAuthToken
+        {
+            get => _staticObjectsExternalStorageAuthToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _staticObjectsExternalStorageAuthToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("staticObjectsExternalStorageUrl")]
+        private Input<string>? _staticObjectsExternalStorageUrl;
+
+        /// <summary>
+        /// URL to an external storage for repository static objects.
+        /// </summary>
+        public Input<string>? StaticObjectsExternalStorageUrl
+        {
+            get => _staticObjectsExternalStorageUrl;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _staticObjectsExternalStorageUrl = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable pipeline suggestion banner.
@@ -3444,6 +3976,12 @@ namespace Pulumi.GitLab
         public Input<int>? TwoFactorGracePeriod { get; set; }
 
         /// <summary>
+        /// Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Input("unconfirmedUsersDeleteAfterDays")]
+        public Input<int>? UnconfirmedUsersDeleteAfterDays { get; set; }
+
+        /// <summary>
         /// (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         /// </summary>
         [Input("uniqueIpsLimitEnabled")]
@@ -3462,10 +4000,22 @@ namespace Pulumi.GitLab
         public Input<int>? UniqueIpsLimitTimeWindow { get; set; }
 
         /// <summary>
+        /// Fetch GitLab Runner release version data from GitLab.com.
+        /// </summary>
+        [Input("updateRunnerVersionsEnabled")]
+        public Input<bool>? UpdateRunnerVersionsEnabled { get; set; }
+
+        /// <summary>
         /// Every week GitLab reports license usage back to GitLab, Inc.
         /// </summary>
         [Input("usagePingEnabled")]
         public Input<bool>? UsagePingEnabled { get; set; }
+
+        /// <summary>
+        /// Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+        /// </summary>
+        [Input("useClickhouseForAnalytics")]
+        public Input<bool>? UseClickhouseForAnalytics { get; set; }
 
         /// <summary>
         /// Send an email to users upon account deactivation.
@@ -3486,6 +4036,12 @@ namespace Pulumi.GitLab
         public Input<string>? UserDefaultInternalRegex { get; set; }
 
         /// <summary>
+        /// Newly created users have private profile by default. Introduced in GitLab 15.8.
+        /// </summary>
+        [Input("userDefaultsToPrivateProfile")]
+        public Input<bool>? UserDefaultsToPrivateProfile { get; set; }
+
+        /// <summary>
         /// Allow users to register any application to use GitLab as an OAuth provider.
         /// </summary>
         [Input("userOauthApplications")]
@@ -3496,6 +4052,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("userShowAddSshKeyMessage")]
         public Input<bool>? UserShowAddSshKeyMessage { get; set; }
+
+        [Input("validRunnerRegistrars")]
+        private InputList<string>? _validRunnerRegistrars;
+
+        /// <summary>
+        /// List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
+        /// </summary>
+        public InputList<string> ValidRunnerRegistrars
+        {
+            get => _validRunnerRegistrars ?? (_validRunnerRegistrars = new InputList<string>());
+            set => _validRunnerRegistrars = value;
+        }
 
         /// <summary>
         /// Let GitLab inform you when an update is available.
@@ -3510,7 +4078,7 @@ namespace Pulumi.GitLab
         public Input<bool>? WebIdeClientsidePreviewEnabled { get; set; }
 
         /// <summary>
-        /// What’s new variant, possible values: all*tiers, current*tier, and disabled.
+        /// What's new variant, possible values: all*tiers, current*tier, and disabled.
         /// </summary>
         [Input("whatsNewVariant")]
         public Input<string>? WhatsNewVariant { get; set; }
@@ -4165,6 +4733,12 @@ namespace Pulumi.GitLab
         [Input("elasticsearchMaxBulkSizeMb")]
         public Input<int>? ElasticsearchMaxBulkSizeMb { get; set; }
 
+        /// <summary>
+        /// Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
+        /// </summary>
+        [Input("elasticsearchMaxCodeIndexingConcurrency")]
+        public Input<int>? ElasticsearchMaxCodeIndexingConcurrency { get; set; }
+
         [Input("elasticsearchNamespaceIds")]
         private InputList<int>? _elasticsearchNamespaceIds;
 
@@ -4206,6 +4780,12 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
+        /// Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
+        /// </summary>
+        [Input("elasticsearchRequeueWorkers")]
+        public Input<bool>? ElasticsearchRequeueWorkers { get; set; }
+
+        /// <summary>
         /// Enable Elasticsearch search.
         /// </summary>
         [Input("elasticsearchSearch")]
@@ -4230,6 +4810,12 @@ namespace Pulumi.GitLab
         public Input<string>? ElasticsearchUsername { get; set; }
 
         /// <summary>
+        /// Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
+        /// </summary>
+        [Input("elasticsearchWorkerNumberOfShards")]
+        public Input<int>? ElasticsearchWorkerNumberOfShards { get; set; }
+
+        /// <summary>
         /// Additional text added to the bottom of every email for legal/auditing/compliance reasons.
         /// </summary>
         [Input("emailAdditionalText")]
@@ -4240,6 +4826,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("emailAuthorInBody")]
         public Input<bool>? EmailAuthorInBody { get; set; }
+
+        /// <summary>
+        /// Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
+        /// </summary>
+        [Input("emailConfirmationSetting")]
+        public Input<string>? EmailConfirmationSetting { get; set; }
+
+        /// <summary>
+        /// Show the external redirect page that warns you about user-generated content in GitLab Pages.
+        /// </summary>
+        [Input("enableArtifactExternalRedirectWarningPage")]
+        public Input<bool>? EnableArtifactExternalRedirectWarningPage { get; set; }
 
         /// <summary>
         /// Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
@@ -4340,6 +4938,12 @@ namespace Pulumi.GitLab
         public Input<string>? ExternalPipelineValidationServiceUrl { get; set; }
 
         /// <summary>
+        /// Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
+        /// </summary>
+        [Input("failedLoginAttemptsUnlockPeriodInMinutes")]
+        public Input<int>? FailedLoginAttemptsUnlockPeriodInMinutes { get; set; }
+
+        /// <summary>
         /// The ID of a project to load custom file templates from.
         /// </summary>
         [Input("fileTemplateProjectId")]
@@ -4363,11 +4967,23 @@ namespace Pulumi.GitLab
         [Input("geoStatusTimeout")]
         public Input<int>? GeoStatusTimeout { get; set; }
 
+        [Input("gitRateLimitUsersAlertlists")]
+        private InputList<int>? _gitRateLimitUsersAlertlists;
+
+        /// <summary>
+        /// List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+        /// </summary>
+        public InputList<int> GitRateLimitUsersAlertlists
+        {
+            get => _gitRateLimitUsersAlertlists ?? (_gitRateLimitUsersAlertlists = new InputList<int>());
+            set => _gitRateLimitUsersAlertlists = value;
+        }
+
         [Input("gitRateLimitUsersAllowlists")]
         private InputList<string>? _gitRateLimitUsersAllowlists;
 
         /// <summary>
-        /// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
+        /// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
         /// </summary>
         public InputList<string> GitRateLimitUsersAllowlists
         {
@@ -4398,6 +5014,42 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("gitalyTimeoutMedium")]
         public Input<int>? GitalyTimeoutMedium { get; set; }
+
+        /// <summary>
+        /// Indicates whether the instance was provisioned for GitLab Dedicated.
+        /// </summary>
+        [Input("gitlabDedicatedInstance")]
+        public Input<bool>? GitlabDedicatedInstance { get; set; }
+
+        /// <summary>
+        /// Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
+        /// </summary>
+        [Input("gitlabEnvironmentToolkitInstance")]
+        public Input<bool>? GitlabEnvironmentToolkitInstance { get; set; }
+
+        /// <summary>
+        /// Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+        /// </summary>
+        [Input("gitlabShellOperationLimit")]
+        public Input<int>? GitlabShellOperationLimit { get; set; }
+
+        /// <summary>
+        /// Enable Gitpod integration.
+        /// </summary>
+        [Input("gitpodEnabled")]
+        public Input<bool>? GitpodEnabled { get; set; }
+
+        /// <summary>
+        /// The Gitpod instance URL for integration.
+        /// </summary>
+        [Input("gitpodUrl")]
+        public Input<string>? GitpodUrl { get; set; }
+
+        /// <summary>
+        /// Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
+        /// </summary>
+        [Input("globallyAllowedIps")]
+        public Input<string>? GloballyAllowedIps { get; set; }
 
         /// <summary>
         /// Enable Grafana.
@@ -4540,6 +5192,12 @@ namespace Pulumi.GitLab
         public Input<int>? InactiveProjectsSendWarningEmailAfterMonths { get; set; }
 
         /// <summary>
+        /// Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+        /// </summary>
+        [Input("includeOptionalMetricsInServicePing")]
+        public Input<bool>? IncludeOptionalMetricsInServicePing { get; set; }
+
+        /// <summary>
         /// Enable Invisible CAPTCHA spam detection during sign-up.
         /// </summary>
         [Input("invisibleCaptchaEnabled")]
@@ -4552,6 +5210,24 @@ namespace Pulumi.GitLab
         public Input<int>? IssuesCreateLimit { get; set; }
 
         /// <summary>
+        /// ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
+        /// </summary>
+        [Input("jiraConnectApplicationKey")]
+        public Input<string>? JiraConnectApplicationKey { get; set; }
+
+        /// <summary>
+        /// URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
+        /// </summary>
+        [Input("jiraConnectProxyUrl")]
+        public Input<string>? JiraConnectProxyUrl { get; set; }
+
+        /// <summary>
+        /// Enable public key storage for the GitLab for Jira Cloud app.
+        /// </summary>
+        [Input("jiraConnectPublicKeyStorageEnabled")]
+        public Input<bool>? JiraConnectPublicKeyStorageEnabled { get; set; }
+
+        /// <summary>
         /// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         /// </summary>
         [Input("keepLatestArtifact")]
@@ -4562,6 +5238,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("localMarkdownVersion")]
         public Input<int>? LocalMarkdownVersion { get; set; }
+
+        /// <summary>
+        /// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Input("lockDuoFeaturesEnabled")]
+        public Input<bool>? LockDuoFeaturesEnabled { get; set; }
 
         /// <summary>
         /// Enable Mailgun event receiver.
@@ -4598,6 +5280,12 @@ namespace Pulumi.GitLab
         public Input<string>? MaintenanceModeMessage { get; set; }
 
         /// <summary>
+        /// Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
+        /// </summary>
+        [Input("mavenPackageRequestsForwarding")]
+        public Input<bool>? MavenPackageRequestsForwarding { get; set; }
+
+        /// <summary>
         /// Maximum artifacts size in MB.
         /// </summary>
         [Input("maxArtifactsSize")]
@@ -4610,16 +5298,34 @@ namespace Pulumi.GitLab
         public Input<int>? MaxAttachmentSize { get; set; }
 
         /// <summary>
+        /// Maximum decompressed archive size in bytes.
+        /// </summary>
+        [Input("maxDecompressedArchiveSize")]
+        public Input<int>? MaxDecompressedArchiveSize { get; set; }
+
+        /// <summary>
         /// Maximum export size in MB. 0 for unlimited.
         /// </summary>
         [Input("maxExportSize")]
         public Input<int>? MaxExportSize { get; set; }
 
         /// <summary>
+        /// Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+        /// </summary>
+        [Input("maxImportRemoteFileSize")]
+        public Input<int>? MaxImportRemoteFileSize { get; set; }
+
+        /// <summary>
         /// Maximum import size in MB. 0 for unlimited.
         /// </summary>
         [Input("maxImportSize")]
         public Input<int>? MaxImportSize { get; set; }
+
+        /// <summary>
+        /// Maximum number of sign-in attempts before locking out the user.
+        /// </summary>
+        [Input("maxLoginAttempts")]
+        public Input<int>? MaxLoginAttempts { get; set; }
 
         /// <summary>
         /// Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
@@ -4696,6 +5402,12 @@ namespace Pulumi.GitLab
         [Input("npmPackageRequestsForwarding")]
         public Input<bool>? NpmPackageRequestsForwarding { get; set; }
 
+        /// <summary>
+        /// Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        /// </summary>
+        [Input("nugetSkipMetadataUrlValidation")]
+        public Input<bool>? NugetSkipMetadataUrlValidation { get; set; }
+
         [Input("outboundLocalRequestsWhitelists")]
         private InputList<string>? _outboundLocalRequestsWhitelists;
 
@@ -4707,6 +5419,24 @@ namespace Pulumi.GitLab
             get => _outboundLocalRequestsWhitelists ?? (_outboundLocalRequestsWhitelists = new InputList<string>());
             set => _outboundLocalRequestsWhitelists = value;
         }
+
+        [Input("packageMetadataPurlTypes")]
+        private InputList<int>? _packageMetadataPurlTypes;
+
+        /// <summary>
+        /// List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
+        /// </summary>
+        public InputList<int> PackageMetadataPurlTypes
+        {
+            get => _packageMetadataPurlTypes ?? (_packageMetadataPurlTypes = new InputList<int>());
+            set => _packageMetadataPurlTypes = value;
+        }
+
+        /// <summary>
+        /// Enable to allow anyone to pull from Package Registry visible and changeable.
+        /// </summary>
+        [Input("packageRegistryAllowAnyoneToPullOption")]
+        public Input<bool>? PackageRegistryAllowAnyoneToPullOption { get; set; }
 
         /// <summary>
         /// Number of workers assigned to the packages cleanup policies.
@@ -4799,6 +5529,18 @@ namespace Pulumi.GitLab
         public Input<bool>? ProjectExportEnabled { get; set; }
 
         /// <summary>
+        /// Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+        /// </summary>
+        [Input("projectJobsApiRateLimit")]
+        public Input<int>? ProjectJobsApiRateLimit { get; set; }
+
+        /// <summary>
+        /// Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+        /// </summary>
+        [Input("projectsApiRateLimitUnauthenticated")]
+        public Input<int>? ProjectsApiRateLimitUnauthenticated { get; set; }
+
+        /// <summary>
         /// Enable Prometheus metrics.
         /// </summary>
         [Input("prometheusMetricsEnabled")]
@@ -4885,6 +5627,18 @@ namespace Pulumi.GitLab
         public Input<int>? ReceiveMaxInputSize { get; set; }
 
         /// <summary>
+        /// Enable receptive mode for GitLab Agents for Kubernetes.
+        /// </summary>
+        [Input("receptiveClusterAgentsEnabled")]
+        public Input<bool>? ReceptiveClusterAgentsEnabled { get; set; }
+
+        /// <summary>
+        /// Enable Remember me setting. Introduced in GitLab 16.0.
+        /// </summary>
+        [Input("rememberMeEnabled")]
+        public Input<bool>? RememberMeEnabled { get; set; }
+
+        /// <summary>
         /// GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         /// </summary>
         [Input("repositoryChecksEnabled")]
@@ -4927,6 +5681,18 @@ namespace Pulumi.GitLab
         public Input<bool>? RequireAdminApprovalAfterUserSignup { get; set; }
 
         /// <summary>
+        /// Allow administrators to require 2FA for all administrators on the instance.
+        /// </summary>
+        [Input("requireAdminTwoFactorAuthentication")]
+        public Input<bool>? RequireAdminTwoFactorAuthentication { get; set; }
+
+        /// <summary>
+        /// When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
+        /// </summary>
+        [Input("requirePersonalAccessTokenExpiry")]
+        public Input<bool>? RequirePersonalAccessTokenExpiry { get; set; }
+
+        /// <summary>
         /// (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         /// </summary>
         [Input("requireTwoFactorAuthentication")]
@@ -4963,10 +5729,34 @@ namespace Pulumi.GitLab
         public Input<int>? SearchRateLimitUnauthenticated { get; set; }
 
         /// <summary>
+        /// Maximum number of active merge request approval policies per security policy project. Maximum: 20
+        /// </summary>
+        [Input("securityApprovalPoliciesLimit")]
+        public Input<int>? SecurityApprovalPoliciesLimit { get; set; }
+
+        /// <summary>
+        /// Whether to look up merge request approval policy approval groups globally or within project hierarchies.
+        /// </summary>
+        [Input("securityPolicyGlobalGroupApproversEnabled")]
+        public Input<bool>? SecurityPolicyGlobalGroupApproversEnabled { get; set; }
+
+        /// <summary>
+        /// Public security contact information. Introduced in GitLab 16.7.
+        /// </summary>
+        [Input("securityTxtContent")]
+        public Input<string>? SecurityTxtContent { get; set; }
+
+        /// <summary>
         /// Send confirmation email on sign-up.
         /// </summary>
         [Input("sendUserConfirmationEmail")]
         public Input<bool>? SendUserConfirmationEmail { get; set; }
+
+        /// <summary>
+        /// Flag to indicate if token expiry date can be optional for service account users
+        /// </summary>
+        [Input("serviceAccessTokensExpirationEnforced")]
+        public Input<bool>? ServiceAccessTokensExpirationEnforced { get; set; }
 
         /// <summary>
         /// Session duration in minutes. GitLab restart is required to apply changes.
@@ -5021,6 +5811,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("signupEnabled")]
         public Input<bool>? SignupEnabled { get; set; }
+
+        /// <summary>
+        /// Enable Silent admin exports.
+        /// </summary>
+        [Input("silentAdminExportsEnabled")]
+        public Input<bool>? SilentAdminExportsEnabled { get; set; }
+
+        /// <summary>
+        /// Enable Silent mode.
+        /// </summary>
+        [Input("silentModeEnabled")]
+        public Input<bool>? SilentModeEnabled { get; set; }
 
         /// <summary>
         /// (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
@@ -5097,6 +5899,12 @@ namespace Pulumi.GitLab
         public Input<string>? SnowplowCookieDomain { get; set; }
 
         /// <summary>
+        /// The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
+        /// </summary>
+        [Input("snowplowDatabaseCollectorHostname")]
+        public Input<string>? SnowplowDatabaseCollectorHostname { get; set; }
+
+        /// <summary>
         /// Enable snowplow tracking.
         /// </summary>
         [Input("snowplowEnabled")]
@@ -5147,6 +5955,38 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("spamCheckEndpointUrl")]
         public Input<string>? SpamCheckEndpointUrl { get; set; }
+
+        [Input("staticObjectsExternalStorageAuthToken")]
+        private Input<string>? _staticObjectsExternalStorageAuthToken;
+
+        /// <summary>
+        /// Authentication token for the external storage linked in static*objects*external*storage*url.
+        /// </summary>
+        public Input<string>? StaticObjectsExternalStorageAuthToken
+        {
+            get => _staticObjectsExternalStorageAuthToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _staticObjectsExternalStorageAuthToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("staticObjectsExternalStorageUrl")]
+        private Input<string>? _staticObjectsExternalStorageUrl;
+
+        /// <summary>
+        /// URL to an external storage for repository static objects.
+        /// </summary>
+        public Input<string>? StaticObjectsExternalStorageUrl
+        {
+            get => _staticObjectsExternalStorageUrl;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _staticObjectsExternalStorageUrl = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable pipeline suggestion banner.
@@ -5287,6 +6127,12 @@ namespace Pulumi.GitLab
         public Input<int>? TwoFactorGracePeriod { get; set; }
 
         /// <summary>
+        /// Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+        /// </summary>
+        [Input("unconfirmedUsersDeleteAfterDays")]
+        public Input<int>? UnconfirmedUsersDeleteAfterDays { get; set; }
+
+        /// <summary>
         /// (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         /// </summary>
         [Input("uniqueIpsLimitEnabled")]
@@ -5305,10 +6151,22 @@ namespace Pulumi.GitLab
         public Input<int>? UniqueIpsLimitTimeWindow { get; set; }
 
         /// <summary>
+        /// Fetch GitLab Runner release version data from GitLab.com.
+        /// </summary>
+        [Input("updateRunnerVersionsEnabled")]
+        public Input<bool>? UpdateRunnerVersionsEnabled { get; set; }
+
+        /// <summary>
         /// Every week GitLab reports license usage back to GitLab, Inc.
         /// </summary>
         [Input("usagePingEnabled")]
         public Input<bool>? UsagePingEnabled { get; set; }
+
+        /// <summary>
+        /// Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
+        /// </summary>
+        [Input("useClickhouseForAnalytics")]
+        public Input<bool>? UseClickhouseForAnalytics { get; set; }
 
         /// <summary>
         /// Send an email to users upon account deactivation.
@@ -5329,6 +6187,12 @@ namespace Pulumi.GitLab
         public Input<string>? UserDefaultInternalRegex { get; set; }
 
         /// <summary>
+        /// Newly created users have private profile by default. Introduced in GitLab 15.8.
+        /// </summary>
+        [Input("userDefaultsToPrivateProfile")]
+        public Input<bool>? UserDefaultsToPrivateProfile { get; set; }
+
+        /// <summary>
         /// Allow users to register any application to use GitLab as an OAuth provider.
         /// </summary>
         [Input("userOauthApplications")]
@@ -5339,6 +6203,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("userShowAddSshKeyMessage")]
         public Input<bool>? UserShowAddSshKeyMessage { get; set; }
+
+        [Input("validRunnerRegistrars")]
+        private InputList<string>? _validRunnerRegistrars;
+
+        /// <summary>
+        /// List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
+        /// </summary>
+        public InputList<string> ValidRunnerRegistrars
+        {
+            get => _validRunnerRegistrars ?? (_validRunnerRegistrars = new InputList<string>());
+            set => _validRunnerRegistrars = value;
+        }
 
         /// <summary>
         /// Let GitLab inform you when an update is available.
@@ -5353,7 +6229,7 @@ namespace Pulumi.GitLab
         public Input<bool>? WebIdeClientsidePreviewEnabled { get; set; }
 
         /// <summary>
-        /// What’s new variant, possible values: all*tiers, current*tier, and disabled.
+        /// What's new variant, possible values: all*tiers, current*tier, and disabled.
         /// </summary>
         [Input("whatsNewVariant")]
         public Input<string>? WhatsNewVariant { get; set; }

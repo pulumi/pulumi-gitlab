@@ -39,6 +39,8 @@ __all__ = [
     'GroupProtectedEnvironmentDeployAccessLevelArgsDict',
     'GroupPushRulesArgs',
     'GroupPushRulesArgsDict',
+    'PersonalAccessTokenRotationConfigurationArgs',
+    'PersonalAccessTokenRotationConfigurationArgsDict',
     'ProjectAccessTokenRotationConfigurationArgs',
     'ProjectAccessTokenRotationConfigurationArgsDict',
     'ProjectContainerExpirationPolicyArgs',
@@ -59,6 +61,8 @@ __all__ = [
     'ProjectTagReleaseArgsDict',
     'TagProtectionAllowedToCreateArgs',
     'TagProtectionAllowedToCreateArgsDict',
+    'GetGroupProvisionedUsersProvisionedUserArgs',
+    'GetGroupProvisionedUsersProvisionedUserArgsDict',
     'GetProjectProtectedBranchMergeAccessLevelArgs',
     'GetProjectProtectedBranchMergeAccessLevelArgsDict',
     'GetProjectProtectedBranchPushAccessLevelArgs',
@@ -737,11 +741,11 @@ if not MYPY:
         """
         allowed_to_merges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+        An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
         """
         allowed_to_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+        An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
         """
         developer_can_initial_push: NotRequired[pulumi.Input[bool]]
         """
@@ -759,8 +763,8 @@ class GroupDefaultBranchProtectionDefaultsArgs:
                  developer_can_initial_push: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] allow_force_push: Allow force push for all users with push access.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_to_merges: An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_to_pushes: An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_to_merges: An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_to_pushes: An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
         :param pulumi.Input[bool] developer_can_initial_push: Allow developers to initial push.
         """
         if allow_force_push is not None:
@@ -788,7 +792,7 @@ class GroupDefaultBranchProtectionDefaultsArgs:
     @pulumi.getter(name="allowedToMerges")
     def allowed_to_merges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+        An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
         """
         return pulumi.get(self, "allowed_to_merges")
 
@@ -800,7 +804,7 @@ class GroupDefaultBranchProtectionDefaultsArgs:
     @pulumi.getter(name="allowedToPushes")
     def allowed_to_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+        An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
         """
         return pulumi.get(self, "allowed_to_pushes")
 
@@ -1519,6 +1523,56 @@ class GroupPushRulesArgs:
     @reject_unsigned_commits.setter
     def reject_unsigned_commits(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reject_unsigned_commits", value)
+
+
+if not MYPY:
+    class PersonalAccessTokenRotationConfigurationArgsDict(TypedDict):
+        expiration_days: pulumi.Input[int]
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        rotate_before_days: pulumi.Input[int]
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+elif False:
+    PersonalAccessTokenRotationConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PersonalAccessTokenRotationConfigurationArgs:
+    def __init__(__self__, *,
+                 expiration_days: pulumi.Input[int],
+                 rotate_before_days: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] expiration_days: The duration (in days) the new token should be valid for.
+        :param pulumi.Input[int] rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        pulumi.set(__self__, "expiration_days", expiration_days)
+        pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> pulumi.Input[int]:
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @expiration_days.setter
+    def expiration_days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "expiration_days", value)
+
+    @property
+    @pulumi.getter(name="rotateBeforeDays")
+    def rotate_before_days(self) -> pulumi.Input[int]:
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        return pulumi.get(self, "rotate_before_days")
+
+    @rotate_before_days.setter
+    def rotate_before_days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "rotate_before_days", value)
 
 
 if not MYPY:
@@ -2861,6 +2915,493 @@ class TagProtectionAllowedToCreateArgs:
     @user_id.setter
     def user_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "user_id", value)
+
+
+if not MYPY:
+    class GetGroupProvisionedUsersProvisionedUserArgsDict(TypedDict):
+        avatar_url: str
+        """
+        The avatar URL of the provisioned user.
+        """
+        bio: str
+        """
+        The bio of the provisioned user.
+        """
+        bot: bool
+        """
+        Whether the provisioned user is a bot.
+        """
+        confirmed_at: str
+        """
+        The confirmation date of the provisioned user.
+        """
+        created_at: str
+        """
+        The creation date of the provisioned user.
+        """
+        email: str
+        """
+        The email of the provisioned user.
+        """
+        external: bool
+        """
+        Whether the provisioned user is external.
+        """
+        id: str
+        """
+        The ID of the provisioned user.
+        """
+        job_title: str
+        """
+        The job title of the provisioned user.
+        """
+        last_activity_on: str
+        """
+        The last activity date of the provisioned user.
+        """
+        last_sign_in_at: str
+        """
+        The last sign-in date of the provisioned user.
+        """
+        linkedin: str
+        """
+        The LinkedIn ID of the provisioned user.
+        """
+        location: str
+        """
+        The location of the provisioned user.
+        """
+        name: str
+        """
+        The name of the provisioned user.
+        """
+        organization: str
+        """
+        The organization of the provisioned user.
+        """
+        private_profile: bool
+        """
+        Whether the provisioned user has a private profile.
+        """
+        pronouns: str
+        """
+        The pronouns of the provisioned user.
+        """
+        public_email: str
+        """
+        The public email of the provisioned user.
+        """
+        skype: str
+        """
+        The Skype ID of the provisioned user.
+        """
+        state: str
+        """
+        The state of the provisioned user.
+        """
+        twitter: str
+        """
+        The Twitter ID of the provisioned user.
+        """
+        two_factor_enabled: bool
+        """
+        Whether two-factor authentication is enabled for the provisioned user.
+        """
+        username: str
+        """
+        The username of the provisioned user.
+        """
+        web_url: str
+        """
+        The web URL of the provisioned user.
+        """
+        website_url: str
+        """
+        The website URL of the provisioned user.
+        """
+elif False:
+    GetGroupProvisionedUsersProvisionedUserArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGroupProvisionedUsersProvisionedUserArgs:
+    def __init__(__self__, *,
+                 avatar_url: str,
+                 bio: str,
+                 bot: bool,
+                 confirmed_at: str,
+                 created_at: str,
+                 email: str,
+                 external: bool,
+                 id: str,
+                 job_title: str,
+                 last_activity_on: str,
+                 last_sign_in_at: str,
+                 linkedin: str,
+                 location: str,
+                 name: str,
+                 organization: str,
+                 private_profile: bool,
+                 pronouns: str,
+                 public_email: str,
+                 skype: str,
+                 state: str,
+                 twitter: str,
+                 two_factor_enabled: bool,
+                 username: str,
+                 web_url: str,
+                 website_url: str):
+        """
+        :param str avatar_url: The avatar URL of the provisioned user.
+        :param str bio: The bio of the provisioned user.
+        :param bool bot: Whether the provisioned user is a bot.
+        :param str confirmed_at: The confirmation date of the provisioned user.
+        :param str created_at: The creation date of the provisioned user.
+        :param str email: The email of the provisioned user.
+        :param bool external: Whether the provisioned user is external.
+        :param str id: The ID of the provisioned user.
+        :param str job_title: The job title of the provisioned user.
+        :param str last_activity_on: The last activity date of the provisioned user.
+        :param str last_sign_in_at: The last sign-in date of the provisioned user.
+        :param str linkedin: The LinkedIn ID of the provisioned user.
+        :param str location: The location of the provisioned user.
+        :param str name: The name of the provisioned user.
+        :param str organization: The organization of the provisioned user.
+        :param bool private_profile: Whether the provisioned user has a private profile.
+        :param str pronouns: The pronouns of the provisioned user.
+        :param str public_email: The public email of the provisioned user.
+        :param str skype: The Skype ID of the provisioned user.
+        :param str state: The state of the provisioned user.
+        :param str twitter: The Twitter ID of the provisioned user.
+        :param bool two_factor_enabled: Whether two-factor authentication is enabled for the provisioned user.
+        :param str username: The username of the provisioned user.
+        :param str web_url: The web URL of the provisioned user.
+        :param str website_url: The website URL of the provisioned user.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "bio", bio)
+        pulumi.set(__self__, "bot", bot)
+        pulumi.set(__self__, "confirmed_at", confirmed_at)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "external", external)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "job_title", job_title)
+        pulumi.set(__self__, "last_activity_on", last_activity_on)
+        pulumi.set(__self__, "last_sign_in_at", last_sign_in_at)
+        pulumi.set(__self__, "linkedin", linkedin)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "organization", organization)
+        pulumi.set(__self__, "private_profile", private_profile)
+        pulumi.set(__self__, "pronouns", pronouns)
+        pulumi.set(__self__, "public_email", public_email)
+        pulumi.set(__self__, "skype", skype)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "twitter", twitter)
+        pulumi.set(__self__, "two_factor_enabled", two_factor_enabled)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+        pulumi.set(__self__, "website_url", website_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> str:
+        """
+        The avatar URL of the provisioned user.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @avatar_url.setter
+    def avatar_url(self, value: str):
+        pulumi.set(self, "avatar_url", value)
+
+    @property
+    @pulumi.getter
+    def bio(self) -> str:
+        """
+        The bio of the provisioned user.
+        """
+        return pulumi.get(self, "bio")
+
+    @bio.setter
+    def bio(self, value: str):
+        pulumi.set(self, "bio", value)
+
+    @property
+    @pulumi.getter
+    def bot(self) -> bool:
+        """
+        Whether the provisioned user is a bot.
+        """
+        return pulumi.get(self, "bot")
+
+    @bot.setter
+    def bot(self, value: bool):
+        pulumi.set(self, "bot", value)
+
+    @property
+    @pulumi.getter(name="confirmedAt")
+    def confirmed_at(self) -> str:
+        """
+        The confirmation date of the provisioned user.
+        """
+        return pulumi.get(self, "confirmed_at")
+
+    @confirmed_at.setter
+    def confirmed_at(self, value: str):
+        pulumi.set(self, "confirmed_at", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The creation date of the provisioned user.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: str):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The email of the provisioned user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: str):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def external(self) -> bool:
+        """
+        Whether the provisioned user is external.
+        """
+        return pulumi.get(self, "external")
+
+    @external.setter
+    def external(self, value: bool):
+        pulumi.set(self, "external", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the provisioned user.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="jobTitle")
+    def job_title(self) -> str:
+        """
+        The job title of the provisioned user.
+        """
+        return pulumi.get(self, "job_title")
+
+    @job_title.setter
+    def job_title(self, value: str):
+        pulumi.set(self, "job_title", value)
+
+    @property
+    @pulumi.getter(name="lastActivityOn")
+    def last_activity_on(self) -> str:
+        """
+        The last activity date of the provisioned user.
+        """
+        return pulumi.get(self, "last_activity_on")
+
+    @last_activity_on.setter
+    def last_activity_on(self, value: str):
+        pulumi.set(self, "last_activity_on", value)
+
+    @property
+    @pulumi.getter(name="lastSignInAt")
+    def last_sign_in_at(self) -> str:
+        """
+        The last sign-in date of the provisioned user.
+        """
+        return pulumi.get(self, "last_sign_in_at")
+
+    @last_sign_in_at.setter
+    def last_sign_in_at(self, value: str):
+        pulumi.set(self, "last_sign_in_at", value)
+
+    @property
+    @pulumi.getter
+    def linkedin(self) -> str:
+        """
+        The LinkedIn ID of the provisioned user.
+        """
+        return pulumi.get(self, "linkedin")
+
+    @linkedin.setter
+    def linkedin(self, value: str):
+        pulumi.set(self, "linkedin", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the provisioned user.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: str):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the provisioned user.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def organization(self) -> str:
+        """
+        The organization of the provisioned user.
+        """
+        return pulumi.get(self, "organization")
+
+    @organization.setter
+    def organization(self, value: str):
+        pulumi.set(self, "organization", value)
+
+    @property
+    @pulumi.getter(name="privateProfile")
+    def private_profile(self) -> bool:
+        """
+        Whether the provisioned user has a private profile.
+        """
+        return pulumi.get(self, "private_profile")
+
+    @private_profile.setter
+    def private_profile(self, value: bool):
+        pulumi.set(self, "private_profile", value)
+
+    @property
+    @pulumi.getter
+    def pronouns(self) -> str:
+        """
+        The pronouns of the provisioned user.
+        """
+        return pulumi.get(self, "pronouns")
+
+    @pronouns.setter
+    def pronouns(self, value: str):
+        pulumi.set(self, "pronouns", value)
+
+    @property
+    @pulumi.getter(name="publicEmail")
+    def public_email(self) -> str:
+        """
+        The public email of the provisioned user.
+        """
+        return pulumi.get(self, "public_email")
+
+    @public_email.setter
+    def public_email(self, value: str):
+        pulumi.set(self, "public_email", value)
+
+    @property
+    @pulumi.getter
+    def skype(self) -> str:
+        """
+        The Skype ID of the provisioned user.
+        """
+        return pulumi.get(self, "skype")
+
+    @skype.setter
+    def skype(self, value: str):
+        pulumi.set(self, "skype", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the provisioned user.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: str):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def twitter(self) -> str:
+        """
+        The Twitter ID of the provisioned user.
+        """
+        return pulumi.get(self, "twitter")
+
+    @twitter.setter
+    def twitter(self, value: str):
+        pulumi.set(self, "twitter", value)
+
+    @property
+    @pulumi.getter(name="twoFactorEnabled")
+    def two_factor_enabled(self) -> bool:
+        """
+        Whether two-factor authentication is enabled for the provisioned user.
+        """
+        return pulumi.get(self, "two_factor_enabled")
+
+    @two_factor_enabled.setter
+    def two_factor_enabled(self, value: bool):
+        pulumi.set(self, "two_factor_enabled", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username of the provisioned user.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: str):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        """
+        The web URL of the provisioned user.
+        """
+        return pulumi.get(self, "web_url")
+
+    @web_url.setter
+    def web_url(self, value: str):
+        pulumi.set(self, "web_url", value)
+
+    @property
+    @pulumi.getter(name="websiteUrl")
+    def website_url(self) -> str:
+        """
+        The website URL of the provisioned user.
+        """
+        return pulumi.get(self, "website_url")
+
+    @website_url.setter
+    def website_url(self, value: str):
+        pulumi.set(self, "website_url", value)
 
 
 if not MYPY:
