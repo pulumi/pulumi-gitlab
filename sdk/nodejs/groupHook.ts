@@ -84,25 +84,25 @@ export class GroupHook extends pulumi.CustomResource {
     /**
      * Invoke the hook for confidential issues events.
      */
-    public readonly confidentialIssuesEvents!: pulumi.Output<boolean | undefined>;
+    public readonly confidentialIssuesEvents!: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for confidential notes events.
+     * Invoke the hook for confidential note events.
      */
-    public readonly confidentialNoteEvents!: pulumi.Output<boolean | undefined>;
+    public readonly confidentialNoteEvents!: pulumi.Output<boolean>;
     /**
-     * Set a custom webhook template.
+     * Custom webhook template.
      */
-    public readonly customWebhookTemplate!: pulumi.Output<string | undefined>;
+    public readonly customWebhookTemplate!: pulumi.Output<string>;
     /**
      * Invoke the hook for deployment events.
      */
-    public readonly deploymentEvents!: pulumi.Output<boolean | undefined>;
+    public readonly deploymentEvents!: pulumi.Output<boolean>;
     /**
-     * Enable ssl verification when invoking the hook.
+     * Enable SSL verification when invoking the hook.
      */
-    public readonly enableSslVerification!: pulumi.Output<boolean | undefined>;
+    public readonly enableSslVerification!: pulumi.Output<boolean>;
     /**
-     * The ID or full path of the group.
+     * The full path or id of the group to add the hook to.
      */
     public readonly group!: pulumi.Output<string>;
     /**
@@ -116,55 +116,55 @@ export class GroupHook extends pulumi.CustomResource {
     /**
      * Invoke the hook for issues events.
      */
-    public readonly issuesEvents!: pulumi.Output<boolean | undefined>;
+    public readonly issuesEvents!: pulumi.Output<boolean>;
     /**
      * Invoke the hook for job events.
      */
-    public readonly jobEvents!: pulumi.Output<boolean | undefined>;
+    public readonly jobEvents!: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for merge requests.
+     * Invoke the hook for merge requests events.
      */
-    public readonly mergeRequestsEvents!: pulumi.Output<boolean | undefined>;
+    public readonly mergeRequestsEvents!: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for notes events.
+     * Invoke the hook for note events.
      */
-    public readonly noteEvents!: pulumi.Output<boolean | undefined>;
+    public readonly noteEvents!: pulumi.Output<boolean>;
     /**
      * Invoke the hook for pipeline events.
      */
-    public readonly pipelineEvents!: pulumi.Output<boolean | undefined>;
+    public readonly pipelineEvents!: pulumi.Output<boolean>;
     /**
      * Invoke the hook for push events.
      */
-    public readonly pushEvents!: pulumi.Output<boolean | undefined>;
+    public readonly pushEvents!: pulumi.Output<boolean>;
     /**
      * Invoke the hook for push events on matching branches only.
      */
-    public readonly pushEventsBranchFilter!: pulumi.Output<string | undefined>;
+    public readonly pushEventsBranchFilter!: pulumi.Output<string>;
     /**
-     * Invoke the hook for releases events.
+     * Invoke the hook for release events.
      */
-    public readonly releasesEvents!: pulumi.Output<boolean | undefined>;
+    public readonly releasesEvents!: pulumi.Output<boolean>;
     /**
      * Invoke the hook for subgroup events.
      */
-    public readonly subgroupEvents!: pulumi.Output<boolean | undefined>;
+    public readonly subgroupEvents!: pulumi.Output<boolean>;
     /**
      * Invoke the hook for tag push events.
      */
-    public readonly tagPushEvents!: pulumi.Output<boolean | undefined>;
+    public readonly tagPushEvents!: pulumi.Output<boolean>;
     /**
      * A token to present when invoking the hook. The token is not available for imported resources.
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    public readonly token!: pulumi.Output<string>;
     /**
-     * The url of the hook to invoke.
+     * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     public readonly url!: pulumi.Output<string>;
     /**
      * Invoke the hook for wiki page events.
      */
-    public readonly wikiPageEvents!: pulumi.Output<boolean | undefined>;
+    public readonly wikiPageEvents!: pulumi.Output<boolean>;
 
     /**
      * Create a GroupHook resource with the given unique name, arguments, and options.
@@ -246,11 +246,11 @@ export interface GroupHookState {
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for confidential notes events.
+     * Invoke the hook for confidential note events.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
-     * Set a custom webhook template.
+     * Custom webhook template.
      */
     customWebhookTemplate?: pulumi.Input<string>;
     /**
@@ -258,11 +258,11 @@ export interface GroupHookState {
      */
     deploymentEvents?: pulumi.Input<boolean>;
     /**
-     * Enable ssl verification when invoking the hook.
+     * Enable SSL verification when invoking the hook.
      */
     enableSslVerification?: pulumi.Input<boolean>;
     /**
-     * The ID or full path of the group.
+     * The full path or id of the group to add the hook to.
      */
     group?: pulumi.Input<string>;
     /**
@@ -282,11 +282,11 @@ export interface GroupHookState {
      */
     jobEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for merge requests.
+     * Invoke the hook for merge requests events.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for notes events.
+     * Invoke the hook for note events.
      */
     noteEvents?: pulumi.Input<boolean>;
     /**
@@ -302,7 +302,7 @@ export interface GroupHookState {
      */
     pushEventsBranchFilter?: pulumi.Input<string>;
     /**
-     * Invoke the hook for releases events.
+     * Invoke the hook for release events.
      */
     releasesEvents?: pulumi.Input<boolean>;
     /**
@@ -318,7 +318,7 @@ export interface GroupHookState {
      */
     token?: pulumi.Input<string>;
     /**
-     * The url of the hook to invoke.
+     * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     url?: pulumi.Input<string>;
     /**
@@ -336,11 +336,11 @@ export interface GroupHookArgs {
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for confidential notes events.
+     * Invoke the hook for confidential note events.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
-     * Set a custom webhook template.
+     * Custom webhook template.
      */
     customWebhookTemplate?: pulumi.Input<string>;
     /**
@@ -348,11 +348,11 @@ export interface GroupHookArgs {
      */
     deploymentEvents?: pulumi.Input<boolean>;
     /**
-     * Enable ssl verification when invoking the hook.
+     * Enable SSL verification when invoking the hook.
      */
     enableSslVerification?: pulumi.Input<boolean>;
     /**
-     * The ID or full path of the group.
+     * The full path or id of the group to add the hook to.
      */
     group: pulumi.Input<string>;
     /**
@@ -364,11 +364,11 @@ export interface GroupHookArgs {
      */
     jobEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for merge requests.
+     * Invoke the hook for merge requests events.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for notes events.
+     * Invoke the hook for note events.
      */
     noteEvents?: pulumi.Input<boolean>;
     /**
@@ -384,7 +384,7 @@ export interface GroupHookArgs {
      */
     pushEventsBranchFilter?: pulumi.Input<string>;
     /**
-     * Invoke the hook for releases events.
+     * Invoke the hook for release events.
      */
     releasesEvents?: pulumi.Input<boolean>;
     /**
@@ -400,7 +400,7 @@ export interface GroupHookArgs {
      */
     token?: pulumi.Input<string>;
     /**
-     * The url of the hook to invoke.
+     * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     url: pulumi.Input<string>;
     /**

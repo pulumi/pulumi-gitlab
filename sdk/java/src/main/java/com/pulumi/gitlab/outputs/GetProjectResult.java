@@ -19,6 +19,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetProjectResult {
     /**
+     * @return Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     * 
+     */
+    private Boolean allowPipelineTriggerApproveDeployment;
+    /**
      * @return Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -199,6 +204,16 @@ public final class GetProjectResult {
      */
     private Boolean mergeTrainsEnabled;
     /**
+     * @return The visibility of machine learning model experiments.
+     * 
+     */
+    private String modelExperimentsAccessLevel;
+    /**
+     * @return The visibility of machine learning model registry.
+     * 
+     */
+    private String modelRegistryAccessLevel;
+    /**
      * @return Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -350,6 +365,13 @@ public final class GetProjectResult {
     private Boolean wikiEnabled;
 
     private GetProjectResult() {}
+    /**
+     * @return Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     * 
+     */
+    public Boolean allowPipelineTriggerApproveDeployment() {
+        return this.allowPipelineTriggerApproveDeployment;
+    }
     /**
      * @return Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      * 
@@ -603,6 +625,20 @@ public final class GetProjectResult {
         return this.mergeTrainsEnabled;
     }
     /**
+     * @return The visibility of machine learning model experiments.
+     * 
+     */
+    public String modelExperimentsAccessLevel() {
+        return this.modelExperimentsAccessLevel;
+    }
+    /**
+     * @return The visibility of machine learning model registry.
+     * 
+     */
+    public String modelRegistryAccessLevel() {
+        return this.modelRegistryAccessLevel;
+    }
+    /**
      * @return Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -822,6 +858,7 @@ public final class GetProjectResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean allowPipelineTriggerApproveDeployment;
         private String analyticsAccessLevel;
         private Boolean archived;
         private String autoCancelPendingPipelines;
@@ -858,6 +895,8 @@ public final class GetProjectResult {
         private String mergeRequestsAccessLevel;
         private Boolean mergeRequestsEnabled;
         private Boolean mergeTrainsEnabled;
+        private String modelExperimentsAccessLevel;
+        private String modelRegistryAccessLevel;
         private String monitorAccessLevel;
         private String name;
         private Integer namespaceId;
@@ -891,6 +930,7 @@ public final class GetProjectResult {
         public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowPipelineTriggerApproveDeployment = defaults.allowPipelineTriggerApproveDeployment;
     	      this.analyticsAccessLevel = defaults.analyticsAccessLevel;
     	      this.archived = defaults.archived;
     	      this.autoCancelPendingPipelines = defaults.autoCancelPendingPipelines;
@@ -927,6 +967,8 @@ public final class GetProjectResult {
     	      this.mergeRequestsAccessLevel = defaults.mergeRequestsAccessLevel;
     	      this.mergeRequestsEnabled = defaults.mergeRequestsEnabled;
     	      this.mergeTrainsEnabled = defaults.mergeTrainsEnabled;
+    	      this.modelExperimentsAccessLevel = defaults.modelExperimentsAccessLevel;
+    	      this.modelRegistryAccessLevel = defaults.modelRegistryAccessLevel;
     	      this.monitorAccessLevel = defaults.monitorAccessLevel;
     	      this.name = defaults.name;
     	      this.namespaceId = defaults.namespaceId;
@@ -959,6 +1001,14 @@ public final class GetProjectResult {
     	      this.wikiEnabled = defaults.wikiEnabled;
         }
 
+        @CustomType.Setter
+        public Builder allowPipelineTriggerApproveDeployment(Boolean allowPipelineTriggerApproveDeployment) {
+            if (allowPipelineTriggerApproveDeployment == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "allowPipelineTriggerApproveDeployment");
+            }
+            this.allowPipelineTriggerApproveDeployment = allowPipelineTriggerApproveDeployment;
+            return this;
+        }
         @CustomType.Setter
         public Builder analyticsAccessLevel(String analyticsAccessLevel) {
             if (analyticsAccessLevel == null) {
@@ -1251,6 +1301,22 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder modelExperimentsAccessLevel(String modelExperimentsAccessLevel) {
+            if (modelExperimentsAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "modelExperimentsAccessLevel");
+            }
+            this.modelExperimentsAccessLevel = modelExperimentsAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder modelRegistryAccessLevel(String modelRegistryAccessLevel) {
+            if (modelRegistryAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "modelRegistryAccessLevel");
+            }
+            this.modelRegistryAccessLevel = modelRegistryAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder monitorAccessLevel(String monitorAccessLevel) {
             if (monitorAccessLevel == null) {
               throw new MissingRequiredPropertyException("GetProjectResult", "monitorAccessLevel");
@@ -1499,6 +1565,7 @@ public final class GetProjectResult {
         }
         public GetProjectResult build() {
             final var _resultValue = new GetProjectResult();
+            _resultValue.allowPipelineTriggerApproveDeployment = allowPipelineTriggerApproveDeployment;
             _resultValue.analyticsAccessLevel = analyticsAccessLevel;
             _resultValue.archived = archived;
             _resultValue.autoCancelPendingPipelines = autoCancelPendingPipelines;
@@ -1535,6 +1602,8 @@ public final class GetProjectResult {
             _resultValue.mergeRequestsAccessLevel = mergeRequestsAccessLevel;
             _resultValue.mergeRequestsEnabled = mergeRequestsEnabled;
             _resultValue.mergeTrainsEnabled = mergeTrainsEnabled;
+            _resultValue.modelExperimentsAccessLevel = modelExperimentsAccessLevel;
+            _resultValue.modelRegistryAccessLevel = modelRegistryAccessLevel;
             _resultValue.monitorAccessLevel = monitorAccessLevel;
             _resultValue.name = name;
             _resultValue.namespaceId = namespaceId;

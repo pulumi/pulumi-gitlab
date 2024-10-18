@@ -42,18 +42,18 @@ class ProjectHookArgs:
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
         :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
-        :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential notes events.
-        :param pulumi.Input[str] custom_webhook_template: Set a custom webhook template.
+        :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
+        :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
-        :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking the hook.
+        :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
-        :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests.
-        :param pulumi.Input[bool] note_events: Invoke the hook for notes events.
+        :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
-        :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
+        :param pulumi.Input[bool] releases_events: Invoke the hook for release events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
@@ -133,7 +133,7 @@ class ProjectHookArgs:
     @pulumi.getter(name="confidentialNoteEvents")
     def confidential_note_events(self) -> Optional[pulumi.Input[bool]]:
         """
-        Invoke the hook for confidential notes events.
+        Invoke the hook for confidential note events.
         """
         return pulumi.get(self, "confidential_note_events")
 
@@ -145,7 +145,7 @@ class ProjectHookArgs:
     @pulumi.getter(name="customWebhookTemplate")
     def custom_webhook_template(self) -> Optional[pulumi.Input[str]]:
         """
-        Set a custom webhook template.
+        Custom webhook template.
         """
         return pulumi.get(self, "custom_webhook_template")
 
@@ -169,7 +169,7 @@ class ProjectHookArgs:
     @pulumi.getter(name="enableSslVerification")
     def enable_ssl_verification(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable ssl verification when invoking the hook.
+        Enable SSL verification when invoking the hook.
         """
         return pulumi.get(self, "enable_ssl_verification")
 
@@ -205,7 +205,7 @@ class ProjectHookArgs:
     @pulumi.getter(name="mergeRequestsEvents")
     def merge_requests_events(self) -> Optional[pulumi.Input[bool]]:
         """
-        Invoke the hook for merge requests.
+        Invoke the hook for merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
 
@@ -217,7 +217,7 @@ class ProjectHookArgs:
     @pulumi.getter(name="noteEvents")
     def note_events(self) -> Optional[pulumi.Input[bool]]:
         """
-        Invoke the hook for notes events.
+        Invoke the hook for note events.
         """
         return pulumi.get(self, "note_events")
 
@@ -265,7 +265,7 @@ class ProjectHookArgs:
     @pulumi.getter(name="releasesEvents")
     def releases_events(self) -> Optional[pulumi.Input[bool]]:
         """
-        Invoke the hook for releases events.
+        Invoke the hook for release events.
         """
         return pulumi.get(self, "releases_events")
 
@@ -336,21 +336,21 @@ class _ProjectHookState:
         """
         Input properties used for looking up and filtering ProjectHook resources.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
-        :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential notes events.
-        :param pulumi.Input[str] custom_webhook_template: Set a custom webhook template.
+        :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
+        :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
-        :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking the hook.
+        :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[int] hook_id: The id of the project hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
-        :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests.
-        :param pulumi.Input[bool] note_events: Invoke the hook for notes events.
+        :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
         :param pulumi.Input[int] project_id: The id of the project for the hook.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
-        :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
+        :param pulumi.Input[bool] releases_events: Invoke the hook for release events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
@@ -413,7 +413,7 @@ class _ProjectHookState:
     @pulumi.getter(name="confidentialNoteEvents")
     def confidential_note_events(self) -> Optional[pulumi.Input[bool]]:
         """
-        Invoke the hook for confidential notes events.
+        Invoke the hook for confidential note events.
         """
         return pulumi.get(self, "confidential_note_events")
 
@@ -425,7 +425,7 @@ class _ProjectHookState:
     @pulumi.getter(name="customWebhookTemplate")
     def custom_webhook_template(self) -> Optional[pulumi.Input[str]]:
         """
-        Set a custom webhook template.
+        Custom webhook template.
         """
         return pulumi.get(self, "custom_webhook_template")
 
@@ -449,7 +449,7 @@ class _ProjectHookState:
     @pulumi.getter(name="enableSslVerification")
     def enable_ssl_verification(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable ssl verification when invoking the hook.
+        Enable SSL verification when invoking the hook.
         """
         return pulumi.get(self, "enable_ssl_verification")
 
@@ -497,7 +497,7 @@ class _ProjectHookState:
     @pulumi.getter(name="mergeRequestsEvents")
     def merge_requests_events(self) -> Optional[pulumi.Input[bool]]:
         """
-        Invoke the hook for merge requests.
+        Invoke the hook for merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
 
@@ -509,7 +509,7 @@ class _ProjectHookState:
     @pulumi.getter(name="noteEvents")
     def note_events(self) -> Optional[pulumi.Input[bool]]:
         """
-        Invoke the hook for notes events.
+        Invoke the hook for note events.
         """
         return pulumi.get(self, "note_events")
 
@@ -581,7 +581,7 @@ class _ProjectHookState:
     @pulumi.getter(name="releasesEvents")
     def releases_events(self) -> Optional[pulumi.Input[bool]]:
         """
-        Invoke the hook for releases events.
+        Invoke the hook for release events.
         """
         return pulumi.get(self, "releases_events")
 
@@ -692,19 +692,19 @@ class ProjectHook(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
-        :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential notes events.
-        :param pulumi.Input[str] custom_webhook_template: Set a custom webhook template.
+        :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
+        :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
-        :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking the hook.
+        :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
-        :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests.
-        :param pulumi.Input[bool] note_events: Invoke the hook for notes events.
+        :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
-        :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
+        :param pulumi.Input[bool] releases_events: Invoke the hook for release events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
@@ -849,21 +849,21 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
-        :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential notes events.
-        :param pulumi.Input[str] custom_webhook_template: Set a custom webhook template.
+        :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
+        :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
-        :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking the hook.
+        :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[int] hook_id: The id of the project hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
-        :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests.
-        :param pulumi.Input[bool] note_events: Invoke the hook for notes events.
+        :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
         :param pulumi.Input[int] project_id: The id of the project for the hook.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
-        :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
+        :param pulumi.Input[bool] releases_events: Invoke the hook for release events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
@@ -897,7 +897,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
-    def confidential_issues_events(self) -> pulumi.Output[Optional[bool]]:
+    def confidential_issues_events(self) -> pulumi.Output[bool]:
         """
         Invoke the hook for confidential issues events.
         """
@@ -905,23 +905,23 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="confidentialNoteEvents")
-    def confidential_note_events(self) -> pulumi.Output[Optional[bool]]:
+    def confidential_note_events(self) -> pulumi.Output[bool]:
         """
-        Invoke the hook for confidential notes events.
+        Invoke the hook for confidential note events.
         """
         return pulumi.get(self, "confidential_note_events")
 
     @property
     @pulumi.getter(name="customWebhookTemplate")
-    def custom_webhook_template(self) -> pulumi.Output[Optional[str]]:
+    def custom_webhook_template(self) -> pulumi.Output[str]:
         """
-        Set a custom webhook template.
+        Custom webhook template.
         """
         return pulumi.get(self, "custom_webhook_template")
 
     @property
     @pulumi.getter(name="deploymentEvents")
-    def deployment_events(self) -> pulumi.Output[Optional[bool]]:
+    def deployment_events(self) -> pulumi.Output[bool]:
         """
         Invoke the hook for deployment events.
         """
@@ -929,9 +929,9 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableSslVerification")
-    def enable_ssl_verification(self) -> pulumi.Output[Optional[bool]]:
+    def enable_ssl_verification(self) -> pulumi.Output[bool]:
         """
-        Enable ssl verification when invoking the hook.
+        Enable SSL verification when invoking the hook.
         """
         return pulumi.get(self, "enable_ssl_verification")
 
@@ -945,7 +945,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> pulumi.Output[Optional[bool]]:
+    def issues_events(self) -> pulumi.Output[bool]:
         """
         Invoke the hook for issues events.
         """
@@ -953,7 +953,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="jobEvents")
-    def job_events(self) -> pulumi.Output[Optional[bool]]:
+    def job_events(self) -> pulumi.Output[bool]:
         """
         Invoke the hook for job events.
         """
@@ -961,23 +961,23 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> pulumi.Output[Optional[bool]]:
+    def merge_requests_events(self) -> pulumi.Output[bool]:
         """
-        Invoke the hook for merge requests.
+        Invoke the hook for merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
 
     @property
     @pulumi.getter(name="noteEvents")
-    def note_events(self) -> pulumi.Output[Optional[bool]]:
+    def note_events(self) -> pulumi.Output[bool]:
         """
-        Invoke the hook for notes events.
+        Invoke the hook for note events.
         """
         return pulumi.get(self, "note_events")
 
     @property
     @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> pulumi.Output[Optional[bool]]:
+    def pipeline_events(self) -> pulumi.Output[bool]:
         """
         Invoke the hook for pipeline events.
         """
@@ -1001,7 +1001,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> pulumi.Output[Optional[bool]]:
+    def push_events(self) -> pulumi.Output[bool]:
         """
         Invoke the hook for push events.
         """
@@ -1009,7 +1009,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pushEventsBranchFilter")
-    def push_events_branch_filter(self) -> pulumi.Output[Optional[str]]:
+    def push_events_branch_filter(self) -> pulumi.Output[str]:
         """
         Invoke the hook for push events on matching branches only.
         """
@@ -1017,15 +1017,15 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="releasesEvents")
-    def releases_events(self) -> pulumi.Output[Optional[bool]]:
+    def releases_events(self) -> pulumi.Output[bool]:
         """
-        Invoke the hook for releases events.
+        Invoke the hook for release events.
         """
         return pulumi.get(self, "releases_events")
 
     @property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> pulumi.Output[Optional[bool]]:
+    def tag_push_events(self) -> pulumi.Output[bool]:
         """
         Invoke the hook for tag push events.
         """
@@ -1033,7 +1033,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> pulumi.Output[Optional[str]]:
+    def token(self) -> pulumi.Output[str]:
         """
         A token to present when invoking the hook. The token is not available for imported resources.
         """
@@ -1049,7 +1049,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wikiPageEvents")
-    def wiki_page_events(self) -> pulumi.Output[Optional[bool]]:
+    def wiki_page_events(self) -> pulumi.Output[bool]:
         """
         Invoke the hook for wiki page events.
         """

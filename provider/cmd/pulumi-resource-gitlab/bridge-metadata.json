@@ -48,6 +48,9 @@
                     "elasticsearch_url": {
                         "maxItemsOne": false
                     },
+                    "git_rate_limit_users_alertlist": {
+                        "maxItemsOne": false
+                    },
                     "git_rate_limit_users_allowlist": {
                         "maxItemsOne": false
                     },
@@ -57,10 +60,16 @@
                     "outbound_local_requests_whitelist": {
                         "maxItemsOne": false
                     },
+                    "package_metadata_purl_types": {
+                        "maxItemsOne": false
+                    },
                     "repository_storages": {
                         "maxItemsOne": false
                     },
                     "restricted_visibility_levels": {
+                        "maxItemsOne": false
+                    },
+                    "valid_runner_registrars": {
                         "maxItemsOne": false
                     }
                 }
@@ -235,6 +244,19 @@
             "gitlab_group_security_policy_attachment": {
                 "current": "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment",
                 "majorVersion": 8
+            },
+            "gitlab_group_service_account": {
+                "current": "gitlab:index/groupServiceAccount:GroupServiceAccount",
+                "majorVersion": 8
+            },
+            "gitlab_group_service_account_access_token": {
+                "current": "gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken",
+                "majorVersion": 8,
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_group_share_group": {
                 "current": "gitlab:index/groupShareGroup:GroupShareGroup",
@@ -720,6 +742,19 @@
                     }
                 }
             },
+            "gitlab_group_provisioned_users": {
+                "current": "gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers",
+                "majorVersion": 8,
+                "fields": {
+                    "provisioned_users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "gitlab_group_service_account": {
+                "current": "gitlab:index/getGroupServiceAccount:getGroupServiceAccount",
+                "majorVersion": 8
+            },
             "gitlab_group_subgroups": {
                 "current": "gitlab:index/getGroupSubgroups:getGroupSubgroups",
                 "majorVersion": 8,
@@ -923,6 +958,15 @@
                 "majorVersion": 8,
                 "fields": {
                     "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "gitlab_project_merge_request": {
+                "current": "gitlab:index/getProjectMergeRequest:getProjectMergeRequest",
+                "majorVersion": 8,
+                "fields": {
+                    "assignees": {
                         "maxItemsOne": false
                     }
                 }
@@ -1186,7 +1230,7 @@
             "gitlab:index/groupCluster:GroupCluster": 0,
             "gitlab:index/groupCustomAttribute:GroupCustomAttribute": 0,
             "gitlab:index/groupEpicBoard:GroupEpicBoard": 1,
-            "gitlab:index/groupHook:GroupHook": 0,
+            "gitlab:index/groupHook:GroupHook": 1,
             "gitlab:index/groupIssueBoard:GroupIssueBoard": 1,
             "gitlab:index/groupLabel:GroupLabel": 0,
             "gitlab:index/groupLdapLink:GroupLdapLink": 0,
@@ -1195,6 +1239,8 @@
             "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment": 1,
             "gitlab:index/groupSamlLink:GroupSamlLink": 0,
             "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment": 1,
+            "gitlab:index/groupServiceAccount:GroupServiceAccount": 1,
+            "gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken": 1,
             "gitlab:index/groupShareGroup:GroupShareGroup": 0,
             "gitlab:index/groupVariable:GroupVariable": 0,
             "gitlab:index/instanceCluster:InstanceCluster": 0,
@@ -1226,7 +1272,7 @@
             "gitlab:index/projectCustomAttribute:ProjectCustomAttribute": 0,
             "gitlab:index/projectEnvironment:ProjectEnvironment": 0,
             "gitlab:index/projectFreezePeriod:ProjectFreezePeriod": 0,
-            "gitlab:index/projectHook:ProjectHook": 0,
+            "gitlab:index/projectHook:ProjectHook": 1,
             "gitlab:index/projectIssue:ProjectIssue": 0,
             "gitlab:index/projectIssueBoard:ProjectIssueBoard": 0,
             "gitlab:index/projectJobTokenScope:ProjectJobTokenScope": 1,
@@ -1277,6 +1323,8 @@
             "gitlab:index/getGroupHooks:getGroupHooks": 0,
             "gitlab:index/getGroupIds:getGroupIds": 1,
             "gitlab:index/getGroupMembership:getGroupMembership": 0,
+            "gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers": 1,
+            "gitlab:index/getGroupServiceAccount:getGroupServiceAccount": 1,
             "gitlab:index/getGroupSubgroups:getGroupSubgroups": 0,
             "gitlab:index/getGroupVariable:getGroupVariable": 0,
             "gitlab:index/getGroupVariables:getGroupVariables": 0,
@@ -1295,6 +1343,7 @@
             "gitlab:index/getProjectIssue:getProjectIssue": 0,
             "gitlab:index/getProjectIssues:getProjectIssues": 0,
             "gitlab:index/getProjectMembership:getProjectMembership": 0,
+            "gitlab:index/getProjectMergeRequest:getProjectMergeRequest": 1,
             "gitlab:index/getProjectMilestone:getProjectMilestone": 0,
             "gitlab:index/getProjectMilestones:getProjectMilestones": 0,
             "gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch": 1,

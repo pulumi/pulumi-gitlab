@@ -96,6 +96,27 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Group with custom default branch protection defaults
+ *         var example_four = new Group("example-four", GroupArgs.builder()
+ *             .name("example-four")
+ *             .path("example-four")
+ *             .description("An example group with default branch protection defaults")
+ *             .defaultBranchProtectionDefaults(GroupDefaultBranchProtectionDefaultsArgs.builder()
+ *                 .allowedToPushes("no one")
+ *                 .allowForcePush(true)
+ *                 .allowedToMerges("no one")
+ *                 .developerCanInitialPush(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         // Group with a default branch name specified
+ *         var example_five = new Group("example-five", GroupArgs.builder()
+ *             .name("example")
+ *             .path("example")
+ *             .defaultBranch("develop")
+ *             .description("An example group with a default branch name")
+ *             .build());
+ * 
  *     }}{@code
  * }}{@code
  * }
@@ -174,6 +195,20 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<String> avatarUrl() {
         return this.avatarUrl;
+    }
+    /**
+     * Initial default branch name.
+     * 
+     */
+    @Export(name="defaultBranch", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> defaultBranch;
+
+    /**
+     * @return Initial default branch name.
+     * 
+     */
+    public Output<Optional<String>> defaultBranch() {
+        return Codegen.optional(this.defaultBranch);
     }
     /**
      * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.

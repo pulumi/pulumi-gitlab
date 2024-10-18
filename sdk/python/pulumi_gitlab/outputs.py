@@ -28,6 +28,7 @@ __all__ = [
     'GroupProtectedEnvironmentApprovalRule',
     'GroupProtectedEnvironmentDeployAccessLevel',
     'GroupPushRules',
+    'PersonalAccessTokenRotationConfiguration',
     'ProjectAccessTokenRotationConfiguration',
     'ProjectContainerExpirationPolicy',
     'ProjectIssueBoardList',
@@ -42,6 +43,7 @@ __all__ = [
     'GetClusterAgentsClusterAgentResult',
     'GetGroupHooksHookResult',
     'GetGroupMembershipMemberResult',
+    'GetGroupProvisionedUsersProvisionedUserResult',
     'GetGroupSharedWithGroupResult',
     'GetGroupSubgroupsSubgroupResult',
     'GetGroupVariablesVariableResult',
@@ -63,6 +65,9 @@ __all__ = [
     'GetProjectIssuesIssueResult',
     'GetProjectIssuesIssueTaskCompletionStatusResult',
     'GetProjectMembershipMemberResult',
+    'GetProjectMergeRequestAssigneeResult',
+    'GetProjectMergeRequestAuthorResult',
+    'GetProjectMergeRequestClosedByResult',
     'GetProjectMilestonesMilestoneResult',
     'GetProjectProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchPushAccessLevelResult',
@@ -658,8 +663,8 @@ class GroupDefaultBranchProtectionDefaults(dict):
                  developer_can_initial_push: Optional[bool] = None):
         """
         :param bool allow_force_push: Allow force push for all users with push access.
-        :param Sequence[str] allowed_to_merges: An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
-        :param Sequence[str] allowed_to_pushes: An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+        :param Sequence[str] allowed_to_merges: An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
+        :param Sequence[str] allowed_to_pushes: An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
         :param bool developer_can_initial_push: Allow developers to initial push.
         """
         if allow_force_push is not None:
@@ -683,7 +688,7 @@ class GroupDefaultBranchProtectionDefaults(dict):
     @pulumi.getter(name="allowedToMerges")
     def allowed_to_merges(self) -> Optional[Sequence[str]]:
         """
-        An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+        An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
         """
         return pulumi.get(self, "allowed_to_merges")
 
@@ -691,7 +696,7 @@ class GroupDefaultBranchProtectionDefaults(dict):
     @pulumi.getter(name="allowedToPushes")
     def allowed_to_pushes(self) -> Optional[Sequence[str]]:
         """
-        An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+        An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
         """
         return pulumi.get(self, "allowed_to_pushes")
 
@@ -1248,6 +1253,54 @@ class GroupPushRules(dict):
         Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
         """
         return pulumi.get(self, "reject_unsigned_commits")
+
+
+@pulumi.output_type
+class PersonalAccessTokenRotationConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationDays":
+            suggest = "expiration_days"
+        elif key == "rotateBeforeDays":
+            suggest = "rotate_before_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PersonalAccessTokenRotationConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PersonalAccessTokenRotationConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PersonalAccessTokenRotationConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expiration_days: int,
+                 rotate_before_days: int):
+        """
+        :param int expiration_days: The duration (in days) the new token should be valid for.
+        :param int rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        pulumi.set(__self__, "expiration_days", expiration_days)
+        pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> int:
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @property
+    @pulumi.getter(name="rotateBeforeDays")
+    def rotate_before_days(self) -> int:
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        return pulumi.get(self, "rotate_before_days")
 
 
 @pulumi.output_type
@@ -2825,6 +2878,288 @@ class GetGroupMembershipMemberResult(dict):
 
 
 @pulumi.output_type
+class GetGroupProvisionedUsersProvisionedUserResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: str,
+                 bio: str,
+                 bot: bool,
+                 confirmed_at: str,
+                 created_at: str,
+                 email: str,
+                 external: bool,
+                 id: str,
+                 job_title: str,
+                 last_activity_on: str,
+                 last_sign_in_at: str,
+                 linkedin: str,
+                 location: str,
+                 name: str,
+                 organization: str,
+                 private_profile: bool,
+                 pronouns: str,
+                 public_email: str,
+                 skype: str,
+                 state: str,
+                 twitter: str,
+                 two_factor_enabled: bool,
+                 username: str,
+                 web_url: str,
+                 website_url: str):
+        """
+        :param str avatar_url: The avatar URL of the provisioned user.
+        :param str bio: The bio of the provisioned user.
+        :param bool bot: Whether the provisioned user is a bot.
+        :param str confirmed_at: The confirmation date of the provisioned user.
+        :param str created_at: The creation date of the provisioned user.
+        :param str email: The email of the provisioned user.
+        :param bool external: Whether the provisioned user is external.
+        :param str id: The ID of the provisioned user.
+        :param str job_title: The job title of the provisioned user.
+        :param str last_activity_on: The last activity date of the provisioned user.
+        :param str last_sign_in_at: The last sign-in date of the provisioned user.
+        :param str linkedin: The LinkedIn ID of the provisioned user.
+        :param str location: The location of the provisioned user.
+        :param str name: The name of the provisioned user.
+        :param str organization: The organization of the provisioned user.
+        :param bool private_profile: Whether the provisioned user has a private profile.
+        :param str pronouns: The pronouns of the provisioned user.
+        :param str public_email: The public email of the provisioned user.
+        :param str skype: The Skype ID of the provisioned user.
+        :param str state: The state of the provisioned user.
+        :param str twitter: The Twitter ID of the provisioned user.
+        :param bool two_factor_enabled: Whether two-factor authentication is enabled for the provisioned user.
+        :param str username: The username of the provisioned user.
+        :param str web_url: The web URL of the provisioned user.
+        :param str website_url: The website URL of the provisioned user.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "bio", bio)
+        pulumi.set(__self__, "bot", bot)
+        pulumi.set(__self__, "confirmed_at", confirmed_at)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "external", external)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "job_title", job_title)
+        pulumi.set(__self__, "last_activity_on", last_activity_on)
+        pulumi.set(__self__, "last_sign_in_at", last_sign_in_at)
+        pulumi.set(__self__, "linkedin", linkedin)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "organization", organization)
+        pulumi.set(__self__, "private_profile", private_profile)
+        pulumi.set(__self__, "pronouns", pronouns)
+        pulumi.set(__self__, "public_email", public_email)
+        pulumi.set(__self__, "skype", skype)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "twitter", twitter)
+        pulumi.set(__self__, "two_factor_enabled", two_factor_enabled)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+        pulumi.set(__self__, "website_url", website_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> str:
+        """
+        The avatar URL of the provisioned user.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def bio(self) -> str:
+        """
+        The bio of the provisioned user.
+        """
+        return pulumi.get(self, "bio")
+
+    @property
+    @pulumi.getter
+    def bot(self) -> bool:
+        """
+        Whether the provisioned user is a bot.
+        """
+        return pulumi.get(self, "bot")
+
+    @property
+    @pulumi.getter(name="confirmedAt")
+    def confirmed_at(self) -> str:
+        """
+        The confirmation date of the provisioned user.
+        """
+        return pulumi.get(self, "confirmed_at")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The creation date of the provisioned user.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The email of the provisioned user.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def external(self) -> bool:
+        """
+        Whether the provisioned user is external.
+        """
+        return pulumi.get(self, "external")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the provisioned user.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="jobTitle")
+    def job_title(self) -> str:
+        """
+        The job title of the provisioned user.
+        """
+        return pulumi.get(self, "job_title")
+
+    @property
+    @pulumi.getter(name="lastActivityOn")
+    def last_activity_on(self) -> str:
+        """
+        The last activity date of the provisioned user.
+        """
+        return pulumi.get(self, "last_activity_on")
+
+    @property
+    @pulumi.getter(name="lastSignInAt")
+    def last_sign_in_at(self) -> str:
+        """
+        The last sign-in date of the provisioned user.
+        """
+        return pulumi.get(self, "last_sign_in_at")
+
+    @property
+    @pulumi.getter
+    def linkedin(self) -> str:
+        """
+        The LinkedIn ID of the provisioned user.
+        """
+        return pulumi.get(self, "linkedin")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the provisioned user.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the provisioned user.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def organization(self) -> str:
+        """
+        The organization of the provisioned user.
+        """
+        return pulumi.get(self, "organization")
+
+    @property
+    @pulumi.getter(name="privateProfile")
+    def private_profile(self) -> bool:
+        """
+        Whether the provisioned user has a private profile.
+        """
+        return pulumi.get(self, "private_profile")
+
+    @property
+    @pulumi.getter
+    def pronouns(self) -> str:
+        """
+        The pronouns of the provisioned user.
+        """
+        return pulumi.get(self, "pronouns")
+
+    @property
+    @pulumi.getter(name="publicEmail")
+    def public_email(self) -> str:
+        """
+        The public email of the provisioned user.
+        """
+        return pulumi.get(self, "public_email")
+
+    @property
+    @pulumi.getter
+    def skype(self) -> str:
+        """
+        The Skype ID of the provisioned user.
+        """
+        return pulumi.get(self, "skype")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the provisioned user.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def twitter(self) -> str:
+        """
+        The Twitter ID of the provisioned user.
+        """
+        return pulumi.get(self, "twitter")
+
+    @property
+    @pulumi.getter(name="twoFactorEnabled")
+    def two_factor_enabled(self) -> bool:
+        """
+        Whether two-factor authentication is enabled for the provisioned user.
+        """
+        return pulumi.get(self, "two_factor_enabled")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username of the provisioned user.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        """
+        The web URL of the provisioned user.
+        """
+        return pulumi.get(self, "web_url")
+
+    @property
+    @pulumi.getter(name="websiteUrl")
+    def website_url(self) -> str:
+        """
+        The website URL of the provisioned user.
+        """
+        return pulumi.get(self, "website_url")
+
+
+@pulumi.output_type
 class GetGroupSharedWithGroupResult(dict):
     def __init__(__self__, *,
                  expires_at: str,
@@ -3822,7 +4157,7 @@ class GetPipelineSchedulesPipelineScheduleResult(dict):
                  cron: str,
                  cron_timezone: str,
                  description: str,
-                 id: str,
+                 id: int,
                  next_run_at: str,
                  owner: 'outputs.GetPipelineSchedulesPipelineScheduleOwnerResult',
                  ref: str,
@@ -3833,7 +4168,7 @@ class GetPipelineSchedulesPipelineScheduleResult(dict):
         :param str cron: The cron (e.g. `0 1 * * *`).
         :param str cron_timezone: The timezone.
         :param str description: The description of the pipeline schedule.
-        :param str id: The pipeline schedule id.
+        :param int id: The pipeline schedule id.
         :param str next_run_at: The datetime of when the schedule will next run.
         :param 'GetPipelineSchedulesPipelineScheduleOwnerArgs' owner: The details of the pipeline schedule owner.
         :param str ref: The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `main`.
@@ -3892,7 +4227,7 @@ class GetPipelineSchedulesPipelineScheduleResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> int:
         """
         The pipeline schedule id.
         """
@@ -5146,6 +5481,225 @@ class GetProjectMembershipMemberResult(dict):
     def web_url(self) -> str:
         """
         User's website URL.
+        """
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetProjectMergeRequestAssigneeResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: str,
+                 id: float,
+                 name: str,
+                 state: str,
+                 username: str,
+                 web_url: str):
+        """
+        :param str avatar_url: A link to the user's avatar image.
+        :param float id: The internal ID number of the user.
+        :param str name: The name of the user.
+        :param str state: The state of the user account.
+        :param str username: The username of the user.
+        :param str web_url: A link to the user's profile page.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> str:
+        """
+        A link to the user's avatar image.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> float:
+        """
+        The internal ID number of the user.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the user account.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username of the user.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        """
+        A link to the user's profile page.
+        """
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetProjectMergeRequestAuthorResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: str,
+                 id: float,
+                 name: str,
+                 state: str,
+                 username: str,
+                 web_url: str):
+        """
+        :param str avatar_url: A link to the user's avatar image.
+        :param float id: The internal ID number of the user.
+        :param str name: The name of the user.
+        :param str state: The state of the user account.
+        :param str username: The username of the user.
+        :param str web_url: A link to the user's profile page.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> str:
+        """
+        A link to the user's avatar image.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> float:
+        """
+        The internal ID number of the user.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the user account.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username of the user.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        """
+        A link to the user's profile page.
+        """
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetProjectMergeRequestClosedByResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: str,
+                 id: float,
+                 name: str,
+                 state: str,
+                 username: str,
+                 web_url: str):
+        """
+        :param str avatar_url: A link to the user's avatar image.
+        :param float id: The internal ID number of the user.
+        :param str name: The name of the user.
+        :param str state: The state of the user account.
+        :param str username: The username of the user.
+        :param str web_url: A link to the user's profile page.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> str:
+        """
+        A link to the user's avatar image.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> float:
+        """
+        The internal ID number of the user.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the user account.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username of the user.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        """
+        A link to the user's profile page.
         """
         return pulumi.get(self, "web_url")
 
@@ -6443,6 +6997,7 @@ class GetProjectsProjectResult(dict):
     def __init__(__self__, *,
                  _links: Mapping[str, str],
                  allow_merge_on_skipped_pipeline: bool,
+                 allow_pipeline_trigger_approve_deployment: bool,
                  analytics_access_level: str,
                  approvals_before_merge: int,
                  archived: bool,
@@ -6498,6 +7053,8 @@ class GetProjectsProjectResult(dict):
                  mirror_overwrites_diverged_branches: bool,
                  mirror_trigger_builds: bool,
                  mirror_user_id: int,
+                 model_experiments_access_level: str,
+                 model_registry_access_level: str,
                  monitor_access_level: str,
                  name: str,
                  name_with_namespace: str,
@@ -6540,6 +7097,7 @@ class GetProjectsProjectResult(dict):
         """
         :param Mapping[str, str] _links: Links for the project.
         :param bool allow_merge_on_skipped_pipeline: Whether allow_merge_on_skipped_pipeline is enabled for the project.
+        :param bool allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param str analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
         :param int approvals_before_merge: The numbers of approvals needed in a merge requests.
         :param bool archived: Whether the project is archived.
@@ -6595,6 +7153,8 @@ class GetProjectsProjectResult(dict):
         :param bool mirror_overwrites_diverged_branches: Whether mirror_overwrites_diverged_branches is enabled for the project.
         :param bool mirror_trigger_builds: Whether pull mirroring triggers builds for the project.
         :param int mirror_user_id: The mirror user ID for the project.
+        :param str model_experiments_access_level: The visibility of machine learning model experiments.
+        :param str model_registry_access_level: The visibility of machine learning model registry.
         :param str monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         :param str name: The name of the project.
         :param str name_with_namespace: In `group / subgroup / project` or `user / project` format.
@@ -6636,6 +7196,7 @@ class GetProjectsProjectResult(dict):
         """
         pulumi.set(__self__, "_links", _links)
         pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
+        pulumi.set(__self__, "allow_pipeline_trigger_approve_deployment", allow_pipeline_trigger_approve_deployment)
         pulumi.set(__self__, "analytics_access_level", analytics_access_level)
         pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         pulumi.set(__self__, "archived", archived)
@@ -6691,6 +7252,8 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
         pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
         pulumi.set(__self__, "mirror_user_id", mirror_user_id)
+        pulumi.set(__self__, "model_experiments_access_level", model_experiments_access_level)
+        pulumi.set(__self__, "model_registry_access_level", model_registry_access_level)
         pulumi.set(__self__, "monitor_access_level", monitor_access_level)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "name_with_namespace", name_with_namespace)
@@ -6746,6 +7309,14 @@ class GetProjectsProjectResult(dict):
         Whether allow_merge_on_skipped_pipeline is enabled for the project.
         """
         return pulumi.get(self, "allow_merge_on_skipped_pipeline")
+
+    @property
+    @pulumi.getter(name="allowPipelineTriggerApproveDeployment")
+    def allow_pipeline_trigger_approve_deployment(self) -> bool:
+        """
+        Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_pipeline_trigger_approve_deployment")
 
     @property
     @pulumi.getter(name="analyticsAccessLevel")
@@ -7186,6 +7757,22 @@ class GetProjectsProjectResult(dict):
         The mirror user ID for the project.
         """
         return pulumi.get(self, "mirror_user_id")
+
+    @property
+    @pulumi.getter(name="modelExperimentsAccessLevel")
+    def model_experiments_access_level(self) -> str:
+        """
+        The visibility of machine learning model experiments.
+        """
+        return pulumi.get(self, "model_experiments_access_level")
+
+    @property
+    @pulumi.getter(name="modelRegistryAccessLevel")
+    def model_registry_access_level(self) -> str:
+        """
+        The visibility of machine learning model registry.
+        """
+        return pulumi.get(self, "model_registry_access_level")
 
     @property
     @pulumi.getter(name="monitorAccessLevel")

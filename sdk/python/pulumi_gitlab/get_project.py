@@ -27,7 +27,10 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_enabled=None, empty_repo=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
+    def __init__(__self__, allow_pipeline_trigger_approve_deployment=None, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_enabled=None, empty_repo=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, model_experiments_access_level=None, model_registry_access_level=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
+        if allow_pipeline_trigger_approve_deployment and not isinstance(allow_pipeline_trigger_approve_deployment, bool):
+            raise TypeError("Expected argument 'allow_pipeline_trigger_approve_deployment' to be a bool")
+        pulumi.set(__self__, "allow_pipeline_trigger_approve_deployment", allow_pipeline_trigger_approve_deployment)
         if analytics_access_level and not isinstance(analytics_access_level, str):
             raise TypeError("Expected argument 'analytics_access_level' to be a str")
         pulumi.set(__self__, "analytics_access_level", analytics_access_level)
@@ -136,6 +139,12 @@ class GetProjectResult:
         if merge_trains_enabled and not isinstance(merge_trains_enabled, bool):
             raise TypeError("Expected argument 'merge_trains_enabled' to be a bool")
         pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
+        if model_experiments_access_level and not isinstance(model_experiments_access_level, str):
+            raise TypeError("Expected argument 'model_experiments_access_level' to be a str")
+        pulumi.set(__self__, "model_experiments_access_level", model_experiments_access_level)
+        if model_registry_access_level and not isinstance(model_registry_access_level, str):
+            raise TypeError("Expected argument 'model_registry_access_level' to be a str")
+        pulumi.set(__self__, "model_registry_access_level", model_registry_access_level)
         if monitor_access_level and not isinstance(monitor_access_level, str):
             raise TypeError("Expected argument 'monitor_access_level' to be a str")
         pulumi.set(__self__, "monitor_access_level", monitor_access_level)
@@ -226,6 +235,14 @@ class GetProjectResult:
         if wiki_enabled and not isinstance(wiki_enabled, bool):
             raise TypeError("Expected argument 'wiki_enabled' to be a bool")
         pulumi.set(__self__, "wiki_enabled", wiki_enabled)
+
+    @property
+    @pulumi.getter(name="allowPipelineTriggerApproveDeployment")
+    def allow_pipeline_trigger_approve_deployment(self) -> bool:
+        """
+        Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_pipeline_trigger_approve_deployment")
 
     @property
     @pulumi.getter(name="analyticsAccessLevel")
@@ -516,6 +533,22 @@ class GetProjectResult:
         return pulumi.get(self, "merge_trains_enabled")
 
     @property
+    @pulumi.getter(name="modelExperimentsAccessLevel")
+    def model_experiments_access_level(self) -> str:
+        """
+        The visibility of machine learning model experiments.
+        """
+        return pulumi.get(self, "model_experiments_access_level")
+
+    @property
+    @pulumi.getter(name="modelRegistryAccessLevel")
+    def model_registry_access_level(self) -> str:
+        """
+        The visibility of machine learning model registry.
+        """
+        return pulumi.get(self, "model_registry_access_level")
+
+    @property
     @pulumi.getter(name="monitorAccessLevel")
     def monitor_access_level(self) -> str:
         """
@@ -762,6 +795,7 @@ class AwaitableGetProjectResult(GetProjectResult):
         if False:
             yield self
         return GetProjectResult(
+            allow_pipeline_trigger_approve_deployment=self.allow_pipeline_trigger_approve_deployment,
             analytics_access_level=self.analytics_access_level,
             archived=self.archived,
             auto_cancel_pending_pipelines=self.auto_cancel_pending_pipelines,
@@ -798,6 +832,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             merge_requests_access_level=self.merge_requests_access_level,
             merge_requests_enabled=self.merge_requests_enabled,
             merge_trains_enabled=self.merge_trains_enabled,
+            model_experiments_access_level=self.model_experiments_access_level,
+            model_registry_access_level=self.model_registry_access_level,
             monitor_access_level=self.monitor_access_level,
             name=self.name,
             namespace_id=self.namespace_id,
@@ -855,6 +891,7 @@ def get_project(ci_default_git_depth: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
+        allow_pipeline_trigger_approve_deployment=pulumi.get(__ret__, 'allow_pipeline_trigger_approve_deployment'),
         analytics_access_level=pulumi.get(__ret__, 'analytics_access_level'),
         archived=pulumi.get(__ret__, 'archived'),
         auto_cancel_pending_pipelines=pulumi.get(__ret__, 'auto_cancel_pending_pipelines'),
@@ -891,6 +928,8 @@ def get_project(ci_default_git_depth: Optional[int] = None,
         merge_requests_access_level=pulumi.get(__ret__, 'merge_requests_access_level'),
         merge_requests_enabled=pulumi.get(__ret__, 'merge_requests_enabled'),
         merge_trains_enabled=pulumi.get(__ret__, 'merge_trains_enabled'),
+        model_experiments_access_level=pulumi.get(__ret__, 'model_experiments_access_level'),
+        model_registry_access_level=pulumi.get(__ret__, 'model_registry_access_level'),
         monitor_access_level=pulumi.get(__ret__, 'monitor_access_level'),
         name=pulumi.get(__ret__, 'name'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
@@ -945,6 +984,7 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
     return __ret__.apply(lambda __response__: GetProjectResult(
+        allow_pipeline_trigger_approve_deployment=pulumi.get(__response__, 'allow_pipeline_trigger_approve_deployment'),
         analytics_access_level=pulumi.get(__response__, 'analytics_access_level'),
         archived=pulumi.get(__response__, 'archived'),
         auto_cancel_pending_pipelines=pulumi.get(__response__, 'auto_cancel_pending_pipelines'),
@@ -981,6 +1021,8 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]
         merge_requests_access_level=pulumi.get(__response__, 'merge_requests_access_level'),
         merge_requests_enabled=pulumi.get(__response__, 'merge_requests_enabled'),
         merge_trains_enabled=pulumi.get(__response__, 'merge_trains_enabled'),
+        model_experiments_access_level=pulumi.get(__response__, 'model_experiments_access_level'),
+        model_registry_access_level=pulumi.get(__response__, 'model_registry_access_level'),
         monitor_access_level=pulumi.get(__response__, 'monitor_access_level'),
         name=pulumi.get(__response__, 'name'),
         namespace_id=pulumi.get(__response__, 'namespace_id'),

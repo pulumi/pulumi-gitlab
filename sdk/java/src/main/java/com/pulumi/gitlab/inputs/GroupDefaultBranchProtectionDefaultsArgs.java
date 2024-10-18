@@ -33,14 +33,14 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
     }
 
     /**
-     * An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+     * An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
      * 
      */
     @Import(name="allowedToMerges")
     private @Nullable Output<List<String>> allowedToMerges;
 
     /**
-     * @return An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+     * @return An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
      * 
      */
     public Optional<Output<List<String>>> allowedToMerges() {
@@ -48,14 +48,14 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
     }
 
     /**
-     * An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+     * An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
      * 
      */
     @Import(name="allowedToPushes")
     private @Nullable Output<List<String>> allowedToPushes;
 
     /**
-     * @return An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+     * @return An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
      * 
      */
     public Optional<Output<List<String>>> allowedToPushes() {
@@ -126,7 +126,7 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
         }
 
         /**
-         * @param allowedToMerges An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+         * @param allowedToMerges An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
         }
 
         /**
-         * @param allowedToMerges An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+         * @param allowedToMerges An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
         }
 
         /**
-         * @param allowedToMerges An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.
+         * @param allowedToMerges An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
         }
 
         /**
-         * @param allowedToPushes An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+         * @param allowedToPushes An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
         }
 
         /**
-         * @param allowedToPushes An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+         * @param allowedToPushes An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
         }
 
         /**
-         * @param allowedToPushes An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.
+         * @param allowedToPushes An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
          * 
          * @return builder
          * 

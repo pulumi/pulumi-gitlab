@@ -39,6 +39,10 @@ export interface GetGroupArgs {
  */
 export interface GetGroupResult {
     /**
+     * The default branch of the group.
+     */
+    readonly defaultBranch: string;
+    /**
      * Whether developers and maintainers can push to the applicable default branch.
      */
     readonly defaultBranchProtection: number;

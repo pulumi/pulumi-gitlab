@@ -31,6 +31,11 @@ public final class GetProjectsProject {
      */
     private Boolean allowMergeOnSkippedPipeline;
     /**
+     * @return Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     * 
+     */
+    private Boolean allowPipelineTriggerApproveDeployment;
+    /**
      * @return Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -306,6 +311,16 @@ public final class GetProjectsProject {
      */
     private Integer mirrorUserId;
     /**
+     * @return The visibility of machine learning model experiments.
+     * 
+     */
+    private String modelExperimentsAccessLevel;
+    /**
+     * @return The visibility of machine learning model registry.
+     * 
+     */
+    private String modelRegistryAccessLevel;
+    /**
      * @return Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -511,6 +526,13 @@ public final class GetProjectsProject {
      */
     public Boolean allowMergeOnSkippedPipeline() {
         return this.allowMergeOnSkippedPipeline;
+    }
+    /**
+     * @return Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     * 
+     */
+    public Boolean allowPipelineTriggerApproveDeployment() {
+        return this.allowPipelineTriggerApproveDeployment;
     }
     /**
      * @return Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -898,6 +920,20 @@ public final class GetProjectsProject {
         return this.mirrorUserId;
     }
     /**
+     * @return The visibility of machine learning model experiments.
+     * 
+     */
+    public String modelExperimentsAccessLevel() {
+        return this.modelExperimentsAccessLevel;
+    }
+    /**
+     * @return The visibility of machine learning model registry.
+     * 
+     */
+    public String modelRegistryAccessLevel() {
+        return this.modelRegistryAccessLevel;
+    }
+    /**
      * @return Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -1178,6 +1214,7 @@ public final class GetProjectsProject {
     public static final class Builder {
         private Map<String,String> _links;
         private Boolean allowMergeOnSkippedPipeline;
+        private Boolean allowPipelineTriggerApproveDeployment;
         private String analyticsAccessLevel;
         private Integer approvalsBeforeMerge;
         private Boolean archived;
@@ -1233,6 +1270,8 @@ public final class GetProjectsProject {
         private Boolean mirrorOverwritesDivergedBranches;
         private Boolean mirrorTriggerBuilds;
         private Integer mirrorUserId;
+        private String modelExperimentsAccessLevel;
+        private String modelRegistryAccessLevel;
         private String monitorAccessLevel;
         private String name;
         private String nameWithNamespace;
@@ -1277,6 +1316,7 @@ public final class GetProjectsProject {
     	      Objects.requireNonNull(defaults);
     	      this._links = defaults._links;
     	      this.allowMergeOnSkippedPipeline = defaults.allowMergeOnSkippedPipeline;
+    	      this.allowPipelineTriggerApproveDeployment = defaults.allowPipelineTriggerApproveDeployment;
     	      this.analyticsAccessLevel = defaults.analyticsAccessLevel;
     	      this.approvalsBeforeMerge = defaults.approvalsBeforeMerge;
     	      this.archived = defaults.archived;
@@ -1332,6 +1372,8 @@ public final class GetProjectsProject {
     	      this.mirrorOverwritesDivergedBranches = defaults.mirrorOverwritesDivergedBranches;
     	      this.mirrorTriggerBuilds = defaults.mirrorTriggerBuilds;
     	      this.mirrorUserId = defaults.mirrorUserId;
+    	      this.modelExperimentsAccessLevel = defaults.modelExperimentsAccessLevel;
+    	      this.modelRegistryAccessLevel = defaults.modelRegistryAccessLevel;
     	      this.monitorAccessLevel = defaults.monitorAccessLevel;
     	      this.name = defaults.name;
     	      this.nameWithNamespace = defaults.nameWithNamespace;
@@ -1387,6 +1429,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "allowMergeOnSkippedPipeline");
             }
             this.allowMergeOnSkippedPipeline = allowMergeOnSkippedPipeline;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allowPipelineTriggerApproveDeployment(Boolean allowPipelineTriggerApproveDeployment) {
+            if (allowPipelineTriggerApproveDeployment == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "allowPipelineTriggerApproveDeployment");
+            }
+            this.allowPipelineTriggerApproveDeployment = allowPipelineTriggerApproveDeployment;
             return this;
         }
         @CustomType.Setter
@@ -1836,6 +1886,22 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder modelExperimentsAccessLevel(String modelExperimentsAccessLevel) {
+            if (modelExperimentsAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "modelExperimentsAccessLevel");
+            }
+            this.modelExperimentsAccessLevel = modelExperimentsAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder modelRegistryAccessLevel(String modelRegistryAccessLevel) {
+            if (modelRegistryAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "modelRegistryAccessLevel");
+            }
+            this.modelRegistryAccessLevel = modelRegistryAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder monitorAccessLevel(String monitorAccessLevel) {
             if (monitorAccessLevel == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "monitorAccessLevel");
@@ -2169,6 +2235,7 @@ public final class GetProjectsProject {
             final var _resultValue = new GetProjectsProject();
             _resultValue._links = _links;
             _resultValue.allowMergeOnSkippedPipeline = allowMergeOnSkippedPipeline;
+            _resultValue.allowPipelineTriggerApproveDeployment = allowPipelineTriggerApproveDeployment;
             _resultValue.analyticsAccessLevel = analyticsAccessLevel;
             _resultValue.approvalsBeforeMerge = approvalsBeforeMerge;
             _resultValue.archived = archived;
@@ -2224,6 +2291,8 @@ public final class GetProjectsProject {
             _resultValue.mirrorOverwritesDivergedBranches = mirrorOverwritesDivergedBranches;
             _resultValue.mirrorTriggerBuilds = mirrorTriggerBuilds;
             _resultValue.mirrorUserId = mirrorUserId;
+            _resultValue.modelExperimentsAccessLevel = modelExperimentsAccessLevel;
+            _resultValue.modelRegistryAccessLevel = modelRegistryAccessLevel;
             _resultValue.monitorAccessLevel = monitorAccessLevel;
             _resultValue.name = name;
             _resultValue.nameWithNamespace = nameWithNamespace;

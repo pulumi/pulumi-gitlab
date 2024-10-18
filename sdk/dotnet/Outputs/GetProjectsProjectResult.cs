@@ -22,6 +22,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool AllowMergeOnSkippedPipeline;
         /// <summary>
+        /// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+        /// </summary>
+        public readonly bool AllowPipelineTriggerApproveDeployment;
+        /// <summary>
         /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         public readonly string AnalyticsAccessLevel;
@@ -242,6 +246,14 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int MirrorUserId;
         /// <summary>
+        /// The visibility of machine learning model experiments.
+        /// </summary>
+        public readonly string ModelExperimentsAccessLevel;
+        /// <summary>
+        /// The visibility of machine learning model registry.
+        /// </summary>
+        public readonly string ModelRegistryAccessLevel;
+        /// <summary>
         /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         public readonly string MonitorAccessLevel;
@@ -401,6 +413,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool allowMergeOnSkippedPipeline,
 
+            bool allowPipelineTriggerApproveDeployment,
+
             string analyticsAccessLevel,
 
             int approvalsBeforeMerge,
@@ -511,6 +525,10 @@ namespace Pulumi.GitLab.Outputs
 
             int mirrorUserId,
 
+            string modelExperimentsAccessLevel,
+
+            string modelRegistryAccessLevel,
+
             string monitorAccessLevel,
 
             string name,
@@ -591,6 +609,7 @@ namespace Pulumi.GitLab.Outputs
         {
             this._links = _links;
             AllowMergeOnSkippedPipeline = allowMergeOnSkippedPipeline;
+            AllowPipelineTriggerApproveDeployment = allowPipelineTriggerApproveDeployment;
             AnalyticsAccessLevel = analyticsAccessLevel;
             ApprovalsBeforeMerge = approvalsBeforeMerge;
             Archived = archived;
@@ -646,6 +665,8 @@ namespace Pulumi.GitLab.Outputs
             MirrorOverwritesDivergedBranches = mirrorOverwritesDivergedBranches;
             MirrorTriggerBuilds = mirrorTriggerBuilds;
             MirrorUserId = mirrorUserId;
+            ModelExperimentsAccessLevel = modelExperimentsAccessLevel;
+            ModelRegistryAccessLevel = modelRegistryAccessLevel;
             MonitorAccessLevel = monitorAccessLevel;
             Name = name;
             NameWithNamespace = nameWithNamespace;

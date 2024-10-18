@@ -38,6 +38,8 @@ type LookupProjectArgs struct {
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
+	// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+	AllowPipelineTriggerApproveDeployment bool `pulumi:"allowPipelineTriggerApproveDeployment"`
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel string `pulumi:"analyticsAccessLevel"`
 	// Whether the project is in read-only mode (archived).
@@ -110,6 +112,10 @@ type LookupProjectResult struct {
 	MergeRequestsEnabled bool `pulumi:"mergeRequestsEnabled"`
 	// Enable or disable merge trains.
 	MergeTrainsEnabled bool `pulumi:"mergeTrainsEnabled"`
+	// The visibility of machine learning model experiments.
+	ModelExperimentsAccessLevel string `pulumi:"modelExperimentsAccessLevel"`
+	// The visibility of machine learning model registry.
+	ModelRegistryAccessLevel string `pulumi:"modelRegistryAccessLevel"`
 	// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
 	MonitorAccessLevel string `pulumi:"monitorAccessLevel"`
 	// The name of the project.
@@ -220,6 +226,11 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutput() LookupProjectRe
 
 func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx context.Context) LookupProjectResultOutput {
 	return o
+}
+
+// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+func (o LookupProjectResultOutput) AllowPipelineTriggerApproveDeployment() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.AllowPipelineTriggerApproveDeployment }).(pulumi.BoolOutput)
 }
 
 // Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -402,6 +413,16 @@ func (o LookupProjectResultOutput) MergeRequestsEnabled() pulumi.BoolOutput {
 // Enable or disable merge trains.
 func (o LookupProjectResultOutput) MergeTrainsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergeTrainsEnabled }).(pulumi.BoolOutput)
+}
+
+// The visibility of machine learning model experiments.
+func (o LookupProjectResultOutput) ModelExperimentsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ModelExperimentsAccessLevel }).(pulumi.StringOutput)
+}
+
+// The visibility of machine learning model registry.
+func (o LookupProjectResultOutput) ModelRegistryAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ModelRegistryAccessLevel }).(pulumi.StringOutput)
 }
 
 // Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.

@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.PersonalAccessTokenRotationConfigurationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -49,14 +50,14 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * When the token will expire, YYYY-MM-DD format.
+     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return When the token will expire, YYYY-MM-DD format.
+     * @return When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -91,6 +92,21 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> revoked() {
         return Optional.ofNullable(this.revoked);
+    }
+
+    /**
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    @Import(name="rotationConfiguration")
+    private @Nullable Output<PersonalAccessTokenRotationConfigurationArgs> rotationConfiguration;
+
+    /**
+     * @return The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    public Optional<Output<PersonalAccessTokenRotationConfigurationArgs>> rotationConfiguration() {
+        return Optional.ofNullable(this.rotationConfiguration);
     }
 
     /**
@@ -146,6 +162,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         this.expiresAt = $.expiresAt;
         this.name = $.name;
         this.revoked = $.revoked;
+        this.rotationConfiguration = $.rotationConfiguration;
         this.scopes = $.scopes;
         this.token = $.token;
         this.userId = $.userId;
@@ -212,7 +229,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expiresAt When the token will expire, YYYY-MM-DD format.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
          * 
          * @return builder
          * 
@@ -223,7 +240,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expiresAt When the token will expire, YYYY-MM-DD format.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
          * 
          * @return builder
          * 
@@ -272,6 +289,27 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
          */
         public Builder revoked(Boolean revoked) {
             return revoked(Output.of(revoked));
+        }
+
+        /**
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(@Nullable Output<PersonalAccessTokenRotationConfigurationArgs> rotationConfiguration) {
+            $.rotationConfiguration = rotationConfiguration;
+            return this;
+        }
+
+        /**
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(PersonalAccessTokenRotationConfigurationArgs rotationConfiguration) {
+            return rotationConfiguration(Output.of(rotationConfiguration));
         }
 
         /**

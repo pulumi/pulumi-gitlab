@@ -26,6 +26,8 @@ from .get_group_hook import *
 from .get_group_hooks import *
 from .get_group_ids import *
 from .get_group_membership import *
+from .get_group_provisioned_users import *
+from .get_group_service_account import *
 from .get_group_subgroups import *
 from .get_group_variable import *
 from .get_group_variables import *
@@ -44,6 +46,7 @@ from .get_project_ids import *
 from .get_project_issue import *
 from .get_project_issues import *
 from .get_project_membership import *
+from .get_project_merge_request import *
 from .get_project_milestone import *
 from .get_project_milestones import *
 from .get_project_protected_branch import *
@@ -79,6 +82,8 @@ from .group_project_file_template import *
 from .group_protected_environment import *
 from .group_saml_link import *
 from .group_security_policy_attachment import *
+from .group_service_account import *
+from .group_service_account_access_token import *
 from .group_share_group import *
 from .group_variable import *
 from .instance_cluster import *
@@ -368,6 +373,22 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment": "GroupSecurityPolicyAttachment"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupServiceAccount",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupServiceAccount:GroupServiceAccount": "GroupServiceAccount"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupServiceAccountAccessToken",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken": "GroupServiceAccountAccessToken"
   }
  },
  {

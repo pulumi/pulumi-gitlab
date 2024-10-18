@@ -73,6 +73,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupSamlLink{}
 	case "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment":
 		r = &GroupSecurityPolicyAttachment{}
+	case "gitlab:index/groupServiceAccount:GroupServiceAccount":
+		r = &GroupServiceAccount{}
+	case "gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken":
+		r = &GroupServiceAccountAccessToken{}
 	case "gitlab:index/groupShareGroup:GroupShareGroup":
 		r = &GroupShareGroup{}
 	case "gitlab:index/groupVariable:GroupVariable":
@@ -370,6 +374,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupSecurityPolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupServiceAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupServiceAccountAccessToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

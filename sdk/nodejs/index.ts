@@ -110,6 +110,16 @@ export const getGroupMembership: typeof import("./getGroupMembership").getGroupM
 export const getGroupMembershipOutput: typeof import("./getGroupMembership").getGroupMembershipOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupMembership","getGroupMembershipOutput"], () => require("./getGroupMembership"));
 
+export { GetGroupProvisionedUsersArgs, GetGroupProvisionedUsersResult, GetGroupProvisionedUsersOutputArgs } from "./getGroupProvisionedUsers";
+export const getGroupProvisionedUsers: typeof import("./getGroupProvisionedUsers").getGroupProvisionedUsers = null as any;
+export const getGroupProvisionedUsersOutput: typeof import("./getGroupProvisionedUsers").getGroupProvisionedUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupProvisionedUsers","getGroupProvisionedUsersOutput"], () => require("./getGroupProvisionedUsers"));
+
+export { GetGroupServiceAccountArgs, GetGroupServiceAccountResult, GetGroupServiceAccountOutputArgs } from "./getGroupServiceAccount";
+export const getGroupServiceAccount: typeof import("./getGroupServiceAccount").getGroupServiceAccount = null as any;
+export const getGroupServiceAccountOutput: typeof import("./getGroupServiceAccount").getGroupServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupServiceAccount","getGroupServiceAccountOutput"], () => require("./getGroupServiceAccount"));
+
 export { GetGroupSubgroupsArgs, GetGroupSubgroupsResult, GetGroupSubgroupsOutputArgs } from "./getGroupSubgroups";
 export const getGroupSubgroups: typeof import("./getGroupSubgroups").getGroupSubgroups = null as any;
 export const getGroupSubgroupsOutput: typeof import("./getGroupSubgroups").getGroupSubgroupsOutput = null as any;
@@ -199,6 +209,11 @@ export { GetProjectMembershipArgs, GetProjectMembershipResult, GetProjectMembers
 export const getProjectMembership: typeof import("./getProjectMembership").getProjectMembership = null as any;
 export const getProjectMembershipOutput: typeof import("./getProjectMembership").getProjectMembershipOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectMembership","getProjectMembershipOutput"], () => require("./getProjectMembership"));
+
+export { GetProjectMergeRequestArgs, GetProjectMergeRequestResult, GetProjectMergeRequestOutputArgs } from "./getProjectMergeRequest";
+export const getProjectMergeRequest: typeof import("./getProjectMergeRequest").getProjectMergeRequest = null as any;
+export const getProjectMergeRequestOutput: typeof import("./getProjectMergeRequest").getProjectMergeRequestOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectMergeRequest","getProjectMergeRequestOutput"], () => require("./getProjectMergeRequest"));
 
 export { GetProjectMilestoneArgs, GetProjectMilestoneResult, GetProjectMilestoneOutputArgs } from "./getProjectMilestone";
 export const getProjectMilestone: typeof import("./getProjectMilestone").getProjectMilestone = null as any;
@@ -374,6 +389,16 @@ export { GroupSecurityPolicyAttachmentArgs, GroupSecurityPolicyAttachmentState }
 export type GroupSecurityPolicyAttachment = import("./groupSecurityPolicyAttachment").GroupSecurityPolicyAttachment;
 export const GroupSecurityPolicyAttachment: typeof import("./groupSecurityPolicyAttachment").GroupSecurityPolicyAttachment = null as any;
 utilities.lazyLoad(exports, ["GroupSecurityPolicyAttachment"], () => require("./groupSecurityPolicyAttachment"));
+
+export { GroupServiceAccountArgs, GroupServiceAccountState } from "./groupServiceAccount";
+export type GroupServiceAccount = import("./groupServiceAccount").GroupServiceAccount;
+export const GroupServiceAccount: typeof import("./groupServiceAccount").GroupServiceAccount = null as any;
+utilities.lazyLoad(exports, ["GroupServiceAccount"], () => require("./groupServiceAccount"));
+
+export { GroupServiceAccountAccessTokenArgs, GroupServiceAccountAccessTokenState } from "./groupServiceAccountAccessToken";
+export type GroupServiceAccountAccessToken = import("./groupServiceAccountAccessToken").GroupServiceAccountAccessToken;
+export const GroupServiceAccountAccessToken: typeof import("./groupServiceAccountAccessToken").GroupServiceAccountAccessToken = null as any;
+utilities.lazyLoad(exports, ["GroupServiceAccountAccessToken"], () => require("./groupServiceAccountAccessToken"));
 
 export { GroupShareGroupArgs, GroupShareGroupState } from "./groupShareGroup";
 export type GroupShareGroup = import("./groupShareGroup").GroupShareGroup;
@@ -791,6 +816,10 @@ const _module = {
                 return new GroupSamlLink(name, <any>undefined, { urn })
             case "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment":
                 return new GroupSecurityPolicyAttachment(name, <any>undefined, { urn })
+            case "gitlab:index/groupServiceAccount:GroupServiceAccount":
+                return new GroupServiceAccount(name, <any>undefined, { urn })
+            case "gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken":
+                return new GroupServiceAccountAccessToken(name, <any>undefined, { urn })
             case "gitlab:index/groupShareGroup:GroupShareGroup":
                 return new GroupShareGroup(name, <any>undefined, { urn })
             case "gitlab:index/groupVariable:GroupVariable":
@@ -960,6 +989,8 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupProjectFileTemplate"
 pulumi.runtime.registerResourceModule("gitlab", "index/groupProtectedEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupSamlLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupSecurityPolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupServiceAccount", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupServiceAccountAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceCluster", _module)

@@ -49,6 +49,10 @@ export interface GetProjectArgs {
  */
 export interface GetProjectResult {
     /**
+     * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     */
+    readonly allowPipelineTriggerApproveDeployment: boolean;
+    /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
     readonly analyticsAccessLevel: string;
@@ -192,6 +196,14 @@ export interface GetProjectResult {
      * Enable or disable merge trains.
      */
     readonly mergeTrainsEnabled: boolean;
+    /**
+     * The visibility of machine learning model experiments.
+     */
+    readonly modelExperimentsAccessLevel: string;
+    /**
+     * The visibility of machine learning model registry.
+     */
+    readonly modelRegistryAccessLevel: string;
     /**
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      */

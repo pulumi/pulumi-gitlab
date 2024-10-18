@@ -74,6 +74,10 @@ namespace Pulumi.GitLab
     public sealed class GetGroupResult
     {
         /// <summary>
+        /// The default branch of the group.
+        /// </summary>
+        public readonly string DefaultBranch;
+        /// <summary>
         /// Whether developers and maintainers can push to the applicable default branch.
         /// </summary>
         public readonly int DefaultBranchProtection;
@@ -160,6 +164,8 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetGroupResult(
+            string defaultBranch,
+
             int defaultBranchProtection,
 
             string description,
@@ -202,6 +208,7 @@ namespace Pulumi.GitLab
 
             string wikiAccessLevel)
         {
+            DefaultBranch = defaultBranch;
             DefaultBranchProtection = defaultBranchProtection;
             Description = description;
             ExtraSharedRunnersMinutesLimit = extraSharedRunnersMinutesLimit;

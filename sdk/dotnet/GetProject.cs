@@ -98,6 +98,10 @@ namespace Pulumi.GitLab
     public sealed class GetProjectResult
     {
         /// <summary>
+        /// Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+        /// </summary>
+        public readonly bool AllowPipelineTriggerApproveDeployment;
+        /// <summary>
         /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         public readonly string AnalyticsAccessLevel;
@@ -242,6 +246,14 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool MergeTrainsEnabled;
         /// <summary>
+        /// The visibility of machine learning model experiments.
+        /// </summary>
+        public readonly string ModelExperimentsAccessLevel;
+        /// <summary>
+        /// The visibility of machine learning model registry.
+        /// </summary>
+        public readonly string ModelRegistryAccessLevel;
+        /// <summary>
         /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         public readonly string MonitorAccessLevel;
@@ -364,6 +376,8 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetProjectResult(
+            bool allowPipelineTriggerApproveDeployment,
+
             string analyticsAccessLevel,
 
             bool archived,
@@ -436,6 +450,10 @@ namespace Pulumi.GitLab
 
             bool mergeTrainsEnabled,
 
+            string modelExperimentsAccessLevel,
+
+            string modelRegistryAccessLevel,
+
             string monitorAccessLevel,
 
             string name,
@@ -496,6 +514,7 @@ namespace Pulumi.GitLab
 
             bool wikiEnabled)
         {
+            AllowPipelineTriggerApproveDeployment = allowPipelineTriggerApproveDeployment;
             AnalyticsAccessLevel = analyticsAccessLevel;
             Archived = archived;
             AutoCancelPendingPipelines = autoCancelPendingPipelines;
@@ -532,6 +551,8 @@ namespace Pulumi.GitLab
             MergeRequestsAccessLevel = mergeRequestsAccessLevel;
             MergeRequestsEnabled = mergeRequestsEnabled;
             MergeTrainsEnabled = mergeTrainsEnabled;
+            ModelExperimentsAccessLevel = modelExperimentsAccessLevel;
+            ModelRegistryAccessLevel = modelRegistryAccessLevel;
             MonitorAccessLevel = monitorAccessLevel;
             Name = name;
             NamespaceId = namespaceId;

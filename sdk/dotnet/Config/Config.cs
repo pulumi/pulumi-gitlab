@@ -83,6 +83,16 @@ namespace Pulumi.GitLab
             set => _earlyAuthCheck.Set(value);
         }
 
+        private static readonly __Value<ImmutableDictionary<string, string>?> _headers = new __Value<ImmutableDictionary<string, string>?>(() => __config.GetObject<ImmutableDictionary<string, string>>("headers"));
+        /// <summary>
+        /// A map of headers to append to all API request to the GitLab instance.
+        /// </summary>
+        public static ImmutableDictionary<string, string>? Headers
+        {
+            get => _headers.Get();
+            set => _headers.Set(value);
+        }
+
         private static readonly __Value<bool?> _insecure = new __Value<bool?>(() => __config.GetBoolean("insecure"));
         /// <summary>
         /// When set to true this disables SSL verification of the connection to the GitLab instance.

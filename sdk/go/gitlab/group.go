@@ -84,6 +84,35 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Group with custom default branch protection defaults
+//			_, err = gitlab.NewGroup(ctx, "example-four", &gitlab.GroupArgs{
+//				Name:        pulumi.String("example-four"),
+//				Path:        pulumi.String("example-four"),
+//				Description: pulumi.String("An example group with default branch protection defaults"),
+//				DefaultBranchProtectionDefaults: &gitlab.GroupDefaultBranchProtectionDefaultsArgs{
+//					AllowedToPushes: pulumi.StringArray{
+//						pulumi.String("no one"),
+//					},
+//					AllowForcePush: pulumi.Bool(true),
+//					AllowedToMerges: pulumi.StringArray{
+//						pulumi.String("no one"),
+//					},
+//					DeveloperCanInitialPush: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Group with a default branch name specified
+//			_, err = gitlab.NewGroup(ctx, "example-five", &gitlab.GroupArgs{
+//				Name:          pulumi.String("example"),
+//				Path:          pulumi.String("example"),
+//				DefaultBranch: pulumi.String("develop"),
+//				Description:   pulumi.String("An example group with a default branch name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -114,6 +143,8 @@ type Group struct {
 	AvatarHash pulumi.StringOutput `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringOutput `pulumi:"avatarUrl"`
+	// Initial default branch name.
+	DefaultBranch pulumi.StringPtrOutput `pulumi:"defaultBranch"`
 	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 	//
 	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
@@ -221,6 +252,8 @@ type groupState struct {
 	AvatarHash *string `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl *string `pulumi:"avatarUrl"`
+	// Initial default branch name.
+	DefaultBranch *string `pulumi:"defaultBranch"`
 	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 	//
 	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
@@ -292,6 +325,8 @@ type GroupState struct {
 	AvatarHash pulumi.StringPtrInput
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringPtrInput
+	// Initial default branch name.
+	DefaultBranch pulumi.StringPtrInput
 	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 	//
 	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
@@ -365,6 +400,8 @@ type groupArgs struct {
 	Avatar *string `pulumi:"avatar"`
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash *string `pulumi:"avatarHash"`
+	// Initial default branch name.
+	DefaultBranch *string `pulumi:"defaultBranch"`
 	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 	//
 	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
@@ -427,6 +464,8 @@ type GroupArgs struct {
 	Avatar pulumi.StringPtrInput
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash pulumi.StringPtrInput
+	// Initial default branch name.
+	DefaultBranch pulumi.StringPtrInput
 	// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 	//
 	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
@@ -586,6 +625,11 @@ func (o GroupOutput) AvatarHash() pulumi.StringOutput {
 // The URL of the avatar image.
 func (o GroupOutput) AvatarUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// Initial default branch name.
+func (o GroupOutput) DefaultBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.DefaultBranch }).(pulumi.StringPtrOutput)
 }
 
 // See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.

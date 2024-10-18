@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['PersonalAccessTokenArgs', 'PersonalAccessToken']
 
@@ -22,13 +24,15 @@ class PersonalAccessTokenArgs:
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  user_id: pulumi.Input[int],
                  expires_at: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 rotation_configuration: Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']] = None):
         """
         The set of arguments for constructing a PersonalAccessToken resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
         :param pulumi.Input[int] user_id: The ID of the user.
-        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[str] name: The name of the personal access token.
+        :param pulumi.Input['PersonalAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         """
         pulumi.set(__self__, "scopes", scopes)
         pulumi.set(__self__, "user_id", user_id)
@@ -36,6 +40,8 @@ class PersonalAccessTokenArgs:
             pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if rotation_configuration is not None:
+            pulumi.set(__self__, "rotation_configuration", rotation_configuration)
 
     @property
     @pulumi.getter
@@ -65,7 +71,7 @@ class PersonalAccessTokenArgs:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        When the token will expire, YYYY-MM-DD format.
+        When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         """
         return pulumi.get(self, "expires_at")
 
@@ -85,6 +91,18 @@ class PersonalAccessTokenArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="rotationConfiguration")
+    def rotation_configuration(self) -> Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']]:
+        """
+        The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        """
+        return pulumi.get(self, "rotation_configuration")
+
+    @rotation_configuration.setter
+    def rotation_configuration(self, value: Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']]):
+        pulumi.set(self, "rotation_configuration", value)
+
 
 @pulumi.input_type
 class _PersonalAccessTokenState:
@@ -94,6 +112,7 @@ class _PersonalAccessTokenState:
                  expires_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  revoked: Optional[pulumi.Input[bool]] = None,
+                 rotation_configuration: Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
@@ -101,9 +120,10 @@ class _PersonalAccessTokenState:
         Input properties used for looking up and filtering PersonalAccessToken resources.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[str] name: The name of the personal access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
+        :param pulumi.Input['PersonalAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
         :param pulumi.Input[str] token: The token of the personal access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The ID of the user.
@@ -118,6 +138,8 @@ class _PersonalAccessTokenState:
             pulumi.set(__self__, "name", name)
         if revoked is not None:
             pulumi.set(__self__, "revoked", revoked)
+        if rotation_configuration is not None:
+            pulumi.set(__self__, "rotation_configuration", rotation_configuration)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if token is not None:
@@ -153,7 +175,7 @@ class _PersonalAccessTokenState:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        When the token will expire, YYYY-MM-DD format.
+        When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         """
         return pulumi.get(self, "expires_at")
 
@@ -184,6 +206,18 @@ class _PersonalAccessTokenState:
     @revoked.setter
     def revoked(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "revoked", value)
+
+    @property
+    @pulumi.getter(name="rotationConfiguration")
+    def rotation_configuration(self) -> Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']]:
+        """
+        The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        """
+        return pulumi.get(self, "rotation_configuration")
+
+    @rotation_configuration.setter
+    def rotation_configuration(self, value: Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']]):
+        pulumi.set(self, "rotation_configuration", value)
 
     @property
     @pulumi.getter
@@ -229,6 +263,7 @@ class PersonalAccessToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 rotation_configuration: Optional[pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -240,6 +275,8 @@ class PersonalAccessToken(pulumi.CustomResource):
         > Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
 
         > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+
+        > Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
 
         > Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
 
@@ -274,8 +311,9 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[str] name: The name of the personal access token.
+        :param pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
         :param pulumi.Input[int] user_id: The ID of the user.
         """
@@ -293,6 +331,8 @@ class PersonalAccessToken(pulumi.CustomResource):
         > Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
 
         > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+
+        > Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
 
         > Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
 
@@ -342,6 +382,7 @@ class PersonalAccessToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 rotation_configuration: Optional[pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -355,6 +396,7 @@ class PersonalAccessToken(pulumi.CustomResource):
 
             __props__.__dict__["expires_at"] = expires_at
             __props__.__dict__["name"] = name
+            __props__.__dict__["rotation_configuration"] = rotation_configuration
             if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
             __props__.__dict__["scopes"] = scopes
@@ -382,6 +424,7 @@ class PersonalAccessToken(pulumi.CustomResource):
             expires_at: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             revoked: Optional[pulumi.Input[bool]] = None,
+            rotation_configuration: Optional[pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']]] = None,
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             token: Optional[pulumi.Input[str]] = None,
             user_id: Optional[pulumi.Input[int]] = None) -> 'PersonalAccessToken':
@@ -394,9 +437,10 @@ class PersonalAccessToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format.
+        :param pulumi.Input[str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[str] name: The name of the personal access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
+        :param pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
         :param pulumi.Input[str] token: The token of the personal access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The ID of the user.
@@ -410,6 +454,7 @@ class PersonalAccessToken(pulumi.CustomResource):
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["name"] = name
         __props__.__dict__["revoked"] = revoked
+        __props__.__dict__["rotation_configuration"] = rotation_configuration
         __props__.__dict__["scopes"] = scopes
         __props__.__dict__["token"] = token
         __props__.__dict__["user_id"] = user_id
@@ -435,7 +480,7 @@ class PersonalAccessToken(pulumi.CustomResource):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[str]:
         """
-        When the token will expire, YYYY-MM-DD format.
+        When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         """
         return pulumi.get(self, "expires_at")
 
@@ -454,6 +499,14 @@ class PersonalAccessToken(pulumi.CustomResource):
         True if the token is revoked.
         """
         return pulumi.get(self, "revoked")
+
+    @property
+    @pulumi.getter(name="rotationConfiguration")
+    def rotation_configuration(self) -> pulumi.Output[Optional['outputs.PersonalAccessTokenRotationConfiguration']]:
+        """
+        The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        """
+        return pulumi.get(self, "rotation_configuration")
 
     @property
     @pulumi.getter

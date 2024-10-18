@@ -69,6 +69,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientCert"] = args ? args.clientCert : undefined;
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["earlyAuthCheck"] = pulumi.output(args ? args.earlyAuthCheck : undefined).apply(JSON.stringify);
+            resourceInputs["headers"] = pulumi.output(args ? args.headers : undefined).apply(JSON.stringify);
             resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
             resourceInputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
@@ -105,6 +106,10 @@ export interface ProviderArgs {
      */
     clientKey?: pulumi.Input<string>;
     earlyAuthCheck?: pulumi.Input<boolean>;
+    /**
+     * A map of headers to append to all API request to the GitLab instance.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * When set to true this disables SSL verification of the connection to the GitLab instance.
      */

@@ -67,6 +67,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Initial default branch name.
+     * 
+     */
+    @Import(name="defaultBranch")
+    private @Nullable Output<String> defaultBranch;
+
+    /**
+     * @return Initial default branch name.
+     * 
+     */
+    public Optional<Output<String>> defaultBranch() {
+        return Optional.ofNullable(this.defaultBranch);
+    }
+
+    /**
      * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      * @deprecated
@@ -455,6 +470,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         this.autoDevopsEnabled = $.autoDevopsEnabled;
         this.avatar = $.avatar;
         this.avatarHash = $.avatarHash;
+        this.defaultBranch = $.defaultBranch;
         this.defaultBranchProtection = $.defaultBranchProtection;
         this.defaultBranchProtectionDefaults = $.defaultBranchProtectionDefaults;
         this.description = $.description;
@@ -561,6 +577,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder avatarHash(String avatarHash) {
             return avatarHash(Output.of(avatarHash));
+        }
+
+        /**
+         * @param defaultBranch Initial default branch name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultBranch(@Nullable Output<String> defaultBranch) {
+            $.defaultBranch = defaultBranch;
+            return this;
+        }
+
+        /**
+         * @param defaultBranch Initial default branch name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultBranch(String defaultBranch) {
+            return defaultBranch(Output.of(defaultBranch));
         }
 
         /**

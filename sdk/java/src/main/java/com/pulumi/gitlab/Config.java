@@ -3,10 +3,12 @@
 
 package com.pulumi.gitlab;
 
+import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 
 public final class Config {
@@ -46,6 +48,13 @@ public final class Config {
     }
     public Optional<Boolean> earlyAuthCheck() {
         return Codegen.booleanProp("earlyAuthCheck").config(config).get();
+    }
+/**
+ * A map of headers to append to all API request to the GitLab instance.
+ * 
+ */
+    public Optional<Map<String,String>> headers() {
+        return Codegen.objectProp("headers", TypeShape.<Map<String,String>>builder(Map.class).addParameter(String.class).addParameter(String.class).build()).config(config).get();
     }
 /**
  * When set to true this disables SSL verification of the connection to the GitLab instance.

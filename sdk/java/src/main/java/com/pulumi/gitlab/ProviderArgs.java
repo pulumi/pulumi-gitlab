@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -93,6 +94,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A map of headers to append to all API request to the GitLab instance.
+     * 
+     */
+    @Import(name="headers", json=true)
+    private @Nullable Output<Map<String,String>> headers;
+
+    /**
+     * @return A map of headers to append to all API request to the GitLab instance.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> headers() {
+        return Optional.ofNullable(this.headers);
+    }
+
+    /**
      * When set to true this disables SSL verification of the connection to the GitLab instance.
      * 
      */
@@ -151,6 +167,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientCert = $.clientCert;
         this.clientKey = $.clientKey;
         this.earlyAuthCheck = $.earlyAuthCheck;
+        this.headers = $.headers;
         this.insecure = $.insecure;
         this.retries = $.retries;
         this.token = $.token;
@@ -273,6 +290,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder earlyAuthCheck(Boolean earlyAuthCheck) {
             return earlyAuthCheck(Output.of(earlyAuthCheck));
+        }
+
+        /**
+         * @param headers A map of headers to append to all API request to the GitLab instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headers(@Nullable Output<Map<String,String>> headers) {
+            $.headers = headers;
+            return this;
+        }
+
+        /**
+         * @param headers A map of headers to append to all API request to the GitLab instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headers(Map<String,String> headers) {
+            return headers(Output.of(headers));
         }
 
         /**

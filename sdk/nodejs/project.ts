@@ -58,6 +58,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly allowMergeOnSkippedPipeline!: pulumi.Output<boolean>;
     /**
+     * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     */
+    public readonly allowPipelineTriggerApproveDeployment!: pulumi.Output<boolean>;
+    /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
     public readonly analyticsAccessLevel!: pulumi.Output<string>;
@@ -285,6 +289,14 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly mirrorTriggerBuilds!: pulumi.Output<boolean>;
     /**
+     * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+     */
+    public readonly modelExperimentsAccessLevel!: pulumi.Output<string>;
+    /**
+     * Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+     */
+    public readonly modelRegistryAccessLevel!: pulumi.Output<string>;
+    /**
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      */
     public readonly monitorAccessLevel!: pulumi.Output<string>;
@@ -483,6 +495,7 @@ export class Project extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
             resourceInputs["allowMergeOnSkippedPipeline"] = state ? state.allowMergeOnSkippedPipeline : undefined;
+            resourceInputs["allowPipelineTriggerApproveDeployment"] = state ? state.allowPipelineTriggerApproveDeployment : undefined;
             resourceInputs["analyticsAccessLevel"] = state ? state.analyticsAccessLevel : undefined;
             resourceInputs["approvalsBeforeMerge"] = state ? state.approvalsBeforeMerge : undefined;
             resourceInputs["archiveOnDestroy"] = state ? state.archiveOnDestroy : undefined;
@@ -538,6 +551,8 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mirror"] = state ? state.mirror : undefined;
             resourceInputs["mirrorOverwritesDivergedBranches"] = state ? state.mirrorOverwritesDivergedBranches : undefined;
             resourceInputs["mirrorTriggerBuilds"] = state ? state.mirrorTriggerBuilds : undefined;
+            resourceInputs["modelExperimentsAccessLevel"] = state ? state.modelExperimentsAccessLevel : undefined;
+            resourceInputs["modelRegistryAccessLevel"] = state ? state.modelRegistryAccessLevel : undefined;
             resourceInputs["monitorAccessLevel"] = state ? state.monitorAccessLevel : undefined;
             resourceInputs["mrDefaultTargetSelf"] = state ? state.mrDefaultTargetSelf : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -585,6 +600,7 @@ export class Project extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             resourceInputs["allowMergeOnSkippedPipeline"] = args ? args.allowMergeOnSkippedPipeline : undefined;
+            resourceInputs["allowPipelineTriggerApproveDeployment"] = args ? args.allowPipelineTriggerApproveDeployment : undefined;
             resourceInputs["analyticsAccessLevel"] = args ? args.analyticsAccessLevel : undefined;
             resourceInputs["approvalsBeforeMerge"] = args ? args.approvalsBeforeMerge : undefined;
             resourceInputs["archiveOnDestroy"] = args ? args.archiveOnDestroy : undefined;
@@ -637,6 +653,8 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mirror"] = args ? args.mirror : undefined;
             resourceInputs["mirrorOverwritesDivergedBranches"] = args ? args.mirrorOverwritesDivergedBranches : undefined;
             resourceInputs["mirrorTriggerBuilds"] = args ? args.mirrorTriggerBuilds : undefined;
+            resourceInputs["modelExperimentsAccessLevel"] = args ? args.modelExperimentsAccessLevel : undefined;
+            resourceInputs["modelRegistryAccessLevel"] = args ? args.modelRegistryAccessLevel : undefined;
             resourceInputs["monitorAccessLevel"] = args ? args.monitorAccessLevel : undefined;
             resourceInputs["mrDefaultTargetSelf"] = args ? args.mrDefaultTargetSelf : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -700,6 +718,10 @@ export interface ProjectState {
      * Set to true if you want to treat skipped pipelines as if they finished with success.
      */
     allowMergeOnSkippedPipeline?: pulumi.Input<boolean>;
+    /**
+     * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     */
+    allowPipelineTriggerApproveDeployment?: pulumi.Input<boolean>;
     /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -928,6 +950,14 @@ export interface ProjectState {
      */
     mirrorTriggerBuilds?: pulumi.Input<boolean>;
     /**
+     * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+     */
+    modelExperimentsAccessLevel?: pulumi.Input<string>;
+    /**
+     * Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+     */
+    modelRegistryAccessLevel?: pulumi.Input<string>;
+    /**
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      */
     monitorAccessLevel?: pulumi.Input<string>;
@@ -1121,6 +1151,10 @@ export interface ProjectArgs {
      * Set to true if you want to treat skipped pipelines as if they finished with success.
      */
     allowMergeOnSkippedPipeline?: pulumi.Input<boolean>;
+    /**
+     * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
+     */
+    allowPipelineTriggerApproveDeployment?: pulumi.Input<boolean>;
     /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -1336,6 +1370,14 @@ export interface ProjectArgs {
      * Enable trigger builds on pushes for a mirrored project.
      */
     mirrorTriggerBuilds?: pulumi.Input<boolean>;
+    /**
+     * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
+     */
+    modelExperimentsAccessLevel?: pulumi.Input<string>;
+    /**
+     * Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
+     */
+    modelRegistryAccessLevel?: pulumi.Input<string>;
     /**
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      */

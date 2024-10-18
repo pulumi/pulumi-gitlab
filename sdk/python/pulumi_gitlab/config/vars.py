@@ -57,6 +57,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('earlyAuthCheck')
 
     @property
+    def headers(self) -> Optional[str]:
+        """
+        A map of headers to append to all API request to the GitLab instance.
+        """
+        return __config__.get('headers')
+
+    @property
     def insecure(self) -> Optional[bool]:
         """
         When set to true this disables SSL verification of the connection to the GitLab instance.

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetPipelineSchedulesPipelineScheduleOwner;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -41,7 +42,7 @@ public final class GetPipelineSchedulesPipelineSchedule {
      * @return The pipeline schedule id.
      * 
      */
-    private String id;
+    private Integer id;
     /**
      * @return The datetime of when the schedule will next run.
      * 
@@ -103,7 +104,7 @@ public final class GetPipelineSchedulesPipelineSchedule {
      * @return The pipeline schedule id.
      * 
      */
-    public String id() {
+    public Integer id() {
         return this.id;
     }
     /**
@@ -149,7 +150,7 @@ public final class GetPipelineSchedulesPipelineSchedule {
         private String cron;
         private String cronTimezone;
         private String description;
-        private String id;
+        private Integer id;
         private String nextRunAt;
         private GetPipelineSchedulesPipelineScheduleOwner owner;
         private String ref;
@@ -210,7 +211,7 @@ public final class GetPipelineSchedulesPipelineSchedule {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
+        public Builder id(Integer id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetPipelineSchedulesPipelineSchedule", "id");
             }
