@@ -74,6 +74,13 @@
             "earlyAuthCheck": {
                 "type": "boolean"
             },
+            "headers": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                },
+                "description": "A map of headers to append to all API request to the GitLab instance.\n"
+            },
             "insecure": {
                 "type": "boolean",
                 "description": "When set to true this disables SSL verification of the connection to the GitLab instance.\n"
@@ -311,14 +318,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`.\n"
+                    "description": "An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.\n"
                 },
                 "allowedToPushes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of access levels allowed to push. Valid values are: `developer`, `maintainer`.\n"
+                    "description": "An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.\n"
                 },
                 "developerCanInitialPush": {
                     "type": "boolean",
@@ -543,6 +550,23 @@
                     ]
                 }
             }
+        },
+        "gitlab:index/PersonalAccessTokenRotationConfiguration:PersonalAccessTokenRotationConfiguration": {
+            "properties": {
+                "expirationDays": {
+                    "type": "integer",
+                    "description": "The duration (in days) the new token should be valid for.\n"
+                },
+                "rotateBeforeDays": {
+                    "type": "integer",
+                    "description": "The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expirationDays",
+                "rotateBeforeDays"
+            ]
         },
         "gitlab:index/ProjectAccessTokenRotationConfiguration:ProjectAccessTokenRotationConfiguration": {
             "properties": {
@@ -1204,6 +1228,143 @@
                 }
             }
         },
+        "gitlab:index/getGroupProvisionedUsersProvisionedUser:getGroupProvisionedUsersProvisionedUser": {
+            "properties": {
+                "avatarUrl": {
+                    "type": "string",
+                    "description": "The avatar URL of the provisioned user.\n"
+                },
+                "bio": {
+                    "type": "string",
+                    "description": "The bio of the provisioned user.\n"
+                },
+                "bot": {
+                    "type": "boolean",
+                    "description": "Whether the provisioned user is a bot.\n"
+                },
+                "confirmedAt": {
+                    "type": "string",
+                    "description": "The confirmation date of the provisioned user.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation date of the provisioned user.\n"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email of the provisioned user.\n"
+                },
+                "external": {
+                    "type": "boolean",
+                    "description": "Whether the provisioned user is external.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the provisioned user.\n"
+                },
+                "jobTitle": {
+                    "type": "string",
+                    "description": "The job title of the provisioned user.\n"
+                },
+                "lastActivityOn": {
+                    "type": "string",
+                    "description": "The last activity date of the provisioned user.\n"
+                },
+                "lastSignInAt": {
+                    "type": "string",
+                    "description": "The last sign-in date of the provisioned user.\n"
+                },
+                "linkedin": {
+                    "type": "string",
+                    "description": "The LinkedIn ID of the provisioned user.\n"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "The location of the provisioned user.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the provisioned user.\n"
+                },
+                "organization": {
+                    "type": "string",
+                    "description": "The organization of the provisioned user.\n"
+                },
+                "privateProfile": {
+                    "type": "boolean",
+                    "description": "Whether the provisioned user has a private profile.\n"
+                },
+                "pronouns": {
+                    "type": "string",
+                    "description": "The pronouns of the provisioned user.\n"
+                },
+                "publicEmail": {
+                    "type": "string",
+                    "description": "The public email of the provisioned user.\n"
+                },
+                "skype": {
+                    "type": "string",
+                    "description": "The Skype ID of the provisioned user.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state of the provisioned user.\n"
+                },
+                "twitter": {
+                    "type": "string",
+                    "description": "The Twitter ID of the provisioned user.\n"
+                },
+                "twoFactorEnabled": {
+                    "type": "boolean",
+                    "description": "Whether two-factor authentication is enabled for the provisioned user.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the provisioned user.\n"
+                },
+                "webUrl": {
+                    "type": "string",
+                    "description": "The web URL of the provisioned user.\n"
+                },
+                "websiteUrl": {
+                    "type": "string",
+                    "description": "The website URL of the provisioned user.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "avatarUrl",
+                "bio",
+                "bot",
+                "confirmedAt",
+                "createdAt",
+                "email",
+                "external",
+                "id",
+                "jobTitle",
+                "lastActivityOn",
+                "lastSignInAt",
+                "linkedin",
+                "location",
+                "name",
+                "organization",
+                "privateProfile",
+                "pronouns",
+                "publicEmail",
+                "skype",
+                "state",
+                "twitter",
+                "twoFactorEnabled",
+                "username",
+                "webUrl",
+                "websiteUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "gitlab:index/getGroupSharedWithGroup:getGroupSharedWithGroup": {
             "properties": {
                 "expiresAt": {
@@ -1804,7 +1965,7 @@
                     "description": "The description of the pipeline schedule.\n"
                 },
                 "id": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "The pipeline schedule id.\n"
                 },
                 "nextRunAt": {
@@ -2486,6 +2647,132 @@
                 "accessLevel",
                 "avatarUrl",
                 "expiresAt",
+                "id",
+                "name",
+                "state",
+                "username",
+                "webUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getProjectMergeRequestAssignee:getProjectMergeRequestAssignee": {
+            "properties": {
+                "avatarUrl": {
+                    "type": "string",
+                    "description": "A link to the user's avatar image.\n"
+                },
+                "id": {
+                    "type": "number",
+                    "description": "The internal ID number of the user.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state of the user account.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user.\n"
+                },
+                "webUrl": {
+                    "type": "string",
+                    "description": "A link to the user's profile page.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "avatarUrl",
+                "id",
+                "name",
+                "state",
+                "username",
+                "webUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getProjectMergeRequestAuthor:getProjectMergeRequestAuthor": {
+            "properties": {
+                "avatarUrl": {
+                    "type": "string",
+                    "description": "A link to the user's avatar image.\n"
+                },
+                "id": {
+                    "type": "number",
+                    "description": "The internal ID number of the user.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state of the user account.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user.\n"
+                },
+                "webUrl": {
+                    "type": "string",
+                    "description": "A link to the user's profile page.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "avatarUrl",
+                "id",
+                "name",
+                "state",
+                "username",
+                "webUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getProjectMergeRequestClosedBy:getProjectMergeRequestClosedBy": {
+            "properties": {
+                "avatarUrl": {
+                    "type": "string",
+                    "description": "A link to the user's avatar image.\n"
+                },
+                "id": {
+                    "type": "number",
+                    "description": "The internal ID number of the user.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state of the user account.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user.\n"
+                },
+                "webUrl": {
+                    "type": "string",
+                    "description": "A link to the user's profile page.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "avatarUrl",
                 "id",
                 "name",
                 "state",
@@ -3247,6 +3534,10 @@
                     "type": "boolean",
                     "description": "Whether allow_merge_on_skipped_pipeline is enabled for the project.\n"
                 },
+                "allowPipelineTriggerApproveDeployment": {
+                    "type": "boolean",
+                    "description": "Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.\n"
+                },
                 "analyticsAccessLevel": {
                     "type": "string",
                     "description": "Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.\n"
@@ -3479,6 +3770,14 @@
                     "type": "integer",
                     "description": "The mirror user ID for the project.\n"
                 },
+                "modelExperimentsAccessLevel": {
+                    "type": "string",
+                    "description": "The visibility of machine learning model experiments.\n"
+                },
+                "modelRegistryAccessLevel": {
+                    "type": "string",
+                    "description": "The visibility of machine learning model registry.\n"
+                },
                 "monitorAccessLevel": {
                     "type": "string",
                     "description": "Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.\n"
@@ -3661,6 +3960,7 @@
             "required": [
                 "_links",
                 "allowMergeOnSkippedPipeline",
+                "allowPipelineTriggerApproveDeployment",
                 "analyticsAccessLevel",
                 "approvalsBeforeMerge",
                 "archived",
@@ -3716,6 +4016,8 @@
                 "mirrorOverwritesDivergedBranches",
                 "mirrorTriggerBuilds",
                 "mirrorUserId",
+                "modelExperimentsAccessLevel",
+                "modelRegistryAccessLevel",
                 "monitorAccessLevel",
                 "name",
                 "nameWithNamespace",
@@ -4392,6 +4694,13 @@
             "earlyAuthCheck": {
                 "type": "boolean"
             },
+            "headers": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                },
+                "description": "A map of headers to append to all API request to the GitLab instance.\n"
+            },
             "insecure": {
                 "type": "boolean",
                 "description": "When set to true this disables SSL verification of the connection to the GitLab instance.\n"
@@ -4425,6 +4734,13 @@
             },
             "earlyAuthCheck": {
                 "type": "boolean"
+            },
+            "headers": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                },
+                "description": "A map of headers to append to all API request to the GitLab instance.\n"
             },
             "insecure": {
                 "type": "boolean",
@@ -4931,6 +5247,10 @@
                     "type": "integer",
                     "description": "Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.\n"
                 },
+                "elasticsearchMaxCodeIndexingConcurrency": {
+                    "type": "integer",
+                    "description": "Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.\n"
+                },
                 "elasticsearchNamespaceIds": {
                     "type": "array",
                     "items": {
@@ -4950,6 +5270,10 @@
                     },
                     "description": "The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.\n"
                 },
+                "elasticsearchRequeueWorkers": {
+                    "type": "boolean",
+                    "description": "Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.\n"
+                },
                 "elasticsearchSearch": {
                     "type": "boolean",
                     "description": "Enable Elasticsearch search.\n"
@@ -4965,6 +5289,10 @@
                     "type": "string",
                     "description": "The username of your Elasticsearch instance.\n"
                 },
+                "elasticsearchWorkerNumberOfShards": {
+                    "type": "integer",
+                    "description": "Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.\n"
+                },
                 "emailAdditionalText": {
                     "type": "string",
                     "description": "Additional text added to the bottom of every email for legal/auditing/compliance reasons.\n"
@@ -4972,6 +5300,14 @@
                 "emailAuthorInBody": {
                     "type": "boolean",
                     "description": "Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.\n"
+                },
+                "emailConfirmationSetting": {
+                    "type": "string",
+                    "description": "Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.\n"
+                },
+                "enableArtifactExternalRedirectWarningPage": {
+                    "type": "boolean",
+                    "description": "Show the external redirect page that warns you about user-generated content in GitLab Pages.\n"
                 },
                 "enabledGitAccessProtocol": {
                     "type": "string",
@@ -5027,6 +5363,10 @@
                     "type": "string",
                     "description": "URL to use for pipeline validation requests.\n"
                 },
+                "failedLoginAttemptsUnlockPeriodInMinutes": {
+                    "type": "integer",
+                    "description": "Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.\n"
+                },
                 "fileTemplateProjectId": {
                     "type": "integer",
                     "description": "The ID of a project to load custom file templates from.\n"
@@ -5043,12 +5383,19 @@
                     "type": "integer",
                     "description": "The amount of seconds after which a request to get a secondary node status times out.\n"
                 },
+                "gitRateLimitUsersAlertlists": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.\n"
+                },
                 "gitRateLimitUsersAllowlists": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.\n"
+                    "description": "List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.\n"
                 },
                 "gitTwoFactorSessionExpiry": {
                     "type": "integer",
@@ -5065,6 +5412,30 @@
                 "gitalyTimeoutMedium": {
                     "type": "integer",
                     "description": "Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.\n"
+                },
+                "gitlabDedicatedInstance": {
+                    "type": "boolean",
+                    "description": "Indicates whether the instance was provisioned for GitLab Dedicated.\n"
+                },
+                "gitlabEnvironmentToolkitInstance": {
+                    "type": "boolean",
+                    "description": "Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.\n"
+                },
+                "gitlabShellOperationLimit": {
+                    "type": "integer",
+                    "description": "Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.\n"
+                },
+                "gitpodEnabled": {
+                    "type": "boolean",
+                    "description": "Enable Gitpod integration.\n"
+                },
+                "gitpodUrl": {
+                    "type": "string",
+                    "description": "The Gitpod instance URL for integration.\n"
+                },
+                "globallyAllowedIps": {
+                    "type": "string",
+                    "description": "Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.\n"
                 },
                 "grafanaEnabled": {
                     "type": "boolean",
@@ -5160,6 +5531,10 @@
                     "type": "integer",
                     "description": "If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.\n"
                 },
+                "includeOptionalMetricsInServicePing": {
+                    "type": "boolean",
+                    "description": "Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.\n"
+                },
                 "invisibleCaptchaEnabled": {
                     "type": "boolean",
                     "description": "Enable Invisible CAPTCHA spam detection during sign-up.\n"
@@ -5168,6 +5543,18 @@
                     "type": "integer",
                     "description": "Max number of issue creation requests per minute per user.\n"
                 },
+                "jiraConnectApplicationKey": {
+                    "type": "string",
+                    "description": "ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.\n"
+                },
+                "jiraConnectProxyUrl": {
+                    "type": "string",
+                    "description": "URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.\n"
+                },
+                "jiraConnectPublicKeyStorageEnabled": {
+                    "type": "boolean",
+                    "description": "Enable public key storage for the GitLab for Jira Cloud app.\n"
+                },
                 "keepLatestArtifact": {
                     "type": "boolean",
                     "description": "Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.\n"
@@ -5175,6 +5562,10 @@
                 "localMarkdownVersion": {
                     "type": "integer",
                     "description": "Increase this value when any cached Markdown should be invalidated.\n"
+                },
+                "lockDuoFeaturesEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.\n"
                 },
                 "mailgunEventsEnabled": {
                     "type": "boolean",
@@ -5193,6 +5584,10 @@
                     "type": "string",
                     "description": "Message displayed when instance is in maintenance mode.\n"
                 },
+                "mavenPackageRequestsForwarding": {
+                    "type": "boolean",
+                    "description": "Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.\n"
+                },
                 "maxArtifactsSize": {
                     "type": "integer",
                     "description": "Maximum artifacts size in MB.\n"
@@ -5201,13 +5596,25 @@
                     "type": "integer",
                     "description": "Limit attachment size in MB.\n"
                 },
+                "maxDecompressedArchiveSize": {
+                    "type": "integer",
+                    "description": "Maximum decompressed archive size in bytes.\n"
+                },
                 "maxExportSize": {
                     "type": "integer",
                     "description": "Maximum export size in MB. 0 for unlimited.\n"
                 },
+                "maxImportRemoteFileSize": {
+                    "type": "integer",
+                    "description": "Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.\n"
+                },
                 "maxImportSize": {
                     "type": "integer",
                     "description": "Maximum import size in MB. 0 for unlimited.\n"
+                },
+                "maxLoginAttempts": {
+                    "type": "integer",
+                    "description": "Maximum number of sign-in attempts before locking out the user.\n"
                 },
                 "maxNumberOfRepositoryDownloads": {
                     "type": "integer",
@@ -5260,12 +5667,27 @@
                     "type": "boolean",
                     "description": "Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.\n"
                 },
+                "nugetSkipMetadataUrlValidation": {
+                    "type": "boolean",
+                    "description": "Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.\n"
+                },
                 "outboundLocalRequestsWhitelists": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
                     "description": "Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.\n"
+                },
+                "packageMetadataPurlTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.\n"
+                },
+                "packageRegistryAllowAnyoneToPullOption": {
+                    "type": "boolean",
+                    "description": "Enable to allow anyone to pull from Package Registry visible and changeable.\n"
                 },
                 "packageRegistryCleanupPoliciesWorkerCapacity": {
                     "type": "integer",
@@ -5327,6 +5749,14 @@
                     "type": "boolean",
                     "description": "Enable project export.\n"
                 },
+                "projectJobsApiRateLimit": {
+                    "type": "integer",
+                    "description": "Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.\n"
+                },
+                "projectsApiRateLimitUnauthenticated": {
+                    "type": "integer",
+                    "description": "Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.\n"
+                },
                 "prometheusMetricsEnabled": {
                     "type": "boolean",
                     "description": "Enable Prometheus metrics.\n"
@@ -5373,6 +5803,14 @@
                     "type": "integer",
                     "description": "Maximum push size (MB).\n"
                 },
+                "receptiveClusterAgentsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable receptive mode for GitLab Agents for Kubernetes.\n"
+                },
+                "rememberMeEnabled": {
+                    "type": "boolean",
+                    "description": "Enable Remember me setting. Introduced in GitLab 16.0.\n"
+                },
                 "repositoryChecksEnabled": {
                     "type": "boolean",
                     "description": "GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.\n"
@@ -5399,6 +5837,14 @@
                     "type": "boolean",
                     "description": "When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.\n"
                 },
+                "requireAdminTwoFactorAuthentication": {
+                    "type": "boolean",
+                    "description": "Allow administrators to require 2FA for all administrators on the instance.\n"
+                },
+                "requirePersonalAccessTokenExpiry": {
+                    "type": "boolean",
+                    "description": "When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.\n"
+                },
                 "requireTwoFactorAuthentication": {
                     "type": "boolean",
                     "description": "(If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.\n"
@@ -5422,9 +5868,25 @@
                     "type": "integer",
                     "description": "Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.\n"
                 },
+                "securityApprovalPoliciesLimit": {
+                    "type": "integer",
+                    "description": "Maximum number of active merge request approval policies per security policy project. Maximum: 20\n"
+                },
+                "securityPolicyGlobalGroupApproversEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to look up merge request approval policy approval groups globally or within project hierarchies.\n"
+                },
+                "securityTxtContent": {
+                    "type": "string",
+                    "description": "Public security contact information. Introduced in GitLab 16.7.\n"
+                },
                 "sendUserConfirmationEmail": {
                     "type": "boolean",
                     "description": "Send confirmation email on sign-up.\n"
+                },
+                "serviceAccessTokensExpirationEnforced": {
+                    "type": "boolean",
+                    "description": "Flag to indicate if token expiry date can be optional for service account users\n"
                 },
                 "sessionExpireDelay": {
                     "type": "integer",
@@ -5461,6 +5923,14 @@
                 "signupEnabled": {
                     "type": "boolean",
                     "description": "Enable registration.\n"
+                },
+                "silentAdminExportsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable Silent admin exports.\n"
+                },
+                "silentModeEnabled": {
+                    "type": "boolean",
+                    "description": "Enable Silent mode.\n"
                 },
                 "slackAppEnabled": {
                     "type": "boolean",
@@ -5500,6 +5970,10 @@
                     "type": "string",
                     "description": "The Snowplow cookie domain. (for example, .gitlab.com)\n"
                 },
+                "snowplowDatabaseCollectorHostname": {
+                    "type": "string",
+                    "description": "The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)\n"
+                },
                 "snowplowEnabled": {
                     "type": "boolean",
                     "description": "Enable snowplow tracking.\n"
@@ -5528,6 +6002,16 @@
                 "spamCheckEndpointUrl": {
                     "type": "string",
                     "description": "URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.\n"
+                },
+                "staticObjectsExternalStorageAuthToken": {
+                    "type": "string",
+                    "description": "Authentication token for the external storage linked in static*objects*external*storage*url.\n",
+                    "secret": true
+                },
+                "staticObjectsExternalStorageUrl": {
+                    "type": "string",
+                    "description": "URL to an external storage for repository static objects.\n",
+                    "secret": true
                 },
                 "suggestPipelineEnabled": {
                     "type": "boolean",
@@ -5621,6 +6105,10 @@
                     "type": "integer",
                     "description": "Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.\n"
                 },
+                "unconfirmedUsersDeleteAfterDays": {
+                    "type": "integer",
+                    "description": "Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.\n"
+                },
                 "uniqueIpsLimitEnabled": {
                     "type": "boolean",
                     "description": "(If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.\n"
@@ -5633,9 +6121,17 @@
                     "type": "integer",
                     "description": "How many seconds an IP is counted towards the limit.\n"
                 },
+                "updateRunnerVersionsEnabled": {
+                    "type": "boolean",
+                    "description": "Fetch GitLab Runner release version data from GitLab.com.\n"
+                },
                 "usagePingEnabled": {
                     "type": "boolean",
                     "description": "Every week GitLab reports license usage back to GitLab, Inc.\n"
+                },
+                "useClickhouseForAnalytics": {
+                    "type": "boolean",
+                    "description": "Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.\n"
                 },
                 "userDeactivationEmailsEnabled": {
                     "type": "boolean",
@@ -5649,6 +6145,10 @@
                     "type": "string",
                     "description": "Specify an email address regex pattern to identify default internal users.\n"
                 },
+                "userDefaultsToPrivateProfile": {
+                    "type": "boolean",
+                    "description": "Newly created users have private profile by default. Introduced in GitLab 15.8.\n"
+                },
                 "userOauthApplications": {
                     "type": "boolean",
                     "description": "Allow users to register any application to use GitLab as an OAuth provider.\n"
@@ -5656,6 +6156,13 @@
                 "userShowAddSshKeyMessage": {
                     "type": "boolean",
                     "description": "When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.\n"
+                },
+                "validRunnerRegistrars": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].\n"
                 },
                 "versionCheckEnabled": {
                     "type": "boolean",
@@ -5667,7 +6174,7 @@
                 },
                 "whatsNewVariant": {
                     "type": "string",
-                    "description": "What’s new variant, possible values: all*tiers, current*tier, and disabled.\n"
+                    "description": "What's new variant, possible values: all*tiers, current*tier, and disabled.\n"
                 },
                 "wikiPageMaxContentBytes": {
                     "type": "integer",
@@ -5767,14 +6274,19 @@
                 "elasticsearchLimitIndexing",
                 "elasticsearchMaxBulkConcurrency",
                 "elasticsearchMaxBulkSizeMb",
+                "elasticsearchMaxCodeIndexingConcurrency",
                 "elasticsearchNamespaceIds",
                 "elasticsearchPassword",
                 "elasticsearchProjectIds",
+                "elasticsearchRequeueWorkers",
                 "elasticsearchSearch",
                 "elasticsearchUrls",
                 "elasticsearchUsername",
+                "elasticsearchWorkerNumberOfShards",
                 "emailAdditionalText",
                 "emailAuthorInBody",
+                "emailConfirmationSetting",
+                "enableArtifactExternalRedirectWarningPage",
                 "enabledGitAccessProtocol",
                 "enforceNamespaceStorageLimit",
                 "enforceTerms",
@@ -5788,15 +6300,23 @@
                 "externalPipelineValidationServiceTimeout",
                 "externalPipelineValidationServiceToken",
                 "externalPipelineValidationServiceUrl",
+                "failedLoginAttemptsUnlockPeriodInMinutes",
                 "fileTemplateProjectId",
                 "firstDayOfWeek",
                 "geoNodeAllowedIps",
                 "geoStatusTimeout",
+                "gitRateLimitUsersAlertlists",
                 "gitRateLimitUsersAllowlists",
                 "gitTwoFactorSessionExpiry",
                 "gitalyTimeoutDefault",
                 "gitalyTimeoutFast",
                 "gitalyTimeoutMedium",
+                "gitlabDedicatedInstance",
+                "gitlabEnvironmentToolkitInstance",
+                "gitlabShellOperationLimit",
+                "gitpodEnabled",
+                "gitpodUrl",
+                "globallyAllowedIps",
                 "grafanaEnabled",
                 "grafanaUrl",
                 "gravatarEnabled",
@@ -5819,18 +6339,27 @@
                 "inactiveProjectsDeleteAfterMonths",
                 "inactiveProjectsMinSizeMb",
                 "inactiveProjectsSendWarningEmailAfterMonths",
+                "includeOptionalMetricsInServicePing",
                 "invisibleCaptchaEnabled",
                 "issuesCreateLimit",
+                "jiraConnectApplicationKey",
+                "jiraConnectProxyUrl",
+                "jiraConnectPublicKeyStorageEnabled",
                 "keepLatestArtifact",
                 "localMarkdownVersion",
+                "lockDuoFeaturesEnabled",
                 "mailgunEventsEnabled",
                 "mailgunSigningKey",
                 "maintenanceMode",
                 "maintenanceModeMessage",
+                "mavenPackageRequestsForwarding",
                 "maxArtifactsSize",
                 "maxAttachmentSize",
+                "maxDecompressedArchiveSize",
                 "maxExportSize",
+                "maxImportRemoteFileSize",
                 "maxImportSize",
+                "maxLoginAttempts",
                 "maxNumberOfRepositoryDownloads",
                 "maxNumberOfRepositoryDownloadsWithinTimePeriod",
                 "maxPagesSize",
@@ -5844,7 +6373,10 @@
                 "mirrorMaxCapacity",
                 "mirrorMaxDelay",
                 "npmPackageRequestsForwarding",
+                "nugetSkipMetadataUrlValidation",
                 "outboundLocalRequestsWhitelists",
+                "packageMetadataPurlTypes",
+                "packageRegistryAllowAnyoneToPullOption",
                 "packageRegistryCleanupPoliciesWorkerCapacity",
                 "pagesDomainVerificationEnabled",
                 "passwordAuthenticationEnabledForGit",
@@ -5860,6 +6392,8 @@
                 "plantumlUrl",
                 "pollingIntervalMultiplier",
                 "projectExportEnabled",
+                "projectJobsApiRateLimit",
+                "projectsApiRateLimitUnauthenticated",
                 "prometheusMetricsEnabled",
                 "protectedCiVariables",
                 "pushEventActivitiesLimit",
@@ -5871,17 +6405,25 @@
                 "recaptchaPrivateKey",
                 "recaptchaSiteKey",
                 "receiveMaxInputSize",
+                "receptiveClusterAgentsEnabled",
+                "rememberMeEnabled",
                 "repositoryChecksEnabled",
                 "repositorySizeLimit",
                 "repositoryStorages",
                 "repositoryStoragesWeighted",
                 "requireAdminApprovalAfterUserSignup",
+                "requireAdminTwoFactorAuthentication",
+                "requirePersonalAccessTokenExpiry",
                 "requireTwoFactorAuthentication",
                 "restrictedVisibilityLevels",
                 "rsaKeyRestriction",
                 "searchRateLimit",
                 "searchRateLimitUnauthenticated",
+                "securityApprovalPoliciesLimit",
+                "securityPolicyGlobalGroupApproversEnabled",
+                "securityTxtContent",
                 "sendUserConfirmationEmail",
+                "serviceAccessTokensExpirationEnforced",
                 "sessionExpireDelay",
                 "sharedRunnersEnabled",
                 "sharedRunnersMinutes",
@@ -5891,6 +6433,8 @@
                 "sidekiqJobLimiterMode",
                 "signInText",
                 "signupEnabled",
+                "silentAdminExportsEnabled",
+                "silentModeEnabled",
                 "slackAppEnabled",
                 "slackAppId",
                 "slackAppSecret",
@@ -5900,6 +6444,7 @@
                 "snowplowAppId",
                 "snowplowCollectorHostname",
                 "snowplowCookieDomain",
+                "snowplowDatabaseCollectorHostname",
                 "snowplowEnabled",
                 "sourcegraphEnabled",
                 "sourcegraphPublicOnly",
@@ -5930,15 +6475,20 @@
                 "throttleUnauthenticatedWebRequestsPerPeriod",
                 "timeTrackingLimitToHours",
                 "twoFactorGracePeriod",
+                "unconfirmedUsersDeleteAfterDays",
                 "uniqueIpsLimitEnabled",
                 "uniqueIpsLimitPerUser",
                 "uniqueIpsLimitTimeWindow",
+                "updateRunnerVersionsEnabled",
                 "usagePingEnabled",
+                "useClickhouseForAnalytics",
                 "userDeactivationEmailsEnabled",
                 "userDefaultExternal",
                 "userDefaultInternalRegex",
+                "userDefaultsToPrivateProfile",
                 "userOauthApplications",
                 "userShowAddSshKeyMessage",
+                "validRunnerRegistrars",
                 "versionCheckEnabled",
                 "webIdeClientsidePreviewEnabled",
                 "whatsNewVariant",
@@ -6331,6 +6881,10 @@
                     "type": "integer",
                     "description": "Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.\n"
                 },
+                "elasticsearchMaxCodeIndexingConcurrency": {
+                    "type": "integer",
+                    "description": "Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.\n"
+                },
                 "elasticsearchNamespaceIds": {
                     "type": "array",
                     "items": {
@@ -6350,6 +6904,10 @@
                     },
                     "description": "The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.\n"
                 },
+                "elasticsearchRequeueWorkers": {
+                    "type": "boolean",
+                    "description": "Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.\n"
+                },
                 "elasticsearchSearch": {
                     "type": "boolean",
                     "description": "Enable Elasticsearch search.\n"
@@ -6365,6 +6923,10 @@
                     "type": "string",
                     "description": "The username of your Elasticsearch instance.\n"
                 },
+                "elasticsearchWorkerNumberOfShards": {
+                    "type": "integer",
+                    "description": "Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.\n"
+                },
                 "emailAdditionalText": {
                     "type": "string",
                     "description": "Additional text added to the bottom of every email for legal/auditing/compliance reasons.\n"
@@ -6372,6 +6934,14 @@
                 "emailAuthorInBody": {
                     "type": "boolean",
                     "description": "Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.\n"
+                },
+                "emailConfirmationSetting": {
+                    "type": "string",
+                    "description": "Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.\n"
+                },
+                "enableArtifactExternalRedirectWarningPage": {
+                    "type": "boolean",
+                    "description": "Show the external redirect page that warns you about user-generated content in GitLab Pages.\n"
                 },
                 "enabledGitAccessProtocol": {
                     "type": "string",
@@ -6427,6 +6997,10 @@
                     "type": "string",
                     "description": "URL to use for pipeline validation requests.\n"
                 },
+                "failedLoginAttemptsUnlockPeriodInMinutes": {
+                    "type": "integer",
+                    "description": "Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.\n"
+                },
                 "fileTemplateProjectId": {
                     "type": "integer",
                     "description": "The ID of a project to load custom file templates from.\n"
@@ -6443,12 +7017,19 @@
                     "type": "integer",
                     "description": "The amount of seconds after which a request to get a secondary node status times out.\n"
                 },
+                "gitRateLimitUsersAlertlists": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.\n"
+                },
                 "gitRateLimitUsersAllowlists": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.\n"
+                    "description": "List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.\n"
                 },
                 "gitTwoFactorSessionExpiry": {
                     "type": "integer",
@@ -6465,6 +7046,22 @@
                 "gitalyTimeoutMedium": {
                     "type": "integer",
                     "description": "Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.\n"
+                },
+                "gitlabShellOperationLimit": {
+                    "type": "integer",
+                    "description": "Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.\n"
+                },
+                "gitpodEnabled": {
+                    "type": "boolean",
+                    "description": "Enable Gitpod integration.\n"
+                },
+                "gitpodUrl": {
+                    "type": "string",
+                    "description": "The Gitpod instance URL for integration.\n"
+                },
+                "globallyAllowedIps": {
+                    "type": "string",
+                    "description": "Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.\n"
                 },
                 "grafanaEnabled": {
                     "type": "boolean",
@@ -6560,6 +7157,10 @@
                     "type": "integer",
                     "description": "If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.\n"
                 },
+                "includeOptionalMetricsInServicePing": {
+                    "type": "boolean",
+                    "description": "Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.\n"
+                },
                 "invisibleCaptchaEnabled": {
                     "type": "boolean",
                     "description": "Enable Invisible CAPTCHA spam detection during sign-up.\n"
@@ -6568,6 +7169,18 @@
                     "type": "integer",
                     "description": "Max number of issue creation requests per minute per user.\n"
                 },
+                "jiraConnectApplicationKey": {
+                    "type": "string",
+                    "description": "ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.\n"
+                },
+                "jiraConnectProxyUrl": {
+                    "type": "string",
+                    "description": "URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.\n"
+                },
+                "jiraConnectPublicKeyStorageEnabled": {
+                    "type": "boolean",
+                    "description": "Enable public key storage for the GitLab for Jira Cloud app.\n"
+                },
                 "keepLatestArtifact": {
                     "type": "boolean",
                     "description": "Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.\n"
@@ -6575,6 +7188,10 @@
                 "localMarkdownVersion": {
                     "type": "integer",
                     "description": "Increase this value when any cached Markdown should be invalidated.\n"
+                },
+                "lockDuoFeaturesEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.\n"
                 },
                 "mailgunEventsEnabled": {
                     "type": "boolean",
@@ -6593,6 +7210,10 @@
                     "type": "string",
                     "description": "Message displayed when instance is in maintenance mode.\n"
                 },
+                "mavenPackageRequestsForwarding": {
+                    "type": "boolean",
+                    "description": "Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.\n"
+                },
                 "maxArtifactsSize": {
                     "type": "integer",
                     "description": "Maximum artifacts size in MB.\n"
@@ -6601,13 +7222,25 @@
                     "type": "integer",
                     "description": "Limit attachment size in MB.\n"
                 },
+                "maxDecompressedArchiveSize": {
+                    "type": "integer",
+                    "description": "Maximum decompressed archive size in bytes.\n"
+                },
                 "maxExportSize": {
                     "type": "integer",
                     "description": "Maximum export size in MB. 0 for unlimited.\n"
                 },
+                "maxImportRemoteFileSize": {
+                    "type": "integer",
+                    "description": "Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.\n"
+                },
                 "maxImportSize": {
                     "type": "integer",
                     "description": "Maximum import size in MB. 0 for unlimited.\n"
+                },
+                "maxLoginAttempts": {
+                    "type": "integer",
+                    "description": "Maximum number of sign-in attempts before locking out the user.\n"
                 },
                 "maxNumberOfRepositoryDownloads": {
                     "type": "integer",
@@ -6660,12 +7293,27 @@
                     "type": "boolean",
                     "description": "Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.\n"
                 },
+                "nugetSkipMetadataUrlValidation": {
+                    "type": "boolean",
+                    "description": "Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.\n"
+                },
                 "outboundLocalRequestsWhitelists": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
                     "description": "Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.\n"
+                },
+                "packageMetadataPurlTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.\n"
+                },
+                "packageRegistryAllowAnyoneToPullOption": {
+                    "type": "boolean",
+                    "description": "Enable to allow anyone to pull from Package Registry visible and changeable.\n"
                 },
                 "packageRegistryCleanupPoliciesWorkerCapacity": {
                     "type": "integer",
@@ -6727,6 +7375,14 @@
                     "type": "boolean",
                     "description": "Enable project export.\n"
                 },
+                "projectJobsApiRateLimit": {
+                    "type": "integer",
+                    "description": "Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.\n"
+                },
+                "projectsApiRateLimitUnauthenticated": {
+                    "type": "integer",
+                    "description": "Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.\n"
+                },
                 "prometheusMetricsEnabled": {
                     "type": "boolean",
                     "description": "Enable Prometheus metrics.\n"
@@ -6773,6 +7429,14 @@
                     "type": "integer",
                     "description": "Maximum push size (MB).\n"
                 },
+                "receptiveClusterAgentsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable receptive mode for GitLab Agents for Kubernetes.\n"
+                },
+                "rememberMeEnabled": {
+                    "type": "boolean",
+                    "description": "Enable Remember me setting. Introduced in GitLab 16.0.\n"
+                },
                 "repositoryChecksEnabled": {
                     "type": "boolean",
                     "description": "GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.\n"
@@ -6799,6 +7463,14 @@
                     "type": "boolean",
                     "description": "When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.\n"
                 },
+                "requireAdminTwoFactorAuthentication": {
+                    "type": "boolean",
+                    "description": "Allow administrators to require 2FA for all administrators on the instance.\n"
+                },
+                "requirePersonalAccessTokenExpiry": {
+                    "type": "boolean",
+                    "description": "When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.\n"
+                },
                 "requireTwoFactorAuthentication": {
                     "type": "boolean",
                     "description": "(If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.\n"
@@ -6822,9 +7494,25 @@
                     "type": "integer",
                     "description": "Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.\n"
                 },
+                "securityApprovalPoliciesLimit": {
+                    "type": "integer",
+                    "description": "Maximum number of active merge request approval policies per security policy project. Maximum: 20\n"
+                },
+                "securityPolicyGlobalGroupApproversEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to look up merge request approval policy approval groups globally or within project hierarchies.\n"
+                },
+                "securityTxtContent": {
+                    "type": "string",
+                    "description": "Public security contact information. Introduced in GitLab 16.7.\n"
+                },
                 "sendUserConfirmationEmail": {
                     "type": "boolean",
                     "description": "Send confirmation email on sign-up.\n"
+                },
+                "serviceAccessTokensExpirationEnforced": {
+                    "type": "boolean",
+                    "description": "Flag to indicate if token expiry date can be optional for service account users\n"
                 },
                 "sessionExpireDelay": {
                     "type": "integer",
@@ -6861,6 +7549,14 @@
                 "signupEnabled": {
                     "type": "boolean",
                     "description": "Enable registration.\n"
+                },
+                "silentAdminExportsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable Silent admin exports.\n"
+                },
+                "silentModeEnabled": {
+                    "type": "boolean",
+                    "description": "Enable Silent mode.\n"
                 },
                 "slackAppEnabled": {
                     "type": "boolean",
@@ -6900,6 +7596,10 @@
                     "type": "string",
                     "description": "The Snowplow cookie domain. (for example, .gitlab.com)\n"
                 },
+                "snowplowDatabaseCollectorHostname": {
+                    "type": "string",
+                    "description": "The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)\n"
+                },
                 "snowplowEnabled": {
                     "type": "boolean",
                     "description": "Enable snowplow tracking.\n"
@@ -6928,6 +7628,16 @@
                 "spamCheckEndpointUrl": {
                     "type": "string",
                     "description": "URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.\n"
+                },
+                "staticObjectsExternalStorageAuthToken": {
+                    "type": "string",
+                    "description": "Authentication token for the external storage linked in static*objects*external*storage*url.\n",
+                    "secret": true
+                },
+                "staticObjectsExternalStorageUrl": {
+                    "type": "string",
+                    "description": "URL to an external storage for repository static objects.\n",
+                    "secret": true
                 },
                 "suggestPipelineEnabled": {
                     "type": "boolean",
@@ -7021,6 +7731,10 @@
                     "type": "integer",
                     "description": "Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.\n"
                 },
+                "unconfirmedUsersDeleteAfterDays": {
+                    "type": "integer",
+                    "description": "Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.\n"
+                },
                 "uniqueIpsLimitEnabled": {
                     "type": "boolean",
                     "description": "(If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.\n"
@@ -7033,9 +7747,17 @@
                     "type": "integer",
                     "description": "How many seconds an IP is counted towards the limit.\n"
                 },
+                "updateRunnerVersionsEnabled": {
+                    "type": "boolean",
+                    "description": "Fetch GitLab Runner release version data from GitLab.com.\n"
+                },
                 "usagePingEnabled": {
                     "type": "boolean",
                     "description": "Every week GitLab reports license usage back to GitLab, Inc.\n"
+                },
+                "useClickhouseForAnalytics": {
+                    "type": "boolean",
+                    "description": "Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.\n"
                 },
                 "userDeactivationEmailsEnabled": {
                     "type": "boolean",
@@ -7049,6 +7771,10 @@
                     "type": "string",
                     "description": "Specify an email address regex pattern to identify default internal users.\n"
                 },
+                "userDefaultsToPrivateProfile": {
+                    "type": "boolean",
+                    "description": "Newly created users have private profile by default. Introduced in GitLab 15.8.\n"
+                },
                 "userOauthApplications": {
                     "type": "boolean",
                     "description": "Allow users to register any application to use GitLab as an OAuth provider.\n"
@@ -7056,6 +7782,13 @@
                 "userShowAddSshKeyMessage": {
                     "type": "boolean",
                     "description": "When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.\n"
+                },
+                "validRunnerRegistrars": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].\n"
                 },
                 "versionCheckEnabled": {
                     "type": "boolean",
@@ -7067,7 +7800,7 @@
                 },
                 "whatsNewVariant": {
                     "type": "string",
-                    "description": "What’s new variant, possible values: all*tiers, current*tier, and disabled.\n"
+                    "description": "What's new variant, possible values: all*tiers, current*tier, and disabled.\n"
                 },
                 "wikiPageMaxContentBytes": {
                     "type": "integer",
@@ -7463,6 +8196,10 @@
                         "type": "integer",
                         "description": "Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.\n"
                     },
+                    "elasticsearchMaxCodeIndexingConcurrency": {
+                        "type": "integer",
+                        "description": "Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.\n"
+                    },
                     "elasticsearchNamespaceIds": {
                         "type": "array",
                         "items": {
@@ -7482,6 +8219,10 @@
                         },
                         "description": "The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.\n"
                     },
+                    "elasticsearchRequeueWorkers": {
+                        "type": "boolean",
+                        "description": "Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.\n"
+                    },
                     "elasticsearchSearch": {
                         "type": "boolean",
                         "description": "Enable Elasticsearch search.\n"
@@ -7497,6 +8238,10 @@
                         "type": "string",
                         "description": "The username of your Elasticsearch instance.\n"
                     },
+                    "elasticsearchWorkerNumberOfShards": {
+                        "type": "integer",
+                        "description": "Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.\n"
+                    },
                     "emailAdditionalText": {
                         "type": "string",
                         "description": "Additional text added to the bottom of every email for legal/auditing/compliance reasons.\n"
@@ -7504,6 +8249,14 @@
                     "emailAuthorInBody": {
                         "type": "boolean",
                         "description": "Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.\n"
+                    },
+                    "emailConfirmationSetting": {
+                        "type": "string",
+                        "description": "Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.\n"
+                    },
+                    "enableArtifactExternalRedirectWarningPage": {
+                        "type": "boolean",
+                        "description": "Show the external redirect page that warns you about user-generated content in GitLab Pages.\n"
                     },
                     "enabledGitAccessProtocol": {
                         "type": "string",
@@ -7559,6 +8312,10 @@
                         "type": "string",
                         "description": "URL to use for pipeline validation requests.\n"
                     },
+                    "failedLoginAttemptsUnlockPeriodInMinutes": {
+                        "type": "integer",
+                        "description": "Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.\n"
+                    },
                     "fileTemplateProjectId": {
                         "type": "integer",
                         "description": "The ID of a project to load custom file templates from.\n"
@@ -7575,12 +8332,19 @@
                         "type": "integer",
                         "description": "The amount of seconds after which a request to get a secondary node status times out.\n"
                     },
+                    "gitRateLimitUsersAlertlists": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.\n"
+                    },
                     "gitRateLimitUsersAllowlists": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.\n"
+                        "description": "List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.\n"
                     },
                     "gitTwoFactorSessionExpiry": {
                         "type": "integer",
@@ -7597,6 +8361,30 @@
                     "gitalyTimeoutMedium": {
                         "type": "integer",
                         "description": "Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.\n"
+                    },
+                    "gitlabDedicatedInstance": {
+                        "type": "boolean",
+                        "description": "Indicates whether the instance was provisioned for GitLab Dedicated.\n"
+                    },
+                    "gitlabEnvironmentToolkitInstance": {
+                        "type": "boolean",
+                        "description": "Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.\n"
+                    },
+                    "gitlabShellOperationLimit": {
+                        "type": "integer",
+                        "description": "Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.\n"
+                    },
+                    "gitpodEnabled": {
+                        "type": "boolean",
+                        "description": "Enable Gitpod integration.\n"
+                    },
+                    "gitpodUrl": {
+                        "type": "string",
+                        "description": "The Gitpod instance URL for integration.\n"
+                    },
+                    "globallyAllowedIps": {
+                        "type": "string",
+                        "description": "Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.\n"
                     },
                     "grafanaEnabled": {
                         "type": "boolean",
@@ -7692,6 +8480,10 @@
                         "type": "integer",
                         "description": "If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.\n"
                     },
+                    "includeOptionalMetricsInServicePing": {
+                        "type": "boolean",
+                        "description": "Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.\n"
+                    },
                     "invisibleCaptchaEnabled": {
                         "type": "boolean",
                         "description": "Enable Invisible CAPTCHA spam detection during sign-up.\n"
@@ -7700,6 +8492,18 @@
                         "type": "integer",
                         "description": "Max number of issue creation requests per minute per user.\n"
                     },
+                    "jiraConnectApplicationKey": {
+                        "type": "string",
+                        "description": "ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.\n"
+                    },
+                    "jiraConnectProxyUrl": {
+                        "type": "string",
+                        "description": "URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.\n"
+                    },
+                    "jiraConnectPublicKeyStorageEnabled": {
+                        "type": "boolean",
+                        "description": "Enable public key storage for the GitLab for Jira Cloud app.\n"
+                    },
                     "keepLatestArtifact": {
                         "type": "boolean",
                         "description": "Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.\n"
@@ -7707,6 +8511,10 @@
                     "localMarkdownVersion": {
                         "type": "integer",
                         "description": "Increase this value when any cached Markdown should be invalidated.\n"
+                    },
+                    "lockDuoFeaturesEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.\n"
                     },
                     "mailgunEventsEnabled": {
                         "type": "boolean",
@@ -7725,6 +8533,10 @@
                         "type": "string",
                         "description": "Message displayed when instance is in maintenance mode.\n"
                     },
+                    "mavenPackageRequestsForwarding": {
+                        "type": "boolean",
+                        "description": "Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.\n"
+                    },
                     "maxArtifactsSize": {
                         "type": "integer",
                         "description": "Maximum artifacts size in MB.\n"
@@ -7733,13 +8545,25 @@
                         "type": "integer",
                         "description": "Limit attachment size in MB.\n"
                     },
+                    "maxDecompressedArchiveSize": {
+                        "type": "integer",
+                        "description": "Maximum decompressed archive size in bytes.\n"
+                    },
                     "maxExportSize": {
                         "type": "integer",
                         "description": "Maximum export size in MB. 0 for unlimited.\n"
                     },
+                    "maxImportRemoteFileSize": {
+                        "type": "integer",
+                        "description": "Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.\n"
+                    },
                     "maxImportSize": {
                         "type": "integer",
                         "description": "Maximum import size in MB. 0 for unlimited.\n"
+                    },
+                    "maxLoginAttempts": {
+                        "type": "integer",
+                        "description": "Maximum number of sign-in attempts before locking out the user.\n"
                     },
                     "maxNumberOfRepositoryDownloads": {
                         "type": "integer",
@@ -7792,12 +8616,27 @@
                         "type": "boolean",
                         "description": "Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.\n"
                     },
+                    "nugetSkipMetadataUrlValidation": {
+                        "type": "boolean",
+                        "description": "Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.\n"
+                    },
                     "outboundLocalRequestsWhitelists": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
                         "description": "Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.\n"
+                    },
+                    "packageMetadataPurlTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.\n"
+                    },
+                    "packageRegistryAllowAnyoneToPullOption": {
+                        "type": "boolean",
+                        "description": "Enable to allow anyone to pull from Package Registry visible and changeable.\n"
                     },
                     "packageRegistryCleanupPoliciesWorkerCapacity": {
                         "type": "integer",
@@ -7859,6 +8698,14 @@
                         "type": "boolean",
                         "description": "Enable project export.\n"
                     },
+                    "projectJobsApiRateLimit": {
+                        "type": "integer",
+                        "description": "Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.\n"
+                    },
+                    "projectsApiRateLimitUnauthenticated": {
+                        "type": "integer",
+                        "description": "Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.\n"
+                    },
                     "prometheusMetricsEnabled": {
                         "type": "boolean",
                         "description": "Enable Prometheus metrics.\n"
@@ -7905,6 +8752,14 @@
                         "type": "integer",
                         "description": "Maximum push size (MB).\n"
                     },
+                    "receptiveClusterAgentsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable receptive mode for GitLab Agents for Kubernetes.\n"
+                    },
+                    "rememberMeEnabled": {
+                        "type": "boolean",
+                        "description": "Enable Remember me setting. Introduced in GitLab 16.0.\n"
+                    },
                     "repositoryChecksEnabled": {
                         "type": "boolean",
                         "description": "GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.\n"
@@ -7931,6 +8786,14 @@
                         "type": "boolean",
                         "description": "When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.\n"
                     },
+                    "requireAdminTwoFactorAuthentication": {
+                        "type": "boolean",
+                        "description": "Allow administrators to require 2FA for all administrators on the instance.\n"
+                    },
+                    "requirePersonalAccessTokenExpiry": {
+                        "type": "boolean",
+                        "description": "When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.\n"
+                    },
                     "requireTwoFactorAuthentication": {
                         "type": "boolean",
                         "description": "(If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.\n"
@@ -7954,9 +8817,25 @@
                         "type": "integer",
                         "description": "Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.\n"
                     },
+                    "securityApprovalPoliciesLimit": {
+                        "type": "integer",
+                        "description": "Maximum number of active merge request approval policies per security policy project. Maximum: 20\n"
+                    },
+                    "securityPolicyGlobalGroupApproversEnabled": {
+                        "type": "boolean",
+                        "description": "Whether to look up merge request approval policy approval groups globally or within project hierarchies.\n"
+                    },
+                    "securityTxtContent": {
+                        "type": "string",
+                        "description": "Public security contact information. Introduced in GitLab 16.7.\n"
+                    },
                     "sendUserConfirmationEmail": {
                         "type": "boolean",
                         "description": "Send confirmation email on sign-up.\n"
+                    },
+                    "serviceAccessTokensExpirationEnforced": {
+                        "type": "boolean",
+                        "description": "Flag to indicate if token expiry date can be optional for service account users\n"
                     },
                     "sessionExpireDelay": {
                         "type": "integer",
@@ -7993,6 +8872,14 @@
                     "signupEnabled": {
                         "type": "boolean",
                         "description": "Enable registration.\n"
+                    },
+                    "silentAdminExportsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable Silent admin exports.\n"
+                    },
+                    "silentModeEnabled": {
+                        "type": "boolean",
+                        "description": "Enable Silent mode.\n"
                     },
                     "slackAppEnabled": {
                         "type": "boolean",
@@ -8032,6 +8919,10 @@
                         "type": "string",
                         "description": "The Snowplow cookie domain. (for example, .gitlab.com)\n"
                     },
+                    "snowplowDatabaseCollectorHostname": {
+                        "type": "string",
+                        "description": "The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)\n"
+                    },
                     "snowplowEnabled": {
                         "type": "boolean",
                         "description": "Enable snowplow tracking.\n"
@@ -8060,6 +8951,16 @@
                     "spamCheckEndpointUrl": {
                         "type": "string",
                         "description": "URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.\n"
+                    },
+                    "staticObjectsExternalStorageAuthToken": {
+                        "type": "string",
+                        "description": "Authentication token for the external storage linked in static*objects*external*storage*url.\n",
+                        "secret": true
+                    },
+                    "staticObjectsExternalStorageUrl": {
+                        "type": "string",
+                        "description": "URL to an external storage for repository static objects.\n",
+                        "secret": true
                     },
                     "suggestPipelineEnabled": {
                         "type": "boolean",
@@ -8153,6 +9054,10 @@
                         "type": "integer",
                         "description": "Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.\n"
                     },
+                    "unconfirmedUsersDeleteAfterDays": {
+                        "type": "integer",
+                        "description": "Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.\n"
+                    },
                     "uniqueIpsLimitEnabled": {
                         "type": "boolean",
                         "description": "(If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.\n"
@@ -8165,9 +9070,17 @@
                         "type": "integer",
                         "description": "How many seconds an IP is counted towards the limit.\n"
                     },
+                    "updateRunnerVersionsEnabled": {
+                        "type": "boolean",
+                        "description": "Fetch GitLab Runner release version data from GitLab.com.\n"
+                    },
                     "usagePingEnabled": {
                         "type": "boolean",
                         "description": "Every week GitLab reports license usage back to GitLab, Inc.\n"
+                    },
+                    "useClickhouseForAnalytics": {
+                        "type": "boolean",
+                        "description": "Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.\n"
                     },
                     "userDeactivationEmailsEnabled": {
                         "type": "boolean",
@@ -8181,6 +9094,10 @@
                         "type": "string",
                         "description": "Specify an email address regex pattern to identify default internal users.\n"
                     },
+                    "userDefaultsToPrivateProfile": {
+                        "type": "boolean",
+                        "description": "Newly created users have private profile by default. Introduced in GitLab 15.8.\n"
+                    },
                     "userOauthApplications": {
                         "type": "boolean",
                         "description": "Allow users to register any application to use GitLab as an OAuth provider.\n"
@@ -8188,6 +9105,13 @@
                     "userShowAddSshKeyMessage": {
                         "type": "boolean",
                         "description": "When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.\n"
+                    },
+                    "validRunnerRegistrars": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].\n"
                     },
                     "versionCheckEnabled": {
                         "type": "boolean",
@@ -8199,7 +9123,7 @@
                     },
                     "whatsNewVariant": {
                         "type": "string",
-                        "description": "What’s new variant, possible values: all*tiers, current*tier, and disabled.\n"
+                        "description": "What's new variant, possible values: all*tiers, current*tier, and disabled.\n"
                     },
                     "wikiPageMaxContentBytes": {
                         "type": "integer",
@@ -9409,7 +10333,7 @@
             }
         },
         "gitlab:index/group:Group": {
-            "description": "The `gitlab.Group` resource allows to manage the lifecycle of a group.\n\n\u003e On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.Group(\"example\", {\n    name: \"example\",\n    path: \"example\",\n    description: \"An example group\",\n});\n// Create a project in the example group\nconst exampleProject = new gitlab.Project(\"example\", {\n    name: \"example\",\n    description: \"An example project\",\n    namespaceId: example.id,\n});\n// Group with custom push rules\nconst example_two = new gitlab.Group(\"example-two\", {\n    name: \"example-two\",\n    path: \"example-two\",\n    description: \"An example group with push rules\",\n    pushRules: {\n        authorEmailRegex: \"@example\\\\.com$\",\n        commitCommitterCheck: true,\n        memberCheck: true,\n        preventSecrets: true,\n    },\n});\n// Group with custom default branch protection defaults\nconst example_three = new gitlab.Group(\"example-three\", {\n    name: \"example-three\",\n    path: \"example-three\",\n    description: \"An example group with default branch protection defaults\",\n    defaultBranchProtectionDefaults: {\n        allowedToPushes: [\"developer\"],\n        allowForcePush: true,\n        allowedToMerges: [\n            \"developer\",\n            \"maintainer\",\n        ],\n        developerCanInitialPush: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.Group(\"example\",\n    name=\"example\",\n    path=\"example\",\n    description=\"An example group\")\n# Create a project in the example group\nexample_project = gitlab.Project(\"example\",\n    name=\"example\",\n    description=\"An example project\",\n    namespace_id=example.id)\n# Group with custom push rules\nexample_two = gitlab.Group(\"example-two\",\n    name=\"example-two\",\n    path=\"example-two\",\n    description=\"An example group with push rules\",\n    push_rules={\n        \"author_email_regex\": \"@example\\\\.com$\",\n        \"commit_committer_check\": True,\n        \"member_check\": True,\n        \"prevent_secrets\": True,\n    })\n# Group with custom default branch protection defaults\nexample_three = gitlab.Group(\"example-three\",\n    name=\"example-three\",\n    path=\"example-three\",\n    description=\"An example group with default branch protection defaults\",\n    default_branch_protection_defaults={\n        \"allowed_to_pushes\": [\"developer\"],\n        \"allow_force_push\": True,\n        \"allowed_to_merges\": [\n            \"developer\",\n            \"maintainer\",\n        ],\n        \"developer_can_initial_push\": True,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.Group(\"example\", new()\n    {\n        Name = \"example\",\n        Path = \"example\",\n        Description = \"An example group\",\n    });\n\n    // Create a project in the example group\n    var exampleProject = new GitLab.Project(\"example\", new()\n    {\n        Name = \"example\",\n        Description = \"An example project\",\n        NamespaceId = example.Id,\n    });\n\n    // Group with custom push rules\n    var example_two = new GitLab.Group(\"example-two\", new()\n    {\n        Name = \"example-two\",\n        Path = \"example-two\",\n        Description = \"An example group with push rules\",\n        PushRules = new GitLab.Inputs.GroupPushRulesArgs\n        {\n            AuthorEmailRegex = \"@example\\\\.com$\",\n            CommitCommitterCheck = true,\n            MemberCheck = true,\n            PreventSecrets = true,\n        },\n    });\n\n    // Group with custom default branch protection defaults\n    var example_three = new GitLab.Group(\"example-three\", new()\n    {\n        Name = \"example-three\",\n        Path = \"example-three\",\n        Description = \"An example group with default branch protection defaults\",\n        DefaultBranchProtectionDefaults = new GitLab.Inputs.GroupDefaultBranchProtectionDefaultsArgs\n        {\n            AllowedToPushes = new[]\n            {\n                \"developer\",\n            },\n            AllowForcePush = true,\n            AllowedToMerges = new[]\n            {\n                \"developer\",\n                \"maintainer\",\n            },\n            DeveloperCanInitialPush = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewGroup(ctx, \"example\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tPath:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create a project in the example group\n\t\t_, err = gitlab.NewProject(ctx, \"example\", \u0026gitlab.ProjectArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example project\"),\n\t\t\tNamespaceId: example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Group with custom push rules\n\t\t_, err = gitlab.NewGroup(ctx, \"example-two\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example-two\"),\n\t\t\tPath:        pulumi.String(\"example-two\"),\n\t\t\tDescription: pulumi.String(\"An example group with push rules\"),\n\t\t\tPushRules: \u0026gitlab.GroupPushRulesArgs{\n\t\t\t\tAuthorEmailRegex:     pulumi.String(\"@example\\\\.com$\"),\n\t\t\t\tCommitCommitterCheck: pulumi.Bool(true),\n\t\t\t\tMemberCheck:          pulumi.Bool(true),\n\t\t\t\tPreventSecrets:       pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Group with custom default branch protection defaults\n\t\t_, err = gitlab.NewGroup(ctx, \"example-three\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example-three\"),\n\t\t\tPath:        pulumi.String(\"example-three\"),\n\t\t\tDescription: pulumi.String(\"An example group with default branch protection defaults\"),\n\t\t\tDefaultBranchProtectionDefaults: \u0026gitlab.GroupDefaultBranchProtectionDefaultsArgs{\n\t\t\t\tAllowedToPushes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"developer\"),\n\t\t\t\t},\n\t\t\t\tAllowForcePush: pulumi.Bool(true),\n\t\t\t\tAllowedToMerges: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"developer\"),\n\t\t\t\t\tpulumi.String(\"maintainer\"),\n\t\t\t\t},\n\t\t\t\tDeveloperCanInitialPush: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.inputs.GroupPushRulesArgs;\nimport com.pulumi.gitlab.inputs.GroupDefaultBranchProtectionDefaultsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()\n            .name(\"example\")\n            .path(\"example\")\n            .description(\"An example group\")\n            .build());\n\n        // Create a project in the example group\n        var exampleProject = new Project(\"exampleProject\", ProjectArgs.builder()\n            .name(\"example\")\n            .description(\"An example project\")\n            .namespaceId(example.id())\n            .build());\n\n        // Group with custom push rules\n        var example_two = new Group(\"example-two\", GroupArgs.builder()\n            .name(\"example-two\")\n            .path(\"example-two\")\n            .description(\"An example group with push rules\")\n            .pushRules(GroupPushRulesArgs.builder()\n                .authorEmailRegex(\"@example\\\\.com$\")\n                .commitCommitterCheck(true)\n                .memberCheck(true)\n                .preventSecrets(true)\n                .build())\n            .build());\n\n        // Group with custom default branch protection defaults\n        var example_three = new Group(\"example-three\", GroupArgs.builder()\n            .name(\"example-three\")\n            .path(\"example-three\")\n            .description(\"An example group with default branch protection defaults\")\n            .defaultBranchProtectionDefaults(GroupDefaultBranchProtectionDefaultsArgs.builder()\n                .allowedToPushes(\"developer\")\n                .allowForcePush(true)\n                .allowedToMerges(                \n                    \"developer\",\n                    \"maintainer\")\n                .developerCanInitialPush(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:Group\n    properties:\n      name: example\n      path: example\n      description: An example group\n  # Create a project in the example group\n  exampleProject:\n    type: gitlab:Project\n    name: example\n    properties:\n      name: example\n      description: An example project\n      namespaceId: ${example.id}\n  # Group with custom push rules\n  example-two:\n    type: gitlab:Group\n    properties:\n      name: example-two\n      path: example-two\n      description: An example group with push rules\n      pushRules:\n        authorEmailRegex: '@example\\.com$'\n        commitCommitterCheck: true\n        memberCheck: true\n        preventSecrets: true\n  # Group with custom default branch protection defaults\n  example-three:\n    type: gitlab:Group\n    properties:\n      name: example-three\n      path: example-three\n      description: An example group with default branch protection defaults\n      defaultBranchProtectionDefaults:\n        allowedToPushes:\n          - developer\n        allowForcePush: true\n        allowedToMerges:\n          - developer\n          - maintainer\n        developerCanInitialPush: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import gitlab:index/group:Group You can import a group state using `\u003cresource\u003e \u003cid\u003e`. The\n```\n\n`id` can be whatever the [details of a group][details_of_a_group] api takes for\n\nits `:id` value, so for example:\n\n```sh\n$ pulumi import gitlab:index/group:Group example example\n```\n\n",
+            "description": "The `gitlab.Group` resource allows to manage the lifecycle of a group.\n\n\u003e On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.Group(\"example\", {\n    name: \"example\",\n    path: \"example\",\n    description: \"An example group\",\n});\n// Create a project in the example group\nconst exampleProject = new gitlab.Project(\"example\", {\n    name: \"example\",\n    description: \"An example project\",\n    namespaceId: example.id,\n});\n// Group with custom push rules\nconst example_two = new gitlab.Group(\"example-two\", {\n    name: \"example-two\",\n    path: \"example-two\",\n    description: \"An example group with push rules\",\n    pushRules: {\n        authorEmailRegex: \"@example\\\\.com$\",\n        commitCommitterCheck: true,\n        memberCheck: true,\n        preventSecrets: true,\n    },\n});\n// Group with custom default branch protection defaults\nconst example_three = new gitlab.Group(\"example-three\", {\n    name: \"example-three\",\n    path: \"example-three\",\n    description: \"An example group with default branch protection defaults\",\n    defaultBranchProtectionDefaults: {\n        allowedToPushes: [\"developer\"],\n        allowForcePush: true,\n        allowedToMerges: [\n            \"developer\",\n            \"maintainer\",\n        ],\n        developerCanInitialPush: true,\n    },\n});\n// Group with custom default branch protection defaults\nconst example_four = new gitlab.Group(\"example-four\", {\n    name: \"example-four\",\n    path: \"example-four\",\n    description: \"An example group with default branch protection defaults\",\n    defaultBranchProtectionDefaults: {\n        allowedToPushes: [\"no one\"],\n        allowForcePush: true,\n        allowedToMerges: [\"no one\"],\n        developerCanInitialPush: true,\n    },\n});\n// Group with a default branch name specified\nconst example_five = new gitlab.Group(\"example-five\", {\n    name: \"example\",\n    path: \"example\",\n    defaultBranch: \"develop\",\n    description: \"An example group with a default branch name\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.Group(\"example\",\n    name=\"example\",\n    path=\"example\",\n    description=\"An example group\")\n# Create a project in the example group\nexample_project = gitlab.Project(\"example\",\n    name=\"example\",\n    description=\"An example project\",\n    namespace_id=example.id)\n# Group with custom push rules\nexample_two = gitlab.Group(\"example-two\",\n    name=\"example-two\",\n    path=\"example-two\",\n    description=\"An example group with push rules\",\n    push_rules={\n        \"author_email_regex\": \"@example\\\\.com$\",\n        \"commit_committer_check\": True,\n        \"member_check\": True,\n        \"prevent_secrets\": True,\n    })\n# Group with custom default branch protection defaults\nexample_three = gitlab.Group(\"example-three\",\n    name=\"example-three\",\n    path=\"example-three\",\n    description=\"An example group with default branch protection defaults\",\n    default_branch_protection_defaults={\n        \"allowed_to_pushes\": [\"developer\"],\n        \"allow_force_push\": True,\n        \"allowed_to_merges\": [\n            \"developer\",\n            \"maintainer\",\n        ],\n        \"developer_can_initial_push\": True,\n    })\n# Group with custom default branch protection defaults\nexample_four = gitlab.Group(\"example-four\",\n    name=\"example-four\",\n    path=\"example-four\",\n    description=\"An example group with default branch protection defaults\",\n    default_branch_protection_defaults={\n        \"allowed_to_pushes\": [\"no one\"],\n        \"allow_force_push\": True,\n        \"allowed_to_merges\": [\"no one\"],\n        \"developer_can_initial_push\": True,\n    })\n# Group with a default branch name specified\nexample_five = gitlab.Group(\"example-five\",\n    name=\"example\",\n    path=\"example\",\n    default_branch=\"develop\",\n    description=\"An example group with a default branch name\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.Group(\"example\", new()\n    {\n        Name = \"example\",\n        Path = \"example\",\n        Description = \"An example group\",\n    });\n\n    // Create a project in the example group\n    var exampleProject = new GitLab.Project(\"example\", new()\n    {\n        Name = \"example\",\n        Description = \"An example project\",\n        NamespaceId = example.Id,\n    });\n\n    // Group with custom push rules\n    var example_two = new GitLab.Group(\"example-two\", new()\n    {\n        Name = \"example-two\",\n        Path = \"example-two\",\n        Description = \"An example group with push rules\",\n        PushRules = new GitLab.Inputs.GroupPushRulesArgs\n        {\n            AuthorEmailRegex = \"@example\\\\.com$\",\n            CommitCommitterCheck = true,\n            MemberCheck = true,\n            PreventSecrets = true,\n        },\n    });\n\n    // Group with custom default branch protection defaults\n    var example_three = new GitLab.Group(\"example-three\", new()\n    {\n        Name = \"example-three\",\n        Path = \"example-three\",\n        Description = \"An example group with default branch protection defaults\",\n        DefaultBranchProtectionDefaults = new GitLab.Inputs.GroupDefaultBranchProtectionDefaultsArgs\n        {\n            AllowedToPushes = new[]\n            {\n                \"developer\",\n            },\n            AllowForcePush = true,\n            AllowedToMerges = new[]\n            {\n                \"developer\",\n                \"maintainer\",\n            },\n            DeveloperCanInitialPush = true,\n        },\n    });\n\n    // Group with custom default branch protection defaults\n    var example_four = new GitLab.Group(\"example-four\", new()\n    {\n        Name = \"example-four\",\n        Path = \"example-four\",\n        Description = \"An example group with default branch protection defaults\",\n        DefaultBranchProtectionDefaults = new GitLab.Inputs.GroupDefaultBranchProtectionDefaultsArgs\n        {\n            AllowedToPushes = new[]\n            {\n                \"no one\",\n            },\n            AllowForcePush = true,\n            AllowedToMerges = new[]\n            {\n                \"no one\",\n            },\n            DeveloperCanInitialPush = true,\n        },\n    });\n\n    // Group with a default branch name specified\n    var example_five = new GitLab.Group(\"example-five\", new()\n    {\n        Name = \"example\",\n        Path = \"example\",\n        DefaultBranch = \"develop\",\n        Description = \"An example group with a default branch name\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewGroup(ctx, \"example\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tPath:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create a project in the example group\n\t\t_, err = gitlab.NewProject(ctx, \"example\", \u0026gitlab.ProjectArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example project\"),\n\t\t\tNamespaceId: example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Group with custom push rules\n\t\t_, err = gitlab.NewGroup(ctx, \"example-two\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example-two\"),\n\t\t\tPath:        pulumi.String(\"example-two\"),\n\t\t\tDescription: pulumi.String(\"An example group with push rules\"),\n\t\t\tPushRules: \u0026gitlab.GroupPushRulesArgs{\n\t\t\t\tAuthorEmailRegex:     pulumi.String(\"@example\\\\.com$\"),\n\t\t\t\tCommitCommitterCheck: pulumi.Bool(true),\n\t\t\t\tMemberCheck:          pulumi.Bool(true),\n\t\t\t\tPreventSecrets:       pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Group with custom default branch protection defaults\n\t\t_, err = gitlab.NewGroup(ctx, \"example-three\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example-three\"),\n\t\t\tPath:        pulumi.String(\"example-three\"),\n\t\t\tDescription: pulumi.String(\"An example group with default branch protection defaults\"),\n\t\t\tDefaultBranchProtectionDefaults: \u0026gitlab.GroupDefaultBranchProtectionDefaultsArgs{\n\t\t\t\tAllowedToPushes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"developer\"),\n\t\t\t\t},\n\t\t\t\tAllowForcePush: pulumi.Bool(true),\n\t\t\t\tAllowedToMerges: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"developer\"),\n\t\t\t\t\tpulumi.String(\"maintainer\"),\n\t\t\t\t},\n\t\t\t\tDeveloperCanInitialPush: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Group with custom default branch protection defaults\n\t\t_, err = gitlab.NewGroup(ctx, \"example-four\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example-four\"),\n\t\t\tPath:        pulumi.String(\"example-four\"),\n\t\t\tDescription: pulumi.String(\"An example group with default branch protection defaults\"),\n\t\t\tDefaultBranchProtectionDefaults: \u0026gitlab.GroupDefaultBranchProtectionDefaultsArgs{\n\t\t\t\tAllowedToPushes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"no one\"),\n\t\t\t\t},\n\t\t\t\tAllowForcePush: pulumi.Bool(true),\n\t\t\t\tAllowedToMerges: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"no one\"),\n\t\t\t\t},\n\t\t\t\tDeveloperCanInitialPush: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Group with a default branch name specified\n\t\t_, err = gitlab.NewGroup(ctx, \"example-five\", \u0026gitlab.GroupArgs{\n\t\t\tName:          pulumi.String(\"example\"),\n\t\t\tPath:          pulumi.String(\"example\"),\n\t\t\tDefaultBranch: pulumi.String(\"develop\"),\n\t\t\tDescription:   pulumi.String(\"An example group with a default branch name\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.inputs.GroupPushRulesArgs;\nimport com.pulumi.gitlab.inputs.GroupDefaultBranchProtectionDefaultsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()\n            .name(\"example\")\n            .path(\"example\")\n            .description(\"An example group\")\n            .build());\n\n        // Create a project in the example group\n        var exampleProject = new Project(\"exampleProject\", ProjectArgs.builder()\n            .name(\"example\")\n            .description(\"An example project\")\n            .namespaceId(example.id())\n            .build());\n\n        // Group with custom push rules\n        var example_two = new Group(\"example-two\", GroupArgs.builder()\n            .name(\"example-two\")\n            .path(\"example-two\")\n            .description(\"An example group with push rules\")\n            .pushRules(GroupPushRulesArgs.builder()\n                .authorEmailRegex(\"@example\\\\.com$\")\n                .commitCommitterCheck(true)\n                .memberCheck(true)\n                .preventSecrets(true)\n                .build())\n            .build());\n\n        // Group with custom default branch protection defaults\n        var example_three = new Group(\"example-three\", GroupArgs.builder()\n            .name(\"example-three\")\n            .path(\"example-three\")\n            .description(\"An example group with default branch protection defaults\")\n            .defaultBranchProtectionDefaults(GroupDefaultBranchProtectionDefaultsArgs.builder()\n                .allowedToPushes(\"developer\")\n                .allowForcePush(true)\n                .allowedToMerges(                \n                    \"developer\",\n                    \"maintainer\")\n                .developerCanInitialPush(true)\n                .build())\n            .build());\n\n        // Group with custom default branch protection defaults\n        var example_four = new Group(\"example-four\", GroupArgs.builder()\n            .name(\"example-four\")\n            .path(\"example-four\")\n            .description(\"An example group with default branch protection defaults\")\n            .defaultBranchProtectionDefaults(GroupDefaultBranchProtectionDefaultsArgs.builder()\n                .allowedToPushes(\"no one\")\n                .allowForcePush(true)\n                .allowedToMerges(\"no one\")\n                .developerCanInitialPush(true)\n                .build())\n            .build());\n\n        // Group with a default branch name specified\n        var example_five = new Group(\"example-five\", GroupArgs.builder()\n            .name(\"example\")\n            .path(\"example\")\n            .defaultBranch(\"develop\")\n            .description(\"An example group with a default branch name\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:Group\n    properties:\n      name: example\n      path: example\n      description: An example group\n  # Create a project in the example group\n  exampleProject:\n    type: gitlab:Project\n    name: example\n    properties:\n      name: example\n      description: An example project\n      namespaceId: ${example.id}\n  # Group with custom push rules\n  example-two:\n    type: gitlab:Group\n    properties:\n      name: example-two\n      path: example-two\n      description: An example group with push rules\n      pushRules:\n        authorEmailRegex: '@example\\.com$'\n        commitCommitterCheck: true\n        memberCheck: true\n        preventSecrets: true\n  # Group with custom default branch protection defaults\n  example-three:\n    type: gitlab:Group\n    properties:\n      name: example-three\n      path: example-three\n      description: An example group with default branch protection defaults\n      defaultBranchProtectionDefaults:\n        allowedToPushes:\n          - developer\n        allowForcePush: true\n        allowedToMerges:\n          - developer\n          - maintainer\n        developerCanInitialPush: true\n  # Group with custom default branch protection defaults\n  example-four:\n    type: gitlab:Group\n    properties:\n      name: example-four\n      path: example-four\n      description: An example group with default branch protection defaults\n      defaultBranchProtectionDefaults:\n        allowedToPushes:\n          - no one\n        allowForcePush: true\n        allowedToMerges:\n          - no one\n        developerCanInitialPush: true\n  # Group with a default branch name specified\n  example-five:\n    type: gitlab:Group\n    properties:\n      name: example\n      path: example\n      defaultBranch: develop\n      description: An example group with a default branch name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import gitlab:index/group:Group You can import a group state using `\u003cresource\u003e \u003cid\u003e`. The\n```\n\n`id` can be whatever the [details of a group][details_of_a_group] api takes for\n\nits `:id` value, so for example:\n\n```sh\n$ pulumi import gitlab:index/group:Group example example\n```\n\n",
             "properties": {
                 "autoDevopsEnabled": {
                     "type": "boolean",
@@ -9426,6 +10350,10 @@
                 "avatarUrl": {
                     "type": "string",
                     "description": "The URL of the avatar image.\n"
+                },
+                "defaultBranch": {
+                    "type": "string",
+                    "description": "Initial default branch name.\n"
                 },
                 "defaultBranchProtection": {
                     "type": "integer",
@@ -9592,6 +10520,10 @@
                     "type": "string",
                     "description": "The hash of the avatar image. Use `filesha256(\"path/to/avatar.png\")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.\n"
                 },
+                "defaultBranch": {
+                    "type": "string",
+                    "description": "Initial default branch name.\n"
+                },
                 "defaultBranchProtection": {
                     "type": "integer",
                     "description": "See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.\n",
@@ -9718,6 +10650,10 @@
                     "avatarUrl": {
                         "type": "string",
                         "description": "The URL of the avatar image.\n"
+                    },
+                    "defaultBranch": {
+                        "type": "string",
+                        "description": "Initial default branch name.\n"
                     },
                     "defaultBranchProtection": {
                         "type": "integer",
@@ -10422,11 +11358,11 @@
                 },
                 "confidentialNoteEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for confidential notes events.\n"
+                    "description": "Invoke the hook for confidential note events.\n"
                 },
                 "customWebhookTemplate": {
                     "type": "string",
-                    "description": "Set a custom webhook template.\n"
+                    "description": "Custom webhook template.\n"
                 },
                 "deploymentEvents": {
                     "type": "boolean",
@@ -10434,11 +11370,11 @@
                 },
                 "enableSslVerification": {
                     "type": "boolean",
-                    "description": "Enable ssl verification when invoking the hook.\n"
+                    "description": "Enable SSL verification when invoking the hook.\n"
                 },
                 "group": {
                     "type": "string",
-                    "description": "The ID or full path of the group.\n"
+                    "description": "The full path or id of the group to add the hook to.\n"
                 },
                 "groupId": {
                     "type": "integer",
@@ -10458,11 +11394,11 @@
                 },
                 "mergeRequestsEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for merge requests.\n"
+                    "description": "Invoke the hook for merge requests events.\n"
                 },
                 "noteEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for notes events.\n"
+                    "description": "Invoke the hook for note events.\n"
                 },
                 "pipelineEvents": {
                     "type": "boolean",
@@ -10478,7 +11414,7 @@
                 },
                 "releasesEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for releases events.\n"
+                    "description": "Invoke the hook for release events.\n"
                 },
                 "subgroupEvents": {
                     "type": "boolean",
@@ -10495,7 +11431,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The url of the hook to invoke.\n"
+                    "description": "The url of the hook to invoke. Forces re-creation to preserve `token`.\n"
                 },
                 "wikiPageEvents": {
                     "type": "boolean",
@@ -10503,10 +11439,27 @@
                 }
             },
             "required": [
+                "confidentialIssuesEvents",
+                "confidentialNoteEvents",
+                "customWebhookTemplate",
+                "deploymentEvents",
+                "enableSslVerification",
                 "group",
                 "groupId",
                 "hookId",
-                "url"
+                "issuesEvents",
+                "jobEvents",
+                "mergeRequestsEvents",
+                "noteEvents",
+                "pipelineEvents",
+                "pushEvents",
+                "pushEventsBranchFilter",
+                "releasesEvents",
+                "subgroupEvents",
+                "tagPushEvents",
+                "token",
+                "url",
+                "wikiPageEvents"
             ],
             "inputProperties": {
                 "confidentialIssuesEvents": {
@@ -10515,11 +11468,11 @@
                 },
                 "confidentialNoteEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for confidential notes events.\n"
+                    "description": "Invoke the hook for confidential note events.\n"
                 },
                 "customWebhookTemplate": {
                     "type": "string",
-                    "description": "Set a custom webhook template.\n"
+                    "description": "Custom webhook template.\n"
                 },
                 "deploymentEvents": {
                     "type": "boolean",
@@ -10527,11 +11480,11 @@
                 },
                 "enableSslVerification": {
                     "type": "boolean",
-                    "description": "Enable ssl verification when invoking the hook.\n"
+                    "description": "Enable SSL verification when invoking the hook.\n"
                 },
                 "group": {
                     "type": "string",
-                    "description": "The ID or full path of the group.\n"
+                    "description": "The full path or id of the group to add the hook to.\n"
                 },
                 "issuesEvents": {
                     "type": "boolean",
@@ -10543,11 +11496,11 @@
                 },
                 "mergeRequestsEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for merge requests.\n"
+                    "description": "Invoke the hook for merge requests events.\n"
                 },
                 "noteEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for notes events.\n"
+                    "description": "Invoke the hook for note events.\n"
                 },
                 "pipelineEvents": {
                     "type": "boolean",
@@ -10563,7 +11516,7 @@
                 },
                 "releasesEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for releases events.\n"
+                    "description": "Invoke the hook for release events.\n"
                 },
                 "subgroupEvents": {
                     "type": "boolean",
@@ -10580,7 +11533,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The url of the hook to invoke.\n"
+                    "description": "The url of the hook to invoke. Forces re-creation to preserve `token`.\n"
                 },
                 "wikiPageEvents": {
                     "type": "boolean",
@@ -10600,11 +11553,11 @@
                     },
                     "confidentialNoteEvents": {
                         "type": "boolean",
-                        "description": "Invoke the hook for confidential notes events.\n"
+                        "description": "Invoke the hook for confidential note events.\n"
                     },
                     "customWebhookTemplate": {
                         "type": "string",
-                        "description": "Set a custom webhook template.\n"
+                        "description": "Custom webhook template.\n"
                     },
                     "deploymentEvents": {
                         "type": "boolean",
@@ -10612,11 +11565,11 @@
                     },
                     "enableSslVerification": {
                         "type": "boolean",
-                        "description": "Enable ssl verification when invoking the hook.\n"
+                        "description": "Enable SSL verification when invoking the hook.\n"
                     },
                     "group": {
                         "type": "string",
-                        "description": "The ID or full path of the group.\n"
+                        "description": "The full path or id of the group to add the hook to.\n"
                     },
                     "groupId": {
                         "type": "integer",
@@ -10636,11 +11589,11 @@
                     },
                     "mergeRequestsEvents": {
                         "type": "boolean",
-                        "description": "Invoke the hook for merge requests.\n"
+                        "description": "Invoke the hook for merge requests events.\n"
                     },
                     "noteEvents": {
                         "type": "boolean",
-                        "description": "Invoke the hook for notes events.\n"
+                        "description": "Invoke the hook for note events.\n"
                     },
                     "pipelineEvents": {
                         "type": "boolean",
@@ -10656,7 +11609,7 @@
                     },
                     "releasesEvents": {
                         "type": "boolean",
-                        "description": "Invoke the hook for releases events.\n"
+                        "description": "Invoke the hook for release events.\n"
                     },
                     "subgroupEvents": {
                         "type": "boolean",
@@ -10673,7 +11626,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "The url of the hook to invoke.\n"
+                        "description": "The url of the hook to invoke. Forces re-creation to preserve `token`.\n"
                     },
                     "wikiPageEvents": {
                         "type": "boolean",
@@ -11369,6 +12322,203 @@
                     "policyProjectGraphqlId": {
                         "type": "string",
                         "description": "The GraphQL ID of the security policy project.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/groupServiceAccount:GroupServiceAccount": {
+            "description": "The `gitlab.GroupServiceAccount` resource allows creating a GitLab group service account.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.Group(\"example\", {\n    name: \"example\",\n    path: \"example\",\n    description: \"An example group\",\n});\nconst example_sa = new gitlab.GroupServiceAccount(\"example-sa\", {\n    group: example.id,\n    name: \"example-name\",\n    username: \"example-username\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.Group(\"example\",\n    name=\"example\",\n    path=\"example\",\n    description=\"An example group\")\nexample_sa = gitlab.GroupServiceAccount(\"example-sa\",\n    group=example.id,\n    name=\"example-name\",\n    username=\"example-username\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.Group(\"example\", new()\n    {\n        Name = \"example\",\n        Path = \"example\",\n        Description = \"An example group\",\n    });\n\n    var example_sa = new GitLab.GroupServiceAccount(\"example-sa\", new()\n    {\n        Group = example.Id,\n        Name = \"example-name\",\n        Username = \"example-username\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewGroup(ctx, \"example\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tPath:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupServiceAccount(ctx, \"example-sa\", \u0026gitlab.GroupServiceAccountArgs{\n\t\t\tGroup:    example.ID(),\n\t\t\tName:     pulumi.String(\"example-name\"),\n\t\t\tUsername: pulumi.String(\"example-username\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.GroupServiceAccount;\nimport com.pulumi.gitlab.GroupServiceAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()\n            .name(\"example\")\n            .path(\"example\")\n            .description(\"An example group\")\n            .build());\n\n        var example_sa = new GroupServiceAccount(\"example-sa\", GroupServiceAccountArgs.builder()\n            .group(example.id())\n            .name(\"example-name\")\n            .username(\"example-username\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:Group\n    properties:\n      name: example\n      path: example\n      description: An example group\n  example-sa:\n    type: gitlab:GroupServiceAccount\n    properties:\n      group: ${example.id}\n      name: example-name\n      username: example-username\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount You can import a group service account using `\u003cresource\u003e \u003cid\u003e`. The\n```\n\n`id` is in the form of \u003cgroup_id\u003e:\u003cservice_account_id\u003e\n\n```sh\n$ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount example example\n```\n\n",
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user. If not specified, the default Service account user name is used.\n"
+                },
+                "serviceAccountId": {
+                    "type": "string",
+                    "description": "The service account id.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user. If not specified, it’s automatically generated.\n"
+                }
+            },
+            "required": [
+                "group",
+                "name",
+                "serviceAccountId"
+            ],
+            "inputProperties": {
+                "group": {
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user. If not specified, the default Service account user name is used.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user. If not specified, it’s automatically generated.\n"
+                }
+            },
+            "requiredInputs": [
+                "group"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupServiceAccount resources.\n",
+                "properties": {
+                    "group": {
+                        "type": "string",
+                        "description": "The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the user. If not specified, the default Service account user name is used.\n"
+                    },
+                    "serviceAccountId": {
+                        "type": "string",
+                        "description": "The service account id.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user. If not specified, it’s automatically generated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken": {
+            "description": "The `gitlab.GroupServiceAccountAccessToken` resource allows to manage the lifecycle of a group service account access token.\n\n\u003e Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.Group(\"example\", {\n    name: \"example\",\n    path: \"example\",\n    description: \"An example group\",\n});\nconst example_sa = new gitlab.GroupServiceAccount(\"example-sa\", {\n    group: example.id,\n    name: \"example-name\",\n    username: \"example-username\",\n});\nconst example_sa_token = new gitlab.GroupServiceAccountAccessToken(\"example-sa-token\", {\n    group: example.id,\n    userId: example_sa.id,\n    name: \"Example personal access token\",\n    expiresAt: \"2020-03-14\",\n    scopes: [\"api\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.Group(\"example\",\n    name=\"example\",\n    path=\"example\",\n    description=\"An example group\")\nexample_sa = gitlab.GroupServiceAccount(\"example-sa\",\n    group=example.id,\n    name=\"example-name\",\n    username=\"example-username\")\nexample_sa_token = gitlab.GroupServiceAccountAccessToken(\"example-sa-token\",\n    group=example.id,\n    user_id=example_sa.id,\n    name=\"Example personal access token\",\n    expires_at=\"2020-03-14\",\n    scopes=[\"api\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.Group(\"example\", new()\n    {\n        Name = \"example\",\n        Path = \"example\",\n        Description = \"An example group\",\n    });\n\n    var example_sa = new GitLab.GroupServiceAccount(\"example-sa\", new()\n    {\n        Group = example.Id,\n        Name = \"example-name\",\n        Username = \"example-username\",\n    });\n\n    var example_sa_token = new GitLab.GroupServiceAccountAccessToken(\"example-sa-token\", new()\n    {\n        Group = example.Id,\n        UserId = example_sa.Id,\n        Name = \"Example personal access token\",\n        ExpiresAt = \"2020-03-14\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewGroup(ctx, \"example\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tPath:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupServiceAccount(ctx, \"example-sa\", \u0026gitlab.GroupServiceAccountArgs{\n\t\t\tGroup:    example.ID(),\n\t\t\tName:     pulumi.String(\"example-name\"),\n\t\t\tUsername: pulumi.String(\"example-username\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupServiceAccountAccessToken(ctx, \"example-sa-token\", \u0026gitlab.GroupServiceAccountAccessTokenArgs{\n\t\t\tGroup:     example.ID(),\n\t\t\tUserId:    example_sa.ID(),\n\t\t\tName:      pulumi.String(\"Example personal access token\"),\n\t\t\tExpiresAt: pulumi.String(\"2020-03-14\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.GroupServiceAccount;\nimport com.pulumi.gitlab.GroupServiceAccountArgs;\nimport com.pulumi.gitlab.GroupServiceAccountAccessToken;\nimport com.pulumi.gitlab.GroupServiceAccountAccessTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()\n            .name(\"example\")\n            .path(\"example\")\n            .description(\"An example group\")\n            .build());\n\n        var example_sa = new GroupServiceAccount(\"example-sa\", GroupServiceAccountArgs.builder()\n            .group(example.id())\n            .name(\"example-name\")\n            .username(\"example-username\")\n            .build());\n\n        var example_sa_token = new GroupServiceAccountAccessToken(\"example-sa-token\", GroupServiceAccountAccessTokenArgs.builder()\n            .group(example.id())\n            .userId(example_sa.id())\n            .name(\"Example personal access token\")\n            .expiresAt(\"2020-03-14\")\n            .scopes(\"api\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:Group\n    properties:\n      name: example\n      path: example\n      description: An example group\n  example-sa:\n    type: gitlab:GroupServiceAccount\n    properties:\n      group: ${example.id}\n      name: example-name\n      username: example-username\n  example-sa-token:\n    type: gitlab:GroupServiceAccountAccessToken\n    properties:\n      group: ${example.id}\n      userId: ${[\"example-sa\"].id}\n      name: Example personal access token\n      expiresAt: 2020-03-14\n      scopes:\n        - api\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `\u003cresource\u003e \u003cid\u003e`. The\n```\n\n`id` is in the form of \u003cgroup_id\u003e:\u003cservice_account_id\u003e:\u003caccess_token_id\u003e\n\nImporting an access token does not import the access token value.\n\n```sh\n$ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken example 1:2:3\n```\n\n",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "True if the token is active.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Time the token has been created, RFC3339 format.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the group containing the service account. Must be a top level group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the personal access token.\n"
+                },
+                "revoked": {
+                    "type": "boolean",
+                    "description": "True if the token is revoked.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The token of the group service account access token. **Note**: the token is not available for imported resources.\n",
+                    "secret": true
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of a service account user.\n"
+                }
+            },
+            "required": [
+                "active",
+                "createdAt",
+                "expiresAt",
+                "group",
+                "name",
+                "revoked",
+                "scopes",
+                "token",
+                "userId"
+            ],
+            "inputProperties": {
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the group containing the service account. Must be a top level group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the personal access token.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of a service account user.\n"
+                }
+            },
+            "requiredInputs": [
+                "group",
+                "scopes",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupServiceAccountAccessToken resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "True if the token is active.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Time the token has been created, RFC3339 format.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The ID or URL-encoded path of the group containing the service account. Must be a top level group.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the personal access token.\n"
+                    },
+                    "revoked": {
+                        "type": "boolean",
+                        "description": "True if the token is revoked.\n"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The token of the group service account access token. **Note**: the token is not available for imported resources.\n",
+                        "secret": true
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "The ID of a service account user.\n"
                     }
                 },
                 "type": "object"
@@ -14244,7 +15394,7 @@
             }
         },
         "gitlab:index/personalAccessToken:PersonalAccessToken": {
-            "description": "The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.\n\n\u003e This resource requires administration privileges.\n\n\u003e Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.\n\n\u003e Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)\n\n\u003e Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.PersonalAccessToken(\"example\", {\n    userId: 25,\n    name: \"Example personal access token\",\n    expiresAt: \"2020-03-14\",\n    scopes: [\"api\"],\n});\nconst exampleProjectVariable = new gitlab.ProjectVariable(\"example\", {\n    project: exampleGitlabProject.id,\n    key: \"pat\",\n    value: example.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.PersonalAccessToken(\"example\",\n    user_id=25,\n    name=\"Example personal access token\",\n    expires_at=\"2020-03-14\",\n    scopes=[\"api\"])\nexample_project_variable = gitlab.ProjectVariable(\"example\",\n    project=example_gitlab_project[\"id\"],\n    key=\"pat\",\n    value=example.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.PersonalAccessToken(\"example\", new()\n    {\n        UserId = 25,\n        Name = \"Example personal access token\",\n        ExpiresAt = \"2020-03-14\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleProjectVariable = new GitLab.ProjectVariable(\"example\", new()\n    {\n        Project = exampleGitlabProject.Id,\n        Key = \"pat\",\n        Value = example.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewPersonalAccessToken(ctx, \"example\", \u0026gitlab.PersonalAccessTokenArgs{\n\t\t\tUserId:    pulumi.Int(25),\n\t\t\tName:      pulumi.String(\"Example personal access token\"),\n\t\t\tExpiresAt: pulumi.String(\"2020-03-14\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectVariable(ctx, \"example\", \u0026gitlab.ProjectVariableArgs{\n\t\t\tProject: pulumi.Any(exampleGitlabProject.Id),\n\t\t\tKey:     pulumi.String(\"pat\"),\n\t\t\tValue:   example.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.PersonalAccessToken;\nimport com.pulumi.gitlab.PersonalAccessTokenArgs;\nimport com.pulumi.gitlab.ProjectVariable;\nimport com.pulumi.gitlab.ProjectVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new PersonalAccessToken(\"example\", PersonalAccessTokenArgs.builder()\n            .userId(\"25\")\n            .name(\"Example personal access token\")\n            .expiresAt(\"2020-03-14\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleProjectVariable = new ProjectVariable(\"exampleProjectVariable\", ProjectVariableArgs.builder()\n            .project(exampleGitlabProject.id())\n            .key(\"pat\")\n            .value(example.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:PersonalAccessToken\n    properties:\n      userId: '25'\n      name: Example personal access token\n      expiresAt: 2020-03-14\n      scopes:\n        - api\n  exampleProjectVariable:\n    type: gitlab:ProjectVariable\n    name: example\n    properties:\n      project: ${exampleGitlabProject.id}\n      key: pat\n      value: ${example.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab Personal Access Token can be imported using a key composed of `\u003cuser-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example \"12345:1\"\n```\n\nNOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
+            "description": "The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.\n\n\u003e This resource requires administration privileges.\n\n\u003e Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.\n\n\u003e Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)\n\n\u003e Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.\n\n\u003e Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it's possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.PersonalAccessToken(\"example\", {\n    userId: 25,\n    name: \"Example personal access token\",\n    expiresAt: \"2020-03-14\",\n    scopes: [\"api\"],\n});\nconst exampleProjectVariable = new gitlab.ProjectVariable(\"example\", {\n    project: exampleGitlabProject.id,\n    key: \"pat\",\n    value: example.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.PersonalAccessToken(\"example\",\n    user_id=25,\n    name=\"Example personal access token\",\n    expires_at=\"2020-03-14\",\n    scopes=[\"api\"])\nexample_project_variable = gitlab.ProjectVariable(\"example\",\n    project=example_gitlab_project[\"id\"],\n    key=\"pat\",\n    value=example.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.PersonalAccessToken(\"example\", new()\n    {\n        UserId = 25,\n        Name = \"Example personal access token\",\n        ExpiresAt = \"2020-03-14\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n    var exampleProjectVariable = new GitLab.ProjectVariable(\"example\", new()\n    {\n        Project = exampleGitlabProject.Id,\n        Key = \"pat\",\n        Value = example.Token,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewPersonalAccessToken(ctx, \"example\", \u0026gitlab.PersonalAccessTokenArgs{\n\t\t\tUserId:    pulumi.Int(25),\n\t\t\tName:      pulumi.String(\"Example personal access token\"),\n\t\t\tExpiresAt: pulumi.String(\"2020-03-14\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectVariable(ctx, \"example\", \u0026gitlab.ProjectVariableArgs{\n\t\t\tProject: pulumi.Any(exampleGitlabProject.Id),\n\t\t\tKey:     pulumi.String(\"pat\"),\n\t\t\tValue:   example.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.PersonalAccessToken;\nimport com.pulumi.gitlab.PersonalAccessTokenArgs;\nimport com.pulumi.gitlab.ProjectVariable;\nimport com.pulumi.gitlab.ProjectVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new PersonalAccessToken(\"example\", PersonalAccessTokenArgs.builder()\n            .userId(\"25\")\n            .name(\"Example personal access token\")\n            .expiresAt(\"2020-03-14\")\n            .scopes(\"api\")\n            .build());\n\n        var exampleProjectVariable = new ProjectVariable(\"exampleProjectVariable\", ProjectVariableArgs.builder()\n            .project(exampleGitlabProject.id())\n            .key(\"pat\")\n            .value(example.token())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:PersonalAccessToken\n    properties:\n      userId: '25'\n      name: Example personal access token\n      expiresAt: 2020-03-14\n      scopes:\n        - api\n  exampleProjectVariable:\n    type: gitlab:ProjectVariable\n    name: example\n    properties:\n      project: ${exampleGitlabProject.id}\n      key: pat\n      value: ${example.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA GitLab Personal Access Token can be imported using a key composed of `\u003cuser-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example \"12345:1\"\n```\n\nNOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -14256,7 +15406,7 @@
                 },
                 "expiresAt": {
                     "type": "string",
-                    "description": "When the token will expire, YYYY-MM-DD format.\n"
+                    "description": "When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.\n"
                 },
                 "name": {
                     "type": "string",
@@ -14265,6 +15415,10 @@
                 "revoked": {
                     "type": "boolean",
                     "description": "True if the token is revoked.\n"
+                },
+                "rotationConfiguration": {
+                    "$ref": "#/types/gitlab:index/PersonalAccessTokenRotationConfiguration:PersonalAccessTokenRotationConfiguration",
+                    "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                 },
                 "scopes": {
                     "type": "array",
@@ -14296,11 +15450,15 @@
             "inputProperties": {
                 "expiresAt": {
                     "type": "string",
-                    "description": "When the token will expire, YYYY-MM-DD format.\n"
+                    "description": "When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "The name of the personal access token.\n"
+                },
+                "rotationConfiguration": {
+                    "$ref": "#/types/gitlab:index/PersonalAccessTokenRotationConfiguration:PersonalAccessTokenRotationConfiguration",
+                    "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                 },
                 "scopes": {
                     "type": "array",
@@ -14331,7 +15489,7 @@
                     },
                     "expiresAt": {
                         "type": "string",
-                        "description": "When the token will expire, YYYY-MM-DD format.\n"
+                        "description": "When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.\n"
                     },
                     "name": {
                         "type": "string",
@@ -14340,6 +15498,10 @@
                     "revoked": {
                         "type": "boolean",
                         "description": "True if the token is revoked.\n"
+                    },
+                    "rotationConfiguration": {
+                        "$ref": "#/types/gitlab:index/PersonalAccessTokenRotationConfiguration:PersonalAccessTokenRotationConfiguration",
+                        "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                     },
                     "scopes": {
                         "type": "array",
@@ -14654,6 +15816,10 @@
                     "type": "boolean",
                     "description": "Set to true if you want to treat skipped pipelines as if they finished with success.\n"
                 },
+                "allowPipelineTriggerApproveDeployment": {
+                    "type": "boolean",
+                    "description": "Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.\n"
+                },
                 "analyticsAccessLevel": {
                     "type": "string",
                     "description": "Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.\n"
@@ -14877,6 +16043,14 @@
                     "type": "boolean",
                     "description": "Enable trigger builds on pushes for a mirrored project.\n"
                 },
+                "modelExperimentsAccessLevel": {
+                    "type": "string",
+                    "description": "Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.\n"
+                },
+                "modelRegistryAccessLevel": {
+                    "type": "string",
+                    "description": "Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.\n"
+                },
                 "monitorAccessLevel": {
                     "type": "string",
                     "description": "Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.\n"
@@ -15065,6 +16239,7 @@
             },
             "required": [
                 "allowMergeOnSkippedPipeline",
+                "allowPipelineTriggerApproveDeployment",
                 "analyticsAccessLevel",
                 "autoCancelPendingPipelines",
                 "autoDevopsDeployStrategy",
@@ -15102,6 +16277,8 @@
                 "mergeTrainsEnabled",
                 "mirrorOverwritesDivergedBranches",
                 "mirrorTriggerBuilds",
+                "modelExperimentsAccessLevel",
+                "modelRegistryAccessLevel",
                 "monitorAccessLevel",
                 "name",
                 "namespaceId",
@@ -15141,6 +16318,10 @@
                 "allowMergeOnSkippedPipeline": {
                     "type": "boolean",
                     "description": "Set to true if you want to treat skipped pipelines as if they finished with success.\n"
+                },
+                "allowPipelineTriggerApproveDeployment": {
+                    "type": "boolean",
+                    "description": "Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.\n"
                 },
                 "analyticsAccessLevel": {
                     "type": "string",
@@ -15353,6 +16534,14 @@
                     "type": "boolean",
                     "description": "Enable trigger builds on pushes for a mirrored project.\n"
                 },
+                "modelExperimentsAccessLevel": {
+                    "type": "string",
+                    "description": "Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.\n"
+                },
+                "modelRegistryAccessLevel": {
+                    "type": "string",
+                    "description": "Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.\n"
+                },
                 "monitorAccessLevel": {
                     "type": "string",
                     "description": "Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.\n"
@@ -15530,6 +16719,10 @@
                     "allowMergeOnSkippedPipeline": {
                         "type": "boolean",
                         "description": "Set to true if you want to treat skipped pipelines as if they finished with success.\n"
+                    },
+                    "allowPipelineTriggerApproveDeployment": {
+                        "type": "boolean",
+                        "description": "Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.\n"
                     },
                     "analyticsAccessLevel": {
                         "type": "string",
@@ -15753,6 +16946,14 @@
                     "mirrorTriggerBuilds": {
                         "type": "boolean",
                         "description": "Enable trigger builds on pushes for a mirrored project.\n"
+                    },
+                    "modelExperimentsAccessLevel": {
+                        "type": "string",
+                        "description": "Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.\n"
+                    },
+                    "modelRegistryAccessLevel": {
+                        "type": "string",
+                        "description": "Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.\n"
                     },
                     "monitorAccessLevel": {
                         "type": "string",
@@ -16873,11 +18074,11 @@
                 },
                 "confidentialNoteEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for confidential notes events.\n"
+                    "description": "Invoke the hook for confidential note events.\n"
                 },
                 "customWebhookTemplate": {
                     "type": "string",
-                    "description": "Set a custom webhook template.\n"
+                    "description": "Custom webhook template.\n"
                 },
                 "deploymentEvents": {
                     "type": "boolean",
@@ -16885,7 +18086,7 @@
                 },
                 "enableSslVerification": {
                     "type": "boolean",
-                    "description": "Enable ssl verification when invoking the hook.\n"
+                    "description": "Enable SSL verification when invoking the hook.\n"
                 },
                 "hookId": {
                     "type": "integer",
@@ -16901,11 +18102,11 @@
                 },
                 "mergeRequestsEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for merge requests.\n"
+                    "description": "Invoke the hook for merge requests events.\n"
                 },
                 "noteEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for notes events.\n"
+                    "description": "Invoke the hook for note events.\n"
                 },
                 "pipelineEvents": {
                     "type": "boolean",
@@ -16929,7 +18130,7 @@
                 },
                 "releasesEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for releases events.\n"
+                    "description": "Invoke the hook for release events.\n"
                 },
                 "tagPushEvents": {
                     "type": "boolean",
@@ -16950,10 +18151,26 @@
                 }
             },
             "required": [
+                "confidentialIssuesEvents",
+                "confidentialNoteEvents",
+                "customWebhookTemplate",
+                "deploymentEvents",
+                "enableSslVerification",
                 "hookId",
+                "issuesEvents",
+                "jobEvents",
+                "mergeRequestsEvents",
+                "noteEvents",
+                "pipelineEvents",
                 "project",
                 "projectId",
-                "url"
+                "pushEvents",
+                "pushEventsBranchFilter",
+                "releasesEvents",
+                "tagPushEvents",
+                "token",
+                "url",
+                "wikiPageEvents"
             ],
             "inputProperties": {
                 "confidentialIssuesEvents": {
@@ -16962,11 +18179,11 @@
                 },
                 "confidentialNoteEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for confidential notes events.\n"
+                    "description": "Invoke the hook for confidential note events.\n"
                 },
                 "customWebhookTemplate": {
                     "type": "string",
-                    "description": "Set a custom webhook template.\n"
+                    "description": "Custom webhook template.\n"
                 },
                 "deploymentEvents": {
                     "type": "boolean",
@@ -16974,7 +18191,7 @@
                 },
                 "enableSslVerification": {
                     "type": "boolean",
-                    "description": "Enable ssl verification when invoking the hook.\n"
+                    "description": "Enable SSL verification when invoking the hook.\n"
                 },
                 "issuesEvents": {
                     "type": "boolean",
@@ -16986,11 +18203,11 @@
                 },
                 "mergeRequestsEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for merge requests.\n"
+                    "description": "Invoke the hook for merge requests events.\n"
                 },
                 "noteEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for notes events.\n"
+                    "description": "Invoke the hook for note events.\n"
                 },
                 "pipelineEvents": {
                     "type": "boolean",
@@ -16998,8 +18215,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name or id of the project to add the hook to.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name or id of the project to add the hook to.\n"
                 },
                 "pushEvents": {
                     "type": "boolean",
@@ -17011,7 +18227,7 @@
                 },
                 "releasesEvents": {
                     "type": "boolean",
-                    "description": "Invoke the hook for releases events.\n"
+                    "description": "Invoke the hook for release events.\n"
                 },
                 "tagPushEvents": {
                     "type": "boolean",
@@ -17024,8 +18240,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The url of the hook to invoke. Forces re-creation to preserve `token`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The url of the hook to invoke. Forces re-creation to preserve `token`.\n"
                 },
                 "wikiPageEvents": {
                     "type": "boolean",
@@ -17045,11 +18260,11 @@
                     },
                     "confidentialNoteEvents": {
                         "type": "boolean",
-                        "description": "Invoke the hook for confidential notes events.\n"
+                        "description": "Invoke the hook for confidential note events.\n"
                     },
                     "customWebhookTemplate": {
                         "type": "string",
-                        "description": "Set a custom webhook template.\n"
+                        "description": "Custom webhook template.\n"
                     },
                     "deploymentEvents": {
                         "type": "boolean",
@@ -17057,7 +18272,7 @@
                     },
                     "enableSslVerification": {
                         "type": "boolean",
-                        "description": "Enable ssl verification when invoking the hook.\n"
+                        "description": "Enable SSL verification when invoking the hook.\n"
                     },
                     "hookId": {
                         "type": "integer",
@@ -17073,11 +18288,11 @@
                     },
                     "mergeRequestsEvents": {
                         "type": "boolean",
-                        "description": "Invoke the hook for merge requests.\n"
+                        "description": "Invoke the hook for merge requests events.\n"
                     },
                     "noteEvents": {
                         "type": "boolean",
-                        "description": "Invoke the hook for notes events.\n"
+                        "description": "Invoke the hook for note events.\n"
                     },
                     "pipelineEvents": {
                         "type": "boolean",
@@ -17085,8 +18300,7 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name or id of the project to add the hook to.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name or id of the project to add the hook to.\n"
                     },
                     "projectId": {
                         "type": "integer",
@@ -17102,7 +18316,7 @@
                     },
                     "releasesEvents": {
                         "type": "boolean",
-                        "description": "Invoke the hook for releases events.\n"
+                        "description": "Invoke the hook for release events.\n"
                     },
                     "tagPushEvents": {
                         "type": "boolean",
@@ -17115,8 +18329,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "The url of the hook to invoke. Forces re-creation to preserve `token`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The url of the hook to invoke. Forces re-creation to preserve `token`.\n"
                     },
                     "wikiPageEvents": {
                         "type": "boolean",
@@ -22710,6 +23923,10 @@
             "outputs": {
                 "description": "A collection of values returned by getGroup.\n",
                 "properties": {
+                    "defaultBranch": {
+                        "description": "The default branch of the group.\n",
+                        "type": "string"
+                    },
                     "defaultBranchProtection": {
                         "description": "Whether developers and maintainers can push to the applicable default branch.\n",
                         "type": "integer"
@@ -22800,6 +24017,7 @@
                     }
                 },
                 "required": [
+                    "defaultBranch",
                     "defaultBranchProtection",
                     "description",
                     "extraSharedRunnersMinutesLimit",
@@ -23115,6 +24333,156 @@
                     "groupId",
                     "members",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers": {
+            "description": "The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroupProvisionedUsers.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Return only active provisioned users.\n"
+                    },
+                    "blocked": {
+                        "type": "boolean",
+                        "description": "Return only blocked provisioned users.\n"
+                    },
+                    "createdAfter": {
+                        "type": "string",
+                        "description": "Return only provisioned users created on or after the specified date. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).\n"
+                    },
+                    "createdBefore": {
+                        "type": "string",
+                        "description": "Return only provisioned users created on or before the specified date. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID or URL-encoded path of the group.\n"
+                    },
+                    "provisionedUsers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getGroupProvisionedUsersProvisionedUser:getGroupProvisionedUsersProvisionedUser"
+                        },
+                        "description": "The list of provisioned users.\n"
+                    },
+                    "search": {
+                        "type": "string",
+                        "description": "The search query to filter the provisioned users.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the provisioned user.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroupProvisionedUsers.\n",
+                "properties": {
+                    "active": {
+                        "description": "Return only active provisioned users.\n",
+                        "type": "boolean"
+                    },
+                    "blocked": {
+                        "description": "Return only blocked provisioned users.\n",
+                        "type": "boolean"
+                    },
+                    "createdAfter": {
+                        "description": "Return only provisioned users created on or after the specified date. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).\n",
+                        "type": "string"
+                    },
+                    "createdBefore": {
+                        "description": "Return only provisioned users created on or before the specified date. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The ID or URL-encoded path of the group.\n",
+                        "type": "string"
+                    },
+                    "provisionedUsers": {
+                        "description": "The list of provisioned users.\n",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getGroupProvisionedUsersProvisionedUser:getGroupProvisionedUsersProvisionedUser"
+                        },
+                        "type": "array"
+                    },
+                    "search": {
+                        "description": "The search query to filter the provisioned users.\n",
+                        "type": "string"
+                    },
+                    "username": {
+                        "description": "The username of the provisioned user.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "gitlab:index/getGroupServiceAccount:getGroupServiceAccount": {
+            "description": "The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroupServiceAccount.\n",
+                "properties": {
+                    "group": {
+                        "type": "string",
+                        "description": "The ID or URL-encoded path of the target group. Must be a top-level group.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the user. If not specified, the default Service account user name is used.\n"
+                    },
+                    "serviceAccountId": {
+                        "type": "string",
+                        "description": "The service account id.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user. If not specified, it's automatically generated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "group",
+                    "serviceAccountId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroupServiceAccount.\n",
+                "properties": {
+                    "group": {
+                        "description": "The ID or URL-encoded path of the target group. Must be a top-level group.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the user. If not specified, the default Service account user name is used.\n",
+                        "type": "string"
+                    },
+                    "serviceAccountId": {
+                        "description": "The service account id.\n",
+                        "type": "string"
+                    },
+                    "username": {
+                        "description": "The username of the user. If not specified, it's automatically generated.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "group",
+                    "id",
+                    "serviceAccountId"
                 ],
                 "type": "object"
             }
@@ -23779,6 +25147,10 @@
             "outputs": {
                 "description": "A collection of values returned by getProject.\n",
                 "properties": {
+                    "allowPipelineTriggerApproveDeployment": {
+                        "description": "Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.\n",
+                        "type": "boolean"
+                    },
                     "analyticsAccessLevel": {
                         "description": "Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.\n",
                         "type": "string"
@@ -23926,6 +25298,14 @@
                         "description": "Enable or disable merge trains.\n",
                         "type": "boolean"
                     },
+                    "modelExperimentsAccessLevel": {
+                        "description": "The visibility of machine learning model experiments.\n",
+                        "type": "string"
+                    },
+                    "modelRegistryAccessLevel": {
+                        "description": "The visibility of machine learning model registry.\n",
+                        "type": "string"
+                    },
                     "monitorAccessLevel": {
                         "description": "Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.\n",
                         "type": "string"
@@ -24058,6 +25438,7 @@
                     }
                 },
                 "required": [
+                    "allowPipelineTriggerApproveDeployment",
                     "analyticsAccessLevel",
                     "archived",
                     "autoCancelPendingPipelines",
@@ -24094,6 +25475,8 @@
                     "mergeRequestsAccessLevel",
                     "mergeRequestsEnabled",
                     "mergeTrainsEnabled",
+                    "modelExperimentsAccessLevel",
+                    "modelRegistryAccessLevel",
                     "monitorAccessLevel",
                     "name",
                     "namespaceId",
@@ -24975,6 +26358,93 @@
                     "members",
                     "projectId",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "gitlab:index/getProjectMergeRequest:getProjectMergeRequest": {
+            "description": "The `gitlab.getProjectMergeRequest` data source retrieves\ninformation about a single merge request related to a specific project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_requests.html#get-single-mr)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst byProjectId = gitlab.getProjectMergeRequest({\n    project: \"123\",\n    iid: 456,\n});\nconst byProjectName = gitlab.getProjectMergeRequest({\n    project: \"company/group/project1\",\n    iid: 3,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nby_project_id = gitlab.get_project_merge_request(project=\"123\",\n    iid=456)\nby_project_name = gitlab.get_project_merge_request(project=\"company/group/project1\",\n    iid=3)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var byProjectId = GitLab.GetProjectMergeRequest.Invoke(new()\n    {\n        Project = \"123\",\n        Iid = 456,\n    });\n\n    var byProjectName = GitLab.GetProjectMergeRequest.Invoke(new()\n    {\n        Project = \"company/group/project1\",\n        Iid = 3,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetProjectMergeRequest(ctx, \u0026gitlab.GetProjectMergeRequestArgs{\n\t\t\tProject: \"123\",\n\t\t\tIid:     456,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.GetProjectMergeRequest(ctx, \u0026gitlab.GetProjectMergeRequestArgs{\n\t\t\tProject: \"company/group/project1\",\n\t\t\tIid:     3,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var byProjectId = GitlabFunctions.getProjectMergeRequest(GetProjectMergeRequestArgs.builder()\n            .project(\"123\")\n            .iid(456)\n            .build());\n\n        final var byProjectName = GitlabFunctions.getProjectMergeRequest(GetProjectMergeRequestArgs.builder()\n            .project(\"company/group/project1\")\n            .iid(3)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  byProjectId:\n    fn::invoke:\n      Function: gitlab:getProjectMergeRequest\n      Arguments:\n        project: '123'\n        iid: 456\n  byProjectName:\n    fn::invoke:\n      Function: gitlab:getProjectMergeRequest\n      Arguments:\n        project: company/group/project1\n        iid: 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProjectMergeRequest.\n",
+                "properties": {
+                    "iid": {
+                        "type": "number",
+                        "description": "The unique project level ID of the merge request.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The ID or path of the project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "iid",
+                    "project"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProjectMergeRequest.\n",
+                "properties": {
+                    "assignee": {
+                        "$ref": "#/types/gitlab:index/getProjectMergeRequestAssignee:getProjectMergeRequestAssignee",
+                        "description": "First assignee of the merge request.\n"
+                    },
+                    "assignees": {
+                        "description": "Assignees of the merge request.\n",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getProjectMergeRequestAssignee:getProjectMergeRequestAssignee"
+                        },
+                        "type": "array"
+                    },
+                    "author": {
+                        "$ref": "#/types/gitlab:index/getProjectMergeRequestAuthor:getProjectMergeRequestAuthor",
+                        "description": "User who created this merge request.\n"
+                    },
+                    "blockingDiscussionsResolved": {
+                        "description": "Indicates if all discussions are resolved only if all are\nrequired before merge request can be merged.\n",
+                        "type": "boolean"
+                    },
+                    "changesCount": {
+                        "description": "Number of changes made on the merge request. Empty when the\nmerge request is created, and populates asynchronously.\n",
+                        "type": "string"
+                    },
+                    "closedAt": {
+                        "description": "Timestamp of when the merge request was closed.\n",
+                        "type": "string"
+                    },
+                    "closedBy": {
+                        "$ref": "#/types/gitlab:index/getProjectMergeRequestClosedBy:getProjectMergeRequestClosedBy",
+                        "description": "User who closed this merge request.\n"
+                    },
+                    "createdAt": {
+                        "description": "Timestamp of when the merge request was created.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The unique instance level ID of the merge request.\n",
+                        "type": "number"
+                    },
+                    "iid": {
+                        "description": "The unique project level ID of the merge request.\n",
+                        "type": "number"
+                    },
+                    "project": {
+                        "description": "The ID or path of the project.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "assignee",
+                    "assignees",
+                    "author",
+                    "blockingDiscussionsResolved",
+                    "changesCount",
+                    "closedAt",
+                    "closedBy",
+                    "createdAt",
+                    "id",
+                    "iid",
+                    "project"
                 ],
                 "type": "object"
             }
