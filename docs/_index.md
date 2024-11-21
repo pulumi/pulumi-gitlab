@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The gitlab provider is available as a package in all Pulumi languages:
+The Gitlab provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/gitlab`](https://www.npmjs.com/package/@pulumi/gitlab)
 * Python: [`pulumi-gitlab`](https://pypi.org/project/pulumi-gitlab/)
