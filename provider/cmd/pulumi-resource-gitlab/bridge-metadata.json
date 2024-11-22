@@ -142,6 +142,9 @@
                 "current": "gitlab:index/group:Group",
                 "majorVersion": 8,
                 "fields": {
+                    "allowed_email_domains_list": {
+                        "maxItemsOne": false
+                    },
                     "default_branch_protection_defaults": {
                         "maxItemsOne": true,
                         "elem": {
@@ -195,7 +198,12 @@
             },
             "gitlab_group_hook": {
                 "current": "gitlab:index/groupHook:GroupHook",
-                "majorVersion": 8
+                "majorVersion": 8,
+                "fields": {
+                    "custom_headers": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_group_issue_board": {
                 "current": "gitlab:index/groupIssueBoard:GroupIssueBoard",
@@ -420,6 +428,15 @@
                 "current": "gitlab:index/projectComplianceFramework:ProjectComplianceFramework",
                 "majorVersion": 8
             },
+            "gitlab_project_compliance_frameworks": {
+                "current": "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks",
+                "majorVersion": 8,
+                "fields": {
+                    "compliance_framework_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_project_custom_attribute": {
                 "current": "gitlab:index/projectCustomAttribute:ProjectCustomAttribute",
                 "majorVersion": 8
@@ -434,7 +451,12 @@
             },
             "gitlab_project_hook": {
                 "current": "gitlab:index/projectHook:ProjectHook",
-                "majorVersion": 8
+                "majorVersion": 8,
+                "fields": {
+                    "custom_headers": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_issue": {
                 "current": "gitlab:index/projectIssue:ProjectIssue",
@@ -716,6 +738,15 @@
                     }
                 }
             },
+            "gitlab_group_billable_member_memberships": {
+                "current": "gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships",
+                "majorVersion": 8,
+                "fields": {
+                    "memberships": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_group_hook": {
                 "current": "gitlab:index/getGroupHook:getGroupHook",
                 "majorVersion": 8
@@ -878,6 +909,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "gitlab_project_environments": {
+                "current": "gitlab:index/getProjectEnvironments:getProjectEnvironments",
+                "majorVersion": 8,
+                "fields": {
+                    "environments": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1186,6 +1226,18 @@
                     }
                 }
             },
+            "gitlab_runners": {
+                "current": "gitlab:index/getRunners:getRunners",
+                "majorVersion": 8,
+                "fields": {
+                    "runners": {
+                        "maxItemsOne": false
+                    },
+                    "tag_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_user": {
                 "current": "gitlab:index/getUser:getUser",
                 "majorVersion": 8
@@ -1269,6 +1321,7 @@
             "gitlab:index/projectBadge:ProjectBadge": 0,
             "gitlab:index/projectCluster:ProjectCluster": 0,
             "gitlab:index/projectComplianceFramework:ProjectComplianceFramework": 1,
+            "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks": 1,
             "gitlab:index/projectCustomAttribute:ProjectCustomAttribute": 0,
             "gitlab:index/projectEnvironment:ProjectEnvironment": 0,
             "gitlab:index/projectFreezePeriod:ProjectFreezePeriod": 0,
@@ -1319,6 +1372,7 @@
             "gitlab:index/getComplianceFramework:getComplianceFramework": 1,
             "gitlab:index/getCurrentUser:getCurrentUser": 0,
             "gitlab:index/getGroup:getGroup": 0,
+            "gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships": 1,
             "gitlab:index/getGroupHook:getGroupHook": 0,
             "gitlab:index/getGroupHooks:getGroupHooks": 0,
             "gitlab:index/getGroupIds:getGroupIds": 1,
@@ -1337,6 +1391,7 @@
             "gitlab:index/getPipelineSchedules:getPipelineSchedules": 1,
             "gitlab:index/getProject:getProject": 0,
             "gitlab:index/getProjectBranches:getProjectBranches": 0,
+            "gitlab:index/getProjectEnvironments:getProjectEnvironments": 1,
             "gitlab:index/getProjectHook:getProjectHook": 0,
             "gitlab:index/getProjectHooks:getProjectHooks": 0,
             "gitlab:index/getProjectIds:getProjectIds": 1,
@@ -1360,6 +1415,7 @@
             "gitlab:index/getReleaseLinks:getReleaseLinks": 0,
             "gitlab:index/getRepositoryFile:getRepositoryFile": 0,
             "gitlab:index/getRepositoryTree:getRepositoryTree": 0,
+            "gitlab:index/getRunners:getRunners": 1,
             "gitlab:index/getUser:getUser": 0,
             "gitlab:index/getUserSshkeys:getUserSshkeys": 0,
             "gitlab:index/getUsers:getUsers": 0
