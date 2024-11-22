@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProjectEnvironmentArgs Empty = new ProjectEnvironmentArgs();
+
+    /**
+     * The cluster agent to associate with this environment.
+     * 
+     */
+    @Import(name="clusterAgentId")
+    private @Nullable Output<Integer> clusterAgentId;
+
+    /**
+     * @return The cluster agent to associate with this environment.
+     * 
+     */
+    public Optional<Output<Integer>> clusterAgentId() {
+        return Optional.ofNullable(this.clusterAgentId);
+    }
 
     /**
      * Place to link to for this environment.
@@ -30,6 +46,36 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> externalUrl() {
         return Optional.ofNullable(this.externalUrl);
+    }
+
+    /**
+     * The Flux resource path to associate with this environment.
+     * 
+     */
+    @Import(name="fluxResourcePath")
+    private @Nullable Output<String> fluxResourcePath;
+
+    /**
+     * @return The Flux resource path to associate with this environment.
+     * 
+     */
+    public Optional<Output<String>> fluxResourcePath() {
+        return Optional.ofNullable(this.fluxResourcePath);
+    }
+
+    /**
+     * The Kubernetes namespace to associate with this environment.
+     * 
+     */
+    @Import(name="kubernetesNamespace")
+    private @Nullable Output<String> kubernetesNamespace;
+
+    /**
+     * @return The Kubernetes namespace to associate with this environment.
+     * 
+     */
+    public Optional<Output<String>> kubernetesNamespace() {
+        return Optional.ofNullable(this.kubernetesNamespace);
     }
 
     /**
@@ -77,13 +123,32 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.stopBeforeDestroy);
     }
 
+    /**
+     * The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+     * 
+     */
+    @Import(name="tier")
+    private @Nullable Output<String> tier;
+
+    /**
+     * @return The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+     * 
+     */
+    public Optional<Output<String>> tier() {
+        return Optional.ofNullable(this.tier);
+    }
+
     private ProjectEnvironmentArgs() {}
 
     private ProjectEnvironmentArgs(ProjectEnvironmentArgs $) {
+        this.clusterAgentId = $.clusterAgentId;
         this.externalUrl = $.externalUrl;
+        this.fluxResourcePath = $.fluxResourcePath;
+        this.kubernetesNamespace = $.kubernetesNamespace;
         this.name = $.name;
         this.project = $.project;
         this.stopBeforeDestroy = $.stopBeforeDestroy;
+        this.tier = $.tier;
     }
 
     public static Builder builder() {
@@ -105,6 +170,27 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param clusterAgentId The cluster agent to associate with this environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterAgentId(@Nullable Output<Integer> clusterAgentId) {
+            $.clusterAgentId = clusterAgentId;
+            return this;
+        }
+
+        /**
+         * @param clusterAgentId The cluster agent to associate with this environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterAgentId(Integer clusterAgentId) {
+            return clusterAgentId(Output.of(clusterAgentId));
+        }
+
+        /**
          * @param externalUrl Place to link to for this environment.
          * 
          * @return builder
@@ -123,6 +209,48 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
          */
         public Builder externalUrl(String externalUrl) {
             return externalUrl(Output.of(externalUrl));
+        }
+
+        /**
+         * @param fluxResourcePath The Flux resource path to associate with this environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fluxResourcePath(@Nullable Output<String> fluxResourcePath) {
+            $.fluxResourcePath = fluxResourcePath;
+            return this;
+        }
+
+        /**
+         * @param fluxResourcePath The Flux resource path to associate with this environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fluxResourcePath(String fluxResourcePath) {
+            return fluxResourcePath(Output.of(fluxResourcePath));
+        }
+
+        /**
+         * @param kubernetesNamespace The Kubernetes namespace to associate with this environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kubernetesNamespace(@Nullable Output<String> kubernetesNamespace) {
+            $.kubernetesNamespace = kubernetesNamespace;
+            return this;
+        }
+
+        /**
+         * @param kubernetesNamespace The Kubernetes namespace to associate with this environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kubernetesNamespace(String kubernetesNamespace) {
+            return kubernetesNamespace(Output.of(kubernetesNamespace));
         }
 
         /**
@@ -186,6 +314,27 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
          */
         public Builder stopBeforeDestroy(Boolean stopBeforeDestroy) {
             return stopBeforeDestroy(Output.of(stopBeforeDestroy));
+        }
+
+        /**
+         * @param tier The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(@Nullable Output<String> tier) {
+            $.tier = tier;
+            return this;
+        }
+
+        /**
+         * @param tier The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(String tier) {
+            return tier(Output.of(tier));
         }
 
         public ProjectEnvironmentArgs build() {

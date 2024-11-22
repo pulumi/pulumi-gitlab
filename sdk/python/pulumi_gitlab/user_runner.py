@@ -24,6 +24,7 @@ class UserRunnerArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 maintenance_note: Optional[pulumi.Input[str]] = None,
                  maximum_timeout: Optional[pulumi.Input[int]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  project_id: Optional[pulumi.Input[int]] = None,
@@ -36,6 +37,7 @@ class UserRunnerArgs:
         :param pulumi.Input[str] description: Description of the runner.
         :param pulumi.Input[int] group_id: The ID of the group that the runner is created in. Required if runner*type is group*type.
         :param pulumi.Input[bool] locked: Specifies if the runner should be locked for the current project.
+        :param pulumi.Input[str] maintenance_note: Free-form maintenance notes for the runner (1024 characters)
         :param pulumi.Input[int] maximum_timeout: Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
         :param pulumi.Input[bool] paused: Specifies if the runner should ignore new jobs.
         :param pulumi.Input[int] project_id: The ID of the project that the runner is created in. Required if runner*type is project*type.
@@ -51,6 +53,8 @@ class UserRunnerArgs:
             pulumi.set(__self__, "group_id", group_id)
         if locked is not None:
             pulumi.set(__self__, "locked", locked)
+        if maintenance_note is not None:
+            pulumi.set(__self__, "maintenance_note", maintenance_note)
         if maximum_timeout is not None:
             pulumi.set(__self__, "maximum_timeout", maximum_timeout)
         if paused is not None:
@@ -123,6 +127,18 @@ class UserRunnerArgs:
         pulumi.set(self, "locked", value)
 
     @property
+    @pulumi.getter(name="maintenanceNote")
+    def maintenance_note(self) -> Optional[pulumi.Input[str]]:
+        """
+        Free-form maintenance notes for the runner (1024 characters)
+        """
+        return pulumi.get(self, "maintenance_note")
+
+    @maintenance_note.setter
+    def maintenance_note(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_note", value)
+
+    @property
     @pulumi.getter(name="maximumTimeout")
     def maximum_timeout(self) -> Optional[pulumi.Input[int]]:
         """
@@ -190,6 +206,7 @@ class _UserRunnerState:
                  description: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 maintenance_note: Optional[pulumi.Input[str]] = None,
                  maximum_timeout: Optional[pulumi.Input[int]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  project_id: Optional[pulumi.Input[int]] = None,
@@ -203,6 +220,7 @@ class _UserRunnerState:
         :param pulumi.Input[str] description: Description of the runner.
         :param pulumi.Input[int] group_id: The ID of the group that the runner is created in. Required if runner*type is group*type.
         :param pulumi.Input[bool] locked: Specifies if the runner should be locked for the current project.
+        :param pulumi.Input[str] maintenance_note: Free-form maintenance notes for the runner (1024 characters)
         :param pulumi.Input[int] maximum_timeout: Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
         :param pulumi.Input[bool] paused: Specifies if the runner should ignore new jobs.
         :param pulumi.Input[int] project_id: The ID of the project that the runner is created in. Required if runner*type is project*type.
@@ -219,6 +237,8 @@ class _UserRunnerState:
             pulumi.set(__self__, "group_id", group_id)
         if locked is not None:
             pulumi.set(__self__, "locked", locked)
+        if maintenance_note is not None:
+            pulumi.set(__self__, "maintenance_note", maintenance_note)
         if maximum_timeout is not None:
             pulumi.set(__self__, "maximum_timeout", maximum_timeout)
         if paused is not None:
@@ -281,6 +301,18 @@ class _UserRunnerState:
     @locked.setter
     def locked(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "locked", value)
+
+    @property
+    @pulumi.getter(name="maintenanceNote")
+    def maintenance_note(self) -> Optional[pulumi.Input[str]]:
+        """
+        Free-form maintenance notes for the runner (1024 characters)
+        """
+        return pulumi.get(self, "maintenance_note")
+
+    @maintenance_note.setter
+    def maintenance_note(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_note", value)
 
     @property
     @pulumi.getter(name="maximumTimeout")
@@ -376,6 +408,7 @@ class UserRunner(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 maintenance_note: Optional[pulumi.Input[str]] = None,
                  maximum_timeout: Optional[pulumi.Input[int]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  project_id: Optional[pulumi.Input[int]] = None,
@@ -441,6 +474,20 @@ class UserRunner(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_user_runner`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_user_runner.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         You can import a gitlab runner using its ID
 
         Note: Importing a runner will not provide access to the `token` attribute
@@ -455,6 +502,7 @@ class UserRunner(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the runner.
         :param pulumi.Input[int] group_id: The ID of the group that the runner is created in. Required if runner*type is group*type.
         :param pulumi.Input[bool] locked: Specifies if the runner should be locked for the current project.
+        :param pulumi.Input[str] maintenance_note: Free-form maintenance notes for the runner (1024 characters)
         :param pulumi.Input[int] maximum_timeout: Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
         :param pulumi.Input[bool] paused: Specifies if the runner should ignore new jobs.
         :param pulumi.Input[int] project_id: The ID of the project that the runner is created in. Required if runner*type is project*type.
@@ -526,6 +574,20 @@ class UserRunner(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_user_runner`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_user_runner.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         You can import a gitlab runner using its ID
 
         Note: Importing a runner will not provide access to the `token` attribute
@@ -553,6 +615,7 @@ class UserRunner(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 maintenance_note: Optional[pulumi.Input[str]] = None,
                  maximum_timeout: Optional[pulumi.Input[int]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  project_id: Optional[pulumi.Input[int]] = None,
@@ -572,6 +635,7 @@ class UserRunner(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["group_id"] = group_id
             __props__.__dict__["locked"] = locked
+            __props__.__dict__["maintenance_note"] = maintenance_note
             __props__.__dict__["maximum_timeout"] = maximum_timeout
             __props__.__dict__["paused"] = paused
             __props__.__dict__["project_id"] = project_id
@@ -597,6 +661,7 @@ class UserRunner(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[int]] = None,
             locked: Optional[pulumi.Input[bool]] = None,
+            maintenance_note: Optional[pulumi.Input[str]] = None,
             maximum_timeout: Optional[pulumi.Input[int]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             project_id: Optional[pulumi.Input[int]] = None,
@@ -615,6 +680,7 @@ class UserRunner(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the runner.
         :param pulumi.Input[int] group_id: The ID of the group that the runner is created in. Required if runner*type is group*type.
         :param pulumi.Input[bool] locked: Specifies if the runner should be locked for the current project.
+        :param pulumi.Input[str] maintenance_note: Free-form maintenance notes for the runner (1024 characters)
         :param pulumi.Input[int] maximum_timeout: Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
         :param pulumi.Input[bool] paused: Specifies if the runner should ignore new jobs.
         :param pulumi.Input[int] project_id: The ID of the project that the runner is created in. Required if runner*type is project*type.
@@ -631,6 +697,7 @@ class UserRunner(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["locked"] = locked
+        __props__.__dict__["maintenance_note"] = maintenance_note
         __props__.__dict__["maximum_timeout"] = maximum_timeout
         __props__.__dict__["paused"] = paused
         __props__.__dict__["project_id"] = project_id
@@ -671,6 +738,14 @@ class UserRunner(pulumi.CustomResource):
         Specifies if the runner should be locked for the current project.
         """
         return pulumi.get(self, "locked")
+
+    @property
+    @pulumi.getter(name="maintenanceNote")
+    def maintenance_note(self) -> pulumi.Output[str]:
+        """
+        Free-form maintenance notes for the runner (1024 characters)
+        """
+        return pulumi.get(self, "maintenance_note")
 
     @property
     @pulumi.getter(name="maximumTimeout")

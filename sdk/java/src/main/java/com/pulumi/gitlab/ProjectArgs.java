@@ -320,6 +320,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * 
+     */
+    @Import(name="ciPipelineVariablesMinimumOverrideRole")
+    private @Nullable Output<String> ciPipelineVariablesMinimumOverrideRole;
+
+    /**
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * 
+     */
+    public Optional<Output<String>> ciPipelineVariablesMinimumOverrideRole() {
+        return Optional.ofNullable(this.ciPipelineVariablesMinimumOverrideRole);
+    }
+
+    /**
      * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */
@@ -1528,6 +1543,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.ciConfigPath = $.ciConfigPath;
         this.ciDefaultGitDepth = $.ciDefaultGitDepth;
         this.ciForwardDeploymentEnabled = $.ciForwardDeploymentEnabled;
+        this.ciPipelineVariablesMinimumOverrideRole = $.ciPipelineVariablesMinimumOverrideRole;
         this.ciRestrictPipelineCancellationRole = $.ciRestrictPipelineCancellationRole;
         this.ciSeparatedCaches = $.ciSeparatedCaches;
         this.containerExpirationPolicy = $.containerExpirationPolicy;
@@ -2036,6 +2052,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ciForwardDeploymentEnabled(Boolean ciForwardDeploymentEnabled) {
             return ciForwardDeploymentEnabled(Output.of(ciForwardDeploymentEnabled));
+        }
+
+        /**
+         * @param ciPipelineVariablesMinimumOverrideRole The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciPipelineVariablesMinimumOverrideRole(@Nullable Output<String> ciPipelineVariablesMinimumOverrideRole) {
+            $.ciPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
+            return this;
+        }
+
+        /**
+         * @param ciPipelineVariablesMinimumOverrideRole The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciPipelineVariablesMinimumOverrideRole(String ciPipelineVariablesMinimumOverrideRole) {
+            return ciPipelineVariablesMinimumOverrideRole(Output.of(ciPipelineVariablesMinimumOverrideRole));
         }
 
         /**

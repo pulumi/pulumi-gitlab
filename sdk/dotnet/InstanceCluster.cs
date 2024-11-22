@@ -45,6 +45,20 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_instance_cluster`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_instance_cluster.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
+    /// 
     /// GitLab instance clusters can be imported using a `clusterid`, e.g.
     /// 
     /// ```sh

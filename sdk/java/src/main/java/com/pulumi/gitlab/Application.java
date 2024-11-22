@@ -63,6 +63,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_application`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_application.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
+ * 
  * Gitlab applications can be imported with their id, e.g.
  * 
  * ```sh

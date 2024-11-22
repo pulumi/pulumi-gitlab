@@ -354,6 +354,20 @@ class GroupVariable(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_variable`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_group_variable.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
 
         ```sh
@@ -399,6 +413,20 @@ class GroupVariable(pulumi.CustomResource):
         ```
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_variable`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_group_variable.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
 

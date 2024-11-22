@@ -46,6 +46,20 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_environment`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_project_environment.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
+    /// 
     /// GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
     /// 
     /// ```sh
@@ -55,6 +69,12 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/projectEnvironment:ProjectEnvironment")]
     public partial class ProjectEnvironment : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The cluster agent to associate with this environment.
+        /// </summary>
+        [Output("clusterAgentId")]
+        public Output<int?> ClusterAgentId { get; private set; } = null!;
+
         /// <summary>
         /// The ISO8601 date/time that this environment was created at in UTC.
         /// </summary>
@@ -66,6 +86,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("externalUrl")]
         public Output<string?> ExternalUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The Flux resource path to associate with this environment.
+        /// </summary>
+        [Output("fluxResourcePath")]
+        public Output<string?> FluxResourcePath { get; private set; } = null!;
+
+        /// <summary>
+        /// The Kubernetes namespace to associate with this environment.
+        /// </summary>
+        [Output("kubernetesNamespace")]
+        public Output<string?> KubernetesNamespace { get; private set; } = null!;
 
         /// <summary>
         /// The name of the environment.
@@ -96,6 +128,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("stopBeforeDestroy")]
         public Output<bool?> StopBeforeDestroy { get; private set; } = null!;
+
+        /// <summary>
+        /// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        /// </summary>
+        [Output("tier")]
+        public Output<string> Tier { get; private set; } = null!;
 
         /// <summary>
         /// The ISO8601 date/time that this environment was last updated at in UTC.
@@ -150,10 +188,28 @@ namespace Pulumi.GitLab
     public sealed class ProjectEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The cluster agent to associate with this environment.
+        /// </summary>
+        [Input("clusterAgentId")]
+        public Input<int>? ClusterAgentId { get; set; }
+
+        /// <summary>
         /// Place to link to for this environment.
         /// </summary>
         [Input("externalUrl")]
         public Input<string>? ExternalUrl { get; set; }
+
+        /// <summary>
+        /// The Flux resource path to associate with this environment.
+        /// </summary>
+        [Input("fluxResourcePath")]
+        public Input<string>? FluxResourcePath { get; set; }
+
+        /// <summary>
+        /// The Kubernetes namespace to associate with this environment.
+        /// </summary>
+        [Input("kubernetesNamespace")]
+        public Input<string>? KubernetesNamespace { get; set; }
 
         /// <summary>
         /// The name of the environment.
@@ -173,6 +229,12 @@ namespace Pulumi.GitLab
         [Input("stopBeforeDestroy")]
         public Input<bool>? StopBeforeDestroy { get; set; }
 
+        /// <summary>
+        /// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        /// </summary>
+        [Input("tier")]
+        public Input<string>? Tier { get; set; }
+
         public ProjectEnvironmentArgs()
         {
         }
@@ -181,6 +243,12 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectEnvironmentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The cluster agent to associate with this environment.
+        /// </summary>
+        [Input("clusterAgentId")]
+        public Input<int>? ClusterAgentId { get; set; }
+
         /// <summary>
         /// The ISO8601 date/time that this environment was created at in UTC.
         /// </summary>
@@ -192,6 +260,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("externalUrl")]
         public Input<string>? ExternalUrl { get; set; }
+
+        /// <summary>
+        /// The Flux resource path to associate with this environment.
+        /// </summary>
+        [Input("fluxResourcePath")]
+        public Input<string>? FluxResourcePath { get; set; }
+
+        /// <summary>
+        /// The Kubernetes namespace to associate with this environment.
+        /// </summary>
+        [Input("kubernetesNamespace")]
+        public Input<string>? KubernetesNamespace { get; set; }
 
         /// <summary>
         /// The name of the environment.
@@ -222,6 +302,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("stopBeforeDestroy")]
         public Input<bool>? StopBeforeDestroy { get; set; }
+
+        /// <summary>
+        /// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        /// </summary>
+        [Input("tier")]
+        public Input<string>? Tier { get; set; }
 
         /// <summary>
         /// The ISO8601 date/time that this environment was last updated at in UTC.

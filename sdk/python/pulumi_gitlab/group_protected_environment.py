@@ -181,6 +181,20 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_protected_environment`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_group_protected_environment.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         GitLab group protected environments can be imported using an id made up of `groupId:environmentName`, e.g.
 
         ```sh
@@ -211,6 +225,20 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_protected_environments.html)
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_protected_environment`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_group_protected_environment.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         GitLab group protected environments can be imported using an id made up of `groupId:environmentName`, e.g.
 

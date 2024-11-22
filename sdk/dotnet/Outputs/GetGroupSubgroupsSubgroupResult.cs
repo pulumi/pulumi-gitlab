@@ -13,6 +13,7 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetGroupSubgroupsSubgroupResult
     {
+        public readonly string AllowedEmailDomainsList;
         public readonly bool AutoDevopsEnabled;
         public readonly string AvatarUrl;
         public readonly string CreatedAt;
@@ -43,6 +44,8 @@ namespace Pulumi.GitLab.Outputs
 
         [OutputConstructor]
         private GetGroupSubgroupsSubgroupResult(
+            string allowedEmailDomainsList,
+
             bool autoDevopsEnabled,
 
             string avatarUrl,
@@ -97,6 +100,7 @@ namespace Pulumi.GitLab.Outputs
 
             string wikiAccessLevel)
         {
+            AllowedEmailDomainsList = allowedEmailDomainsList;
             AutoDevopsEnabled = autoDevopsEnabled;
             AvatarUrl = avatarUrl;
             CreatedAt = createdAt;

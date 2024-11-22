@@ -33,6 +33,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_service_github`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_service_github.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Import using the CLI is supported using the following syntax:
+ *
  * ```sh
  * $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`:
  * ```

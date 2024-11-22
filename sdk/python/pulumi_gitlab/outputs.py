@@ -24,6 +24,7 @@ __all__ = [
     'GroupAccessTokenRotationConfiguration',
     'GroupDefaultBranchProtectionDefaults',
     'GroupEpicBoardList',
+    'GroupHookCustomHeader',
     'GroupIssueBoardList',
     'GroupProtectedEnvironmentApprovalRule',
     'GroupProtectedEnvironmentDeployAccessLevel',
@@ -31,6 +32,7 @@ __all__ = [
     'PersonalAccessTokenRotationConfiguration',
     'ProjectAccessTokenRotationConfiguration',
     'ProjectContainerExpirationPolicy',
+    'ProjectHookCustomHeader',
     'ProjectIssueBoardList',
     'ProjectIssueTaskCompletionStatus',
     'ProjectProtectedEnvironmentApprovalRule',
@@ -41,6 +43,7 @@ __all__ = [
     'TagProtectionAllowedToCreate',
     'GetBranchCommitResult',
     'GetClusterAgentsClusterAgentResult',
+    'GetGroupBillableMemberMembershipsMembershipResult',
     'GetGroupHooksHookResult',
     'GetGroupMembershipMemberResult',
     'GetGroupProvisionedUsersProvisionedUserResult',
@@ -60,6 +63,7 @@ __all__ = [
     'GetProjectBranchesBranchResult',
     'GetProjectBranchesBranchCommitResult',
     'GetProjectContainerExpirationPolicyResult',
+    'GetProjectEnvironmentsEnvironmentResult',
     'GetProjectHooksHookResult',
     'GetProjectIssueTaskCompletionStatusResult',
     'GetProjectIssuesIssueResult',
@@ -97,6 +101,7 @@ __all__ = [
     'GetReleaseAssetsSourceResult',
     'GetReleaseLinksReleaseLinkResult',
     'GetRepositoryTreeTreeResult',
+    'GetRunnersRunnerResult',
     'GetUserSshkeysKeyResult',
     'GetUsersUserResult',
 ]
@@ -436,6 +441,8 @@ class BranchProtectionAllowedToPush(dict):
             suggest = "access_level"
         elif key == "accessLevelDescription":
             suggest = "access_level_description"
+        elif key == "deployKeyId":
+            suggest = "deploy_key_id"
         elif key == "groupId":
             suggest = "group_id"
         elif key == "userId":
@@ -455,18 +462,22 @@ class BranchProtectionAllowedToPush(dict):
     def __init__(__self__, *,
                  access_level: Optional[str] = None,
                  access_level_description: Optional[str] = None,
+                 deploy_key_id: Optional[int] = None,
                  group_id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
         :param str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         :param str access_level_description: Readable description of access level.
-        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
         if access_level_description is not None:
             pulumi.set(__self__, "access_level_description", access_level_description)
+        if deploy_key_id is not None:
+            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if user_id is not None:
@@ -489,10 +500,18 @@ class BranchProtectionAllowedToPush(dict):
         return pulumi.get(self, "access_level_description")
 
     @property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[int]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -500,7 +519,7 @@ class BranchProtectionAllowedToPush(dict):
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[int]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
@@ -767,6 +786,35 @@ class GroupEpicBoardList(dict):
         The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
         """
         return pulumi.get(self, "position")
+
+
+@pulumi.output_type
+class GroupHookCustomHeader(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Key of the custom header.
+        :param str value: Value of the custom header. This value cannot be imported.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of the custom header.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value of the custom header. This value cannot be imported.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -1480,6 +1528,35 @@ class ProjectContainerExpirationPolicy(dict):
         The number of days to keep images.
         """
         return pulumi.get(self, "older_than")
+
+
+@pulumi.output_type
+class ProjectHookCustomHeader(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Key of the custom header.
+        :param str value: Value of the custom header. This value cannot be imported.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of the custom header.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value of the custom header. This value cannot be imported.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -2545,6 +2622,90 @@ class GetClusterAgentsClusterAgentResult(dict):
 
 
 @pulumi.output_type
+class GetGroupBillableMemberMembershipsMembershipResult(dict):
+    def __init__(__self__, *,
+                 access_level: str,
+                 created_at: str,
+                 expires_at: str,
+                 id: int,
+                 source_full_name: str,
+                 source_id: int,
+                 source_members_url: str):
+        """
+        :param str access_level: Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+        :param str created_at: Datetime when the membership was first added.
+        :param str expires_at: Date when the membership will end.
+        :param int id: The id of the membership.
+        :param str source_full_name: Breadcrumb-style, full display-name of the group or project.
+        :param int source_id: The id of the group or project, the user is a (direct) member of.
+        :param str source_members_url: URL to the members-page of the group or project.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "source_full_name", source_full_name)
+        pulumi.set(__self__, "source_id", source_id)
+        pulumi.set(__self__, "source_members_url", source_members_url)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> str:
+        """
+        Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+        """
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        Datetime when the membership was first added.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> str:
+        """
+        Date when the membership will end.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The id of the membership.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="sourceFullName")
+    def source_full_name(self) -> str:
+        """
+        Breadcrumb-style, full display-name of the group or project.
+        """
+        return pulumi.get(self, "source_full_name")
+
+    @property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> int:
+        """
+        The id of the group or project, the user is a (direct) member of.
+        """
+        return pulumi.get(self, "source_id")
+
+    @property
+    @pulumi.getter(name="sourceMembersUrl")
+    def source_members_url(self) -> str:
+        """
+        URL to the members-page of the group or project.
+        """
+        return pulumi.get(self, "source_members_url")
+
+
+@pulumi.output_type
 class GetGroupHooksHookResult(dict):
     def __init__(__self__, *,
                  confidential_issues_events: bool,
@@ -3224,6 +3385,7 @@ class GetGroupSharedWithGroupResult(dict):
 @pulumi.output_type
 class GetGroupSubgroupsSubgroupResult(dict):
     def __init__(__self__, *,
+                 allowed_email_domains_list: str,
                  auto_devops_enabled: bool,
                  avatar_url: str,
                  created_at: str,
@@ -3251,6 +3413,7 @@ class GetGroupSubgroupsSubgroupResult(dict):
                  visibility: str,
                  web_url: str,
                  wiki_access_level: str):
+        pulumi.set(__self__, "allowed_email_domains_list", allowed_email_domains_list)
         pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         pulumi.set(__self__, "avatar_url", avatar_url)
         pulumi.set(__self__, "created_at", created_at)
@@ -3278,6 +3441,11 @@ class GetGroupSubgroupsSubgroupResult(dict):
         pulumi.set(__self__, "visibility", visibility)
         pulumi.set(__self__, "web_url", web_url)
         pulumi.set(__self__, "wiki_access_level", wiki_access_level)
+
+    @property
+    @pulumi.getter(name="allowedEmailDomainsList")
+    def allowed_email_domains_list(self) -> str:
+        return pulumi.get(self, "allowed_email_domains_list")
 
     @property
     @pulumi.getter(name="autoDevopsEnabled")
@@ -3949,14 +4117,17 @@ class GetInstanceVariablesVariableResult(dict):
 class GetMetadataKasResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
+                 external_k8s_proxy_url: str,
                  external_url: str,
                  version: str):
         """
         :param bool enabled: Indicates whether KAS is enabled.
+        :param str external_k8s_proxy_url: URL used by the Kubernetes tooling to communicate with the KAS Kubernetes API proxy. It’s null if kas.enabled is false.
         :param str external_url: URL used by the agents to communicate with KAS. It’s null if kas.enabled is false.
         :param str version: Version of KAS. It’s null if kas.enabled is false.
         """
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "external_k8s_proxy_url", external_k8s_proxy_url)
         pulumi.set(__self__, "external_url", external_url)
         pulumi.set(__self__, "version", version)
 
@@ -3967,6 +4138,14 @@ class GetMetadataKasResult(dict):
         Indicates whether KAS is enabled.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="externalK8sProxyUrl")
+    def external_k8s_proxy_url(self) -> str:
+        """
+        URL used by the Kubernetes tooling to communicate with the KAS Kubernetes API proxy. It’s null if kas.enabled is false.
+        """
+        return pulumi.get(self, "external_k8s_proxy_url")
 
     @property
     @pulumi.getter(name="externalUrl")
@@ -4667,6 +4846,145 @@ class GetProjectContainerExpirationPolicyResult(dict):
         The number of days to keep images.
         """
         return pulumi.get(self, "older_than")
+
+
+@pulumi.output_type
+class GetProjectEnvironmentsEnvironmentResult(dict):
+    def __init__(__self__, *,
+                 cluster_agent_id: int,
+                 created_at: str,
+                 description: str,
+                 external_url: str,
+                 flux_resource_path: str,
+                 id: int,
+                 kubernetes_namespace: str,
+                 name: str,
+                 slug: str,
+                 state: str,
+                 tier: str,
+                 updated_at: str):
+        """
+        :param int cluster_agent_id: The ID of the environments cluster agent or `null` if none is assigned.
+        :param str created_at: Timestamp of the environment creation, RFC3339 format.
+        :param str description: The description of the environment.
+        :param str external_url: Place to link to for this environment.
+        :param str flux_resource_path: The Flux resource path to associate with this environment.
+        :param int id: The ID of the environment.
+        :param str kubernetes_namespace: The Kubernetes namespace to associate with this environment.
+        :param str name: The name of the environment.
+        :param str slug: The simplified version of the environment name, suitable for inclusion in DNS, URLs, Kubernetes labels, and so on. The slug is truncated to 24 characters. A random suffix is automatically added to uppercase environment names.
+        :param str state: The state of the environment. Value can be one of `available`, `stopping`, `stopped`. Returns all environments if not set.
+        :param str tier: The tier of the environment. Value can be one of `production`, `staging`, `testing`, `development`, `other`. Returns all environments if not set.
+        :param str updated_at: Timestamp of the last environment update, RFC3339 format.
+        """
+        pulumi.set(__self__, "cluster_agent_id", cluster_agent_id)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "external_url", external_url)
+        pulumi.set(__self__, "flux_resource_path", flux_resource_path)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "kubernetes_namespace", kubernetes_namespace)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "slug", slug)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "tier", tier)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="clusterAgentId")
+    def cluster_agent_id(self) -> int:
+        """
+        The ID of the environments cluster agent or `null` if none is assigned.
+        """
+        return pulumi.get(self, "cluster_agent_id")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        Timestamp of the environment creation, RFC3339 format.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the environment.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="externalUrl")
+    def external_url(self) -> str:
+        """
+        Place to link to for this environment.
+        """
+        return pulumi.get(self, "external_url")
+
+    @property
+    @pulumi.getter(name="fluxResourcePath")
+    def flux_resource_path(self) -> str:
+        """
+        The Flux resource path to associate with this environment.
+        """
+        return pulumi.get(self, "flux_resource_path")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the environment.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="kubernetesNamespace")
+    def kubernetes_namespace(self) -> str:
+        """
+        The Kubernetes namespace to associate with this environment.
+        """
+        return pulumi.get(self, "kubernetes_namespace")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the environment.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def slug(self) -> str:
+        """
+        The simplified version of the environment name, suitable for inclusion in DNS, URLs, Kubernetes labels, and so on. The slug is truncated to 24 characters. A random suffix is automatically added to uppercase environment names.
+        """
+        return pulumi.get(self, "slug")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the environment. Value can be one of `available`, `stopping`, `stopped`. Returns all environments if not set.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def tier(self) -> str:
+        """
+        The tier of the environment. Value can be one of `production`, `staging`, `testing`, `development`, `other`. Returns all environments if not set.
+        """
+        return pulumi.get(self, "tier")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        """
+        Timestamp of the last environment update, RFC3339 format.
+        """
+        return pulumi.get(self, "updated_at")
 
 
 @pulumi.output_type
@@ -5912,16 +6230,20 @@ class GetProjectProtectedBranchPushAccessLevelResult(dict):
     def __init__(__self__, *,
                  access_level: str,
                  access_level_description: str,
+                 deploy_key_id: Optional[int] = None,
                  group_id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
         :param str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         :param str access_level_description: Readable description of access level.
-        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
+        if deploy_key_id is not None:
+            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if user_id is not None:
@@ -5944,10 +6266,18 @@ class GetProjectProtectedBranchPushAccessLevelResult(dict):
         return pulumi.get(self, "access_level_description")
 
     @property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[int]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -5955,7 +6285,7 @@ class GetProjectProtectedBranchPushAccessLevelResult(dict):
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[int]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
@@ -6093,16 +6423,20 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
     def __init__(__self__, *,
                  access_level: str,
                  access_level_description: str,
+                 deploy_key_id: Optional[int] = None,
                  group_id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
         :param str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         :param str access_level_description: Readable description of access level.
-        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
+        if deploy_key_id is not None:
+            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if user_id is not None:
@@ -6125,10 +6459,18 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
         return pulumi.get(self, "access_level_description")
 
     @property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[int]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -6136,7 +6478,7 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[int]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
@@ -7013,6 +7355,7 @@ class GetProjectsProjectResult(dict):
                  ci_config_path: str,
                  ci_default_git_depth: int,
                  ci_forward_deployment_enabled: bool,
+                 ci_pipeline_variables_minimum_override_role: str,
                  ci_restrict_pipeline_cancellation_role: str,
                  container_expiration_policies: Sequence['outputs.GetProjectsProjectContainerExpirationPolicyResult'],
                  container_registry_access_level: str,
@@ -7113,6 +7456,7 @@ class GetProjectsProjectResult(dict):
         :param str ci_config_path: CI config file path for the project.
         :param int ci_default_git_depth: Default number of revisions for shallow cloning.
         :param bool ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param str ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param str ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param Sequence['GetProjectsProjectContainerExpirationPolicyArgs'] container_expiration_policies: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param str container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -7212,6 +7556,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "ci_config_path", ci_config_path)
         pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
         pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
         pulumi.set(__self__, "container_expiration_policies", container_expiration_policies)
         pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
@@ -7437,6 +7782,14 @@ class GetProjectsProjectResult(dict):
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @property
+    @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
+    def ci_pipeline_variables_minimum_override_role(self) -> str:
+        """
+        The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        """
+        return pulumi.get(self, "ci_pipeline_variables_minimum_override_role")
 
     @property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
@@ -8756,6 +9109,90 @@ class GetRepositoryTreeTreeResult(dict):
         Type of object in the repository. Can be either type tree or of type blob
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRunnersRunnerResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 id: int,
+                 is_shared: bool,
+                 online: bool,
+                 paused: bool,
+                 runner_type: str,
+                 status: str):
+        """
+        :param str description: The description of the runner.
+        :param int id: The runner id.
+        :param bool is_shared: Indicates if this is a shared runner
+        :param bool online: The connectivity status of the runner.
+        :param bool paused: Indicates if the runner is accepting or ignoring new jobs.
+        :param str runner_type: The runner type. Values are `instance_type`, `group_type` and `project_type`.
+        :param str status: The status of the runner. Values can be `online`, `offline`, `stale`, and `never_contacted`.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_shared", is_shared)
+        pulumi.set(__self__, "online", online)
+        pulumi.set(__self__, "paused", paused)
+        pulumi.set(__self__, "runner_type", runner_type)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the runner.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The runner id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isShared")
+    def is_shared(self) -> bool:
+        """
+        Indicates if this is a shared runner
+        """
+        return pulumi.get(self, "is_shared")
+
+    @property
+    @pulumi.getter
+    def online(self) -> bool:
+        """
+        The connectivity status of the runner.
+        """
+        return pulumi.get(self, "online")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> bool:
+        """
+        Indicates if the runner is accepting or ignoring new jobs.
+        """
+        return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter(name="runnerType")
+    def runner_type(self) -> str:
+        """
+        The runner type. Values are `instance_type`, `group_type` and `project_type`.
+        """
+        return pulumi.get(self, "runner_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the runner. Values can be `online`, `offline`, `stale`, and `never_contacted`.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

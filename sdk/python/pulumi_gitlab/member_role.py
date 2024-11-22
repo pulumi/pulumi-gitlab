@@ -262,6 +262,28 @@ class MemberRole(pulumi.CustomResource):
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationmemberrolecreate)
 
+        ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_member_role`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_member_role.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
+        GitLab member role can be imported using the id made up of `gid://gitlab/MemberRole/<ID>` e.g.
+
+        ```sh
+        $ pulumi import gitlab:index/memberRole:MemberRole example 'gid://gitlab/MemberRole/123'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] base_access_level: The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
@@ -288,6 +310,28 @@ class MemberRole(pulumi.CustomResource):
         > There can be only 10 custom roles on your instance or namespace. See [issue 450929](https://gitlab.com/gitlab-org/gitlab/-/issues/450929) for more details.
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationmemberrolecreate)
+
+        ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_member_role`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_member_role.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
+        GitLab member role can be imported using the id made up of `gid://gitlab/MemberRole/<ID>` e.g.
+
+        ```sh
+        $ pulumi import gitlab:index/memberRole:MemberRole example 'gid://gitlab/MemberRole/123'
+        ```
 
         :param str resource_name: The name of the resource.
         :param MemberRoleArgs args: The arguments to use to populate this resource's properties.

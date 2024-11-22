@@ -97,6 +97,10 @@ export interface GetProjectResult {
      */
     readonly ciDefaultGitDepth: number;
     /**
+     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+     */
+    readonly ciPipelineVariablesMinimumOverrideRole: string;
+    /**
      * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
     readonly ciRestrictPipelineCancellationRole: string;

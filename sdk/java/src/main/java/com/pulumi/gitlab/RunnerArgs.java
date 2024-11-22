@@ -65,6 +65,21 @@ public final class RunnerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Free-form maintenance notes for the runner (1024 characters).
+     * 
+     */
+    @Import(name="maintenanceNote")
+    private @Nullable Output<String> maintenanceNote;
+
+    /**
+     * @return Free-form maintenance notes for the runner (1024 characters).
+     * 
+     */
+    public Optional<Output<String>> maintenanceNote() {
+        return Optional.ofNullable(this.maintenanceNote);
+    }
+
+    /**
      * Maximum timeout set when this runner handles the job.
      * 
      */
@@ -145,6 +160,7 @@ public final class RunnerArgs extends com.pulumi.resources.ResourceArgs {
         this.accessLevel = $.accessLevel;
         this.description = $.description;
         this.locked = $.locked;
+        this.maintenanceNote = $.maintenanceNote;
         this.maximumTimeout = $.maximumTimeout;
         this.paused = $.paused;
         this.registrationToken = $.registrationToken;
@@ -231,6 +247,27 @@ public final class RunnerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder locked(Boolean locked) {
             return locked(Output.of(locked));
+        }
+
+        /**
+         * @param maintenanceNote Free-form maintenance notes for the runner (1024 characters).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceNote(@Nullable Output<String> maintenanceNote) {
+            $.maintenanceNote = maintenanceNote;
+            return this;
+        }
+
+        /**
+         * @param maintenanceNote Free-form maintenance notes for the runner (1024 characters).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceNote(String maintenanceNote) {
+            return maintenanceNote(Output.of(maintenanceNote));
         }
 
         /**

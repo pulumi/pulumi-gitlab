@@ -11,6 +11,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_project.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Import using the CLI is supported using the following syntax:
+ *
  * ```sh
  * $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
  * ```
@@ -138,6 +152,10 @@ export class Project extends pulumi.CustomResource {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     public readonly ciForwardDeploymentEnabled!: pulumi.Output<boolean>;
+    /**
+     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+     */
+    public readonly ciPipelineVariablesMinimumOverrideRole!: pulumi.Output<string>;
     /**
      * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
@@ -514,6 +532,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciConfigPath"] = state ? state.ciConfigPath : undefined;
             resourceInputs["ciDefaultGitDepth"] = state ? state.ciDefaultGitDepth : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = state ? state.ciForwardDeploymentEnabled : undefined;
+            resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = state ? state.ciPipelineVariablesMinimumOverrideRole : undefined;
             resourceInputs["ciRestrictPipelineCancellationRole"] = state ? state.ciRestrictPipelineCancellationRole : undefined;
             resourceInputs["ciSeparatedCaches"] = state ? state.ciSeparatedCaches : undefined;
             resourceInputs["containerExpirationPolicy"] = state ? state.containerExpirationPolicy : undefined;
@@ -618,6 +637,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciConfigPath"] = args ? args.ciConfigPath : undefined;
             resourceInputs["ciDefaultGitDepth"] = args ? args.ciDefaultGitDepth : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = args ? args.ciForwardDeploymentEnabled : undefined;
+            resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = args ? args.ciPipelineVariablesMinimumOverrideRole : undefined;
             resourceInputs["ciRestrictPipelineCancellationRole"] = args ? args.ciRestrictPipelineCancellationRole : undefined;
             resourceInputs["ciSeparatedCaches"] = args ? args.ciSeparatedCaches : undefined;
             resourceInputs["containerExpirationPolicy"] = args ? args.containerExpirationPolicy : undefined;
@@ -799,6 +819,10 @@ export interface ProjectState {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    /**
+     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+     */
+    ciPipelineVariablesMinimumOverrideRole?: pulumi.Input<string>;
     /**
      * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
@@ -1228,6 +1252,10 @@ export interface ProjectArgs {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    /**
+     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+     */
+    ciPipelineVariablesMinimumOverrideRole?: pulumi.Input<string>;
     /**
      * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */

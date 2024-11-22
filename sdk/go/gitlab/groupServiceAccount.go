@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// This must be a top-level group
 //			example, err := gitlab.NewGroup(ctx, "example", &gitlab.GroupArgs{
 //				Name:        pulumi.String("example"),
 //				Path:        pulumi.String("example"),
@@ -38,10 +39,30 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewGroupServiceAccount(ctx, "example-sa", &gitlab.GroupServiceAccountArgs{
+//			// The service account against the top-level group
+//			exampleSa, err := gitlab.NewGroupServiceAccount(ctx, "example_sa", &gitlab.GroupServiceAccountArgs{
 //				Group:    example.ID(),
 //				Name:     pulumi.String("example-name"),
 //				Username: pulumi.String("example-username"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Group to assign the service account to. Can be the same top-level group resource as above, or a subgroup of that group.
+//			exampleSubgroup, err := gitlab.NewGroup(ctx, "example_subgroup", &gitlab.GroupArgs{
+//				Name:        pulumi.String("subgroup"),
+//				Path:        pulumi.String("example/subgroup"),
+//				Description: pulumi.String("An example subgroup"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// To assign the service account to a group
+//			_, err = gitlab.NewGroupMembership(ctx, "example_membership", &gitlab.GroupMembershipArgs{
+//				GroupId:     exampleSubgroup.ID(),
+//				UserId:      exampleSa.ServiceAccountId,
+//				AccessLevel: pulumi.String("developer"),
+//				ExpiresAt:   pulumi.String("2020-03-14"),
 //			})
 //			if err != nil {
 //				return err
@@ -53,6 +74,20 @@ import (
 // ```
 //
 // ## Import
+//
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_group_service_account.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
 //
 // ```sh
 // $ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount You can import a group service account using `<resource> <id>`. The

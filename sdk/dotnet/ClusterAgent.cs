@@ -62,6 +62,20 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_cluster_agent`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_cluster_agent.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
+    /// 
     /// GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;`
     /// 
     /// ```sh

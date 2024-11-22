@@ -17,6 +17,11 @@ public final class GetMetadataKas {
      */
     private Boolean enabled;
     /**
+     * @return URL used by the Kubernetes tooling to communicate with the KAS Kubernetes API proxy. It’s null if kas.enabled is false.
+     * 
+     */
+    private String externalK8sProxyUrl;
+    /**
      * @return URL used by the agents to communicate with KAS. It’s null if kas.enabled is false.
      * 
      */
@@ -34,6 +39,13 @@ public final class GetMetadataKas {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return URL used by the Kubernetes tooling to communicate with the KAS Kubernetes API proxy. It’s null if kas.enabled is false.
+     * 
+     */
+    public String externalK8sProxyUrl() {
+        return this.externalK8sProxyUrl;
     }
     /**
      * @return URL used by the agents to communicate with KAS. It’s null if kas.enabled is false.
@@ -60,12 +72,14 @@ public final class GetMetadataKas {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private String externalK8sProxyUrl;
         private String externalUrl;
         private String version;
         public Builder() {}
         public Builder(GetMetadataKas defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.externalK8sProxyUrl = defaults.externalK8sProxyUrl;
     	      this.externalUrl = defaults.externalUrl;
     	      this.version = defaults.version;
         }
@@ -76,6 +90,14 @@ public final class GetMetadataKas {
               throw new MissingRequiredPropertyException("GetMetadataKas", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalK8sProxyUrl(String externalK8sProxyUrl) {
+            if (externalK8sProxyUrl == null) {
+              throw new MissingRequiredPropertyException("GetMetadataKas", "externalK8sProxyUrl");
+            }
+            this.externalK8sProxyUrl = externalK8sProxyUrl;
             return this;
         }
         @CustomType.Setter
@@ -97,6 +119,7 @@ public final class GetMetadataKas {
         public GetMetadataKas build() {
             final var _resultValue = new GetMetadataKas();
             _resultValue.enabled = enabled;
+            _resultValue.externalK8sProxyUrl = externalK8sProxyUrl;
             _resultValue.externalUrl = externalUrl;
             _resultValue.version = version;
             return _resultValue;

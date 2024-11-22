@@ -28,6 +28,28 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationmemberrolecreate)
  * 
+ * ## Import
+ * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_member_role`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_member_role.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
+ * 
+ * GitLab member role can be imported using the id made up of `gid://gitlab/MemberRole/&lt;ID&gt;` e.g.
+ * 
+ * ```sh
+ * $ pulumi import gitlab:index/memberRole:MemberRole example &#39;gid://gitlab/MemberRole/123&#39;
+ * ```
+ * 
  */
 @ResourceType(type="gitlab:index/memberRole:MemberRole")
 public class MemberRole extends com.pulumi.resources.CustomResource {

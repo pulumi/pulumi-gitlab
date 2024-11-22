@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
  *
  * > Use of the `timestamp()` function with expiresAt will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
  *
+ * > Reading the access token status of a service account requires an admin token or a top-level group owner token on gitlab.com. As a result, this resource will ignore permission errors when attempting to read the token status, and will rely on the values in state instead. This can lead to apply-time failures if the token configured for the provider doesn't have permissions to rotate tokens for the service account.
+ *
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)
  *
  * ## Example Usage
@@ -17,26 +19,50 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
+ * // This must be a top-level group
  * const example = new gitlab.Group("example", {
  *     name: "example",
  *     path: "example",
  *     description: "An example group",
  * });
- * const example_sa = new gitlab.GroupServiceAccount("example-sa", {
+ * // The service account against the top-level group
+ * const exampleSa = new gitlab.GroupServiceAccount("example_sa", {
  *     group: example.id,
  *     name: "example-name",
  *     username: "example-username",
  * });
- * const example_sa_token = new gitlab.GroupServiceAccountAccessToken("example-sa-token", {
+ * // To assign the service account to a group
+ * const exampleMembership = new gitlab.GroupMembership("example_membership", {
+ *     groupId: example.id,
+ *     userId: exampleSa.serviceAccountId,
+ *     accessLevel: "developer",
+ *     expiresAt: "2020-03-14",
+ * });
+ * // The service account access token
+ * const exampleSaToken = new gitlab.GroupServiceAccountAccessToken("example_sa_token", {
  *     group: example.id,
- *     userId: example_sa.id,
- *     name: "Example personal access token",
+ *     userId: exampleSa.serviceAccountId,
+ *     name: "Example service account access token",
  *     expiresAt: "2020-03-14",
  *     scopes: ["api"],
  * });
  * ```
  *
  * ## Import
+ *
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account_access_token`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_group_service_account_access_token.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Import using the CLI is supported using the following syntax:
  *
  * ```sh
  * $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `<resource> <id>`. The

@@ -24,12 +24,17 @@ public final class GetProjectProtectedBranchPushAccessLevel {
      */
     private String accessLevelDescription;
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+     * 
+     */
+    private @Nullable Integer deployKeyId;
+    /**
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
      * 
      */
     private @Nullable Integer groupId;
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
      * 
      */
     private @Nullable Integer userId;
@@ -50,14 +55,21 @@ public final class GetProjectProtectedBranchPushAccessLevel {
         return this.accessLevelDescription;
     }
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+     * 
+     */
+    public Optional<Integer> deployKeyId() {
+        return Optional.ofNullable(this.deployKeyId);
+    }
+    /**
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
      * 
      */
     public Optional<Integer> groupId() {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
      * 
      */
     public Optional<Integer> userId() {
@@ -75,6 +87,7 @@ public final class GetProjectProtectedBranchPushAccessLevel {
     public static final class Builder {
         private String accessLevel;
         private String accessLevelDescription;
+        private @Nullable Integer deployKeyId;
         private @Nullable Integer groupId;
         private @Nullable Integer userId;
         public Builder() {}
@@ -82,6 +95,7 @@ public final class GetProjectProtectedBranchPushAccessLevel {
     	      Objects.requireNonNull(defaults);
     	      this.accessLevel = defaults.accessLevel;
     	      this.accessLevelDescription = defaults.accessLevelDescription;
+    	      this.deployKeyId = defaults.deployKeyId;
     	      this.groupId = defaults.groupId;
     	      this.userId = defaults.userId;
         }
@@ -103,6 +117,12 @@ public final class GetProjectProtectedBranchPushAccessLevel {
             return this;
         }
         @CustomType.Setter
+        public Builder deployKeyId(@Nullable Integer deployKeyId) {
+
+            this.deployKeyId = deployKeyId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder groupId(@Nullable Integer groupId) {
 
             this.groupId = groupId;
@@ -118,6 +138,7 @@ public final class GetProjectProtectedBranchPushAccessLevel {
             final var _resultValue = new GetProjectProtectedBranchPushAccessLevel();
             _resultValue.accessLevel = accessLevel;
             _resultValue.accessLevelDescription = accessLevelDescription;
+            _resultValue.deployKeyId = deployKeyId;
             _resultValue.groupId = groupId;
             _resultValue.userId = userId;
             return _resultValue;

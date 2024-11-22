@@ -24,6 +24,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_project.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
+ * 
  * ```sh
  * $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
  * ```
@@ -330,6 +344,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> ciForwardDeploymentEnabled() {
         return this.ciForwardDeploymentEnabled;
+    }
+    /**
+     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * 
+     */
+    @Export(name="ciPipelineVariablesMinimumOverrideRole", refs={String.class}, tree="[0]")
+    private Output<String> ciPipelineVariablesMinimumOverrideRole;
+
+    /**
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * 
+     */
+    public Output<String> ciPipelineVariablesMinimumOverrideRole() {
+        return this.ciPipelineVariablesMinimumOverrideRole;
     }
     /**
      * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`

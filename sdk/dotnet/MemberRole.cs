@@ -21,6 +21,28 @@ namespace Pulumi.GitLab
     /// &gt; There can be only 10 custom roles on your instance or namespace. See [issue 450929](https://gitlab.com/gitlab-org/gitlab/-/issues/450929) for more details.
     /// 
     /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationmemberrolecreate)
+    /// 
+    /// ## Import
+    /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_member_role`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_member_role.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
+    /// 
+    /// GitLab member role can be imported using the id made up of `gid://gitlab/MemberRole/&lt;ID&gt;` e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import gitlab:index/memberRole:MemberRole example 'gid://gitlab/MemberRole/123'
+    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/memberRole:MemberRole")]
     public partial class MemberRole : global::Pulumi.CustomResource

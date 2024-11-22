@@ -48,14 +48,29 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs
     }
 
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+     * 
+     */
+    @Import(name="deployKeyId")
+    private @Nullable Output<Integer> deployKeyId;
+
+    /**
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+     * 
+     */
+    public Optional<Output<Integer>> deployKeyId() {
+        return Optional.ofNullable(this.deployKeyId);
+    }
+
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -63,14 +78,14 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs
     }
 
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -82,6 +97,7 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs
     private GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs(GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs $) {
         this.accessLevel = $.accessLevel;
         this.accessLevelDescription = $.accessLevelDescription;
+        this.deployKeyId = $.deployKeyId;
         this.groupId = $.groupId;
         this.userId = $.userId;
     }
@@ -147,7 +163,28 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployKeyId(@Nullable Output<Integer> deployKeyId) {
+            $.deployKeyId = deployKeyId;
+            return this;
+        }
+
+        /**
+         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployKeyId(Integer deployKeyId) {
+            return deployKeyId(Output.of(deployKeyId));
+        }
+
+        /**
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
          * 
          * @return builder
          * 
@@ -158,7 +195,7 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
          * 
          * @return builder
          * 
@@ -168,7 +205,7 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
          * 
          * @return builder
          * 
@@ -179,7 +216,7 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
          * 
          * @return builder
          * 

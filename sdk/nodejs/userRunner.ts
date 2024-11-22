@@ -64,6 +64,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_user_runner`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_user_runner.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Import using the CLI is supported using the following syntax:
+ *
  * You can import a gitlab runner using its ID
  *
  * Note: Importing a runner will not provide access to the `token` attribute
@@ -117,6 +131,10 @@ export class UserRunner extends pulumi.CustomResource {
      */
     public readonly locked!: pulumi.Output<boolean>;
     /**
+     * Free-form maintenance notes for the runner (1024 characters)
+     */
+    public readonly maintenanceNote!: pulumi.Output<string>;
+    /**
      * Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
      */
     public readonly maximumTimeout!: pulumi.Output<number>;
@@ -162,6 +180,7 @@ export class UserRunner extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["locked"] = state ? state.locked : undefined;
+            resourceInputs["maintenanceNote"] = state ? state.maintenanceNote : undefined;
             resourceInputs["maximumTimeout"] = state ? state.maximumTimeout : undefined;
             resourceInputs["paused"] = state ? state.paused : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -178,6 +197,7 @@ export class UserRunner extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["locked"] = args ? args.locked : undefined;
+            resourceInputs["maintenanceNote"] = args ? args.maintenanceNote : undefined;
             resourceInputs["maximumTimeout"] = args ? args.maximumTimeout : undefined;
             resourceInputs["paused"] = args ? args.paused : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
@@ -213,6 +233,10 @@ export interface UserRunnerState {
      * Specifies if the runner should be locked for the current project.
      */
     locked?: pulumi.Input<boolean>;
+    /**
+     * Free-form maintenance notes for the runner (1024 characters)
+     */
+    maintenanceNote?: pulumi.Input<string>;
     /**
      * Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
      */
@@ -263,6 +287,10 @@ export interface UserRunnerArgs {
      * Specifies if the runner should be locked for the current project.
      */
     locked?: pulumi.Input<boolean>;
+    /**
+     * Free-form maintenance notes for the runner (1024 characters)
+     */
+    maintenanceNote?: pulumi.Input<string>;
     /**
      * Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
      */

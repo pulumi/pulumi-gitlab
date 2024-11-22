@@ -14,6 +14,20 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_project.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
+    /// 
     /// ```sh
     /// $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
     /// ```
@@ -153,6 +167,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("ciForwardDeploymentEnabled")]
         public Output<bool> CiForwardDeploymentEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        /// </summary>
+        [Output("ciPipelineVariablesMinimumOverrideRole")]
+        public Output<string> CiPipelineVariablesMinimumOverrideRole { get; private set; } = null!;
 
         /// <summary>
         /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -825,6 +845,12 @@ namespace Pulumi.GitLab
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
 
         /// <summary>
+        /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        /// </summary>
+        [Input("ciPipelineVariablesMinimumOverrideRole")]
+        public Input<string>? CiPipelineVariablesMinimumOverrideRole { get; set; }
+
+        /// <summary>
         /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         /// </summary>
         [Input("ciRestrictPipelineCancellationRole")]
@@ -1442,6 +1468,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciForwardDeploymentEnabled")]
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
+
+        /// <summary>
+        /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        /// </summary>
+        [Input("ciPipelineVariablesMinimumOverrideRole")]
+        public Input<string>? CiPipelineVariablesMinimumOverrideRole { get; set; }
 
         /// <summary>
         /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`

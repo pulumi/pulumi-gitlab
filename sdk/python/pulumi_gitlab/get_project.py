@@ -27,7 +27,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, allow_pipeline_trigger_approve_deployment=None, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_enabled=None, empty_repo=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, model_experiments_access_level=None, model_registry_access_level=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
+    def __init__(__self__, allow_pipeline_trigger_approve_deployment=None, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_pipeline_variables_minimum_override_role=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_enabled=None, empty_repo=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, model_experiments_access_level=None, model_registry_access_level=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
         if allow_pipeline_trigger_approve_deployment and not isinstance(allow_pipeline_trigger_approve_deployment, bool):
             raise TypeError("Expected argument 'allow_pipeline_trigger_approve_deployment' to be a bool")
         pulumi.set(__self__, "allow_pipeline_trigger_approve_deployment", allow_pipeline_trigger_approve_deployment)
@@ -64,6 +64,9 @@ class GetProjectResult:
         if ci_default_git_depth and not isinstance(ci_default_git_depth, int):
             raise TypeError("Expected argument 'ci_default_git_depth' to be a int")
         pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
+        if ci_pipeline_variables_minimum_override_role and not isinstance(ci_pipeline_variables_minimum_override_role, str):
+            raise TypeError("Expected argument 'ci_pipeline_variables_minimum_override_role' to be a str")
+        pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
         if ci_restrict_pipeline_cancellation_role and not isinstance(ci_restrict_pipeline_cancellation_role, str):
             raise TypeError("Expected argument 'ci_restrict_pipeline_cancellation_role' to be a str")
         pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
@@ -331,6 +334,14 @@ class GetProjectResult:
         Default number of revisions for shallow cloning.
         """
         return pulumi.get(self, "ci_default_git_depth")
+
+    @property
+    @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
+    def ci_pipeline_variables_minimum_override_role(self) -> str:
+        """
+        The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        """
+        return pulumi.get(self, "ci_pipeline_variables_minimum_override_role")
 
     @property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
@@ -807,6 +818,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             builds_access_level=self.builds_access_level,
             ci_config_path=self.ci_config_path,
             ci_default_git_depth=self.ci_default_git_depth,
+            ci_pipeline_variables_minimum_override_role=self.ci_pipeline_variables_minimum_override_role,
             ci_restrict_pipeline_cancellation_role=self.ci_restrict_pipeline_cancellation_role,
             ci_separated_caches=self.ci_separated_caches,
             container_expiration_policies=self.container_expiration_policies,
@@ -903,6 +915,7 @@ def get_project(ci_default_git_depth: Optional[int] = None,
         builds_access_level=pulumi.get(__ret__, 'builds_access_level'),
         ci_config_path=pulumi.get(__ret__, 'ci_config_path'),
         ci_default_git_depth=pulumi.get(__ret__, 'ci_default_git_depth'),
+        ci_pipeline_variables_minimum_override_role=pulumi.get(__ret__, 'ci_pipeline_variables_minimum_override_role'),
         ci_restrict_pipeline_cancellation_role=pulumi.get(__ret__, 'ci_restrict_pipeline_cancellation_role'),
         ci_separated_caches=pulumi.get(__ret__, 'ci_separated_caches'),
         container_expiration_policies=pulumi.get(__ret__, 'container_expiration_policies'),
@@ -996,6 +1009,7 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]
         builds_access_level=pulumi.get(__response__, 'builds_access_level'),
         ci_config_path=pulumi.get(__response__, 'ci_config_path'),
         ci_default_git_depth=pulumi.get(__response__, 'ci_default_git_depth'),
+        ci_pipeline_variables_minimum_override_role=pulumi.get(__response__, 'ci_pipeline_variables_minimum_override_role'),
         ci_restrict_pipeline_cancellation_role=pulumi.get(__response__, 'ci_restrict_pipeline_cancellation_role'),
         ci_separated_caches=pulumi.get(__response__, 'ci_separated_caches'),
         container_expiration_policies=pulumi.get(__response__, 'container_expiration_policies'),

@@ -60,6 +60,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_pipeline_schedule`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_pipeline_schedule.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
+ * 
  * GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
  * 
  * ```sh

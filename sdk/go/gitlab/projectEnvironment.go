@@ -58,6 +58,20 @@ import (
 //
 // ## Import
 //
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_environment`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_project_environment.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
+//
 // GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
 //
 // ```sh
@@ -66,10 +80,16 @@ import (
 type ProjectEnvironment struct {
 	pulumi.CustomResourceState
 
+	// The cluster agent to associate with this environment.
+	ClusterAgentId pulumi.IntPtrOutput `pulumi:"clusterAgentId"`
 	// The ISO8601 date/time that this environment was created at in UTC.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Place to link to for this environment.
 	ExternalUrl pulumi.StringPtrOutput `pulumi:"externalUrl"`
+	// The Flux resource path to associate with this environment.
+	FluxResourcePath pulumi.StringPtrOutput `pulumi:"fluxResourcePath"`
+	// The Kubernetes namespace to associate with this environment.
+	KubernetesNamespace pulumi.StringPtrOutput `pulumi:"kubernetesNamespace"`
 	// The name of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID or full path of the project to environment is created for.
@@ -80,6 +100,8 @@ type ProjectEnvironment struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Determines whether the environment is attempted to be stopped before the environment is deleted.
 	StopBeforeDestroy pulumi.BoolPtrOutput `pulumi:"stopBeforeDestroy"`
+	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+	Tier pulumi.StringOutput `pulumi:"tier"`
 	// The ISO8601 date/time that this environment was last updated at in UTC.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -117,10 +139,16 @@ func GetProjectEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectEnvironment resources.
 type projectEnvironmentState struct {
+	// The cluster agent to associate with this environment.
+	ClusterAgentId *int `pulumi:"clusterAgentId"`
 	// The ISO8601 date/time that this environment was created at in UTC.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Place to link to for this environment.
 	ExternalUrl *string `pulumi:"externalUrl"`
+	// The Flux resource path to associate with this environment.
+	FluxResourcePath *string `pulumi:"fluxResourcePath"`
+	// The Kubernetes namespace to associate with this environment.
+	KubernetesNamespace *string `pulumi:"kubernetesNamespace"`
 	// The name of the environment.
 	Name *string `pulumi:"name"`
 	// The ID or full path of the project to environment is created for.
@@ -131,15 +159,23 @@ type projectEnvironmentState struct {
 	State *string `pulumi:"state"`
 	// Determines whether the environment is attempted to be stopped before the environment is deleted.
 	StopBeforeDestroy *bool `pulumi:"stopBeforeDestroy"`
+	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+	Tier *string `pulumi:"tier"`
 	// The ISO8601 date/time that this environment was last updated at in UTC.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type ProjectEnvironmentState struct {
+	// The cluster agent to associate with this environment.
+	ClusterAgentId pulumi.IntPtrInput
 	// The ISO8601 date/time that this environment was created at in UTC.
 	CreatedAt pulumi.StringPtrInput
 	// Place to link to for this environment.
 	ExternalUrl pulumi.StringPtrInput
+	// The Flux resource path to associate with this environment.
+	FluxResourcePath pulumi.StringPtrInput
+	// The Kubernetes namespace to associate with this environment.
+	KubernetesNamespace pulumi.StringPtrInput
 	// The name of the environment.
 	Name pulumi.StringPtrInput
 	// The ID or full path of the project to environment is created for.
@@ -150,6 +186,8 @@ type ProjectEnvironmentState struct {
 	State pulumi.StringPtrInput
 	// Determines whether the environment is attempted to be stopped before the environment is deleted.
 	StopBeforeDestroy pulumi.BoolPtrInput
+	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+	Tier pulumi.StringPtrInput
 	// The ISO8601 date/time that this environment was last updated at in UTC.
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -159,26 +197,42 @@ func (ProjectEnvironmentState) ElementType() reflect.Type {
 }
 
 type projectEnvironmentArgs struct {
+	// The cluster agent to associate with this environment.
+	ClusterAgentId *int `pulumi:"clusterAgentId"`
 	// Place to link to for this environment.
 	ExternalUrl *string `pulumi:"externalUrl"`
+	// The Flux resource path to associate with this environment.
+	FluxResourcePath *string `pulumi:"fluxResourcePath"`
+	// The Kubernetes namespace to associate with this environment.
+	KubernetesNamespace *string `pulumi:"kubernetesNamespace"`
 	// The name of the environment.
 	Name *string `pulumi:"name"`
 	// The ID or full path of the project to environment is created for.
 	Project string `pulumi:"project"`
 	// Determines whether the environment is attempted to be stopped before the environment is deleted.
 	StopBeforeDestroy *bool `pulumi:"stopBeforeDestroy"`
+	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+	Tier *string `pulumi:"tier"`
 }
 
 // The set of arguments for constructing a ProjectEnvironment resource.
 type ProjectEnvironmentArgs struct {
+	// The cluster agent to associate with this environment.
+	ClusterAgentId pulumi.IntPtrInput
 	// Place to link to for this environment.
 	ExternalUrl pulumi.StringPtrInput
+	// The Flux resource path to associate with this environment.
+	FluxResourcePath pulumi.StringPtrInput
+	// The Kubernetes namespace to associate with this environment.
+	KubernetesNamespace pulumi.StringPtrInput
 	// The name of the environment.
 	Name pulumi.StringPtrInput
 	// The ID or full path of the project to environment is created for.
 	Project pulumi.StringInput
 	// Determines whether the environment is attempted to be stopped before the environment is deleted.
 	StopBeforeDestroy pulumi.BoolPtrInput
+	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+	Tier pulumi.StringPtrInput
 }
 
 func (ProjectEnvironmentArgs) ElementType() reflect.Type {
@@ -268,6 +322,11 @@ func (o ProjectEnvironmentOutput) ToProjectEnvironmentOutputWithContext(ctx cont
 	return o
 }
 
+// The cluster agent to associate with this environment.
+func (o ProjectEnvironmentOutput) ClusterAgentId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.IntPtrOutput { return v.ClusterAgentId }).(pulumi.IntPtrOutput)
+}
+
 // The ISO8601 date/time that this environment was created at in UTC.
 func (o ProjectEnvironmentOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
@@ -276,6 +335,16 @@ func (o ProjectEnvironmentOutput) CreatedAt() pulumi.StringOutput {
 // Place to link to for this environment.
 func (o ProjectEnvironmentOutput) ExternalUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringPtrOutput { return v.ExternalUrl }).(pulumi.StringPtrOutput)
+}
+
+// The Flux resource path to associate with this environment.
+func (o ProjectEnvironmentOutput) FluxResourcePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringPtrOutput { return v.FluxResourcePath }).(pulumi.StringPtrOutput)
+}
+
+// The Kubernetes namespace to associate with this environment.
+func (o ProjectEnvironmentOutput) KubernetesNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringPtrOutput { return v.KubernetesNamespace }).(pulumi.StringPtrOutput)
 }
 
 // The name of the environment.
@@ -301,6 +370,11 @@ func (o ProjectEnvironmentOutput) State() pulumi.StringOutput {
 // Determines whether the environment is attempted to be stopped before the environment is deleted.
 func (o ProjectEnvironmentOutput) StopBeforeDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectEnvironment) pulumi.BoolPtrOutput { return v.StopBeforeDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+func (o ProjectEnvironmentOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }
 
 // The ISO8601 date/time that this environment was last updated at in UTC.

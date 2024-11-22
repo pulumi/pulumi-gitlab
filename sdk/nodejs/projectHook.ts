@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -20,9 +22,40 @@ import * as utilities from "./utilities";
  *     url: "https://example.com/hook/example",
  *     mergeRequestsEvents: true,
  * });
+ * // Using Custom Headers
+ * // Values of headers can't be imported
+ * const customHeaders = new gitlab.ProjectHook("custom_headers", {
+ *     project: "example/hooked",
+ *     url: "https://example.com/hook/example",
+ *     mergeRequestsEvents: true,
+ *     customHeaders: [
+ *         {
+ *             key: "X-Custom-Header",
+ *             value: "example",
+ *         },
+ *         {
+ *             key: "X-Custom-Header-Second",
+ *             value: "example-second",
+ *         },
+ *     ],
+ * });
  * ```
  *
  * ## Import
+ *
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_hook`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_project_hook.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Import using the CLI is supported using the following syntax:
  *
  * A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
  *
@@ -68,6 +101,10 @@ export class ProjectHook extends pulumi.CustomResource {
      * Invoke the hook for confidential note events.
      */
     public readonly confidentialNoteEvents!: pulumi.Output<boolean>;
+    /**
+     * Custom headers for the project webhook.
+     */
+    public readonly customHeaders!: pulumi.Output<outputs.ProjectHookCustomHeader[] | undefined>;
     /**
      * Custom webhook template.
      */
@@ -156,6 +193,7 @@ export class ProjectHook extends pulumi.CustomResource {
             const state = argsOrState as ProjectHookState | undefined;
             resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
             resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
+            resourceInputs["customHeaders"] = state ? state.customHeaders : undefined;
             resourceInputs["customWebhookTemplate"] = state ? state.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
             resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
@@ -184,6 +222,7 @@ export class ProjectHook extends pulumi.CustomResource {
             }
             resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
             resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
+            resourceInputs["customHeaders"] = args ? args.customHeaders : undefined;
             resourceInputs["customWebhookTemplate"] = args ? args.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = args ? args.deploymentEvents : undefined;
             resourceInputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
@@ -222,6 +261,10 @@ export interface ProjectHookState {
      * Invoke the hook for confidential note events.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
+    /**
+     * Custom headers for the project webhook.
+     */
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.ProjectHookCustomHeader>[]>;
     /**
      * Custom webhook template.
      */
@@ -308,6 +351,10 @@ export interface ProjectHookArgs {
      * Invoke the hook for confidential note events.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
+    /**
+     * Custom headers for the project webhook.
+     */
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.ProjectHookCustomHeader>[]>;
     /**
      * Custom webhook template.
      */

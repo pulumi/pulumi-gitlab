@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ProjectHookArgs', 'ProjectHook']
 
@@ -23,6 +25,7 @@ class ProjectHookArgs:
                  url: pulumi.Input[str],
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
@@ -43,6 +46,7 @@ class ProjectHookArgs:
         :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
@@ -64,6 +68,8 @@ class ProjectHookArgs:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
             pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        if custom_headers is not None:
+            pulumi.set(__self__, "custom_headers", custom_headers)
         if custom_webhook_template is not None:
             pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         if deployment_events is not None:
@@ -140,6 +146,18 @@ class ProjectHookArgs:
     @confidential_note_events.setter
     def confidential_note_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "confidential_note_events", value)
+
+    @property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]]:
+        """
+        Custom headers for the project webhook.
+        """
+        return pulumi.get(self, "custom_headers")
+
+    @custom_headers.setter
+    def custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]]):
+        pulumi.set(self, "custom_headers", value)
 
     @property
     @pulumi.getter(name="customWebhookTemplate")
@@ -315,6 +333,7 @@ class _ProjectHookState:
     def __init__(__self__, *,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
@@ -337,6 +356,7 @@ class _ProjectHookState:
         Input properties used for looking up and filtering ProjectHook resources.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
@@ -360,6 +380,8 @@ class _ProjectHookState:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
             pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        if custom_headers is not None:
+            pulumi.set(__self__, "custom_headers", custom_headers)
         if custom_webhook_template is not None:
             pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         if deployment_events is not None:
@@ -420,6 +442,18 @@ class _ProjectHookState:
     @confidential_note_events.setter
     def confidential_note_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "confidential_note_events", value)
+
+    @property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]]:
+        """
+        Custom headers for the project webhook.
+        """
+        return pulumi.get(self, "custom_headers")
+
+    @custom_headers.setter
+    def custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]]):
+        pulumi.set(self, "custom_headers", value)
 
     @property
     @pulumi.getter(name="customWebhookTemplate")
@@ -645,6 +679,7 @@ class ProjectHook(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
@@ -677,9 +712,39 @@ class ProjectHook(pulumi.CustomResource):
             project="example/hooked",
             url="https://example.com/hook/example",
             merge_requests_events=True)
+        # Using Custom Headers
+        # Values of headers can't be imported
+        custom_headers = gitlab.ProjectHook("custom_headers",
+            project="example/hooked",
+            url="https://example.com/hook/example",
+            merge_requests_events=True,
+            custom_headers=[
+                {
+                    "key": "X-Custom-Header",
+                    "value": "example",
+                },
+                {
+                    "key": "X-Custom-Header-Second",
+                    "value": "example-second",
+                },
+            ])
         ```
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_hook`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_hook.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
 
@@ -693,6 +758,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
@@ -731,9 +797,39 @@ class ProjectHook(pulumi.CustomResource):
             project="example/hooked",
             url="https://example.com/hook/example",
             merge_requests_events=True)
+        # Using Custom Headers
+        # Values of headers can't be imported
+        custom_headers = gitlab.ProjectHook("custom_headers",
+            project="example/hooked",
+            url="https://example.com/hook/example",
+            merge_requests_events=True,
+            custom_headers=[
+                {
+                    "key": "X-Custom-Header",
+                    "value": "example",
+                },
+                {
+                    "key": "X-Custom-Header-Second",
+                    "value": "example-second",
+                },
+            ])
         ```
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_hook`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_hook.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
 
@@ -760,6 +856,7 @@ class ProjectHook(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
@@ -787,6 +884,7 @@ class ProjectHook(pulumi.CustomResource):
 
             __props__.__dict__["confidential_issues_events"] = confidential_issues_events
             __props__.__dict__["confidential_note_events"] = confidential_note_events
+            __props__.__dict__["custom_headers"] = custom_headers
             __props__.__dict__["custom_webhook_template"] = custom_webhook_template
             __props__.__dict__["deployment_events"] = deployment_events
             __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
@@ -823,6 +921,7 @@ class ProjectHook(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
             confidential_note_events: Optional[pulumi.Input[bool]] = None,
+            custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
             custom_webhook_template: Optional[pulumi.Input[str]] = None,
             deployment_events: Optional[pulumi.Input[bool]] = None,
             enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
@@ -850,6 +949,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
@@ -875,6 +975,7 @@ class ProjectHook(pulumi.CustomResource):
 
         __props__.__dict__["confidential_issues_events"] = confidential_issues_events
         __props__.__dict__["confidential_note_events"] = confidential_note_events
+        __props__.__dict__["custom_headers"] = custom_headers
         __props__.__dict__["custom_webhook_template"] = custom_webhook_template
         __props__.__dict__["deployment_events"] = deployment_events
         __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
@@ -910,6 +1011,14 @@ class ProjectHook(pulumi.CustomResource):
         Invoke the hook for confidential note events.
         """
         return pulumi.get(self, "confidential_note_events")
+
+    @property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> pulumi.Output[Optional[Sequence['outputs.ProjectHookCustomHeader']]]:
+        """
+        Custom headers for the project webhook.
+        """
+        return pulumi.get(self, "custom_headers")
 
     @property
     @pulumi.getter(name="customWebhookTemplate")

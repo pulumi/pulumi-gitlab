@@ -16,6 +16,20 @@ import (
 //
 // ## Import
 //
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_branch_protection`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_branch_protection.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
+//
 // Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
 //
 // ```sh

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -9,41 +11,21 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = new gitlab.GroupHook("example", {
- *     group: "example/hooked",
- *     url: "https://example.com/hook/example",
- *     mergeRequestsEvents: true,
- * });
- * // Setting all attributes
- * const allAttributes = new gitlab.GroupHook("all_attributes", {
- *     group: "1",
- *     url: "http://example.com",
- *     token: "supersecret",
- *     enableSslVerification: false,
- *     pushEvents: true,
- *     pushEventsBranchFilter: "devel",
- *     issuesEvents: false,
- *     confidentialIssuesEvents: false,
- *     mergeRequestsEvents: true,
- *     tagPushEvents: true,
- *     noteEvents: true,
- *     confidentialNoteEvents: true,
- *     jobEvents: true,
- *     pipelineEvents: true,
- *     wikiPageEvents: true,
- *     deploymentEvents: true,
- *     releasesEvents: true,
- *     subgroupEvents: true,
- * });
- * ```
- *
  * ## Import
+ *
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_hook`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_group_hook.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Import using the CLI is supported using the following syntax:
  *
  * A GitLab Group Hook can be imported using a key composed of `<group-id>:<hook-id>`, e.g.
  *
@@ -89,6 +71,10 @@ export class GroupHook extends pulumi.CustomResource {
      * Invoke the hook for confidential note events.
      */
     public readonly confidentialNoteEvents!: pulumi.Output<boolean>;
+    /**
+     * Custom headers for the project webhook.
+     */
+    public readonly customHeaders!: pulumi.Output<outputs.GroupHookCustomHeader[] | undefined>;
     /**
      * Custom webhook template.
      */
@@ -181,6 +167,7 @@ export class GroupHook extends pulumi.CustomResource {
             const state = argsOrState as GroupHookState | undefined;
             resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
             resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
+            resourceInputs["customHeaders"] = state ? state.customHeaders : undefined;
             resourceInputs["customWebhookTemplate"] = state ? state.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
             resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
@@ -210,6 +197,7 @@ export class GroupHook extends pulumi.CustomResource {
             }
             resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
             resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
+            resourceInputs["customHeaders"] = args ? args.customHeaders : undefined;
             resourceInputs["customWebhookTemplate"] = args ? args.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = args ? args.deploymentEvents : undefined;
             resourceInputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
@@ -249,6 +237,10 @@ export interface GroupHookState {
      * Invoke the hook for confidential note events.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
+    /**
+     * Custom headers for the project webhook.
+     */
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.GroupHookCustomHeader>[]>;
     /**
      * Custom webhook template.
      */
@@ -339,6 +331,10 @@ export interface GroupHookArgs {
      * Invoke the hook for confidential note events.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
+    /**
+     * Custom headers for the project webhook.
+     */
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.GroupHookCustomHeader>[]>;
     /**
      * Custom webhook template.
      */

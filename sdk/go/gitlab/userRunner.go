@@ -103,6 +103,20 @@ import (
 //
 // ## Import
 //
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_user_runner`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_user_runner.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
+//
 // # You can import a gitlab runner using its ID
 //
 // Note: Importing a runner will not provide access to the `token` attribute
@@ -121,6 +135,8 @@ type UserRunner struct {
 	GroupId pulumi.IntPtrOutput `pulumi:"groupId"`
 	// Specifies if the runner should be locked for the current project.
 	Locked pulumi.BoolOutput `pulumi:"locked"`
+	// Free-form maintenance notes for the runner (1024 characters)
+	MaintenanceNote pulumi.StringOutput `pulumi:"maintenanceNote"`
 	// Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
 	MaximumTimeout pulumi.IntOutput `pulumi:"maximumTimeout"`
 	// Specifies if the runner should ignore new jobs.
@@ -182,6 +198,8 @@ type userRunnerState struct {
 	GroupId *int `pulumi:"groupId"`
 	// Specifies if the runner should be locked for the current project.
 	Locked *bool `pulumi:"locked"`
+	// Free-form maintenance notes for the runner (1024 characters)
+	MaintenanceNote *string `pulumi:"maintenanceNote"`
 	// Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
 	MaximumTimeout *int `pulumi:"maximumTimeout"`
 	// Specifies if the runner should ignore new jobs.
@@ -207,6 +225,8 @@ type UserRunnerState struct {
 	GroupId pulumi.IntPtrInput
 	// Specifies if the runner should be locked for the current project.
 	Locked pulumi.BoolPtrInput
+	// Free-form maintenance notes for the runner (1024 characters)
+	MaintenanceNote pulumi.StringPtrInput
 	// Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
 	MaximumTimeout pulumi.IntPtrInput
 	// Specifies if the runner should ignore new jobs.
@@ -236,6 +256,8 @@ type userRunnerArgs struct {
 	GroupId *int `pulumi:"groupId"`
 	// Specifies if the runner should be locked for the current project.
 	Locked *bool `pulumi:"locked"`
+	// Free-form maintenance notes for the runner (1024 characters)
+	MaintenanceNote *string `pulumi:"maintenanceNote"`
 	// Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
 	MaximumTimeout *int `pulumi:"maximumTimeout"`
 	// Specifies if the runner should ignore new jobs.
@@ -260,6 +282,8 @@ type UserRunnerArgs struct {
 	GroupId pulumi.IntPtrInput
 	// Specifies if the runner should be locked for the current project.
 	Locked pulumi.BoolPtrInput
+	// Free-form maintenance notes for the runner (1024 characters)
+	MaintenanceNote pulumi.StringPtrInput
 	// Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
 	MaximumTimeout pulumi.IntPtrInput
 	// Specifies if the runner should ignore new jobs.
@@ -379,6 +403,11 @@ func (o UserRunnerOutput) GroupId() pulumi.IntPtrOutput {
 // Specifies if the runner should be locked for the current project.
 func (o UserRunnerOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *UserRunner) pulumi.BoolOutput { return v.Locked }).(pulumi.BoolOutput)
+}
+
+// Free-form maintenance notes for the runner (1024 characters)
+func (o UserRunnerOutput) MaintenanceNote() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserRunner) pulumi.StringOutput { return v.MaintenanceNote }).(pulumi.StringOutput)
 }
 
 // Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).

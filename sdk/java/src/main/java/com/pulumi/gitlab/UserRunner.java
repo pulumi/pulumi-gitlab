@@ -106,6 +106,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_user_runner`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_user_runner.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
+ * 
  * You can import a gitlab runner using its ID
  * 
  * Note: Importing a runner will not provide access to the `token` attribute
@@ -172,6 +186,20 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> locked() {
         return this.locked;
+    }
+    /**
+     * Free-form maintenance notes for the runner (1024 characters)
+     * 
+     */
+    @Export(name="maintenanceNote", refs={String.class}, tree="[0]")
+    private Output<String> maintenanceNote;
+
+    /**
+     * @return Free-form maintenance notes for the runner (1024 characters)
+     * 
+     */
+    public Output<String> maintenanceNote() {
+        return this.maintenanceNote;
     }
     /**
      * Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).

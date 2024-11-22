@@ -59,6 +59,20 @@ import (
 //
 // ## Import
 //
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_saml_link`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_group_saml_link.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
+//
 // GitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.
 //
 // ```sh

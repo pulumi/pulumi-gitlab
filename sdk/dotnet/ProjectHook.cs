@@ -31,10 +31,46 @@ namespace Pulumi.GitLab
     ///         MergeRequestsEvents = true,
     ///     });
     /// 
+    ///     // Using Custom Headers
+    ///     // Values of headers can't be imported
+    ///     var customHeaders = new GitLab.ProjectHook("custom_headers", new()
+    ///     {
+    ///         Project = "example/hooked",
+    ///         Url = "https://example.com/hook/example",
+    ///         MergeRequestsEvents = true,
+    ///         CustomHeaders = new[]
+    ///         {
+    ///             new GitLab.Inputs.ProjectHookCustomHeaderArgs
+    ///             {
+    ///                 Key = "X-Custom-Header",
+    ///                 Value = "example",
+    ///             },
+    ///             new GitLab.Inputs.ProjectHookCustomHeaderArgs
+    ///             {
+    ///                 Key = "X-Custom-Header-Second",
+    ///                 Value = "example-second",
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
     /// ## Import
+    /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_hook`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_project_hook.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
     /// 
     /// A GitLab Project Hook can be imported using a key composed of `&lt;project-id&gt;:&lt;hook-id&gt;`, e.g.
     /// 
@@ -58,6 +94,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("confidentialNoteEvents")]
         public Output<bool> ConfidentialNoteEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom headers for the project webhook.
+        /// </summary>
+        [Output("customHeaders")]
+        public Output<ImmutableArray<Outputs.ProjectHookCustomHeader>> CustomHeaders { get; private set; } = null!;
 
         /// <summary>
         /// Custom webhook template.
@@ -229,6 +271,18 @@ namespace Pulumi.GitLab
         [Input("confidentialNoteEvents")]
         public Input<bool>? ConfidentialNoteEvents { get; set; }
 
+        [Input("customHeaders")]
+        private InputList<Inputs.ProjectHookCustomHeaderArgs>? _customHeaders;
+
+        /// <summary>
+        /// Custom headers for the project webhook.
+        /// </summary>
+        public InputList<Inputs.ProjectHookCustomHeaderArgs> CustomHeaders
+        {
+            get => _customHeaders ?? (_customHeaders = new InputList<Inputs.ProjectHookCustomHeaderArgs>());
+            set => _customHeaders = value;
+        }
+
         /// <summary>
         /// Custom webhook template.
         /// </summary>
@@ -354,6 +408,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("confidentialNoteEvents")]
         public Input<bool>? ConfidentialNoteEvents { get; set; }
+
+        [Input("customHeaders")]
+        private InputList<Inputs.ProjectHookCustomHeaderGetArgs>? _customHeaders;
+
+        /// <summary>
+        /// Custom headers for the project webhook.
+        /// </summary>
+        public InputList<Inputs.ProjectHookCustomHeaderGetArgs> CustomHeaders
+        {
+            get => _customHeaders ?? (_customHeaders = new InputList<Inputs.ProjectHookCustomHeaderGetArgs>());
+            set => _customHeaders = value;
+        }
 
         /// <summary>
         /// Custom webhook template.

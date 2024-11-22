@@ -30,6 +30,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_environment`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_project_environment.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Import using the CLI is supported using the following syntax:
+ *
  * GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
  *
  * ```sh
@@ -65,6 +79,10 @@ export class ProjectEnvironment extends pulumi.CustomResource {
     }
 
     /**
+     * The cluster agent to associate with this environment.
+     */
+    public readonly clusterAgentId!: pulumi.Output<number | undefined>;
+    /**
      * The ISO8601 date/time that this environment was created at in UTC.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -72,6 +90,14 @@ export class ProjectEnvironment extends pulumi.CustomResource {
      * Place to link to for this environment.
      */
     public readonly externalUrl!: pulumi.Output<string | undefined>;
+    /**
+     * The Flux resource path to associate with this environment.
+     */
+    public readonly fluxResourcePath!: pulumi.Output<string | undefined>;
+    /**
+     * The Kubernetes namespace to associate with this environment.
+     */
+    public readonly kubernetesNamespace!: pulumi.Output<string | undefined>;
     /**
      * The name of the environment.
      */
@@ -93,6 +119,10 @@ export class ProjectEnvironment extends pulumi.CustomResource {
      */
     public readonly stopBeforeDestroy!: pulumi.Output<boolean | undefined>;
     /**
+     * The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+     */
+    public readonly tier!: pulumi.Output<string>;
+    /**
      * The ISO8601 date/time that this environment was last updated at in UTC.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
@@ -110,23 +140,31 @@ export class ProjectEnvironment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectEnvironmentState | undefined;
+            resourceInputs["clusterAgentId"] = state ? state.clusterAgentId : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["externalUrl"] = state ? state.externalUrl : undefined;
+            resourceInputs["fluxResourcePath"] = state ? state.fluxResourcePath : undefined;
+            resourceInputs["kubernetesNamespace"] = state ? state.kubernetesNamespace : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stopBeforeDestroy"] = state ? state.stopBeforeDestroy : undefined;
+            resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ProjectEnvironmentArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            resourceInputs["clusterAgentId"] = args ? args.clusterAgentId : undefined;
             resourceInputs["externalUrl"] = args ? args.externalUrl : undefined;
+            resourceInputs["fluxResourcePath"] = args ? args.fluxResourcePath : undefined;
+            resourceInputs["kubernetesNamespace"] = args ? args.kubernetesNamespace : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["stopBeforeDestroy"] = args ? args.stopBeforeDestroy : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["slug"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -142,6 +180,10 @@ export class ProjectEnvironment extends pulumi.CustomResource {
  */
 export interface ProjectEnvironmentState {
     /**
+     * The cluster agent to associate with this environment.
+     */
+    clusterAgentId?: pulumi.Input<number>;
+    /**
      * The ISO8601 date/time that this environment was created at in UTC.
      */
     createdAt?: pulumi.Input<string>;
@@ -149,6 +191,14 @@ export interface ProjectEnvironmentState {
      * Place to link to for this environment.
      */
     externalUrl?: pulumi.Input<string>;
+    /**
+     * The Flux resource path to associate with this environment.
+     */
+    fluxResourcePath?: pulumi.Input<string>;
+    /**
+     * The Kubernetes namespace to associate with this environment.
+     */
+    kubernetesNamespace?: pulumi.Input<string>;
     /**
      * The name of the environment.
      */
@@ -170,6 +220,10 @@ export interface ProjectEnvironmentState {
      */
     stopBeforeDestroy?: pulumi.Input<boolean>;
     /**
+     * The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+     */
+    tier?: pulumi.Input<string>;
+    /**
      * The ISO8601 date/time that this environment was last updated at in UTC.
      */
     updatedAt?: pulumi.Input<string>;
@@ -180,9 +234,21 @@ export interface ProjectEnvironmentState {
  */
 export interface ProjectEnvironmentArgs {
     /**
+     * The cluster agent to associate with this environment.
+     */
+    clusterAgentId?: pulumi.Input<number>;
+    /**
      * Place to link to for this environment.
      */
     externalUrl?: pulumi.Input<string>;
+    /**
+     * The Flux resource path to associate with this environment.
+     */
+    fluxResourcePath?: pulumi.Input<string>;
+    /**
+     * The Kubernetes namespace to associate with this environment.
+     */
+    kubernetesNamespace?: pulumi.Input<string>;
     /**
      * The name of the environment.
      */
@@ -195,4 +261,8 @@ export interface ProjectEnvironmentArgs {
      * Determines whether the environment is attempted to be stopped before the environment is deleted.
      */
     stopBeforeDestroy?: pulumi.Input<boolean>;
+    /**
+     * The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+     */
+    tier?: pulumi.Input<string>;
 }

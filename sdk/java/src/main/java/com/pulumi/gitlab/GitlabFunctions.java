@@ -19,6 +19,8 @@ import com.pulumi.gitlab.inputs.GetClusterAgentsPlainArgs;
 import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
 import com.pulumi.gitlab.inputs.GetComplianceFrameworkPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupArgs;
+import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
+import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupHookArgs;
 import com.pulumi.gitlab.inputs.GetGroupHookPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
@@ -51,6 +53,8 @@ import com.pulumi.gitlab.inputs.GetPipelineSchedulesPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectArgs;
 import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
 import com.pulumi.gitlab.inputs.GetProjectBranchesPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
+import com.pulumi.gitlab.inputs.GetProjectEnvironmentsPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectHookArgs;
 import com.pulumi.gitlab.inputs.GetProjectHookPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectHooksArgs;
@@ -98,6 +102,8 @@ import com.pulumi.gitlab.inputs.GetRepositoryFileArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryFilePlainArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryTreeArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryTreePlainArgs;
+import com.pulumi.gitlab.inputs.GetRunnersArgs;
+import com.pulumi.gitlab.inputs.GetRunnersPlainArgs;
 import com.pulumi.gitlab.inputs.GetUserArgs;
 import com.pulumi.gitlab.inputs.GetUserPlainArgs;
 import com.pulumi.gitlab.inputs.GetUserSshkeysArgs;
@@ -110,6 +116,7 @@ import com.pulumi.gitlab.outputs.GetClusterAgentResult;
 import com.pulumi.gitlab.outputs.GetClusterAgentsResult;
 import com.pulumi.gitlab.outputs.GetComplianceFrameworkResult;
 import com.pulumi.gitlab.outputs.GetCurrentUserResult;
+import com.pulumi.gitlab.outputs.GetGroupBillableMemberMembershipsResult;
 import com.pulumi.gitlab.outputs.GetGroupHookResult;
 import com.pulumi.gitlab.outputs.GetGroupHooksResult;
 import com.pulumi.gitlab.outputs.GetGroupIdsResult;
@@ -128,6 +135,7 @@ import com.pulumi.gitlab.outputs.GetMetadataResult;
 import com.pulumi.gitlab.outputs.GetPipelineScheduleResult;
 import com.pulumi.gitlab.outputs.GetPipelineSchedulesResult;
 import com.pulumi.gitlab.outputs.GetProjectBranchesResult;
+import com.pulumi.gitlab.outputs.GetProjectEnvironmentsResult;
 import com.pulumi.gitlab.outputs.GetProjectHookResult;
 import com.pulumi.gitlab.outputs.GetProjectHooksResult;
 import com.pulumi.gitlab.outputs.GetProjectIdsResult;
@@ -152,6 +160,7 @@ import com.pulumi.gitlab.outputs.GetReleaseLinksResult;
 import com.pulumi.gitlab.outputs.GetReleaseResult;
 import com.pulumi.gitlab.outputs.GetRepositoryFileResult;
 import com.pulumi.gitlab.outputs.GetRepositoryTreeResult;
+import com.pulumi.gitlab.outputs.GetRunnersResult;
 import com.pulumi.gitlab.outputs.GetUserResult;
 import com.pulumi.gitlab.outputs.GetUserSshkeysResult;
 import com.pulumi.gitlab.outputs.GetUsersResult;
@@ -1222,6 +1231,206 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupBillableMemberMemberships` data source allows (sub)group- and project-memberships of a billable member of a group to be retrieved by either the user ID, username or email address.
+     * 
+     * &gt; You must be an administrator!
+     * 
+     * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+     * the most related match will prioritize an exact match if one is available.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-memberships-for-a-billable-member-of-a-group)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testUserMembership = GitlabFunctions.getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs.builder()
+     *             .userId(21)
+     *             .groupId(42)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupBillableMemberMembershipsResult> getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs args) {
+        return getGroupBillableMemberMemberships(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupBillableMemberMemberships` data source allows (sub)group- and project-memberships of a billable member of a group to be retrieved by either the user ID, username or email address.
+     * 
+     * &gt; You must be an administrator!
+     * 
+     * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+     * the most related match will prioritize an exact match if one is available.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-memberships-for-a-billable-member-of-a-group)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testUserMembership = GitlabFunctions.getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs.builder()
+     *             .userId(21)
+     *             .groupId(42)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupBillableMemberMembershipsResult> getGroupBillableMemberMembershipsPlain(GetGroupBillableMemberMembershipsPlainArgs args) {
+        return getGroupBillableMemberMembershipsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupBillableMemberMemberships` data source allows (sub)group- and project-memberships of a billable member of a group to be retrieved by either the user ID, username or email address.
+     * 
+     * &gt; You must be an administrator!
+     * 
+     * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+     * the most related match will prioritize an exact match if one is available.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-memberships-for-a-billable-member-of-a-group)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testUserMembership = GitlabFunctions.getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs.builder()
+     *             .userId(21)
+     *             .groupId(42)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupBillableMemberMembershipsResult> getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships", TypeShape.of(GetGroupBillableMemberMembershipsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupBillableMemberMemberships` data source allows (sub)group- and project-memberships of a billable member of a group to be retrieved by either the user ID, username or email address.
+     * 
+     * &gt; You must be an administrator!
+     * 
+     * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+     * the most related match will prioritize an exact match if one is available.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-memberships-for-a-billable-member-of-a-group)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testUserMembership = GitlabFunctions.getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs.builder()
+     *             .userId(21)
+     *             .groupId(42)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupBillableMemberMembershipsResult> getGroupBillableMemberMembershipsPlain(GetGroupBillableMemberMembershipsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships", TypeShape.of(GetGroupBillableMemberMembershipsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
@@ -4030,6 +4239,210 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectBranchesResult> getProjectBranchesPlain(GetProjectBranchesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectBranches:getProjectBranches", TypeShape.of(GetProjectBranchesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectEnvironments` data source retrieves information about all environments of the given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/environments.html#list-environments)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.ProjectArgs;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisProject = new Project("thisProject", ProjectArgs.builder()
+     *             .name("example")
+     *             .initializeWithReadme(true)
+     *             .build());
+     * 
+     *         final var this = GitlabFunctions.getProjectEnvironments(GetProjectEnvironmentsArgs.builder()
+     *             .project(thisProject.pathWithNamespace())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectEnvironmentsResult> getProjectEnvironments(GetProjectEnvironmentsArgs args) {
+        return getProjectEnvironments(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectEnvironments` data source retrieves information about all environments of the given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/environments.html#list-environments)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.ProjectArgs;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisProject = new Project("thisProject", ProjectArgs.builder()
+     *             .name("example")
+     *             .initializeWithReadme(true)
+     *             .build());
+     * 
+     *         final var this = GitlabFunctions.getProjectEnvironments(GetProjectEnvironmentsArgs.builder()
+     *             .project(thisProject.pathWithNamespace())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetProjectEnvironmentsResult> getProjectEnvironmentsPlain(GetProjectEnvironmentsPlainArgs args) {
+        return getProjectEnvironmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectEnvironments` data source retrieves information about all environments of the given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/environments.html#list-environments)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.ProjectArgs;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisProject = new Project("thisProject", ProjectArgs.builder()
+     *             .name("example")
+     *             .initializeWithReadme(true)
+     *             .build());
+     * 
+     *         final var this = GitlabFunctions.getProjectEnvironments(GetProjectEnvironmentsArgs.builder()
+     *             .project(thisProject.pathWithNamespace())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectEnvironmentsResult> getProjectEnvironments(GetProjectEnvironmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectEnvironments:getProjectEnvironments", TypeShape.of(GetProjectEnvironmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectEnvironments` data source retrieves information about all environments of the given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/environments.html#list-environments)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.ProjectArgs;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisProject = new Project("thisProject", ProjectArgs.builder()
+     *             .name("example")
+     *             .initializeWithReadme(true)
+     *             .build());
+     * 
+     *         final var this = GitlabFunctions.getProjectEnvironments(GetProjectEnvironmentsArgs.builder()
+     *             .project(thisProject.pathWithNamespace())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetProjectEnvironmentsResult> getProjectEnvironmentsPlain(GetProjectEnvironmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectEnvironments:getProjectEnvironments", TypeShape.of(GetProjectEnvironmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
@@ -7002,6 +7415,354 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetRepositoryTreeResult> getRepositoryTreePlain(GetRepositoryTreePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getRepositoryTree:getRepositoryTree", TypeShape.of(GetRepositoryTreeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getRunners` data source retrieves information about all gitlab runners.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#list-all-runners)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.UserRunner;
+     * import com.pulumi.gitlab.UserRunnerArgs;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisUserRunner = new UserRunner("thisUserRunner", UserRunnerArgs.builder()
+     *             .runnerType("instance_type")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .build());
+     * 
+     *         final var this = GitlabFunctions.getRunners(GetRunnersArgs.builder()
+     *             .paused(false)
+     *             .status("online")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .type("instance_type")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRunnersResult> getRunners() {
+        return getRunners(GetRunnersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRunners` data source retrieves information about all gitlab runners.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#list-all-runners)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.UserRunner;
+     * import com.pulumi.gitlab.UserRunnerArgs;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisUserRunner = new UserRunner("thisUserRunner", UserRunnerArgs.builder()
+     *             .runnerType("instance_type")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .build());
+     * 
+     *         final var this = GitlabFunctions.getRunners(GetRunnersArgs.builder()
+     *             .paused(false)
+     *             .status("online")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .type("instance_type")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRunnersResult> getRunnersPlain() {
+        return getRunnersPlain(GetRunnersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRunners` data source retrieves information about all gitlab runners.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#list-all-runners)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.UserRunner;
+     * import com.pulumi.gitlab.UserRunnerArgs;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisUserRunner = new UserRunner("thisUserRunner", UserRunnerArgs.builder()
+     *             .runnerType("instance_type")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .build());
+     * 
+     *         final var this = GitlabFunctions.getRunners(GetRunnersArgs.builder()
+     *             .paused(false)
+     *             .status("online")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .type("instance_type")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRunnersResult> getRunners(GetRunnersArgs args) {
+        return getRunners(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRunners` data source retrieves information about all gitlab runners.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#list-all-runners)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.UserRunner;
+     * import com.pulumi.gitlab.UserRunnerArgs;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisUserRunner = new UserRunner("thisUserRunner", UserRunnerArgs.builder()
+     *             .runnerType("instance_type")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .build());
+     * 
+     *         final var this = GitlabFunctions.getRunners(GetRunnersArgs.builder()
+     *             .paused(false)
+     *             .status("online")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .type("instance_type")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRunnersResult> getRunnersPlain(GetRunnersPlainArgs args) {
+        return getRunnersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRunners` data source retrieves information about all gitlab runners.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#list-all-runners)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.UserRunner;
+     * import com.pulumi.gitlab.UserRunnerArgs;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisUserRunner = new UserRunner("thisUserRunner", UserRunnerArgs.builder()
+     *             .runnerType("instance_type")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .build());
+     * 
+     *         final var this = GitlabFunctions.getRunners(GetRunnersArgs.builder()
+     *             .paused(false)
+     *             .status("online")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .type("instance_type")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRunnersResult> getRunners(GetRunnersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getRunners:getRunners", TypeShape.of(GetRunnersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getRunners` data source retrieves information about all gitlab runners.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#list-all-runners)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.UserRunner;
+     * import com.pulumi.gitlab.UserRunnerArgs;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisUserRunner = new UserRunner("thisUserRunner", UserRunnerArgs.builder()
+     *             .runnerType("instance_type")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .build());
+     * 
+     *         final var this = GitlabFunctions.getRunners(GetRunnersArgs.builder()
+     *             .paused(false)
+     *             .status("online")
+     *             .tagLists(            
+     *                 "tag1",
+     *                 "tag2")
+     *             .type("instance_type")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRunnersResult> getRunnersPlain(GetRunnersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getRunners:getRunners", TypeShape.of(GetRunnersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.User` data source allows details of a user to be retrieved by either the user ID, username or email address.

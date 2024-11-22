@@ -39,6 +39,20 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_membership`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_group_membership.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
+    /// 
     /// GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
     /// 
     /// ```sh

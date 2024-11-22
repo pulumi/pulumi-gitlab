@@ -56,6 +56,20 @@ import (
 //
 // ## Import
 //
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_service_custom_issue_tracker`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_service_custom_issue_tracker.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
+//
 // You can import a gitlab_service_custom_issue_tracker state using the project ID, e.g.
 //
 // ```sh

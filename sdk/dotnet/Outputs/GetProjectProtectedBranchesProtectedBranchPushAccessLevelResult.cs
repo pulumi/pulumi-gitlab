@@ -22,11 +22,15 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string AccessLevelDescription;
         /// <summary>
-        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        /// The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        /// </summary>
+        public readonly int? DeployKeyId;
+        /// <summary>
+        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         /// </summary>
         public readonly int? GroupId;
         /// <summary>
-        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         /// </summary>
         public readonly int? UserId;
 
@@ -36,12 +40,15 @@ namespace Pulumi.GitLab.Outputs
 
             string accessLevelDescription,
 
+            int? deployKeyId,
+
             int? groupId,
 
             int? userId)
         {
             AccessLevel = accessLevel;
             AccessLevelDescription = accessLevelDescription;
+            DeployKeyId = deployKeyId;
             GroupId = groupId;
             UserId = userId;
         }

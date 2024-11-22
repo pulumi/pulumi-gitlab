@@ -279,6 +279,20 @@ class ProjectIssueBoard(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_issue_board`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_issue_board.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         You can import this resource with an id made up of `{project-id}:{issue-board-id}`, e.g.
 
         ```sh
@@ -309,6 +323,20 @@ class ProjectIssueBoard(pulumi.CustomResource):
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/boards.html)
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_issue_board`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_issue_board.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         You can import this resource with an id made up of `{project-id}:{issue-board-id}`, e.g.
 

@@ -12,10 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectSecurityPolicyAttachment` resource allows to attach a security policy project to a project.
-//
-// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#mutationsecuritypolicyprojectassign)
-//
 // ## Example Usage
 //
 // ```go
@@ -38,7 +34,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Or you can use Terraform to create a new project, add a policy to that project,
+//			// Or Terraform can create a new project, add a policy to that project,
 //			// then attach that policy project to other projects.
 //			_, err = gitlab.NewProject(ctx, "my-policy-project", &gitlab.ProjectArgs{
 //				Name: pulumi.String("security-policy-project"),
@@ -85,6 +81,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Multiple policies can be attached to a single project by repeating this resource or using a `for_each`
 //			_, err = gitlab.NewProjectSecurityPolicyAttachment(ctx, "my-policy", &gitlab.ProjectSecurityPolicyAttachmentArgs{
 //				Project:       pulumi.String("1234"),
 //				PolicyProject: my_policy_project.ID(),
@@ -99,6 +96,20 @@ import (
 // ```
 //
 // ## Import
+//
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_security_policy_attachment`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_project_security_policy_attachment.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
 //
 // GitLab project security policy attachments can be imported using an id made up of `project:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
 //

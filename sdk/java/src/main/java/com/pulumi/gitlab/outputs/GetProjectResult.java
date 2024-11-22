@@ -79,6 +79,11 @@ public final class GetProjectResult {
      */
     private Integer ciDefaultGitDepth;
     /**
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * 
+     */
+    private String ciPipelineVariablesMinimumOverrideRole;
+    /**
      * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */
@@ -448,6 +453,13 @@ public final class GetProjectResult {
      */
     public Integer ciDefaultGitDepth() {
         return this.ciDefaultGitDepth;
+    }
+    /**
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * 
+     */
+    public String ciPipelineVariablesMinimumOverrideRole() {
+        return this.ciPipelineVariablesMinimumOverrideRole;
     }
     /**
      * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -870,6 +882,7 @@ public final class GetProjectResult {
         private String buildsAccessLevel;
         private String ciConfigPath;
         private Integer ciDefaultGitDepth;
+        private String ciPipelineVariablesMinimumOverrideRole;
         private String ciRestrictPipelineCancellationRole;
         private Boolean ciSeparatedCaches;
         private List<GetProjectContainerExpirationPolicy> containerExpirationPolicies;
@@ -942,6 +955,7 @@ public final class GetProjectResult {
     	      this.buildsAccessLevel = defaults.buildsAccessLevel;
     	      this.ciConfigPath = defaults.ciConfigPath;
     	      this.ciDefaultGitDepth = defaults.ciDefaultGitDepth;
+    	      this.ciPipelineVariablesMinimumOverrideRole = defaults.ciPipelineVariablesMinimumOverrideRole;
     	      this.ciRestrictPipelineCancellationRole = defaults.ciRestrictPipelineCancellationRole;
     	      this.ciSeparatedCaches = defaults.ciSeparatedCaches;
     	      this.containerExpirationPolicies = defaults.containerExpirationPolicies;
@@ -1095,6 +1109,14 @@ public final class GetProjectResult {
               throw new MissingRequiredPropertyException("GetProjectResult", "ciDefaultGitDepth");
             }
             this.ciDefaultGitDepth = ciDefaultGitDepth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ciPipelineVariablesMinimumOverrideRole(String ciPipelineVariablesMinimumOverrideRole) {
+            if (ciPipelineVariablesMinimumOverrideRole == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "ciPipelineVariablesMinimumOverrideRole");
+            }
+            this.ciPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
             return this;
         }
         @CustomType.Setter
@@ -1577,6 +1599,7 @@ public final class GetProjectResult {
             _resultValue.buildsAccessLevel = buildsAccessLevel;
             _resultValue.ciConfigPath = ciConfigPath;
             _resultValue.ciDefaultGitDepth = ciDefaultGitDepth;
+            _resultValue.ciPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
             _resultValue.ciRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             _resultValue.ciSeparatedCaches = ciSeparatedCaches;
             _resultValue.containerExpirationPolicies = containerExpirationPolicies;

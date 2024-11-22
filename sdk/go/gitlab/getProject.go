@@ -62,6 +62,8 @@ type LookupProjectResult struct {
 	CiConfigPath string `pulumi:"ciConfigPath"`
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth int `pulumi:"ciDefaultGitDepth"`
+	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+	CiPipelineVariablesMinimumOverrideRole string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
 	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
@@ -286,6 +288,11 @@ func (o LookupProjectResultOutput) CiConfigPath() pulumi.StringOutput {
 // Default number of revisions for shallow cloning.
 func (o LookupProjectResultOutput) CiDefaultGitDepth() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.CiDefaultGitDepth }).(pulumi.IntOutput)
+}
+
+// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+func (o LookupProjectResultOutput) CiPipelineVariablesMinimumOverrideRole() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.CiPipelineVariablesMinimumOverrideRole }).(pulumi.StringOutput)
 }
 
 // The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`

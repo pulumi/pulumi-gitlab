@@ -111,6 +111,11 @@ public final class GetProjectsProject {
      */
     private Boolean ciForwardDeploymentEnabled;
     /**
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * 
+     */
+    private String ciPipelineVariablesMinimumOverrideRole;
+    /**
      * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */
@@ -638,6 +643,13 @@ public final class GetProjectsProject {
      */
     public Boolean ciForwardDeploymentEnabled() {
         return this.ciForwardDeploymentEnabled;
+    }
+    /**
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * 
+     */
+    public String ciPipelineVariablesMinimumOverrideRole() {
+        return this.ciPipelineVariablesMinimumOverrideRole;
     }
     /**
      * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -1230,6 +1242,7 @@ public final class GetProjectsProject {
         private String ciConfigPath;
         private Integer ciDefaultGitDepth;
         private Boolean ciForwardDeploymentEnabled;
+        private String ciPipelineVariablesMinimumOverrideRole;
         private String ciRestrictPipelineCancellationRole;
         private List<GetProjectsProjectContainerExpirationPolicy> containerExpirationPolicies;
         private String containerRegistryAccessLevel;
@@ -1332,6 +1345,7 @@ public final class GetProjectsProject {
     	      this.ciConfigPath = defaults.ciConfigPath;
     	      this.ciDefaultGitDepth = defaults.ciDefaultGitDepth;
     	      this.ciForwardDeploymentEnabled = defaults.ciForwardDeploymentEnabled;
+    	      this.ciPipelineVariablesMinimumOverrideRole = defaults.ciPipelineVariablesMinimumOverrideRole;
     	      this.ciRestrictPipelineCancellationRole = defaults.ciRestrictPipelineCancellationRole;
     	      this.containerExpirationPolicies = defaults.containerExpirationPolicies;
     	      this.containerRegistryAccessLevel = defaults.containerRegistryAccessLevel;
@@ -1557,6 +1571,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "ciForwardDeploymentEnabled");
             }
             this.ciForwardDeploymentEnabled = ciForwardDeploymentEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ciPipelineVariablesMinimumOverrideRole(String ciPipelineVariablesMinimumOverrideRole) {
+            if (ciPipelineVariablesMinimumOverrideRole == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ciPipelineVariablesMinimumOverrideRole");
+            }
+            this.ciPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
             return this;
         }
         @CustomType.Setter
@@ -2251,6 +2273,7 @@ public final class GetProjectsProject {
             _resultValue.ciConfigPath = ciConfigPath;
             _resultValue.ciDefaultGitDepth = ciDefaultGitDepth;
             _resultValue.ciForwardDeploymentEnabled = ciForwardDeploymentEnabled;
+            _resultValue.ciPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
             _resultValue.ciRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             _resultValue.containerExpirationPolicies = containerExpirationPolicies;
             _resultValue.containerRegistryAccessLevel = containerRegistryAccessLevel;

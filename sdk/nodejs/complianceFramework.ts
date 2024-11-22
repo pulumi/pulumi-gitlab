@@ -33,6 +33,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_compliance_framework`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_compliance_framework.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Import using the CLI is supported using the following syntax:
+ *
  * Gitlab compliance frameworks can be imported with a key composed of `<namespace_path>:<framework_id>`, e.g.
  *
  * ```sh

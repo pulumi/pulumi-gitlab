@@ -80,6 +80,21 @@ public final class UserRunnerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Free-form maintenance notes for the runner (1024 characters)
+     * 
+     */
+    @Import(name="maintenanceNote")
+    private @Nullable Output<String> maintenanceNote;
+
+    /**
+     * @return Free-form maintenance notes for the runner (1024 characters)
+     * 
+     */
+    public Optional<Output<String>> maintenanceNote() {
+        return Optional.ofNullable(this.maintenanceNote);
+    }
+
+    /**
      * Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
      * 
      */
@@ -176,6 +191,7 @@ public final class UserRunnerArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.groupId = $.groupId;
         this.locked = $.locked;
+        this.maintenanceNote = $.maintenanceNote;
         this.maximumTimeout = $.maximumTimeout;
         this.paused = $.paused;
         this.projectId = $.projectId;
@@ -284,6 +300,27 @@ public final class UserRunnerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder locked(Boolean locked) {
             return locked(Output.of(locked));
+        }
+
+        /**
+         * @param maintenanceNote Free-form maintenance notes for the runner (1024 characters)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceNote(@Nullable Output<String> maintenanceNote) {
+            $.maintenanceNote = maintenanceNote;
+            return this;
+        }
+
+        /**
+         * @param maintenanceNote Free-form maintenance notes for the runner (1024 characters)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceNote(String maintenanceNote) {
+            return maintenanceNote(Output.of(maintenanceNote));
         }
 
         /**

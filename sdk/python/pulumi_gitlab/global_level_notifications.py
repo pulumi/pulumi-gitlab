@@ -639,6 +639,20 @@ class GlobalLevelNotifications(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_global_level_notifications`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_global_level_notifications.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         Note: You can import a global notification state using "gitlab" as the ID.
 
         The ID will always be gitlab, because the global notificatio only exists
@@ -682,6 +696,20 @@ class GlobalLevelNotifications(pulumi.CustomResource):
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_global_level_notifications`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_global_level_notifications.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         Note: You can import a global notification state using "gitlab" as the ID.
 

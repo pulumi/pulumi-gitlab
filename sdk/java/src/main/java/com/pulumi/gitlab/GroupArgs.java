@@ -22,6 +22,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final GroupArgs Empty = new GroupArgs();
 
     /**
+     * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+     * 
+     */
+    @Import(name="allowedEmailDomainsLists")
+    private @Nullable Output<List<String>> allowedEmailDomainsLists;
+
+    /**
+     * @return A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedEmailDomainsLists() {
+        return Optional.ofNullable(this.allowedEmailDomainsLists);
+    }
+
+    /**
      * Default to Auto DevOps pipeline for all projects within this group.
      * 
      */
@@ -467,6 +482,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     private GroupArgs() {}
 
     private GroupArgs(GroupArgs $) {
+        this.allowedEmailDomainsLists = $.allowedEmailDomainsLists;
         this.autoDevopsEnabled = $.autoDevopsEnabled;
         this.avatar = $.avatar;
         this.avatarHash = $.avatarHash;
@@ -514,6 +530,37 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(GroupArgs defaults) {
             $ = new GroupArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedEmailDomainsLists A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedEmailDomainsLists(@Nullable Output<List<String>> allowedEmailDomainsLists) {
+            $.allowedEmailDomainsLists = allowedEmailDomainsLists;
+            return this;
+        }
+
+        /**
+         * @param allowedEmailDomainsLists A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedEmailDomainsLists(List<String> allowedEmailDomainsLists) {
+            return allowedEmailDomainsLists(Output.of(allowedEmailDomainsLists));
+        }
+
+        /**
+         * @param allowedEmailDomainsLists A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedEmailDomainsLists(String... allowedEmailDomainsLists) {
+            return allowedEmailDomainsLists(List.of(allowedEmailDomainsLists));
         }
 
         /**

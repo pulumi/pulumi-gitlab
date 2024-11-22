@@ -20,23 +20,39 @@ __all__ = ['ProjectEnvironmentArgs', 'ProjectEnvironment']
 class ProjectEnvironmentArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
+                 cluster_agent_id: Optional[pulumi.Input[int]] = None,
                  external_url: Optional[pulumi.Input[str]] = None,
+                 flux_resource_path: Optional[pulumi.Input[str]] = None,
+                 kubernetes_namespace: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 stop_before_destroy: Optional[pulumi.Input[bool]] = None):
+                 stop_before_destroy: Optional[pulumi.Input[bool]] = None,
+                 tier: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProjectEnvironment resource.
         :param pulumi.Input[str] project: The ID or full path of the project to environment is created for.
+        :param pulumi.Input[int] cluster_agent_id: The cluster agent to associate with this environment.
         :param pulumi.Input[str] external_url: Place to link to for this environment.
+        :param pulumi.Input[str] flux_resource_path: The Flux resource path to associate with this environment.
+        :param pulumi.Input[str] kubernetes_namespace: The Kubernetes namespace to associate with this environment.
         :param pulumi.Input[str] name: The name of the environment.
         :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted.
+        :param pulumi.Input[str] tier: The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
         """
         pulumi.set(__self__, "project", project)
+        if cluster_agent_id is not None:
+            pulumi.set(__self__, "cluster_agent_id", cluster_agent_id)
         if external_url is not None:
             pulumi.set(__self__, "external_url", external_url)
+        if flux_resource_path is not None:
+            pulumi.set(__self__, "flux_resource_path", flux_resource_path)
+        if kubernetes_namespace is not None:
+            pulumi.set(__self__, "kubernetes_namespace", kubernetes_namespace)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if stop_before_destroy is not None:
             pulumi.set(__self__, "stop_before_destroy", stop_before_destroy)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
 
     @property
     @pulumi.getter
@@ -51,6 +67,18 @@ class ProjectEnvironmentArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="clusterAgentId")
+    def cluster_agent_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The cluster agent to associate with this environment.
+        """
+        return pulumi.get(self, "cluster_agent_id")
+
+    @cluster_agent_id.setter
+    def cluster_agent_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cluster_agent_id", value)
+
+    @property
     @pulumi.getter(name="externalUrl")
     def external_url(self) -> Optional[pulumi.Input[str]]:
         """
@@ -61,6 +89,30 @@ class ProjectEnvironmentArgs:
     @external_url.setter
     def external_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_url", value)
+
+    @property
+    @pulumi.getter(name="fluxResourcePath")
+    def flux_resource_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Flux resource path to associate with this environment.
+        """
+        return pulumi.get(self, "flux_resource_path")
+
+    @flux_resource_path.setter
+    def flux_resource_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flux_resource_path", value)
+
+    @property
+    @pulumi.getter(name="kubernetesNamespace")
+    def kubernetes_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Kubernetes namespace to associate with this environment.
+        """
+        return pulumi.get(self, "kubernetes_namespace")
+
+    @kubernetes_namespace.setter
+    def kubernetes_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubernetes_namespace", value)
 
     @property
     @pulumi.getter
@@ -86,33 +138,59 @@ class ProjectEnvironmentArgs:
     def stop_before_destroy(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "stop_before_destroy", value)
 
+    @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tier", value)
+
 
 @pulumi.input_type
 class _ProjectEnvironmentState:
     def __init__(__self__, *,
+                 cluster_agent_id: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  external_url: Optional[pulumi.Input[str]] = None,
+                 flux_resource_path: Optional[pulumi.Input[str]] = None,
+                 kubernetes_namespace: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  slug: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  stop_before_destroy: Optional[pulumi.Input[bool]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectEnvironment resources.
+        :param pulumi.Input[int] cluster_agent_id: The cluster agent to associate with this environment.
         :param pulumi.Input[str] created_at: The ISO8601 date/time that this environment was created at in UTC.
         :param pulumi.Input[str] external_url: Place to link to for this environment.
+        :param pulumi.Input[str] flux_resource_path: The Flux resource path to associate with this environment.
+        :param pulumi.Input[str] kubernetes_namespace: The Kubernetes namespace to associate with this environment.
         :param pulumi.Input[str] name: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project to environment is created for.
         :param pulumi.Input[str] slug: The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         :param pulumi.Input[str] state: State the environment is in. Valid values are `available`, `stopped`.
         :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted.
+        :param pulumi.Input[str] tier: The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] updated_at: The ISO8601 date/time that this environment was last updated at in UTC.
         """
+        if cluster_agent_id is not None:
+            pulumi.set(__self__, "cluster_agent_id", cluster_agent_id)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if external_url is not None:
             pulumi.set(__self__, "external_url", external_url)
+        if flux_resource_path is not None:
+            pulumi.set(__self__, "flux_resource_path", flux_resource_path)
+        if kubernetes_namespace is not None:
+            pulumi.set(__self__, "kubernetes_namespace", kubernetes_namespace)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -123,8 +201,22 @@ class _ProjectEnvironmentState:
             pulumi.set(__self__, "state", state)
         if stop_before_destroy is not None:
             pulumi.set(__self__, "stop_before_destroy", stop_before_destroy)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="clusterAgentId")
+    def cluster_agent_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The cluster agent to associate with this environment.
+        """
+        return pulumi.get(self, "cluster_agent_id")
+
+    @cluster_agent_id.setter
+    def cluster_agent_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cluster_agent_id", value)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -149,6 +241,30 @@ class _ProjectEnvironmentState:
     @external_url.setter
     def external_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_url", value)
+
+    @property
+    @pulumi.getter(name="fluxResourcePath")
+    def flux_resource_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Flux resource path to associate with this environment.
+        """
+        return pulumi.get(self, "flux_resource_path")
+
+    @flux_resource_path.setter
+    def flux_resource_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flux_resource_path", value)
+
+    @property
+    @pulumi.getter(name="kubernetesNamespace")
+    def kubernetes_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Kubernetes namespace to associate with this environment.
+        """
+        return pulumi.get(self, "kubernetes_namespace")
+
+    @kubernetes_namespace.setter
+    def kubernetes_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubernetes_namespace", value)
 
     @property
     @pulumi.getter
@@ -211,6 +327,18 @@ class _ProjectEnvironmentState:
         pulumi.set(self, "stop_before_destroy", value)
 
     @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tier", value)
+
+    @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
         """
@@ -228,10 +356,14 @@ class ProjectEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_agent_id: Optional[pulumi.Input[int]] = None,
                  external_url: Optional[pulumi.Input[str]] = None,
+                 flux_resource_path: Optional[pulumi.Input[str]] = None,
+                 kubernetes_namespace: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  stop_before_destroy: Optional[pulumi.Input[bool]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -256,6 +388,20 @@ class ProjectEnvironment(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_environment`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_environment.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
 
         ```sh
@@ -264,10 +410,14 @@ class ProjectEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] cluster_agent_id: The cluster agent to associate with this environment.
         :param pulumi.Input[str] external_url: Place to link to for this environment.
+        :param pulumi.Input[str] flux_resource_path: The Flux resource path to associate with this environment.
+        :param pulumi.Input[str] kubernetes_namespace: The Kubernetes namespace to associate with this environment.
         :param pulumi.Input[str] name: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project to environment is created for.
         :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted.
+        :param pulumi.Input[str] tier: The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
         """
         ...
     @overload
@@ -298,6 +448,20 @@ class ProjectEnvironment(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_environment`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_environment.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
 
         ```sh
@@ -319,10 +483,14 @@ class ProjectEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_agent_id: Optional[pulumi.Input[int]] = None,
                  external_url: Optional[pulumi.Input[str]] = None,
+                 flux_resource_path: Optional[pulumi.Input[str]] = None,
+                 kubernetes_namespace: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  stop_before_destroy: Optional[pulumi.Input[bool]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -332,12 +500,16 @@ class ProjectEnvironment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectEnvironmentArgs.__new__(ProjectEnvironmentArgs)
 
+            __props__.__dict__["cluster_agent_id"] = cluster_agent_id
             __props__.__dict__["external_url"] = external_url
+            __props__.__dict__["flux_resource_path"] = flux_resource_path
+            __props__.__dict__["kubernetes_namespace"] = kubernetes_namespace
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["stop_before_destroy"] = stop_before_destroy
+            __props__.__dict__["tier"] = tier
             __props__.__dict__["created_at"] = None
             __props__.__dict__["slug"] = None
             __props__.__dict__["state"] = None
@@ -352,13 +524,17 @@ class ProjectEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_agent_id: Optional[pulumi.Input[int]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             external_url: Optional[pulumi.Input[str]] = None,
+            flux_resource_path: Optional[pulumi.Input[str]] = None,
+            kubernetes_namespace: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             slug: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             stop_before_destroy: Optional[pulumi.Input[bool]] = None,
+            tier: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None) -> 'ProjectEnvironment':
         """
         Get an existing ProjectEnvironment resource's state with the given name, id, and optional extra
@@ -367,28 +543,44 @@ class ProjectEnvironment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] cluster_agent_id: The cluster agent to associate with this environment.
         :param pulumi.Input[str] created_at: The ISO8601 date/time that this environment was created at in UTC.
         :param pulumi.Input[str] external_url: Place to link to for this environment.
+        :param pulumi.Input[str] flux_resource_path: The Flux resource path to associate with this environment.
+        :param pulumi.Input[str] kubernetes_namespace: The Kubernetes namespace to associate with this environment.
         :param pulumi.Input[str] name: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project to environment is created for.
         :param pulumi.Input[str] slug: The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         :param pulumi.Input[str] state: State the environment is in. Valid values are `available`, `stopped`.
         :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted.
+        :param pulumi.Input[str] tier: The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] updated_at: The ISO8601 date/time that this environment was last updated at in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ProjectEnvironmentState.__new__(_ProjectEnvironmentState)
 
+        __props__.__dict__["cluster_agent_id"] = cluster_agent_id
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["external_url"] = external_url
+        __props__.__dict__["flux_resource_path"] = flux_resource_path
+        __props__.__dict__["kubernetes_namespace"] = kubernetes_namespace
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["slug"] = slug
         __props__.__dict__["state"] = state
         __props__.__dict__["stop_before_destroy"] = stop_before_destroy
+        __props__.__dict__["tier"] = tier
         __props__.__dict__["updated_at"] = updated_at
         return ProjectEnvironment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clusterAgentId")
+    def cluster_agent_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        The cluster agent to associate with this environment.
+        """
+        return pulumi.get(self, "cluster_agent_id")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -405,6 +597,22 @@ class ProjectEnvironment(pulumi.CustomResource):
         Place to link to for this environment.
         """
         return pulumi.get(self, "external_url")
+
+    @property
+    @pulumi.getter(name="fluxResourcePath")
+    def flux_resource_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Flux resource path to associate with this environment.
+        """
+        return pulumi.get(self, "flux_resource_path")
+
+    @property
+    @pulumi.getter(name="kubernetesNamespace")
+    def kubernetes_namespace(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Kubernetes namespace to associate with this environment.
+        """
+        return pulumi.get(self, "kubernetes_namespace")
 
     @property
     @pulumi.getter
@@ -445,6 +653,14 @@ class ProjectEnvironment(pulumi.CustomResource):
         Determines whether the environment is attempted to be stopped before the environment is deleted.
         """
         return pulumi.get(self, "stop_before_destroy")
+
+    @property
+    @pulumi.getter
+    def tier(self) -> pulumi.Output[str]:
+        """
+        The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        """
+        return pulumi.get(self, "tier")
 
     @property
     @pulumi.getter(name="updatedAt")

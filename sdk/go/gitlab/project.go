@@ -15,6 +15,20 @@ import (
 //
 // ## Import
 //
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_project.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
+//
 // ```sh
 // $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
 // ```
@@ -76,6 +90,8 @@ type Project struct {
 	CiDefaultGitDepth pulumi.IntOutput `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolOutput `pulumi:"ciForwardDeploymentEnabled"`
+	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+	CiPipelineVariablesMinimumOverrideRole pulumi.StringOutput `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
 	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole pulumi.StringOutput `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
@@ -337,6 +353,8 @@ type projectState struct {
 	CiDefaultGitDepth *int `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
+	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+	CiPipelineVariablesMinimumOverrideRole *string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
 	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole *string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
@@ -561,6 +579,8 @@ type ProjectState struct {
 	CiDefaultGitDepth pulumi.IntPtrInput
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
+	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+	CiPipelineVariablesMinimumOverrideRole pulumi.StringPtrInput
 	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole pulumi.StringPtrInput
 	// Use separate caches for protected branches.
@@ -787,6 +807,8 @@ type projectArgs struct {
 	CiDefaultGitDepth *int `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
+	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+	CiPipelineVariablesMinimumOverrideRole *string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
 	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole *string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
@@ -998,6 +1020,8 @@ type ProjectArgs struct {
 	CiDefaultGitDepth pulumi.IntPtrInput
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
+	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+	CiPipelineVariablesMinimumOverrideRole pulumi.StringPtrInput
 	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole pulumi.StringPtrInput
 	// Use separate caches for protected branches.
@@ -1354,6 +1378,11 @@ func (o ProjectOutput) CiDefaultGitDepth() pulumi.IntOutput {
 // When a new deployment job starts, skip older deployment jobs that are still pending.
 func (o ProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.CiForwardDeploymentEnabled }).(pulumi.BoolOutput)
+}
+
+// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+func (o ProjectOutput) CiPipelineVariablesMinimumOverrideRole() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CiPipelineVariablesMinimumOverrideRole }).(pulumi.StringOutput)
 }
 
 // The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`

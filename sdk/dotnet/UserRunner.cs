@@ -84,6 +84,20 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_user_runner`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_user_runner.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
+    /// 
     /// You can import a gitlab runner using its ID
     /// 
     /// Note: Importing a runner will not provide access to the `token` attribute
@@ -118,6 +132,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("locked")]
         public Output<bool> Locked { get; private set; } = null!;
+
+        /// <summary>
+        /// Free-form maintenance notes for the runner (1024 characters)
+        /// </summary>
+        [Output("maintenanceNote")]
+        public Output<string> MaintenanceNote { get; private set; } = null!;
 
         /// <summary>
         /// Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
@@ -236,6 +256,12 @@ namespace Pulumi.GitLab
         public Input<bool>? Locked { get; set; }
 
         /// <summary>
+        /// Free-form maintenance notes for the runner (1024 characters)
+        /// </summary>
+        [Input("maintenanceNote")]
+        public Input<string>? MaintenanceNote { get; set; }
+
+        /// <summary>
         /// Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
         /// </summary>
         [Input("maximumTimeout")]
@@ -308,6 +334,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
+
+        /// <summary>
+        /// Free-form maintenance notes for the runner (1024 characters)
+        /// </summary>
+        [Input("maintenanceNote")]
+        public Input<string>? MaintenanceNote { get; set; }
 
         /// <summary>
         /// Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
