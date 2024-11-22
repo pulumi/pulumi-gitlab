@@ -11,6 +11,7 @@ import com.pulumi.gitlab.ProjectEnvironmentArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectEnvironmentState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -71,6 +72,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_environment`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_project_environment.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
+ * 
  * GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
  * 
  * ```sh
@@ -80,6 +95,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gitlab:index/projectEnvironment:ProjectEnvironment")
 public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
+    /**
+     * The cluster agent to associate with this environment.
+     * 
+     */
+    @Export(name="clusterAgentId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> clusterAgentId;
+
+    /**
+     * @return The cluster agent to associate with this environment.
+     * 
+     */
+    public Output<Optional<Integer>> clusterAgentId() {
+        return Codegen.optional(this.clusterAgentId);
+    }
     /**
      * The ISO8601 date/time that this environment was created at in UTC.
      * 
@@ -107,6 +136,34 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> externalUrl() {
         return Codegen.optional(this.externalUrl);
+    }
+    /**
+     * The Flux resource path to associate with this environment.
+     * 
+     */
+    @Export(name="fluxResourcePath", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> fluxResourcePath;
+
+    /**
+     * @return The Flux resource path to associate with this environment.
+     * 
+     */
+    public Output<Optional<String>> fluxResourcePath() {
+        return Codegen.optional(this.fluxResourcePath);
+    }
+    /**
+     * The Kubernetes namespace to associate with this environment.
+     * 
+     */
+    @Export(name="kubernetesNamespace", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kubernetesNamespace;
+
+    /**
+     * @return The Kubernetes namespace to associate with this environment.
+     * 
+     */
+    public Output<Optional<String>> kubernetesNamespace() {
+        return Codegen.optional(this.kubernetesNamespace);
     }
     /**
      * The name of the environment.
@@ -177,6 +234,20 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> stopBeforeDestroy() {
         return Codegen.optional(this.stopBeforeDestroy);
+    }
+    /**
+     * The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+     * 
+     */
+    @Export(name="tier", refs={String.class}, tree="[0]")
+    private Output<String> tier;
+
+    /**
+     * @return The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+     * 
+     */
+    public Output<String> tier() {
+        return this.tier;
     }
     /**
      * The ISO8601 date/time that this environment was last updated at in UTC.

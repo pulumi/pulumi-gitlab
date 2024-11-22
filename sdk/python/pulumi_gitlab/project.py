@@ -40,6 +40,7 @@ class ProjectArgs:
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
@@ -141,6 +142,7 @@ class ProjectArgs:
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -264,6 +266,8 @@ class ProjectArgs:
             pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        if ci_pipeline_variables_minimum_override_role is not None:
+            pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
         if ci_restrict_pipeline_cancellation_role is not None:
             pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
         if ci_separated_caches is not None:
@@ -659,6 +663,18 @@ class ProjectArgs:
     @ci_forward_deployment_enabled.setter
     def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ci_forward_deployment_enabled", value)
+
+    @property
+    @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
+    def ci_pipeline_variables_minimum_override_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        """
+        return pulumi.get(self, "ci_pipeline_variables_minimum_override_role")
+
+    @ci_pipeline_variables_minimum_override_role.setter
+    def ci_pipeline_variables_minimum_override_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ci_pipeline_variables_minimum_override_role", value)
 
     @property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
@@ -1615,6 +1631,7 @@ class _ProjectState:
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
@@ -1723,6 +1740,7 @@ class _ProjectState:
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -1854,6 +1872,8 @@ class _ProjectState:
             pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        if ci_pipeline_variables_minimum_override_role is not None:
+            pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
         if ci_restrict_pipeline_cancellation_role is not None:
             pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
         if ci_separated_caches is not None:
@@ -2273,6 +2293,18 @@ class _ProjectState:
     @ci_forward_deployment_enabled.setter
     def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ci_forward_deployment_enabled", value)
+
+    @property
+    @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
+    def ci_pipeline_variables_minimum_override_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        """
+        return pulumi.get(self, "ci_pipeline_variables_minimum_override_role")
+
+    @ci_pipeline_variables_minimum_override_role.setter
+    def ci_pipeline_variables_minimum_override_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ci_pipeline_variables_minimum_override_role", value)
 
     @property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
@@ -3302,6 +3334,7 @@ class Project(pulumi.CustomResource):
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
@@ -3385,6 +3418,20 @@ class Project(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         ```sh
         $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
         ```
@@ -3423,6 +3470,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -3516,6 +3564,20 @@ class Project(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         ```sh
         $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
         ```
@@ -3564,6 +3626,7 @@ class Project(pulumi.CustomResource):
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
@@ -3669,6 +3732,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["ci_config_path"] = ci_config_path
             __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
             __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
+            __props__.__dict__["ci_pipeline_variables_minimum_override_role"] = ci_pipeline_variables_minimum_override_role
             __props__.__dict__["ci_restrict_pipeline_cancellation_role"] = ci_restrict_pipeline_cancellation_role
             __props__.__dict__["ci_separated_caches"] = ci_separated_caches
             __props__.__dict__["container_expiration_policy"] = container_expiration_policy
@@ -3785,6 +3849,7 @@ class Project(pulumi.CustomResource):
             ci_config_path: Optional[pulumi.Input[str]] = None,
             ci_default_git_depth: Optional[pulumi.Input[int]] = None,
             ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+            ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[str]] = None,
             ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[str]] = None,
             ci_separated_caches: Optional[pulumi.Input[bool]] = None,
             container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
@@ -3898,6 +3963,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -4010,6 +4076,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["ci_config_path"] = ci_config_path
         __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
         __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
+        __props__.__dict__["ci_pipeline_variables_minimum_override_role"] = ci_pipeline_variables_minimum_override_role
         __props__.__dict__["ci_restrict_pipeline_cancellation_role"] = ci_restrict_pipeline_cancellation_role
         __props__.__dict__["ci_separated_caches"] = ci_separated_caches
         __props__.__dict__["container_expiration_policy"] = container_expiration_policy
@@ -4258,6 +4325,14 @@ class Project(pulumi.CustomResource):
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @property
+    @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
+    def ci_pipeline_variables_minimum_override_role(self) -> pulumi.Output[str]:
+        """
+        The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        """
+        return pulumi.get(self, "ci_pipeline_variables_minimum_override_role")
 
     @property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")

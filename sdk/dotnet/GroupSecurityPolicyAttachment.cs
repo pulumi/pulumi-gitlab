@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupSecurityPolicyAttachment` resource allows to attach a security policy project to a group.
-    /// 
-    /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#mutationsecuritypolicyprojectassign)
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -31,7 +27,7 @@ namespace Pulumi.GitLab
     ///         PolicyProject = "4567",
     ///     });
     /// 
-    ///     // Or you can use Terraform to create a new project, add a policy to that project,
+    ///     // Or Terraform can create a new project, add a policy to that project,
     ///     // then attach that policy project to other groups.
     ///     var my_policy_project = new GitLab.Project("my-policy-project", new()
     ///     {
@@ -62,12 +58,17 @@ namespace Pulumi.GitLab
     ///     require_password_to_approve: false
     /// fallback_behavior:
     ///     fail: closed
+    /// policy_scope:
+    ///   compliance_frameworks:
+    ///   - id: 1010101
+    ///   - id: 0101010
     /// actions:
     /// - type: send_bot_message
     ///     enabled: true
     /// ",
     ///     });
     /// 
+    ///     // Multiple policies can be attached to a single project by repeating this resource or using a `for_each`
     ///     var my_policy = new GitLab.GroupSecurityPolicyAttachment("my-policy", new()
     ///     {
     ///         Group = "1234",
@@ -78,6 +79,20 @@ namespace Pulumi.GitLab
     /// ```
     /// 
     /// ## Import
+    /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_security_policy_attachment`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_group_security_policy_attachment.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
     /// 
     /// GitLab group security policy attachments can be imported using an id made up of `group:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
     /// 

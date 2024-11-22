@@ -14,50 +14,21 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new GitLab.GroupHook("example", new()
-    ///     {
-    ///         Group = "example/hooked",
-    ///         Url = "https://example.com/hook/example",
-    ///         MergeRequestsEvents = true,
-    ///     });
-    /// 
-    ///     // Setting all attributes
-    ///     var allAttributes = new GitLab.GroupHook("all_attributes", new()
-    ///     {
-    ///         Group = "1",
-    ///         Url = "http://example.com",
-    ///         Token = "supersecret",
-    ///         EnableSslVerification = false,
-    ///         PushEvents = true,
-    ///         PushEventsBranchFilter = "devel",
-    ///         IssuesEvents = false,
-    ///         ConfidentialIssuesEvents = false,
-    ///         MergeRequestsEvents = true,
-    ///         TagPushEvents = true,
-    ///         NoteEvents = true,
-    ///         ConfidentialNoteEvents = true,
-    ///         JobEvents = true,
-    ///         PipelineEvents = true,
-    ///         WikiPageEvents = true,
-    ///         DeploymentEvents = true,
-    ///         ReleasesEvents = true,
-    ///         SubgroupEvents = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
+    /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_hook`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_group_hook.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
     /// 
     /// A GitLab Group Hook can be imported using a key composed of `&lt;group-id&gt;:&lt;hook-id&gt;`, e.g.
     /// 
@@ -81,6 +52,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("confidentialNoteEvents")]
         public Output<bool> ConfidentialNoteEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom headers for the project webhook.
+        /// </summary>
+        [Output("customHeaders")]
+        public Output<ImmutableArray<Outputs.GroupHookCustomHeader>> CustomHeaders { get; private set; } = null!;
 
         /// <summary>
         /// Custom webhook template.
@@ -258,6 +235,18 @@ namespace Pulumi.GitLab
         [Input("confidentialNoteEvents")]
         public Input<bool>? ConfidentialNoteEvents { get; set; }
 
+        [Input("customHeaders")]
+        private InputList<Inputs.GroupHookCustomHeaderArgs>? _customHeaders;
+
+        /// <summary>
+        /// Custom headers for the project webhook.
+        /// </summary>
+        public InputList<Inputs.GroupHookCustomHeaderArgs> CustomHeaders
+        {
+            get => _customHeaders ?? (_customHeaders = new InputList<Inputs.GroupHookCustomHeaderArgs>());
+            set => _customHeaders = value;
+        }
+
         /// <summary>
         /// Custom webhook template.
         /// </summary>
@@ -389,6 +378,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("confidentialNoteEvents")]
         public Input<bool>? ConfidentialNoteEvents { get; set; }
+
+        [Input("customHeaders")]
+        private InputList<Inputs.GroupHookCustomHeaderGetArgs>? _customHeaders;
+
+        /// <summary>
+        /// Custom headers for the project webhook.
+        /// </summary>
+        public InputList<Inputs.GroupHookCustomHeaderGetArgs> CustomHeaders
+        {
+            get => _customHeaders ?? (_customHeaders = new InputList<Inputs.GroupHookCustomHeaderGetArgs>());
+            set => _customHeaders = value;
+        }
 
         /// <summary>
         /// Custom webhook template.

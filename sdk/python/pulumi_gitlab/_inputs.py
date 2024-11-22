@@ -31,6 +31,8 @@ __all__ = [
     'GroupDefaultBranchProtectionDefaultsArgsDict',
     'GroupEpicBoardListArgs',
     'GroupEpicBoardListArgsDict',
+    'GroupHookCustomHeaderArgs',
+    'GroupHookCustomHeaderArgsDict',
     'GroupIssueBoardListArgs',
     'GroupIssueBoardListArgsDict',
     'GroupProtectedEnvironmentApprovalRuleArgs',
@@ -45,6 +47,8 @@ __all__ = [
     'ProjectAccessTokenRotationConfigurationArgsDict',
     'ProjectContainerExpirationPolicyArgs',
     'ProjectContainerExpirationPolicyArgsDict',
+    'ProjectHookCustomHeaderArgs',
+    'ProjectHookCustomHeaderArgsDict',
     'ProjectIssueBoardListArgs',
     'ProjectIssueBoardListArgsDict',
     'ProjectIssueTaskCompletionStatusArgs',
@@ -509,13 +513,17 @@ if not MYPY:
         """
         Readable description of access level.
         """
+        deploy_key_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        """
         group_id: NotRequired[pulumi.Input[int]]
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         user_id: NotRequired[pulumi.Input[int]]
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
 elif False:
     BranchProtectionAllowedToPushArgsDict: TypeAlias = Mapping[str, Any]
@@ -525,18 +533,22 @@ class BranchProtectionAllowedToPushArgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
                  access_level_description: Optional[pulumi.Input[str]] = None,
+                 deploy_key_id: Optional[pulumi.Input[int]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] access_level_description: Readable description of access level.
-        :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param pulumi.Input[int] deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
         if access_level_description is not None:
             pulumi.set(__self__, "access_level_description", access_level_description)
+        if deploy_key_id is not None:
+            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if user_id is not None:
@@ -567,10 +579,22 @@ class BranchProtectionAllowedToPushArgs:
         pulumi.set(self, "access_level_description", value)
 
     @property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @deploy_key_id.setter
+    def deploy_key_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deploy_key_id", value)
+
+    @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -582,7 +606,7 @@ class BranchProtectionAllowedToPushArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
@@ -895,6 +919,56 @@ class GroupEpicBoardListArgs:
     @position.setter
     def position(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "position", value)
+
+
+if not MYPY:
+    class GroupHookCustomHeaderArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key of the custom header.
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the custom header. This value cannot be imported.
+        """
+elif False:
+    GroupHookCustomHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GroupHookCustomHeaderArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: Key of the custom header.
+        :param pulumi.Input[str] value: Value of the custom header. This value cannot be imported.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Key of the custom header.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value of the custom header. This value cannot be imported.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -1799,6 +1873,56 @@ class ProjectContainerExpirationPolicyArgs:
     @older_than.setter
     def older_than(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "older_than", value)
+
+
+if not MYPY:
+    class ProjectHookCustomHeaderArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key of the custom header.
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the custom header. This value cannot be imported.
+        """
+elif False:
+    ProjectHookCustomHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProjectHookCustomHeaderArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: Key of the custom header.
+        :param pulumi.Input[str] value: Value of the custom header. This value cannot be imported.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Key of the custom header.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value of the custom header. This value cannot be imported.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -3504,13 +3628,17 @@ if not MYPY:
         """
         Readable description of access level.
         """
+        deploy_key_id: NotRequired[int]
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        """
         group_id: NotRequired[int]
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         user_id: NotRequired[int]
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
 elif False:
     GetProjectProtectedBranchPushAccessLevelArgsDict: TypeAlias = Mapping[str, Any]
@@ -3520,16 +3648,20 @@ class GetProjectProtectedBranchPushAccessLevelArgs:
     def __init__(__self__, *,
                  access_level: str,
                  access_level_description: str,
+                 deploy_key_id: Optional[int] = None,
                  group_id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
         :param str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         :param str access_level_description: Readable description of access level.
-        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
+        if deploy_key_id is not None:
+            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if user_id is not None:
@@ -3560,10 +3692,22 @@ class GetProjectProtectedBranchPushAccessLevelArgs:
         pulumi.set(self, "access_level_description", value)
 
     @property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @deploy_key_id.setter
+    def deploy_key_id(self, value: Optional[int]):
+        pulumi.set(self, "deploy_key_id", value)
+
+    @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[int]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -3575,7 +3719,7 @@ class GetProjectProtectedBranchPushAccessLevelArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[int]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
@@ -3812,13 +3956,17 @@ if not MYPY:
         """
         Readable description of access level.
         """
+        deploy_key_id: NotRequired[int]
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        """
         group_id: NotRequired[int]
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         user_id: NotRequired[int]
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
 elif False:
     GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgsDict: TypeAlias = Mapping[str, Any]
@@ -3828,16 +3976,20 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs:
     def __init__(__self__, *,
                  access_level: str,
                  access_level_description: str,
+                 deploy_key_id: Optional[int] = None,
                  group_id: Optional[int] = None,
                  user_id: Optional[int] = None):
         """
         :param str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
         :param str access_level_description: Readable description of access level.
-        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
+        if deploy_key_id is not None:
+            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if user_id is not None:
@@ -3868,10 +4020,22 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs:
         pulumi.set(self, "access_level_description", value)
 
     @property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @deploy_key_id.setter
+    def deploy_key_id(self, value: Optional[int]):
+        pulumi.set(self, "deploy_key_id", value)
+
+    @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[int]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -3883,7 +4047,7 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[int]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 

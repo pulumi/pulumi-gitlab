@@ -113,6 +113,20 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_group.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
+    /// 
     /// ```sh
     /// $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
     /// ```
@@ -128,6 +142,12 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/group:Group")]
     public partial class Group : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+        /// </summary>
+        [Output("allowedEmailDomainsLists")]
+        public Output<ImmutableArray<string>> AllowedEmailDomainsLists { get; private set; } = null!;
+
         /// <summary>
         /// Default to Auto DevOps pipeline for all projects within this group.
         /// </summary>
@@ -382,6 +402,18 @@ namespace Pulumi.GitLab
 
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedEmailDomainsLists")]
+        private InputList<string>? _allowedEmailDomainsLists;
+
+        /// <summary>
+        /// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+        /// </summary>
+        public InputList<string> AllowedEmailDomainsLists
+        {
+            get => _allowedEmailDomainsLists ?? (_allowedEmailDomainsLists = new InputList<string>());
+            set => _allowedEmailDomainsLists = value;
+        }
+
         /// <summary>
         /// Default to Auto DevOps pipeline for all projects within this group.
         /// </summary>
@@ -570,6 +602,18 @@ namespace Pulumi.GitLab
 
     public sealed class GroupState : global::Pulumi.ResourceArgs
     {
+        [Input("allowedEmailDomainsLists")]
+        private InputList<string>? _allowedEmailDomainsLists;
+
+        /// <summary>
+        /// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+        /// </summary>
+        public InputList<string> AllowedEmailDomainsLists
+        {
+            get => _allowedEmailDomainsLists ?? (_allowedEmailDomainsLists = new InputList<string>());
+            set => _allowedEmailDomainsLists = value;
+        }
+
         /// <summary>
         /// Default to Auto DevOps pipeline for all projects within this group.
         /// </summary>

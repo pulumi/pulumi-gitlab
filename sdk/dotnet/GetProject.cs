@@ -146,6 +146,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int CiDefaultGitDepth;
         /// <summary>
+        /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        /// </summary>
+        public readonly string CiPipelineVariablesMinimumOverrideRole;
+        /// <summary>
         /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         /// </summary>
         public readonly string CiRestrictPipelineCancellationRole;
@@ -400,6 +404,8 @@ namespace Pulumi.GitLab
 
             int ciDefaultGitDepth,
 
+            string ciPipelineVariablesMinimumOverrideRole,
+
             string ciRestrictPipelineCancellationRole,
 
             bool ciSeparatedCaches,
@@ -526,6 +532,7 @@ namespace Pulumi.GitLab
             BuildsAccessLevel = buildsAccessLevel;
             CiConfigPath = ciConfigPath;
             CiDefaultGitDepth = ciDefaultGitDepth;
+            CiPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
             CiRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             CiSeparatedCaches = ciSeparatedCaches;
             ContainerExpirationPolicies = containerExpirationPolicies;

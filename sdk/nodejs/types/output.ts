@@ -100,11 +100,15 @@ export interface BranchProtectionAllowedToPush {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     */
+    deployKeyId?: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
     groupId?: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
     userId?: number;
 }
@@ -196,6 +200,37 @@ export interface GetClusterAgentsClusterAgent {
      * ID or full path of the project maintained by the authenticated user.
      */
     project: string;
+}
+
+export interface GetGroupBillableMemberMembershipsMembership {
+    /**
+     * Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+     */
+    accessLevel: string;
+    /**
+     * Datetime when the membership was first added.
+     */
+    createdAt: string;
+    /**
+     * Date when the membership will end.
+     */
+    expiresAt: string;
+    /**
+     * The id of the membership.
+     */
+    id: number;
+    /**
+     * Breadcrumb-style, full display-name of the group or project.
+     */
+    sourceFullName: string;
+    /**
+     * The id of the group or project, the user is a (direct) member of.
+     */
+    sourceId: number;
+    /**
+     * URL to the members-page of the group or project.
+     */
+    sourceMembersUrl: string;
 }
 
 export interface GetGroupHooksHook {
@@ -447,6 +482,7 @@ export interface GetGroupSharedWithGroup {
 }
 
 export interface GetGroupSubgroupsSubgroup {
+    allowedEmailDomainsList: string;
     autoDevopsEnabled: boolean;
     avatarUrl: string;
     createdAt: string;
@@ -676,6 +712,10 @@ export interface GetMetadataKas {
      * Indicates whether KAS is enabled.
      */
     enabled: boolean;
+    /**
+     * URL used by the Kubernetes tooling to communicate with the KAS Kubernetes API proxy. It’s null if kas.enabled is false.
+     */
+    externalK8sProxyUrl: string;
     /**
      * URL used by the agents to communicate with KAS. It’s null if kas.enabled is false.
      */
@@ -938,6 +978,57 @@ export interface GetProjectContainerExpirationPolicy {
      * The number of days to keep images.
      */
     olderThan: string;
+}
+
+export interface GetProjectEnvironmentsEnvironment {
+    /**
+     * The ID of the environments cluster agent or `null` if none is assigned.
+     */
+    clusterAgentId: number;
+    /**
+     * Timestamp of the environment creation, RFC3339 format.
+     */
+    createdAt: string;
+    /**
+     * The description of the environment.
+     */
+    description: string;
+    /**
+     * Place to link to for this environment.
+     */
+    externalUrl: string;
+    /**
+     * The Flux resource path to associate with this environment.
+     */
+    fluxResourcePath: string;
+    /**
+     * The ID of the environment.
+     */
+    id: number;
+    /**
+     * The Kubernetes namespace to associate with this environment.
+     */
+    kubernetesNamespace: string;
+    /**
+     * The name of the environment.
+     */
+    name: string;
+    /**
+     * The simplified version of the environment name, suitable for inclusion in DNS, URLs, Kubernetes labels, and so on. The slug is truncated to 24 characters. A random suffix is automatically added to uppercase environment names.
+     */
+    slug: string;
+    /**
+     * The state of the environment. Value can be one of `available`, `stopping`, `stopped`. Returns all environments if not set.
+     */
+    state: string;
+    /**
+     * The tier of the environment. Value can be one of `production`, `staging`, `testing`, `development`, `other`. Returns all environments if not set.
+     */
+    tier: string;
+    /**
+     * Timestamp of the last environment update, RFC3339 format.
+     */
+    updatedAt: string;
 }
 
 export interface GetProjectHooksHook {
@@ -1404,11 +1495,15 @@ export interface GetProjectProtectedBranchPushAccessLevel {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     */
+    deployKeyId?: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
     groupId?: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
     userId?: number;
 }
@@ -1469,11 +1564,15 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     */
+    deployKeyId?: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
     groupId?: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
     userId?: number;
 }
@@ -1864,6 +1963,10 @@ export interface GetProjectsProject {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled: boolean;
+    /**
+     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+     */
+    ciPipelineVariablesMinimumOverrideRole: string;
     /**
      * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
@@ -2438,6 +2541,37 @@ export interface GetRepositoryTreeTree {
     type: string;
 }
 
+export interface GetRunnersRunner {
+    /**
+     * The description of the runner.
+     */
+    description: string;
+    /**
+     * The runner id.
+     */
+    id: number;
+    /**
+     * Indicates if this is a shared runner
+     */
+    isShared: boolean;
+    /**
+     * The connectivity status of the runner.
+     */
+    online: boolean;
+    /**
+     * Indicates if the runner is accepting or ignoring new jobs.
+     */
+    paused: boolean;
+    /**
+     * The runner type. Values are `instanceType`, `groupType` and `projectType`.
+     */
+    runnerType: string;
+    /**
+     * The status of the runner. Values can be `online`, `offline`, `stale`, and `neverContacted`.
+     */
+    status: string;
+}
+
 export interface GetUserSshkeysKey {
     /**
      * The time when this key was created in GitLab.
@@ -2625,6 +2759,17 @@ export interface GroupEpicBoardList {
     position: number;
 }
 
+export interface GroupHookCustomHeader {
+    /**
+     * Key of the custom header.
+     */
+    key: string;
+    /**
+     * Value of the custom header. This value cannot be imported.
+     */
+    value: string;
+}
+
 export interface GroupIssueBoardList {
     /**
      * The ID of the list.
@@ -2810,6 +2955,17 @@ export interface ProjectContainerExpirationPolicy {
      * The number of days to keep images.
      */
     olderThan: string;
+}
+
+export interface ProjectHookCustomHeader {
+    /**
+     * Key of the custom header.
+     */
+    key: string;
+    /**
+     * Value of the custom header. This value cannot be imported.
+     */
+    value: string;
 }
 
 export interface ProjectIssueBoardList {

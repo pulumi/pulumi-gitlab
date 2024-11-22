@@ -13,6 +13,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupSubgroupsSubgroup {
+    private String allowedEmailDomainsList;
     private Boolean autoDevopsEnabled;
     private String avatarUrl;
     private String createdAt;
@@ -42,6 +43,9 @@ public final class GetGroupSubgroupsSubgroup {
     private String wikiAccessLevel;
 
     private GetGroupSubgroupsSubgroup() {}
+    public String allowedEmailDomainsList() {
+        return this.allowedEmailDomainsList;
+    }
     public Boolean autoDevopsEnabled() {
         return this.autoDevopsEnabled;
     }
@@ -133,6 +137,7 @@ public final class GetGroupSubgroupsSubgroup {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String allowedEmailDomainsList;
         private Boolean autoDevopsEnabled;
         private String avatarUrl;
         private String createdAt;
@@ -163,6 +168,7 @@ public final class GetGroupSubgroupsSubgroup {
         public Builder() {}
         public Builder(GetGroupSubgroupsSubgroup defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedEmailDomainsList = defaults.allowedEmailDomainsList;
     	      this.autoDevopsEnabled = defaults.autoDevopsEnabled;
     	      this.avatarUrl = defaults.avatarUrl;
     	      this.createdAt = defaults.createdAt;
@@ -192,6 +198,14 @@ public final class GetGroupSubgroupsSubgroup {
     	      this.wikiAccessLevel = defaults.wikiAccessLevel;
         }
 
+        @CustomType.Setter
+        public Builder allowedEmailDomainsList(String allowedEmailDomainsList) {
+            if (allowedEmailDomainsList == null) {
+              throw new MissingRequiredPropertyException("GetGroupSubgroupsSubgroup", "allowedEmailDomainsList");
+            }
+            this.allowedEmailDomainsList = allowedEmailDomainsList;
+            return this;
+        }
         @CustomType.Setter
         public Builder autoDevopsEnabled(Boolean autoDevopsEnabled) {
             if (autoDevopsEnabled == null) {
@@ -410,6 +424,7 @@ public final class GetGroupSubgroupsSubgroup {
         }
         public GetGroupSubgroupsSubgroup build() {
             final var _resultValue = new GetGroupSubgroupsSubgroup();
+            _resultValue.allowedEmailDomainsList = allowedEmailDomainsList;
             _resultValue.autoDevopsEnabled = autoDevopsEnabled;
             _resultValue.avatarUrl = avatarUrl;
             _resultValue.createdAt = createdAt;

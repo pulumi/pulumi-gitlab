@@ -38,6 +38,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Using Custom Headers
+//			// Values of headers can't be imported
+//			_, err = gitlab.NewProjectHook(ctx, "custom_headers", &gitlab.ProjectHookArgs{
+//				Project:             pulumi.String("example/hooked"),
+//				Url:                 pulumi.String("https://example.com/hook/example"),
+//				MergeRequestsEvents: pulumi.Bool(true),
+//				CustomHeaders: gitlab.ProjectHookCustomHeaderArray{
+//					&gitlab.ProjectHookCustomHeaderArgs{
+//						Key:   pulumi.String("X-Custom-Header"),
+//						Value: pulumi.String("example"),
+//					},
+//					&gitlab.ProjectHookCustomHeaderArgs{
+//						Key:   pulumi.String("X-Custom-Header-Second"),
+//						Value: pulumi.String("example-second"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -45,6 +65,20 @@ import (
 // ```
 //
 // ## Import
+//
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_hook`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_project_hook.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
 //
 // A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
 //
@@ -60,6 +94,8 @@ type ProjectHook struct {
 	ConfidentialIssuesEvents pulumi.BoolOutput `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolOutput `pulumi:"confidentialNoteEvents"`
+	// Custom headers for the project webhook.
+	CustomHeaders ProjectHookCustomHeaderArrayOutput `pulumi:"customHeaders"`
 	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringOutput `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
@@ -145,6 +181,8 @@ type projectHookState struct {
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
+	// Custom headers for the project webhook.
+	CustomHeaders []ProjectHookCustomHeader `pulumi:"customHeaders"`
 	// Custom webhook template.
 	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
@@ -188,6 +226,8 @@ type ProjectHookState struct {
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
+	// Custom headers for the project webhook.
+	CustomHeaders ProjectHookCustomHeaderArrayInput
 	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringPtrInput
 	// Invoke the hook for deployment events.
@@ -235,6 +275,8 @@ type projectHookArgs struct {
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
+	// Custom headers for the project webhook.
+	CustomHeaders []ProjectHookCustomHeader `pulumi:"customHeaders"`
 	// Custom webhook template.
 	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
@@ -275,6 +317,8 @@ type ProjectHookArgs struct {
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
+	// Custom headers for the project webhook.
+	CustomHeaders ProjectHookCustomHeaderArrayInput
 	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringPtrInput
 	// Invoke the hook for deployment events.
@@ -404,6 +448,11 @@ func (o ProjectHookOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
 // Invoke the hook for confidential note events.
 func (o ProjectHookOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
+}
+
+// Custom headers for the project webhook.
+func (o ProjectHookOutput) CustomHeaders() ProjectHookCustomHeaderArrayOutput {
+	return o.ApplyT(func(v *ProjectHook) ProjectHookCustomHeaderArrayOutput { return v.CustomHeaders }).(ProjectHookCustomHeaderArrayOutput)
 }
 
 // Custom webhook template.

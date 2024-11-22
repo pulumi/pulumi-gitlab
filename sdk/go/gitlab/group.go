@@ -121,6 +121,20 @@ import (
 //
 // ## Import
 //
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_group.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
+//
 // ```sh
 // $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
 // ```
@@ -135,6 +149,8 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
+	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+	AllowedEmailDomainsLists pulumi.StringArrayOutput `pulumi:"allowedEmailDomainsLists"`
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolOutput `pulumi:"autoDevopsEnabled"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -244,6 +260,8 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
+	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+	AllowedEmailDomainsLists []string `pulumi:"allowedEmailDomainsLists"`
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -317,6 +335,8 @@ type groupState struct {
 }
 
 type GroupState struct {
+	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+	AllowedEmailDomainsLists pulumi.StringArrayInput
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -394,6 +414,8 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
+	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+	AllowedEmailDomainsLists []string `pulumi:"allowedEmailDomainsLists"`
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -458,6 +480,8 @@ type groupArgs struct {
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
+	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+	AllowedEmailDomainsLists pulumi.StringArrayInput
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -605,6 +629,11 @@ func (o GroupOutput) ToGroupOutput() GroupOutput {
 
 func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
+}
+
+// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+func (o GroupOutput) AllowedEmailDomainsLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.AllowedEmailDomainsLists }).(pulumi.StringArrayOutput)
 }
 
 // Default to Auto DevOps pipeline for all projects within this group.

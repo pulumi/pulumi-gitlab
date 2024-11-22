@@ -16,59 +16,21 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewGroupHook(ctx, "example", &gitlab.GroupHookArgs{
-//				Group:               pulumi.String("example/hooked"),
-//				Url:                 pulumi.String("https://example.com/hook/example"),
-//				MergeRequestsEvents: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Setting all attributes
-//			_, err = gitlab.NewGroupHook(ctx, "all_attributes", &gitlab.GroupHookArgs{
-//				Group:                    pulumi.String("1"),
-//				Url:                      pulumi.String("http://example.com"),
-//				Token:                    pulumi.String("supersecret"),
-//				EnableSslVerification:    pulumi.Bool(false),
-//				PushEvents:               pulumi.Bool(true),
-//				PushEventsBranchFilter:   pulumi.String("devel"),
-//				IssuesEvents:             pulumi.Bool(false),
-//				ConfidentialIssuesEvents: pulumi.Bool(false),
-//				MergeRequestsEvents:      pulumi.Bool(true),
-//				TagPushEvents:            pulumi.Bool(true),
-//				NoteEvents:               pulumi.Bool(true),
-//				ConfidentialNoteEvents:   pulumi.Bool(true),
-//				JobEvents:                pulumi.Bool(true),
-//				PipelineEvents:           pulumi.Bool(true),
-//				WikiPageEvents:           pulumi.Bool(true),
-//				DeploymentEvents:         pulumi.Bool(true),
-//				ReleasesEvents:           pulumi.Bool(true),
-//				SubgroupEvents:           pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
+//
+// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_hook`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_group_hook.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Import using the CLI is supported using the following syntax:
 //
 // A GitLab Group Hook can be imported using a key composed of `<group-id>:<hook-id>`, e.g.
 //
@@ -84,6 +46,8 @@ type GroupHook struct {
 	ConfidentialIssuesEvents pulumi.BoolOutput `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolOutput `pulumi:"confidentialNoteEvents"`
+	// Custom headers for the project webhook.
+	CustomHeaders GroupHookCustomHeaderArrayOutput `pulumi:"customHeaders"`
 	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringOutput `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
@@ -171,6 +135,8 @@ type groupHookState struct {
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
+	// Custom headers for the project webhook.
+	CustomHeaders []GroupHookCustomHeader `pulumi:"customHeaders"`
 	// Custom webhook template.
 	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
@@ -216,6 +182,8 @@ type GroupHookState struct {
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
+	// Custom headers for the project webhook.
+	CustomHeaders GroupHookCustomHeaderArrayInput
 	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringPtrInput
 	// Invoke the hook for deployment events.
@@ -265,6 +233,8 @@ type groupHookArgs struct {
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
+	// Custom headers for the project webhook.
+	CustomHeaders []GroupHookCustomHeader `pulumi:"customHeaders"`
 	// Custom webhook template.
 	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
@@ -307,6 +277,8 @@ type GroupHookArgs struct {
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
+	// Custom headers for the project webhook.
+	CustomHeaders GroupHookCustomHeaderArrayInput
 	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringPtrInput
 	// Invoke the hook for deployment events.
@@ -438,6 +410,11 @@ func (o GroupHookOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
 // Invoke the hook for confidential note events.
 func (o GroupHookOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
+}
+
+// Custom headers for the project webhook.
+func (o GroupHookOutput) CustomHeaders() GroupHookCustomHeaderArrayOutput {
+	return o.ApplyT(func(v *GroupHook) GroupHookCustomHeaderArrayOutput { return v.CustomHeaders }).(GroupHookCustomHeaderArrayOutput)
 }
 
 // Custom webhook template.

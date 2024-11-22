@@ -187,6 +187,20 @@ class ProjectFreezePeriod(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_freeze_period`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_freeze_period.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
 
         ```sh
@@ -225,6 +239,20 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         ```
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_freeze_period`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_freeze_period.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
 

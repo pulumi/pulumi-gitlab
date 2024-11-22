@@ -90,6 +90,11 @@ export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
 
+export { GetGroupBillableMemberMembershipsArgs, GetGroupBillableMemberMembershipsResult, GetGroupBillableMemberMembershipsOutputArgs } from "./getGroupBillableMemberMemberships";
+export const getGroupBillableMemberMemberships: typeof import("./getGroupBillableMemberMemberships").getGroupBillableMemberMemberships = null as any;
+export const getGroupBillableMemberMembershipsOutput: typeof import("./getGroupBillableMemberMemberships").getGroupBillableMemberMembershipsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupBillableMemberMemberships","getGroupBillableMemberMembershipsOutput"], () => require("./getGroupBillableMemberMemberships"));
+
 export { GetGroupHookArgs, GetGroupHookResult, GetGroupHookOutputArgs } from "./getGroupHook";
 export const getGroupHook: typeof import("./getGroupHook").getGroupHook = null as any;
 export const getGroupHookOutput: typeof import("./getGroupHook").getGroupHookOutput = null as any;
@@ -179,6 +184,11 @@ export { GetProjectBranchesArgs, GetProjectBranchesResult, GetProjectBranchesOut
 export const getProjectBranches: typeof import("./getProjectBranches").getProjectBranches = null as any;
 export const getProjectBranchesOutput: typeof import("./getProjectBranches").getProjectBranchesOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectBranches","getProjectBranchesOutput"], () => require("./getProjectBranches"));
+
+export { GetProjectEnvironmentsArgs, GetProjectEnvironmentsResult, GetProjectEnvironmentsOutputArgs } from "./getProjectEnvironments";
+export const getProjectEnvironments: typeof import("./getProjectEnvironments").getProjectEnvironments = null as any;
+export const getProjectEnvironmentsOutput: typeof import("./getProjectEnvironments").getProjectEnvironmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectEnvironments","getProjectEnvironmentsOutput"], () => require("./getProjectEnvironments"));
 
 export { GetProjectHookArgs, GetProjectHookResult, GetProjectHookOutputArgs } from "./getProjectHook";
 export const getProjectHook: typeof import("./getProjectHook").getProjectHook = null as any;
@@ -294,6 +304,11 @@ export { GetRepositoryTreeArgs, GetRepositoryTreeResult, GetRepositoryTreeOutput
 export const getRepositoryTree: typeof import("./getRepositoryTree").getRepositoryTree = null as any;
 export const getRepositoryTreeOutput: typeof import("./getRepositoryTree").getRepositoryTreeOutput = null as any;
 utilities.lazyLoad(exports, ["getRepositoryTree","getRepositoryTreeOutput"], () => require("./getRepositoryTree"));
+
+export { GetRunnersArgs, GetRunnersResult, GetRunnersOutputArgs } from "./getRunners";
+export const getRunners: typeof import("./getRunners").getRunners = null as any;
+export const getRunnersOutput: typeof import("./getRunners").getRunnersOutput = null as any;
+utilities.lazyLoad(exports, ["getRunners","getRunnersOutput"], () => require("./getRunners"));
 
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
@@ -539,6 +554,11 @@ export { ProjectComplianceFrameworkArgs, ProjectComplianceFrameworkState } from 
 export type ProjectComplianceFramework = import("./projectComplianceFramework").ProjectComplianceFramework;
 export const ProjectComplianceFramework: typeof import("./projectComplianceFramework").ProjectComplianceFramework = null as any;
 utilities.lazyLoad(exports, ["ProjectComplianceFramework"], () => require("./projectComplianceFramework"));
+
+export { ProjectComplianceFrameworksArgs, ProjectComplianceFrameworksState } from "./projectComplianceFrameworks";
+export type ProjectComplianceFrameworks = import("./projectComplianceFrameworks").ProjectComplianceFrameworks;
+export const ProjectComplianceFrameworks: typeof import("./projectComplianceFrameworks").ProjectComplianceFrameworks = null as any;
+utilities.lazyLoad(exports, ["ProjectComplianceFrameworks"], () => require("./projectComplianceFrameworks"));
 
 export { ProjectCustomAttributeArgs, ProjectCustomAttributeState } from "./projectCustomAttribute";
 export type ProjectCustomAttribute = import("./projectCustomAttribute").ProjectCustomAttribute;
@@ -876,6 +896,8 @@ const _module = {
                 return new ProjectCluster(name, <any>undefined, { urn })
             case "gitlab:index/projectComplianceFramework:ProjectComplianceFramework":
                 return new ProjectComplianceFramework(name, <any>undefined, { urn })
+            case "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks":
+                return new ProjectComplianceFrameworks(name, <any>undefined, { urn })
             case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
                 return new ProjectCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/projectEnvironment:ProjectEnvironment":
@@ -1019,6 +1041,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectApprovalRule", _mo
 pulumi.runtime.registerResourceModule("gitlab", "index/projectBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectComplianceFramework", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectComplianceFrameworks", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)

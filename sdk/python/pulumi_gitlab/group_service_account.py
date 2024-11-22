@@ -163,17 +163,44 @@ class GroupServiceAccount(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
+        # This must be a top-level group
         example = gitlab.Group("example",
             name="example",
             path="example",
             description="An example group")
-        example_sa = gitlab.GroupServiceAccount("example-sa",
+        # The service account against the top-level group
+        example_sa = gitlab.GroupServiceAccount("example_sa",
             group=example.id,
             name="example-name",
             username="example-username")
+        # Group to assign the service account to. Can be the same top-level group resource as above, or a subgroup of that group.
+        example_subgroup = gitlab.Group("example_subgroup",
+            name="subgroup",
+            path="example/subgroup",
+            description="An example subgroup")
+        # To assign the service account to a group
+        example_membership = gitlab.GroupMembership("example_membership",
+            group_id=example_subgroup.id,
+            user_id=example_sa.service_account_id,
+            access_level="developer",
+            expires_at="2020-03-14")
         ```
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_group_service_account.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         ```sh
         $ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount You can import a group service account using `<resource> <id>`. The
@@ -208,17 +235,44 @@ class GroupServiceAccount(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
+        # This must be a top-level group
         example = gitlab.Group("example",
             name="example",
             path="example",
             description="An example group")
-        example_sa = gitlab.GroupServiceAccount("example-sa",
+        # The service account against the top-level group
+        example_sa = gitlab.GroupServiceAccount("example_sa",
             group=example.id,
             name="example-name",
             username="example-username")
+        # Group to assign the service account to. Can be the same top-level group resource as above, or a subgroup of that group.
+        example_subgroup = gitlab.Group("example_subgroup",
+            name="subgroup",
+            path="example/subgroup",
+            description="An example subgroup")
+        # To assign the service account to a group
+        example_membership = gitlab.GroupMembership("example_membership",
+            group_id=example_subgroup.id,
+            user_id=example_sa.service_account_id,
+            access_level="developer",
+            expires_at="2020-03-14")
         ```
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_group_service_account.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         ```sh
         $ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount You can import a group service account using `<resource> <id>`. The

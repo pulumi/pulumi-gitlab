@@ -18,6 +18,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// URL used by the Kubernetes tooling to communicate with the KAS Kubernetes API proxy. It’s null if kas.enabled is false.
+        /// </summary>
+        public readonly string ExternalK8sProxyUrl;
+        /// <summary>
         /// URL used by the agents to communicate with KAS. It’s null if kas.enabled is false.
         /// </summary>
         public readonly string ExternalUrl;
@@ -30,11 +34,14 @@ namespace Pulumi.GitLab.Outputs
         private GetMetadataKasResult(
             bool enabled,
 
+            string externalK8sProxyUrl,
+
             string externalUrl,
 
             string version)
         {
             Enabled = enabled;
+            ExternalK8sProxyUrl = externalK8sProxyUrl;
             ExternalUrl = externalUrl;
             Version = version;
         }

@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gitlab.GroupArgs;
  * import com.pulumi.gitlab.GroupServiceAccount;
  * import com.pulumi.gitlab.GroupServiceAccountArgs;
+ * import com.pulumi.gitlab.GroupMembership;
+ * import com.pulumi.gitlab.GroupMembershipArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,16 +48,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // This must be a top-level group
  *         var example = new Group("example", GroupArgs.builder()
  *             .name("example")
  *             .path("example")
  *             .description("An example group")
  *             .build());
  * 
- *         var example_sa = new GroupServiceAccount("example-sa", GroupServiceAccountArgs.builder()
+ *         // The service account against the top-level group
+ *         var exampleSa = new GroupServiceAccount("exampleSa", GroupServiceAccountArgs.builder()
  *             .group(example.id())
  *             .name("example-name")
  *             .username("example-username")
+ *             .build());
+ * 
+ *         // Group to assign the service account to. Can be the same top-level group resource as above, or a subgroup of that group.
+ *         var exampleSubgroup = new Group("exampleSubgroup", GroupArgs.builder()
+ *             .name("subgroup")
+ *             .path("example/subgroup")
+ *             .description("An example subgroup")
+ *             .build());
+ * 
+ *         // To assign the service account to a group
+ *         var exampleMembership = new GroupMembership("exampleMembership", GroupMembershipArgs.builder()
+ *             .groupId(exampleSubgroup.id())
+ *             .userId(exampleSa.serviceAccountId())
+ *             .accessLevel("developer")
+ *             .expiresAt("2020-03-14")
  *             .build());
  * 
  *     }
@@ -65,6 +84,20 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_group_service_account.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
  * 
  * ```sh
  * $ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount You can import a group service account using `&lt;resource&gt; &lt;id&gt;`. The

@@ -10,10 +10,12 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.ProjectHookArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectHookState;
+import com.pulumi.gitlab.outputs.ProjectHookCustomHeader;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -33,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gitlab.ProjectHook;
  * import com.pulumi.gitlab.ProjectHookArgs;
+ * import com.pulumi.gitlab.inputs.ProjectHookCustomHeaderArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,6 +55,23 @@ import javax.annotation.Nullable;
  *             .mergeRequestsEvents(true)
  *             .build());
  * 
+ *         // Using Custom Headers
+ *         // Values of headers can't be imported
+ *         var customHeaders = new ProjectHook("customHeaders", ProjectHookArgs.builder()
+ *             .project("example/hooked")
+ *             .url("https://example.com/hook/example")
+ *             .mergeRequestsEvents(true)
+ *             .customHeaders(            
+ *                 ProjectHookCustomHeaderArgs.builder()
+ *                     .key("X-Custom-Header")
+ *                     .value("example")
+ *                     .build(),
+ *                 ProjectHookCustomHeaderArgs.builder()
+ *                     .key("X-Custom-Header-Second")
+ *                     .value("example-second")
+ *                     .build())
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -59,6 +79,20 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_hook`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_project_hook.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
  * 
  * A GitLab Project Hook can be imported using a key composed of `&lt;project-id&gt;:&lt;hook-id&gt;`, e.g.
  * 
@@ -98,6 +132,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> confidentialNoteEvents() {
         return this.confidentialNoteEvents;
+    }
+    /**
+     * Custom headers for the project webhook.
+     * 
+     */
+    @Export(name="customHeaders", refs={List.class,ProjectHookCustomHeader.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ProjectHookCustomHeader>> customHeaders;
+
+    /**
+     * @return Custom headers for the project webhook.
+     * 
+     */
+    public Output<Optional<List<ProjectHookCustomHeader>>> customHeaders() {
+        return Codegen.optional(this.customHeaders);
     }
     /**
      * Custom webhook template.

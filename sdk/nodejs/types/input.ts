@@ -100,11 +100,15 @@ export interface BranchProtectionAllowedToPush {
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     */
+    deployKeyId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
     groupId?: pulumi.Input<number>;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
     userId?: pulumi.Input<number>;
 }
@@ -382,11 +386,15 @@ export interface GetProjectProtectedBranchPushAccessLevel {
      */
     accessLevelDescription?: string;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     */
+    deployKeyId?: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
     groupId?: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
     userId?: number;
 }
@@ -401,11 +409,15 @@ export interface GetProjectProtectedBranchPushAccessLevelArgs {
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     */
+    deployKeyId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
     groupId?: pulumi.Input<number>;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
     userId?: pulumi.Input<number>;
 }
@@ -512,11 +524,15 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
      */
     accessLevelDescription?: string;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     */
+    deployKeyId?: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
     groupId?: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
     userId?: number;
 }
@@ -531,11 +547,15 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs {
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     */
+    deployKeyId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
     groupId?: pulumi.Input<number>;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
     userId?: pulumi.Input<number>;
 }
@@ -673,6 +693,17 @@ export interface GroupEpicBoardList {
      * The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
      */
     position?: pulumi.Input<number>;
+}
+
+export interface GroupHookCustomHeader {
+    /**
+     * Key of the custom header.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Value of the custom header. This value cannot be imported.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface GroupIssueBoardList {
@@ -860,6 +891,17 @@ export interface ProjectContainerExpirationPolicy {
      * The number of days to keep images.
      */
     olderThan?: pulumi.Input<string>;
+}
+
+export interface ProjectHookCustomHeader {
+    /**
+     * Key of the custom header.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Value of the custom header. This value cannot be imported.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface ProjectIssueBoardList {

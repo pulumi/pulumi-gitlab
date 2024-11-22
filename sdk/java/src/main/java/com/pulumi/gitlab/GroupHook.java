@@ -10,10 +10,12 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.GroupHookArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupHookState;
+import com.pulumi.gitlab.outputs.GroupHookCustomHeader;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -21,66 +23,21 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gitlab.GroupHook;
- * import com.pulumi.gitlab.GroupHookArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new GroupHook("example", GroupHookArgs.builder()
- *             .group("example/hooked")
- *             .url("https://example.com/hook/example")
- *             .mergeRequestsEvents(true)
- *             .build());
- * 
- *         // Setting all attributes
- *         var allAttributes = new GroupHook("allAttributes", GroupHookArgs.builder()
- *             .group(1)
- *             .url("http://example.com")
- *             .token("supersecret")
- *             .enableSslVerification(false)
- *             .pushEvents(true)
- *             .pushEventsBranchFilter("devel")
- *             .issuesEvents(false)
- *             .confidentialIssuesEvents(false)
- *             .mergeRequestsEvents(true)
- *             .tagPushEvents(true)
- *             .noteEvents(true)
- *             .confidentialNoteEvents(true)
- *             .jobEvents(true)
- *             .pipelineEvents(true)
- *             .wikiPageEvents(true)
- *             .deploymentEvents(true)
- *             .releasesEvents(true)
- *             .subgroupEvents(true)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
+ * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_hook`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_group_hook.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
  * 
  * A GitLab Group Hook can be imported using a key composed of `&lt;group-id&gt;:&lt;hook-id&gt;`, e.g.
  * 
@@ -120,6 +77,20 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> confidentialNoteEvents() {
         return this.confidentialNoteEvents;
+    }
+    /**
+     * Custom headers for the project webhook.
+     * 
+     */
+    @Export(name="customHeaders", refs={List.class,GroupHookCustomHeader.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<GroupHookCustomHeader>> customHeaders;
+
+    /**
+     * @return Custom headers for the project webhook.
+     * 
+     */
+    public Output<Optional<List<GroupHookCustomHeader>>> customHeaders() {
+        return Codegen.optional(this.customHeaders);
     }
     /**
      * Custom webhook template.

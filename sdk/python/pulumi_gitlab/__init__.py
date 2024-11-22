@@ -22,6 +22,7 @@ from .get_cluster_agents import *
 from .get_compliance_framework import *
 from .get_current_user import *
 from .get_group import *
+from .get_group_billable_member_memberships import *
 from .get_group_hook import *
 from .get_group_hooks import *
 from .get_group_ids import *
@@ -40,6 +41,7 @@ from .get_pipeline_schedule import *
 from .get_pipeline_schedules import *
 from .get_project import *
 from .get_project_branches import *
+from .get_project_environments import *
 from .get_project_hook import *
 from .get_project_hooks import *
 from .get_project_ids import *
@@ -63,6 +65,7 @@ from .get_release_link import *
 from .get_release_links import *
 from .get_repository_file import *
 from .get_repository_tree import *
+from .get_runners import *
 from .get_user import *
 from .get_user_sshkeys import *
 from .get_users import *
@@ -112,6 +115,7 @@ from .project_approval_rule import *
 from .project_badge import *
 from .project_cluster import *
 from .project_compliance_framework import *
+from .project_compliance_frameworks import *
 from .project_custom_attribute import *
 from .project_environment import *
 from .project_freeze_period import *
@@ -613,6 +617,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectComplianceFramework:ProjectComplianceFramework": "ProjectComplianceFramework"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectComplianceFrameworks",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks": "ProjectComplianceFrameworks"
   }
  },
  {

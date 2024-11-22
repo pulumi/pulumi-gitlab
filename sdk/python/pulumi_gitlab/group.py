@@ -22,6 +22,7 @@ __all__ = ['GroupArgs', 'Group']
 class GroupArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
+                 allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
@@ -53,6 +54,7 @@ class GroupArgs:
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] path: The path of the group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -83,6 +85,8 @@ class GroupArgs:
         :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         pulumi.set(__self__, "path", path)
+        if allowed_email_domains_lists is not None:
+            pulumi.set(__self__, "allowed_email_domains_lists", allowed_email_domains_lists)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if avatar is not None:
@@ -154,6 +158,18 @@ class GroupArgs:
     @path.setter
     def path(self, value: pulumi.Input[str]):
         pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="allowedEmailDomainsLists")
+    def allowed_email_domains_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+        """
+        return pulumi.get(self, "allowed_email_domains_lists")
+
+    @allowed_email_domains_lists.setter
+    def allowed_email_domains_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_email_domains_lists", value)
 
     @property
     @pulumi.getter(name="autoDevopsEnabled")
@@ -496,6 +512,7 @@ class GroupArgs:
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
+                 allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
@@ -532,6 +549,7 @@ class _GroupState:
                  wiki_access_level: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -567,6 +585,8 @@ class _GroupState:
         :param pulumi.Input[str] web_url: Web URL of the group.
         :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
+        if allowed_email_domains_lists is not None:
+            pulumi.set(__self__, "allowed_email_domains_lists", allowed_email_domains_lists)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if avatar is not None:
@@ -638,6 +658,18 @@ class _GroupState:
             pulumi.set(__self__, "web_url", web_url)
         if wiki_access_level is not None:
             pulumi.set(__self__, "wiki_access_level", wiki_access_level)
+
+    @property
+    @pulumi.getter(name="allowedEmailDomainsLists")
+    def allowed_email_domains_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+        """
+        return pulumi.get(self, "allowed_email_domains_lists")
+
+    @allowed_email_domains_lists.setter
+    def allowed_email_domains_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_email_domains_lists", value)
 
     @property
     @pulumi.getter(name="autoDevopsEnabled")
@@ -1054,6 +1086,7 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
@@ -1152,6 +1185,20 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_group.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         ```sh
         $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
         ```
@@ -1166,6 +1213,7 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -1270,6 +1318,20 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_group.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         ```sh
         $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
         ```
@@ -1297,6 +1359,7 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  avatar: Optional[pulumi.Input[str]] = None,
                  avatar_hash: Optional[pulumi.Input[str]] = None,
@@ -1335,6 +1398,7 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupArgs.__new__(GroupArgs)
 
+            __props__.__dict__["allowed_email_domains_lists"] = allowed_email_domains_lists
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
             __props__.__dict__["avatar"] = avatar
             __props__.__dict__["avatar_hash"] = avatar_hash
@@ -1383,6 +1447,7 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
             avatar: Optional[pulumi.Input[str]] = None,
             avatar_hash: Optional[pulumi.Input[str]] = None,
@@ -1424,6 +1489,7 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         :param pulumi.Input[bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -1463,6 +1529,7 @@ class Group(pulumi.CustomResource):
 
         __props__ = _GroupState.__new__(_GroupState)
 
+        __props__.__dict__["allowed_email_domains_lists"] = allowed_email_domains_lists
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
         __props__.__dict__["avatar"] = avatar
         __props__.__dict__["avatar_hash"] = avatar_hash
@@ -1498,6 +1565,14 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["web_url"] = web_url
         __props__.__dict__["wiki_access_level"] = wiki_access_level
         return Group(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowedEmailDomainsLists")
+    def allowed_email_domains_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+        """
+        return pulumi.get(self, "allowed_email_domains_lists")
 
     @property
     @pulumi.getter(name="autoDevopsEnabled")

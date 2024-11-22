@@ -30,6 +30,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_runner`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_runner.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
+ * 
  * A GitLab Runner can be imported using the runner&#39;s ID, eg
  * 
  * ```sh
@@ -94,6 +108,20 @@ public class Runner extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> locked() {
         return this.locked;
+    }
+    /**
+     * Free-form maintenance notes for the runner (1024 characters).
+     * 
+     */
+    @Export(name="maintenanceNote", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> maintenanceNote;
+
+    /**
+     * @return Free-form maintenance notes for the runner (1024 characters).
+     * 
+     */
+    public Output<Optional<String>> maintenanceNote() {
+        return Codegen.optional(this.maintenanceNote);
     }
     /**
      * Maximum timeout set when this runner handles the job.

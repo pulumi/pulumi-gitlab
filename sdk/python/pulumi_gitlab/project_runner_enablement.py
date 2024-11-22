@@ -120,6 +120,20 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_runner_enablement`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_runner_enablement.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
 
         ```sh
@@ -154,6 +168,20 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
         ```
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_runner_enablement`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_runner_enablement.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
 

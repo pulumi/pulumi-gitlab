@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it&#39;s recommended to use `plantimestamp()` or a static value instead.
  * 
+ * &gt; Reading the access token status of a service account requires an admin token or a top-level group owner token on gitlab.com. As a result, this resource will ignore permission errors when attempting to read the token status, and will rely on the values in state instead. This can lead to apply-time failures if the token configured for the provider doesn&#39;t have permissions to rotate tokens for the service account.
+ * 
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)
  * 
  * ## Example Usage
@@ -37,6 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gitlab.GroupArgs;
  * import com.pulumi.gitlab.GroupServiceAccount;
  * import com.pulumi.gitlab.GroupServiceAccountArgs;
+ * import com.pulumi.gitlab.GroupMembership;
+ * import com.pulumi.gitlab.GroupMembershipArgs;
  * import com.pulumi.gitlab.GroupServiceAccountAccessToken;
  * import com.pulumi.gitlab.GroupServiceAccountAccessTokenArgs;
  * import java.util.List;
@@ -52,22 +56,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // This must be a top-level group
  *         var example = new Group("example", GroupArgs.builder()
  *             .name("example")
  *             .path("example")
  *             .description("An example group")
  *             .build());
  * 
- *         var example_sa = new GroupServiceAccount("example-sa", GroupServiceAccountArgs.builder()
+ *         // The service account against the top-level group
+ *         var exampleSa = new GroupServiceAccount("exampleSa", GroupServiceAccountArgs.builder()
  *             .group(example.id())
  *             .name("example-name")
  *             .username("example-username")
  *             .build());
  * 
- *         var example_sa_token = new GroupServiceAccountAccessToken("example-sa-token", GroupServiceAccountAccessTokenArgs.builder()
+ *         // To assign the service account to a group
+ *         var exampleMembership = new GroupMembership("exampleMembership", GroupMembershipArgs.builder()
+ *             .groupId(example.id())
+ *             .userId(exampleSa.serviceAccountId())
+ *             .accessLevel("developer")
+ *             .expiresAt("2020-03-14")
+ *             .build());
+ * 
+ *         // The service account access token
+ *         var exampleSaToken = new GroupServiceAccountAccessToken("exampleSaToken", GroupServiceAccountAccessTokenArgs.builder()
  *             .group(example.id())
- *             .userId(example_sa.id())
- *             .name("Example personal access token")
+ *             .userId(exampleSa.serviceAccountId())
+ *             .name("Example service account access token")
  *             .expiresAt("2020-03-14")
  *             .scopes("api")
  *             .build());
@@ -79,6 +94,20 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account_access_token`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_group_service_account_access_token.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
  * 
  * ```sh
  * $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `&lt;resource&gt; &lt;id&gt;`. The

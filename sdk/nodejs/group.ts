@@ -80,6 +80,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_group.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Import using the CLI is supported using the following syntax:
+ *
  * ```sh
  * $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
  * ```
@@ -120,6 +134,10 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
+    /**
+     * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+     */
+    public readonly allowedEmailDomainsLists!: pulumi.Output<string[] | undefined>;
     /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */
@@ -272,6 +290,7 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
+            resourceInputs["allowedEmailDomainsLists"] = state ? state.allowedEmailDomainsLists : undefined;
             resourceInputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
             resourceInputs["avatar"] = state ? state.avatar : undefined;
             resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
@@ -311,6 +330,7 @@ export class Group extends pulumi.CustomResource {
             if ((!args || args.path === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
+            resourceInputs["allowedEmailDomainsLists"] = args ? args.allowedEmailDomainsLists : undefined;
             resourceInputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
             resourceInputs["avatar"] = args ? args.avatar : undefined;
             resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
@@ -357,6 +377,10 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
+    /**
+     * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+     */
+    allowedEmailDomainsLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */
@@ -501,6 +525,10 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
+    /**
+     * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+     */
+    allowedEmailDomainsLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */

@@ -22,6 +22,20 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
+    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_runner`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_runner.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Import using the CLI is supported using the following syntax:
+    /// 
     /// A GitLab Runner can be imported using the runner's ID, eg
     /// 
     /// ```sh
@@ -54,6 +68,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("locked")]
         public Output<bool> Locked { get; private set; } = null!;
+
+        /// <summary>
+        /// Free-form maintenance notes for the runner (1024 characters).
+        /// </summary>
+        [Output("maintenanceNote")]
+        public Output<string?> MaintenanceNote { get; private set; } = null!;
 
         /// <summary>
         /// Maximum timeout set when this runner handles the job.
@@ -162,6 +182,12 @@ namespace Pulumi.GitLab
         public Input<bool>? Locked { get; set; }
 
         /// <summary>
+        /// Free-form maintenance notes for the runner (1024 characters).
+        /// </summary>
+        [Input("maintenanceNote")]
+        public Input<string>? MaintenanceNote { get; set; }
+
+        /// <summary>
         /// Maximum timeout set when this runner handles the job.
         /// </summary>
         [Input("maximumTimeout")]
@@ -248,6 +274,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
+
+        /// <summary>
+        /// Free-form maintenance notes for the runner (1024 characters).
+        /// </summary>
+        [Input("maintenanceNote")]
+        public Input<string>? MaintenanceNote { get; set; }
 
         /// <summary>
         /// Maximum timeout set when this runner handles the job.

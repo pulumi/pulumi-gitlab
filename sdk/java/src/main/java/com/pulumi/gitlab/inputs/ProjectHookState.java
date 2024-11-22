@@ -5,9 +5,11 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.ProjectHookCustomHeaderArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -45,6 +47,21 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> confidentialNoteEvents() {
         return Optional.ofNullable(this.confidentialNoteEvents);
+    }
+
+    /**
+     * Custom headers for the project webhook.
+     * 
+     */
+    @Import(name="customHeaders")
+    private @Nullable Output<List<ProjectHookCustomHeaderArgs>> customHeaders;
+
+    /**
+     * @return Custom headers for the project webhook.
+     * 
+     */
+    public Optional<Output<List<ProjectHookCustomHeaderArgs>>> customHeaders() {
+        return Optional.ofNullable(this.customHeaders);
     }
 
     /**
@@ -322,6 +339,7 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
     private ProjectHookState(ProjectHookState $) {
         this.confidentialIssuesEvents = $.confidentialIssuesEvents;
         this.confidentialNoteEvents = $.confidentialNoteEvents;
+        this.customHeaders = $.customHeaders;
         this.customWebhookTemplate = $.customWebhookTemplate;
         this.deploymentEvents = $.deploymentEvents;
         this.enableSslVerification = $.enableSslVerification;
@@ -400,6 +418,37 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder confidentialNoteEvents(Boolean confidentialNoteEvents) {
             return confidentialNoteEvents(Output.of(confidentialNoteEvents));
+        }
+
+        /**
+         * @param customHeaders Custom headers for the project webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customHeaders(@Nullable Output<List<ProjectHookCustomHeaderArgs>> customHeaders) {
+            $.customHeaders = customHeaders;
+            return this;
+        }
+
+        /**
+         * @param customHeaders Custom headers for the project webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customHeaders(List<ProjectHookCustomHeaderArgs> customHeaders) {
+            return customHeaders(Output.of(customHeaders));
+        }
+
+        /**
+         * @param customHeaders Custom headers for the project webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customHeaders(ProjectHookCustomHeaderArgs... customHeaders) {
+            return customHeaders(List.of(customHeaders));
         }
 
         /**

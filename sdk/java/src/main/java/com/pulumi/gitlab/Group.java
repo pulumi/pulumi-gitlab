@@ -125,6 +125,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_group.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
+ * 
  * ```sh
  * $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
  * ```
@@ -140,6 +154,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gitlab:index/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {
+    /**
+     * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+     * 
+     */
+    @Export(name="allowedEmailDomainsLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> allowedEmailDomainsLists;
+
+    /**
+     * @return A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+     * 
+     */
+    public Output<Optional<List<String>>> allowedEmailDomainsLists() {
+        return Codegen.optional(this.allowedEmailDomainsLists);
+    }
     /**
      * Default to Auto DevOps pipeline for all projects within this group.
      * 

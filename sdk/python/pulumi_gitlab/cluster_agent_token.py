@@ -313,6 +313,20 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         ## Import
 
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_cluster_agent_token`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_cluster_agent_token.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
         A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>:<token-id>`:
 
         ```sh
@@ -382,6 +396,20 @@ class ClusterAgentToken(pulumi.CustomResource):
         ```
 
         ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_cluster_agent_token`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_cluster_agent_token.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
 
         A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>:<token-id>`:
 
