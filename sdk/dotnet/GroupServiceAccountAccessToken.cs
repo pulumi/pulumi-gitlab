@@ -16,58 +16,11 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; Reading the access token status of a service account requires an admin token or a top-level group owner token on gitlab.com. As a result, this resource will ignore permission errors when attempting to read the token status, and will rely on the values in state instead. This can lead to apply-time failures if the token configured for the provider doesn't have permissions to rotate tokens for the service account.
     /// 
+    /// &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+    /// 
+    /// &gt; Due to a limitation in the API, the `rotation_configuration` is unable to set the new expiry date. Instead, when the resource is created, it will default the expiry date to 7 days in the future. On each subsequent apply, the new expiry will be 7 days from the date of the apply.
+    /// 
     /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // This must be a top-level group
-    ///     var example = new GitLab.Group("example", new()
-    ///     {
-    ///         Name = "example",
-    ///         Path = "example",
-    ///         Description = "An example group",
-    ///     });
-    /// 
-    ///     // The service account against the top-level group
-    ///     var exampleSa = new GitLab.GroupServiceAccount("example_sa", new()
-    ///     {
-    ///         Group = example.Id,
-    ///         Name = "example-name",
-    ///         Username = "example-username",
-    ///     });
-    /// 
-    ///     // To assign the service account to a group
-    ///     var exampleMembership = new GitLab.GroupMembership("example_membership", new()
-    ///     {
-    ///         GroupId = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
-    ///         AccessLevel = "developer",
-    ///         ExpiresAt = "2020-03-14",
-    ///     });
-    /// 
-    ///     // The service account access token
-    ///     var exampleSaToken = new GitLab.GroupServiceAccountAccessToken("example_sa_token", new()
-    ///     {
-    ///         Group = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
-    ///         Name = "Example service account access token",
-    ///         ExpiresAt = "2020-03-14",
-    ///         Scopes = new[]
-    ///         {
-    ///             "api",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
@@ -113,7 +66,7 @@ namespace Pulumi.GitLab
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+        /// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         /// </summary>
         [Output("expiresAt")]
         public Output<string> ExpiresAt { get; private set; } = null!;
@@ -135,6 +88,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("revoked")]
         public Output<bool> Revoked { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        /// </summary>
+        [Output("rotationConfiguration")]
+        public Output<Outputs.GroupServiceAccountAccessTokenRotationConfiguration?> RotationConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
@@ -205,7 +164,7 @@ namespace Pulumi.GitLab
     public sealed class GroupServiceAccountAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+        /// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -221,6 +180,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        /// </summary>
+        [Input("rotationConfiguration")]
+        public Input<Inputs.GroupServiceAccountAccessTokenRotationConfigurationArgs>? RotationConfiguration { get; set; }
 
         [Input("scopes", required: true)]
         private InputList<string>? _scopes;
@@ -261,7 +226,7 @@ namespace Pulumi.GitLab
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+        /// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -283,6 +248,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("revoked")]
         public Input<bool>? Revoked { get; set; }
+
+        /// <summary>
+        /// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        /// </summary>
+        [Input("rotationConfiguration")]
+        public Input<Inputs.GroupServiceAccountAccessTokenRotationConfigurationGetArgs>? RotationConfiguration { get; set; }
 
         [Input("scopes")]
         private InputList<string>? _scopes;

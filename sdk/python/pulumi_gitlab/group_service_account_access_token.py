@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GroupServiceAccountAccessTokenArgs', 'GroupServiceAccountAccessToken']
 
@@ -23,14 +25,16 @@ class GroupServiceAccountAccessTokenArgs:
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  user_id: pulumi.Input[int],
                  expires_at: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 rotation_configuration: Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']] = None):
         """
         The set of arguments for constructing a GroupServiceAccountAccessToken resource.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         :param pulumi.Input[int] user_id: The ID of a service account user.
-        :param pulumi.Input[str] expires_at: The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+        :param pulumi.Input[str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[str] name: The name of the personal access token.
+        :param pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "scopes", scopes)
@@ -39,6 +43,8 @@ class GroupServiceAccountAccessTokenArgs:
             pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if rotation_configuration is not None:
+            pulumi.set(__self__, "rotation_configuration", rotation_configuration)
 
     @property
     @pulumi.getter
@@ -80,7 +86,7 @@ class GroupServiceAccountAccessTokenArgs:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+        The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         """
         return pulumi.get(self, "expires_at")
 
@@ -100,6 +106,18 @@ class GroupServiceAccountAccessTokenArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="rotationConfiguration")
+    def rotation_configuration(self) -> Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']]:
+        """
+        The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        """
+        return pulumi.get(self, "rotation_configuration")
+
+    @rotation_configuration.setter
+    def rotation_configuration(self, value: Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']]):
+        pulumi.set(self, "rotation_configuration", value)
+
 
 @pulumi.input_type
 class _GroupServiceAccountAccessTokenState:
@@ -110,6 +128,7 @@ class _GroupServiceAccountAccessTokenState:
                  group: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  revoked: Optional[pulumi.Input[bool]] = None,
+                 rotation_configuration: Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
@@ -117,10 +136,11 @@ class _GroupServiceAccountAccessTokenState:
         Input properties used for looking up and filtering GroupServiceAccountAccessToken resources.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+        :param pulumi.Input[str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         :param pulumi.Input[str] name: The name of the personal access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
+        :param pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         :param pulumi.Input[str] token: The token of the group service account access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The ID of a service account user.
@@ -137,6 +157,8 @@ class _GroupServiceAccountAccessTokenState:
             pulumi.set(__self__, "name", name)
         if revoked is not None:
             pulumi.set(__self__, "revoked", revoked)
+        if rotation_configuration is not None:
+            pulumi.set(__self__, "rotation_configuration", rotation_configuration)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if token is not None:
@@ -172,7 +194,7 @@ class _GroupServiceAccountAccessTokenState:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+        The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         """
         return pulumi.get(self, "expires_at")
 
@@ -215,6 +237,18 @@ class _GroupServiceAccountAccessTokenState:
     @revoked.setter
     def revoked(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "revoked", value)
+
+    @property
+    @pulumi.getter(name="rotationConfiguration")
+    def rotation_configuration(self) -> Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']]:
+        """
+        The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        """
+        return pulumi.get(self, "rotation_configuration")
+
+    @rotation_configuration.setter
+    def rotation_configuration(self, value: Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']]):
+        pulumi.set(self, "rotation_configuration", value)
 
     @property
     @pulumi.getter
@@ -261,6 +295,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 rotation_configuration: Optional[pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -271,38 +306,11 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         > Reading the access token status of a service account requires an admin token or a top-level group owner token on gitlab.com. As a result, this resource will ignore permission errors when attempting to read the token status, and will rely on the values in state instead. This can lead to apply-time failures if the token configured for the provider doesn't have permissions to rotate tokens for the service account.
 
+        > Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+
+        > Due to a limitation in the API, the `rotation_configuration` is unable to set the new expiry date. Instead, when the resource is created, it will default the expiry date to 7 days in the future. On each subsequent apply, the new expiry will be 7 days from the date of the apply.
+
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # This must be a top-level group
-        example = gitlab.Group("example",
-            name="example",
-            path="example",
-            description="An example group")
-        # The service account against the top-level group
-        example_sa = gitlab.GroupServiceAccount("example_sa",
-            group=example.id,
-            name="example-name",
-            username="example-username")
-        # To assign the service account to a group
-        example_membership = gitlab.GroupMembership("example_membership",
-            group_id=example.id,
-            user_id=example_sa.service_account_id,
-            access_level="developer",
-            expires_at="2020-03-14")
-        # The service account access token
-        example_sa_token = gitlab.GroupServiceAccountAccessToken("example_sa_token",
-            group=example.id,
-            user_id=example_sa.service_account_id,
-            name="Example service account access token",
-            expires_at="2020-03-14",
-            scopes=["api"])
-        ```
 
         ## Import
 
@@ -334,9 +342,10 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] expires_at: The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+        :param pulumi.Input[str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         :param pulumi.Input[str] name: The name of the personal access token.
+        :param pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         :param pulumi.Input[int] user_id: The ID of a service account user.
         """
@@ -353,38 +362,11 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         > Reading the access token status of a service account requires an admin token or a top-level group owner token on gitlab.com. As a result, this resource will ignore permission errors when attempting to read the token status, and will rely on the values in state instead. This can lead to apply-time failures if the token configured for the provider doesn't have permissions to rotate tokens for the service account.
 
+        > Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+
+        > Due to a limitation in the API, the `rotation_configuration` is unable to set the new expiry date. Instead, when the resource is created, it will default the expiry date to 7 days in the future. On each subsequent apply, the new expiry will be 7 days from the date of the apply.
+
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # This must be a top-level group
-        example = gitlab.Group("example",
-            name="example",
-            path="example",
-            description="An example group")
-        # The service account against the top-level group
-        example_sa = gitlab.GroupServiceAccount("example_sa",
-            group=example.id,
-            name="example-name",
-            username="example-username")
-        # To assign the service account to a group
-        example_membership = gitlab.GroupMembership("example_membership",
-            group_id=example.id,
-            user_id=example_sa.service_account_id,
-            access_level="developer",
-            expires_at="2020-03-14")
-        # The service account access token
-        example_sa_token = gitlab.GroupServiceAccountAccessToken("example_sa_token",
-            group=example.id,
-            user_id=example_sa.service_account_id,
-            name="Example service account access token",
-            expires_at="2020-03-14",
-            scopes=["api"])
-        ```
 
         ## Import
 
@@ -432,6 +414,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 rotation_configuration: Optional[pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -448,6 +431,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
             __props__.__dict__["name"] = name
+            __props__.__dict__["rotation_configuration"] = rotation_configuration
             if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
             __props__.__dict__["scopes"] = scopes
@@ -476,6 +460,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
             group: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             revoked: Optional[pulumi.Input[bool]] = None,
+            rotation_configuration: Optional[pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             token: Optional[pulumi.Input[str]] = None,
             user_id: Optional[pulumi.Input[int]] = None) -> 'GroupServiceAccountAccessToken':
@@ -488,10 +473,11 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+        :param pulumi.Input[str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         :param pulumi.Input[str] name: The name of the personal access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
+        :param pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
         :param pulumi.Input[str] token: The token of the group service account access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The ID of a service account user.
@@ -506,6 +492,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
         __props__.__dict__["group"] = group
         __props__.__dict__["name"] = name
         __props__.__dict__["revoked"] = revoked
+        __props__.__dict__["rotation_configuration"] = rotation_configuration
         __props__.__dict__["scopes"] = scopes
         __props__.__dict__["token"] = token
         __props__.__dict__["user_id"] = user_id
@@ -531,7 +518,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[str]:
         """
-        The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+        The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         """
         return pulumi.get(self, "expires_at")
 
@@ -558,6 +545,14 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
         True if the token is revoked.
         """
         return pulumi.get(self, "revoked")
+
+    @property
+    @pulumi.getter(name="rotationConfiguration")
+    def rotation_configuration(self) -> pulumi.Output[Optional['outputs.GroupServiceAccountAccessTokenRotationConfiguration']]:
+        """
+        The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        """
+        return pulumi.get(self, "rotation_configuration")
 
     @property
     @pulumi.getter

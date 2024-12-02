@@ -137,7 +137,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      */
-    public readonly allowedEmailDomainsLists!: pulumi.Output<string[] | undefined>;
+    public readonly allowedEmailDomainsLists!: pulumi.Output<string[]>;
     /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */

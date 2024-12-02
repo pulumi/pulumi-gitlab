@@ -2119,6 +2119,143 @@ func (o GroupPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GroupServiceAccountAccessTokenRotationConfiguration struct {
+	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+	RotateBeforeDays int `pulumi:"rotateBeforeDays"`
+}
+
+// GroupServiceAccountAccessTokenRotationConfigurationInput is an input type that accepts GroupServiceAccountAccessTokenRotationConfigurationArgs and GroupServiceAccountAccessTokenRotationConfigurationOutput values.
+// You can construct a concrete instance of `GroupServiceAccountAccessTokenRotationConfigurationInput` via:
+//
+//	GroupServiceAccountAccessTokenRotationConfigurationArgs{...}
+type GroupServiceAccountAccessTokenRotationConfigurationInput interface {
+	pulumi.Input
+
+	ToGroupServiceAccountAccessTokenRotationConfigurationOutput() GroupServiceAccountAccessTokenRotationConfigurationOutput
+	ToGroupServiceAccountAccessTokenRotationConfigurationOutputWithContext(context.Context) GroupServiceAccountAccessTokenRotationConfigurationOutput
+}
+
+type GroupServiceAccountAccessTokenRotationConfigurationArgs struct {
+	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+	RotateBeforeDays pulumi.IntInput `pulumi:"rotateBeforeDays"`
+}
+
+func (GroupServiceAccountAccessTokenRotationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupServiceAccountAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (i GroupServiceAccountAccessTokenRotationConfigurationArgs) ToGroupServiceAccountAccessTokenRotationConfigurationOutput() GroupServiceAccountAccessTokenRotationConfigurationOutput {
+	return i.ToGroupServiceAccountAccessTokenRotationConfigurationOutputWithContext(context.Background())
+}
+
+func (i GroupServiceAccountAccessTokenRotationConfigurationArgs) ToGroupServiceAccountAccessTokenRotationConfigurationOutputWithContext(ctx context.Context) GroupServiceAccountAccessTokenRotationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupServiceAccountAccessTokenRotationConfigurationOutput)
+}
+
+func (i GroupServiceAccountAccessTokenRotationConfigurationArgs) ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutput() GroupServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return i.ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GroupServiceAccountAccessTokenRotationConfigurationArgs) ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) GroupServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupServiceAccountAccessTokenRotationConfigurationOutput).ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(ctx)
+}
+
+// GroupServiceAccountAccessTokenRotationConfigurationPtrInput is an input type that accepts GroupServiceAccountAccessTokenRotationConfigurationArgs, GroupServiceAccountAccessTokenRotationConfigurationPtr and GroupServiceAccountAccessTokenRotationConfigurationPtrOutput values.
+// You can construct a concrete instance of `GroupServiceAccountAccessTokenRotationConfigurationPtrInput` via:
+//
+//	        GroupServiceAccountAccessTokenRotationConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupServiceAccountAccessTokenRotationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutput() GroupServiceAccountAccessTokenRotationConfigurationPtrOutput
+	ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(context.Context) GroupServiceAccountAccessTokenRotationConfigurationPtrOutput
+}
+
+type groupServiceAccountAccessTokenRotationConfigurationPtrType GroupServiceAccountAccessTokenRotationConfigurationArgs
+
+func GroupServiceAccountAccessTokenRotationConfigurationPtr(v *GroupServiceAccountAccessTokenRotationConfigurationArgs) GroupServiceAccountAccessTokenRotationConfigurationPtrInput {
+	return (*groupServiceAccountAccessTokenRotationConfigurationPtrType)(v)
+}
+
+func (*groupServiceAccountAccessTokenRotationConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupServiceAccountAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (i *groupServiceAccountAccessTokenRotationConfigurationPtrType) ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutput() GroupServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return i.ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *groupServiceAccountAccessTokenRotationConfigurationPtrType) ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) GroupServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupServiceAccountAccessTokenRotationConfigurationPtrOutput)
+}
+
+type GroupServiceAccountAccessTokenRotationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GroupServiceAccountAccessTokenRotationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupServiceAccountAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (o GroupServiceAccountAccessTokenRotationConfigurationOutput) ToGroupServiceAccountAccessTokenRotationConfigurationOutput() GroupServiceAccountAccessTokenRotationConfigurationOutput {
+	return o
+}
+
+func (o GroupServiceAccountAccessTokenRotationConfigurationOutput) ToGroupServiceAccountAccessTokenRotationConfigurationOutputWithContext(ctx context.Context) GroupServiceAccountAccessTokenRotationConfigurationOutput {
+	return o
+}
+
+func (o GroupServiceAccountAccessTokenRotationConfigurationOutput) ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutput() GroupServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return o.ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GroupServiceAccountAccessTokenRotationConfigurationOutput) ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) GroupServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupServiceAccountAccessTokenRotationConfiguration) *GroupServiceAccountAccessTokenRotationConfiguration {
+		return &v
+	}).(GroupServiceAccountAccessTokenRotationConfigurationPtrOutput)
+}
+
+// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+func (o GroupServiceAccountAccessTokenRotationConfigurationOutput) RotateBeforeDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GroupServiceAccountAccessTokenRotationConfiguration) int { return v.RotateBeforeDays }).(pulumi.IntOutput)
+}
+
+type GroupServiceAccountAccessTokenRotationConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupServiceAccountAccessTokenRotationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupServiceAccountAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (o GroupServiceAccountAccessTokenRotationConfigurationPtrOutput) ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutput() GroupServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return o
+}
+
+func (o GroupServiceAccountAccessTokenRotationConfigurationPtrOutput) ToGroupServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) GroupServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return o
+}
+
+func (o GroupServiceAccountAccessTokenRotationConfigurationPtrOutput) Elem() GroupServiceAccountAccessTokenRotationConfigurationOutput {
+	return o.ApplyT(func(v *GroupServiceAccountAccessTokenRotationConfiguration) GroupServiceAccountAccessTokenRotationConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GroupServiceAccountAccessTokenRotationConfiguration
+		return ret
+	}).(GroupServiceAccountAccessTokenRotationConfigurationOutput)
+}
+
+// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+func (o GroupServiceAccountAccessTokenRotationConfigurationPtrOutput) RotateBeforeDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupServiceAccountAccessTokenRotationConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RotateBeforeDays
+	}).(pulumi.IntPtrOutput)
+}
+
 type PersonalAccessTokenRotationConfiguration struct {
 	// The duration (in days) the new token should be valid for.
 	ExpirationDays int `pulumi:"expirationDays"`
@@ -15011,6 +15148,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentDeployAccessLevelArrayInput)(nil)).Elem(), GroupProtectedEnvironmentDeployAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesInput)(nil)).Elem(), GroupPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesPtrInput)(nil)).Elem(), GroupPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountAccessTokenRotationConfigurationInput)(nil)).Elem(), GroupServiceAccountAccessTokenRotationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), GroupServiceAccountAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersonalAccessTokenRotationConfigurationInput)(nil)).Elem(), PersonalAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersonalAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), PersonalAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessTokenRotationConfigurationInput)(nil)).Elem(), ProjectAccessTokenRotationConfigurationArgs{})
@@ -15181,6 +15320,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupProtectedEnvironmentDeployAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(GroupPushRulesOutput{})
 	pulumi.RegisterOutputType(GroupPushRulesPtrOutput{})
+	pulumi.RegisterOutputType(GroupServiceAccountAccessTokenRotationConfigurationOutput{})
+	pulumi.RegisterOutputType(GroupServiceAccountAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(PersonalAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(PersonalAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ProjectAccessTokenRotationConfigurationOutput{})

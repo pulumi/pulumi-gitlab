@@ -573,6 +573,18 @@
                 }
             }
         },
+        "gitlab:index/GroupServiceAccountAccessTokenRotationConfiguration:GroupServiceAccountAccessTokenRotationConfiguration": {
+            "properties": {
+                "rotateBeforeDays": {
+                    "type": "integer",
+                    "description": "The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rotateBeforeDays"
+            ]
+        },
         "gitlab:index/PersonalAccessTokenRotationConfiguration:PersonalAccessTokenRotationConfiguration": {
             "properties": {
                 "expirationDays": {
@@ -10713,6 +10725,7 @@
                 }
             },
             "required": [
+                "allowedEmailDomainsLists",
                 "autoDevopsEnabled",
                 "avatarHash",
                 "avatarUrl",
@@ -12663,7 +12676,7 @@
             }
         },
         "gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken": {
-            "description": "The `gitlab.GroupServiceAccountAccessToken` resource allows to manage the lifecycle of a group service account access token.\n\n\u003e Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.\n\n\u003e Reading the access token status of a service account requires an admin token or a top-level group owner token on gitlab.com. As a result, this resource will ignore permission errors when attempting to read the token status, and will rely on the values in state instead. This can lead to apply-time failures if the token configured for the provider doesn't have permissions to rotate tokens for the service account.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// This must be a top-level group\nconst example = new gitlab.Group(\"example\", {\n    name: \"example\",\n    path: \"example\",\n    description: \"An example group\",\n});\n// The service account against the top-level group\nconst exampleSa = new gitlab.GroupServiceAccount(\"example_sa\", {\n    group: example.id,\n    name: \"example-name\",\n    username: \"example-username\",\n});\n// To assign the service account to a group\nconst exampleMembership = new gitlab.GroupMembership(\"example_membership\", {\n    groupId: example.id,\n    userId: exampleSa.serviceAccountId,\n    accessLevel: \"developer\",\n    expiresAt: \"2020-03-14\",\n});\n// The service account access token\nconst exampleSaToken = new gitlab.GroupServiceAccountAccessToken(\"example_sa_token\", {\n    group: example.id,\n    userId: exampleSa.serviceAccountId,\n    name: \"Example service account access token\",\n    expiresAt: \"2020-03-14\",\n    scopes: [\"api\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# This must be a top-level group\nexample = gitlab.Group(\"example\",\n    name=\"example\",\n    path=\"example\",\n    description=\"An example group\")\n# The service account against the top-level group\nexample_sa = gitlab.GroupServiceAccount(\"example_sa\",\n    group=example.id,\n    name=\"example-name\",\n    username=\"example-username\")\n# To assign the service account to a group\nexample_membership = gitlab.GroupMembership(\"example_membership\",\n    group_id=example.id,\n    user_id=example_sa.service_account_id,\n    access_level=\"developer\",\n    expires_at=\"2020-03-14\")\n# The service account access token\nexample_sa_token = gitlab.GroupServiceAccountAccessToken(\"example_sa_token\",\n    group=example.id,\n    user_id=example_sa.service_account_id,\n    name=\"Example service account access token\",\n    expires_at=\"2020-03-14\",\n    scopes=[\"api\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // This must be a top-level group\n    var example = new GitLab.Group(\"example\", new()\n    {\n        Name = \"example\",\n        Path = \"example\",\n        Description = \"An example group\",\n    });\n\n    // The service account against the top-level group\n    var exampleSa = new GitLab.GroupServiceAccount(\"example_sa\", new()\n    {\n        Group = example.Id,\n        Name = \"example-name\",\n        Username = \"example-username\",\n    });\n\n    // To assign the service account to a group\n    var exampleMembership = new GitLab.GroupMembership(\"example_membership\", new()\n    {\n        GroupId = example.Id,\n        UserId = exampleSa.ServiceAccountId,\n        AccessLevel = \"developer\",\n        ExpiresAt = \"2020-03-14\",\n    });\n\n    // The service account access token\n    var exampleSaToken = new GitLab.GroupServiceAccountAccessToken(\"example_sa_token\", new()\n    {\n        Group = example.Id,\n        UserId = exampleSa.ServiceAccountId,\n        Name = \"Example service account access token\",\n        ExpiresAt = \"2020-03-14\",\n        Scopes = new[]\n        {\n            \"api\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// This must be a top-level group\n\t\texample, err := gitlab.NewGroup(ctx, \"example\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tPath:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// The service account against the top-level group\n\t\texampleSa, err := gitlab.NewGroupServiceAccount(ctx, \"example_sa\", \u0026gitlab.GroupServiceAccountArgs{\n\t\t\tGroup:    example.ID(),\n\t\t\tName:     pulumi.String(\"example-name\"),\n\t\t\tUsername: pulumi.String(\"example-username\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// To assign the service account to a group\n\t\t_, err = gitlab.NewGroupMembership(ctx, \"example_membership\", \u0026gitlab.GroupMembershipArgs{\n\t\t\tGroupId:     example.ID(),\n\t\t\tUserId:      exampleSa.ServiceAccountId,\n\t\t\tAccessLevel: pulumi.String(\"developer\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-03-14\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// The service account access token\n\t\t_, err = gitlab.NewGroupServiceAccountAccessToken(ctx, \"example_sa_token\", \u0026gitlab.GroupServiceAccountAccessTokenArgs{\n\t\t\tGroup:     example.ID(),\n\t\t\tUserId:    exampleSa.ServiceAccountId,\n\t\t\tName:      pulumi.String(\"Example service account access token\"),\n\t\t\tExpiresAt: pulumi.String(\"2020-03-14\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.GroupServiceAccount;\nimport com.pulumi.gitlab.GroupServiceAccountArgs;\nimport com.pulumi.gitlab.GroupMembership;\nimport com.pulumi.gitlab.GroupMembershipArgs;\nimport com.pulumi.gitlab.GroupServiceAccountAccessToken;\nimport com.pulumi.gitlab.GroupServiceAccountAccessTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // This must be a top-level group\n        var example = new Group(\"example\", GroupArgs.builder()\n            .name(\"example\")\n            .path(\"example\")\n            .description(\"An example group\")\n            .build());\n\n        // The service account against the top-level group\n        var exampleSa = new GroupServiceAccount(\"exampleSa\", GroupServiceAccountArgs.builder()\n            .group(example.id())\n            .name(\"example-name\")\n            .username(\"example-username\")\n            .build());\n\n        // To assign the service account to a group\n        var exampleMembership = new GroupMembership(\"exampleMembership\", GroupMembershipArgs.builder()\n            .groupId(example.id())\n            .userId(exampleSa.serviceAccountId())\n            .accessLevel(\"developer\")\n            .expiresAt(\"2020-03-14\")\n            .build());\n\n        // The service account access token\n        var exampleSaToken = new GroupServiceAccountAccessToken(\"exampleSaToken\", GroupServiceAccountAccessTokenArgs.builder()\n            .group(example.id())\n            .userId(exampleSa.serviceAccountId())\n            .name(\"Example service account access token\")\n            .expiresAt(\"2020-03-14\")\n            .scopes(\"api\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This must be a top-level group\n  example:\n    type: gitlab:Group\n    properties:\n      name: example\n      path: example\n      description: An example group\n  # The service account against the top-level group\n  exampleSa:\n    type: gitlab:GroupServiceAccount\n    name: example_sa\n    properties:\n      group: ${example.id}\n      name: example-name\n      username: example-username\n  # To assign the service account to a group\n  exampleMembership:\n    type: gitlab:GroupMembership\n    name: example_membership\n    properties:\n      groupId: ${example.id}\n      userId: ${exampleSa.serviceAccountId}\n      accessLevel: developer\n      expiresAt: 2020-03-14\n  # The service account access token\n  exampleSaToken:\n    type: gitlab:GroupServiceAccountAccessToken\n    name: example_sa_token\n    properties:\n      group: ${example.id}\n      userId: ${exampleSa.serviceAccountId}\n      name: Example service account access token\n      expiresAt: 2020-03-14\n      scopes:\n        - api\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account_access_token`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_group_service_account_access_token.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImport using the CLI is supported using the following syntax:\n\n```sh\n$ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `\u003cresource\u003e \u003cid\u003e`. The\n```\n\n`id` is in the form of \u003cgroup_id\u003e:\u003cservice_account_id\u003e:\u003caccess_token_id\u003e\n\nImporting an access token does not import the access token value.\n\n```sh\n$ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken example 1:2:3\n```\n\n",
+            "description": "The `gitlab.GroupServiceAccountAccessToken` resource allows to manage the lifecycle of a group service account access token.\n\n\u003e Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.\n\n\u003e Reading the access token status of a service account requires an admin token or a top-level group owner token on gitlab.com. As a result, this resource will ignore permission errors when attempting to read the token status, and will rely on the values in state instead. This can lead to apply-time failures if the token configured for the provider doesn't have permissions to rotate tokens for the service account.\n\n\u003e Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.\n\n\u003e Due to a limitation in the API, the `rotation_configuration` is unable to set the new expiry date. Instead, when the resource is created, it will default the expiry date to 7 days in the future. On each subsequent apply, the new expiry will be 7 days from the date of the apply. \n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)\n\n## Import\n\nStarting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account_access_token`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_group_service_account_access_token.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImport using the CLI is supported using the following syntax:\n\n```sh\n$ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `\u003cresource\u003e \u003cid\u003e`. The\n```\n\n`id` is in the form of \u003cgroup_id\u003e:\u003cservice_account_id\u003e:\u003caccess_token_id\u003e\n\nImporting an access token does not import the access token value.\n\n```sh\n$ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken example 1:2:3\n```\n\n",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -12675,7 +12688,7 @@
                 },
                 "expiresAt": {
                     "type": "string",
-                    "description": "The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.\n"
+                    "description": "The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.\n"
                 },
                 "group": {
                     "type": "string",
@@ -12688,6 +12701,10 @@
                 "revoked": {
                     "type": "boolean",
                     "description": "True if the token is revoked.\n"
+                },
+                "rotationConfiguration": {
+                    "$ref": "#/types/gitlab:index/GroupServiceAccountAccessTokenRotationConfiguration:GroupServiceAccountAccessTokenRotationConfiguration",
+                    "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                 },
                 "scopes": {
                     "type": "array",
@@ -12720,7 +12737,7 @@
             "inputProperties": {
                 "expiresAt": {
                     "type": "string",
-                    "description": "The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.\n"
+                    "description": "The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.\n"
                 },
                 "group": {
                     "type": "string",
@@ -12729,6 +12746,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the personal access token.\n"
+                },
+                "rotationConfiguration": {
+                    "$ref": "#/types/gitlab:index/GroupServiceAccountAccessTokenRotationConfiguration:GroupServiceAccountAccessTokenRotationConfiguration",
+                    "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                 },
                 "scopes": {
                     "type": "array",
@@ -12760,7 +12781,7 @@
                     },
                     "expiresAt": {
                         "type": "string",
-                        "description": "The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.\n"
+                        "description": "The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.\n"
                     },
                     "group": {
                         "type": "string",
@@ -12773,6 +12794,10 @@
                     "revoked": {
                         "type": "boolean",
                         "description": "True if the token is revoked.\n"
+                    },
+                    "rotationConfiguration": {
+                        "$ref": "#/types/gitlab:index/GroupServiceAccountAccessTokenRotationConfiguration:GroupServiceAccountAccessTokenRotationConfiguration",
+                        "description": "The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.\n"
                     },
                     "scopes": {
                         "type": "array",

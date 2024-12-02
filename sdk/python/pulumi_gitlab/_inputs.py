@@ -41,6 +41,8 @@ __all__ = [
     'GroupProtectedEnvironmentDeployAccessLevelArgsDict',
     'GroupPushRulesArgs',
     'GroupPushRulesArgsDict',
+    'GroupServiceAccountAccessTokenRotationConfigurationArgs',
+    'GroupServiceAccountAccessTokenRotationConfigurationArgsDict',
     'PersonalAccessTokenRotationConfigurationArgs',
     'PersonalAccessTokenRotationConfigurationArgsDict',
     'ProjectAccessTokenRotationConfigurationArgs',
@@ -1597,6 +1599,37 @@ class GroupPushRulesArgs:
     @reject_unsigned_commits.setter
     def reject_unsigned_commits(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reject_unsigned_commits", value)
+
+
+if not MYPY:
+    class GroupServiceAccountAccessTokenRotationConfigurationArgsDict(TypedDict):
+        rotate_before_days: pulumi.Input[int]
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+elif False:
+    GroupServiceAccountAccessTokenRotationConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GroupServiceAccountAccessTokenRotationConfigurationArgs:
+    def __init__(__self__, *,
+                 rotate_before_days: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+
+    @property
+    @pulumi.getter(name="rotateBeforeDays")
+    def rotate_before_days(self) -> pulumi.Input[int]:
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        return pulumi.get(self, "rotate_before_days")
+
+    @rotate_before_days.setter
+    def rotate_before_days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "rotate_before_days", value)
 
 
 if not MYPY:

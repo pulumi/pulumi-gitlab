@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.GroupServiceAccountAccessTokenRotationConfigurationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -49,14 +50,14 @@ public final class GroupServiceAccountAccessTokenState extends com.pulumi.resour
     }
 
     /**
-     * The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+     * The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      * 
      */
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+     * @return The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -106,6 +107,21 @@ public final class GroupServiceAccountAccessTokenState extends com.pulumi.resour
      */
     public Optional<Output<Boolean>> revoked() {
         return Optional.ofNullable(this.revoked);
+    }
+
+    /**
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    @Import(name="rotationConfiguration")
+    private @Nullable Output<GroupServiceAccountAccessTokenRotationConfigurationArgs> rotationConfiguration;
+
+    /**
+     * @return The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    public Optional<Output<GroupServiceAccountAccessTokenRotationConfigurationArgs>> rotationConfiguration() {
+        return Optional.ofNullable(this.rotationConfiguration);
     }
 
     /**
@@ -162,6 +178,7 @@ public final class GroupServiceAccountAccessTokenState extends com.pulumi.resour
         this.group = $.group;
         this.name = $.name;
         this.revoked = $.revoked;
+        this.rotationConfiguration = $.rotationConfiguration;
         this.scopes = $.scopes;
         this.token = $.token;
         this.userId = $.userId;
@@ -228,7 +245,7 @@ public final class GroupServiceAccountAccessTokenState extends com.pulumi.resour
         }
 
         /**
-         * @param expiresAt The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+         * @param expiresAt The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
          * 
          * @return builder
          * 
@@ -239,7 +256,7 @@ public final class GroupServiceAccountAccessTokenState extends com.pulumi.resour
         }
 
         /**
-         * @param expiresAt The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+         * @param expiresAt The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
          * 
          * @return builder
          * 
@@ -309,6 +326,27 @@ public final class GroupServiceAccountAccessTokenState extends com.pulumi.resour
          */
         public Builder revoked(Boolean revoked) {
             return revoked(Output.of(revoked));
+        }
+
+        /**
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(@Nullable Output<GroupServiceAccountAccessTokenRotationConfigurationArgs> rotationConfiguration) {
+            $.rotationConfiguration = rotationConfiguration;
+            return this;
+        }
+
+        /**
+         * @param rotationConfiguration The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfiguration(GroupServiceAccountAccessTokenRotationConfigurationArgs rotationConfiguration) {
+            return rotationConfiguration(Output.of(rotationConfiguration));
         }
 
         /**
