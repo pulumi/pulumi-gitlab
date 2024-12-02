@@ -159,14 +159,14 @@ public class Group extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="allowedEmailDomainsLists", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> allowedEmailDomainsLists;
+    private Output<List<String>> allowedEmailDomainsLists;
 
     /**
      * @return A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      * 
      */
-    public Output<Optional<List<String>>> allowedEmailDomainsLists() {
-        return Codegen.optional(this.allowedEmailDomainsLists);
+    public Output<List<String>> allowedEmailDomainsLists() {
+        return this.allowedEmailDomainsLists;
     }
     /**
      * Default to Auto DevOps pipeline for all projects within this group.

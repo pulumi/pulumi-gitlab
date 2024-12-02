@@ -29,6 +29,7 @@ __all__ = [
     'GroupProtectedEnvironmentApprovalRule',
     'GroupProtectedEnvironmentDeployAccessLevel',
     'GroupPushRules',
+    'GroupServiceAccountAccessTokenRotationConfiguration',
     'PersonalAccessTokenRotationConfiguration',
     'ProjectAccessTokenRotationConfiguration',
     'ProjectContainerExpirationPolicy',
@@ -1301,6 +1302,41 @@ class GroupPushRules(dict):
         Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
         """
         return pulumi.get(self, "reject_unsigned_commits")
+
+
+@pulumi.output_type
+class GroupServiceAccountAccessTokenRotationConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rotateBeforeDays":
+            suggest = "rotate_before_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupServiceAccountAccessTokenRotationConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupServiceAccountAccessTokenRotationConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupServiceAccountAccessTokenRotationConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rotate_before_days: int):
+        """
+        :param int rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+
+    @property
+    @pulumi.getter(name="rotateBeforeDays")
+    def rotate_before_days(self) -> int:
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        return pulumi.get(self, "rotate_before_days")
 
 
 @pulumi.output_type

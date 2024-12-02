@@ -10,10 +10,12 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.GroupServiceAccountAccessTokenArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupServiceAccountAccessTokenState;
+import com.pulumi.gitlab.outputs.GroupServiceAccountAccessTokenRotationConfiguration;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -23,75 +25,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; Reading the access token status of a service account requires an admin token or a top-level group owner token on gitlab.com. As a result, this resource will ignore permission errors when attempting to read the token status, and will rely on the values in state instead. This can lead to apply-time failures if the token configured for the provider doesn&#39;t have permissions to rotate tokens for the service account.
  * 
+ * &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+ * 
+ * &gt; Due to a limitation in the API, the `rotation_configuration` is unable to set the new expiry date. Instead, when the resource is created, it will default the expiry date to 7 days in the future. On each subsequent apply, the new expiry will be 7 days from the date of the apply.
+ * 
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gitlab.Group;
- * import com.pulumi.gitlab.GroupArgs;
- * import com.pulumi.gitlab.GroupServiceAccount;
- * import com.pulumi.gitlab.GroupServiceAccountArgs;
- * import com.pulumi.gitlab.GroupMembership;
- * import com.pulumi.gitlab.GroupMembershipArgs;
- * import com.pulumi.gitlab.GroupServiceAccountAccessToken;
- * import com.pulumi.gitlab.GroupServiceAccountAccessTokenArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // This must be a top-level group
- *         var example = new Group("example", GroupArgs.builder()
- *             .name("example")
- *             .path("example")
- *             .description("An example group")
- *             .build());
- * 
- *         // The service account against the top-level group
- *         var exampleSa = new GroupServiceAccount("exampleSa", GroupServiceAccountArgs.builder()
- *             .group(example.id())
- *             .name("example-name")
- *             .username("example-username")
- *             .build());
- * 
- *         // To assign the service account to a group
- *         var exampleMembership = new GroupMembership("exampleMembership", GroupMembershipArgs.builder()
- *             .groupId(example.id())
- *             .userId(exampleSa.serviceAccountId())
- *             .accessLevel("developer")
- *             .expiresAt("2020-03-14")
- *             .build());
- * 
- *         // The service account access token
- *         var exampleSaToken = new GroupServiceAccountAccessToken("exampleSaToken", GroupServiceAccountAccessTokenArgs.builder()
- *             .group(example.id())
- *             .userId(exampleSa.serviceAccountId())
- *             .name("Example service account access token")
- *             .expiresAt("2020-03-14")
- *             .scopes("api")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -153,14 +91,14 @@ public class GroupServiceAccountAccessToken extends com.pulumi.resources.CustomR
         return this.createdAt;
     }
     /**
-     * The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+     * The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      * 
      */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output<String> expiresAt;
 
     /**
-     * @return The personal access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
+     * @return The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      * 
      */
     public Output<String> expiresAt() {
@@ -207,6 +145,20 @@ public class GroupServiceAccountAccessToken extends com.pulumi.resources.CustomR
      */
     public Output<Boolean> revoked() {
         return this.revoked;
+    }
+    /**
+     * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    @Export(name="rotationConfiguration", refs={GroupServiceAccountAccessTokenRotationConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ GroupServiceAccountAccessTokenRotationConfiguration> rotationConfiguration;
+
+    /**
+     * @return The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+     * 
+     */
+    public Output<Optional<GroupServiceAccountAccessTokenRotationConfiguration>> rotationConfiguration() {
+        return Codegen.optional(this.rotationConfiguration);
     }
     /**
      * The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`

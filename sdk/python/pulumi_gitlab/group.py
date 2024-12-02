@@ -1568,7 +1568,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedEmailDomainsLists")
-    def allowed_email_domains_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def allowed_email_domains_lists(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         """
