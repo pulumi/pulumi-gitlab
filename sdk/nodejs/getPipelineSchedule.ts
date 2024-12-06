@@ -125,7 +125,7 @@ export interface GetPipelineScheduleResult {
  * });
  * ```
  */
-export function getPipelineScheduleOutput(args: GetPipelineScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelineScheduleResult> {
+export function getPipelineScheduleOutput(args: GetPipelineScheduleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineScheduleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getPipelineSchedule:getPipelineSchedule", {
         "cronTimezone": args.cronTimezone,

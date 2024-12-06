@@ -530,7 +530,7 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
                               updated_before: Optional[pulumi.Input[Optional[str]]] = None,
                               weight: Optional[pulumi.Input[Optional[int]]] = None,
                               with_labels_details: Optional[pulumi.Input[Optional[bool]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectIssuesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectIssuesResult]:
     """
     The `get_project_issues` data source allows to retrieve details about issues in a project.
 
@@ -602,7 +602,7 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
     __args__['updatedBefore'] = updated_before
     __args__['weight'] = weight
     __args__['withLabelsDetails'] = with_labels_details
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectIssues:getProjectIssues', __args__, opts=opts, typ=GetProjectIssuesResult)
     return __ret__.apply(lambda __response__: GetProjectIssuesResult(
         assignee_id=pulumi.get(__response__, 'assignee_id'),

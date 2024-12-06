@@ -342,7 +342,7 @@ def get_project_hook(hook_id: Optional[int] = None,
         wiki_page_events=pulumi.get(__ret__, 'wiki_page_events'))
 def get_project_hook_output(hook_id: Optional[pulumi.Input[int]] = None,
                             project: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectHookResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectHookResult]:
     """
     The `ProjectHook` data source allows to retrieve details about a hook in a project.
 
@@ -366,7 +366,7 @@ def get_project_hook_output(hook_id: Optional[pulumi.Input[int]] = None,
     __args__ = dict()
     __args__['hookId'] = hook_id
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectHook:getProjectHook', __args__, opts=opts, typ=GetProjectHookResult)
     return __ret__.apply(lambda __response__: GetProjectHookResult(
         confidential_issues_events=pulumi.get(__response__, 'confidential_issues_events'),

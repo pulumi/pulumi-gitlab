@@ -124,7 +124,7 @@ export interface GetRepositoryFileResult {
  * });
  * ```
  */
-export function getRepositoryFileOutput(args: GetRepositoryFileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryFileResult> {
+export function getRepositoryFileOutput(args: GetRepositoryFileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepositoryFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getRepositoryFile:getRepositoryFile", {
         "filePath": args.filePath,

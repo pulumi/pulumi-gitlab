@@ -129,7 +129,7 @@ def get_project_ids(project: Optional[str] = None,
         project_graphql_id=pulumi.get(__ret__, 'project_graphql_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
 def get_project_ids_output(project: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectIdsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectIdsResult]:
     """
     The `get_project_ids` data source identification information for a given project, allowing a user to translate a full path or ID into the GraphQL ID of the project.
 
@@ -153,7 +153,7 @@ def get_project_ids_output(project: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectIds:getProjectIds', __args__, opts=opts, typ=GetProjectIdsResult)
     return __ret__.apply(lambda __response__: GetProjectIdsResult(
         id=pulumi.get(__response__, 'id'),

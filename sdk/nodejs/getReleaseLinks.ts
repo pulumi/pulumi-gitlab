@@ -59,7 +59,7 @@ export interface GetReleaseLinksResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
  */
-export function getReleaseLinksOutput(args: GetReleaseLinksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseLinksResult> {
+export function getReleaseLinksOutput(args: GetReleaseLinksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReleaseLinksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getReleaseLinks:getReleaseLinks", {
         "project": args.project,

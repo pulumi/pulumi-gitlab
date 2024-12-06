@@ -167,7 +167,7 @@ def get_instance_variable(key: Optional[str] = None,
         value=pulumi.get(__ret__, 'value'),
         variable_type=pulumi.get(__ret__, 'variable_type'))
 def get_instance_variable_output(key: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceVariableResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceVariableResult]:
     """
     The `InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
 
@@ -187,7 +187,7 @@ def get_instance_variable_output(key: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['key'] = key
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getInstanceVariable:getInstanceVariable', __args__, opts=opts, typ=GetInstanceVariableResult)
     return __ret__.apply(lambda __response__: GetInstanceVariableResult(
         description=pulumi.get(__response__, 'description'),

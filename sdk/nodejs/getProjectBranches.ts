@@ -50,7 +50,7 @@ export interface GetProjectBranchesResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
  */
-export function getProjectBranchesOutput(args: GetProjectBranchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectBranchesResult> {
+export function getProjectBranchesOutput(args: GetProjectBranchesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectBranchesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectBranches:getProjectBranches", {
         "project": args.project,

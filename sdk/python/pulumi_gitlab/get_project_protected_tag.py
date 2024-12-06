@@ -111,7 +111,7 @@ def get_project_protected_tag(project: Optional[str] = None,
         tag=pulumi.get(__ret__, 'tag'))
 def get_project_protected_tag_output(project: Optional[pulumi.Input[str]] = None,
                                      tag: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedTagResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectProtectedTagResult]:
     """
     The `get_project_protected_tag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
 
@@ -124,7 +124,7 @@ def get_project_protected_tag_output(project: Optional[pulumi.Input[str]] = None
     __args__ = dict()
     __args__['project'] = project
     __args__['tag'] = tag
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectProtectedTag:getProjectProtectedTag', __args__, opts=opts, typ=GetProjectProtectedTagResult)
     return __ret__.apply(lambda __response__: GetProjectProtectedTagResult(
         create_access_levels=pulumi.get(__response__, 'create_access_levels'),
